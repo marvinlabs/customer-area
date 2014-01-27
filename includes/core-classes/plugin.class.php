@@ -15,8 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
-
-require_once( CUAR_INCLUDES_DIR . '/settings.class.php' );
 	
 if (!class_exists('CUAR_Plugin')) :
 
@@ -192,9 +190,14 @@ class CUAR_Plugin {
 		return '';
 	}
 	
-	public function get_customer_page_id() {
-		$cp_addon = $this->get_addon('customer-page');
-		return $cp_addon->get_customer_page_id();
+	public function is_customer_area_page() {
+		$cp_addon = $this->get_addon( 'customer-pages' );
+		return $cp_addon->is_customer_area_page();
+	}
+	
+	public function get_customer_page_id( $slug ) {
+		$cp_addon = $this->get_addon( 'customer-pages' );
+		return $cp_addon->get_page_id( $slug );
 	}
 
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/

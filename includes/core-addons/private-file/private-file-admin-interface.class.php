@@ -36,18 +36,19 @@ class CUAR_PrivateFileAdminInterface {
 		add_action( 'cuar_addon_print_settings_cuar_private_files', array( &$this, 'print_settings' ), 10, 2 );
 		add_filter( 'cuar_addon_validate_options_cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
 		
-		if ( $plugin->get_option( self::$OPTION_ENABLE_ADDON ) ) {
+		if ( $this->private_file_addon->is_enabled() ) {
 			// Admin menu
-			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10 );
+			add_action( 'cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10 );
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 			
 			// File edit page
 			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
-			add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );
-				
-			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );			
-
+			add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );				
+			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );		
+			
+			// File list page	
 			add_action( 'parse_query' , array( &$this, 'restrict_edit_post_listing' ) );
+			add_action( 'cuar_after_addons_init', array( &$this, 'customize_post_list_pages' ) );
 		}		
 	}
 			
@@ -89,14 +90,8 @@ jQuery(document).ready( function($) {
 	 * Add the menu item
 	 */
 	public function add_menu_items( $submenus ) {
-		$separator = '<span style="display:block;
-				        margin: 0px 5px 12px -5px;
-				        padding:0;
-				        height:1px;
-				        line-height:1px;
-				        background:#ddd;
-						opacity: 0.5; "></span>';
-		
+		$separator = '<span class="cuar-menu-divider"></span>';
+				
 		$my_submenus = array(
 				array(
 					'page_title'	=> __( 'Private Files', 'cuar' ),
@@ -126,6 +121,25 @@ jQuery(document).ready( function($) {
 		}
 	
 		return $submenus;
+	}
+	
+	/*------- CUSTOMISATION OF THE LISTING OF POSTS -----------------------------------------------------------------*/
+	
+	public function customize_post_list_pages() {
+		$type = "cuar_private_file";
+		add_filter( "manage_edit-{$type}_columns", array( &$this, 'register_post_list_columns' ), 5 );
+		add_action( "manage_{$type}_posts_custom_column", array( &$this, 'display_post_list_column'), 8, 2 );
+	}
+	
+	public function register_post_list_columns( $columns ) {
+		$columns['cuar_category'] = __( 'Category', 'cuar' );
+		return $columns;
+	}
+	
+	public function display_post_list_column( $column_name, $post_id ) {
+		if ( 'cuar_category' == $column_name ) {
+			the_terms( $post_id, 'cuar_private_file_category' );
+		}
 	}
 	
 	/*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE FILES ------------------------------------------------------*/
@@ -405,61 +419,6 @@ jQuery(document).ready( function($) {
 							. $folder_exists_message
 							. '</p>' ) 
 				);
-		
-		add_settings_section(
-				'cuar_private_files_addon_frontend',
-				__('Frontend Integration', 'cuar'),
-				array( &$this, 'print_frontend_section_info' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG
-			);
-
-		add_settings_field(
-				self::$OPTION_SHOW_AFTER_POST_CONTENT,
-				__('Show after post', 'cuar'),
-				array( &$cuar_settings, 'print_input_field' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_files_addon_frontend',
-				array(
-					'option_id' => self::$OPTION_SHOW_AFTER_POST_CONTENT,
-					'type' 		=> 'checkbox',
-					'after'		=> 
-							__( 'Show additional information after the post in the single post view.', 'cuar' )
-							. '<p class="description">' 
-							. __( 'You can disable this if you have your own "single-cuar_private_file.php" template file.', 'cuar' )
-							. '</p>' )
-			);
-		
-		add_settings_field(
-				self::$OPTION_FILE_LIST_MODE, 
-				__('File list', 'cuar'),
-				array( &$cuar_settings, 'print_select_field' ), 
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_files_addon_frontend',
-				array( 
-					'option_id' => self::$OPTION_FILE_LIST_MODE, 
-					'options'	=> array( 
-						'plain' 	=> __( "Don't group files", 'cuar' ),
-						'month'		=> __( 'Group by month', 'cuar' ),
-						'year' 		=> __( 'Group by year', 'cuar' ),
-						'category' 	=> __( 'Group by category', 'cuar' ) ),
-	    			'after'	=> '<p class="description">'
-	    				. __( 'You can choose how files will be organized by default in the customer area.', 'cuar' )
-	    				. '</p>' )
-			);	
-
-		add_settings_field(
-				self::$OPTION_HIDE_EMPTY_CATEGORIES,
-				__('Empty categories', 'cuar'),
-				array( &$cuar_settings, 'print_input_field' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_files_addon_frontend',
-				array(
-					'option_id' => self::$OPTION_HIDE_EMPTY_CATEGORIES,
-					'type' 		=> 'checkbox',
-					'after'		=> 
-						__( 'When listing files by category, empty categories will be hidden if you check this.', 
-							'cuar' ) )
-			);
 
 		add_settings_section(
 				'cuar_private_files_addon_storage',
@@ -480,10 +439,6 @@ jQuery(document).ready( function($) {
 		// TODO OUTPUT ALLOWED FILE TYPES
 		
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_ENABLE_ADDON );
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
-		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_FILE_LIST_MODE, 
-				array( 'plain', 'year', 'month', 'category' ) );
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_HIDE_EMPTY_CATEGORIES );
 
 		// TODO: Would be good to have a validate_valid_folder function in CUAR_Settings class.
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_FTP_PATH);
@@ -499,9 +454,6 @@ jQuery(document).ready( function($) {
 	 */
 	public static function set_default_options( $defaults ) {
 		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
-		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
-		$defaults[ self::$OPTION_FILE_LIST_MODE ] = 'year';
-		$defaults[ self::$OPTION_HIDE_EMPTY_CATEGORIES ] = true;
 		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
 
 		$admin_role = get_role( 'administrator' );
@@ -561,11 +513,6 @@ jQuery(document).ready( function($) {
 
 	// General options
 	public static $OPTION_ENABLE_ADDON					= 'enable_private_files';
-
-	// Frontend options
-	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'frontend_show_after_post_content';
-	public static $OPTION_FILE_LIST_MODE				= 'frontend_file_list_mode';
-	public static $OPTION_HIDE_EMPTY_CATEGORIES			= 'frontend_hide_empty_file_categories';
 	public static $OPTION_FTP_PATH 						= 'frontend_ftp_upload_path';
 		
 	/** @var CUAR_Plugin */

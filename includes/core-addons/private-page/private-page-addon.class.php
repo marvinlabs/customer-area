@@ -16,7 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 require_once( CUAR_INCLUDES_DIR . '/helpers/template-functions.class.php' );
 
 require_once( dirname(__FILE__) . '/private-page-admin-interface.class.php' );
@@ -68,6 +68,10 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 			global $wp_rewrite;  
 			$wp_rewrite->flush_rules();
 		}
+	}
+	
+	public function is_enabled() {
+		return $this->plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_ENABLE_ADDON );
 	}
 		
 	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
@@ -283,7 +287,6 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 }
 
 // Make sure the addon is loaded
-global $cuar_pp_addon;
-$cuar_pp_addon = new CUAR_PrivatePageAddOn();
+new CUAR_PrivatePageAddOn();
 
 endif; // if (!class_exists('CUAR_PrivatePageAddOn')) 

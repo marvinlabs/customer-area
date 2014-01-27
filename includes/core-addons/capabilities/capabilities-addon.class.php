@@ -16,7 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 
 require_once( dirname(__FILE__) . '/capabilities-admin-interface.class.php' );
 
@@ -50,7 +50,6 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 }
 
 // Make sure the addon is loaded
-global $cuar_caps_addon;
-$cuar_caps_addon = new CUAR_CapabilitiesAddOn();
+new CUAR_CapabilitiesAddOn();
 
 endif; // if (!class_exists('CUAR_CapabilitiesAddOn')) 

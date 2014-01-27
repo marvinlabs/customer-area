@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	
 	<form method="post" action="options.php"> 	
 		<input type="hidden" id="cuar_tab" name="cuar_tab" value="<?php echo $this->current_tab; ?>" />
+		<input type="hidden" id="cuar_do_save_settings" name="cuar_do_save_settings" value="1" />
 	
 	<?php 
 		settings_fields( CUAR_Settings::$OPTIONS_GROUP . '_' . $this->current_tab ); 

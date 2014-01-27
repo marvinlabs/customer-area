@@ -120,7 +120,7 @@ class CUAR_PrivatePageFrontendInterface {
 	
 	public function print_customer_area_content() {			
 		$po_addon = $this->plugin->get_addon('post-owner');
-		$cp_addon = $this->plugin->get_addon('customer-page');
+		$cp_addon = $this->plugin->get_addon( 'customer-pages' );
 		$current_user_id = get_current_user_id();
 		
 		// Get user pages
@@ -194,8 +194,7 @@ class CUAR_PrivatePageFrontendInterface {
 	public function load_scripts() {
 		if ( is_admin() ) return;
 
-		$obj = get_queried_object();
-		if ( is_page( $obj ) && $obj->ID==$this->plugin->get_customer_page_id() ) {
+		if ( $this->plugin->is_customer_area_page() ) {
 			wp_enqueue_script( 'jquery-ui-accordion' );
 		}
 	}

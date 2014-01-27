@@ -16,11 +16,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 require_once( CUAR_INCLUDES_DIR . '/helpers/template-functions.class.php' );
 
 require_once( dirname(__FILE__) . '/private-file-admin-interface.class.php' );
-require_once( dirname(__FILE__) . '/private-file-frontend-interface.class.php' );
 require_once( dirname(__FILE__) . '/private-file-theme-utils.class.php' );
 
 if (!class_exists('CUAR_PrivateFileAddOn')) :
@@ -33,13 +32,13 @@ if (!class_exists('CUAR_PrivateFileAddOn')) :
 class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'private-files', __( 'Private Files', 'cuar' ), '2.0.0' );
+		parent::__construct( 'private-files', __( 'Private Files', 'cuar' ), '4.0.0' );
 	}
 
 	public function run_addon( $plugin ) {
 		$this->plugin = $plugin;
 
-		if ( $plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_ENABLE_ADDON ) ) {
+		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
 			
@@ -57,12 +56,14 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		// Init the admin interface if needed
 		if ( is_admin() ) {
 			$this->admin_interface = new CUAR_PrivateFileAdminInterface( $plugin, $this );
-		} else {
-			$this->frontend_interface = new CUAR_PrivateFileFrontendInterface( $plugin, $this );
-		}
+		} 
 	}	
 	
 	/*------- GENERAL MAINTAINANCE FUNCTIONS -------------------------------------------------------------------------*/
+	
+	public function is_enabled() {
+		return $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_ENABLE_ADDON );
+	}
 	
 	/**
 	 * Delete the files when a post is deleted
@@ -356,7 +357,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
-			$cp_addon = $this->plugin->get_addon( 'customer-page' );
+			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
 			$url = $cp_addon->get_customer_page_url( '', $_SERVER['REQUEST_URI'] );
 			wp_redirect( $url );
 			exit;
@@ -706,7 +707,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 }
 
 // Make sure the addon is loaded
-global $cuar_pf_addon;
-$cuar_pf_addon = new CUAR_PrivateFileAddOn();
+new CUAR_PrivateFileAddOn();
 
 endif; // if (!class_exists('CUAR_PrivateFileAddOn')) 

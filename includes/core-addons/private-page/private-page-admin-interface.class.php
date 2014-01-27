@@ -36,12 +36,14 @@ class CUAR_PrivatePageAdminInterface {
 		add_action( 'cuar_addon_print_settings_cuar_private_pages', array( &$this, 'print_settings' ), 10, 2 );
 		add_filter( 'cuar_addon_validate_options_cuar_private_pages', array( &$this, 'validate_options' ), 10, 3 );
 		
-		if ( $plugin->get_option( self::$OPTION_ENABLE_ADDON ) ) {
+		if ( $this->private_page_addon->is_enabled() ) {
 			// Admin menu
 			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 11 );			
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 
-			add_action( 'parse_query' , array( &$this, 'restrict_edit_post_listing' ) );
+			// File list page
+			add_action( 'parse_query' , array( &$this, 'restrict_edit_post_listing' ) );			
+			add_action( 'cuar_after_addons_init', array( &$this, 'customize_post_list_pages' ) );
 		}		
 	}
 			
@@ -83,13 +85,7 @@ jQuery(document).ready( function($) {
 	 * Add the menu item
 	 */
 	public function add_menu_items( $submenus ) {
-		$separator = '<span style="display:block;  
-				        margin: 0px 5px 12px -5px; 
-				        padding:0; 
-				        height:1px; 
-				        line-height:1px; 
-				        background:#ddd;
-						opacity: 0.5; "></span>';
+		$separator = '<span class="cuar-menu-divider"></span>';
 		
 		$my_submenus = array(
 				array(
@@ -120,6 +116,25 @@ jQuery(document).ready( function($) {
 		}
 	
 		return $submenus;
+	}
+	
+	/*------- CUSTOMISATION OF THE LISTING OF POSTS -----------------------------------------------------------------*/
+	
+	public function customize_post_list_pages() {
+		$type = "cuar_private_page";
+		add_filter( "manage_edit-{$type}_columns", array( &$this, 'register_post_list_columns' ), 5 );
+		add_action( "manage_{$type}_posts_custom_column", array( &$this, 'display_post_list_column'), 8, 2 );
+	}
+	
+	public function register_post_list_columns( $columns ) {
+		$columns['cuar_category'] = __( 'Category', 'cuar' );
+		return $columns;
+	}
+	
+	public function display_post_list_column( $column_name, $post_id ) {
+		if ( 'cuar_category' == $column_name ) {
+			the_terms( $post_id, 'cuar_private_page_category' );
+		}
 	}
 	
 	/*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE PAGES ------------------------------------------------------*/

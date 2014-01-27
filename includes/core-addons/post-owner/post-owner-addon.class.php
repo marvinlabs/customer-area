@@ -16,7 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 
 if (!class_exists('CUAR_PostOwnerAddOn')) :
 
@@ -448,7 +448,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 
 		echo '<table class="metabox-row">';
 		echo '<tr>';
-		echo '<td class="label"><label for="cuar_owner_type">' . __('Select the type of owner', 'cuar') . '</label></td>';
+		echo '<td class="label"><label for="cuar_owner_type">' . __('Select the owner', 'cuar') . '</label></td>';
 		echo '<td class="field">';		
 		$this->print_owner_type_select_field( 'cuar_owner_type', null, $current_owner_type );
 		echo '</td>';
@@ -505,6 +505,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		
 		if (count($owner_types)==1) {
 			reset($owner_types);
+			_e( 'User', 'cuar' );
 ?>
 		<input type="hidden" name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" value="<?php echo key($owner_types); ?>" />
 <?php
@@ -719,7 +720,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
-			$cp_addon = $this->plugin->get_addon( 'customer-page' );
+			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
 			$url = $cp_addon->get_customer_page_url( '', get_permalink() );
 			wp_redirect( $url );
 			exit;
@@ -840,7 +841,6 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 }
 
 // Make sure the addon is loaded
-global $cuar_po_addon;
-$cuar_po_addon = new CUAR_PostOwnerAddOn();
+new CUAR_PostOwnerAddOn();
 
 endif; // if (!class_exists('CUAR_PrivateFileAddOn')) 

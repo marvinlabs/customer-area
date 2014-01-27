@@ -45,38 +45,25 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				
 				// Links under the plugin name
 				$plugin_file = 'customer-area/customer-area.php';
-				add_filter ( "plugin_action_links_{$plugin_file}", array (
-						&$this,
-						'print_plugin_action_links' 
-				), 10, 2 );
+				add_filter( "plugin_action_links_{$plugin_file}", array( &$this, 'print_plugin_action_links' ), 10, 2 );
 				
 				// We have some core settings to take care of too
-				add_filter ( 'cuar_addon_settings_tabs', array (
-						&$this,
-						'add_core_settings_tab' 
-					), 10, 1 );
-				add_action ( 'cuar_addon_print_settings_cuar_core', array (
-						&$this,
-						'print_core_settings' 
-					), 10, 2 );
-				add_filter ( 'cuar_addon_validate_options_cuar_core', array (
-						&$this,
-						'validate_core_settings' 
-					), 10, 3 );
+				add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_core_settings_tab' ), 5, 1 );
+				add_action( 'cuar_addon_print_settings_cuar_core', array( &$this, 'print_core_settings' ), 10, 2 );
+				add_filter( 'cuar_addon_validate_options_cuar_core', array( &$this,	'validate_core_settings' ), 10, 3 );
 			}
+		}
+		
+		public function flush_rewrite_rules() {
+			global $wp_rewrite;
+			$wp_rewrite->flush_rules();
 		}
 		
 		/**
 		 * Add the menu item
 		 */
 		public function add_settings_menu_item($submenus) {
-			$separator = '<span style="display:block;  
-				        margin: 0px 5px 12px -5px; 
-				        padding:0; 
-				        height:1px; 
-				        line-height:1px; 
-				        background:#ddd;
-						opacity: 0.5; "></span>';
+			$separator = '<span class="cuar-menu-divider"></span>';	
 			
 			$submenu = array (
 					'page_title' => __ ( 'Settings', 'cuar' ),
@@ -125,7 +112,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 						if ( is_wp_error( $page_id ) ) {
 							$errors[] = $page_id->get_error_message();
 						} else {
-							$this->plugin->get_addon('customer-page')->set_customer_page_id( $page_id );
+							$this->plugin->get_addon( 'customer-pages' )->set_customer_page_id( $page_id );
 						}
 						
 						if ( empty($errors) ) $success = true;
@@ -142,7 +129,10 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					include (CUAR_INCLUDES_DIR . '/setup-wizard.view.php');
 				}
 			} else {
-				include (CUAR_INCLUDES_DIR . '/settings.view.php');
+				include( $this->plugin->get_template_file_path(
+					CUAR_INCLUDES_DIR . '/core-classes',
+					'settings.template.php',
+					'templates' ));
 			}
 		}
 		
@@ -719,11 +709,11 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			if (isset ( $before ))
 				echo $before;
 			
-			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
+			echo sprintf ( '<select id="%s" name="%s[%s]" class="cuar-post-select">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 
 			$value = -1;
 			$label = __( 'None', 'cuar' );
-			$selected = ($this->options[$option_id] == $value) ? 'selected="selected"' : '';
+			$selected = ( isset( $this->options[$option_id] ) && $this->options[$option_id] == $value ) ? 'selected="selected"' : '';
 			echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 			
 			while ( $pages_query->have_posts() ) {
@@ -731,17 +721,39 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				$value = get_the_ID();
 				$label = get_the_title();
 				
-				$selected = ($this->options[$option_id] == $value) ? 'selected="selected"' : '';
+				$selected = ( isset( $this->options[$option_id] ) && $this->options[$option_id] == $value ) ? 'selected="selected"' : '';
 				
 				echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 			}
 			
 			echo '</select>';
+			
+			if ( isset( $this->options[$option_id] ) && $this->options[$option_id]>0 ) {
+				if ( $show_create_button ) {
+					printf( '<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post"/>',
+							esc_attr__( 'Delete existing &amp; create new &raquo;', 'cuar' ),
+							esc_attr( $this->get_submit_create_post_button_name( $option_id ) )
+						);
+				}
+				
+				edit_post_link( __('Edit it &raquo;', 'cuar'), '<span class="cuar-edit-page-link">', '</span>', $this->options[$option_id] );
+			} else {
+				if ( $show_create_button ) {
+					printf( '<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post"/>', 
+							esc_attr__( 'Create it &raquo;', 'cuar' ),
+							esc_attr( $this->get_submit_create_post_button_name( $option_id ) )
+						); 
+				}
+			}
 
 			wp_reset_postdata();
 			
 			if (isset ( $after ))
 				echo $after;
+		}
+		
+		public function get_submit_create_post_button_name( $option_id ) {
+			return 'submit_' . $option_id . '_create';
 		}
 		
 		/**

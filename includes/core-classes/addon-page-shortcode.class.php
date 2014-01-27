@@ -16,17 +16,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-if (!class_exists('CUAR_CustomerPageShortcode')) :
+if (!class_exists('CUAR_AddOnPageShortcode')) :
 
 /**
- * Handles the [customer-area] shortcode
+ * Handles the shortcodes rendering add-on pages
  * 
  * @author Vincent Prat @ MarvinLabs
  */
-class CUAR_CustomerPageShortcode {
+class CUAR_AddOnPageShortcode {
 
-	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
+	public function __construct( $page_addon, $shortcode, $default_args = array() ) {
+		$this->page_addon = $page_addon;
+		$this->shortcode = $shortcode;
+		$this->default_args = $default_args;
+		
 		$this->setup();	
 	}
 	
@@ -34,8 +37,9 @@ class CUAR_CustomerPageShortcode {
 	 * Setup the WordPress hooks we need
 	 */
 	public function setup() {
-		if ( is_admin() ) return;		
-		add_shortcode( 'customer-area', array( &$this, 'process_shortcode' ) );
+		if ( !is_admin() ) {
+			add_shortcode( $this->shortcode, array( &$this, 'process_shortcode' ) );
+		}
 	}
 	
 	/**
@@ -46,20 +50,42 @@ class CUAR_CustomerPageShortcode {
 	 * @param string $content
 	 */
 	public function process_shortcode( $params = array(), $content = null ) {
-		$cp_addon = $this->plugin->get_addon('customer-page');
-
-		ob_start();
+		$args = shortcode_atts( $this->default_args, $params, $this->shortcode );
 		
-		$cp_addon->print_customer_area();
-	  	
+		ob_start();		
+		$this->page_addon->print_page( $args, $content );		
   		$out = ob_get_contents();
   		ob_end_clean(); 
   		
 		return $out;
 	}
 	
-	/** @var CUAR_Plugin The plugin instance */
-	private $plugin;
+	public function get_sample_shortcode( $include_defaults=true ) {
+		$out = '[' . $this->shortcode . ' ';
+		
+		if ( $this->default_args!=null && !empty( $this->default_args )) {
+			foreach ( $this->default_args as $p => $v ) {
+				$out .= $p . "='" . $v . "' ";
+			}
+		}
+		
+		$out .= '/]';
+		
+		return $out;
+	}
+	
+	public function get_shortcode_name() {
+		return $this->shortcode;
+	}
+	
+	/** @var CUAR_AbstractPageAddOn The page to be rendered */
+	private $page_addon;
+
+	/** @var string The shortcode to be used */
+	private $shortcode;
+
+	/** @var string The default values for the shortcode arguments */
+	private $default_args;
 }
 
-endif; // if (!class_exists('CUAR_CustomerPageShortcode')) :
+endif; // if (!class_exists('CUAR_AddOnPageShortcode')) :
