@@ -23,7 +23,7 @@
 	?></div>
 	
 	<?php if ( $this->has_page_sidebar() ) : ?>	
-	<div class="widget-area cuar-page-sidebar"><?php 
+	<div class="cuar-page-sidebar"><?php 
 		do_action( 'cuar_before_page_sidebar-' . $page_slug );
 		
 		$this->print_page_sidebar( $args, $shortcode_content ); 
