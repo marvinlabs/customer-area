@@ -42,9 +42,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
 			
-			add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
-			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
-			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
+//			add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
+//			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
+//			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
 			
 			add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
 			

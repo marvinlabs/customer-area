@@ -41,10 +41,6 @@ class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 			$this->page_description['requires_login'] = true;
 		}
 		
-		if ( !isset( $this->page_description['friendly_post_type'] )) {
-			$this->page_description['friendly_post_type'] = null;
-		}
-		
 		if ( !isset( $this->page_description['parent_slug'] )) {
 			$this->page_description['parent_slug'] = null;
 		}
@@ -52,78 +48,6 @@ class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	
 	protected function set_page_shortcode( $shortcode_name, $shorcode_params = array() ) {
 		$this->shortcode = new CUAR_AddOnPageShortcode( $this, $shortcode_name, $shorcode_params );
-	}
-
-	/*------- ARCHIVES ----------------------------------------------------------------------------------------------*/
-	
-	public function enable_content_archives() {		
-		add_filter( 'rewrite_rules_array', array( &$this, 'insert_archive_rewrite_rules' ) );
-		add_filter( 'query_vars', array( &$this, 'insert_archive_query_vars' ) );
-	}
-
-	// Adding a new rule
-	function insert_archive_rewrite_rules( $rules ) {
-		$cp_addon = $this->plugin->get_addon( 'customer-pages' );
-		
-		$page_id = $cp_addon->get_page_id( $this->get_slug() );
-		$page_slug = untrailingslashit( str_replace( trailingslashit( home_url() ), '', get_permalink( $page_id ) ) );
-		
-		$newrules = array();
-		
-		// Category archives
-		$rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_category=$matches[1]';		
-		$rewrite_regex = '^' . $page_slug . '/' . $cp_addon->get_category_archive_slug() . '/([^/]+)/?$';
-		$newrules[ $rewrite_regex ] = $rewrite_rule;
-		
-		// Year archives
-		$rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_year=$matches[1]';
-		$rewrite_regex = '^' . $page_slug . '/' . $cp_addon->get_date_archive_slug() . '/([0-9]{4})/?$';
-		$newrules[ $rewrite_regex ] = $rewrite_rule;
-		
-		// Month archives
-		$rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_year=$matches[1]&cuar_month=$matches[2]';
-		$rewrite_regex = '^' . $page_slug . '/' . $cp_addon->get_date_archive_slug() . '/([0-9]{4})/([0-9]{2})/?$';
-		$newrules[ $rewrite_regex ] = $rewrite_rule;
-		
-		return $newrules + $rules;
-	}
-
-	// Adding the id var so that WP recognizes it
-	function insert_archive_query_vars( $vars ) {
-	    array_push($vars, 'cuar_category');
-	    array_push($vars, 'cuar_year');
-	    array_push($vars, 'cuar_month');
-	    return $vars;
-	}
-	
-	public function get_time_archive_url( $year, $month ) {
-		$cp_addon = $this->plugin->get_addon( 'customer-pages' );
-		
-		$page_id = $cp_addon->get_page_id( $this->get_slug() );
-		if ( $page_id==false ) return '';
-		
-		$url = trailingslashit( get_permalink( $page_id ) );
-		$url .= $cp_addon->get_date_archive_slug() . '/';
-		$url .= $year . '/';
-		
-		if ( $month>0 ) {
-			$url .= sprintf( '%02d', $month );
-		}
-		
-		return $url;
-	}
-	
-	public function get_category_archive_url( $term ) {
-		$cp_addon = $this->plugin->get_addon( 'customer-pages' );
-		
-		$page_id = $cp_addon->get_page_id( $this->get_slug() );
-		if ( $page_id==false ) return '';
-		
-		$url = trailingslashit( get_permalink( $page_id ) );
-		$url .= $cp_addon->get_category_archive_slug() . '/';
-		$url .= $term->slug;
-		
-		return $url;
 	}
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
@@ -138,6 +62,18 @@ class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	
 	public function get_slug() {
 		return $this->page_description['slug'];
+	}
+	
+	public function get_label() {
+		return $this->page_description['label'];
+	}
+	
+	public function get_title() {
+		return $this->page_description['title'];
+	}
+	
+	public function requires_login() {
+		return $this->page_description['requires_login'];
 	}
 	
 	public function get_page_id() {
@@ -173,13 +109,9 @@ class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		}
 		
 		// If title or descriptions are not specified, we'll give some defaults
-		if ( !empty( $this->page_description['title'] ) ) {
-			$page_data['post_title'] = $this->page_description['title'];
-		} else if ( !empty( $this->page_description['label'] ) ) {
-			$page_data['post_title'] = $this->page_description['label'];
-		} else {
-			$page_data['post_title'] = $this->page_description['slug'];
-		}
+		$page_data['post_title'] = $this->get_title();		
+		if ( empty( $page_data['post_title'] ) ) $page_data['post_title'] = $this->get_label();
+		if ( empty( $page_data['post_title'] ) ) $page_data['post_title'] = $this->get_slug();
 		
 		if ( $this->shortcode!=null ) {
 			$page_data['post_content'] = $this->shortcode->get_sample_shortcode();
@@ -226,8 +158,9 @@ class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 
 	public function run_addon( $plugin ) {
 		$this->plugin = $plugin;
+		
 		add_filter( 'cuar_customer_pages', array( &$this, 'register_page_description' ), $this->page_priority );
-		add_filter( 'cuar_do_create_page_' . $this->page_description['slug'], array( &$this, 'create_default_page' ), 10, 4 );
+		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 4 );
 	}
 	
 	protected function register_sidebar( $id, $name ) {
