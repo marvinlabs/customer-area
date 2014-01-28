@@ -249,6 +249,20 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		$url = trailingslashit( get_permalink( $page_id ) );
 		$url .= sprintf( '%04d/%02d/%02d/%s', $date[0], $date[1], $date[2], $post->post_name );		
 		
+		if ( !empty( $action ) ) {
+			$url .= '/' . $action;		
+		}
+		
+		return $url;
+	}
+	
+	public function get_single_private_content_action_url( $post, $action='' ) {		
+		$url = $this->get_single_private_content_url( $post );
+		
+		if ( !empty( $action ) ) {
+			$url .= '/' . $action;		
+		}
+		
 		return $url;
 	}
 			
@@ -367,12 +381,12 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 				
 		$args = apply_filters( $page_slug . 'cuar_query_parameters-' .  $page_slug, $args );
 		$args = apply_filters( $page_slug . 'cuar_query_parameters-' .  $page_slug . '-' . $display_mode, $args );		
-		$files_query = new WP_Query( $args );
+		$content_query = new WP_Query( $args );
 
 		$page_subtitle = apply_filters( 'cuar_page_subtitle-' .  $page_slug, $page_subtitle );
 		$page_subtitle = apply_filters( 'cuar_page_subtitle-' .  $page_slug . '-' . $display_mode, $page_subtitle );
 		
-		if ( $files_query->have_posts() ) {
+		if ( $content_query->have_posts() ) {
 			$item_template = $this->plugin->get_template_file_path(
 					$this->get_page_addon_path(),
 					$this->get_slug() . "-content-item-{$display_mode}.template.php",

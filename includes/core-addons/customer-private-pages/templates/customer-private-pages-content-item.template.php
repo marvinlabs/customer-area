@@ -15,7 +15,4 @@
 		<br/>
 		<span class="recipient"><?php echo CUAR_WordPressHelper::ellipsis( sprintf( __('To: %s', 'cuar' ), CUAR_TemplateFunctions::get_the_owner() ), 53 ); ?></span>
 	</td>
-	<td class="links">
-		<?php do_action( get_post_type() . '_item_additional_links', $post ); ?>	
-	</td> 
 </tr>

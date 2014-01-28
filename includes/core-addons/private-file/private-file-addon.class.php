@@ -42,12 +42,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
 			
-//			add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
-//			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
-//			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
-			
 			add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
-			
 			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 			
 			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
@@ -139,31 +134,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param int $post_id
 	 * @param string $action
 	 */
-	public function get_file_permalink( $post_id, $action = 'download' ) {
-		global $wp_rewrite;
-		
-		$url = get_permalink( $post_id );
-		
-		if ( $wp_rewrite->using_permalinks() ) {
-			$url = trailingslashit( $url );
-	
-			if ( $action=="download" ) {
-				$url .= 'download-file';
-			} else if ( $action=="view" ) {
-				$url .= 'view-file';
-			} else {
-				cuar_log_debug( "CUAR_PrivateFileAddOn::get_file_permalink - unknown action" );
-			}
-		} else {
-			if ( $action=="download" ) {
-				$url .= '&' . 'download-file' . '=1';
-			} else if ( $action=="view" ) {
-				$url .= '&' . 'view-file' . '=1';
-			} else {
-				cuar_log_debug( "CUAR_PrivateFileAddOn::get_file_permalink - unknown action" );
-			}
-		}
-		
+	public function get_file_permalink( $post_id, $action = 'download' ) {		
+		$cpf_addon = $this->plugin->get_addon('customer-files-page');
+		$url = $cpf_addon->get_single_private_content_action_url( $post_id, $action );		
 		return $url;
 	}
 	
@@ -351,7 +324,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		// If not a known action, do nothing
 		$action = get_query_var( 'cuar_action' );
-		if ( $action!='download-file' && $action!='view-file' ) {
+		if ( $action!='download' && $action!='view' ) {
 			return;
 		}
 		
@@ -381,7 +354,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$file_name = $this->get_file_name( $post->ID );
 		$file_path = $po_addon->get_private_file_path( $file_name, $post->ID );
 		
-		if ( $action=='download-file' ) {			
+		if ( $action=='download' ) {			
 			if ( $author_id!=$current_user_id ) {
 				$this->increment_file_download_count( $post->ID );
 			}
@@ -389,7 +362,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			do_action( 'cuar_private_file_download', $post->ID, $current_user_id, $this );	
 					
 			$this->output_file( $file_path, $file_name, $file_type, 'download' );
-		} else if ( $action=='view-file' ) {			
+		} else if ( $action=='view' ) {			
 			if ( $author_id!=$current_user_id ) {
 				$this->increment_file_download_count( $post->ID );
 			}
@@ -619,9 +592,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'show_tagcloud' 	=> false,
 				'hierarchical' 		=> true,
 				'query_var' 		=> true,
-				'rewrite' 			=> array(
-						'slug' 				=> 'private-file-category'
-					),
+				'rewrite' 			=> false,
 				'capabilities' 			=> array(
 						'manage_terms' 		=> 'cuar_pf_manage_categories',
 						'edit_terms' 		=> 'cuar_pf_edit_categories',
@@ -632,78 +603,12 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	  
 		register_taxonomy( 'cuar_private_file_category', array( 'cuar_private_file' ), $args );
 	}
-
-	/**
-	 * Add the rewrite rule for the private files.  
-	 */
-	function add_query_vars( $vars ) {
-	    array_push( $vars, 'cuar_action' );
-	    return $vars;
-	}
-
-	/**
-	 * Add the rewrite rule for the private files.  
-	 */
-	function add_post_type_rewrites() {
-		global $wp_rewrite;
-		
-		$pf_slug = 'private-file';
-		
-		$wp_rewrite->add_rewrite_tag('%cuar_private_file%', '([^/]+)', 'cuar_private_file=');
-		$wp_rewrite->add_rewrite_tag('%cuar_action%', '([^/]+)', 'cuar_action=');
-		$wp_rewrite->add_permastruct( 'cuar_private_file',
-				$pf_slug . '/%year%/%monthnum%/%day%/%cuar_private_file%',
-				false);
-		$wp_rewrite->add_permastruct( 'cuar_private_file',
-				$pf_slug . '/%year%/%monthnum%/%day%/%cuar_private_file%/%cuar_action%',
-				false);
-	}
-
-	/**
-	 * Build the permalink for the private files
-	 * 
-	 * @param unknown $post_link
-	 * @param unknown $post
-	 * @param unknown $leavename
-	 * @return unknown|mixed
-	 */
-	function built_post_type_permalink( $post_link, $post, $leavename ) {		
-		// Only change permalinks for private files
-		if ( $post->post_type!='cuar_private_file') return $post_link;
-	
-		// Only change permalinks for published posts
-		$draft_or_pending = isset( $post->post_status )
-		&& in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) );
-		if( $draft_or_pending and !$leavename ) return $post_link;
-	
-		// Change the permalink
-		global $wp_rewrite, $cuar_pf_addon;
-	
-		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_file' );
-		$permalink = str_replace( "%cuar_private_file%", $post->post_name, $permalink );
-	
-		$post_date = strtotime( $post->post_date );
-		$permalink = str_replace( "%year%", 	date( "Y", $post_date ), $permalink );
-		$permalink = str_replace( "%monthnum%", date( "m", $post_date ), $permalink );
-		$permalink = str_replace( "%day%", 		date( "d", $post_date ), $permalink );
-
-		$permalink = str_replace( "%cuar_action%", '', $permalink );
-		
-		$permalink = home_url() . "/" . user_trailingslashit( $permalink );
-		$permalink = str_replace( "//", "/", $permalink );
-		$permalink = str_replace( ":/", "://", $permalink );
-	
-		return $permalink;
-	}
 	
 	/** @var CUAR_Plugin */
 	private $plugin;
 
 	/** @var CUAR_PrivateFileAdminInterface */
 	private $admin_interface;
-
-	/** @var CUAR_PrivateFileFrontendInterface */
-	private $frontend_interface;
 }
 
 // Make sure the addon is loaded

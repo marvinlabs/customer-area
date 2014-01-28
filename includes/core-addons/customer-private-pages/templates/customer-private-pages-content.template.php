@@ -1,5 +1,5 @@
 <h3><?php echo $page_subtitle; ?></h3>
-<table class="cuar-private-file-list cuar-item-list">
+<table class="cuar-private-page-list cuar-item-list">
 	<tbody>
 <?php 	
 		while ( $content_query->have_posts() ) {
