@@ -170,12 +170,28 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 			}
 			
 			$args = array( 'theme_location'  => 'cuar_main_menu' );
-			
-			$defaults = array( 'menu' => '', 'container' => 'div', 'container_class' => '', 'container_id' => '', 'menu_class' => 'menu cuar-nav-menu', 'menu_id' => '',
-					'echo' => false, 'fallback_cb' => 'wp_page_menu', 'before' => '', 'after' => '', 'link_before' => '', 'link_after' => '', 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-					'depth' => 0, 'walker' => '', 'theme_location' => '' );
+
+			$defaults = apply_filters( 'cuar_get_main_menu_args', array(
+					'theme_location'  => 'cuar_main_menu',
+					'menu'            => '',
+					'container'       => 'div',
+					'container_class' => '',
+					'container_id'    => '',
+					'menu_class'      => 'menu cuar-nav-menu',
+					'menu_id'         => '',
+					'echo'            => false,
+					'fallback_cb'     => '',
+					'before'          => '',
+					'after'           => '',
+					'link_before'     => '',
+					'link_after'      => '',
+					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+					'depth'           => 0,
+					'walker'          => ''
+			));
 			
 			$args = wp_parse_args( $args, $defaults );
+			$args = apply_filters( 'cuar_get_main_menu_args', $args );
 			$args = apply_filters( 'wp_nav_menu_args', $args );
 			$args = (object) $args;
 			
