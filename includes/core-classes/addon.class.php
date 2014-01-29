@@ -32,6 +32,7 @@ abstract class CUAR_AddOn {
 		$this->addon_name = $addon_name;
 		$this->min_cuar_version = $min_cuar_version;
 
+		add_action( 'cuar_default_options', array( &$this, 'set_default_options' ) );
 		add_action( 'cuar_addons_init', array( &$this, 'run' ) );
 	}
 	
@@ -78,6 +79,9 @@ abstract class CUAR_AddOn {
 						. 'Please update the Customer Area plugin.', 'cuar' ), 
 					$this->addon_name, $current_version, $this->min_cuar_version ) );
 		}
+	}
+	
+	public function set_default_options( $defaults ) {
 	}
 	
 	/** @var string Id of the add-on */

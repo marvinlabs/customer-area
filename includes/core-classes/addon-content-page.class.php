@@ -44,10 +44,40 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		}
 	}
 	
-	protected abstract function get_page_addon_path();	
 	protected abstract function get_category_archive_page_subtitle( $category );	
 	protected abstract function get_date_archive_page_subtitle( $year, $month=0 );	
 	protected abstract function get_default_page_subtitle();
+	protected abstract function get_default_dashboard_block_title();
+	
+	/**
+	 * Set the default values for the options
+	 *
+	 * @param array $defaults
+	 * @return array
+	 */
+	public function set_default_options( $defaults ) {
+		$slug = $this->get_slug();
+		
+		$defaults[ $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER ] 		= true;
+		$defaults[ $slug . self::$OPTION_SHOW_IN_DASHBOARD ] 				= true;
+		$defaults[ $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD ] 	= 5;
+			
+		return $defaults;
+	}
+	
+	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
+	
+	public function is_show_in_dashboard_enabled() {
+		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD, true );
+	}
+	
+	public function is_show_in_single_post_footer_enabled() {
+		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD, true );
+	}
+	
+	public function get_max_item_number_on_dashboard() {
+		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD, 5 );
+	}
 
 	/*------- ARCHIVES ----------------------------------------------------------------------------------------------*/
 	
@@ -303,18 +333,6 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		return $this->is_sidebar_enabled;
 	}
 	
-	public function print_page_header( $args = array(), $shortcode_content = '' ) {
-	}
-	
-	public function print_page_sidebar( $args = array(), $shortcode_content = '' ) {
-		if ( $this->has_page_sidebar() ) {
-			include( $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-sidebar.template.php",
-					'templates' ));
-		}
-	}
-	
 	public function print_page_content( $args = array(), $shortcode_content = '' ) {
 		$po_addon = $this->plugin->get_addon('post-owner');
 		$current_user_id = get_current_user_id();
@@ -406,7 +424,169 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 					$this->get_slug() . "-content-empty.template.php" ));
 		}
 	}
+	
+	/*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
+	
+	public function print_single_private_content_footer( $content ) {
+		// If not on a matching post type, we do nothing
+		if ( !is_singular( $this->get_friendly_post_type() ) ) return $content;		
 
+		ob_start();
+		include( $this->plugin->get_template_file_path(
+				$this->get_page_addon_path(),
+				$this->get_slug() . '-single-post-footer.template.php',
+				'templates' ));	
+  		$out = ob_get_contents();
+  		ob_end_clean(); 
+  		
+  		return $content . $out;
+	}
+	
+	/*------- DASHBOARD BLOCK ---------------------------------------------------------------------------------------*/
+	
+	public function print_dashboard_content( $content ) {
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$current_user_id = get_current_user_id();
+		$page_slug = $this->get_slug();
+		
+		$args = array(
+				'post_type' 		=> $this->get_friendly_post_type(),
+				'posts_per_page' 	=> $this->get_max_item_number_on_dashboard(),
+				'orderby' 			=> 'date',
+				'order' 			=> 'DESC',
+				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+			);
+			
+		$page_subtitle = $this->get_default_dashboard_block_title();
+		$page_subtitle = apply_filters( 'cuar_dashboard_block_title-' .  $page_slug, $page_subtitle );
+
+		$args = apply_filters( $page_slug . 'cuar_dashboard_block_query_parameters-' .  $page_slug, $args );
+
+		$content_query = new WP_Query( $args );
+		
+		if ( $content_query->have_posts() ) {
+			$item_template = $this->plugin->get_template_file_path(
+					$this->get_page_addon_path(),
+					$this->get_slug() . "-content-item-dashboard.template.php",
+					'templates',
+					$this->get_slug() . "-content-item.template.php" );
+			
+			include( $this->plugin->get_template_file_path(
+					$this->get_page_addon_path(),
+					$this->get_slug() . "-content-dashboard.template.php",
+					'templates',
+					$this->get_slug() . "-content.template.php" ));
+		} else {
+			include( $this->plugin->get_template_file_path(
+					$this->get_page_addon_path(),
+					$this->get_slug() . "-content-empty-dashboard.template.php",
+					'templates',
+					$this->get_slug() . "-content-empty.template.php" ));
+		}
+	}
+	
+	/*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
+
+	public function enable_settings( $target_tab, $enabled_settings = array( 'dashboard', 'single-post-footer' ) ) {
+		$this->enabled_settings = $enabled_settings;
+		
+		if ( is_admin() && !empty( $this->enabled_settings ) ) {
+			// Settings
+			add_action( 'cuar_addon_print_settings_' . $target_tab, array( &$this, 'print_settings' ), 10, 2 );
+			add_filter( 'cuar_addon_validate_options_' . $target_tab, array( &$this, 'validate_options' ), 10, 3 );
+		}
+	}
+	
+	protected function get_settings_section() {
+		return $this->get_slug() . '_frontend';
+	}
+	
+	/**
+	 * Add our fields to the settings page
+	 *
+	 * @param CUAR_Settings $cuar_settings The settings class
+	 */
+	public function print_settings( $cuar_settings, $options_group ) {
+		if ( empty( $this->enabled_settings ) ) return;
+		 		
+		$slug = $this->get_slug();
+		
+		add_settings_section(
+				$this->get_settings_section(),
+				__('Frontend Integration', 'cuar'),
+				array( &$this, 'print_empty_section_info' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG
+			);
+
+		if ( in_array( 'single-post-footer', $this->enabled_settings ) ) {
+			add_settings_field(
+					$slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
+					__('Show after post', 'cuar'),
+					array( &$cuar_settings, 'print_input_field' ),
+					CUAR_Settings::$OPTIONS_PAGE_SLUG,
+					$this->get_settings_section(),
+					array(
+						'option_id' 	=> $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
+						'type' 			=> 'checkbox',
+						'default_value' => 1,
+						'after'			=> 
+								__( 'Show additional information after the post in the single post view.', 'cuar' )
+								. '<p class="description">' 
+								. sprintf( __( 'You can disable this if you have your own theme template file for single posts. The theme file to look for or create should be called: %s.', 'cuar' ),
+										'<code>single-' . $this->get_friendly_post_type() . '.php</code>' )
+								. '</p>' )
+				);
+		}
+
+		if ( in_array( 'dashboard', $this->enabled_settings ) ) {
+			add_settings_field(
+					$slug . self::$OPTION_SHOW_IN_DASHBOARD,
+					__('Dashboard', 'cuar'),
+					array( &$cuar_settings, 'print_input_field' ),
+					CUAR_Settings::$OPTIONS_PAGE_SLUG,
+					$this->get_settings_section(),
+					array(
+						'option_id' 	=> $slug . self::$OPTION_SHOW_IN_DASHBOARD,
+						'type' 			=> 'checkbox',
+						'default_value' => 1,
+						'after'			=> __( 'Show recent content on the dashboard.', 'cuar' ) )
+				);
+
+			add_settings_field(
+					$slug . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD,
+					'',
+					array( &$cuar_settings, 'print_input_field' ),
+					CUAR_Settings::$OPTIONS_PAGE_SLUG,
+					$this->get_settings_section(),
+					array(
+						'option_id' 	=> $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD,
+						'type' 			=> 'text',
+						'default_value' => 1,
+						'after'			=> '<p class="description">' . __( 'Define how many items to allow on the dashboard page. -1 will show all items.', 'cuar' ) )
+				);
+		}
+	}
+	
+	/**
+	 * Validate our options
+	 *
+	 * @param CUAR_Settings $cuar_settings
+	 * @param array $input
+	 * @param array $validated
+	 */
+	public function validate_options( $validated, $cuar_settings, $input ) {
+		$slug = $this->get_slug();
+		
+		$cuar_settings->validate_boolean( $input, $validated, $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER );
+		$cuar_settings->validate_boolean( $input, $validated, $slug . self::$OPTION_SHOW_IN_DASHBOARD );
+		$cuar_settings->validate_int( $input, $validated, $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD );
+		
+		return $validated;
+	}
+	
+	public function print_empty_section_info() {
+	}
+	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 
 	public function run_addon( $plugin ) {
@@ -416,7 +596,26 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 			add_filter( "get_previous_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
 			add_filter( "get_next_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
 		}
+		
+		if ( !is_admin() ) {
+			// Optionally output the file links in the post footer area
+			if ( $this->is_show_in_single_post_footer_enabled() ) {
+				add_filter( 'the_content', array( &$this, 'print_single_private_content_footer' ), 3000 );
+			}
+
+			// Optionally output the latest files on the dashboard
+			if ( $this->is_show_in_dashboard_enabled() ) {
+				add_filter( 'cuar_before_page_content_customer-dashboard', array( &$this, 'print_dashboard_content' ), 10 );
+			}
+		}
 	}
+
+	// Settings
+	public static $OPTION_SHOW_IN_SINGLE_POST_FOOTER	= '-show_in_single_post_footer';
+	public static $OPTION_SHOW_IN_DASHBOARD				= '-show_in_dashboard';
+	public static $OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD	= '-max_items_on_dashboard';
+	
+	protected $enabled_settings = array();
 	
 	/** @var boolean did we enable a sidebar for this page? */
 	protected $is_sidebar_enabled = false;

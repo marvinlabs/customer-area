@@ -81,7 +81,7 @@ class CUAR_FieldRenderer {
 				'id'				=> $id,
 				'label' 			=> $label,
 				'value'				=> $value,
-				'class'				=> $class,
+				'classes'			=> explode( ' ', $class ),
 				'placeholder'		=> $placeholder
 			);
 	}
@@ -96,7 +96,7 @@ class CUAR_FieldRenderer {
 				'id'				=> $id,
 				'label' 			=> $label,
 				'value'				=> $value,
-				'class'				=> $class,
+				'classes'			=> explode( ' ', $class ),
 				'placeholder'		=> $placeholder,
 				'control_type'		=> $control_type,
 				'control_name'		=> $control_name,
@@ -105,16 +105,33 @@ class CUAR_FieldRenderer {
 	}
 	
 	protected function get_field_template( $field ) {		
-		$class = $field[ 'class' ];
-		if ( !isset( $this->field_templates[ $class ] ) ) {
-			$this->field_templates[ $class ] = $this->plugin->get_template_file_path(
-				CUAR_INCLUDES_DIR . '/core-classes',
-				'field-' . $class . '.template.php',
-				'templates',
-				'field.template.php' );
+		$classes = $field[ 'classes' ];
+		
+		// If our template is in cache, return the first one we find
+		foreach ( $classes as $class ) {
+			if ( isset( $this->field_templates[$class] ) ) {
+				$template = $this->field_templates[$class];			
+				if ( !empty( $template ) ) return $template;
+			} else {
+				$file_name = $class=='default' || empty( $class ) ? 'field.template.php' : 'field-' . $class . '.template.php';				
+				$template = $this->plugin->get_template_file_path(
+						CUAR_INCLUDES_DIR . '/core-classes',
+						$file_name,
+						'templates' 
+					);
+				
+				if ( !empty( $template ) ) {
+					$this->field_templates[ $class ] = $template;
+					return $template;
+				}
+			}
 		}
 		
-		return $this->field_templates[ $class ];
+		return $this->plugin->get_template_file_path(
+						CUAR_INCLUDES_DIR . '/core-classes',
+						'field.template.php',
+						'templates' 
+					);
 	}
 	
 	protected $field_templates = array();	

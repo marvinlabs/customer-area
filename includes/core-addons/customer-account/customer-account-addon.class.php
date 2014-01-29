@@ -32,11 +32,11 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 		parent::__construct( 'customer-account', __( 'Customer Account', 'cuar' ), '4.0.0' );
 		
 		$this->set_page_parameters( 800, array(
-					'slug'					=> 'user-account',
+					'slug'					=> 'customer-account',
 					'label'					=> __( 'My Account', 'cuar' ),
 					'title'					=> __( 'My Account', 'cuar' ),
 					'hint'					=> __( 'This page shows a summary of the user account / login links / ...', 'cuar' ),
-					'parent_slug'			=> 'dashboard',
+					'parent_slug'			=> 'customer-dashboard',
 					'requires_login'		=> false
 				)
 			);
@@ -50,17 +50,21 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 		add_filter( 'cuar_default_login_url', array( &$this, 'get_default_login_url' ), 20, 3 );
 	}
 
+	protected function get_page_addon_path() {
+		return CUAR_INCLUDES_DIR . '/core-addons/customer-account';
+	}
+
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
 	public function print_page_content( $args = array(), $shortcode_content = '' ) {
 		if ( !is_user_logged_in() ) {
-			$this->print_login_page( $args, $shortcode_content );
+			$this->print_login_page_content( $args, $shortcode_content );
 		} else {
-			$this->print_account_page( $args, $shortcode_content );
+			$this->print_account_page_content( $args, $shortcode_content );
 		}
 	}
 	
-	private function print_login_page( $args = array(), $shortcode_content = '' ) {
+	private function print_login_page_content( $args = array(), $shortcode_content = '' ) {
 		$redirect_url = $this->get_requested_redirect_url();
 		
 		include( $this->plugin->get_template_file_path(
@@ -69,7 +73,7 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 				'templates' ));
 	}
 	
-	private function print_account_page( $args = array(), $shortcode_content = '' ) {
+	private function print_account_page_content( $args = array(), $shortcode_content = '' ) {
 		$user_id = apply_filters( 'cuar_user_id_for_profile_page', get_current_user_id() );
 		$current_user = get_userdata( $user_id );
 	
@@ -86,10 +90,10 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 		$current_user = get_userdata( $user_id );
 		
 		$renderer = new CUAR_FieldRenderer( $this->plugin );		
-		$renderer->add_field( 'first_name', __( 'First Name'), $current_user->first_name, false );
-		$renderer->add_field( 'last_name', __( 'Last Name'), $current_user->last_name, false );
+		$renderer->add_field( 'first_name', __( 'First Name'), $current_user->first_name, '-' );
+		$renderer->add_field( 'last_name', __( 'Last Name'), $current_user->last_name, '-' );
 		$renderer->add_field( 'email', __( 'Email'), $current_user->user_email, false, 'wide' );
-		$renderer->add_field( 'website', __( 'Website'), $current_user->user_url, false, 'link' );
+		$renderer->add_field( 'website', __( 'Website'), $current_user->user_url, false, 'wide link' );
 		
 		$renderer->print_fields();
 		
@@ -134,8 +138,5 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 
 // Make sure the addon is loaded
 new CUAR_CustomerAccountAddOn();
-	
-// This filter needs to be executed too early to be registered in the constructor
-// add_filter( 'cuar_default_options', array( 'CUAR_CustomerAccountAddOn', 'set_default_options' ) );
 
 endif; // if (!class_exists('CUAR_CustomerAccountAddOn')) :

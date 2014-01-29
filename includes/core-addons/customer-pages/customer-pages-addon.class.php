@@ -49,14 +49,54 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		add_action( 'cuar_addon_print_settings_cuar_customer_pages', array( &$this, 'print_pages_settings' ), 50, 2 );
 		add_filter( 'cuar_addon_validate_options_cuar_customer_pages', array( &$this, 'validate_pages_settings' ), 50, 3 );
 		
-		if ( $plugin->get_option( self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT ) ) {
+		if ( $this->is_auto_menu_on_single_private_content_pages_enabled() ) {
 			add_filter( 'the_content', array( &$this, 'get_main_menu_for_single_private_content' ), 50 );
 		}
 		
-		if ( $plugin->get_option( self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES ) ) {
+		if ( $this->is_auto_menu_on_customer_area_pages_enabled() ) {
 			add_filter( 'the_content', array( &$this, 'get_main_menu_for_customer_area_pages' ), 51 );
 		}
 	}	
+	
+	public function set_default_options($defaults) {
+		$defaults [self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT] 	= false;
+		$defaults [self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES] 		= true;
+		$defaults [self::$OPTION_CATEGORY_ARCHIVE_SLUG] 				= _x( 'category', 'Private content category archive slug', 'cuar' );
+		$defaults [self::$OPTION_DATE_ARCHIVE_SLUG] 					= _x( 'archive', 'Private content date archive slug', 'cuar' );
+		return $defaults;
+	}
+	
+	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
+	
+	/** 
+	 * Get the WordPress page ID corresponding to a given customer area page slug
+	 * 
+	 * @param string $slug	The customer area identifier of the page we are looking for
+	 * 
+	 * @return mixed|boolean
+	 */
+	public function get_page_id( $slug ) {
+		if ( empty( $slug ) ) return false;
+		
+		$page_id = $this->plugin->get_option( $this->get_page_option_name( $slug ), -1 );
+		return $page_id<0 ? false : $page_id;
+	}
+	
+	public function is_auto_menu_on_single_private_content_pages_enabled() {
+		return $this->plugin->get_option( self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT );
+	}
+	
+	public function is_auto_menu_on_customer_area_pages_enabled() {
+		return $this->plugin->get_option( self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES );
+	}
+	
+	public function get_category_archive_slug() {
+		return $this->plugin->get_option( self::$OPTION_CATEGORY_ARCHIVE_SLUG );
+	}
+	
+	public function get_date_archive_slug() {
+		return $this->plugin->get_option( self::$OPTION_DATE_ARCHIVE_SLUG );
+	}
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
@@ -258,30 +298,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	 * 
 	 * @return mixed|boolean
 	 */
-	public function get_page_id( $slug ) {
-		if ( empty( $slug ) ) return false;
-		
-		$page_id = $this->plugin->get_option( $this->get_page_option_name( $slug ), -1 );
-		return $page_id<0 ? false : $page_id;
-	}
-	
-	/** 
-	 * Get the WordPress page ID corresponding to a given customer area page slug
-	 * 
-	 * @param string $slug	The customer area identifier of the page we are looking for
-	 * 
-	 * @return mixed|boolean
-	 */
 	public function get_page_option_name( $slug ) {
 		return self::$OPTION_CUSTOMER_PAGE . $slug;
-	}
-	
-	public function get_category_archive_slug() {
-		return $this->plugin->get_option( self::$OPTION_CATEGORY_ARCHIVE_SLUG );
-	}
-	
-	public function get_date_archive_slug() {
-		return $this->plugin->get_option( self::$OPTION_DATE_ARCHIVE_SLUG );
 	}
 	
 	public function add_settings_tab( $tabs ) {
@@ -457,14 +475,6 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		
 		return $validated;
 	}
-	
-	public static function set_default_options($defaults) {
-		$defaults [self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT] 	= false;
-		$defaults [self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES] 		= true;
-		$defaults [self::$OPTION_CATEGORY_ARCHIVE_SLUG] 				= _x( 'category', 'Private content category archive slug', 'cuar' );
-		$defaults [self::$OPTION_DATE_ARCHIVE_SLUG] 					= _x( 'archive', 'Private content date archive slug', 'cuar' );
-		return $defaults;
-	}
 
 	// Options
 	public static $OPTION_CUSTOMER_PAGE = 'customer_page_';
@@ -482,8 +492,5 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 
 // Make sure the addon is loaded
 new CUAR_CustomerPagesAddOn();
-	
-// This filter needs to be executed too early to be registered in the constructor
-add_filter( 'cuar_default_options', array( 'CUAR_CustomerPagesAddOn', 'set_default_options' ) );
 
 endif; // if (!class_exists('CUAR_CustomerPagesAddOn')) :

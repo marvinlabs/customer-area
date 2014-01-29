@@ -203,7 +203,7 @@ jQuery(document).ready( function($) {
 <?php 	endif; ?> 
 	
 <?php 
-		$ftp_dir = trailingslashit( $this->plugin->get_option( self::$OPTION_FTP_PATH ) );
+		$ftp_dir = trailingslashit( $this->private_file_addon->get_ftp_path() );
 ?>
 		<div>
 			<hr>
@@ -335,7 +335,7 @@ jQuery(document).ready( function($) {
 			}
 			
 			if ( !empty( $_POST['cuar_selected_ftp_file'] ) ) {
-				$ftp_dir = trailingslashit( $this->plugin->get_option( self::$OPTION_FTP_PATH ) );
+				$ftp_dir = trailingslashit( $this->private_file_addon->get_ftp_path() );
 
 				$this->private_file_addon->handle_copy_private_file_from_ftp_folder( $post_id, $previous_owner, $new_owner,
 						$ftp_dir . $_POST['cuar_selected_ftp_file']);
@@ -386,32 +386,32 @@ jQuery(document).ready( function($) {
 			);
 
 		add_settings_field(
-				self::$OPTION_ENABLE_ADDON,
+				CUAR_PrivateFileAddOn::$OPTION_ENABLE_ADDON,
 				__('Enable add-on', 'cuar'),
 				array( &$cuar_settings, 'print_input_field' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG,
 				'cuar_private_files_addon_general',
 				array(
-					'option_id' => self::$OPTION_ENABLE_ADDON,
+					'option_id' => CUAR_PrivateFileAddOn::$OPTION_ENABLE_ADDON,
 					'type' 		=> 'checkbox',
 					'after'		=> 
 						__( 'Check this to enable the private files add-on.', 'cuar' ) )
 			);
 		
-		if ( !file_exists( $this->plugin->get_option( self::$OPTION_FTP_PATH ) ) ) {
+		if ( !file_exists( $this->private_file_addon->get_ftp_path() ) ) {
 			$folder_exists_message = '<span style="color: #c33;">' . __('This folder does not exist, please create it if you want to copy files from the FTP folder. Otherwise, you need not do anything.', 'cuar' ) . '</span>';
 		} else {
 			$folder_exists_message = "";
 		}
 		 
 		add_settings_field(
-				self::$OPTION_FTP_PATH,
+				CUAR_PrivateFileAddOn::$OPTION_FTP_PATH,
 				__('FTP uploads folder', 'cuar'),
 				array( &$cuar_settings, 'print_input_field' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG,
 				'cuar_private_files_addon_general',
 				array(
-					'option_id' => self::$OPTION_FTP_PATH,
+					'option_id' => CUAR_PrivateFileAddOn::$OPTION_FTP_PATH,
 					'type' 		=> 'text',
 					'is_large'	=> true,
 					'after'		=> '<p class="description">' 
@@ -438,38 +438,12 @@ jQuery(document).ready( function($) {
 	public function validate_options( $validated, $cuar_settings, $input ) {
 		// TODO OUTPUT ALLOWED FILE TYPES
 		
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_ENABLE_ADDON );
+		$cuar_settings->validate_boolean( $input, $validated, CUAR_PrivateFileAddOn::$OPTION_ENABLE_ADDON );
 
 		// TODO: Would be good to have a validate_valid_folder function in CUAR_Settings class.
-		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_FTP_PATH);
+		$cuar_settings->validate_not_empty( $input, $validated, CUAR_PrivateFileAddOn::$OPTION_FTP_PATH);
 				
 		return $validated;
-	}
-	
-	/**
-	 * Set the default values for the options
-	 * 
-	 * @param array $defaults
-	 * @return array
-	 */
-	public static function set_default_options( $defaults ) {
-		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
-		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
-
-		$admin_role = get_role( 'administrator' );
-		if ( $admin_role ) {
-			$admin_role->add_cap( 'cuar_pf_edit' );
-			$admin_role->add_cap( 'cuar_pf_delete' );
-			$admin_role->add_cap( 'cuar_pf_read' );
-			$admin_role->add_cap( 'cuar_pf_manage_categories' );
-			$admin_role->add_cap( 'cuar_pf_edit_categories' );
-			$admin_role->add_cap( 'cuar_pf_delete_categories' );
-			$admin_role->add_cap( 'cuar_pf_assign_categories' );
-			$admin_role->add_cap( 'cuar_pf_list_all' );
-			$admin_role->add_cap( 'cuar_view_any_cuar_private_file' );
-		}
-		
-		return $defaults;
 	}
 	
 	/**
@@ -510,10 +484,6 @@ jQuery(document).ready( function($) {
 		}
 		echo '</div>';
 	}
-
-	// General options
-	public static $OPTION_ENABLE_ADDON					= 'enable_private_files';
-	public static $OPTION_FTP_PATH 						= 'frontend_ftp_upload_path';
 		
 	/** @var CUAR_Plugin */
 	private $plugin;
@@ -521,8 +491,5 @@ jQuery(document).ready( function($) {
 	/** @var CUAR_PrivateFileAddOn */
 	private $private_file_addon;
 }
-	
-// This filter needs to be executed too early to be registered in the constructor
-add_filter( 'cuar_default_options', array( 'CUAR_PrivateFileAdminInterface', 'set_default_options' ) );
 
 endif; // if (!class_exists('CUAR_PrivateFileAdminInterface')) :

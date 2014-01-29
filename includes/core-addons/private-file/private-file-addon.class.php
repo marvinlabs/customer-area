@@ -54,11 +54,43 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		} 
 	}	
 	
-	/*------- GENERAL MAINTAINANCE FUNCTIONS -------------------------------------------------------------------------*/
+	/**
+	 * Set the default values for the options
+	 * 
+	 * @param array $defaults
+	 * @return array
+	 */
+	public function set_default_options( $defaults ) {
+		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
+		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
+
+		$admin_role = get_role( 'administrator' );
+		if ( $admin_role ) {
+			$admin_role->add_cap( 'cuar_pf_edit' );
+			$admin_role->add_cap( 'cuar_pf_delete' );
+			$admin_role->add_cap( 'cuar_pf_read' );
+			$admin_role->add_cap( 'cuar_pf_manage_categories' );
+			$admin_role->add_cap( 'cuar_pf_edit_categories' );
+			$admin_role->add_cap( 'cuar_pf_delete_categories' );
+			$admin_role->add_cap( 'cuar_pf_assign_categories' );
+			$admin_role->add_cap( 'cuar_pf_list_all' );
+			$admin_role->add_cap( 'cuar_view_any_cuar_private_file' );
+		}
+		
+		return $defaults;
+	}
+	
+	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 	
 	public function is_enabled() {
-		return $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_ENABLE_ADDON );
+		return $this->plugin->get_option( self::$OPTION_ENABLE_ADDON );
 	}
+	
+	public function get_ftp_path() {
+		return $this->plugin->get_option( self::$OPTION_FTP_PATH );
+	}
+	
+	/*------- GENERAL MAINTAINANCE FUNCTIONS ------------------------------------------------------------------------*/
 	
 	/**
 	 * Delete the files when a post is deleted
@@ -79,7 +111,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		}
 	}
 	
-	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
+	/*------- FUNCTIONS TO ACCESS THE POST META ---------------------------------------------------------------------*/
 
 	/**
 	 * Get the name of the file associated to the given post
@@ -603,6 +635,10 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	  
 		register_taxonomy( 'cuar_private_file_category', array( 'cuar_private_file' ), $args );
 	}
+
+	// General options
+	public static $OPTION_ENABLE_ADDON					= 'enable_private_files';
+	public static $OPTION_FTP_PATH 						= 'frontend_ftp_upload_path';
 	
 	/** @var CUAR_Plugin */
 	private $plugin;

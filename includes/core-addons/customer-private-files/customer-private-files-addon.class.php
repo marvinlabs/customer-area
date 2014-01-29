@@ -62,15 +62,8 @@ class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 		}
 		
 		if ( is_admin() ) { 
-			// Settings
-			add_action( 'cuar_addon_print_settings_cuar_private_files', array( &$this, 'print_settings' ), 10, 2 );
-			add_filter( 'cuar_addon_validate_options_cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
-		} else {
-			// Optionally output the file links in the post footer area
-			if ( $this->plugin->get_option( self::$OPTION_SHOW_AFTER_POST_CONTENT ) ) {
-				add_filter( 'the_content', array( &$this, 'after_post_content' ), 3000 );
-			}
-		}
+			$this->enable_settings( 'cuar_private_files' );
+		} 
 	}	
 
 	protected function get_page_addon_path() {
@@ -96,89 +89,9 @@ class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 		return __( 'Recent Files', 'cuar' );
 	}
 	
-	/*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
-	
-	public function after_post_content( $content ) {
-		// If not on a matching post type, we do nothing
-		if ( !is_singular('cuar_private_file') ) return $content;		
-
-		ob_start();
-		include( $this->plugin->get_template_file_path(
-				CUAR_INCLUDES_DIR . '/core-addons/customer-private-files',
-				'customer-private-files-single-post-footer.template.php',
-				'templates' ));	
-  		$out = ob_get_contents();
-  		ob_end_clean(); 
-  		
-  		return $content . $out;
+	protected function get_default_dashboard_block_title() {
+		return __( 'Recent Files', 'cuar' );
 	}
-
-	/*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
-	
-	/**
-	 * Add our fields to the settings page
-	 *
-	 * @param CUAR_Settings $cuar_settings The settings class
-	 */
-	public function print_settings( $cuar_settings, $options_group ) {		
-		add_settings_section(
-				'cuar_private_files_addon_frontend',
-				__('Frontend Integration', 'cuar'),
-				array( &$this, 'print_empty_section_info' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG
-			);
-
-		add_settings_field(
-				self::$OPTION_SHOW_AFTER_POST_CONTENT,
-				__('Show after post', 'cuar'),
-				array( &$cuar_settings, 'print_input_field' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_files_addon_frontend',
-				array(
-					'option_id' => self::$OPTION_SHOW_AFTER_POST_CONTENT,
-					'type' 		=> 'checkbox',
-					'after'		=> 
-							__( 'Show additional information after the post in the single post view.', 'cuar' )
-							. '<p class="description">' 
-							. __( 'You can disable this if you have your own "single-cuar_private_file.php" template file.', 'cuar' )
-							. '</p>' )
-			);
-	}
-	
-	/**
-	 * Validate our options
-	 *
-	 * @param CUAR_Settings $cuar_settings
-	 * @param array $input
-	 * @param array $validated
-	 */
-	public function validate_options( $validated, $cuar_settings, $input ) {
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
-		
-		return $validated;
-	}
-	
-	/**
-	 * Set the default values for the options
-	 *
-	 * @param array $defaults
-	 * @return array
-	 */
-	public static function set_default_options( $defaults ) {
-		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
-			
-		return $defaults;
-	}
-	
-	/**
-	 * Print some info about the section
-	 */
-	public function print_empty_section_info() {
-		// echo '<p>' . __( 'Options for the private files add-on.', 'cuar' ) . '</p>';
-	}
-
-	// Settings
-	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'private_files_auto_show_in_single_post_footer';
 	
 	/** @var CUAR_PrivateFileAddOn */
 	private $pf_addon;
@@ -186,8 +99,5 @@ class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 
 // Make sure the addon is loaded - THIS IS DONE IN THE PRIVATE FILE ADD-ON ITSELF
 new CUAR_CustomerPrivateFilesAddOn();
-
-// This filter needs to be executed too early to be registered in the constructor
-add_filter( 'cuar_default_options', array( 'CUAR_CustomerPrivateFilesAddOn', 'set_default_options' ) );
 
 endif; // if (!class_exists('CUAR_CustomerPrivateFilesAddOn')) 

@@ -50,8 +50,35 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		}
 	}	
 	
+	/**
+	 * Set the default values for the options
+	 * 
+	 * @param array $defaults
+	 * @return array
+	 */
+	public function set_default_options( $defaults ) {
+		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
+
+		$admin_role = get_role( 'administrator' );
+		if ( $admin_role ) {
+			$admin_role->add_cap( 'cuar_pp_edit' );
+			$admin_role->add_cap( 'cuar_pp_delete' );
+			$admin_role->add_cap( 'cuar_pp_read' );
+			$admin_role->add_cap( 'cuar_pp_manage_categories' );
+			$admin_role->add_cap( 'cuar_pp_edit_categories' );
+			$admin_role->add_cap( 'cuar_pp_delete_categories' );
+			$admin_role->add_cap( 'cuar_pp_assign_categories' );
+			$admin_role->add_cap( 'cuar_pp_list_all' );
+			$admin_role->add_cap( 'cuar_view_any_cuar_private_page' );
+		}
+		
+		return $defaults;
+	}
+	
+	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
+	
 	public function is_enabled() {
-		return $this->plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_ENABLE_ADDON );
+		return $this->plugin->get_option( self::$OPTION_ENABLE_ADDON );
 	}
 		
 	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
@@ -204,6 +231,9 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	  
 		register_taxonomy( 'cuar_private_page_category', array( 'cuar_private_page' ), $args );
 	}
+
+	// General options
+	public static $OPTION_ENABLE_ADDON					= 'enable_private_pages';
 	
 	/** @var CUAR_Plugin */
 	private $plugin;

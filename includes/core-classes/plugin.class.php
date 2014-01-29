@@ -29,13 +29,14 @@ class CUAR_Plugin {
 	}
 	
 	public function run() {		
-		$this->settings = new CUAR_Settings( $this );
-
-		add_action( 'init', array( &$this, 'load_textdomain' ) );
-		add_action( 'init', array( &$this, 'load_scripts' ) );
-		add_action( 'init', array( &$this, 'load_styles' ) );		
-		add_action( 'init', array( &$this, 'load_defaults' ) );
-		add_action( 'plugins_loaded', array( &$this, 'load_addons' ) );	
+		add_action( 'plugins_loaded', array( &$this, 'load_settings' ), 5 );
+		add_action( 'plugins_loaded', array( &$this, 'load_addons' ), 10 );
+		
+		add_action( 'init', array( &$this, 'load_textdomain' ), 6 );
+		add_action( 'init', array( &$this, 'load_scripts' ), 7 );
+		add_action( 'init', array( &$this, 'load_styles' ), 8 );		
+		add_action( 'init', array( &$this, 'load_defaults' ), 9 );	
+		
 		add_action( 'admin_init', array( &$this, 'check_versions' ) );
 		
 		if ( is_admin() ) {		
@@ -45,6 +46,10 @@ class CUAR_Plugin {
 	}
 
 	/*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/
+	
+	public function load_settings() {
+		$this->settings = new CUAR_Settings( $this );		
+	}
 	
 	/**
 	 * Load the translation file for current language. Checks in wp-content/languages first

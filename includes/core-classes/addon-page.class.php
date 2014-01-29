@@ -27,7 +27,7 @@ if (!class_exists('CUAR_AbstractPageAddOn')) :
 *
 * @author Vincent Prat @ MarvinLabs
 */
-class CUAR_AbstractPageAddOn extends CUAR_AddOn {
+abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 
 	public function __construct( $addon_id = null, $addon_name = null, $min_cuar_version = null ) {
 		parent::__construct( $addon_id, $addon_name, $min_cuar_version );
@@ -51,6 +51,8 @@ class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	}
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
+	
+	protected abstract function get_page_addon_path();	
 	
 	public function register_page_description( $pages ) {
 		if ( $this->page_description!=null ) { 
@@ -143,17 +145,41 @@ class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	}
 	
 	public function print_page_header( $args = array(), $shortcode_content = '' ) {
+		$this->print_page_part( 'header' );
 	}
 	
 	public function print_page_sidebar( $args = array(), $shortcode_content = '' ) {
+		if ( $this->has_page_sidebar() ) {
+			$this->print_page_part( 'sidebar' );
+		}
 	}
 	
 	public function print_page_content( $args = array(), $shortcode_content = '' ) {
+		$this->print_page_part( 'content' );
 	}
 	
 	public function print_page_footer( $args = array(), $shortcode_content = '' ) {
+		$this->print_page_part( 'footer' );
 	}
 
+	protected function print_page_part( $part ) {
+		$slug = $this->get_slug();
+		
+		$template = $this->plugin->get_template_file_path(
+				$this->get_page_addon_path(),
+				$slug . "-" . $part . ".template.php",
+				'templates' );
+
+		do_action( 'cuar_before_page_' . $part );
+		do_action( 'cuar_before_page_' . $part . '_' . $slug );		
+		
+		if ( !empty( $template ) ) include( $template );
+		
+		do_action( 'cuar_after_page_' . $part . '_' . $slug );
+		do_action( 'cuar_after_page_' . $part );
+		
+	}
+	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 
 	public function run_addon( $plugin ) {

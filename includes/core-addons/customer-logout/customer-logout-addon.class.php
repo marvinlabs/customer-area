@@ -31,11 +31,11 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 		parent::__construct( 'customer-logout', __( 'Customer Logout', 'cuar' ), '4.0.0' );
 		
 		$this->set_page_parameters( 1000, array(
-					'slug'					=> 'user-logout',
+					'slug'					=> 'customer-logout',
 					'label'					=> __( 'Logout', 'cuar' ),
 					'title'					=> __( 'Logout', 'cuar' ),
 					'hint'					=> __( 'This page logs the current user out and redirects him to the logout page', 'cuar' ),
-					'parent_slug'			=> 'user-account',
+					'parent_slug'			=> 'customer-account',
 					'requires_logout'		=> false
 				)
 			);
@@ -50,6 +50,10 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 		add_filter( 'cuar_default_logout_url', array( &$this, 'get_default_logout_url' ), 20, 3 );
 	}
 
+	protected function get_page_addon_path() {
+		return CUAR_INCLUDES_DIR . '/core-addons/customer-logout';
+	}
+
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
 	public function hide_page_in_default_nav_menu( $pages ) {
@@ -59,11 +63,21 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 		return $pages;
 	}
 	
-	public function print_page_content( $args = array(), $shortcode_content = '' ) {
+
+	public function print_page_header( $args = array(), $shortcode_content = '' ) {
 		wp_logout();
 		
 		$logout_url = apply_filters( 'cuar_default_logout_url', null, 'dashboard', null );			
 		wp_redirect( $logout_url );			
+	}
+	
+	public function print_page_sidebar( $args = array(), $shortcode_content = '' ) {
+	}
+	
+	public function print_page_content( $args = array(), $shortcode_content = '' ) {
+	}
+	
+	public function print_page_footer( $args = array(), $shortcode_content = '' ) {
 	}
 
 	/*------- FORM URLS ---------------------------------------------------------------------------------------------*/
@@ -104,8 +118,5 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 
 // Make sure the addon is loaded
 new CUAR_CustomerLogoutAddOn();
-	
-// This filter needs to be executed too early to be registered in the constructor
-// add_filter( 'cuar_default_options', array( 'CUAR_CustomerLogoutAddOn', 'set_default_options' ) );
 
 endif; // if (!class_exists('CUAR_CustomerLogoutAddOn')) :

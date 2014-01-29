@@ -31,7 +31,7 @@ class CUAR_CustomerDashboardAddOn extends CUAR_AbstractPageAddOn {
 		parent::__construct( 'customer-dashboard', __( 'Customer Dashboard', 'cuar' ), '4.0.0' );
 		
 		$this->set_page_parameters( 5, array(
-					'slug'					=> 'dashboard',
+					'slug'					=> 'customer-dashboard',
 					'label'					=> __( 'Dashboard', 'cuar' ),
 					'title'					=> __( 'Dashboard', 'cuar' ),
 					'hint'					=> __( 'Usually this is the main page of your Customer Area where the user will see a summary of his documents and messages.', 'cuar' )
@@ -43,22 +43,18 @@ class CUAR_CustomerDashboardAddOn extends CUAR_AbstractPageAddOn {
 
 	public function run_addon( $plugin ) {
 		parent::run_addon( $plugin );		
+			
+		// Register the main widget area
+		$this->register_sidebar( 'cuar_customer_dashboard_content', __( 'Customer Area Dashboard', 'cuar' ) );
 	}	
 
-	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
-	
-	public function print_page_content( $args = array(), $shortcode_content = '' ) {
-		include( $this->plugin->get_template_file_path(
-				CUAR_INCLUDES_DIR . '/core-addons/customer-dashboard',
-				"customer-dashboard.template.php",
-				'templates' ));
+	protected function get_page_addon_path() {
+		return CUAR_INCLUDES_DIR . '/core-addons/customer-dashboard';
 	}
+
 }
 
 // Make sure the addon is loaded
 new CUAR_CustomerDashboardAddOn();
-	
-// This filter needs to be executed too early to be registered in the constructor
-// add_filter( 'cuar_default_options', array( 'CUAR_CustomerDashboardAddOn', 'set_default_options' ) );
 
 endif; // if (!class_exists('CUAR_CustomerDashboardAddOn')) :

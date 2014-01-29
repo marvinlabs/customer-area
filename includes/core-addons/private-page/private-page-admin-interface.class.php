@@ -170,76 +170,21 @@ jQuery(document).ready( function($) {
 		add_settings_section(
 				'cuar_private_pages_addon_general',
 				__('General settings', 'cuar'),
-				array( &$this, 'print_frontend_section_info' ),
+				array( &$this, 'print_empty_section_info' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG
 			);
 
 		add_settings_field(
-				self::$OPTION_ENABLE_ADDON,
+				CUAR_PrivatePageAddOn::$OPTION_ENABLE_ADDON,
 				__('Enable add-on', 'cuar'),
 				array( &$cuar_settings, 'print_input_field' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG,
 				'cuar_private_pages_addon_general',
 				array(
-					'option_id' => self::$OPTION_ENABLE_ADDON,
+					'option_id' => CUAR_PrivatePageAddOn::$OPTION_ENABLE_ADDON,
 					'type' 		=> 'checkbox',
 					'after'		=> 
 						__( 'Check this to enable the private pages add-on.', 'cuar' ) )
-			);
-		
-		add_settings_section(
-				'cuar_private_pages_addon_frontend',
-				__('Frontend Integration', 'cuar'),
-				array( &$this, 'print_frontend_section_info' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG
-			);
-
-		add_settings_field(
-				self::$OPTION_SHOW_AFTER_POST_CONTENT,
-				__('Show after post', 'cuar'),
-				array( &$cuar_settings, 'print_input_field' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_pages_addon_frontend',
-				array(
-					'option_id' => self::$OPTION_SHOW_AFTER_POST_CONTENT,
-					'type' 		=> 'checkbox',
-					'after'		=> 
-							__( 'Show additional information after the post in the single post view.', 'cuar' )
-							. '<p class="description">' 
-							. __( 'You can disable this if you have your own "single-cuar_private_page.php" template file.', 'cuar' )
-							. '</p>' )
-			);
-		
-		add_settings_field(
-				self::$OPTION_PAGE_LIST_MODE, 
-				__('Page list', 'cuar'),
-				array( &$cuar_settings, 'print_select_field' ), 
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_pages_addon_frontend',
-				array( 
-					'option_id' => self::$OPTION_PAGE_LIST_MODE, 
-					'options'	=> array( 
-						'plain' 	=> __( "Don't group pages", 'cuar' ),
-						'month'		=> __( 'Group by month', 'cuar' ),
-						'year' 		=> __( 'Group by year', 'cuar' ),
-						'category' 	=> __( 'Group by category', 'cuar' ) ),
-	    			'after'	=> '<p class="description">'
-	    				. __( 'You can choose how pages will be organized by default in the customer area.', 'cuar' )
-	    				. '</p>' )
-			);	
-
-		add_settings_field(
-				self::$OPTION_HIDE_EMPTY_CATEGORIES,
-				__('Empty categories', 'cuar'),
-				array( &$cuar_settings, 'print_input_field' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_pages_addon_frontend',
-				array(
-					'option_id' => self::$OPTION_HIDE_EMPTY_CATEGORIES,
-					'type' 		=> 'checkbox',
-					'after'		=> 
-						__( 'When listing pages by category, empty categories will be hidden if you check this.', 
-							'cuar' ) )
 			);
 	}
 	
@@ -251,57 +196,15 @@ jQuery(document).ready( function($) {
 	 * @param array $validated
 	 */
 	public function validate_options( $validated, $cuar_settings, $input ) {		
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_ENABLE_ADDON );
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
-		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_PAGE_LIST_MODE, 
-				array( 'plain', 'year', 'month', 'category' ) );
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_HIDE_EMPTY_CATEGORIES );
-		
+		$cuar_settings->validate_boolean( $input, $validated, CUAR_PrivatePageAddOn::$OPTION_ENABLE_ADDON );		
 		return $validated;
-	}
-	
-	/**
-	 * Set the default values for the options
-	 * 
-	 * @param array $defaults
-	 * @return array
-	 */
-	public static function set_default_options( $defaults ) {
-		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
-		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
-		$defaults[ self::$OPTION_PAGE_LIST_MODE ] = 'plain';
-		$defaults[ self::$OPTION_HIDE_EMPTY_CATEGORIES ] = true;
-
-		$admin_role = get_role( 'administrator' );
-		if ( $admin_role ) {
-			$admin_role->add_cap( 'cuar_pp_edit' );
-			$admin_role->add_cap( 'cuar_pp_delete' );
-			$admin_role->add_cap( 'cuar_pp_read' );
-			$admin_role->add_cap( 'cuar_pp_manage_categories' );
-			$admin_role->add_cap( 'cuar_pp_edit_categories' );
-			$admin_role->add_cap( 'cuar_pp_delete_categories' );
-			$admin_role->add_cap( 'cuar_pp_assign_categories' );
-			$admin_role->add_cap( 'cuar_pp_list_all' );
-			$admin_role->add_cap( 'cuar_view_any_cuar_private_page' );
-		}
-		
-		return $defaults;
 	}
 	
 	/**
 	 * Print some info about the section
 	 */
-	public function print_frontend_section_info() {
-		// echo '<p>' . __( 'Options for the private files add-on.', 'cuar' ) . '</p>';
+	public function print_empty_section_info() {
 	}
-
-	// General options
-	public static $OPTION_ENABLE_ADDON					= 'enable_private_pages';
-	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'pf_frontend_show_after_post_content';
-
-	// Frontend options
-	public static $OPTION_PAGE_LIST_MODE				= 'frontend_page_list_mode';
-	public static $OPTION_HIDE_EMPTY_CATEGORIES			= 'frontend_hide_empty_page_categories';
 		
 	/** @var CUAR_Plugin */
 	private $plugin;
@@ -309,8 +212,5 @@ jQuery(document).ready( function($) {
 	/** @var CUAR_PrivatePageAddOn */
 	private $private_page_addon;
 }
-	
-// This filter needs to be executed too early to be registered in the constructor
-add_filter( 'cuar_default_options', array( 'CUAR_PrivatePageAdminInterface', 'set_default_options' ) );
 
 endif; // if (!class_exists('CUAR_PrivatePageAdminInterface')) :
