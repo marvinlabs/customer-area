@@ -159,6 +159,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	public function get_main_navigation_menu( $echo=false ) {
 		$out = '';
 		
+		if ( !is_user_logged_in() ) return $out;
+		
 		if ( has_nav_menu( 'cuar_main_menu' ) ) {
 			$defaults = apply_filters( 'cuar_get_main_menu_args', array(
 					'theme_location'  => 'cuar_main_menu',
