@@ -36,8 +36,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-
 		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
@@ -61,6 +59,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @return array
 	 */
 	public function set_default_options( $defaults ) {
+		$defaults = parent::set_default_options($defaults);
+		
 		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
 		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
 
@@ -362,10 +362,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
-			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
-			$url = $cp_addon->get_customer_page_url( '', $_SERVER['REQUEST_URI'] );
-			wp_redirect( $url );
-			exit;
+			$this->plugin->login_then_redirect_to_url( $_SERVER['REQUEST_URI'] );
 		}
 
 		$po_addon = $this->plugin->get_addon('post-owner');
@@ -640,9 +637,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	public static $OPTION_ENABLE_ADDON					= 'enable_private_files';
 	public static $OPTION_FTP_PATH 						= 'frontend_ftp_upload_path';
 	
-	/** @var CUAR_Plugin */
-	private $plugin;
-
 	/** @var CUAR_PrivateFileAdminInterface */
 	private $admin_interface;
 }

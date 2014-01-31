@@ -1,13 +1,13 @@
 <?php
 
 // uncomment this line for testing
-// set_site_transient( 'update_plugins', null );
+//set_site_transient( 'update_plugins', null );
 
 /**
  * Allows plugins to use their own update API.
  *
  * @author Pippin Williamson
- * @version 1.0
+ * @version 1.1
  */
 class EDD_SL_Plugin_Updater {
 	private $api_url  = '';
@@ -46,7 +46,8 @@ class EDD_SL_Plugin_Updater {
 	 */
 	private function hook() {
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'pre_set_site_transient_update_plugins_filter' ) );
-		add_filter( 'plugins_api', array( $this, 'plugins_api_filter' ), 10, 3);
+		add_filter( 'plugins_api', array( $this, 'plugins_api_filter' ), 10, 3 );
+		add_filter( 'http_request_args', array( $this, 'http_request_args' ), 10, 2 );
 	}
 
 	/**
@@ -71,15 +72,9 @@ class EDD_SL_Plugin_Updater {
 
 		$api_response = $this->api_request( 'plugin_latest_version', $to_send );
 
-		if( false !== $api_response && is_object( $api_response ) ) {
-			if ( !property_exists( $api_response, 'new_version' ) && property_exists( $api_response, 'msg' )) {
-// 				global $cuar_plugin;
-// 				$cuar_plugin->add_admin_notice( 
-// 						sprintf( __( 'Error while checking updates for %s: %s. You may ignore this message if you are running on a development environment.', 'cuar'), $this->name, $api_response->msg ),
-// 						'updated' );	
-			} else if( version_compare( $this->version, $api_response->new_version, '<' ) ) {
+		if( false !== $api_response && is_object( $api_response ) && isset( $api_response->new_version ) ) {
+			if( version_compare( $this->version, $api_response->new_version, '<' ) )
 				$_transient_data->response[$this->name] = $api_response;
-			}
 		}
 		return $_transient_data;
 	}
@@ -106,6 +101,22 @@ class EDD_SL_Plugin_Updater {
 		return $_data;
 	}
 
+
+	/**
+	 * Disable SSL verification in order to prevent download update failures
+	 *
+	 * @param array $args
+	 * @param string $url
+	 * @return object $array
+	 */
+	function http_request_args( $args, $url ) {
+		// If it is an https request and we are performing a package download, disable ssl verification
+		if( strpos( $url, 'https://' ) !== false && strpos( $url, 'edd_action=package_download' ) ) {
+			$args['sslverify'] = false;
+		}
+		return $args;
+	}
+
 	/**
 	 * Calls the API and, if successfull, returns the object delivered by the API.
 	 *
@@ -122,7 +133,11 @@ class EDD_SL_Plugin_Updater {
 		global $wp_version;
 
 		$data = array_merge( $this->api_data, $_data );
+
 		if( $data['slug'] != $this->slug )
+			return;
+
+		if( empty( $data['license'] ) )
 			return;
 
 		$api_params = array(
@@ -130,14 +145,14 @@ class EDD_SL_Plugin_Updater {
 			'license' 		=> $data['license'],
 			'name' 			=> $data['item_name'],
 			'slug' 			=> $this->slug,
-			'author'		=> $data['author']
+			'author'		=> $data['author'],
+			'url'           => home_url()
 		);
-		
 		$request = wp_remote_post( $this->api_url, array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
-		
-		if ( !is_wp_error( $request ) ):
-			$request = json_decode( wp_remote_retrieve_body( $request ) );		
-			if( $request && isset($request->sections) )
+
+		if ( ! is_wp_error( $request ) ):
+			$request = json_decode( wp_remote_retrieve_body( $request ) );
+			if( $request && isset( $request->sections ) )
 				$request->sections = maybe_unserialize( $request->sections );
 			return $request;
 		else:

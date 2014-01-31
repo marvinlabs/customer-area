@@ -18,8 +18,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 
-require_once( dirname(__FILE__) . '/capabilities-admin-interface.class.php' );
-
 if (!class_exists('CUAR_CapabilitiesAddOn')) :
 
 /**
@@ -34,19 +32,87 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-		
 		// Init the admin interface if needed
 		if ( is_admin() ) {
-			$this->admin_interface = new CUAR_CapabilitiesAdminInterface( $plugin, $this );
+			// Settings
+			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
+			add_action( 'cuar_in_settings_form_cuar_capabilities', array( &$this, 'print_settings' ) );
+			add_filter( 'cuar_addon_validate_options_cuar_capabilities', array( &$this, 'validate_options' ), 10, 3 );
 		} 
 	}	
 	
-	/** @var CUAR_Plugin */
-	private $plugin;
-
-	/** @var CUAR_CapabilitiesAdminInterface */
-	private $admin_interface;
+	/*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
+	
+	public function add_settings_tab( $tabs ) {
+		$tabs[ 'cuar_capabilities' ] = __( 'Capabilities', 'cuar' );
+		return $tabs;
+	}
+	
+	/**
+	 * Add our fields to the settings page
+	 *
+	 * @param CUAR_Settings $cuar_settings The settings class
+	 */
+	public function print_settings() {
+		global $wp_roles;
+		$all_roles 	= $wp_roles->role_objects;
+	
+		$all_capability_groups = $this->get_configurable_capability_groups();
+	
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/capabilities',
+				'capabilities-table.template.php',
+				'templates' ));
+	}
+	
+	/**
+	 * Validate our options
+	 *
+	 * @param CUAR_Settings $cuar_settings
+	 * @param array $input
+	 * @param array $validated
+	 */
+	public function validate_options( $validated, $cuar_settings, $input ) {
+		global $wp_roles;
+		$roles 	= $wp_roles->role_objects;
+		$all_capability_groups = $this->get_configurable_capability_groups();
+	
+		foreach ( $all_capability_groups as $group ) {
+			$group_name = $group['group_name'];
+			$group_caps = $group['capabilities'];
+	
+			if ( empty( $group_caps ) ) continue;
+	
+			foreach ( $roles as $role ) {
+				foreach ( $group_caps as $cap => $cap_name ) {
+					$name = str_replace( ' ', '-', $role->name . '_' . $cap );
+						
+					if ( isset( $_POST[ $name ] ) ) {
+						$role->add_cap( $cap );
+					} else {
+						$role->remove_cap( $cap );
+					}
+				}
+			}
+		}
+	
+		return $validated;
+	}
+	
+	private function get_configurable_capability_groups() {
+		if ( $this->all_capability_groups==null ) {
+			// each entry should be an array in the form:
+			// array(
+			//   'group_name' => 'My Add-on',
+			//   'capabilities' => array( 'my_cap' => 'My cap label' )
+			// );
+			$this->all_capability_groups = apply_filters( 'cuar_configurable_capability_groups', array() );
+		}
+		return $this->all_capability_groups;
+	}
+	
+	/** @var array */	
+	private $all_capability_groups;	
 }
 
 // Make sure the addon is loaded

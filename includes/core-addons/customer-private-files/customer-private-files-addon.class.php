@@ -32,14 +32,14 @@ if (!class_exists('CUAR_CustomerPrivateFilesAddOn')) :
 class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-files-page', __( 'Customer Files', 'cuar' ), '4.0.0' );
+		parent::__construct( 'customer-files-page', __( 'Customer Page - Private Files', 'cuar' ), '4.0.0' );
 		
 		$this->set_page_parameters( 200, array(
 					'slug'					=> 'customer-private-files',
 					'label'					=> __( 'Private Files', 'cuar' ),
 					'title'					=> __( 'Files', 'cuar' ),
 					'hint'					=> __( 'Page to list the customer files.', 'cuar' ),
-					'parent_slug'			=> 'dashboard',
+					'parent_slug'			=> 'customer-dashboard',
 					'friendly_post_type'	=> 'cuar_private_file',
 					'friendly_taxonomy'		=> 'cuar_private_file_category'
 				)

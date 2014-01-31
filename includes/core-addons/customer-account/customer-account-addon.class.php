@@ -29,15 +29,14 @@ if (!class_exists('CUAR_CustomerAccountAddOn')) :
 class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-account', __( 'Customer Account', 'cuar' ), '4.0.0' );
+		parent::__construct( 'customer-account', __( 'Customer Page - User Account', 'cuar' ), '4.0.0' );
 		
 		$this->set_page_parameters( 800, array(
 					'slug'					=> 'customer-account',
 					'label'					=> __( 'My Account', 'cuar' ),
 					'title'					=> __( 'My Account', 'cuar' ),
-					'hint'					=> __( 'This page shows a summary of the user account / login links / ...', 'cuar' ),
-					'parent_slug'			=> 'customer-dashboard',
-					'requires_login'		=> false
+					'hint'					=> __( 'This page shows a summary of the user account', 'cuar' ),
+					'parent_slug'			=> 'customer-dashboard'
 				)
 			);
 		
@@ -46,8 +45,6 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 
 	public function run_addon( $plugin ) {
 		parent::run_addon( $plugin );	
-
-		add_filter( 'cuar_default_login_url', array( &$this, 'get_default_login_url' ), 20, 3 );
 	}
 
 	protected function get_page_addon_path() {
@@ -56,84 +53,35 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
-	public function print_page_content( $args = array(), $shortcode_content = '' ) {
-		if ( !is_user_logged_in() ) {
-			$this->print_login_page_content( $args, $shortcode_content );
-		} else {
-			$this->print_account_page_content( $args, $shortcode_content );
-		}
-	}
-	
-	private function print_login_page_content( $args = array(), $shortcode_content = '' ) {
-		$redirect_url = $this->get_requested_redirect_url();
-		
-		include( $this->plugin->get_template_file_path(
-				CUAR_INCLUDES_DIR . '/core-addons/customer-account',
-				'customer-account-login-required.template.php',
-				'templates' ));
-	}
-	
-	private function print_account_page_content( $args = array(), $shortcode_content = '' ) {
-		$user_id = apply_filters( 'cuar_user_id_for_profile_page', get_current_user_id() );
-		$current_user = get_userdata( $user_id );
-	
-		include( $this->plugin->get_template_file_path(
-				CUAR_INCLUDES_DIR . '/core-addons/customer-account',
-				'customer-account-summary.template.php',
-				'templates' ));
-	}
-	
 	public function print_account_fields() {
 		do_action( 'cuar_customer_account_before_fields' );
 
-		$user_id = apply_filters( 'cuar_user_id_for_profile_page', get_current_user_id() );
-		$current_user = get_userdata( $user_id );
+		$current_user = $this->get_current_user();
 		
-		$renderer = new CUAR_FieldRenderer( $this->plugin );		
-		$renderer->add_field( 'first_name', __( 'First Name'), $current_user->first_name, '-' );
-		$renderer->add_field( 'last_name', __( 'Last Name'), $current_user->last_name, '-' );
-		$renderer->add_field( 'email', __( 'Email'), $current_user->user_email, false, 'wide' );
-		$renderer->add_field( 'website', __( 'Website'), $current_user->user_url, false, 'wide link' );
+		$renderer = new CUAR_FieldRenderer( $this->plugin );	
+			
+		$renderer->start_section( 'contact', __( 'Contact', 'cuar' ) );
+		$renderer->add_simple_field( 'first_name', __( 'First Name'), $current_user->first_name, '-' );
+		$renderer->add_simple_field( 'last_name', __( 'Last Name'), $current_user->last_name, '-' );
+		$renderer->add_simple_field( 'email', __( 'Email'), $current_user->user_email, false, 'wide' );
+		$renderer->add_simple_field( 'website', __( 'Website'), $current_user->user_url, false, 'wide link' );
+		
+		do_action( 'cuar_add_account_fields', $current_user, $renderer );
 		
 		$renderer->print_fields();
 		
 		do_action( 'cuar_customer_account_after_fields' );
 	}
-
-	/*------- FORM URLS ---------------------------------------------------------------------------------------------*/
 	
-	public function get_requested_redirect_url() {
-		return isset( $_GET['cuar_redirect'] ) ? $_GET['cuar_redirect'] : '';
+	protected function get_current_user() {
+		if ( $this->current_user==null ) {
+			$user_id = apply_filters( 'cuar_user_id_for_profile_page', get_current_user_id() );
+			$this->current_user = get_userdata( $user_id );
+		}
+		return $this->current_user;
 	}
 	
-	public function get_default_login_url( $current_url = null, $redirect_slug = 'dashboard', $redirect_url = null ) {
-		if ( $current_url!=null ) return $current_url;
-		
-		$cp_addon = $this->plugin->get_addon('customer-pages');
-
-		// Where should we redirect?
-		if ( !empty( $redirect_slug ) ) {
-			$redirect_page_id = $cp_addon->get_page_id( $redirect_slug );
-			if ( $redirect_page_id>0 ) {
-				$redirect_url = get_permalink( $redirect_page_id );
-			} 
-		} 
-		
-		if ( $redirect_url==null ) {
-			$redirect_url = get_home_url();
-		}
-		
-		// The account page ID
-		$page_id = $cp_addon->get_page_id( 'user-account' );		
-		if ( $page_id>0 ) {
-			$permalink = get_permalink( $page_id );
-			$login_url = $permalink . '?cuar_redirect=' . $redirect_url;
-		} else {
-			$login_url = wp_login_url( $redirect_url );
-		}
-		
-		return $login_url;
-	}
+	private $current_user = null;
 }
 
 // Make sure the addon is loaded

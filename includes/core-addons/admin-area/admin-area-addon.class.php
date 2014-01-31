@@ -31,9 +31,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 		parent::__construct( 'admin-area', __( 'Administration Area', 'cuar' ), '2.0.0' );
 	}
 
-	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-		
+	public function run_addon( $plugin ) {		
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
 			add_action( 'cuar_version_upgraded', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
@@ -201,10 +199,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 			}
 		}
 	}
-	
-	/** @var CUAR_Plugin */
-	private $plugin;
-	
+		
 	/** @var string */
 	private $pagehook;
 }

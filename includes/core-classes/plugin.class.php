@@ -204,6 +204,28 @@ class CUAR_Plugin {
 		$cp_addon = $this->get_addon( 'customer-pages' );
 		return $cp_addon->get_page_id( $slug );
 	}
+	
+	public function login_then_redirect_to_page( $page_slug ) {
+		$cp_addon = $this->get_addon('customer-pages');
+		$redirect_page_id = $cp_addon->get_page_id( $page_slug );
+		if ( $redirect_page_id>0 ) {
+			$redirect_url = get_permalink( $redirect_page_id );
+		} else {
+			$redirect_url = '';
+		}
+	
+		$this->login_then_redirect_to_url( $redirect_url );
+	}
+	
+	public function login_then_redirect_to_url( $redirect_to='' ) {
+		$login_url = apply_filters( 'cuar_login_url', null, $redirect_to );		
+		if ( $login_url==null ) {
+			$login_url = wp_login_url( $redirect_to );
+		}	
+		
+		wp_redirect( $login_url );
+		exit;
+	}
 
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 	
@@ -264,6 +286,18 @@ class CUAR_Plugin {
 		return $this->registered_addons;
 	}
 	
+	public function tag_addon_as_commercial( $addon_id ) {
+		return $this->commercial_addons[$addon_id] = $this->get_addon( $addon_id );
+	}
+	
+	public function get_commercial_addons() {
+		return $this->commercial_addons;
+	}
+	
+	public function has_commercial_addons() {
+		return !empty( $this->commercial_addons );
+	}
+	
 	/**
 	 * Get add-on
 	 */
@@ -273,6 +307,9 @@ class CUAR_Plugin {
 	
 	/** @var array */
 	private $registered_addons = array();
+	
+	/** @var array */
+	private $commercial_addons = array();
 
 	/*------- ADMIN NOTICES -----------------------------------------------------------------------------------------*/
 	

@@ -56,6 +56,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	 * @return array
 	 */
 	public function set_default_options( $defaults ) {
+		$defaults = parent::set_default_options($defaults);
+		
 		$slug = $this->get_slug();
 		
 		$defaults[ $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER ] 		= true;

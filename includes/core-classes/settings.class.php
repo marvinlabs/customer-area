@@ -49,8 +49,14 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				
 				// We have some core settings to take care of too
 				add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_core_settings_tab' ), 5, 1 );
+				
 				add_action( 'cuar_addon_print_settings_cuar_core', array( &$this, 'print_core_settings' ), 10, 2 );
 				add_filter( 'cuar_addon_validate_options_cuar_core', array( &$this,	'validate_core_settings' ), 10, 3 );
+				
+				add_action( 'cuar_addon_print_settings_cuar_frontend', array( &$this, 'print_frontend_settings' ), 10, 2 );
+				add_filter( 'cuar_addon_validate_options_cuar_frontend', array( &$this,	'validate_frontend_settings' ), 10, 3 );
+			
+				add_action( 'wp_ajax_cuar_validate_license', array( 'CUAR_Settings', 'ajax_validate_license' ) );
 			}
 		}
 		
@@ -205,7 +211,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @return array
 		 */
 		public function add_core_settings_tab($tabs) {
-			$tabs ['cuar_core'] = __ ( 'General', 'cuar' );
+			$tabs ['cuar_core'] 	= __ ( 'General', 'cuar' );
+			$tabs ['cuar_frontend'] = __ ( 'Frontend', 'cuar' );
 			return $tabs;
 		}
 		
@@ -219,20 +226,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			// General settings
 			add_settings_section ( 'cuar_general_settings', 
 					__ ( 'General Settings', 'cuar' ), 
-					array ( &$cuar_settings, 'print_core_settings_general_section_info' ), 
+					array ( &$cuar_settings, 'print_empty_section_info' ), 
 					self::$OPTIONS_PAGE_SLUG );
-			
-			add_settings_field ( self::$OPTION_INCLUDE_CSS, 
-					__ ( 'Include CSS', 'cuar' ), 
-					array( &$cuar_settings,	'print_input_field'	), 
-					self::$OPTIONS_PAGE_SLUG, 
-					'cuar_general_settings', 
-					array (
-							'option_id' => self::$OPTION_INCLUDE_CSS,
-							'type' => 'checkbox',
-							'after' => __ ( 'Include the default stylesheet.', 'cuar' ) . '<p class="description">' . __ ( 'If not, you should style the plugin yourself in your theme.', 'cuar' ) . '</p>' 
-						) 
-				);
 			
 			add_settings_field ( self::$OPTION_ADMIN_THEME_URL, 
 					__ ( 'Admin theme', 'cuar' ), 
@@ -243,17 +238,6 @@ if (! class_exists ( 'CUAR_Settings' )) :
 							'option_id' => self::$OPTION_ADMIN_THEME_URL,
 							'theme_type' => 'admin' 
 						)
-				);
-			
-			add_settings_field ( self::$OPTION_FRONTEND_THEME_URL, 
-					__ ( 'Frontend theme', 'cuar' ), 
-					array ( &$cuar_settings, 'print_theme_select_field' ), 
-					self::$OPTIONS_PAGE_SLUG, 
-					'cuar_general_settings', 
-					array (
-							'option_id' => self::$OPTION_FRONTEND_THEME_URL,
-							'theme_type' => 'frontend' 
-						) 
 				);
 			
 			add_settings_field ( self::$OPTION_HIDE_SINGLE_OWNER_SELECT, 
@@ -271,9 +255,6 @@ if (! class_exists ( 'CUAR_Settings' )) :
 						) 
 				);
 		}
-		public function print_core_settings_general_section_info() {
-			// echo '<p>' . __( 'General plugin options.', 'cuar' ) . '</p>';
-		}
 		
 		/**
 		 * Validate core options
@@ -283,14 +264,66 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param array $validated        	
 		 */
 		public function validate_core_settings($validated, $cuar_settings, $input) {
-			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
 			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_ADMIN_THEME_URL );
-			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME_URL );
 			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_HIDE_SINGLE_OWNER_SELECT );
 			
 			return $validated;
 		}
 		
+		/**
+		 * Add our fields to the settings page
+		 *
+		 * @param CUAR_Settings $cuar_settings
+		 *        	The settings class
+		 */
+		public function print_frontend_settings($cuar_settings, $options_group) {
+			// General settings
+			add_settings_section ( 'cuar_general_settings', 
+					__ ( 'General Settings', 'cuar' ), 
+					array ( &$cuar_settings, 'print_empty_section_info' ), 
+					self::$OPTIONS_PAGE_SLUG );
+			
+			add_settings_field ( self::$OPTION_INCLUDE_CSS, 
+					__ ( 'Include CSS', 'cuar' ), 
+					array( &$cuar_settings,	'print_input_field'	), 
+					self::$OPTIONS_PAGE_SLUG, 
+					'cuar_general_settings', 
+					array (
+							'option_id' => self::$OPTION_INCLUDE_CSS,
+							'type' => 'checkbox',
+							'after' => __ ( 'Include the default stylesheet.', 'cuar' ) . '<p class="description">' . __ ( 'If not, you should style the plugin yourself in your theme.', 'cuar' ) . '</p>' 
+						) 
+				);
+			
+			add_settings_field ( self::$OPTION_FRONTEND_THEME_URL, 
+					__ ( 'Frontend theme', 'cuar' ), 
+					array ( &$cuar_settings, 'print_theme_select_field' ), 
+					self::$OPTIONS_PAGE_SLUG, 
+					'cuar_general_settings', 
+					array (
+							'option_id' => self::$OPTION_FRONTEND_THEME_URL,
+							'theme_type' => 'frontend' 
+						) 
+				);
+		}
+		
+		/**
+		 * Validate frontend options
+		 *
+		 * @param CUAR_Settings $cuar_settings        	
+		 * @param array $input        	
+		 * @param array $validated        	
+		 */
+		public function validate_frontend_settings($validated, $cuar_settings, $input) {
+			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
+			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME_URL );
+			
+			return $validated;
+		}
+		
+		public function print_empty_section_info() {
+		}
+				
 		/**
 		 * Set the default values for the core options
 		 *
@@ -372,40 +405,42 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function validate_license_key($input, &$validated, $option_id, $store_url, $product_name) {
 			$validated[$option_id] = trim ( $input[$option_id] );
 			
-			// Only validate on license change or every N days
-			$last_check = $this->get_option ( $option_id . '_lastcheck' );
+// 			// Only validate on license change or every N days
+// 			$last_check = $this->get_option ( $option_id . '_lastcheck' );
 			
-			if ($last_check) {
-				$days_since_lastcheck = (time () - intval ( $last_check )) / (24 * 60 * 60);
-			} else {
-				$days_since_lastcheck = 99999;
-			}
+// 			if ($last_check) {
+// 				$days_since_lastcheck = (time () - intval ( $last_check )) / (24 * 60 * 60);
+// 			} else {
+// 				$days_since_lastcheck = 99999;
+// 			}
 			
-			if ($days_since_lastcheck > 2 || $input[$option_id] != $this->get_option ( $option_id )) {
-				// data to send in our API request
-				$api_params = array (
-						'edd_action' => 'activate_license',
-						'license' => $validated[$option_id],
-						'item_name' => urlencode ( $product_name ) 
-				);
+// 			if ($days_since_lastcheck > 2 || $input[$option_id] != $this->get_option ( $option_id )) {
+// 				// data to send in our API request
+// 				$api_params = array (
+// 						'edd_action' => 'activate_license',
+// 						'license' => $validated[$option_id],
+// 						'item_name' => urlencode ( $product_name ) 
+// 					);
 				
-				// Call the custom API.
-				$response = wp_remote_get ( add_query_arg ( $api_params, $store_url ), array (
-						'timeout' => 15,
-						'sslverify' => false 
-				) );
+// 				// Call the custom API.
+// 				$response = wp_remote_get ( add_query_arg ( $api_params, $store_url ), array (
+// 						'timeout' => 15,
+// 						'sslverify' => false 
+// 					) );
 				
-				// make sure the response came back okay
-				if (is_wp_error ( $response ))
-					return false;
+// 				// make sure the response came back okay
+// 				if (is_wp_error ( $response ))
+// 					return false;
 					
-					// decode the license data
-					// $license_data->license will be either "active" or "inactive"
-				$license_data = json_decode ( wp_remote_retrieve_body ( $response ) );
+// 				// decode the license data
+// 				// $license_data->license will be either "active" or "inactive"
+// 				$response = wp_remote_retrieve_body( $response );
+// 				$license_data = json_decode( $response );
 				
-				$validated[$option_id . '_status'] = $license_data->license;
-				$validated[$option_id . '_lastcheck'] = time ();
-			}
+// 				$validated[$option_id . '_status'] = $license_data->license;
+// 				$validated[$option_id . '_lastcheck'] = time ();
+// 				$validated[$option_id . '_response'] = $response;
+// 			}
 		}
 		
 		/**
@@ -578,6 +613,96 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				$validated[$option_id] = -1;
 			}
 		}
+	
+		/** 
+		 * Handles remote requests to validate a license
+		 */
+		public static function ajax_validate_license() {
+			global $cuar_plugin;
+			
+			$addon_id = $_POST["addon_id"];		
+			$license = $_POST["license"];		
+			$today = new DateTime();
+			
+			$addon = $cuar_plugin->get_addon( $addon_id );
+			
+			$license_key_option_id = $addon->get_license_key_option_name();
+			$cuar_plugin->update_option( $license_key_option_id, $license );
+			
+			// data to send in our API request
+			$api_params = array (
+					'edd_action' 	=> 'activate_license',
+					'license' 		=> $license,
+					'item_name' 	=> urlencode( $addon->store_item_name )
+				);
+			
+			// Call the custom API.
+			$response = wp_remote_get( add_query_arg( $api_params, CUAR_AddOn::$STORE_URL ), array (
+					'timeout' => 15,
+					'sslverify' => false
+				) );
+			
+			$result = new stdClass();
+			$result->result_container = $license_key_option_id . '_check_result';
+			
+			// make sure the response came back okay
+			if (is_wp_error( $response )) {
+				$result->success = false;
+				$result->error = $response->get_error_message();
+	
+				echo json_encode( $result );
+				exit;
+			} 
+	
+			$response = wp_remote_retrieve_body( $response );			
+			$license_data = json_decode( $response );
+
+			$expiry_date = new DateTime($license_data->expires);
+			
+			if ( $license_data->license=='valid' ) {
+				$result->success = true;
+				$result->expires = $license_data->expires;
+				$result->message = sprintf( __( 'Your license is valid until: %s', 'cuar' ), $expiry_date->format( get_option('date_format') ) );
+			} else {
+				$result->success = false;
+				
+				switch ( $license_data->error ) {
+					case 'revoked': 
+						$result->message = __( 'This license key has been revoked.', 'cuar' );
+						break;
+
+					case 'no_activations_left':
+						$result->message = sprintf( __( 'You have reached your maximum number of sites for this license key. You can use it on at most %s site(s).', 'cuar' ), $license_data->max_sites );
+						break;
+
+					case 'expired':
+						$result->message = sprintf( __( 'Your license has expired at the date: %s', 'cuar' ), $expiry_date->format( get_option('date_format') ) );
+						break;
+
+					case 'key_mismatch':
+						$result->message = __( 'This license key does not match.', 'cuar' );
+						break;
+
+					case 'product_name_mismatch':
+						$result->message = __( 'This license key seems have been generated for another product.', 'cuar' );
+						break;
+
+					default:
+						$result->message = __( 'Problem when validating your license key', 'cuar' );
+						break;
+								
+				}				
+			}
+		
+			$license_check_option_id = $addon->get_license_check_option_name();
+			$cuar_plugin->update_option( $license_check_option_id, $today->format('Y-m-d') );
+
+			$license_status_option_id = $addon->get_license_status_option_name();
+			$cuar_plugin->update_option( $license_status_option_id, $result );
+			
+			echo json_encode( $result );
+			exit;
+		}
 		
 		/* ------------ FIELDS OUTPUT ----------------------------------------------------------------------------------- */
 		
@@ -588,32 +713,72 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function print_license_key_field($args) {
 			extract ( $args );
+
+			$license_key = $this->options[$option_id];
+			$last_status = $this->plugin->get_option( $status_option_id, null );
+			
+			if ( $last_status!=null && !empty( $license_key ) ) {
+				$status_class = $last_status->success ? 'cuar-ajax-success' : 'cuar-ajax-failure';
+				$status_message = $last_status->message;
+			} else if ( empty( $license_key ) ) {
+				$status_class = '';
+				$status_message = '';				
+				$this->plugin->update_option( $status_option_id, null );
+				$this->plugin->update_option( $check_option_id, null );
+			} else {
+				$status_class = '';
+				$status_message = '';
+			}
 			
 			if (isset ( $before ))
 				echo $before;
 			
-			echo sprintf ( '<input type="text" id="%s" name="%s[%s]" value="%s" class="regular-text" />', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ), esc_attr ( $this->options [$option_id] ) );
-			
-			$status = $this->get_option ( $option_id . '_status' );
-			if (isset ( $status ) && $status !== false) {
-				if ($status == "active") {
-					printf ( '&nbsp;&nbsp;<span class="status" style="color: green;">%s</span>', __ ( 'Your license is active!', 'cuar' ) );
-				} else if ($status == "invalid") {
-					printf ( '&nbsp;&nbsp;<span class="status" style="color: red;">%s</span>', __ ( 'Your license key is invalid!', 'cuar' ) );
-				} else if ($status == "expired") {
-					printf ( '&nbsp;&nbsp;<span class="status" style="color: orange;">%s</span>', __ ( 'Your license key is expired!', 'cuar' ) );
-				}
-			}
-			
-			$last_check = $this->get_option ( $option_id . '_lastcheck' );
-			if (isset ( $last_check )) {
-				printf ( '&nbsp;&nbsp;<span>(%s: %s)</span>', __ ( 'Last check', 'cuar' ), date ( __ ( 'd/m/Y', 'cuar' ), $last_check ) );
-			}
-			
-			printf ( '<p class="description">%s</p>', __ ( 'The license key you have received for this add-on. ' . 'This is required in order to get automatic plugin updates.', 'cuar' ) );
+			echo sprintf ( '<input type="text" id="%s" name="%s[%s]" value="%s" class="regular-text" />', esc_attr( $option_id ), self::$OPTIONS_GROUP, esc_attr( $option_id ), esc_attr( $this->options[$option_id] ) );			
+			echo sprintf ( '<span class="cuar-ajax-container"><span id="%s_check_result" class="%s">%s</span></span>', esc_attr( $option_id ), $status_class, $status_message );
 			
 			if (isset ( $after ))
-				echo $after;
+				echo $after; 
+
+			$last_check = $this->plugin->get_option( $check_option_id, null );
+			if ( $last_check!=null ) {
+				$next_check = new DateTime( $last_check );
+				$next_check->add(new DateInterval('P10D'));
+				
+				$should_check_license = ( new DateTime('now') > $next_check );
+			} else {
+				$should_check_license = true;
+			}
+			
+			if ( !empty( $license_key ) && ( $should_check_license || ( $last_status!=null && $last_status->success==false ) ) ) {
+?>
+				<script type="text/javascript">
+				<!--
+					jQuery(document).ready(function($) {
+						$('#<?php echo $option_id . '_check_result'; ?>').html('<?php esc_attr_e( 'Checking license...', 'cuar' ); ?>').removeClass().addClass('cuar-ajax-running');
+						
+						var data = {
+								action: 'cuar_validate_license',
+								addon_id: '<?php echo $addon_id; ?>',
+								license: '<?php echo $license_key; ?>',
+								url: '<?php echo home_url(); ?>'
+							};
+						
+						$.post(ajaxurl, data, function(response) {
+								var panel = $('#<?php echo $option_id . '_check_result'; ?>');
+								if ( response.success ) {
+									panel.removeClass().addClass('cuar-ajax-success').html(response.message);
+								} else {
+									panel.removeClass().addClass('cuar-ajax-failure').html(response.message);
+								}
+							}, "json",
+							function() {
+								panel.removeClass().addClass('cuar-ajax-failure').html('<?php esc_attr_e( 'Failed to contact server', 'cuar' ); ?>');
+							});
+					});
+				//-->
+				</script>
+<?php			
+			}
 		}
 		
 		/**

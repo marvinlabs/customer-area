@@ -33,8 +33,6 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-
 		// Add a WordPress menu 
 		register_nav_menus( array(
 				'cuar_main_menu' => 'Customer Area Navigation Menu'
@@ -43,8 +41,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		// Settings
 		add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 6, 1 );
 		
-		add_action( 'cuar_addon_print_settings_cuar_core', array( &$this, 'print_core_settings' ), 50, 2 );
-		add_filter( 'cuar_addon_validate_options_cuar_core', array( &$this, 'validate_core_settings' ), 50, 3 );
+		add_action( 'cuar_addon_print_settings_cuar_frontend', array( &$this, 'print_frontend_settings' ), 50, 2 );
+		add_filter( 'cuar_addon_validate_options_cuar_frontend', array( &$this, 'validate_frontend_settings' ), 50, 3 );
 		
 		add_action( 'cuar_addon_print_settings_cuar_customer_pages', array( &$this, 'print_pages_settings' ), 50, 2 );
 		add_filter( 'cuar_addon_validate_options_cuar_customer_pages', array( &$this, 'validate_pages_settings' ), 50, 3 );
@@ -59,6 +57,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	}	
 	
 	public function set_default_options($defaults) {
+		$defaults = parent::set_default_options($defaults);
+		
 		$defaults [self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT] 	= false;
 		$defaults [self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES] 		= true;
 		$defaults [self::$OPTION_CATEGORY_ARCHIVE_SLUG] 				= _x( 'category', 'Private content category archive slug', 'cuar' );
@@ -80,6 +80,13 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		
 		$page_id = $this->plugin->get_option( $this->get_page_option_name( $slug ), -1 );
 		return $page_id<0 ? false : $page_id;
+	}
+	
+	public function get_page_url( $slug ) {
+		if ( empty( $slug ) ) return false;
+		
+		$page_id = $this->plugin->get_option( $this->get_page_option_name( $slug ), -1 );
+		return $page_id<0 ? false : get_permalink( $page_id );
 	}
 	
 	public function is_auto_menu_on_single_private_content_pages_enabled() {
@@ -335,7 +342,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		}
 	}
 	
-	public function print_core_settings($cuar_settings, $options_group) {	
+	public function print_frontend_settings($cuar_settings, $options_group) {	
 		add_settings_section(
 				'cuar_core_nav_menu',
 				__('Main Navigation Menu', 'cuar'),
@@ -439,7 +446,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 				. '</p>';
 	}
 	
-	public function validate_core_settings($validated, $cuar_settings, $input) {
+	public function validate_frontend_settings($validated, $cuar_settings, $input) {
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT );
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES );
 
@@ -487,9 +494,6 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 
 	/** @var array */
 	private $pages = null;
-	
-	/** @var CUAR_Plugin */
-	private $plugin;
 }
 
 // Make sure the addon is loaded

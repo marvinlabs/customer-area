@@ -33,8 +33,6 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-
 		// Init the admin interface if needed
 		if ( is_admin() ) {
 			add_action( 'cuar_version_upgraded', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
@@ -720,10 +718,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
-			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
-			$url = $cp_addon->get_customer_page_url( '', get_permalink() );
-			wp_redirect( $url );
-			exit;
+			$this->plugin->login_then_redirect_to_url( get_permalink() );
 		}
 	
 		// If not authorized to view the page, we bail
@@ -836,8 +831,6 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	public static $META_OWNER_DISPLAYNAME 			= 'cuar_owner_displayname';
 	public static $META_OWNER_SORTABLE_DISPLAYNAME 	= 'cuar_owner_sortable_displayname';
 	
-	/** @var CUAR_Plugin */
-	private $plugin;
 }
 
 // Make sure the addon is loaded

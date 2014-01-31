@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 if (!class_exists('CUAR_FieldRenderer')) :
 
 /**
- * Class that helps rendering fields (like profile fields) 
+ * Class that helps rendering fields in a form (like profile fields) 
  *
  * @author Vincent Prat @ MarvinLabs
  */
@@ -29,37 +29,20 @@ class CUAR_FieldRenderer {
 		$this->plugin = $plugin;
 	}
 	
-	public function print_fields( $is_form = false ) {
+	public function start_section( $id, $label ) {
 		// Just in case
 		$this->end_section();
 		
-		foreach ( $this->sections as $section ) {
-			$fields = $section[ 'fields' ];
-			
-			echo '<div class="cuar-field-section cuar-field-section-' . $section['id'] . '">';
-			
-			if ( !empty( $section['label'] ) ) {
-				echo '<h3>' . $section['label'] . '</h3>';
-			} 
-			
-			foreach ( $fields as $field ) {
-				$template = $this->get_field_template( $field );
-				include( $template );
-			}
-			
-			echo '</div>';
+		if ( !isset( $this->sections[$id] ) ) {		
+			$this->sections[$id] = array(
+					'id'		=> $id,
+					'label'		=> $label,
+					'fields'	=> array()
+				);	
 		}
-	}
-	
-	public function start_section( $id, $label ) {
-		$this->sections[ $id ] = array(
-				'id'		=> $id,
-				'label'		=> $label,
-				'fields'	=> array()
-			);
-			
+		
 		$this->current_section_id = $id;
-		$this->current_fields = array();
+		$this->current_fields = $this->sections[$id]['fields'];
 	}
 	
 	public function end_section() {
@@ -71,12 +54,54 @@ class CUAR_FieldRenderer {
 		$this->current_fields = array();
 	}
 	
-	public function add_field( $id, $label, $value, $placeholder=false, $class='default' ) {
+	public function add_simple_field( $id, $label, $value, $placeholder=false, $class='default' ) {
 		if ( empty( $this->sections ) ) {
 			$this->start_section( 'default', '' );	
 		}
 		
-		$this->current_fields[] = array(
+		$this->current_fields[] = $this->build_simple_field( $id, $label, $value, $placeholder, $class );
+	}
+	
+	public function print_fields() {
+		// Just in case
+		$this->end_section();
+
+		$this->print_header();
+		
+		foreach ( $this->sections as $section ) {
+			$this->print_section_header( $section );
+			
+			$fields = $section[ 'fields' ];
+			foreach ( $fields as $field ) {
+				$template = $this->get_field_template( $field );
+				include( $template );
+			}
+			
+			$this->print_section_footer( $section );
+		}
+
+		$this->print_footer();
+	}
+	
+	protected function print_section_header( $section ) {
+		echo '<div class="cuar-field-section cuar-field-section-' . $section['id'] . '">';
+		if ( !empty( $section['label'] ) ) {
+			echo '<h3 class="cuar-section-title">' . $section['label'] . '</h3>';
+		}			
+	}
+	
+	protected function print_section_footer( $section ) {
+		echo '</div>';
+	}
+	
+	protected function print_header() {		
+	}
+	
+	protected function print_footer() {		
+	}
+	
+	protected function build_simple_field( $id, $label, $value, $placeholder=false, $class='default' ) {
+		return array(
 				'editable'			=> false,
 				'id'				=> $id,
 				'label' 			=> $label,
@@ -86,25 +111,7 @@ class CUAR_FieldRenderer {
 			);
 	}
 	
-	public function add_editable_field( $id, $label, $value, $placeholder=false, $class='default', $control_name, $control_type='text', $available_values=null ) {
-		if ( empty( $this->sections ) ) {
-			$this->start_section( 'cuar-default', '' );	
-		}
-		
-		$this->current_fields[] = array(
-				'editable'			=> true,
-				'id'				=> $id,
-				'label' 			=> $label,
-				'value'				=> $value,
-				'classes'			=> explode( ' ', $class ),
-				'placeholder'		=> $placeholder,
-				'control_type'		=> $control_type,
-				'control_name'		=> $control_name,
-				'available_values'	=> $available_values
-			);
-	}
-	
-	protected function get_field_template( $field ) {		
+	protected function get_field_template( $field ) {
 		$classes = $field[ 'classes' ];
 		
 		// If our template is in cache, return the first one we find

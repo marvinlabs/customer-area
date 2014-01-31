@@ -32,8 +32,6 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-		
 		// We only do something within the admin interface
 		if ( is_admin() ) {
 			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 1000, 1 );
@@ -210,9 +208,6 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		
 		return $content;	
 	}
-	
-	/** @var CUAR_Plugin */
-	private $plugin;
 }
 
 // Make sure the addon is loaded

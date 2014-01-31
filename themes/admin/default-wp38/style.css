@@ -78,6 +78,26 @@ span.label {
 	margin-top: 35px;
 }
 
+.cuar-ajax-container {
+	margin: 0 15px;
+	font-size: 0.8em;
+}
+.cuar-ajax-running {
+	color: #666;
+	animation: blinker 1s linear infinite; 
+}
+@keyframes blinker {  
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }  
+  100% { opacity: 1; }
+}
+.cuar-ajax-success {
+	color: #006400;
+}
+.cuar-ajax-failure {
+	color: #B22222;
+}
+
 /* -= ADMIN MENU & ICONS */
 
 #adminmenu #toplevel_page_customer-area div.wp-menu-image:before {

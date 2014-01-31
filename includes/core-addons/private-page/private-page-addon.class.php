@@ -35,8 +35,6 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-
 		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
@@ -57,6 +55,8 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	 * @return array
 	 */
 	public function set_default_options( $defaults ) {
+		$defaults = parent::set_default_options($defaults);
+		
 		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
 
 		$admin_role = get_role( 'administrator' );
@@ -235,9 +235,6 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	// General options
 	public static $OPTION_ENABLE_ADDON					= 'enable_private_pages';
 	
-	/** @var CUAR_Plugin */
-	private $plugin;
-
 	/** @var CUAR_PrivatePageAdminInterface */
 	private $admin_interface;
 }

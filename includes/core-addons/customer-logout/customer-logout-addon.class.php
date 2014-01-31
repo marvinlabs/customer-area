@@ -28,14 +28,14 @@ if (!class_exists('CUAR_CustomerLogoutAddOn')) :
 class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-logout', __( 'Customer Logout', 'cuar' ), '4.0.0' );
+		parent::__construct( 'customer-logout', __( 'Customer Page - Logout', 'cuar' ), '4.0.0' );
 		
 		$this->set_page_parameters( 1000, array(
 					'slug'					=> 'customer-logout',
 					'label'					=> __( 'Logout', 'cuar' ),
 					'title'					=> __( 'Logout', 'cuar' ),
 					'hint'					=> __( 'This page logs the current user out and redirects him to the logout page', 'cuar' ),
-					'parent_slug'			=> 'customer-account',
+					'parent_slug'			=> 'customer-dashboard',
 					'requires_logout'		=> false
 				)
 			);

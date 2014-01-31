@@ -1,4 +1,5 @@
 <h3><?php 
+	$current_user = $this->get_current_user();	
 	printf( __('Hello %s,', 'cuar'), $current_user->display_name );
 ?></h3>
 
