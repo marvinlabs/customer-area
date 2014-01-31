@@ -2,7 +2,7 @@
 Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
-Requires at least: 3.5
+Requires at least: 3.6
 Tested up to: 3.8.1
 Stable tag: 3.9.0
 License: GPLv2 or later
@@ -22,6 +22,7 @@ or download them on his page.
 * [Demo](http://customer-area.marvinlabs.com/demo)
 * [Add-ons](http://www.marvinlabs.com/downloads/category/customer-area)
 * [Translations](http://customer-area.marvinlabs.com/documentation/translations/)
+* [GitHub repository for contributors](https://github.com/marvinlabs/customer-area)
 
 **Current features**
 
@@ -78,7 +79,16 @@ customisation has been done to the plugin or to the add-ons.
 	
 == Upgrade Notice ==
 
-= Upgrading from 2.x to 3.0.0 =
+= Upgrading from 3.x to 4.x =
+
+Version 4 introduces a brand new menu system and breaks many templates that have been there in version 3.x. Coming 
+from that version, you will need to create the pages that are necessary to display the private content types. Before
+upgrading the plugin, backup your files and database. It is advised that you attempt the upgrade on a development 
+site first.
+
+
+
+= Upgrading from 2.x to 3.x =
 
 Because version 3 introduces a new layout for the customer area, template files for displaying files and pages 
 have been renamed and reorganised. If you have customized them, be warned that you will need to change your 
@@ -158,6 +168,12 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 4.0.0 () =
+
+* Completely changed the way information is displayed. Now the plugin uses a system of pages similar to the one usd by WooCommerce for example. 
+This has allowed greater possibilities for customization (Widget areas, 
+* Added category column in the admin page for private files and private pages
 
 = 3.9.0 (2014/01/23) =
 

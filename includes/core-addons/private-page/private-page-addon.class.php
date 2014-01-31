@@ -16,11 +16,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 require_once( CUAR_INCLUDES_DIR . '/helpers/template-functions.class.php' );
 
 require_once( dirname(__FILE__) . '/private-page-admin-interface.class.php' );
-require_once( dirname(__FILE__) . '/private-page-frontend-interface.class.php' );
 
 if (!class_exists('CUAR_PrivatePageAddOn')) :
 
@@ -36,14 +35,9 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-
-		if ( $plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_ENABLE_ADDON ) ) {
+		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
-			
-			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
-			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
 			
 			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
 		}
@@ -51,23 +45,40 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		// Init the admin interface if needed
 		if ( is_admin() ) {
 			$this->admin_interface = new CUAR_PrivatePageAdminInterface( $plugin, $this );
-		} else {
-			$this->frontend_interface = new CUAR_PrivatePageFrontendInterface( $plugin, $this );
 		}
 	}	
 	
 	/**
-	 * When the plugin is upgraded
+	 * Set the default values for the options
 	 * 
-	 * @param unknown $from_version
-	 * @param unknown $to_version
+	 * @param array $defaults
+	 * @return array
 	 */
-	public function plugin_version_upgrade( $from_version, $to_version ) {
-		// If upgrading from before 1.6.0 we should flush rewrite rules
-		if ( $from_version<'1.6.0' ) {
-			global $wp_rewrite;  
-			$wp_rewrite->flush_rules();
+	public function set_default_options( $defaults ) {
+		$defaults = parent::set_default_options($defaults);
+		
+		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
+
+		$admin_role = get_role( 'administrator' );
+		if ( $admin_role ) {
+			$admin_role->add_cap( 'cuar_pp_edit' );
+			$admin_role->add_cap( 'cuar_pp_delete' );
+			$admin_role->add_cap( 'cuar_pp_read' );
+			$admin_role->add_cap( 'cuar_pp_manage_categories' );
+			$admin_role->add_cap( 'cuar_pp_edit_categories' );
+			$admin_role->add_cap( 'cuar_pp_delete_categories' );
+			$admin_role->add_cap( 'cuar_pp_assign_categories' );
+			$admin_role->add_cap( 'cuar_pp_list_all' );
+			$admin_role->add_cap( 'cuar_view_any_cuar_private_page' );
 		}
+		
+		return $defaults;
+	}
+	
+	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
+	
+	public function is_enabled() {
+		return $this->plugin->get_option( self::$OPTION_ENABLE_ADDON );
 	}
 		
 	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
@@ -209,9 +220,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 				'show_tagcloud' 	=> false,
 				'hierarchical' 		=> true,
 				'query_var' 		=> true,
-				'rewrite' 			=> array(
-						'slug' 				=> 'private-page-category'
-					),
+				'rewrite' 			=> false,
 				'capabilities' 			=> array(
 						'manage_terms' 		=> 'cuar_pp_manage_categories',
 						'edit_terms' 		=> 'cuar_pp_edit_categories',
@@ -223,67 +232,14 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		register_taxonomy( 'cuar_private_page_category', array( 'cuar_private_page' ), $args );
 	}
 
-	/**
-	 * Add the rewrite rule for the private files.  
-	 */
-	function add_post_type_rewrites() {
-		global $wp_rewrite;
-		
-		$pf_slug = 'private-page';
-		
-		$wp_rewrite->add_rewrite_tag('%cuar_private_page%', '([^/]+)', 'cuar_private_page=');
-		$wp_rewrite->add_permastruct( 'cuar_private_page',
-				$pf_slug . '/%year%/%monthnum%/%day%/%cuar_private_page%',
-				false);
-	}
-
-	/**
-	 * Build the permalink for the private files
-	 * 
-	 * @param unknown $post_link
-	 * @param unknown $post
-	 * @param unknown $leavename
-	 * @return unknown|mixed
-	 */
-	function built_post_type_permalink( $post_link, $post, $leavename ) {		
-		// Only change permalinks for private files
-		if ( $post->post_type!='cuar_private_page') return $post_link;
+	// General options
+	public static $OPTION_ENABLE_ADDON					= 'enable_private_pages';
 	
-		// Only change permalinks for published posts
-		$draft_or_pending = isset( $post->post_status )
-		&& in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) );
-		if( $draft_or_pending and !$leavename ) return $post_link;
-	
-		// Change the permalink
-		global $wp_rewrite;
-	
-		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_page' );
-		$permalink = str_replace( "%cuar_private_page%", $post->post_name, $permalink );
-	
-		$post_date = strtotime( $post->post_date );
-		$permalink = str_replace( "%year%", 	date( "Y", $post_date ), $permalink );
-		$permalink = str_replace( "%monthnum%", date( "m", $post_date ), $permalink );
-		$permalink = str_replace( "%day%", 		date( "d", $post_date ), $permalink );
-		
-		$permalink = home_url() . "/" . user_trailingslashit( $permalink );
-		$permalink = str_replace( "//", "/", $permalink );
-		$permalink = str_replace( ":/", "://", $permalink );
-	
-		return $permalink;
-	}
-	
-	/** @var CUAR_Plugin */
-	private $plugin;
-
 	/** @var CUAR_PrivatePageAdminInterface */
 	private $admin_interface;
-
-	/** @var CUAR_PrivatePageFrontendInterface */
-	private $frontend_interface;
 }
 
 // Make sure the addon is loaded
-global $cuar_pp_addon;
-$cuar_pp_addon = new CUAR_PrivatePageAddOn();
+new CUAR_PrivatePageAddOn();
 
 endif; // if (!class_exists('CUAR_PrivatePageAddOn')) 

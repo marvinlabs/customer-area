@@ -21,6 +21,12 @@ span.label {
 	min-width: 200px;
 }
 
+/* -= POST LISTING */
+
+.fixed .column-cuar_category {
+	width: 15%;
+}
+
 /* -= CONVERSATIONS ADMIN */
 
 .column-cuar_reply_count {
@@ -72,6 +78,26 @@ span.label {
 	margin-top: 35px;
 }
 
+.cuar-ajax-container {
+	margin: 0 15px;
+	font-size: 0.8em;
+}
+.cuar-ajax-running {
+	color: #666;
+	animation: blinker 1s linear infinite; 
+}
+@keyframes blinker {  
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }  
+  100% { opacity: 1; }
+}
+.cuar-ajax-success {
+	color: #006400;
+}
+.cuar-ajax-failure {
+	color: #B22222;
+}
+
 /* -= ADMIN MENU & ICONS */
 
 #adminmenu #toplevel_page_customer-area div.wp-menu-image:before {
@@ -86,6 +112,16 @@ span.label {
 .dashboard-logo img {
 	max-width: 100%;
 	height: auto; 
+}
+
+#adminmenu span.cuar-menu-divider {
+	display:block; 
+	margin: 0px 5px 12px -5px; 
+	padding:0; 
+	height:1px; 
+	line-height:1px; 
+	background:#ddd; 
+	opacity: 0.5;
 }
 
 /* -= SETTINGS SIDEBOXES */
@@ -114,10 +150,6 @@ span.label {
 .cuar-sidebox div.cuar-sidebox-content {
 	background: #fafafa;
 	padding: 7px 20px;
-}
-
-.cuar-main .cuar-section-description {
-	padding: 5px 10px;
 }
 
 /* -= ADD-ONS TAB */
@@ -236,6 +268,22 @@ p.forcelinebreak {
 	list-style-type: disc;
 	padding-left: 2em;
 	max-width: 600px;
+}
+
+.cuar-settings p.cuar-section-info {
+	max-width: 100%;
+}
+ 
+.wp-admin .cuar-settings select.cuar-post-select {
+	min-width: 200px;
+}
+
+.cuar-main .cuar-section-description {
+	padding: 5px 10px;
+}
+
+.wp-admin .cuar-settings .cuar-submit-create-post {
+	margin: 1px 25px;
 }
 
 .cuar-wizard ul li {

@@ -16,7 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 
 if (!class_exists('CUAR_HelpAddOn')) :
 
@@ -32,8 +32,6 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-		
 		// We only do something within the admin interface
 		if ( is_admin() ) {
 			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 1000, 1 );
@@ -210,13 +208,9 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		
 		return $content;	
 	}
-	
-	/** @var CUAR_Plugin */
-	private $plugin;
 }
 
 // Make sure the addon is loaded
-global $cuar_he_addon;
-$cuar_he_addon = new CUAR_HelpAddOn();
+new CUAR_HelpAddOn();
 
 endif; // if (!class_exists('CUAR_HelpAddOn')) 

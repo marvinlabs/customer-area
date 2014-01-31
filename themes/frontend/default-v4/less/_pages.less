@@ -1,0 +1,27 @@
+// Customer Page
+// --------------------------------------------------
+
+.cuar-page {
+		.make-row();
+		
+	.cuar-page-header {
+			.make-xs-column(12);
+	}
+		
+	.cuar-page-footer {
+			.make-xs-column(12);
+	}
+		
+	.cuar-page-content {
+			.make-xs-column(12);
+	}
+		
+	&.cuar-page-with-sidebar {
+		.cuar-page-content {
+				.make-md-column(8);
+		}
+		.cuar-page-sidebar {
+				.make-md-column(4);
+		}
+	}
+}
