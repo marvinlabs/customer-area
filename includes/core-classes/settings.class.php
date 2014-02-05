@@ -648,18 +648,20 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			// make sure the response came back okay
 			if (is_wp_error( $response )) {
 				$result->success = false;
-				$result->error = $response->get_error_message();
+				$result->message = $response->get_error_message();
 	
 				echo json_encode( $result );
 				exit;
 			} 
 	
-			$response = wp_remote_retrieve_body( $response );			
+			$response = wp_remote_retrieve_body( $response );		
 			$license_data = json_decode( $response );
-
-			$expiry_date = new DateTime($license_data->expires);
+			
+			$result->response = json_encode( $response, JSON_PRETTY_PRINT );
 			
 			if ( $license_data->license=='valid' ) {
+				$expiry_date = new DateTime($license_data->expires);
+			
 				$result->success = true;
 				$result->expires = $license_data->expires;
 				$result->message = sprintf( __( 'Your license is valid until: %s', 'cuar' ), $expiry_date->format( get_option('date_format') ) );
@@ -676,6 +678,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 						break;
 
 					case 'expired':
+						$expiry_date = new DateTime($license_data->expires);
 						$result->message = sprintf( __( 'Your license has expired at the date: %s', 'cuar' ), $expiry_date->format( get_option('date_format') ) );
 						break;
 
@@ -684,7 +687,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 						break;
 
 					case 'product_name_mismatch':
-						$result->message = __( 'This license key seems have been generated for another product.', 'cuar' );
+						$result->message = __( 'This license key seems to have been generated for another product.', 'cuar' );
 						break;
 
 					default:
