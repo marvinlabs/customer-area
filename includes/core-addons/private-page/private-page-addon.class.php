@@ -31,7 +31,7 @@ if (!class_exists('CUAR_PrivatePageAddOn')) :
 class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'private-pages', __( 'Private Pages', 'cuar' ), '2.0.0' );
+		parent::__construct( 'private-pages', __( 'Private Pages', 'cuar' ), '4.0.0' );
 	}
 
 	public function run_addon( $plugin ) {

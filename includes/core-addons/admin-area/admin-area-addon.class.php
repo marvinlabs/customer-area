@@ -28,7 +28,7 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
 class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'admin-area', __( 'Administration Area', 'cuar' ), '2.0.0' );
+		parent::__construct( 'admin-area', __( 'Administration Area', 'cuar' ), '4.0.0' );
 	}
 
 	public function run_addon( $plugin ) {		

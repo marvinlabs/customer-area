@@ -53,7 +53,3 @@
 	</tbody>
 </table>
 <p>&nbsp;</p>
-
-<h2><?php _e( 'Plugin options', 'cuar' ); ?></h2>
-<pre><?php echo esc_html( print_r($cuar_settings->get_options(), true )); ?></pre>
-<p>&nbsp;</p>

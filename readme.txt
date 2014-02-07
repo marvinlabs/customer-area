@@ -178,7 +178,7 @@ license key again. These are available by logging-in with your credentials at ht
 * Added category column in the admin page for private files and private pages (A pending feature request from several users)
 * Refactored a lot of code to make the plugin ligher and more efficient. Should also reduce the amount of duplicated code and thus the potential hidden bugs. 
 
-= 3.9.0 (2014/01/23) =
+= 3.9.1 (2014/02/07) =
 
 * Added lot of mime types, this should fix th "0 bytes downloads" bug on old browsers.
 
