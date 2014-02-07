@@ -812,7 +812,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					echo $after;
 			} else if ($type == 'editor') {
 				if (! isset ( $editor_settings ))
-					$editor_settings = array ();
+					$editor_settings = $this->plugin->get_default_wp_editor_settings();
 				$editor_settings ['textarea_name'] = self::$OPTIONS_GROUP . "[" . $option_id . "]";
 				
 				wp_editor ( $this->options [$option_id], $option_id, $editor_settings );
