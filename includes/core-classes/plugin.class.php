@@ -410,6 +410,16 @@ class CUAR_Plugin {
 		return apply_filters('cuar_private_post_types', array());
 	}	
 	
+	public function get_default_wp_editor_settings() {
+		return apply_filters( 'cuar_default_wp_editor_settings', array(
+				'textarea_rows'	=> 5,
+				'editor_class'	=> 'form-control',
+				'quicktags'		=> false,
+				'media_buttons' => false,
+				'teeny' 		=> true,
+				'dfw' 			=> true
+			) );
+	}
 }
 
 endif; // if (!class_exists('CUAR_Plugin')) :
