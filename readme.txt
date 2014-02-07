@@ -169,11 +169,18 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 4.0.0 () =
+= 4.0.0 (2014/02/) =
 
-* Completely changed the way information is displayed. Now the plugin uses a system of pages similar to the one usd by WooCommerce for example. 
-This has allowed greater possibilities for customization (Widget areas, 
-* Added category column in the admin page for private files and private pages
+* Completely changed the way information is displayed in the frontend. Now the plugin uses a system of pages similar to the one used by WooCommerce for example. 
+This has allowed greater possibilities for customization (Widget areas, more templates to override, ...)
+* Restructured the options page. It now has less tabs and should group options in a more logical way. If you have commercial add-ons, you may need to enter their
+license key again. These are available by logging-in with your credentials at http://www.marvinlabs.com/shop/your-account/
+* Added category column in the admin page for private files and private pages (A pending feature request from several users)
+* Refactored a lot of code to make the plugin ligher and more efficient. Should also reduce the amount of duplicated code and thus the potential hidden bugs. 
+
+= 3.9.0 (2014/01/23) =
+
+* Added lot of mime types, this should fix th "0 bytes downloads" bug on old browsers.
 
 = 3.9.0 (2014/01/23) =
 

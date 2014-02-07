@@ -438,11 +438,16 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 				$this->get_page_addon_path(),
 				$this->get_slug() . '-single-post-footer.template.php',
 				'templates' ));	
+		
+		$this->print_additional_private_content_footer();
+		
   		$out = ob_get_contents();
   		ob_end_clean(); 
   		
   		return $content . $out;
 	}
+	
+	protected function print_additional_private_content_footer() {}
 	
 	/*------- DASHBOARD BLOCK ---------------------------------------------------------------------------------------*/
 	
@@ -567,6 +572,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 						'after'			=> '<p class="description">' . __( 'Define how many items to allow on the dashboard page. -1 will show all items.', 'cuar' ) )
 				);
 		}
+		
+		$this->print_additional_settings( $cuar_settings, $options_group );
 	}
 	
 	/**
@@ -583,7 +590,15 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		$cuar_settings->validate_boolean( $input, $validated, $slug . self::$OPTION_SHOW_IN_DASHBOARD );
 		$cuar_settings->validate_int( $input, $validated, $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD );
 		
+		$this->validate_additional_settings( $validated, $cuar_settings, $input );
+		
 		return $validated;
+	}
+	
+	protected function print_additional_settings( $cuar_settings, $options_group ) {		
+	}
+	
+	protected function validate_additional_settings( &$validated, $cuar_settings, $input ) {		
 	}
 	
 	public function print_empty_section_info() {
