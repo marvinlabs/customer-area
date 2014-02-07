@@ -429,10 +429,11 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	/*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 	
-	public function print_single_private_content_footer( $content ) {
+	public function print_single_private_content_footer( $content ) {		
 		// If not on a matching post type, we do nothing
 		if ( !is_singular( $this->get_friendly_post_type() ) ) return $content;		
-
+		if ( get_post_type()!=$this->get_friendly_post_type() ) return $content;		
+		
 		ob_start();
 		include( $this->plugin->get_template_file_path(
 				$this->get_page_addon_path(),

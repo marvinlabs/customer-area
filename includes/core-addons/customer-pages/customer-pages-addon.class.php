@@ -266,17 +266,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	 */
 	public function get_main_menu_for_single_private_content( $content ) {		
 		// Only on single private content pages
-		$post_types = $this->plugin->get_private_post_types();
-		$print_content = false;
-		
-		foreach ( $post_types as $type ) {
-			if ( is_singular( $type ) ) {
-				$print_content = true;
-				break;
-			}
-		}
-		
-		if ( $print_content ) {
+ 		$post_types = $this->plugin->get_private_post_types();	 		
+ 		if ( is_singular( $post_types ) && in_array( get_post_type(), $post_types ) ) {
 			$content = '<div class="cuar-menu-container">' . $this->get_main_navigation_menu() . '</div>' . $content;
 		}
 		
