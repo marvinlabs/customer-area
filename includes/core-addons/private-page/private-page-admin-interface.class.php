@@ -133,7 +133,13 @@ jQuery(document).ready( function($) {
 	
 	public function display_post_list_column( $column_name, $post_id ) {
 		if ( 'cuar_category' == $column_name ) {
-			the_terms( $post_id, 'cuar_private_page_category' );
+			$terms = get_the_terms( $post_id, 'cuar_private_page_category' );
+			$out = array();
+			$base_url = admin_url('edit.php?post_type=cuar_private_page&cuar_private_page_category=');
+			foreach ( $terms as $term ) {
+				$out[] = sprintf( '<a href="%1$s">%2$s</a>', $base_url . $term->slug, $term->name );
+			}
+			echo implode( ', ', $out );
 		}
 	}
 	
