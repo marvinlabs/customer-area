@@ -229,13 +229,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					array ( &$cuar_settings, 'print_empty_section_info' ), 
 					self::$OPTIONS_PAGE_SLUG );
 			
-			add_settings_field ( self::$OPTION_ADMIN_THEME_URL, 
+			add_settings_field ( self::$OPTION_ADMIN_THEME, 
 					__ ( 'Admin theme', 'cuar' ), 
 					array ( &$cuar_settings, 'print_theme_select_field' ), 
 					self::$OPTIONS_PAGE_SLUG, 
 					'cuar_general_settings', 
 					array (
-							'option_id' => self::$OPTION_ADMIN_THEME_URL,
+							'option_id' => self::$OPTION_ADMIN_THEME,
 							'theme_type' => 'admin' 
 						)
 				);
@@ -264,7 +264,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param array $validated        	
 		 */
 		public function validate_core_settings($validated, $cuar_settings, $input) {
-			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_ADMIN_THEME_URL );
+			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_ADMIN_THEME );
 			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_HIDE_SINGLE_OWNER_SELECT );
 			
 			return $validated;
@@ -295,13 +295,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 						) 
 				);
 			
-			add_settings_field ( self::$OPTION_FRONTEND_THEME_URL, 
+			add_settings_field ( self::$OPTION_FRONTEND_THEME, 
 					__ ( 'Frontend theme', 'cuar' ), 
 					array ( &$cuar_settings, 'print_theme_select_field' ), 
 					self::$OPTIONS_PAGE_SLUG, 
 					'cuar_general_settings', 
 					array (
-							'option_id' => self::$OPTION_FRONTEND_THEME_URL,
+							'option_id' => self::$OPTION_FRONTEND_THEME,
 							'theme_type' => 'frontend' 
 						) 
 				);
@@ -316,7 +316,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function validate_frontend_settings($validated, $cuar_settings, $input) {
 			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
-			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME_URL );
+			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME );
 			
 			return $validated;
 		}
@@ -332,8 +332,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public static function set_default_core_options($defaults) {
 			$defaults [self::$OPTION_INCLUDE_CSS] = true;
-			$defaults [self::$OPTION_ADMIN_THEME_URL] = CUAR_ADMIN_THEME_URL;
-			$defaults [self::$OPTION_FRONTEND_THEME_URL] = CUAR_FRONTEND_THEME_URL;
+			$defaults [self::$OPTION_ADMIN_THEME] = CUAR_ADMIN_THEME;
+			$defaults [self::$OPTION_FRONTEND_THEME] = CUAR_FRONTEND_THEME;
 			$defaults [self::$OPTION_HIDE_SINGLE_OWNER_SELECT] = false;
 			
 			return $defaults;
@@ -1050,30 +1050,33 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			$theme_locations = apply_filters ( 'cuar_theme_locations', array (
 					array (
-							'dir' => CUAR_PLUGIN_DIR . '/themes/' . $theme_type,
-							'url' => CUAR_PLUGIN_URL . 'themes/' . $theme_type,
+							'base'	=> 'plugin',
+							'type'	=> $theme_type,
+							'dir' 	=> CUAR_PLUGIN_DIR . '/themes/' . $theme_type,
 							'label' => __ ( 'Main plugin folder', 'cuar' ) 
-					),
+						),
 					array (
-							'dir' => get_stylesheet_directory () . '/customer-area/themes/' . $theme_type,
-							'url' => get_stylesheet_directory_uri () . '/customer-area/themes/' . $theme_type,
+							'base'	=> 'user-theme',
+							'type'	=> $theme_type,
+							'dir' 	=> untrailingslashit(get_stylesheet_directory()) . '/customer-area/themes/' . $theme_type,
 							'label' => __ ( 'Current theme folder', 'cuar' ) 
-					),
+						),
 					array (
-							'dir' => WP_CONTENT_DIR . '/customer-area/themes/' . $theme_type,
-							'url' => WP_CONTENT_URL . '/customer-area/themes/' . $theme_type,
+							'base'	=> 'wp-content',
+							'type'	=> $theme_type,
+							'dir' 	=> untrailingslashit(WP_CONTENT_DIR) . '/customer-area/themes/' . $theme_type,
 							'label' => __ ( 'WordPress content folder', 'cuar' ) 
-					) 
-			) );
+						) 
+				) );
 			
 			foreach ( $theme_locations as $theme_location ) {
 				$subfolders = array_filter ( glob ( $theme_location ['dir'] . '/*' ), 'is_dir' );
 				
 				foreach ( $subfolders as $s ) {
-					$theme_name = basename ( $s );
-					$label = $theme_location ['label'] . ' - ' . $theme_name;
-					$value = esc_attr ( $theme_location ['url'] . '/' . $theme_name );
-					$selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
+					$theme_name = basename( $s );
+					$label = $theme_location['label'] . ' - ' . $theme_name;
+					$value = esc_attr ( $theme_location['base'] . '%%' . $theme_name );
+					$selected = ($this->options[$option_id] == $value || $this->options[$option_id] == $theme_location['url'] ) ? 'selected="selected"' : '';
 					
 					echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 				}
@@ -1159,8 +1162,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		// Core options
 		public static $OPTION_CURRENT_VERSION = 'cuar_current_version';
 		public static $OPTION_INCLUDE_CSS = 'cuar_include_css';
-		public static $OPTION_ADMIN_THEME_URL = 'cuar_admin_theme_url';
-		public static $OPTION_FRONTEND_THEME_URL = 'cuar_frontend_theme_url';
+		public static $OPTION_ADMIN_THEME = 'cuar_admin_theme_url';
+		public static $OPTION_FRONTEND_THEME = 'cuar_frontend_theme_url';
 		public static $OPTION_HIDE_SINGLE_OWNER_SELECT = 'cuar_hide_single_owner_select';
 		
 		/**

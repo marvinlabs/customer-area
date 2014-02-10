@@ -42,6 +42,7 @@ class CUAR_Plugin {
 		if ( is_admin() ) {		
 			add_action( 'admin_notices', array( &$this, 'print_admin_notices' ));
 		} else {
+			add_action( 'plugins_loaded', array( &$this, 'load_theme_functions' ), 7 );
 		}
 	}
 
@@ -130,18 +131,86 @@ class CUAR_Plugin {
 
 	/*------- TEMPLATING & THEMING ----------------------------------------------------------------------------------*/
 
-	/**
-	 * This function offers a way for addons to do their stuff after this plugin is loaded
-	 */
+	public function get_theme( $theme_type ) {
+		return explode( '%%', $this->get_option( $theme_type=='admin' ? CUAR_Settings::$OPTION_ADMIN_THEME : CUAR_Settings::$OPTION_FRONTEND_THEME, '' ) );		
+	}
+	
+	public function get_theme_url( $theme_type ) {
+		$theme = $this->get_theme( $theme_type );
+		
+		if ( count( $theme )==1 ) {
+			// Still not on CUAR 4.0? Option value is already the URL
+			return $theme[0];
+		} else if ( count( $theme )==2 ) {
+			$base = '';
+			switch ( $theme[0] ) {
+				case 'plugin':
+					$base = untrailingslashit(CUAR_PLUGIN_URL) . '/themes/';
+					break;
+				case 'user-theme':
+					$base = untrailingslashit(get_stylesheet_directory_uri()) . '/customer-area/themes/';
+					break;
+				case 'wp-content':
+					$base = untrailingslashit(WP_CONTENT_URL) . '/customer-area/themes/';
+					break;
+			} 			
+			return $base . $theme_type . '/' . $theme[1];
+		}
+		
+		return '';
+	}
+	
+	public function get_theme_path( $theme_type ) {
+		$theme = $this->get_theme( $theme_type );
+		
+		if ( count( $theme )==1 ) {
+			// Still not on CUAR 4.0? then we have a problem			
+			return '';
+		} else if ( count( $theme )==2 ) {
+			$base = '';
+			switch ( $theme[0] ) {
+				case 'plugin':
+					$base = untrailingslashit(CUAR_PLUGIN_DIR) . '/themes';
+					break;
+				case 'user-theme':
+					$base = untrailingslashit(get_stylesheet_directory()) . '/customer-area/themes';
+					break;
+				case 'wp-content':
+					$base = untrailingslashit(WP_CONTENT_DIR) . '/customer-area/themes';
+					break;
+			} 			
+			return $base . '/' . $theme_type . '/' . $theme[1];
+		}
+		
+		return '';
+	}
+
 	public function get_admin_theme_url() {
-		return apply_filters( 'cuar_admin_theme_url', $this->get_option( CUAR_Settings::$OPTION_ADMIN_THEME_URL ) );
+		return $this->get_theme_url('admin');
 	}
 	
 	/**
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
 	public function get_frontend_theme_url() {
-		return apply_filters( 'cuar_frontend_theme_url', $this->get_option( CUAR_Settings::$OPTION_FRONTEND_THEME_URL ) );
+		return $this->get_theme_url('frontend');
+	}
+	
+	/**
+	 * This function offers a way for addons to do their stuff after this plugin is loaded
+	 */
+	public function get_frontend_theme_path() {
+		return $this->get_theme_path('frontend');
+	}
+	
+	public function load_theme_functions() {
+		$theme_path = trailingslashit($this->get_frontend_theme_path());
+		if ( empty( $theme_path ) ) return;
+		
+		$functions_path = $theme_path . 'cuar-functions.php';
+		if ( file_exists( $functions_path ) ) {
+			include_once( $functions_path );
+		}
 	}
 	
 	/**
@@ -162,8 +231,9 @@ class CUAR_Plugin {
 		
 		$possible_locations = apply_filters( 'cuar_available_template_file_locations', 
 				array(
-					get_stylesheet_directory() . '/customer-area',
-					get_stylesheet_directory() ) );
+					untrailingslashit(WP_CONTENT_DIR) . '/customer-area',
+					untrailingslashit(get_stylesheet_directory()) . '/customer-area',
+					untrailingslashit(get_stylesheet_directory()) ) );
 		
 		// Look for the preferred file first
 		foreach ( $possible_locations as $dir ) {
@@ -396,7 +466,21 @@ class CUAR_Plugin {
 				
 				wp_enqueue_style( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.css', $this->get_version() );
 			}
+			break;
+
+			case 'bootstrap.dropdown': {
+				wp_enqueue_script( 'bootstrap.transition', CUAR_PLUGIN_URL . 'libs/bootstrap/js/transition.js', array('jquery'), $this->get_version() );
+				wp_enqueue_script( 'bootstrap.dropdown', CUAR_PLUGIN_URL . 'libs/bootstrap/js/dropdown.js', array('jquery', 'bootstrap.transition'), $this->get_version() );
+			}
+			break;
+
+			case 'bootstrap.transition': {
+				wp_enqueue_script( 'bootstrap.transition', CUAR_PLUGIN_URL . 'libs/bootstrap/js/transition.js', array('jquery'), $this->get_version() );
+			}
+			break;
+			
 			default:
+				do_action( 'cuar_enable_library', $library_id );
 		}
 	}
 	
