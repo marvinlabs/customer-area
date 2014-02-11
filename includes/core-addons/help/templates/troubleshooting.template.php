@@ -43,6 +43,9 @@
 <?php
 	global $cuar_plugin;
 	$addons =  $cuar_plugin->get_registered_addons();
+	
+	uasort( $addons, array( &$this, 'sort_addons_by_name_callback' ) );
+	
 	foreach ( $addons as $id => $addon ) : ?>
 		<tr>
 			<td><?php echo $addon->addon_name; ?></td>

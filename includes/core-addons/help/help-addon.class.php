@@ -55,6 +55,10 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		array_unshift( $links, $link );	
 		return $links;
 	}
+	
+	public function sort_addons_by_name_callback( $a, $b ) {
+		return strcmp( $a->addon_name, $b->addon_name );
+	}
 
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/
 	
