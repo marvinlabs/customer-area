@@ -36,7 +36,7 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 					'label'					=> __( 'My Account', 'cuar' ),
 					'title'					=> __( 'My Account', 'cuar' ),
 					'hint'					=> __( 'This page shows a summary of the user account', 'cuar' ),
-					'parent_slug'			=> 'customer-dashboard'
+					'parent_slug'			=> 'customer-home'
 				)
 			);
 		

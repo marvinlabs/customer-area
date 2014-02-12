@@ -60,7 +60,7 @@ function cuar_log_debug( $message ) {
 }
 
 // Core classes
-require_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/theme-utils.class.php' );
 
@@ -78,6 +78,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/private-file/private-file-addon.
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-account/customer-account-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-logout/customer-logout-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-home/customer-home-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-dashboard/customer-dashboard-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-files/customer-private-files-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages/customer-private-pages-addon.class.php' );

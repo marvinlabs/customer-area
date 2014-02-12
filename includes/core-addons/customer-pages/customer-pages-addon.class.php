@@ -54,6 +54,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		if ( $this->is_auto_menu_on_customer_area_pages_enabled() ) {
 			add_filter( 'the_content', array( &$this, 'get_main_menu_for_customer_area_pages' ), 51 );
 		}
+		
+		add_filter( 'wp_page_menu_args', array( &$this, 'exclude_pages_from_wp_page_menu' ) );
 	}	
 	
 	public function set_default_options($defaults) {
@@ -163,96 +165,132 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 	
+	public function exclude_pages_from_wp_page_menu( $args ) {
+		$new_args = $args;
+		if ( !empty( $new_args['exclude'] ) ) $new_args['exclude'] .= ',';
+
+		$customer_area_pages = $this->get_customer_area_pages();
+		$pages_to_exclude = array();
+		foreach ( $customer_area_pages as $slug => $p ) {
+			$exclude = false;
+			
+			if ( !is_user_logged_in() && $p['requires_login'] ) {
+				$exclude = true;
+			} else if ( is_user_logged_in() && $p['hide_if_logged_in'] ) {
+				$exclude = true;
+			} else if ( $p['hide_in_menu'] ) {
+				$exclude = true;
+ 			}
+ 			
+ 			if ( $p['always_include_in_menu'] ) {
+ 				$exclude = false;
+ 			}
+
+			if ( $exclude ) {
+				$page_id = $this->get_page_id( $slug );
+				$pages_to_exclude[] = $page_id;
+			}
+		}
+		
+		if ( !empty( $pages_to_exclude ) ) $new_args['exclude'] .= implode( ',', $pages_to_exclude );
+		
+		return $new_args;
+	}
+	
+	/*------- NAV MENU ----------------------------------------------------------------------------------------------*/
+	
+	public function recreate_default_navigation_menu() {	
+		$menu_name = 'cuar_main_menu';
+		$menu = null;
+		
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );	
+			$menu_items = wp_get_nav_menu_items($menu->term_id);
+			
+			// Delete existing menu items
+			foreach ( $menu_items as $item ) {
+				wp_delete_post( $item->ID, true );
+			}
+		}
+		
+		// Create new menu if not existing already
+		if ( $menu==null ) {			
+			$menu = wp_get_nav_menu_object( 'customer-area-menu' );	
+			if ( false!=$menu ) {
+				wp_delete_term( $menu->term_id, 'nav_menu' );
+			}
+			
+			$menu = wp_create_nav_menu( __('Customer Area Menu', 'cuar' ) );
+		}
+		
+		if ( is_wp_error( $menu ) ) {
+			$this->plugin->add_admin_notice( sprintf( __( 'Could not create the menu. %s', 'cuar' ), $menu->get_error_message() ) );			
+			return;
+		} else {
+			$menu = wp_get_nav_menu_object( $menu );	
+		}
+		
+		// Place the menu at the right location
+		$locations = get_theme_mod( 'nav_menu_locations' );
+		$locations[$menu_name] = $menu->term_id;
+		set_theme_mod( 'nav_menu_locations', $locations );
+		
+		// Now add all default menu items
+		$pages = $this->get_customer_area_pages();
+		$menu_items = array();
+		foreach ( $pages as $slug => $desc ) {
+			// Ignore home on purpose
+			if ( $slug=='customer-home' ) continue;
+			
+			// Exclude pages that are made to be seen when not logged-in
+			$exclude = false;				
+			if ( $desc['hide_if_logged_in'] || $desc['hide_in_menu'] ) {
+				$exclude = true;
+			}
+			
+			if ( $desc['always_include_in_menu'] ) {
+				$exclude = false;
+			}
+			
+			if ( $exclude ) continue;
+			
+			$args = array(
+					'menu-item-object-id' 	=> $this->get_page_id( $slug ),
+					'menu-item-object'	 	=> 'page',
+					'menu-item-type' 		=> 'post_type',
+					'menu-item-status' 		=> 'publish',
+				);
+
+
+			// Find parent if any
+			if ( !empty( $desc['parent_slug'] ) && isset( $menu_items[$desc['parent_slug']] ) ) {
+				$args['menu-item-parent-id'] = $menu_items[$desc['parent_slug']];
+			}
+			
+			$item_id = wp_update_nav_menu_item( $menu->term_id, 0, $args );			
+			if ( !is_wp_error( $item_id ) ) {
+				// Remember the slug for parent ownership
+				$menu_items[$slug] = $item_id;
+			} 
+		}
+		
+		$this->plugin->add_admin_notice( sprintf( __( 'The menu has been created: <a href="%s">view menu</a>', 'cuar' ), admin_url('nav-menus.php?menu=') . $menu->term_id ), 'updated' );	
+	}
+	
 	public function get_main_navigation_menu( $echo=false ) {
 		$out = '';
 		
 		if ( !is_user_logged_in() ) return $out;
 		
-		if ( has_nav_menu( 'cuar_main_menu' ) ) {
-			$defaults = apply_filters( 'cuar_get_main_menu_args', array(
-					'theme_location'  => 'cuar_main_menu',
-					'menu'            => '',
-					'container'       => 'div',
-					'container_class' => '',
-					'container_id'    => '',
-					'menu_class'      => 'menu cuar-nav-menu',
-					'menu_id'         => '',
-					'echo'            => false,
-					'fallback_cb'     => '',
-					'before'          => '',
-					'after'           => '',
-					'link_before'     => '',
-					'link_after'      => '',
-					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-					'depth'           => 0,
-					'walker'          => ''
-				));
-			
-			$out .= wp_nav_menu( $defaults );
-		} else {
-			// Get page IDs that are currently set
-			$customer_area_pages = $this->get_customer_area_pages();
-			$page_ids = array();
-			
-			// Filter out some pages (like logout, ...)
-			$customer_area_pages = apply_filters( 'cuar_get_nav_customer_area_pages', $customer_area_pages );
-			
-			foreach ( $customer_area_pages as $slug => $p ) {
-				$page_id = $this->get_page_id( $slug );
-				if ( $page_id ) $page_ids[] = $page_id;
-			}
-			
-			if ( empty( $page_ids ) ) return '';
-			
-			// Get the associated post objects
-			$pages = get_posts( array(
-					'post_type'			=> 'page', 
-					'numberposts'		=> 0,
-					'post__in' 			=> $page_ids,
-					'orderby'			=> 'menu_order',
-					'order'				=> 'ASC'
-				) );
-			
-			$page_count = count( $pages );
-			for ( $i=0; $i<$page_count; ++$i ) {
-				$pages[$i] = wp_setup_nav_menu_item( $pages[$i] );
-			}
-			
-			$args = array( 'theme_location'  => 'cuar_main_menu' );
-
-			$defaults = apply_filters( 'cuar_get_main_menu_args', array(
-					'theme_location'  => 'cuar_main_menu',
-					'menu'            => '',
-					'container'       => 'div',
-					'container_class' => '',
-					'container_id'    => '',
-					'menu_class'      => 'menu cuar-nav-menu',
-					'menu_id'         => '',
-					'echo'            => false,
-					'fallback_cb'     => '',
-					'before'          => '',
-					'after'           => '',
-					'link_before'     => '',
-					'link_after'      => '',
-					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-					'depth'           => 0,
-					'walker'          => ''
+		$defaults = apply_filters( 'cuar_get_main_menu_args', array(
+				'theme_location'  => 'cuar_main_menu',
+				'container_class' => 'menu-container cuar-menu-container',
+				'menu_class'      => 'menu cuar-menu',
+				'echo'            => false
 			));
-			
-			$args = wp_parse_args( $args, $defaults );
-			$args = apply_filters( 'cuar_get_main_menu_args', $args );
-			$args = apply_filters( 'wp_nav_menu_args', $args );
-			$args = (object) $args;
-			
-			_wp_menu_item_classes_by_context( $pages );
-
-			$items = walk_nav_menu_tree( $pages, 1, $args );
-			
-			$out .= '<div class="menu-customer-area-container">';
-			$out .= sprintf( '<ul id="%1$s" class="%2$s">%3$s</ul>', 'menu-customer-area', 'menu cuar-nav-menu', $items );
-			$out .= '</div>';
-		}
 		
+		$out .= wp_nav_menu( $defaults );
+					
 		if ( $echo ) echo $out;
 		
 		return $out;
@@ -375,6 +413,21 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 					)
 			);
 		
+		add_settings_field(
+				'cuar_recreate_navigation_menu',
+				__('Reset', 'cuar'),
+				array( &$cuar_settings, 'print_submit_button' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_core_nav_menu',
+				array(
+						'option_id' 	=> 'cuar_recreate_navigation_menu',
+						'label' 		=> __( 'Recreate menu', 'cuar' ),
+						'nonce_action' 	=> 'recreate_navigation_menu',
+						'nonce_name' 	=> 'cuar_recreate_navigation_menu_nonce',
+						'before'		=>  '<p>' . __( 'Delete and recreate the main navigation menu (this operation cannot be undone).', 'cuar' ) . '</p>'
+					)
+			);
+		
 		add_settings_section(
 				'cuar_core_permalinks',
 				__('Permalinks', 'cuar'),
@@ -443,6 +496,10 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_CATEGORY_ARCHIVE_SLUG );
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_DATE_ARCHIVE_SLUG );
+
+		if ( isset( $_POST['cuar_recreate_navigation_menu'] ) && check_admin_referer( 'recreate_navigation_menu','cuar_recreate_navigation_menu_nonce' ) ) {
+			$this->recreate_default_navigation_menu();
+		}
 		
 		return $validated;
 	}

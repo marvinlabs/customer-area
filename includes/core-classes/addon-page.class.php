@@ -44,6 +44,10 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		if ( !isset( $this->page_description['parent_slug'] )) {
 			$this->page_description['parent_slug'] = null;
 		}
+
+		if ( !isset( $this->page_description['menu_order'] )) {
+			$this->page_description['menu_order'] = $priority;
+		}
 	}
 	
 	protected function set_page_shortcode( $shortcode_name, $shorcode_params = array() ) {
@@ -105,6 +109,11 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 				'menu_order'		=> $this->page_priority
 			);
 		
+		// If a permalink is specified, we'll use it
+		if ( isset( $this->page_description['permalink'] ) ) {
+			$page_data['post_name'] = $this->page_description['permalink'];
+		}
+		
 		// If a slug is specified, we will try to find that page from the options
 		if ( $this->page_description['parent_slug']!=null && !empty( $this->page_description['parent_slug'] ) ) {
 			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
@@ -131,7 +140,7 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		
 		return $page_id;
 	}
-	
+		
 	public function print_page( $args = array(), $shortcode_content = '' ) {
 		if ( $this->page_description['requires_login'] && !is_user_logged_in() ) {
 			$this->plugin->login_then_redirect_to_page( $this->get_slug() );	

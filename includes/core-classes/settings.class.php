@@ -828,6 +828,32 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					echo $after;
 			}
 		}
+
+
+		/**
+		 * Output a submit button
+		 *
+		 * @param string $option_id
+		 * @param array $options
+		 * @param string $caption
+		 */
+		public function print_submit_button($args) {
+			extract ( $args );
+				
+			if (isset ( $before ))
+				echo $before;
+				
+			echo sprintf ( '<input type="submit" name="%s" id="%s[%s]" value="%s" class="button button-primary">', 
+						esc_attr( $option_id ), 
+						self::$OPTIONS_GROUP, esc_attr( $option_id ),
+						$label
+					);
+
+			wp_nonce_field( $nonce_action, $nonce_name );
+
+			if (isset ( $after ))
+				echo $after;
+		}
 		
 		/**
 		 * Output a select field for a setting

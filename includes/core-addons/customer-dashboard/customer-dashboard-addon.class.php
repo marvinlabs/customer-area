@@ -34,11 +34,12 @@ class CUAR_CustomerDashboardAddOn extends CUAR_AbstractPageAddOn {
 					'slug'					=> 'customer-dashboard',
 					'label'					=> __( 'Dashboard', 'cuar' ),
 					'title'					=> __( 'Dashboard', 'cuar' ),
-					'hint'					=> __( 'Usually this is the main page of your Customer Area where the user will see a summary of his documents and messages.', 'cuar' )
+					'hint'					=> __( "Shows a summary of the user's private content (files, pages, messages, ...).", 'cuar' ),
+					'parent_slug'			=> 'customer-home',
 				)
 			);
 		
-		$this->set_page_shortcode( 'customer-area' );
+		$this->set_page_shortcode( 'customer-area-dashboard' );
 	}
 
 	public function run_addon( $plugin ) {

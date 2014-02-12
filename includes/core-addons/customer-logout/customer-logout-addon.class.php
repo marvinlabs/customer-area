@@ -35,7 +35,7 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 					'label'					=> __( 'Logout', 'cuar' ),
 					'title'					=> __( 'Logout', 'cuar' ),
 					'hint'					=> __( 'This page logs the current user out and redirects him to the logout page', 'cuar' ),
-					'parent_slug'			=> 'customer-dashboard',
+					'parent_slug'			=> 'customer-account',
 					'requires_logout'		=> false
 				)
 			);

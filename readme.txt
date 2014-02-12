@@ -173,10 +173,13 @@ your wordpress.org profile with your other developed plugins.
 
 * Completely changed the way information is displayed in the frontend. Now the plugin uses a system of pages similar to the one used by WooCommerce for example. 
 This has allowed greater possibilities for customization (Widget areas, more templates to override, ...)
+* The customer area main navigation menu now is a WordPress menu that can be customized just like any other WordPress menu (from the admin page: "Appearance" > "Menus")
 * Restructured the options page. It now has less tabs and should group options in a more logical way. If you have commercial add-ons, you may need to enter their
 license key again. These are available by logging-in with your credentials at http://www.marvinlabs.com/shop/your-account/
 * Added category column in the admin page for private files and private pages (A pending feature request from several users)
 * Refactored a lot of code to make the plugin ligher and more efficient. Should also reduce the amount of duplicated code and thus the potential hidden bugs. 
+* Add possibility to include a function file in your Customer Area theme (See included frontend theme: default-v4). Works like WordPress' functions.php file for themes
+except that this file should be located in your Customer Area theme folder (not the WordPress theme's folder) and it should be named 'cuar-functions.php'
 
 = 3.9.1 (2014/02/07) =
 
