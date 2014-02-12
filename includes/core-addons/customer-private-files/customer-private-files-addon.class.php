@@ -34,7 +34,7 @@ class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 	public function __construct() {
 		parent::__construct( 'customer-files-page', __( 'Customer Page - Private Files', 'cuar' ), '4.0.0' );
 		
-		$this->set_page_parameters( 200, array(
+		$this->set_page_parameters( 500, array(
 					'slug'					=> 'customer-private-files',
 					'label'					=> __( 'Private Files', 'cuar' ),
 					'title'					=> __( 'Files', 'cuar' ),

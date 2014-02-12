@@ -38,6 +38,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 				'cuar_main_menu' => 'Customer Area Navigation Menu'
 			) );
 		
+		add_filter( 'wp_nav_menu_objects', array( &$this, 'fix_menu_item_classes' ) );
+		
 		// Settings
 		add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 6, 1 );
 		
@@ -120,6 +122,23 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		}
 			
 		return $this->pages;
+	}
+	/**
+	 * List all the pages expected by Customer Area and its add-ons. 
+	 * 
+	 * @return array see structure for each item in function get_customer_area_page
+	 */
+	public function get_customer_area_child_pages( $parent_slug ) {
+		$child_pages = array();
+		
+		$pages = $this->get_customer_area_pages();
+		foreach ( $pages as $slug => $desc) {
+			if ( isset( $desc['parent_slug'] ) && $parent_slug==$desc['parent_slug'] ) {
+				$child_pages[$slug] = $desc; 
+			}	
+		}
+		
+		return $child_pages;
 	}
 	
 	/**
@@ -289,7 +308,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 				'echo'            => false
 			));
 		
-		$out .= wp_nav_menu( $defaults );
+		$out .= wp_nav_menu( $defaults );		
+		$out .= $this->get_subpages_menu();
 					
 		if ( $echo ) echo $out;
 		
@@ -327,6 +347,106 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		return $content;
 	}
 
+	public function fix_menu_item_classes( $sorted_menu_items ) {
+		// Get menu at our location to bail early if not in the CUAR main nav menu
+		$theme_locations = get_nav_menu_locations();
+		if ( !isset( $theme_locations['cuar_main_menu'] ) ) return;
+		
+		$menu = wp_get_nav_menu_object( $theme_locations['cuar_main_menu'] );
+		if ( !isset( $menu ) ) return;
+		
+		// Augment the pages list with their page IDs
+		$pages = $this->get_customer_area_pages();
+		$page_ids = array();		
+		foreach ( $pages as $slug => $desc ) {
+			$page_id = $this->get_page_id( $slug );
+			
+			$pages[$slug]['page_id'] = $page_id;
+			$page_ids[$page_id] = $desc;
+		}
+
+		$post_id = get_queried_object_id();
+		$post_type = get_post_type( $post_id );
+		
+		// If we are showing a single post, look for menu items with the same friendly post type
+		if ( is_singular() && in_array( $post_type, $this->plugin->get_private_post_types() ) ) {						
+	    	foreach ( $sorted_menu_items as $menu_item ) {
+	    		$menus = get_the_terms( $menu_item->ID, 'nav_menu' );
+	    		foreach ( $menus as $m ) {
+	    			if ( $m->term_id!=$menu->term_id ) {
+	    				return $sorted_menu_items;
+	    			}
+	    		}
+	    		
+	    		if ( $menu_item->type=='post_type' && $menu_item->object=='page' ) {
+	    			$menu_item_page = isset( $page_ids[$menu_item->object_id] ) ? $page_ids[$menu_item->object_id] : null;
+	    			
+	    			if ( $menu_item_page==null ) continue;
+	    			
+	    			if ( $menu_item_page['friendly_post_type']==$post_type ) {
+	    				$menu_item->classes[] = 'current-menu-item';
+	    				$menu_item->classes[] = 'current_page_item';
+	    				$menu_item->current = true;
+	    				
+	    				$this->set_current_menu_item_id( $menu_item->ID );
+	    				
+	    				break;
+	    			}
+	    		}
+	    	}
+		} else {
+		    foreach ( $sorted_menu_items as $menu_item ) {
+	    		$menus = get_the_terms( $menu_item->ID, 'nav_menu' );
+	    		foreach ( $menus as $m ) {
+	    			if ( $m->term_id!=$menu->term_id ) {
+	    				return $sorted_menu_items;
+	    			}
+	    		}
+	    		
+		        if ( $menu_item->current ) {
+	    			$this->set_current_menu_item_id( $menu_item->ID );
+		            break;
+		        }
+		    }			
+		}
+	    
+    	return $sorted_menu_items;
+	}
+
+	// Print a row of buttons that allow to click the child pages even on mobile
+	protected function get_subpages_menu() {
+		$theme_locations = get_nav_menu_locations();
+		if ( !isset( $theme_locations['cuar_main_menu'] ) ) return '';
+		 
+		$menu_items = wp_get_nav_menu_items( $theme_locations['cuar_main_menu'] );
+		if ( empty( $menu_items ) ) return '';
+		
+		$out = '<div class="cuar-child-pages-menu btn-toolbar"><div class="btn-group">';
+
+		$current_item_id = $this->get_current_menu_item_id();
+
+		foreach ( $menu_items as $item ) {
+			
+			if ( $item->menu_item_parent==$current_item_id ) {
+				$out .= sprintf( '<a href="%1$s" class="btn btn-primary" role="button">%2$s</a>', $item->url, $item->title );
+			}
+		}
+		
+		$out .= '</div></div>';
+		
+		return $out;
+	}
+	
+	public function get_current_menu_item_id() {
+		return $this->current_menu_item_id;
+	}
+	
+	protected function set_current_menu_item_id( $item_id ) {
+		$this->current_menu_item_id = $item_id;
+	}
+	
+	protected $current_menu_item_id = null;
+	
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 	
 	/** 

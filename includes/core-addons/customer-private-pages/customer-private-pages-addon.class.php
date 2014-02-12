@@ -34,7 +34,7 @@ class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 	public function __construct() {
 		parent::__construct( 'customer-pages-page', __( 'Customer Page - Private Pages', 'cuar' ), '4.0.0' );
 		
-		$this->set_page_parameters( 200, array(
+		$this->set_page_parameters( 600, array(
 					'slug'					=> 'customer-private-pages',
 					'label'					=> __( 'Private Pages', 'cuar' ),
 					'title'					=> __( 'Pages', 'cuar' ),

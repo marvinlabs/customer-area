@@ -78,6 +78,15 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		return $this->page_description['title'];
 	}
 	
+	public function get_child_pages() {
+		if ( $this->child_pages==null ) {
+			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
+			$this->child_pages = $cp_addon->get_customer_area_child_pages( $this->get_slug() );
+		}
+		
+		return $this->child_pages;
+	}
+	
 	public function requires_login() {
 		return $this->page_description['requires_login'];
 	}
@@ -156,7 +165,7 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		return false;
 	}
 	
-	public function print_page_header( $args = array(), $shortcode_content = '' ) {
+	public function print_page_header( $args = array(), $shortcode_content = '' ) {		
 		$this->print_page_part( 'header' );
 	}
 	
@@ -189,7 +198,6 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		
 		do_action( 'cuar_after_page_' . $part . '_' . $slug );
 		do_action( 'cuar_after_page_' . $part );
-		
 	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
@@ -209,6 +217,8 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 				'after_title' 		=> '</h3>',
 			) );
 	}
+	
+	protected $child_pages = null;
 	
 	/** @var int order for the page */
 	protected $page_priority = 10;
