@@ -98,7 +98,8 @@ abstract class CUAR_ContentDatesWidget extends WP_Widget {
 					$out[ $current_year ] = array();
 				}
 				
-				$out[ $current_year ][] = mysql2date( 'm', $p->post_date );
+				$month_num = mysql2date( 'm', $p->post_date );
+				$out[ $current_year ][ $month_num ] = $month_num;
 			}
 		}
 		
