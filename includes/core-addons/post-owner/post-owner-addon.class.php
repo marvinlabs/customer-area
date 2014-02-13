@@ -509,7 +509,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 <?php
 		} else {
 ?>
-			<select name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" >
+			<select name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" class="form-control" >
 <?php 		foreach ( $owner_types as $type_id => $type_label ) : 
 				$selected =  ( $selected_owner_type!=$type_id ? '' : ' selected="selected"' ); 
 ?>
@@ -618,7 +618,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				$enable_multiple_selection = apply_filters( 'cuar_enable_multiple_select_for_type_' . $type_id, false );
 				$multiple = $enable_multiple_selection ? ' multiple="multiple" size="8"' : '';
 				
-				printf( '<select id="%s" name="%s" class="%s" %s data-placeholder="%s">',
+				printf( '<select id="%s" name="%s" class="%s" %s data-placeholder="%s" class="form-control">',
 						$field_id,
 						$enable_multiple_selection ? $field_name . '[]' : $field_name,
 						$owner_type_field_id . '_owner_select',

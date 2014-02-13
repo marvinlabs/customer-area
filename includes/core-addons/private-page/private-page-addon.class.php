@@ -69,6 +69,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 			$admin_role->add_cap( 'cuar_pp_delete_categories' );
 			$admin_role->add_cap( 'cuar_pp_assign_categories' );
 			$admin_role->add_cap( 'cuar_pp_list_all' );
+			$admin_role->add_cap( 'cuar_view_pages' );
 			$admin_role->add_cap( 'cuar_view_any_cuar_private_page' );
 		}
 		
@@ -127,7 +128,8 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$capability_groups[] = array(
 				'group_name' => __( 'Private Pages', 'cuar' ),
 				'capabilities' => array(
-						'cuar_view_any_cuar_private_page' 		=> __( 'View any private page', 'cuar' ),
+						'cuar_view_pages'					=> __( 'View private pages', 'cuar' ),
+						'cuar_view_any_cuar_private_page' 	=> __( 'View any private page', 'cuar' ),
 				)
 		);
 		

@@ -74,6 +74,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			$admin_role->add_cap( 'cuar_pf_delete_categories' );
 			$admin_role->add_cap( 'cuar_pf_assign_categories' );
 			$admin_role->add_cap( 'cuar_pf_list_all' );
+			$admin_role->add_cap( 'cuar_view_files' );
 			$admin_role->add_cap( 'cuar_view_any_cuar_private_file' );
 		}
 		
@@ -167,7 +168,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param string $action
 	 */
 	public function get_file_permalink( $post_id, $action = 'download' ) {		
-		$cpf_addon = $this->plugin->get_addon('customer-files-page');
+		$cpf_addon = $this->plugin->get_addon('customer-private-files');
 		$url = $cpf_addon->get_single_private_content_action_url( $post_id, $action );		
 		return $url;
 	}
@@ -703,7 +704,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$capability_groups[] = array(
 				'group_name' => __( 'Private Files', 'cuar' ),
 				'capabilities' => array(
-						'cuar_view_any_cuar_private_file' 		=> __( 'View any private file', 'cuar' ),
+						'cuar_view_files'					=> __( 'View private files', 'cuar' ),
+						'cuar_view_any_cuar_private_file' 	=> __( 'View any private file', 'cuar' ),
 				)
 		);
 		

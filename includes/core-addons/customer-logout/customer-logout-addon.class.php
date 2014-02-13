@@ -30,12 +30,12 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 	public function __construct() {
 		parent::__construct( 'customer-logout', __( 'Customer Page - Logout', 'cuar' ), '4.0.0' );
 		
-		$this->set_page_parameters( 1000, array(
+		$this->set_page_parameters( 850, array(
 					'slug'					=> 'customer-logout',
 					'label'					=> __( 'Logout', 'cuar' ),
 					'title'					=> __( 'Logout', 'cuar' ),
 					'hint'					=> __( 'This page logs the current user out and redirects him to the logout page', 'cuar' ),
-					'parent_slug'			=> 'customer-account',
+					'parent_slug'			=> 'customer-account-home',
 					'requires_logout'		=> false
 				)
 			);
@@ -62,22 +62,11 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 		}
 		return $pages;
 	}
-	
 
-	public function print_page_header( $args = array(), $shortcode_content = '' ) {
+	public function print_page( $args = array(), $shortcode_content = '' ) {
 		wp_logout();
-		
-		$logout_url = apply_filters( 'cuar_default_logout_url', null, 'dashboard', null );			
+		$logout_url = apply_filters( 'cuar_default_logout_url', null, 'customer-dashboard', null );	
 		wp_redirect( $logout_url );			
-	}
-	
-	public function print_page_sidebar( $args = array(), $shortcode_content = '' ) {
-	}
-	
-	public function print_page_content( $args = array(), $shortcode_content = '' ) {
-	}
-	
-	public function print_page_footer( $args = array(), $shortcode_content = '' ) {
 	}
 
 	/*------- FORM URLS ---------------------------------------------------------------------------------------------*/
@@ -86,7 +75,7 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 		return isset( $_GET['cuar_redirect'] ) ? $_GET['cuar_redirect'] : '';
 	}
 	
-	public function get_default_logout_url( $current_url = null, $redirect_slug = 'dashboard', $redirect_url = null ) {
+	public function get_default_logout_url( $current_url = null, $redirect_slug = 'customer-dashboard', $redirect_url = null ) {
 		if ( $current_url!=null ) return $current_url;
 		
 		$cp_addon = $this->plugin->get_addon('customer-pages');
@@ -109,7 +98,7 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 			$permalink = get_permalink( $page_id );
 			$logout_url = $permalink . '?cuar_redirect=' . $redirect_url;
 		} else {
-			$logout_url = wp_logout_url( $redirect_url );
+			$logout_url = wp_login_url( $redirect_url );
 		}
 		
 		return $logout_url;

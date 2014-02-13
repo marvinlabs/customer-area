@@ -32,16 +32,17 @@ if (!class_exists('CUAR_CustomerPrivatePagesAddOn')) :
 class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-pages-page', __( 'Customer Page - Private Pages', 'cuar' ), '4.0.0' );
+		parent::__construct( 'customer-private-pages', __( 'Customer Page - Private Pages', 'cuar' ), '4.0.0' );
 		
-		$this->set_page_parameters( 600, array(
+		$this->set_page_parameters( 610, array(
 					'slug'					=> 'customer-private-pages',
-					'label'					=> __( 'Private Pages', 'cuar' ),
-					'title'					=> __( 'Pages', 'cuar' ),
-					'hint'					=> __( 'Page to list the customer pages.', 'cuar' ),
-					'parent_slug'			=> 'customer-home',
+					'label'					=> __( 'Private Pages - Owned', 'cuar' ),
+					'title'					=> __( 'My pages', 'cuar' ),
+					'hint'					=> __( 'Page to list the pages a customer owns.', 'cuar' ),
+					'parent_slug'			=> 'customer-private-pages-home',
 					'friendly_post_type'	=> 'cuar_private_page',
-					'friendly_taxonomy'		=> 'cuar_private_page_category'
+					'friendly_taxonomy'		=> 'cuar_private_page_category',
+					'required_capability'	=> 'cuar_view_pages'
 				)
 			);
 		

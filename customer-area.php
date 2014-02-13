@@ -76,11 +76,18 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/private-file/private-file-addon.
 
 // Core pages
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php' );
-include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-account/customer-account-addon.class.php' );
-include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-logout/customer-logout-addon.class.php' );
+
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-home/customer-home-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-dashboard/customer-dashboard-addon.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-account-home/customer-account-home-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-account/customer-account-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-logout/customer-logout-addon.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-files/customer-private-files-addon.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages/customer-private-pages-addon.class.php' );
 
 // Start the plugin!

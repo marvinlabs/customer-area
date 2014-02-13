@@ -51,7 +51,7 @@ class CUAR_PrivateFileDatesWidget extends CUAR_ContentDatesWidget {
 	
 	protected function get_link( $year, $month=0 ) {
 		global $cuar_plugin;
-		$cfp_addon = $cuar_plugin->get_addon( 'customer-files-page' );
+		$cfp_addon = $cuar_plugin->get_addon( 'customer-private-files' );
 		return $cfp_addon->get_date_archive_url( $year, $month );
 	}
 	

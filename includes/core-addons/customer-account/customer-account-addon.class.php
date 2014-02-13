@@ -31,12 +31,12 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 	public function __construct() {
 		parent::__construct( 'customer-account', __( 'Customer Page - User Account', 'cuar' ), '4.0.0' );
 		
-		$this->set_page_parameters( 800, array(
+		$this->set_page_parameters( 810, array(
 					'slug'					=> 'customer-account',
-					'label'					=> __( 'My Account', 'cuar' ),
-					'title'					=> __( 'My Account', 'cuar' ),
+					'label'					=> __( 'Account - Details', 'cuar' ),
+					'title'					=> __( 'Account details', 'cuar' ),
 					'hint'					=> __( 'This page shows a summary of the user account', 'cuar' ),
-					'parent_slug'			=> 'customer-home'
+					'parent_slug'			=> 'customer-account-home'
 				)
 			);
 		

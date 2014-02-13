@@ -44,6 +44,14 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		}
 	}
 	
+	public function get_friendly_post_type() {
+		return $this->page_description['friendly_post_type'];
+	}
+	
+	public function get_friendly_taxonomy() {
+		return $this->page_description['friendly_taxonomy'];
+	}
+	
 	protected abstract function get_category_archive_page_subtitle( $category );	
 	protected abstract function get_date_archive_page_subtitle( $year, $month=0 );	
 	protected abstract function get_default_page_subtitle();
@@ -323,14 +331,6 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
-	public function get_friendly_post_type() {
-		return $this->page_description['friendly_post_type'];
-	}
-	
-	public function get_friendly_taxonomy() {
-		return $this->page_description['friendly_taxonomy'];
-	}
-	
 	public function has_page_sidebar() {
 		return $this->is_sidebar_enabled;
 	}
@@ -453,6 +453,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	/*------- DASHBOARD BLOCK ---------------------------------------------------------------------------------------*/
 	
 	public function print_dashboard_content( $content ) {
+		if ( !$this->is_accessible_to_current_user() ) return;
+		
 		$po_addon = $this->plugin->get_addon('post-owner');
 		$current_user_id = get_current_user_id();
 		$page_slug = $this->get_slug();

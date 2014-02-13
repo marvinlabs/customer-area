@@ -56,7 +56,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	
 	public function handle_form_submission() {		
 		if ( get_queried_object_id()!=$this->get_page_id() ) return false;
-        echo 'hiha';	
+		
 		if ( !isset( $_POST['cuar_form_id'] ) || $_POST['cuar_form_id']!=$this->get_slug() ) return false;
 
         if ( !wp_verify_nonce( $_POST["cuar_" . $this->get_slug() . "_nonce"], 'cuar_' . $this->get_slug() ) ) {
@@ -65,8 +65,60 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
         
 		// If not logged-in, bail
 		if ( !is_user_logged_in() ) return false;
+
+        if ( !$this->is_accessible_to_current_user() ) {
+        	die('You are not allowed to view this page.');
+        }
         
+		$result = $this->do_create_content( $_POST );		
+		if ( true===$result ) {
+			$redirect_url = apply_filters( 'cuar_redirect_url_after_content_creation', $this->get_redirect_slug_after_creation(), $this->get_slug() );
+			if ( $redirect_url!=null ) {
+				wp_redirect( $redirect_url );
+				exit;
+			}
+		}
+		
         return true;	
+	}
+	
+	protected function do_create_content( $form_data ) {		
+	}
+	
+	protected function check_submitted_title( $form_data, $error_message ) {
+		if ( isset( $form_data['cuar_title'] ) && !empty( $form_data['cuar_title'] ) ) {
+			return  $form_data['cuar_title'];
+		}
+
+		$this->form_errors[] = new WP_Error( $error_message );
+		return FALSE;
+	}
+	
+	protected function check_submitted_content( $form_data, $error_message ) {
+		if ( isset( $form_data['cuar_content'] ) && !empty( $form_data['cuar_content'] ) ) {
+			return  $form_data['cuar_content'];
+		}
+
+		$this->form_errors[] = new WP_Error( $error_message );
+		return FALSE;
+	}
+	
+	protected function check_submitted_owner( $form_data, $error_message ) {
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$new_owner = $po_addon->get_owner_from_post_data();
+			
+		if ( $new_owner!=null ) {
+			return $new_owner;
+		}
+		
+		$this->form_errors[] = new WP_Error( $error_message );
+		return FALSE;
+	}
+	
+	protected function get_redirect_slug_after_creation() {		
+		$cp_addon = $this->plugin->get_addon('customer-pages');
+		$page_id = $cp_addon->get_page_id( $this->get_parent_slug() );
+		return get_permalink( $page_id );
 	}
 	
 	public function should_print_form() {
@@ -80,7 +132,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	}
 
 	public function print_form_header() {
-		printf( '<form name="%1$s" method="post" class="cuar-form cuar-%1$s-form" action="%2$s">', $this->get_slug(), $this->get_page_url() );
+		printf( '<form name="%1$s" method="post" class="cuar-form cuar-create-content-form cuar-%1$s-form" action="%2$s">', $this->get_slug(), $this->get_page_url() );
 
 		printf( '<input type="hidden" name="cuar_form_id" value="%1$s" />', $this->get_slug() );
 		
@@ -100,13 +152,83 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	public function print_form_footer() {
 		echo '</form>';
 	}
-		
-	public function print_page_content( $args = array(), $shortcode_content = '' ) {
-		$this->print_form_header(); 		
-		parent::print_page_content( $args, $shortcode_content );
-		$this->print_form_footer();
+
+	public function print_submit_button( $label ) {
+		echo '<div class="form-group">';
+		echo '	<div class="submit-container">';
+		echo '		<input type="submit" name="cuar_do_register" value="' . esc_attr( $label ) . '" class="btn btn-default" />';
+		echo '	</div>';
+		echo '</div>';
 	}
 
+	public function print_title_field( $label ) {
+		$title = isset( $_POST['cuar_title'] ) ? $_POST['cuar_title'] : '';
+		$field_code = sprintf( '<input type="text" id="cuar_title" name="cuar_title" value="%1$s" class="form-control" />', esc_attr( $title ) );		
+		$this->print_form_field( 'cuar_title', $label, $field_code );
+	}
+
+	public function print_content_field( $label ) {
+		$content = isset( $_POST['cuar_content'] ) ? $_POST['cuar_content'] : '';
+		
+		if ( $this->is_rich_editor_enabled() ) {
+			$field_code = sprintf( '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>', esc_attr( $content ) );
+		} else {
+			ob_start();
+			wp_editor( $content, 'cuar_content', $this->plugin->get_default_wp_editor_settings() );
+
+			$field_code = ob_get_contents();
+			ob_end_clean();
+		}	
+			
+		$this->print_form_field( 'cuar_content', $label, $field_code );
+	}
+
+	public function print_owner_field( $label, $required_capability = null ) {
+		if ( $required_capability==null || current_user_can( $required_capability ) ) {
+			$po_addon = $this->plugin->get_addon('post-owner');
+			
+			$owner = $po_addon->get_owner_from_post_data();
+			$owner_type = $owner==null ? 'usr' : $owner['type'];
+			$owner_ids = $owner==null ? array() : $owner['ids'];
+		
+			ob_start();
+			$po_addon->print_owner_type_select_field( 'cuar_owner_type', null, $owner_type );
+			$po_addon->print_owner_select_field( 'cuar_owner_type', 'cuar_owner', null, $owner_type, $owner_ids );
+			$po_addon->print_owner_select_javascript( 'cuar_owner_type', 'cuar_owner' );
+			$field_code = ob_get_contents();
+			ob_end_clean();
+		
+			$this->print_form_field( 'cuar_owner', $label, $field_code );
+		} else {
+			$owner_type = $this->get_default_owner_type();
+			$owner_ids = $this->get_default_owner();
+			
+			$field_code = sprintf( '<input type="hidden" name="cuar_owner_type" value="%1$s" />', esc_attr( $owner_type ) );
+			
+			foreach ( $owner_ids as $id ) {
+				$field_code .= sprintf( '<input type="hidden" name="%1$s" value="%2$s" />', 
+									'cuar_owner_' . $owner_type . '_id[]',
+									esc_attr( $id ) );
+			}
+			
+			echo $field_code;
+		}
+	}
+
+	public function print_form_field( $name, $label, $field_code, $help_text='' ) {
+		echo '<div class="form-group">';
+		echo '	<label for="' . $name . '" class="control-label">' . $label . '</label>';
+		echo '	<div class="control-container">';
+		echo $field_code;
+		
+		if ( !empty( $help_text ) ) {
+			echo '		<span class="help-block">' . $help_text . '</span>';
+		}
+		
+		echo '	</div>';
+		echo '</div>';
+	}
+	
 	protected $should_print_form = true;
 	protected $form_errors = array();	
 	protected $form_messages = array();

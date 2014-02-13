@@ -18,37 +18,36 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once( CUAR_INCLUDES_DIR . '/core-classes/addon-root-page.class.php' );
 
-if ( !class_exists( 'CUAR_CustomerAreaHomeAddOn' ) ) :
+if (!class_exists('CUAR_CustomerAccountHomeAddOn')) :
 
 /**
- * Add-on to show the customer dashboard page
- *
- * @author Vincent Prat @ MarvinLabs
- */
-class CUAR_CustomerAreaHomeAddOn extends CUAR_RootPageAddOn {
+ * Add-on to put private pages in the customer area
+*
+* @author Vincent Prat @ MarvinLabs
+*/
+class CUAR_CustomerAccountHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-home', __( 'Customer Page - Home', 'cuar' ), '4.0.0', 'customer-dashboard' );
+		parent::__construct( 'customer-account-home', __( 'Customer Page - Account Root', 'cuar' ), '4.0.0', 'customer-account' );
 		
-		$this->set_page_parameters( 1, array(
-					'slug'					=> 'customer-home',
-					'label'					=> __( 'Home', 'cuar' ),
-					'permalink'				=> __( 'customer-area', 'cuar' ),
-					'title'					=> __( 'Customer Area', 'cuar' ),
-					'hint'					=> __( 'This is the main page for your customers. It will redirect to the login page or to the customer area dashboard.', 'cuar' ),
-					'always_include_in_menu'=> true
+		$this->set_page_parameters( 800, array(
+					'slug'					=> 'customer-account-home',
+					'label'					=> __( 'Account - Home', 'cuar' ),
+					'title'					=> __( 'My account', 'cuar' ),
+					'hint'					=> __( 'This page shows a summary of the user account', 'cuar' ),
+					'parent_slug'			=> 'customer-home',
 				)
 			);
 		
-		$this->set_page_shortcode( 'customer-area' );
+		$this->set_page_shortcode( 'customer-account-home' );
 	}
 
 	protected function get_page_addon_path() {
-		return CUAR_INCLUDES_DIR . '/core-addons/customer-home';
+		return CUAR_INCLUDES_DIR . '/core-addons/customer-account';
 	}
 }
 
 // Make sure the addon is loaded
-new CUAR_CustomerAreaHomeAddOn();
+new CUAR_CustomerAccountHomeAddOn();
 
-endif; // if (!class_exists('CUAR_CustomerAreaHomeAddOn')) :
+endif; // if (!class_exists('CUAR_CustomerAccountHomeAddOn')) 

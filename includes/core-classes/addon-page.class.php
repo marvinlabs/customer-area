@@ -42,11 +42,27 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		}
 		
 		if ( !isset( $this->page_description['parent_slug'] )) {
-			$this->page_description['parent_slug'] = null;
+			$this->page_description['parent_slug'] = '';
 		}
 
 		if ( !isset( $this->page_description['menu_order'] )) {
 			$this->page_description['menu_order'] = $priority;
+		}
+
+		if ( !isset( $this->page_description['required_capability'] )) {
+			$this->page_description['required_capability'] = '';
+		}
+		
+		if ( !isset( $this->page_description['hide_if_logged_in'] )) {
+			$this->page_description['hide_if_logged_in'] = false;
+		}
+		
+		if ( !isset( $this->page_description['hide_in_menu'] )) {
+			$this->page_description['hide_in_menu'] = false;
+		}
+		
+		if ( !isset( $this->page_description['always_include_in_menu'] )) {
+			$this->page_description['always_include_in_menu'] = false;
 		}
 	}
 	
@@ -58,12 +74,16 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	
 	protected abstract function get_page_addon_path();	
 	
-	public function register_page_description( $pages ) {
+	public function register_page( $pages ) {
 		if ( $this->page_description!=null ) { 
-			$pages[ $this->get_slug() ] = $this->page_description;
+			$pages[ $this->get_slug() ] = $this;
 		}
 		
 		return $pages;
+	}
+	
+	public function get_priority() {
+		return $this->page_priority;
 	}
 	
 	public function get_slug() {
@@ -78,6 +98,51 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		return $this->page_description['title'];
 	}
 	
+	public function get_hint() {
+		return $this->page_description['hint'];
+	}
+	
+	public function get_parent_slug() {
+		return $this->page_description['parent_slug'];
+	}
+	
+	public function get_menu_order() {
+		return $this->page_description['menu_order'];
+	}
+	
+	public function requires_login() {
+		return $this->page_description['requires_login'];
+	}
+	
+	public function hide_if_logged_in() {
+		return $this->page_description['hide_if_logged_in'];
+	}
+	
+	public function hide_in_menu() {
+		return $this->page_description['hide_in_menu'];
+	} 
+	
+	public function always_include_in_menu() {
+		return $this->page_description['always_include_in_menu'];
+	} 
+	
+	public function get_friendly_post_type() {
+		return null;
+	}
+	
+	public function get_friendly_taxonomy() {
+		return null;
+	}
+	
+	public function get_required_capability() {
+		return $this->page_description['required_capability'];
+	}
+	
+	public function is_accessible_to_current_user() {
+		$cap = $this->get_required_capability();
+		return apply_filters( 'cuar_is_page_accessible_to_current_user', empty( $cap ) || current_user_can( $cap ), $this );
+	}
+	
 	public function get_child_pages() {
 		if ( $this->child_pages==null ) {
 			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
@@ -87,30 +152,28 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		return $this->child_pages;
 	}
 	
-	public function requires_login() {
-		return $this->page_description['requires_login'];
-	}
-	
 	public function get_page_id() {
-		$cp_addon = $this->plugin->get_addon( 'customer-pages' );
-		return $cp_addon->get_page_id( $this->get_slug() );
+		if ( $this->page_id<=0 ) {
+			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
+			$this->page_id = $cp_addon->get_page_id( $this->get_slug() );
+		}
+		
+		return $this->page_id;
 	}
 	
 	public function get_page_url() {
-		$cp_addon = $this->plugin->get_addon( 'customer-pages' );
-		return $cp_addon->get_page_url( $this->get_slug() );
+		if ( $this->page_url<=0 ) {
+			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
+			$this->page_url = $cp_addon->get_page_url( $this->get_slug() );
+		}
+		
+		return $this->page_url;
 	}
 	
 	/**
 	 * Create the corresponding WordPress page.
-	 * 
-	 * @param string $parent_slug The Customer Area identifier (@see CUAR_CustomerPageAddOn::get_customer_area_page) for the parent page. 
-	 * @param string $page_title If null, the page title will be taken from the page description array
-	 * @param string $page_content If null, and if we have a shortcode, the content will simply be the default shortcode declaration
-	 *  
-	 * @return Ambigous <number, WP_Error, unknown>
 	 */
-	public function create_default_page( $void ) {		
+	public function create_default_page( $existing_page_id, $options_array=null ) {		
 		$page_data = array(
 				'post_status' 		=> 'publish',
 				'post_type' 		=> 'page',
@@ -124,12 +187,13 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		}
 		
 		// If a slug is specified, we will try to find that page from the options
-		if ( $this->page_description['parent_slug']!=null && !empty( $this->page_description['parent_slug'] ) ) {
+		$parent_slug = $this->get_parent_slug();
+		if ( !empty( $parent_slug ) ) {
 			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
-			$page_id = $cp_addon->get_page_id( $this->page_description['parent_slug'] );
+			$parent_id = $cp_addon->get_page_id( $parent_slug, $options_array );
 			
-			if ( $page_id>0 ) {
-				$page_data['post_parent'] = $page_id;
+			if ( $parent_id>0 ) {
+				$page_data['post_parent'] = $parent_id;
 			}
 		}
 		
@@ -147,13 +211,17 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		// Create the page
 		$page_id = wp_insert_post( $page_data );
 		
+		if ( !is_wp_error( $page_id ) ) {
+			$this->page_id = $page_id;
+		}
+		
 		return $page_id;
 	}
 		
 	public function print_page( $args = array(), $shortcode_content = '' ) {
-		if ( $this->page_description['requires_login'] && !is_user_logged_in() ) {
+		if ( $this->requires_login() && !is_user_logged_in() ) {
 			$this->plugin->login_then_redirect_to_page( $this->get_slug() );	
-		} else {
+		} else if ( $this->is_accessible_to_current_user() ) {		
 			include( $this->plugin->get_template_file_path(
 					CUAR_INCLUDES_DIR . '/core-classes',
 					'customer-page.template.php',
@@ -203,8 +271,8 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 
 	public function run_addon( $plugin ) {
-		add_filter( 'cuar_customer_pages', array( &$this, 'register_page_description' ), $this->page_priority );
-		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 4 );
+		add_filter( 'cuar_customer_pages', array( &$this, 'register_page' ), $this->page_priority );
+		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 2 );
 	}
 	
 	protected function register_sidebar( $id, $name ) {
@@ -228,6 +296,9 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	
 	/** @var CUAR_AddOnPageShortcode shortcode that displays the page */
 	protected $shortcode = null;
+	
+	protected $page_id = -1;
+	protected $page_url = '';
 }
 
 endif; // CUAR_AbstractPageAddOn

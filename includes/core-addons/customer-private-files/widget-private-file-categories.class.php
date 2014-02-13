@@ -51,7 +51,7 @@ class CUAR_PrivateFileCategoriesWidget extends CUAR_TermsWidget {
 	
 	protected function get_link( $term ) {
 		global $cuar_plugin;
-		$cfp_addon = $cuar_plugin->get_addon( 'customer-files-page' );
+		$cfp_addon = $cuar_plugin->get_addon( 'customer-private-files' );
 		return $cfp_addon->get_category_archive_url( $term );
 	}
 	
