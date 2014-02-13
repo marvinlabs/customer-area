@@ -35,7 +35,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
 			add_action( 'cuar_version_upgraded', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
+			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ), 5 );
 
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
 		} 
@@ -134,16 +134,20 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	 * @param array $groups
 	 * @return number
 	 */
-	public function declare_configurable_capabilities( $groups ) {
-		$group = array(
-				'group_name' => __( 'Back-office', 'cuar' ), 
-				'capabilities' => array( 
-						'view-customer-area-menu' => __( 'View the menu', 'cuar' ) 
-					) 
+	public function get_configurable_capability_groups( $capability_groups ) {
+		$capability_groups[ 'cuar_general' ] = array(
+				'label'		=> __( 'General', 'cuar' ),
+				'groups'	=> array(
+						'back-office' 	=> array( 
+								'group_name' => __( 'Back-office', 'cuar' ), 
+								'capabilities' => array( 
+										'view-customer-area-menu' => __( 'View the menu', 'cuar' ) 
+								)
+							) 
+					)
 			);
 		
-		array_unshift( $groups, $group );
-		return $groups;
+		return $capability_groups;
 	}
 
 	/**

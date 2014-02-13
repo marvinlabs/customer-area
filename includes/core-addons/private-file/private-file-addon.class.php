@@ -43,7 +43,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
 			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 			
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
+			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ) );
 		}
 				
 		// Init the admin interface if needed
@@ -63,20 +63,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
 		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
-
-		$admin_role = get_role( 'administrator' );
-		if ( $admin_role ) {
-			$admin_role->add_cap( 'cuar_pf_edit' );
-			$admin_role->add_cap( 'cuar_pf_delete' );
-			$admin_role->add_cap( 'cuar_pf_read' );
-			$admin_role->add_cap( 'cuar_pf_manage_categories' );
-			$admin_role->add_cap( 'cuar_pf_edit_categories' );
-			$admin_role->add_cap( 'cuar_pf_delete_categories' );
-			$admin_role->add_cap( 'cuar_pf_assign_categories' );
-			$admin_role->add_cap( 'cuar_pf_list_all' );
-			$admin_role->add_cap( 'cuar_view_files' );
-			$admin_role->add_cap( 'cuar_view_any_cuar_private_file' );
-		}
 		
 		return $defaults;
 	}
@@ -686,28 +672,32 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 
 	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/
 	
-	public function declare_configurable_capabilities( $capability_groups ) {
-		$capability_groups[] = array(
-				'group_name' => __( 'Private Files (back-office)', 'cuar' ),
-				'capabilities' => array(
-						'cuar_pf_list_all'				=> __( 'List all files', 'cuar' ),
-						'cuar_pf_edit' 					=> __( 'Create/Edit files', 'cuar' ),
-						'cuar_pf_delete'				=> __( 'Delete files', 'cuar' ),
-						'cuar_pf_read' 					=> __( 'Access files', 'cuar' ),
-						'cuar_pf_manage_categories' 	=> __( 'Manage categories', 'cuar' ),
-						'cuar_pf_edit_categories' 		=> __( 'Edit categories', 'cuar' ),
-						'cuar_pf_delete_categories' 	=> __( 'Delete categories', 'cuar' ),
-						'cuar_pf_assign_categories' 	=> __( 'Assign categories', 'cuar' ),
+	public function get_configurable_capability_groups( $capability_groups ) {
+		$capability_groups[ 'cuar_private_file' ] = array(
+				'label'		=> __( 'Private Files', 'cuar' ),
+				'groups'	=> array(
+						'back-office' => array(
+								'group_name' => __( 'Back-office', 'cuar' ),
+								'capabilities' => array(
+										'cuar_pf_list_all'				=> __( 'List all files', 'cuar' ),
+										'cuar_pf_edit' 					=> __( 'Create/Edit files', 'cuar' ),
+										'cuar_pf_delete'				=> __( 'Delete files', 'cuar' ),
+										'cuar_pf_read' 					=> __( 'Access files', 'cuar' ),
+										'cuar_pf_manage_categories' 	=> __( 'Manage categories', 'cuar' ),
+										'cuar_pf_edit_categories' 		=> __( 'Edit categories', 'cuar' ),
+										'cuar_pf_delete_categories' 	=> __( 'Delete categories', 'cuar' ),
+										'cuar_pf_assign_categories' 	=> __( 'Assign categories', 'cuar' ),
+									)
+							),
+						'front-office'	=> array(
+								'group_name' => __( 'Front-office', 'cuar' ),
+								'capabilities' => array(
+										'cuar_view_files'					=> __( 'View private files', 'cuar' ),
+										'cuar_view_any_cuar_private_file' 	=> __( 'View any private file', 'cuar' ),
+									)
+							)
 					)
 			);
-
-		$capability_groups[] = array(
-				'group_name' => __( 'Private Files', 'cuar' ),
-				'capabilities' => array(
-						'cuar_view_files'					=> __( 'View private files', 'cuar' ),
-						'cuar_view_any_cuar_private_file' 	=> __( 'View any private file', 'cuar' ),
-				)
-		);
 		
 		return $capability_groups;
 	}

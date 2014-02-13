@@ -69,6 +69,10 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
         if ( !$this->is_accessible_to_current_user() ) {
         	die('You are not allowed to view this page.');
         }
+
+        if ( !$this->current_user_can_create_content() ) {
+        	die('You are not allowed to create content.');
+        }
         
 		$result = $this->do_create_content( $_POST );		
 		if ( true===$result ) {
@@ -90,7 +94,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 			return  $form_data['cuar_title'];
 		}
 
-		$this->form_errors[] = new WP_Error( $error_message );
+		$this->form_errors[] = new WP_Error( 'missing_title', $error_message );
 		return FALSE;
 	}
 	
@@ -99,7 +103,25 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 			return  $form_data['cuar_content'];
 		}
 
-		$this->form_errors[] = new WP_Error( $error_message );
+		$this->form_errors[] = new WP_Error( 'missing_content', $error_message );
+		return FALSE;
+	}
+	
+	protected function check_submitted_category( $form_data, $error_message ) {
+		if ( isset( $form_data['cuar_category'] ) && !empty( $form_data['cuar_category'] ) ) {
+			return  $form_data['cuar_category'];
+		}
+
+		$this->form_errors[] = new WP_Error( 'missing_category', $error_message );
+		return FALSE;
+	}
+	
+	protected function check_submitted_file( $form_data, $error_message ) {
+		if ( isset( $_FILES ) && isset( $_FILES['cuar_file'] ) && !empty( $_FILES['cuar_file']['name'] ) ) {
+			return $_FILES['cuar_file'];
+		}
+
+		$this->form_errors[] = new WP_Error( 'missing_file', $error_message );
 		return FALSE;
 	}
 	
@@ -111,7 +133,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 			return $new_owner;
 		}
 		
-		$this->form_errors[] = new WP_Error( $error_message );
+		$this->form_errors[] = new WP_Error( 'missing_owner', $error_message );
 		return FALSE;
 	}
 	
@@ -167,6 +189,11 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		$this->print_form_field( 'cuar_title', $label, $field_code );
 	}
 
+	public function print_file_field( $label ) {
+		$field_code = '<input type="file" id="cuar_file" name="cuar_file" class="form-control" />';		
+		$this->print_form_field( 'cuar_file', $label, $field_code );
+	}
+
 	public function print_content_field( $label ) {
 		$content = isset( $_POST['cuar_content'] ) ? $_POST['cuar_content'] : '';
 		
@@ -183,8 +210,8 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		$this->print_form_field( 'cuar_content', $label, $field_code );
 	}
 
-	public function print_owner_field( $label, $required_capability = null ) {
-		if ( $required_capability==null || current_user_can( $required_capability ) ) {
+	public function print_owner_field( $label ) {
+		if ( $this->current_user_can_select_owner() ) {
 			$po_addon = $this->plugin->get_addon('post-owner');
 			
 			$owner = $po_addon->get_owner_from_post_data();
@@ -211,6 +238,29 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 									esc_attr( $id ) );
 			}
 			
+			echo $field_code;
+		}
+	}
+
+	public function print_category_field( $label ) {		
+		if ( $this->current_user_can_select_category() ) {
+			$category = isset( $_POST['cuar_category'] ) ? $_POST['cuar_category'] : '';
+		
+			$field_code = wp_dropdown_categories( array( 
+							'taxonomy'		=> $this->get_friendly_taxonomy(),
+							'name' 			=> 'cuar_category',
+							'hide_empty'    => 0,
+							'hierarchical'  => 1,
+							'selected'		=> $category,
+							'orderby'       => 'NAME',
+							'echo'			=> false,
+							'class'         => 'form-control',
+						) );
+		
+			$this->print_form_field( 'cuar_category', $label, $field_code );
+		} else {
+			$category = $this->get_default_category();			
+			$field_code = sprintf( '<input type="hidden" name="cuar_category" value="%1$s" />', esc_attr( $category ) );			
 			echo $field_code;
 		}
 	}
@@ -247,6 +297,10 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_DEFAULT_OWNER, array( '1' ) );
 	}
 	
+	public function get_default_category() {
+		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_DEFAULT_CATEGORY, -1 );
+	}
+	
 	/**
 	 * Set the default values for the options
 	 *
@@ -257,23 +311,69 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		$defaults = parent::set_default_options($defaults);
 		
 		$slug = $this->get_slug();
-		
+
+		// $defaults[ $slug . self::$OPTION_ENABLE_RICH_EDITOR ] 	= true;
 		$defaults[ $slug . self::$OPTION_ENABLE_RICH_EDITOR ] 	= true;
 		$defaults[ $slug . self::$OPTION_DEFAULT_OWNER_TYPE ] 	= 'usr';
 		$defaults[ $slug . self::$OPTION_DEFAULT_OWNER ] 		= array( '1' );
+		$defaults[ $slug . self::$OPTION_DEFAULT_CATEGORY ]		= -1;
 			
 		return $defaults;
 	}
 	
+	/*------- CAPABILITIES ------------------------------------------------------------------------------------------*/
+
+	public function get_configurable_capability_groups( $capability_groups ) {
+		$post_type = $this->get_friendly_post_type();
+
+		if ( isset( $capability_groups[$post_type] ) ) {
+			$capability_groups[$post_type]['groups']['create-content'] = array(
+					'group_name' 	=> __( 'Content creation (from front-office)', 'cuar' ),
+					'capabilities' 	=> array(
+							$post_type . '_create_content'				=> __( 'Create content from front office', 'cuar' ),
+							$post_type . '_create_select_owner'			=> __( 'Select an owner (uses default else)', 'cuar' ),
+							$post_type . '_create_select_category'		=> __( 'Select a category (uses default else)', 'cuar' ),
+							$post_type . '_create_bypass_moderation' 	=> __( 'Bypass moderation (content is automatically published)', 'cuar' )
+						)
+			);
+		}
+		
+		return $capability_groups;
+	}
+	
+	public function current_user_can_select_category() {
+		$post_type = $this->get_friendly_post_type();
+		return current_user_can( $post_type . '_create_select_category' );
+	}
+	
+	public function current_user_can_select_owner() {
+		$post_type = $this->get_friendly_post_type();
+		return current_user_can( $post_type . '_create_select_owner' );
+	}
+	
+	public function current_user_can_create_content() {
+		$post_type = $this->get_friendly_post_type();
+		return current_user_can( $post_type . '_create_content' );
+	}
+	
+	public function current_user_can_bypass_moderation() {
+		$post_type = $this->get_friendly_post_type();
+		return current_user_can( $post_type . '_create_bypass_moderation' );
+	}
+	
+	public function is_accessible_to_current_user() {
+		return $this->current_user_can_create_content();
+	}
+	
 	/*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
 
-	public function enable_settings( $target_tab, $enabled_settings = array( 'rich-editor', 'default-ownership' ) ) {
+	public function enable_settings( $target_tab, $enabled_settings = array( 'rich-editor', 'default-ownership', 'default-category' ) ) {
 		$this->enabled_settings = $enabled_settings;
 		
 		if ( is_admin() && !empty( $this->enabled_settings ) ) {
 			// Settings	
-			add_action( 'cuar_addon_print_settings_' . $target_tab, array( &$this, 'print_settings' ), 10, 2 );
-			add_filter( 'cuar_addon_validate_options_' . $target_tab, array( &$this, 'validate_options' ), 10, 3 );
+			add_action( 'cuar_addon_print_settings_' . $target_tab, array( &$this, 'print_settings' ), 20, 2 );
+			add_filter( 'cuar_addon_validate_options_' . $target_tab, array( &$this, 'validate_options' ), 20, 3 );
 		}
 	}
 	
@@ -339,6 +439,21 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 				);			
 		}
 		
+		$tax = $this->get_friendly_taxonomy();
+		if ( in_array('default-category', $this->enabled_settings ) && !empty( $tax ) ) {
+			add_settings_field(
+					$slug . self::$OPTION_DEFAULT_CATEGORY, 
+					__('Default category', 'cuar'),
+					array( &$cuar_settings, 'print_term_select_field' ), 
+					CUAR_Settings::$OPTIONS_PAGE_SLUG,
+					$this->get_settings_section(),
+					array( 
+						'option_id' 		=> $slug . self::$OPTION_DEFAULT_CATEGORY, 
+						'taxonomy' 			=> $tax, 
+		    			'after'				=> '' )
+				);
+		}
+		
 		$this->print_additional_settings( $cuar_settings, $options_group );
 	}
 	
@@ -351,10 +466,20 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	 */
 	public function validate_options( $validated, $cuar_settings, $input ) {
 		$slug = $this->get_slug();		
+
+		if ( in_array('rich-editor', $this->enabled_settings ) ) {
+			$cuar_settings->validate_boolean( $input, $validated, $slug . self::$OPTION_ENABLE_RICH_EDITOR );
+		}
 		
-		$cuar_settings->validate_boolean( $input, $validated, $slug . self::$OPTION_ENABLE_RICH_EDITOR );
-		$cuar_settings->validate_owner_type( $input, $validated, $slug . self::$OPTION_DEFAULT_OWNER_TYPE );
-		$cuar_settings->validate_owner( $input, $validated, $slug . self::$OPTION_DEFAULT_OWNER, $slug . self::$OPTION_DEFAULT_OWNER_TYPE );
+		if ( in_array('default-ownership', $this->enabled_settings ) ) {
+			$cuar_settings->validate_owner_type( $input, $validated, $slug . self::$OPTION_DEFAULT_OWNER_TYPE );
+			$cuar_settings->validate_owner( $input, $validated, $slug . self::$OPTION_DEFAULT_OWNER, $slug . self::$OPTION_DEFAULT_OWNER_TYPE );
+		}
+
+		$tax = $this->get_friendly_taxonomy();
+		if ( in_array('default-category', $this->enabled_settings ) && !empty( $tax ) ) {
+			$cuar_settings->validate_term( $input, $validated, $slug . self::$OPTION_DEFAULT_CATEGORY, $tax );
+		}
 		
 		$this->validate_additional_settings( $validated, $cuar_settings, $input );
 		
@@ -377,8 +502,10 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 
 		if ( !is_admin() ) {
 			add_action( 'template_redirect', array( &$this, 'handle_form_submission' ) );
+			$this->plugin->enable_library('jquery.select2');
 		} else {
-			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );			
+			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );		
+			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ), 1000 );	
 		}
 	}
 
@@ -397,6 +524,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	public static $OPTION_DEFAULT_OWNER_TYPE	= '-default_owner_type';
 	public static $OPTION_DEFAULT_OWNER			= '-default_owner';
 	public static $OPTION_ENABLE_RICH_EDITOR	= '-enable_rich_editor';
+	public static $OPTION_DEFAULT_CATEGORY		= '-default_category';
 	
 	protected $enabled_settings = array();
 }

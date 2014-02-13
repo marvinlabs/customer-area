@@ -39,7 +39,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
 			
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
+			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ) );
 		}
 				
 		// Init the admin interface if needed
@@ -58,20 +58,6 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$defaults = parent::set_default_options($defaults);
 		
 		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
-
-		$admin_role = get_role( 'administrator' );
-		if ( $admin_role ) {
-			$admin_role->add_cap( 'cuar_pp_edit' );
-			$admin_role->add_cap( 'cuar_pp_delete' );
-			$admin_role->add_cap( 'cuar_pp_read' );
-			$admin_role->add_cap( 'cuar_pp_manage_categories' );
-			$admin_role->add_cap( 'cuar_pp_edit_categories' );
-			$admin_role->add_cap( 'cuar_pp_delete_categories' );
-			$admin_role->add_cap( 'cuar_pp_assign_categories' );
-			$admin_role->add_cap( 'cuar_pp_list_all' );
-			$admin_role->add_cap( 'cuar_view_pages' );
-			$admin_role->add_cap( 'cuar_view_any_cuar_private_page' );
-		}
 		
 		return $defaults;
 	}
@@ -110,28 +96,32 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 
 	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/
 	
-	public function declare_configurable_capabilities( $capability_groups ) {
-		$capability_groups[] = array(
-				'group_name' => __( 'Private Pages (back-office)', 'cuar' ),
-				'capabilities' => array(
-						'cuar_pp_list_all' 	=> __( 'List all pages', 'cuar' ),
-						'cuar_pp_edit' 		=> __( 'Create/Edit pages', 'cuar' ),
-						'cuar_pp_delete'	=> __( 'Delete pages', 'cuar' ),
-						'cuar_pp_read' 		=> __( 'Access pages', 'cuar' ),
-						'cuar_pp_manage_categories' 	=> __( 'Manage categories', 'cuar' ),
-						'cuar_pp_edit_categories' 		=> __( 'Edit categories', 'cuar' ),
-						'cuar_pp_delete_categories' 	=> __( 'Delete categories', 'cuar' ),
-						'cuar_pp_assign_categories' 	=> __( 'Assign categories', 'cuar' ),
+	public function get_configurable_capability_groups( $capability_groups ) {
+		$capability_groups[ 'cuar_private_page' ] = array(
+				'label'		=> __( 'Private Pages', 'cuar' ),
+				'groups'	=> array(
+						'back-office' => array(
+								'group_name' => __( 'Back-office', 'cuar' ),
+								'capabilities' => array(
+										'cuar_pp_list_all' 	=> __( 'List all pages', 'cuar' ),
+										'cuar_pp_edit' 		=> __( 'Create/Edit pages', 'cuar' ),
+										'cuar_pp_delete'	=> __( 'Delete pages', 'cuar' ),
+										'cuar_pp_read' 		=> __( 'Access pages', 'cuar' ),
+										'cuar_pp_manage_categories' 	=> __( 'Manage categories', 'cuar' ),
+										'cuar_pp_edit_categories' 		=> __( 'Edit categories', 'cuar' ),
+										'cuar_pp_delete_categories' 	=> __( 'Delete categories', 'cuar' ),
+										'cuar_pp_assign_categories' 	=> __( 'Assign categories', 'cuar' ),
+									)
+							),
+						'front-office'	=> array(
+								'group_name' => __( 'Front-office', 'cuar' ),
+								'capabilities' => array(
+										'cuar_view_pages'					=> __( 'View private pages', 'cuar' ),
+										'cuar_view_any_cuar_private_page' 	=> __( 'View any private page', 'cuar' ),
+									)
+							)
 					)
 			);
-
-		$capability_groups[] = array(
-				'group_name' => __( 'Private Pages', 'cuar' ),
-				'capabilities' => array(
-						'cuar_view_pages'					=> __( 'View private pages', 'cuar' ),
-						'cuar_view_any_cuar_private_page' 	=> __( 'View any private page', 'cuar' ),
-				)
-		);
 		
 		return $capability_groups;
 	}

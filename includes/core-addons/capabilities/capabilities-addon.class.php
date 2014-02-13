@@ -39,6 +39,8 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 			add_action( 'cuar_in_settings_form_cuar_capabilities', array( &$this, 'print_settings' ) );
 			add_filter( 'cuar_addon_validate_options_cuar_capabilities', array( &$this, 'validate_options' ), 10, 3 );
 		} 
+		
+		add_action( 'cuar_after_addons_init', array( &$this, 'set_administrator_capabilities' ) );
 	}	
 	
 	/*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
@@ -46,6 +48,24 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	public function add_settings_tab( $tabs ) {
 		$tabs[ 'cuar_capabilities' ] = __( 'Capabilities', 'cuar' );
 		return $tabs;
+	}
+	
+	/**
+	 * Give all caps to the admin
+	 */
+	public function set_administrator_capabilities() {
+		$admin_role = get_role( 'administrator' );
+		if ( $admin_role ) {
+			$all_caps = $this->get_configurable_capability_groups();
+			
+			foreach ( $all_caps as $section_id => $section ) {
+				foreach ( $section['groups'] as $group ) {
+					foreach ($group['capabilities'] as $key => $label) {
+						$admin_role->add_cap( $key );
+					}
+				}
+			}
+		}
 	}
 	
 	/**
@@ -76,17 +96,20 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 		global $wp_roles;
 		$roles 	= $wp_roles->role_objects;
 		$all_capability_groups = $this->get_configurable_capability_groups();
-	
-		foreach ( $all_capability_groups as $group ) {
+
+		$selected_section_id = isset( $_POST['cuar_section'] ) ? $_POST['cuar_section'] : 'cuar_general';
+		$selected_section = $all_capability_groups[$selected_section_id];
+		
+		foreach ( $selected_section['groups'] as $group_id => $group ) {
 			$group_name = $group['group_name'];
 			$group_caps = $group['capabilities'];
-	
+			
 			if ( empty( $group_caps ) ) continue;
-	
-			foreach ( $roles as $role ) {
-				foreach ( $group_caps as $cap => $cap_name ) {
+				
+			foreach ( $group_caps as $cap => $cap_name ) {
+				foreach ( $roles as $role ) {
 					$name = str_replace( ' ', '-', $role->name . '_' . $cap );
-						
+				
 					if ( isset( $_POST[ $name ] ) ) {
 						$role->add_cap( $cap );
 					} else {
@@ -95,17 +118,22 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 				}
 			}
 		}
-	
+		
 		return $validated;
 	}
 	
 	private function get_configurable_capability_groups() {
 		if ( $this->all_capability_groups==null ) {
 			// each entry should be an array in the form:
-			// array(
-			//   'group_name' => 'My Add-on',
-			//   'capabilities' => array( 'my_cap' => 'My cap label' )
-			// );
+			// 	'section_id' => array(
+			//   	'label' => 'My Caps',
+			//   	'groups' => array(
+			//      	'group_id' => array(
+			//     	  		'group_name' => 'My Add-on',
+			//        		'capabilities' => array( 'my_cap' => 'My cap label' )
+			//       	)
+			//    	)
+			//	);
 			$this->all_capability_groups = apply_filters( 'cuar_configurable_capability_groups', array() );
 		}
 		return $this->all_capability_groups;
