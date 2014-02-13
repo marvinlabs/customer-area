@@ -75,6 +75,7 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	 */
 	public function print_settings() {
 		global $wp_roles;
+		if ( !isset( $wp_roles ) ) $wp_roles = new WP_Roles();
 		$all_roles 	= $wp_roles->role_objects;
 	
 		$all_capability_groups = $this->get_configurable_capability_groups();
@@ -94,7 +95,9 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	 */
 	public function validate_options( $validated, $cuar_settings, $input ) {
 		global $wp_roles;
+		if ( !isset( $wp_roles ) ) $wp_roles = new WP_Roles();
 		$roles 	= $wp_roles->role_objects;
+		
 		$all_capability_groups = $this->get_configurable_capability_groups();
 
 		$selected_section_id = isset( $_POST['cuar_section'] ) ? $_POST['cuar_section'] : 'cuar_general';

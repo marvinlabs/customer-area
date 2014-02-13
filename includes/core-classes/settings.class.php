@@ -1007,6 +1007,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 			
 			global $wp_roles;
+			if ( !isset( $wp_roles ) ) $wp_roles = new WP_Roles();
 			$all_roles = $wp_roles->role_objects;
 			
 			if ($show_any_option) {
