@@ -82,7 +82,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	}
 	
 	public function is_show_in_single_post_footer_enabled() {
-		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD, true );
+		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER, true );
 	}
 	
 	public function get_max_item_number_on_dashboard() {
