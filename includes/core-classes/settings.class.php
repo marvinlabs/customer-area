@@ -26,7 +26,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @return mixed the value
 		 */
 		public function get_option($option_id) {
-			return isset ( $this->options [$option_id] ) ? $this->options [$option_id] : null;
+			return  isset( $this->options [$option_id] ) ? $this->options [$option_id] : null;
 		}
 		
 		/**
@@ -169,11 +169,11 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$this->tabs = apply_filters ( 'cuar_addon_settings_tabs', array () );
 			
 			// Get current tab from GET or POST params or default to first in list
-			$this->current_tab = isset ( $_GET ['cuar_tab'] ) ? $_GET ['cuar_tab'] : '';
-			if (! isset ( $this->tabs [$this->current_tab] )) {
-				$this->current_tab = isset ( $_POST ['cuar_tab'] ) ? $_POST ['cuar_tab'] : '';
+			$this->current_tab =  isset( $_GET ['cuar_tab'] ) ? $_GET ['cuar_tab'] : '';
+			if (!  isset( $this->tabs [$this->current_tab] )) {
+				$this->current_tab =  isset( $_POST ['cuar_tab'] ) ? $_POST ['cuar_tab'] : '';
 			}
-			if (! isset ( $this->tabs [$this->current_tab] )) {
+			if (!  isset( $this->tabs [$this->current_tab] )) {
 				reset ( $this->tabs );
 				$this->current_tab = key ( $this->tabs );
 			}
@@ -370,7 +370,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_boolean($input, &$validated, $option_id) {
-			$validated[$option_id] = isset ( $input[$option_id] ) ? true : false;
+			$validated[$option_id] =  isset( $input[$option_id] ) ? true : false;
 		}
 		
 		/**
@@ -454,7 +454,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_not_empty($input, &$validated, $option_id) {
-			if (isset ( $input[$option_id] ) && ! empty ( $input[$option_id] )) {
+			if ( isset( $input[$option_id] ) && ! empty ( $input[$option_id] )) {
 				$validated[$option_id] = $input[$option_id];
 			} else {
 				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' cannot be empty', 'cuar' ), 'error' );
@@ -474,7 +474,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_email($input, &$validated, $option_id) {
-			if (isset ( $input[$option_id] ) && is_email ( $input[$option_id] )) {
+			if ( isset( $input[$option_id] ) && is_email ( $input[$option_id] )) {
 				$validated[$option_id] = $input[$option_id];
 			} else {
 				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' is not a valid email', 'cuar' ), 'error' );
@@ -562,7 +562,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function validate_owner_type($input, &$validated, $option_id) {
 			$po_addon = $this->plugin->get_addon ( "post-owner" );
 			
-			if (isset ( $input[$option_id] ) && $po_addon->is_valid_owner_type ( $input[$option_id] )) {
+			if ( isset( $input[$option_id] ) && $po_addon->is_valid_owner_type ( $input[$option_id] )) {
 				$validated[$option_id] = $input[$option_id];
 			} else {
 				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' is not a valid owner type', 'cuar' ), 'error' );
@@ -586,7 +586,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			// TODO better checks, for now, just check it is not empty
 			// $po_addon = $this->plugin->get_addon("post-owner");
-			if (isset ( $input[$field_id] )) {
+			if ( isset( $input[$field_id] )) {
 				$validated[$option_id] = is_array( $input[$field_id] ) ? $input[$field_id] : array( $input[$field_id] );
 			} else {
 				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$field_id] . __ ( ' is not a valid owner', 'cuar' ), 'error' );
@@ -733,14 +733,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				$status_message = '';
 			}
 			
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before )) echo $before;
 			
 			echo sprintf ( '<input type="text" id="%s" name="%s[%s]" value="%s" class="regular-text" />', esc_attr( $option_id ), self::$OPTIONS_GROUP, esc_attr( $option_id ), esc_attr( $this->options[$option_id] ) );			
 			echo sprintf ( '<span class="cuar-ajax-container"><span id="%s_check_result" class="%s">%s</span></span>', esc_attr( $option_id ), $status_class, $status_message );
 			
-			if (isset ( $after ))
-				echo $after; 
+			if ( isset( $after )) echo $after; 
 
 			$last_check = $this->plugin->get_option( $check_option_id, null );
 			if ( $last_check!=null ) {
@@ -795,37 +793,31 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			extract ( $args );
 			
 			if ($type == 'checkbox') {
-				if (isset ( $before ))
-					echo $before;
+				if ( isset( $before )) echo $before;
 				
 				echo sprintf ( '<input type="%s" id="%s" name="%s[%s]" value="open" %s />&nbsp;', esc_attr ( $type ), esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ), ($this->options [$option_id] != 0) ? 'checked="checked" ' : '' );
 				
-				if (isset ( $after ))
-					echo $after;
+				if ( isset( $after )) echo $after;
 			} else if ($type == 'textarea') {
-				if (isset ( $before ))
-					echo $before;
+				if ( isset( $before )) echo $before;
 				
 				echo sprintf ( '<textarea id="%s" name="%s[%s]" class="large-text">%s</textarea>', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ), $content );
 				
-				if (isset ( $after ))
-					echo $after;
+				if ( isset( $after )) echo $after;
 			} else if ($type == 'editor') {
-				if (! isset ( $editor_settings ))
+				if (!  isset( $editor_settings ))
 					$editor_settings = $this->plugin->get_default_wp_editor_settings();
 				$editor_settings ['textarea_name'] = self::$OPTIONS_GROUP . "[" . $option_id . "]";
 				
 				wp_editor ( $this->options [$option_id], $option_id, $editor_settings );
 			} else {
-				$extra_class = isset ( $is_large ) && $is_large == true ? 'large-text' : 'regular-text';
+				$extra_class =  isset( $is_large ) && $is_large == true ? 'large-text' : 'regular-text';
 				
-				if (isset ( $before ))
-					echo $before;
+				if ( isset( $before )) echo $before;
 				
 				echo sprintf ( '<input type="%s" id="%s" name="%s[%s]" value="%s" class="%s" />', esc_attr ( $type ), esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ), esc_attr ( $this->options [$option_id] ), esc_attr ( $extra_class ) );
 				
-				if (isset ( $after ))
-					echo $after;
+				if ( isset( $after )) echo $after;
 			}
 		}
 
@@ -840,19 +832,33 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function print_submit_button($args) {
 			extract ( $args );
 				
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before ) ) echo $before;
 				
-			echo sprintf ( '<input type="submit" name="%s" id="%s[%s]" value="%s" class="button button-primary">', 
+			echo sprintf ( '<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button button-primary %s" /></p>', 
 						esc_attr( $option_id ), 
 						self::$OPTIONS_GROUP, esc_attr( $option_id ),
-						$label
+						$label,
+						esc_attr( $option_id )
 					);
 
 			wp_nonce_field( $nonce_action, $nonce_name );
-
-			if (isset ( $after ))
-				echo $after;
+			
+			if ( isset( $after )) echo $after;
+			
+			if ( isset( $confirm_message ) && !empty( $confirm_message ) ) {
+?>
+			<script type="text/javascript">
+			<!--
+				jQuery(document).ready(function($) {
+					$('input.<?php echo esc_attr( $option_id ); ?>').click('click', function(){
+						var answer = confirm( "<?php echo esc_attr($confirm_message); ?>" );
+						return answer;
+					});
+				});
+			//-->
+			</script>
+<?php 			
+			}
 		}
 		
 		/**
@@ -865,8 +871,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function print_select_field($args) {
 			extract ( $args );
 			
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before )) echo $before;
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 			
@@ -878,8 +883,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			echo '</select>';
 			
-			if (isset ( $after ))
-				echo $after;
+			if ( isset( $after )) echo $after;
 		}
 		
 		/**
@@ -900,8 +904,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				);
 			$pages_query = new WP_Query( $query_args );
 			
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before )) echo $before;
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]" class="cuar-post-select">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 
@@ -942,8 +945,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 
 			wp_reset_postdata();
 			
-			if (isset ( $after ))
-				echo $after;
+			if ( isset( $after )) echo $after;
 		}
 		
 		public function get_submit_create_post_button_name( $option_id ) {
@@ -960,14 +962,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function print_owner_type_select_field($args) {
 			extract ( $args );
 			
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before )) echo $before;
 			
 			$po_addon = $this->plugin->get_addon ( "post-owner" );
 			$po_addon->print_owner_type_select_field ( $option_id, self::$OPTIONS_GROUP, $this->options [$option_id] );
 			
-			if (isset ( $after ))
-				echo $after;
+			if ( isset( $after )) echo $after;
 		}
 		
 		/**
@@ -980,15 +980,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function print_owner_select_field($args) {
 			extract ( $args );
 			
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before )) echo $before;
 			
 			$po_addon = $this->plugin->get_addon ( "post-owner" );
 			$po_addon->print_owner_select_field ( $owner_type_option_id, $option_id, self::$OPTIONS_GROUP, $this->options [$owner_type_option_id], $this->options [$option_id] );
 			$po_addon->print_owner_select_javascript ( $owner_type_option_id, $option_id );
 			
-			if (isset ( $after ))
-				echo $after;
+			if ( isset( $after )) echo $after;
 		}
 		
 		/**
@@ -1001,8 +999,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function print_role_select_field($args) {
 			extract ( $args );
 			
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before )) echo $before;
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 			
@@ -1028,8 +1025,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			echo '</select>';
 			
-			if (isset ( $after ))
-				echo $after;
+			if ( isset( $after )) echo $after;
 		}
 		
 		/**
@@ -1042,8 +1038,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function print_term_select_field($args) {
 			extract ( $args );
 			
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before )) echo $before;
 			
 			wp_dropdown_categories( array(
 					'taxonomy'			=> $taxonomy,
@@ -1056,8 +1051,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					'orderby'       	=> 'NAME',
 				) );
 			
-			if (isset ( $after ))
-				echo $after;
+			if ( isset( $after )) echo $after;
 		}
 		
 		/**
@@ -1070,8 +1064,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function print_theme_select_field($args) {
 			extract ( $args );
 			
-			if (isset ( $before ))
-				echo $before;
+			if ( isset( $before )) echo $before;
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 			
@@ -1111,8 +1104,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			echo '</select>';
 			
-			if (isset ( $after ))
-				echo $after;
+			if ( isset( $after )) echo $after;
 		}
 		
 		/* ------------ OTHER FUNCTIONS --------------------------------------------------------------------------------- */

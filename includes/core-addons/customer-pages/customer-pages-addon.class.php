@@ -564,10 +564,11 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 				'cuar_core_pages',
 				array(
 						'option_id' 	=> 'cuar_recreate_all_pages',
-						'label' 		=> __( 'Delete all & create all pages &raquo;', 'cuar' ),
+						'label' 		=> __( 'Reset all pages &raquo;', 'cuar' ),
 						'nonce_action' 	=> 'recreate_all_pages',
 						'nonce_name' 	=> 'cuar_recreate_all_pages_nonce',
-						'before'		=>  '<p>' . __( 'Delete all existing pages and recreate them (this operation cannot be undone).', 'cuar' ) . '</p>'
+						'before'		=>  '<p>' . __( 'Delete all existing pages and recreate them.', 'cuar' ) . '</p>',
+						'confirm_message'	=> __( 'Are you sure that you want to delete all existing pages and recreate them (this operation cannot be undone)?', 'cuar' )
 					)
 			);
 	}
@@ -625,7 +626,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 						'label' 		=> __( 'Recreate menu', 'cuar' ),
 						'nonce_action' 	=> 'recreate_navigation_menu',
 						'nonce_name' 	=> 'cuar_recreate_navigation_menu_nonce',
-						'before'		=>  '<p>' . __( 'Delete and recreate the main navigation menu (this operation cannot be undone).', 'cuar' ) . '</p>'
+						'before'		=>  '<p>' . __( 'Delete and recreate the main navigation menu.', 'cuar' ) . '</p>',
+						'confirm_message'	=> __( 'Are you sure that you want to recreate the main navigation menu (this operation cannot be undone)?', 'cuar' )
 					)
 			);
 		
@@ -722,7 +724,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 				$existing_page_id = $page->get_page_id();
 				
 				if ( $existing_page_id>0 ) {
-					wp_delete_post( $existing_page_id );
+					wp_delete_post( $existing_page_id, true );
 				}
 				
 				$page_id = apply_filters( 'cuar_do_create_page_' . $page->get_slug(), 0, $input );	

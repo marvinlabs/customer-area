@@ -24,8 +24,18 @@
 
 <form method="POST" action="">
 	<p >
-		<input type="submit" name="cuar-reset-all-settings" id="cuar-reset-all-settings" class="button button-primary" value="<?php esc_attr_e( 'Reset default settings', 'cuar' ); ?>" />
+		<input type="submit" name="cuar-reset-all-settings" id="cuar-reset-all-settings" class="button button-primary cuar-reset-all-settings" value="<?php esc_attr_e( 'Reset default settings', 'cuar' ); ?>" />
 	</p>
+	<script type="text/javascript">
+	<!--
+		jQuery(document).ready(function($) {
+			$('input.cuar-reset-all-settings').click('click', function(){
+				var answer = confirm( "<?php esc_attr_e('Are you sure that you want to reset all the settings to their default values (this operation cannot be undone)?', 'cuar'); ?>" );
+				return answer;
+			});
+		});
+	//-->
+	</script>
 </form>
 
 <h1><?php _e( 'Troubleshooting information', 'cuar' ); ?></h1>
