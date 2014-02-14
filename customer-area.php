@@ -69,14 +69,14 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.clas
 include_once( CUAR_INCLUDES_DIR . '/core-addons/help/help-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php' );
 
 // Core content types
 include_once( CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/private-file/private-file-addon.class.php' );
 
 // Core pages
-include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php' );
-
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-home/customer-home-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-dashboard/customer-dashboard-addon.class.php' );
 

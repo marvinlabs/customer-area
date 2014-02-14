@@ -34,6 +34,10 @@ abstract class CUAR_AddOn {
 
 		add_action( 'cuar_default_options', array( &$this, 'set_default_options' ) );
 		add_action( 'cuar_addons_init', array( &$this, 'run' ), 10 );
+		
+		if ( is_admin() ) {
+			add_action( 'cuar_after_addons_init', array( &$this, 'check_attention_needed' ), 10 );
+		}
 	}
 	
 	/** 
@@ -44,10 +48,6 @@ abstract class CUAR_AddOn {
 		
 		$cuar_plugin->register_addon( $this );		
 		$current_version = $cuar_plugin->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
-		
-		if ( is_admin() ) {
-			add_action('admin_notices', array( &$this, 'show_warnings' ) );
-		}
 		
 		$this->run_addon( $cuar_plugin );
 		
@@ -66,23 +66,7 @@ abstract class CUAR_AddOn {
 	 */
 	public abstract function run_addon( $cuar_plugin );
 	
-	/**
-	 * Shows a compatibity warning
-	 */
-	public function show_warnings() {
-		if ( $this->addon_name == null || $this->min_cuar_version==null ) {
-			echo '<div id="message" class="error">A customer area add-on MUST call the CUAR_AddOn constructor!</div>';
-			return;
-		} 
-					
-		global $cuar_plugin;
-		$current_version = $cuar_plugin->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
-		if ( $current_version<$this->min_cuar_version ) {
-			printf( '<div id="message" class="error"><p>%s</p></div>', 
-				sprintf( __( 'The "%1$s" add-on requires Customer Area %3$s. You are currently using version %2$s. '
-						. 'Please update the Customer Area plugin.', 'cuar' ), 
-					$this->addon_name, $current_version, $this->min_cuar_version ) );
-		}
+	public function check_attention_needed() {
 	}
 	
 	public function set_default_options( $defaults ) {
@@ -226,6 +210,10 @@ abstract class CUAR_AddOn {
 	
 	public static $STORE_URL = 'http://www.marvinlabs.com';
 	
+}
+
+function cuar_sort_addons_by_name_callback( $a, $b ) {
+	return strcmp( $a->addon_name, $b->addon_name );
 }
 
 endif; // CUAR_AddOn

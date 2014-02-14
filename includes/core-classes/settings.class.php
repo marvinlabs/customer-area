@@ -851,7 +851,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				<!--
 					jQuery(document).ready(function($) {
 						$('input.<?php echo esc_attr( $option_id ); ?>').click('click', function(){
-							var answer = confirm( "<?php echo esc_attr($confirm_message); ?>" );
+							var answer = confirm( "<?php echo str_replace( '"', '\\"', $confirm_message ); ?>" );
 							return answer;
 						});
 					});
@@ -1096,7 +1096,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					$theme_name = basename( $s );
 					$label = $theme_location['label'] . ' - ' . $theme_name;
 					$value = esc_attr ( $theme_location['base'] . '%%' . $theme_name );
-					$selected = ($this->options[$option_id] == $value || $this->options[$option_id] == $theme_location['url'] ) ? 'selected="selected"' : '';
+					$selected = ($this->options[$option_id] == $value ) ? 'selected="selected"' : '';
 					
 					echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 				}

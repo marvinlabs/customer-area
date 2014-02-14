@@ -41,7 +41,6 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 			add_filter( 'cuar_before_settings_cuar_addons', array( &$this, 'print_addons' ) );
 			add_filter( 'cuar_before_settings_cuar_troubleshooting', array( &$this, 'print_troubleshooting' ) );
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
-			add_filter( 'admin_init', array( &$this, 'handle_extra_actions' ) );
 			
 			$plugin_file = 'customer-area/customer-area.php';
 			add_filter( "plugin_action_links_{$plugin_file}", array( &$this, 'print_plugin_action_links' ), 10, 2 );
@@ -54,10 +53,6 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 				. __( 'Add-ons', 'cuar' ) . '</a>';
 		array_unshift( $links, $link );	
 		return $links;
-	}
-	
-	public function sort_addons_by_name_callback( $a, $b ) {
-		return strcmp( $a->addon_name, $b->addon_name );
 	}
 
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/
@@ -80,13 +75,6 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	 */
 	public function print_troubleshooting( $cuar_settings ) {
 		include( dirname( __FILE__ ) . '/templates/troubleshooting.template.php' );
-	}	
-	
-	public function handle_extra_actions() {
-		if ( isset( $_POST['cuar-reset-all-settings'] ) ) {
-			$this->plugin->reset_defaults();
-			$this->plugin->add_admin_notice( __('Settings have been resetted to default values', 'cuar'), 'updated' );
-		}
 	}
 	
 	public function add_dashboard_metaboxes() {	

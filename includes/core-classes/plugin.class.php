@@ -40,7 +40,8 @@ class CUAR_Plugin {
 		add_action( 'admin_init', array( &$this, 'check_versions' ) );
 		
 		if ( is_admin() ) {		
-			add_action( 'admin_notices', array( &$this, 'print_admin_notices' ));
+			add_action( 'admin_notices', array( &$this, 'print_admin_notices' ) );
+			add_action( 'admin_notices', array( &$this, 'show_attention_needed_message' ) );
 		} else {
 			add_action( 'plugins_loaded', array( &$this, 'load_theme_functions' ), 7 );
 		}
@@ -297,6 +298,69 @@ class CUAR_Plugin {
 		exit;
 	}
 
+	/*------- GENERAL MAINTENANCE -----------------------------------------------------------------------------------*/
+	
+	public function set_attention_needed( $section_id, $message ) {
+		$status_sections = get_option( self::$OPTION_STATUS_SECTIONS );
+		
+		if ( $status_sections==null ) $status_sections = array();
+		
+		if ( !empty( $message ) ) {
+			$status_sections[$section_id] = $message;
+		} else if ( isset( $status_sections[$section_id] ) ) {
+			unset( $status_sections[$section_id] );
+		}		
+		
+		update_option( self::$OPTION_STATUS_SECTIONS, $status_sections );
+	}
+	
+	public function clear_attention_needed( $section_id ) {
+		$status_sections = get_option( self::$OPTION_STATUS_SECTIONS );
+		unset( $status_sections[$section_id] );
+		update_option( self::$OPTION_STATUS_SECTIONS, $status_sections );
+	}
+	
+	public function is_attention_needed( $section_id ) {
+		$status_sections = get_option( self::$OPTION_STATUS_SECTIONS );
+
+		if ( $status_sections!=null 
+				&& isset( $status_sections[$section_id] )
+				&& !empty( $status_sections[$section_id] ) ) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public function get_attention_needed_messages() {
+		return get_option( self::$OPTION_STATUS_SECTIONS, array() );
+	}
+	
+	public function show_attention_needed_message() {
+		if ( isset( $_GET['page'] ) && $_GET['page']=='cuar-status' ) return;
+		
+		$status_sections = $this->get_attention_needed_messages();
+		if ( $status_sections==null || empty( $status_sections ) ) return;
+		
+		echo '<div id="message" class="error">';
+		
+		echo '<p>';
+		_e( 'The Customer Area plugin requires your attention. The issues we have detected are the following: ', 'cuar' );
+		echo '</p>';
+		echo '<ul class="cuar-with-bullets">';		
+		foreach ( $status_sections as $id => $message ) {
+			echo '<li>' . $message . '</li>';
+		}		
+		echo '</ul>';		
+		echo '<p><strong>';
+		printf( __( 'You can view the details of those issues and fix them on the <a href="%1$s">Customer Area status page</a>.', 'cuar' ),
+				admin_url('admin.php?page=cuar-status&cuar_section=needs-attention' ) );
+		echo '</strong></p>';
+		echo '</div>';
+	}
+
+	public static $OPTION_STATUS_SECTIONS = 'cuar_status_sections';
+	
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 	
 	/**
@@ -335,10 +399,15 @@ class CUAR_Plugin {
 	/**
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
-	public function load_addons() {
+	public function load_addons() {		
 		do_action( 'cuar_before_addons_init', $this );
 		do_action( 'cuar_addons_init', $this );
 		do_action( 'cuar_after_addons_init', $this );
+
+		// Check add-on versions
+		if ( is_admin() ) {
+			$this->check_addons_required_versions();
+		}
 	}
 	
 	/**
@@ -366,6 +435,28 @@ class CUAR_Plugin {
 	
 	public function has_commercial_addons() {
 		return !empty( $this->commercial_addons );
+	}
+	
+	/**
+	 * Shows a compatibity warning
+	 */
+	public function check_addons_required_versions() {
+		$current_version = $this->get_version();
+		$needs_attention = false;
+		
+		foreach ( $this->registered_addons as $id => $addon ) {
+			if ( $current_version < $addon->min_cuar_version ) {
+				$needs_attention = true;
+				break;
+			}
+		}
+		
+		if ( $needs_attention ) {
+			$this->set_attention_needed( 'outdated-plugin-version',
+					__('Some add-ons require a newer version of the main plugin.', 'cuar') );
+		} else {
+			$this->clear_attention_needed( 'outdated-plugin-version' );
+		}
 	}
 	
 	/**

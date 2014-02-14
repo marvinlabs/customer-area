@@ -134,6 +134,9 @@ jQuery(document).ready( function($) {
 	public function display_post_list_column( $column_name, $post_id ) {
 		if ( 'cuar_category' == $column_name ) {
 			$terms = get_the_terms( $post_id, 'cuar_private_page_category' );
+			
+			if ( $terms==false || is_wp_error( $terms ) ) return;
+			
 			$out = array();
 			$base_url = admin_url('edit.php?post_type=cuar_private_page&cuar_private_page_category=');
 			foreach ( $terms as $term ) {
