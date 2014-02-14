@@ -847,16 +847,16 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			if ( isset( $confirm_message ) && !empty( $confirm_message ) ) {
 ?>
-			<script type="text/javascript">
-			<!--
-				jQuery(document).ready(function($) {
-					$('input.<?php echo esc_attr( $option_id ); ?>').click('click', function(){
-						var answer = confirm( "<?php echo esc_attr($confirm_message); ?>" );
-						return answer;
+				<script type="text/javascript">
+				<!--
+					jQuery(document).ready(function($) {
+						$('input.<?php echo esc_attr( $option_id ); ?>').click('click', function(){
+							var answer = confirm( "<?php echo esc_attr($confirm_message); ?>" );
+							return answer;
+						});
 					});
-				});
-			//-->
-			</script>
+				//-->
+				</script>
 <?php 			
 			}
 		}
