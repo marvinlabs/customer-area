@@ -100,23 +100,22 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 		
 		$all_capability_groups = $this->get_configurable_capability_groups();
 
-		$selected_section_id = isset( $_POST['cuar_section'] ) ? $_POST['cuar_section'] : 'cuar_general';
-		$selected_section = $all_capability_groups[$selected_section_id];
-		
-		foreach ( $selected_section['groups'] as $group_id => $group ) {
-			$group_name = $group['group_name'];
-			$group_caps = $group['capabilities'];
-			
-			if ( empty( $group_caps ) ) continue;
+		foreach ( $all_capability_groups as $section_id => $section ) {
+			foreach ( $section['groups'] as $group_id => $group ) {
+				$group_name = $group['group_name'];
+				$group_caps = $group['capabilities'];
 				
-			foreach ( $group_caps as $cap => $cap_name ) {
-				foreach ( $roles as $role ) {
-					$name = str_replace( ' ', '-', $role->name . '_' . $cap );
-				
-					if ( isset( $_POST[ $name ] ) ) {
-						$role->add_cap( $cap );
-					} else {
-						$role->remove_cap( $cap );
+				if ( empty( $group_caps ) ) continue;
+					
+				foreach ( $group_caps as $cap => $cap_name ) {
+					foreach ( $roles as $role ) {
+						$name = str_replace( ' ', '-', $role->name . '_' . $cap );
+					
+						if ( isset( $_POST[ $name ] ) ) {
+							$role->add_cap( $cap );
+						} else {
+							$role->remove_cap( $cap );
+						}
 					}
 				}
 			}
