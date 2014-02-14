@@ -59,7 +59,7 @@ class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 		
 		// Widget area for our sidebar
 		if ( $this->pf_addon->is_enabled() ) {
-			$this->enable_sidebar( array( 'CUAR_PrivateFileCategoriesWidget', 'CUAR_PrivateFileDatesWidget', 'CUAR_PrivateFilesWidget' ) );
+			$this->enable_sidebar( array( 'CUAR_PrivateFileCategoriesWidget', 'CUAR_PrivateFileDatesWidget', 'CUAR_PrivateFilesWidget' ), true );
 		}
 		
 		if ( is_admin() ) { 
@@ -92,6 +92,20 @@ class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 	
 	protected function get_default_dashboard_block_title() {
 		return __( 'Recent Files', 'cuar' );
+	}
+	
+	protected function print_default_widgets() {
+		$default_widget_args = $this->get_default_widget_args();
+
+		$w = new CUAR_PrivateFileCategoriesWidget();
+		$w->widget( $default_widget_args, array(
+				'title'	=> __( 'Categories', 'cuar' ),
+		) );
+		
+		$w = new CUAR_PrivateFileDatesWidget();
+		$w->widget( $default_widget_args, array(
+				'title'	=> __( 'Archives', 'cuar' ),
+		) );
 	}
 	
 	/** @var CUAR_PrivateFileAddOn */

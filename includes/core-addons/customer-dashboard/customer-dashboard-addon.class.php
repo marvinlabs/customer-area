@@ -44,9 +44,9 @@ class CUAR_CustomerDashboardAddOn extends CUAR_AbstractPageAddOn {
 
 	public function run_addon( $plugin ) {
 		parent::run_addon( $plugin );		
-			
-		// Register the main widget area
-		$this->register_sidebar( 'cuar_customer_dashboard_content', __( 'Customer Area Dashboard', 'cuar' ) );
+		
+		// Widget area for our sidebar
+		$this->enable_sidebar();		
 	}	
 
 	protected function get_page_addon_path() {

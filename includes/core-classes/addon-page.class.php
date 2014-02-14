@@ -32,55 +32,13 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	public function __construct( $addon_id = null, $addon_name = null, $min_cuar_version = null ) {
 		parent::__construct( $addon_id, $addon_name, $min_cuar_version );
 	}
-	
-	protected function set_page_parameters( $priority, $description ) {
-		$this->page_priority = $priority;
-		$this->page_description = $description;
-		
-		if ( !isset( $this->page_description['requires_login'] )) {
-			$this->page_description['requires_login'] = true;
-		}
-		
-		if ( !isset( $this->page_description['parent_slug'] )) {
-			$this->page_description['parent_slug'] = '';
-		}
 
-		if ( !isset( $this->page_description['menu_order'] )) {
-			$this->page_description['menu_order'] = $priority;
-		}
-
-		if ( !isset( $this->page_description['required_capability'] )) {
-			$this->page_description['required_capability'] = '';
-		}
-		
-		if ( !isset( $this->page_description['hide_if_logged_in'] )) {
-			$this->page_description['hide_if_logged_in'] = false;
-		}
-		
-		if ( !isset( $this->page_description['hide_in_menu'] )) {
-			$this->page_description['hide_in_menu'] = false;
-		}
-		
-		if ( !isset( $this->page_description['always_include_in_menu'] )) {
-			$this->page_description['always_include_in_menu'] = false;
-		}
+	public function run_addon( $plugin ) {
+		add_filter( 'cuar_customer_pages', array( &$this, 'register_page' ), $this->page_priority );
+		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 2 );
 	}
 	
-	protected function set_page_shortcode( $shortcode_name, $shorcode_params = array() ) {
-		$this->shortcode = new CUAR_AddOnPageShortcode( $this, $shortcode_name, $shorcode_params );
-	}
-	
-	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
-	
-	protected abstract function get_page_addon_path();	
-	
-	public function register_page( $pages ) {
-		if ( $this->page_description!=null ) { 
-			$pages[ $this->get_slug() ] = $this;
-		}
-		
-		return $pages;
-	}
+	/*------- PAGE PARAMETERS ---------------------------------------------------------------------------------------*/
 	
 	public function get_priority() {
 		return $this->page_priority;
@@ -141,6 +99,51 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	public function is_accessible_to_current_user() {
 		$cap = $this->get_required_capability();
 		return apply_filters( 'cuar_is_page_accessible_to_current_user', empty( $cap ) || current_user_can( $cap ), $this );
+	}
+	
+	protected function set_page_parameters( $priority, $description ) {
+		$this->page_priority = $priority;
+		$this->page_description = $description;
+		
+		if ( !isset( $this->page_description['requires_login'] )) {
+			$this->page_description['requires_login'] = true;
+		}
+		
+		if ( !isset( $this->page_description['parent_slug'] )) {
+			$this->page_description['parent_slug'] = '';
+		}
+
+		if ( !isset( $this->page_description['menu_order'] )) {
+			$this->page_description['menu_order'] = $priority;
+		}
+
+		if ( !isset( $this->page_description['required_capability'] )) {
+			$this->page_description['required_capability'] = '';
+		}
+		
+		if ( !isset( $this->page_description['hide_if_logged_in'] )) {
+			$this->page_description['hide_if_logged_in'] = false;
+		}
+		
+		if ( !isset( $this->page_description['hide_in_menu'] )) {
+			$this->page_description['hide_in_menu'] = false;
+		}
+		
+		if ( !isset( $this->page_description['always_include_in_menu'] )) {
+			$this->page_description['always_include_in_menu'] = false;
+		}
+	}
+	
+	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
+	
+	protected abstract function get_page_addon_path();	
+	
+	public function register_page( $pages ) {
+		if ( $this->page_description!=null ) { 
+			$pages[ $this->get_slug() ] = $this;
+		}
+		
+		return $pages;
 	}
 	
 	public function get_child_pages() {
@@ -229,17 +232,17 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		}
 	}
 	
-	public function has_page_sidebar() {
-		return false;
-	}
-	
 	public function print_page_header( $args = array(), $shortcode_content = '' ) {		
 		$this->print_page_part( 'header' );
 	}
 	
-	public function print_page_sidebar( $args = array(), $shortcode_content = '' ) {
+	public function print_page_sidebar( $args = array(), $shortcode_content = '' ) {		
 		if ( $this->has_page_sidebar() ) {
-			$this->print_page_part( 'sidebar' );
+			if ( !$this->print_page_part( 'sidebar' ) ) {
+				if ( !dynamic_sidebar( $this->get_sidebar_id() ) ) {
+					$this->print_default_widgets();
+				}
+			}
 		}
 	}
 	
@@ -260,19 +263,60 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 				'templates' );
 
 		do_action( 'cuar_before_page_' . $part );
-		do_action( 'cuar_before_page_' . $part . '_' . $slug );		
+		do_action( 'cuar_before_page_' . $part . '_' . $slug );
 		
-		if ( !empty( $template ) ) include( $template );
+		if ( !empty( $template ) ) {		
+			include( $template );			
+		}
 		
 		do_action( 'cuar_after_page_' . $part . '_' . $slug );
 		do_action( 'cuar_after_page_' . $part );
+		
+		return !empty( $template );
+	}
+		
+	/*------- SIDEBAR HANDLING --------------------------------------------------------------------------------------*/
+
+	public function has_page_sidebar() {
+		if ( $this->is_sidebar_enabled ) {
+			if ( !is_active_sidebar( $this->get_sidebar_id() ) && !$this->has_default_sidebar ) {
+				return false;
+			}
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
-	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
-
-	public function run_addon( $plugin ) {
-		add_filter( 'cuar_customer_pages', array( &$this, 'register_page' ), $this->page_priority );
-		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 2 );
+	public function get_default_widget_args() {
+		return array( 
+				'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
+				'after_widget' 		=> "</aside>",
+				'before_title' 		=> '<h3 class="widget-title">',
+				'after_title' 		=> '</h3>',
+			);
+	}
+	
+	public function get_sidebar_id() {
+		return $this->get_slug() . '-sidebar';
+	}
+	
+	// Override this function to output some default widgets when sidebar is empty
+	protected function print_default_widgets() {
+	}
+	
+	protected function enable_sidebar( $widget_classes=array(), $has_default_sidebar=false ) {
+		$this->is_sidebar_enabled = apply_filters( 'cuar_enable_sidebar-' . $this->get_slug(), true );
+		$this->has_default_sidebar = apply_filters( 'cuar_enable_default_sidebar-' . $this->get_slug(), $has_default_sidebar );
+		
+		// Register widget classes
+		foreach ( $widget_classes as $w ) {
+			add_action( 'widgets_init', create_function( '', 'return register_widget("' . $w . '");' ) );
+		}
+			
+		// Register the sidebar
+		$this->register_sidebar( $this->get_sidebar_id(), sprintf( __( 'Customer Area Sidebar - %s', 'cuar' ), $this->get_title() ) );
 	}
 	
 	protected function register_sidebar( $id, $name ) {
@@ -286,6 +330,12 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 			) );
 	}
 	
+	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
+
+	protected function set_page_shortcode( $shortcode_name, $shorcode_params = array() ) {
+		$this->shortcode = new CUAR_AddOnPageShortcode( $this, $shortcode_name, $shorcode_params );
+	}
+	
 	protected $child_pages = null;
 	
 	/** @var int order for the page */
@@ -296,6 +346,10 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	
 	/** @var CUAR_AddOnPageShortcode shortcode that displays the page */
 	protected $shortcode = null;
+	
+	/** @var boolean did we enable a sidebar for this page? */
+	protected $is_sidebar_enabled = false;
+	protected $has_default_sidebar = false;
 	
 	protected $page_id = -1;
 	protected $page_url = '';

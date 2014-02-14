@@ -59,7 +59,7 @@ class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 		
 		// Widget area for our sidebar
 		if ( $this->pf_addon->is_enabled() ) {
-			$this->enable_sidebar( array( 'CUAR_PrivatePageCategoriesWidget', 'CUAR_PrivatePageDatesWidget', 'CUAR_PrivatePagesWidget' ) );
+			$this->enable_sidebar( array( 'CUAR_PrivatePageCategoriesWidget', 'CUAR_PrivatePageDatesWidget', 'CUAR_PrivatePagesWidget' ), true );
 		}
 		
 		if ( is_admin() ) { 
@@ -92,6 +92,20 @@ class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 	
 	protected function get_default_dashboard_block_title() {
 		return __( 'Recent Pages', 'cuar' );
+	}
+	
+	protected function print_default_widgets() {
+		$default_widget_args = $this->get_default_widget_args();
+
+		$w = new CUAR_PrivatePageCategoriesWidget();
+		$w->widget( $default_widget_args, array(
+				'title'	=> __( 'Categories', 'cuar' ),
+		) );
+		
+		$w = new CUAR_PrivatePageDatesWidget();
+		$w->widget( $default_widget_args, array(
+				'title'	=> __( 'Archives', 'cuar' ),
+		) );
 	}
 	
 	/** @var CUAR_PrivatePageAddOn */

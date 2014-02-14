@@ -314,26 +314,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		if ( get_post_type()==$this->get_friendly_post_type() )	return "WHERE 1=0";		
 		return $where;
 	}
-		
-	/*------- SIDEBAR HANDLING --------------------------------------------------------------------------------------*/
-	
-	protected function enable_sidebar( $widget_classes ) {
-		$this->is_sidebar_enabled = true;
-		
-		// Register widget classes
-		foreach ( $widget_classes as $w ) {
-			add_action( 'widgets_init', create_function( '', 'return register_widget("' . $w . '");' ) );
-		}
-			
-		// Register the sidebar
-		$this->register_sidebar( $this->get_slug() . '-sidebar', sprintf( __( '%s Sidebar', 'cuar' ), $this->get_label() ) );
-	}
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
-	
-	public function has_page_sidebar() {
-		return $this->is_sidebar_enabled;
-	}
 	
 	public function print_page_content( $args = array(), $shortcode_content = '' ) {
 		$po_addon = $this->plugin->get_addon('post-owner');
@@ -636,9 +618,6 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	public static $OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD	= '-max_items_on_dashboard';
 	
 	protected $enabled_settings = array();
-	
-	/** @var boolean did we enable a sidebar for this page? */
-	protected $is_sidebar_enabled = false;
 }
 
 endif; // CUAR_AbstractContentPageAddOn
