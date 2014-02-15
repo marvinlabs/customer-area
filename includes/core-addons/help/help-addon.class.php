@@ -16,7 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 
 if (!class_exists('CUAR_HelpAddOn')) :
 
@@ -28,12 +28,14 @@ if (!class_exists('CUAR_HelpAddOn')) :
 class CUAR_HelpAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'help', __( 'Help', 'cuar' ), '2.0.0' );
+		parent::__construct( 'help', '4.0.0' );
+	}
+	
+	public function get_addon_name() {
+		return __( 'Help', 'cuar' );
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-		
 		// We only do something within the admin interface
 		if ( is_admin() ) {
 			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 1000, 1 );
@@ -43,7 +45,6 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 			add_filter( 'cuar_before_settings_cuar_addons', array( &$this, 'print_addons' ) );
 			add_filter( 'cuar_before_settings_cuar_troubleshooting', array( &$this, 'print_troubleshooting' ) );
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
-			add_filter( 'admin_init', array( &$this, 'handle_extra_actions' ) );
 			
 			$plugin_file = 'customer-area/customer-area.php';
 			add_filter( "plugin_action_links_{$plugin_file}", array( &$this, 'print_plugin_action_links' ), 10, 2 );
@@ -78,13 +79,6 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	 */
 	public function print_troubleshooting( $cuar_settings ) {
 		include( dirname( __FILE__ ) . '/templates/troubleshooting.template.php' );
-	}	
-	
-	public function handle_extra_actions() {
-		if ( isset( $_POST['cuar-reset-all-settings'] ) ) {
-			$this->plugin->reset_defaults();
-			$this->plugin->add_admin_notice( __('Settings have been resetted to default values', 'cuar'), 'updated' );
-		}
 	}
 	
 	public function add_dashboard_metaboxes() {	
@@ -210,13 +204,9 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		
 		return $content;	
 	}
-	
-	/** @var CUAR_Plugin */
-	private $plugin;
 }
 
 // Make sure the addon is loaded
-global $cuar_he_addon;
-$cuar_he_addon = new CUAR_HelpAddOn();
+new CUAR_HelpAddOn();
 
 endif; // if (!class_exists('CUAR_HelpAddOn')) 

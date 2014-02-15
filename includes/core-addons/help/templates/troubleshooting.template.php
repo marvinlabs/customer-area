@@ -1,4 +1,4 @@
-<h1><?php _e( 'Getting support', 'cuar' ); ?></h1>
+<h2><?php _e( 'Getting support', 'cuar' ); ?></h2>
 
 <p><strong><?php _e( "Please note that we do not reply to support requests sent by email.", 'cuar' ); ?></strong> 
 <?php _e( 'If you have any problem, we have some resources that could help you:', 'cuar' ); ?></p>
@@ -18,42 +18,4 @@
 		'http://customer-area.marvinlabs.com/support/'); ?></li>
 </ul>
 
-<h1><?php _e( 'Reset settings', 'cuar' ); ?></h1>
-
-<p><?php _e('Pressing the button below will reset all your Customer Area settings to the default values. This cannot be undone!', 'cuar' ); ?></p>
-
-<form method="POST" action="">
-	<p >
-		<input type="submit" name="cuar-reset-all-settings" id="cuar-reset-all-settings" class="button button-primary" value="<?php esc_attr_e( 'Reset default settings', 'cuar' ); ?>" />
-	</p>
-</form>
-
-<h1><?php _e( 'Troubleshooting information', 'cuar' ); ?></h1>
-
-<h2><?php _e( 'Installed add-ons', 'cuar' ); ?></h2>
-
-<table class="widefat">
-	<thead>
-		<tr>
-			<th><?php _e( 'Name', 'cuar' ); ?></th>
-			<th><?php _e( 'Required customer area version', 'cuar' ); ?></th>
-		</tr>
-	</thead>
-	<tbody>
-<?php
-	global $cuar_plugin;
-	$addons =  $cuar_plugin->get_registered_addons();
-	foreach ( $addons as $id => $addon ) : ?>
-		<tr>
-			<td><?php echo $addon->addon_name; ?></td>
-			<td><?php echo $addon->min_cuar_version; ?></td>
-		</tr>
-<?php 
-	endforeach; ?>
-	</tbody>
-</table>
-<p>&nbsp;</p>
-
-<h2><?php _e( 'Plugin options', 'cuar' ); ?></h2>
-<pre><?php echo esc_html( print_r($cuar_settings->get_options(), true )); ?></pre>
 <p>&nbsp;</p>

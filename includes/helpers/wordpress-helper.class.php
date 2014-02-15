@@ -35,9 +35,11 @@ class CUAR_WordPressHelper {
 	 */
 	public static function getRoleDisplayName( $id ) {
 		global $wp_roles;
+		if ( !isset( $wp_roles ) ) $wp_roles = new WP_Roles();
+		
 		return isset( $wp_roles->role_names[ $id ] )
-		? $wp_roles->role_names[ $id ]
-		: $id;
+				? $wp_roles->role_names[ $id ]
+				: $id;
 	}
 
 	/**

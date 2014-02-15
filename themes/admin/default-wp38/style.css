@@ -21,6 +21,78 @@ span.label {
 	min-width: 200px;
 }
 
+/* -= Status */
+
+.cuar-congrats {
+	margin: 5px 0 15px;
+	padding: 1px 12px;
+	background: #fff;
+	border-left: 4px solid #7ad03a;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+		    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+	
+.cuar-congrats p {	    
+	font-size: 120%;
+}
+
+p.cuar-needs-attention {
+	border-left: 4px solid #dd3d36;
+}
+
+tr.cuar-needs-attention td {
+	background: #dd3d36;
+	color: #fff;
+}
+
+div.cuar-needs-attention {
+	margin: 5px 0 15px;
+	padding: 1px 12px;
+	background: #fff;
+	border-left: 4px solid #dd3d36;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+		    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+div.cuar-needs-attention p {
+	margin: .5em 0;
+	padding: 2px;
+}
+
+.cuar-needs-attention .cuar-suggested-action {
+	margin-top: 20px;
+	padding: 20px 0 15px;
+	font-weight: bold;
+	font-size: 120%;
+	border-top: 1px #e0e0e0 solid;
+}
+
+.cuar-needs-attention .cuar-suggested-action .text {
+	display: inline-block; 
+	min-width: 150px;
+}
+
+.cuar-needs-attention .cuar-suggested-action .button {
+	margin: 0 30px;
+	min-width: 180px;
+	text-align: center;
+}
+
+.cuar-status-section h2 {
+	margin: 20px 0 30px;
+}
+
+.error ul.cuar-with-bullets {
+	padding: 0 0 0 40px;
+	list-style-type: disc;
+}
+
+/* -= POST LISTING */
+
+.fixed .column-cuar_category {
+	width: 15%;
+}
+
 /* -= CONVERSATIONS ADMIN */
 
 .column-cuar_reply_count {
@@ -72,6 +144,34 @@ span.label {
 	margin-top: 35px;
 }
 
+.cuar-ajax-container {
+	margin: 0 15px;
+	font-size: 0.8em;
+}
+.cuar-ajax-running {
+	color: #666;
+	animation: blinker 1s linear infinite; 
+}
+@keyframes blinker {  
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }  
+  100% { opacity: 1; }
+}
+.cuar-ajax-success {
+	color: #006400;
+}
+.cuar-ajax-failure {
+	color: #B22222;
+}
+
+.cuar-capabilities .label {
+	max-width: 25%;
+}
+
+.cuar-capabilities .value {
+	width: 90px;
+}
+
 /* -= ADMIN MENU & ICONS */
 
 #adminmenu #toplevel_page_customer-area div.wp-menu-image:before {
@@ -86,6 +186,16 @@ span.label {
 .dashboard-logo img {
 	max-width: 100%;
 	height: auto; 
+}
+
+#adminmenu span.cuar-menu-divider {
+	display:block; 
+	margin: 0px 5px 12px -5px; 
+	padding:0; 
+	height:1px; 
+	line-height:1px; 
+	background:#ddd; 
+	opacity: 0.5;
 }
 
 /* -= SETTINGS SIDEBOXES */
@@ -114,10 +224,6 @@ span.label {
 .cuar-sidebox div.cuar-sidebox-content {
 	background: #fafafa;
 	padding: 7px 20px;
-}
-
-.cuar-main .cuar-section-description {
-	padding: 5px 10px;
 }
 
 /* -= ADD-ONS TAB */
@@ -232,10 +338,26 @@ p.forcelinebreak {
 	max-width: 600px;
 }
 
-.cuar-settings ul:not(.tab-wrapper) {
+.cuar-settings ul:not(.tab-wrapper, .select2-choices) {
 	list-style-type: disc;
 	padding-left: 2em;
 	max-width: 600px;
+}
+
+.cuar-settings p.cuar-section-info {
+	max-width: 100%;
+}
+ 
+.wp-admin .cuar-settings select.cuar-post-select {
+	min-width: 200px;
+}
+
+.cuar-main .cuar-section-description {
+	padding: 5px 10px;
+}
+
+.wp-admin .cuar-settings .cuar-submit-create-post {
+	margin: 1px 25px;
 }
 
 .cuar-wizard ul li {

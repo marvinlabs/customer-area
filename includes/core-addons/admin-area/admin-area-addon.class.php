@@ -16,7 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 
 if (!class_exists('CUAR_AdminAreaAddOn')) :
 
@@ -28,16 +28,18 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
 class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'admin-area', __( 'Administration Area', 'cuar' ), '2.0.0' );
+		parent::__construct( 'admin-area', '4.0.0' );
+	}
+	
+	public function get_addon_name() {
+		return __( 'Administration Area', 'cuar' );
 	}
 
-	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-		
+	public function run_addon( $plugin ) {		
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
 			add_action( 'cuar_version_upgraded', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
+			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ), 5 );
 
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
 		} 
@@ -136,16 +138,20 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	 * @param array $groups
 	 * @return number
 	 */
-	public function declare_configurable_capabilities( $groups ) {
-		$group = array(
-				'group_name' => __( 'Back-office', 'cuar' ), 
-				'capabilities' => array( 
-						'view-customer-area-menu' => __( 'View the menu', 'cuar' ) 
-					) 
+	public function get_configurable_capability_groups( $capability_groups ) {
+		$capability_groups[ 'cuar_general' ] = array(
+				'label'		=> __( 'General', 'cuar' ),
+				'groups'	=> array(
+						'back-office' 	=> array( 
+								'group_name' => __( 'Back-office', 'cuar' ), 
+								'capabilities' => array( 
+										'view-customer-area-menu' => __( 'View the menu', 'cuar' ) 
+								)
+							) 
+					)
 			);
 		
-		array_unshift( $groups, $group );
-		return $groups;
+		return $capability_groups;
 	}
 
 	/**
@@ -201,16 +207,12 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 			}
 		}
 	}
-	
-	/** @var CUAR_Plugin */
-	private $plugin;
-	
+		
 	/** @var string */
 	private $pagehook;
 }
 
 // Make sure the addon is loaded
-global $cuar_admin_area_addon;
-$cuar_admin_area_addon = new CUAR_AdminAreaAddOn();
+new CUAR_AdminAreaAddOn();
 
 endif; // if (!class_exists('CUAR_AdminAreaAddOn')) 

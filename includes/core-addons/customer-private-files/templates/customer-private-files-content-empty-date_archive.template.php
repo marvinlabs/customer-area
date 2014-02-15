@@ -1,0 +1,1 @@
+<p><?php _e( 'There are no files for that period.', 'cuar' ); ?></p>

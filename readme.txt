@@ -2,9 +2,9 @@
 Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
-Requires at least: 3.5
+Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 3.9.1
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,7 @@ or download them on his page.
 * [Demo](http://customer-area.marvinlabs.com/demo)
 * [Add-ons](http://www.marvinlabs.com/downloads/category/customer-area)
 * [Translations](http://customer-area.marvinlabs.com/documentation/translations/)
+* [GitHub repository for contributors](https://github.com/marvinlabs/customer-area)
 
 **Current features**
 
@@ -78,7 +79,16 @@ customisation has been done to the plugin or to the add-ons.
 	
 == Upgrade Notice ==
 
-= Upgrading from 2.x to 3.0.0 =
+= Upgrading from 3.x to 4.x =
+
+Version 4 introduces a brand new menu system and breaks many templates that have been there in version 3.x. Coming 
+from that version, you will need to create the pages that are necessary to display the private content types. Before
+upgrading the plugin, backup your files and database. It is advised that you attempt the upgrade on a development 
+site first.
+
+
+
+= Upgrading from 2.x to 3.x =
 
 Because version 3 introduces a new layout for the customer area, template files for displaying files and pages 
 have been renamed and reorganised. If you have customized them, be warned that you will need to change your 
@@ -159,9 +169,23 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 4.0.0 (2014/02/15) =
+
+**THIS IS A MAJOR UPDATE - PLEASE MAKE SOME TESTS ON YOUR DEVELOPMENT AND TEST SITES BEFORE UPGRADING YOUR LIVE WEBSITE**
+
+* Completely changed the way information is displayed in the frontend. Now the plugin uses a system of pages similar to the one used by WooCommerce for example. 
+This has allowed greater possibilities for customization (Widget areas, more templates to override, ...)
+* The customer area main navigation menu now is a WordPress menu that can be customized just like any other WordPress menu (from the admin page: "Appearance" > "Menus")
+* Restructured the options page. It now has less tabs and should group options in a more logical way. If you have commercial add-ons, you may need to enter their
+license key again. These are available by logging-in with your credentials at http://www.marvinlabs.com/shop/your-account/
+* Added category column in the admin page for private files and private pages (A pending feature request from several users)
+* Refactored a lot of code to make the plugin ligher and more efficient. Should also reduce the amount of duplicated code and thus the potential hidden bugs. 
+* Add possibility to include a function file in your Customer Area theme (See included frontend theme: default-v4). Works like WordPress' functions.php file for themes
+except that this file should be located in your Customer Area theme folder (not the WordPress theme's folder) and it should be named 'cuar-functions.php'
+
 = 3.9.1 (2014/02/07) =
 
-* Bug fix for 0-byte file downloads (http://customer-area.marvinlabs.com/support/topic/cannot-download-private-files-with-android/)
+* Added lot of mime types, this should fix th "0 bytes downloads" bug on old browsers.
 
 = 3.9.0 (2014/01/23) =
 

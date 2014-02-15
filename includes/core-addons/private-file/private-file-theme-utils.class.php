@@ -35,8 +35,9 @@ class CUAR_PrivateFileThemeUtils {
 		if ( !$post_id ) $post_id = get_the_ID();		
 		if ( !$post_id ) return '';
 		
-		global $cuar_pf_addon;
-		return $cuar_pf_addon->get_file_permalink( $post_id, $action );
+		global $cuar_plugin;
+		$pf_addon = $cuar_plugin->get_addon('private-files');
+		return $pf_addon->get_file_permalink( $post_id, $action );
 	}
 
 	/**

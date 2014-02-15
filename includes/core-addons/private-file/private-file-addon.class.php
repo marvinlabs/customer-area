@@ -16,11 +16,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/addon.class.php' );
 require_once( CUAR_INCLUDES_DIR . '/helpers/template-functions.class.php' );
 
 require_once( dirname(__FILE__) . '/private-file-admin-interface.class.php' );
-require_once( dirname(__FILE__) . '/private-file-frontend-interface.class.php' );
 require_once( dirname(__FILE__) . '/private-file-theme-utils.class.php' );
 
 if (!class_exists('CUAR_PrivateFileAddOn')) :
@@ -33,36 +32,56 @@ if (!class_exists('CUAR_PrivateFileAddOn')) :
 class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'private-files', __( 'Private Files', 'cuar' ), '2.0.0' );
+		parent::__construct( 'private-files', '4.0.0' );
+	}
+	
+	public function get_addon_name() {
+		return __( 'Private Files', 'cuar' );
 	}
 
 	public function run_addon( $plugin ) {
-		$this->plugin = $plugin;
-
-		if ( $plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_ENABLE_ADDON ) ) {
+		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
 			
-			add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
-			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
-			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
-			
 			add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
-			
 			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 			
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
+			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ) );
 		}
 				
 		// Init the admin interface if needed
 		if ( is_admin() ) {
 			$this->admin_interface = new CUAR_PrivateFileAdminInterface( $plugin, $this );
-		} else {
-			$this->frontend_interface = new CUAR_PrivateFileFrontendInterface( $plugin, $this );
-		}
+		} 
 	}	
 	
-	/*------- GENERAL MAINTAINANCE FUNCTIONS -------------------------------------------------------------------------*/
+	/**
+	 * Set the default values for the options
+	 * 
+	 * @param array $defaults
+	 * @return array
+	 */
+	public function set_default_options( $defaults ) {
+		$defaults = parent::set_default_options($defaults);
+		
+		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
+		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
+		
+		return $defaults;
+	}
+	
+	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
+	
+	public function is_enabled() {
+		return $this->plugin->get_option( self::$OPTION_ENABLE_ADDON );
+	}
+	
+	public function get_ftp_path() {
+		return $this->plugin->get_option( self::$OPTION_FTP_PATH );
+	}
+	
+	/*------- GENERAL MAINTAINANCE FUNCTIONS ------------------------------------------------------------------------*/
 	
 	/**
 	 * Delete the files when a post is deleted
@@ -83,7 +102,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		}
 	}
 	
-	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
+	/*------- FUNCTIONS TO ACCESS THE POST META ---------------------------------------------------------------------*/
 
 	/**
 	 * Get the name of the file associated to the given post
@@ -138,31 +157,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param int $post_id
 	 * @param string $action
 	 */
-	public function get_file_permalink( $post_id, $action = 'download' ) {
-		global $wp_rewrite;
-		
-		$url = get_permalink( $post_id );
-		
-		if ( $wp_rewrite->using_permalinks() ) {
-			$url = trailingslashit( $url );
-	
-			if ( $action=="download" ) {
-				$url .= 'download-file';
-			} else if ( $action=="view" ) {
-				$url .= 'view-file';
-			} else {
-				cuar_log_debug( "CUAR_PrivateFileAddOn::get_file_permalink - unknown action" );
-			}
-		} else {
-			if ( $action=="download" ) {
-				$url .= '&' . 'download-file' . '=1';
-			} else if ( $action=="view" ) {
-				$url .= '&' . 'view-file' . '=1';
-			} else {
-				cuar_log_debug( "CUAR_PrivateFileAddOn::get_file_permalink - unknown action" );
-			}
-		}
-		
+	public function get_file_permalink( $post_id, $action = 'download' ) {		
+		$cpf_addon = $this->plugin->get_addon('customer-private-files');
+		$url = $cpf_addon->get_single_private_content_action_url( $post_id, $action );		
 		return $url;
 	}
 	
@@ -350,16 +347,13 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		// If not a known action, do nothing
 		$action = get_query_var( 'cuar_action' );
-		if ( $action!='download-file' && $action!='view-file' ) {
+		if ( $action!='download' && $action!='view' ) {
 			return;
 		}
 		
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
-			$cp_addon = $this->plugin->get_addon( 'customer-page' );
-			$url = $cp_addon->get_customer_page_url( '', $_SERVER['REQUEST_URI'] );
-			wp_redirect( $url );
-			exit;
+			$this->plugin->login_then_redirect_to_url( $_SERVER['REQUEST_URI'] );
 		}
 
 		$po_addon = $this->plugin->get_addon('post-owner');
@@ -380,7 +374,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$file_name = $this->get_file_name( $post->ID );
 		$file_path = $po_addon->get_private_file_path( $file_name, $post->ID );
 		
-		if ( $action=='download-file' ) {			
+		if ( $action=='download' ) {			
 			if ( $author_id!=$current_user_id ) {
 				$this->increment_file_download_count( $post->ID );
 			}
@@ -388,7 +382,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			do_action( 'cuar_private_file_download', $post->ID, $current_user_id, $this );	
 					
 			$this->output_file( $file_path, $file_name, $file_type, 'download' );
-		} else if ( $action=='view-file' ) {			
+		} else if ( $action=='view' ) {			
 			if ( $author_id!=$current_user_id ) {
 				$this->increment_file_download_count( $post->ID );
 			}
@@ -418,197 +412,197 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$size = filesize( $file );
 		$name = rawurldecode( $name );
 
-		$known_mime_types = array(                
-				"323"        => "text/h323",
-                "acx"        => "application/internet-property-stream",
-                "ai"         => "application/postscript",
-                "aif"        => "audio/x-aiff",
-                "aifc"       => "audio/x-aiff",
-                "aiff"       => "audio/x-aiff",
-                "asf"        => "video/x-ms-asf",
-                "asr"        => "video/x-ms-asf",
-                "asx"        => "video/x-ms-asf",
-                "au"         => "audio/basic",
-                "avi"        => "video/x-msvideo",
-                "axs"        => "application/olescript",
-                "bas"        => "text/plain",
-                "bcpio"      => "application/x-bcpio",
-                "bin"        => "application/octet-stream",
-                "bmp"        => "image/bmp",
-                "c"          => "text/plain",
-                "cat"        => "application/vnd.ms-pkiseccat",
-                "cdf"        => "application/x-cdf",
-                "cdf"        => "application/x-netcdf",
-                "cer"        => "application/x-x509-ca-cert",
-                "class"      => "application/octet-stream",
-                "clp"        => "application/x-msclip",
-                "cmx"        => "image/x-cmx",
-                "cod"        => "image/cis-cod",
-                "cpio"       => "application/x-cpio",
-                "crd"        => "application/x-mscardfile",
-                "crl"        => "application/pkix-crl",
-                "crt"        => "application/x-x509-ca-cert",
-                "csh"        => "application/x-csh",
-                "css"        => "text/css",
-                "dcr"        => "application/x-director",
-                "der"        => "application/x-x509-ca-cert",
-                "dir"        => "application/x-director",
-                "dll"        => "application/x-msdownload",
-                "dms"        => "application/octet-stream",
-                "doc"        => "application/msword",
-                "dot"        => "application/msword",
-                "dvi"        => "application/x-dvi",
-                "dxr"        => "application/x-director",
-                "eps"        => "application/postscript",
-                "etx"        => "text/x-setext",
-                "evy"        => "application/envoy",
-                "exe"        => "application/octet-stream",
-                "fif"        => "application/fractals",
-                "flr"        => "x-world/x-vrml",
-                "gif"        => "image/gif",
-                "gtar"       => "application/x-gtar",
-                "gz"         => "application/x-gzip",
-                "h"          => "text/plain",
-                "hdf"        => "application/x-hdf",
-                "hlp"        => "application/winhlp",
-                "hqx"        => "application/mac-binhex40",
-                "hta"        => "application/hta",
-                "htc"        => "text/x-component",
-                "htm"        => "text/html",
-                "html"       => "text/html",
-                "htt"        => "text/webviewhtml",
-                "ico"        => "image/x-icon",
-                "ief"        => "image/ief",
-                "iii"        => "application/x-iphone",
-                "ins"        => "application/x-internet-signup",
-                "isp"        => "application/x-internet-signup",
-                "jfif"       => "image/pipeg",
-                "jpe"        => "image/jpeg",
-                "jpeg"       => "image/jpeg",
-                "jpg"        => "image/jpeg",
-                "js"         => "application/x-javascript",
-                "latex"      => "application/x-latex",
-                "lha"        => "application/octet-stream",
-                "lsf"        => "video/x-la-asf",
-                "lsx"        => "video/x-la-asf",
-                "lzh"        => "application/octet-stream",
-                "m13"        => "application/x-msmediaview",
-                "m14"        => "application/x-msmediaview",
-                "m3u"        => "audio/x-mpegurl",
-                "man"        => "application/x-troff-man",
-                "mdb"        => "application/x-msaccess",
-                "me"         => "application/x-troff-me",
-                "mht"        => "message/rfc822",
-                "mhtml"      => "message/rfc822",
-                "mid"        => "audio/mid",
-                "mny"        => "application/x-msmoney",
-                "mov"        => "video/quicktime",
-                "movie"      => "video/x-sgi-movie",
-                "mp2"        => "video/mpeg",
-                "mp3"        => "audio/mpeg",
-                "mpa"        => "video/mpeg",
-                "mpe"        => "video/mpeg",
-                "mpeg"       => "video/mpeg",
-                "mpg"        => "video/mpeg",
-                "mpp"        => "application/vnd.ms-project",
-                "mpv2"       => "video/mpeg",
-                "ms"         => "application/x-troff-ms",
-                "msg"        => "application/vnd.ms-outlook",
-                "mvb"        => "application/x-msmediaview",
-                "nc"         => "application/x-netcdf",
-                "nws"        => "message/rfc822",
-                "oda"        => "application/oda",
-                "p10"        => "application/pkcs10",
-                "p12"        => "application/x-pkcs12",
-                "p7b"        => "application/x-pkcs7-certificates",
-                "p7c"        => "application/x-pkcs7-mime",
-                "p7m"        => "application/x-pkcs7-mime",
-                "p7r"        => "application/x-pkcs7-certreqresp",
-                "p7s"        => "application/x-pkcs7-signature",
-                "pbm"        => "image/x-portable-bitmap",
-                "pdf"        => "application/pdf",
-                "pfx"        => "application/x-pkcs12",
-                "pgm"        => "image/x-portable-graymap",
-                "pko"        => "application/ynd.ms-pkipko",
-                "pma"        => "application/x-perfmon",
-                "pmc"        => "application/x-perfmon",
-                "pml"        => "application/x-perfmon",
-                "pmr"        => "application/x-perfmon",
-                "pmw"        => "application/x-perfmon",
-                "pnm"        => "image/x-portable-anymap",
-                "pot"        => "application/vnd.ms-powerpoint",
-                "ppm"        => "image/x-portable-pixmap",
-                "pps"        => "application/vnd.ms-powerpoint",
-                "ppt"        => "application/vnd.ms-powerpoint",
-                "prf"        => "application/pics-rules",
-                "ps"         => "application/postscript",
-                "pub"        => "application/x-mspublisher",
-                "qt"         => "video/quicktime",
-                "ra"         => "audio/x-pn-realaudio",
-                "ram"        => "audio/x-pn-realaudio",
-                "ras"        => "image/x-cmu-raster",
-                "rgb"        => "image/x-rgb",
-                "rmi"        => "audio/mid",
-                "roff"       => "application/x-troff",
-                "rtf"        => "application/rtf",
-                "rtx"        => "text/richtext",
-                "scd"        => "application/x-msschedule",
-                "sct"        => "text/scriptlet",
-                "setpay"     => "application/set-payment-initiation",
-                "setreg"     => "application/set-registration-initiation",
-                "sh"         => "application/x-sh",
-                "shar"       => "application/x-shar",
-                "sit"        => "application/x-stuffit",
-                "snd"        => "audio/basic",
-                "spc"        => "application/x-pkcs7-certificates",
-                "spl"        => "application/futuresplash",
-                "src"        => "application/x-wais-source",
-                "sst"        => "application/vnd.ms-pkicertstore",
-                "stl"        => "application/vnd.ms-pkistl",
-                "stm"        => "text/html",
-                "sv4cpio"    => "application/x-sv4cpio",
-                "sv4crc"     => "application/x-sv4crc",
-                "svg"        => "image/svg+xml",
-                "swf"        => "application/x-shockwave-flash",
-                "t"          => "application/x-troff",
-                "tar"        => "application/x-tar",
-                "tcl"        => "application/x-tcl",
-                "tex"        => "application/x-tex",
-                "texi"       => "application/x-texinfo",
-                "texinfo"    => "application/x-texinfo",
-                "tgz"        => "application/x-compressed",
-                "tif"        => "image/tiff",
-                "tiff"       => "image/tiff",
-                "tr"         => "application/x-troff",
-                "trm"        => "application/x-msterminal",
-                "tsv"        => "text/tab-separated-values",
-                "txt"        => "text/plain",
-                "uls"        => "text/iuls",
-                "ustar"      => "application/x-ustar",
-                "vcf"        => "text/x-vcard",
-                "vrml"       => "x-world/x-vrml",
-                "wav"        => "audio/x-wav",
-                "wcm"        => "application/vnd.ms-works",
-                "wdb"        => "application/vnd.ms-works",
-                "wks"        => "application/vnd.ms-works",
-                "wmf"        => "application/x-msmetafile",
-                "wps"        => "application/vnd.ms-works",
-                "wri"        => "application/x-mswrite",
-                "wrl"        => "x-world/x-vrml",
-                "wrz"        => "x-world/x-vrml",
-                "xaf"        => "x-world/x-vrml",
-                "xbm"        => "image/x-xbitmap",
-                "xla"        => "application/vnd.ms-excel",
-                "xlc"        => "application/vnd.ms-excel",
-                "xlm"        => "application/vnd.ms-excel",
-                "xls"        => "application/vnd.ms-excel",
-                "xlt"        => "application/vnd.ms-excel",
-                "xlw"        => "application/vnd.ms-excel",
-                "xof"        => "x-world/x-vrml",
-                "xpm"        => "image/x-xpixmap",
-                "xwd"        => "image/x-xwindowdump",
-                "z"          => "application/x-compress",
-                "zip"        => "application/zip"
+		$known_mime_types = array(
+				"323"		=> "text/h323",
+				"acx"		=> "application/internet-property-stream",
+				"ai"		=> "application/postscript",
+				"aif"		=> "audio/x-aiff",
+				"aifc"		=> "audio/x-aiff",
+				"aiff"		=> "audio/x-aiff",
+				"asf"		=> "video/x-ms-asf",
+				"asr"		=> "video/x-ms-asf",
+				"asx"		=> "video/x-ms-asf",
+				"au"		=> "audio/basic",
+				"avi"		=> "video/x-msvideo",
+				"axs"		=> "application/olescript",
+				"bas"		=> "text/plain",
+				"bcpio"		=> "application/x-bcpio",
+				"bin"		=> "application/octet-stream",
+				"bmp"		=> "image/bmp",
+				"c"			=> "text/plain",
+				"cat"		=> "application/vnd.ms-pkiseccat",
+				"cdf"		=> "application/x-cdf",
+				"cdf"		=> "application/x-netcdf",
+				"cer"		=> "application/x-x509-ca-cert",
+				"class"		=> "application/octet-stream",
+				"clp"		=> "application/x-msclip",
+				"cmx"		=> "image/x-cmx",
+				"cod"		=> "image/cis-cod",
+				"cpio"		=> "application/x-cpio",
+				"crd"		=> "application/x-mscardfile",
+				"crl"		=> "application/pkix-crl",
+				"crt"		=> "application/x-x509-ca-cert",
+				"csh"		=> "application/x-csh",
+				"css"		=> "text/css",
+				"dcr"		=> "application/x-director",
+				"der"		=> "application/x-x509-ca-cert",
+				"dir"		=> "application/x-director",
+				"dll"		=> "application/x-msdownload",
+				"dms"		=> "application/octet-stream",
+				"doc"		=> "application/msword",
+				"dot"		=> "application/msword",
+				"dvi"		=> "application/x-dvi",
+				"dxr"		=> "application/x-director",
+				"eps"		=> "application/postscript",
+				"etx"		=> "text/x-setext",
+				"evy"		=> "application/envoy",
+				"exe"		=> "application/octet-stream",
+				"fif"		=> "application/fractals",
+				"flr"		=> "x-world/x-vrml",
+				"gif"		=> "image/gif",
+				"gtar"		=> "application/x-gtar",
+				"gz"		=> "application/x-gzip",
+				"h"			=> "text/plain",
+				"hdf"		=> "application/x-hdf",
+				"hlp"		=> "application/winhlp",
+				"hqx"		=> "application/mac-binhex40",
+				"hta"		=> "application/hta",
+				"htc"		=> "text/x-component",
+				"htm"		=> "text/html",
+				"html"		=> "text/html",
+				"htt"		=> "text/webviewhtml",
+				"ico"		=> "image/x-icon",
+				"ief"		=> "image/ief",
+				"iii"		=> "application/x-iphone",
+				"ins"		=> "application/x-internet-signup",
+				"isp"		=> "application/x-internet-signup",
+				"jfif"		=> "image/pipeg",
+				"jpe"		=> "image/jpeg",
+				"jpeg"		=> "image/jpeg",
+				"jpg"		=> "image/jpeg",
+				"js"		=> "application/x-javascript",
+				"latex"		=> "application/x-latex",
+				"lha"		=> "application/octet-stream",
+				"lsf"		=> "video/x-la-asf",
+				"lsx"		=> "video/x-la-asf",
+				"lzh"		=> "application/octet-stream",
+				"m13"		=> "application/x-msmediaview",
+				"m14"		=> "application/x-msmediaview",
+				"m3u"		=> "audio/x-mpegurl",
+				"man"		=> "application/x-troff-man",
+				"mdb"		=> "application/x-msaccess",
+				"me"		=> "application/x-troff-me",
+				"mht"		=> "message/rfc822",
+				"mhtml"		=> "message/rfc822",
+				"mid"		=> "audio/mid",
+				"mny"		=> "application/x-msmoney",
+				"mov"		=> "video/quicktime",
+				"movie"		=> "video/x-sgi-movie",
+				"mp2"		=> "video/mpeg",
+				"mp3"		=> "audio/mpeg",
+				"mpa"		=> "video/mpeg",
+				"mpe"		=> "video/mpeg",
+				"mpeg"		=> "video/mpeg",
+				"mpg"		=> "video/mpeg",
+				"mpp"		=> "application/vnd.ms-project",
+				"mpv2"		=> "video/mpeg",
+				"ms"		=> "application/x-troff-ms",
+				"msg"		=> "application/vnd.ms-outlook",
+				"mvb"		=> "application/x-msmediaview",
+				"nc"		=> "application/x-netcdf",
+				"nws"		=> "message/rfc822",
+				"oda"		=> "application/oda",
+				"p10"		=> "application/pkcs10",
+				"p12"		=> "application/x-pkcs12",
+				"p7b"		=> "application/x-pkcs7-certificates",
+				"p7c"		=> "application/x-pkcs7-mime",
+				"p7m"		=> "application/x-pkcs7-mime",
+				"p7r"		=> "application/x-pkcs7-certreqresp",
+				"p7s"		=> "application/x-pkcs7-signature",
+				"pbm"		=> "image/x-portable-bitmap",
+				"pdf"		=> "application/pdf",
+				"pfx"		=> "application/x-pkcs12",
+				"pgm"		=> "image/x-portable-graymap",
+				"pko"		=> "application/ynd.ms-pkipko",
+				"pma"		=> "application/x-perfmon",
+				"pmc"		=> "application/x-perfmon",
+				"pml"		=> "application/x-perfmon",
+				"pmr"		=> "application/x-perfmon",
+				"pmw"		=> "application/x-perfmon",
+				"pnm"		=> "image/x-portable-anymap",
+				"pot"		=> "application/vnd.ms-powerpoint",
+				"ppm"		=> "image/x-portable-pixmap",
+				"pps"		=> "application/vnd.ms-powerpoint",
+				"ppt"		=> "application/vnd.ms-powerpoint",
+				"prf"		=> "application/pics-rules",
+				"ps"		=> "application/postscript",
+				"pub"		=> "application/x-mspublisher",
+				"qt"		=> "video/quicktime",
+				"ra"		=> "audio/x-pn-realaudio",
+				"ram"		=> "audio/x-pn-realaudio",
+				"ras"		=> "image/x-cmu-raster",
+				"rgb"		=> "image/x-rgb",
+				"rmi"		=> "audio/mid",
+				"roff"		=> "application/x-troff",
+				"rtf"		=> "application/rtf",
+				"rtx"		=> "text/richtext",
+				"scd"		=> "application/x-msschedule",
+				"sct"		=> "text/scriptlet",
+				"setpay"	=> "application/set-payment-initiation",
+				"setreg"	=> "application/set-registration-initiation",
+				"sh"		=> "application/x-sh",
+				"shar"		=> "application/x-shar",
+				"sit"		=> "application/x-stuffit",
+				"snd"		=> "audio/basic",
+				"spc"		=> "application/x-pkcs7-certificates",
+				"spl"		=> "application/futuresplash",
+				"src"		=> "application/x-wais-source",
+				"sst"		=> "application/vnd.ms-pkicertstore",
+				"stl"		=> "application/vnd.ms-pkistl",
+				"stm"		=> "text/html",
+				"sv4cpio"	=> "application/x-sv4cpio",
+				"sv4crc"	=> "application/x-sv4crc",
+				"svg"		=> "image/svg+xml",
+				"swf"		=> "application/x-shockwave-flash",
+				"t"			=> "application/x-troff",
+				"tar"		=> "application/x-tar",
+				"tcl"		=> "application/x-tcl",
+				"tex"		=> "application/x-tex",
+				"texi"		=> "application/x-texinfo",
+				"texinfo"	=> "application/x-texinfo",
+				"tgz"		=> "application/x-compressed",
+				"tif"		=> "image/tiff",
+				"tiff"		=> "image/tiff",
+				"tr"		=> "application/x-troff",
+				"trm"		=> "application/x-msterminal",
+				"tsv"		=> "text/tab-separated-values",
+				"txt"		=> "text/plain",
+				"uls"		=> "text/iuls",
+				"ustar"		=> "application/x-ustar",
+				"vcf"		=> "text/x-vcard",
+				"vrml"		=> "x-world/x-vrml",
+				"wav"		=> "audio/x-wav",
+				"wcm"		=> "application/vnd.ms-works",
+				"wdb"		=> "application/vnd.ms-works",
+				"wks"		=> "application/vnd.ms-works",
+				"wmf"		=> "application/x-msmetafile",
+				"wps"		=> "application/vnd.ms-works",
+				"wri"		=> "application/x-mswrite",
+				"wrl"		=> "x-world/x-vrml",
+				"wrz"		=> "x-world/x-vrml",
+				"xaf"		=> "x-world/x-vrml",
+				"xbm"		=> "image/x-xbitmap",
+				"xla"		=> "application/vnd.ms-excel",
+				"xlc"		=> "application/vnd.ms-excel",
+				"xlm"		=> "application/vnd.ms-excel",
+				"xls"		=> "application/vnd.ms-excel",
+				"xlt"		=> "application/vnd.ms-excel",
+				"xlw"		=> "application/vnd.ms-excel",
+				"xof"		=> "x-world/x-vrml",
+				"xpm"		=> "image/x-xpixmap",
+				"xwd"		=> "image/x-xwindowdump",
+				"z"			=> "application/x-compress",
+				"zip"		=> "application/zip"
 			);
 
 		if ( $mime_type=='' ){
@@ -616,7 +610,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			if ( array_key_exists( $file_extension, $known_mime_types ) ){
 				$mime_type = $known_mime_types[ $file_extension ];
 			} else {
-				$mime_type = "application/force-download";
+				$mime_type = "application/octet-stream";
 			}
 		};
 
@@ -682,27 +676,32 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 
 	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/
 	
-	public function declare_configurable_capabilities( $capability_groups ) {
-		$capability_groups[] = array(
-				'group_name' => __( 'Private Files (back-office)', 'cuar' ),
-				'capabilities' => array(
-						'cuar_pf_list_all'				=> __( 'List all files', 'cuar' ),
-						'cuar_pf_edit' 					=> __( 'Create/Edit files', 'cuar' ),
-						'cuar_pf_delete'				=> __( 'Delete files', 'cuar' ),
-						'cuar_pf_read' 					=> __( 'Access files', 'cuar' ),
-						'cuar_pf_manage_categories' 	=> __( 'Manage categories', 'cuar' ),
-						'cuar_pf_edit_categories' 		=> __( 'Edit categories', 'cuar' ),
-						'cuar_pf_delete_categories' 	=> __( 'Delete categories', 'cuar' ),
-						'cuar_pf_assign_categories' 	=> __( 'Assign categories', 'cuar' ),
+	public function get_configurable_capability_groups( $capability_groups ) {
+		$capability_groups[ 'cuar_private_file' ] = array(
+				'label'		=> __( 'Private Files', 'cuar' ),
+				'groups'	=> array(
+						'back-office' => array(
+								'group_name' => __( 'Back-office', 'cuar' ),
+								'capabilities' => array(
+										'cuar_pf_list_all'				=> __( 'List all files', 'cuar' ),
+										'cuar_pf_edit' 					=> __( 'Create/Edit files', 'cuar' ),
+										'cuar_pf_delete'				=> __( 'Delete files', 'cuar' ),
+										'cuar_pf_read' 					=> __( 'Access files', 'cuar' ),
+										'cuar_pf_manage_categories' 	=> __( 'Manage categories', 'cuar' ),
+										'cuar_pf_edit_categories' 		=> __( 'Edit categories', 'cuar' ),
+										'cuar_pf_delete_categories' 	=> __( 'Delete categories', 'cuar' ),
+										'cuar_pf_assign_categories' 	=> __( 'Assign categories', 'cuar' ),
+									)
+							),
+						'front-office'	=> array(
+								'group_name' => __( 'Front-office', 'cuar' ),
+								'capabilities' => array(
+										'cuar_view_files'					=> __( 'View private files', 'cuar' ),
+										'cuar_view_any_cuar_private_file' 	=> __( 'View any private file', 'cuar' ),
+									)
+							)
 					)
 			);
-
-		$capability_groups[] = array(
-				'group_name' => __( 'Private Files', 'cuar' ),
-				'capabilities' => array(
-						'cuar_view_any_cuar_private_file' 		=> __( 'View any private file', 'cuar' ),
-				)
-		);
 		
 		return $capability_groups;
 	}
@@ -793,9 +792,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'show_tagcloud' 	=> false,
 				'hierarchical' 		=> true,
 				'query_var' 		=> true,
-				'rewrite' 			=> array(
-						'slug' 				=> 'private-file-category'
-					),
+				'rewrite' 			=> false,
 				'capabilities' 			=> array(
 						'manage_terms' 		=> 'cuar_pf_manage_categories',
 						'edit_terms' 		=> 'cuar_pf_edit_categories',
@@ -807,81 +804,15 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		register_taxonomy( 'cuar_private_file_category', array( 'cuar_private_file' ), $args );
 	}
 
-	/**
-	 * Add the rewrite rule for the private files.  
-	 */
-	function add_query_vars( $vars ) {
-	    array_push( $vars, 'cuar_action' );
-	    return $vars;
-	}
-
-	/**
-	 * Add the rewrite rule for the private files.  
-	 */
-	function add_post_type_rewrites() {
-		global $wp_rewrite;
-		
-		$pf_slug = 'private-file';
-		
-		$wp_rewrite->add_rewrite_tag('%cuar_private_file%', '([^/]+)', 'cuar_private_file=');
-		$wp_rewrite->add_rewrite_tag('%cuar_action%', '([^/]+)', 'cuar_action=');
-		$wp_rewrite->add_permastruct( 'cuar_private_file',
-				$pf_slug . '/%year%/%monthnum%/%day%/%cuar_private_file%',
-				false);
-		$wp_rewrite->add_permastruct( 'cuar_private_file',
-				$pf_slug . '/%year%/%monthnum%/%day%/%cuar_private_file%/%cuar_action%',
-				false);
-	}
-
-	/**
-	 * Build the permalink for the private files
-	 * 
-	 * @param unknown $post_link
-	 * @param unknown $post
-	 * @param unknown $leavename
-	 * @return unknown|mixed
-	 */
-	function built_post_type_permalink( $post_link, $post, $leavename ) {		
-		// Only change permalinks for private files
-		if ( $post->post_type!='cuar_private_file') return $post_link;
+	// General options
+	public static $OPTION_ENABLE_ADDON					= 'enable_private_files';
+	public static $OPTION_FTP_PATH 						= 'frontend_ftp_upload_path';
 	
-		// Only change permalinks for published posts
-		$draft_or_pending = isset( $post->post_status )
-		&& in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) );
-		if( $draft_or_pending and !$leavename ) return $post_link;
-	
-		// Change the permalink
-		global $wp_rewrite, $cuar_pf_addon;
-	
-		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_file' );
-		$permalink = str_replace( "%cuar_private_file%", $post->post_name, $permalink );
-	
-		$post_date = strtotime( $post->post_date );
-		$permalink = str_replace( "%year%", 	date( "Y", $post_date ), $permalink );
-		$permalink = str_replace( "%monthnum%", date( "m", $post_date ), $permalink );
-		$permalink = str_replace( "%day%", 		date( "d", $post_date ), $permalink );
-
-		$permalink = str_replace( "%cuar_action%", '', $permalink );
-		
-		$permalink = home_url() . "/" . user_trailingslashit( $permalink );
-		$permalink = str_replace( "//", "/", $permalink );
-		$permalink = str_replace( ":/", "://", $permalink );
-	
-		return $permalink;
-	}
-	
-	/** @var CUAR_Plugin */
-	private $plugin;
-
 	/** @var CUAR_PrivateFileAdminInterface */
 	private $admin_interface;
-
-	/** @var CUAR_PrivateFileFrontendInterface */
-	private $frontend_interface;
 }
 
 // Make sure the addon is loaded
-global $cuar_pf_addon;
-$cuar_pf_addon = new CUAR_PrivateFileAddOn();
+new CUAR_PrivateFileAddOn();
 
 endif; // if (!class_exists('CUAR_PrivateFileAddOn')) 
