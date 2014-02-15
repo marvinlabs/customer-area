@@ -28,7 +28,11 @@ if (!class_exists('CUAR_HelpAddOn')) :
 class CUAR_HelpAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'help', __( 'Help', 'cuar' ), '4.0.0' );
+		parent::__construct( 'help', '4.0.0' );
+	}
+	
+	public function get_addon_name() {
+		return __( 'Help', 'cuar' );
 	}
 
 	public function run_addon( $plugin ) {

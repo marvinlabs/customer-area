@@ -28,19 +28,28 @@ if (!class_exists('CUAR_CustomerDashboardAddOn')) :
 class CUAR_CustomerDashboardAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-dashboard', __( 'Customer Page - Dashboard', 'cuar' ), '4.0.0' );
+		parent::__construct( 'customer-dashboard', '4.0.0' );
 		
 		$this->set_page_parameters( 5, array(
 					'slug'					=> 'customer-dashboard',
-					'label'					=> __( 'Dashboard', 'cuar' ),
-					'title'					=> __( 'Dashboard', 'cuar' ),
-					'hint'					=> __( "Shows a summary of the user's private content (files, pages, messages, ...).", 'cuar' ),
 					'parent_slug'			=> 'customer-home',
 				)
 			);
 		
 		$this->set_page_shortcode( 'customer-area-dashboard' );
 	}
+	
+	public function get_label() {
+		return __( 'Dashboard', 'cuar' );
+	}
+	
+	public function get_title() {
+		return __( 'Dashboard', 'cuar' );
+	}		
+		
+	public function get_hint() {
+		return __( "Shows a summary of the user's private content (files, pages, messages, ...).", 'cuar' );
+	}	
 
 	public function run_addon( $plugin ) {
 		parent::run_addon( $plugin );		

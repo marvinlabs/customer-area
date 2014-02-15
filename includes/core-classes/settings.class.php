@@ -11,7 +11,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 	 * Also used to access the plugin settings
 	 * stored in the DB (@see CUAR_Plugin::get_option)
 	 */
-	class CUAR_Settings {
+	class CUAR_Settings { 
 		public function __construct($plugin) {
 			$this->plugin = $plugin;
 			$this->setup ();

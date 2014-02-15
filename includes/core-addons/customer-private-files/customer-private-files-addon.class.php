@@ -32,13 +32,10 @@ if (!class_exists('CUAR_CustomerPrivateFilesAddOn')) :
 class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-private-files', __( 'Customer Page - Private Files', 'cuar' ), '4.0.0' );
+		parent::__construct( 'customer-private-files', '4.0.0' );
 		
 		$this->set_page_parameters( 510, array(
 					'slug'					=> 'customer-private-files',
-					'label'					=> __( 'Private Files - Owned', 'cuar' ),
-					'title'					=> __( 'My files', 'cuar' ),
-					'hint'					=> __( 'Page to list the files a customer owns.', 'cuar' ),
 					'parent_slug'			=> 'customer-private-files-home',
 					'friendly_post_type'	=> 'cuar_private_file',
 					'friendly_taxonomy'		=> 'cuar_private_file_category',
@@ -48,6 +45,18 @@ class CUAR_CustomerPrivateFilesAddOn extends CUAR_AbstractContentPageAddOn {
 		
 		$this->set_page_shortcode( 'customer-area-private-files' );
 	}
+	
+	public function get_label() {
+		return __( 'Private Files - Owned', 'cuar' );
+	}
+	
+	public function get_title() {
+		return __( 'My files', 'cuar' );
+	}		
+		
+	public function get_hint() {
+		return __( 'Page to list the files a customer owns.', 'cuar' );
+	}	
 
 	public function run_addon( $plugin ) {
 		parent::run_addon( $plugin );		

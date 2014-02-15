@@ -29,10 +29,11 @@ class CUAR_Plugin {
 	}
 	
 	public function run() {		
+		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ), 4 );
+		
 		add_action( 'plugins_loaded', array( &$this, 'load_settings' ), 5 );
 		add_action( 'plugins_loaded', array( &$this, 'load_addons' ), 10 );
 		
-		add_action( 'init', array( &$this, 'load_textdomain' ), 6 );
 		add_action( 'init', array( &$this, 'load_scripts' ), 7 );
 		add_action( 'init', array( &$this, 'load_styles' ), 8 );		
 		add_action( 'init', array( &$this, 'load_defaults' ), 9 );	
@@ -63,19 +64,7 @@ class CUAR_Plugin {
 	public function load_textdomain( $domain = 'cuar', $plugin_name = 'customer-area' ) {
 		if ( empty( $domain ) ) $domain = 'cuar';
 		if ( empty( $plugin_name ) ) $plugin_name = 'customer-area';
-	
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-			
-		$mofile = $domain . '-' . $locale . '.mo';
-
-		/* Check the global language folder */
-		$files = array( WP_LANG_DIR . '/' . $plugin_name . '/' . $mofile, WP_LANG_DIR . '/' . $mofile );
-		foreach ( $files as $file ){
-			if( file_exists( $file ) ) return load_textdomain( $domain, $file );
-		}
-
-		// If we got this far, fallback to the plug-in language folder.
-		// We could use load_textdomain - but this avoids touching any more constants.
+		
 		load_plugin_textdomain( $domain, false, $plugin_name . '/languages' );
 	}
 

@@ -28,8 +28,8 @@ if (!class_exists('CUAR_AbstractCreateContentPageAddOn')) :
 */
 abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddOn {
 
-	public function __construct( $addon_id = null, $addon_name = null, $min_cuar_version = null ) {
-		parent::__construct( $addon_id, $addon_name, $min_cuar_version );
+	public function __construct( $addon_id = null, $min_cuar_version = null ) {
+		parent::__construct( $addon_id, $min_cuar_version );
 	}
 	
 	protected function set_page_parameters( $priority, $description ) {

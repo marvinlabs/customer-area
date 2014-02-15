@@ -27,9 +27,8 @@ if (!class_exists('CUAR_AddOn')) :
 */
 abstract class CUAR_AddOn {
 
-	public function __construct( $addon_id = null, $addon_name = null, $min_cuar_version = null ) {
+	public function __construct( $addon_id = null, $min_cuar_version = null ) {
 		$this->addon_id = $addon_id;
-		$this->addon_name = $addon_name;
 		$this->min_cuar_version = $min_cuar_version;
 
 		add_action( 'cuar_default_options', array( &$this, 'set_default_options' ) );
@@ -39,6 +38,8 @@ abstract class CUAR_AddOn {
 			add_action( 'cuar_after_addons_init', array( &$this, 'check_attention_needed' ), 10 );
 		}
 	}
+	
+	public abstract function get_addon_name();
 	
 	/** 
 	 * Function that starts the add-on
@@ -78,9 +79,6 @@ abstract class CUAR_AddOn {
 	/** @var string Id of the add-on */
 	public $addon_id;
 	
-	/** @var string Name of the add-on */
-	public $addon_name;
-	
 	/** @var string Name of the add-on on the marvinlabs store */
 	public $store_item_name;
 	
@@ -114,7 +112,7 @@ abstract class CUAR_AddOn {
 		foreach ( $commercial_addons as $id => $addon ) {		
 			add_settings_field(
 					$this->get_license_key_option_name( $id ), 
-					$addon->addon_name,
+					$addon->get_addon_name(),
 					array( &$cuar_settings, 'print_license_key_field' ), 
 					CUAR_Settings::$OPTIONS_PAGE_SLUG,
 					'cuar_license_keys_section',
@@ -147,8 +145,8 @@ abstract class CUAR_AddOn {
 	
 	public function print_license_section_info() {
 		echo '<p>';
-		_e( 'This page allows you to enter license key you have received when you purchased commercial addons. ', 'cuar' );
-		echo '<strong>' . __( 'Do not activate your license on your development site. Only on the final site where you are running the plugin.', 'cuarco' ) . '</strong>';
+		_e( 'This page allows you to enter license key you have received when you purchased commercial addons.', 'cuar' );
+		echo ' <strong>' . __( 'Do not activate your license on your development site. Only on the final site where you are running the plugin.', 'cuar' ) . '</strong>';
 		echo '</p>';
 	}	
 		
@@ -213,7 +211,7 @@ abstract class CUAR_AddOn {
 }
 
 function cuar_sort_addons_by_name_callback( $a, $b ) {
-	return strcmp( $a->addon_name, $b->addon_name );
+	return strcmp( $a->get_addon_name(), $b->get_addon_name() );
 }
 
 endif; // CUAR_AddOn

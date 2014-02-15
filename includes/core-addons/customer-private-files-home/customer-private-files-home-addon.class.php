@@ -28,13 +28,10 @@ if (!class_exists('CUAR_CustomerPrivateFilesHomeAddOn')) :
 class CUAR_CustomerPrivateFilesHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-private-files-home', __( 'Customer Page - Private Files Root', 'cuar' ), '4.0.0', 'customer-private-files' );
+		parent::__construct( 'customer-private-files-home', '4.0.0', 'customer-private-files' );
 		
 		$this->set_page_parameters( 500, array(
 					'slug'					=> 'customer-private-files-home',
-					'label'					=> __( 'Private Files - Home', 'cuar' ),
-					'title'					=> __( 'Files', 'cuar' ),
-					'hint'					=> __( 'Root page for the customer files.', 'cuar' ),
 					'parent_slug'			=> 'customer-home',
 					'friendly_post_type'	=> 'cuar_private_file',
 					'friendly_taxonomy'		=> 'cuar_private_file_category',
@@ -44,6 +41,18 @@ class CUAR_CustomerPrivateFilesHomeAddOn extends CUAR_RootPageAddOn {
 		
 		$this->set_page_shortcode( 'customer-area-private-files-home' );
 	}
+	
+	public function get_label() {
+		return __( 'Private Files - Home', 'cuar' );
+	}
+	
+	public function get_title() {
+		return __( 'Files', 'cuar' );
+	}		
+		
+	public function get_hint() {
+		return __( 'Root page for the customer files.', 'cuar' );
+	}	
 
 	protected function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-private-files';

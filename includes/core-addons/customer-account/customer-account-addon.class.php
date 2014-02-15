@@ -29,19 +29,28 @@ if (!class_exists('CUAR_CustomerAccountAddOn')) :
 class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-account', __( 'Customer Page - User Account', 'cuar' ), '4.0.0' );
+		parent::__construct( 'customer-account', '4.0.0' );
 		
 		$this->set_page_parameters( 810, array(
 					'slug'					=> 'customer-account',
-					'label'					=> __( 'Account - Details', 'cuar' ),
-					'title'					=> __( 'Account details', 'cuar' ),
-					'hint'					=> __( 'This page shows a summary of the user account', 'cuar' ),
 					'parent_slug'			=> 'customer-account-home'
 				)
 			);
 		
 		$this->set_page_shortcode( 'customer-area-account' );
 	}
+	
+	public function get_label() {
+		return __( 'Account - Details', 'cuar' );
+	}
+	
+	public function get_title() {
+		return __( 'Account details', 'cuar' );
+	}		
+		
+	public function get_hint() {
+		return __( 'This page shows a summary of the user account', 'cuar' );
+	}	
 
 	public function run_addon( $plugin ) {
 		parent::run_addon( $plugin );	

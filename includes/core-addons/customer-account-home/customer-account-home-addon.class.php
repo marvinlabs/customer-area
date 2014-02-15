@@ -28,19 +28,28 @@ if (!class_exists('CUAR_CustomerAccountHomeAddOn')) :
 class CUAR_CustomerAccountHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-account-home', __( 'Customer Page - Account Root', 'cuar' ), '4.0.0', 'customer-account' );
+		parent::__construct( 'customer-account-home', '4.0.0', 'customer-account' );
 		
 		$this->set_page_parameters( 800, array(
 					'slug'					=> 'customer-account-home',
-					'label'					=> __( 'Account - Home', 'cuar' ),
-					'title'					=> __( 'My account', 'cuar' ),
-					'hint'					=> __( 'This page shows a summary of the user account', 'cuar' ),
 					'parent_slug'			=> 'customer-home',
 				)
 			);
 		
 		$this->set_page_shortcode( 'customer-account-home' );
 	}
+	
+	public function get_label() {
+		return __( 'Account - Home', 'cuar' );
+	}
+	
+	public function get_title() {
+		return __( 'My account', 'cuar' );
+	}		
+		
+	public function get_hint() {
+		return __( 'This page shows a summary of the user account', 'cuar' );
+	}	
 
 	protected function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-account';

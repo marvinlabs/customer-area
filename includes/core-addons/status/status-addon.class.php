@@ -28,7 +28,11 @@ if (!class_exists('CUAR_StatusAddOn')) :
 class CUAR_StatusAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'status', __( 'Status', 'cuar' ), '4.0.0' );
+		parent::__construct( 'status', '4.0.0' );
+	}
+	
+	public function get_addon_name() {
+		return __( 'Status', 'cuar' );
 	}
 
 	public function run_addon( $plugin ) {

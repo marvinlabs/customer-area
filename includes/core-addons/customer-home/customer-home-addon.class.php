@@ -28,19 +28,31 @@ if ( !class_exists( 'CUAR_CustomerAreaHomeAddOn' ) ) :
 class CUAR_CustomerAreaHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-home', __( 'Customer Page - Home', 'cuar' ), '4.0.0', 'customer-dashboard' );
+		parent::__construct( 'customer-home', '4.0.0', 'customer-dashboard' );
 		
 		$this->set_page_parameters( 1, array(
 					'slug'					=> 'customer-home',
-					'label'					=> __( 'Home', 'cuar' ),
-					'permalink'				=> __( 'customer-area', 'cuar' ),
-					'title'					=> __( 'Customer Area', 'cuar' ),
-					'hint'					=> __( 'This is the main page for your customers. It will redirect to the login page or to the customer area dashboard.', 'cuar' ),
 					'always_include_in_menu'=> true
 				)
 			);
 		
 		$this->set_page_shortcode( 'customer-area' );
+	}
+	
+	public function get_label() {
+		return __( 'Home', 'cuar' );
+	}
+	
+	public function get_title() {
+		return __( 'Customer Area', 'cuar' );
+	}		
+		
+	public function get_hint() {
+		return __( 'This is the main page for your customers. It will redirect to the login page or to the customer area dashboard.', 'cuar' );
+	}	
+	
+	public function get_permalink() {
+		return __( 'customer-area', 'cuar' );
 	}
 
 	protected function get_page_addon_path() {

@@ -28,7 +28,11 @@ if (!class_exists('CUAR_CapabilitiesAddOn')) :
 class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'capabilities-manager', __( 'Capabilities Manager', 'cuar' ), '4.0.0' );
+		parent::__construct( 'capabilities-manager', '4.0.0' );
+	}
+	
+	public function get_addon_name() {
+		return __( 'Capabilities Manager', 'cuar' );
 	}
 
 	public function run_addon( $plugin ) {
@@ -40,7 +44,7 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 			add_filter( 'cuar_addon_validate_options_cuar_capabilities', array( &$this, 'validate_options' ), 10, 3 );
 		} 
 		
-		add_action( 'cuar_after_addons_init', array( &$this, 'set_administrator_capabilities' ) );
+		add_action( 'init', array( &$this, 'set_administrator_capabilities' ), 100 );
 	}	
 	
 	/*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/

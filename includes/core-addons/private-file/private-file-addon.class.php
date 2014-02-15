@@ -32,7 +32,11 @@ if (!class_exists('CUAR_PrivateFileAddOn')) :
 class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'private-files', __( 'Private Files', 'cuar' ), '4.0.0' );
+		parent::__construct( 'private-files', '4.0.0' );
+	}
+	
+	public function get_addon_name() {
+		return __( 'Private Files', 'cuar' );
 	}
 
 	public function run_addon( $plugin ) {

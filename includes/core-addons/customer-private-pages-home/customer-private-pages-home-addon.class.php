@@ -28,13 +28,10 @@ if (!class_exists('CUAR_CustomerPrivatePagesHomeAddOn')) :
 class CUAR_CustomerPrivatePagesHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-private-pages-home', __( 'Customer Page - Private Pages Root', 'cuar' ), '4.0.0', 'customer-private-pages' );
+		parent::__construct( 'customer-private-pages-home', '4.0.0', 'customer-private-pages' );
 		
 		$this->set_page_parameters( 600, array(
 					'slug'					=> 'customer-private-pages-home',
-					'label'					=> __( 'Private Pages - Home', 'cuar' ),
-					'title'					=> __( 'Pages', 'cuar' ),
-					'hint'					=> __( 'Root page for the customer pages.', 'cuar' ),
 					'parent_slug'			=> 'customer-home',
 					'friendly_post_type'	=> 'cuar_private_page',
 					'friendly_taxonomy'		=> 'cuar_private_page_category',
@@ -44,6 +41,18 @@ class CUAR_CustomerPrivatePagesHomeAddOn extends CUAR_RootPageAddOn {
 		
 		$this->set_page_shortcode( 'customer-area-private-pages-home' );
 	}
+	
+	public function get_label() {
+		return __( 'Private Pages - Home', 'cuar' );
+	}
+	
+	public function get_title() {
+		return __( 'Pages', 'cuar' );
+	}		
+		
+	public function get_hint() {
+		return __( 'Root page for the customer pages.', 'cuar' );
+	}	
 
 	protected function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages';

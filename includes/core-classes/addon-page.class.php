@@ -29,8 +29,8 @@ if (!class_exists('CUAR_AbstractPageAddOn')) :
 */
 abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 
-	public function __construct( $addon_id = null, $addon_name = null, $min_cuar_version = null ) {
-		parent::__construct( $addon_id, $addon_name, $min_cuar_version );
+	public function __construct( $addon_id = null, $min_cuar_version = null ) {
+		parent::__construct( $addon_id, $min_cuar_version );
 	}
 
 	public function run_addon( $plugin ) {
@@ -38,7 +38,19 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 2 );
 	}
 	
+	public function get_addon_name() {
+		return sprintf( __( 'Customer Page - %s', 'cuar' ), $this->get_label() );
+	}
+	
+	public abstract function get_title();	
+	public abstract function get_label();	
+	public abstract function get_hint();
+	
 	/*------- PAGE PARAMETERS ---------------------------------------------------------------------------------------*/
+	
+	public function get_permalink() {
+		return null;
+	}
 	
 	public function get_priority() {
 		return $this->page_priority;
@@ -46,18 +58,6 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	
 	public function get_slug() {
 		return $this->page_description['slug'];
-	}
-	
-	public function get_label() {
-		return $this->page_description['label'];
-	}
-	
-	public function get_title() {
-		return $this->page_description['title'];
-	}
-	
-	public function get_hint() {
-		return $this->page_description['hint'];
 	}
 	
 	public function get_parent_slug() {
@@ -185,8 +185,8 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 			);
 		
 		// If a permalink is specified, we'll use it
-		if ( isset( $this->page_description['permalink'] ) ) {
-			$page_data['post_name'] = $this->page_description['permalink'];
+		if ( $this->get_permalink()!=null ) {
+			$page_data['post_name'] = $this->get_permalink();
 		}
 		
 		// If a slug is specified, we will try to find that page from the options

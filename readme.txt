@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 3.9.0
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,7 +169,9 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 4.0.0 (2014/02/) =
+= 4.0.0 (2014/02/15) =
+
+**THIS IS A MAJOR UPDATE - PLEASE MAKE SOME TESTS ON YOUR DEVELOPMENT AND TEST SITES BEFORE UPGRADING YOUR LIVE WEBSITE**
 
 * Completely changed the way information is displayed in the frontend. Now the plugin uses a system of pages similar to the one used by WooCommerce for example. 
 This has allowed greater possibilities for customization (Widget areas, more templates to override, ...)

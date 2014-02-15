@@ -28,13 +28,10 @@ if (!class_exists('CUAR_CustomerLogoutAddOn')) :
 class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-logout', __( 'Customer Page - Logout', 'cuar' ), '4.0.0' );
+		parent::__construct( 'customer-logout', '4.0.0' );
 		
 		$this->set_page_parameters( 850, array(
 					'slug'					=> 'customer-logout',
-					'label'					=> __( 'Logout', 'cuar' ),
-					'title'					=> __( 'Logout', 'cuar' ),
-					'hint'					=> __( 'This page logs the current user out and redirects him to the logout page', 'cuar' ),
 					'parent_slug'			=> 'customer-account-home',
 					'requires_logout'		=> false
 				)
@@ -42,6 +39,18 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 		
 		$this->set_page_shortcode( 'customer-area-logout' );
 	}
+	
+	public function get_label() {
+		return __( 'Logout', 'cuar' );
+	}
+	
+	public function get_title() {
+		return __( 'Logout', 'cuar' );
+	}		
+		
+	public function get_hint() {
+		return __( 'This page logs the current user out and redirects him to the logout page', 'cuar' );
+	}	
 
 	public function run_addon( $plugin ) {
 		parent::run_addon( $plugin );	
