@@ -38,6 +38,8 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// Init the admin interface if needed
 		if ( is_admin() ) {
+			add_filter( 'cuar_status_sections', array( &$this, 'add_status_sections' ) );
+			
 			// Settings
 			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
 			add_action( 'cuar_in_settings_form_cuar_capabilities', array( &$this, 'print_settings' ) );
@@ -46,6 +48,30 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 		
 		add_action( 'init', array( &$this, 'set_administrator_capabilities' ), 100 );
 	}	
+	
+	public function check_attention_needed() {
+		parent::check_attention_needed();		
+		if ( $this->plugin->is_warning_ignored( 'unconfigured-capabilities' ) ) return;
+		$this->plugin->set_attention_needed( 'unconfigured-capabilities', __( 'You have not yet configured the plugin permissions.', 'cuar') );		
+	}
+	
+	public function ignore_unconfigured_capabilities_flag() {
+		$this->plugin->ignore_warning( 'unconfigured-capabilities' );
+		$this->plugin->clear_attention_needed( 'unconfigured-capabilities' );
+	}
+	
+	public function add_status_sections( $sections ) { 
+		$sections['capabilities-manager'] = array(
+				'id'			=> 'capabilities',
+				'template_path'	=> CUAR_INCLUDES_DIR . '/core-addons/capabilities',
+				'linked-checks'	=> array( 'unconfigured-capabilities' ),
+				'actions'		=> array(
+						'cuar-ignore-unconfigured-capabilities'	=> array( &$this, 'ignore_unconfigured_capabilities_flag' ),
+					)
+			);
+		
+		return $sections;
+	}
 	
 	/*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
 	
@@ -124,6 +150,8 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 				}
 			}
 		}
+		
+		$this->ignore_unconfigured_capabilities_flag();
 		
 		return $validated;
 	}

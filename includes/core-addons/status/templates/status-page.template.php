@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	<h2 class="nav-tab-wrapper">
 <?php 	
 	foreach ( $sections as $section_id => $section ) {
+		if ( !isset( $section['label'] ) ) continue;
+		
 		$section_label = $section['label'];
 		$is_current = $section_id==$current_section['id'];
 

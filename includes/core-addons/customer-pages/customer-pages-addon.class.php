@@ -284,14 +284,15 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		$new_items = array();
 		foreach ( $items as $item ) {
 			$exclude = false;
-	    	$menu_item_page = isset( $page_ids[$item->object_id] ) ? $page_ids[$item->object_id] : null;
 			
-	    	if ( $menu_item_page==null ) continue;
-	    	
- 			if ( !$menu_item_page->is_accessible_to_current_user() ) {
-				$exclude = true;
- 			}
-
+			// Only filter the items corresponding to a customer page
+	    	$menu_item_page = isset( $page_ids[$item->object_id] ) ? $page_ids[$item->object_id] : null;			
+	    	if ( $menu_item_page!=null ) {	    	
+	 			if ( !$menu_item_page->is_accessible_to_current_user() ) {
+					$exclude = true;
+	 			}
+	    	}
+	
 			if ( !$exclude ) {
 				if ( in_array( $item->menu_item_parent, $excluded_item_ids ) ) {
 					$item->menu_item_parent = 0;
