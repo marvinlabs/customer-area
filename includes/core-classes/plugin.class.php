@@ -321,6 +321,17 @@ class CUAR_Plugin {
 		return false;
 	}
 	
+	public function is_warning_ignored( $warning_id ) {
+		$warnings = get_option( self::$OPTION_IGNORE_WARNINGS );
+		return isset( $warnings[$warning_id] ) && $warnings[$warning_id]==true;
+	}
+	
+	public function ignore_warning( $warning_id ) {
+		$warnings = get_option( self::$OPTION_IGNORE_WARNINGS );
+		$warnings[$warning_id] = true;
+		update_option( self::$OPTION_IGNORE_WARNINGS, $warnings );
+	}
+	
 	public function get_attention_needed_messages() {
 		return get_option( self::$OPTION_STATUS_SECTIONS, array() );
 	}
@@ -349,6 +360,7 @@ class CUAR_Plugin {
 	}
 
 	public static $OPTION_STATUS_SECTIONS = 'cuar_status_sections';
+	public static $OPTION_IGNORE_WARNINGS = 'cuar_ignore_warnings';
 	
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 	
