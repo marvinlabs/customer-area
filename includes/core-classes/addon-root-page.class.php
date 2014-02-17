@@ -32,6 +32,12 @@ abstract class CUAR_RootPageAddOn extends CUAR_AbstractPageAddOn {
 		$this->redirect_slug = $redirect_slug;
 	}
 	
+	public function run($cuar_plugin) {
+		parent::run($cuar_plugin);
+		
+		add_action( 'template_redirect', array( &$this, 'redirect_to_main_page' ), 1000 );
+	}
+	
 	protected function set_page_parameters( $priority, $description ) {
 		parent::set_page_parameters( $priority, $description );
 		
@@ -54,14 +60,13 @@ abstract class CUAR_RootPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 
-	public function print_page_header( $args = array(), $shortcode_content = '' ) {
-		if ( is_user_logged_in() ) {
+	public function redirect_to_main_page() {			
+		// If we are logged-in and we really are on this page, simply redirect
+		if ( is_user_logged_in() && get_queried_object_id()==$this->get_page_id() ) {
 			$cp_addon = $this->plugin->get_addon('customer-pages');
 			wp_redirect( $cp_addon->get_page_url( apply_filters( 'cuar_root_page_redirect_slug', $this->redirect_slug, $this->get_slug() ) ), 302 );
 			exit;
 		}
-		
-		parent::print_page_header( $args, $shortcode_content );
 	}
 
 	protected $redirect_slug = 'customer-dashboard';
