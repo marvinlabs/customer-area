@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,6 +168,13 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 4.0.2 (2014/02/17) =
+
+* Fix redirect issue occuring sometimes (headers already sent)
+* Add a class to the body element on customer area pages (helps to tweak CSS)
+* Fix small issue when re-creating the customer area menu in some cases
+* Some small fixes on the default-v4 theme
 
 = 4.0.1 (2014/02/16) =
 
