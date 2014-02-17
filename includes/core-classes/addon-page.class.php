@@ -226,10 +226,11 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		if ( $this->requires_login() && !is_user_logged_in() ) {
 			$this->plugin->login_then_redirect_to_page( $this->get_slug() );	
 		} else if ( $this->is_accessible_to_current_user() ) {		
-			include( $this->plugin->get_template_file_path(
+			$template_path = $this->plugin->get_template_file_path(
 					CUAR_INCLUDES_DIR . '/core-classes',
 					'customer-page.template.php',
-					'templates' ));
+					'templates' );
+			include( $template_path );
 		}
 	}
 	

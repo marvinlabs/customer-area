@@ -228,7 +228,13 @@ class CUAR_Plugin {
 		// Look for the preferred file first
 		foreach ( $possible_locations as $dir ) {
 			$path =  trailingslashit( $dir ) . $relative_path;
-			if ( file_exists( $path ) ) return $path;
+			if ( file_exists( $path ) ) {
+				if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
+					$this->print_template_path_debug_info( $path );
+				}
+				
+				return $path;
+			}
 		}
 		
 		// Then for the fallback alternative if any
@@ -239,20 +245,48 @@ class CUAR_Plugin {
 		
 			foreach ( $possible_locations as $dir ) {
 				$path =  trailingslashit( $dir ) . $fallback_relative_path;
-				if ( file_exists( $path ) ) return $path;
+				if ( file_exists( $path ) ) {
+					if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
+						$this->print_template_path_debug_info( $path );
+					}
+					
+					return $path;
+				}
 			}
 		}
 		
 		// Then from default directory
 		$path =  trailingslashit( $default_root ) . $relative_path;
-		if ( file_exists( $path ) ) return $path;
+		if ( file_exists( $path ) ) {
+			if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
+				$this->print_template_path_debug_info( $path );
+			}
+			
+			return $path;
+		}
 
 		if ( !empty( $fallback_filename ) ) {
 			$path =  trailingslashit( $default_root ) . $fallback_relative_path;
-			if ( file_exists( $path ) ) return $path;
+			if ( file_exists( $path ) ) {
+				if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
+					$this->print_template_path_debug_info( $path );
+				}
+				
+				return $path;
+			}
 		}
 		
 		return '';
+	}
+	
+	private function print_template_path_debug_info( $path ) {		
+		$dirname = dirname( $path );
+		$strip_from = strpos( $path, 'customer-area' );
+		$dirname = $strip_from>0 ? strstr( $dirname, 'customer-area' ) : $dirname;
+		
+		$filename = basename( $path );
+		
+		echo "\n<!-- CUAR TEMPLATE < $filename > IN FOLDER < $dirname > -->\n";
 	}
 	
 	public function is_customer_area_page() {
