@@ -305,6 +305,20 @@ if (! class_exists ( 'CUAR_Settings' )) :
 							'theme_type' => 'frontend' 
 						) 
 				);
+
+			add_settings_field ( self::$OPTION_DEBUG_TEMPLATES,
+					__ ( 'Debug templates', 'cuar' ), 
+					array( &$cuar_settings,	'print_input_field'	), 
+					self::$OPTIONS_PAGE_SLUG, 
+					'cuar_general_settings', 
+					array (
+							'option_id' => self::$OPTION_DEBUG_TEMPLATES,
+							'type' => 'checkbox',
+							'after' => __ ( 'Print debug information about the templates used by Customer Area.', 'cuar' ) 
+								. '<p class="description">' . __( 'If checked, the plugin will print HTML comments in the page source code to show which template files ' 
+										. 'are used. This is very helpful if you are a developer and want to customize the plugin layout.', 'cuar' ) . '</p>' 
+						) 
+				);
 		}
 		
 		/**
@@ -316,6 +330,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function validate_frontend_settings($validated, $cuar_settings, $input) {
 			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
+			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_DEBUG_TEMPLATES );
 			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME );
 			
 			return $validated;
@@ -332,6 +347,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public static function set_default_core_options($defaults) {
 			$defaults [self::$OPTION_INCLUDE_CSS] = true;
+			$defaults [self::$OPTION_DEBUG_TEMPLATES] = false;
 			$defaults [self::$OPTION_ADMIN_THEME] = CUAR_ADMIN_THEME;
 			$defaults [self::$OPTION_FRONTEND_THEME] = CUAR_FRONTEND_THEME;
 			$defaults [self::$OPTION_HIDE_SINGLE_OWNER_SELECT] = false;
@@ -1179,6 +1195,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public static $OPTIONS_GROUP = 'cuar_options';
 		
 		// Core options
+		public static $OPTION_DEBUG_TEMPLATES = 'cuar_debug_templates';
 		public static $OPTION_CURRENT_VERSION = 'cuar_current_version';
 		public static $OPTION_INCLUDE_CSS = 'cuar_include_css';
 		public static $OPTION_ADMIN_THEME = 'cuar_admin_theme_url';
