@@ -36,6 +36,7 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		add_filter( 'cuar_customer_pages', array( &$this, 'register_page' ), $this->page_priority );
 		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 2 );
+		add_filter( 'body_class', array( &$this, 'add_body_class' ) );
 	}
 	
 	public function get_addon_name() {
@@ -332,6 +333,14 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 
+	public function add_body_class( $classes = array() ) {
+		$cp_addon = $this->plugin->get_addon('customer-pages');
+		if ( $cp_addon->is_customer_area_page() && !in_array( 'customer-area', $classes ) ) {
+			$classes[] = 'customer-area';
+		}
+		return $classes;
+	}
+	
 	protected function set_page_shortcode( $shortcode_name, $shorcode_params = array() ) {
 		$this->shortcode = new CUAR_AddOnPageShortcode( $this, $shortcode_name, $shorcode_params );
 	}
