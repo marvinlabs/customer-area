@@ -418,8 +418,9 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	public function recreate_default_navigation_menu() {	
 		$menu_name = 'cuar_main_menu';
 		$menu = null;
+		$locations = get_nav_menu_locations();
 		
-		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+		if ( isset( $locations[ $menu_name ] ) && $locations[ $menu_name ]>0 ) {
 			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );	
 			$menu_items = wp_get_nav_menu_items($menu->term_id);
 			
@@ -430,12 +431,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		}
 		
 		// Create new menu if not existing already
-		if ( $menu==null ) {			
-			$menu = wp_get_nav_menu_object( 'customer-area-menu' );	
-			if ( false!=$menu ) {
-				wp_delete_term( $menu->term_id, 'nav_menu' );
-			}
-			
+		if ( $menu==null ) {	
+			wp_delete_nav_menu( _x( 'customer-area-menu', 'Localised slug for the main navigation menu (small caps version of the "Customer Area Menu" translation)', 'cuar' ) );
 			$menu = wp_create_nav_menu( __('Customer Area Menu', 'cuar' ) );
 		}
 		
@@ -447,7 +444,6 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		}
 		
 		// Place the menu at the right location
-		$locations = get_theme_mod( 'nav_menu_locations' );
 		$locations[$menu_name] = $menu->term_id;
 		set_theme_mod( 'nav_menu_locations', $locations );
 		

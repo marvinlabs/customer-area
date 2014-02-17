@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2014-02-15 23:18+0100\n"
-"PO-Revision-Date: 2014-02-15 23:22+0100\n"
+"POT-Creation-Date: 2014-02-17 10:28+0100\n"
+"PO-Revision-Date: 2014-02-17 10:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -220,9 +220,41 @@ msgstr "Voir le menu"
 msgid "Capabilities Manager"
 msgstr "Gestion des Permissions"
 
-#: ../includes/core-addons/capabilities/capabilities-addon.class.php:53
+#: ../includes/core-addons/capabilities/capabilities-addon.class.php:55
+msgid "You have not yet configured the plugin permissions."
+msgstr "Vous n'avez pas encore configuré les permissions."
+
+#: ../includes/core-addons/capabilities/capabilities-addon.class.php:79
 msgid "Capabilities"
 msgstr "Permissions"
+
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:22
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:28
+msgid "Configure permissions"
+msgstr "Configurer les permissions"
+
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:24
+msgid ""
+"You have not yet configured the permissions. By default, the plugin will "
+"allows the administrators to do everything but the other roles will not be "
+"able to use the customer area. The permissions can easily be configured from "
+"the Customer Area settings."
+msgstr ""
+"Vous n'avez pas encore configuré les permissions. Par défaut, le plugin "
+"permet aux administrateur de tout faire mais les les autres rôles ne peuvent "
+"pas utiliser l'espace client. Les permissions peuvent être configurées "
+"facilement depuis la page de réglage des permissions de l'espace client."
+
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:27
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:29
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:29
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:31
+msgid "Suggested action"
+msgstr "Action recommandée"
+
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:29
+msgid "Ignore this warning"
+msgstr "Ignorer cet avertissement"
 
 #: ../includes/core-addons/customer-account/customer-account-addon.class.php:44
 msgid "Account - Details"
@@ -315,7 +347,7 @@ msgstr ""
 "Cette page déconnecte l'utilisateur et le redirige vers la page de connexion"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:36
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:609
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:606
 msgid "Customer Pages"
 msgstr "Pages Client"
 
@@ -346,39 +378,46 @@ msgstr "Pages"
 msgid "Pages of the Customer Area"
 msgstr "Pages de l'espace client"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:438
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:435
+msgctxt ""
+"Localised slug for the main navigation menu (small caps version of the "
+"\"Customer Area Menu\" translation)"
+msgid "customer-area-menu"
+msgstr "menu-espace-client"
+
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:436
 msgid "Customer Area Menu"
 msgstr "Menu Espace Client"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:442
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:440
 #, php-format
 msgid "Could not create the menu. %s"
 msgstr "Impossible de créer le menu : %s"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:494
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:491
 #, php-format
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "Le menu a été créé : <a href=\"%s\">afficher</a>"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:602
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:599
 msgid "Site Pages"
 msgstr "Pages du site"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:635
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:694
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:632
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:691
 #: ../includes/core-addons/status/status-addon.class.php:96
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:641
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:638
 msgid "Reset all pages &raquo;"
 msgstr "réinitialiser toutes les pages &raquo;"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:644
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:641
 msgid "Delete all existing pages and recreate them."
 msgstr "Supprimer les pages existantes et les recréer."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:645
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:642
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
@@ -386,15 +425,15 @@ msgstr ""
 "Êtes-vous sur de vouloir supprimer toutes les pages existantes et de les "
 "recréer (cette opération ne peut pas être annulée) ?"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:653
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:650
 msgid "Main Navigation Menu"
 msgstr "Menu de navigation principal"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:660
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:657
 msgid "Customer Area pages"
 msgstr "Pages de l'espace client"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:667
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:664
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
@@ -402,7 +441,7 @@ msgstr ""
 "Afficher automatiquement le menu de navigation sur les pages de l'espace "
 "client."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:669
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:666
 msgid ""
 "By checking this box, the menu will automatically be shown automatically on "
 "the Customer Area pages (the ones defined in the tab named \"Site Pages\"). "
@@ -415,11 +454,11 @@ msgstr ""
 "Si c'est le cas, vous pouvez consulter la documentation pour savoir comment "
 "éditer votre thème."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:677
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:674
 msgid "Private content single pages"
 msgstr "Pages de détail du contenu privé"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:684
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:681
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
@@ -427,7 +466,7 @@ msgstr ""
 "Afficher automatiquement le menu de navigation sur les pages de détail de "
 "contenu privé."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:686
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:683
 msgid ""
 "By checking this box, the menu will automatically be shown automatically on "
 "the pages displaying a single private content (a private page or a private "
@@ -441,15 +480,15 @@ msgstr ""
 "souhaiteriez. Si c'est le cas, vous pouvez consulter la documentation pour "
 "savoir comment éditer votre thème."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:700
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:697
 msgid "Recreate menu"
 msgstr "Recréer le menu"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:703
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:700
 msgid "Delete and recreate the main navigation menu."
 msgstr "Supprimer et recréer le menu de navigation principal."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:704
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:701
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
@@ -457,15 +496,15 @@ msgstr ""
 "Êtes-vous sur de vouloir recréer le menu de navigation (cette opération ne "
 "peut pas être annulée) ?"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:710
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:707
 msgid "Permalinks"
 msgstr "Liens permanents"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:717
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:714
 msgid "Category Archive"
 msgstr "Archives de catégorie"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:726
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:723
 msgid ""
 "Slug that is used in the URL for category archives of private content. For "
 "example, the list of files in the \"my-awesome-category\" category would "
@@ -477,11 +516,11 @@ msgstr ""
 "super-categorie\" ressemblerait à : <br/>http://example.fr/espace-client/"
 "fichiers/<b>mon-slug</b>/ma-super-categorie"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:734
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:731
 msgid "Date Archive"
 msgstr "Archives temporelles"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:743
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:740
 msgid ""
 "Slug that is used in the URL for date archives of private content. For "
 "example, the list of files for 2014 would look like:<br/>http://example.com/"
@@ -491,12 +530,12 @@ msgstr ""
 "privé. Par exemple, la liste des fichiers de l'anée 2014 ressemblerait à : "
 "<br/>http://example.fr/espace-client/fichiers/<b>mon-slug</b>/2014"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:755
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:752
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
 msgstr ""
 "Depuis la version 4.0.0, Espace Client utilise les menus pour la navigation."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:757
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:754
 #, php-format
 msgid ""
 "You can customize the Customer Area menu in the <a href=\"%1$s\">Appearance "
@@ -509,7 +548,7 @@ msgstr ""
 "Espace Client va générer un menu par défaut avec toutes les pages que vous "
 "aurez défini ci-dessous."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:766
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:763
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
@@ -519,8 +558,8 @@ msgstr ""
 "pour afficher le contenu à vos utilisateurs. Créez ces pages à partir d'ici "
 "ou indiquez celles qui existent déjà."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:820
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:849
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:817
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:846
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
@@ -528,12 +567,12 @@ msgstr ""
 "Certaines pages de l'espace client on été créées ou supprimées. Le menu de "
 "navigation a besoin d'être synchronisé."
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:846
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:843
 #, php-format
 msgid "The following pages have been created: %s"
 msgstr "Les pages suivantes ont été créées : %s"
 
-#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:851
+#: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:848
 msgid "There was no missing page that could be created."
 msgstr "Aucune page manquante n'a pu être créée."
 
@@ -563,12 +602,6 @@ msgid ""
 msgstr ""
 "Vous pouvez voir les menus actuellement activés sur la <a href=\"%1$s\">page "
 "des menus</a>."
-
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:29
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:29
-#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:31
-msgid "Suggested action"
-msgstr "Action recommandée"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:30
 msgid "Create the menu"
@@ -1796,7 +1829,7 @@ msgstr "Licences pour les extensions commerciales"
 #: ../includes/core-classes/addon.class.php:148
 msgid ""
 "This page allows you to enter license key you have received when you "
-"purchased commercial addons. "
+"purchased commercial addons."
 msgstr ""
 "Cette page vous permet de renseigner les clés de licence que vous avez reçu "
 "suite à l'achat de vos extensions."
@@ -1809,7 +1842,7 @@ msgstr ""
 "N'activez pas votre license sur vos sites de développement. Seulement sur le "
 "site final où vous souhaitez utiliser le plugin."
 
-#: ../includes/core-classes/plugin.class.php:337
+#: ../includes/core-classes/plugin.class.php:348
 msgid ""
 "The Customer Area plugin requires your attention. The issues we have "
 "detected are the following: "
@@ -1817,7 +1850,7 @@ msgstr ""
 "Le plugin Espace Client a détecté des problèmes. Voici ce qui demande votre "
 "attention :"
 
-#: ../includes/core-classes/plugin.class.php:345
+#: ../includes/core-classes/plugin.class.php:356
 #, php-format
 msgid ""
 "You can view the details of those issues and fix them on the <a href=\"%1$s"
@@ -1826,13 +1859,13 @@ msgstr ""
 "Vous pouvez afficher le détail de ces problèmes et les régler sur la <a href="
 "\"%1$s\">page de statut de l'espace client</a>."
 
-#: ../includes/core-classes/plugin.class.php:445
+#: ../includes/core-classes/plugin.class.php:457
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr ""
 "Certaines extensions nécessitent une version plus récente du plugin "
 "principal."
 
-#: ../includes/core-classes/plugin.class.php:471
+#: ../includes/core-classes/plugin.class.php:483
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please enable "
 "them in the WordPress settings."
