@@ -93,8 +93,8 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 			
 			$this->sections['hooks'] = array(
 					'id'			=> 'hooks',
-					'label'			=> __('Hooks and filters', 'cuar'),
-					'title'			=> __('Listing of all hooks and filters', 'cuar')
+					'label'			=> __('Actions and filters', 'cuar'),
+					'title'			=> __('Listing of all actions and filters', 'cuar')
 				);
 			
 			$this->sections['reset'] = array(
