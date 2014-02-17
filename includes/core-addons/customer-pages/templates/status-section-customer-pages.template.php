@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	<thead>
 		<tr>
 			<th><?php _e( 'Page', 'cuar' ); ?></th>
+			<th><?php _e( 'Slug', 'cuar' ); ?></th>
 			<th><?php _e( 'Order', 'cuar' ); ?></th>
 			<th><?php _e( 'ID', 'cuar' ); ?></th>
 			<th></th>
@@ -37,6 +38,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ?>
 		<tr class="<?php echo $tr_class; ?>">
 			<td><?php echo $page->get_title(); ?></td>
+			<td><?php echo $page->get_slug(); ?></td>
 			<td><?php echo $page->get_priority(); ?></td>
 			<td><?php echo $page_id>0 ? $page_id : '?'; ?></td>
 			<td>
