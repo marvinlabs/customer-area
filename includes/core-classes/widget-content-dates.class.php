@@ -85,6 +85,7 @@ abstract class CUAR_ContentDatesWidget extends WP_Widget {
 				'order' 			=> 'DESC',
 				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( get_current_user_id() )
 			);		
+		$args = apply_filters( 'cuar_widget_query_parameters-' .  $this->id_base, $args );		
 		$posts = get_posts( $args );
 		
 		

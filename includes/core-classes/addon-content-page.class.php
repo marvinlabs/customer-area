@@ -381,8 +381,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 			$page_subtitle = $this->get_default_page_subtitle();
 		}
 				
-		$args = apply_filters( $page_slug . 'cuar_query_parameters-' .  $page_slug, $args );
-		$args = apply_filters( $page_slug . 'cuar_query_parameters-' .  $page_slug . '-' . $display_mode, $args );		
+		$args = apply_filters( 'cuar_query_parameters-' .  $page_slug, $args );
+		$args = apply_filters( 'cuar_query_parameters-' .  $page_slug . '-' . $display_mode, $args );		
 		$content_query = new WP_Query( $args );
 
 		$page_subtitle = apply_filters( 'cuar_page_subtitle-' .  $page_slug, $page_subtitle );
