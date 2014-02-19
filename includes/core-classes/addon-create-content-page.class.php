@@ -421,7 +421,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 							'option_id' 	=> $slug . self::$OPTION_ENABLE_RICH_EDITOR,
 							'type' 			=> 'checkbox',
 							'default_value' => 1,
-							'after'			=> __('Enable the rich editor when creating new content.', 'cuarme')
+							'after'			=> __('Enable the rich editor when creating new content.', 'cuar')
 						)
 				);
 		}
@@ -437,7 +437,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 							'option_id' 	=> $slug . self::$OPTION_ENABLE_MODERATION,
 							'type' 			=> 'checkbox',
 							'default_value' => 1,
-							'after'			=> __('Enable moderation when new content is submitted by a user.', 'cuarme')
+							'after'			=> __('Enable moderation when new content is submitted by a user.', 'cuar')
 					    					. '<p class="description">'
 						    				. __( 'An administrator will be required to review the content and publish it '
 						    						. 'manually. This can be used to moderate the content created by users by saving it as draft. '
@@ -452,7 +452,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		if ( in_array('default-ownership', $this->enabled_settings ) ) {	
 			add_settings_field(
 					$slug . self::$OPTION_DEFAULT_OWNER_TYPE, 
-					__('Default owner type', 'cuarme'),
+					__('Default owner type', 'cuar'),
 					array( &$cuar_settings, 'print_owner_type_select_field' ), 
 					CUAR_Settings::$OPTIONS_PAGE_SLUG,
 					$this->get_settings_section(),
@@ -463,7 +463,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	
 			add_settings_field(
 					$slug . self::$OPTION_DEFAULT_OWNER, 
-					__('Default owner', 'cuarme'),
+					__('Default owner', 'cuar'),
 					array( &$cuar_settings, 'print_owner_select_field' ), 
 					CUAR_Settings::$OPTIONS_PAGE_SLUG,
 					$this->get_settings_section(),
