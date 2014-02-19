@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 4.1.1
+Stable tag: 4.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,14 +79,15 @@ customisation has been done to the plugin or to the add-ons.
 	
 == Upgrade Notice ==
 
+We have a safe upgrade procedure that needs to be followed, specially if you have installed any add-ons to the main
+plugin: [Important upgrade procedure for Customer Area](http://customer-area.marvinlabs.com/documentation/general-topics/updating-main-plugin-andor-add-ons/)
+
 = Upgrading from 3.x to 4.x =
 
 Version 4 introduces a brand new menu system and breaks many templates that have been there in version 3.x. Coming 
 from that version, you will need to create the pages that are necessary to display the private content types. Before
 upgrading the plugin, backup your files and database. It is advised that you attempt the upgrade on a development 
 site first.
-
-
 
 = Upgrading from 2.x to 3.x =
 
@@ -168,6 +169,10 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 4.1.2 (2014/02/19) =
+
+* Fix another "headers already sent" bug. This one was tricky. Hopefully that's the last one...
 
 = 4.1.1 (2014/02/19) =
 

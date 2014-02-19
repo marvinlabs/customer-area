@@ -37,6 +37,8 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		add_filter( 'cuar_customer_pages', array( &$this, 'register_page' ), $this->page_priority );
 		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 2 );
 		add_filter( 'body_class', array( &$this, 'add_body_class' ) );
+		
+		add_action( 'template_redirect', array( &$this, 'redirect_guests_if_required' ), 1000 );
 	}
 	
 	public function get_addon_name() {
@@ -221,10 +223,16 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		
 		return $page_id;
 	}
+	
+	public function redirect_guests_if_required() {
+		if ( $this->requires_login() && !is_user_logged_in() && get_queried_object_id()==$this->get_page_id() ) {
+			$this->plugin->login_then_redirect_to_page( $this->get_slug() );
+		}
+	}
 		
 	public function print_page( $args = array(), $shortcode_content = '' ) {
 		if ( $this->requires_login() && !is_user_logged_in() ) {
-			$this->plugin->login_then_redirect_to_page( $this->get_slug() );	
+			_e( 'This page requires login, you should not be here', 'cuar' );
 		} else if ( $this->is_accessible_to_current_user() ) {		
 			$template_path = $this->plugin->get_template_file_path(
 					CUAR_INCLUDES_DIR . '/core-classes',
