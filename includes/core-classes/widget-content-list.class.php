@@ -100,7 +100,8 @@ abstract class CUAR_ContentListWidget extends WP_Widget {
 						)
 				);
 		}		
-		
+
+		$args = apply_filters( 'cuar_widget_query_parameters-' .  $this->id_base, $args );
 		$posts = get_posts( $args );
 		
 		return $posts;

@@ -41,7 +41,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 			add_action( 'cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10000 );
 			add_action( 'admin_init', array( &$this, 'handle_core_section_actions' ), 500 );
 		} 
-	}	
+	}
 
 	/**
 	 * Add the menu item
@@ -90,6 +90,12 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 			);
 			
 			$this->sections = apply_filters( 'cuar_status_sections', $this->sections );
+			
+			$this->sections['hooks'] = array(
+					'id'			=> 'hooks',
+					'label'			=> __('Actions and filters', 'cuar'),
+					'title'			=> __('Listing of all actions and filters', 'cuar')
+				);
 			
 			$this->sections['reset'] = array(
 					'id'			=> 'reset',

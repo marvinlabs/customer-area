@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 4.0.3
+Stable tag: 4.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,6 +168,16 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 4.1.1 (2014/02/19) =
+
+* Filter name for content queries was wrong
+* Allow filtering queries for date archive and recent content widgets
+
+= 4.1.0 (2014/02/18) =
+
+* Fix a strange bug that most likely happens when you hav orphan menu items in your database.
+* Added a list of all hooks (actions and filters) that are available to developers in the status page.
 
 = 4.0.3 (2014/02/17) =
 

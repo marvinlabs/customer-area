@@ -16,6 +16,10 @@ if ( !function_exists( 'cuar_load_theme_scripts' ) ) {
 
 
 if ( !function_exists( 'cuar_enable_bootstrap_nav_walker' ) ) {
+	
+	/**
+	 * Use the bootstrap navwalker for our navigation menu to output bootstrap-friendly HTML.
+	 */
 	function cuar_enable_bootstrap_nav_walker( $args ) {
 		require_once( CUAR_PLUGIN_DIR . '/libs/wp-bootstrap-navwalker/wp_bootstrap_navwalker.php' );		
 		$new_args = $args;

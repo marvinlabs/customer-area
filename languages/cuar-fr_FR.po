@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2014-02-17 15:25+0100\n"
-"PO-Revision-Date: 2014-02-17 15:28+0100\n"
+"POT-Creation-Date: 2014-02-17 23:04+0100\n"
+"PO-Revision-Date: 2014-02-17 23:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -91,6 +91,7 @@ msgstr "Voir le menu"
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:163
 #: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
 #: ../includes/core-addons/customer-home/customer-home-addon.class.php:47
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:22
 msgid "Customer Area"
 msgstr "Espace Client"
 
@@ -283,7 +284,7 @@ msgstr "Pages du site"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:632
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:691
-#: ../includes/core-addons/status/status-addon.class.php:96
+#: ../includes/core-addons/status/status-addon.class.php:102
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -1221,6 +1222,7 @@ msgid "Category"
 msgstr "Catégorie"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:186
+#: ../includes/core-addons/status/hook-finder.class.php:125
 msgid "File"
 msgstr "Fichier"
 
@@ -1516,6 +1518,20 @@ msgstr "Catégories de page"
 msgid "Check this to enable the private pages add-on."
 msgstr "Cochez cette case pour activer l'extension des pages privées."
 
+#: ../includes/core-addons/status/hook-finder.class.php:123
+msgid "Type"
+msgstr "Type"
+
+#: ../includes/core-addons/status/hook-finder.class.php:124
+#: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:26
+#: ../includes/core-classes/widget-content-list.class.php:161
+msgid "Name"
+msgstr "Nom"
+
+#: ../includes/core-addons/status/hook-finder.class.php:126
+msgid "Path"
+msgstr "Chemin "
+
 #: ../includes/core-addons/status/status-addon.class.php:35
 #: ../includes/core-addons/status/status-addon.class.php:52
 msgid "Status"
@@ -1541,11 +1557,19 @@ msgstr "Extension installées"
 msgid "Core and commercial add-ons currently enabled"
 msgstr "Extensions gratuites et commerciales actuellement activées"
 
+#: ../includes/core-addons/status/status-addon.class.php:96
+msgid "Actions and filters"
+msgstr "Actions et filtres"
+
 #: ../includes/core-addons/status/status-addon.class.php:97
+msgid "Listing of all actions and filters"
+msgstr "Liste de tous les filtres et actions"
+
+#: ../includes/core-addons/status/status-addon.class.php:103
 msgid "Reset settings"
 msgstr "Réinitialiser les réglages"
 
-#: ../includes/core-addons/status/status-addon.class.php:141
+#: ../includes/core-addons/status/status-addon.class.php:147
 msgid "Settings have been resetted to default values"
 msgstr "Les réglages ont été réinitialisés"
 
@@ -1568,10 +1592,22 @@ msgstr ""
 msgid "Update the plugin"
 msgstr "Mettre à jour"
 
-#: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:26
-#: ../includes/core-classes/widget-content-list.class.php:161
-msgid "Name"
-msgstr "Nom"
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:27
+msgid "All"
+msgstr "Tous"
+
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:28
+msgid "Filters only"
+msgstr "Filtres seulement"
+
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:29
+msgid "Actions only"
+msgstr "Actions seulement"
+
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:50
+#, php-format
+msgid "%s: %d hook(s)"
+msgstr "%s: %d point(s) d’accroche"
 
 #: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:27
 msgid "Required customer area version"
@@ -2521,9 +2557,6 @@ msgstr "Ajouter un menu"
 
 #~ msgid "work"
 #~ msgstr "projet"
-
-#~ msgid "Type"
-#~ msgstr "Type"
 
 #~ msgid "Types"
 #~ msgstr "Types"

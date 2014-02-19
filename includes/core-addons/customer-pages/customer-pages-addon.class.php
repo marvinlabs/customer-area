@@ -331,10 +331,14 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 			
 	    	foreach ( $sorted_menu_items as $menu_item ) {
 	    		$menus = get_the_terms( $menu_item->ID, 'nav_menu' );
-	    		foreach ( $menus as $m ) {
-	    			if ( $m->term_id!=$menu->term_id ) {
-	    				return $sorted_menu_items;
-	    			}
+	    		if ( $menus!=null && $menus!=false && !is_wp_error( $menus ) ) {
+		    		foreach ( $menus as $m ) {
+		    			if ( $m->term_id!=$menu->term_id ) {
+		    				return $sorted_menu_items;
+		    			}
+		    		}
+	    		} else {
+		    		return $sorted_menu_items;
 	    		}
 	    		
 	    		if ( $menu_item->type=='post_type' && $menu_item->object=='page' ) {
@@ -364,10 +368,14 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		} else {
 		    foreach ( $sorted_menu_items as $menu_item ) {
 	    		$menus = get_the_terms( $menu_item->ID, 'nav_menu' );
-	    		foreach ( $menus as $m ) {
-	    			if ( $m->term_id!=$menu->term_id ) {
-	    				return $sorted_menu_items;
-	    			}
+	    		if ( $menus!=null && $menus!=false && !is_wp_error( $menus ) ) {
+		    		foreach ( $menus as $m ) {
+		    			if ( $m->term_id!=$menu->term_id ) {
+		    				return $sorted_menu_items;
+		    			}
+		    		}
+	    		} else {
+		    		return $sorted_menu_items;
 	    		}
 	    		
 		        if ( $menu_item->current ) {
