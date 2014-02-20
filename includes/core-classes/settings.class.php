@@ -634,7 +634,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * Handles remote requests to validate a license
 		 */
 		public static function ajax_validate_license() {
-			global $cuar_plugin;
+			$cuar_plugin = CUAR_Plugin::get_instance();
 			
 			$addon_id = $_POST["addon_id"];		
 			$license = $_POST["license"];		

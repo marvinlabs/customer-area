@@ -75,7 +75,7 @@ abstract class CUAR_ContentDatesWidget extends WP_Widget {
 		
 		
 		// Get user files
-		global $cuar_plugin;
+		$cuar_plugin = CUAR_Plugin::get_instance();
 		$po_addon = $cuar_plugin->get_addon( 'post-owner' );
 		
 		$args = array(

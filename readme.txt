@@ -170,37 +170,46 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 4.2.0 (2014/02/20) =
+
+* New: new template functions. See the directory "customer-area/includes/functions" for details
+* New: some templates have been updated to use the new template functions
+* New: add a warning when we detect that permalinks are disabled
+* Fix: do not force to select a category when creating content and no category has yet been created
+* Fix: the rich editor setting was not working properly for some add-ons
+* Fix: refactoring typo that was affecting the "advanced owner restrictions" add-on
+
 = 4.1.2 (2014/02/19) =
 
-* Fix another "headers already sent" bug. This one was tricky. Hopefully that's the last one...
+* Fix: another "headers already sent" bug. This one was tricky. Hopefully that's the last one...
 
 = 4.1.1 (2014/02/19) =
 
-* Filter name for content queries was wrong
-* Allow filtering queries for date archive and recent content widgets
+* New: Allow filtering queries for date archive and recent content widgets
+* Fix: Filter name for content queries was wrong
 
 = 4.1.0 (2014/02/18) =
 
-* Fix a strange bug that most likely happens when you hav orphan menu items in your database.
-* Added a list of all hooks (actions and filters) that are available to developers in the status page.
+* New: Added a list of all hooks (actions and filters) that are available to developers in the status page.
+* Fix: a strange bug that most likely happens when you hav orphan menu items in your database.
 
 = 4.0.3 (2014/02/17) =
 
-* Fix logout page bug when getting the warning "headers already sent"
-* New setting to output debug information for developers about the templates used in a page
-* Added some developer info in the status page for customer pages (to help findind which template to override)
+* New: setting to output debug information for developers about the templates used in a page
+* New: Added some developer info in the status page for customer pages (to help findind which template to override)
+* Fix: logout page bug when getting the warning "headers already sent"
 
 = 4.0.2 (2014/02/17) =
 
-* Fix redirect issue occuring sometimes (headers already sent)
-* Add a class to the body element on customer area pages (helps to tweak CSS)
-* Fix small issue when re-creating the customer area menu in some cases
-* Some small fixes on the default-v4 theme
+* New: Add a class to the body element on customer area pages (helps to tweak CSS)
+* Fix: redirect issue occuring sometimes (headers already sent)
+* Fix: small issue when re-creating the customer area menu in some cases
+* Fix: Some small fixes on the default-v4 theme
 
 = 4.0.1 (2014/02/16) =
 
-* Fixed: normal WordPress pages could not be added to any navigation menu
-* Added a reminder to configure the plugin permissions
+* New: Added a reminder to configure the plugin permissions
+* Fix: normal WordPress pages could not be added to any navigation menu
 
 = 4.0.0 (2014/02/15) =
 

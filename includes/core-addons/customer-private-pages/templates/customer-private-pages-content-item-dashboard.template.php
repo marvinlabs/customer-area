@@ -13,7 +13,7 @@
 		<span class="title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Added on %s', 'cuar' ), get_the_date() ) ); ?>">
 			<?php the_title(); ?></a></span>
 		<br/>
-		<span class="recipient"><?php echo CUAR_WordPressHelper::ellipsis( sprintf( __('To: %s', 'cuar' ), CUAR_TemplateFunctions::get_the_owner() ), 53 ); ?></span>
+		<span class="recipient"><?php echo CUAR_WordPressHelper::ellipsis( sprintf( __('To: %s', 'cuar' ), cuar_get_the_owner() ), 53 ); ?></span>
 	</td>
 	<td class="links">
 		&nbsp;

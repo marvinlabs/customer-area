@@ -6,7 +6,7 @@ if ( !function_exists( 'cuar_load_theme_scripts' ) ) {
 	 * Load theme particular scripts
 	 */
 	function cuar_load_theme_scripts() {
-		global $cuar_plugin;	
+		$cuar_plugin = CUAR_Plugin::get_instance();	
 		$cuar_plugin->enable_library( 'bootstrap.dropdown' );		
 		$cuar_plugin->enable_library( 'bootstrap.collapse' );		
 	}

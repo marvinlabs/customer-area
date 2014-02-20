@@ -75,7 +75,7 @@ abstract class CUAR_ContentListWidget extends WP_Widget {
 	
 	function get_content( $args, $instance ) {			
 		// Get user content
-		global $cuar_plugin;
+		$cuar_plugin = CUAR_Plugin::get_instance();
 		$po_addon = $cuar_plugin->get_addon( 'post-owner' );
 		
 		$limit = isset( $instance[ 'posts_per_page' ] ) ? $instance[ 'posts_per_page' ] : 5;

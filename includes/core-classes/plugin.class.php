@@ -48,6 +48,11 @@ class CUAR_Plugin {
 		}
 	}
 
+	public static function get_instance() {
+		global $cuar_plugin;
+		return $cuar_plugin;
+	}
+	
 	/*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/
 	
 	public function load_settings() {
@@ -275,11 +280,15 @@ class CUAR_Plugin {
 				return $path;
 			}
 		}
+
+		if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
+			echo "\n<!-- CUAR TEMPLATE < $filename > REQUESTED BUT NOT FOUND (WILL NOT BE USED) -->\n";
+		}
 		
 		return '';
 	}
 	
-	private function print_template_path_debug_info( $path ) {		
+	private function print_template_path_debug_info( $path ) {	
 		$dirname = dirname( $path );
 		$strip_from = strpos( $path, 'customer-area' );
 		$dirname = $strip_from>0 ? strstr( $dirname, 'customer-area' ) : $dirname;
@@ -441,6 +450,7 @@ class CUAR_Plugin {
 
 		// Check add-on versions
 		if ( is_admin() ) {
+			$this->check_permalinks_enabled();
 			$this->check_addons_required_versions();
 		}
 	}
@@ -470,6 +480,18 @@ class CUAR_Plugin {
 	
 	public function has_commercial_addons() {
 		return !empty( $this->commercial_addons );
+	}
+	
+	/**
+	 * Shows a compatibity warning
+	 */
+	public function check_permalinks_enabled() {
+		if ( !get_option('permalink_structure') ) {
+			$this->set_attention_needed( 'permalinks-disabled',
+					__( 'Permalinks are disabled, Customer Area will not work properly. Please enable them in the WordPress settings.', 'cuar' ) );
+		} else {
+			$this->clear_attention_needed( 'permalinks-disabled' );
+		}
 	}
 	
 	/**
@@ -513,10 +535,6 @@ class CUAR_Plugin {
 	 * Print the eventual errors that occured during a post save/update
 	 */
 	public function print_admin_notices() {
-		if ( !get_option('permalink_structure') ) { 
-			$this->add_admin_notice( __( 'Permalinks are disabled, Customer Area will not work properly. Please enable them in the WordPress settings.', 'cuar' ) );
-		}
-		
 		$notices = $this->get_admin_notices();
 		
 		if ( $notices ) {
