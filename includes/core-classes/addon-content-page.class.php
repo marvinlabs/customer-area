@@ -452,7 +452,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		$page_subtitle = $this->get_default_dashboard_block_title();
 		$page_subtitle = apply_filters( 'cuar_dashboard_block_title-' .  $page_slug, $page_subtitle );
 
-		$args = apply_filters( $page_slug . 'cuar_dashboard_block_query_parameters-' .  $page_slug, $args );
+		$args = apply_filters( 'cuar_dashboard_block_query_parameters-' .  $page_slug, $args );
 
 		$content_query = new WP_Query( $args );
 		
