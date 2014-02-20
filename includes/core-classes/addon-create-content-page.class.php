@@ -165,6 +165,11 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		printf( '<form name="%1$s" method="post" class="cuar-form cuar-create-content-form cuar-%1$s-form" action="%2$s" enctype="multipart/form-data">', $this->get_slug(), $this->get_page_url() );
 
 		printf( '<input type="hidden" name="cuar_form_id" value="%1$s" />', $this->get_slug() );
+		printf( '<input type="hidden" name="cuar_post_type" value="%1$s" />', $this->get_friendly_post_type() );
+		
+		if ( !isset( $_POST['cuar_post_type'] ) ) {
+			$_POST['cuar_post_type'] = $this->get_friendly_post_type();
+		} 
 		
 		wp_nonce_field( 'cuar_' . $this->get_slug(), 'cuar_' . $this->get_slug() . '_nonce' );
 	
@@ -205,7 +210,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	public function print_content_field( $label ) {
 		$content = isset( $_POST['cuar_content'] ) ? $_POST['cuar_content'] : '';
 		
-		if ( $this->is_rich_editor_enabled() ) {
+		if ( !$this->is_rich_editor_enabled() ) {
 			$field_code = sprintf( '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>', esc_attr( $content ) );
 		} else {
 			ob_start();
@@ -214,7 +219,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 			$field_code = ob_get_contents();
 			ob_end_clean();
 		}	
-			
+		
 		$this->print_form_field( 'cuar_content', $label, $field_code );
 	}
 
@@ -251,9 +256,13 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	}
 
 	public function print_category_field( $label ) {		
-		if ( $this->current_user_can_select_category() ) {
+		$categories = get_terms( $this->get_friendly_taxonomy() );
+		if ( empty( $categories ) )	{	
+			$field_code = '<input type="hidden" name="cuar_category" value="-1" />';			
+			echo $field_code;
+		} else if ( $this->current_user_can_select_category() ) {
 			$category = isset( $_POST['cuar_category'] ) ? $_POST['cuar_category'] : '';
-		
+			
 			$field_code = wp_dropdown_categories( array( 
 							'taxonomy'		=> $this->get_friendly_taxonomy(),
 							'name' 			=> 'cuar_category',

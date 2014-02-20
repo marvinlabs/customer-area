@@ -50,7 +50,7 @@ class CUAR_PrivatePageDatesWidget extends CUAR_ContentDatesWidget {
 	}
 	
 	protected function get_link( $year, $month=0 ) {
-		global $cuar_plugin;
+		$cuar_plugin = CUAR_Plugin::get_instance();
 		$cfp_addon = $cuar_plugin->get_addon( 'customer-private-pages' );
 		return $cfp_addon->get_date_archive_url( $year, $month );
 	}

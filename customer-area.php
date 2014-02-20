@@ -90,6 +90,11 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-files/customer-
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages/customer-private-pages-addon.class.php' );
 
+// Template functions
+include_once( CUAR_INCLUDES_DIR . '/functions/functions-general.php' );
+include_once( CUAR_INCLUDES_DIR . '/functions/functions-private-content.php' );
+include_once( CUAR_INCLUDES_DIR . '/functions/functions-private-files.php' );
+
 // Start the plugin!
 global $cuar_plugin;
 $cuar_plugin = new CUAR_Plugin();
