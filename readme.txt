@@ -170,9 +170,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 4.2.2 (2014/02/) =
+= 4.2.2 (2014/02/21) =
 
 * Fix: renamed the dashboard query filter
+* Fix: bug in some file templates functions 
 
 = 4.2.1 (2014/02/20) =
 

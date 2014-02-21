@@ -39,7 +39,7 @@ function cuar_get_the_file_link( $post_id = null, $action = 'download' ) {
  * @param int $post_id Defaults to the current post ID from the loop
  */
 function cuar_the_file_link( $post_id = null, $action = 'download' ) {
-	echo self::get_the_file_link( $post_id, $action );
+	echo cuar_get_the_file_link( $post_id, $action );
 }
 
 /**
@@ -68,7 +68,7 @@ function cuar_get_the_file_name( $post_id = null ) {
  * @return string|mixed
  */		
 function cuar_the_file_name( $post_id = null ) {
-	echo self::get_the_file_name( $post_id );
+	echo cuar_get_the_file_name( $post_id );
 }
 
 /**
@@ -97,5 +97,5 @@ function cuar_get_the_file_type( $post_id = null ) {
  * @return string|mixed
  */		
 function cuar_the_file_type( $post_id = null ) {
-	echo self::get_the_file_type( $post_id );
+	echo cuar_get_the_file_type( $post_id );
 }
