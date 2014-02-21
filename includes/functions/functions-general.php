@@ -48,5 +48,5 @@ function cuar_is_customer_area_private_content( $post = null ) {
 	$cuar_plugin = CUAR_Plugin::get_instance();
 	$private_types = $cuar_plugin->get_private_post_types();
 	
-	return in_array( get_post_type( $post_id ), $private_types );
+	return in_array( get_post_type( $post ), $private_types );
 }
