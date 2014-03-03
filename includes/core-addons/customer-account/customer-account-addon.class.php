@@ -70,10 +70,10 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 		$renderer = new CUAR_FieldRenderer( $this->plugin );	
 			
 		$renderer->start_section( 'contact', __( 'Contact', 'cuar' ) );
-		$renderer->add_simple_field( 'first_name', __( 'First Name'), $current_user->first_name, '-' );
-		$renderer->add_simple_field( 'last_name', __( 'Last Name'), $current_user->last_name, '-' );
-		$renderer->add_simple_field( 'email', __( 'Email'), $current_user->user_email, false, 'wide' );
-		$renderer->add_simple_field( 'website', __( 'Website'), $current_user->user_url, false, 'wide link' );
+		$renderer->add_simple_field( 'first_name', __( 'First Name', 'cuar'), $current_user->first_name, '-' );
+		$renderer->add_simple_field( 'last_name', __( 'Last Name', 'cuar'), $current_user->last_name, '-' );
+		$renderer->add_simple_field( 'email', __( 'Email', 'cuar'), $current_user->user_email, false, 'wide' );
+		$renderer->add_simple_field( 'website', __( 'Website', 'cuar'), $current_user->user_url, false, 'wide link' );
 		
 		do_action( 'cuar_add_account_fields', $current_user, $renderer );
 		

@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 			<th><?php _e( 'Slug', 'cuar' ); ?></th>
 			<th><?php _e( 'Order', 'cuar' ); ?></th>
 			<th><?php _e( 'ID', 'cuar' ); ?></th>
+			<th><?php _e( 'Sidebar', 'cuar' ); ?></th>
+			<th><?php _e( 'Type', 'cuar' ); ?></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -41,9 +43,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 			<td><?php echo $page->get_slug(); ?></td>
 			<td><?php echo $page->get_priority(); ?></td>
 			<td><?php echo $page_id>0 ? $page_id : '?'; ?></td>
+			<td><?php echo $page->has_page_sidebar() ? 'Yes' : ''; ?></td>
+			<td><?php echo $page->get_type(); ?></td>
 			<td>
 <?php 			if ( $page_id>0 ) {
-					printf( '<a href="%1$s">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $page_id), __('Edit', 'cuar') );		
+					printf( '<a href="%1$s" class="button">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $page_id), __('Edit', 'cuar') );	
+					echo ' ';
+					printf( '<a href="%1$s" class="button">%2$s &raquo;</a>', get_permalink( $page_id ), __('View', 'cuar') );			
 				}
 ?>
 			</td>

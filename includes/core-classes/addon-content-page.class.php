@@ -44,6 +44,10 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		}
 	}
 	
+	public function get_type() {
+		return 'list-content';
+	}
+	
 	public function get_friendly_post_type() {
 		return $this->page_description['friendly_post_type'];
 	}

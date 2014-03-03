@@ -41,6 +41,10 @@ abstract class CUAR_AddOn {
 	
 	public abstract function get_addon_name();
 	
+	public function get_id() {
+		return $this->addon_id;
+	}
+	
 	/** 
 	 * Function that starts the add-on
 	 */
