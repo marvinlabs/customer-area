@@ -138,6 +138,10 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	}
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
+
+	public function get_type() {
+		return 'base';
+	}
 	
 	protected abstract function get_page_addon_path();	
 	

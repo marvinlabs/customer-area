@@ -43,6 +43,10 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 			$this->page_description['friendly_taxonomy'] = null;
 		}
 	}
+	
+	public function get_type() {
+		return 'create-content';
+	}
 
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
@@ -73,9 +77,13 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
         if ( !$this->current_user_can_create_content() ) {
         	die('You are not allowed to create content.');
         }
+		
+		do_action( 'cuar_before_create_content-' . $this->get_slug(), $this );
         
 		$result = $this->do_create_content( $_POST );		
 		if ( true===$result ) {
+			do_action( 'cuar_after_create_content-' . $this->get_slug(), $this );
+		
 			$redirect_url = apply_filters( 'cuar_redirect_url_after_content_creation', $this->get_redirect_slug_after_creation(), $this->get_slug() );
 			if ( $redirect_url!=null ) {
 				wp_redirect( $redirect_url );

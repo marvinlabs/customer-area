@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <table class="widefat cuar-status-table">
 	<thead>
 		<tr>
+			<th><?php _e( 'ID', 'cuar' ); ?></th>
 			<th><?php _e( 'Name', 'cuar' ); ?></th>
 			<th><?php _e( 'Required customer area version', 'cuar' ); ?></th>
 		</tr>
@@ -37,6 +38,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 		$tr_class = version_compare( $required_version, $current_plugin_version, '>' ) ? 'cuar-needs-attention' : '';
 ?>
 		<tr class="<?php echo $tr_class; ?>">
+			<td><?php echo $addon->get_id(); ?></td>
 			<td><?php echo $addon->get_addon_name(); ?></td>
 			<td><?php echo $addon->min_cuar_version; ?></td>
 		</tr>

@@ -205,7 +205,7 @@ jQuery(document).ready( function($) {
 		<div id="cuar-current-file" class="metabox-row">
 			<h4><?php _e('File currently associated to this post', 'cuar');?></h4>
 			<p><?php _e('Current file:', 'cuar');?> 
-				<a href="<?php CUAR_PrivateFileThemeUtils::the_file_link( $post->ID, 'download' ); ?>" target="_blank">
+				<a href="<?php cuar_the_file_link( $post->ID, 'download' ); ?>" target="_blank">
 					<?php echo basename($current_file['file']); ?></a>
 			</p>
 		</div>		

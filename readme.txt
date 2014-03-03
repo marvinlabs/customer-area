@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 4.2.2
+Stable tag: 4.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,7 +170,14 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 4.2.2 (2014/02/21) =
+= 4.3.0 (2014/03/03) =
+
+* New: Added the addon ID in the add-on status page (useful for developers)
+* New: Added more page information in the pages status page (useful for developers)
+* New: Added a hook to change the redirect URL for root pages
+* Fix: Translation problem in the customer account page
+
+= 4.2.3 (2014/02/21) =
 
 * Fix: renamed the dashboard query filter
 * Fix: bug in some file templates functions 
