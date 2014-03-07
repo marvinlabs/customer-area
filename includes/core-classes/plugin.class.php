@@ -274,7 +274,7 @@ class CUAR_Plugin {
 			$path =  trailingslashit( $default_root ) . $fallback_relative_path;
 			if ( file_exists( $path ) ) {
 				if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
-					$this->print_template_path_debug_info( $path );
+					$this->print_template_path_debug_info( $path, $filename );
 				}
 				
 				return $path;
@@ -288,14 +288,18 @@ class CUAR_Plugin {
 		return '';
 	}
 	
-	private function print_template_path_debug_info( $path ) {	
+	private function print_template_path_debug_info( $path, $original_filename=null ) {	
 		$dirname = dirname( $path );
 		$strip_from = strpos( $path, 'customer-area' );
 		$dirname = $strip_from>0 ? strstr( $dirname, 'customer-area' ) : $dirname;
 		
 		$filename = basename( $path );
 		
-		echo "\n<!-- CUAR TEMPLATE < $filename > IN FOLDER < $dirname > -->\n";
+		if ( $original_filename==null ) {
+			echo "\n<!-- CUAR TEMPLATE < $filename > IN FOLDER < $dirname > -->\n";
+		} else {
+			echo "\n<!-- CUAR TEMPLATE < $original_filename > NOT FOUND BUT USING FALLBACK: < $filename > IN FOLDER < $dirname > -->\n";
+		}
 	}
 	
 	public function is_customer_area_page() {
@@ -435,6 +439,14 @@ class CUAR_Plugin {
 		return $this->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
 	}
 	
+	public function get_options() {
+		return $this->settings->get_options();
+	}
+	
+	public function set_options( $opt ) {
+		return $this->settings->set_options( $opt );
+	}
+	
 	/** @var CUAR_Settings */
 	private $settings;
 
@@ -452,6 +464,7 @@ class CUAR_Plugin {
 		if ( is_admin() ) {
 			$this->check_permalinks_enabled();
 			$this->check_addons_required_versions();
+			$this->check_templates();
 		}
 	}
 	
@@ -632,8 +645,49 @@ class CUAR_Plugin {
 				do_action( 'cuar_enable_library', $library_id );
 		}
 	}
+
+	/*------- TEMPLATES ---------------------------------------------------------------------------------------------*/
+	
+	public static function enable_check_templates( $enable=true ) {
+		update_option( 'cuar_check_templates_required', $enable );
+	}
+	
+	public function is_check_templates_enabled() {
+		return get_option( 'cuar_check_templates_required', false );
+	}
+	
+	public function check_templates() {
+		if ( $this->is_check_templates_enabled()!=true ) {
+			return;
+		}
+
+		include( CUAR_PLUGIN_DIR . '/includes/core-addons/status/template-finder.class.php' );
+		$dirs_to_scan = apply_filters( 'cuar_hooks_status_directories', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
+		
+		$outdated_templates = array();		
+		foreach ( $dirs_to_scan as $dir => $title ) {
+			$template_finder = new CUAR_TemplateFinder( $this );
+			$template_finder->scan_directory( $dir );
+			
+			$tmp = $template_finder->get_outdated_templates();
+			if ( !empty( $tmp ) ) {
+				$outdated_templates[ $title ] = $tmp;
+			}
+		}
+		
+		if ( !empty( $outdated_templates ) ) {
+			$this->set_attention_needed( 'outdated-templates', __( 'Some template files you have overriden seem to be outdated.', 'cuar' ) );
+		} else {
+			$this->clear_attention_needed( 'outdated-templates' );
+			self::enable_check_templates( false );
+		}
+	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
+	
+	public static function on_activate() {
+		self::enable_check_templates();
+	}
 	
 	/**
 	 * Tells which post types are private (shown on the customer area page)

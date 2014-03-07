@@ -20,19 +20,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 wp_enqueue_script( 'jquery-ui-tabs' );
 
-include( CUAR_PLUGIN_DIR . '/includes/core-addons/status/hook-finder.class.php' );
+include( CUAR_PLUGIN_DIR . '/includes/core-addons/status/template-finder.class.php' );
 $dirs_to_scan = apply_filters( 'cuar_hooks_status_directories', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
 
 ?>
 
 <div>
 	<a href="#" id="cuar_show_all"><?php _e('All', 'cuar' ); ?></a> |
-	<a href="#" id="cuar_show_filters"><?php _e('Filters only', 'cuar' ); ?></a> |
-	<a href="#" id="cuar_show_actions"><?php _e('Actions only', 'cuar' ); ?></a>
+	<a href="#" id="cuar_show_overriden"><?php _e('Overriden only', 'cuar' ); ?></a> |
+	<a href="#" id="cuar_show_outdated"><?php _e('Outdated only', 'cuar' ); ?></a>
 </div>
 
 <p>&nbsp;</p>
- 
+
 <div id="sections_tabs" class="tab-container">
 	<ul class="tab-wrapper">
 <?php 	
@@ -45,15 +45,15 @@ $dirs_to_scan = apply_filters( 'cuar_hooks_status_directories', array( CUAR_PLUG
 	</ul>
 	
 <?php 	foreach ( $dirs_to_scan as $dir => $title ) : 
-			$hook_finder = new CUAR_HookFinder();
-			$hook_finder->scan_directory( $dir );
+			$template_finder = new CUAR_TemplateFinder( $this->plugin );
+			$template_finder->scan_directory( $dir );
 ?>
 	<div id="section_tab_<?php echo esc_attr( sanitize_title( $title ) ); ?>">	
-		<h2><?php printf( __( '%s: %d hook(s)', 'cuar' ), $title, $hook_finder->get_hook_count() ); ?></h2>
-		<table class="widefat cuar-hooks-table">
-<?php 			
-			$hook_finder->print_hook_headings();
-			$hook_finder->print_hook_list();
+		<h2><?php printf( __( '%s: %d template(s)', 'cuar' ), $title, $template_finder->get_template_count() ); ?></h2>
+		<table class="widefat cuar-templates-table">
+<?php
+			$template_finder->print_template_headings();
+			$template_finder->print_template_list();
 ?>
 		</table>
 	</div>
@@ -62,21 +62,21 @@ $dirs_to_scan = apply_filters( 'cuar_hooks_status_directories', array( CUAR_PLUG
 </div>
 
 
+
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
     	$( "#sections_tabs" ).tabs();
     	
-		$('#cuar_show_all').click(function() {
-			$('.cuar-hooks-table tr.cuar-filter').show();
-			$('.cuar-hooks-table tr.cuar-action').show();
-		});
-		$('#cuar_show_filters').click(function() {
-			$('.cuar-hooks-table tr.cuar-filter').show();
-			$('.cuar-hooks-table tr.cuar-action').hide();
-		});
-		$('#cuar_show_actions').click(function() {
-			$('.cuar-hooks-table tr.cuar-filter').hide();
-			$('.cuar-hooks-table tr.cuar-action').show();
-		});
+    	$('#cuar_show_all').click(function() {
+    		$('.cuar-templates-table tr').show();
+    	});
+    	$('#cuar_show_overriden').click(function() {
+    		$('.cuar-templates-table tr').hide();
+    		$('.cuar-templates-table tr.cuar-overriden').show();
+    	});
+    	$('#cuar_show_outdated').click(function() {
+    		$('.cuar-templates-table tr').hide();
+    		$('.cuar-templates-table tr.cuar-outdated').show();
+    	});
 	});
 </script>

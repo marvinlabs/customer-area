@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
 
@@ -47,7 +49,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	<div class="cuar-status-section">	
 		<h2><?php echo $current_section['title'] ?></h2>
 	
-		<form method="POST" action="">
+		<form method="POST" action="" enctype="multipart/form-data">
 			<input type="hidden" name="cuar-do-status-action" value="1" />		
 <?php
 		do_action( 'before_status_section-' . $current_section['id'] );		

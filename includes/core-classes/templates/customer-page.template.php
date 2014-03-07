@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <?php
 	$page_classes = array( 'cuar-page-' . $this->page_description['slug'] ); 
 	if ( $this->has_page_sidebar() ) $page_classes[] = "cuar-page-with-sidebar";

@@ -1163,6 +1163,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$this->reload_options();
 		}
 		
+		public function set_options( $opt ) {
+			$this->options = $opt;
+			$this->save_options();
+			$this->reload_options();
+		}
+		
 		/**
 		 * Persist the current plugin options to DB
 		 */

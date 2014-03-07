@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <?php 
 	global $post;	
 	$extra_class = ' ' . get_post_type();
