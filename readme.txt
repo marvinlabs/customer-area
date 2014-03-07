@@ -170,7 +170,7 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 4.4.0 (2014/03/) =
+= 4.4.0 (2014/03/07) =
 
 * New: templates now have a version number. This will help you to detect your outdated overriden templates.
 * New: slighlty improved template debug info
