@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2014-03-03 17:12+0100\n"
-"PO-Revision-Date: 2014-03-03 17:13+0100\n"
+"POT-Creation-Date: 2014-03-07 18:25+0100\n"
+"PO-Revision-Date: 2014-03-07 18:42+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -34,7 +34,7 @@ msgid "Resources"
 msgstr "Ressources"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:67
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:8
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:10
 #, php-format
 msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and "
@@ -44,13 +44,13 @@ msgstr ""
 "principal et pour les extensions."
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:70
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:11
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:13
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
 msgstr "<a href=\"%1$s\" target=\"_blank\">Foire Aux Questions</a>. "
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:73
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:14
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:16
 #, php-format
 msgid ""
 "A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support forum</"
@@ -61,7 +61,7 @@ msgstr ""
 "de wordpress.org)."
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:76
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:17
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:19
 #, php-format
 msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Support forums</a> on our website for the "
@@ -89,9 +89,12 @@ msgstr "Voir le menu"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:162
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:163
-#: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
+#: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:33
 #: ../includes/core-addons/customer-home/customer-home-addon.class.php:47
-#: ../includes/core-addons/status/templates/status-section-hooks.template.php:22
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:22
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:24
+#: ../includes/core-addons/status/templates/status-section-templates.template.php:24
+#: ../includes/core-classes/plugin.class.php:665
 msgid "Customer Area"
 msgstr "Espace Client"
 
@@ -107,12 +110,12 @@ msgstr "Vous n'avez pas encore configuré les permissions."
 msgid "Capabilities"
 msgstr "Permissions"
 
-#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:22
-#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:28
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:24
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:30
 msgid "Configure permissions"
 msgstr "Configurer les permissions"
 
-#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:24
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:26
 msgid ""
 "You have not yet configured the permissions. By default, the plugin will "
 "allows the administrators to do everything but the other roles will not be "
@@ -124,14 +127,14 @@ msgstr ""
 "pas utiliser l'espace client. Les permissions peuvent être configurées "
 "facilement depuis la page de réglage des permissions de l'espace client."
 
-#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:27
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:29
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:29
-#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:31
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:29
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:31
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:31
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
 msgid "Suggested action"
 msgstr "Action recommandée"
 
-#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:29
+#: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:31
 msgid "Ignore this warning"
 msgstr "Ignorer cet avertissement"
 
@@ -168,12 +171,12 @@ msgstr "Courriel"
 msgid "Website"
 msgstr "Site Internet"
 
-#: ../includes/core-addons/customer-account/templates/customer-account-content.template.php:3
+#: ../includes/core-addons/customer-account/templates/customer-account-content.template.php:5
 #, php-format
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: ../includes/core-addons/customer-account/templates/customer-account-content.template.php:6
+#: ../includes/core-addons/customer-account/templates/customer-account-content.template.php:8
 msgid "Please find below your account details"
 msgstr "Voici les détails de votre compte utilisateur"
 
@@ -284,7 +287,6 @@ msgstr "Pages du site"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:640
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:699
-#: ../includes/core-addons/status/status-addon.class.php:102
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -455,15 +457,15 @@ msgstr "Les pages suivantes ont été créées : %s"
 msgid "There was no missing page that could be created."
 msgstr "Aucune page manquante n'a pu être créée."
 
-#: ../includes/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:6
+#: ../includes/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:8
 msgid "Toggle navigation"
 msgstr "Basculer la navigation"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:21
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:23
 msgid "Missing navigation menu"
 msgstr "Menu de navigation manquant"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:24
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:26
 msgid ""
 "A navigation menu organizes the customer area. It allows to browse the "
 "files, the pages, to view the account details and much more. It seems that "
@@ -473,7 +475,7 @@ msgstr ""
 "fichiers, les pages, de voir les détails du compte utilisateur et bien plus. "
 "Il semble que ce menu n'ait pas encore été créé."
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:25
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
 #, php-format
 msgid ""
 "You can review which menus are currently created on the <a href=\"%1$s"
@@ -482,11 +484,11 @@ msgstr ""
 "Vous pouvez voir les menus actuellement activés sur la <a href=\"%1$s\">page "
 "des menus</a>."
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:30
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:32
 msgid "Create the menu"
 msgstr "Créer le menu"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:37
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:39
 msgid ""
 "Are you sure that you want to create the menu (this operation cannot be "
 "undone)?"
@@ -494,11 +496,11 @@ msgstr ""
 "Êtes-vous sur de vouloir créer le menu (cette opération ne peut pas être "
 "annulée) ?"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:21
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:23
 msgid "Navigation menu is out of sync"
 msgstr "Le menu de navigation est désynchronisé"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:24
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
 msgid ""
 "Some pages of the customer area have been changed and our current navigation "
 "menu probably references the previous pages. We recommend to synchronize the "
@@ -508,7 +510,7 @@ msgstr ""
 "référence probablement les pages précédentes. Nous vous recommandons de "
 "synchroniser le menu avec les nouvelles pages."
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:25
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
 #, php-format
 msgid ""
 "You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
@@ -517,19 +519,19 @@ msgstr ""
 "Vous pouvez aussi manuellement modifier ce menu dans la page <a href=\"%1$s"
 "\">Apparence &raquo; Menus</a>."
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:28
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:30
 msgid "Suggested actions"
 msgstr "Actions recommandées"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:29
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:31
 msgid "Synchronize menu"
 msgstr "Synchroniser le menu"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:32
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:34
 msgid "Ignore warning"
 msgstr "Ignorer"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:39
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:41
 msgid ""
 "Are you sure that you want to clear current menu and create it again from "
 "scratch (this operation cannot be undone)?"
@@ -537,7 +539,7 @@ msgstr ""
 "Êtes-vous sur de vouloir réinitialiser le menu actuel et de le recréer à "
 "partir de zéro (cette opération ne peut pas être annulée) ?"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:44
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:46
 msgid ""
 "Are you sure that you want ignore this warning? You can also manually edit "
 "your menu in the page: \"Appearance > Menus\"."
@@ -545,11 +547,11 @@ msgstr ""
 "Êtes-vous sur de vouloir ignorer cet avertissement ? Vous pouvez aussi "
 "éditer votre menu dans la page \"Apparence > Menus\"."
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:21
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:23
 msgid "Missing front-office pages"
 msgstr "Pages manquantes pour le site"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:24
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:26
 msgid ""
 "Some pages of the customer area have not yet been created. Those pages are "
 "responsible for displaying the private content you have assigned to your "
@@ -559,7 +561,7 @@ msgstr ""
 "permettent d'afficher le contenu privé que vous avez assigné aux "
 "utilisateurs."
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:25
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
 #, php-format
 msgid ""
 "You can review which pages are currently created on the <a href=\"%1$s"
@@ -568,11 +570,11 @@ msgstr ""
 "Vous pouvez voir quelles pages sont actuellement actives sur <a href=\"%1$s"
 "\">l'onglet de réglage des pages</a>."
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:30
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:32
 msgid "Create missing pages"
 msgstr "Créer les pages manquantes"
 
-#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:37
+#: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:39
 msgid ""
 "Are you sure that you want to create all the pages that are currently "
 "missing (this operation cannot be undone)?"
@@ -580,37 +582,37 @@ msgstr ""
 "Êtes-vous sur de vouloir créer toutes les pages manquantes (cette opération "
 "ne peut pas être annulée) ?"
 
-#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:23
+#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
 msgid "Page"
 msgstr "Page"
 
-#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:24
+#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:26
 msgid "Slug"
 msgstr "Slug"
 
-#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
+#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:27
 msgid "Order"
 msgstr "Ordre"
 
-#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:26
-#: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:26
+#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:28
+#: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:28
 msgid "ID"
 msgstr "ID"
 
-#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:27
+#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:29
 msgid "Sidebar"
 msgstr "Colonne latérale"
 
-#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:28
+#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:30
 #: ../includes/core-addons/status/hook-finder.class.php:123
 msgid "Type"
 msgstr "Type"
 
-#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:50
+#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
 msgid "Edit"
 msgstr "Modifier"
 
-#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
+#: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:54
 msgid "View"
 msgstr "Voir"
 
@@ -690,51 +692,51 @@ msgstr "Affiche une liste de fichiers pour l'utilisateur connecté"
 msgid "No files"
 msgstr "Aucun fichier"
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:1
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:3
 msgid "There are no files in that category."
 msgstr "Aucun fichier dans cette catégorie."
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:1
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:3
 msgid "There are no files for that period."
 msgstr "Aucun fichier pour cette période."
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty.template.php:1
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty.template.php:3
 msgid "You currently have no files."
 msgstr "Vous n'avez aucun fichier actuellement."
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:10
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:10
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:10
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:12
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:12
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:12
 #, php-format
 msgid "From: %s"
 msgstr "De : %s"
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:13
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:13
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:13
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:15
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:15
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:15
 #, php-format
 msgid "Added on %s"
 msgstr "Ajouté le %s"
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:16
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:16
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:16
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:18
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:18
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:18
 #, php-format
 msgid "To: %s"
 msgstr "A : %s"
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:19
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:20
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:18
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:19
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:21
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:22
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:20
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:21
 msgid "Download"
 msgstr "Télécharger"
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:2
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:4
 msgid "More information about this file"
 msgstr "Plus d'information sur ce fichier"
 
-#: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:9
+#: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:11
 #, php-format
 msgid "File created on %1$s by %2$s for %3$s"
 msgstr "Fichier créé le %1$s par %2$s pour %3$s"
@@ -812,23 +814,23 @@ msgstr "Affiche une liste de pages pour l'utilisateur connecté"
 msgid "No pages"
 msgstr "Aucune page"
 
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:1
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:3
 msgid "There are no pages in that category."
 msgstr "Aucune page dans cette catégorie"
 
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-date_archive.template.php:1
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-date_archive.template.php:3
 msgid "There are no pages for that period."
 msgstr "Aucune page pour cette période."
 
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty.template.php:1
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty.template.php:3
 msgid "You currently have no pages."
 msgstr "Vous n'avez aucune page actuellement."
 
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:2
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:4
 msgid "More information about this page"
 msgstr "Plus d'information sur cette page"
 
-#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:9
+#: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:11
 #, php-format
 msgid "Page created on %1$s by %2$s for %3$s"
 msgstr "Page créée le %1$s par %2$s pour %3$s"
@@ -856,7 +858,7 @@ msgstr "Assistance"
 
 #: ../includes/core-addons/help/help-addon.class.php:85
 #: ../includes/core-addons/help/help-addon.class.php:97
-#: ../includes/core-addons/help/templates/list-addons.template.php:7
+#: ../includes/core-addons/help/templates/list-addons.template.php:9
 msgid "Enhance your customer area"
 msgstr "Améliorez votre espace client"
 
@@ -929,7 +931,7 @@ msgstr ""
 msgid "Email Address"
 msgstr "Adresse email"
 
-#: ../includes/core-addons/help/templates/list-addons.template.php:12
+#: ../includes/core-addons/help/templates/list-addons.template.php:14
 #, php-format
 msgid ""
 "There has been an error while getting the list of add-ons, please <a href="
@@ -938,25 +940,25 @@ msgstr ""
 "Il y a eu une erreur lors de la récupération de la liste des extensions. "
 "Vous pouvez les <a href=\"%s\">voir directement sur notre boutique</a>."
 
-#: ../includes/core-addons/help/templates/list-addons.template.php:18
+#: ../includes/core-addons/help/templates/list-addons.template.php:20
 msgid "Save money with our bundles"
 msgstr "Economisez avec nos packs d'extensions"
 
-#: ../includes/core-addons/help/templates/list-addons.template.php:45
+#: ../includes/core-addons/help/templates/list-addons.template.php:47
 msgid "Our add-ons"
 msgstr "Nos extensions"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:1
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:3
 msgid "Getting support"
 msgstr "Obtenir de l'aide"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:3
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:5
 msgid "Please note that we do not reply to support requests sent by email."
 msgstr ""
 "Veuillez noter que nous ne répondrons pas aux demandes d'assistance envoyées "
 "par courriel."
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:4
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:6
 msgid "If you have any problem, we have some resources that could help you:"
 msgstr ""
 "Si vous avez un souci, nous avons quelques ressources qui pourraient vous "
@@ -1237,6 +1239,7 @@ msgstr "Catégorie"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:186
 #: ../includes/core-addons/status/hook-finder.class.php:125
+#: ../includes/core-addons/status/template-finder.class.php:69
 msgid "File"
 msgstr "Fichier"
 
@@ -1533,7 +1536,7 @@ msgid "Check this to enable the private pages add-on."
 msgstr "Cochez cette case pour activer l'extension des pages privées."
 
 #: ../includes/core-addons/status/hook-finder.class.php:124
-#: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:27
+#: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:29
 #: ../includes/core-classes/widget-content-list.class.php:162
 msgid "Name"
 msgstr "Nom"
@@ -1575,19 +1578,77 @@ msgstr "Actions et filtres"
 msgid "Listing of all actions and filters"
 msgstr "Liste de tous les filtres et actions"
 
-#: ../includes/core-addons/status/status-addon.class.php:103
-msgid "Reset settings"
-msgstr "Réinitialiser les réglages"
+#: ../includes/core-addons/status/status-addon.class.php:102
+msgid "Templates"
+msgstr "Modèles"
 
-#: ../includes/core-addons/status/status-addon.class.php:147
+#: ../includes/core-addons/status/status-addon.class.php:103
+msgid "Template files"
+msgstr "Fichiers \"template\""
+
+#: ../includes/core-addons/status/status-addon.class.php:112
+#: ../includes/core-classes/settings.class.php:75
+#: ../includes/core-classes/settings.class.php:76
+#: ../includes/core-classes/settings.class.php:90
+msgid "Settings"
+msgstr "Réglages"
+
+#: ../includes/core-addons/status/status-addon.class.php:113
+msgid "Settings tools"
+msgstr "Outils options"
+
+#: ../includes/core-addons/status/status-addon.class.php:159
 msgid "Settings have been resetted to default values"
 msgstr "Les réglages ont été réinitialisés"
 
-#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:24
+#: ../includes/core-addons/status/status-addon.class.php:166
+msgid "Invalid parameters. No file sent"
+msgstr "Paramètre invalide. Aucun fichier n'a été envoyé."
+
+#: ../includes/core-addons/status/status-addon.class.php:174
+msgid "No file sent."
+msgstr "Aucun fichier envoyé."
+
+#: ../includes/core-addons/status/status-addon.class.php:178
+msgid "Exceeded filesize limit."
+msgstr "Limite de taille dépassée."
+
+#: ../includes/core-addons/status/status-addon.class.php:181
+msgid "Unknown errors."
+msgstr "Erreurs inconnues."
+
+#: ../includes/core-addons/status/status-addon.class.php:189
+msgid "Settings have been imported successfully"
+msgstr "Les réglages ont été correctement importés"
+
+#: ../includes/core-addons/status/template-finder.class.php:70
+msgid "Original"
+msgstr "Original"
+
+#: ../includes/core-addons/status/template-finder.class.php:71
+msgid "Current"
+msgstr "Actuel"
+
+#: ../includes/core-addons/status/template-finder.class.php:88
+#: ../includes/core-addons/status/template-finder.class.php:96
+#, php-format
+msgid "Version: %s"
+msgstr "Version : %s"
+
+#: ../includes/core-addons/status/template-finder.class.php:88
+#: ../includes/core-addons/status/template-finder.class.php:96
+msgid "unknown"
+msgstr "inconnu"
+
+#: ../includes/core-addons/status/template-finder.class.php:93
+msgid "Not overriden"
+msgstr "Non personnalisé"
+
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:26
 msgid "Outdated plugin version"
 msgstr "Version de plugin dépassée"
 
-#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:26
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 #, php-format
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
@@ -1598,37 +1659,86 @@ msgstr ""
 "(vous avez la version %1$s). Vous trouverez la liste complète des extensions "
 "actives sur <a href=\"%2$s\">la page de statut des extensions</a>."
 
-#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:32
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
 msgid "Update the plugin"
 msgstr "Mettre à jour"
 
-#: ../includes/core-addons/status/templates/status-section-hooks.template.php:27
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:26
+msgid "Outdated template files"
+msgstr "Fichiers \"template\" obsolètes"
+
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:28
+#, php-format
+msgid ""
+"Some template files you have overridden have been modified in the current "
+"version of Customer Area. You have the list of these files below, but you "
+"can also find a list of all template files and their respective status on "
+"the <a href=\"%s\">corresponding templates status page</a>"
+msgstr ""
+"Certains fichiers \"template\" que vous avez personnalisé ont été modifiés "
+"dans la version actuelle de Customer Area. Vous avez la liste de ces "
+"fichiers ci-dessous mais vous avez une liste exhaustive et le statut de ces "
+"fichiers sur la <a href=\"%s\">page de statut des \"template\" "
+"correspondante</a>"
+
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:35
+msgid ""
+"Since Customer Area 4.4.0, we are providing a way to make sure your template "
+"files are always up-to-date. For you, this is a great way to know when "
+"template files get changed when Customer Area is updated."
+msgstr ""
+"Depuis Customer Area 4.4.0, nous vous donnons un moyen de vérifier que vos "
+"fichiers \"template\" sont à jour. Pour vous, c'est un bon moyen de savoir "
+"quand un de ces fichiers est mis à jour dans une nouvelle version de "
+"Customer Area."
+
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:38
+msgid ""
+"If you still do not have any version number in your template files, please "
+"paste the following line of code as the first line of your template and make "
+"sure it is compatible with the the current template version."
+msgstr ""
+"Si vous n'avez pas encore de numéro de version dans vos propres fichiers "
+"\"template\", merci de copier/coller la ligne de code suivante dans chacun "
+"de vos fichiers \"template\" en première ligne et de vous assurez que ce "
+"fichier est bien compatible avec la version actuelle de Customer Area."
+
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:66
+msgid "Other action"
+msgstr "Autre action"
+
+#: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:67
+msgid "Ignore until next update"
+msgstr "Ignorer jusqu'à la prochaine mise à jour"
+
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:29
+#: ../includes/core-addons/status/templates/status-section-templates.template.php:29
 msgid "All"
 msgstr "Tous"
 
-#: ../includes/core-addons/status/templates/status-section-hooks.template.php:28
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:30
 msgid "Filters only"
 msgstr "Filtres seulement"
 
-#: ../includes/core-addons/status/templates/status-section-hooks.template.php:29
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:31
 msgid "Actions only"
 msgstr "Actions seulement"
 
-#: ../includes/core-addons/status/templates/status-section-hooks.template.php:50
+#: ../includes/core-addons/status/templates/status-section-hooks.template.php:52
 #, php-format
 msgid "%s: %d hook(s)"
 msgstr "%s: %d point(s) d’accroche"
 
-#: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:28
+#: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:30
 msgid "Required customer area version"
 msgstr "Version espace client requise"
 
-#: ../includes/core-addons/status/templates/status-section-needs-attention.template.php:31
+#: ../includes/core-addons/status/templates/status-section-needs-attention.template.php:33
 #, php-format
 msgid "Issue #%d"
 msgstr "Problème #%d"
 
-#: ../includes/core-addons/status/templates/status-section-needs-attention.template.php:61
+#: ../includes/core-addons/status/templates/status-section-needs-attention.template.php:63
 msgid ""
 "Congratulations, everything seems to be configured properly. You can enjoy "
 "your customer area now."
@@ -1636,7 +1746,37 @@ msgstr ""
 "Félicitations, tout semble en ordre. Vous pouvez profiter de votre espace "
 "client."
 
-#: ../includes/core-addons/status/templates/status-section-reset.template.php:20
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:22
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:28
+msgid "Export settings"
+msgstr "Exporter les réglages"
+
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:24
+msgid ""
+"You can export all the settings to a JSON file. You can then use that file "
+"to restore your settings using the import settings field below."
+msgstr ""
+"Vous pouvez exporter tous les réglages vers un fichier JSON. Vous pourrez "
+"alors utiliser ce même fichier pour restaurer vos réglages à l'aide du champ "
+"situé plus bas."
+
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:31
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:38
+msgid "Import settings"
+msgstr "Importer les réglages"
+
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:33
+msgid ""
+"You can import all the settings you had previously exported from a JSON file."
+msgstr ""
+"Vous pouvez importer tous les réglages que vous aviez exporté d'un fichier "
+"JSON."
+
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:42
+msgid "Reset settings"
+msgstr "Réinitialiser les réglages"
+
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:44
 msgid ""
 "Pressing the button below will reset all your Customer Area settings to the "
 "default values. This cannot be undone!"
@@ -1644,17 +1784,30 @@ msgstr ""
 "Appuyer sur le bouton ci-dessous remettra tous vos réglages de l'Espace "
 "Client à 0. Cette action ne peut pas être annulée !"
 
-#: ../includes/core-addons/status/templates/status-section-reset.template.php:24
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:48
 msgid "Reset default settings"
 msgstr "Réinitialiser les réglages"
 
-#: ../includes/core-addons/status/templates/status-section-reset.template.php:30
+#: ../includes/core-addons/status/templates/status-section-reset.template.php:54
 msgid ""
 "Are you sure that you want to reset all the settings to their default values "
 "(this operation cannot be undone)?"
 msgstr ""
 "Êtes-vous sur de vouloir remettre tous vos réglages de l'espace client à "
 "zéro (cette action ne peut pas être annulée) ?"
+
+#: ../includes/core-addons/status/templates/status-section-templates.template.php:30
+msgid "Overriden only"
+msgstr "Personnalisés seulement"
+
+#: ../includes/core-addons/status/templates/status-section-templates.template.php:31
+msgid "Outdated only"
+msgstr "Obsolètes seulement"
+
+#: ../includes/core-addons/status/templates/status-section-templates.template.php:52
+#, php-format
+msgid "%s: %d template(s)"
+msgstr "%s : %d modèle(s)"
 
 #: ../includes/core-classes/addon-content-page.class.php:512
 msgid "Frontend Integration"
@@ -1798,7 +1951,7 @@ msgstr ""
 "N'activez pas votre license sur vos sites de développement. Seulement sur le "
 "site final où vous souhaitez utiliser le plugin."
 
-#: ../includes/core-classes/plugin.class.php:391
+#: ../includes/core-classes/plugin.class.php:395
 msgid ""
 "The Customer Area plugin requires your attention. The issues we have "
 "detected are the following: "
@@ -1806,7 +1959,7 @@ msgstr ""
 "Le plugin Espace Client a détecté des problèmes. Voici ce qui demande votre "
 "attention :"
 
-#: ../includes/core-classes/plugin.class.php:399
+#: ../includes/core-classes/plugin.class.php:403
 #, php-format
 msgid ""
 "You can view the details of those issues and fix them on the <a href=\"%1$s"
@@ -1815,7 +1968,7 @@ msgstr ""
 "Vous pouvez afficher le détail de ces problèmes et les régler sur la <a href="
 "\"%1$s\">page de statut de l'espace client</a>."
 
-#: ../includes/core-classes/plugin.class.php:491
+#: ../includes/core-classes/plugin.class.php:504
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please enable "
 "them in the WordPress settings."
@@ -1823,17 +1976,16 @@ msgstr ""
 "Les permaliens sont désactivés, Customer Area ne peut pas fonctionner "
 "correctement. Veuillez les activer dans les réglages WordPress."
 
-#: ../includes/core-classes/plugin.class.php:513
+#: ../includes/core-classes/plugin.class.php:526
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr ""
 "Certaines extensions nécessitent une version plus récente du plugin "
 "principal."
 
-#: ../includes/core-classes/settings.class.php:75
-#: ../includes/core-classes/settings.class.php:76
-#: ../includes/core-classes/settings.class.php:90
-msgid "Settings"
-msgstr "Réglages"
+#: ../includes/core-classes/plugin.class.php:679
+msgid "Some template files you have overriden seem to be outdated."
+msgstr ""
+"Certains fichiers \"template\" que vous avez personnalisé sotn obsolètes."
 
 #: ../includes/core-classes/settings.class.php:105
 msgid "The page title cannot be empty"
