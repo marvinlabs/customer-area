@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <?php	 
 	$class = implode( ' ', $field['classes'] );
 	$label = $field['label'];

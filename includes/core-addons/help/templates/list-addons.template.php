@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <?php
 	include_once(ABSPATH . WPINC . '/feed.php');
 	

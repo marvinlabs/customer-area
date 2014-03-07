@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <h3><?php echo $page_subtitle; ?></h3>
 <table class="cuar-private-file-list cuar-item-list">
 	<tbody>

@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <nav class="navbar navbar-default" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="container">

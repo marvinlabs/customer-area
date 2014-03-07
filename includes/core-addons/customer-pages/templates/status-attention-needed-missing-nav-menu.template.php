@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
 

@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <div class="cuar-private-file-meta">
 	<h4><?php echo apply_filters( 'cuar_private_files_after_content_title', __( 'More information about this file', 'cuar' ) ); ?></h4>
 	

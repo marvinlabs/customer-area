@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
 
@@ -16,6 +18,28 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 ?>
+
+<h3><?php _e( 'Export settings', 'cuar' ); ?></h3>
+
+<p><?php _e('You can export all the settings to a JSON file. You can then use that file to restore your settings using the import settings field below.', 'cuar' ); ?></p>
+
+<p>
+	<?php wp_nonce_field( 'cuar-export-settings', 'cuar-export-settings_nonce' ); ?>
+	<input type="submit" name="cuar-export-settings" id="cuar-export-settings" class="button button-primary cuar-export-settings" value="<?php esc_attr_e( 'Export settings', 'cuar' ); ?>" />
+</p>
+
+<h3><?php _e( 'Import settings', 'cuar' ); ?></h3>
+
+<p><?php _e('You can import all the settings you had previously exported from a JSON file.', 'cuar' ); ?></p>
+
+<p>
+	<?php wp_nonce_field( 'cuar-import-settings', 'cuar-import-settings_nonce' ); ?>
+	<input type="file" name="cuar-settings-file" id="cuar-settings-file" /><br>
+	<input type="submit" name="cuar-import-settings" id="cuar-import-settings" class="button button-primary cuar-import-settings" value="<?php esc_attr_e( 'Import settings', 'cuar' ); ?>" />
+</p>
+
+
+<h3><?php _e( 'Reset settings', 'cuar' ); ?></h3>
 
 <p><?php _e('Pressing the button below will reset all your Customer Area settings to the default values. This cannot be undone!', 'cuar' ); ?></p>
 

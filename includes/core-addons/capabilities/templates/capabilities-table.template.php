@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <?php 
 	require_once( CUAR_INCLUDES_DIR . '/helpers/wordpress-helper.class.php' );
 	$column_count = 1; // We got an empty column on the left

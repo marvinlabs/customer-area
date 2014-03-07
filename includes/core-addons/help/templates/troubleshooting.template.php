@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <h2><?php _e( 'Getting support', 'cuar' ); ?></h2>
 
 <p><strong><?php _e( "Please note that we do not reply to support requests sent by email.", 'cuar' ); ?></strong> 

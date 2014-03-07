@@ -97,12 +97,24 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 					'title'			=> __('Listing of all actions and filters', 'cuar')
 				);
 			
+			$this->sections['templates'] = array(
+					'id'			=> 'templates',
+					'label'			=> __('Templates', 'cuar'),
+					'title'			=> __('Template files', 'cuar'),
+					'linked-checks'	=> array( 'outdated-templates' ),
+					'actions'		=> array(
+							'cuar-ignore-outdated-templates'	=> array( &$this, 'ignore_outdated_templates_flag' ),
+						)
+				);
+			
 			$this->sections['reset'] = array(
 					'id'			=> 'reset',
-					'label'			=> __('Reset', 'cuar'),
-					'title'			=> __('Reset settings', 'cuar'),
+					'label'			=> __('Settings', 'cuar'),
+					'title'			=> __('Settings tools', 'cuar'),
 					'actions'		=> array(
-							'cuar-reset-all-settings'	=> array( &$this, 'reset_settings' )
+							'cuar-reset-all-settings'	=> array( &$this, 'reset_settings' ),
+							'cuar-export-settings'	=> array( &$this, 'export_settings' ),
+							'cuar-import-settings'	=> array( &$this, 'import_settings' )
 						)
 				);
 		}
@@ -145,6 +157,70 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 	private function reset_settings() {
 		$this->plugin->reset_defaults();
 		$this->plugin->add_admin_notice( __('Settings have been resetted to default values', 'cuar'), 'updated' );
+	}
+	
+	private function import_settings() {
+		if ( !isset($_FILES['cuar-settings-file']) 
+				|| !isset($_FILES['cuar-settings-file']['error']) 
+				|| is_array($_FILES['cuar-settings-file']['error']) ) {
+			$this->plugin->add_admin_notice( __('Invalid parameters. No file sent', 'cuar') );
+			return;
+		}
+		
+		switch ($_FILES['cuar-settings-file']['error']) {
+			case UPLOAD_ERR_OK:
+				break;
+			case UPLOAD_ERR_NO_FILE:
+				$this->plugin->add_admin_notice( __('No file sent.', 'cuar') );
+				return;
+			case UPLOAD_ERR_INI_SIZE:
+			case UPLOAD_ERR_FORM_SIZE:
+				$this->plugin->add_admin_notice( __('Exceeded filesize limit.', 'cuar') );	
+				return;
+			default:
+				$this->plugin->add_admin_notice( __('Unknown errors.', 'cuar') );
+				return;
+		}
+		
+		$as_json = file_get_contents( $_FILES['cuar-settings-file']['tmp_name'] );
+		$options = json_decode( $as_json, true );
+
+		$this->plugin->set_options( $options );
+		$this->plugin->add_admin_notice( __('Settings have been imported successfully', 'cuar'), 'updated' );	
+	}
+	
+	private function export_settings() {
+		$options = $this->plugin->get_options();		
+		
+		// Filter some options we don't want to be exported
+		foreach ( $options as $key => $value ) {
+			if ( strstr( $key, 'cuar_license_' )!=false ) {
+				unset( $options[$key]);
+			}
+		}
+		
+		// Encode to JSON and output
+		$as_json = json_encode( $options, JSON_PRETTY_PRINT );
+		
+		@ob_end_clean(); //turn off output buffering to decrease cpu usage
+		@ob_clean();
+
+		header('Content-Type: application/json');
+		header('Content-Disposition: attachment; filename="cuar-settings.json"');
+
+		/* The three lines below basically make the	download non-cacheable */
+		header("Cache-control: private");
+		header('Pragma: private');
+		header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+
+		echo $as_json;
+
+		die();
+	}
+	
+	public function ignore_outdated_templates_flag() {
+		$this->plugin->clear_attention_needed( 'outdated-templates' );
+		CUAR_Plugin::enable_check_templates( false );
 	}
 	
 	protected $sections = null;
