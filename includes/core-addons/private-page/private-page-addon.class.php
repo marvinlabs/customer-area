@@ -213,6 +213,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 				'show_in_nav_menus' => 'customer-area',
 				'show_ui' 			=> true,
 				'show_tagcloud' 	=> false,
+				'show_admin_column'	=> true,
 				'hierarchical' 		=> true,
 				'query_var' 		=> true,
 				'rewrite' 			=> false,

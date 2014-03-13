@@ -56,7 +56,7 @@ function cuar_get_the_file_name( $post_id = null ) {
 
 	if ( !$file || empty( $file ) ) return '';
 	
-	return apply_filters( 'cuar_the_file_name', $file['file'] );
+	return apply_filters( 'cuar_the_file_name', $file['file'], $post_id );
 }
 
 /**
@@ -85,7 +85,7 @@ function cuar_get_the_file_type( $post_id = null ) {
 
 	if ( !$file || empty( $file ) ) return '';
 	
-	return apply_filters( 'cuar_the_file_type', pathinfo( $file['file'], PATHINFO_EXTENSION ) );
+	return apply_filters( 'cuar_the_file_type', pathinfo( $file['file'], PATHINFO_EXTENSION ), $post_id );
 }
 
 /**
@@ -98,4 +98,66 @@ function cuar_get_the_file_type( $post_id = null ) {
  */		
 function cuar_the_file_type( $post_id = null ) {
 	echo cuar_get_the_file_type( $post_id );
+}
+
+/**
+ * Get the type of the file associated to the given post
+ * 
+ * @param int $post_id
+ * @return string|mixed
+ */	
+function cuar_get_the_file_size( $post_id = null, $human = true ) {
+	if ( !$post_id ) $post_id = get_the_ID();		
+	if ( !$post_id ) return '';
+	
+	$cuar_plugin = CUAR_Plugin::get_instance();
+	$pf_addon = $cuar_plugin->get_addon('private-files');
+		
+	$size = $pf_addon->get_file_size( $post_id );
+	if ( false===$size ) {
+		return '';
+	}
+	
+	if ( $human ) {
+		$size = cuar_format_human_file_size( $size );  
+	}
+	
+	return apply_filters( 'cuar_the_file_size', $size, $post_id );
+}
+
+/**
+ * Prints the type of the file associated to the given post
+ * 
+ * @see get_the_file_type
+ * 
+ * @param int $post_id
+ * @return string|mixed
+ */		
+function cuar_the_file_size( $post_id = null, $human = true ) {
+	echo cuar_get_the_file_size( $post_id, $human );
+}
+
+
+/** Helper function to format file size */
+function cuar_format_human_file_size( $size ) {
+	$factor = 1;
+	$unit = __( 'bytes', 'cuar' );
+	
+	if ( $size>=1024*1024*1024*1024 ) {
+		$factor = 1024*1024*1024*1024;
+		$unit = __( 'TB', 'cuar' );
+	} else if ( $size>=1024*1024*1024 ) {
+		$factor = 1024*1024*1024;
+		$unit = __( 'GB', 'cuar' );
+	} else if ( $size>=1024*1024 ) {
+		$factor = 1024*1024;
+		$unit = __( 'MB', 'cuar' );
+	} else if ( $size>=1024 ) {
+		$factor = 1024;
+		$unit = __( 'kB', 'cuar' );
+	} else {
+		$unit = __( 'bytes', 'cuar' );
+	}
+	
+	return sprintf( '%1$s %2$s', number_format( $size/$factor, 2 ), $unit );
 }

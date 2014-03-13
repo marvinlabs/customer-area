@@ -260,27 +260,33 @@ class CUAR_Plugin {
 			}
 		}
 		
-		// Then from default directory
-		$path =  trailingslashit( $default_root ) . $relative_path;
-		if ( file_exists( $path ) ) {
-			if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
-				$this->print_template_path_debug_info( $path );
-			}
-			
-			return $path;
+		// Then from default directories. We allow multiple default root directories.
+		if ( !is_array( $default_root ) ) {
+			$default_root = array( $default_root );
 		}
-
-		if ( !empty( $fallback_filename ) ) {
-			$path =  trailingslashit( $default_root ) . $fallback_relative_path;
+		
+		foreach ( $default_root as $root_path ) {
+			$path =  trailingslashit( $root_path ) . $relative_path;
 			if ( file_exists( $path ) ) {
 				if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
-					$this->print_template_path_debug_info( $path, $filename );
+					$this->print_template_path_debug_info( $path );
 				}
 				
 				return $path;
 			}
+	
+			if ( !empty( $fallback_filename ) ) {
+				$path =  trailingslashit( $root_path ) . $fallback_relative_path;
+				if ( file_exists( $path ) ) {
+					if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
+						$this->print_template_path_debug_info( $path, $filename );
+					}
+					
+					return $path;
+				}
+			}
 		}
-
+		
 		if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
 			echo "\n<!-- CUAR TEMPLATE < $filename > REQUESTED BUT NOT FOUND (WILL NOT BE USED) -->\n";
 		}

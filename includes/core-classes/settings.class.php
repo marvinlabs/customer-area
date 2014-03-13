@@ -759,7 +759,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$last_check = $this->plugin->get_option( $check_option_id, null );
 			if ( $last_check!=null ) {
 				$next_check = new DateTime( $last_check );
-				$next_check->add(new DateInterval('P10D'));
+				$next_check->modify('+10 day');
 				
 				$should_check_license = ( new DateTime('now') > $next_check );
 			} else {

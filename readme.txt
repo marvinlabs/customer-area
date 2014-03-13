@@ -3,8 +3,8 @@ Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.6
-Tested up to: 3.8.1
-Stable tag: 4.4.0
+Tested up to: 3.9.0 beta
+Stable tag: 4.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,13 +39,14 @@ Customer Area is available for free and should cover the needs of most users. If
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
 from [our online shop](http://www.marvinlabs.com/downloads/category/customer-area): 
 
-* [Login and registration forms integration](http://www.marvinlabs.com/downloads/customer-area-login-register-forms/)
-* [Email notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
-* [Extended Permissions](http://www.marvinlabs.com/downloads/customer-area-extended-permissions/)
 * [Collaboration](http://www.marvinlabs.com/downloads/customer-area-collaboration/)
-* [Managed Groups](http://www.marvinlabs.com/downloads/customer-area-managed-groups/)
 * [Conversations](http://www.marvinlabs.com/downloads/customer-area-conversations/)
+* [Extended Permissions](http://www.marvinlabs.com/downloads/customer-area-extended-permissions/)
+* [Login and registration forms](http://www.marvinlabs.com/downloads/customer-area-login-register-forms/)
+* [Managed Groups](http://www.marvinlabs.com/downloads/customer-area-managed-groups/)
+* [Notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
 * [Owner Restriction](http://www.marvinlabs.com/downloads/customer-area-owner-restriction/)
+* [Search](http://www.marvinlabs.com/downloads/customer-area-search/)
 * [Switch Users](http://www.marvinlabs.com/downloads/customer-area-switch-users/)
 
 **Included translations**
@@ -170,7 +171,14 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 4.4.0 (2014/03/) =
+= 4.5.0 (2014/03/13) =
+
+* New: compatibility with the new Search add-on
+* New: allow fetching templates from multiple root directories (dev. feature)
+* New: added a category filter in the private page and private file administration pages.
+* New: function to print the private file size (cuar_the_file_size)
+
+= 4.4.0 (2014/03/07) =
 
 * New: templates now have a version number. This will help you to detect your outdated overriden templates.
 * New: slighlty improved template debug info

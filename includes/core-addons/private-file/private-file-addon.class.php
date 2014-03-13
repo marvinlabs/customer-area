@@ -127,6 +127,21 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 	
 	/**
+	 * Get the size of the file associated to the given post
+	 *
+	 * @param int $post_id
+	 * @return boolean|int false if the file does not exist
+	 */
+	public function get_file_size( $post_id ) {
+		$po_addon = $this->plugin->get_addon('post-owner');
+		
+		$file_name = $this->get_file_name( $post_id );
+		$file_path = $po_addon->get_private_file_path( $file_name, $post_id );
+		
+		return filesize( $file_path );
+	}
+	
+	/**
 	 * Get the number of times the file has been downloaded
 	 *
 	 * @param int $post_id
@@ -773,11 +788,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'update_item' 				=> _x( 'Update File Category', 'cuar_private_file_category', 'cuar' ),
 				'add_new_item' 				=> _x( 'Add New File Category', 'cuar_private_file_category', 'cuar' ),
 				'new_item_name' 			=> _x( 'New File Category', 'cuar_private_file_category', 'cuar' ),
-				'separate_items_with_commas'=> _x( 'Separate file categories with commas', 'cuar_private_file_category',
-						'cuar' ),
+				'separate_items_with_commas'=> _x( 'Separate file categories with commas', 'cuar_private_file_category', 'cuar' ),
 				'add_or_remove_items' 		=> _x( 'Add or remove file categories', 'cuar_private_file_category', 'cuar' ),
-				'choose_from_most_used' 	=> _x( 'Choose from the most used file categories', 'cuar_private_file_category',
-						'cuar' ),
+				'choose_from_most_used' 	=> _x( 'Choose from the most used file categories', 'cuar_private_file_category', 'cuar' ),
 				'menu_name' 				=> _x( 'File Categories', 'cuar_private_file_category', 'cuar' ),
 			);
 	  
@@ -788,6 +801,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'show_in_nav_menus' => 'customer-area',
 				'show_ui' 			=> true,
 				'show_tagcloud' 	=> false,
+				'show_admin_column'	=> true,
 				'hierarchical' 		=> true,
 				'query_var' 		=> true,
 				'rewrite' 			=> false,
