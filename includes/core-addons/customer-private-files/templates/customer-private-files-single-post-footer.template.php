@@ -1,4 +1,13 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /** Template version: 1.0.1 
+
+-= 1.1.0 =-
+- Added file size
+ 
+-= 1.0.0 =-
+- Initial version
+
+*/
+?>
 
 <div class="cuar-private-file-meta">
 	<h4><?php echo apply_filters( 'cuar_private_files_after_content_title', __( 'More information about this file', 'cuar' ) ); ?></h4>
@@ -14,7 +23,7 @@
 	  <tbody>
 			<tr class="cuar-private-file">
 				<td class="title">
-					<?php cuar_the_file_name( get_the_ID() ); ?>
+					<?php cuar_the_file_name( get_the_ID() ); ?> (<?php cuar_the_file_size( get_the_ID() ); ?>)
 				</td>
 				<td class="links download-link">
 					<a href="<?php cuar_the_file_link( get_the_ID(), 'download' ); ?>" title="<?php esc_attr_e( 'Download', 'cuar' ); ?>">
