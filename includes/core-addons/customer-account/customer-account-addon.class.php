@@ -17,7 +17,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 require_once( CUAR_INCLUDES_DIR . '/core-classes/addon-page.class.php' );
-require_once( CUAR_INCLUDES_DIR . '/core-classes/field-renderer.class.php' );
 
 if (!class_exists('CUAR_CustomerAccountAddOn')) :
 
@@ -29,7 +28,7 @@ if (!class_exists('CUAR_CustomerAccountAddOn')) :
 class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-account', '4.0.0' );
+		parent::__construct( 'customer-account', '4.6.0' );
 		
 		$this->set_page_parameters( 810, array(
 					'slug'					=> 'customer-account',
@@ -67,17 +66,12 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 
 		$current_user = $this->get_current_user();
 		
-		$renderer = new CUAR_FieldRenderer( $this->plugin );	
-			
-		$renderer->start_section( 'contact', __( 'Contact', 'cuar' ) );
-		$renderer->add_simple_field( 'first_name', __( 'First Name', 'cuar'), $current_user->first_name, '-' );
-		$renderer->add_simple_field( 'last_name', __( 'Last Name', 'cuar'), $current_user->last_name, '-' );
-		$renderer->add_simple_field( 'email', __( 'Email', 'cuar'), $current_user->user_email, false, 'wide' );
-		$renderer->add_simple_field( 'website', __( 'Website', 'cuar'), $current_user->user_url, false, 'wide link' );
+		$up_addon = $this->plugin->get_addon('user-profile');
+		$fields = $up_addon->get_profile_fields();
 		
-		do_action( 'cuar_add_account_fields', $current_user, $renderer );
-		
-		$renderer->print_fields();
+		foreach ( $fields as $field ) {
+			$field->render_read_only_field( $current_user->ID );
+		}
 		
 		do_action( 'cuar_customer_account_after_fields' );
 	}

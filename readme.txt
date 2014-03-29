@@ -171,6 +171,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 4.6.0 (2014/04/) =
+
+* New: users can now edit their account information (email, password)
+
 = 4.5.0 (2014/03/13) =
 
 * New: compatibility with the new Search add-on
