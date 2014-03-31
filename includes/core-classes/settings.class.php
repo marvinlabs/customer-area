@@ -34,14 +34,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function setup() {
 			if (is_admin ()) {
-				add_action ( 'cuar_admin_submenu_pages', array (
-						&$this,
-						'add_settings_menu_item' 
-				), 100 );
-				add_action ( 'admin_init', array (
-						&$this,
-						'page_init' 
-				) );
+				add_action ( 'cuar_admin_submenu_pages', array( &$this, 'add_settings_menu_item' ), 100 );
+				add_action ( 'admin_init', array( &$this, 'page_init' ) );
 				
 				// Links under the plugin name
 				$plugin_file = 'customer-area/customer-area.php';

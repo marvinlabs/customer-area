@@ -47,7 +47,25 @@ interface CUAR_Field {
 	 * @param int $object_id The object associated to the field (post_id, user_id, ...)
 	 */
 	public function render_form_field( $object_id );
+
+	/**
+	 * Render the field value for direct use 
+	 *
+	 * @param int $object_id The object associated to the field (post_id, user_id, ...)
+	 */
+	public function render_raw_value( $object_id );
 	
+	/**
+	 * Indicate if this field should be displayed in the given context.
+	 * 
+	 * @param string $context
+	 */
+	public function is_visible( $context );
+	
+	/**
+	 * Returns the label for that field
+	 */
+	public function get_label();
 }
 
 endif; // if (!class_exists('CUAR_Field')) :

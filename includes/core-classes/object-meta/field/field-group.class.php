@@ -132,6 +132,7 @@ class CUAR_FieldGroup implements CUAR_Field {
 	
 	protected $title = '';
 	protected $fields = array();
+	protected $visibility = array();
 	
 }
 

@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 if (!class_exists('CUAR_UserPasswordField')) :
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/field.interface.php' );
-include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/password-field-renderer.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/abstract-field.class.php' );
 
 /**
  * A field that renders two input forms to enter a password and its confirmation (and validates accordingly). Persistance is 
@@ -28,19 +28,48 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/password-f
  *
  * @author Vincent Prat @ MarvinLabs
  */
-class CUAR_UserPasswordField implements CUAR_Field {
+class CUAR_UserPasswordField extends CUAR_AbstractField implements CUAR_Field {
 
-	public function __construct( $id, $label, $help, $confirm_label, $confirm_help, $validation ) {
-		$this->id = $id;
-		$this->pwd_renderer = new CUAR_PasswordFieldRenderer( $label, false, $help );
-		$this->pwd_confirm_renderer = new CUAR_PasswordFieldRenderer( $confirm_label, false, $confirm_help );
-		$this->pwd_validation_rule = $validation;
+	public function __construct( $id, $args ) { // $label, $help, $confirm_label, $confirm_help, $validation ) {
+		parent::__construct( $id, null, $args );
+		
+		$this->pwd_renderer = new CUAR_PasswordFieldRenderer( 
+				$this->get_arg( 'label' ), 
+				false, 
+				$this->get_arg( 'inline_help' )
+			);
+		
+		$this->pwd_confirm_renderer = new CUAR_PasswordFieldRenderer( 
+				$this->get_arg( 'confirm_label' ), 
+				false, 
+				$this->get_arg( 'confirm_inline_help' )
+			);
+		
+		$this->pwd_validation_rule = new CUAR_PasswordValidation( 
+				$this->get_arg( 'required' ),
+				$this->get_arg( 'min_length' ),
+				$this->get_arg( 'max_length' )
+			);
+	}
+	
+	protected function get_default_args() {
+		return array_merge( parent::get_default_args(), array( 
+				'label' 				=> '',
+				'inline_help' 			=> '',
+				'confirm_label' 		=> '',
+				'confirm_inline_help' 	=> '',
+				
+				'required' 				=> false,	
+				'min_length'			=> null,
+				'max_length'			=> null,
+				'visibility' 			=> array( 'frontend_view_profile', 'frontend_edit_profile', 'admin_edit_profile' ),			
+			) );
 	}
 
 	// See CUAR_AbstractField
 	public function persist( $object_id ) {
-		$pwd = isset( $_POST[$this->id] ) ? $_POST[$this->id] : null;
-		$pwd_confirm = isset( $_POST[$this->id . '_confirm'] ) ? $_POST[$this->id . '_confirm'] : null;
+		$pwd = isset( $_POST[$this->get_id()] ) ? $_POST[$this->get_id()] : null;
+		$pwd_confirm = isset( $_POST[$this->get_id() . '_confirm'] ) ? $_POST[$this->get_id() . '_confirm'] : null;
 
 		if ( $pwd==null && $pwd_confirm==NULL ) return TRUE;
 		
@@ -48,7 +77,7 @@ class CUAR_UserPasswordField implements CUAR_Field {
 			return __('The password and its confirmation do not match', 'cuar');
 		}
 		
-		$validation_result = $this->pwd_validation_rule==null ? TRUE : $this->pwd_validation_rule->validate( $this->pwd_renderer->get_label(), $pwd );		
+		$validation_result = $this->pwd_validation_rule==null ? TRUE : $this->pwd_validation_rule->validate( $this->get_arg( 'label' ), $pwd );		
 		if ( $validation_result===TRUE ) {
 			wp_set_password( $pwd, $object_id );
 		}
@@ -58,17 +87,21 @@ class CUAR_UserPasswordField implements CUAR_Field {
 
 	// See CUAR_AbstractField
 	public function render_read_only_field( $object_id ) {
-		$this->pwd_renderer->render_read_only_field( $this->id, '' );
+		$this->pwd_renderer->render_read_only_field( $this->get_id(), '' );
 	}
 
 	// See CUAR_AbstractField
 	public function render_form_field( $object_id ) {
 		// Render the field
-		$this->pwd_renderer->render_form_field( $this->id, '' );
-		$this->pwd_confirm_renderer->render_form_field( $this->id . '_confirm', '' );
+		$this->pwd_renderer->render_form_field( $this->get_id(), '' );
+		$this->pwd_confirm_renderer->render_form_field( $this->get_id() . '_confirm', '' );
 	}
 
-	protected $id = null;
+	// See CUAR_AbstractField
+	public function render_raw_value( $object_id ) {
+		$this->pwd_renderer->render_raw_value( '' );
+	}
+
 	protected $pwd_renderer = null;
 	protected $pwd_confirm_renderer = null;
 	protected $pwd_validation_rule = null;

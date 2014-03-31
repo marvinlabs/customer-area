@@ -47,6 +47,11 @@ abstract class CUAR_AbstractFieldRenderer implements CUAR_FieldRenderer {
 	
 	protected $label = '';	
 	protected $inline_help = '';	
+
+	// See CUAR_FieldRenderer
+	public function render_raw_value( $value ) {
+		echo $value;
+	}
 	
 	/*------- READ-ONLY DISPLAY -------------------------------------------------------------------------------------*/
 	

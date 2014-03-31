@@ -86,7 +86,10 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/validation/password
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/field.interface.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/simple-field.class.php' );
-include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/field-group.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/header-field.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/text-field.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/number-field.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/email-field.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/user-password-field.class.php' );
 
 // Core addons

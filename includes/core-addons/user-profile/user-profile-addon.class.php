@@ -38,6 +38,31 @@ class CUAR_UserProfileAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// Init the admin interface if needed
 		if ( is_admin() ) {
+			$this->plugin->update_option( self::$OPTION_PROFILE_FIELDS, array(
+				
+				'account_details'	=> new CUAR_HeaderField( 'account_details', array( 
+						'label'			=> __( 'Account details', 'cuar' )
+					) ),
+				
+				'user_login' 		=> new CUAR_TextField( 'user_login', new CUAR_UserStorage(), array( 
+						'label'			=> __( 'Username', 'cuar' ),
+						'readonly'		=> true,
+						'inline_help'	=> __( 'Your username cannot be changed.', 'cuar' ),
+						'required'		=> true,
+					) ),
+						
+				'user_email' 		=> new CUAR_EmailField( 'user_email', new CUAR_UserStorage(), array( 
+						'label'			=> __( 'Primary email', 'cuar' ),
+						'required'		=> true,
+					) ),
+						
+				'user_pass' 		=> new CUAR_UserPasswordField( 'user_pass', array(
+						'label'					=> __( 'Password', 'cuar' ), 
+						'confirm_label'			=> __( 'Password (confirm)', 'cuar' ), 
+						'confirm_inline_help'	=> __( 'The password must at least be composed of 5 characters. You will be requested to login again after '
+														. 'your password gets changed. Leave these fields empty if you want to keep your current password', 'cuar' ), 
+						'min_length'			=> 5, 
+					) ) )) ;
 		} else {
 		}
 	}	
@@ -52,22 +77,29 @@ class CUAR_UserProfileAddOn extends CUAR_AddOn {
 		$defaults = parent::set_default_options($defaults);
 		
 		$defaults[ self::$OPTION_PROFILE_FIELDS ] = array(
-				new CUAR_FieldGroup( __( 'Account details', 'cuar' ), array( 
-						new CUAR_SimpleField('user_login', 
-								new CUAR_ShortTextFieldRenderer( __('Username', 'cuar' ), true, __('Your username cannot be changed.', 'cuar') ), 
-								new CUAR_UserStorage(), 
-								new CUAR_SimpleValidation(true)
-							),
-						new CUAR_SimpleField('user_email', 
-								new CUAR_EmailFieldRenderer( __('Primary email address', 'cuar' ), false ), 
-								new CUAR_UserStorage(), 
-								new CUAR_EmailValidation(true)
-							),
-						new CUAR_UserPasswordField('user_pass', 
-								__( 'Password', 'cuar' ), '', 
-								__( 'Password (confirm)', 'cuar' ), __( 'The password must at least be composed of 5 characters.', 'cuar' ), 
-								apply_filters( 'cuar_user_password_validation_rule', new CUAR_PasswordValidation( false, 5, null ) )
-							),
+				
+				new CUAR_HeaderField( 'account_details', array( 
+						'label'			=> __( 'Account details', 'cuar' )
+					) ),
+				
+				new CUAR_TextField( 'user_login', new CUAR_UserStorage(), array( 
+						'label'			=> __( 'Username', 'cuar' ),
+						'readonly'		=> true,
+						'inline_help'	=> __( 'Your username cannot be changed.', 'cuar' ),
+						'required'		=> true,
+					) ),
+						
+				new CUAR_SimpleField( 'user_email', new CUAR_UserStorage(), array( 
+						'label'			=> __( 'Primary email', 'cuar' ),
+						'required'		=> true,
+					) ),
+						
+				new CUAR_UserPasswordField( 'user_pass', array(
+						'label'					=> __( 'Password', 'cuar' ), 
+						'confirm_label'			=> __( 'Password (confirm)', 'cuar' ), 
+						'confirm_inline_help'	=> __( 'The password must at least be composed of 5 characters. You will be requested to login again after '
+														. 'your password gets changed. Leave these fields empty if you want to keep your current password', 'cuar' ), 
+						'min_length'			=> 5, 
 					) )
 			);
 		
@@ -78,6 +110,10 @@ class CUAR_UserProfileAddOn extends CUAR_AddOn {
 	
 	public function get_profile_fields() {
 		return $this->plugin->get_option( self::$OPTION_PROFILE_FIELDS );
+	}
+	
+	public function set_profile_fields( $fields ) {
+		$this->plugin->update_option( self::$OPTION_PROFILE_FIELDS, $fields );
 	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/

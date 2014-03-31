@@ -36,6 +36,11 @@ class CUAR_EmailFieldRenderer extends CUAR_AbstractInputFieldRenderer implements
 		if ( empty( $value ) ) return ''; 
 		return sprintf( '<a href="mailto:%1$s">%1$s</a>', $value );
 	}
+
+	// See CUAR_FieldRenderer
+	public function render_raw_value( $value ) {
+		printf( '<a href="mailto:%1$s">%1$s</a>', $value );
+	}
 }
 
 endif; // if (!class_exists('CUAR_EmailFieldRenderer')) :

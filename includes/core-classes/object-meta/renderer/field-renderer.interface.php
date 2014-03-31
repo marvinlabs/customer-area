@@ -45,6 +45,11 @@ interface CUAR_FieldRenderer {
 	 * Show the field value as a form input field. For instance, a textarea or an input tag.
 	 */
 	public function render_form_field( $id, $value );
+	
+	/**
+	 * Show the field value
+	 */
+	public function render_raw_value( $value );
 }
 
 endif; // if (!interface_exists('CUAR_FieldRenderer')) :
