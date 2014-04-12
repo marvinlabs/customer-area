@@ -86,7 +86,7 @@ class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 	
 	protected function get_date_archive_page_subtitle( $year, $month=0 ) {
 		if ( isset( $month ) && ( (int)($month)>0 ) ) {
-			$month_name = date("F", mktime(0, 0, 0, (int)$month, 10));
+			$month_name = date_i18n( "F", mktime( 0, 0, 0, (int)$month, 10 ) );
 			$page_subtitle = sprintf( __( 'Pages published in %2$s %1$s', 'cuar' ), $year, $month_name );
 		} else {
 			$page_subtitle = sprintf( __( 'Pages published in %1$s', 'cuar' ), $year );
