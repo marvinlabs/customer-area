@@ -1,3 +1,9 @@
+*, *:before, *:after {
+	-webkit-box-sizing: border-box; 
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
+}
+ 
 .metabox-row {
 	margin: 0.5em 0; 
 }
@@ -391,4 +397,57 @@ p.forcelinebreak {
 .wp-admin .select2-container-multi .select2-choices .select2-search-choice {
 	border-radius: 0;
 	background-image: none;
+}
+
+/* -= FIELD ADMIN */
+
+.cuar-field-panel {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.cuar-field-panel-header {
+	width: 100%;
+	background: #fff;
+	border: 1px solid #e1e1e1;
+	padding: 8px 10px;
+	line-height: 1.4em;
+	font-size: 14px;
+}
+
+.cuar-field-panel-header:hover {
+	cursor: pointer;
+	background: #fafafa;
+}
+
+.cuar-field-panel-header .order {
+	width: 30px;
+	float: left;
+}
+
+.cuar-field-panel-header .type {
+	width: 15%;
+	float: left;
+}
+
+.cuar-field-panel-header .label {
+	margin: 0 0 0;
+}
+
+.cuar-field-panel-header .row_options {
+	width: auto;
+	float: right;
+	text-align: right;
+}
+
+.cuar-field-panel-header .row_options a, .cuar-field-panel-header .row_options a:hover {
+	text-decoration: none;
+}
+
+.cuar-field-panel-content {
+	width: 100%;
+	background: #f9f9f9;
+	border: 1px solid #e1e1e1;
+	border-top: none;
+	padding: 8px 10px;
 }

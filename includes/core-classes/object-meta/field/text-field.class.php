@@ -52,6 +52,11 @@ class CUAR_TextField extends CUAR_SimpleField {
 				$this->get_arg( 'max_length' )
 			) );
 	}
+
+	// See CUAR_Field
+	public function get_type( $is_for_display ) {
+		return $is_for_display ? __( 'Text', 'cuar' ) : 'text';
+	}
 	
 	protected function get_default_args() {
 		return array_merge( parent::get_default_args(), array( 

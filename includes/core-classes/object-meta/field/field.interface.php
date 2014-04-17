@@ -25,7 +25,7 @@ if (!interface_exists('CUAR_Field')) :
 * @author Vincent Prat @ MarvinLabs
 */
 interface CUAR_Field {
-
+	
 	/**
 	 * Persist the field to database. The value will be taken from POST data. This does not do anything if the field is readonly.
 	 * 
@@ -66,6 +66,13 @@ interface CUAR_Field {
 	 * Returns the label for that field
 	 */
 	public function get_label();
+	
+	/**
+	 * Returns the type for that field
+	 * 
+	 * @param boolean $is_for_display if true, return the type as a localized human readable string. Else, return the type ID
+	 */
+	public function get_type( $is_for_display );
 }
 
 endif; // if (!class_exists('CUAR_Field')) :

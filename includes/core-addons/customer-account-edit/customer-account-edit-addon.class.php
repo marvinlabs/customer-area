@@ -99,10 +99,12 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
         	}
         }
         
+        do_action( 'cuar/user-profile/edit/save_profile_fields', $current_user_id, $this->form_errors );
+        
         if ( empty( $this->form_errors ) ) {
 			$cp_addon = $this->plugin->get_addon('customer-pages');
 			$page_id = $cp_addon->get_page_id( 'customer-account' );
-			$redirect_url = get_permalink( $page_id );
+			$redirect_url = get_permalink( $page_id ) . '?updated=1';
         	wp_redirect( $redirect_url );
         	exit;
         } 
@@ -111,11 +113,15 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 	}
 
 	public function print_submit_button( $label ) {
+        do_action( 'cuar/user-profile/edit/before_submit_button' );
+        
 		echo '<div class="form-group">';
 		echo '	<div class="submit-container">';
 		echo '		<input type="submit" name="cuar_submit" value="' . esc_attr( $label ) . '" class="btn btn-default" />';
 		echo '	</div>';
 		echo '</div>';
+		
+		do_action( 'cuar/user-profile/edit/after_submit_button' );
 	}
 
 	public function print_form_header() {
@@ -124,12 +130,16 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 		printf( '<input type="hidden" name="cuar_form_id" value="%1$s" />', $this->get_slug() );
 		
 		wp_nonce_field( 'cuar_' . $this->get_slug(), 'cuar_' . $this->get_slug() . '_nonce' );
+		
+		do_action( 'cuar/user-profile/edit/before_submit_errors' );
 	
 		if ( !empty( $this->form_errors ) ) {
 			foreach ( $this->form_errors as $error ) {
 				printf( '<p class="alert alert-warning">%s</p>', $error );
 			}
 		}
+
+		do_action( 'cuar/user-profile/edit/after_submit_errors' );
 	}
 	
 	public function print_form_footer() {
@@ -137,14 +147,22 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 	}
 	
 	public function print_account_fields() {
-		$current_user_id = get_current_user_id();
+		$current_user = get_userdata( get_current_user_id() );
 		
 		$up_addon = $this->plugin->get_addon('user-profile');
 		$fields = $up_addon->get_profile_fields();
+
+		do_action( 'cuar/user-profile/edit/before_fields', $current_user );
 		
-		foreach ( $fields as $field ) {
-			$field->render_form_field( $current_user_id );
+		foreach ( $fields as $id => $field ) {
+			do_action( 'cuar/user-profile/edit/before_field/id=' . $id, $current_user );
+			
+			$field->render_form_field( $current_user->ID );
+
+			do_action( 'cuar/user-profile/edit/after_field/id=' . $id, $current_user );
 		}
+		
+		do_action( 'cuar/user-profile/edit/after_fields', $current_user );
 	}
 	
 	private $current_user = null;

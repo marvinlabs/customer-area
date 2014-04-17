@@ -38,31 +38,6 @@ class CUAR_UserProfileAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// Init the admin interface if needed
 		if ( is_admin() ) {
-			$this->plugin->update_option( self::$OPTION_PROFILE_FIELDS, array(
-				
-				'account_details'	=> new CUAR_HeaderField( 'account_details', array( 
-						'label'			=> __( 'Account details', 'cuar' )
-					) ),
-				
-				'user_login' 		=> new CUAR_TextField( 'user_login', new CUAR_UserStorage(), array( 
-						'label'			=> __( 'Username', 'cuar' ),
-						'readonly'		=> true,
-						'inline_help'	=> __( 'Your username cannot be changed.', 'cuar' ),
-						'required'		=> true,
-					) ),
-						
-				'user_email' 		=> new CUAR_EmailField( 'user_email', new CUAR_UserStorage(), array( 
-						'label'			=> __( 'Primary email', 'cuar' ),
-						'required'		=> true,
-					) ),
-						
-				'user_pass' 		=> new CUAR_UserPasswordField( 'user_pass', array(
-						'label'					=> __( 'Password', 'cuar' ), 
-						'confirm_label'			=> __( 'Password (confirm)', 'cuar' ), 
-						'confirm_inline_help'	=> __( 'The password must at least be composed of 5 characters. You will be requested to login again after '
-														. 'your password gets changed. Leave these fields empty if you want to keep your current password', 'cuar' ), 
-						'min_length'			=> 5, 
-					) ) )) ;
 		} else {
 		}
 	}	
@@ -75,52 +50,43 @@ class CUAR_UserProfileAddOn extends CUAR_AddOn {
 	 */
 	public function set_default_options( $defaults ) {
 		$defaults = parent::set_default_options($defaults);
-		
-		$defaults[ self::$OPTION_PROFILE_FIELDS ] = array(
-				
-				new CUAR_HeaderField( 'account_details', array( 
-						'label'			=> __( 'Account details', 'cuar' )
-					) ),
-				
-				new CUAR_TextField( 'user_login', new CUAR_UserStorage(), array( 
-						'label'			=> __( 'Username', 'cuar' ),
-						'readonly'		=> true,
-						'inline_help'	=> __( 'Your username cannot be changed.', 'cuar' ),
-						'required'		=> true,
-					) ),
-						
-				new CUAR_SimpleField( 'user_email', new CUAR_UserStorage(), array( 
-						'label'			=> __( 'Primary email', 'cuar' ),
-						'required'		=> true,
-					) ),
-						
-				new CUAR_UserPasswordField( 'user_pass', array(
-						'label'					=> __( 'Password', 'cuar' ), 
-						'confirm_label'			=> __( 'Password (confirm)', 'cuar' ), 
-						'confirm_inline_help'	=> __( 'The password must at least be composed of 5 characters. You will be requested to login again after '
-														. 'your password gets changed. Leave these fields empty if you want to keep your current password', 'cuar' ), 
-						'min_length'			=> 5, 
-					) )
-			);
-		
 		return $defaults;
 	}
 	
 	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 	
 	public function get_profile_fields() {
-		return $this->plugin->get_option( self::$OPTION_PROFILE_FIELDS );
-	}
-	
-	public function set_profile_fields( $fields ) {
-		$this->plugin->update_option( self::$OPTION_PROFILE_FIELDS, $fields );
+		$default_fields = array(
+				'account_details'	=> new CUAR_HeaderField( 'account_details', array(
+						'label'			=> __( 'Account details', 'cuar' )
+					) ),
+				
+				'user_login' 		=> new CUAR_TextField( 'user_login', new CUAR_UserStorage(), array(
+						'label'			=> __( 'Username', 'cuar' ),
+						'readonly'		=> true,
+						'inline_help'	=> __( 'Your username cannot be changed.', 'cuar' ),
+						'required'		=> true,
+					) ),
+				
+				'user_email' 		=> new CUAR_EmailField( 'user_email', new CUAR_UserStorage(), array(
+						'label'			=> __( 'Primary email', 'cuar' ),
+						'required'		=> true,
+					) ),
+				
+				'user_pass' 		=> new CUAR_UserPasswordField( 'user_pass', array(
+						'label'					=> __( 'Password', 'cuar' ),
+						'confirm_label'			=> __( 'Password (confirm)', 'cuar' ),
+						'confirm_inline_help'	=> __( 'The password must at least be composed of 5 characters. You will be requested to login again after '
+								. 'your password gets changed. Leave these fields empty if you want to keep your current password', 'cuar' ),
+						'min_length'			=> 5,
+					) )
+			);
+		
+		return apply_filters( 'cuar/user-profile/get_profile_fields', $default_fields );
 	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 	
-	
-	// General options
-	public static $OPTION_PROFILE_FIELDS		= 'profile_fields';
 }
 
 // Make sure the addon is loaded

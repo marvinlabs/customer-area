@@ -42,8 +42,8 @@ class CUAR_PasswordValidation extends CUAR_SimpleValidation implements CUAR_Vali
 		if ( $parent_val!==TRUE ) return $parent_val;
 		
 		$errors = array();		
-		if ( $this->min_length!=null && strlen( $value ) < $this->min_length ) $errors[] = sprintf( __('%1$s must contain at least %1$s characters', 'cuar'), $label, $this->min_length );
-		if ( $this->max_length!=null && strlen( $value ) > $this->max_length ) $errors[] = sprintf( __('%1$s must contain at most %1$s characters', 'cuar'), $label, $this->max_length );
+		if ( $this->min_length!=null && strlen( $value ) < $this->min_length ) $errors[] = sprintf( __('%1$s must contain at least %2$s characters', 'cuar'), $label, $this->min_length );
+		if ( $this->max_length!=null && strlen( $value ) > $this->max_length ) $errors[] = sprintf( __('%1$s must contain at most %2$s characters', 'cuar'), $label, $this->max_length );
 		
 		return empty( $errors ) ? TRUE : $errors;
 	}

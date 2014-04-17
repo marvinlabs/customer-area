@@ -43,10 +43,14 @@ class CUAR_NumberField extends CUAR_SimpleField {
 				$this->get_arg( 'max' )
 			) );
 	}
+
+	// See CUAR_Field
+	public function get_type( $is_for_display ) {
+		return $is_for_display ? __( 'Number', 'cuar' ) : 'number';
+	}
 	
 	protected function get_default_args() {
 		return array_merge( parent::get_default_args(), array( 
-				'label' 			=> '',
 				'inline_help' 		=> '',
 				'readonly' 			=> false,
 

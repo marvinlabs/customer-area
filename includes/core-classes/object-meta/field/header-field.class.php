@@ -40,22 +40,27 @@ class CUAR_HeaderField extends CUAR_AbstractField implements CUAR_Field {
 		) );
 	}
 
-	// See CUAR_AbstractField
+	// See CUAR_Field
+	public function get_type( $is_for_display ) {
+		return $is_for_display ? __( 'Header', 'cuar' ) : 'header';
+	}
+
+	// See CUAR_Field
 	public function persist( $object_id ) {
 		return TRUE;
 	}	
 
-	// See CUAR_AbstractField
+	// See CUAR_Field
 	public function render_read_only_field( $object_id ) {
 		printf( '<%1$s id="%3$s" class="cuar-field cuar-field-header">%2$s</%1$s>', $this->get_arg( 'wrapper' ), $this->get_arg( 'label' ), $this->get_id() );
 	}
 
-	// See CUAR_AbstractField
+	// See CUAR_Field
 	public function render_form_field( $object_id ) {
 		$this->render_read_only_field( $object_id );
 	}
 
-	// See CUAR_AbstractField
+	// See CUAR_Field
 	public function render_raw_value( $object_id ) {
 		echo $this->get_arg( 'label' );
 	}

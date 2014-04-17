@@ -421,12 +421,19 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		if ( get_post_type()!=$this->get_friendly_post_type() ) return $content;		
 		
 		ob_start();
+		
+		do_action( 'cuar/private-content/view/before_footer', $this );
+		
 		include( $this->plugin->get_template_file_path(
 				$this->get_page_addon_path(),
 				$this->get_slug() . '-single-post-footer.template.php',
 				'templates' ));	
 		
+		do_action( 'cuar/private-content/view/before_additional_footer', $this );
+		
 		$this->print_additional_private_content_footer();
+		
+		do_action( 'cuar/private-content/view/after_footer', $this );
 		
   		$out = ob_get_contents();
   		ob_end_clean(); 

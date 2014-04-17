@@ -41,6 +41,11 @@ class CUAR_EmailField extends CUAR_SimpleField {
 				$this->get_arg( 'required' ) 
 			) );
 	}
+
+	// See CUAR_Field
+	public function get_type( $is_for_display ) {
+		return $is_for_display ? __( 'Email', 'cuar' ) : 'email';
+	}
 	
 	protected function get_default_args() {
 		return array_merge( parent::get_default_args(), array( 

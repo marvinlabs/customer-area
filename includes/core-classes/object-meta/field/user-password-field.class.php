@@ -54,7 +54,6 @@ class CUAR_UserPasswordField extends CUAR_AbstractField implements CUAR_Field {
 	
 	protected function get_default_args() {
 		return array_merge( parent::get_default_args(), array( 
-				'label' 				=> '',
 				'inline_help' 			=> '',
 				'confirm_label' 		=> '',
 				'confirm_inline_help' 	=> '',
@@ -66,7 +65,12 @@ class CUAR_UserPasswordField extends CUAR_AbstractField implements CUAR_Field {
 			) );
 	}
 
-	// See CUAR_AbstractField
+	// See CUAR_Field
+	public function get_type( $is_for_display ) {
+		return $is_for_display ? __( 'Password', 'cuar' ) : 'password';
+	}
+
+	// See CUAR_Field
 	public function persist( $object_id ) {
 		$pwd = isset( $_POST[$this->get_id()] ) ? $_POST[$this->get_id()] : null;
 		$pwd_confirm = isset( $_POST[$this->get_id() . '_confirm'] ) ? $_POST[$this->get_id() . '_confirm'] : null;
@@ -85,19 +89,19 @@ class CUAR_UserPasswordField extends CUAR_AbstractField implements CUAR_Field {
 		return $validation_result;
 	}	
 
-	// See CUAR_AbstractField
+	// See CUAR_Field
 	public function render_read_only_field( $object_id ) {
 		$this->pwd_renderer->render_read_only_field( $this->get_id(), '' );
 	}
 
-	// See CUAR_AbstractField
+	// See CUAR_Field
 	public function render_form_field( $object_id ) {
 		// Render the field
 		$this->pwd_renderer->render_form_field( $this->get_id(), '' );
 		$this->pwd_confirm_renderer->render_form_field( $this->get_id() . '_confirm', '' );
 	}
 
-	// See CUAR_AbstractField
+	// See CUAR_Field
 	public function render_raw_value( $object_id ) {
 		$this->pwd_renderer->render_raw_value( '' );
 	}

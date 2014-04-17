@@ -27,7 +27,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/abstract-fiel
 *
 * @author Vincent Prat @ MarvinLabs
 */
-class CUAR_SimpleField extends CUAR_AbstractField implements CUAR_Field {
+abstract class CUAR_SimpleField extends CUAR_AbstractField implements CUAR_Field {
 
 	public function __construct( $id, $storage, $args ) {
 		parent::__construct( $id, $storage, $args );
