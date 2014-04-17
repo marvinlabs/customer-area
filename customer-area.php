@@ -2,7 +2,7 @@
 /*
 Plugin Name: Customer Area
 Plugin URI: http://customer-area.marvinlabs.com
-Version: 4.5.0
+Version: 4.6.0
 Description: Customer area give your customers the possibility to get a page on your site where they can access private content. 
 Author: MarvinLabs
 Author URI: http://www.marvinlabs.com
@@ -64,6 +64,34 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/theme-utils.class.php' );
 
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/field-renderer.interface.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/abstract-field-renderer.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/abstract-input-field-renderer.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/password-field-renderer.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/email-field-renderer.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/long-text-field-renderer.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/short-text-field-renderer.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/storage/storage.interface.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/storage/user-meta-storage.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/storage/user-storage.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/storage/post-meta-storage.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/validation/validation-rule.interface.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/validation/simple-validation.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/validation/email-validation.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/validation/string-validation.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/validation/number-validation.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/validation/password-validation.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/field.interface.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/simple-field.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/header-field.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/text-field.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/number-field.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/email-field.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/user-password-field.class.php' );
+
 // Core addons
 include_once( CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/help/help-addon.class.php' );
@@ -71,6 +99,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.clas
 include_once( CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.class.php' );
 
 // Core content types
 include_once( CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php' );
@@ -81,6 +110,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-home/customer-home-addo
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-dashboard/customer-dashboard-addon.class.php' );
 
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-account-home/customer-account-home-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-account-edit/customer-account-edit-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-account/customer-account-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-logout/customer-logout-addon.class.php' );
 

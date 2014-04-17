@@ -77,14 +77,17 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
         if ( !$this->current_user_can_create_content() ) {
         	die('You are not allowed to create content.');
         }
-		
-		do_action( 'cuar_before_create_content-' . $this->get_slug(), $this );
+
+        do_action( 'cuar/private-content/edit/before_create', $this, $this->form_errors );
+        do_action( 'cuar/private-content/edit/before_create/page-slug=' . $this->get_slug(), $this, $this->form_errors );
         
 		$result = $this->do_create_content( $_POST );		
-		if ( true===$result ) {
-			do_action( 'cuar_after_create_content-' . $this->get_slug(), $this );
+
+		do_action( 'cuar/private-content/edit/after_create', $this, $this->form_errors );
+		do_action( 'cuar/private-content/edit/after_create/page-slug=' . $this->get_slug(), $this, $this->form_errors );
 		
-			$redirect_url = apply_filters( 'cuar_redirect_url_after_content_creation', $this->get_redirect_slug_after_creation(), $this->get_slug() );
+		if ( true===$result && empty( $this->form_errors ) ) {		
+			$redirect_url = apply_filters( 'cuar/private-content/edit/after_create/redirect_url', $this->get_redirect_slug_after_creation(), $this->get_slug() );
 			if ( $redirect_url!=null ) {
 				wp_redirect( $redirect_url );
 				exit;
@@ -180,6 +183,8 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		} 
 		
 		wp_nonce_field( 'cuar_' . $this->get_slug(), 'cuar_' . $this->get_slug() . '_nonce' );
+		
+		do_action( 'cuar/private-content/edit/before_submit_errors', $this );
 	
 		if ( !empty( $this->form_errors ) ) {
 			foreach ( $this->form_errors as $error ) {
@@ -190,18 +195,28 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 				}
 			}
 		}
+		
+		do_action( 'cuar/private-content/edit/after_submit_errors', $this );
+		
+		do_action( 'cuar/private-content/edit/before_fields', $this );		
 	}
 	
 	public function print_form_footer() {
+		do_action( 'cuar/private-content/edit/after_fields', $this );
+		
 		echo '</form>';
 	}
 
 	public function print_submit_button( $label ) {
+        do_action( 'cuar/private-content/edit/before_submit_button', $this );
+        
 		echo '<div class="form-group">';
 		echo '	<div class="submit-container">';
 		echo '		<input type="submit" name="cuar_do_register" value="' . esc_attr( $label ) . '" class="btn btn-default" />';
 		echo '	</div>';
 		echo '</div>';
+
+		do_action( 'cuar/private-content/edit/after_submit_button', $this );
 	}
 
 	public function print_title_field( $label ) {
@@ -291,6 +306,8 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	}
 
 	public function print_form_field( $name, $label, $field_code, $help_text='' ) {
+		do_action( 'cuar/private-content/edit/before_field/id=' . $name, $this );
+			
 		echo '<div class="form-group">';
 		echo '	<label for="' . $name . '" class="control-label">' . $label . '</label>';
 		echo '	<div class="control-container">';
@@ -302,11 +319,22 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		
 		echo '	</div>';
 		echo '</div>';
+		
+		do_action( 'cuar/private-content/edit/after_field/id=' . $name, $this );			
+	}
+	
+	public function set_current_post_id( $post_id ) {
+		$this->current_post_id = $post_id; 
+	}
+	
+	public function get_current_post_id() {
+		return $this->current_post_id;
 	}
 	
 	protected $should_print_form = true;
 	protected $form_errors = array();	
 	protected $form_messages = array();
+	protected $current_post_id = null;
 	
 	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 	

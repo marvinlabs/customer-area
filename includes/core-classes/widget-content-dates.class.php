@@ -127,7 +127,7 @@ abstract class CUAR_ContentDatesWidget extends WP_Widget {
 					echo '<li>';
 	
 					$link = $this->get_link( $year, $month );
-					$month_name = date("F", mktime(0, 0, 0, $month, 10));
+					$month_name = date_i18n("F", mktime(0, 0, 0, $month, 10));
 					
 					printf( '<a href="%1$s" title="%3$s">%2$s</a>',
 							$link,

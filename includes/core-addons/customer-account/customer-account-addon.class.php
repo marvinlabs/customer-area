@@ -17,7 +17,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 require_once( CUAR_INCLUDES_DIR . '/core-classes/addon-page.class.php' );
-require_once( CUAR_INCLUDES_DIR . '/core-classes/field-renderer.class.php' );
 
 if (!class_exists('CUAR_CustomerAccountAddOn')) :
 
@@ -29,7 +28,7 @@ if (!class_exists('CUAR_CustomerAccountAddOn')) :
 class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-account', '4.0.0' );
+		parent::__construct( 'customer-account', '4.6.0' );
 		
 		$this->set_page_parameters( 810, array(
 					'slug'					=> 'customer-account',
@@ -63,28 +62,27 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
 	public function print_account_fields() {
-		do_action( 'cuar_customer_account_before_fields' );
-
 		$current_user = $this->get_current_user();
 		
-		$renderer = new CUAR_FieldRenderer( $this->plugin );	
-			
-		$renderer->start_section( 'contact', __( 'Contact', 'cuar' ) );
-		$renderer->add_simple_field( 'first_name', __( 'First Name', 'cuar'), $current_user->first_name, '-' );
-		$renderer->add_simple_field( 'last_name', __( 'Last Name', 'cuar'), $current_user->last_name, '-' );
-		$renderer->add_simple_field( 'email', __( 'Email', 'cuar'), $current_user->user_email, false, 'wide' );
-		$renderer->add_simple_field( 'website', __( 'Website', 'cuar'), $current_user->user_url, false, 'wide link' );
+		$up_addon = $this->plugin->get_addon('user-profile');
+		$fields = $up_addon->get_profile_fields();
+
+		do_action( 'cuar/user-profile/view/before_fields', $current_user );
 		
-		do_action( 'cuar_add_account_fields', $current_user, $renderer );
+		foreach ( $fields as $id => $field ) {
+			do_action( 'cuar/user-profile/view/before_field/id=' . $id, $current_user );
 		
-		$renderer->print_fields();
+			$field->render_read_only_field( $current_user->ID );
 		
-		do_action( 'cuar_customer_account_after_fields' );
+			do_action( 'cuar/user-profile/view/after_field/id=' . $id, $current_user );
+		}
+		
+		do_action( 'cuar/user-profile/view/after_fields', $current_user );
 	}
 	
 	protected function get_current_user() {
 		if ( $this->current_user==null ) {
-			$user_id = apply_filters( 'cuar_user_id_for_profile_page', get_current_user_id() );
+			$user_id = apply_filters( 'cuar/user-profile/view/get_current_user_id', get_current_user_id() );
 			$this->current_user = get_userdata( $user_id );
 		}
 		return $this->current_user;

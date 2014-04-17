@@ -390,6 +390,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	
 	public function exclude_pages_from_wp_page_menu( $args ) {
 		$new_args = $args;
+		
+		if ( !isset( $new_args['exclude'] ) ) $new_args['exclude'] = '';
 		if ( !empty( $new_args['exclude'] ) ) $new_args['exclude'] .= ',';
 
 		$customer_area_pages = $this->get_customer_area_pages();

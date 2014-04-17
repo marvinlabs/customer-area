@@ -52,9 +52,11 @@ abstract class CUAR_TermsWidget extends WP_Widget {
 		// Don't output anything if we don't have any categories or if the user is a guest
 		if ( !is_user_logged_in() ) return;
 		
+		$hide_empty = isset( $instance['hide_empty'] ) ? $instance['hide_empty'] : 0;
+		
 		$categories = get_terms( $this->get_taxonomy(), array(
 				'parent'		=> 0,
-				'hide_empty'	=> 0
+				'hide_empty'	=> $hide_empty
 			) );
 		if ( count( $categories )<=0 ) return;
 		
@@ -65,12 +67,12 @@ abstract class CUAR_TermsWidget extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 		
-		$this->print_category_list( $categories );
+		$this->print_category_list( $categories, $hide_empty );
 		
 		echo $args['after_widget'];
 	}
 	
-	private function print_category_list( $categories ) {		
+	private function print_category_list( $categories, $hide_empty ) {		
 		echo '<ul>';
 		
 		foreach ( $categories as $cat ) {
@@ -86,11 +88,11 @@ abstract class CUAR_TermsWidget extends WP_Widget {
 			
 			$children = get_terms( 'cuar_private_file_category', array(
 					'parent'		=> $cat->term_id,
-					'hide_empty'	=> 0
+					'hide_empty'	=> $hide_empty
 				));
 			
 			if ( count( $children )>0 ) {
-				$this->print_category_list( $children );
+				$this->print_category_list( $children, $hide_empty );
 			}
 
 			echo '</li>';
@@ -112,10 +114,24 @@ abstract class CUAR_TermsWidget extends WP_Widget {
 		} else {
 			$title = $this->get_default_title();
 		}
+
+		if ( isset( $instance[ 'hide_empty' ] ) ) {
+			$hide_empty = $instance['hide_empty'];
+		} else {
+			$hide_empty = 0;
+		}
 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'cuar' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'hide_empty' ); ?>"><?php _e( 'Empty terms:', 'cuar' ); ?></label> 
+			<select class="widefat" id="<?php echo $this->get_field_id( 'hide_empty' ); ?>" name="<?php echo $this->get_field_name( 'hide_empty' ); ?>">
+				<option value="0" <?php selected( 0, $hide_empty ); ?>><?php _e( 'Show', 'cuar' ); ?></option>
+				<option value="1" <?php selected( 1, $hide_empty ); ?>><?php _e( 'Hide', 'cuar' ); ?></option>
+			</select> 
 		</p>
 <?php 
 	}
@@ -132,7 +148,8 @@ abstract class CUAR_TermsWidget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['hide_empty'] = ( !empty( $new_instance['hide_empty'] ) ) ? 1 : 0;
 
 		return $instance;
 	}

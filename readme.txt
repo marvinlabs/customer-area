@@ -3,8 +3,8 @@ Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.6
-Tested up to: 3.9.0 beta
-Stable tag: 4.5.0
+Tested up to: 3.9
+Stable tag: 4.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,6 +170,14 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 4.6.0 (2014/04/17) =
+
+* New: compatibility with the new ACF Integration add-on (to add custom fields to the user accounts and/or private content)
+* New: users can now edit their account information (email, password)
+* New: Add a parameter to the category widgets to hide/show empty categories
+* Fix: Updated the Italian translation. Credits go to [Antonio Cicirelli](http://www.ideacommerce.it).
+* Fix: months where not properly localized in the archive titles and widgets
 
 = 4.5.0 (2014/03/13) =
 
