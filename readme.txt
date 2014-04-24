@@ -39,6 +39,7 @@ Customer Area is available for free and should cover the needs of most users. If
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
 from [our online shop](http://www.marvinlabs.com/downloads/category/customer-area): 
 
+* [Advanced Custom Fields Integration](http://www.marvinlabs.com/downloads/customer-area-advanced-custom-fields-integration/)
 * [Collaboration](http://www.marvinlabs.com/downloads/customer-area-collaboration/)
 * [Conversations](http://www.marvinlabs.com/downloads/customer-area-conversations/)
 * [Extended Permissions](http://www.marvinlabs.com/downloads/customer-area-extended-permissions/)
