@@ -646,6 +646,11 @@ class CUAR_Plugin {
 				wp_enqueue_script( 'bootstrap.collapse', CUAR_PLUGIN_URL . 'libs/bootstrap/js/collapse.js', array('jquery'), $this->get_version() );
 			}
 			break;
+
+			case 'jquery.knob': {
+				wp_enqueue_script( 'jquery.knob', CUAR_PLUGIN_URL . 'libs/knob/jquery.knob.min.js', array('jquery'), $this->get_version() );
+			}
+			break;
 			
 			default:
 				do_action( 'cuar_enable_library', $library_id );
