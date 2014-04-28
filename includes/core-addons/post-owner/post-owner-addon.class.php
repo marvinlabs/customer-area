@@ -636,6 +636,8 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				}
 				
 				echo '</select>';
+				
+				$this->plugin->enable_library( 'jquery.select2' );
 ?>
 				<script type="text/javascript">
 					<!--
