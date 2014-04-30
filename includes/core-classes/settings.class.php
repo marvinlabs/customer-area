@@ -615,12 +615,23 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param string $option_id
 		 *        	Key of the value to check in the input array
 		 */
-		public function validate_term( $input, &$validated, $option_id, $taxonomy ) {			
-			// TODO better checks, for now, we just check it is not empty and strictly positive
-			if (isset( $input[$option_id] ) && $input[$option_id] > 0 ) {
-				$validated[$option_id] = $input[$option_id];
-			} else {
+		public function validate_term( $input, &$validated, $option_id, $taxonomy, $allow_multiple=false ) {	
+			$term_ids = isset( $input[$option_id] ) ? $input[$option_id] : '';
+			
+			if ( !$allow_multiple && is_array( $term_ids ) ) {
+				add_settings_error( $option_id, 'settings-errors', $option_id . ': ' . __ ( 'you cannot select multiple terms.', 'cuar' ), 'error' );
 				$validated[$option_id] = -1;
+				return;
+			}
+			
+			if ( $allow_multiple ) {
+				if ( !is_array( $term_ids ) ) {
+					$term_ids = empty( $term_ids ) ? array() : array( $term_ids );
+				}
+					
+				$validated[$option_id] = $term_ids;
+			} else {
+				$validated[$option_id] = empty( $term_ids ) ? -1 : $term_ids;
 			}
 		}
 	
@@ -885,8 +896,10 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 			
+			$option_value = isset( $this->options[$option_id] ) ? $this->options[$option_id] : null;
+			
 			foreach ( $options as $value => $label ) {
-				$selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
+				$selected = ($option_value == $value) ? 'selected="selected"' : '';
 				
 				echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 			}
@@ -1049,18 +1062,51 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			extract ( $args );
 			
 			if ( isset( $before )) echo $before;
-			
-			wp_dropdown_categories( array(
-					'taxonomy'			=> $taxonomy,
-					'name' 				=> self::$OPTIONS_GROUP . '[' . esc_attr ( $option_id ) . ']',
-					'id' 				=> esc_attr ( $option_id ),
-					'selected'			=> $this->options [$option_id],
+
+			$this->plugin->enable_library( 'jquery.select2' );
+			$terms = get_terms( $taxonomy, array(
 					'hide_empty'    	=> 0,
-					'hierarchical'  	=> 1,
-					'show_option_none' 	=> __('None', 'cuar'),
-					'orderby'       	=> 'NAME',
+					'orderby'       	=> 'name'
 				) );
+
+			$current_option_value = $this->options[$option_id];			
 			
+			$field_name = esc_attr( self::$OPTIONS_GROUP ) . '[' . esc_attr( $option_id ) . ']';
+			if ( isset( $multiple ) && $multiple ) $field_name .= '[]';
+			
+			$field_id = esc_attr( $option_id );
+
+			$multiple = isset( $multiple ) && $multiple ? 'multiple="multiple" ' : '';
+?>
+
+			<select id="<?php echo $field_id; ?>" name="<?php echo $field_name; ?>" <?php echo $multiple; ?>>
+			
+<?php 		foreach ( $terms as $term ) :
+				$value = $term->term_id;
+				$label = $term->name;
+				
+				if ( is_array( $current_option_value ) ) {
+					$selected = in_array( $value, $current_option_value ) ? 'selected="selected"' : '';
+				} else {
+					$selected = ($current_option_value==$value) ? 'selected="selected"' : '';
+				}
+?>			
+				<option value="<?php echo esc_attr( $value ); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+			
+<?php 		endforeach; ?>
+
+			</select>
+			
+			<script type="text/javascript">
+				<!--
+				jQuery("document").ready(function($){
+					$("#<?php echo esc_attr( $option_id ); ?>").select2({
+						width: "100%"
+					});
+				});
+				//-->
+			</script>
+<?php 			
 			if ( isset( $after )) echo $after;
 		}
 		

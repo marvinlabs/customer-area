@@ -698,6 +698,7 @@ class CUAR_Plugin {
 	
 	public static function on_activate() {
 		self::enable_check_templates();
+		flush_rewrite_rules();
 	}
 	
 	/**
