@@ -122,11 +122,12 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 				'label'			=> __('Pages', 'cuar'),
 				'title'			=> __('Pages of the Customer Area', 'cuar'),
 				'template_path'	=> CUAR_INCLUDES_DIR . '/core-addons/customer-pages',
-				'linked-checks'	=> array( 'pages-without-id', 'missing-nav-menu', 'nav-menu-needs-sync' ),
+				'linked-checks'	=> array( 'pages-without-id', 'missing-nav-menu', 'nav-menu-needs-sync', 'orphan-pages' ),
 				'actions'		=> array(
 						'cuar-create-all-missing-pages'	=> array( &$this, 'create_all_missing_pages' ),
 						'cuar-synchronize-menu'			=> array( &$this, 'recreate_default_navigation_menu' ),
 						'cuar-clear-sync-nav-warning'	=> array( &$this, 'ignore_nav_menu_needs_sync_warning' ),
+						'cuar-remove-orphan-pages'		=> array( &$this, 'delete_orphan_pages' ),
 					)
 			);
 		
@@ -857,6 +858,64 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		} else {
 			$this->plugin->add_admin_notice( __('There was no missing page that could be created.', 'cuar'), 'error' );
 		}
+	}
+	
+	/**
+	 * Try to detect pages that contain customer area shortcodes but which are not set in our settings
+	 */
+	public function get_potential_orphan_pages() {
+		$all_pages = get_pages( array( 'numposts' => -1 ) );
+		$cp_pages = $this->get_customer_area_pages();
+		
+		$orphans = array();
+		
+		foreach ( $all_pages as $suspect ) {
+			$has_known_id = false;
+			$contains_shortcode = false;
+			
+			foreach ( $cp_pages as $verified ) {
+				// If we have a known ID, clear the suspect
+				if ( $suspect->ID==$verified->get_page_id() ) {
+					$has_known_id = true;
+					break;
+				}			
+
+				// If we contain the shortcode, that's potentially bad news
+				if ( FALSE!=strpos( $suspect->post_content, $verified->get_page_shortcode() ) ) {
+					$contains_shortcode = true;
+				}
+			}
+			
+			if ( !$has_known_id && $contains_shortcode ) {
+				$orphans[] = $suspect;
+			}
+		}
+
+		if ( !empty( $orphans ) ) {
+			$this->plugin->set_attention_needed( 'orphan-pages',
+					__( 'Some pages in your site seem to contain Customer Area shortcodes but are not registered in the Customer Area pages settings.', 'cuar') );
+		}
+		
+		return $orphans;
+	}
+	
+	public function delete_orphan_pages() {
+		$orphans = $this->get_potential_orphan_pages();
+		
+		$delete_count = 0;
+		foreach ( $orphans as $o ) {
+			if ( false!=wp_delete_post( $o->ID, true ) ) {
+				++$delete_count;
+			}
+		}
+
+		$this->plugin->add_admin_notice( sprintf( _n( '%s page has been deleted', '%s pages have been deleted', $delete_count, 'cuar'), $delete_count ), 'updated' );
+
+		$this->plugin->clear_attention_needed( 'orphan-pages' );
+		$this->plugin->set_attention_needed( 'nav-menu-needs-sync',
+				__( 'Some pages of the customer area have been created or deleted. The customer area navigation menu needs to be updated.', 'cuar') );
+
+		flush_rewrite_rules();
 	}
 
 	// Options

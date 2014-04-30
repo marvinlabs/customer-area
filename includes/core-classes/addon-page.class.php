@@ -358,6 +358,10 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		$this->shortcode = new CUAR_AddOnPageShortcode( $this, $shortcode_name, $shorcode_params );
 	}
 	
+	public function get_page_shortcode() {
+		return $this->shortcode==null ? '' : $this->shortcode->get_shortcode_name(); 
+	}
+	
 	protected $child_pages = null;
 	
 	/** @var int order for the page */
