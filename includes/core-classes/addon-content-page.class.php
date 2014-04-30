@@ -131,18 +131,18 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		// Category archives
 		if ( $this->get_friendly_taxonomy()!=null ) {
 			$rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_category=$matches[1]';		
-			$rewrite_regex = '^' . $page_slug . '/' . $cp_addon->get_category_archive_slug() . '/([^/]+)/?$';
+			$rewrite_regex = $page_slug . '/' . $cp_addon->get_category_archive_slug() . '/([^/]+)/?$';
 			$newrules[ $rewrite_regex ] = $rewrite_rule;
 		}
 			
 		// Year archives
 		$rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_year=$matches[1]';
-		$rewrite_regex = '^' . $page_slug . '/' . $cp_addon->get_date_archive_slug() . '/([0-9]{4})/?$';
+		$rewrite_regex = $page_slug . '/' . $cp_addon->get_date_archive_slug() . '/([0-9]{4})/?$';
 		$newrules[ $rewrite_regex ] = $rewrite_rule;
 		
 		// Month archives
 		$rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_year=$matches[1]&cuar_month=$matches[2]';
-		$rewrite_regex = '^' . $page_slug . '/' . $cp_addon->get_date_archive_slug() . '/([0-9]{4})/([0-9]{2})/?$';
+		$rewrite_regex = $page_slug . '/' . $cp_addon->get_date_archive_slug() . '/([0-9]{4})/([0-9]{2})/?$';
 		$newrules[ $rewrite_regex ] = $rewrite_rule;
 		
 		return $newrules + $rules;
@@ -235,12 +235,12 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		
 		// Single post rule
 		$rewrite_rule = 'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&' . $this->page_description['friendly_post_type'] . '=$matches[4]';		
-		$rewrite_regex = '^' . $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/?$';
+		$rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/?$';
 		$newrules[ $rewrite_regex ] = $rewrite_rule;
 		
 		// Single post rule with action
 		$rewrite_rule = 'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&' . $this->page_description['friendly_post_type'] . '=$matches[4]&cuar_action=$matches[5]';		
-		$rewrite_regex = '^' . $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/([^/]+)/?$';
+		$rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/([^/]+)/?$';
 		$newrules[ $rewrite_regex ] = $rewrite_rule;
 		
 		return $newrules + $rules;
