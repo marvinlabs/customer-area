@@ -42,7 +42,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				add_filter( "plugin_action_links_{$plugin_file}", array( &$this, 'print_plugin_action_links' ), 10, 2 );
 				
 				// We have some core settings to take care of too
-				add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_core_settings_tab' ), 5, 1 );
+				add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_core_settings_tab' ), 200, 1 );
 				
 				add_action( 'cuar_addon_print_settings_cuar_core', array( &$this, 'print_core_settings' ), 10, 2 );
 				add_filter( 'cuar_addon_validate_options_cuar_core', array( &$this,	'validate_core_settings' ), 10, 3 );
@@ -1207,6 +1207,10 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$this->options = $opt;
 			$this->save_options();
 			$this->reload_options();
+		}
+		
+		public function update_option_default($option_id, $new_value) {
+			$this->default_options[$option_id] = $new_value;
 		}
 		
 		/**

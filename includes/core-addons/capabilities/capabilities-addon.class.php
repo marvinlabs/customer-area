@@ -41,7 +41,7 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 			add_filter( 'cuar_status_sections', array( &$this, 'add_status_sections' ) );
 			
 			// Settings
-			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
+			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 400, 1 );
 			add_action( 'cuar_in_settings_form_cuar_capabilities', array( &$this, 'print_settings' ) );
 			add_filter( 'cuar_addon_validate_options_cuar_capabilities', array( &$this, 'validate_options' ), 10, 3 );
 		} 

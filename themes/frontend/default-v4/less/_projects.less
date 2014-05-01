@@ -1,0 +1,140 @@
+// Projects styling
+// --------------------------------------------------
+
+// Items in the project page
+// --------------------------------------------------
+.cuar-item.cuar-project {
+	
+	.panel {
+			position: relative;
+			background: #fafafa;
+	}
+	
+	.cover img {
+			border-radius: 0;
+			.box-shadow(none);
+	}
+	
+	.title a {
+			width: 100%;
+			display: block;
+			font-size: 120%;
+			padding: 10px 10px 5px;
+			opacity: 0.7;
+			.transition(opacity .6s ease);
+			color:  @link-color;
+
+		&:hover {
+				text-decoration: none;
+				opacity: 1;
+				color:  @link-hover-color;
+		}
+		&:visited {
+				color:  @link-color;
+		}
+	}	
+	
+	.progress {
+			position: relative;
+			margin-top: -5px;
+			margin-bottom: 0;
+			background: rgba( 0, 0, 0, 0.5 );
+			z-index: 9999;
+		.progress-bar {
+		}
+	}
+	
+	.status {
+			position: absolute;
+			top: 0;
+			right: 0; 
+			font-size: 80%;
+			
+			//background: #999;
+			background: rgba( 0, 0, 0, 0.5 );
+			color: #fff;
+			padding: 3px 7px;
+			
+			font-weight: normal;
+			
+			rotation: 45;
+	}
+}
+
+// Items in the dashboard block
+// --------------------------------------------------
+
+.cuar-item-compact.cuar-project {
+	.panel {
+			position: relative;
+			background: transparent;
+	}
+	
+	.title a {
+			font-size: 100%;
+			padding: 0 0 5px;
+	}
+	
+	.status {
+			font-size: 70%;
+	}
+}
+
+// Project info in the single post footer
+// --------------------------------------------------
+
+.cuar-single-post-footer.cuar-project {
+	.schedule {
+			.make-xs-column(12);
+			
+		.icon {
+				.make-sm-column(3);
+				.make-xs-column(6);
+			.dashicons {
+					text-align: left;
+					width: 100%;
+					font-size: 350%;
+			}
+		}
+		.date {
+				.make-sm-column(3);
+				.make-xs-column(6);
+			h4 {
+					margin: 0;
+					font-weight: bold;
+			}
+			p {
+					opacity: 0.8;
+			}
+		}
+	}
+	
+	.team {
+			.make-xs-column(12);
+			
+		.icon {
+				.make-sm-column(3);
+				.make-xs-column(3);
+			.dashicons {
+					text-align: left;
+					width: 100%;
+					font-size: 350%;
+			}
+		}
+		.user-list {
+				.make-sm-column(9);
+				.make-xs-column(9);
+			h4 {
+					margin: 0;
+					font-weight: bold;
+			}
+			p {
+					opacity: 0.8;
+			}
+		}
+	}
+	
+	.extra-info {
+			.make-xs-column(12);
+	}
+}

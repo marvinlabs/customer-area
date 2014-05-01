@@ -29,7 +29,7 @@ class CUAR_Plugin {
 	}
 	
 	public function run() {		
-		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ), 4 );
+		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ), 3 );
 		
 		add_action( 'plugins_loaded', array( &$this, 'load_settings' ), 5 );
 		add_action( 'plugins_loaded', array( &$this, 'load_addons' ), 10 );
@@ -90,8 +90,11 @@ class CUAR_Plugin {
 				$this->get_admin_theme_url() . '/style.css' );
 		} else if ( $this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS ) ) {
 			wp_enqueue_style(
-				'cuar.frontend',
-				$this->get_frontend_theme_url() . '/style.css' );
+					'cuar.frontend',
+					$this->get_frontend_theme_url() . '/style.css',
+					array( 'dashicons' ), 
+					$this->get_version()
+				);
 		}
 	}
 	

@@ -1,7 +1,46 @@
+// Item list
+// --------------------------------------------------
+
+.cuar-item-list {
+		.make-row();
+		
+	.cuar-item {
+			.make-sm-column(6);
+	}
+}
+
+.cuar-item-list-compact {
+		.make-row();
+		
+	.cuar-item {
+			.make-sm-column(12);
+	}
+}
+
+.cuar-page-customer-dashboard .cuar-item-list {
+	&:extend( .cuar-item-list-compact all );
+}
+
 // Items
 // --------------------------------------------------
 
-.cuar-item {
+.cuar-item-list {
+	.cuar-item {
+	}
+}
+
+.cuar-item-list-compact {
+	.cuar-item {
+	}
+}
+
+
+
+/////////////// DEPRECATED STYLES TO BE REMOVED !!!!
+
+.cuar-page-customer-dashboard table.cuar-item-list .cuar-item, 
+table.cuar-item-list .cuar-item {
+		
 	.meta {
 			width: 30%;
 	}
@@ -15,7 +54,8 @@
 	}
 }
 
-.cuar-item {
+.cuar-page-customer-dashboard table.cuar-item-list .cuar-item, 
+table.cuar-item-list .cuar-item {
 	.sender, .recipient {
 			opacity: 0.8;
 	}

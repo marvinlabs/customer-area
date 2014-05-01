@@ -32,7 +32,7 @@ class CUAR_PrivatePageAdminInterface {
 		$this->private_page_addon = $private_page_addon;
 
 		// Settings
-		add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
+		add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 510, 1 );
 		add_action( 'cuar_addon_print_settings_cuar_private_pages', array( &$this, 'print_settings' ), 10, 2 );
 		add_filter( 'cuar_addon_validate_options_cuar_private_pages', array( &$this, 'validate_options' ), 10, 3 );
 		

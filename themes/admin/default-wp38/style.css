@@ -399,57 +399,44 @@ p.forcelinebreak {
 	background-image: none;
 }
 
-/* -= FIELD ADMIN */
 
-.cuar-field-panel {
+/* -= JQUERY.DATEPICKER */
+
+.cuar-datepicker {
+	position: relative;
 	width: 100%;
-	margin-bottom: 8px;
+	display: block;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
 }
 
-.cuar-field-panel-header {
-	width: 100%;
-	background: #fff;
-	border: 1px solid #e1e1e1;
-	padding: 8px 10px;
-	line-height: 1.4em;
-	font-size: 14px;
+.cuar-datepicker .title {
+	display: inline-block;
+	width: 33%;
+	margin-right: 5%;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
 }
 
-.cuar-field-panel-header:hover {
-	cursor: pointer;
-	background: #fafafa;
+.cuar-datepicker input {
+	display: inline-block;
+	width: 60%;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
 }
 
-.cuar-field-panel-header .order {
-	width: 30px;
-	float: left;
-}
-
-.cuar-field-panel-header .type {
-	width: 15%;
-	float: left;
-}
-
-.cuar-field-panel-header .label {
-	margin: 0 0 0;
-}
-
-.cuar-field-panel-header .row_options {
-	width: auto;
-	float: right;
-	text-align: right;
-}
-
-.cuar-field-panel-header .row_options a, .cuar-field-panel-header .row_options a:hover {
-	text-decoration: none;
-}
-
-.cuar-field-panel-content {
-	width: 100%;
-	background: #f9f9f9;
-	border: 1px solid #e1e1e1;
-	border-top: none;
-	padding: 8px 10px;
+.cuar-datepicker .dashicons {
+	display: block;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	color: #666;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
 }
 
 /* -= Projects */
@@ -487,4 +474,16 @@ input.knob {
 
 .column-cuar_status {
     width: 110px;
+}
+
+.column-cuar_started,
+.column-cuar_due,
+.column-cuar_completed {
+    width: 120px;
+}
+
+.column-cuar_team .dashicons {
+	font-size: 18px;
+	height: 24px;
+	margin-right: 10px;
 }
