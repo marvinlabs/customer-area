@@ -41,6 +41,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar/core/post-types/content', array( &$this, 'register_private_post_types' ) );
+			add_filter( 'cuar/core/types/content', array( &$this, 'register_content_type' ) );
 			
 			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ) );
 		}
@@ -130,9 +131,23 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	}
 	
 	/**
+	 * Declare our content type
+	 * @param array $types
+	 * @return array
+	 */
+	public function register_content_type($types) {
+		$types['cuar_private_page'] = array(
+				'label-singular'		=> _x( 'Page', 'cuar_private_page', 'cuar' ),
+				'label-plural'			=> _x( 'Pages', 'cuar_private_page', 'cuar' ),
+				'content-page-addon'	=> 'customer-private-pages'
+			);
+		return $types;
+	}
+	
+	/**
 	 * Declare that our post type is owned by someone
-	 * @param unknown $types
-	 * @return string
+	 * @param array $types
+	 * @return array
 	 */
 	public function register_private_post_types($types) {
 		$types[] = "cuar_private_page";

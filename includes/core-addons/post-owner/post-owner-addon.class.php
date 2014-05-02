@@ -64,14 +64,18 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		
 		$base_meta_query = array(
 				'relation' => 'OR',
-				array(
-						'key' 		=> self::$META_OWNER_QUERYABLE,
-						'value' 	=> '|usr_' . $user_id . '|',
-						'compare' 	=> 'LIKE'
-					)
+				$this->get_owner_meta_query_component( 'usr', $user_id )
 			);
 		
 		return apply_filters( 'cuar_meta_query_post_owned_by', $base_meta_query, $user_id );
+	}
+	
+	public function get_owner_meta_query_component( $owner_type, $owner_id ) {
+		return array(
+				'key' 		=> self::$META_OWNER_QUERYABLE,
+				'value' 	=> '|' . $owner_type . '_' . $owner_id . '|',
+				'compare' 	=> 'LIKE'
+			);
 	}
 
 	/*------- PRIVATE FILE STORAGE DIRECTORIES ----------------------------------------------------------------------*/

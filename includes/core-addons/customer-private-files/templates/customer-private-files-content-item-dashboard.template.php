@@ -13,9 +13,10 @@
 	global $post;	
 	
 	$is_author = get_the_author_meta('ID')==get_current_user_id();
+	$file_size = cuar_get_the_file_size( get_the_ID() );
 		
 	if ( $is_author ) {
-		$subtitle_popup = __( 'You published this page', 'cuar' );
+		$subtitle_popup = __( 'You uploaded this file', 'cuar' );
 		$subtitle = sprintf( __( 'Published for %s', 'cuar' ), cuar_get_the_owner() );
 	} else {
 		$subtitle_popup = sprintf( __( 'Published for %s', 'cuar' ), cuar_get_the_owner() );
@@ -28,7 +29,7 @@
 	$extra_class = apply_filters( 'cuar/templates/cuar-item/extra-class/post-type=' . get_post_type(), $extra_class, $post );
 ?>
 
-<div class="cuar-private-page cuar-item cuar-item-large<?php echo $extra_class; ?>">
+<div class="cuar-private-file cuar-item cuar-item-wide<?php echo $extra_class; ?>">
 	<div class="panel">
 		<div class="title">
 			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $title_popup ); ?>"><?php the_title(); ?></a>
@@ -37,13 +38,11 @@
 		<div class="subtitle">
 			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $subtitle_popup ); ?>"><?php echo $subtitle; ?></a>
 		</div>
-			
-<?php 	if ( has_post_thumbnail( get_the_ID() ) ) : ?>
-		<div class="cover">
-			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $title_popup ); ?>">			
-				<?php the_post_thumbnail( 'medium', array( 'class'	=> "img-responsive" ) ); ?>
+		
+		<div class="badges">
+			<a href="<?php cuar_the_file_link( get_the_ID(), 'download' ); ?>" title="<?php echo esc_attr( sprintf( __( 'Download (%1$s)', 'cuar' ), $file_size ) ); ?>">
+				<span class="download-badge dashicons dashicons-download dashicon-badge small pull-right"></span>
 			</a>
 		</div>
-<?php 	endif; ?>
 	</div>
 </div>

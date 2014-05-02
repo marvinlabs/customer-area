@@ -60,6 +60,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	protected abstract function get_default_page_subtitle();
 	protected abstract function get_default_dashboard_block_title();
 	protected abstract function get_meta_query_containers_owned_by( $user_id );
+	protected abstract function get_container_owner_type();
 	
 	/**
 	 * Set the default values for the options
@@ -399,10 +400,62 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		
 		do_action( 'cuar/container/view/after_footer', $this );
 		
+		do_action( 'cuar/container/view/before_associated_content', $this );
+		
+		$this->print_associated_content();
+		
+		do_action( 'cuar/container/view/after_associated_content', $this );
+		
   		$out = ob_get_contents();
   		ob_end_clean(); 
   		
   		return $content . $out;
+	}
+
+	// Retrieve all the private content associated to this project and display it here
+	protected function print_associated_content() {
+		$po_addon = $this->plugin->get_addon( 'post-owner' );
+		
+		$container_id = get_queried_object_id();		
+		$page_slug = $this->get_slug();	
+		$display_mode = 'container';			
+		$content_types = $this->plugin->get_content_types();
+
+		foreach ( $content_types as $post_type => $desc ) {
+			$content_page_addon = $this->plugin->get_addon( $desc['content-page-addon'] );
+			
+			$args = array(
+					'post_type' 		=> $post_type,
+					'posts_per_page' 	=> -1,
+					'orderby' 			=> 'title',
+					'order' 			=> 'ASC',
+					'meta_query' 		=> array( 
+							$po_addon->get_owner_meta_query_component( $this->get_container_owner_type(), $container_id )
+						)
+				);
+			$args = apply_filters( 'cuar/page/query-args/associated-content/slug=' .  $page_slug, $args );
+			$args = apply_filters( 'cuar/page/query-args/associated-content/type=' .  $post_type, $args );
+			$args = apply_filters( 'cuar/page/query-args/associated-content/slug=' .  $page_slug . '&type=' .  $post_type, $args );
+				
+			$content_query = new WP_Query( $args );
+
+			$page_subtitle = apply_filters( 'cuar/page/container-content-subtitle/type=' . $post_type, $desc['label-plural'] );
+
+			if ( $content_query->have_posts() ) {
+
+				$item_template = $this->plugin->get_template_file_path(
+						$content_page_addon->get_page_addon_path(),
+						$content_page_addon->get_slug() . "-content-item-{$display_mode}.template.php",
+						'templates',
+						$content_page_addon->get_slug() . "-content-item.template.php" );
+					
+				include( $this->plugin->get_template_file_path(
+						$content_page_addon->get_page_addon_path(),
+						$content_page_addon->get_slug() . "-content-{$display_mode}.template.php",
+						'templates',
+						$content_page_addon->get_slug() . "-content.template.php" ));
+			}			
+		}
 	}
 	
 	protected function print_additional_container_footer() {}

@@ -41,6 +41,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
 			add_filter( 'cuar/core/post-types/content', array( &$this, 'register_private_post_types' ) );
+			add_filter( 'cuar/core/types/content', array( &$this, 'register_content_type' ) );
 			
 			add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
 			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
@@ -720,9 +721,23 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 	
 	/**
+	 * Declare our content type
+	 * @param array $types
+	 * @return array
+	 */
+	public function register_content_type($types) {
+		$types['cuar_private_file'] = array(
+				'label-singular'		=> _x( 'File', 'cuar_private_file', 'cuar' ),
+				'label-plural'			=> _x( 'Files', 'cuar_private_file', 'cuar' ),
+				'content-page-addon'	=> 'customer-private-files'
+			);
+		return $types;
+	}
+	
+	/**
 	 * Declare that our post type is owned by someone
-	 * @param unknown $types
-	 * @return string
+	 * @param array $types
+	 * @return array
 	 */
 	public function register_private_post_types($types) {
 		$types[] = "cuar_private_file";

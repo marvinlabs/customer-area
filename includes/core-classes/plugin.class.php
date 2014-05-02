@@ -713,6 +713,18 @@ class CUAR_Plugin {
 	}	
 	
 	/**
+	 * Get the content types descriptors. Each descriptor is an array with:
+	 * - 'label-plural'				- plural label
+	 * - 'label-singular'			- singular label
+	 * - 'content-page-addon'		- content page addon associated to this type 
+	 * 
+	 * @return array keys are post_type and values are arrays as described above
+	 */
+	public function get_content_types() {
+		return apply_filters( 'cuar/core/types/content', array() );
+	}	
+	
+	/**
 	 * Tells which container post types are available
 	 * @return array
 	 */
@@ -720,6 +732,18 @@ class CUAR_Plugin {
 		return apply_filters( 'cuar/core/post-types/container', array() );
 	}	
 	
+	/**
+	 * Get the post type descriptors. Each descriptor is an array with:
+	 * - 'label'					- plural label
+	 * - 'label-singular'			- singular label
+	 * - 'container-page-slug'		- main page slug associated to this type 
+	 * 
+	 * @return array
+	 */
+	public function get_container_types() {
+		return apply_filters( 'cuar/core/types/container', array() );
+	}	
+		
 	public function get_default_wp_editor_settings() {
 		return apply_filters( 'cuar_default_wp_editor_settings', array(
 				'textarea_rows'	=> 5,

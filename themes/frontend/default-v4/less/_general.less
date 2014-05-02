@@ -8,10 +8,36 @@
 // Slim progress bar
 .progress-slim {
 		height: 5px; 
+		margin-bottom: 0;
 		
 	.progress-bar {
 			height: 5px;
   	}
+}
+
+// Round dashicon
+.dashicon {
+		width: @dashicon-size;
+		height: @dashicon-size;
+		line-height: @dashicon-size;
+		font-size: @dashicon-font-size;
+}
+
+.dashicon-badge {
+		width: @dashicon-size + 2*@dashicon-badge-padding;
+		height: @dashicon-size + 2*@dashicon-badge-padding;
+		line-height: @dashicon-size + 2*@dashicon-badge-padding;
+		font-size: @dashicon-size - @dashicon-badge-padding;
+  		background-color: @badge-bg;
+ 		color: @badge-color;
+ 		border-radius: 50%;
+}
+
+.dashicon-badge.small {
+		width: 0.8 * ( @dashicon-size + 2*@dashicon-badge-padding );
+		height: 0.8 * ( @dashicon-size + 2*@dashicon-badge-padding );
+		line-height: 0.9 * ( @dashicon-size + 2*@dashicon-badge-padding );
+		font-size: 0.9 * ( @dashicon-size - @dashicon-badge-padding );
 }
 
 // Unstyled keeps list items block level, just removes default browser padding and list-style
