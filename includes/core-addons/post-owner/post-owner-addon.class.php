@@ -346,7 +346,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	/*------- CUSTOMISATION OF THE LISTING OF POSTS -----------------------------------------------------------------*/
 	
 	public function customize_post_list_pages() {
-		$post_types = $this->plugin->get_private_post_types();
+		$post_types = $this->plugin->get_content_post_types();
 		foreach ($post_types as $type) {
 			add_filter( "manage_edit-{$type}_columns", array( &$this, 'owner_column_register' ));
 			add_action( "manage_{$type}_posts_custom_column", array( &$this, 'owner_column_display'), 10, 2 );
@@ -403,7 +403,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 */
 	public function enqueue_scripts() {
 		$screen = get_current_screen();
-		$post_types = $this->plugin->get_private_post_types();		
+		$post_types = $this->plugin->get_content_post_types();		
 	
 		if ( isset( $screen->id ) ) {
 			if ( in_array( $screen->id, $post_types ) ) {
@@ -421,7 +421,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * Register some additional boxes on the page to edit the files
 	 */
 	public function register_post_edit_meta_boxes() {
-		$post_types = $this->plugin->get_private_post_types();		
+		$post_types = $this->plugin->get_content_post_types();		
 		foreach ($post_types as $type) {
 			add_meta_box( 
 					'cuar_post_owner', 
@@ -669,7 +669,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
 	
 		// Only take care of private post types
-		$private_post_types = $this->plugin->get_private_post_types();	
+		$private_post_types = $this->plugin->get_content_post_types();	
 		if ( !$post || !in_array( get_post_type( $post->ID ), $private_post_types ) ) return;
 		
 		// Save the owner details
@@ -717,7 +717,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * Protect access to single posts: only for author and owner.
 	 */
 	public function protect_single_post_access() {
-		$private_post_types = $this->plugin->get_private_post_types();
+		$private_post_types = $this->plugin->get_content_post_types();
 			
 		// If not on a matching post type, we do nothing
 		if ( !is_singular( $private_post_types ) ) return;

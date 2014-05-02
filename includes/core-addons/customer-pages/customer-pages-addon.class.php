@@ -327,7 +327,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		$post_type = get_post_type( $post_id );
 		
 		// If we are showing a single post, look for menu items with the same friendly post type
-		if ( is_singular() && in_array( $post_type, $this->plugin->get_private_post_types() ) ) {		
+		if ( is_singular() && in_array( $post_type, $this->plugin->get_content_post_types() ) ) {		
 			$highlighted_menu_item = null;
 			
 	    	foreach ( $sorted_menu_items as $menu_item ) {
@@ -536,7 +536,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	 */
 	public function get_main_menu_for_single_private_content( $content ) {		
 		// Only on single private content pages
- 		$post_types = $this->plugin->get_private_post_types();	 		
+ 		$post_types = $this->plugin->get_content_post_types();	 		
  		if ( is_singular( $post_types ) && in_array( get_post_type(), $post_types ) ) {
 			$content = '<div class="cuar-menu-container">' . $this->get_main_navigation_menu() . '</div>' . $content;
 		}
