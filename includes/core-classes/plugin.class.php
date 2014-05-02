@@ -707,20 +707,9 @@ class CUAR_Plugin {
 	/**
 	 * Tells which post types are private (shown on the customer area page)
 	 * @return array
-	 * 
-	 * @deprecated since 4.7.0 (use get_content_post_types instead & implement the 'cuar/core/post-types/content' filter)
-	 */
-	public function get_private_post_types() {
-		return apply_filters( 'cuar_private_post_types', array() );
-	}	
-
-	/**
-	 * Tells which post types are private (shown on the customer area page)
-	 * @return array
 	 */
 	public function get_content_post_types() {
-		$types = $this->get_private_post_types();
-		return apply_filters( 'cuar/core/post-types/content', $types );
+		return apply_filters( 'cuar/core/post-types/content', array() );
 	}	
 	
 	/**

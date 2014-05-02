@@ -40,7 +40,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
-			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
+			add_filter( 'cuar/core/post-types/content', array( &$this, 'register_private_post_types' ) );
 			
 			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ) );
 		}
