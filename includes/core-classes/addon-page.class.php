@@ -101,7 +101,7 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	
 	public function is_accessible_to_current_user() {
 		$cap = $this->get_required_capability();
-		return apply_filters( 'cuar_is_page_accessible_to_current_user', empty( $cap ) || current_user_can( $cap ), $this );
+		return apply_filters( 'cuar/core/page/check-access-granted', empty( $cap ) || current_user_can( $cap ), $this );
 	}
 	
 	protected function set_page_parameters( $priority, $description ) {
@@ -276,15 +276,15 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 				$slug . "-" . $part . ".template.php",
 				'templates' );
 
-		do_action( 'cuar_before_page_' . $part );
-		do_action( 'cuar_before_page_' . $part . '_' . $slug );
+		do_action( 'cuar/core/page/before-' . $part );
+		do_action( 'cuar/core/page/before-' . $part . '?slug=' . $slug );
 		
 		if ( !empty( $template ) ) {		
 			include( $template );			
 		}
 		
-		do_action( 'cuar_after_page_' . $part . '_' . $slug );
-		do_action( 'cuar_after_page_' . $part );
+		do_action( 'cuar/core/page/after-' . $part . '?slug=' . $slug );
+		do_action( 'cuar/core/page/after-' . $part );
 		
 		return !empty( $template );
 	}

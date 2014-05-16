@@ -89,7 +89,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 					)
 			);
 			
-			$this->sections = apply_filters( 'cuar_status_sections', $this->sections );
+			$this->sections = apply_filters( 'cuar/core/status/sections', $this->sections );
 			
 			$this->sections['hooks'] = array(
 					'id'			=> 'hooks',

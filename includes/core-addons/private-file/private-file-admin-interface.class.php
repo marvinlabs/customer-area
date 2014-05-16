@@ -43,7 +43,7 @@ class CUAR_PrivateFileAdminInterface {
 			
 			// File edit page
 			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
-			add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );				
+			add_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ), 10, 4 );				
 			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );		
 			
 			// File list page	
@@ -217,7 +217,7 @@ jQuery(document).ready( function($) {
 	
 		$current_file = get_post_meta( $post->ID, 'cuar_private_file_file', true );
 
-		do_action( "cuar/core/private-files/before-upload-meta-box" );
+		do_action( "cuar/core/private-content/files/before-upload-meta-box" );
 ?>
 		
 <?php	if ( !empty( $current_file ) && isset( $current_file['file'] ) ) : ?>
@@ -308,7 +308,7 @@ jQuery(document).ready( function($) {
 		//-->
 		</script>
 <?php 
-		do_action( "cuar/core/private-files/after-upload-meta-box" );
+		do_action( "cuar/core/private-content/files/after-upload-meta-box" );
 	}
 	
 	/** 
@@ -379,7 +379,7 @@ jQuery(document).ready( function($) {
 						$_FILES['cuar_private_file_file']);
 
 				if ( $upload_result!==true ) {
-					remove_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ) );
+					remove_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ) );
 
 					$my_post = array(
 							'ID'          => $post_id,
@@ -387,7 +387,7 @@ jQuery(document).ready( function($) {
 						);
 					wp_update_post( $my_post );
 					
-					add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );
+					add_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ), 10, 4 );
 				}
 			}
 		}

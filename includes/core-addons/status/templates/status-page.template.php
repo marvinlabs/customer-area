@@ -26,8 +26,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	$sections = $this->get_status_sections();
 	$current_section = isset( $_GET['cuar_section'] ) ? $_GET['cuar_section'] : 'needs-attention';
    	$current_section = $sections[$current_section];
-
-   	do_action( 'cuar_show_status_section', $current_section );
 ?>
 	
 	<h2 class="nav-tab-wrapper">

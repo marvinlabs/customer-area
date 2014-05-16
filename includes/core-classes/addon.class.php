@@ -31,7 +31,7 @@ abstract class CUAR_AddOn {
 		$this->addon_id = $addon_id;
 		$this->min_cuar_version = $min_cuar_version;
 
-		add_action( 'cuar_default_options', array( &$this, 'set_default_options' ) );
+		add_action( 'cuar/core/settings/default-options', array( &$this, 'set_default_options' ) );
 		add_action( 'cuar/core/addons/init', array( &$this, 'run' ), 10 );
 		
 		if ( is_admin() ) {

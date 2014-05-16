@@ -38,7 +38,7 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// Init the admin interface if needed
 		if ( is_admin() ) {
-			add_filter( 'cuar_status_sections', array( &$this, 'add_status_sections' ) );
+			add_filter( 'cuar/core/status/sections', array( &$this, 'add_status_sections' ) );
 			
 			// Settings
 			add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_settings_tab' ), 400, 1 );

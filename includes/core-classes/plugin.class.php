@@ -415,7 +415,7 @@ class CUAR_Plugin {
 		echo '</div>';
 	}
 
-	public static $OPTION_STATUS_SECTIONS = 'cuar_status_sections';
+	public static $OPTION_STATUS_SECTIONS = 'cuar/core/status/sections';
 	public static $OPTION_IGNORE_WARNINGS = 'cuar_ignore_warnings';
 	
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/

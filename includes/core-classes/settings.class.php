@@ -1124,7 +1124,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 			
-			$theme_locations = apply_filters ( 'cuar_theme_locations', array (
+			$theme_locations = apply_filters ( 'cuar/core/settings/theme-root-directories', array (
 					array (
 							'base'	=> 'plugin',
 							'type'	=> $theme_type,
@@ -1233,13 +1233,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		private function reload_options() {
 			$current_options = get_option ( CUAR_Settings::$OPTIONS_GROUP );
 			
-			$this->default_options = apply_filters ( 'cuar_default_options', array () );
+			$this->default_options = apply_filters ( 'cuar/core/settings/default-options', array () );
 			
 			if (! is_array ( $current_options ))
 				$current_options = array ();
 			$this->options = array_merge ( $this->default_options, $current_options );
 			
-			do_action ( 'cuar_options_loaded', $this->options );
+			do_action ( 'cuar/core/settings/on-options-loaded', $this->options );
 		}
 		public static $OPTIONS_PAGE_SLUG = 'cuar-settings';
 		public static $OPTIONS_GROUP = 'cuar_options';
@@ -1274,7 +1274,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 	}
 	
 	// This filter needs to be executed too early to be registered in the constructor
-	add_filter ( 'cuar_default_options', array (
+	add_filter ( 'cuar/core/settings/default-options', array (
 			'CUAR_Settings',
 			'set_default_core_options' 
 	) );

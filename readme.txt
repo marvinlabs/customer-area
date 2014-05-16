@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least: 3.6
 Tested up to: 3.9
-Stable tag: 4.7.0
+Stable tag: 5.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -173,13 +173,14 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 4.7.0 (2014/) =
+= 5.0.0 (2014/) =
 
 * New: compatibility with the new Projects add-on (to manage projects and/or organize private content by project rather than by type)
 * New: tool to help find & delete outdated customer pages (see Customer Area > Status > Pages)
 * Fix: Changed item templates to be compatible with the updated Customer Area 4 theme (better responsiveness) 
 * Fix: javascript error in the private files and private pages settings
 * Fix: avoid defining the wp_bootstrap_navwalker class multiple times if other themes/plugins are already using it
+* Fix: normalized a lot of action and filter names (big clean-up on that side to make it more organized and try to make it more understandable) 
 
 = 4.6.0 (2014/04/17) =
 

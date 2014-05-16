@@ -49,7 +49,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			add_action( 'template_redirect', array( &$this, 'protect_single_post_access' ) );
 		}
 			
-		add_action('cuar/core/ownership/printable-owners?type=usr', array( &$this, 'get_printable_owners_for_type_usr'), 10 );		
+		add_action('cuar/core/ownership/printable-owners?owner-type=usr', array( &$this, 'get_printable_owners_for_type_usr'), 10 );		
 	}	
 	
 	/*------- QUERY FUNCTIONS ---------------------------------------------------------------------------------------*/
@@ -186,7 +186,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 */
 	public function get_owner_types() {
 		if ($this->owner_types==null) {
-			$this->owner_types = apply_filters('cuar_post_owner_types', array( 'usr' => __('User', 'cuar') ) );
+			$this->owner_types = apply_filters('cuar/core/ownership/owner-types', array( 'usr' => __('User', 'cuar') ) );
 		}
 		return $this->owner_types;
 	}
@@ -211,7 +211,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$result = false;
 		}
 
-		return apply_filters( 'cuar_is_user_owner_of_post', $result, $post_id, $user_id, $owner_type, $owner_ids );
+		return apply_filters( 'cuar/core/ownership/validate-post-ownership', $result, $post_id, $user_id, $owner_type, $owner_ids );
 	}
 	
 	/**
@@ -249,11 +249,11 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		if ($prefix_with_type) {
 			$name = get_post_meta( $post_id, self::$META_OWNER_SORTABLE_DISPLAYNAME, true );
 			if ( !$name || empty( $name ) ) $name = __( 'Unknown', 'cuar' );
-			return apply_filters( 'cuar_get_post_owner_sortable_displayname', $name, $post_id );
+			return apply_filters( 'cuar/core/ownership/sortable-displayname', $name, $post_id );
 		} else {
 			$name = get_post_meta( $post_id, self::$META_OWNER_DISPLAYNAME, true );
 			if ( !$name || empty( $name ) ) $name = __( 'Unknown', 'cuar' );
-			return apply_filters( 'cuar_get_post_owner_displayname', $name, $post_id );
+			return apply_filters( 'cuar/core/ownership/displayname', $name, $post_id );
 		} 
 	}
 	
@@ -287,7 +287,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		}
 		
 		// Let other add-ons return what they want
-		return apply_filters( 'cuar_get_post_owner_user_ids_from_' . $owner_type, array(), $owner_ids );
+		return apply_filters( 'cuar/core/ownership/real-user-ids?owner-type=' . $owner_type, array(), $owner_ids );
 	}
 	
 	/**
@@ -319,11 +319,11 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			asort( $names );
 			$displayname = implode( ', ', $names );
 		} 
-		$displayname = apply_filters( 'cuar_saved_post_owner_displayname', $displayname,
+		$displayname = apply_filters( 'cuar/core/ownership/saved-displayname', $displayname,
 				$post_id, $owner_ids, $owner_type );
 		
 		$sortable_displayname = $owner_types[ $owner_type ] . ' - ' . $displayname;
-		$sortable_displayname = apply_filters( 'cuar_saved_post_owner_sortable_displayname', $sortable_displayname,
+		$sortable_displayname = apply_filters( 'cuar/core/ownership/saved-sortable-displayname', $sortable_displayname,
 				$post_id, $owner_ids, $owner_type, $displayname );
 		
 		// Persist data
@@ -374,7 +374,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		if ( 'cuar_owner' != $column_name )
 			return;
 		
-		$txt = apply_filters( 'cuar_owner_column_text', null, $post_id );
+		$txt = apply_filters( 'cuar/core/ownership/owner-column-text', null, $post_id );
 		echo $txt!=null ? $txt : $this->get_post_owner_displayname( $post_id, true );
 	}
 	
@@ -448,7 +448,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		$current_owner_ids = $this->get_post_owner_ids( $post->ID );
 		$current_owner_type = $this->get_post_owner_type( $post->ID );		
 		
-		do_action( "cuar_owner_meta_box_header" );
+		do_action( "cuar/core/ownership/before-owner-meta-box" );
 
 		// $owner_type_field_id = 'cuar_owner_type', $owner_field_id = 'cuar_owner'
 
@@ -470,7 +470,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 
 		$this->print_owner_select_javascript( 'cuar_owner_type', 'cuar_owner' );
 		
-		do_action( "cuar_owner_meta_box_footer" );
+		do_action( "cuar/core/ownership/after-owner-meta-box" );
 	}
 	
 	/**
@@ -480,7 +480,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @param unknown $current_owner_id
 	 */
 	public function get_printable_owners_for_type_usr( $in ) {
-		$all_users = apply_filters( 'cuar_get_selectable_owners_for_type_usr', null );		
+		$all_users = apply_filters( 'cuar/core/ownership/selectable-owners?owner-type=usr', null );		
 		if ( null===$all_users ) {
 			$all_users = get_users( array( 'orderby' => 'display_name', 'fields' => 'all_with_meta' ) );
 		}	
@@ -504,7 +504,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$owner_type_field_name = $owner_type_field_id;
 		}
 
-		$owner_types = apply_filters( 'cuar_get_selectable_owner_types', null );
+		$owner_types = apply_filters( 'cuar/core/ownership/selectable-owner-types', null );
 		if ( null===$owner_types ) {
 			$owner_types = $this->get_owner_types();
 		}
@@ -566,7 +566,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 
 		$hide_if_single_owner = $this->plugin->get_option( CUAR_Settings::$OPTION_HIDE_SINGLE_OWNER_SELECT );
 		
-		$owner_types = apply_filters( 'cuar_get_selectable_owner_types', null );
+		$owner_types = apply_filters( 'cuar/core/ownership/selectable-owner-types', null );
 		if ( null===$owner_types ) {
 			$owner_types = $this->get_owner_types();
 		}
@@ -592,7 +592,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				$field_name = $field_id;
 			}
 			
-			$owners = apply_filters( 'cuar/core/ownership/printable-owners?type=' . $type_id, array() );
+			$owners = apply_filters( 'cuar/core/ownership/printable-owners?owner-type=' . $type_id, array() );
 
 			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );
 
@@ -623,7 +623,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 					}
 				}
 			} else {	
-				$enable_multiple_selection = apply_filters( 'cuar_enable_multiple_select_for_type_' . $type_id, false );
+				$enable_multiple_selection = apply_filters( 'cuar/core/ownership/enable-multiple-select?owner-type=' . $type_id, false );
 				$multiple = $enable_multiple_selection ? ' multiple="multiple" size="8"' : '';
 				
 				printf( '<select id="%s" name="%s" class="%s" %s data-placeholder="%s" class="form-control">',
@@ -683,14 +683,13 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		$new_owner = $this->get_owner_from_post_data();
 	
 		// Other addons can do something before we save
-		do_action( "cuar_before_save_post_owner", $post_id, $previous_owner, $new_owner );
+		do_action( "cuar/core/ownership/before-save-owner", $post_id, $previous_owner, $new_owner );
 		
 		// Save owner details
 		$this->save_post_owners( $post_id, $new_owner['ids'], $new_owner['type'] );
 		
 		// Other addons can do something after we save
-		do_action( "cuar_after_save_post_owner", $post_id, $post, $previous_owner, $new_owner );
-		do_action( "cuar_after_save_private_post", $post_id, $post, $previous_owner, $new_owner );
+		do_action( "cuar/core/ownership/after-save-owner", $post_id, $post, $previous_owner, $new_owner );
 
 		return $post_id;
 	}

@@ -56,7 +56,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		add_filter( 'wp_page_menu_args', array( &$this, 'exclude_pages_from_wp_page_menu' ) );
 		
 		if ( is_admin() ) {				
-			add_filter( 'cuar_status_sections', array( &$this, 'add_status_sections' ) );
+			add_filter( 'cuar/core/status/sections', array( &$this, 'add_status_sections' ) );
 			
 			// Settings
 			add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_settings_tab' ), 300, 1 );

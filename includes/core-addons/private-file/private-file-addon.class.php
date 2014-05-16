@@ -112,7 +112,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	public function get_file_name( $post_id ) {
 		$file = get_post_meta( $post_id, 'cuar_private_file_file', true );	
 		if ( !$file || empty( $file ) ) return '';	
-		return apply_filters( 'cuar_get_file_name', $file['file'] );
+		return apply_filters( 'cuar/core/private-content/files/file-name', $file['file'] );
 	}
 	
 	/**
@@ -124,7 +124,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	public function get_file_type( $post_id ) {
 		$file = get_post_meta( $post_id, 'cuar_private_file_file', true );	
 		if ( !$file || empty( $file ) ) return '';	
-		return apply_filters( 'cuar_get_file_type', pathinfo( $file['file'], PATHINFO_EXTENSION ) );
+		return apply_filters( 'cuar/core/private-content/files/file-type', pathinfo( $file['file'], PATHINFO_EXTENSION ) );
 	}
 	
 	/**
@@ -139,7 +139,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$file_name = $this->get_file_name( $post_id );
 		$file_path = $po_addon->get_private_file_path( $file_name, $post_id );
 		
-		return filesize( $file_path );
+		return apply_filters( 'cuar/core/private-content/files/file-size', filesize( $file_path ) );
 	}
 	
 	/**
