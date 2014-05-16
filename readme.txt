@@ -177,8 +177,9 @@ your wordpress.org profile with your other developed plugins.
 
 * New: compatibility with the new Projects add-on (to manage projects and/or organize private content by project rather than by type)
 * New: tool to help find & delete outdated customer pages (see Customer Area > Status > Pages)
-* Fix: Changed item templates to be compatible with the updated Customer Area 4 theme 
+* Fix: Changed item templates to be compatible with the updated Customer Area 4 theme (better responsiveness) 
 * Fix: javascript error in the private files and private pages settings
+* Fix: avoid defining the wp_bootstrap_navwalker class multiple times if other themes/plugins are already using it
 
 = 4.6.0 (2014/04/17) =
 
