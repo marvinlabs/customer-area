@@ -10,6 +10,8 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
+if ( !class_exists( 'wp_bootstrap_navwalker' ) ) :
+
 class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 	/**
@@ -203,3 +205,5 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		}
 	}
 }
+
+endif;
