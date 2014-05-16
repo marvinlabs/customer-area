@@ -52,9 +52,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 		<form method="POST" action="" enctype="multipart/form-data">
 			<input type="hidden" name="cuar-do-status-action" value="1" />		
 <?php
-		do_action( 'before_status_section-' . $current_section['id'] );		
+		do_action( 'cuar/templates/status/before-section?id=' . $current_section['id'] );		
 		$this->print_section_template( $current_section );		
-		do_action( 'after_status_section-' . $current_section['id'] );
+		do_action( 'cuar/templates/status/after-section?id=' . $current_section['id'] );
 ?>	
 		</form>
 	</div>

@@ -39,17 +39,17 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// Init the admin interface if needed
 		if ( is_admin() ) {
-			add_action( 'cuar_version_upgraded', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
+			add_action( 'cuar/core/on-plugin-update', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
 
-			add_action('cuar_after_addons_init', array( &$this, 'customize_post_edit_pages'));
-			add_action('cuar_after_addons_init', array( &$this, 'customize_post_list_pages'));
+			add_action('cuar/core/addons/after-init', array( &$this, 'customize_post_edit_pages'));
+			add_action('cuar/core/addons/after-init', array( &$this, 'customize_post_list_pages'));
 
 			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
 		} else {
 			add_action( 'template_redirect', array( &$this, 'protect_single_post_access' ) );
 		}
 			
-		add_action('cuar_get_printable_owners_for_type_usr', array( &$this, 'get_printable_owners_for_type_usr'), 10 );		
+		add_action('cuar/core/ownership/printable-owners?type=usr', array( &$this, 'get_printable_owners_for_type_usr'), 10 );		
 	}	
 	
 	/*------- QUERY FUNCTIONS ---------------------------------------------------------------------------------------*/
@@ -60,14 +60,14 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @return array See the meta query documentation on WP codex
 	 */
 	public function get_meta_query_post_owned_by( $user_id ) {
-		$user_id = apply_filters( 'cuar_user_id_for_meta_query_post_owned_by', $user_id );
+		$user_id = apply_filters( 'cuar/core/ownership/content/meta-query-owner-id', $user_id );
 		
 		$base_meta_query = array(
 				'relation' => 'OR',
 				$this->get_owner_meta_query_component( 'usr', $user_id )
 			);
 		
-		return apply_filters( 'cuar_meta_query_post_owned_by', $base_meta_query, $user_id );
+		return apply_filters( 'cuar/core/ownership/content/meta-query', $base_meta_query, $user_id );
 	}
 	
 	public function get_owner_meta_query_component( $owner_type, $owner_id ) {
@@ -592,7 +592,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				$field_name = $field_id;
 			}
 			
-			$owners = apply_filters( 'cuar_get_printable_owners_for_type_' . $type_id, array() );
+			$owners = apply_filters( 'cuar/core/ownership/printable-owners?type=' . $type_id, array() );
 
 			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );
 
@@ -734,7 +734,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		// If not authorized to view the page, we bail
 		$post = get_queried_object();
 		$author_id = $post->post_author;	
-		$current_user_id = apply_filters( 'cuar_user_id_for_protect_single_post_access', get_current_user_id() );
+		$current_user_id = apply_filters( 'cuar/core/ownership/protect-single-post/user-id', get_current_user_id() );
 	
 		$is_current_user_owner = $this->is_user_owner_of_post( $post->ID, $current_user_id );
 		if ( !( $is_current_user_owner || $author_id==$current_user_id || current_user_can('cuar_view_any_' . get_post_type()) )) {
@@ -742,7 +742,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			exit();
 		}
 		
-		do_action( 'cuar_single_post_access_granted', $post );
+		do_action( 'cuar/core/ownership/protect-single-post/on-access-granted', $post );
 	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/

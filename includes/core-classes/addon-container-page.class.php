@@ -186,7 +186,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	/**
 	 * Allow this page to get URLs for single private content pages
 	 */
-	protected function enable_single_private_content_permalinks() {
+	protected function enable_single_container_permalinks() {
 		if ( !isset( $this->page_description['friendly_post_type'] ) ) {
 			warn( 'Cannot enable single content permalinks for page without declaring its friendly_post_type' );
 			return;
@@ -194,7 +194,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		
 		add_filter( 'rewrite_rules_array', array( &$this, 'insert_single_post_rewrite_rules' ) );
 		add_filter( 'query_vars', array( &$this, 'insert_single_post_query_vars' ) );		
-		add_filter( 'post_type_link', array( &$this, 'filter_single_private_content_link' ), 10, 2 );
+		add_filter( 'post_type_link', array( &$this, 'filter_single_container_link' ), 10, 2 );
 	}
 
 	/**
@@ -238,13 +238,13 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	 * @param unknown $post
 	 * @return Ambigous <string, mixed>
 	 */
-	function filter_single_private_content_link( $permalink, $post ) {
+	function filter_single_container_link( $permalink, $post ) {
 		$post_type = $this->page_description['friendly_post_type'];
 		
 		if ( $post_type == $post->post_type 
 				&& ''!=$permalink 
 				&& !in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) ) {
-			$permalink = $this->get_single_private_content_url( $post );
+			$permalink = $this->get_single_container_url( $post );
 		}
 		return $permalink;
 	}
@@ -254,7 +254,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	 * 
 	 * @param unknown $post_id
 	 */
-	public function get_single_private_content_url( $post ) {
+	public function get_single_container_url( $post ) {
 		$cp_addon = $this->plugin->get_addon( 'customer-pages' );
 		$page_id = $cp_addon->get_page_id( $this->get_slug() );
 		if ( $page_id==false ) return '';
@@ -274,8 +274,8 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		return $url;
 	}
 	
-	public function get_single_private_content_action_url( $post, $action='' ) {		
-		$url = $this->get_single_private_content_url( $post );
+	public function get_single_container_action_url( $post, $action='' ) {		
+		$url = $this->get_single_container_url( $post );
 		
 		if ( !empty( $action ) ) {
 			$url .= '/' . $action;		
@@ -350,12 +350,12 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 			$page_subtitle = $this->get_default_page_subtitle();
 		}
 		
-		$args = apply_filters( 'cuar/page/query-args/slug=' .  $page_slug, $args );
-		$args = apply_filters( 'cuar/page/query-args/slug=' .  $page_slug . '&display-mode=' . $display_mode, $args );		
+		$args = apply_filters( 'cuar/core/page/query-args?slug=' .  $page_slug, $args );
+		$args = apply_filters( 'cuar/core/page/query-args?slug=' .  $page_slug . '&display-mode=' . $display_mode, $args );		
 		$content_query = new WP_Query( $args );
 
-		$page_subtitle = apply_filters( 'cuar/page/subtitle/slug=' .  $page_slug, $page_subtitle );
-		$page_subtitle = apply_filters( 'cuar/page/subtitle/slug=' .  $page_slug . '&display-mode=' . $display_mode, $page_subtitle );
+		$page_subtitle = apply_filters( 'cuar/core/page/subtitle?slug=' .  $page_slug, $page_subtitle );
+		$page_subtitle = apply_filters( 'cuar/core/page/subtitle?slug=' .  $page_slug . '&display-mode=' . $display_mode, $page_subtitle );
 		
 		if ( $content_query->have_posts() ) {
 			$item_template = $this->plugin->get_template_file_path(
@@ -380,31 +380,31 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	/*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 	
-	public function print_single_private_content_footer( $content ) {		
+	public function print_single_container_footer( $content ) {		
 		// If not on a matching post type, we do nothing
 		if ( !is_singular( $this->get_friendly_post_type() ) ) return $content;		
 		if ( get_post_type()!=$this->get_friendly_post_type() ) return $content;		
 		
 		ob_start();
 		
-		do_action( 'cuar/container/view/before_footer', $this );
+		do_action( 'cuar/core/container/view/before_footer', $this );
 		
 		include( $this->plugin->get_template_file_path(
 				$this->get_page_addon_path(),
 				$this->get_slug() . '-single-post-footer.template.php',
 				'templates' ));	
 		
-		do_action( 'cuar/container/view/before_additional_footer', $this );
+		do_action( 'cuar/core/container/view/before_additional_footer', $this );
 		
 		$this->print_additional_container_footer();
 		
-		do_action( 'cuar/container/view/after_footer', $this );
+		do_action( 'cuar/core/container/view/after_footer', $this );
 		
-		do_action( 'cuar/container/view/before_associated_content', $this );
+		do_action( 'cuar/core/container/view/before_associated_content', $this );
 		
 		$this->print_associated_content();
 		
-		do_action( 'cuar/container/view/after_associated_content', $this );
+		do_action( 'cuar/core/container/view/after_associated_content', $this );
 		
   		$out = ob_get_contents();
   		ob_end_clean(); 
@@ -433,13 +433,13 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 							$po_addon->get_owner_meta_query_component( $this->get_container_owner_type(), $container_id )
 						)
 				);
-			$args = apply_filters( 'cuar/page/query-args/associated-content/slug=' .  $page_slug, $args );
-			$args = apply_filters( 'cuar/page/query-args/associated-content/type=' .  $post_type, $args );
-			$args = apply_filters( 'cuar/page/query-args/associated-content/slug=' .  $page_slug . '&type=' .  $post_type, $args );
+			$args = apply_filters( 'cuar/core/page/query-args/associated-content?slug=' .  $page_slug, $args );
+			$args = apply_filters( 'cuar/core/page/query-args/associated-content?type=' .  $post_type, $args );
+			$args = apply_filters( 'cuar/core/page/query-args/associated-content?slug=' .  $page_slug . '&type=' .  $post_type, $args );
 				
 			$content_query = new WP_Query( $args );
 
-			$page_subtitle = apply_filters( 'cuar/page/container-content-subtitle/type=' . $post_type, $desc['label-plural'] );
+			$page_subtitle = apply_filters( 'cuar/core/page/container-content-subtitle?type=' . $post_type, $desc['label-plural'] );
 
 			if ( $content_query->have_posts() ) {
 
@@ -478,9 +478,9 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 			);
 			
 		$page_subtitle = $this->get_default_dashboard_block_title();
-		$page_subtitle = apply_filters( 'cuar/dashboard/block-title/slug=' .  $page_slug, $page_subtitle );
+		$page_subtitle = apply_filters( 'cuar/core/dashboard/block-title?slug=' .  $page_slug, $page_subtitle );
 
-		$args = apply_filters( 'cuar/dashboard/block-query-args/slug=' .  $page_slug, $args );
+		$args = apply_filters( 'cuar/core/dashboard/block-query-args?slug=' .  $page_slug, $args );
 
 		$content_query = new WP_Query( $args );
 		
@@ -512,12 +512,12 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		
 		if ( is_admin() && !empty( $this->enabled_settings ) ) {
 			// Settings
-			add_action( 'cuar_addon_print_settings_' . $target_tab, array( &$this, 'print_settings' ), 10, 2 );
-			add_filter( 'cuar_addon_validate_options_' . $target_tab, array( &$this, 'validate_options' ), 10, 3 );
+			add_action( 'cuar/core/settings/print-settings?tab=' . $target_tab, array( &$this, 'print_settings' ), 10, 2 );
+			add_filter( 'cuar/core/settings/validate-settings?tab=' . $target_tab, array( &$this, 'validate_options' ), 10, 3 );
 
 			if ( in_array( 'taxonomy', $this->enabled_settings ) ) {
-				add_action( 'cuar_addon_print_settings_cuar_frontend', array( &$this, 'print_frontend_settings' ), 60, 2 );
-				add_filter( 'cuar_addon_validate_options_cuar_frontend', array( &$this, 'validate_frontend_settings' ), 60, 3 );
+				add_action( 'cuar/core/settings/print-settings?tab=cuar_frontend', array( &$this, 'print_frontend_settings' ), 60, 2 );
+				add_filter( 'cuar/core/settings/validate-settings?tab=cuar_frontend', array( &$this, 'validate_frontend_settings' ), 60, 3 );
 			}
 		}
 	}
@@ -696,12 +696,12 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		if ( !is_admin() ) {
 			// Optionally output the file links in the post footer area
 			if ( $this->is_show_in_single_post_footer_enabled() ) {
-				add_filter( 'the_content', array( &$this, 'print_single_private_content_footer' ), 3000 );
+				add_filter( 'the_content', array( &$this, 'print_single_container_footer' ), 3000 );
 			}
 
 			// Optionally output the latest files on the dashboard
 			if ( $this->is_show_in_dashboard_enabled() ) {
-				add_filter( 'cuar_before_page_content_customer-dashboard', array( &$this, 'print_dashboard_content' ), 9 );
+				add_filter( 'cuar/core/page/before-content?slug=customer-dashboard', array( &$this, 'print_dashboard_content' ), 9 );
 			}
 		}
 	}

@@ -59,14 +59,14 @@ abstract class CUAR_AbstractFieldRenderer implements CUAR_FieldRenderer {
 	public function render_read_only_field( $id, $value ) {
 		$out = '<div class="cuar-field cuar-readonly-field cuar-' . $this->get_type() . '-field">' . "\n";
 				
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_before_readonly_field_label', 	$this->get_before_readonly_field_label( $id, $value ), 	$this );
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_readonly_field_label', 			$this->get_readonly_field_label( $id, $value ), 		$this );
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_after_readonly_field_label', 	$this->get_after_readonly_field_label( $id, $value ), 	$this );
+		$out .= apply_filters( 'cuar/core/fields/readonly/before-label?type=' . $this->get_type(), 	$this->get_before_readonly_field_label( $id, $value ), 	$this );
+		$out .= apply_filters( 'cuar/core/fields/readonly/label?type=' . $this->get_type(), 		$this->get_readonly_field_label( $id, $value ), 		$this );
+		$out .= apply_filters( 'cuar/core/fields/readonly/after-label?type=' . $this->get_type(), 	$this->get_after_readonly_field_label( $id, $value ), 	$this );
 		$out .= "\n";
 		
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_before_readonly_field_value', 	$this->get_before_readonly_field_value( $id, $value ), 	$this );
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_readonly_field_value', 			$this->get_readonly_field_value( $id, $value ), 		$this );
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_after_readonly_field_value', 	$this->get_after_readonly_field_value( $id, $value ), 	$this );
+		$out .= apply_filters( 'cuar/core/fields/readonly/before-value?type=' . $this->get_type(), 	$this->get_before_readonly_field_value( $id, $value ), 	$this );
+		$out .= apply_filters( 'cuar/core/fields/readonly/value?type=' . $this->get_type(), 		$this->get_readonly_field_value( $id, $value ), 		$this );
+		$out .= apply_filters( 'cuar/core/fields/readonly/after-value?type=' . $this->get_type(), 	$this->get_after_readonly_field_value( $id, $value ), 	$this );
 		$out .= "\n";		
 		
 		$out .= '</div>' . "\n";
@@ -103,15 +103,15 @@ abstract class CUAR_AbstractFieldRenderer implements CUAR_FieldRenderer {
 		
 		$out = '<div class="form-group cuar-field cuar-form-field cuar-' . $this->get_type() . '-field">' . "\n";
 				
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_before_form_field_label', 	$this->get_before_form_field_label( $id, $value ), 	$this );
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_form_field_label', 			$this->get_form_field_label( $id, $value ), 		$this );
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_after_form_field_label', 	$this->get_after_form_field_label( $id, $value ), 	$this );
+		$out .= apply_filters( 'cuar/core/fields/form/before-label?type=' . $this->get_type(), 	$this->get_before_form_field_label( $id, $value ), 	$this );
+		$out .= apply_filters( 'cuar/core/fields/form/label?type=' . $this->get_type(), 		$this->get_form_field_label( $id, $value ), 		$this );
+		$out .= apply_filters( 'cuar/core/fields/form/after-label?type=' . $this->get_type(), 	$this->get_after_form_field_label( $id, $value ), 	$this );
 		$out .= "\n";
 		
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_before_form_field_input', 	$this->get_before_form_field_input( $id, $value ), 	$this );
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_form_field_input', 			$this->get_form_field_input( $id, $value ), 		$this );		
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_form_field_inline_help', 	$this->get_form_inline_help( $id, $value ), 		$this );		
-		$out .= apply_filters( 'cuar_' . $this->get_type() . '_after_form_field_input', 	$this->get_after_form_field_input( $id, $value ), 	$this );
+		$out .= apply_filters( 'cuar/core/fields/form/before-input?type=' . $this->get_type(), 	$this->get_before_form_field_input( $id, $value ), 	$this );
+		$out .= apply_filters( 'cuar/core/fields/form/input?type=' . $this->get_type(), 		$this->get_form_field_input( $id, $value ), 		$this );		
+		$out .= apply_filters( 'cuar/core/fields/form/inline-help?type=' . $this->get_type(), 	$this->get_form_inline_help( $id, $value ), 		$this );		
+		$out .= apply_filters( 'cuar/core/fields/form/after-input?type=' . $this->get_type(), 	$this->get_after_form_field_input( $id, $value ), 	$this );
 		$out .= "\n";
 		
 		$out .= '</div>' . "\n";

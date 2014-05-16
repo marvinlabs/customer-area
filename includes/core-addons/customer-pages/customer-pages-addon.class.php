@@ -59,13 +59,13 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 			add_filter( 'cuar_status_sections', array( &$this, 'add_status_sections' ) );
 			
 			// Settings
-			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 300, 1 );
+			add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_settings_tab' ), 300, 1 );
 			
-			add_action( 'cuar_addon_print_settings_cuar_frontend', array( &$this, 'print_frontend_settings' ), 50, 2 );
-			add_filter( 'cuar_addon_validate_options_cuar_frontend', array( &$this, 'validate_frontend_settings' ), 50, 3 );
+			add_action( 'cuar/core/settings/print-settings?tab=cuar_frontend', array( &$this, 'print_frontend_settings' ), 50, 2 );
+			add_filter( 'cuar/core/settings/validate-settings?tab=cuar_frontend', array( &$this, 'validate_frontend_settings' ), 50, 3 );
 			
-			add_action( 'cuar_addon_print_settings_cuar_customer_pages', array( &$this, 'print_pages_settings' ), 50, 2 );
-			add_filter( 'cuar_addon_validate_options_cuar_customer_pages', array( &$this, 'validate_pages_settings' ), 50, 3 );
+			add_action( 'cuar/core/settings/print-settings?tab=cuar_customer_pages', array( &$this, 'print_pages_settings' ), 50, 2 );
+			add_filter( 'cuar/core/settings/validate-settings?tab=cuar_customer_pages', array( &$this, 'validate_pages_settings' ), 50, 3 );
 		}
 	}	
 	

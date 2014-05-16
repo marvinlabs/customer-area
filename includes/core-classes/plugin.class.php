@@ -108,10 +108,10 @@ class CUAR_Plugin {
 		if ( !isset( $active_version ) ) $active_version = '1.4.0';
 		
 		if ( CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION!==FALSE ) {
-			do_action( 'cuar_version_upgraded', CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION, $current_version );
+			do_action( 'cuar/core/on-plugin-update', CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION, $current_version );
 		} else {
 			if ( $active_version != $current_version ) {
-				do_action( 'cuar_version_upgraded', $active_version, $current_version );
+				do_action( 'cuar/core/on-plugin-update', $active_version, $current_version );
 			} 
 			if ( empty( $active_version ) || $active_version != $current_version ) {
 				$this->settings->update_option( CUAR_Settings::$OPTION_CURRENT_VERSION, $current_version );
@@ -227,7 +227,7 @@ class CUAR_Plugin {
 	public function get_template_file_path( $default_root, $filename, $sub_directory = '', $fallback_filename = '' ) {		
 		$relative_path = ( !empty( $sub_directory ) ) ? trailingslashit( $sub_directory ) . $filename : $filename;
 		
-		$possible_locations = apply_filters( 'cuar_available_template_file_locations', 
+		$possible_locations = apply_filters( 'cuar/core/ui/template-directories', 
 				array(
 					untrailingslashit(WP_CONTENT_DIR) . '/customer-area',
 					untrailingslashit(get_stylesheet_directory()) . '/customer-area',
@@ -334,7 +334,7 @@ class CUAR_Plugin {
 	}
 	
 	public function login_then_redirect_to_url( $redirect_to='' ) {
-		$login_url = apply_filters( 'cuar_login_url', null, $redirect_to );		
+		$login_url = apply_filters( 'cuar/core/login-url', null, $redirect_to );		
 		if ( $login_url==null ) {
 			$login_url = wp_login_url( $redirect_to );
 		}	
@@ -465,9 +465,9 @@ class CUAR_Plugin {
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
 	public function load_addons() {		
-		do_action( 'cuar_before_addons_init', $this );
-		do_action( 'cuar_addons_init', $this );
-		do_action( 'cuar_after_addons_init', $this );
+		do_action( 'cuar/core/addons/before-init', $this );
+		do_action( 'cuar/core/addons/init', $this );
+		do_action( 'cuar/core/addons/after-init', $this );
 
 		// Check add-on versions
 		if ( is_admin() ) {
@@ -606,8 +606,10 @@ class CUAR_Plugin {
 	 * 
 	 * @param string $id The ID for the external library
 	 */
-	public function enable_library( $id ) {
-		switch ( $id ) {
+	public function enable_library( $library_id ) {
+		do_action( 'cuar/core/libraries/before-enable?id=' . $library_id );
+		
+		switch ( $library_id ) {
 			case 'jquery.select2': {
 				wp_enqueue_script( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.min.js', array('jquery'), $this->get_version() );
 
@@ -656,8 +658,10 @@ class CUAR_Plugin {
 			break;
 			
 			default:
-				do_action( 'cuar_enable_library', $library_id );
+				do_action( 'cuar/core/libraries/enable?id=' . $library_id );
 		}
+		
+		do_action( 'cuar/core/libraries/after-enable?id=' . $library_id );
 	}
 
 	/*------- TEMPLATES ---------------------------------------------------------------------------------------------*/
@@ -676,7 +680,7 @@ class CUAR_Plugin {
 		}
 
 		include( CUAR_PLUGIN_DIR . '/includes/core-addons/status/template-finder.class.php' );
-		$dirs_to_scan = apply_filters( 'cuar_hooks_status_directories', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
+		$dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
 		
 		$outdated_templates = array();		
 		foreach ( $dirs_to_scan as $dir => $title ) {
@@ -745,7 +749,7 @@ class CUAR_Plugin {
 	}	
 		
 	public function get_default_wp_editor_settings() {
-		return apply_filters( 'cuar_default_wp_editor_settings', array(
+		return apply_filters( 'cuar/core/ui/default-wp-editor-settings', array(
 				'textarea_rows'	=> 5,
 				'editor_class'	=> 'form-control',
 				'quicktags'		=> false,

@@ -25,7 +25,7 @@
 	$title_popup = sprintf( __( 'Uploaded on %s', 'cuar' ), get_the_date() );
 	
 	$extra_class = ' ' . get_post_type();
-	$extra_class = apply_filters( 'cuar/templates/cuar-item/extra-class/post-type=' . get_post_type(), $extra_class, $post );
+	$extra_class = apply_filters( 'cuar/templates/cuar-item/extra-class?post-type=' . get_post_type(), $extra_class, $post );
 ?>
 
 <div class="cuar-private-page cuar-item cuar-item-large<?php echo $extra_class; ?>">

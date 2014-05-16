@@ -42,13 +42,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				add_filter( "plugin_action_links_{$plugin_file}", array( &$this, 'print_plugin_action_links' ), 10, 2 );
 				
 				// We have some core settings to take care of too
-				add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_core_settings_tab' ), 200, 1 );
+				add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_core_settings_tab' ), 200, 1 );
 				
-				add_action( 'cuar_addon_print_settings_cuar_core', array( &$this, 'print_core_settings' ), 10, 2 );
-				add_filter( 'cuar_addon_validate_options_cuar_core', array( &$this,	'validate_core_settings' ), 10, 3 );
+				add_action( 'cuar/core/settings/print-settings?tab=cuar_core', array( &$this, 'print_core_settings' ), 10, 2 );
+				add_filter( 'cuar/core/settings/validate-settings?tab=cuar_core', array( &$this,	'validate_core_settings' ), 10, 3 );
 				
-				add_action( 'cuar_addon_print_settings_cuar_frontend', array( &$this, 'print_frontend_settings' ), 10, 2 );
-				add_filter( 'cuar_addon_validate_options_cuar_frontend', array( &$this,	'validate_frontend_settings' ), 10, 3 );
+				add_action( 'cuar/core/settings/print-settings?tab=cuar_frontend', array( &$this, 'print_frontend_settings' ), 10, 2 );
+				add_filter( 'cuar/core/settings/validate-settings?tab=cuar_frontend', array( &$this,	'validate_frontend_settings' ), 10, 3 );
 			
 				add_action( 'wp_ajax_cuar_validate_license', array( 'CUAR_Settings', 'ajax_validate_license' ) );
 			}
@@ -153,14 +153,14 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				) );
 			
 			// Let the current tab add its own settings to the page
-			do_action ( "cuar_addon_print_settings_{$this->current_tab}", $this, self::$OPTIONS_GROUP . '_' . $this->current_tab );
+			do_action ( "cuar/core/settings/print-settings?tab=" . $this->current_tab, $this, self::$OPTIONS_GROUP . '_' . $this->current_tab );
 		}
 		
 		/**
 		 * Create the tabs to show
 		 */
 		public function setup_tabs() {
-			$this->tabs = apply_filters ( 'cuar_addon_settings_tabs', array () );
+			$this->tabs = apply_filters ( 'cuar/core/settings/settings-tabs', array () );
 			
 			// Get current tab from GET or POST params or default to first in list
 			$this->current_tab =  isset( $_GET ['cuar_tab'] ) ? $_GET ['cuar_tab'] : '';
@@ -185,7 +185,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$validated = array ();
 			
 			// Allow addons to validate their settings here
-			$validated = apply_filters ( 'cuar_addon_validate_options_' . $this->current_tab, $validated, $this, $input );
+			$validated = apply_filters ( 'cuar/core/settings/validate-settings?tab=' . $this->current_tab, $validated, $this, $input );
 			
 			$this->options = array_merge ( $this->options, $validated );
 			

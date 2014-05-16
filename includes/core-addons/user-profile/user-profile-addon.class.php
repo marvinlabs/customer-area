@@ -82,7 +82,7 @@ class CUAR_UserProfileAddOn extends CUAR_AddOn {
 					) )
 			);
 		
-		return apply_filters( 'cuar/user-profile/get_profile_fields', $default_fields );
+		return apply_filters( 'cuar/core/user-profile/get_profile_fields', $default_fields );
 	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/

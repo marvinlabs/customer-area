@@ -422,18 +422,18 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		
 		ob_start();
 		
-		do_action( 'cuar/private-content/view/before_footer', $this );
+		do_action( 'cuar/core/private-content/view/before_footer', $this );
 		
 		include( $this->plugin->get_template_file_path(
 				$this->get_page_addon_path(),
 				$this->get_slug() . '-single-post-footer.template.php',
 				'templates' ));	
 		
-		do_action( 'cuar/private-content/view/before_additional_footer', $this );
+		do_action( 'cuar/core/private-content/view/before_additional_footer', $this );
 		
 		$this->print_additional_private_content_footer();
 		
-		do_action( 'cuar/private-content/view/after_footer', $this );
+		do_action( 'cuar/core/private-content/view/after_footer', $this );
 		
   		$out = ob_get_contents();
   		ob_end_clean(); 
@@ -495,8 +495,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		
 		if ( is_admin() && !empty( $this->enabled_settings ) ) {
 			// Settings
-			add_action( 'cuar_addon_print_settings_' . $target_tab, array( &$this, 'print_settings' ), 10, 2 );
-			add_filter( 'cuar_addon_validate_options_' . $target_tab, array( &$this, 'validate_options' ), 10, 3 );
+			add_action( 'cuar/core/settings/print-settings?tab=' . $target_tab, array( &$this, 'print_settings' ), 10, 2 );
+			add_filter( 'cuar/core/settings/validate-settings?tab=' . $target_tab, array( &$this, 'validate_options' ), 10, 3 );
 		}
 	}
 	
@@ -618,7 +618,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 
 			// Optionally output the latest files on the dashboard
 			if ( $this->is_show_in_dashboard_enabled() ) {
-				add_filter( 'cuar_before_page_content_customer-dashboard', array( &$this, 'print_dashboard_content' ), 10 );
+				add_filter( 'cuar/core/page/before-content?slug=customer-dashboard', array( &$this, 'print_dashboard_content' ), 10 );
 			}
 		}
 	}

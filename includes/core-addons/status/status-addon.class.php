@@ -48,12 +48,12 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 	 */
 	public function add_menu_items( $submenus ) {
 		$submenus[] = array(
-							'page_title'	=> __( 'Customer Area - Plugin status', 'cuar' ),
-							'title'			=> __( 'Status', 'cuar' ),
-							'slug' 			=> self::$STATUS_PAGE_SLUG,
-							'function' 		=> array( &$this, 'print_status_page' ),
-							'capability' 	=> 'manage_options' 
-						); 
+				'page_title'	=> __( 'Customer Area - Plugin status', 'cuar' ),
+				'title'			=> __( 'Status', 'cuar' ),
+				'slug' 			=> self::$STATUS_PAGE_SLUG,
+				'function' 		=> array( &$this, 'print_status_page' ),
+				'capability' 	=> 'manage_options' 
+			); 
 		
 		return $submenus;
 	}

@@ -15,7 +15,7 @@
 <?php 
 	global $post;	
 	$extra_class = ' ' . get_post_type();
-	$extra_class = apply_filters( 'cuar/templates/cuar-single-post-footer/extra-class/post-type=' . get_post_type(), $extra_class, $post );
+	$extra_class = apply_filters( 'cuar/templates/cuar-single-post-footer/extra-class?post-type=' . get_post_type(), $extra_class, $post );
 	
 	$date = sprintf("<em>%s</em>", get_the_date() );
 	$author = sprintf("<em>%s</em>", get_the_author_meta( 'display_name' ) );
