@@ -738,7 +738,7 @@ class CUAR_Plugin {
 	
 	/**
 	 * Get the post type descriptors. Each descriptor is an array with:
-	 * - 'label'					- plural label
+	 * - 'label-plural'				- plural label
 	 * - 'label-singular'			- singular label
 	 * - 'container-page-slug'		- main page slug associated to this type 
 	 * 

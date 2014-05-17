@@ -59,7 +59,6 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	protected abstract function get_taxonomy_archive_page_subtitle( $taxonomy, $term );	
 	protected abstract function get_default_page_subtitle();
 	protected abstract function get_default_dashboard_block_title();
-	protected abstract function get_meta_query_containers_owned_by( $user_id );
 	protected abstract function get_container_owner_type();
 	
 	/**
@@ -296,7 +295,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
 	public function print_page_content( $args = array(), $shortcode_content = '' ) {
-		$po_addon = $this->plugin->get_addon('post-owner');
+		$co_addon = $this->plugin->get_addon('container-owner');
 		$current_user_id = get_current_user_id();
 		$page_slug = $this->get_slug();	
 		
@@ -321,7 +320,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 							'posts_per_page' 	=> -1,
 							'orderby' 			=> 'title',
 							'order' 			=> 'ASC',
-							'meta_query' 		=> $this->get_meta_query_containers_owned_by( $current_user_id ),
+							'meta_query' 		=> $co_addon->get_meta_query_containers_owned_by( $current_user_id ),
 							'tax_query' => array(
 									array(
 											'taxonomy' 		=> $tax,
@@ -344,7 +343,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 					'posts_per_page' 	=> -1,
 					'orderby' 			=> 'title',
 					'order' 			=> 'ASC',
-					'meta_query' 		=> $this->get_meta_query_containers_owned_by( $current_user_id )
+					'meta_query' 		=> $co_addon->get_meta_query_containers_owned_by( $current_user_id )
 				);
 			
 			$page_subtitle = $this->get_default_page_subtitle();
@@ -465,7 +464,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	public function print_dashboard_content( $content ) {
 		if ( !$this->is_accessible_to_current_user() ) return;
 		
-		$po_addon = $this->plugin->get_addon('post-owner');
+		$co_addon = $this->plugin->get_addon('container-owner');
 		$current_user_id = get_current_user_id();
 		$page_slug = $this->get_slug();
 		
@@ -474,7 +473,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 				'posts_per_page' 	=> $this->get_max_item_number_on_dashboard(),
 				'orderby' 			=> 'modified',
 				'order' 			=> 'DESC',
-				'meta_query' 		=> $this->get_meta_query_containers_owned_by( $current_user_id )
+				'meta_query' 		=> $co_addon->get_meta_query_containers_owned_by( $current_user_id )
 			);
 			
 		$page_subtitle = $this->get_default_dashboard_block_title();

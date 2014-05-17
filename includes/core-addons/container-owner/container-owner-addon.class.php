@@ -51,7 +51,7 @@ class CUAR_ContainerOwnerAddOn extends CUAR_AddOn {
 	 * @param int $user_id The user ID of the owner
 	 * @return array See the meta query documentation on WP codex
 	 */
-	public function get_meta_query_container_owned_by( $user_id ) {
+	public function get_meta_query_containers_owned_by( $user_id ) {
 		$user_id = apply_filters( 'cuar/core/ownership/container/meta-query-owner-id', $user_id );
 		
 		$base_meta_query = array(
@@ -67,6 +67,18 @@ class CUAR_ContainerOwnerAddOn extends CUAR_AddOn {
 				'value' 	=> '|' . $owner_id . '|',
 				'compare' 	=> 'LIKE'
 			);
+	}
+	
+	/*------- ACCESS TO OWNER INFO ----------------------------------------------------------------------------------*/
+	
+	/**
+	 * Check if a user is an owner of the given container. 
+	 * 
+	 * @param int $post_id
+	 * @param int $user_id
+	 */
+	public function is_user_owner_of_container( $post_id, $user_id ) {
+		return apply_filters( 'cuar/core/ownership/validate-container-ownership', false, $post_id, $user_id );
 	}
 
 	/*------- FRONTEND ----------------------------------------------------------------------------------------------*/
@@ -90,7 +102,7 @@ class CUAR_ContainerOwnerAddOn extends CUAR_AddOn {
 		$author_id = $post->post_author;	
 		$current_user_id = apply_filters( 'cuar/core/ownership/protect-single-post/override-user-id', get_current_user_id() );
 	
-		$is_current_user_owner = $this->is_user_owner_of_post( $post->ID, $current_user_id );
+		$is_current_user_owner = $this->is_user_owner_of_container( $post->ID, $current_user_id );
 		if ( !( $is_current_user_owner || $author_id==$current_user_id || current_user_can('cuar_view_any_' . get_post_type()) )) {
 			wp_die( __( "You are not authorized to view this page", "cuar" ) );
 			exit();

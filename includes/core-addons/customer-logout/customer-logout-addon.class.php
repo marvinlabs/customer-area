@@ -55,7 +55,6 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 	public function run_addon( $plugin ) {
 		parent::run_addon( $plugin );	
 
-		add_filter( 'cuar_get_nav_customer_area_pages', array( &$this, 'hide_page_in_default_nav_menu' ) );
 		add_filter( 'cuar/routing/logout-url', array( &$this, 'get_default_logout_url' ), 20, 3 );
 		
 		add_action( 'template_redirect', array( &$this, 'do_logout' ), 1000 );
@@ -67,13 +66,6 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
-	public function hide_page_in_default_nav_menu( $pages ) {
-		if ( !is_user_logged_in() ) {
-			unset( $pages['user-logout'] );
-		}
-		return $pages;
-	}
-
 	public function do_logout() {
 		// If we are logged-in and we really are on this page, simply redirect
 		if ( is_user_logged_in() && get_queried_object_id()==$this->get_page_id() ) {
