@@ -43,7 +43,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 			add_filter( 'cuar/core/post-types/content', array( &$this, 'register_private_post_types' ) );
 			add_filter( 'cuar/core/types/content', array( &$this, 'register_content_type' ) );
 			
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ) );
+			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ) );
 		}
 				
 		// Init the admin interface if needed
@@ -199,7 +199,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 					)
 			);
 
-		register_post_type( 'cuar_private_page', apply_filters( 'cuar_private_page_post_type_args', $args ) );
+		register_post_type( 'cuar_private_page', apply_filters( 'cuar/private-content/pages/register-post-type-args', $args ) );
 
 		$labels = array(
 				'name' 						=> _x( 'Page Categories', 'cuar_private_page_category', 'cuar' ),
@@ -240,7 +240,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 					)
 			);
 	  
-		register_taxonomy( 'cuar_private_page_category', array( 'cuar_private_page' ), $args );
+		register_taxonomy( 'cuar_private_page_category', array( 'cuar_private_page' ), apply_filters( 'cuar/private-content/pages/category/register-taxonomy-args', $args ) );
 	}
 
 	// General options

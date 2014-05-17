@@ -385,12 +385,12 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 			$page_subtitle = $this->get_default_page_subtitle();
 		}
 				
-		$args = apply_filters( 'cuar_query_parameters-' .  $page_slug, $args );
-		$args = apply_filters( 'cuar_query_parameters-' .  $page_slug . '-' . $display_mode, $args );		
+		$args = apply_filters( 'cuar/core/page/query-args?slug=' .  $page_slug, $args );
+		$args = apply_filters( 'cuar/core/page/query-args?slug=' .  $page_slug . '&display-mode=' . $display_mode, $args );		
 		$content_query = new WP_Query( $args );
 
-		$page_subtitle = apply_filters( 'cuar_page_subtitle-' .  $page_slug, $page_subtitle );
-		$page_subtitle = apply_filters( 'cuar_page_subtitle-' .  $page_slug . '-' . $display_mode, $page_subtitle );
+		$page_subtitle = apply_filters( 'cuar/core/page/subtitle?slug=' .  $page_slug, $page_subtitle );
+		$page_subtitle = apply_filters( 'cuar/core/page/subtitle?slug=' .  $page_slug . '&display-mode=' . $display_mode, $page_subtitle );
 		
 		if ( $content_query->have_posts() ) {
 			$item_template = $this->plugin->get_template_file_path(
@@ -422,18 +422,18 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		
 		ob_start();
 		
-		do_action( 'cuar/core/private-content/view/before_footer', $this );
+		do_action( 'cuar/private-content/view/before_footer', $this );
 		
 		include( $this->plugin->get_template_file_path(
 				$this->get_page_addon_path(),
 				$this->get_slug() . '-single-post-footer.template.php',
 				'templates' ));	
 		
-		do_action( 'cuar/core/private-content/view/before_additional_footer', $this );
+		do_action( 'cuar/private-content/view/before_additional_footer', $this );
 		
 		$this->print_additional_private_content_footer();
 		
-		do_action( 'cuar/core/private-content/view/after_footer', $this );
+		do_action( 'cuar/private-content/view/after_footer', $this );
 		
   		$out = ob_get_contents();
   		ob_end_clean(); 
@@ -461,9 +461,9 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 			);
 			
 		$page_subtitle = $this->get_default_dashboard_block_title();
-		$page_subtitle = apply_filters( 'cuar_dashboard_block_title-' .  $page_slug, $page_subtitle );
+		$page_subtitle = apply_filters( 'cuar/core/dashboard/block-title?slug=' .  $page_slug, $page_subtitle );
 
-		$args = apply_filters( 'cuar_dashboard_block_query_parameters-' .  $page_slug, $args );
+		$args = apply_filters( 'cuar/core/dashboard/block-query-args?slug=' .  $page_slug, $args );
 
 		$content_query = new WP_Query( $args );
 		

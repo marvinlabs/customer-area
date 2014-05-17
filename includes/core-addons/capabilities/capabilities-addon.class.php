@@ -168,7 +168,7 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 			//       	)
 			//    	)
 			//	);
-			$this->all_capability_groups = apply_filters( 'cuar_configurable_capability_groups', array() );
+			$this->all_capability_groups = apply_filters( 'cuar/core/permission-groups', array() );
 		}
 		return $this->all_capability_groups;
 	}

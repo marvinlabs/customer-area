@@ -88,7 +88,7 @@ class CUAR_ContainerOwnerAddOn extends CUAR_AddOn {
 		// If not authorized to view the page, we bail
 		$post = get_queried_object();
 		$author_id = $post->post_author;	
-		$current_user_id = apply_filters( 'cuar/core/ownership/protect-single-post/user-id', get_current_user_id() );
+		$current_user_id = apply_filters( 'cuar/core/ownership/protect-single-post/override-user-id', get_current_user_id() );
 	
 		$is_current_user_owner = $this->is_user_owner_of_post( $post->ID, $current_user_id );
 		if ( !( $is_current_user_owner || $author_id==$current_user_id || current_user_can('cuar_view_any_' . get_post_type()) )) {

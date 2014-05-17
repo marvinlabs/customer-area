@@ -199,7 +199,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	 */
 	public function get_customer_area_pages() {
 		if ( $this->pages==null) {
-			$this->pages = apply_filters( 'cuar_customer_pages', array() );
+			$this->pages = apply_filters( 'cuar/core/page/customer-pages', array() );
 		}
 			
 		return $this->pages;
@@ -507,7 +507,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		
 		if ( !is_user_logged_in() ) return $out;
 		
-		$nav_menu_args = apply_filters( 'cuar_get_main_menu_args', array(
+		$nav_menu_args = apply_filters( 'cuar/core/page/nav-menu-args', array(
 				'theme_location'  => 'cuar_main_menu',
 				'container_class' => 'menu-container cuar-menu-container',
 				'menu_class'      => 'menu cuar-menu'
@@ -814,7 +814,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 					wp_delete_post( $existing_page_id, true );
 				}
 				
-				$page_id = apply_filters( 'cuar_do_create_page_' . $page->get_slug(), 0, $input );	
+				$page_id = apply_filters( 'cuar/core/page/on-page-created?slug=' . $page->get_slug(), 0, $input );	
 				if ( $page_id>0 ) {
 					$input[ $option_id ] = $page_id;
 					$has_created_pages = true;
@@ -845,7 +845,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 			
 			if ( $existing_page_id>0 && get_post( $existing_page_id )!=null ) continue;
 			
-			$page_id = apply_filters( 'cuar_do_create_page_' . $page->get_slug(), 0 );
+			$page_id = apply_filters( 'cuar/core/page/on-page-created?slug=' . $page->get_slug(), 0 );
 
 			if ( $page_id>0 ) {
 				$this->set_page_id( $page->get_slug(), $page_id );				

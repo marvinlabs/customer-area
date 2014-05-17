@@ -38,7 +38,7 @@ class CUAR_PrivateFileAdminInterface {
 		
 		if ( $this->private_file_addon->is_enabled() ) {
 			// Admin menu
-			add_action( 'cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10 );
+			add_action( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 10 );
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 			
 			// File edit page
@@ -217,7 +217,7 @@ jQuery(document).ready( function($) {
 	
 		$current_file = get_post_meta( $post->ID, 'cuar_private_file_file', true );
 
-		do_action( "cuar/core/private-content/files/before-upload-meta-box" );
+		do_action( "cuar/private-content/files/before-upload-meta-box" );
 ?>
 		
 <?php	if ( !empty( $current_file ) && isset( $current_file['file'] ) ) : ?>
@@ -308,7 +308,7 @@ jQuery(document).ready( function($) {
 		//-->
 		</script>
 <?php 
-		do_action( "cuar/core/private-content/files/after-upload-meta-box" );
+		do_action( "cuar/private-content/files/after-upload-meta-box" );
 	}
 	
 	/** 

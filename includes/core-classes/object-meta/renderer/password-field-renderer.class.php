@@ -33,7 +33,7 @@ class CUAR_PasswordFieldRenderer extends CUAR_AbstractInputFieldRenderer impleme
 	}
 
 	protected function get_readonly_field_value( $id, $value ) {
-		$hidden_char = apply_filters( 'cuar_password_field_hidden_char', '&bull;' );
+		$hidden_char = apply_filters( 'cuar/core/fields/password/hidden-char', '&bull;' );
 		return str_repeat( $hidden_char, 8 );
 	}
 }

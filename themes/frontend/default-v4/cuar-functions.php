@@ -33,5 +33,5 @@ if ( !function_exists( 'cuar_enable_bootstrap_nav_walker' ) ) {
 		
 		return $new_args;
 	}
-	add_filter( 'cuar_get_main_menu_args', 'cuar_enable_bootstrap_nav_walker' );
+	add_filter( 'cuar/core/page/nav-menu-args', 'cuar_enable_bootstrap_nav_walker' );
 }

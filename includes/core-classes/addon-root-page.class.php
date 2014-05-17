@@ -69,8 +69,8 @@ abstract class CUAR_RootPageAddOn extends CUAR_AbstractPageAddOn {
 		if ( is_user_logged_in() && get_queried_object_id()==$this->get_page_id() ) {
 			$cp_addon = $this->plugin->get_addon('customer-pages');
 			
-			$redirect_slug = apply_filters( 'cuar_root_page_redirect_slug-' . $this->get_slug(), $this->redirect_slug );			
-			$redirect_url = apply_filters( 'cuar_root_page_redirect_url-' . $this->get_slug(), $cp_addon->get_page_url( $redirect_slug ) );
+			$redirect_slug = apply_filters( 'cuar/routing/redirect/root-page-to-slug?slug=' . $this->get_slug(), $this->redirect_slug );			
+			$redirect_url = apply_filters( 'cuar/routing/redirect/root-page-to-url?slug=' . $this->get_slug(), $cp_addon->get_page_url( $redirect_slug ) );
 			
 			wp_redirect( $redirect_url, 302 );
 			exit;

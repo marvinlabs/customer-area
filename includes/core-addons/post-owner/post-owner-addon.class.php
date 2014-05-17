@@ -60,7 +60,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @return array See the meta query documentation on WP codex
 	 */
 	public function get_meta_query_post_owned_by( $user_id ) {
-		$user_id = apply_filters( 'cuar/core/ownership/content/meta-query-owner-id', $user_id );
+		$user_id = apply_filters( 'cuar/core/ownership/content/meta-query/override-owner-id', $user_id );
 		
 		$base_meta_query = array(
 				'relation' => 'OR',
@@ -614,12 +614,12 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 						printf( '<span id="%s" class="single-owner hidden-message %s"><em>%s</em></span>', 
 								$field_id, 
 								$owner_type_field_id . '_owner_select', 
-								apply_filters( 'cuar_select_owner_text_hidden', __( 'The owner is hidden', 'cuar' ) ) );
+								apply_filters( 'cuar/core/ownership/hidden-single-selectable-owner-text', __( 'The owner is hidden', 'cuar' ) ) );
 					} else {
 						printf( '<span id="%s" class="single-owner %s"><em>%s</em></span>', 
 								$field_id, 
 								$owner_type_field_id . '_owner_select', 
-								apply_filters( 'cuar_select_owner_text_single', $name ) );
+								apply_filters( 'cuar/core/ownership/single-selectable-owner-text', $name ) );
 					}
 				}
 			} else {	
@@ -733,7 +733,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		// If not authorized to view the page, we bail
 		$post = get_queried_object();
 		$author_id = $post->post_author;	
-		$current_user_id = apply_filters( 'cuar/core/ownership/protect-single-post/user-id', get_current_user_id() );
+		$current_user_id = apply_filters( 'cuar/core/ownership/protect-single-post/override-user-id', get_current_user_id() );
 	
 		$is_current_user_owner = $this->is_user_owner_of_post( $post->ID, $current_user_id );
 		if ( !( $is_current_user_owner || $author_id==$current_user_id || current_user_can('cuar_view_any_' . get_post_type()) )) {

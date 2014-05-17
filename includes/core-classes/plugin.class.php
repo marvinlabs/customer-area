@@ -227,7 +227,7 @@ class CUAR_Plugin {
 	public function get_template_file_path( $default_root, $filename, $sub_directory = '', $fallback_filename = '' ) {		
 		$relative_path = ( !empty( $sub_directory ) ) ? trailingslashit( $sub_directory ) . $filename : $filename;
 		
-		$possible_locations = apply_filters( 'cuar/core/ui/template-directories', 
+		$possible_locations = apply_filters( 'cuar/ui/template-directories', 
 				array(
 					untrailingslashit(WP_CONTENT_DIR) . '/customer-area',
 					untrailingslashit(get_stylesheet_directory()) . '/customer-area',
@@ -334,7 +334,7 @@ class CUAR_Plugin {
 	}
 	
 	public function login_then_redirect_to_url( $redirect_to='' ) {
-		$login_url = apply_filters( 'cuar/core/login-url', null, $redirect_to );		
+		$login_url = apply_filters( 'cuar/routing/login-url', null, $redirect_to );		
 		if ( $login_url==null ) {
 			$login_url = wp_login_url( $redirect_to );
 		}	
@@ -749,7 +749,7 @@ class CUAR_Plugin {
 	}	
 		
 	public function get_default_wp_editor_settings() {
-		return apply_filters( 'cuar/core/ui/default-wp-editor-settings', array(
+		return apply_filters( 'cuar/ui/default-wp-editor-settings', array(
 				'textarea_rows'	=> 5,
 				'editor_class'	=> 'form-control',
 				'quicktags'		=> false,

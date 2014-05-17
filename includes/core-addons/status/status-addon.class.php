@@ -38,7 +38,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// We only do something within the admin interface
 		if ( is_admin() ) {
-			add_action( 'cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10000 );
+			add_action( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 10000 );
 			add_action( 'admin_init', array( &$this, 'handle_core_section_actions' ), 500 );
 		} 
 	}

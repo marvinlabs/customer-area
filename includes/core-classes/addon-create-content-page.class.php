@@ -78,16 +78,16 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
         	die('You are not allowed to create content.');
         }
 
-        do_action( 'cuar/core/private-content/edit/before_create', $this, $this->form_errors );
-        do_action( 'cuar/core/private-content/edit/before_create/page-slug=' . $this->get_slug(), $this, $this->form_errors );
+        do_action( 'cuar/private-content/edit/before_create', $this, $this->form_errors );
+        do_action( 'cuar/private-content/edit/before_create/page-slug=' . $this->get_slug(), $this, $this->form_errors );
         
 		$result = $this->do_create_content( $_POST );		
 
-		do_action( 'cuar/core/private-content/edit/after_create', $this, $this->form_errors );
-		do_action( 'cuar/core/private-content/edit/after_create/page-slug=' . $this->get_slug(), $this, $this->form_errors );
+		do_action( 'cuar/private-content/edit/after_create', $this, $this->form_errors );
+		do_action( 'cuar/private-content/edit/after_create/page-slug=' . $this->get_slug(), $this, $this->form_errors );
 		
 		if ( true===$result && empty( $this->form_errors ) ) {		
-			$redirect_url = apply_filters( 'cuar/core/private-content/edit/after_create/redirect_url', $this->get_redirect_slug_after_creation(), $this->get_slug() );
+			$redirect_url = apply_filters( 'cuar/private-content/edit/after_create/redirect_url', $this->get_redirect_slug_after_creation(), $this->get_slug() );
 			if ( $redirect_url!=null ) {
 				wp_redirect( $redirect_url );
 				exit;
@@ -184,7 +184,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		
 		wp_nonce_field( 'cuar_' . $this->get_slug(), 'cuar_' . $this->get_slug() . '_nonce' );
 		
-		do_action( 'cuar/core/private-content/edit/before_submit_errors', $this );
+		do_action( 'cuar/private-content/edit/before_submit_errors', $this );
 	
 		if ( !empty( $this->form_errors ) ) {
 			foreach ( $this->form_errors as $error ) {
@@ -196,19 +196,19 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 			}
 		}
 		
-		do_action( 'cuar/core/private-content/edit/after_submit_errors', $this );
+		do_action( 'cuar/private-content/edit/after_submit_errors', $this );
 		
-		do_action( 'cuar/core/private-content/edit/before_fields', $this );		
+		do_action( 'cuar/private-content/edit/before_fields', $this );		
 	}
 	
 	public function print_form_footer() {
-		do_action( 'cuar/core/private-content/edit/after_fields', $this );
+		do_action( 'cuar/private-content/edit/after_fields', $this );
 		
 		echo '</form>';
 	}
 
 	public function print_submit_button( $label ) {
-        do_action( 'cuar/core/private-content/edit/before_submit_button', $this );
+        do_action( 'cuar/private-content/edit/before_submit_button', $this );
         
 		echo '<div class="form-group">';
 		echo '	<div class="submit-container">';
@@ -216,7 +216,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		echo '	</div>';
 		echo '</div>';
 
-		do_action( 'cuar/core/private-content/edit/after_submit_button', $this );
+		do_action( 'cuar/private-content/edit/after_submit_button', $this );
 	}
 
 	public function print_title_field( $label ) {
@@ -306,7 +306,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 	}
 
 	public function print_form_field( $name, $label, $field_code, $help_text='' ) {
-		do_action( 'cuar/core/private-content/edit/before_field?id=' . $name, $this );
+		do_action( 'cuar/private-content/edit/before_field?id=' . $name, $this );
 			
 		echo '<div class="form-group">';
 		echo '	<label for="' . $name . '" class="control-label">' . $label . '</label>';
@@ -320,7 +320,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 		echo '	</div>';
 		echo '</div>';
 		
-		do_action( 'cuar/core/private-content/edit/after_field?id=' . $name, $this );			
+		do_action( 'cuar/private-content/edit/after_field?id=' . $name, $this );			
 	}
 	
 	public function set_current_post_id( $post_id ) {
@@ -589,7 +589,7 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractPageAddO
 			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );	
 		} else {
 			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );		
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ), 1000 );	
+			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ), 1000 );	
 		}
 	}
 

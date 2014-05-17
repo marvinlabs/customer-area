@@ -34,8 +34,8 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {
-		add_filter( 'cuar_customer_pages', array( &$this, 'register_page' ), $this->page_priority );
-		add_filter( 'cuar_do_create_page_' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 2 );
+		add_filter( 'cuar/core/page/customer-pages', array( &$this, 'register_page' ), $this->page_priority );
+		add_filter( 'cuar/core/page/on-page-created?slug=' . $this->get_slug(), array( &$this, 'create_default_page' ), 10, 2 );
 		add_filter( 'body_class', array( &$this, 'add_body_class' ) );
 		
 		add_action( 'template_redirect', array( &$this, 'redirect_guests_if_required' ), 1000 );
@@ -321,8 +321,9 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 	}
 	
 	protected function enable_sidebar( $widget_classes=array(), $has_default_sidebar=false ) {
-		$this->is_sidebar_enabled = apply_filters( 'cuar_enable_sidebar-' . $this->get_slug(), true );
-		$this->has_default_sidebar = apply_filters( 'cuar_enable_default_sidebar-' . $this->get_slug(), $has_default_sidebar );
+		$page_slug = $this->get_slug();
+		$this->is_sidebar_enabled = apply_filters( 'cuar/core/page/enable-sidebar?slug=' . $page_slug, true );
+		$this->has_default_sidebar = apply_filters( 'cuar/core/page/enable-default-sidebar?slug=' . $page_slug, $has_default_sidebar );
 		
 		// Register widget classes
 		foreach ( $widget_classes as $w ) {

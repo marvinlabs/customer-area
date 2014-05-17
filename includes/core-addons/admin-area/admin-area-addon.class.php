@@ -39,7 +39,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
 			add_action( 'cuar/core/on-plugin-update', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ), 5 );
+			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ), 5 );
 
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
 		} 
@@ -170,7 +170,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	    $this->pagehook = add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon, $position );
 	    
 	    // Now add the submenu pages from add-ons
-	    $submenu_items = apply_filters( 'cuar_admin_submenu_pages', array() );
+	    $submenu_items = apply_filters( 'cuar/core/admin/main-menu-pages', array() );
 	    
 	    foreach ( $submenu_items as $item ) {
 		    $submenu_page_title = $item[ 'page_title' ];

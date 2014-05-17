@@ -82,7 +82,7 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 	
 	protected function get_current_user() {
 		if ( $this->current_user==null ) {
-			$user_id = apply_filters( 'cuar/core/user-profile/view/get_current_user_id', get_current_user_id() );
+			$user_id = apply_filters( 'cuar/core/user-profile/view/override-user-id', get_current_user_id() );
 			$this->current_user = get_userdata( $user_id );
 		}
 		return $this->current_user;
