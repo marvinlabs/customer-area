@@ -52,7 +52,7 @@ class CUAR_ContainerOwnerAddOn extends CUAR_AddOn {
 	 * @return array See the meta query documentation on WP codex
 	 */
 	public function get_meta_query_containers_owned_by( $user_id ) {
-		$user_id = apply_filters( 'cuar/core/ownership/container/meta-query-owner-id', $user_id );
+		$user_id = apply_filters( 'cuar/core/ownership/container/meta-query/override-owner-id', $user_id );
 		
 		$base_meta_query = array(
 				'relation' => 'OR'
