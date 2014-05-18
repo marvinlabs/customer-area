@@ -416,10 +416,14 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	/*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 	
 	public function print_single_private_content_footer( $content ) {		
+		// If theme is taking care of it, don't do anything
+		$theme_support = get_theme_support( 'customer-area.single-post-templates' );
+		if ( is_array( $theme_support ) && in_array( $this->get_friendly_post_type(), $theme_support[0] ) ) return $content;	
+		
 		// If not on a matching post type, we do nothing
 		if ( !is_singular( $this->get_friendly_post_type() ) ) return $content;		
-		if ( get_post_type()!=$this->get_friendly_post_type() ) return $content;		
-		
+		if ( get_post_type()!=$this->get_friendly_post_type() ) return $content;	
+
 		ob_start();
 		
 		do_action( 'cuar/private-content/view/before_footer', $this );
@@ -522,23 +526,26 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 			);
 
 		if ( in_array( 'single-post-footer', $this->enabled_settings ) ) {
-			add_settings_field(
-					$slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
-					__('Show after post', 'cuar'),
-					array( &$cuar_settings, 'print_input_field' ),
-					CUAR_Settings::$OPTIONS_PAGE_SLUG,
-					$this->get_settings_section(),
-					array(
-						'option_id' 	=> $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
-						'type' 			=> 'checkbox',
-						'default_value' => 1,
-						'after'			=> 
-								__( 'Show additional information after the post in the single post view.', 'cuar' )
-								. '<p class="description">' 
-								. sprintf( __( 'You can disable this if you have your own theme template file for single posts. The theme file to look for or create should be called: %s.', 'cuar' ),
-										'<code>single-' . $this->get_friendly_post_type() . '.php</code>' )
-								. '</p>' )
-				);
+			$theme_support = get_theme_support( 'customer-area.single-post-templates' );
+			if ( !is_array( $theme_support ) || !in_array( $this->get_friendly_post_type(), $theme_support[0] ) ) {
+				add_settings_field(
+						$slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
+						__('Show after post', 'cuar'),
+						array( &$cuar_settings, 'print_input_field' ),
+						CUAR_Settings::$OPTIONS_PAGE_SLUG,
+						$this->get_settings_section(),
+						array(
+							'option_id' 	=> $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
+							'type' 			=> 'checkbox',
+							'default_value' => 1,
+							'after'			=> 
+									__( 'Show additional information after the post in the single post view.', 'cuar' )
+									. '<p class="description">' 
+									. sprintf( __( 'You can disable this if you have your own theme template file for single posts. The theme file to look for or create should be called: %s.', 'cuar' ),
+											'<code>single-' . $this->get_friendly_post_type() . '.php</code>' )
+									. '</p>' )
+					);
+			}
 		}
 
 		if ( in_array( 'dashboard', $this->enabled_settings ) ) {

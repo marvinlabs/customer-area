@@ -379,7 +379,11 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	/*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 	
-	public function print_single_container_footer( $content ) {		
+	public function print_single_container_footer( $content ) {				
+		// If theme is taking care of it, don't do anything
+		$theme_support = get_theme_support( 'customer-area.single-post-templates' );
+		if ( is_array( $theme_support ) && in_array( $this->get_friendly_post_type(), $theme_support[0] ) ) return $content;	
+		
 		// If not on a matching post type, we do nothing
 		if ( !is_singular( $this->get_friendly_post_type() ) ) return $content;		
 		if ( get_post_type()!=$this->get_friendly_post_type() ) return $content;		
@@ -399,11 +403,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		
 		do_action( 'cuar/core/container/view/after_footer', $this );
 		
-		do_action( 'cuar/core/container/view/before_associated_content', $this );
-		
 		$this->print_associated_content();
-		
-		do_action( 'cuar/core/container/view/after_associated_content', $this );
 		
   		$out = ob_get_contents();
   		ob_end_clean(); 
@@ -412,7 +412,9 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	}
 
 	// Retrieve all the private content associated to this project and display it here
-	protected function print_associated_content() {
+	public function print_associated_content() {
+		do_action( 'cuar/core/container/view/before_associated_content', $this );
+		
 		$po_addon = $this->plugin->get_addon( 'post-owner' );
 		
 		$container_id = get_queried_object_id();		
@@ -455,6 +457,8 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 						$content_page_addon->get_slug() . "-content.template.php" ));
 			}			
 		}
+		
+		do_action( 'cuar/core/container/view/after_associated_content', $this );
 	}
 	
 	protected function print_additional_container_footer() {}
@@ -542,24 +546,27 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 				CUAR_Settings::$OPTIONS_PAGE_SLUG
 			);
 
-		if ( in_array( 'single-post-footer', $this->enabled_settings ) ) {
-			add_settings_field(
-					$slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
-					__('Show after post', 'cuar'),
-					array( &$cuar_settings, 'print_input_field' ),
-					CUAR_Settings::$OPTIONS_PAGE_SLUG,
-					$this->get_settings_section(),
-					array(
-						'option_id' 	=> $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
-						'type' 			=> 'checkbox',
-						'default_value' => 1,
-						'after'			=> 
-								__( 'Show additional information after the post in the single post view.', 'cuar' )
-								. '<p class="description">' 
-								. sprintf( __( 'You can disable this if you have your own theme template file for single posts. The theme file to look for or create should be called: %s.', 'cuar' ),
-										'<code>single-' . $this->get_friendly_post_type() . '.php</code>' )
-								. '</p>' )
-				);
+		if ( in_array( 'single-post-footer', $this->enabled_settings ) ) {			
+			$theme_support = get_theme_support( 'customer-area.single-post-templates' );
+			if ( !is_array( $theme_support ) || !in_array( $this->get_friendly_post_type(), $theme_support[0] ) ) {
+				add_settings_field(
+						$slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
+						__('Show after post', 'cuar'),
+						array( &$cuar_settings, 'print_input_field' ),
+						CUAR_Settings::$OPTIONS_PAGE_SLUG,
+						$this->get_settings_section(),
+						array(
+							'option_id' 	=> $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER,
+							'type' 			=> 'checkbox',
+							'default_value' => 1,
+							'after'			=> 
+									__( 'Show additional information after the post in the single post view.', 'cuar' )
+									. '<p class="description">' 
+									. sprintf( __( 'You can disable this if you have your own theme template file for single posts. The theme file to look for or create should be called: %s.', 'cuar' ),
+											'<code>single-' . $this->get_friendly_post_type() . '.php</code>' )
+									. '</p>' )
+					);
+			}
 		}
 
 		if ( in_array( 'dashboard', $this->enabled_settings ) ) {
