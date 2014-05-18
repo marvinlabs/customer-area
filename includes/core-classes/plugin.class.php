@@ -203,6 +203,11 @@ class CUAR_Plugin {
 	}
 	
 	public function load_theme_functions() {
+		if ( current_theme_supports( 'customer-area.stylesheet' )
+			|| !$this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS ) ) {
+			return;
+		}
+		
 		$theme_path = trailingslashit($this->get_frontend_theme_path());
 		if ( empty( $theme_path ) ) return;
 		
