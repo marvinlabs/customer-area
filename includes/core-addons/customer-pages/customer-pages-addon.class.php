@@ -535,6 +535,9 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	 * @return unknown|string
 	 */
 	public function get_main_menu_for_single_private_content( $content ) {		
+		// Only if the theme does not already support this
+		if ( current_theme_supports( 'customer-area.navigation-menu' ) ) return $content;
+		
 		// Only on single private content pages
  		$content_types = $this->plugin->get_content_post_types();
  		$container_types = $this->plugin->get_container_post_types();
@@ -554,9 +557,12 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	 * @return unknown|string
 	 */
 	public function get_main_menu_for_customer_area_pages( $content ) {
+		// Only if the theme does not already support this
+		if ( current_theme_supports( 'customer-area.navigation-menu' ) ) return $content;
+
 		// Only on customer area pages
 		if ( !$this->is_customer_area_page() ) return $content;
-
+		
 		$content = '<div class="cuar-menu-container">' . $this->get_main_navigation_menu() . '</div>' . $content;
 		
 		return $content;
@@ -666,39 +672,41 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 				CUAR_Settings::$OPTIONS_PAGE_SLUG
 			);
 		
-		add_settings_field(
-				self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES,
-				__('Customer Area pages', 'cuar'),
-				array( &$cuar_settings, 'print_input_field' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_core_nav_menu',
-				array(
-						'option_id' => self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES,
-						'type' 		=> 'checkbox',
-						'after'		=>  __( 'Automatically print the Customer Area navigation menu on the Customer Area pages.', 'cuar' )
-										. '<p class="description">'
-										. __( 'By checking this box, the menu will automatically be shown automatically on the Customer Area pages (the ones defined in the tab named "Site Pages"). '
-											. 'It may however not appear at the place you would want it. If that is the case, you can refer to our documentation to see how to edit your theme.', 'cuar' )
-										. '</p>' 
-					)
-			);
-		
-		add_settings_field(
-				self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT,
-				__('Private content single pages', 'cuar'),
-				array( &$cuar_settings, 'print_input_field' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_core_nav_menu',
-				array(
-						'option_id' => self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT,
-						'type' 		=> 'checkbox',
-						'after'		=>  __( 'Automatically print the Customer Area navigation menu on private content single pages.', 'cuar' )
-										. '<p class="description">'
-										. __( 'By checking this box, the menu will automatically be shown automatically on the pages displaying a single private content (a private page or a private file for example). '
-											. 'It may however not appear at the place you would want it. If that is the case, you can refer to our documentation to see how to edit your theme.', 'cuar' )
-										. '</p>' 
-					)
-			);
+		if ( !current_theme_supports( 'customer-area.navigation-menu' ) ) {
+			add_settings_field(
+					self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES,
+					__('Customer Area pages', 'cuar'),
+					array( &$cuar_settings, 'print_input_field' ),
+					CUAR_Settings::$OPTIONS_PAGE_SLUG,
+					'cuar_core_nav_menu',
+					array(
+							'option_id' => self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES,
+							'type' 		=> 'checkbox',
+							'after'		=>  __( 'Automatically print the Customer Area navigation menu on the Customer Area pages.', 'cuar' )
+											. '<p class="description">'
+											. __( 'By checking this box, the menu will automatically be shown automatically on the Customer Area pages (the ones defined in the tab named "Site Pages"). '
+												. 'It may however not appear at the place you would want it. If that is the case, you can refer to our documentation to see how to edit your theme.', 'cuar' )
+											. '</p>' 
+						)
+				);
+			
+			add_settings_field(
+					self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT,
+					__('Private content single pages', 'cuar'),
+					array( &$cuar_settings, 'print_input_field' ),
+					CUAR_Settings::$OPTIONS_PAGE_SLUG,
+					'cuar_core_nav_menu',
+					array(
+							'option_id' => self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT,
+							'type' 		=> 'checkbox',
+							'after'		=>  __( 'Automatically print the Customer Area navigation menu on private content single pages.', 'cuar' )
+											. '<p class="description">'
+											. __( 'By checking this box, the menu will automatically be shown automatically on the pages displaying a single private content (a private page or a private file for example). '
+												. 'It may however not appear at the place you would want it. If that is the case, you can refer to our documentation to see how to edit your theme.', 'cuar' )
+											. '</p>' 
+						)
+				);
+		}
 		
 		add_settings_field(
 				'cuar_recreate_navigation_menu',
@@ -779,9 +787,11 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	}
 	
 	public function validate_frontend_settings($validated, $cuar_settings, $input) {
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT );
-		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES );
-
+		if ( !current_theme_supports( 'customer-area.navigation-menu' ) ) {
+			$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT );
+			$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES );
+		}
+		
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_CATEGORY_ARCHIVE_SLUG );
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_DATE_ARCHIVE_SLUG );
 
