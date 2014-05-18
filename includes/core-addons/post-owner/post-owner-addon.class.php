@@ -641,18 +641,23 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				
 				echo '</select>';
 				
-				$this->plugin->enable_library( 'jquery.select2' );
+				$theme_support = get_theme_support( 'customer-area.library.jquery.select2' );
+				if ( is_admin() 
+						|| $theme_support===false 
+						|| ( is_array( $theme_support ) && !in_array( 'markup', $theme_support[0] ) ) ) {				
+					$this->plugin->enable_library( 'jquery.select2' );
 ?>
-				<script type="text/javascript">
-					<!--
-					jQuery("document").ready(function($){
-						$("#<?php echo $field_id; ?>").select2({
-							width:						"100%"
+					<script type="text/javascript">
+						<!--
+						jQuery("document").ready(function($){
+							$("#<?php echo $field_id; ?>").select2({
+								width:						"100%"
+							});
 						});
-					});
-					//-->
-				</script>
+						//-->
+					</script>
 <?php 			
+				}
 			}
 			
 			echo '</div>';

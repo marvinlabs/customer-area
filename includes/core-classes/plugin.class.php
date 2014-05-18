@@ -613,6 +613,12 @@ class CUAR_Plugin {
 	 * @param string $id The ID for the external library
 	 */
 	public function enable_library( $library_id ) {
+		// Only if the theme does not already support this and we are viewing the frontend
+		if ( !is_admin() ) {
+			$theme_support = get_theme_support( 'customer-area.library.' . $library_id );
+			if ( $theme_support===true || ( is_array( $theme_support ) && in_array( 'files', $theme_support[0] ) ) ) return;
+		}
+		
 		do_action( 'cuar/core/libraries/before-enable?id=' . $library_id );
 		
 		switch ( $library_id ) {
