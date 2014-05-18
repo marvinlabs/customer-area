@@ -88,7 +88,8 @@ class CUAR_Plugin {
 			wp_enqueue_style(
 				'cuar.admin',
 				$this->get_admin_theme_url() . '/style.css' );
-		} else if ( $this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS ) ) {
+		} else if ( !current_theme_supports( 'customer-area.stylesheet' ) 
+					&& $this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS ) ) {
 			wp_enqueue_style(
 					'cuar.frontend',
 					$this->get_frontend_theme_url() . '/style.css',

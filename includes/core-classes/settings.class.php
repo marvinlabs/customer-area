@@ -277,29 +277,31 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					array ( &$cuar_settings, 'print_empty_section_info' ), 
 					self::$OPTIONS_PAGE_SLUG );
 			
-			add_settings_field ( self::$OPTION_INCLUDE_CSS, 
-					__ ( 'Include CSS', 'cuar' ), 
-					array( &$cuar_settings,	'print_input_field'	), 
-					self::$OPTIONS_PAGE_SLUG, 
-					'cuar_general_settings', 
-					array (
-							'option_id' => self::$OPTION_INCLUDE_CSS,
-							'type' => 'checkbox',
-							'after' => __ ( 'Include the default stylesheet.', 'cuar' ) . '<p class="description">' . __ ( 'If not, you should style the plugin yourself in your theme.', 'cuar' ) . '</p>' 
-						) 
-				);
+			if ( !current_theme_supports( 'customer-area.stylesheet' ) ) {			
+				add_settings_field ( self::$OPTION_INCLUDE_CSS, 
+						__ ( 'Include CSS', 'cuar' ), 
+						array( &$cuar_settings,	'print_input_field'	), 
+						self::$OPTIONS_PAGE_SLUG, 
+						'cuar_general_settings', 
+						array (
+								'option_id' => self::$OPTION_INCLUDE_CSS,
+								'type' => 'checkbox',
+								'after' => __ ( 'Include the default stylesheet.', 'cuar' ) . '<p class="description">' . __ ( 'If not, you should style the plugin yourself in your theme.', 'cuar' ) . '</p>' 
+							) 
+					);
+				
+				add_settings_field ( self::$OPTION_FRONTEND_THEME, 
+						__ ( 'Frontend theme', 'cuar' ), 
+						array ( &$cuar_settings, 'print_theme_select_field' ), 
+						self::$OPTIONS_PAGE_SLUG, 
+						'cuar_general_settings', 
+						array (
+								'option_id' => self::$OPTION_FRONTEND_THEME,
+								'theme_type' => 'frontend' 
+							) 
+					);
+			}
 			
-			add_settings_field ( self::$OPTION_FRONTEND_THEME, 
-					__ ( 'Frontend theme', 'cuar' ), 
-					array ( &$cuar_settings, 'print_theme_select_field' ), 
-					self::$OPTIONS_PAGE_SLUG, 
-					'cuar_general_settings', 
-					array (
-							'option_id' => self::$OPTION_FRONTEND_THEME,
-							'theme_type' => 'frontend' 
-						) 
-				);
-
 			add_settings_field ( self::$OPTION_DEBUG_TEMPLATES,
 					__ ( 'Debug templates', 'cuar' ), 
 					array( &$cuar_settings,	'print_input_field'	), 
@@ -323,9 +325,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param array $validated        	
 		 */
 		public function validate_frontend_settings($validated, $cuar_settings, $input) {
-			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
 			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_DEBUG_TEMPLATES );
-			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME );
+			
+			if ( !current_theme_supports( 'customer-area-css' ) ) {		
+				$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
+				$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME );
+			}
 			
 			return $validated;
 		}
