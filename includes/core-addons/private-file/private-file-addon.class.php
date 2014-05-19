@@ -47,6 +47,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 			
 			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ) );
+			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 10 );
 		}
 				
 		// Init the admin interface if needed
@@ -68,6 +69,57 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
 		
 		return $defaults;
+	}
+
+	/**
+	 * Add the menu item
+	 */
+	public function add_adminbar_menu_items( $submenus ) {
+		$my_submenus = array();
+
+		if ( current_user_can( 'cuar_pf_read' ) 
+				|| current_user_can( 'cuar_pf_edit' ) 
+				|| current_user_can( 'cuar_pf_manage_categories' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-files',
+					'title' => __( 'Private Files', 'cuar' ),
+					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_file' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pf_read' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-files',
+					'id' 	=> 'customer-area-files-list',
+					'title' => __( 'All files', 'cuar' ),
+					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_file' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pf_edit' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-files',
+					'id' 	=> 'customer-area-files-new',
+					'title' => __( 'New file', 'cuar' ),
+					'href' 	=> admin_url( 'post-new.php?post_type=cuar_private_file' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pf_manage_categories' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-files',
+					'id' 	=> 'customer-area-files-categories',
+					'title' => __( 'Manage categories', 'cuar' ),
+					'href' 	=> admin_url( 'edit-tags.php?taxonomy=cuar_private_file_category' )
+				);
+		}
+	
+		foreach ( $my_submenus as $submenu ) {
+			$submenus[] = $submenu;
+		}
+	
+		return $submenus;
 	}
 	
 	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/

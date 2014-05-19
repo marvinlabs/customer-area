@@ -180,7 +180,8 @@ div.cuar-needs-attention p {
 
 /* -= ADMIN MENU & ICONS */
 
-#adminmenu #toplevel_page_customer-area div.wp-menu-image:before {
+#adminmenu #toplevel_page_customer-area div.wp-menu-image:before,
+#wp-admin-bar-customer-area > a:before {
 	content: "\f332";
 } 
 

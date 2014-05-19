@@ -341,7 +341,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		$page_subtitle = '';
 		
 		// Paging
-		$pagination_param = _x( 'page-num', 'pagination_parameter_name', 'cuar' );
+		$pagination_param = _x( 'page-num', 'pagination_parameter_name (should not be "page")', 'cuar' );
 		$current_page = isset( $_GET[$pagination_param] ) ? $_GET[$pagination_param] : 1;
 		$posts_per_page = $this->get_max_item_number_in_listing();
 		$pagination_base = '';

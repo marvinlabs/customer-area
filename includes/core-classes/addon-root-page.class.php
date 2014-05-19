@@ -40,6 +40,7 @@ abstract class CUAR_RootPageAddOn extends CUAR_AbstractPageAddOn {
 		parent::run($cuar_plugin);
 		
 		add_action( 'template_redirect', array( &$this, 'redirect_to_main_page' ), 1000 );
+		add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), $this->get_priority() );
 	}
 	
 	protected function set_page_parameters( $priority, $description ) {
@@ -60,6 +61,22 @@ abstract class CUAR_RootPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function get_friendly_taxonomy() {
 		return $this->page_description['friendly_taxonomy'];
+	}
+
+	/**
+	 * Add the menu item
+	 */
+	public function add_adminbar_menu_items( $submenus ) {		
+		if ( $this->get_page_id()>0 ) {
+			$submenus[] = array(
+					'parent'=> 'customer-area-front-office',
+					'id' 	=> $this->get_slug(),
+					'title' => $this->get_title(),
+					'href' 	=> $this->get_page_url()
+				);
+		}
+	
+		return $submenus;
 	}
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/

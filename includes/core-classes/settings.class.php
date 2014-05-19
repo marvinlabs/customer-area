@@ -33,6 +33,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * Setup the WordPress hooks we need
 		 */
 		public function setup() {
+			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 10 );
+			
 			if (is_admin ()) {
 				add_action ( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_settings_menu_item' ), 100 );
 				add_action ( 'admin_init', array( &$this, 'page_init' ) );
@@ -80,6 +82,30 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			return $submenus;
 		}
+	
+		/**
+		 * Add the menu item
+		 */
+		public function add_adminbar_menu_items( $submenus ) {		
+			if ( current_user_can( 'manage_options' ) ) {
+				$tabs = apply_filters ( 'cuar/core/settings/settings-tabs', array () );
+				
+				$tabs_to_skip = array( 'cuar_addons', 'cuar_troubleshooting' );
+				foreach ( $tabs as $tab_id => $tab_label ) {
+					if ( in_array( $tab_id, $tabs_to_skip ) ) continue;
+					
+					$submenus[] = array(
+							'parent'=> 'customer-area-settings',
+							'id' 	=> 'customer-area-admin-settings-' . $tab_id,
+							'title' => $tab_label,
+							'href' 	=> admin_url( 'admin.php?page=cuar-settings&cuar_tab=' . $tab_id )
+						);
+				}
+			}
+		
+			return $submenus;
+		}
+	
 		public function print_plugin_action_links($links, $file) {
 			$link = '<a href="' . get_bloginfo ( 'wpurl' ) . '/wp-admin/admin.php?page=' . self::$OPTIONS_PAGE_SLUG . '">' . __ ( 'Settings', 'cuar' ) . '</a>';
 			array_unshift ( $links, $link );

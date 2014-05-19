@@ -36,6 +36,8 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {		
+		add_action( 'admin_bar_menu', array( &$this, 'build_adminbar_menu' ), 32 );
+			
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
 			add_action( 'cuar/core/on-plugin-update', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
@@ -182,6 +184,54 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 		    add_submenu_page($menu_slug, $submenu_page_title, $submenu_title, 
 		    		$submenu_capability, $submenu_slug, $submenu_function);
 	    }
+	}
+
+	/**
+	 * Build the admin bar menu
+	 */
+	public function build_adminbar_menu( $wp_admin_bar ) {	
+		$wp_admin_bar->add_menu(array(
+				'id' 	=> 'customer-area',
+				'title' => __( 'Customer Area', 'cuar' ),
+				'href' 	=> admin_url( 'admin.php?page=customer-area' )
+			));
+
+		$wp_admin_bar->add_menu(array(
+				'parent'=> 'customer-area',
+				'id' 	=> 'customer-area-front-office',
+				'title' => __( 'Your private area', 'cuar' ),
+				'href' 	=> '#'
+		));
+
+		$submenu_items = apply_filters( 'cuar/core/admin/adminbar-menu-items', array() );		
+		foreach ( $submenu_items as $item ) {
+			$wp_admin_bar->add_menu( $item );
+		}
+
+		if ( current_user_can( 'manage_options' ) ) {
+			$wp_admin_bar->add_menu(array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-settings',
+					'title' => __( 'Settings', 'cuar' ),
+					'href' 	=> admin_url( 'admin.php?page=cuar-settings' )
+				));
+		}
+
+		if ( current_user_can( 'manage_options' ) ) {			
+			$wp_admin_bar->add_menu(array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-support',
+					'title' => __( 'Help & support', 'cuar' ),
+					'href' 	=> admin_url( 'admin.php?page=cuar-settings&cuar_tab=cuar_troubleshooting' )
+				));
+
+			$wp_admin_bar->add_menu(array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-addons',
+					'title' => __( 'Add-ons', 'cuar' ),
+					'href' 	=> admin_url( 'admin.php?page=cuar-settings&cuar_tab=cuar_addons' )
+				));
+		}
 	}
 
 	public function print_customer_area_dashboard() {

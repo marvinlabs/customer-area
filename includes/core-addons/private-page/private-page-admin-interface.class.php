@@ -38,7 +38,7 @@ class CUAR_PrivatePageAdminInterface {
 		
 		if ( $this->private_page_addon->is_enabled() ) {
 			// Admin menu
-			add_action('cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 11 );			
+			add_action( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 11 );		
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 
 			// File list page
