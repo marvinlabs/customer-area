@@ -143,7 +143,7 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		return 'base';
 	}
 	
-	protected abstract function get_page_addon_path();	
+	public abstract function get_page_addon_path();	
 	
 	public function register_page( $pages ) {
 		if ( $this->page_description!=null ) { 

@@ -58,7 +58,7 @@ class CUAR_CustomerDashboardAddOn extends CUAR_AbstractPageAddOn {
 		$this->enable_sidebar();		
 	}	
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-dashboard';
 	}
 

@@ -176,6 +176,7 @@ your wordpress.org profile with your other developed plugins.
 = 5.0.0 (2014/) =
 
 * New: compatibility with the new Projects add-on (to manage projects and/or organize private content by project rather than by type)
+* New: private content lists are now paginated. This speeds up page loading when users have a lot of private content.
 * New: tool to help find & delete outdated customer pages (see Customer Area > Status > Pages)
 * New: theme developers now have some tools to disable some settings if their theme supports styling and/or external libraries
 * Fix: Changed item templates to be compatible with the updated Customer Area 4 theme (better responsiveness) 

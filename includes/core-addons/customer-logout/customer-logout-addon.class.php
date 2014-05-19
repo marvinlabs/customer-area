@@ -60,7 +60,7 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 		add_action( 'template_redirect', array( &$this, 'do_logout' ), 1000 );
 	}
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-logout';
 	}
 

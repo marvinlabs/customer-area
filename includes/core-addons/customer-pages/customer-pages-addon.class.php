@@ -266,7 +266,33 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
-
+	
+	public function print_pagination( $current_page_addon, $query, $pagination_base, $current_page ) {
+		$total = $query->max_num_pages;		
+		
+		// Don't do anything if only a single page
+		if ( $total==1 ) return;
+		
+		$pagination_param_name = _x( 'page-num', 'pagination_parameter_name (should not be "page")', 'cuar' );
+		$page_links = array();
+		
+		for ( $i=1; $i<=$total; ++$i ) {
+			$link = add_query_arg( $pagination_param_name, $i, $pagination_base );
+			$page_links[$i] = array(
+					'link'			=> $link,
+					'is_current'	=> ($i==$current_page)
+				);
+		}
+		
+		include( $this->plugin->get_template_file_path(
+				array( 
+						$current_page_addon->get_page_addon_path(),
+						CUAR_INCLUDES_DIR . '/core-addons/customer-pages'
+					),
+				$current_page_addon->get_slug() . "-pagination.template.php",
+				'templates',
+				"pagination.template.php" ) );
+	}
 
 	/*------- NAV MENU ----------------------------------------------------------------------------------------------*/
 	

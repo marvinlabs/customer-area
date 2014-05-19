@@ -54,7 +54,7 @@ class CUAR_CustomerPrivateFilesHomeAddOn extends CUAR_RootPageAddOn {
 		return __( 'Root page for the customer files.', 'cuar' );
 	}	
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-private-files';
 	}
 }

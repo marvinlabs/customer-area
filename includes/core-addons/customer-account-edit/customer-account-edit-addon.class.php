@@ -59,7 +59,7 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 		}
 	}
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-account-edit';
 	}
 

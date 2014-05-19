@@ -75,6 +75,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		$defaults[ $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER ] 		= true;
 		$defaults[ $slug . self::$OPTION_SHOW_IN_DASHBOARD ] 				= true;
 		$defaults[ $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD ] 	= 5;
+		$defaults[ $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING ] 		= 10;
 		
 		return $defaults;
 	}
@@ -95,6 +96,10 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function get_taxonomy_archive_slug( $tax ) {
 		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_TAXONOMY_SLUG . $tax );
+	}
+	
+	public function get_max_item_number_in_listing() {
+		return $this->plugin->get_option( $this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING, 10 );
 	}
 
 	/*------- ARCHIVES ----------------------------------------------------------------------------------------------*/
@@ -298,9 +303,18 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		$co_addon = $this->plugin->get_addon('container-owner');
 		$current_user_id = get_current_user_id();
 		$page_slug = $this->get_slug();	
-		
+
+		// Display mode
 		$display_mode = 'default';
+		
+		// Texts
 		$page_subtitle = '';
+		
+		// Paging
+		$pagination_param = _x( 'page-num', 'pagination_parameter_name', 'cuar' );
+		$current_page = isset( $_GET[$pagination_param] ) ? $_GET[$pagination_param] : 1;
+		$posts_per_page = $this->get_max_item_number_in_listing();
+		$pagination_base = '';
 		
 		// See if we are in the case of a taxonomy archive
 		$friendly_tax = $this->get_friendly_taxonomies();
@@ -317,7 +331,8 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 
 					$args = array(
 							'post_type' 		=> $this->get_friendly_post_type(),
-							'posts_per_page' 	=> -1,
+							'posts_per_page' 	=> $posts_per_page,
+							'paged'				=> $current_page,
 							'orderby' 			=> 'title',
 							'order' 			=> 'ASC',
 							'meta_query' 		=> $co_addon->get_meta_query_containers_owned_by( $current_user_id ),
@@ -329,7 +344,8 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 										)
 								)
 						);
-					
+
+					$pagination_base = $this->get_taxonomy_term_archive_url($tax, $term);					
 					break;
 				}
 			}
@@ -340,13 +356,15 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 			// Default view			
 			$args = array(
 					'post_type' 		=> $this->get_friendly_post_type(),
-					'posts_per_page' 	=> -1,
+					'posts_per_page' 	=> $posts_per_page,
+					'paged'				=> $current_page,
 					'orderby' 			=> 'title',
 					'order' 			=> 'ASC',
 					'meta_query' 		=> $co_addon->get_meta_query_containers_owned_by( $current_user_id )
 				);
 			
 			$page_subtitle = $this->get_default_page_subtitle();
+			$pagination_base = $this->get_page_url();
 		}
 		
 		$args = apply_filters( 'cuar/core/page/query-args?slug=' .  $page_slug, $args );
@@ -368,6 +386,10 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 					$this->get_slug() . "-content-{$display_mode}.template.php",
 					'templates',
 					$this->get_slug() . "-content.template.php" ));
+			
+			// Include paging navigation if necessary
+			$cp_addon = $this->plugin->get_addon('customer-pages');
+			$cp_addon->print_pagination( $this, $content_query, $pagination_base, $current_page );
 		} else {
 			include( $this->plugin->get_template_file_path(
 					$this->get_page_addon_path(),
@@ -596,6 +618,22 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 						'after'			=> '<p class="description">' . __( 'Define how many items to allow on the dashboard page. -1 will show all items.', 'cuar' ) )
 				);
 		}
+
+		add_settings_field(
+				$slug . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING,
+				'',
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				$this->get_settings_section(),
+				array(
+					'option_id' 	=> $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING,
+					'type' 			=> 'text',
+					'default_value' => 1,
+					'after'			=> '<p class="description">' 
+										. __( 'Define how many items to allow on the listing pages (main listing page, archive pages, etc.). -1 will show all items but this '
+										. 'can slow down the page display if the user has a lot of private items.', 'cuar' )
+										. '</p>' )
+			);
 		
 		$this->print_additional_settings( $cuar_settings, $options_group );
 	}
@@ -613,6 +651,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		$cuar_settings->validate_boolean( $input, $validated, $slug . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER );
 		$cuar_settings->validate_boolean( $input, $validated, $slug . self::$OPTION_SHOW_IN_DASHBOARD );
 		$cuar_settings->validate_int( $input, $validated, $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD );
+		$cuar_settings->validate_int( $input, $validated, $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING );
 		
 		$this->validate_additional_settings( $validated, $cuar_settings, $input );
 		
@@ -716,6 +755,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	public static $OPTION_SHOW_IN_SINGLE_POST_FOOTER	= '-show_in_single_post_footer';
 	public static $OPTION_SHOW_IN_DASHBOARD				= '-show_in_dashboard';
 	public static $OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD	= '-max_items_on_dashboard';
+	public static $OPTION_MAX_ITEM_NUMBER_ON_LISTING	= '-max_items_on_listing';
 	public static $OPTION_TAXONOMY_SLUG					= '-taxonomy_slug-';
 	
 	protected $enabled_settings = array();

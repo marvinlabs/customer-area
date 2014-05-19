@@ -55,7 +55,7 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 		parent::run_addon( $plugin );	
 	}
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-account';
 	}
 
