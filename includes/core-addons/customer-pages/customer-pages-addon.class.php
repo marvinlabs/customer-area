@@ -224,23 +224,32 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	}
 	
 	/**
-	 * List all the pages expected by Customer Area and its add-ons. 
-	 * 
-	 * Structure of the item is
-	 * 	'slug'					=> string
-	 * 	'label' 				=> string
-	 * 	'hint' 					=> string
-	 * 	'title' 				=> string
-	 * 	'parent_slug'			=> string (optional, defaults to 'dashboard')
-	 * 	'friendly_post_type' 	=> string (optional, defaults to null)
-	 *  'requires_login'		=> boolean (optional, defaults to true)
-	 *  'required_capability'	=> string
-	 * 
-	 * @return array
+	 * Get the customer area page corresponding to the given slug
 	 */
 	public function get_customer_area_page( $slug ) {
 		$customer_area_pages = $this->get_customer_area_pages();
 		return isset( $customer_area_pages[ $slug ] ) ? $customer_area_pages[ $slug ] : false;
+	}
+	
+	/**
+	 * Get the customer area page corresponding to the given ID
+	 */
+	public function get_customer_area_page_from_id( $page_id=0 ) {
+		if ( $page_id<=0 ) { 
+			$page_id = get_queried_object_id();
+		}
+		
+		// We expect a page. You should not make customer area pages in posts or any other custom post type.
+		if ( !is_page( $page_id ) ) return false;
+		
+		// Test if the current page is one of the root pages
+		$customer_area_pages = $this->get_customer_area_pages();
+		foreach ( $customer_area_pages as $slug => $page ) {
+			if ( $page->get_page_id()==$page_id  ) return $page;
+		}
+		
+		// Not found
+		return null;
 	}
 	
 	/**
