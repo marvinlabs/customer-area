@@ -177,6 +177,7 @@ your wordpress.org profile with your other developed plugins.
 
 * New: compatibility with the new Projects add-on (to manage projects and/or organize private content by project rather than by type)
 * New: private content lists are now paginated. This speeds up page loading when users have a lot of private content.
+* New: widget to show all authors of the private content you own. Can be used to see which files you have created for example.
 * New: menu in the admin bar to bring you directly to the page you are looking for
 * New: tool to help find & delete outdated customer pages (see Customer Area > Status > Pages)
 * New: theme developers now have some tools to disable some settings if their theme supports styling and/or external libraries

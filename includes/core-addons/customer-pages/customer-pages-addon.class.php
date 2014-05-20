@@ -76,6 +76,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		$defaults [self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES] 		= true;
 		$defaults [self::$OPTION_CATEGORY_ARCHIVE_SLUG] 				= _x( 'category', 'Private content category archive slug', 'cuar' );
 		$defaults [self::$OPTION_DATE_ARCHIVE_SLUG] 					= _x( 'archive', 'Private content date archive slug', 'cuar' );
+		$defaults [self::$OPTION_AUTHOR_ARCHIVE_SLUG] 					= _x( 'created-by', 'Private content author archive slug', 'cuar' );
 		return $defaults;
 	}
 	
@@ -188,6 +189,10 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	
 	public function get_date_archive_slug() {
 		return $this->plugin->get_option( self::$OPTION_DATE_ARCHIVE_SLUG );
+	}
+	
+	public function get_author_archive_slug() {
+		return $this->plugin->get_option( self::$OPTION_AUTHOR_ARCHIVE_SLUG );
 	}
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
@@ -799,6 +804,23 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 								. '</p>'
 					)
 			);
+
+		add_settings_field(
+				self::$OPTION_AUTHOR_ARCHIVE_SLUG,
+				__('Author Archive', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_core_permalinks',
+				array(
+						'option_id' => self::$OPTION_AUTHOR_ARCHIVE_SLUG,
+						'type' 		=> 'text',
+						'is_large'	=> false,
+						'after'		=> '<p class="description">'
+								. __( 'Slug that is used in the URL for author archives of private content. For example, the list of files created by user with ID 2 would look ' 
+									. 'like:<br/>http://example.com/customer-area/files/<b>my-slug</b>/2', 'cuar' )
+								. '</p>'
+					)
+			);
 		
 	}
 	
@@ -829,6 +851,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_CATEGORY_ARCHIVE_SLUG );
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_DATE_ARCHIVE_SLUG );
+		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_AUTHOR_ARCHIVE_SLUG );
 
 		if ( isset( $_POST['cuar_recreate_navigation_menu'] ) && check_admin_referer( 'recreate_navigation_menu','cuar_recreate_navigation_menu_nonce' ) ) {
 			$this->recreate_default_navigation_menu();
@@ -969,9 +992,10 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	// Options
 	public static $OPTION_CUSTOMER_PAGE = 'customer_page_';
 	public static $OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT	= 'customer_page_auto_menu_on_single_content';
-	public static $OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES	= 'customer_page_auto_menu_on_pages';
-	public static $OPTION_CATEGORY_ARCHIVE_SLUG	= 'cuar_permalink_category_archive_slug';
-	public static $OPTION_DATE_ARCHIVE_SLUG	= 'cuar_permalink_date_archive_slug';
+	public static $OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES		= 'customer_page_auto_menu_on_pages';
+	public static $OPTION_CATEGORY_ARCHIVE_SLUG					= 'cuar_permalink_category_archive_slug';
+	public static $OPTION_DATE_ARCHIVE_SLUG						= 'cuar_permalink_date_archive_slug';
+	public static $OPTION_AUTHOR_ARCHIVE_SLUG					= 'cuar_permalink_author_archive_slug';
 
 	/** @var array */
 	private $pages = null;

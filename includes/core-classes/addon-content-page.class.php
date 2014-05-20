@@ -55,7 +55,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	public function get_friendly_taxonomy() {
 		return $this->page_description['friendly_taxonomy'];
 	}
-	
+
+	protected abstract function get_author_archive_page_subtitle( $author_id );
 	protected abstract function get_category_archive_page_subtitle( $category );	
 	protected abstract function get_date_archive_page_subtitle( $year, $month=0 );	
 	protected abstract function get_default_page_subtitle();
@@ -139,6 +140,11 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 			$rewrite_regex = $page_slug . '/' . $cp_addon->get_category_archive_slug() . '/([^/]+)/?$';
 			$newrules[ $rewrite_regex ] = $rewrite_rule;
 		}
+		
+		// Author archives
+		$rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_author=$matches[1]';
+		$rewrite_regex = $page_slug . '/' . $cp_addon->get_author_archive_slug() . '/([0-9]+)/?$';
+		$newrules[ $rewrite_regex ] = $rewrite_rule;
 			
 		// Year archives
 		$rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_year=$matches[1]';
@@ -165,6 +171,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		
 	    array_push($vars, 'cuar_year');
 	    array_push($vars, 'cuar_month');
+	    array_push($vars, 'cuar_author');
 	    
 	    return $vars;
 	}
@@ -208,6 +215,25 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		$url = trailingslashit( get_permalink( $page_id ) );
 		$url .= $cp_addon->get_category_archive_slug() . '/';
 		$url .= $term->slug;
+		
+		return $url;
+	}
+	
+	/**
+	 * Get the URL for the archive corresponding to a given author.
+	 * 
+	 * @param unknown $author_id
+	 * @return string|unknown
+	 */
+	public function get_author_archive_url( $author_id ) {
+		$cp_addon = $this->plugin->get_addon( 'customer-pages' );
+		
+		$page_id = $cp_addon->get_page_id( $this->get_slug() );
+		if ( $page_id==false ) return '';
+		
+		$url = trailingslashit( get_permalink( $page_id ) );
+		$url .= $cp_addon->get_author_archive_slug() . '/';
+		$url .= $author_id;
 		
 		return $url;
 	}
@@ -334,7 +360,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		// Display mode
 		$year = get_query_var( 'cuar_year' );
 		$month = get_query_var( 'cuar_month' );
-		$category = get_query_var( 'cuar_category' );		
+		$category = get_query_var( 'cuar_category' );	
+		$author_id = get_query_var( 'cuar_author' );		
 		$display_mode = 'default';
 		
 		// Texts
@@ -391,6 +418,27 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 			}
 			
 			$page_subtitle = $this->get_date_archive_page_subtitle( $year, $month );
+		} else if ( !empty( $author_id ) ) {
+			// Author archive, only show the files created by that user
+			$display_mode = 'author_archive';
+		
+			$args = array(
+					'post_type' 		=> $this->get_friendly_post_type(),
+					'posts_per_page' 	=> $posts_per_page,
+					'paged'				=> $current_page,
+					'orderby' 			=> 'title',
+					'order' 			=> 'ASC',
+					'author' 			=> $author_id
+				);
+			
+			// If the content authored by someone else is requested, don't show anyone else's content  
+			if ( $author_id!=get_current_user_id() ) {
+				$args['meta_query'] = $po_addon->get_meta_query_post_owned_by( $current_user_id );
+			}
+			
+			$pagination_base = $this->get_author_archive_url( $author_id );
+			
+			$page_subtitle = $this->get_author_archive_page_subtitle( $author_id );
 		} else {
 			// Default view			
 			$args = array(
