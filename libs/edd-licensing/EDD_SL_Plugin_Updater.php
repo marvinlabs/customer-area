@@ -1,5 +1,7 @@
 <?php
 
+if ( !class_exists( "EDD_SL_Plugin_Updater" ) ) :
+
 // uncomment this line for testing
 //set_site_transient( 'update_plugins', null );
 
@@ -160,3 +162,5 @@ class EDD_SL_Plugin_Updater {
 		endif;
 	}
 }
+
+endif; // !class_exists( "EDD_SL_Plugin_Updater" ) 
