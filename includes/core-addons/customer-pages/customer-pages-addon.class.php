@@ -77,6 +77,9 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		$defaults [self::$OPTION_CATEGORY_ARCHIVE_SLUG] 				= _x( 'category', 'Private content category archive slug', 'cuar' );
 		$defaults [self::$OPTION_DATE_ARCHIVE_SLUG] 					= _x( 'archive', 'Private content date archive slug', 'cuar' );
 		$defaults [self::$OPTION_AUTHOR_ARCHIVE_SLUG] 					= _x( 'created-by', 'Private content author archive slug', 'cuar' );
+		$defaults [self::$OPTION_UPDATE_CONTENT_SLUG] 					= _x( 'update', 'Private content update slug', 'cuar' );
+		$defaults [self::$OPTION_DELETE_CONTENT_SLUG] 					= _x( 'delete', 'Private content delete slug', 'cuar' );
+		
 		return $defaults;
 	}
 	
@@ -193,6 +196,14 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	
 	public function get_author_archive_slug() {
 		return $this->plugin->get_option( self::$OPTION_AUTHOR_ARCHIVE_SLUG );
+	}
+	
+	public function get_update_content_slug() {
+		return $this->plugin->get_option( self::$OPTION_UPDATE_CONTENT_SLUG );
+	}
+	
+	public function get_delete_content_slug() {
+		return $this->plugin->get_option( self::$OPTION_DELETE_CONTENT_SLUG );
 	}
 	
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
@@ -821,6 +832,38 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 								. '</p>'
 					)
 			);
+
+		add_settings_field(
+				self::$OPTION_UPDATE_CONTENT_SLUG,
+				__('Update Content', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_core_permalinks',
+				array(
+						'option_id' => self::$OPTION_UPDATE_CONTENT_SLUG,
+						'type' 		=> 'text',
+						'is_large'	=> false,
+						'after'		=> '<p class="description">'
+								. __( 'Slug that is used in the URL to update existing private content', 'cuar' )
+								. '</p>'
+					)
+			);
+
+		add_settings_field(
+				self::$OPTION_DELETE_CONTENT_SLUG,
+				__('Delete Content', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_core_permalinks',
+				array(
+						'option_id' => self::$OPTION_DELETE_CONTENT_SLUG,
+						'type' 		=> 'text',
+						'is_large'	=> false,
+						'after'		=> '<p class="description">'
+								. __( 'Slug that is used in the URL to delete existing private content', 'cuar' )
+								. '</p>'
+					)
+			);
 		
 	}
 	
@@ -852,6 +895,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_CATEGORY_ARCHIVE_SLUG );
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_DATE_ARCHIVE_SLUG );
 		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_AUTHOR_ARCHIVE_SLUG );
+		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_UPDATE_CONTENT_SLUG );
+		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_DELETE_CONTENT_SLUG );
 
 		if ( isset( $_POST['cuar_recreate_navigation_menu'] ) && check_admin_referer( 'recreate_navigation_menu','cuar_recreate_navigation_menu_nonce' ) ) {
 			$this->recreate_default_navigation_menu();
@@ -996,6 +1041,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	public static $OPTION_CATEGORY_ARCHIVE_SLUG					= 'cuar_permalink_category_archive_slug';
 	public static $OPTION_DATE_ARCHIVE_SLUG						= 'cuar_permalink_date_archive_slug';
 	public static $OPTION_AUTHOR_ARCHIVE_SLUG					= 'cuar_permalink_author_archive_slug';
+	public static $OPTION_UPDATE_CONTENT_SLUG					= 'cuar_permalink_update_content_slug';
+	public static $OPTION_DELETE_CONTENT_SLUG					= 'cuar_permalink_delete_content_slug';
 
 	/** @var array */
 	private $pages = null;

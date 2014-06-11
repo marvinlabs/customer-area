@@ -181,10 +181,12 @@ your wordpress.org profile with your other developed plugins.
 * New: menu in the admin bar to bring you directly to the page you are looking for
 * New: tool to help find & delete outdated customer pages (see Customer Area > Status > Pages)
 * New: theme developers now have some tools to disable some settings if their theme supports styling and/or external libraries
+* Fix: a server error 500 occuring when another plugin also uses the Easy Digital Downloads licensing system 
 * Fix: Changed item templates to be compatible with the updated Customer Area 4 theme (better responsiveness) 
 * Fix: javascript error in the private files and private pages settings
 * Fix: avoid defining the wp_bootstrap_navwalker class multiple times if other themes/plugins are already using it
 * Fix: normalized a lot of action and filter names (big clean-up on that side to make it more organized and try to make it more understandable) 
+* Fix: some improvements on the default-v4 skin (credits go to [Thomas Lartaud](http://www.thomaslartaud.com/))
 
 = 4.6.0 (2014/04/17) =
 

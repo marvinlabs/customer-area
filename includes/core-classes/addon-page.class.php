@@ -243,6 +243,8 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 					'customer-page.template.php',
 					'templates' );
 			include( $template_path );
+		} else {
+			echo '<p>' . __('You are not allowed to view this page', 'cuar') . '</p>';
 		}
 	}
 	

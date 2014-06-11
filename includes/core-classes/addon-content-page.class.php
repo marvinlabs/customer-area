@@ -488,6 +488,41 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	/*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 	
+	public function print_single_private_content_action_links( $content ) {		
+		// If theme is taking care of it, don't do anything
+		$theme_support = get_theme_support( 'customer-area.single-post-templates' );
+		if ( is_array( $theme_support ) && in_array( $this->get_friendly_post_type(), $theme_support[0] ) ) return $content;	
+		
+		// If not on a matching post type, we do nothing
+		if ( !is_singular( $this->get_friendly_post_type() ) ) return $content;		
+		if ( get_post_type()!=$this->get_friendly_post_type() ) return $content;	
+
+		ob_start();
+		
+		do_action( 'cuar/private-content/view/before_action_links', $this );
+		do_action( 'cuar/private-content/view/before_action_links?post-type=' . $this->get_friendly_post_type(), $this );
+
+		$links = apply_filters( 'cuar/private-content/view/single-post-action-links', array() );
+		$links = apply_filters( 'cuar/private-content/view/single-post-action-links?post-type=' . $this->get_friendly_post_type(), $links );
+		
+		include( $this->plugin->get_template_file_path(
+				array(
+						$this->get_page_addon_path(),
+						CUAR_INCLUDES_DIR . '/core-classes'
+				),
+				$this->get_slug() . '-single-post-action-links.template.php',
+				'templates',
+				'single-post-action-links.template.php' ));
+		
+		do_action( 'cuar/private-content/view/after_action_links', $this );
+		do_action( 'cuar/private-content/view/after_action_links?post-type=' . $this->get_friendly_post_type(), $this );
+		
+  		$out = ob_get_contents();
+  		ob_end_clean(); 
+  		
+  		return $out . $content;
+	}
+	
 	public function print_single_private_content_footer( $content ) {		
 		// If theme is taking care of it, don't do anything
 		$theme_support = get_theme_support( 'customer-area.single-post-templates' );
@@ -500,6 +535,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		ob_start();
 		
 		do_action( 'cuar/private-content/view/before_footer', $this );
+		do_action( 'cuar/private-content/view/before_footer?post-type=' . $this->get_friendly_post_type(), $this );
 		
 		include( $this->plugin->get_template_file_path(
 				$this->get_page_addon_path(),
@@ -507,10 +543,12 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 				'templates' ));	
 		
 		do_action( 'cuar/private-content/view/before_additional_footer', $this );
+		do_action( 'cuar/private-content/view/before_additional_footer?post-type=' . $this->get_friendly_post_type(), $this );
 		
 		$this->print_additional_private_content_footer();
 		
 		do_action( 'cuar/private-content/view/after_footer', $this );
+		do_action( 'cuar/private-content/view/after_footer?post-type=' . $this->get_friendly_post_type(), $this );
 		
   		$out = ob_get_contents();
   		ob_end_clean(); 
@@ -708,6 +746,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		}
 		
 		if ( !is_admin() ) {
+			add_filter( 'the_content', array( &$this, 'print_single_private_content_action_links' ), 2990 );
+				
 			// Optionally output the file links in the post footer area
 			if ( $this->is_show_in_single_post_footer_enabled() ) {
 				add_filter( 'the_content', array( &$this, 'print_single_private_content_footer' ), 3000 );
