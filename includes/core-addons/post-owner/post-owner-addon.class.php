@@ -429,7 +429,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		foreach ($post_types as $type) {
 			add_meta_box( 
 					'cuar_post_owner', 
-					'<span class="dashicons dashicons-visibility"></span> ' . __( 'Assignment', 'cuar' ), 
+					__( 'Assignment', 'cuar' ), 
 					array( &$this, 'print_owner_meta_box'), 
 					$type, 
 					'normal', 

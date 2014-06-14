@@ -13,6 +13,17 @@
 	}
 }
 
+.cuar-page-without-sidebar .cuar-item-list {
+	
+	.cuar-item-large {
+			.make-sm-column(4);
+	}
+		
+	.cuar-item-wide {
+			.make-sm-column(6);
+	}
+}
+
 // Items
 // --------------------------------------------------
 
@@ -77,10 +88,17 @@
 	
 		.badge {
 				font-weight: normal;
+				margin-left: 5px;
 		}
 	
 		.badge.small {
 				font-size: 70%;
+		}
+		
+		.badge .dashicons {
+				width: auto;
+				height: auto;
+				font-size: inherit;
 		}
 		
 		a:hover {
@@ -141,37 +159,3 @@
 
 
 
-/////////////// DEPRECATED STYLES TO BE REMOVED !!!!
-
-.cuar-page-customer-dashboard table.cuar-item-list .cuar-item, 
-table.cuar-item-list .cuar-item {
-		
-	.meta {
-			width: 30%;
-	}
-	
-	.content {
-			width: 60%;
-	}
-	
-	.links {
-			width: 10%;
-	}
-}
-
-.cuar-page-customer-dashboard table.cuar-item-list .cuar-item, 
-table.cuar-item-list .cuar-item {
-	.sender, .recipient {
-			opacity: 0.8;
-	}
-	
-	.meta {
-	}
-	
-	.content {
-	}
-	
-	.links {
-			text-align: right;
-	}
-}

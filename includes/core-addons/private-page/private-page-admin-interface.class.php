@@ -26,8 +26,6 @@ if (!class_exists('CUAR_PrivatePageAdminInterface')) :
 class CUAR_PrivatePageAdminInterface {
 	
 	public function __construct( $plugin, $private_page_addon ) {
-		global $cuar_po_addon;
-		
 		$this->plugin = $plugin;
 		$this->private_page_addon = $private_page_addon;
 

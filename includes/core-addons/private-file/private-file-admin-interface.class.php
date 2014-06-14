@@ -26,8 +26,6 @@ if (!class_exists('CUAR_PrivateFileAdminInterface')) :
 class CUAR_PrivateFileAdminInterface {
 	
 	public function __construct( $plugin, $private_file_addon ) {
-		global $cuar_po_addon;
-		
 		$this->plugin = $plugin;
 		$this->private_file_addon = $private_file_addon;
 
