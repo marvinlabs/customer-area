@@ -729,8 +729,8 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		$private_post_types = $this->plugin->get_content_post_types();
 			
 		// If not on a matching post type, we do nothing
-		if ( !is_singular( $private_post_types ) ) return;
-	
+		if ( empty( $private_post_types ) ||!is_singular( $private_post_types ) ) return;
+
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
 			$this->plugin->login_then_redirect_to_url( get_permalink() );
