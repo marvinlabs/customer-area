@@ -114,17 +114,64 @@
 	.panel {
 			border-left: 0 solid transparent;
 			padding-left: 0;
-	}
-	
-	.panel:hover {
+			
+		&:hover {
 			background: @item-hover-bg;
 			padding-left: @item-border-padding;
 			border-left: @item-border-width solid @item-border-color;
 			
-		.badges {
-				top: -5px;
-				right: -5px;
+			.badges {
+					top: -5px;
+					right: -5px;
+			}
 		}
+	
+		&.static:hover {
+				background: @item-hover-bg;
+				padding-left: 0;
+				border-left: 0 none @item-border-color;
+				
+			.badges {
+					top: 0px;
+					right: 0px;
+			}
+		}
+	}
+}
+
+@bullet-item-border-color: #ddd;
+
+.cuar-item.with-bullets {
+		margin: 0;
+	
+	.item-container {
+			border-bottom: 1px solid @bullet-item-border-color;
+	}
+	
+	.panel,
+	.panel.static:hover {
+			margin-left: 40px;
+			padding-left: 20px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			border-left: 1px solid @bullet-item-border-color;
+	}
+	
+	.panel:before {
+		   	content: " ";
+		   	position: absolute;
+		   	width: 0;
+		   	top: 0;
+		   	left: -5px;
+		   	bottom: 0;
+			border-left: 1px solid @bullet-item-border-color;
+	}
+	
+	.bullet {
+			width: 30px; 
+			float:left;
+			padding-top: 10px;
+			padding-bottom: 10px;
 	}
 }
 

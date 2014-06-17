@@ -273,7 +273,7 @@ abstract class CUAR_AbstractUpdateContentPageAddOn extends CUAR_AbstractEditCont
 
 		if ( isset( $capability_groups[$post_type] ) ) {
 			$capability_groups[$post_type]['groups']['update-content'] = array(
-					'group_name' 	=> __( 'Content edition (from front-office)', 'cuar' ),
+					'group_name' 	=> __( 'Content update (from front-office)', 'cuar' ),
 					'capabilities' 	=> array(
 							$post_type . '_update_any_content'			=> __( 'Update any content from front office', 'cuar' ),
 							$post_type . '_update_authored_content'		=> __( 'Update authored content', 'cuar' ),

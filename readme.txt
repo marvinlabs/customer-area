@@ -173,7 +173,7 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 5.0.0 (2014/) =
+= 5.0.0 (2014/06/17) =
 
 * New: compatibility with the new Projects add-on (to manage projects and/or organize private content by project rather than by type)
 * New: private content lists are now paginated. This speeds up page loading when users have a lot of private content.

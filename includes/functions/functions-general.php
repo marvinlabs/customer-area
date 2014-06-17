@@ -50,3 +50,17 @@ function cuar_is_customer_area_private_content( $post = null ) {
 	
 	return in_array( get_post_type( $post ), $private_types );
 }
+
+/**
+ * Outputs a loading indicator
+ */
+function cuar_ajax_loading( $is_visible=false ) {
+?>
+	<div class="ajax-loading" style="display: <?php echo $is_visible==false ? 'none' : 'block'; ?>;">
+		<div class="circle left"></div>
+		<div class="circle middle"></div>
+		<div class="circle right"></div>
+		<div class="clearfix"></div>
+	</div>
+<?php 
+}

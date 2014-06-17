@@ -22,5 +22,31 @@
 		margin-top: 20px;
 		
 	.cuar-task {
+			position: relative;
+		
+		.description {
+			p:last-child {
+					margin-bottom: 10px;
+			}
+		}
+		
+		.footer {
+				opacity: 0.8;
+				font-style: italic;
+				font-size: 80%;
+				
+			.dashicons, .dashicons-before:before {
+					width: 15px;
+					height: 15px;
+					font-size: 15px;
+			}
+		}
+		
+		&.completed {
+			.description {
+					opacity: 0.8;
+					text-decoration: line-through;
+			}
+		}
 	}
 }
