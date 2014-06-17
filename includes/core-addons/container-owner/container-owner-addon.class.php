@@ -90,8 +90,8 @@ class CUAR_ContainerOwnerAddOn extends CUAR_AddOn {
 		$private_container_types = $this->plugin->get_container_post_types();
 			
 		// If not on a matching post type, we do nothing
-		if ( !is_singular( $private_container_types ) ) return;
-	
+		if ( empty( $private_container_types ) || !is_singular( $private_container_types ) ) return;
+		
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
 			$this->plugin->login_then_redirect_to_url( get_permalink() );
