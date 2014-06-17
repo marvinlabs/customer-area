@@ -181,6 +181,7 @@ your wordpress.org profile with your other developed plugins.
 * New: menu in the admin bar to bring you directly to the page you are looking for
 * New: tool to help find & delete outdated customer pages (see Customer Area > Status > Pages)
 * New: theme developers now have some tools to disable some settings if their theme supports styling and/or external libraries
+* New: adding a filter to change the base storage directory for private data (files for instance): 'cuar/core/ownership/base-private-storage-directory'
 * Fix: a server error 500 occuring when another plugin also uses the Easy Digital Downloads licensing system 
 * Fix: Changed item templates to be compatible with the updated Customer Area 4 theme (better responsiveness) 
 * Fix: javascript error in the private files and private pages settings
