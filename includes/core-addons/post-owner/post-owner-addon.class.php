@@ -87,6 +87,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 */
 	public function get_base_private_storage_directory( $create_dirs = false ) {
 		$dir = WP_CONTENT_DIR . '/customer-area';	
+		$dir = apply_filters( 'cuar/core/ownership/base-private-storage-directory', $dir );
 		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, 0775, true );	
 		return $dir;
 	}
