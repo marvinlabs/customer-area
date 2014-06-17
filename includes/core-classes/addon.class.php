@@ -31,11 +31,11 @@ abstract class CUAR_AddOn {
 		$this->addon_id = $addon_id;
 		$this->min_cuar_version = $min_cuar_version;
 
-		add_action( 'cuar_default_options', array( &$this, 'set_default_options' ) );
-		add_action( 'cuar_addons_init', array( &$this, 'run' ), 10 );
+		add_action( 'cuar/core/settings/default-options', array( &$this, 'set_default_options' ) );
+		add_action( 'cuar/core/addons/init', array( &$this, 'run' ), 10 );
 		
 		if ( is_admin() ) {
-			add_action( 'cuar_after_addons_init', array( &$this, 'check_attention_needed' ), 10 );
+			add_action( 'cuar/core/addons/after-init', array( &$this, 'check_attention_needed' ), 10 );
 		}
 	}
 	
@@ -58,9 +58,9 @@ abstract class CUAR_AddOn {
 		
 		if ( is_admin() && $cuar_plugin->has_commercial_addons() ) {
 			// Settings
-			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 900, 1 );
-			add_action( 'cuar_addon_print_settings_cuar_licenses', array( &$this, 'print_license_settings' ), 10, 2 );
-			add_filter( 'cuar_addon_validate_options_cuar_licenses', array( &$this, 'validate_license_options' ), 10, 3 );
+			add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_settings_tab' ), 900, 1 );
+			add_action( 'cuar/core/settings/print-settings?tab=cuar_licenses', array( &$this, 'print_license_settings' ), 10, 2 );
+			add_filter( 'cuar/core/settings/validate-settings?tab=cuar_licenses', array( &$this, 'validate_license_options' ), 10, 3 );
 		}
 	}
 	

@@ -40,12 +40,14 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
-			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
+			add_filter( 'cuar/core/post-types/content', array( &$this, 'register_private_post_types' ) );
+			add_filter( 'cuar/core/types/content', array( &$this, 'register_content_type' ) );
 			
 			add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
 			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 			
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ) );
+			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ) );
+			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 10 );
 		}
 				
 		// Init the admin interface if needed
@@ -67,6 +69,57 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
 		
 		return $defaults;
+	}
+
+	/**
+	 * Add the menu item
+	 */
+	public function add_adminbar_menu_items( $submenus ) {
+		$my_submenus = array();
+
+		if ( current_user_can( 'cuar_pf_read' ) 
+				|| current_user_can( 'cuar_pf_edit' ) 
+				|| current_user_can( 'cuar_pf_manage_categories' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-files',
+					'title' => __( 'Private Files', 'cuar' ),
+					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_file' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pf_read' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-files',
+					'id' 	=> 'customer-area-files-list',
+					'title' => __( 'All files', 'cuar' ),
+					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_file' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pf_edit' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-files',
+					'id' 	=> 'customer-area-files-new',
+					'title' => __( 'New file', 'cuar' ),
+					'href' 	=> admin_url( 'post-new.php?post_type=cuar_private_file' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pf_manage_categories' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-files',
+					'id' 	=> 'customer-area-files-categories',
+					'title' => __( 'Manage categories', 'cuar' ),
+					'href' 	=> admin_url( 'edit-tags.php?taxonomy=cuar_private_file_category' )
+				);
+		}
+	
+		foreach ( $my_submenus as $submenu ) {
+			$submenus[] = $submenu;
+		}
+	
+		return $submenus;
 	}
 	
 	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
@@ -111,7 +164,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	public function get_file_name( $post_id ) {
 		$file = get_post_meta( $post_id, 'cuar_private_file_file', true );	
 		if ( !$file || empty( $file ) ) return '';	
-		return apply_filters( 'cuar_get_file_name', $file['file'] );
+		return apply_filters( 'cuar/private-content/files/file-name', $file['file'] );
 	}
 	
 	/**
@@ -123,7 +176,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	public function get_file_type( $post_id ) {
 		$file = get_post_meta( $post_id, 'cuar_private_file_file', true );	
 		if ( !$file || empty( $file ) ) return '';	
-		return apply_filters( 'cuar_get_file_type', pathinfo( $file['file'], PATHINFO_EXTENSION ) );
+		return apply_filters( 'cuar/private-content/files/file-type', pathinfo( $file['file'], PATHINFO_EXTENSION ) );
 	}
 	
 	/**
@@ -138,7 +191,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$file_name = $this->get_file_name( $post_id );
 		$file_path = $po_addon->get_private_file_path( $file_name, $post_id );
 		
-		return filesize( $file_path );
+		return apply_filters( 'cuar/private-content/files/file-size', filesize( $file_path ) );
 	}
 	
 	/**
@@ -148,7 +201,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @return int
 	 */
 	public function get_file_download_count( $post_id ) {
-		$count = get_post_meta( $post_id, 'cuar_private_file_download_count', true );	
+		$count = get_post_meta( $post_id, 'cuar/private-content/files/on-download_count', true );	
 		if ( !$count || empty( $count ) ) return 0;	
 		return intval( $count );
 	}
@@ -161,7 +214,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 */
 	public function increment_file_download_count( $post_id ) {
 		update_post_meta( $post_id, 
-			'cuar_private_file_download_count', 
+			'cuar/private-content/files/on-download_count', 
 			$this->get_file_download_count( $post_id ) + 1 );
 	}
 	
@@ -251,7 +304,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		// Do some file type checking on the uploaded file if needed
 		$new_file_name = $file['name'];
-		$supported_types = apply_filters( 'cuar_private_file_supported_types', null );
+		$supported_types = apply_filters( 'cuar/private-content/files/supported-types', null );
 		if ( $supported_types!=null ) {
 			$arr_file_type = wp_check_filetype( basename( $file['name'] ) );
 			$uploaded_type = $arr_file_type['type'];
@@ -392,7 +445,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				$this->increment_file_download_count( $post->ID );
 			}
 			
-			do_action( 'cuar_private_file_download', $post->ID, $current_user_id, $this );	
+			do_action( 'cuar/private-content/files/on-download', $post->ID, $current_user_id, $this );	
 					
 			$this->output_file( $file_path, $file_name, $file_type, 'download' );
 		} else if ( $action=='view' ) {			
@@ -400,7 +453,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				$this->increment_file_download_count( $post->ID );
 			}
 			
-			do_action( 'cuar_private_file_view', $post->ID, $current_user_id, $this );		
+			do_action( 'cuar/private-content/files/on-view', $post->ID, $current_user_id, $this );		
 			
 			$this->output_file( $file_path, $file_name, $file_type, 'view' );
 		} else {
@@ -720,9 +773,23 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 	
 	/**
+	 * Declare our content type
+	 * @param array $types
+	 * @return array
+	 */
+	public function register_content_type($types) {
+		$types['cuar_private_file'] = array(
+				'label-singular'		=> _x( 'File', 'cuar_private_file', 'cuar' ),
+				'label-plural'			=> _x( 'Files', 'cuar_private_file', 'cuar' ),
+				'content-page-addon'	=> 'customer-private-files'
+			);
+		return $types;
+	}
+	
+	/**
 	 * Declare that our post type is owned by someone
-	 * @param unknown $types
-	 * @return string
+	 * @param array $types
+	 * @return array
 	 */
 	public function register_private_post_types($types) {
 		$types[] = "cuar_private_file";
@@ -774,7 +841,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 					)
 			);
 
-		register_post_type( 'cuar_private_file', apply_filters( 'cuar_private_file_post_type_args', $args ) );
+		register_post_type( 'cuar_private_file', apply_filters( 'cuar/private-content/files/register-post-type-args', $args ) );
 
 		$labels = array(
 				'name' 						=> _x( 'File Categories', 'cuar_private_file_category', 'cuar' ),
@@ -813,7 +880,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 					)
 			);
 	  
-		register_taxonomy( 'cuar_private_file_category', array( 'cuar_private_file' ), $args );
+		register_taxonomy( 'cuar_private_file_category', array( 'cuar_private_file' ), apply_filters( 'cuar/private-content/files/category/register-taxonomy-args', $args ) );
 	}
 
 	// General options

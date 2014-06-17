@@ -55,7 +55,7 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 		parent::run_addon( $plugin );	
 	}
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-account';
 	}
 
@@ -67,22 +67,22 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 		$up_addon = $this->plugin->get_addon('user-profile');
 		$fields = $up_addon->get_profile_fields();
 
-		do_action( 'cuar/user-profile/view/before_fields', $current_user );
+		do_action( 'cuar/core/user-profile/view/before_fields', $current_user );
 		
 		foreach ( $fields as $id => $field ) {
-			do_action( 'cuar/user-profile/view/before_field/id=' . $id, $current_user );
+			do_action( 'cuar/core/user-profile/view/before_field?id=' . $id, $current_user );
 		
 			$field->render_read_only_field( $current_user->ID );
 		
-			do_action( 'cuar/user-profile/view/after_field/id=' . $id, $current_user );
+			do_action( 'cuar/core/user-profile/view/after_field?id=' . $id, $current_user );
 		}
 		
-		do_action( 'cuar/user-profile/view/after_fields', $current_user );
+		do_action( 'cuar/core/user-profile/view/after_fields', $current_user );
 	}
 	
 	protected function get_current_user() {
 		if ( $this->current_user==null ) {
-			$user_id = apply_filters( 'cuar/user-profile/view/get_current_user_id', get_current_user_id() );
+			$user_id = apply_filters( 'cuar/core/user-profile/view/override-user-id', get_current_user_id() );
 			$this->current_user = get_userdata( $user_id );
 		}
 		return $this->current_user;

@@ -46,7 +46,21 @@ function cuar_is_customer_area_page( $post_id = 0 ) {
  */
 function cuar_is_customer_area_private_content( $post = null ) {
 	$cuar_plugin = CUAR_Plugin::get_instance();
-	$private_types = $cuar_plugin->get_private_post_types();
+	$private_types = $cuar_plugin->get_content_post_types();
 	
 	return in_array( get_post_type( $post ), $private_types );
+}
+
+/**
+ * Outputs a loading indicator
+ */
+function cuar_ajax_loading( $is_visible=false ) {
+?>
+	<div class="ajax-loading" style="display: <?php echo $is_visible==false ? 'none' : 'block'; ?>;">
+		<div class="circle left"></div>
+		<div class="circle middle"></div>
+		<div class="circle right"></div>
+		<div class="clearfix"></div>
+	</div>
+<?php 
 }

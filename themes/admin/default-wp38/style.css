@@ -5,7 +5,7 @@
 }
  
 .metabox-row {
-	margin: 0.5em 0; 
+	margin: 1.5em 0 1em; 
 }
 table.metabox-row {
 	width: 100%;
@@ -25,6 +25,39 @@ span.label {
 
 .form-table input[type=text], .form-table select, .form-table text-area {
 	min-width: 200px;
+}
+
+a.cuar-round-button {
+	display: inline-block; 
+	width: 24px;
+	height: 24px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	line-height: 24px;
+	text-align: center;
+	border-radius: 50%;
+	color: #fff;
+	background: #666;
+	cursor: pointer;
+	text-decoration: none;
+	opacity: 0.8;
+}
+
+a.cuar-round-button .dashicons {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+}
+
+a.cuar-round-button:hover {
+	background: #333;
+}
+
+a.cuar-round-button:visited,
+a.cuar-round-button:active,
+a.cuar-round-button:hover {
+	text-decoration: none;
+	color: #fff;
 }
 
 /* -= Status */
@@ -180,7 +213,8 @@ div.cuar-needs-attention p {
 
 /* -= ADMIN MENU & ICONS */
 
-#adminmenu #toplevel_page_customer-area div.wp-menu-image:before {
+#adminmenu #toplevel_page_customer-area div.wp-menu-image:before,
+#wp-admin-bar-customer-area > a:before {
 	content: "\f332";
 } 
 
@@ -399,55 +433,229 @@ p.forcelinebreak {
 	background-image: none;
 }
 
-/* -= FIELD ADMIN */
 
-.cuar-field-panel {
+/* -= JQUERY.DATEPICKER */
+
+.cuar-datepicker {
+	position: relative;
 	width: 100%;
-	margin-bottom: 8px;
+	display: block;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
 }
 
-.cuar-field-panel-header {
-	width: 100%;
+.cuar-datepicker .title {
+	display: inline-block;
+	width: 33%;
+	margin-right: 5%;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
+}
+
+.cuar-datepicker input {
+	display: inline-block;
+	width: 60%;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
+}
+
+.cuar-datepicker .dashicons {
+	display: block;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	color: #666;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
+}
+
+/* -= Projects */
+
+.cuar-horizontal-progress {
+	border: 1px solid #efefef;
+	background: #fafafa;
+	height: 15px;
+}
+
+.wp-list-table .cuar-horizontal-progress {
+	margin-top: 5px;
+	text-align: center;
+}
+
+.cuar-horizontal-progress>div {
+	display: block;
+	height: 100%;
+	width: 0;
+	background: #87CEEB;
+	text-indent: -9999px;
+}
+
+.cuar-horizontal-progress>.caption {
+	color: #999;
+}
+
+input.knob {
+	-webkit-box-shadow: none;
+	    	box-shadow: none;
+}
+
+.knob-container {
+	text-align: center;
+}
+
+.column-cuar_progress {
+	width: 100px;
+}
+
+.column-cuar_status {
+    width: 110px;
+}
+
+.column-cuar_started,
+.column-cuar_due,
+.column-cuar_completed {
+    width: 120px;
+}
+
+.column-cuar_team .dashicons {
+	font-size: 18px;
+	height: 24px;
+	margin-right: 10px;
+}
+
+/* -= Tasks */
+
+.cuar-tasks {
+	margin-top: 15px;
+	border-top: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	background: #999;
+}
+
+.cuar-task {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.cuar-task .cuar-header {
+	padding: 10px; 
 	background: #fff;
-	border: 1px solid #e1e1e1;
-	padding: 8px 10px;
-	line-height: 1.4em;
-	font-size: 14px;
 }
 
-.cuar-field-panel-header:hover {
-	cursor: pointer;
+.cuar-task .cuar-panel { 
+	padding: 20px 10px; 
+	border-top: 1px solid #e5e5e5;
 	background: #fafafa;
 }
 
-.cuar-field-panel-header .order {
-	width: 30px;
+.cuar-task .cuar-left {
+	width: 60%; 
 	float: left;
+	
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
 }
 
-.cuar-field-panel-header .type {
-	width: 15%;
-	float: left;
-}
-
-.cuar-field-panel-header .label {
-	margin: 0 0 0;
-}
-
-.cuar-field-panel-header .row_options {
-	width: auto;
+.cuar-task .cuar-right {	
+	width: 38%; 
 	float: right;
-	text-align: right;
+	
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
 }
 
-.cuar-field-panel-header .row_options a, .cuar-field-panel-header .row_options a:hover {
-	text-decoration: none;
+.cuar-task label {
+	display: block;
+	margin-bottom: 10px;
 }
 
-.cuar-field-panel-content {
-	width: 100%;
-	background: #f9f9f9;
-	border: 1px solid #e1e1e1;
-	border-top: none;
-	padding: 8px 10px;
+.cuar-task label .title {
+	display: inline-block;
+	width: 33%;
+	margin-right: 5%;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
+}
+
+.cuar-task label input[type=text],
+.cuar-task label input[type=number] {
+	display: inline-block;
+	width: 60%;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box; 
+	        box-sizing: border-box;
+}
+
+.cuar-task .cuar-datepicker .dashicons {
+	right: 10px;
+}
+
+.cuar-task .cuar-add-task-button {
+	float: right;
+	margin-top: 15px;
+}
+
+.cuar-task .cuar-header .cuar-title {
+	float: left;
+	line-height: 24px;
+}
+
+.cuar-task .cuar-header .cuar-actions {
+	float: right;
+}
+
+.cuar-task textarea {
+	display: block;
+	width: 100%;		
+	font-family: Consolas,Monaco,monospace;
+	font-size: 13px;
+	padding: 10px;
+	line-height: 150%;
+	resize: vertical;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+.cuar-new-task {
+	background: #e14d43;
+	border-left: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	margin-top: 30px;
+}
+
+.cuar-new-task .cuar-header {
+	background: #e14d43;
+}
+
+.cuar-new-task .cuar-title h4 {
+	margin: 0;
+	color: #fff;
+}
+
+.cuar-task .cuar-round-button {
+	margin-left: 5px;
+}
+
+.cuar-task.completed .cuar-title {
+	text-decoration: line-through;
+}
+
+.cuar-task.completed .cuar-check-task {
+	background: #209900;
+}
+
+.cuar-task.completed .cuar-check-task:hover {
+	background: #00992B;
+}
+
+.cuar-completed-checkbox {
+	display: none;
 }

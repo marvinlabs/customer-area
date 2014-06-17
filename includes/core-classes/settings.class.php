@@ -33,8 +33,10 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * Setup the WordPress hooks we need
 		 */
 		public function setup() {
+			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 10 );
+			
 			if (is_admin ()) {
-				add_action ( 'cuar_admin_submenu_pages', array( &$this, 'add_settings_menu_item' ), 100 );
+				add_action ( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_settings_menu_item' ), 100 );
 				add_action ( 'admin_init', array( &$this, 'page_init' ) );
 				
 				// Links under the plugin name
@@ -42,13 +44,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				add_filter( "plugin_action_links_{$plugin_file}", array( &$this, 'print_plugin_action_links' ), 10, 2 );
 				
 				// We have some core settings to take care of too
-				add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_core_settings_tab' ), 5, 1 );
+				add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_core_settings_tab' ), 200, 1 );
 				
-				add_action( 'cuar_addon_print_settings_cuar_core', array( &$this, 'print_core_settings' ), 10, 2 );
-				add_filter( 'cuar_addon_validate_options_cuar_core', array( &$this,	'validate_core_settings' ), 10, 3 );
+				add_action( 'cuar/core/settings/print-settings?tab=cuar_core', array( &$this, 'print_core_settings' ), 10, 2 );
+				add_filter( 'cuar/core/settings/validate-settings?tab=cuar_core', array( &$this,	'validate_core_settings' ), 10, 3 );
 				
-				add_action( 'cuar_addon_print_settings_cuar_frontend', array( &$this, 'print_frontend_settings' ), 10, 2 );
-				add_filter( 'cuar_addon_validate_options_cuar_frontend', array( &$this,	'validate_frontend_settings' ), 10, 3 );
+				add_action( 'cuar/core/settings/print-settings?tab=cuar_frontend', array( &$this, 'print_frontend_settings' ), 10, 2 );
+				add_filter( 'cuar/core/settings/validate-settings?tab=cuar_frontend', array( &$this,	'validate_frontend_settings' ), 10, 3 );
 			
 				add_action( 'wp_ajax_cuar_validate_license', array( 'CUAR_Settings', 'ajax_validate_license' ) );
 			}
@@ -80,6 +82,30 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			return $submenus;
 		}
+	
+		/**
+		 * Add the menu item
+		 */
+		public function add_adminbar_menu_items( $submenus ) {		
+			if ( current_user_can( 'manage_options' ) ) {
+				$tabs = apply_filters ( 'cuar/core/settings/settings-tabs', array () );
+				
+				$tabs_to_skip = array( 'cuar_addons', 'cuar_troubleshooting' );
+				foreach ( $tabs as $tab_id => $tab_label ) {
+					if ( in_array( $tab_id, $tabs_to_skip ) ) continue;
+					
+					$submenus[] = array(
+							'parent'=> 'customer-area-settings',
+							'id' 	=> 'customer-area-admin-settings-' . $tab_id,
+							'title' => $tab_label,
+							'href' 	=> admin_url( 'admin.php?page=cuar-settings&cuar_tab=' . $tab_id )
+						);
+				}
+			}
+		
+			return $submenus;
+		}
+	
 		public function print_plugin_action_links($links, $file) {
 			$link = '<a href="' . get_bloginfo ( 'wpurl' ) . '/wp-admin/admin.php?page=' . self::$OPTIONS_PAGE_SLUG . '">' . __ ( 'Settings', 'cuar' ) . '</a>';
 			array_unshift ( $links, $link );
@@ -153,14 +179,14 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				) );
 			
 			// Let the current tab add its own settings to the page
-			do_action ( "cuar_addon_print_settings_{$this->current_tab}", $this, self::$OPTIONS_GROUP . '_' . $this->current_tab );
+			do_action ( "cuar/core/settings/print-settings?tab=" . $this->current_tab, $this, self::$OPTIONS_GROUP . '_' . $this->current_tab );
 		}
 		
 		/**
 		 * Create the tabs to show
 		 */
 		public function setup_tabs() {
-			$this->tabs = apply_filters ( 'cuar_addon_settings_tabs', array () );
+			$this->tabs = apply_filters ( 'cuar/core/settings/settings-tabs', array () );
 			
 			// Get current tab from GET or POST params or default to first in list
 			$this->current_tab =  isset( $_GET ['cuar_tab'] ) ? $_GET ['cuar_tab'] : '';
@@ -185,7 +211,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$validated = array ();
 			
 			// Allow addons to validate their settings here
-			$validated = apply_filters ( 'cuar_addon_validate_options_' . $this->current_tab, $validated, $this, $input );
+			$validated = apply_filters ( 'cuar/core/settings/validate-settings?tab=' . $this->current_tab, $validated, $this, $input );
 			
 			$this->options = array_merge ( $this->options, $validated );
 			
@@ -277,29 +303,31 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					array ( &$cuar_settings, 'print_empty_section_info' ), 
 					self::$OPTIONS_PAGE_SLUG );
 			
-			add_settings_field ( self::$OPTION_INCLUDE_CSS, 
-					__ ( 'Include CSS', 'cuar' ), 
-					array( &$cuar_settings,	'print_input_field'	), 
-					self::$OPTIONS_PAGE_SLUG, 
-					'cuar_general_settings', 
-					array (
-							'option_id' => self::$OPTION_INCLUDE_CSS,
-							'type' => 'checkbox',
-							'after' => __ ( 'Include the default stylesheet.', 'cuar' ) . '<p class="description">' . __ ( 'If not, you should style the plugin yourself in your theme.', 'cuar' ) . '</p>' 
-						) 
-				);
+			if ( !current_theme_supports( 'customer-area.stylesheet' ) ) {			
+				add_settings_field ( self::$OPTION_INCLUDE_CSS, 
+						__ ( 'Include CSS', 'cuar' ), 
+						array( &$cuar_settings,	'print_input_field'	), 
+						self::$OPTIONS_PAGE_SLUG, 
+						'cuar_general_settings', 
+						array (
+								'option_id' => self::$OPTION_INCLUDE_CSS,
+								'type' => 'checkbox',
+								'after' => __ ( 'Include the default stylesheet.', 'cuar' ) . '<p class="description">' . __ ( 'If not, you should style the plugin yourself in your theme.', 'cuar' ) . '</p>' 
+							) 
+					);
+				
+				add_settings_field ( self::$OPTION_FRONTEND_THEME, 
+						__ ( 'Frontend theme', 'cuar' ), 
+						array ( &$cuar_settings, 'print_theme_select_field' ), 
+						self::$OPTIONS_PAGE_SLUG, 
+						'cuar_general_settings', 
+						array (
+								'option_id' => self::$OPTION_FRONTEND_THEME,
+								'theme_type' => 'frontend' 
+							) 
+					);
+			}
 			
-			add_settings_field ( self::$OPTION_FRONTEND_THEME, 
-					__ ( 'Frontend theme', 'cuar' ), 
-					array ( &$cuar_settings, 'print_theme_select_field' ), 
-					self::$OPTIONS_PAGE_SLUG, 
-					'cuar_general_settings', 
-					array (
-							'option_id' => self::$OPTION_FRONTEND_THEME,
-							'theme_type' => 'frontend' 
-						) 
-				);
-
 			add_settings_field ( self::$OPTION_DEBUG_TEMPLATES,
 					__ ( 'Debug templates', 'cuar' ), 
 					array( &$cuar_settings,	'print_input_field'	), 
@@ -323,9 +351,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param array $validated        	
 		 */
 		public function validate_frontend_settings($validated, $cuar_settings, $input) {
-			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
 			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_DEBUG_TEMPLATES );
-			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME );
+			
+			if ( !current_theme_supports( 'customer-area-css' ) ) {		
+				$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
+				$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME );
+			}
 			
 			return $validated;
 		}
@@ -615,12 +646,23 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param string $option_id
 		 *        	Key of the value to check in the input array
 		 */
-		public function validate_term( $input, &$validated, $option_id, $taxonomy ) {			
-			// TODO better checks, for now, we just check it is not empty and strictly positive
-			if (isset( $input[$option_id] ) && $input[$option_id] > 0 ) {
-				$validated[$option_id] = $input[$option_id];
-			} else {
+		public function validate_term( $input, &$validated, $option_id, $taxonomy, $allow_multiple=false ) {	
+			$term_ids = isset( $input[$option_id] ) ? $input[$option_id] : '';
+			
+			if ( !$allow_multiple && is_array( $term_ids ) ) {
+				add_settings_error( $option_id, 'settings-errors', $option_id . ': ' . __ ( 'you cannot select multiple terms.', 'cuar' ), 'error' );
 				$validated[$option_id] = -1;
+				return;
+			}
+			
+			if ( $allow_multiple ) {
+				if ( !is_array( $term_ids ) ) {
+					$term_ids = empty( $term_ids ) ? array() : array( $term_ids );
+				}
+					
+				$validated[$option_id] = $term_ids;
+			} else {
+				$validated[$option_id] = empty( $term_ids ) ? -1 : $term_ids;
 			}
 		}
 	
@@ -885,8 +927,10 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 			
+			$option_value = isset( $this->options[$option_id] ) ? $this->options[$option_id] : null;
+			
 			foreach ( $options as $value => $label ) {
-				$selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
+				$selected = ($option_value == $value) ? 'selected="selected"' : '';
 				
 				echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 			}
@@ -1049,18 +1093,51 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			extract ( $args );
 			
 			if ( isset( $before )) echo $before;
-			
-			wp_dropdown_categories( array(
-					'taxonomy'			=> $taxonomy,
-					'name' 				=> self::$OPTIONS_GROUP . '[' . esc_attr ( $option_id ) . ']',
-					'id' 				=> esc_attr ( $option_id ),
-					'selected'			=> $this->options [$option_id],
+
+			$this->plugin->enable_library( 'jquery.select2' );
+			$terms = get_terms( $taxonomy, array(
 					'hide_empty'    	=> 0,
-					'hierarchical'  	=> 1,
-					'show_option_none' 	=> __('None', 'cuar'),
-					'orderby'       	=> 'NAME',
+					'orderby'       	=> 'name'
 				) );
+
+			$current_option_value = $this->options[$option_id];			
 			
+			$field_name = esc_attr( self::$OPTIONS_GROUP ) . '[' . esc_attr( $option_id ) . ']';
+			if ( isset( $multiple ) && $multiple ) $field_name .= '[]';
+			
+			$field_id = esc_attr( $option_id );
+
+			$multiple = isset( $multiple ) && $multiple ? 'multiple="multiple" ' : '';
+?>
+
+			<select id="<?php echo $field_id; ?>" name="<?php echo $field_name; ?>" <?php echo $multiple; ?>>
+			
+<?php 		foreach ( $terms as $term ) :
+				$value = $term->term_id;
+				$label = $term->name;
+				
+				if ( is_array( $current_option_value ) ) {
+					$selected = in_array( $value, $current_option_value ) ? 'selected="selected"' : '';
+				} else {
+					$selected = ($current_option_value==$value) ? 'selected="selected"' : '';
+				}
+?>			
+				<option value="<?php echo esc_attr( $value ); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+			
+<?php 		endforeach; ?>
+
+			</select>
+			
+			<script type="text/javascript">
+				<!--
+				jQuery("document").ready(function($){
+					$("#<?php echo esc_attr( $option_id ); ?>").select2({
+						width: "100%"
+					});
+				});
+				//-->
+			</script>
+<?php 			
 			if ( isset( $after )) echo $after;
 		}
 		
@@ -1078,7 +1155,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
 			
-			$theme_locations = apply_filters ( 'cuar_theme_locations', array (
+			$theme_locations = apply_filters ( 'cuar/core/settings/theme-root-directories', array (
 					array (
 							'base'	=> 'plugin',
 							'type'	=> $theme_type,
@@ -1163,6 +1240,10 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$this->reload_options();
 		}
 		
+		public function update_option_default($option_id, $new_value) {
+			$this->default_options[$option_id] = $new_value;
+		}
+		
 		/**
 		 * Persist the current plugin options to DB
 		 */
@@ -1183,13 +1264,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		private function reload_options() {
 			$current_options = get_option ( CUAR_Settings::$OPTIONS_GROUP );
 			
-			$this->default_options = apply_filters ( 'cuar_default_options', array () );
+			$this->default_options = apply_filters ( 'cuar/core/settings/default-options', array () );
 			
 			if (! is_array ( $current_options ))
 				$current_options = array ();
 			$this->options = array_merge ( $this->default_options, $current_options );
 			
-			do_action ( 'cuar_options_loaded', $this->options );
+			do_action ( 'cuar/core/settings/on-options-loaded', $this->options );
 		}
 		public static $OPTIONS_PAGE_SLUG = 'cuar-settings';
 		public static $OPTIONS_GROUP = 'cuar_options';
@@ -1224,7 +1305,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 	}
 	
 	// This filter needs to be executed too early to be registered in the constructor
-	add_filter ( 'cuar_default_options', array (
+	add_filter ( 'cuar/core/settings/default-options', array (
 			'CUAR_Settings',
 			'set_default_core_options' 
 	) );

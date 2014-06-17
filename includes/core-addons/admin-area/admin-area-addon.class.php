@@ -36,10 +36,12 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	}
 
 	public function run_addon( $plugin ) {		
+		add_action( 'admin_bar_menu', array( &$this, 'build_adminbar_menu' ), 32 );
+			
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
-			add_action( 'cuar_version_upgraded', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ), 5 );
+			add_action( 'cuar/core/on-plugin-update', array( &$this, 'plugin_version_upgrade' ), 10, 2 );
+			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ), 5 );
 
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
 		} 
@@ -170,7 +172,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	    $this->pagehook = add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon, $position );
 	    
 	    // Now add the submenu pages from add-ons
-	    $submenu_items = apply_filters( 'cuar_admin_submenu_pages', array() );
+	    $submenu_items = apply_filters( 'cuar/core/admin/main-menu-pages', array() );
 	    
 	    foreach ( $submenu_items as $item ) {
 		    $submenu_page_title = $item[ 'page_title' ];
@@ -182,6 +184,54 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 		    add_submenu_page($menu_slug, $submenu_page_title, $submenu_title, 
 		    		$submenu_capability, $submenu_slug, $submenu_function);
 	    }
+	}
+
+	/**
+	 * Build the admin bar menu
+	 */
+	public function build_adminbar_menu( $wp_admin_bar ) {	
+		$wp_admin_bar->add_menu(array(
+				'id' 	=> 'customer-area',
+				'title' => __( 'Customer Area', 'cuar' ),
+				'href' 	=> admin_url( 'admin.php?page=customer-area' )
+			));
+
+		$wp_admin_bar->add_menu(array(
+				'parent'=> 'customer-area',
+				'id' 	=> 'customer-area-front-office',
+				'title' => __( 'Your private area', 'cuar' ),
+				'href' 	=> '#'
+		));
+
+		$submenu_items = apply_filters( 'cuar/core/admin/adminbar-menu-items', array() );		
+		foreach ( $submenu_items as $item ) {
+			$wp_admin_bar->add_menu( $item );
+		}
+
+		if ( current_user_can( 'manage_options' ) ) {
+			$wp_admin_bar->add_menu(array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-settings',
+					'title' => __( 'Settings', 'cuar' ),
+					'href' 	=> admin_url( 'admin.php?page=cuar-settings' )
+				));
+		}
+
+		if ( current_user_can( 'manage_options' ) ) {			
+			$wp_admin_bar->add_menu(array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-support',
+					'title' => __( 'Help & support', 'cuar' ),
+					'href' 	=> admin_url( 'admin.php?page=cuar-settings&cuar_tab=cuar_troubleshooting' )
+				));
+
+			$wp_admin_bar->add_menu(array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-addons',
+					'title' => __( 'Add-ons', 'cuar' ),
+					'href' 	=> admin_url( 'admin.php?page=cuar-settings&cuar_tab=cuar_addons' )
+				));
+		}
 	}
 
 	public function print_customer_area_dashboard() {

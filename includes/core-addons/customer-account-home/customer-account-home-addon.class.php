@@ -51,7 +51,7 @@ class CUAR_CustomerAccountHomeAddOn extends CUAR_RootPageAddOn {
 		return __( 'This page shows a summary of the user account', 'cuar' );
 	}	
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-account';
 	}
 }

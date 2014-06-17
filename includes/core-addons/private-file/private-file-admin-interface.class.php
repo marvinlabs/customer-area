@@ -26,29 +26,27 @@ if (!class_exists('CUAR_PrivateFileAdminInterface')) :
 class CUAR_PrivateFileAdminInterface {
 	
 	public function __construct( $plugin, $private_file_addon ) {
-		global $cuar_po_addon;
-		
 		$this->plugin = $plugin;
 		$this->private_file_addon = $private_file_addon;
 
 		// Settings
-		add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
-		add_action( 'cuar_addon_print_settings_cuar_private_files', array( &$this, 'print_settings' ), 10, 2 );
-		add_filter( 'cuar_addon_validate_options_cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
+		add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_settings_tab' ), 520, 1 );
+		add_action( 'cuar/core/settings/print-settings?tab=cuar_private_files', array( &$this, 'print_settings' ), 10, 2 );
+		add_filter( 'cuar/core/settings/validate-settings?tab=cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
 		
 		if ( $this->private_file_addon->is_enabled() ) {
 			// Admin menu
-			add_action( 'cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10 );
+			add_action( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 10 );
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 			
 			// File edit page
 			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
-			add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );				
+			add_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ), 10, 4 );				
 			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );		
 			
 			// File list page	
 			add_action( 'parse_query' , array( &$this, 'restrict_edit_post_listing' ) );
-			add_action( 'cuar_after_addons_init', array( &$this, 'customize_post_list_pages' ) );
+			add_action( 'cuar/core/addons/after-init', array( &$this, 'customize_post_list_pages' ) );
 			add_action( 'restrict_manage_posts', array( &$this, 'restrict_manage_posts' ) );
 		}		
 	}
@@ -217,7 +215,7 @@ jQuery(document).ready( function($) {
 	
 		$current_file = get_post_meta( $post->ID, 'cuar_private_file_file', true );
 
-		do_action( "cuar_private_file_upload_meta_box_header" );
+		do_action( "cuar/private-content/files/before-upload-meta-box" );
 ?>
 		
 <?php	if ( !empty( $current_file ) && isset( $current_file['file'] ) ) : ?>
@@ -308,7 +306,7 @@ jQuery(document).ready( function($) {
 		//-->
 		</script>
 <?php 
-		do_action( "cuar_private_file_upload_meta_box_footer" );
+		do_action( "cuar/private-content/files/after-upload-meta-box" );
 	}
 	
 	/** 
@@ -379,7 +377,7 @@ jQuery(document).ready( function($) {
 						$_FILES['cuar_private_file_file']);
 
 				if ( $upload_result!==true ) {
-					remove_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ) );
+					remove_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ) );
 
 					$my_post = array(
 							'ID'          => $post_id,
@@ -387,7 +385,7 @@ jQuery(document).ready( function($) {
 						);
 					wp_update_post( $my_post );
 					
-					add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );
+					add_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ), 10, 4 );
 				}
 			}
 		}

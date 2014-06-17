@@ -128,6 +128,10 @@ class CUAR_HookFinder {
 	}
 	
 	public function print_hook_list() {
+		// Sort hooks by name
+		usort( $this->hooks, array( 'CUAR_HookFinder', 'sort_hooks_by_id' ) );
+		
+		// Display hooks
 		foreach ( $this->hooks as $hook ) {
 			echo '<tr class="cuar-' . esc_attr( $hook['type'] ) . '">' . "\n";
 			echo '  <td class="cuar-' . esc_attr( $hook['type'] ) . '">' . $hook['type'] . '</td>' . "\n";
@@ -147,8 +151,22 @@ class CUAR_HookFinder {
 	} 
 	
 	private function sanitize_hook_id( $id ) {
-        $id = trim( $id, '( ' );
-        return $id;		
+        $sanitize_id = trim( $id, '( ' );
+
+        $sanitize_id = str_replace('&', '&nbsp;&amp;&nbsp;', $sanitize_id );
+		$sanitize_id = str_replace('/', '&nbsp;/&nbsp;', $sanitize_id );
+		$sanitize_id = str_replace('?', '&nbsp;?&nbsp;', $sanitize_id );
+		$sanitize_id = str_replace('=', '&nbsp;=&nbsp;', $sanitize_id );
+		$sanitize_id = str_replace(' . ', '&nbsp;', $sanitize_id );
+		$sanitize_id = str_replace('\'', '', $sanitize_id );
+		$sanitize_id = str_replace('"', '', $sanitize_id );
+		$sanitize_id = str_replace('  ', ' ', $sanitize_id );
+		$sanitize_id = str_replace('  ', ' ', $sanitize_id );
+		$sanitize_id = str_replace(' ', '&nbsp;', $sanitize_id );
+		$sanitize_id = str_replace('&nbsp;&nbsp;', '&nbsp;', $sanitize_id );
+		$sanitize_id = str_replace('&nbsp;&nbsp;', '&nbsp;', $sanitize_id );
+			
+        return $sanitize_id;		
 	} 
 	
 	private function get_short_directory( $path ) {
@@ -158,6 +176,13 @@ class CUAR_HookFinder {
 		
 		return $dirname;
 	} 
+	
+	public static function sort_hooks_by_id( $a, $b ) {
+	    if ($a['id'] == $b['id']) {
+	        return 0;
+	    }
+	    return ($a['id'] < $b['id']) ? -1 : 1;
+	}
 	
 	private $hooks = array();
 

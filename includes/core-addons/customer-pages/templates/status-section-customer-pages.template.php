@@ -61,3 +61,73 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ?>
 	</tbody>
 </table>
+
+<?php 
+	$orphan_pages = $cp_addon->get_potential_orphan_pages();
+	
+	if ( !empty( $orphan_pages ) ) {
+?>
+
+<h2><?php _e( 'Potential orphan pages', 'cuar' ); ?></h2>
+
+<div class="cuar-needs-attention">	
+	<p>
+		<?php _e( 'Some pages in your site seem to contain Customer Area shortcodes but are not registered in the Customer Area pages settings. Those are probably pages you had created and ' 
+				. 'trashed when originally set up the plugin. You should delete them for good either manually or by letting us do it for you.', 'cuar' ); ?>
+	</p>
+		 
+	<p class="cuar-suggested-action"><span class="text"><?php _e('Suggested action', 'cuar' ); ?></span>
+		<input type="submit" id="cuar-remove-orphan-pages" name="cuar-remove-orphan-pages" class="button button-primary" value="<?php esc_attr_e( 'Delete orphan pages', 'cuar' ); ?> &raquo;" />
+		<?php wp_nonce_field( 'cuar-remove-orphan-pages', 'cuar-remove-orphan-pages_nonce' ); ?>
+		
+		<script type="text/javascript">
+		<!--
+			jQuery(document).ready(function($) {
+				$('#cuar-remove-orphan-pages').click('click', function(){
+					var answer = confirm( "<?php echo str_replace( '"', '\\"', __('Are you sure that you want to delete those pages (this operation cannot be undone)?', 'cuar') ); ?>" );
+					return answer;
+				});
+			});
+		//-->
+		</script>
+	</p>	
+</div>
+
+<table class="widefat cuar-status-table">
+	<thead>
+		<tr>
+			<th><?php _e( 'Title', 'cuar' ); ?></th>
+			<th><?php _e( 'ID', 'cuar' ); ?></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+	$cp_addon = $this->plugin->get_addon('customer-pages');
+	$customer_area_pages = $cp_addon->get_customer_area_pages();
+	
+	foreach ( $orphan_pages as $o ) :
+?>
+		<tr class="<?php echo $tr_class; ?>">
+			<td><?php echo $o->post_title; ?></td>
+			<td><?php echo $o->ID; ?></td>
+			<td>
+<?php 			if ( $page_id>0 ) {
+					printf( '<a href="%1$s" class="button">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $o->ID), __('Edit', 'cuar') );	
+					echo ' ';
+					printf( '<a href="%1$s" class="button">%2$s &raquo;</a>', get_permalink( $o->ID ), __('View', 'cuar') );			
+				}
+?>
+			</td>
+		</tr>	
+<?php
+	endforeach;
+?>
+	</tbody>
+</table>
+
+
+
+<?php 
+	}
+?>

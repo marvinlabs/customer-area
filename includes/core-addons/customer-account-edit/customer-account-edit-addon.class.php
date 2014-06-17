@@ -59,7 +59,7 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 		}
 	}
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-account-edit';
 	}
 
@@ -99,7 +99,7 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
         	}
         }
         
-        do_action( 'cuar/user-profile/edit/save_profile_fields', $current_user_id, $this->form_errors );
+        do_action( 'cuar/core/user-profile/edit/save_profile_fields', $current_user_id, $this->form_errors );
         
         if ( empty( $this->form_errors ) ) {
 			$cp_addon = $this->plugin->get_addon('customer-pages');
@@ -113,7 +113,7 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 	}
 
 	public function print_submit_button( $label ) {
-        do_action( 'cuar/user-profile/edit/before_submit_button' );
+        do_action( 'cuar/core/user-profile/edit/before_submit_button' );
         
 		echo '<div class="form-group">';
 		echo '	<div class="submit-container">';
@@ -121,7 +121,7 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 		echo '	</div>';
 		echo '</div>';
 		
-		do_action( 'cuar/user-profile/edit/after_submit_button' );
+		do_action( 'cuar/core/user-profile/edit/after_submit_button' );
 	}
 
 	public function print_form_header() {
@@ -131,7 +131,7 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 		
 		wp_nonce_field( 'cuar_' . $this->get_slug(), 'cuar_' . $this->get_slug() . '_nonce' );
 		
-		do_action( 'cuar/user-profile/edit/before_submit_errors' );
+		do_action( 'cuar/core/user-profile/edit/before_submit_errors' );
 	
 		if ( !empty( $this->form_errors ) ) {
 			foreach ( $this->form_errors as $error ) {
@@ -139,7 +139,7 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 			}
 		}
 
-		do_action( 'cuar/user-profile/edit/after_submit_errors' );
+		do_action( 'cuar/core/user-profile/edit/after_submit_errors' );
 	}
 	
 	public function print_form_footer() {
@@ -152,17 +152,17 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 		$up_addon = $this->plugin->get_addon('user-profile');
 		$fields = $up_addon->get_profile_fields();
 
-		do_action( 'cuar/user-profile/edit/before_fields', $current_user );
+		do_action( 'cuar/core/user-profile/edit/before_fields', $current_user );
 		
 		foreach ( $fields as $id => $field ) {
-			do_action( 'cuar/user-profile/edit/before_field/id=' . $id, $current_user );
+			do_action( 'cuar/core/user-profile/edit/before_field?id=' . $id, $current_user );
 			
 			$field->render_form_field( $current_user->ID );
 
-			do_action( 'cuar/user-profile/edit/after_field/id=' . $id, $current_user );
+			do_action( 'cuar/core/user-profile/edit/after_field?id=' . $id, $current_user );
 		}
 		
-		do_action( 'cuar/user-profile/edit/after_fields', $current_user );
+		do_action( 'cuar/core/user-profile/edit/after_fields', $current_user );
 	}
 	
 	private $current_user = null;

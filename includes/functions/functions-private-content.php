@@ -36,5 +36,5 @@ function cuar_get_the_owner( $post_id = 0 ) {
 	
 	$post_id = $post_id==0 ? get_the_ID() : $post_id;		
 	$owner_name = $po_addon->get_post_owner_displayname( $post_id );
-	return apply_filters( 'cuar_the_owner', $owner_name, $post_id );
+	return apply_filters( 'cuar/private-content/the-owner', $owner_name, $post_id );
 }

@@ -18,6 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once( CUAR_INCLUDES_DIR . '/core-classes/addon-content-page.class.php' );
 
+require_once( dirname(__FILE__) . '/widget-private-page-authors.class.php' );
 require_once( dirname(__FILE__) . '/widget-private-page-categories.class.php' );
 require_once( dirname(__FILE__) . '/widget-private-page-dates.class.php' );
 require_once( dirname(__FILE__) . '/widget-private-pages.class.php' );
@@ -68,7 +69,7 @@ class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 		
 		// Widget area for our sidebar
 		if ( $this->pf_addon->is_enabled() ) {
-			$this->enable_sidebar( array( 'CUAR_PrivatePageCategoriesWidget', 'CUAR_PrivatePageDatesWidget', 'CUAR_PrivatePagesWidget' ), true );
+			$this->enable_sidebar( array( 'CUAR_PrivatePageCategoriesWidget', 'CUAR_PrivatePageDatesWidget', 'CUAR_PrivatePagesWidget', 'CUAR_PrivatePageAuthorsWidget' ), true );
 		}
 		
 		if ( is_admin() ) { 
@@ -76,8 +77,17 @@ class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 		}
 	}	
 
-	protected function get_page_addon_path() {
+	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages';
+	}
+
+	protected function get_author_archive_page_subtitle( $author_id ) {
+		if ( $author_id==get_current_user_id() ) {
+			return __( 'Pages you created', 'cuar' );
+		} 
+		
+		$author = get_userdata( $author_id );
+		return sprintf( __( 'Pages created by %1$s', 'cuar' ), $author->display_name );
 	}
 
 	protected function get_category_archive_page_subtitle( $category ) {
@@ -109,12 +119,17 @@ class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 		$w = new CUAR_PrivatePageCategoriesWidget();
 		$w->widget( $default_widget_args, array(
 				'title'	=> __( 'Categories', 'cuar' ),
-		) );
+			) );
 		
 		$w = new CUAR_PrivatePageDatesWidget();
 		$w->widget( $default_widget_args, array(
 				'title'	=> __( 'Archives', 'cuar' ),
-		) );
+			) );
+		
+		$w = new CUAR_PrivatePageAuthorsWidget();
+		$w->widget( $default_widget_args, array(
+				'title'	=> __( 'Created By', 'cuar' ),
+			) );
 	}
 	
 	/** @var CUAR_PrivatePageAddOn */

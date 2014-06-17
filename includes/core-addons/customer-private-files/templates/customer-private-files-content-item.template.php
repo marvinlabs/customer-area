@@ -1,25 +1,56 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /** Template version: 1.1.0 
+
+-= 1.1.0 =-
+- Updated markup
+- Normalized the extra class filter name
+
+-= 1.0.0 =-
+- Initial version
+
+*/ ?>
 
 <?php 
 	global $post;	
+	
+	$is_author = get_the_author_meta('ID')==get_current_user_id();
+	$file_size = cuar_get_the_file_size( get_the_ID() );
+		
+	if ( $is_author ) {
+		$subtitle_popup = __( 'You uploaded this file', 'cuar' );
+		$subtitle = sprintf( __( 'Published for %s', 'cuar' ), cuar_get_the_owner() );
+	} else {
+		$subtitle_popup = sprintf( __( 'Published for %s', 'cuar' ), cuar_get_the_owner() );
+		$subtitle = sprintf( __( 'Published by %s', 'cuar' ), get_the_author_meta( 'display_name' ) );
+	}
+
+	$title_popup = sprintf( __( 'Uploaded on %s', 'cuar' ), get_the_date() );
+	
 	$extra_class = ' ' . get_post_type();
-	$extra_class = apply_filters( get_post_type() . '_item_extraclass', $extra_class, $post );
+	$extra_class = apply_filters( 'cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post );
 ?>
-<tr class="cuar-private-file cuar-item<?php echo $extra_class; ?>">
-	<td class="meta">
-		<span class="date"><?php the_time(get_option('date_format')); ?></span>
-		<br/>
-		<span class="sender"><?php echo CUAR_WordPressHelper::ellipsis( sprintf( __('From: %s', 'cuar' ), get_the_author_meta( 'display_name' ) ), 27 ); ?></span>
-	</td>
-	<td class="content">
-		<span class="title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Added on %s', 'cuar' ), get_the_date() ) ); ?>">
-			<?php the_title(); ?></a></span>
-		<br/>
-		<span class="recipient"><?php echo CUAR_WordPressHelper::ellipsis( sprintf( __('To: %s', 'cuar' ), cuar_get_the_owner() ), 53 ); ?></span>
-	</td>
-	<td class="links download-link">
-		<a href="<?php cuar_the_file_link( get_the_ID(), 'download' ); ?>" title="<?php esc_attr_e( 'Download', 'cuar' ); ?>">
-			<?php _e( 'Download', 'cuar' ); ?></a>
-		<?php do_action( get_post_type() . '_item_additional_links', $post ); ?>	
-	</td> 
-</tr>
+
+<div class="cuar-private-file cuar-item cuar-item-large<?php echo $extra_class; ?>">
+	<div class="panel">
+		<div class="title">
+			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $title_popup ); ?>"><?php the_title(); ?></a>
+		</div>
+		
+		<div class="subtitle">
+			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $subtitle_popup ); ?>"><?php echo $subtitle; ?></a>
+		</div>
+			
+<?php 	if ( has_post_thumbnail( get_the_ID() ) ) : ?>
+		<div class="cover">
+			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $title_popup ); ?>">			
+				<?php the_post_thumbnail( 'medium', array( 'class'	=> "img-responsive" ) ); ?>
+			</a>
+		</div>
+<?php 	endif; ?>
+		
+		<div class="badges">
+			<a href="<?php cuar_the_file_link( get_the_ID(), 'download' ); ?>" title="<?php echo esc_attr( sprintf( __( 'Download (%1$s)', 'cuar' ), $file_size ) ); ?>">
+				<span class="download-badge dashicons dashicons-download dashicon-badge pull-right"></span>
+			</a>
+		</div>
+	</div>
+</div>

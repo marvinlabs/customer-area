@@ -38,7 +38,8 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// We only do something within the admin interface
 		if ( is_admin() ) {
-			add_action( 'cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10000 );
+			add_action( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 10000 );
+			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 10000 );
 			add_action( 'admin_init', array( &$this, 'handle_core_section_actions' ), 500 );
 		} 
 	}
@@ -48,13 +49,41 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 	 */
 	public function add_menu_items( $submenus ) {
 		$submenus[] = array(
-							'page_title'	=> __( 'Customer Area - Plugin status', 'cuar' ),
-							'title'			=> __( 'Status', 'cuar' ),
-							'slug' 			=> self::$STATUS_PAGE_SLUG,
-							'function' 		=> array( &$this, 'print_status_page' ),
-							'capability' 	=> 'manage_options' 
-						); 
+				'page_title'	=> __( 'Customer Area - Plugin status', 'cuar' ),
+				'title'			=> __( 'Status', 'cuar' ),
+				'slug' 			=> self::$STATUS_PAGE_SLUG,
+				'function' 		=> array( &$this, 'print_status_page' ),
+				'capability' 	=> 'manage_options' 
+			); 
 		
+		return $submenus;
+	}
+
+	/**
+	 * Add the menu item
+	 */
+	public function add_adminbar_menu_items( $submenus ) {		
+		if ( current_user_can( 'manage_options' ) ) {
+			$submenus[] = array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-status',
+					'title' => __( 'Status', 'cuar' ),
+					'href' 	=> admin_url( 'admin.php?page=cuar-status' )
+				);
+			
+			$sections = $this->get_status_sections();
+			foreach ( $sections as $section ) {
+				if ( !isset( $section['label'] ) ) continue;
+				
+				$submenus[] = array(
+						'parent'=> 'customer-area-status',
+						'id' 	=> 'customer-area-status-' . $section['id'],
+						'title' => $section['label'],
+						'href' 	=> admin_url( 'admin.php?page=cuar-status&cuar_section=' . $section['id'] )
+					);
+			}
+		}
+	
 		return $submenus;
 	}
 	
@@ -89,7 +118,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 					)
 			);
 			
-			$this->sections = apply_filters( 'cuar_status_sections', $this->sections );
+			$this->sections = apply_filters( 'cuar/core/status/sections', $this->sections );
 			
 			$this->sections['hooks'] = array(
 					'id'			=> 'hooks',

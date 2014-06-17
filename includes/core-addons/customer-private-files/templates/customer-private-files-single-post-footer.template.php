@@ -1,4 +1,7 @@
-<?php /** Template version: 1.0.1 
+<?php /** Template version: 1.2.0
+
+-= 1.2.0 =-
+- Updated to new responsive markup
 
 -= 1.1.0 =-
 - Added file size
@@ -9,27 +12,45 @@
 */
 ?>
 
-<div class="cuar-private-file-meta">
-	<h4><?php echo apply_filters( 'cuar_private_files_after_content_title', __( 'More information about this file', 'cuar' ) ); ?></h4>
+<?php 
+	global $post;	
+	$extra_class = ' ' . get_post_type();
+	$extra_class = apply_filters( 'cuar/templates/single-post/footer/extra-class?post-type=' . get_post_type(), $extra_class, $post );
 	
-	<p class="private-content-information"><?php 	
-		$date = sprintf("<em>%s</em>", get_the_date() );
-		$author = sprintf("<em>%s</em>", get_the_author_meta( 'display_name' ) );
-		$recipients = sprintf("<em>%s</em>", cuar_get_the_owner() );
+	$date = sprintf("<em>%s</em>", get_the_date() );
+	$author = sprintf("<em>%s</em>", get_the_author_meta( 'display_name' ) );
+	$recipients = sprintf("<em>%s</em>", cuar_get_the_owner() );
+?>
+
+<div class="cuar-single-post-footer cuar-file<?php echo $extra_class; ?>">
 	
-		printf( __( 'File created on %1$s by %2$s for %3$s', 'cuar' ), $date, $author, $recipients  ); ?></p>
+	<div class="meta-category content-meta">
+		<div class="row">
+			<div class="meta-block author">
+				<h4><span class="dashicons dashicons-businessman"></span> <?php _e( 'Author', 'cuar' ); ?></h4>
+				<p><?php echo $author; ?></p>
+			</div>
+			
+			<div class="meta-block owner">
+				<h4><span class="dashicons dashicons-groups"></span> <?php _e( 'Recipient', 'cuar' ); ?></h4>
+				<p><?php echo $recipients; ?></p>
+			</div>
+
+			<div class="meta-block date">
+				<h4><span class="dashicons dashicons-calendar"></span> <?php _e( 'Date', 'cuar' ); ?></h4>
+				<p><?php echo $date; ?></p>
+			</div>
+		</div>
+	</div>
 	
-	<table class="cuar-private-file-list">
-	  <tbody>
-			<tr class="cuar-private-file">
-				<td class="title">
+	<div class="meta-category file-meta">
+		<div class="row">
+			<div class="meta-block file">
+				<h4><span class="dashicons dashicons-admin-links"></span> <?php _e( 'Attachment', 'cuar' ); ?></h4>
+				<p><a href="<?php cuar_the_file_link( get_the_ID(), 'download' ); ?>" title="<?php esc_attr_e( 'Download', 'cuar' ); ?>">
 					<?php cuar_the_file_name( get_the_ID() ); ?> (<?php cuar_the_file_size( get_the_ID() ); ?>)
-				</td>
-				<td class="links download-link">
-					<a href="<?php cuar_the_file_link( get_the_ID(), 'download' ); ?>" title="<?php esc_attr_e( 'Download', 'cuar' ); ?>">
-						<?php _e( 'Download', 'cuar' ); ?></a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+				</a></p>
+			</div>
+		</div>
+	</div>
 </div>

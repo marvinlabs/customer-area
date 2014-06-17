@@ -56,7 +56,7 @@ function cuar_get_the_file_name( $post_id = null ) {
 
 	if ( !$file || empty( $file ) ) return '';
 	
-	return apply_filters( 'cuar_the_file_name', $file['file'], $post_id );
+	return apply_filters( 'cuar/private-content/files/the-name', $file['file'], $post_id );
 }
 
 /**
@@ -85,7 +85,7 @@ function cuar_get_the_file_type( $post_id = null ) {
 
 	if ( !$file || empty( $file ) ) return '';
 	
-	return apply_filters( 'cuar_the_file_type', pathinfo( $file['file'], PATHINFO_EXTENSION ), $post_id );
+	return apply_filters( 'cuar/private-content/files/the-type', pathinfo( $file['file'], PATHINFO_EXTENSION ), $post_id );
 }
 
 /**
@@ -122,7 +122,7 @@ function cuar_get_the_file_size( $post_id = null, $human = true ) {
 		$size = cuar_format_human_file_size( $size );  
 	}
 	
-	return apply_filters( 'cuar_the_file_size', $size, $post_id );
+	return apply_filters( 'cuar/private-content/files/the-size', $size, $post_id );
 }
 
 /**

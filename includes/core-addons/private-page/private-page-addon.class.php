@@ -40,9 +40,11 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		if ( $this->is_enabled() ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
-			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
+			add_filter( 'cuar/core/post-types/content', array( &$this, 'register_private_post_types' ) );
+			add_filter( 'cuar/core/types/content', array( &$this, 'register_content_type' ) );
 			
-			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'get_configurable_capability_groups' ) );
+			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ) );
+			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 11 );	
 		}
 				
 		// Init the admin interface if needed
@@ -63,6 +65,58 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
 		
 		return $defaults;
+	}
+
+	/**
+	 * Add the menu item
+	 */
+	public function add_adminbar_menu_items( $submenus ) {
+		$my_submenus = array();
+
+
+		if ( current_user_can( 'cuar_pp_read' )
+				|| current_user_can( 'cuar_pp_edit' )
+				|| current_user_can( 'cuar_pp_manage_categories' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area',
+					'id' 	=> 'customer-area-pages',
+					'title' => __( 'Private Pages', 'cuar' ),
+					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_page' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pp_read' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-pages',
+					'id' 	=> 'customer-area-pages-list',
+					'title' => __( 'All pages', 'cuar' ),
+					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_page' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pp_edit' ) ) {			
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-pages',
+					'id' 	=> 'customer-area-pages-new',
+					'title' => __( 'New page', 'cuar' ),
+					'href' 	=> admin_url( 'post-new.php?post_type=cuar_private_page' )
+				);
+		}
+		
+		if ( current_user_can( 'cuar_pp_manage_categories' ) ) {
+			$my_submenus[] = array(
+					'parent'=> 'customer-area-pages',
+					'id' 	=> 'customer-area-pages-categories',
+					'title' => __( 'Manage categories', 'cuar' ),
+					'href' 	=> admin_url( 'edit-tags.php?taxonomy=cuar_private_page_category' )
+				);
+		}
+	
+		foreach ( $my_submenus as $submenu ) {
+			$submenus[] = $submenu;
+		}
+	
+		return $submenus;
 	}
 	
 	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
@@ -130,9 +184,23 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	}
 	
 	/**
+	 * Declare our content type
+	 * @param array $types
+	 * @return array
+	 */
+	public function register_content_type($types) {
+		$types['cuar_private_page'] = array(
+				'label-singular'		=> _x( 'Page', 'cuar_private_page', 'cuar' ),
+				'label-plural'			=> _x( 'Pages', 'cuar_private_page', 'cuar' ),
+				'content-page-addon'	=> 'customer-private-pages'
+			);
+		return $types;
+	}
+	
+	/**
 	 * Declare that our post type is owned by someone
-	 * @param unknown $types
-	 * @return string
+	 * @param array $types
+	 * @return array
 	 */
 	public function register_private_post_types($types) {
 		$types[] = "cuar_private_page";
@@ -184,7 +252,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 					)
 			);
 
-		register_post_type( 'cuar_private_page', apply_filters( 'cuar_private_page_post_type_args', $args ) );
+		register_post_type( 'cuar_private_page', apply_filters( 'cuar/private-content/pages/register-post-type-args', $args ) );
 
 		$labels = array(
 				'name' 						=> _x( 'Page Categories', 'cuar_private_page_category', 'cuar' ),
@@ -225,7 +293,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 					)
 			);
 	  
-		register_taxonomy( 'cuar_private_page_category', array( 'cuar_private_page' ), $args );
+		register_taxonomy( 'cuar_private_page_category', array( 'cuar_private_page' ), apply_filters( 'cuar/private-content/pages/category/register-taxonomy-args', $args ) );
 	}
 
 	// General options

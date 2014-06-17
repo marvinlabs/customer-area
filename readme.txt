@@ -1,10 +1,10 @@
 === Customer Area ===
 Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
-Tags: private files,client area,customer area,user files,secure area,crm
+Tags: private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least: 3.6
 Tested up to: 3.9
-Stable tag: 4.6.0
+Stable tag: 5.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,7 @@ from [our online shop](http://www.marvinlabs.com/downloads/category/customer-are
 * [Managed Groups](http://www.marvinlabs.com/downloads/customer-area-managed-groups/)
 * [Notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
 * [Owner Restriction](http://www.marvinlabs.com/downloads/customer-area-owner-restriction/)
+* [Projects](http://www.marvinlabs.com/downloads/customer-area-projects/)
 * [Search](http://www.marvinlabs.com/downloads/customer-area-search/)
 * [Switch Users](http://www.marvinlabs.com/downloads/customer-area-switch-users/)
 
@@ -58,7 +59,7 @@ from [our online shop](http://www.marvinlabs.com/downloads/category/customer-are
 * German by [Benjamin Oechsler](http://benlocal.de)
 * Spanish by [e-rgonomy](http://e-rgonomy.com)
 * Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com) and [Marcos Meyer Hollerweger](http://marcosh.eng.br/)
-* Italian by [Andrea Starz](http://www.work-on-web.it)
+* Italian by [Andrea Starz](http://www.work-on-web.it) and [Antonio Cicirelli](http://www.ideacommerce.it)
 * Swedish by Patric Liljestrand
 
 If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
@@ -171,6 +172,21 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 5.0.0 (2014/06/17) =
+
+* New: compatibility with the new Projects add-on (to manage projects and/or organize private content by project rather than by type)
+* New: private content lists are now paginated. This speeds up page loading when users have a lot of private content.
+* New: widget to show all authors of the private content you own. Can be used to see which files you have created for example.
+* New: menu in the admin bar to bring you directly to the page you are looking for
+* New: tool to help find & delete outdated customer pages (see Customer Area > Status > Pages)
+* New: theme developers now have some tools to disable some settings if their theme supports styling and/or external libraries
+* Fix: a server error 500 occuring when another plugin also uses the Easy Digital Downloads licensing system 
+* Fix: Changed item templates to be compatible with the updated Customer Area 4 theme (better responsiveness) 
+* Fix: javascript error in the private files and private pages settings
+* Fix: avoid defining the wp_bootstrap_navwalker class multiple times if other themes/plugins are already using it
+* Fix: normalized a lot of action and filter names (big clean-up on that side to make it more organized and try to make it more understandable) 
+* Fix: some improvements on the default-v4 skin (credits go to [Thomas Lartaud](http://www.thomaslartaud.com/))
 
 = 4.6.0 (2014/04/17) =
 

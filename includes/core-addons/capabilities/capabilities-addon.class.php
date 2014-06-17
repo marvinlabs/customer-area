@@ -38,12 +38,12 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// Init the admin interface if needed
 		if ( is_admin() ) {
-			add_filter( 'cuar_status_sections', array( &$this, 'add_status_sections' ) );
+			add_filter( 'cuar/core/status/sections', array( &$this, 'add_status_sections' ) );
 			
 			// Settings
-			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
-			add_action( 'cuar_in_settings_form_cuar_capabilities', array( &$this, 'print_settings' ) );
-			add_filter( 'cuar_addon_validate_options_cuar_capabilities', array( &$this, 'validate_options' ), 10, 3 );
+			add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_settings_tab' ), 400, 1 );
+			add_action( 'cuar/templates/settings/in-settings-form?tab=cuar_capabilities', array( &$this, 'print_settings' ) );
+			add_filter( 'cuar/core/settings/validate-settings?tab=cuar_capabilities', array( &$this, 'validate_options' ), 10, 3 );
 		} 
 		
 		add_action( 'init', array( &$this, 'set_administrator_capabilities' ), 100 );
@@ -168,7 +168,7 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 			//       	)
 			//    	)
 			//	);
-			$this->all_capability_groups = apply_filters( 'cuar_configurable_capability_groups', array() );
+			$this->all_capability_groups = apply_filters( 'cuar/core/permission-groups', array() );
 		}
 		return $this->all_capability_groups;
 	}

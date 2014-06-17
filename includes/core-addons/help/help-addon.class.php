@@ -38,12 +38,12 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// We only do something within the admin interface
 		if ( is_admin() ) {
-			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 1000, 1 );
-			add_filter( 'cuar_after_settings_side', array( &$this, 'print_addons_sidebox' ), 800 );
-			add_filter( 'cuar_after_settings_side', array( &$this, 'print_marvinlabs_sidebox' ), 900 );
-			add_filter( 'cuar_after_settings_side', array( &$this, 'print_newsletter_sidebox' ), 1000 );
-			add_filter( 'cuar_before_settings_cuar_addons', array( &$this, 'print_addons' ) );
-			add_filter( 'cuar_before_settings_cuar_troubleshooting', array( &$this, 'print_troubleshooting' ) );
+			add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_settings_tab' ), 1000, 1 );
+			add_filter( 'cuar/templates/settings/after-settings-sidebar', array( &$this, 'print_addons_sidebox' ), 800 );
+			add_filter( 'cuar/templates/settings/after-settings-sidebar', array( &$this, 'print_marvinlabs_sidebox' ), 900 );
+			add_filter( 'cuar/templates/settings/after-settings-sidebar', array( &$this, 'print_newsletter_sidebox' ), 1000 );
+			add_filter( 'cuar/templates/settings/before-settings?tab=cuar_addons', array( &$this, 'print_addons' ) );
+			add_filter( 'cuar/templates/settings/before-settings?tab=cuar_troubleshooting', array( &$this, 'print_troubleshooting' ) );
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
 			
 			$plugin_file = 'customer-area/customer-area.php';
