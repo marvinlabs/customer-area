@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least: 3.6
 Tested up to: 3.9
-Stable tag: 5.0.2
+Stable tag: 5.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -173,7 +173,11 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 5.0.0 (2014/06/17) =
+= 5.0.3 (2014/06/24) =
+
+* Fix: admin styles for the Tasks add-on
+
+= 5.0.2 (2014/06/17) =
 
 * New: compatibility with the new Projects add-on (to manage projects and/or organize private content by project rather than by type)
 * New: private content lists are now paginated. This speeds up page loading when users have a lot of private content.

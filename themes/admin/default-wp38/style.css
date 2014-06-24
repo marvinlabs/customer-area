@@ -60,6 +60,18 @@ a.cuar-round-button:hover {
 	color: #fff;
 }
 
+.clearfix:before,
+.clearfix:after {
+  content:"";
+  display:table;
+}
+.clearfix:after {
+  clear:both;
+}
+.clearfix {
+  zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
 /* -= Status */
 
 .cuar-congrats {
@@ -528,6 +540,10 @@ input.knob {
 }
 
 /* -= Tasks */
+
+#ui-datepicker-div { 
+	display: none; 
+}
 
 .cuar-tasks {
 	margin-top: 15px;
