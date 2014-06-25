@@ -114,15 +114,18 @@
 	.panel {
 			border-left: 0 solid transparent;
 			padding-left: 0;
-			
+	
 		&:hover {
-			background: @item-hover-bg;
-			padding-left: @item-border-padding;
-			border-left: @item-border-width solid @item-border-color;
-			
-			.badges {
-					top: -5px;
-					right: -5px;
+				background: @item-hover-bg;
+					
+			@media (min-width: @screen-sm) {
+					padding-left: @item-border-padding;
+					border-left: @item-border-width solid @item-border-color;
+					
+				.badges {
+						top: -5px;
+						right: -5px;
+				}
 			}
 		}
 	
