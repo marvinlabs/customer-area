@@ -250,8 +250,6 @@ abstract class CUAR_AbstractCreateContentPageAddOn extends CUAR_AbstractEditCont
 			$cuar_settings->validate_term( $input, $validated, $slug . self::$OPTION_DEFAULT_CATEGORY, $tax );
 		}
 		
-		$this->validate_additional_settings( $validated, $cuar_settings, $input );
-		
 		return $validated;		
 	}
 

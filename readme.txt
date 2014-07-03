@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least: 3.6
 Tested up to: 3.9.1
-Stable tag: 5.0.4
+Stable tag: 5.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -172,6 +172,10 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 5.0.5 (2014/07/03) =
+
+* Fix: bug preventing from saving the settings on some tabs (resulting in either error 404, 500, ...)
 
 = 5.0.4 (2014/06/25) =
 
