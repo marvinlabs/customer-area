@@ -247,6 +247,7 @@ abstract class CUAR_AbstractUpdateContentPageAddOn extends CUAR_AbstractEditCont
 		if ( $this->current_user_can_edit_content( $post_id ) ) { 
 			$links[] = array(
 					'title' 		=> '<span class="dashicons dashicons-edit"></span> ' . __('Edit', 'cuar'),
+					'tooltip' 		=> __('Edit', 'cuar'),
 					'url' 			=> $this->get_update_content_url( $post_id ),
 					'extra_class'	=> ''
 				);
@@ -255,6 +256,7 @@ abstract class CUAR_AbstractUpdateContentPageAddOn extends CUAR_AbstractEditCont
 		if ( $this->current_user_can_delete_content( $post_id ) ) { 
 			$links[] = array(
 					'title' 			=> '<span class="dashicons dashicons-trash"></span> ' . __('Delete', 'cuar'),
+					'tooltip' 			=> __('Delete', 'cuar'),
 					'url' 				=> $this->get_delete_content_url( $post_id ),
 					'extra_class'		=> '',
 					'confirm_message'	=> __('Are you sure that you want to delete this content?', 'cuar')
