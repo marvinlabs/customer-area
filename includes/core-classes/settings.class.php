@@ -1177,7 +1177,10 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				) );
 			
 			foreach ( $theme_locations as $theme_location ) {
-				$subfolders = array_filter ( glob ( $theme_location ['dir'] . '/*' ), 'is_dir' );
+				$dir_content = glob( $theme_location['dir'] . '/*' );
+				if ( FALSE===$dir_content ) continue;
+				
+				$subfolders = array_filter( $dir_content, 'is_dir' );
 				
 				foreach ( $subfolders as $s ) {
 					$theme_name = basename( $s );

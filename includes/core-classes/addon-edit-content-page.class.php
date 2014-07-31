@@ -571,7 +571,7 @@ abstract class CUAR_AbstractEditContentPageAddOn extends CUAR_AbstractPageAddOn 
 			$cuar_settings->validate_boolean( $input, $validated, $slug . self::$OPTION_ENABLE_RICH_EDITOR );
 		}
 		
-		$this->validate_additional_settings( $validated, $cuar_settings, $input );
+		$validated = $this->validate_additional_settings( $validated, $cuar_settings, $input );
 		
 		return $validated;
 	}
@@ -579,7 +579,8 @@ abstract class CUAR_AbstractEditContentPageAddOn extends CUAR_AbstractPageAddOn 
 	protected function print_additional_settings( $cuar_settings, $options_group ) {		
 	}
 	
-	protected function validate_additional_settings( &$validated, $cuar_settings, $input ) {		
+	protected function validate_additional_settings( &$validated, $cuar_settings, $input ) {	
+		return $validated;			
 	}
 	
 	public function print_empty_section_info() {

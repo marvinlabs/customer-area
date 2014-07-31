@@ -721,7 +721,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 		$cuar_settings->validate_int( $input, $validated, $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD );
 		$cuar_settings->validate_int( $input, $validated, $slug . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING );
 		
-		$this->validate_additional_settings( $validated, $cuar_settings, $input );
+		$validated = $this->validate_additional_settings( $validated, $cuar_settings, $input );
 		
 		return $validated;
 	}
@@ -729,7 +729,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	protected function print_additional_settings( $cuar_settings, $options_group ) {		
 	}
 	
-	protected function validate_additional_settings( &$validated, $cuar_settings, $input ) {		
+	protected function validate_additional_settings( &$validated, $cuar_settings, $input ) {
+		return $validated;		
 	}
 	
 	public function print_empty_section_info() {
