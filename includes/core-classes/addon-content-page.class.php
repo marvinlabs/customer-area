@@ -477,6 +477,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 			// Include paging navigation if necessary
 			$cp_addon = $this->plugin->get_addon('customer-pages');
 			$cp_addon->print_pagination( $this, $content_query, $pagination_base, $current_page );
+					
+			wp_reset_query();
 		} else {
 			include( $this->plugin->get_template_file_path(
 					$this->get_page_addon_path(),
@@ -594,6 +596,8 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 					$this->get_slug() . "-content-dashboard.template.php",
 					'templates',
 					$this->get_slug() . "-content.template.php" ));
+					
+			wp_reset_query();
 		} else {
 			include( $this->plugin->get_template_file_path(
 					$this->get_page_addon_path(),
