@@ -512,7 +512,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		
 		if (count($owner_types)==1) {
 			reset($owner_types);
-			_e( 'User', 'cuar' );
+			echo current($owner_types); 
 ?>
 		<input type="hidden" name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" value="<?php echo key($owner_types); ?>" />
 <?php
