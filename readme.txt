@@ -3,8 +3,8 @@ Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least: 3.6
-Tested up to: 3.9.1
-Stable tag: 5.0.7
+Tested up to: 4.0
+Stable tag: 5.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,11 +53,13 @@ from [our online shop](http://www.marvinlabs.com/downloads/category/customer-are
 
 **Included translations**
 
+* Catalan by Amanda Fontana
 * Dutch by [Paul Willems](http://wi4.nl) and [Peter Massar](http://profiles.wordpress.org/yourdigihands/)
 * English by [MarvinLabs](http://www.marvinlabs.com)
 * French by [MarvinLabs](http://www.marvinlabs.com)
 * German by [Benjamin Oechsler](http://benlocal.de)
-* Spanish by [e-rgonomy](http://e-rgonomy.com)
+* Hungarian by [Jagri István](http://www.itcs.hu)
+* Spanish by Ulises and [e-rgonomy](http://e-rgonomy.com)
 * Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com) and [Marcos Meyer Hollerweger](http://marcosh.eng.br/)
 * Italian by [Andrea Starz](http://www.work-on-web.it) and [Antonio Cicirelli](http://www.ideacommerce.it)
 * Swedish by Patric Liljestrand
@@ -172,6 +174,11 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 5. (2014//) =
+
+* Fix: bug that was showing the comments related to the last private content on the dashboard page
+* Fix: the function cuar_is_customer_area_private_content was not returning true for private containers (such as projects)
 
 = 5.0.7 (2014/07/31) =
 
