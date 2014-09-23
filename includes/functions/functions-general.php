@@ -46,7 +46,7 @@ function cuar_is_customer_area_page( $post_id = 0 ) {
  */
 function cuar_is_customer_area_private_content( $post = null ) {
 	$cuar_plugin = CUAR_Plugin::get_instance();
-	$private_types = $cuar_plugin->get_content_post_types();
+	$private_types = array_merge( $cuar_plugin->get_content_post_types(), $cuar_plugin->get_container_post_types());
 	
 	return in_array( get_post_type( $post ), $private_types );
 }
