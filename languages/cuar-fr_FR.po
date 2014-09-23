@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2014-06-17 09:43+0100\n"
-"PO-Revision-Date: 2014-06-17 09:43+0100\n"
+"POT-Creation-Date: 2014-09-01 09:14+0100\n"
+"PO-Revision-Date: 2014-09-01 09:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
-"Language: FR\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -169,7 +169,7 @@ msgid "Container Owner"
 msgstr "Propriétaire du conteneur"
 
 #: ../includes/core-addons/container-owner/container-owner-addon.class.php:107
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:745
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:746
 msgid "You are not authorized to view this page"
 msgstr "Vous n'êtes pas autorisé à voir cette page"
 
@@ -768,6 +768,7 @@ msgstr "Type"
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:116
 #: ../includes/core-classes/addon-update-content-page.class.php:249
+#: ../includes/core-classes/addon-update-content-page.class.php:250
 msgid "Edit"
 msgstr "Modifier"
 
@@ -1201,41 +1202,41 @@ msgstr ""
 msgid "Post Owner"
 msgstr "Propriétaire"
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:189
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:514
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:190
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:515
 msgid "User"
 msgstr "Utilisateur"
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:251
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:255
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:252
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:256
 msgid "Unknown"
 msgstr "inconnu"
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:366
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:367
 msgid "Owner"
 msgstr "Propriétaire"
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:432
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:433
 msgid "Assignment"
 msgstr "Affectation"
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:457
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:458
 msgid "Select the owner"
 msgstr "Sélectionner le propriétaire"
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:608
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:609
 msgid "It seems you cannot select any owner of that type."
 msgstr "Vous ne pouvez pas sélectionner de propriétaire."
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:617
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:618
 msgid "The owner is hidden"
 msgstr "Le propriétaire est masqué"
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:634
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:635
 msgid "Select or search an owner"
 msgstr "Sélectionnez un propriétaire"
 
-#: ../includes/core-addons/post-owner/post-owner-addon.class.php:780
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:781
 #, php-format
 msgid "User - %s"
 msgstr "Utilisateur - %s"
@@ -2265,55 +2266,56 @@ msgstr ""
 msgid "The content has been deleted."
 msgstr "Le contenu a été supprimé."
 
-#: ../includes/core-classes/addon-update-content-page.class.php:257
+#: ../includes/core-classes/addon-update-content-page.class.php:258
+#: ../includes/core-classes/addon-update-content-page.class.php:259
 msgid "Delete"
 msgstr "Supprimer"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:260
+#: ../includes/core-classes/addon-update-content-page.class.php:262
 msgid "Are you sure that you want to delete this content?"
 msgstr "Êtes-vous certain de vouloir supprimer ce contenu ?"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:276
+#: ../includes/core-classes/addon-update-content-page.class.php:278
 msgid "Content update (from front-office)"
 msgstr "Mise à jour de contenu (depuis le site)"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:278
+#: ../includes/core-classes/addon-update-content-page.class.php:280
 msgid "Update any content from front office"
 msgstr "Modifier n'importe quel contenu depuis le site"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:279
+#: ../includes/core-classes/addon-update-content-page.class.php:281
 msgid "Update authored content"
 msgstr "Modifier le contenu créé"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:280
+#: ../includes/core-classes/addon-update-content-page.class.php:282
 msgid "Update owned content"
 msgstr "Modifier le contenu assigné"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:284
+#: ../includes/core-classes/addon-update-content-page.class.php:286
 msgid "Content removal (from front-office)"
 msgstr "Suppression de contenu (depuis le site)"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:286
+#: ../includes/core-classes/addon-update-content-page.class.php:288
 msgid "Delete any content from front office"
 msgstr "Supprimer n'importe quel contenu depuis le site"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:287
+#: ../includes/core-classes/addon-update-content-page.class.php:289
 msgid "Delete authored content"
 msgstr "Supprimer du contenu créé"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:288
+#: ../includes/core-classes/addon-update-content-page.class.php:290
 msgid "Delete owned content"
 msgstr "Supprimer du contenu assigné"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:300
+#: ../includes/core-classes/addon-update-content-page.class.php:302
 msgid "You must specify a post to delete"
 msgstr "Vous devez préciser le contenu à supprimer"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:330
+#: ../includes/core-classes/addon-update-content-page.class.php:332
 msgid "You must specify a post to edit"
 msgstr "Vous devez préciser le contenu à modifier"
 
-#: ../includes/core-classes/addon-update-content-page.class.php:364
+#: ../includes/core-classes/addon-update-content-page.class.php:366
 msgid "Content edition"
 msgstr "Mise à jour de contenu"
 

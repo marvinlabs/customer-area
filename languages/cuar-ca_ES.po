@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2014-09-01 09:14+0100\n"
-"PO-Revision-Date: 2014-09-01 09:14+0100\n"
+"POT-Creation-Date: 2014-09-01 09:15+0100\n"
+"PO-Revision-Date: 2014-09-01 09:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
-"Language: nl_NL\n"
+"Language: ca_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,24 +15,24 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:35
 msgid "Administration Area"
-msgstr "Administratie Zone"
+msgstr "Àrea d'Administració"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:53
 msgid "News"
-msgstr "Nieuws"
+msgstr "Notícies"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:55
 msgid "Frequently Asked Questions"
-msgstr "Veelvuldig gestelde vragen"
+msgstr "Preguntes freqüents"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:57
 msgid "Resources"
-msgstr "Bronnen"
+msgstr "Recursos"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:69
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:10
@@ -41,14 +41,14 @@ msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and "
 "for the add-ons."
 msgstr ""
-"<a href=\"%1$s\" target=\"_blank\">Documentatie</a> voor de basis plugin en "
-"voor de extenties."
+"<a href=\"%1$s\" target=\"_blank\">Documentació</a> per l'extensió principal "
+"i per als complements (add-ons)."
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:72
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:13
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
-msgstr "<a href=\"%1$s\" target=\"_blank\">Veelvuldig gestelde vragen</a>. "
+msgstr "<a href=\"%1$s\" target=\"_blank\">Preguntes freqüents</a>. "
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:75
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:16
@@ -57,9 +57,9 @@ msgid ""
 "A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support forum</"
 "a>, only for the main plugin (English only as per the wordpress.org rules)."
 msgstr ""
-"Een eigen <a href=\"%1$s\" target=\"_blank\">wordpress.org support forum</"
-"a>, alleen voor de basis plugin (Alleen in het Engels volgens de regels van "
-"wordpress.org)."
+"El dedicat <a href=\"%1$s\" target=\"_blank\">fòrum de suport de wordpress."
+"org</a>, només per a l'extensió principal (d'acord a la normativa de "
+"wordpress.org, en anglès)."
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:78
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:19
@@ -69,24 +69,24 @@ msgid ""
 "main plugin as well as for the add-ons (English, French and Spanish are ok "
 "there). "
 msgstr ""
-"<a href=\"%1$s\" target=\"_blank\">Support forums</a> op onze website voor "
-"de basis plugin en voor de extenties (Engels, Frans en Spaans zijn daar "
-"toegestaan). "
+"<a href=\"%1$s\" target=\"_blank\">Fòrums de suport</a> a la nostra web per "
+"a l'extensió principal així com per als complements (idiomes: anglès, "
+"francés i castellà). "
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:145
 #: ../includes/core-classes/settings.class.php:234
 msgid "General"
-msgstr "Algemeen"
+msgstr "General"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:148
 #: ../includes/core-addons/private-file/private-file-addon.class.php:750
 #: ../includes/core-addons/private-page/private-page-addon.class.php:161
 msgid "Back-office"
-msgstr "Beheerders kant"
+msgstr "Part privada"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:150
 msgid "View the menu"
-msgstr "Bekijk het menu"
+msgstr "Visualitza el menú"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:164
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:165
@@ -98,11 +98,11 @@ msgstr "Bekijk het menu"
 #: ../includes/core-addons/status/templates/status-section-templates.template.php:24
 #: ../includes/core-classes/plugin.class.php:695
 msgid "Customer Area"
-msgstr "Klanten Zone"
+msgstr "Àrea de Clients"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:202
 msgid "Your private area"
-msgstr "Uw privé zone"
+msgstr "La teva àrea privada"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:215
 #: ../includes/core-addons/status/status-addon.class.php:141
@@ -110,34 +110,34 @@ msgstr "Uw privé zone"
 #: ../includes/core-classes/settings.class.php:72
 #: ../includes/core-classes/settings.class.php:110
 msgid "Settings"
-msgstr "Instellingen"
+msgstr "Paràmetres"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:224
 msgid "Help & support"
-msgstr "Help en support"
+msgstr "Ajuda / Suport"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:231
 #: ../includes/core-addons/help/help-addon.class.php:57
 #: ../includes/core-addons/help/help-addon.class.php:65
 msgid "Add-ons"
-msgstr "Add-on extensies"
+msgstr "Complements"
 
 #: ../includes/core-addons/capabilities/capabilities-addon.class.php:35
 msgid "Capabilities Manager"
-msgstr "Capaciteit Manager"
+msgstr "Gestionar permissos"
 
 #: ../includes/core-addons/capabilities/capabilities-addon.class.php:55
 msgid "You have not yet configured the plugin permissions."
-msgstr "U heeft de plugin autorisaties nog niet geconfigureerd."
+msgstr "Encara no has configurar el permissos per a l'extensió."
 
 #: ../includes/core-addons/capabilities/capabilities-addon.class.php:79
 msgid "Capabilities"
-msgstr "Capaciteit"
+msgstr "Permissos"
 
 #: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:24
 #: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:30
 msgid "Configure permissions"
-msgstr "Configureer autorisaties"
+msgstr "Configurar permissos"
 
 #: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:26
 msgid ""
@@ -146,10 +146,10 @@ msgid ""
 "able to use the customer area. The permissions can easily be configured from "
 "the Customer Area settings."
 msgstr ""
-"U heeft de autorisaties nog niet geconfigureerd. Standaard mag de beheerder "
-"alles uitvoeren, maar alle overige rollen kunnen de klantzone niet "
-"gebruiken. De autorisaties kunnen eenvoudig worden geconfigureerd in de "
-"Klantzone instellingen."
+"Encara no has configurat els permissos. Per defecte, l'extensió permet als "
+"administradors realitzar qualsevol acció però la resta de rols no es troben "
+"autoritzats per utilitzar l'àrea de clients. Els permissos poden configurar-"
+"se fàcilment des dels Paràmetres de l'Àrea de Clients."
 
 #: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:29
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:31
@@ -158,238 +158,238 @@ msgstr ""
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:79
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
 msgid "Suggested action"
-msgstr "Voorgestelde actie"
+msgstr "Acció suggerida"
 
 #: ../includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:31
 msgid "Ignore this warning"
-msgstr "Negeer deze waarschuwing"
+msgstr "Ignorar aquest avís"
 
 #: ../includes/core-addons/container-owner/container-owner-addon.class.php:36
 msgid "Container Owner"
-msgstr "Bericht eigenaar"
+msgstr "Propietari del contenidor"
 
 #: ../includes/core-addons/container-owner/container-owner-addon.class.php:107
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:746
 msgid "You are not authorized to view this page"
-msgstr "U bent niet geautoriseerd om deze pagina te zien"
+msgstr "No et trobes autoritzat per visualitzar aquesta pàgina"
 
 #: ../includes/core-addons/customer-account/customer-account-addon.class.php:43
 msgid "Account - Details"
-msgstr "Gebruikersprofiel - details"
+msgstr "Compte - Detalls"
 
 #: ../includes/core-addons/customer-account/customer-account-addon.class.php:47
 #: ../includes/core-addons/user-profile/user-profile-addon.class.php:61
 msgid "Account details"
-msgstr "Gebruikersprofiel details"
+msgstr "Detalls del compte"
 
 #: ../includes/core-addons/customer-account/customer-account-addon.class.php:51
 #: ../includes/core-addons/customer-account-home/customer-account-home-addon.class.php:51
 msgid "This page shows a summary of the user account"
-msgstr "Deze pagina toont een samenvatting van de gebruikersprofiel gegevens"
+msgstr "Aquesta pàgina mostra un resum del compte de l'usuari"
 
 #: ../includes/core-addons/customer-account/templates/customer-account-content.template.php:14
 #: ../includes/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:11
 #, php-format
 msgid "Hello %s,"
-msgstr "Hallo %s,"
+msgstr "Hola %s,"
 
 #: ../includes/core-addons/customer-account/templates/customer-account-content.template.php:19
 msgid "Your profile has been updated"
-msgstr "Uw gebruikersprofiel is bijgewerkt"
+msgstr "El teu perfil s'ha actualitzat"
 
 #: ../includes/core-addons/customer-account/templates/customer-account-content.template.php:23
 msgid "Please find below your account details"
-msgstr "Zie hieronder uw gebruikersprofiel details."
+msgstr "Si us plau, troba a sota els detalls del teu compte"
 
 #: ../includes/core-addons/customer-account-edit/customer-account-edit-addon.class.php:43
 msgid "Account - Edit"
-msgstr "Gebruikersprofiel - wijzig"
+msgstr "Compte - Editar"
 
 #: ../includes/core-addons/customer-account-edit/customer-account-edit-addon.class.php:47
 msgid "Edit account"
-msgstr "Wijzig gebruikesprofiel"
+msgstr "Editar el compte"
 
 #: ../includes/core-addons/customer-account-edit/customer-account-edit-addon.class.php:51
 msgid "This page shows a form where the user can edit his account"
-msgstr ""
-"Deze pagina toont een formulier waar de gebruiker zijn/haar profiel kan "
-"wijzigen"
+msgstr "Aquesta pàgina mostra una manera com l'usuari pot editar el seu compte"
 
 #: ../includes/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:14
 msgid ""
 "You can update your account details. If you leave the password fields empty, "
 "your password will not be modified."
 msgstr ""
-"U kunt uw gebruikersprofiel bijwerken. Indien u uw wachtwoord niet invult, "
-"dan wordt deze niet bijgewerkt."
+"Pots actualitzar els detalls del teu compte. Si deixes el camp de la "
+"contrasenya buit, la teva contrasenya no es modificarà."
 
 #: ../includes/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:21
 msgid "Submit"
-msgstr "Start"
+msgstr "Enviar"
 
 #: ../includes/core-addons/customer-account-home/customer-account-home-addon.class.php:43
 msgid "Account - Home"
-msgstr "Gebruikersprofiel - home"
+msgstr "Compte - Principal"
 
 #: ../includes/core-addons/customer-account-home/customer-account-home-addon.class.php:47
 msgid "My account"
-msgstr "Mijn profiel"
+msgstr "El meu compte"
 
 #: ../includes/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: ../includes/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
 #: ../includes/core-classes/addon-container-page.class.php:597
 #: ../includes/core-classes/addon-content-page.class.php:665
 msgid "Dashboard"
-msgstr "Werkblad"
+msgstr "Tauler"
 
 #: ../includes/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
 msgid ""
 "Shows a summary of the user's private content (files, pages, messages, ...)."
 msgstr ""
-"Geeft een samenvatting van de gebruikers privé content (bestanden, pagina's, "
-"conversaties)"
+"Mostra un resum del contingut privat de l'usuari (arxius, pàgines, "
+"missatges,...)."
 
 #: ../includes/core-addons/customer-home/customer-home-addon.class.php:43
 msgid "Home"
-msgstr "Home"
+msgstr "Principal"
 
 #: ../includes/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
 "This is the main page for your customers. It will redirect to the login page "
 "or to the customer area dashboard."
 msgstr ""
-"Dit is de hoofdpagina voor uw klanten. Deze wordt doorverwezen naar de inlog "
-"pagina of naar het klantzone werkblad."
+"Aquesta és la pàgina principal per als teus clients. Redigirà a la pàgina "
+"d'inici de sessió o bé al tauler de l'àrea de client."
 
 #: ../includes/core-addons/customer-home/customer-home-addon.class.php:55
 msgid "customer-area"
-msgstr "Klantenzone"
+msgstr "area-clients"
 
 #: ../includes/core-addons/customer-logout/customer-logout-addon.class.php:44
 #: ../includes/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
-msgstr "Uitloggen"
+msgstr "Tancar sessió"
 
 #: ../includes/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
 msgstr ""
-"Deze pagina logt de hudige gebruiker af en verwijst deze door naar de uitlog "
-"pagina."
+"Aquesta pàgina desconnecta a l'usuari actual i el redirigeix a la pàgina de "
+"tancament de sessió"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:36
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:677
 msgid "Customer Pages"
-msgstr "Klantenpagina's"
+msgstr "Pàgines dels clients"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:77
 msgctxt "Private content category archive slug"
 msgid "category"
-msgstr "Categorie"
+msgstr "categoria"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:78
 msgctxt "Private content date archive slug"
 msgid "archive"
-msgstr "Archief"
+msgstr "arxiu"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:79
 msgctxt "Private content author archive slug"
 msgid "created-by"
-msgstr "Gemaakt door"
+msgstr "creat-per"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:80
 msgctxt "Private content update slug"
 msgid "update"
-msgstr "Bijwerken"
+msgstr "actualitzar"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:81
 msgctxt "Private content delete slug"
 msgid "delete"
-msgstr "Verwijder"
+msgstr "eliminar"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:101
 msgid "Some pages of the customer area have not yet been created."
-msgstr "Sommige pagina's van de Klantzone zijn nog niet aangemaakt."
+msgstr "Algunes pàgines de l'àrea de client encara no s'han creat."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:117
 msgid "The navigation menu for the customer area has not been created."
-msgstr "Het navigatie menu voor de Klantzone is nog niet aangemaakt."
+msgstr "El menú de navegació per l'àrea de client encara no s'ha creat."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:126
 #: ../includes/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
 msgid "Pages"
-msgstr "Pagina's"
+msgstr "Pàgines"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:127
 msgid "Pages of the Customer Area"
-msgstr "Pagina's van de Klantenzone"
+msgstr "Pàgines per l'Àrea de Clients"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:301
 #: ../includes/core-classes/addon-container-page.class.php:314
 #: ../includes/core-classes/addon-content-page.class.php:371
 msgctxt "pagination_parameter_name (should not be \"page\")"
 msgid "page-num"
-msgstr "Pagina nummer"
+msgstr "num-pagina"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:497
 msgctxt ""
 "Localised slug for the main navigation menu (small caps version of the "
 "\"Customer Area Menu\" translation)"
 msgid "customer-area-menu"
-msgstr "Klantenzone menu"
+msgstr "menu-area-clients"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:498
 msgid "Customer Area Menu"
-msgstr "Klanten Zone"
+msgstr "Menú Àrea de Clients"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:502
 #, php-format
 msgid "Could not create the menu. %s"
-msgstr "Kan het menu niet aanmaken. %s"
+msgstr "No és possible crear el menú. %s"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:553
 #, php-format
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
-msgstr "Het menu is aangemaakt: <a href=\"%s\">toon menu</a>"
+msgstr "EL menú ha estat creat: <a href=\"%s\">mostra el menú</a>"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:670
 msgid "Site Pages"
-msgstr "Website pagina's"
+msgstr "Pàgines web"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:703
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:764
 msgid "Reset"
-msgstr "Reset"
+msgstr "Restablir"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:709
 msgid "Reset all pages &raquo;"
-msgstr "Reset alle pagina's &raquo;"
+msgstr "Restablir totes les pàgines &raquo;"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:712
 msgid "Delete all existing pages and recreate them."
-msgstr "Verwijder alle bestaande Klantzone pagina's en maak deze opnieuw aan."
+msgstr "Suprimir totes les pàgines existents i refer-les."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:713
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
 msgstr ""
-"Weet u zeker dat u alle bestaande Klantzone pagina's wilt verwijderen en "
-"opnieuw wilt aanmaken. (deze actie kan niet ongedaan worden gemaakt!)?"
+"Estàs segur/a que vols eliminar totes les pàgines existents i refer-les "
+"(aquesta acció no es podrà desfer)?"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:721
 msgid "Main Navigation Menu"
-msgstr "Hoofd navigatie menu"
+msgstr "Menú principal de navegació"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:729
 msgid "Customer Area pages"
-msgstr "Klantenzone pagina's"
+msgstr "Pàgines de l`àrea de clients"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:736
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
-msgstr "Beeld automatisch het Klantzone menu af op privé pagina's."
+msgstr ""
+"Automàticament ubica el menú de navegació de l'àrea de clients a les pàgines "
+"de l'àrea de clients."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:738
 msgid ""
@@ -398,22 +398,22 @@ msgid ""
 "It may however not appear at the place you would want it. If that is the "
 "case, you can refer to our documentation to see how to edit your theme."
 msgstr ""
-"Door dit aan te vinken, zal het menu automatisch worden getoond op de "
-"Klantzone pagina's (de gene die gedefinieerd zijn in de tab genaamt \"Site "
-"Pages\"). Het menu zal misschien niet te zien zijn op de plaats waar u dit "
-"wilt. Indien dit het geval is, zie onze documentatie hoe u uw thema kunt "
-"wijzigen."
+"Marcant aquesta opció, el menú es mostrarà automàticament a les pàgines de "
+"l'àrea de clients (les definides a la pestanya anomenada \"Site Pages\"). "
+"Pot passar que no aparegui al lloc on desitges. Si és el cas, et pots "
+"dirigir a la documentació per veure com editar el teu tema."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:746
 msgid "Private content single pages"
-msgstr "Privé content enkelvoudige pagina's"
+msgstr "Contingut privat de les pàgines individuals"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:753
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
 msgstr ""
-"Beeld automatisch het Klantzone menu af op een enkelvoudige privé pagina."
+"Automàticament ubica el menú de navegació de l'àrea de clients al contingut "
+"privat de les pàgines individuals."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:755
 msgid ""
@@ -423,34 +423,34 @@ msgid ""
 "If that is the case, you can refer to our documentation to see how to edit "
 "your theme."
 msgstr ""
-"Door het aanvinken van dit item, zal het Klantzone menu automatisch getoond "
-"worden op de pagina's die enkelvoudige content weergeven. Het is mogelijk "
-"dat dit menu niet precies wordt weergegeven waar u dit wilt. Indien dat het "
-"geval is, lees dan onze documentatie om dit te wijzigen binnen uw thema."
+"Marcant aquesta opció, el menú es mostrarà automàticament a les pàgines amb "
+"contingut privat (per exemple, una pàgina privada o un arxiu privat). Pot "
+"passar que no aparegui al lloc on desitges. Si és el cas, et pots dirigir a "
+"la documentació per veure com editar el teu tema."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:770
 msgid "Recreate menu"
-msgstr "Maak het menu opniew aan"
+msgstr "Refer el menú"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:773
 msgid "Delete and recreate the main navigation menu."
-msgstr "Verwijder en maak het hoofd navigatie menu opnieuw aan."
+msgstr "Eliminar i refer el menú principal de navegació"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:774
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
 msgstr ""
-"Weet u zeker dat u het hoofd navigatie menu opnieuw wilt maken (deze actie "
-"kan niet ongedaan worden gemaakt)?"
+"Estàs segur/a que vols eliminar el menú principal de navegació (aquesta "
+"acció no es podrà desfer)?"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:780
 msgid "Permalinks"
-msgstr "Permalinks"
+msgstr "Enllaços permanents"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:787
 msgid "Category Archive"
-msgstr "Categorie Archief"
+msgstr "Categoria de l'arxiu"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:796
 msgid ""
@@ -459,14 +459,14 @@ msgid ""
 "look like:<br/>http://example.com/customer-area/files/<b>my-slug</b>/my-"
 "awesome-category"
 msgstr ""
-"Afkorting welke wordt gebruikt in de URL voor category archief of privé "
-"content. Bijvoorbeeld, de lijst met bestanden in \"my-awesome-category\" "
-"categorie zou lijken op:<br/>http://example.com/customer-area/files/<b>mijn-"
-"aforting</b>/my-awesome-category"
+"Resum (slug) utilitzat a la URL per categories d'arxius amb contingut "
+"privat. Per exemple, la llista dels arxius a la categoria \"my-awesome-"
+"category\" es mostraria com:<br/>http://example.com/customer-area/files/"
+"<b>my-slug</b>/my-awesome-category"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:804
 msgid "Date Archive"
-msgstr "Datum archief"
+msgstr "Data de l'arxiu"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:813
 msgid ""
@@ -474,13 +474,13 @@ msgid ""
 "example, the list of files for 2014 would look like:<br/>http://example.com/"
 "customer-area/files/<b>my-slug</b>/2014"
 msgstr ""
-"Afkorting welke wordt gebruikt in de URL voor archief of privé content. "
-"Bijvoorbeeld, de lijst met bestanden voor 2014 zou lijken op:<br/>http://"
-"example.com/customer-area/files/<b>mijn-afkorting</b>/2014"
+"Resum (slug) utilitzat a la URL per la data dels arxius amb contingut "
+"privat. Per exemple, la llista dels arxius del 2014 es mostraria com:<br/"
+">http://example.com/customer-area/files/<b>my-slug</b>/2014"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:821
 msgid "Author Archive"
-msgstr "Schrijvers archief"
+msgstr "Autor de l'arxiu"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:830
 msgid ""
@@ -488,30 +488,32 @@ msgid ""
 "example, the list of files created by user with ID 2 would look like:<br/"
 ">http://example.com/customer-area/files/<b>my-slug</b>/2"
 msgstr ""
-"Afkorting welke wordt gebruikt in de URL voor archief of privé content. "
-"Bijvoorbeeld, de lijst met bestanden voor 2014 zou lijken op:<br/>http://"
-"example.com/customer-area/files/<b>mijn-afkorting</b>/2014"
+"Resum (slug) utilitzat a la URL per l'autor dels arxius amb contingut "
+"privat. Per exemple la llista d'arxius creats per un usuari amb ID 2 es "
+"mostraria com:<br/>http://example.com/customer-area/files/<b>my-slug</b>/2"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:838
 msgid "Update Content"
-msgstr "Content bijwerken"
+msgstr "Actualitzar contingut"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:847
 msgid "Slug that is used in the URL to update existing private content"
-msgstr "Synoniem welke is gebruikt in de URL om uw privé content bij te werken"
+msgstr ""
+"Resum (slug) utilitzat a la URL per actualitzar l'actual contingut privat"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:854
 msgid "Delete Content"
-msgstr "Verwijder content"
+msgstr "Eliminar contingut"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:863
 msgid "Slug that is used in the URL to delete existing private content"
-msgstr ""
-"Synoniem welke is gebruikt in de URL om uw privé content te verwijderen"
+msgstr "Resum (slug) utilitzat a la URL per eliminar l'actual contingut privat"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:874
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
-msgstr "Sinds versie 4.0.0, Klantzone navigeert via menu's"
+msgstr ""
+"Des de la versió 4.0.0, l'extensió Àrea de Clients (Customer Area) maneja la "
+"navegació utilitzant menú."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:876
 #, php-format
@@ -521,9 +523,9 @@ msgid ""
 "Customer Area will generate a default menu for you with all the pages you "
 "have set below."
 msgstr ""
-"U kunt het Klantzone menu aanpassen in <a href=\"%1$s\">Appearance &raquo; "
-"Menus</a> window. Indien u daar geen aangepast menu definieert, dan zal "
-"Klantzone een standaard menu aanmaken met alle onderstaande pagina's."
+"Pots personalitzar el menú de l'Àrea de Clients a través de <a href=\"%1$s"
+"\">Aparença / Menús</a>. Si no defineixes cap menú personalitzat, l'Àrea de "
+"Clients en generarà un per defecte amb totes les pàgines creades a sota."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:885
 msgid ""
@@ -531,9 +533,9 @@ msgid ""
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
 msgstr ""
-"Sinds versie 4.0.0., gebruikt Klantzone diverse pagina's om de content af te "
-"beelden voor uw klanten. Maak hier deze pagina's of selecteer bestaande "
-"pagina's. "
+"Des de la versió 4.0.0, l'extensió Àrea de Clients (Customer Area) utilitza "
+"vàries pàgines per mostrar el contingut als teus clients. Crea aquestes "
+"pàgines des d'aquí o simplement indica les existents."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:944
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:973
@@ -542,49 +544,50 @@ msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
 msgstr ""
-"Sommige pagina's van Klantzone zijn aangemaakt of verwijderd. Het Klantzone "
-"navigatie menu moet worden bijgewerkt."
+"Algunes pàgines de l'àrea de clients han estat creades o eliminades. És "
+"necessari actualitzar el menú de navegació del client."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:970
 #, php-format
 msgid "The following pages have been created: %s"
-msgstr "De volgende pagina's zijn gemaakt: %s"
+msgstr "Les següents pàgines han estat creades: %s"
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:975
 msgid "There was no missing page that could be created."
-msgstr "Er was geen ontbrekende pagina welke kon worden aangemaakt."
+msgstr "No hi ha cap pàgina pendent de creació."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:1012
 msgid ""
 "Some pages in your site seem to contain Customer Area shortcodes but are not "
 "registered in the Customer Area pages settings."
 msgstr ""
-"Sommige pagina's in uw website lijken Klantzone shortcodes te bevatten maar "
-"zijn niet geregistreerd in de Klantzone pagina instellingen."
+"Algunes pàgines al teu lloc web sembla que continguin codis abreujats a "
+"l'Àrea de Clients (Customer Area) però no es troben registrades dins els "
+"paràmetres de les pàgines de l'Àrea de Clients."
 
 #: ../includes/core-addons/customer-pages/customer-pages-addon.class.php:1028
 #, php-format
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
-msgstr[0] "%s pagina is verwijderd"
-msgstr[1] "%s pagina's zijn verwijderd"
+msgstr[0] "%s pàgina s'ha eliminat"
+msgstr[1] "%s pàgines s'han eliminat"
 
 #: ../includes/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:8
 msgid "Toggle navigation"
-msgstr "Wissel Navigatie"
+msgstr "Eina de navegació"
 
 #: ../includes/core-addons/customer-pages/templates/pagination.template.php:8
 msgid "(current)"
-msgstr "(huidige)"
+msgstr "(actual)"
 
 #: ../includes/core-addons/customer-pages/templates/pagination.template.php:11
 #, php-format
 msgid "Page %1$s"
-msgstr "Pagina  %1$s"
+msgstr "Pàgina %1$s"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:23
 msgid "Missing navigation menu"
-msgstr "Ontbrekend navigatie menu"
+msgstr "Menú de navegació no trobat"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:26
 msgid ""
@@ -592,9 +595,9 @@ msgid ""
 "files, the pages, to view the account details and much more. It seems that "
 "this menu has not yet been created."
 msgstr ""
-"Een navigatie menu organiseerd de Klantzone. Via dit menu kunt u bestanden "
-"en pagina's bekijken, uw gebruikers profiel details bekijken en veel meer. "
-"Het lijkt erop dat het menu nog niet is aangemaakt."
+"El menú de navegació organitza l'àrea privada. Et permet navegar pels "
+"arxius, veure els detalls del compte i molt més. Sembla ser que aquest menú "
+"encara no s'ha creat."
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
 #, php-format
@@ -602,24 +605,23 @@ msgid ""
 "You can review which menus are currently created on the <a href=\"%1$s"
 "\">menus page</a>."
 msgstr ""
-"U kunt nakijken welke menus momenteel zijn aangemaakt via de <a href=\"%1$s"
-"\">menus page</a>."
+"Pots revisar quins menús estan actualment creats a la  <a href=\"%1$s"
+"\">pàgina de menús</a>."
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:32
 msgid "Create the menu"
-msgstr "Maak het menu"
+msgstr "Crear el menú"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:39
 msgid ""
 "Are you sure that you want to create the menu (this operation cannot be "
 "undone)?"
 msgstr ""
-"Weet u zeker dat u het menu wilt aanmaken (deze actie kan niet ongedaan "
-"worden gemaakt)?"
+"Estàs segur/a que vols crear el menú (aquesta acció no es podrà desfer)?"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:23
 msgid "Navigation menu is out of sync"
-msgstr "Navigatie menu is niet gesynchoniseerd."
+msgstr "El menú de navegació no està sincronitzat"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
 msgid ""
@@ -627,9 +629,9 @@ msgid ""
 "menu probably references the previous pages. We recommend to synchronize the "
 "menu with the new pages. "
 msgstr ""
-"Sommige pagina's van de Klantzone zijn gewijzigd en uw huidige navigatie "
-"menu verwijst waarschijnlijk naar oudere pagina's. Wij raden u aan om het "
-"menu te synchroniseren met de nieuwe pagina's."
+"Algunes pàgines de l'àrea privada s'han modificat i l'actual menú de "
+"navegació probablement referencia cap a pàgines prèvies. Et recomanem "
+"sincronitzar el menú amb les noves pàgines."
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
 #, php-format
@@ -637,40 +639,40 @@ msgid ""
 "You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
 "&raquo; Menus</a> page."
 msgstr ""
-"U kunt ook het menu handmatig wijzigen via de <a href=\"%1$s\">Appearance "
-"&raquo; Menus</a> pagina."
+"Pots editar manualment el menú a través de la pàgina  <a href=\"%1$s"
+"\">Aparença Menús</a>."
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:30
 msgid "Suggested actions"
-msgstr "Suggestie acties"
+msgstr "Accions suggerides"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:31
 msgid "Synchronize menu"
-msgstr "Synchroniseer menu"
+msgstr "Sincronitzar menú"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:34
 msgid "Ignore warning"
-msgstr "Negeer waarschuwing"
+msgstr "Ignorar avís"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:41
 msgid ""
 "Are you sure that you want to clear current menu and create it again from "
 "scratch (this operation cannot be undone)?"
 msgstr ""
-"Weet u zeker dat u het huidige menu wilt verwijderen en opnieuw wilt "
-"aanmaken (deze actie kan niet ongedaan worden gemaakt)?"
+"Estàs segur/a que vols netejar el menú actual i crear-lo altre cop de zero "
+"(aquesta acció no es podrà desfer)?"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:46
 msgid ""
 "Are you sure that you want ignore this warning? You can also manually edit "
 "your menu in the page: \"Appearance > Menus\"."
 msgstr ""
-"Weet u zeker dat u deze waarschuwing wilt negeren? U kunt ook handmatig uw "
-"menu wijzigen via de pagina: \"Appearance > Menus\"."
+"Estàs segur/a que vols ignorar aquest avís? També pots editar manualment el "
+"teu menú a la pàgina: \"Appearance > Menus\"."
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:23
 msgid "Orphan pages"
-msgstr "Zwevende pagina's"
+msgstr "Pàgines orfes"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:26
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:75
@@ -680,16 +682,16 @@ msgid ""
 "had created and trashed when originally set up the plugin. You should delete "
 "them for good either manually or by letting us do it for you."
 msgstr ""
-"Sommige pagina's in uw website lijken Klantzone shortcodes te bevatten maar "
-"zijn niet geregistreerd in de Klantzone pagina instellingen. Dit zijn "
-"waarschijnlijk pagina's die u heeft gemaakt en daarna verwijderd bij de "
-"originele installatie van de plugin. U zou deze voorgoed handmatig moeten "
-"verwijderen of door ons laten doen."
+"Algunes pàgines del teu lloc web sembla que continguis codis abreujats a "
+"l'Àrea de Clients però no es troben registrades dins dels paràmetres de "
+"pàgina de l'Àrea de Clients. Probablement són pàgines que vas crear i "
+"eliminar quan inicialment vas configurar l'extensió. Cal que les eliminis "
+"manualment o ens deixis fer-ho en nom teu."
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:31
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:80
 msgid "Delete orphan pages"
-msgstr "Verwijder zwevende pagina's"
+msgstr "Eliminar pàgines orfes"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:38
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:87
@@ -697,12 +699,12 @@ msgid ""
 "Are you sure that you want to delete those pages (this operation cannot be "
 "undone)?"
 msgstr ""
-"Weet u zeker dat u deze pagina's wilt verwijderen (deze actie kan niet "
-"ongedaan worden gemaakt)?"
+"Estàs segur/a que vols eliminar aquestes pàgines (aquesta acció no es podrà "
+"desfer)?"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:23
 msgid "Missing front-office pages"
-msgstr "Ontbrekende gebruikers pagina's"
+msgstr "Pàgines de la part pública inexistents"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:26
 msgid ""
@@ -710,9 +712,9 @@ msgid ""
 "responsible for displaying the private content you have assigned to your "
 "users."
 msgstr ""
-"Sommige pagina's van de Klantzone zijn nog niet aangemaakt. Deze pagina's "
-"zijn verantwoordelijke voor het afbeelden van privé content welke u heeft "
-"toegewezen aan uw gebruikers."
+"Algunes pàgines de l'àrea de client encara no s'ha creat. Aquestes pàgines "
+"són les responsables de mostrar el contingut privat que assignes als teus "
+"usuaris."
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
 #, php-format
@@ -720,185 +722,183 @@ msgid ""
 "You can review which pages are currently created on the <a href=\"%1$s"
 "\">pages settings page</a>."
 msgstr ""
-"U kunt de pagina's bekijken welk momenteel zijn aangemaakt via de <a href="
-"\"%1$s\">pages settings page</a>."
+"Pots revisar quines pàgines estan creades actualment a través de la <a href="
+"\"%1$s\">pàgina de paràmetres de pàgines</a>."
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:32
 msgid "Create missing pages"
-msgstr "Maak de ontbrekende pagina's"
+msgstr "Crear pàgines faltants"
 
 #: ../includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:39
 msgid ""
 "Are you sure that you want to create all the pages that are currently "
 "missing (this operation cannot be undone)?"
 msgstr ""
-"Weet u zeker dat u alle pagina's wilt aanmaken welke momenteel ontbreken "
-"(deze actie kan niet ongedaan worden gemaakt)?"
+"Estàs segur/a que vols crear les pàgines que falten (aquesta acció no es "
+"podrà desfer)?"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
 msgid "Page"
-msgstr "Pagina"
+msgstr "Pàgina"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:26
 msgid "Slug"
-msgstr "Afkorting"
+msgstr "Resum"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:27
 msgid "Order"
-msgstr "Volgorde"
+msgstr "Ordre"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:28
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:100
 #: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:28
 msgid "ID"
-msgstr "Id"
+msgstr "ID"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:29
 msgid "Sidebar"
-msgstr "Sidebar"
+msgstr "Barra lateral"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:30
 #: ../includes/core-addons/status/hook-finder.class.php:123
 msgid "Type"
-msgstr "Type"
+msgstr "Tipus"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:116
 #: ../includes/core-classes/addon-update-content-page.class.php:249
 #: ../includes/core-classes/addon-update-content-page.class.php:250
 msgid "Edit"
-msgstr "Wijzig"
+msgstr "Editar"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:54
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:118
 msgid "View"
-msgstr "Bekijk"
+msgstr "Mostra"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:71
 msgid "Potential orphan pages"
-msgstr "Mogelijke zwevende pagina's"
+msgstr "Possibles pàgines orfes"
 
 #: ../includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:99
 msgid "Title"
-msgstr "Titel:"
+msgstr "Títol"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:51
 msgid "Private Files - Owned"
-msgstr "Privé-Bestanden - per eigenaar"
+msgstr "Arxius privats - Propietari"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:55
 msgid "My files"
-msgstr "Mijn bestanden"
+msgstr "Els meus arxius"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:59
 msgid "Page to list the files a customer owns."
-msgstr "Pagina voor de klant bestanden lijst."
+msgstr "Pàgina per llistar els arxius que un client posseeix."
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:86
 msgid "Files you created"
-msgstr "Bestanden die u gemaakt heeft"
+msgstr "Arxius que has creat"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:90
 #, php-format
 msgid "Files created by %1$s"
-msgstr "Bestanden gemaakt door %1$s "
+msgstr "Arxius creats per %1$s"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:94
 #, php-format
 msgid "Files under %1$s"
-msgstr "Bestanden onder %1$s"
+msgstr "Arxius sota %1$s"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:100
 #, php-format
 msgid "Files published in %2$s %1$s"
-msgstr "Bestanden gepubliceerd in %2$s %1$s"
+msgstr "Arxius publicats a %2$s %1$s"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:102
 #, php-format
 msgid "Files published in %1$s"
-msgstr "Bestanden gepubliceerd in %1$s"
+msgstr "Arxius publicats a %1$s"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:109
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:113
 #: ../includes/core-addons/customer-private-files/widget-private-files.class.php:49
 msgid "Recent Files"
-msgstr "Recente bestanden"
+msgstr "Arxius recents"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:121
 #: ../includes/core-addons/customer-private-files/widget-private-file-categories.class.php:49
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:121
 #: ../includes/core-addons/customer-private-pages/widget-private-page-categories.class.php:49
 msgid "Categories"
-msgstr "Categorieën"
+msgstr "Categories"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:126
 #: ../includes/core-addons/customer-private-files/widget-private-file-dates.class.php:49
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:126
 #: ../includes/core-addons/customer-private-pages/widget-private-page-dates.class.php:49
 msgid "Archives"
-msgstr "Archives"
+msgstr "Arxius"
 
 #: ../includes/core-addons/customer-private-files/customer-private-files-addon.class.php:131
 #: ../includes/core-addons/customer-private-files/widget-private-file-authors.class.php:49
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:131
 #: ../includes/core-addons/customer-private-pages/widget-private-page-authors.class.php:49
 msgid "Created By"
-msgstr "Gemaakt door"
+msgstr "Creat per"
 
 #: ../includes/core-addons/customer-private-files/widget-private-file-authors.class.php:37
 msgid "Customer Area - File Authors"
-msgstr "Klantzone - Bestandsschrijvers"
+msgstr "Àrea Privada - Arxiu d'autors"
 
 #: ../includes/core-addons/customer-private-files/widget-private-file-authors.class.php:39
 msgid "Shows the private file author archives of the Customer Area"
-msgstr ""
-"Geeft de jaarlijkse archieven van de privé bestanden in de Klantzone weer."
+msgstr "Mostra els arxius d'un autor d'arxius privats de l'Àrea de Clients"
 
 #: ../includes/core-addons/customer-private-files/widget-private-file-categories.class.php:37
 msgid "Customer Area - File Categories"
-msgstr "Klantzone - Bestandscategorieën"
+msgstr "Àrea Privada - Categoria d'arxius"
 
 #: ../includes/core-addons/customer-private-files/widget-private-file-categories.class.php:39
 msgid "Shows the private file categories of the Customer Area"
-msgstr "Beeld de privé bestandscategoriën af van de Klantzone"
+msgstr "Mostra les categories d'arxius privats de l'Àrea de Clients"
 
 #: ../includes/core-addons/customer-private-files/widget-private-file-dates.class.php:37
 msgid "Customer Area - File Archives"
-msgstr "Klantzone - Bestand archieven"
+msgstr "Àrea Privada - Fitxer d'arxius"
 
 #: ../includes/core-addons/customer-private-files/widget-private-file-dates.class.php:39
 msgid "Shows the private file yearly archives of the Customer Area"
-msgstr ""
-"Geeft de jaarlijkse archieven van de privé bestanden in de Klantzone weer."
+msgstr "Mostra els arxius anuals de la pàgina privada de l'Àrea de Clients"
 
 #: ../includes/core-addons/customer-private-files/widget-private-files.class.php:37
 msgid "Customer Area - Recent Files"
-msgstr "Klantenzone - recente bestanden"
+msgstr "Àrea Privada - Arxius recents"
 
 #: ../includes/core-addons/customer-private-files/widget-private-files.class.php:39
 msgid "Shows a list of files for the logged-in user"
-msgstr "Geeft een lijst van alle bestanden voor de aangemelde gebruiker"
+msgstr "Mostra una llista d'arxius per l'usuari que hagi iniciat sessió"
 
 #: ../includes/core-addons/customer-private-files/widget-private-files.class.php:53
 msgid "No files"
-msgstr "Geen bestanden"
+msgstr "Sense arxius"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:3
 msgid "There are no files in that category."
-msgstr "Er zijn geen bestanden in deze categorie"
+msgstr "No es troben arxius en aquesta categoria."
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:3
 msgid "There are no files for that period."
-msgstr "Er zijn geen bestanden voor deze periode."
+msgstr "No es troben arxius per aquest període."
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-empty.template.php:3
 msgid "You currently have no files."
-msgstr "U heeft op dit moment geen bestanden."
+msgstr "Actualment no hi han arxius per mostrar."
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:19
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:19
 msgid "You uploaded this file"
-msgstr "U heeft dit bestand toegevoegd"
+msgstr "Has carregat aquest arxiu"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:20
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:22
@@ -910,7 +910,7 @@ msgstr "U heeft dit bestand toegevoegd"
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:21
 #, php-format
 msgid "Published for %s"
-msgstr "Gepubliceerd voor %1$s"
+msgstr "Publicat per a %s"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:23
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:23
@@ -918,193 +918,192 @@ msgstr "Gepubliceerd voor %1$s"
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:22
 #, php-format
 msgid "Published by %s"
-msgstr "Gepubliceerd door %1$s"
+msgstr "Publicat per %s"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:26
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:26
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:25
 #, php-format
 msgid "Uploaded on %s"
-msgstr "Toegevoegd op %s"
+msgstr "Actualitzat a %s"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:43
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:51
 #, php-format
 msgid "Download (%1$s)"
-msgstr "Download (%1$s)"
+msgstr "Descàrrega (%1$s)"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:30
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:28
 msgid "Author"
-msgstr "Schrijver"
+msgstr "Autor"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:35
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:33
 msgid "Recipient"
-msgstr "Geadresseerde"
+msgstr "Destinatari"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:40
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
 #: ../includes/core-classes/widget-content-list.class.php:161
 msgid "Date"
-msgstr "Datum"
+msgstr "Data"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
 msgid "Attachment"
-msgstr "Bijlage"
+msgstr "Adjunt"
 
 #: ../includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:50
 msgid "Download"
-msgstr "Download"
+msgstr "Descàrrega"
 
 #: ../includes/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:46
 msgid "Private Files - Home"
-msgstr "Privé-Bestanden home"
+msgstr "Arxius privats - Principal"
 
 #: ../includes/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:50
 msgid "Files"
-msgstr "Bestanden"
+msgstr "Arxius"
 
 #: ../includes/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:54
 msgid "Root page for the customer files."
-msgstr "Basis pagina voor de klant bestanden."
+msgstr "Pàgina principal per als arxius dels usuaris"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:51
 msgid "Private Pages - Owned"
-msgstr "Privé Pagina's - per eigenaar"
+msgstr "Pàgines privades - Propietari"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:55
 msgid "My pages"
-msgstr "Mijn pagina's"
+msgstr "Les meves pàgines"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:59
 msgid "Page to list the pages a customer owns."
-msgstr "Pagina voor de klant pagina's lijst "
+msgstr "Pàgina per llistar les pàgines que posseix un usuari"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:86
 msgid "Pages you created"
-msgstr "Pagina's doro u gemaakt"
+msgstr "Pàgines que has creat"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:90
 #, php-format
 msgid "Pages created by %1$s"
-msgstr "Pagina gemaakt door %1$s"
+msgstr "Pàgines creades per %1$s"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:94
 #, php-format
 msgid "Pages under %1$s"
-msgstr "Pagina's onder %1$s"
+msgstr "Pàgines sota %1$s"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:100
 #, php-format
 msgid "Pages published in %2$s %1$s"
-msgstr "Pagina's gepubliceerd in  %2$s %1$s"
+msgstr "Pàgines publicades a %2$s %1$s"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:102
 #, php-format
 msgid "Pages published in %1$s"
-msgstr "Pagina's gepubliceerd in %1$s"
+msgstr "Pàgines publicades a %1$s"
 
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:109
 #: ../includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:113
 #: ../includes/core-addons/customer-private-pages/widget-private-pages.class.php:49
 msgid "Recent Pages"
-msgstr "Recente pagina's"
+msgstr "Pàgines recents"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-page-authors.class.php:37
 msgid "Customer Area - Page Authors"
-msgstr "Klantzone - Pagina schrijvers"
+msgstr "Àrea Privada - Pàgina d'autors"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-page-authors.class.php:39
 msgid "Shows the private page author archives of the Customer Area"
-msgstr ""
-"Geeft de jaarlijkse archieven voor de klant pagina's in de Klantzone weer."
+msgstr "Mostra els arxius de l'autor de la pàgina privada de l'Àrea de Clients"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-page-categories.class.php:37
 msgid "Customer Area - Page Categories"
-msgstr "Klantzone - Pagina categorieën"
+msgstr "Àrea Privada - Pàgina de categories"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-page-categories.class.php:39
 msgid "Shows the private page categories of the Customer Area"
-msgstr "Beeld de privé pagina categorieën af van de Klantzone"
+msgstr "Mostra les categories de la pàgina privada de l'Àrea de Clients"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-page-dates.class.php:37
 msgid "Customer Area - Page Archives"
-msgstr "Klantenzone - Pagina archieven"
+msgstr "Àrea Privada - Pàgina d'arxius"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-page-dates.class.php:39
 msgid "Shows the private page yearly archives of the Customer Area"
-msgstr ""
-"Geeft de jaarlijkse archieven voor de klant pagina's in de Klantzone weer."
+msgstr "Mostra els arxius anuals de la pàgina privada de l'Àrea de Clients"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-pages.class.php:37
 msgid "Customer Area - Recent Pages"
-msgstr "Klantenzone - Recvente pagina's"
+msgstr "Àrea Privada - Pàgines recents"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-pages.class.php:39
 msgid "Shows a list of pages for the logged-in user"
-msgstr "Geeft een lijst van alle klant pagina's voode aangemelde gebruiker"
+msgstr ""
+"Mostra una llista de les pàgines per a l'usuari que hagi iniciat sessió"
 
 #: ../includes/core-addons/customer-private-pages/widget-private-pages.class.php:53
 msgid "No pages"
-msgstr "Geen pagina's"
+msgstr "No es troben pàgines"
 
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:3
 msgid "There are no pages in that category."
-msgstr "Er zijn geen bestanden in deze categorie"
+msgstr "No es troben pàgines per a aquesta categoria"
 
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-date_archive.template.php:3
 msgid "There are no pages for that period."
-msgstr "Er zijn geen pagina's voor deze periode"
+msgstr "No es troben pàgines per a aquest període."
 
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty.template.php:3
 msgid "You currently have no pages."
-msgstr "U heeft momenteel geen pagina's."
+msgstr "Actualment no hi han pàgines per mostrar."
 
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:18
 msgid "You created this page"
-msgstr "U heeft deze pagina gemaakt"
+msgstr "Has creat aquesta pàgina"
 
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:25
 #, php-format
 msgid "Created on %s"
-msgstr "Gemaakt op %s"
+msgstr "Creat a %s"
 
 #: ../includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:18
 msgid "You published this page"
-msgstr "Publiceer deze pagina"
+msgstr "Has publicat aquesta pàgina"
 
 #: ../includes/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:46
 msgid "Private Pages - Home"
-msgstr "Privé Pagina's - Home"
+msgstr "Pàgines privades - Principal"
 
 #: ../includes/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:54
 msgid "Root page for the customer pages."
-msgstr "Basis pagina voor de klant pagina's"
+msgstr "Pàgina inicial per a les pàgines dels clients"
 
 #: ../includes/core-addons/help/help-addon.class.php:35
 msgid "Help"
-msgstr "Help"
+msgstr "Ajuda"
 
 #: ../includes/core-addons/help/help-addon.class.php:66
 msgid "Support"
-msgstr "Ondersteuning"
+msgstr "Suport"
 
 #: ../includes/core-addons/help/help-addon.class.php:85
 #: ../includes/core-addons/help/help-addon.class.php:97
 #: ../includes/core-addons/help/templates/list-addons.template.php:9
 msgid "Enhance your customer area"
-msgstr "Verbeter uw klanten-zone"
+msgstr "Millorar la teva àrea de clients"
 
 #: ../includes/core-addons/help/help-addon.class.php:87
 #: ../includes/core-addons/help/help-addon.class.php:113
 msgid "Subscribe to our newsletter"
-msgstr "Abonneer je op onze nieuwsbrief"
+msgstr "Subscriu el butlletí de notícies"
 
 #: ../includes/core-addons/help/help-addon.class.php:89
 #: ../includes/core-addons/help/help-addon.class.php:105
 msgid "Get more from MarvinLabs"
-msgstr "Meer van MarvinLabs"
+msgstr "Obtenir més des de MarvinLabs"
 
 #: ../includes/core-addons/help/help-addon.class.php:127
 msgid ""
@@ -1113,14 +1112,15 @@ msgid ""
 "page by selecting the &laquo Add-ons &raquo; tab. You can also view all "
 "extensions we have by clicking the link below."
 msgstr ""
-"&laquo Klanten-zone &raquo; is een zeer modulaire plugin. We hebben het zo "
-"gebouwd dat het uitbreidbaar is in vele manieren. Sommige extensies zijn in "
-"deze pagina gepresenteerd door het &laquo Add-ons &raquo; tabblad aan te "
-"klikken."
+"&laquo L'Àrea de Clients (Customer Area) &raquo; és una extensió modular. "
+"L'hem construït per a que pugui ampliar-se de diverses formes. Alguns "
+"complements te'ls presentem en aquesta pàgina seleccionant l'etiqueta &laquo "
+"Complements&raquo; . També pots veure totes les ampliacions prement l'enllaç "
+"de sota."
 
 #: ../includes/core-addons/help/help-addon.class.php:132
 msgid "Browse all extensions"
-msgstr "Blader door al uw extensies"
+msgstr "Dóna un tomb per tots els complements"
 
 #: ../includes/core-addons/help/help-addon.class.php:150
 #, php-format
@@ -1128,24 +1128,24 @@ msgid ""
 "If you like our plugins, you might want to <a href=\"%s\">check our website</"
 "a> for more."
 msgstr ""
-"Als u onze plugins leuk vindt, kunt u voor meer ook  <a href=\"%s\">onze "
-"website</a> raadplegen."
+"Si t'agraden les nostres extensions, potser vols <a href=\"%s\">visitar la "
+"nostra web</a> per a més."
 
 #: ../includes/core-addons/help/help-addon.class.php:153
 msgid "If you want to get updates about our plugins, you can:"
-msgstr "Als u updates wilt ontvangen over onze plugin, dan kunt u:"
+msgstr "Si vols obtenir actualitzacions de les nostres extensions, pots:"
 
 #: ../includes/core-addons/help/help-addon.class.php:155
 msgid "Follow us on Twitter"
-msgstr "Volg ons op Twitter"
+msgstr "Seguir-nos a Twitter"
 
 #: ../includes/core-addons/help/help-addon.class.php:158
 msgid "Follow us on Google+"
-msgstr "Volg ons op Google+"
+msgstr "Seguir-nos a Google+"
 
 #: ../includes/core-addons/help/help-addon.class.php:161
 msgid "Follow us on Facebook"
-msgstr "Volg ons op Facebook"
+msgstr "Seguir-nos a Facebook"
 
 #: ../includes/core-addons/help/help-addon.class.php:181
 msgid ""
@@ -1153,13 +1153,14 @@ msgid ""
 "updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
 "send at most one email per month!"
 msgstr ""
-"U kunt ook een melding ontvangen als we spannends nieuws hebben (plugin "
-"updates, nieuws, etc.). Gewoon inschrijven voor onze nieuwsbrief, we sturen "
-"geen spam, u ontvangt hooguit een email per maand!"
+"Pots obtenir notificacions quan tinguem alguna cosa important per dir-te "
+"(actualitzacions de l'extensió, novetats, etc.). Simplement subscriu el "
+"butlletí de notícies i rebràs com a màxim un missatge electrònic al mes, mai "
+"correu brossa!"
 
 #: ../includes/core-addons/help/help-addon.class.php:190
 msgid "Email Address"
-msgstr "E-mail adres"
+msgstr "Adreça electrònica"
 
 #: ../includes/core-addons/help/templates/list-addons.template.php:14
 #, php-format
@@ -1167,71 +1168,74 @@ msgid ""
 "There has been an error while getting the list of add-ons, please <a href="
 "\"%s\">visit our shop directly</a>."
 msgstr ""
-"Er is een fout opgetreden bij het ophalen van de lijst van extenties, <a "
-"href=\"%s\">bezoek direct onze webwinkel alstublieft</a>."
+"S'ha produit un error mentre s'obtenia la llista de complements, si us plau "
+"T<a href=\"%s\">visita directament la nostra botiga</a>."
 
 #: ../includes/core-addons/help/templates/list-addons.template.php:20
 msgid "Save money with our bundles"
-msgstr "bespaar geld met onze bundels"
+msgstr "Estalvia diners amb els nostres paquets"
 
 #: ../includes/core-addons/help/templates/list-addons.template.php:47
 msgid "Our add-ons"
-msgstr "Add-on extensies"
+msgstr "Els nostres complements"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:3
 msgid "Getting support"
-msgstr "Instellingen"
+msgstr "Obtenint suport"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:5
 msgid "Please note that we do not reply to support requests sent by email."
-msgstr "Wij reageren niet op verzoeken voor ondersteuning via e-mail."
+msgstr ""
+"Si us plau, tingues en compte que no responen sol·licituds de suport a "
+"través de l'adreça electrònica."
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:6
 msgid "If you have any problem, we have some resources that could help you:"
-msgstr "Indien u enige problemen heeft, wij hebben capaciteit om u te helpen:"
+msgstr ""
+"Si tens qualsevol problema, disposem de varis recursos que et poden ajudar:"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:36
 msgid "Post Owner"
-msgstr "Bericht eigenaar"
+msgstr "Entrada propietària"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:190
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:515
 msgid "User"
-msgstr "Gebruiker"
+msgstr "Usuari"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:252
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:256
 msgid "Unknown"
-msgstr "Onbekend"
+msgstr "Desconegut"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:367
 msgid "Owner"
-msgstr "Eigenaar"
+msgstr "Propietari"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:433
 msgid "Assignment"
-msgstr "Toewijzing"
+msgstr "Assignació"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:458
 msgid "Select the owner"
-msgstr "Selecteer de eigenaar"
+msgstr "Selecciona el propietari"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:609
 msgid "It seems you cannot select any owner of that type."
-msgstr "U kunt blijkbaar geen enkele eigenaar selecteren"
+msgstr "Sembla que no has seleccionat cap propietari per a aquest tipus."
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:618
 msgid "The owner is hidden"
-msgstr "De eigenaar is verborgen"
+msgstr "El propietari està ocult"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:635
 msgid "Select or search an owner"
-msgstr "Selecteer het type eigenaar"
+msgstr "Selecciona o cerca un propietari"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:781
 #, php-format
 msgid "User - %s"
-msgstr "Gebruiker - %s"
+msgstr "Usuari - %s"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:37
 #: ../includes/core-addons/private-file/private-file-addon.class.php:86
@@ -1240,348 +1244,349 @@ msgstr "Gebruiker - %s"
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:97
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:397
 msgid "Private Files"
-msgstr "Privé-Bestanden"
+msgstr "Arxius privats"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:95
 msgid "All files"
-msgstr "Alle bstanden"
+msgstr "Tots els arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:104
 msgid "New file"
-msgstr "Nieuw bestand"
+msgstr "Nou arxiu"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:113
 #: ../includes/core-addons/private-file/private-file-addon.class.php:756
 #: ../includes/core-addons/private-page/private-page-addon.class.php:110
 #: ../includes/core-addons/private-page/private-page-addon.class.php:167
 msgid "Manage categories"
-msgstr "Beheer categoriën"
+msgstr "Gestionar categories"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:299
 msgid "no file to upload"
-msgstr "Geen bestand om te up-loaden"
+msgstr "cap arxiu per carregar"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:313
 #, php-format
 msgid "This file type is not allowed. You can only upload: %s"
-msgstr "Dit bestandstype is niet toegestaan. U kunt alleen uploaden: %s"
+msgstr "Aquest tipus d'arxius no està permés. Només pots carregar: %s"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:347
 msgid "An unknown error happened while uploading your file."
-msgstr "Een onbekende fout is opgetreden tijdens het uploaden van uw bestand."
+msgstr "Ha succeït un error desconegut durant la càrrega de l'arxiu."
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:352
 #, php-format
 msgid "An error happened while uploading your file: %s"
-msgstr "Er is een fout opgetreden tijdens het uploaden van uw bestand: %s"
+msgstr "Ha succeït un error durant la càrrega del fitxer: %s"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:399
 msgid "An error happened while copying your file from the FTP folder"
-msgstr "Er is een fout opgetreden tijdens het uploaden van uw bestand: %s"
+msgstr "Ha succeït un error durant la còpia de l'arxiu des del directori FTP"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:434
 msgid "You are not authorized to access this file"
-msgstr "U bent niet geautoriseerd om dit bestand te openen"
+msgstr "No et trobes autoritzat/da per accedir a aquest arxiu"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:752
 msgid "List all files"
-msgstr "Alle bestanden opsommen"
+msgstr "Llistar tots els arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:753
 msgid "Create/Edit files"
-msgstr "Maak/Wijzig bestanden"
+msgstr "Crear/Editar arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:754
 msgid "Delete files"
-msgstr "Verwijder bestanden"
+msgstr "Eliminar arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:755
 msgid "Access files"
-msgstr "Toegang verkrijgen tot bestanden"
+msgstr "Accedir als arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:757
 #: ../includes/core-addons/private-page/private-page-addon.class.php:168
 msgid "Edit categories"
-msgstr "Wijzig categoriën"
+msgstr "Editar categories"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:758
 #: ../includes/core-addons/private-page/private-page-addon.class.php:169
 msgid "Delete categories"
-msgstr "Verwijder categoriën"
+msgstr "Eliminar categories"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:759
 #: ../includes/core-addons/private-page/private-page-addon.class.php:170
 msgid "Assign categories"
-msgstr "Wijs categoriën toe"
+msgstr "Assignar categories"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:763
 #: ../includes/core-addons/private-page/private-page-addon.class.php:174
 msgid "Front-office"
-msgstr "Gebruikerskant"
+msgstr "Part pública"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:765
 msgid "View private files"
-msgstr "Bekijk privé bestanden"
+msgstr "Mostrar arxius privats"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:766
 msgid "View any private file"
-msgstr "Open het Privé-bestand"
+msgstr "Mostrar qualsevol arxiu privat"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:782
 msgctxt "cuar_private_file"
 msgid "File"
-msgstr "Bestand"
+msgstr "Arxiu"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:783
 msgctxt "cuar_private_file"
 msgid "Files"
-msgstr "Bestanden"
+msgstr "Arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:804
 #: ../includes/core-addons/private-file/private-file-addon.class.php:815
 msgctxt "cuar_private_file"
 msgid "Private Files"
-msgstr "Privé-bestanden"
+msgstr "Arxius privats"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:805
 msgctxt "cuar_private_file"
 msgid "Private File"
-msgstr "Privé-bestand"
+msgstr "Arxiu privat"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:806
 msgctxt "cuar_private_file"
 msgid "Add New"
-msgstr "Voeg een nieuwe toe"
+msgstr "Afegir nou"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:807
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
-msgstr "Voeg een nieuw Privé-bestand toe"
+msgstr "Afegir nou arxiu privat"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:808
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
-msgstr "Bewerk het Privé-bestand"
+msgstr "Editar arxiu privat"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:809
 msgctxt "cuar_private_file"
 msgid "New Private File"
-msgstr "Nieuw privé bestand"
+msgstr "Nou arxiu privat"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:810
 msgctxt "cuar_private_file"
 msgid "View Private File"
-msgstr "Open het Privé-bestand"
+msgstr "Mostrar arxiu privat"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:811
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
-msgstr "Zoek Privé-Bestanden"
+msgstr "Cercar arxius privats"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:812
 msgctxt "cuar_private_file"
 msgid "No private files found"
-msgstr "Er zijn geen privé-bestanden gevonden"
+msgstr "No s'han trobat arxius privats"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:813
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
-msgstr "Er zijn geen privé-bestanden gevonden in de Prullenbak"
+msgstr "No s'han trobat arxius privat a la Papelera"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:814
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
-msgstr "Hoofd Privé-bestand:"
+msgstr "Arxiu privat pare:"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:847
 #: ../includes/core-addons/private-file/private-file-addon.class.php:861
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
-msgstr "Bestandscategoriën"
+msgstr "Categories d'arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:848
 msgctxt "cuar_private_file_category"
 msgid "File Category"
-msgstr "Bestandscategorie"
+msgstr "Categoria de l'arxiu"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:849
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
-msgstr "Doorzoek bestandscategoriën"
+msgstr "Cercar categories d'arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:850
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
-msgstr "Populaire bestandscategoriën"
+msgstr "Categories d'arxius populars"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:851
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
-msgstr "Alle bestandcategoriën"
+msgstr "Totes les categories d'arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:852
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
-msgstr "Hoofd Bestandscategorie"
+msgstr "Categoria d'arxiu pare"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:853
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
-msgstr "Hoofd bestandscategorie:"
+msgstr "Categoria d'arxiu pare:"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:854
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
-msgstr "Bewerk bestandscategorie"
+msgstr "Editar categoria d'arxiu"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:855
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
-msgstr "Vernieuw bestandscategorie"
+msgstr "Actualitzar categoria d'arxiu"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:856
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
-msgstr "Voeg een nieuw bestandscategorie toe"
+msgstr "Afegir nova categoria d'arxiu"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:857
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
-msgstr "Nieuwe Bestandscategorie"
+msgstr "Nova categoria d'arxiu"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:858
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
-msgstr "Scheidt bestandscategoriën met comma's"
+msgstr "Separar categories d'arxius amb comes"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:859
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
-msgstr "Een bestandscategorie toevoegen of verwijderen"
+msgstr "Afegir o eliminar categories d'arxius"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:860
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
-msgstr "Kies uit de meest gebruikte bestandscategoriën"
+msgstr "Selecciona des de les categories d'arxius més utilitzades"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:103
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:104
 msgid "New Private File"
-msgstr "Nieuw Privé-Bestand"
+msgstr "Nou arxiu privat"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:110
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:111
 msgid "Private File Categories"
-msgstr "Privé Bestandscategoriën"
+msgstr "Categories d'arxius privats"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:203
 #: ../includes/core-addons/status/hook-finder.class.php:125
 #: ../includes/core-addons/status/template-finder.class.php:69
 msgid "File"
-msgstr "Bestand"
+msgstr "Arxiu"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:223
 msgid "File currently associated to this post"
-msgstr "Bestand gekoppeld aan dit bericht"
+msgstr "Arxiu actualment associat a aquesta entrada"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:224
 msgid "Current file:"
-msgstr "Huidig bestand:"
+msgstr "Arxiu actual:"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:236
 msgid "Change the associated file"
-msgstr "Gerelateerd bestand"
+msgstr "Canviar l'associació de l'arxiu"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:237
 msgid "How to add the file?"
-msgstr "Hoe voeg ik een bestand toe?"
+msgstr "Com afegir l'arxiu?"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:240
 msgid "Direct upload"
-msgstr "Direct uploaden"
+msgstr "Càrrega directa"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:241
 msgid "Copy from FTP folder"
-msgstr "Kopieer van een FTP map"
+msgstr "Copiar des d'un directori FTP"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:247
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:257
 msgid "Pick a file"
-msgstr "Alle bestanden opsommen"
+msgstr "Afegir un arxiu"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:260
 msgid "The FTP upload folder does not exist."
-msgstr "De FTP map bestaat niet"
+msgstr "El directori de càrrega FTP no existeix."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:262
 msgid "The FTP upload folder is empty."
-msgstr "De FTP map is leeg"
+msgstr "El directori FTP de càrrega està buit."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:265
 msgid "Select a file"
-msgstr "Verwijder bestanden"
+msgstr "Selecciona un arxiu"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:279
 msgid "Copy file or move it?"
-msgstr "Bestand kopiëren of verplaatsen?"
+msgstr "Copiar o moure arxiu?"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:282
 msgid ""
 "If checked, the file will be deleted after it has been copied to the owner's "
 "private storage directory"
 msgstr ""
-"Indien aangevinkt zal het bestand worden verwijderd nadat het gekopieerd is "
-"naar de privé map van de eigenaar."
+"Si està marcat, l'arxiu s'eliminarà després que s'hagi copiat al directori "
+"d'emmagatzematge privat del propietari"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:409
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:198
 msgid "General settings"
-msgstr "Algemene instellingen"
+msgstr "Paràmetres generals"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:416
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:205
 msgid "Enable add-on"
-msgstr "Extenties aanzetten"
+msgstr "Habilitar complement"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:424
 msgid "Check this to enable the private files add-on."
-msgstr "Controleer dit om de privé-bestanden ad-on aan te zetten"
+msgstr "Verifica-ho per habilitar el complement d'arxius privat."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:428
 msgid ""
 "This folder does not exist, please create it if you want to copy files from "
 "the FTP folder. Otherwise, you need not do anything."
 msgstr ""
-"Deze map bestaat niet, wilt u deze alstublieft aanmaken indien u bestanden "
-"van de FTP map wilt kopiëren. Zo niet, dan hoeft u verder niets te doen."
+"Aquesta carpeta no existeix, si us plau crea-la si desitges copiar arxius "
+"des del directori FTP."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:435
 msgid "FTP uploads folder"
-msgstr "FTP upload map"
+msgstr "Carpeta FTP de càrrega"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:444
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
 msgstr ""
-"Deze map kan worden gebruikt wanneer u bestandne wilt uploaden via FTP. Dit "
-"is makkelijk wanneer direct uploaden mislukt bij grote bestanden. "
+"Aquesta carpeta s'utilitzara quan desitgis carregar arxius via FTP. Et "
+"resultarà útil, per exemple, si falla la càrrega directa amb arxius molt "
+"grans."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:451
 msgid "File Storage"
-msgstr "Bestandsopslag"
+msgstr "Emmagatzematge d'arxius"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:495
 #, php-format
 msgid "The files will be stored in the following directory: <code>%s</code>."
-msgstr "De bestanden worden opgeslagen in de foldermap: <code>%s</code>."
+msgstr "Els arxius s'han guardat al següent directori: <code>%s</code>."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:500
 #, php-format
 msgid ""
 "Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
 msgstr ""
-"Elke gebruiker heeft zijn eigen sub-map. Bijvoorbeeld, uw map is: <code>%s</"
+"Cada usuari té el seu propi sub-directori. Per exemple, el teu és: <code>%s</"
 "code>."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:506
@@ -1591,9 +1596,9 @@ msgid ""
 "is %s. You should adjust that directory permissions as upload or download "
 "might not work properly."
 msgstr ""
-"Die map moet ten minste de rechten 705 hebben. Op dit moment is het %s. Pas "
-"de rechten van die foldermap aan zodat u geen problemen ondervindt met het "
-"uploden of downloaden."
+"Aquest directoria hauria de tenir com a mínim el permís assignat a 705. "
+"L'actual és de %s. Cal que ajustis els permisos del directori o la càrrega i "
+"descàrrega no funcionarà correctament."
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:37
 #: ../includes/core-addons/private-page/private-page-addon.class.php:83
@@ -1602,298 +1607,297 @@ msgstr ""
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:92
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:186
 msgid "Private Pages"
-msgstr "Privé Pagina's"
+msgstr "Pàgines privades"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:92
 msgid "All pages"
-msgstr "Alle pagina's"
+msgstr "Totes les pàgines"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:101
 msgid "New page"
-msgstr "Nieuwe pagina"
+msgstr "Nova pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:163
 msgid "List all pages"
-msgstr "Alle pagina's opsommen"
+msgstr "Llistar totes les pàgines"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:164
 msgid "Create/Edit pages"
-msgstr "Maak/Wijzig pagina's"
+msgstr "Crear/Editar pàgines"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:165
 msgid "Delete pages"
-msgstr "Verwijder pagina's"
+msgstr "Eliminar pàgines"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:166
 msgid "Access pages"
-msgstr "Toegang verkrijgen tot pagina's"
+msgstr "Accedir a les pàgines"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:176
 msgid "View private pages"
-msgstr "Bekijk privé pagina's"
+msgstr "Mostrar pàgines privades"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:177
 msgid "View any private page"
-msgstr "Open de Privé Pagina"
+msgstr "Mostrar qualsevol pàgina privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:193
 msgctxt "cuar_private_page"
 msgid "Page"
-msgstr "Pagina"
+msgstr "Pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:194
 msgctxt "cuar_private_page"
 msgid "Pages"
-msgstr "Pagina's"
+msgstr "Pàgines"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:215
 #: ../includes/core-addons/private-page/private-page-addon.class.php:226
 msgctxt "cuar_private_page"
 msgid "Private Pages"
-msgstr "Privé pagina's"
+msgstr "Pàgines privades"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:216
 msgctxt "cuar_private_page"
 msgid "Private Page"
-msgstr "Privé Pagina's"
+msgstr "Pàgina privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:217
 msgctxt "cuar_private_page"
 msgid "Add New"
-msgstr "Nieuwe toevoegen"
+msgstr "Afegir nou"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:218
 msgctxt "cuar_private_page"
 msgid "Add New Private Page"
-msgstr "Voeg een nieuwe Privé Pagina toe"
+msgstr "Afegir nova pàgina privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:219
 msgctxt "cuar_private_page"
 msgid "Edit Private Page"
-msgstr "Bewerk de Privé Pagina"
+msgstr "Editar pàgina privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:220
 msgctxt "cuar_private_page"
 msgid "New Private Page"
-msgstr "Nieuwe Privé Pagina"
+msgstr "Nova pàgina privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:221
 msgctxt "cuar_private_page"
 msgid "View Private Page"
-msgstr "Open de Privé Pagina"
+msgstr "Mostrar pàgina privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:222
 msgctxt "cuar_private_page"
 msgid "Search Private Pages"
-msgstr "Zoek Privé Pagina's"
+msgstr "Cercar pàgines privades"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:223
 msgctxt "cuar_private_page"
 msgid "No private pages found"
-msgstr "Er zijn geen privé pagina's gevonden"
+msgstr "No s'han trobat pàgines privades"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:224
 msgctxt "cuar_private_page"
 msgid "No private pages found in Trash"
-msgstr "Er zijn geen privé pagina's gevonden in de Prullenbak"
+msgstr "No s'han trobat pàgines privades a la Papelera"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:225
 msgctxt "cuar_private_page"
 msgid "Parent Private Page:"
-msgstr "Ouder privé pagina:"
+msgstr "Pàgina privada pare:"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:258
 #: ../includes/core-addons/private-page/private-page-addon.class.php:274
 msgctxt "cuar_private_page_category"
 msgid "Page Categories"
-msgstr "Beheer categoriën"
+msgstr "Categories de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:259
 msgctxt "cuar_private_page_category"
 msgid "Page Category"
-msgstr "Bestandscategorie"
+msgstr "Categoria de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:260
 msgctxt "cuar_private_page_category"
 msgid "Search Page Categories"
-msgstr "Doorzoek bestandscategoriën"
+msgstr "Cercar categories de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:261
 msgctxt "cuar_private_page_category"
 msgid "Popular Page Categories"
-msgstr "Populaire bestandscategoriën"
+msgstr "Categories de pàgina populars"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:262
 msgctxt "cuar_private_page_category"
 msgid "All Page Categories"
-msgstr "Alle bestandcategoriën"
+msgstr "Totes les categories de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:263
 msgctxt "cuar_private_page_category"
 msgid "Parent Page Category"
-msgstr "Hoofd Bestandscategorie"
+msgstr "Categoria de pàgina pare"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:264
 msgctxt "cuar_private_page_category"
 msgid "Parent Page Category:"
-msgstr "Hoofd bestandscategorie:"
+msgstr "Categoria de pàgina pare:"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:265
 msgctxt "cuar_private_page_category"
 msgid "Edit Page Category"
-msgstr "Bewerk bestandscategorie"
+msgstr "Editar categoria de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:266
 msgctxt "cuar_private_page_category"
 msgid "Update Page Category"
-msgstr "Vernieuw bestandscategorie"
+msgstr "Actualitzar categoria de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:267
 msgctxt "cuar_private_page_category"
 msgid "Add New Page Category"
-msgstr "Voeg een nieuw bestandscategorie toe"
+msgstr "Afegir nova categoria de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:268
 msgctxt "cuar_private_page_category"
 msgid "New Page Category"
-msgstr "Nieuwe Bestandscategorie"
+msgstr "Nova categoria de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:269
 msgctxt "cuar_private_page_category"
 msgid "Separate page categories with commas"
-msgstr "Scheidt bestandscategoriën met comma's"
+msgstr "Separar categories de pàgina amb comes"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:271
 msgctxt "cuar_private_page_category"
 msgid "Add or remove page categories"
-msgstr "Een bestandscategorie toevoegen of verwijderen"
+msgstr "Afegir o eliminar categories de pàgina"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:272
 msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
-msgstr "Kies uit de meest gebruikte bestandscategoriën"
+msgstr "Elegir des de les categories de pàgina més utilitzades"
 
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:98
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:99
 msgid "New Private Page"
-msgstr "Nieuwe Privé Pagina"
+msgstr "Nova pàgina privada"
 
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:105
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:106
 msgid "Private Page Categories"
-msgstr "Privé Bestandscategoriën"
+msgstr "Categories de pàgina privada"
 
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:213
 msgid "Check this to enable the private pages add-on."
-msgstr "Selecteer dit om de privé pagina add-on extentie te activeren."
+msgstr "Verifica per habilitar el complement de pàgines privades."
 
 #: ../includes/core-addons/status/hook-finder.class.php:124
 #: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:29
 #: ../includes/core-classes/widget-content-list.class.php:162
 msgid "Name"
-msgstr "Naam"
+msgstr "Nom"
 
 #: ../includes/core-addons/status/hook-finder.class.php:126
 msgid "Path"
-msgstr "Pad"
+msgstr "Ruta"
 
 #: ../includes/core-addons/status/status-addon.class.php:35
 #: ../includes/core-addons/status/status-addon.class.php:53
 #: ../includes/core-addons/status/status-addon.class.php:70
 msgid "Status"
-msgstr "Status"
+msgstr "Estat"
 
 #: ../includes/core-addons/status/status-addon.class.php:52
 msgid "Customer Area - Plugin status"
-msgstr "Klantenzone - Plugin status"
+msgstr "Àrea Privada - Estat de l'extensió"
 
 #: ../includes/core-addons/status/status-addon.class.php:110
 msgid "Needs attention"
-msgstr "Heeft uw aandacht nodig"
+msgstr "Atenció a les necessitats"
 
 #: ../includes/core-addons/status/status-addon.class.php:111
 msgid "Things that need your attention"
-msgstr "Zaken welke uw aandacht nodig hebben"
+msgstr "Coses que demanen la teva atenció"
 
 #: ../includes/core-addons/status/status-addon.class.php:115
 msgid "Installed add-ons"
-msgstr "Geïnstalleerde extenties"
+msgstr "Complements instal·lats"
 
 #: ../includes/core-addons/status/status-addon.class.php:116
 msgid "Core and commercial add-ons currently enabled"
-msgstr ""
-"Basis en commerciële Klantzone uitbreidingen welke momenteel actief zijn"
+msgstr "Nucli i complements comercials actualment habilitats"
 
 #: ../includes/core-addons/status/status-addon.class.php:125
 msgid "Actions and filters"
-msgstr "Acties en filters"
+msgstr "Accions i filtres"
 
 #: ../includes/core-addons/status/status-addon.class.php:126
 msgid "Listing of all actions and filters"
-msgstr "Overzicht van alle acties en filters"
+msgstr "Llistar totes les accions i filtres"
 
 #: ../includes/core-addons/status/status-addon.class.php:131
 msgid "Templates"
-msgstr "Templates"
+msgstr "Plantilles"
 
 #: ../includes/core-addons/status/status-addon.class.php:132
 msgid "Template files"
-msgstr "Tempalte bestanden"
+msgstr "Arxius de plantilla"
 
 #: ../includes/core-addons/status/status-addon.class.php:142
 msgid "Settings tools"
-msgstr "Instellingen"
+msgstr "Eines parametritzables"
 
 #: ../includes/core-addons/status/status-addon.class.php:188
 msgid "Settings have been resetted to default values"
-msgstr "Instellingen zijn teruggezet naar de standaard waarden"
+msgstr "Els paràmetres han estat restablerts als valors de fàbrica"
 
 #: ../includes/core-addons/status/status-addon.class.php:195
 msgid "Invalid parameters. No file sent"
-msgstr "Incorrecte variabelen. Bestand is niet verstuurd"
+msgstr "Paràmetres invàlids. No s'ha enviat l'arxiu"
 
 #: ../includes/core-addons/status/status-addon.class.php:203
 msgid "No file sent."
-msgstr "Geen bestand verstuurd"
+msgstr "No s'ha enviat l'arxiu."
 
 #: ../includes/core-addons/status/status-addon.class.php:207
 msgid "Exceeded filesize limit."
-msgstr "Bestand is groter dan maximum limiet"
+msgstr "S'ha sobrepassat el límit de la mida de l'arxiu."
 
 #: ../includes/core-addons/status/status-addon.class.php:210
 msgid "Unknown errors."
-msgstr "Onbekende fouten"
+msgstr "Errors desconeguts."
 
 #: ../includes/core-addons/status/status-addon.class.php:218
 msgid "Settings have been imported successfully"
-msgstr "Instellingen zijn succesvol geïmporteerd"
+msgstr "Els paràmetres s'han importat amb èxit"
 
 #: ../includes/core-addons/status/template-finder.class.php:70
 msgid "Original"
-msgstr "Origineel"
+msgstr "Original"
 
 #: ../includes/core-addons/status/template-finder.class.php:71
 msgid "Current"
-msgstr "Huidig"
+msgstr "Actual"
 
 #: ../includes/core-addons/status/template-finder.class.php:88
 #: ../includes/core-addons/status/template-finder.class.php:96
 #, php-format
 msgid "Version: %s"
-msgstr "Versie: %s"
+msgstr "Versió: %s"
 
 #: ../includes/core-addons/status/template-finder.class.php:88
 #: ../includes/core-addons/status/template-finder.class.php:96
 msgid "unknown"
-msgstr "Onbekend"
+msgstr "desconegut"
 
 #: ../includes/core-addons/status/template-finder.class.php:93
 msgid "Not overriden"
-msgstr "Niet overschreven"
+msgstr "No sobreescriu"
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:26
 msgid "Outdated plugin version"
-msgstr "Verouderde plugin versie"
+msgstr "Versió de l'extensió antiga"
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 #, php-format
@@ -1902,17 +1906,17 @@ msgid ""
 "running version %1$s). You can find the list of all add-ons on the <a href="
 "\"%2$s\">add-ons status pages</a>."
 msgstr ""
-"Sommige Klantzone uitbreidingen hebben een nieuwere versie van de basis plug-"
-"in nodig. (u gebruikt momenteel versie %1$s). U kunt de lijst met alle "
-"Klantzone uitbreidingen vinden op <a href=\"%2$s\">add-ons status pages</a>."
+"Alguns complements necessiten una versió de l'extensió principal més actual "
+"(ara estàs utilitzant la versió %1$s). Pots trobar la llista de tots els "
+"complements a la<a href=\"%2$s\">pàgina d'estat dels complements</a>."
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
 msgid "Update the plugin"
-msgstr "Plugin bijwerken"
+msgstr "Actualitzar l'extensió"
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:26
 msgid "Outdated template files"
-msgstr "Verouderde template bestanden"
+msgstr "Arxius de plantilla obsolets"
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:28
 #, php-format
@@ -1922,10 +1926,10 @@ msgid ""
 "can also find a list of all template files and their respective status on "
 "the <a href=\"%s\">corresponding templates status page</a>"
 msgstr ""
-"Sommige template bestanden die u heeft overschreven zijn gewijzigd in de "
-"huidige Klantzone versie. Zie hieronder een overzicht van deze bestanden. U "
-"kunt alle template bestanden met hun status ook zien op <a href=\"%s"
-"\">corresponding templates status page</a>"
+"Alguns arxius de plantilla que has sobreescrit han estat modificats a "
+"l'actual versió de l'Àrea de Clients. Tens la llista d'aquests arxius a "
+"sota, però també pots trobar una llista d'arxius de plantilla i del seu "
+"estat corresponent a <a href=\"%s\">la pàgina d'estat de plantilles</a>"
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:35
 msgid ""
@@ -1933,9 +1937,10 @@ msgid ""
 "files are always up-to-date. For you, this is a great way to know when "
 "template files get changed when Customer Area is updated."
 msgstr ""
-"Sinds Klantzone 4.4.0, is er iets ingebouwd om te zorgen dat uw template "
-"bestanden altijd bijgewerkt zijn. Voor u is het nu makkelijk te zien wanneer "
-"template bestanden door Klantzone zijn bijgewerkt."
+"A partir de l'Àrea de Clients 4.4.0, hem suministrat una forma per assegurar "
+"que els teus arxius de plantilla es trobin al dia. Per a tu, aquesta és una "
+"bona manera de conèixer quan es canvien els arxius de plantilla quan "
+"s'actualitzi l'Àrea de Clients."
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:38
 msgid ""
@@ -1943,141 +1948,139 @@ msgid ""
 "paste the following line of code as the first line of your template and make "
 "sure it is compatible with the the current template version."
 msgstr ""
-"Indien u nog steeds geen versie nummer heeft in uw template bestanden, voeg "
-"dan de volgende code regel toe als eerste regel in uw template bestand en "
-"zorg ervoor dat deze overeenkomt met de huidige template versie."
+"Si encara no t'apareix cap número de versió als teus arxius de plantilla, si "
+"us plau pega la següent  línia de codi com la teva primera línia de la "
+"plantilla i comprova que és compatible amb l'actual versió de la plantilla."
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:66
 msgid "Other action"
-msgstr "Andere actie"
+msgstr "Una altra acció"
 
 #: ../includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:67
 msgid "Ignore until next update"
-msgstr "Sla over tot de volgende update"
+msgstr "Ignorar fins a la propera actualització"
 
 #: ../includes/core-addons/status/templates/status-section-hooks.template.php:29
 #: ../includes/core-addons/status/templates/status-section-templates.template.php:29
 msgid "All"
-msgstr "Alle"
+msgstr "Tots"
 
 #: ../includes/core-addons/status/templates/status-section-hooks.template.php:30
 msgid "Filters only"
-msgstr "Alleen filters"
+msgstr "Només filtrar"
 
 #: ../includes/core-addons/status/templates/status-section-hooks.template.php:31
 msgid "Actions only"
-msgstr "Alleen acties"
+msgstr "Només accions"
 
 #: ../includes/core-addons/status/templates/status-section-hooks.template.php:52
 #, php-format
 msgid "%s: %d hook(s)"
-msgstr "%s: %d anker(s)"
+msgstr "%s: %d hook(s)"
 
 #: ../includes/core-addons/status/templates/status-section-installed-addons.template.php:30
 msgid "Required customer area version"
-msgstr "Verplichte klanten-zone versie"
+msgstr "Es requereix versió de l'àrea de clients"
 
 #: ../includes/core-addons/status/templates/status-section-needs-attention.template.php:33
 #, php-format
 msgid "Issue #%d"
-msgstr "Item #%d"
+msgstr "Problema #%d"
 
 #: ../includes/core-addons/status/templates/status-section-needs-attention.template.php:63
 msgid ""
 "Congratulations, everything seems to be configured properly. You can enjoy "
 "your customer area now."
 msgstr ""
-"Gefeliciteerd, alles lijkt goed te zijn geconfigureerd. U kunt nu genieten "
-"van uw Klantzone."
+"Felicitats, tot sembla estar correctament configurat. Ara ja pots gaudir de "
+"la teva àrea de clients."
 
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:22
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:28
 msgid "Export settings"
-msgstr "Exporteer instellingen"
+msgstr "Paràmetres d'exportació"
 
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:24
 msgid ""
 "You can export all the settings to a JSON file. You can then use that file "
 "to restore your settings using the import settings field below."
 msgstr ""
-"U kuhnt alle instellingen exporteren naar een JSON bestand. U kunt dat "
-"bestand gebruiken om uw instellingen terug te zetten via importeren "
-"instellingen."
+"Pots exportar tots els paràmetres a un arxiu JSON. Per importar els "
+"paràmetres i recupera'ls hauràs d'utilitzar el camp de sota."
 
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:31
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:38
 msgid "Import settings"
-msgstr "Importeer instellingen"
+msgstr "Paràmetres d'importació"
 
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:33
 msgid ""
 "You can import all the settings you had previously exported from a JSON file."
 msgstr ""
-"U kunt alle instellingen importeren die u daarvoor heeft geexporteerd in een "
-"JSON bestand"
+"Pots importar tots els paràmetres que hagis exportat prèviament a un arxiu "
+"JSON."
 
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:42
 msgid "Reset settings"
-msgstr "Reset instellingen"
+msgstr "Restablir paràmetres"
 
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:44
 msgid ""
 "Pressing the button below will reset all your Customer Area settings to the "
 "default values. This cannot be undone!"
 msgstr ""
-"Door op onderstaande knop te klikken zullen al uw Klantzone instellingen "
-"teruggezet worden naar de standaard waarden. Deze actie kan niet ongedaan "
-"worden gemaakt!"
+"Prement el botó de sota TOTS els paràmetres de l'Àrea de Clients es "
+"restabliran als valors de fàbrica. Aquesta acció no es podrà desfer!"
 
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:48
 msgid "Reset default settings"
-msgstr "Reset standaard instellingen"
+msgstr "Restablir els paràmetres per defecte"
 
 #: ../includes/core-addons/status/templates/status-section-reset.template.php:54
 msgid ""
 "Are you sure that you want to reset all the settings to their default values "
 "(this operation cannot be undone)?"
 msgstr ""
-"Weet u zeker dat u alle instellingen naar hun standaard waarden wilt "
-"terugzetten (deze actie kan niet ongedaan worden gemaakt)?"
+"Estàs segur/a que vols restablir tots els paràmetres als valors de fàbrica "
+"(aquesta acció no es podrà desfer)?"
 
 #: ../includes/core-addons/status/templates/status-section-templates.template.php:30
 msgid "Overriden only"
-msgstr "Alleen overschrijvingen"
+msgstr "Només anul·lar"
 
 #: ../includes/core-addons/status/templates/status-section-templates.template.php:31
 msgid "Outdated only"
-msgstr "Alleen verouderde"
+msgstr "Només obsoleta"
 
 #: ../includes/core-addons/status/templates/status-section-templates.template.php:52
 #, php-format
 msgid "%s: %d template(s)"
-msgstr "%s: %d template(s)"
+msgstr "%s: %d plantilla(es)"
 
 #: ../includes/core-addons/user-profile/user-profile-addon.class.php:35
 msgid "User Profile"
-msgstr "Gebruikersprofiel"
+msgstr "Perfil d'usuari"
 
 #: ../includes/core-addons/user-profile/user-profile-addon.class.php:65
 msgid "Username"
-msgstr "Gebruikersnaam"
+msgstr "Nom d'usuari"
 
 #: ../includes/core-addons/user-profile/user-profile-addon.class.php:67
 msgid "Your username cannot be changed."
-msgstr "Uw gebruikersnaam kan niet worden gewijzigd"
+msgstr "El teu nom d'usuari no es pot canviar."
 
 #: ../includes/core-addons/user-profile/user-profile-addon.class.php:72
 msgid "Primary email"
-msgstr "Primaire e-mail "
+msgstr "Adreça electrònica primària"
 
 #: ../includes/core-addons/user-profile/user-profile-addon.class.php:77
 #: ../includes/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
-msgstr "Wachtwoord"
+msgstr "Contrasenya"
 
 #: ../includes/core-addons/user-profile/user-profile-addon.class.php:78
 msgid "Password (confirm)"
-msgstr "Wachtwoord (bevestigen)"
+msgstr "Contrasenya (confirmació)"
 
 #: ../includes/core-addons/user-profile/user-profile-addon.class.php:79
 msgid ""
@@ -2085,26 +2088,26 @@ msgid ""
 "requested to login again after your password gets changed. Leave these "
 "fields empty if you want to keep your current password"
 msgstr ""
-"Het wachtwoord moet minimaal 5 tekens lang zijn. U zal worden gevraagd "
-"opnieuw in te loggen na het wijzigen van uw wachtwoord. Laat deze velden "
-"leeg indien u uw wachtwoord niet wilt wijzigen."
+"La contrasenya ha de contenir com a mínim 5 caràcters. Després del canvi de "
+"contrasenya, hauràs d'iniciar sessió altra vegada. Si vols mantenir l'actual "
+"contrasenya deixa els camps buits"
 
 #: ../includes/core-classes/addon-container-page.class.php:566
 #: ../includes/core-classes/addon-content-page.class.php:634
 msgid "Frontend Integration"
-msgstr "Frontend Intergratie"
+msgstr "Integració de la part pública"
 
 #: ../includes/core-classes/addon-container-page.class.php:576
 #: ../includes/core-classes/addon-content-page.class.php:644
 msgid "Show after post"
-msgstr "Laat zien na het bericht"
+msgstr "Mostrar després de l'entrada"
 
 #: ../includes/core-classes/addon-container-page.class.php:585
 #: ../includes/core-classes/addon-content-page.class.php:653
 msgid "Show additional information after the post in the single post view."
 msgstr ""
-"Laat extra informatie zien na het bericht in de enkelvoudige bericht "
-"weergave."
+"Mostrar informació addicional després de l'entrada a la vista d'entrada "
+"individual."
 
 #: ../includes/core-classes/addon-container-page.class.php:587
 #: ../includes/core-classes/addon-content-page.class.php:655
@@ -2113,21 +2116,22 @@ msgid ""
 "You can disable this if you have your own theme template file for single "
 "posts. The theme file to look for or create should be called: %s."
 msgstr ""
-"U kunt deze uitschakelen indien u een eigen thema heeft voor enkele "
-"nieuwsberichten. Het te zoeken of maken thema moet heten: %s."
+"Ho pots deshabilitar si tens el teu propi arxiu de plantilla per a les "
+"entrades individuals. Hauràs de recòrrer a l'arxiu del tema per veure-ho o "
+"crea'l: %s."
 
 #: ../includes/core-classes/addon-container-page.class.php:605
 #: ../includes/core-classes/addon-content-page.class.php:673
 msgid "Show recent content on the dashboard."
-msgstr "Beeld de laatste content af op het werkblad"
+msgstr "Mostrar contingut recent de la Papelera."
 
 #: ../includes/core-classes/addon-container-page.class.php:618
 #: ../includes/core-classes/addon-content-page.class.php:686
 msgid ""
 "Define how many items to allow on the dashboard page. -1 will show all items."
 msgstr ""
-"Bepaald het aantal weer te geven items op het werkblad. -1 zal alle items "
-"weergeven."
+"Definir quants ítems permets a la Papelera (és a dir, la pàgina Papelera). "
+"-1 mostrarà tots els ítems."
 
 #: ../includes/core-classes/addon-container-page.class.php:633
 #: ../includes/core-classes/addon-content-page.class.php:701
@@ -2136,40 +2140,38 @@ msgid ""
 "archive pages, etc.). -1 will show all items but this can slow down the page "
 "display if the user has a lot of private items."
 msgstr ""
-"Geef aan hoeveel onderdelen u wilt zien op de overzichtspagina's (hoofd "
-"overzicht pagina, archief pagina, etc.). Gebruik -1 om alle onderdelen te "
-"tonen. Dit kan wel vertragend werken indien u veel onderdelen heeft. "
+"Definir quants ítems permets a les pàgines amb llistats (pàgina de llista "
+"principal, pàgines d'arxiu, etc.). -1 mostrarà tots els ítem però pot "
+"provocar un alentiment quan es carregui la pàgina si l'usuari disposa de "
+"multitud d'ítems privats."
 
 #: ../includes/core-classes/addon-container-page.class.php:692
 msgid "Slug that is used in the URL for archives of the taxonomy: "
-msgstr ""
-"Synoniem welke is gebruikt in de URL voor het archiveren van de taxanomie."
+msgstr "Resum (slug) que s'utilitza a l'adreça URL per arxius de la taxonomia:"
 
 #: ../includes/core-classes/addon-create-content-page.class.php:130
 msgid "Content creation (from front-office)"
-msgstr "Content creatie (vanuit de gebruikers pagina's)"
+msgstr "Creació de contingut (de la part pública)"
 
 #: ../includes/core-classes/addon-create-content-page.class.php:132
 msgid "Create content from front office"
-msgstr "Maak content vanuit de gebruikers pagina's"
+msgstr "Crear contingut des de la part pública"
 
 #: ../includes/core-classes/addon-create-content-page.class.php:133
 msgid "Bypass moderation (content is automatically published)"
-msgstr "\"Nakijken\" overslaan (content worden automatisch gepubliceerd)"
+msgstr "Saltar-se la moderació (el contingut és publicat automàticament)"
 
 #: ../includes/core-classes/addon-create-content-page.class.php:158
 msgid "Content creation"
-msgstr "Content creatie"
+msgstr "Creació de contingut"
 
 #: ../includes/core-classes/addon-create-content-page.class.php:169
 msgid "Moderation"
-msgstr "Nakijken"
+msgstr "Moderació"
 
 #: ../includes/core-classes/addon-create-content-page.class.php:177
 msgid "Enable moderation when new content is submitted by a user."
-msgstr ""
-"Inschakelen \"nakijken\" wanneer er nieuwe content door een gebruiker worden "
-"aangeleverd."
+msgstr "Habilitar moderació quan un nou contingut sigui carregat per l'usuari."
 
 #: ../includes/core-classes/addon-create-content-page.class.php:179
 msgid ""
@@ -2180,162 +2182,159 @@ msgid ""
 "bypass the moderation process by setting the corresponding capability. This "
 "setting does not affect the backend interface."
 msgstr ""
-"Er is een beheerder noodzakelijk om nieuwe content na te kijken en handmatig "
-"te publiceren. Dit kan worden gebruikt om door gebruikers aangemaakte "
-"gegevens als concept op te slaan en na te laten kijken door een beheerder. "
-"Wanneer er gegevens als concept zijn opgeslagen, dan zijn deze alleen "
-"zichtbaar binnen de Klantzone. U kunt bepaalde gebruikersrollen toegang "
-"geven om het \"nakijken\"over te slaan. Deze instelling heeft geen invloed "
-"op de beheerders kant.  "
+"Un administrador serà requerit per revisar el contingut i publica'l "
+"manualment. Pot ser utilitzat per moderar el contingut creat per usuaris "
+"guardant-ho a la Papelera. Quan el contingut es troba a la Papelera, no és "
+"visible per ningú de fora de l'àrea d'administració. Es pot permetre a "
+"determinats rols saltar-se el procés de moderació assignant el corresponent "
+"permís. Aquest paràmetre no afecten la interfície."
 
 #: ../includes/core-classes/addon-create-content-page.class.php:192
 msgid "Default owner type"
-msgstr "Standaard type eigenaar"
+msgstr "Tipus de propietari per defecte"
 
 #: ../includes/core-classes/addon-create-content-page.class.php:203
 msgid "Default owner"
-msgstr "Standaard eigenaar"
+msgstr "Propietari per defecte"
 
 #: ../includes/core-classes/addon-create-content-page.class.php:218
 msgid "Default category"
-msgstr "Standaard categorie"
+msgstr "Categoria per defecte"
 
 #: ../includes/core-classes/addon-edit-content-page.class.php:485
 msgid "Content edition (from front-office)"
-msgstr "Content versie (vanuit de gebruikers pagina's)"
+msgstr "Edició de contingut (part pública)"
 
 #: ../includes/core-classes/addon-edit-content-page.class.php:487
 msgid "Select an owner (uses default else)"
-msgstr "Selecteer een eigenaar (anders wordt de standaard gebruikt)"
+msgstr "Seleccionar un propietari (d'altra manera, s'utilitza el per defecte)"
 
 #: ../includes/core-classes/addon-edit-content-page.class.php:488
 msgid "Select a category (uses default else)"
-msgstr "Selecteer een categorie (anders wordt de standaard gebruikt)"
+msgstr "Seleccionar una categoria (d'altra manera, s'utilitza la per defecte)"
 
 #: ../includes/core-classes/addon-edit-content-page.class.php:544
 msgid "Rich Editor"
-msgstr "Tekst editor"
+msgstr "Editor enriquit"
 
 #: ../includes/core-classes/addon-edit-content-page.class.php:552
 msgid "Enable the rich editor when editing content."
-msgstr "Inschakelen van de tekstverwerker bij aanmaken van nieuwe content."
+msgstr "Habilita l'editor enriquit quan editis contingut."
 
 #: ../includes/core-classes/addon-page.class.php:45
 #, php-format
 msgid "Customer Page - %s"
-msgstr "Gebruikers pagina - %s"
+msgstr "Pàgina d'usuari - %s"
 
 #: ../includes/core-classes/addon-page.class.php:239
 msgid "This page requires login, you should not be here"
-msgstr "Voor deze pagina moet u zijn aangemeld, u zou hier niet moeten zijn."
+msgstr "Aquesta pàgina demana iniciar sessió, no hauries de rondar per aquí"
 
 #: ../includes/core-classes/addon-page.class.php:247
 msgid "You are not allowed to view this page"
-msgstr "U bent niet geautoriseerd om deze pagina te zien"
+msgstr "No et trobes autoritzat per visualitzar aquesta pàgina"
 
 #: ../includes/core-classes/addon-page.class.php:336
 #, php-format
 msgid "Customer Area Sidebar - %s"
-msgstr "Klantzone Sidebar - %s"
+msgstr "Barra Lateral Àrea Privada - %s"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:130
 msgid "You must supply a post ID to delete"
-msgstr "U moet een bericht ID opgeven om dte verwijderen"
+msgstr "Has de subministrar un ID d'entrada per eliminar"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:135
 msgid "You are not allowed to delete this post"
-msgstr "U bent niet geautoriseerd om dit bericht te verwijdren"
+msgstr "No et trobes autoritzar per eliminar aquesta entrada"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:141
 msgid "The content has been deleted."
-msgstr "De content is verwijderd"
+msgstr "El contingut s'ha eliminat."
 
 #: ../includes/core-classes/addon-update-content-page.class.php:258
 #: ../includes/core-classes/addon-update-content-page.class.php:259
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Eliminar"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:262
 msgid "Are you sure that you want to delete this content?"
-msgstr ""
-"Weet u zeker dat u deze content wilt verwijdren (deze actie kan niet "
-"ongedaan worden gemaakt)?"
+msgstr "Estàs segur/a que vols eliminar aquest contingut?"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:278
 msgid "Content update (from front-office)"
-msgstr "Content bijwerken (vanuit de gebruikers pagina's)"
+msgstr "Actualitzar contingut (part pública)"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:280
 msgid "Update any content from front office"
-msgstr "Content bijwerken vanuit de gebruikers pagina's"
+msgstr "Actualitzar qualsevol contingut de la part pública"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:281
 msgid "Update authored content"
-msgstr "Bijwerken gepubliceerde content"
+msgstr "Actualitzar contingut amb autor"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:282
 msgid "Update owned content"
-msgstr "Bijwerken content in eigendom"
+msgstr "Actualitzar contingut amb propietari"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:286
 msgid "Content removal (from front-office)"
-msgstr "Content verwijdering (vanuit de gebruikers pagina's)"
+msgstr "Eliminació de contingut (part pública)"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:288
 msgid "Delete any content from front office"
-msgstr "Verwijder content vanuit de gebruikers pagina's"
+msgstr "Eliminar qualsevol contingut de la part pública"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:289
 msgid "Delete authored content"
-msgstr "Verwijder gepubliceerde content"
+msgstr "Eliminar contingut amb autor"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:290
 msgid "Delete owned content"
-msgstr "Verwijder content waarvan ik de eigenaar ben"
+msgstr "Eliminar contingut amb propietari"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:302
 msgid "You must specify a post to delete"
-msgstr "U moet een bericht aangeven om te verwijderen"
+msgstr "Cal que especifiquis una entrada a eliminar"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:332
 msgid "You must specify a post to edit"
-msgstr "U moet een bericht ID opgeven om bij te werken"
+msgstr "Cal que especifiquis una entrada per editar"
 
 #: ../includes/core-classes/addon-update-content-page.class.php:366
 msgid "Content edition"
-msgstr "Content versie"
+msgstr "Edició de contingut"
 
 #: ../includes/core-classes/addon.class.php:98
 msgid "License Keys"
-msgstr "Licentie sleutel"
+msgstr "Claus de llicència"
 
 #: ../includes/core-classes/addon.class.php:110
 msgid "License keys for commercial add-ons"
-msgstr "Licentie sleutel voor commerciële Klantzone uitbreidingen"
+msgstr "Claus de llicència per a complements comercials"
 
 #: ../includes/core-classes/addon.class.php:152
 msgid ""
 "This page allows you to enter license key you have received when you "
 "purchased commercial addons."
 msgstr ""
-"Deze pagina stelt u in staat om de licentie sleutels in te geven welke u "
-"heeft ontvangen bij het kopen van de commerciële Klantzone uitbreidingen."
+"Aquesta pàgina et permet introduir la clau de llicència rebuda quan has "
+"adquirit els complements."
 
 #: ../includes/core-classes/addon.class.php:153
 msgid ""
 "Do not activate your license on your development site. Only on the final "
 "site where you are running the plugin."
 msgstr ""
-"Activeer niet uw licentie sleutels op uw ontwikkel omgeving. Activeer deze "
-"alleen binnen de website op de definitieve plaats. "
+"No activis la llicència al lloc web de desenvolupament. Només al lloc on "
+"finalment s'utilitzarà l'extensió."
 
 #: ../includes/core-classes/plugin.class.php:410
 msgid ""
 "The Customer Area plugin requires your attention. The issues we have "
 "detected are the following: "
 msgstr ""
-"De Klantzone plugin heeft uw aandacht nodig. De volgende zaken zijn "
-"geconstateerd:"
+"L'extensió Àrea de Clients (Customer Area) necessita la teva atenció. Els "
+"problemes detectats són els següents:"
 
 #: ../includes/core-classes/plugin.class.php:418
 #, php-format
@@ -2343,52 +2342,53 @@ msgid ""
 "You can view the details of those issues and fix them on the <a href=\"%1$s"
 "\">Customer Area status page</a>."
 msgstr ""
-"U kunt de details inzien van de gemelde problemen en deze oplossen op <a "
-"href=\"%1$s\">Customer Area status page</a>."
+"Pots veure el detall d'aquests problemes i resoldre'ls a través de <a href="
+"\"%1$s\">la pàgina d'estat de l'Àrea de Clients</a>."
 
 #: ../includes/core-classes/plugin.class.php:519
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please enable "
 "them in the WordPress settings."
 msgstr ""
-"Permalinks zijn uitgeschakeld, Klantzone zal niet geheel werken. Schakel de "
-"permalinks in bij Wordpress instellingen."
+"Els enllaços permanents es troben deshabilitats, l'Àrea de Clients no "
+"funcionarà correctament. Si us plau, habilita els enllaços permanents als "
+"Paràmetres de WordPress."
 
 #: ../includes/core-classes/plugin.class.php:541
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr ""
-"Sommige Klantzone uitbreidingen hebben een nieuwere versie van de basis "
-"plugin nodig."
+"Alguns complements necessiten una versió més nova de l'extensió principal."
 
 #: ../includes/core-classes/plugin.class.php:709
 msgid "Some template files you have overriden seem to be outdated."
-msgstr ""
-"Sommige template bestanden die u heeft overschreven lijken te zijn verouderd."
+msgstr "Alguns arxius de plantilles que has sobreescrit semblen ser obsolets."
 
 #: ../includes/core-classes/settings.class.php:125
 msgid "The page title cannot be empty"
-msgstr "kan niet leeg zijn"
+msgstr "El títol de la pàgina no pot deixar-se buit"
 
 #: ../includes/core-classes/settings.class.php:235
 msgid "Frontend"
-msgstr "Gebruikerskant"
+msgstr "Part pública"
 
 #: ../includes/core-classes/settings.class.php:248
 #: ../includes/core-classes/settings.class.php:302
 msgid "General Settings"
-msgstr "Algemene instellingen"
+msgstr "Paràmetres generals"
 
 #: ../includes/core-classes/settings.class.php:253
 msgid "Admin theme"
-msgstr "Admin thema"
+msgstr "Tema d'administració"
 
 #: ../includes/core-classes/settings.class.php:264
 msgid "Hide owner selection"
-msgstr "Verberg eigenaar selectie"
+msgstr "Ocultar selecció del propietari"
 
 #: ../includes/core-classes/settings.class.php:271
 msgid "Hide the owner selection field when a single owner is possible."
-msgstr "Verberg de selectie van de eigenaar wanneer er maar één eigenaar is"
+msgstr ""
+"Ocultar el camp de selecció del propietari quan sigui possible un propietari "
+"individual."
 
 #: ../includes/core-classes/settings.class.php:273
 msgid ""
@@ -2396,34 +2396,35 @@ msgid ""
 "is available to the current user and if within that owner type, a single "
 "owner is available."
 msgstr ""
-"De eigenaar wordt niet weergegeven maar direct geselecteerd wanneer er "
-"binnen het type eigenaar maar één eigenaar beschikbaar is. "
+"El propietari no es mostrarà però s'inclourà directament si només està "
+"disponible un únic tipus de probpietari per l'usuari actual i si dins "
+"d'aquest tipus de propietari, un únic propietari està disponible."
 
 #: ../includes/core-classes/settings.class.php:308
 msgid "Include CSS"
-msgstr "Voeg CSS toe"
+msgstr "Incloure CSS"
 
 #: ../includes/core-classes/settings.class.php:315
 msgid "Include the default stylesheet."
-msgstr "Voeg de standaard stylesheet toe."
+msgstr "Incloure el full d'estil per defecte."
 
 #: ../includes/core-classes/settings.class.php:315
 msgid "If not, you should style the plugin yourself in your theme."
-msgstr "Zo niet, dan moet u zelf de plugin opmaken in uw thema."
+msgstr "Sinó, caldrà que tu mateix donis format a l'extensió en el teu tema."
 
 #: ../includes/core-classes/settings.class.php:320
 msgid "Frontend theme"
-msgstr "Frontend thema"
+msgstr "Tema part pública"
 
 #: ../includes/core-classes/settings.class.php:332
 msgid "Debug templates"
-msgstr "Debug templates"
+msgstr "Plantilles de depuració"
 
 #: ../includes/core-classes/settings.class.php:339
 msgid "Print debug information about the templates used by Customer Area."
 msgstr ""
-"Print debug informatie m.b.t. de templates welke doro Klantzone worden "
-"gebruikt."
+"Imprimir informació de depuració sobre les plantilles utilitzades per l'Àrea "
+"de Clients."
 
 #: ../includes/core-classes/settings.class.php:340
 msgid ""
@@ -2431,64 +2432,65 @@ msgid ""
 "show which template files are used. This is very helpful if you are a "
 "developer and want to customize the plugin layout."
 msgstr ""
-"Indien ingeschakeld zal de plugin HTML commentaar aanmaken in de pagina "
-"source code om te zien welke template bestanden worden gebruikt. Dit is erg "
-"handig voor een ontwikkelaar indien u de Klantzone layout wilt wijzigen. "
+"Si està marcat, l'extensió imprimirà comentaris en HTML al codi font de la "
+"pàgina per mostrar quins arxius de plantilla s'estan utilitzant. Això és "
+"útil si ets un desenvolupador i vols personalitzar  la disposició (layout) "
+"de l'extensió."
 
 #: ../includes/core-classes/settings.class.php:399
 msgid " is not a valid post"
-msgstr "is geen geldige waarde"
+msgstr "no és una entrada vàlida"
 
 #: ../includes/core-classes/settings.class.php:432
 msgid " is not a valid role"
-msgstr "is geen geldige waarde"
+msgstr "no és un rol vàlid"
 
 #: ../includes/core-classes/settings.class.php:501
 msgid " cannot be empty"
-msgstr "kan niet leeg zijn"
+msgstr "no pot deixar-se buit"
 
 #: ../includes/core-classes/settings.class.php:521
 msgid " is not a valid email"
-msgstr "is geen geldig email adres"
+msgstr "no és una adreça electrònica vàlida"
 
 #: ../includes/core-classes/settings.class.php:541
 msgid " is not a valid value"
-msgstr "is geen geldige waarde"
+msgstr "no és un valor vàlid"
 
 #: ../includes/core-classes/settings.class.php:567
 msgid "must be an integer"
-msgstr "moet een nummer zijn"
+msgstr "ha de ser un enter"
 
 #: ../includes/core-classes/settings.class.php:575
 #, php-format
 msgid "must be greater than %s"
-msgstr "moet groter zijn dan %s"
+msgstr "ha de ser major que %s"
 
 #: ../includes/core-classes/settings.class.php:583
 #, php-format
 msgid "must be lower than %s"
-msgstr "moet kleiner zijn dan %s"
+msgstr "ha de ser menor que %s"
 
 #: ../includes/core-classes/settings.class.php:609
 msgid " is not a valid owner type"
-msgstr "is niet een geldige type voor de eigenaar"
+msgstr "no és un tipus de propietari vàlid"
 
 #: ../includes/core-classes/settings.class.php:633
 msgid " is not a valid owner"
-msgstr "is niet een geldige eigenaar"
+msgstr "no és un propietari vàlid"
 
 #: ../includes/core-classes/settings.class.php:653
 msgid "you cannot select multiple terms."
-msgstr "u kunt niet meerdere termen selecteren."
+msgstr "no pots seleccionar múltiples termes."
 
 #: ../includes/core-classes/settings.class.php:719
 #, php-format
 msgid "Your license is valid until: %s"
-msgstr "Uw licentie is geldig tot: %s"
+msgstr "La teva llicència és valida fins: %s"
 
 #: ../includes/core-classes/settings.class.php:725
 msgid "This license key has been revoked."
-msgstr "Deze licentie is ingetgrokken."
+msgstr "La teva llicència ha caducat."
 
 #: ../includes/core-classes/settings.class.php:729
 #, php-format
@@ -2496,208 +2498,209 @@ msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
 msgstr ""
-"U heeft uw maximum aantal website bereikt voor de Klantzone licenties. U "
-"heeft licentie tot %s website(s)."
+"Has arribat al nombre màxim de llocs web per a aquesta clau de llicència. La "
+"pots utilitzar com a màxim per a %s lloc(s) web."
 
 #: ../includes/core-classes/settings.class.php:734
 #, php-format
 msgid "Your license has expired at the date: %s"
-msgstr "Uw licentie is verlopen op: %s"
+msgstr "La teva llicència ha caducat a data: %s"
 
 #: ../includes/core-classes/settings.class.php:738
 msgid "This license key does not match."
-msgstr "De licentie sleutel is onjuist"
+msgstr "La clau de llicència no coincideix."
 
 #: ../includes/core-classes/settings.class.php:742
 msgid "This license key seems to have been generated for another product."
-msgstr "Deze licentie sleutel is voor een ander product."
+msgstr ""
+"Aquesta clau de llicència sembla que s'hagi generat per un altre producte."
 
 #: ../includes/core-classes/settings.class.php:746
 msgid "Problem when validating your license key"
-msgstr "Er is een probleem met het valideren van uw licentie sleutel"
+msgstr "Problema al validar la teva clau de llicència"
 
 #: ../includes/core-classes/settings.class.php:810
 msgid "Checking license..."
-msgstr "Licentiesleutel wordt gecontroleerd...."
+msgstr "Comprovant llicència..."
 
 #: ../includes/core-classes/settings.class.php:828
 msgid "Failed to contact server"
-msgstr "Fout bij het vinden van de server"
+msgstr "La comunicació amb el servidor ha fallat"
 
 #: ../includes/core-classes/settings.class.php:966
 msgid "None"
-msgstr "Geen"
+msgstr "Cap"
 
 #: ../includes/core-classes/settings.class.php:985
 msgid "Delete existing &amp; create new &raquo;"
-msgstr "Verwijder betaande &amp; aanmaken nieuwe &raquo;"
+msgstr "Eliminar &amp; existents i crear nous &raquo;"
 
 #: ../includes/core-classes/settings.class.php:990
 msgid "Edit it &raquo;"
-msgstr "Wijzig &raquo;"
+msgstr "Edita'l &raquo;"
 
 #: ../includes/core-classes/settings.class.php:994
 msgid "Create it &raquo;"
-msgstr "Maak het &raquo;"
+msgstr "Crea'l &raquo;"
 
 #: ../includes/core-classes/settings.class.php:1066
 msgid "Any Role"
-msgstr "Elke Rol"
+msgstr "Qualsevol rol"
 
 #: ../includes/core-classes/settings.class.php:1163
 msgid "Main plugin folder"
-msgstr "Plugin hoofdmap"
+msgstr "Carpeta de l'extensió principal"
 
 #: ../includes/core-classes/settings.class.php:1169
 msgid "Current theme folder"
-msgstr "Huidige map voor het thema"
+msgstr "Carpeta del tema actual"
 
 #: ../includes/core-classes/settings.class.php:1175
 msgid "WordPress content folder"
-msgstr "WordPress contentfolder"
+msgstr "Carpeta del contingut de WordPress"
 
 #: ../includes/core-classes/widget-content-authors.class.php:110
 #: ../includes/core-classes/widget-content-authors.class.php:120
 msgid "You"
-msgstr "U"
+msgstr "Tu"
 
 #: ../includes/core-classes/widget-content-authors.class.php:137
 #, php-format
 msgid "Show all content published by %s"
-msgstr "Toon alle content gepubliceerddoor %s"
+msgstr "Mostrar tot el contingut publicat per %s"
 
 #: ../includes/core-classes/widget-content-authors.class.php:161
 #: ../includes/core-classes/widget-content-dates.class.php:164
 #: ../includes/core-classes/widget-content-list.class.php:147
 #: ../includes/core-classes/widget-terms.class.php:125
 msgid "Title:"
-msgstr "Titel:"
+msgstr "Títol:"
 
 #: ../includes/core-classes/widget-content-dates.class.php:121
 #, php-format
 msgid "Show all content published in %s"
-msgstr "Beeld alle content af welke gepubliceerd is in %s"
+msgstr "Mostrar tot el contingut publicat a %s"
 
 #: ../includes/core-classes/widget-content-dates.class.php:135
 #, php-format
 msgid "Show all content published in %2$s %1$s"
-msgstr "Bekijk alle gepubliceerde content in %2$s %1$s"
+msgstr "Mostrar tot el contingut publicat a %2$s %1$s"
 
 #: ../includes/core-classes/widget-content-list.class.php:122
 #, php-format
 msgid "Link to %s"
-msgstr "Link naar %s"
+msgstr "Enllaços a %s"
 
 #: ../includes/core-classes/widget-content-list.class.php:151
 msgid "Message shown when no posts:"
-msgstr "Bericht wat wordt getoond indien er geen berichten zijn:"
+msgstr "Missatge mostrat quan no hi han entrades:"
 
 #: ../includes/core-classes/widget-content-list.class.php:155
 msgid "Max. number of posts:"
-msgstr "Maximum aantal berichten:"
+msgstr "Número màxim d'entrades:"
 
 #: ../includes/core-classes/widget-content-list.class.php:159
 msgid "Order By:"
-msgstr "Sorteer via:"
+msgstr "Ordenar per:"
 
 #: ../includes/core-classes/widget-content-list.class.php:166
 msgid "Order:"
-msgstr "Volgorde:"
+msgstr "Ordre:"
 
 #: ../includes/core-classes/widget-content-list.class.php:168
 msgid "Ascending"
-msgstr "Oplopend"
+msgstr "Ascendent"
 
 #: ../includes/core-classes/widget-content-list.class.php:169
 msgid "Descending"
-msgstr "Aflopend"
+msgstr "Descendent"
 
 #: ../includes/core-classes/widget-content-list.class.php:176
 msgid "Category:"
-msgstr "Categorie:"
+msgstr "Categoria:"
 
 #: ../includes/core-classes/widget-content-list.class.php:180
 msgid "Any"
-msgstr "Elke"
+msgstr "Qualsevol"
 
 #: ../includes/core-classes/widget-terms.class.php:86
 #, php-format
 msgid "Show all content categorized under %s"
-msgstr "Bekijk alle content onder catogorie %s"
+msgstr "Mostra tot el contingut categoritzat com  %s"
 
 #: ../includes/core-classes/widget-terms.class.php:130
 msgid "Empty terms:"
-msgstr "Lege categorien"
+msgstr "Termes buits:"
 
 #: ../includes/core-classes/widget-terms.class.php:132
 msgid "Show"
-msgstr "Toon"
+msgstr "Mostra"
 
 #: ../includes/core-classes/widget-terms.class.php:133
 msgid "Hide"
-msgstr "Verberg"
+msgstr "Oculta"
 
 #: ../includes/core-classes/object-meta/field/email-field.class.php:47
 msgid "Email"
-msgstr "E-mail"
+msgstr "Adreça electrònica"
 
 #: ../includes/core-classes/object-meta/field/header-field.class.php:45
 msgid "Header"
-msgstr "Kop"
+msgstr "Capçalera"
 
 #: ../includes/core-classes/object-meta/field/number-field.class.php:49
 msgid "Number"
-msgstr "Nummer"
+msgstr "Número"
 
 #: ../includes/core-classes/object-meta/field/text-field.class.php:58
 msgid "Text"
-msgstr "Tekst"
+msgstr "Text"
 
 #: ../includes/core-classes/object-meta/field/user-password-field.class.php:81
 msgid "The password and its confirmation do not match"
-msgstr "Het wachtwoord en de wachtworod bevestiging komen niet overeen"
+msgstr "La contrasenya i la seva confirmació no són coincidents"
 
 #: ../includes/core-classes/object-meta/validation/email-validation.class.php:41
 #, php-format
 msgid "%1$s is not a valid email address."
-msgstr "%1$s is geen geldig email adres."
+msgstr "%1$s no és una adreça electrònica vàlida."
 
 #: ../includes/core-classes/object-meta/validation/number-validation.class.php:45
 #, php-format
 msgid "%1$s is not a valid number"
-msgstr "%1$s is geen geldig nummer"
+msgstr "%1$s no és un número vàlid"
 
 #: ../includes/core-classes/object-meta/validation/number-validation.class.php:46
 #, php-format
 msgid "%1$s is not a valid integer"
-msgstr "%1$s is geen geldig geheel getal"
+msgstr "%1$s no és un enter vàlid"
 
 #: ../includes/core-classes/object-meta/validation/number-validation.class.php:49
 #, php-format
 msgid "%1$s must be greater than %2$s"
-msgstr "%1$s moet groter zijn dan %2$s"
+msgstr "%1$s ha de ser major de %2$s"
 
 #: ../includes/core-classes/object-meta/validation/number-validation.class.php:50
 #, php-format
 msgid "%1$s must be lower than %2$s"
-msgstr "%1$s moet kleiner zijn dan %2$s"
+msgstr "%1$s ha de ser menor de %2$s"
 
 #: ../includes/core-classes/object-meta/validation/password-validation.class.php:45
 #: ../includes/core-classes/object-meta/validation/string-validation.class.php:45
 #, php-format
 msgid "%1$s must contain at least %2$s characters"
-msgstr "%1$s moet minimaal %2$s tekens zijn"
+msgstr "%1$s ha de contindre com a mínim %2$s caràcters"
 
 #: ../includes/core-classes/object-meta/validation/password-validation.class.php:46
 #: ../includes/core-classes/object-meta/validation/string-validation.class.php:46
 #, php-format
 msgid "%1$s must contain at most %2$s characters"
-msgstr "%1$s mag maximaal %2$s tekens zijn"
+msgstr "%1$s ha de contindre com a màxim %2$s caràcters"
 
 #: ../includes/core-classes/object-meta/validation/simple-validation.class.php:37
 #, php-format
 msgid "%1$s is required."
-msgstr "%1$s is verplicht"
+msgstr "%1$s és necessari."
 
 #: ../includes/functions/functions-private-files.php:144
 #: ../includes/functions/functions-private-files.php:159
@@ -2722,78 +2725,71 @@ msgstr "kB"
 
 #: ../libs/wp-bootstrap-navwalker/wp_bootstrap_navwalker.php:198
 msgid "Add a menu"
-msgstr "Voeg een menu toe"
+msgstr "Afegir un menú"
+
+#, fuzzy
+#~ msgctxt "pagination_parameter_name"
+#~ msgid "page-num"
+#~ msgstr "Nombre de boucles"
+
+#~ msgid "More information about this file"
+#~ msgstr "Plus d'information sur ce fichier"
+
+#~ msgid "More information about this page"
+#~ msgstr "Plus d'information sur cette page"
+
+#~ msgid "From: %s"
+#~ msgstr "De : %s"
+
+#~ msgid "To: %s"
+#~ msgstr "A : %s"
+
+#~ msgid "%1$s must contain at least %1$s characters"
+#~ msgstr "%1$s doit contenir au moins %2$s caractères."
+
+#~ msgid "%1$s must contain at most %1$s characters"
+#~ msgstr "%1$s doit contenir au plus %2$s caractères."
 
 #~ msgid "Contact"
 #~ msgstr "Contact"
 
 #~ msgid "First Name"
-#~ msgstr "Voornaam"
+#~ msgstr "Prénom"
 
 #~ msgid "Last Name"
-#~ msgstr "Achternaam"
+#~ msgstr "Nom"
 
 #~ msgid "Website"
-#~ msgstr "Website"
-
-#~ msgid "To: %s"
-#~ msgstr "Naar: %s"
-
-#~ msgid "More information about this file"
-#~ msgstr "Meer informatie omtrent dit bestand"
-
-#~ msgid "More information about this page"
-#~ msgstr "Meer informatie omtrent deze pagina"
+#~ msgstr "Site Internet"
 
 #~ msgid "Category"
 #~ msgstr "Catégorie"
 
-#~ msgid ""
-#~ "The \"%1$s\" add-on requires Customer Area %3$s. You are currently using "
-#~ "version %2$s. Please update the Customer Area plugin."
-#~ msgstr ""
-#~ "Voor de \"%1$s\" ad-on moet u inloggen in de Klanten Login  %3$s. U "
-#~ "gebruikt momenteel versie %2$s. Update a.u.b. de Customer Area plugin."
-
-#~ msgid "Your license is active!"
-#~ msgstr "Uw licentie is geactiveerd!"
-
-#~ msgid "d/m/Y"
-#~ msgstr "d/m/Y"
-
-#~ msgid ""
-#~ "The license key you have received for this add-on. This is required in "
-#~ "order to get automatic plugin updates."
-#~ msgstr ""
-#~ "De licenciecode die u heeft ontvangen voor deze extentie. Deze is nodig "
-#~ "om automatische plugin updates te ontvangen."
-
 #~ msgid "Well done!"
-#~ msgstr "Goed gedaan!"
+#~ msgstr "Félicitations !"
 
 #~ msgid "Your Customer Area is ready"
-#~ msgstr "Klanten Zone"
+#~ msgstr "Votre espace client est prêt"
 
 #~ msgid ""
 #~ "A page has been published on your site and will display the private "
 #~ "content for the user who is logged-in. If you want, you can:"
 #~ msgstr ""
-#~ "Er is een pagina gepubliceerd op uw website wat de privé inhoud zal "
-#~ "weergeven voor de ingelogde gebruiker. Indien u wilt, kunt u:"
+#~ "Une page a été publiée sur votre site et affiche les contenus privés de "
+#~ "l'utilisateur connecté. Si vous le souhaitez, vous pouvez :"
 
 #~ msgid ""
 #~ "<a href=\"%1$s\" target=\"_blank\">See how it looks</a> on your site."
 #~ msgstr ""
-#~ "<a href=\"%1$s\" target=\"_blank\">Kijk hoe het er uit ziet</a> op uw "
-#~ "website."
+#~ "<a href=\"%1$s\" target=\"_blank\">Voir à quoi elle ressemble</a> sur "
+#~ "votre site."
 
 #~ msgid ""
 #~ "<a href=\"%1$s\" target=\"_blank\">Edit the page</a> if you want to "
 #~ "change the title or maybe make it a child page of another one. "
 #~ msgstr ""
-#~ "<a href=\"%1$s\" target=\"_blank\">Wijzig de pagina</a> als u de titel "
-#~ "wilt wijzigen of misschien er een sub pagina van wilt maken of een nieuwe "
-#~ "pagine."
+#~ "<a href=\"%1$s\" target=\"_blank\">Modifier la page</a> si vous voulez "
+#~ "changer le titre ou peut-être en faire une page enfant d'une autre page. "
 
 #~ msgid ""
 #~ "Of course, because the plugin has just been setup, you will not see any "
@@ -2802,234 +2798,282 @@ msgstr "Voeg een menu toe"
 #~ "able to see how it looks in your site and no one else but you will be "
 #~ "able to see it."
 #~ msgstr ""
-#~ " Natuurlijk, omdat de plugin net is geïnstalleerd, ziet u er nog geen "
-#~ "privé inhoud. Een goede manier om te beginnen is om een paar privé "
-#~ "bestanden en pagina's te creëren onder uw eigen naam. Op deze manier kunt "
-#~ "u zien hoe het eruit ziet binnen uw website waarbij alleen u en niemand "
-#~ "anders deze kunt zien. "
+#~ "Bien entendu, comme le plugin vient d'être installé, vous ne verrez aucun "
+#~ "contenu privé dans l'espace client. Un bon moyen de débuter est de créer "
+#~ "quelques fichiers privés et quelques pages privées dont le propriétaire "
+#~ "est vous-même. Ainsi, vous pourrez voir à quoi ça ressemble sur votre "
+#~ "site sans que personne d'autre ne puisse voir ces contenus."
 
 #~ msgid ""
 #~ "You can get notified when we've got something exciting to say (plugin "
 #~ "updates, news, etc.). Simply subscribe to our newsletter, we won't spam, "
 #~ "we send at most one email per month!"
 #~ msgstr ""
-#~ "U kunt ook een melding ontvangen als we spannends nieuws hebben (plugin "
-#~ "updates, nieuws, etc.). Gewoon inschrijven voor onze nieuwsbrief, we "
-#~ "sturen geen spam, u ontvangt hooguit een email per maand!"
+#~ "Vous pouvez être tenu au courant quand nous avons quelque chose qui vaut "
+#~ "le coup (mise à jour de plugins, nouvelles, etc.). Inscrivez-vous "
+#~ "simplement à notre liste de diffusion, aucun spam - promis, nous envoyons "
+#~ "au maximum un courriel par mois !"
 
 #~ msgid "Getting help"
-#~ msgstr "Instellingen"
+#~ msgstr "Obtenir de l'aide"
 
 #~ msgid "Save money with our add-on bundles"
-#~ msgstr "Spaar geld uit met onze extentie bundels!"
+#~ msgstr "Economisez avec nos packs d'extensions"
 
 #~ msgid "Get our add-ons individually"
-#~ msgstr "Koop onze extenties indivudueel"
+#~ msgstr "Nos extensions"
 
 #~ msgid "Setup your Customer Area in seconds"
-#~ msgstr "Verbeter uw Klanten-Zone met onze add-on extensies"
+#~ msgstr "Configurez votre espace client en quelques secondes"
 
 #~ msgid ""
 #~ "Thanks for using our Customer Area plugin. It will be just a few seconds "
 #~ "before the plugin is ready to work."
 #~ msgstr ""
-#~ "Dank u voor het gebruiken van de Klant zone plugin. De plugin zal over "
-#~ "enkele seconden klaar zijn. "
+#~ "Merci d'utiliser notre plugin Customer Area. Il faudra seulement quelques "
+#~ "secondes pour le mettre en route."
 
 #~ msgid "You can give any title you want to the customer area"
-#~ msgstr ""
-#~ "U kunt kiezen hoe de bestanden standaard gesorteerd worden op de klant-"
-#~ "zone"
+#~ msgstr "Vous pouvez choisir un titre pour votre espace client."
 
 #~ msgid "Go, set it up!"
-#~ msgstr "Ga de plugin opzetten!"
+#~ msgstr "C'est parti !"
+
+#~ msgid "Customer Page - User Account"
+#~ msgstr "Page client - Compte utilisateur"
+
+#~ msgid "Customer Page - Account Root"
+#~ msgstr "Page client - Accueil du compte"
+
+#~ msgid "Customer Page - Dashboard"
+#~ msgstr "Page client - Tableau de bord"
+
+#~ msgid "Customer Page - Home"
+#~ msgstr "Page client - Accueil"
+
+#~ msgid "Customer Page - Logout"
+#~ msgstr "Page client - Déconnexion"
+
+#~ msgid "Customer Page - Private Files"
+#~ msgstr "Page client - Fichiers privés"
+
+#~ msgid "Customer Page - Private Files Root"
+#~ msgstr "Page client - Racine fichiers privés"
+
+#~ msgid "Customer Page - Private Pages"
+#~ msgstr "Pages client - Pages privées"
+
+#~ msgid "Customer Page - Private Pages Root"
+#~ msgstr "Page client - Accueil pages privées"
+
+#~ msgid ""
+#~ "The \"%1$s\" add-on requires Customer Area %3$s. You are currently using "
+#~ "version %2$s. Please update the Customer Area plugin."
+#~ msgstr ""
+#~ "L'extension \"%1$s\" nécessite Espace Client %3$s. Vous utilisez "
+#~ "actuellement la version %2$s. Veuillez mettre à jour le plugin Espace "
+#~ "Client."
+
+#~ msgid "Your license is active!"
+#~ msgstr "Votre license est active !"
+
+#~ msgid "d/m/Y"
+#~ msgstr "d/m/Y"
+
+#~ msgid ""
+#~ "The license key you have received for this add-on. This is required in "
+#~ "order to get automatic plugin updates."
+#~ msgstr ""
+#~ "La clé de licence que vous avez reçu avec cette extension. Cette clé est "
+#~ "nécessaire pour obtenir des mises à jour automatiquement."
 
 #~ msgid ""
 #~ "We could not detect the Customer Area page on your site. This may be "
 #~ "because you have not yet setup the plugin, or because you are upgrading "
 #~ "from an older version."
 #~ msgstr ""
-#~ "Wij kunnen de Klant Zone pagina niet vinden binne uw website. Dit komt "
-#~ "door verkeerde instellingen, of omdat u een oudere versies heeft "
-#~ "bijgewerkt."
+#~ "Nous n'avons pas pu détecter la page Espace Client sur votre site. C'est "
+#~ "peut-être du au fait que vous n'ayez pas encore configuré le plugin ou "
+#~ "bien que vous le mettiez à jour depuis une version plus ancienne."
 
 #~ msgid ""
 #~ "If you already have this page, just visit the <a href=\"%s\">plugin "
 #~ "settings</a> to set it manually."
 #~ msgstr ""
-#~ "Indien u deze al heeft, ga naar <a href=\"%s\">klant zone instellingen</"
-#~ "a> om deze daar op te geven."
+#~ "Si vous avez déjà cette page, rendez-vous sur <a href=\"%s\">les options "
+#~ "du plugin</a> pour indiquer laquelle c'est."
 
 #~ msgid ""
 #~ "If you have not yet setup the plugin, we have a <a href=\"%s\">quick "
 #~ "setup wizard</a>"
 #~ msgstr ""
-#~ "Indien u er nog geen een heeft aangemaakt, dan kunnen wij dit automatisch "
-#~ "doen: <a href=\"%s\">maak deze pagina nu</a>"
+#~ "Si vous n'avez pas encore configuré le plugin, nous avons une <a href=\"%s"
+#~ "\">procédure d'installation rapide</a>"
 
 #~ msgid "Disconnect from your customer area"
-#~ msgstr "Uitgelogd van uw klanten-zone"
+#~ msgstr "Se déconnecter de l'espace client"
 
 #~ msgid ""
 #~ "This page is the one where you have inserted the [customer-area] "
 #~ "shortcode. This should be set automatically when you first visit that "
 #~ "page. If for any reason it is not correct, you can change it though."
 #~ msgstr ""
-#~ "Deze pagina is de gene waar u de [customer-area] korte code heeft "
-#~ "aangemaakt. Deze zou bij het bezoeken van de pagina automatisch worden "
-#~ "bepaald. Indien dit niet correct is, kunt u dit altijd wijzigen."
+#~ "Cette page est celle où vous avez inséré le shortcode [customer-area]. "
+#~ "Cette option devrait être ajustée automatiquement la première fois que "
+#~ "vous visitez cette page. Si pour une raison quelconque ce n'est pas "
+#~ "correct, vous pouvez la modifier."
 
 #~ msgid "Number of items on dashboard"
-#~ msgstr "Aantal items op het werkblad"
+#~ msgstr "Nombre d'items dans l'accueil"
 
 #~ msgid "Hello"
-#~ msgstr "Hallo"
+#~ msgstr "Bonjour"
 
 #~ msgid ""
 #~ "You must login to access your own customer area. If you do not have an "
 #~ "account yet, please register or contact us so that we can create it."
 #~ msgstr ""
-#~ "U moet inloggen om toegang te krijgen tot uw klanten-zone. Als u nog geen "
-#~ "account heeft, registreert u zich dan of neem contact met ons op zodat "
-#~ "wij er een voor u kunnen aanmaken."
+#~ "Vous devez être connecté pour avoir accès à votre zone client. Si vous "
+#~ "n'avez pas encore de compte utilisateur, merci de vous enregistrer ou de "
+#~ "nous contacter pour que nous puissions le créer."
 
 #~ msgid "Login"
-#~ msgstr "Inloggen"
+#~ msgstr "Connexion"
 
 #~ msgid "Register"
-#~ msgstr "Registreer"
+#~ msgstr "S'enregistrer"
 
 #~ msgid "Troubleshooting information"
-#~ msgstr "Help informatie"
+#~ msgstr "Information de dépannage"
 
 #~ msgid "Plugin options"
-#~ msgstr "Plugin opties"
+#~ msgstr "Options de l'extension"
 
 #~ msgid "Private Files (back-office)"
-#~ msgstr "Privé Bestandscategoriën"
+#~ msgstr "Fichiers Privés (Zone admin.)"
 
 #~ msgid ""
 #~ "You can disable this if you have your own \"single-cuar_private_file.php"
 #~ "\" template file."
 #~ msgstr ""
-#~ "U kunt deze uitzetten indien u uw eigen  \"single-cuar_private_file.php\" "
-#~ "template bestand heeft."
+#~ "Vous pouvez désactiver ceci si vous avez votre propre fichier de thème "
+#~ "\"single-cuar_private_file.php\""
 
 #~ msgid "File list"
-#~ msgstr "Bestandslijst"
+#~ msgstr "Liste de fichiers"
 
 #~ msgid "Don't group files"
-#~ msgstr "Bestanden niet groeperen"
+#~ msgstr "Ne pas grouper les fichiers"
 
 #~ msgid "Group by month"
-#~ msgstr "Groepeer op jaar"
+#~ msgstr "Grouper par mois"
 
 #~ msgid "Group by year"
-#~ msgstr "Groepeer op jaar"
+#~ msgstr "Grouper par année"
 
 #~ msgid "Group by category"
-#~ msgstr "Groepeer op categorie"
+#~ msgstr "Grouper par catégorie"
 
 #~ msgid ""
 #~ "You can choose how files will be organized by default in the customer "
 #~ "area."
 #~ msgstr ""
-#~ "U kunt kiezen hoe de bestanden standaard gesorteerd worden op de klant-"
-#~ "zone"
+#~ "Vous pouvez choisir la manière par défaut dont seront groupés les "
+#~ "fichiers dans la zone client."
 
 #~ msgid ""
 #~ "When listing files by category, empty categories will be hidden if you "
 #~ "check this."
 #~ msgstr ""
-#~ "Wanneer u bestanden sorteert op categorie dan worden de lege categorieën "
-#~ "onzichtbaar als u deze aanklikt."
+#~ "Si les fichiers sont groupés par catégorie, les catégories vides seront "
+#~ "ignorées si vous cochez cette case."
 
 #~ msgid "Show all private files"
-#~ msgstr "Er zijn geen privé-bestanden gevonden"
+#~ msgstr "Voir tous les fichiers privés"
 
 #~ msgid "Clic to show the files in this category"
-#~ msgstr "Klik om de bestanden in deze categoriën in te zien"
+#~ msgstr "Cliquer pour afficher les fichiers dans cette catégorie"
 
 #~ msgid "Private Pages (back-office)"
-#~ msgstr "Privé Pagina's"
+#~ msgstr "Pages Privées (Zone admin.)"
 
 #~ msgid ""
 #~ "You can disable this if you have your own \"single-cuar_private_page.php"
 #~ "\" template file."
 #~ msgstr ""
-#~ "U kunt deze uitzetten indien u uw eigen \"single-cuar_private_page.php\" "
-#~ "template bestand heeft."
+#~ "Vous pouvez désactiver ceci si vous avez votre propre fichier de thème "
+#~ "\"single-cuar_private_page.php\""
 
 #~ msgid "Page list"
-#~ msgstr "Pagina's"
+#~ msgstr "Liste de pages"
 
 #~ msgid ""
 #~ "You can choose how pages will be organized by default in the customer "
 #~ "area."
 #~ msgstr ""
-#~ "U kunt kiezen hoe de bestanden standaard gesorteerd worden op de klant-"
-#~ "zone"
+#~ "Vous pouvez choisir la manière par défaut dont seront groupées les pages "
+#~ "dans la zone client."
 
 #~ msgid ""
 #~ "When listing pages by category, empty categories will be hidden if you "
 #~ "check this."
 #~ msgstr ""
-#~ "Wanneer u bestanden sorteert op categorie dan worden de lege categorieën "
-#~ "onzichtbaar als u deze aanklikt."
+#~ "Si les pages sont groupées par catégorie, les catégories vides seront "
+#~ "ignorées si vous cochez cette case."
 
 #~ msgid "Show all private pages"
-#~ msgstr "Er zijn geen privé pagina's gevonden"
+#~ msgstr "Voir toutes les pages privées"
 
 #~ msgid "Clic to show the pages in this category"
-#~ msgstr "Klik om de bestanden in deze categoriën in te zien"
+#~ msgstr "Cliquer pour afficher les pages dans cette catégorie"
 
 #~ msgid "What's next?"
-#~ msgstr "Wat volgt?"
+#~ msgstr "Et ensuite ?"
 
 #~ msgid ""
 #~ "You should have a look at the <a href=\"%1$s\" target=\"_blank\">plugin "
 #~ "settings</a> to adjust a few things."
 #~ msgstr ""
-#~ "U dient het volgende na te kijken  <a href=\"%1$s\" target=\"_blank\">in "
-#~ "klant zone instellingen</a> om een paar zaken aan te passen."
+#~ "Vous devriez jeter un oeil aux <a href=\"%1$s\" target=\"_blank"
+#~ "\">réglages du plugin</a> pour ajuster quelques bricoles."
 
 #~ msgid "Improving your Customer Area"
-#~ msgstr "Verbeter uw Klanten-Zone"
+#~ msgstr "Améliorez votre espace client"
+
+#~ msgid "Enhance your customer area with our add-ons"
+#~ msgstr "Améliorez votre espace client avec nos extensions"
+
+#~ msgid "Upload a file"
+#~ msgstr "Téléverser un fichier"
+
+#~ msgid "%s owning this content"
+#~ msgstr "%s propriétaire de ce contenu"
+
+#~ msgid "You are not authorized to view this file"
+#~ msgstr "Vous n'êtes pas autorisé à voir ce fichier"
+
+#~ msgid "Create a new private file"
+#~ msgstr "Nouveau fichier privé"
+
+#~ msgid "Create a new private page"
+#~ msgstr "Nouvelle page privée"
 
 #~ msgid ""
 #~ "There is no Customer Area page on your site. If you already have one, "
 #~ "just visit the plugin settings to set it. "
 #~ msgstr ""
-#~ "Er is geen Klant zone pagina op uw website. Indien u deze al heeft, ga "
-#~ "naar de klant zone instellingen om deze daar op te geven."
-
-#~ msgid "Enhance your customer area with our add-ons"
-#~ msgstr "Verbeter uw klanten-zone met onze extensies"
-
-#~ msgid "%s owning this content"
-#~ msgstr "%s is eigenaar van deze inhoud"
-
-#~ msgid "You are not authorized to view this file"
-#~ msgstr "U bent niet geautoriseerd om dit bestand te bekijken."
-
-#~ msgid "Upload a file"
-#~ msgstr "Upload een bestand"
-
-#~ msgid "Create a new private file"
-#~ msgstr "Nieuw Privé-Bestand"
-
-#~ msgid "Create a new private page"
-#~ msgstr "Nieuwe Privé Pagina"
+#~ "Il n'y a aucune page Customer Area sur votre site. Si vous en avez déjà "
+#~ "créé une, indiquez-la dans les options du plugin."
 
 #~ msgid "Troubleshooting"
-#~ msgstr "Problemen oplossen"
+#~ msgstr "Dépannage"
 
 #~ msgid ""
 #~ "Show the view and download links below the post content for a customer "
 #~ "file."
 #~ msgstr ""
-#~ "Laat de 'bekijk' en 'download' links zien onder het bericht voor een "
-#~ "klantenbestand."
+#~ "Afficher les liens pour voir ou télécharger un fichier sous le contenu "
+#~ "d'un article représentant un fichier client."
 
 #~ msgid "Nobody"
 #~ msgstr "Personne"
