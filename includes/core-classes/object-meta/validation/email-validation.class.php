@@ -37,7 +37,7 @@ class CUAR_EmailValidation extends CUAR_SimpleValidation implements CUAR_Validat
 	public function validate( $label, $value ) {
 		$parent_val = parent::validate( $label, $value );
 		if ( $parent_val!==TRUE ) return $parent_val;
-		
+		if (!$this->required && empty($value)) return TRUE;
 		if ( !is_email( $value ) ) return sprintf( __('%1$s is not a valid email address.', 'cuar'), $label );
 		
 		return TRUE;
