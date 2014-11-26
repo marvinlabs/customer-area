@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Customer Area
-Plugin URI: http://customer-area.marvinlabs.com
-Version: 5.0.8
-Description: Customer area give your customers the possibility to get a page on your site where they can access private content. 
-Author: MarvinLabs
-Author URI: http://www.marvinlabs.com
-Text Domain: cuar
-Domain Path: /languages
+	Plugin Name: 	WP Customer Area - Main plugin
+	Description: 	Customer area give your customers the possibility to get a page on your site where they can access private content. 
+	Plugin URI: 	http://wp-customerarea.com
+	Version: 		5.0.8
+	Author: 		MarvinLabs
+	Author URI: 	http://www.marvinlabs.com
+	Text Domain: 	cuar
+	Domain Path: 	/languages
 */
 
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
