@@ -1,27 +1,27 @@
-=== Customer Area ===
-Contributors: vprat, marvinlabs
-Donate link: http://www.marvinlabs.com/donate/
-Tags: private files,client area,customer area,user files,secure area,crm,project,project management,access control
-Requires at least: 3.6
-Tested up to: 4.0
-Stable tag: 5.0.8
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+=== WP Customer Area ===
+
+Contributors: 		vprat, marvinlabs
+Donate link: 		http://www.marvinlabs.com/donate/
+Tags: 				private files,client area,customer area,user files,secure area,crm,project,project management,access control
+Requires at least:	3.6
+Tested up to:		4.0
+Stable tag: 		5.0.8
+License: 			GPLv2 or later
+License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 
 Give your customers a page on your site where they can access private content (files, notices, ...). 
 
 == Description ==
 
-Give your customers a page on your site where they can access private content in a secure and easy way. 
-As of today, private content means files: you upload files for your customer, and only him will be able to view them
-or download them on his page. 
+WP Customer Area is a modular all-in-one solution to manage private content with WordPress. Sharing files/pages with 
+one or multiple users is one of the main feature provided by our easy-to-use plugin. Give it a try!
 
-* [Documentation](http://customer-area.marvinlabs.com/documentation)
-* [FAQ](http://customer-area.marvinlabs.com/category/faq/)
-* [Support](http://customer-area.marvinlabs.com/support)
-* [Demo](http://customer-area.marvinlabs.com/demo)
-* [Add-ons](http://www.marvinlabs.com/downloads/category/customer-area)
-* [Translations](http://customer-area.marvinlabs.com/documentation/translations/)
+* [Documentation](http://wp-customerarea.com/documentation/)
+* [FAQ](http://wp-customerarea.com/faq/)
+* [Support](http://wp-customerarea.com/support)
+* [Demo](http://wp-customerarea.com/all-demos)
+* [Add-ons](http://wp-customerarea.com/add-ons-and-themes/)
+* [Translations](http://wp-customerarea.com/documentation/)
 * [GitHub repository for contributors](https://github.com/marvinlabs/customer-area)
 
 **Current features**
@@ -33,20 +33,21 @@ or download them on his page.
 * Comments on private files and pages: the customer/user can send some feedback/observations about it
 * Customize the plugin appearance using your own themes and templates 
  
-**Extensions are now available!**
+**Extensions and themes are now available!**
 
-Customer Area is available for free and should cover the needs of most users. If you want to encourage us to actively 
+WP Customer Area is available for free and should cover the needs of most users. If you want to encourage us to actively 
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
-from [our online shop](http://www.marvinlabs.com/downloads/category/customer-area): 
+from [our online shop](http://wp-customerarea.com/add-ons-and-themes/): 
 
-* [Advanced Custom Fields Integration](http://www.marvinlabs.com/downloads/customer-area-advanced-custom-fields-integration/)
+* [Additional Owner Types](http://staging.wp-customerarea.com/downloads/additional-owner-types/)
+* [Advanced Custom Fields Integration](http://staging.wp-customerarea.com/downloads/advanced-custom-fields-integration/)
+* [Advanced Owner Restrictions](http://staging.wp-customerarea.com/downloads/advanced-owner-restrictions/)
+* [Conversations](http://staging.wp-customerarea.com/downloads/conversations/)
+
 * [Collaboration](http://www.marvinlabs.com/downloads/customer-area-collaboration/)
-* [Conversations](http://www.marvinlabs.com/downloads/customer-area-conversations/)
-* [Extended Permissions](http://www.marvinlabs.com/downloads/customer-area-extended-permissions/)
-* [Login and registration forms](http://www.marvinlabs.com/downloads/customer-area-login-register-forms/)
+* [Login forms](http://staging.wp-customerarea.com/downloads/login-forms/)
 * [Managed Groups](http://www.marvinlabs.com/downloads/customer-area-managed-groups/)
 * [Notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
-* [Owner Restriction](http://www.marvinlabs.com/downloads/customer-area-owner-restriction/)
 * [Projects](http://www.marvinlabs.com/downloads/customer-area-projects/)
 * [Search](http://www.marvinlabs.com/downloads/customer-area-search/)
 * [Switch Users](http://www.marvinlabs.com/downloads/customer-area-switch-users/)
@@ -73,7 +74,7 @@ If you like our plugins, you might want to [check our website](http://www.marvin
 
 If you want to get updates about our plugins, you can:
 
-* [Follow us on Twitter](http://twitter.com/marvinlabs)
+* [Follow us on Twitter](http://twitter.com/wp_customerarea)
 * [Follow us on Google+](https://plus.google.com/u/0/117677945360605555441)
 * [Follow us on Facebook](http://www.facebook.com/studio.marvinlabs)
 
@@ -85,7 +86,7 @@ customisation has been done to the plugin or to the add-ons.
 == Upgrade Notice ==
 
 We have a safe upgrade procedure that needs to be followed, specially if you have installed any add-ons to the main
-plugin: [Important upgrade procedure for Customer Area](http://customer-area.marvinlabs.com/documentation/general-topics/updating-main-plugin-andor-add-ons/)
+plugin: [Important upgrade procedure for WP Customer Area](http://wp-customerarea.com/documentation/update-procedure/)
 
 = Upgrading from 3.x to 4.x =
 
@@ -93,30 +94,6 @@ Version 4 introduces a brand new menu system and breaks many templates that have
 from that version, you will need to create the pages that are necessary to display the private content types. Before
 upgrading the plugin, backup your files and database. It is advised that you attempt the upgrade on a development 
 site first.
-
-= Upgrading from 2.x to 3.x =
-
-Because version 3 introduces a new layout for the customer area, template files for displaying files and pages 
-have been renamed and reorganised. If you have customized them, be warned that you will need to change your 
-customized files to reflect the changes! In that case, first do the upgrade on a development site, not on your live 
-website. And as always:
-
-1. Backup your database
-2. /!\ IMPORTANT - Update all the Customer Area extensions FIRST
-3. Update the Customer Area plugin
-
-= Upgrading from 2.x to 2.3.0 =
-
-Make sure to backup your database. Some important changes have been made to the ownership system and even though we have
-tested our upgrade script as much as we could, you might find yourself with owners of posts reset to nobody.
-
-1. Backup your database
-2. /!\ IMPORTANT - Update all the Customer Area extensions FIRST
-3. Update the Customer Area plugin
-
-= Upgrading from 1.x to 2.x =
-
-You must also upgrade all the add-ons you are using.
 
 == Installation ==
 

@@ -1,4 +1,4 @@
-# Customer Area 
+# WP Customer Area 
 
 ![logo](http://www.marvinlabs.com/wp-content/uploads/2013/07/logo.png)
 
