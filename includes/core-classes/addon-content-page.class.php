@@ -562,7 +562,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 	
 	/*------- DASHBOARD BLOCK ---------------------------------------------------------------------------------------*/
 	
-	public function print_dashboard_content( $content ) {
+	public function print_dashboard_content() {
 		if ( !$this->is_accessible_to_current_user() ) return;
 		
 		$po_addon = $this->plugin->get_addon('post-owner');
@@ -760,7 +760,7 @@ abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn {
 
 			// Optionally output the latest files on the dashboard
 			if ( $this->is_show_in_dashboard_enabled() ) {
-				add_filter( 'cuar/core/page/before-content?slug=customer-dashboard', array( &$this, 'print_dashboard_content' ), 10 );
+				add_action( 'cuar/core/page/before-content?slug=customer-dashboard', array( &$this, 'print_dashboard_content' ), 10 );
 			}
 		}
 	}
