@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area - Main plugin
 	Description: 	Customer area give your customers the possibility to get a page on your site where they can access private content. 
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		5.0.8
+	Version: 		6.0.0
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -41,28 +41,11 @@ define( 'CUAR_PLUGIN_FILE', 		'customer-area/customer-area.php' );
 define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', FALSE );
 //define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' ); 
 
-/**
- * A function for debugging purposes
- */
-if ( !function_exists( 'cuar_log_debug' ) ) {
-function cuar_log_debug( $message ) {
-	if (WP_DEBUG === true){
-		if( is_array( $message ) || is_object( $message ) ){
-			$msg = "CUAR \t" . print_r( $message, true );
-		} else {
-			$msg = "CUAR \t" . $message;
-		}
-
-		// ChromePhp::log( $msg );
-		error_log( $msg );
-	}
-}
-}
-
 // Core classes
 include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/theme-utils.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/licensing.class.php' );
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/field-renderer.interface.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/abstract-field-renderer.class.php' );
