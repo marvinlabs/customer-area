@@ -4,8 +4,8 @@ Contributors: 		vprat, marvinlabs
 Donate link: 		http://www.marvinlabs.com/donate/
 Tags: 				private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least:	3.6
-Tested up to:		4.0
-Stable tag: 		5.0.8
+Tested up to:		4.1
+Stable tag: 		6.0.0
 License: 			GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,8 +153,9 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 5. (2014//) =
+= 6.0.0 (2015/) =
 
+* New: support for the new shop at http://wp-customerarea.com
 * Fix: bug that was showing the comments related to the last private content on the dashboard page
 * Fix: the function cuar_is_customer_area_private_content was not returning true for private containers (such as projects)
 
