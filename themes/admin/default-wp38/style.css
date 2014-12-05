@@ -194,17 +194,11 @@ div.cuar-needs-attention p {
 	float: right;
 	margin-top: 35px;
 }
-
 .cuar-ajax-container {
     display: inline-block;
     vertical-align: top;
 	margin: 8px 15px 0;
 	font-size: 0.8em;
-}
-.cuar-old-shop-warning {
-    display: inline-block;
-    color: #666;
-    margin-top: 4px;
 }
 .cuar-ajax-running {
 	color: #666;
@@ -692,4 +686,16 @@ input.knob {
     display: inline-block;
     font-size: 0.95em;
     margin-right: 15px;
+}
+.license-control input {
+    max-width: 30%;
+    min-width: 270px;
+}
+.license-control .cuar-ajax-container {
+    max-width: 60%;
+}
+.cuar-old-shop-warning {
+    display: inline-block;
+    color: #666;
+    margin-top: 4px;
 }

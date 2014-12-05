@@ -61,8 +61,8 @@ class CUAR_Licensing
         $is_new_store_license = true;
         $license_data = $this->query_store($license, $addon, true);
         if ($license_data == null) {
-            $is_new_store_license = false;
             $license_data = $this->query_store($license, $addon, false);
+            if ($license_data != null) $is_new_store_license = false;
         }
 
         if ($license_data == null) {
@@ -75,7 +75,7 @@ class CUAR_Licensing
         if ($license_data->license == 'valid') {
             $expiry_date = new DateTime($license_data->expires);
             $result = CUAR_LicenseValidationResult::success(
-                sprintf(__('Your license is valid until: %s', 'cuar'), $expiry_date->format(get_option('date_format'))),
+                sprintf(__('Your license is valid until: %s', 'cuar'), $expiry_date->format('d/m/Y')),
                 $is_new_store_license,
                 $expiry_date
             );
@@ -101,7 +101,7 @@ class CUAR_Licensing
                     $result = CUAR_LicenseValidationResult::failure(
                         sprintf('<a href="%s" target="_blank" class="button renew-license-button">' . __('Renew license', 'cuar') . ' &raquo;</a>&nbsp;', self::get_renew_license_url($license))
                         . ' '
-                        . sprintf(__('Your license has expired at the date: %s', 'cuar'), $expiry_date->format(get_option('date_format'))),
+                        . sprintf(__('Your license has expired at the date: %s', 'cuar'), $expiry_date->format('d/m/Y')),
                         $is_new_store_license,
                         $expiry_date
                     );
@@ -143,8 +143,9 @@ class CUAR_Licensing
     {
         // data to send in our API request
         $api_params = array(
-            'edd_action' => 'activate_license',
-            'license' => $license
+            'edd_action'    => 'activate_license',
+            'license'       => $license,
+            'url'           => get_home_url()
         );
 
         if ($use_new_store) {
