@@ -196,8 +196,15 @@ div.cuar-needs-attention p {
 }
 
 .cuar-ajax-container {
-	margin: 0 15px;
+    display: inline-block;
+    vertical-align: top;
+	margin: 8px 15px 0;
 	font-size: 0.8em;
+}
+.cuar-old-shop-warning {
+    display: inline-block;
+    color: #666;
+    margin-top: 4px;
 }
 .cuar-ajax-running {
 	color: #666;

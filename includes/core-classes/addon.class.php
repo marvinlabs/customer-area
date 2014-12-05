@@ -82,9 +82,12 @@ abstract class CUAR_AddOn {
 	
 	/** @var string Id of the add-on */
 	public $addon_id;
+
+    /** @var string ID of the add-on on the new wpca store */
+    public $store_item_id;
 	
-	/** @var string Name of the add-on on the marvinlabs store */
-	public $store_item_id;
+	/** @var string Name of the add-on on the legacy marvinlabs store */
+	public $store_item_name;
 	
 	/** @var string min version of Customer Area */
 	public $min_cuar_version;
@@ -129,14 +132,15 @@ abstract class CUAR_AddOn {
 				);	
 		}	
 	}
-	
-	/**
-	 * Validate our options
-	 * 
-	 * @param CUAR_Settings $cuar_settings
-	 * @param array $input
-	 * @param array $validated
-	 */
+
+    /**
+     * Validate our options
+     *
+     * @param CUAR_Settings $cuar_settings
+     * @param array $input
+     * @param array $validated
+     * @return array
+     */
 	public function validate_license_options( $validated, $cuar_settings, $input ) {
 		$commercial_addons = $this->plugin->get_commercial_addons();				
 		foreach ( $commercial_addons as $id => $addon ) {		
@@ -155,15 +159,16 @@ abstract class CUAR_AddOn {
 		
 	/*------- LICENSING FUNCTIONS ---------------------------------------------------------------------------------*/
 	
-	public function enable_licensing( $store_item_id, $plugin_file, $add_on_version ) {
+	public function enable_licensing( $store_item_id, $store_item_name, $plugin_file, $add_on_version ) {
 		$this->store_item_id = $store_item_id;
+        $this->store_item_name = $store_item_name;
 		
 		$license_key = $this->get_license_key();		 
 		if ( !empty( $license_key ) ) {
             require_once( CUAR_PLUGIN_DIR . '/libs/edd-licensing/EDD_SL_Plugin_Updater.php' );
 	
 			new CUAR_Plugin_Updater(
-					CUAR_Licensing::get_store_url(),
+					CUAR_Licensing::get_wpca_store_url(),
 					$plugin_file, 
 					array(
 							'item_id'   => $this->store_item_id,
