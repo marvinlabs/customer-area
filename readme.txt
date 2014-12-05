@@ -16,11 +16,12 @@ Give your customers a page on your site where they can access private content (f
 WP Customer Area is a modular all-in-one solution to manage private content with WordPress. Sharing files/pages with 
 one or multiple users is one of the main feature provided by our easy-to-use plugin. Give it a try!
 
+* [Demo](http://wp-customerarea.com/all-demos)
+* [Add-ons](http://wp-customerarea.com/add-ons-and-themes/)
 * [Documentation](http://wp-customerarea.com/documentation/)
 * [FAQ](http://wp-customerarea.com/faq/)
 * [Support](http://wp-customerarea.com/support)
-* [Demo](http://wp-customerarea.com/all-demos)
-* [Add-ons](http://wp-customerarea.com/add-ons-and-themes/)
+* [Issue tracker](https://github.com/marvinlabs/customer-area/issues)
 * [Translations](http://wp-customerarea.com/documentation/)
 * [GitHub repository for contributors](https://github.com/marvinlabs/customer-area)
 
