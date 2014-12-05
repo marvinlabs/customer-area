@@ -194,9 +194,10 @@ div.cuar-needs-attention p {
 	float: right;
 	margin-top: 35px;
 }
-
 .cuar-ajax-container {
-	margin: 0 15px;
+    display: inline-block;
+    vertical-align: top;
+	margin: 8px 15px 0;
 	font-size: 0.8em;
 }
 .cuar-ajax-running {
@@ -679,4 +680,22 @@ input.knob {
 
 .cuar-completed-checkbox {
 	display: none;
+}
+
+.wp-core-ui .button.renew-license-button {
+    display: inline-block;
+    font-size: 0.95em;
+    margin-right: 15px;
+}
+.license-control input {
+    max-width: 30%;
+    min-width: 270px;
+}
+.license-control .cuar-ajax-container {
+    max-width: 60%;
+}
+.cuar-old-shop-warning {
+    display: inline-block;
+    color: #666;
+    margin-top: 4px;
 }

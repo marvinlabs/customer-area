@@ -443,45 +443,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param string $option_id
 		 *        	Key of the value to check in the input array
 		 */
-		public function validate_license_key($input, &$validated, $option_id, $store_url, $product_name) {
+		public function validate_license_key($input, &$validated, $option_id) {
 			$validated[$option_id] = trim ( $input[$option_id] );
-			
-// 			// Only validate on license change or every N days
-// 			$last_check = $this->get_option ( $option_id . '_lastcheck' );
-			
-// 			if ($last_check) {
-// 				$days_since_lastcheck = (time () - intval ( $last_check )) / (24 * 60 * 60);
-// 			} else {
-// 				$days_since_lastcheck = 99999;
-// 			}
-			
-// 			if ($days_since_lastcheck > 2 || $input[$option_id] != $this->get_option ( $option_id )) {
-// 				// data to send in our API request
-// 				$api_params = array (
-// 						'edd_action' => 'activate_license',
-// 						'license' => $validated[$option_id],
-// 						'item_name' => urlencode ( $product_name ) 
-// 					);
-				
-// 				// Call the custom API.
-// 				$response = wp_remote_get ( add_query_arg ( $api_params, $store_url ), array (
-// 						'timeout' => 15,
-// 						'sslverify' => false 
-// 					) );
-				
-// 				// make sure the response came back okay
-// 				if (is_wp_error ( $response ))
-// 					return false;
-					
-// 				// decode the license data
-// 				// $license_data->license will be either "active" or "inactive"
-// 				$response = wp_remote_retrieve_body( $response );
-// 				$license_data = json_decode( $response );
-				
-// 				$validated[$option_id . '_status'] = $license_data->license;
-// 				$validated[$option_id . '_lastcheck'] = time ();
-// 				$validated[$option_id . '_response'] = $response;
-// 			}
 		}
 		
 		/**
@@ -673,82 +636,18 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$cuar_plugin = CUAR_Plugin::get_instance();
 			
 			$addon_id = $_POST["addon_id"];		
-			$license = $_POST["license"];		
-			$today = new DateTime();
-			
+			$license = $_POST["license"];
+
+            /** @var CUAR_AddOn $addon */
 			$addon = $cuar_plugin->get_addon( $addon_id );
-			
+
 			$license_key_option_id = $addon->get_license_key_option_name();
 			$cuar_plugin->update_option( $license_key_option_id, $license );
-			
-			// data to send in our API request
-			$api_params = array (
-					'edd_action' 	=> 'activate_license',
-					'license' 		=> $license,
-					'item_name' 	=> urlencode( $addon->store_item_name )
-				);
-			
-			// Call the custom API.
-			$response = wp_remote_get( add_query_arg( $api_params, CUAR_AddOn::$STORE_URL ), array (
-					'timeout' => 15,
-					'sslverify' => false
-				) );
-			
-			$result = new stdClass();
-			$result->result_container = $license_key_option_id . '_check_result';
-			
-			// make sure the response came back okay
-			if (is_wp_error( $response )) {
-				$result->success = false;
-				$result->message = $response->get_error_message();
-	
-				echo json_encode( $result );
-				exit;
-			} 
-	
-			$response = wp_remote_retrieve_body( $response );		
-			$license_data = json_decode( $response );
-			
-			$result->response = json_encode( $response, JSON_PRETTY_PRINT );
-			
-			if ( $license_data->license=='valid' ) {
-				$expiry_date = new DateTime($license_data->expires);
-			
-				$result->success = true;
-				$result->expires = $license_data->expires;
-				$result->message = sprintf( __( 'Your license is valid until: %s', 'cuar' ), $expiry_date->format( get_option('date_format') ) );
-			} else {
-				$result->success = false;
-				
-				switch ( $license_data->error ) {
-					case 'revoked': 
-						$result->message = __( 'This license key has been revoked.', 'cuar' );
-						break;
 
-					case 'no_activations_left':
-						$result->message = sprintf( __( 'You have reached your maximum number of sites for this license key. You can use it on at most %s site(s).', 'cuar' ), $license_data->max_sites );
-						break;
+            $licensing = new CUAR_Licensing();
+            $result = $licensing->validate_license($license, $addon);
 
-					case 'expired':
-						$expiry_date = new DateTime($license_data->expires);
-						$result->message = sprintf( __( 'Your license has expired at the date: %s', 'cuar' ), $expiry_date->format( get_option('date_format') ) );
-						break;
-
-					case 'key_mismatch':
-						$result->message = __( 'This license key does not match.', 'cuar' );
-						break;
-
-					case 'product_name_mismatch':
-						$result->message = __( 'This license key seems to have been generated for another product.', 'cuar' );
-						break;
-
-					default:
-						$result->message = __( 'Problem when validating your license key', 'cuar' );
-						break;
-								
-				}				
-			}
-		
+            $today = new DateTime();
 			$license_check_option_id = $addon->get_license_check_option_name();
 			$cuar_plugin->update_option( $license_check_option_id, $today->format('Y-m-d') );
 
@@ -786,52 +685,29 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			}
 			
 			if ( isset( $before )) echo $before;
-			
-			echo sprintf ( '<input type="text" id="%s" name="%s[%s]" value="%s" class="regular-text" />', esc_attr( $option_id ), self::$OPTIONS_GROUP, esc_attr( $option_id ), esc_attr( $this->options[$option_id] ) );			
+
+            echo '<div class="license-control">';
+			echo sprintf ( '<input type="text" id="%s" name="%s[%s]" value="%s" class="regular-text" data-addon="%s" />', esc_attr( $option_id ), self::$OPTIONS_GROUP, esc_attr( $option_id ), esc_attr( $this->options[$option_id] ), esc_attr($addon_id) );
 			echo sprintf ( '<span class="cuar-ajax-container"><span id="%s_check_result" class="%s">%s</span></span>', esc_attr( $option_id ), $status_class, $status_message );
-			
+			echo '</div>';
+
 			if ( isset( $after )) echo $after; 
 
-			$last_check = $this->plugin->get_option( $check_option_id, null );
-			if ( $last_check!=null ) {
-				$next_check = new DateTime( $last_check );
-				$next_check->modify('+10 day');
-				
-				$should_check_license = ( new DateTime('now') > $next_check );
-			} else {
-				$should_check_license = true;
-			}
-			
-			if ( !empty( $license_key ) && ( $should_check_license || ( $last_status!=null && $last_status->success==false ) ) ) {
-?>
-				<script type="text/javascript">
-				<!--
-					jQuery(document).ready(function($) {
-						$('#<?php echo $option_id . '_check_result'; ?>').html('<?php esc_attr_e( 'Checking license...', 'cuar' ); ?>').removeClass().addClass('cuar-ajax-running');
-						
-						var data = {
-								action: 'cuar_validate_license',
-								addon_id: '<?php echo $addon_id; ?>',
-								license: '<?php echo $license_key; ?>',
-								url: '<?php echo home_url(); ?>'
-							};
-						
-						$.post(ajaxurl, data, function(response) {
-								var panel = $('#<?php echo $option_id . '_check_result'; ?>');
-								if ( response.success ) {
-									panel.removeClass().addClass('cuar-ajax-success').html(response.message);
-								} else {
-									panel.removeClass().addClass('cuar-ajax-failure').html(response.message);
-								}
-							}, "json",
-							function() {
-								panel.removeClass().addClass('cuar-ajax-failure').html('<?php esc_attr_e( 'Failed to contact server', 'cuar' ); ?>');
-							});
-					});
-				//-->
-				</script>
-<?php			
-			}
+//			$last_check = $this->plugin->get_option( $check_option_id, null );
+//			if ( $last_check!=null ) {
+//				$next_check = new DateTime( $last_check );
+//				$next_check->modify('+10 day');
+//
+//				$should_check_license = ( new DateTime('now') > $next_check );
+//			} else {
+//				$should_check_license = true;
+//			}
+
+            wp_enqueue_script('cuar-licensing', CUAR_PLUGIN_URL . '/js/admin/licensing.js', array('jquery') );
+            wp_localize_script('cuar-licensing', 'cuarLicensingMessages', array(
+                'checking'                  => __( 'Checking license...', 'cuar' ),
+                'unreachableServerError'    => __( 'Failed to contact server', 'cuar' )
+            ));
 		}
 		
 		/**

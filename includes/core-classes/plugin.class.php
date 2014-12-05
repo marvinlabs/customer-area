@@ -499,7 +499,7 @@ class CUAR_Plugin {
 	}
 	
 	public function tag_addon_as_commercial( $addon_id ) {
-		return $this->commercial_addons[$addon_id] = $this->get_addon( $addon_id );
+		$this->commercial_addons[$addon_id] = $this->get_addon( $addon_id );
 	}
 	
 	public function get_commercial_addons() {
