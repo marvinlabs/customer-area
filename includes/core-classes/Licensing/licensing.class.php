@@ -22,21 +22,23 @@ class CUAR_Licensing
      * Get the url to renew a license
      *
      * @param string $license_key The license key to renew
-     * @param int $item_id The item ID linked to the license
+     * @internal param int $item_id The item ID linked to the license
      * @return string The URL for the WP Customer Area store page to renew the license
      */
-    public static function get_renew_license_url($license_key, $item_id)
+    public static function get_renew_license_url($license_key)
     {
         $url = trailingslashit(self::get_store_url());
         $url .= 'checkout/';
-        $url .= '?edd_license_key=' . $license_key . '&download_id=' . $item_id;
+        $url .= '?edd_license_key=' . $license_key;
         return $url;
     }
 
     /**
-     * @param string license The license key to validate
+     * Query the server to check whether a license is valid or not
+     *
+     * @param string $license The license key to validate
      * @param CUAR_AddOn $addon The add-on to validate
-     * @return stdClass The result
+     * @return CUAR_LicenseValidationResult The result
      */
     public function validate_license($license, $addon)
     {
@@ -99,9 +101,9 @@ class CUAR_Licensing
 
                     $result = CUAR_LicenseValidationResult::failure(
                         $response,
-                        sprintf( __( 'Your license has expired at the date: %s', 'cuar' ), $expiry_date->format( get_option('date_format') ))
+                        sprintf( '<a href="%s" target="_blank" class="button renew-license-button">' . __( 'Renew license', 'cuar' ) . ' &raquo;</a>&nbsp;', self::get_renew_license_url($license) )
                             . ' '
-                            . sprintf( '<a href="%s" target="_blank" class="button renew-license-button">' . __( 'Renew license', 'cuar' ) . ' &raquo;</a>', self::get_renew_license_url($license, $addon->store_item_id) ),
+                            . sprintf( __( 'Your license has expired at the date: %s', 'cuar' ), $expiry_date->format( get_option('date_format') )),
                         $expiry_date
                     );
                     break;
