@@ -32,7 +32,8 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 		
 		$this->set_page_parameters( 810, array(
 					'slug'					=> 'customer-account',
-					'parent_slug'			=> 'customer-account-home'
+					'parent_slug'			=> 'customer-account-home',
+                    'required_capability'	=> 'cuar_view_account'
 				)
 			);
 		
@@ -52,12 +53,33 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
 	}	
 
 	public function run_addon( $plugin ) {
-		parent::run_addon( $plugin );	
+		parent::run_addon( $plugin );
+
+        add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ) );
 	}
 
 	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-account';
 	}
+
+    /*------- CAPABILITIES ------------------------------------------------------------------------------------------*/
+
+    public function get_configurable_capability_groups( $capability_groups ) {
+        $capability_groups[ 'cuar_account' ] = array(
+            'label'		=> __( 'Account', 'cuar' ),
+            'groups'	=> array(
+                'front-office'	=> array(
+                    'group_name' => __( 'Front-office', 'cuar' ),
+                    'capabilities' => array(
+                        'cuar_view_account'     => __( 'View account details', 'cuar' ),
+                        'cuar_edit_account'		=> __( 'Edit account details', 'cuar' )
+                    )
+                )
+            )
+        );
+
+        return $capability_groups;
+    }
 
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	

@@ -32,7 +32,8 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 		
 		$this->set_page_parameters( 820, array(
 					'slug'					=> 'customer-account-edit',
-					'parent_slug'			=> 'customer-account-home'
+					'parent_slug'			=> 'customer-account-home',
+                    'required_capability'	=> 'cuar_edit_account'
 				)
 			);
 		
