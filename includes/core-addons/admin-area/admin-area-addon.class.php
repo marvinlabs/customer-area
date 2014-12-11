@@ -37,6 +37,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 
 	public function run_addon( $plugin ) {		
 		add_action( 'admin_bar_menu', array( &$this, 'build_adminbar_menu' ), 32 );
+        add_action( 'show_admin_bar', array( &$this, 'restrict_admin_bar' ) );
 			
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
@@ -44,7 +45,13 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ), 5 );
 
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
-		} 
+            add_action( 'admin_init', array( &$this, 'restrict_admin_access' ), 1 );
+
+            // Settings
+            add_action( 'cuar/core/settings/print-settings?tab=cuar_core', array( &$this, 'print_core_settings' ), 20, 2 );
+            add_filter( 'cuar/core/settings/validate-settings?tab=cuar_core', array( &$this, 'validate_core_options' ), 20, 3 );
+		} else {
+        }
 	}
 
 	/*------- CUSTOMISATION OF THE MAIN PAGE --------------------------------------------------------------*/
@@ -132,29 +139,133 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 		return $out;
 	}
 
+    /*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
+
+    /**
+     * Set the default values for the options
+     *
+     * @param array $defaults
+     * @return array
+     */
+    public function set_default_options( $defaults ) {
+        $defaults = parent::set_default_options($defaults);
+        $defaults[ self::$OPTION_RESTRICT_ADMIN_AREA_ACCESS ] = false;
+        return $defaults;
+    }
+
+    /**
+     * Is admin area access restriction enabled?
+     * @return boolean true if the admin area access is enabled and controlled by permissions
+     */
+    public function is_admin_area_access_restricted() {
+        return $this->plugin->get_option( self::$OPTION_RESTRICT_ADMIN_AREA_ACCESS );
+    }
+
+    /**
+     * Add our fields to the settings page
+     *
+     * @param CUAR_Settings $cuar_settings The settings class
+     */
+    public function print_core_settings( $cuar_settings, $options_group ) {
+        add_settings_field(
+            self::$OPTION_RESTRICT_ADMIN_AREA_ACCESS,
+            __('Restrict WP admin area', 'cuar'),
+            array( &$cuar_settings, 'print_input_field' ),
+            CUAR_Settings::$OPTIONS_PAGE_SLUG,
+            'cuar_general_settings',
+            array(
+                'option_id' => self::$OPTION_RESTRICT_ADMIN_AREA_ACCESS,
+                'type'		=> 'checkbox',
+                'after'		=>  __('Restrict the access to the administration panel of WordPress.', 'cuar')
+                    . '<p class="description">'
+                    . sprintf(__( 'If you check this box, you will be able to control access to various WordPress administrative features (the area under /wp-admin/, the top bar, etc.). '
+                                    . 'Once enabled, you can select which roles will be allowed to access it in the <a href="%1$s">general permissions tab</a>.', 'cuar' ),
+                        admin_url('admin.php?page=cuar-settings&cuar_tab=cuar_capabilities') )
+                    . '</p>' )
+        );
+    }
+
+    /**
+     * Validate our options
+     *
+     * @param CUAR_Settings $cuar_settings
+     * @param array $input
+     * @param array $validated
+     * @return array
+     */
+    public function validate_core_options( $validated, $cuar_settings, $input ) {
+        $cuar_settings->validate_boolean( $input, $validated, self::$OPTION_RESTRICT_ADMIN_AREA_ACCESS );
+        return $validated;
+    }
+
+    private static $OPTION_RESTRICT_ADMIN_AREA_ACCESS = 'cuar_restrict_admin_area_access';
+
 	/*------- OTHER FUNCTIONS --------------------------------------------------------------*/
-	
-	/**
-	 * Configurable capabilities
-	 *  
-	 * @param array $groups
-	 * @return number
-	 */
+
+    /**
+     * Declare the configurable capabilities for Customer Area
+     *
+     * @param array $capability_groups The capability groups
+     * @return array The updated capability groups
+     */
 	public function get_configurable_capability_groups( $capability_groups ) {
-		$capability_groups[ 'cuar_general' ] = array(
-				'label'		=> __( 'General', 'cuar' ),
-				'groups'	=> array(
-						'back-office' 	=> array( 
-								'group_name' => __( 'Back-office', 'cuar' ), 
-								'capabilities' => array( 
-										'view-customer-area-menu' => __( 'View the menu', 'cuar' ) 
-								)
-							) 
-					)
-			);
+        $capability_groups['cuar_general'] = array(
+            'label' => __('General', 'cuar'),
+            'groups' => array());
+
+
+        if ($this->is_admin_area_access_restricted()) {
+            $capability_groups['cuar_general']['groups'] = array(
+                'back-office' => array(
+                    'group_name' => __('Back-office', 'cuar'),
+                    'capabilities' => array(
+                        'cuar_access_admin_panel' => __('Access the WordPress admin area', 'cuar'),
+                        'view-customer-area-menu' => __('View the Customer Area menu', 'cuar'),
+                    )
+                ),
+                'front-office' => array(
+                    'group_name' => __('Front-office', 'cuar'),
+                    'capabilities' => array(
+                        'cuar_view_top_bar' => __('See the WordPress top bar', 'cuar'),
+                    )
+                )
+            );
+        }
 		
 		return $capability_groups;
 	}
+
+    /**
+     * Restrict access to the administration panel to users having the permission to do so. If the access is forbidden,
+     * the user gets redirected to the customer area home.
+     */
+    public function restrict_admin_access() {
+        if ( $this->is_admin_area_access_restricted()
+                && !current_user_can( 'cuar_access_admin_panel' )
+                && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
+
+            $cp_addon = $this->plugin->get_addon('customer-pages');
+            $customer_area_url = apply_filters('cuar/core/admin/admin-area-forbidden-redirect-url',
+                $cp_addon->get_page_url("customer-home"));
+
+            if (isset($customer_area_url)) {
+                wp_redirect($customer_area_url);
+            } else {
+                wp_redirect(home_url());
+            }
+        }
+    }
+
+    /**
+     * If necessary, hide the admin bar to some users
+     * @return bool true if the admin bar is visible
+     */
+    public function restrict_admin_bar() {
+        if ( $this->is_admin_area_access_restricted() && !current_user_can( 'cuar_view_top_bar' ) ) {
+            return false;
+        }
+        return true;
+    }
 
 	/**
 	 * Build the administration menu
