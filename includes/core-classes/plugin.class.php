@@ -425,11 +425,12 @@ class CUAR_Plugin {
 	public static $OPTION_IGNORE_WARNINGS = 'cuar_ignore_warnings';
 	
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
-	
-	/**
-	 * Access to the settings (delegated to our settings class instance)
-	 * @param unknown $option_id
-	 */
+
+    /**
+     * Access to the settings (delegated to our settings class instance)
+     * @param string $option_id The ID of the option to retrieve
+     * @return mixed The option value
+     */
 	public function get_option( $option_id ) {
 		return $this->settings->get_option( $option_id );
 	}
