@@ -65,18 +65,17 @@ class CUAR_CustomerAccountAddOn extends CUAR_AbstractPageAddOn {
     /*------- CAPABILITIES ------------------------------------------------------------------------------------------*/
 
     public function get_configurable_capability_groups( $capability_groups ) {
-        $capability_groups[ 'cuar_account' ] = array(
-            'label'		=> __( 'Account', 'cuar' ),
-            'groups'	=> array(
-                'front-office'	=> array(
-                    'group_name' => __( 'Front-office', 'cuar' ),
-                    'capabilities' => array(
-                        'cuar_view_account'     => __( 'View account details', 'cuar' ),
-                        'cuar_edit_account'		=> __( 'Edit account details', 'cuar' )
-                    )
-                )
-            )
-        );
+        if ( isset( $capability_groups['cuar_general'] ) ) {
+            if ( !isset( $capability_groups['cuar_general']['groups']['front-office'] ) ) {
+                $capability_groups['cuar_general']['groups']['front-office'] = array(
+                    'group_name' 	=> __( 'Front-office', 'cuar' ),
+                    'capabilities' 	=> array()
+                );
+            }
+
+            $capability_groups['cuar_general']['groups']['front-office']['capabilities']['cuar_view_account'] = __( 'View account details', 'cuar' );
+            $capability_groups['cuar_general']['groups']['front-office']['capabilities']['cuar_edit_account'] = __( 'Edit account details', 'cuar' );
+        }
 
         return $capability_groups;
     }

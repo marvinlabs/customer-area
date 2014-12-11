@@ -156,6 +156,7 @@ your wordpress.org profile with your other developed plugins.
 = 6.0.0 (2015/) =
 
 * New: support for the new shop at http://wp-customerarea.com
+* New: permissions to protect the account pages (view/edit account from frontend)
 * Fix: bug that was showing the comments related to the last private content on the dashboard page
 * Fix: the function cuar_is_customer_area_private_content was not returning true for private containers (such as projects)
 
