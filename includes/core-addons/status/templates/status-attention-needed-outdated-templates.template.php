@@ -18,8 +18,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-include( CUAR_PLUGIN_DIR . '/includes/core-addons/status/template-finder.class.php' );
-$dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
 ?>
 
 <div class="cuar-needs-attention">
@@ -44,8 +42,10 @@ $dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CU
 <?php  	endif; ?>
 	
 	<ol>	 
-<?php 	foreach ( $dirs_to_scan as $dir => $title ) : 
-			$template_finder = new CUAR_TemplateFinder( $this->plugin );
+<?php
+        $dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
+        foreach ( $dirs_to_scan as $dir => $title ) :
+			$template_finder = new CUAR_TemplateFinder( $this->plugin->get_template_engine() );
 			$template_finder->scan_directory( $dir );
 			$outdated = $template_finder->get_outdated_templates();
 
@@ -55,7 +55,7 @@ $dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CU
 			<h4><?php echo $title; ?></h4>
 			<ul>
 <?php 		foreach ( $outdated as $name => $t ) : ?>
-				<li><code><?php echo $name; ?></code> <?php printf( 'Current is %s (you have %s)', $t['original_version'], $t['current_version'] ); ?></li>
+				<li><code><?php echo $name; ?></code> <?php printf( 'Current is %s (you have %s)', $t->get_original_version(), $t->get_current_version() ); ?></li>
 <?php 		endforeach; ?>
 			</ul>
 		</li>

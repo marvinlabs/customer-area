@@ -153,12 +153,12 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 	public function print_section_template( $section ) {
 		$template_path = isset( $section['template_path'] ) ? $section['template_path'] : CUAR_INCLUDES_DIR . '/core-addons/status';
 		$template_file = 'status-section-' . $section['id'] . '.template.php';
-		
-		$template = $this->plugin->get_template_file_path( $template_path, $template_file, 'templates' );
-		
-		if ( !empty( $template ) ) {
-			include( $template );
-		}
+
+        $template = $this->plugin->get_template_file_path( $template_path, $template_file, 'templates' );
+
+        if ( !empty( $template ) ) {
+            include( $template );
+        }
 	}
 	
 	public function handle_core_section_actions() {
@@ -249,7 +249,6 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 	
 	public function ignore_outdated_templates_flag() {
 		$this->plugin->clear_attention_needed( 'outdated-templates' );
-		CUAR_Plugin::enable_check_templates( false );
 	}
 	
 	protected $sections = null;
