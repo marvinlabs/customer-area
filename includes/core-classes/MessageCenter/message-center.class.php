@@ -126,7 +126,7 @@ class CUAR_MessageCenter
      */
     public function print_warning_messages()
     {
-        if (isset($_GET['page']) && $_GET['page'] == 'cuar-status') return;
+        if (isset($_GET['page']) && in_array($_GET['page'], array('cuar-status', 'cuar-setup', 'cuar-about'))) return;
 
         $warnings = $this->get_warnings();
         if (empty($warnings)) return;
