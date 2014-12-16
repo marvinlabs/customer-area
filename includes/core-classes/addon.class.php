@@ -44,16 +44,14 @@ abstract class CUAR_AddOn {
 	public function get_id() {
 		return $this->addon_id;
 	}
-	
-	/** 
-	 * Function that starts the add-on
-	 */
+
+    /**
+     * Function that starts the add-on
+     * @param CUAR_Plugin $cuar_plugin
+     */
 	public function run( $cuar_plugin ) {	
 		$this->plugin = $cuar_plugin;
-		
-		$cuar_plugin->register_addon( $this );		
-		$current_version = $cuar_plugin->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
-		
+		$cuar_plugin->register_addon( $this );
 		$this->run_addon( $cuar_plugin );
 		
 		if ( is_admin() && $cuar_plugin->has_commercial_addons() ) {
