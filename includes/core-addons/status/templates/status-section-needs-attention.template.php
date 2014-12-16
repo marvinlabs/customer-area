@@ -42,7 +42,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 				$template = $this->plugin->get_template_file_path( $template_path, $template_file, 'templates' );
 				
 				if ( !empty( $template ) ) {
-					include( $template );
+                    /** @noinspection PhpIncludeInspection */
+                    include( $template );
 					
 					$message_handled = true; 
 					break;
@@ -51,7 +52,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 		}
 		
 		if ( !$message_handled ) {
-			echo '<div class="cuar-needs-attention"><p>' . $message . '</p></div>'; 				
+			echo '<div class="cuar-needs-attention"><p>' . $message['message'] . '</p></div>';
 		}
 		
 		++$i;
