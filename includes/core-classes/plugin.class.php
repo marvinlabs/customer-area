@@ -336,6 +336,11 @@ class CUAR_Plugin {
 	public function get_version() {
 		return $this->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
 	}
+
+    public function get_major_version() {
+        $tokens = explode('.', $this->get_version());
+        return $tokens[0] . '.' . $tokens[1];
+    }
 	
 	public function get_options() {
 		return $this->settings->get_options();

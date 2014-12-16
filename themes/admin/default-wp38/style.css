@@ -728,3 +728,106 @@ table.cuar-capabilities .toggle_caps {
 table.cuar-capabilities .checkbox-only {
     width: 20px;
 }
+
+/*= Setup & about pages */
+
+.cuar-installer-screen {
+    margin: 25px 40px 0 20px;
+    max-width: 1050px;
+    font-size: 15px;
+}
+
+.cuar-installer-screen .cuar-hero {
+    position: relative;
+    padding-right: 250px;
+    float: left;
+}
+
+.cuar-installer-screen .cuar-badge {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background: #313131;
+    width: 180px;
+    text-align: center;
+    float: left;
+    padding: 10px;
+    border-radius: 10px;
+}
+.cuar-installer-screen .cuar-badge>p {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #fff;
+    opacity: 0.6;
+}
+
+.cuar-installer-screen .cuar-related-actions {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.cuar-installer-screen .cuar-related-actions li {
+    display: block;
+    float: left;
+    padding: 0;
+    margin: 0 10px 0 0;
+}
+
+.cuar-installer-screen .cuar-hero h1 {
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 15px;
+    margin: 25px 0;
+}
+
+.cuar-installer-screen .cuar-hero .cuar-messages .cuar-primary-message {
+    font-size: 1.6em;
+    color: #444;
+}
+.cuar-installer-screen .cuar-hero .cuar-messages .cuar-secondary-message {
+    font-size: 1.3em;
+    color: #666;
+}
+
+.cuar-installer-screen .cuar-content {
+    margin-top: 25px;
+}
+
+.cuar-installer-screen .cuar-whatsnew-box {
+    background: #fff;
+    width: 27.3%;
+    margin-right: 2%;
+    float: left;
+    padding: 15px 2%;
+}
+
+.cuar-installer-screen .cuar-installer-section {
+    margin-top: 25px;
+}
+
+.cuar-installer-screen .cuar-installer-section .cuar-section-title {
+    margin-bottom: 25px;
+}
+
+.cuar-installer-screen .cuar-installer-section .cuar-feed-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cuar-installer-screen .cuar-installer-section .cuar-feed-content li {
+    background: #fff;
+    width: 19%;
+    margin-right: 2%;
+    float: left;
+    padding: 15px 2%;
+}
+
+.cuar-installer-screen .cuar-installer-section .cuar-feed-content .cuar-feed-date {
+    font-size: 0.9em;
+    color: #999;
+}
+
+.cuar-installer-screen .cuar-installer-section .cuar-feed-content .cuar-feed-summary {
+    color: #333;
+    margin-top: 15px;
+}

@@ -55,6 +55,8 @@ class CUAR_PluginActivationManager
             do_action('cuar/core/activation/run-deferred-action?action_id=' . $action_id);
         }
         self::reset_deferred_actions();
+
+        do_action('cuar/core/activation/after-deferred-actions');
     }
 
     /**
