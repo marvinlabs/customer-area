@@ -98,7 +98,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		}		
 		if ( $needs_attention ) {
 			$this->plugin->set_attention_needed( 'pages-without-id',
-					__( 'Some pages of the customer area have not yet been created.', 'cuar') );
+					__( 'Some pages of the customer area have not yet been created.', 'cuar'),
+                    20 );
 		} else {
 			$this->plugin->clear_attention_needed( 'pages-without-id' );
 		}
@@ -114,7 +115,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		if ( $menu==null ) {
 			$this->plugin->clear_attention_needed( 'nav-menu-needs-sync' );
 			$this->plugin->set_attention_needed( 'missing-nav-menu',
-					__( 'The navigation menu for the customer area has not been created.', 'cuar') );
+					__( 'The navigation menu for the customer area has not been created.', 'cuar'),
+                    50 );
 		} else {
 			$this->plugin->clear_attention_needed( 'missing-nav-menu' );
 		}

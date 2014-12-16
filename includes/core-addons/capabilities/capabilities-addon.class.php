@@ -52,7 +52,7 @@ class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	public function check_attention_needed() {
 		parent::check_attention_needed();		
 		if ( $this->plugin->is_warning_ignored( 'unconfigured-capabilities' ) ) return;
-		$this->plugin->set_attention_needed( 'unconfigured-capabilities', __( 'You have not yet configured the plugin permissions.', 'cuar') );		
+		$this->plugin->set_attention_needed( 'unconfigured-capabilities', __( 'You have not yet configured the plugin permissions.', 'cuar'), 100 );
 	}
 	
 	public function ignore_unconfigured_capabilities_flag() {
