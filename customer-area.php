@@ -49,12 +49,16 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-file.cl
 include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-finder.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-engine.class.php' );
 
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-store.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-validation-result.class.php');
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/licensing.class.php' );
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/MessageCenter/message-center.class.php' );
 
 // Core Plugin classes
 include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin-store.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin-activation.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/theme-utils.class.php' );

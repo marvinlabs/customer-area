@@ -166,7 +166,7 @@ abstract class CUAR_AddOn {
             require_once( CUAR_PLUGIN_DIR . '/libs/edd-licensing/EDD_SL_Plugin_Updater.php' );
 	
 			new CUAR_Plugin_Updater(
-					CUAR_Licensing::get_wpca_store_url(),
+					$this->plugin->get_licensing()->get_store()->get_store_url(),
 					$plugin_file, 
 					array(
 							'item_id'   => $this->store_item_id,

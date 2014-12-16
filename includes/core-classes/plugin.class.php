@@ -36,11 +36,15 @@ class CUAR_Plugin {
 
     /** @var CUAR_TemplateEngine */
     private $template_engine;
+
+    /** @var CUAR_Licensing */
+    private $licensing;
 	
 	public function __construct() {
         $this->message_center = new CUAR_MessageCenter();
         $this->activation_manager = new CUAR_PluginActivationManager();
         $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
+        $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
 	}
 	
 	public function run() {
@@ -89,6 +93,14 @@ class CUAR_Plugin {
     public function get_template_engine()
     {
         return $this->template_engine;
+    }
+
+    /**
+     * @return CUAR_Licensing
+     */
+    public function get_licensing()
+    {
+        return $this->licensing;
     }
 	
 	/*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/

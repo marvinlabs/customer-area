@@ -644,7 +644,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$license_key_option_id = $addon->get_license_key_option_name();
 			$cuar_plugin->update_option( $license_key_option_id, $license );
 
-            $licensing = new CUAR_Licensing();
+            $licensing = $cuar_plugin->get_licensing();
             $result = $licensing->validate_license($license, $addon);
 
             $today = new DateTime();
