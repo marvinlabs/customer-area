@@ -157,8 +157,13 @@ your wordpress.org profile with your other developed plugins.
 
 * New: support for the new shop at http://wp-customerarea.com
 * New: permissions to protect the account pages (view/edit account from frontend)
+* New: improved the permissions settings page
+* New: new permission to restrict access to the account pages (view account details / edit account details)
+* New: new permission to show/hide the WordPress admin bar from the front-end for some roles
+* New: new permission to restrict access to the WordPress admin area for some roles
 * Fix: bug that was showing the comments related to the last private content on the dashboard page
 * Fix: the function cuar_is_customer_area_private_content was not returning true for private containers (such as projects)
+* Fix: an email validation bug for additional profile fields created by code
 
 = 5.0.7 (2014/07/31) =
 

@@ -60,6 +60,26 @@ a.cuar-round-button:hover {
 	color: #fff;
 }
 
+.button-primary.button-cuar {
+    background: #F83E0C;
+    border-color: #AD251E;
+    -webkit-box-shadow: inset 0 1px 0 rgba(173,37,30,.5),0 1px 0 rgba(0,0,0,.15);
+            box-shadow: inset 0 1px 0 rgba(173,37,30,.5),0 1px 0 rgba(0,0,0,.15);
+}
+.button-primary.button-cuar:hover {
+    background: #AD251E;
+    border-color: #AD251E;
+    -webkit-box-shadow: inset 0 1px 0 rgba(173,37,30,.5),0 1px 0 rgba(0,0,0,.15);
+            box-shadow: inset 0 1px 0 rgba(173,37,30,.5),0 1px 0 rgba(0,0,0,.15);
+}
+.button-primary.button-cuar:active,
+.button-primary.button-cuar:focus {
+    background: #AD251E;
+    border-color: #AD251E;
+    -webkit-box-shadow: inset 0 1px 0 rgba(173,37,30,.5),0 1px 0 rgba(0,0,0,.15);
+            box-shadow: inset 0 1px 0 rgba(173,37,30,.5),0 1px 0 rgba(0,0,0,.15);
+}
+
 .clearfix:before,
 .clearfix:after {
   content:"";

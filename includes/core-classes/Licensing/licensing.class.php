@@ -4,6 +4,8 @@ include_once('license-validation-result.class.php');
 
 /**
  * The class that will handle licensing checks within WP Customer Area
+ *
+ * @todo Extract the code specific to WPCA and make this class a Framework class
  */
 class CUAR_Licensing
 {

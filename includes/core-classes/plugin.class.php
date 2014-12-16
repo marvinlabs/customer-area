@@ -24,39 +24,80 @@ if (!class_exists('CUAR_Plugin')) :
  * @author Vincent Prat @ MarvinLabs
  */
 class CUAR_Plugin {
+
+    /** @var CUAR_MessageCenter */
+    private $message_center;
+
+    /** @var CUAR_Settings */
+    private $settings;
+
+    /** @var CUAR_PluginActivationManager */
+    private $activation_manager;
+
+    /** @var CUAR_TemplateEngine */
+    private $template_engine;
 	
 	public function __construct() {
+        $this->message_center = new CUAR_MessageCenter();
+        $this->activation_manager = new CUAR_PluginActivationManager();
+        $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
 	}
 	
-	public function run() {		
+	public function run() {
+        $this->message_center->register_hooks();
+        $this->activation_manager->register_hooks();
+
 		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ), 3 );
-		
 		add_action( 'plugins_loaded', array( &$this, 'load_settings' ), 5 );
 		add_action( 'plugins_loaded', array( &$this, 'load_addons' ), 10 );
 		
 		add_action( 'init', array( &$this, 'load_scripts' ), 7 );
-		add_action( 'init', array( &$this, 'load_styles' ), 8 );		
-		add_action( 'init', array( &$this, 'load_defaults' ), 9 );	
+		add_action( 'init', array( &$this, 'load_styles' ), 8 );
+        add_action( 'init', array( &$this, 'load_defaults' ), 9 );
 		
-		add_action( 'admin_init', array( &$this, 'check_versions' ) );
-		
-		if ( is_admin() ) {		
+		if ( is_admin() ) {
+            add_action( 'admin_init', array( &$this, 'check_versions' ) );
 			add_action( 'admin_notices', array( &$this, 'print_admin_notices' ) );
-			add_action( 'admin_notices', array( &$this, 'show_attention_needed_message' ) );
+            add_action( 'init', array( &$this, 'load_defaults' ), 9 );
+
+            add_action('cuar/core/activation/run-deferred-action?action_id=check-template-files', array( &$this, 'check_templates'));
+            add_action('cuar/core/activation/run-deferred-action?action_id=check-permalink-settings', array( &$this, 'check_permalinks_enabled'));
 		} else {
 			add_action( 'plugins_loaded', array( &$this, 'load_theme_functions' ), 7 );
 		}
 	}
 
+    /**
+     * @return CUAR_Plugin
+     */
 	public static function get_instance() {
 		global $cuar_plugin;
 		return $cuar_plugin;
 	}
+
+    /**
+     * @return CUAR_MessageCenter
+     */
+    public function get_message_center()
+    {
+        return $this->message_center;
+    }
+
+    /**
+     * @return CUAR_TemplateEngine
+     */
+    public function get_template_engine()
+    {
+        return $this->template_engine;
+    }
 	
 	/*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/
 	
 	public function load_settings() {
-		$this->settings = new CUAR_Settings( $this );		
+		$this->settings = new CUAR_Settings( $this );
+
+        // Configure some components
+        $this->template_engine->enable_debug($this->get_option(CUAR_Settings::$OPTION_DEBUG_TEMPLATES));
 	}
 	
 	/**
@@ -217,106 +258,6 @@ class CUAR_Plugin {
 		}
 	}
 	
-	/**
-	 * Takes a default template file as parameter. It will look in the theme's directory to see if the user has
-	 * customized the template. If so, it returns the path to the customized file. Else, it returns the default
-	 * passed as parameter.
-	 * 
-	 * Order of preference is:
-	 * 1. user-directory/filename
-	 * 2. user-directory/fallback-filename
-	 * 3. default-directory/filename
-	 * 4. default-directory/fallback-filename
-	 * 
-	 * @param string $default_path
-	 */
-	public function get_template_file_path( $default_root, $filename, $sub_directory = '', $fallback_filename = '' ) {		
-		$relative_path = ( !empty( $sub_directory ) ) ? trailingslashit( $sub_directory ) . $filename : $filename;
-		
-		$possible_locations = apply_filters( 'cuar/ui/template-directories', 
-				array(
-					untrailingslashit(WP_CONTENT_DIR) . '/customer-area',
-					untrailingslashit(get_stylesheet_directory()) . '/customer-area',
-					untrailingslashit(get_stylesheet_directory()) ) );
-		
-		// Look for the preferred file first
-		foreach ( $possible_locations as $dir ) {
-			$path =  trailingslashit( $dir ) . $relative_path;
-			if ( file_exists( $path ) ) {
-				if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
-					$this->print_template_path_debug_info( $path );
-				}
-				
-				return $path;
-			}
-		}
-		
-		// Then for the fallback alternative if any
-		if ( !empty( $fallback_filename ) ) {
-			$fallback_relative_path = ( !empty( $sub_directory ) ) 
-											? trailingslashit( $sub_directory ) . $fallback_filename 
-											: $fallback_filename;
-		
-			foreach ( $possible_locations as $dir ) {
-				$path =  trailingslashit( $dir ) . $fallback_relative_path;
-				if ( file_exists( $path ) ) {
-					if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
-						$this->print_template_path_debug_info( $path );
-					}
-					
-					return $path;
-				}
-			}
-		}
-		
-		// Then from default directories. We allow multiple default root directories.
-		if ( !is_array( $default_root ) ) {
-			$default_root = array( $default_root );
-		}
-		
-		foreach ( $default_root as $root_path ) {
-			$path =  trailingslashit( $root_path ) . $relative_path;
-			if ( file_exists( $path ) ) {
-				if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
-					$this->print_template_path_debug_info( $path );
-				}
-				
-				return $path;
-			}
-	
-			if ( !empty( $fallback_filename ) ) {
-				$path =  trailingslashit( $root_path ) . $fallback_relative_path;
-				if ( file_exists( $path ) ) {
-					if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
-						$this->print_template_path_debug_info( $path, $filename );
-					}
-					
-					return $path;
-				}
-			}
-		}
-		
-		if ( $this->get_option( CUAR_Settings::$OPTION_DEBUG_TEMPLATES ) ) {
-			echo "\n<!-- CUAR TEMPLATE < $filename > REQUESTED BUT NOT FOUND (WILL NOT BE USED) -->\n";
-		}
-		
-		return '';
-	}
-	
-	private function print_template_path_debug_info( $path, $original_filename=null ) {	
-		$dirname = dirname( $path );
-		$strip_from = strpos( $path, 'customer-area' );
-		$dirname = $strip_from>0 ? strstr( $dirname, 'customer-area' ) : $dirname;
-		
-		$filename = basename( $path );
-		
-		if ( $original_filename==null ) {
-			echo "\n<!-- CUAR TEMPLATE < $filename > IN FOLDER < $dirname > -->\n";
-		} else {
-			echo "\n<!-- CUAR TEMPLATE < $original_filename > NOT FOUND BUT USING FALLBACK: < $filename > IN FOLDER < $dirname > -->\n";
-		}
-	}
-	
 	public function is_customer_area_page() {
 		$cp_addon = $this->get_addon( 'customer-pages' );
 		return $cp_addon->is_customer_area_page();
@@ -351,78 +292,29 @@ class CUAR_Plugin {
 
 	/*------- GENERAL MAINTENANCE -----------------------------------------------------------------------------------*/
 	
-	public function set_attention_needed( $section_id, $message ) {
-		$status_sections = get_option( self::$OPTION_STATUS_SECTIONS );
-		
-		if ( $status_sections==null ) $status_sections = array();
-		
-		if ( !empty( $message ) ) {
-			$status_sections[$section_id] = $message;
-		} else if ( isset( $status_sections[$section_id] ) ) {
-			unset( $status_sections[$section_id] );
-		}		
-		
-		update_option( self::$OPTION_STATUS_SECTIONS, $status_sections );
+	public function set_attention_needed( $message_id, $message, $priority ) {
+        $this->message_center->add_warning( $message_id, $message, $priority );
 	}
 	
-	public function clear_attention_needed( $section_id ) {
-		$status_sections = get_option( self::$OPTION_STATUS_SECTIONS );
-		unset( $status_sections[$section_id] );
-		update_option( self::$OPTION_STATUS_SECTIONS, $status_sections );
+	public function clear_attention_needed( $message_id ) {
+        $this->message_center->remove_warning( $message_id );
 	}
 	
-	public function is_attention_needed( $section_id ) {
-		$status_sections = get_option( self::$OPTION_STATUS_SECTIONS );
-
-		if ( $status_sections!=null 
-				&& isset( $status_sections[$section_id] )
-				&& !empty( $status_sections[$section_id] ) ) {
-			return true;
-		}
-		
-		return false;
+	public function is_attention_needed( $message_id ) {
+		return $this->message_center->is_warning_registered($message_id);
 	}
 	
 	public function is_warning_ignored( $warning_id ) {
-		$warnings = get_option( self::$OPTION_IGNORE_WARNINGS );
-		return isset( $warnings[$warning_id] ) && $warnings[$warning_id]==true;
+        return $this->message_center->is_warning_ignored($warning_id);
 	}
 	
 	public function ignore_warning( $warning_id ) {
-		$warnings = get_option( self::$OPTION_IGNORE_WARNINGS );
-		$warnings[$warning_id] = true;
-		update_option( self::$OPTION_IGNORE_WARNINGS, $warnings );
+        $this->message_center->ignore_warning($warning_id);
 	}
 	
 	public function get_attention_needed_messages() {
-		return get_option( self::$OPTION_STATUS_SECTIONS, array() );
+        return $this->message_center->get_warnings();
 	}
-	
-	public function show_attention_needed_message() {
-		if ( isset( $_GET['page'] ) && $_GET['page']=='cuar-status' ) return;
-		
-		$status_sections = $this->get_attention_needed_messages();
-		if ( $status_sections==null || empty( $status_sections ) ) return;
-		
-		echo '<div id="message" class="error">';
-		
-		echo '<p>';
-		_e( 'The Customer Area plugin requires your attention. The issues we have detected are the following: ', 'cuar' );
-		echo '</p>';
-		echo '<ul class="cuar-with-bullets">';		
-		foreach ( $status_sections as $id => $message ) {
-			echo '<li>' . $message . '</li>';
-		}		
-		echo '</ul>';		
-		echo '<p><strong>';
-		printf( __( 'You can view the details of those issues and fix them on the <a href="%1$s">Customer Area status page</a>.', 'cuar' ),
-				admin_url('admin.php?page=cuar-status&cuar_section=needs-attention' ) );
-		echo '</strong></p>';
-		echo '</div>';
-	}
-
-	public static $OPTION_STATUS_SECTIONS = 'cuar/core/status/sections';
-	public static $OPTION_IGNORE_WARNINGS = 'cuar_ignore_warnings';
 	
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 
@@ -436,15 +328,15 @@ class CUAR_Plugin {
 	}
 	
 	public function update_option( $option_id, $new_value, $commit = true ) {
-		return $this->settings->update_option( $option_id, $new_value, $commit );
+		$this->settings->update_option( $option_id, $new_value, $commit );
 	}
 	
 	public function save_options() {
-		return $this->settings->save_options();
+		$this->settings->save_options();
 	}
 	
 	public function reset_defaults() {
-		return $this->settings->reset_defaults();
+		$this->settings->reset_defaults();
 	}
 	
 	public function get_default_options() {
@@ -460,11 +352,8 @@ class CUAR_Plugin {
 	}
 	
 	public function set_options( $opt ) {
-		return $this->settings->set_options( $opt );
+		$this->settings->set_options( $opt );
 	}
-	
-	/** @var CUAR_Settings */
-	private $settings;
 
 	/*------- ADD-ONS -----------------------------------------------------------------------------------------------*/
 
@@ -478,9 +367,7 @@ class CUAR_Plugin {
 
 		// Check add-on versions
 		if ( is_admin() ) {
-			$this->check_permalinks_enabled();
 			$this->check_addons_required_versions();
-			$this->check_templates();
 		}
 	}
 	
@@ -517,7 +404,9 @@ class CUAR_Plugin {
 	public function check_permalinks_enabled() {
 		if ( !get_option('permalink_structure') ) {
 			$this->set_attention_needed( 'permalinks-disabled',
-					__( 'Permalinks are disabled, Customer Area will not work properly. Please enable them in the WordPress settings.', 'cuar' ) );
+					sprintf( __( 'Permalinks are disabled, Customer Area will not work properly. Please <a href="%1$s">enable them in the WordPress settings</a>.', 'cuar' ),
+                        admin_url('options-permalink.php') ),
+                    10 );
 		} else {
 			$this->clear_attention_needed( 'permalinks-disabled' );
 		}
@@ -539,7 +428,8 @@ class CUAR_Plugin {
 		
 		if ( $needs_attention ) {
 			$this->set_attention_needed( 'outdated-plugin-version',
-					__('Some add-ons require a newer version of the main plugin.', 'cuar') );
+					__('Some add-ons require a newer version of the main plugin.', 'cuar'),
+                    10 );
 		} else {
 			$this->clear_attention_needed( 'outdated-plugin-version' );
 		}
@@ -678,49 +568,31 @@ class CUAR_Plugin {
 	}
 
 	/*------- TEMPLATES ---------------------------------------------------------------------------------------------*/
-	
-	public static function enable_check_templates( $enable=true ) {
-		update_option( 'cuar_check_templates_required', $enable );
-	}
-	
-	public function is_check_templates_enabled() {
-		return get_option( 'cuar_check_templates_required', false );
-	}
-	
-	public function check_templates() {
-		if ( $this->is_check_templates_enabled()!=true ) {
-			return;
-		}
 
-		include( CUAR_PLUGIN_DIR . '/includes/core-addons/status/template-finder.class.php' );
+    /**
+     * Check all template files and log a warning if there are any outdated templates
+     */
+	public function check_templates() {
 		$dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
-		
-		$outdated_templates = array();		
-		foreach ( $dirs_to_scan as $dir => $title ) {
-			$template_finder = new CUAR_TemplateFinder( $this );
-			$template_finder->scan_directory( $dir );
-			
-			$tmp = $template_finder->get_outdated_templates();
-			if ( !empty( $tmp ) ) {
-				$outdated_templates[ $title ] = $tmp;
-			}
-		}
+
+		$outdated_templates = $this->template_engine->check_templates($dirs_to_scan);
 		
 		if ( !empty( $outdated_templates ) ) {
-			$this->set_attention_needed( 'outdated-templates', __( 'Some template files you have overriden seem to be outdated.', 'cuar' ) );
+			$this->set_attention_needed( 'outdated-templates', __( 'Some template files you have overridden seem to be outdated.', 'cuar' ), 100 );
 		} else {
 			$this->clear_attention_needed( 'outdated-templates' );
-			self::enable_check_templates( false );
 		}
 	}
+
+    /**
+     * Delegate function for the template engine
+     */
+    public function get_template_file_path( $default_root, $filename, $sub_directory = '', $fallback_filename = '' ) {
+        return $this->template_engine->get_template_file_path( $default_root, $filename, $sub_directory, $fallback_filename);
+    }
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
-	
-	public static function on_activate() {
-		self::enable_check_templates();
-		flush_rewrite_rules();
-	}
-	
+
 	/**
 	 * Tells which post types are private (shown on the customer area page)
 	 * @return array
