@@ -41,7 +41,7 @@ class CUAR_Plugin {
     private $licensing;
 	
 	public function __construct() {
-        $this->message_center = new CUAR_MessageCenter();
+        $this->message_center = new CUAR_MessageCenter(array('cuar-status', 'cuar-setup', 'customer-area'));
         $this->activation_manager = new CUAR_PluginActivationManager();
         $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
         $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());

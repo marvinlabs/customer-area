@@ -26,11 +26,15 @@ class CUAR_MessageCenter
     private static $OPTION_WARNINGS = 'cuar/core/status/warning-messages';
     private static $OPTION_IGNORED_WARNINGS = 'cuar/core/status/ignored-warnings';
 
+    private $warning_free_pages;
+
     /**
      * Constructor
+     * @param array $warning_free_pages
      */
-    function __construct()
+    function __construct($warning_free_pages=array())
     {
+        $this->warning_free_pages = $warning_free_pages;
     }
 
     /**
@@ -126,7 +130,7 @@ class CUAR_MessageCenter
      */
     public function print_warning_messages()
     {
-        if (isset($_GET['page']) && in_array($_GET['page'], array('cuar-status', 'cuar-setup', 'cuar-about'))) return;
+        if (isset($_GET['page']) && in_array($_GET['page'], $this->warning_free_pages)) return;
 
         $warnings = $this->get_warnings();
         if (empty($warnings)) return;
