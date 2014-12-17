@@ -729,7 +729,16 @@ table.cuar-capabilities .checkbox-only {
     width: 20px;
 }
 
-/*= Setup & about pages */
+/* -= Ajax utils */
+
+.cuar-loading-indicator {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: url('images/loading-indicator.gif') top left no-repeat;
+}
+
+/* -= Setup & about pages */
 
 .cuar-installer-screen {
     margin: 25px 40px 0 20px;
@@ -805,6 +814,10 @@ table.cuar-capabilities .checkbox-only {
     margin-top: 25px;
 }
 
+.cuar-installer-screen .cuar-installer-section.cuar-faded {
+    opacity: 0.3;
+}
+
 .cuar-installer-screen .cuar-installer-section .cuar-section-title {
     margin-bottom: 25px;
 }
@@ -816,18 +829,75 @@ table.cuar-capabilities .checkbox-only {
 
 .cuar-installer-screen .cuar-installer-section .cuar-feed-content li {
     background: #fff;
-    width: 19%;
-    margin-right: 2%;
-    float: left;
-    padding: 15px 2%;
+    padding: 15px;
+    margin: 25px 0;
 }
 
 .cuar-installer-screen .cuar-installer-section .cuar-feed-content .cuar-feed-date {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #999;
+}
+
+.cuar-installer-screen .cuar-installer-section .cuar-feed-content .cuar-feed-title {
+    color: #333;
+    margin-bottom: 5px;
 }
 
 .cuar-installer-screen .cuar-installer-section .cuar-feed-content .cuar-feed-summary {
     color: #333;
     margin-top: 15px;
+}
+
+.cuar-installer-screen .cuar-installer-section .cuar-feed-content a {
+    text-decoration: none;
+}
+
+.cuar-installer-screen .cuar-installer-section .cuar-feed-content .cuar-feed-image img {
+    float: left;
+    width: 30%;
+    height: auto;
+    margin-right: 15px;
+}
+
+.cuar-installer-screen .cuar-setup-section .cuar-instructions {
+    float: left;
+    width: 47%;
+    margin: 0 3% 0 0;
+    padding: 0;
+    font-size: 1em;
+}
+
+.cuar-installer-screen .cuar-installer-section.cuar-readynow-section {
+    text-align: center;
+}
+
+.cuar-installer-screen .cuar-installer-section.cuar-readynow-section .cuar-section-title {
+    font-size: 2.5em;
+    margin: 45px 0 35px;
+}
+
+.cuar-installer-screen .cuar-installer-section.cuar-readynow-section .cuar-lets-go {
+    display: inline;
+    font-size: 3.5em;
+    height: auto;
+    line-height: normal;
+}
+
+.cuar-installer-screen .cuar-setup-section .cuar-actions {
+    float: left;
+    width: 47%;
+    margin: 0 0 0 3%;
+    padding: 0;
+}
+
+.cuar-installer-screen .cuar-setup-section .cuar-actions .cuar-response {
+    margin-top: 15px;
+}
+
+.cuar-installer-screen .cuar-setup-section .cuar-actions .cuar-response.cuar-success {
+    color: #006505;
+}
+
+.cuar-installer-screen .cuar-setup-section .cuar-actions .cuar-response.cuar-error {
+    color: #8D1818;
 }

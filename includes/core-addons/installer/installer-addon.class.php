@@ -59,6 +59,9 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                 add_action('admin_menu', array(&$this, 'admin_menus'));
                 add_action('admin_head', array(&$this, 'admin_head'));
                 // add_action('admin_init', array(&$this, 'welcome'));
+
+                add_action('wp_ajax_cuar_installer_create_pages_and_nav', array(&$this, 'create_pages_and_navigation'));
+                add_action('wp_ajax_cuar_mark_permissions_as_configured', array(&$this, 'mark_permissions_as_configured'));
             }
         }
 
@@ -158,6 +161,46 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                 do_action('cuar/core/on-plugin-update', $active_version, $current_version);
                 $this->set_pending_redirect('cuar-about');
             }
+        }
+
+        /*------- AJAX CALLBACKS -------------------------------------------------------------------------------------*/
+
+        /**
+         * Called when the user clicks the button to create pages and navigation menu
+         */
+        public function create_pages_and_navigation()
+        {
+            // Use the Customer Pages add-on to do the job
+            /** @var CUAR_CustomerPagesAddOn $cp_addon */
+            $cp_addon = $this->plugin->get_addon('customer-pages');
+            $cp_addon->create_all_missing_pages();
+            $cp_addon->recreate_default_navigation_menu();
+
+            // Clear the notices added by the above functions
+            $this->plugin->clear_admin_notices();
+
+            // No way to screw up currently, always success
+            $response = new StdClass();
+            $response->success = true;
+            $response->message = __('The required pages and the navigation menu have been created', 'cuar');
+
+            wp_send_json($response);
+        }
+
+        /**
+         * Called when the user clicks the configure permissions button.
+         */
+        public function mark_permissions_as_configured()
+        {
+            /** @var CUAR_CapabilitiesAddOn $cm_addon */
+            $cm_addon = $this->plugin->get_addon('capabilities-manager');
+            $cm_addon->ignore_unconfigured_capabilities_flag();
+
+            // No way to screw up currently, always success
+            $response = new StdClass();
+            $response->success = true;
+
+            wp_send_json($response);
         }
 
         /*------- SETUP ASSISTANT AND ABOUT PAGES --------------------------------------------------------------------*/
@@ -301,19 +344,19 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                 $count = 0;
                 foreach ($feed->get_items() as $item) {
                     $out .= '<li>';
-                    if ( $enclosure = $item->get_enclosure() ) {
-                        $out .= '<a href="' . $item->get_permalink() . '">';
+                    if ($enclosure = $item->get_enclosure()) {
+                        $out .= '<a href="' . $item->get_permalink() . '" class="cuar-feed-image">';
                         $out .= '<img src="' . $enclosure->get_link() . '" />';
                         $out .= '</a>';
                     }
 
-                    $out .= sprintf('<h3><a class="cuar-feed-title" href="%1$s">%2$s</a></h3> <span class="cuar-feed-date">%3$s</span>',
+                    $out .= sprintf('<h3 class="cuar-feed-title"><a href="%1$s">%2$s</a></h3> <span class="cuar-feed-date">%3$s</span>',
                         $item->get_permalink(),
                         $item->get_title(),
                         $item->get_date(get_option('date_format')));
 
                     $out .= sprintf('<div class="cuar-feed-summary">%1$s</div>', $item->get_description());
-                    $out .= '</li>';
+                    $out .= '<div class="clear"></div></li>';
 
                     $count++;
                     if ($max_items > 0 && $count >= $max_items) break;
@@ -325,7 +368,7 @@ if (!class_exists('CUAR_InstallerAddOn')) :
         }
     }
 
-// Make sure the addon is loaded
+    // Make sure the addon is loaded
     new CUAR_InstallerAddOn();
 
 endif; // class_exists('CUAR_InstallerAddOn')

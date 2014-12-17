@@ -542,7 +542,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 
 			// Find parent if any
 			$parent_slug = $page->get_parent_slug();
-			if ( !empty( $parent_slug ) ) {
+			if ( !empty( $parent_slug ) && isset($menu_items[$parent_slug])) {
 				$args['menu-item-parent-id'] = $menu_items[$parent_slug];
 			}
 			
