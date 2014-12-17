@@ -1,3 +1,5 @@
+<?php /** Template version: 1.0.0 */ ?>
+
 <div class="wrap cuar-installer-screen">
 
     <div class="cuar-hero">

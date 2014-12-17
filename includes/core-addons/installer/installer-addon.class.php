@@ -27,16 +27,29 @@ if (!class_exists('CUAR_InstallerAddOn')) :
      */
     class CUAR_InstallerAddOn extends CUAR_AddOn
     {
+        public static $OPTION_IS_INSTALLED = 'cuar/core/installer/is_installed';
+        public static $OPTION_PENDING_REDIRECT = 'cuar/core/installer/pending_redirect';
+
+        /**
+         * Constructor
+         */
         public function __construct()
         {
             parent::__construct('installer', '6.0.0');
         }
 
+        /**
+         * @return string The addon name
+         */
         public function get_addon_name()
         {
             return __('Installer', 'cuar');
         }
 
+        /**
+         * Run the add-on (register hooks, etc.)
+         * @param CUAR_Plugin $plugin
+         */
         public function run_addon($plugin)
         {
             if (is_admin()) {
@@ -104,6 +117,10 @@ if (!class_exists('CUAR_InstallerAddOn')) :
             CUAR_PluginActivationManager::on_activate();
         }
 
+        /**
+         * Hook called after all deferred activation actions have been run. If we need to redirect to the setup or to
+         * the about page, then this is where it happens.
+         */
         public function maybe_redirect_after_activation()
         {
             $pending_redirect = $this->get_pending_redirect();
@@ -115,6 +132,10 @@ if (!class_exists('CUAR_InstallerAddOn')) :
             }
         }
 
+        /**
+         * Deferred activation action to check current and previous plugin version, run the update scripts and decide
+         * if we should show the setup assistant.
+         */
         public function check_plugin_version()
         {
             $plugin_data = get_plugin_data(WP_CONTENT_DIR . '/plugins/' . CUAR_PLUGIN_FILE, false, false);
@@ -139,8 +160,11 @@ if (!class_exists('CUAR_InstallerAddOn')) :
             }
         }
 
+        /*------- SETUP ASSISTANT AND ABOUT PAGES --------------------------------------------------------------------*/
+
         /**
-         * Add admin menus/screens. They get removed later on in admin_head
+         * Add admin menus/screens. They get removed later on in admin_head (those pages are just supposed to be
+         * accessed via redirection)
          */
         public function admin_menus()
         {
@@ -222,27 +246,11 @@ if (!class_exists('CUAR_InstallerAddOn')) :
             }
         }
 
+        /**
+         * Prints the section of the about page to show the new features in current version
+         */
         public function print_whats_new()
         {
-            $whats_new = array(
-                array(
-                    'title' => __('Improved setup &amp; updates', 'cuar'),
-                    'text' => __('We have implemented a new setup assistant that will make it even easier to '
-                        . 'install the plugin. Updates will be smoother too.', 'cuar')
-                ),
-                array(
-                    'title' => __('Better permissions', 'cuar'),
-                    'text' => __('Some new permissions have been added to give you more control about what your '
-                        . 'users can do. On top of that, we have also improved the permissions screen to make it '
-                        . 'faster to set permissions.', 'cuar')
-                ),
-                array(
-                    'title' => __('Stability improvements', 'cuar'),
-                    'text' => __('As with any new release, we constantly provide bug fixes. This update is no exception '
-                        . 'with no less than 20 issues corrected.', 'cuar')
-                ),
-            );
-
             /** @noinspection PhpIncludeInspection */
             include($this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/installer',
@@ -250,6 +258,9 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                 'templates'));
         }
 
+        /**
+         * Prints a toolbar with actions related to the plugin (links, tweet, etc.)
+         */
         public function print_related_actions()
         {
             /** @noinspection PhpIncludeInspection */
@@ -259,12 +270,23 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                 'templates'));
         }
 
+        /**
+         * Prints the latest blog posts fetched from the blog RSS
+         */
         public function print_latest_blog_posts()
         {
-            echo $this->get_feed_content(__('http://wp-customerarea.com/feed/rss', 'cuar'));
+            $this->print_feed_content(__('http://wp-customerarea.com/feed/rss', 'cuar'), 4);
         }
 
-        private function get_feed_content($feed_link, $max_items = 4)
+        /**
+         * Output a list of blocks corresponding to a RSS feed.
+         *
+         * @param string $feed_link The URL of the RSS feed
+         * @param int $max_items The max number of items to print (-1 for no limit)
+         */
+        // TODO Refactor this function into a more general Rss utility class
+        // TODO Use templates for RSS
+        private function print_feed_content($feed_link, $max_items = 4)
         {
             $out = '<div class="cuar-feed-content"><ul>';
 
@@ -279,6 +301,12 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                 $count = 0;
                 foreach ($feed->get_items() as $item) {
                     $out .= '<li>';
+                    if ( $enclosure = $item->get_enclosure() ) {
+                        $out .= '<a href="' . $item->get_permalink() . '">';
+                        $out .= '<img src="' . $enclosure->get_link() . '" />';
+                        $out .= '</a>';
+                    }
+
                     $out .= sprintf('<h3><a class="cuar-feed-title" href="%1$s">%2$s</a></h3> <span class="cuar-feed-date">%3$s</span>',
                         $item->get_permalink(),
                         $item->get_title(),
@@ -288,16 +316,13 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                     $out .= '</li>';
 
                     $count++;
-                    if ($count >= $max_items) break;
+                    if ($max_items > 0 && $count >= $max_items) break;
                 }
             }
             $out .= '</ul></div>';
 
-            return $out;
+            echo $out;
         }
-
-        public static $OPTION_IS_INSTALLED = 'cuar/core/installer/is_installed';
-        public static $OPTION_PENDING_REDIRECT = 'cuar/core/installer/pending_redirect';
     }
 
 // Make sure the addon is loaded
