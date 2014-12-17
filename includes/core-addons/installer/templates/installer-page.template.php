@@ -1,6 +1,6 @@
 <?php /** Template version: 1.0.0 */ ?>
 
-<div class="wrap cuar-installer-screen">
+<div class="wrap cuar-dashboard-screen">
 
     <div class="cuar-hero">
         <h1><?php echo $page_title; ?></h1>

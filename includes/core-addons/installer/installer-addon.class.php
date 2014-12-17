@@ -58,7 +58,6 @@ if (!class_exists('CUAR_InstallerAddOn')) :
 
                 add_action('admin_menu', array(&$this, 'admin_menus'));
                 add_action('admin_head', array(&$this, 'admin_head'));
-                // add_action('admin_init', array(&$this, 'welcome'));
 
                 add_action('wp_ajax_cuar_installer_create_pages_and_nav', array(&$this, 'create_pages_and_navigation'));
                 add_action('wp_ajax_cuar_mark_permissions_as_configured', array(&$this, 'mark_permissions_as_configured'));
@@ -159,7 +158,7 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                 do_action('cuar/core/on-plugin-update', CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION, $current_version);
             } else if ($active_version != $current_version) {
                 do_action('cuar/core/on-plugin-update', $active_version, $current_version);
-                $this->set_pending_redirect('cuar-about');
+                $this->set_pending_redirect('customer-area&tab=whats-new');
             }
         }
 
@@ -214,13 +213,6 @@ if (!class_exists('CUAR_InstallerAddOn')) :
             if (empty($_GET['page'])) return;
 
             switch ($_GET['page']) {
-                case 'cuar-about' : {
-                    $page_name = __('About WP Customer Area', 'cuar');
-                    $page_title = __('Welcome to WP Customer Area', 'cuar');
-                    add_dashboard_page($page_title, $page_name, 'manage_options', 'cuar-about', array($this, 'print_about_page'));
-                    break;
-                }
-
                 case 'cuar-setup' : {
                     $page_name = __('Install WP Customer Area', 'cuar');
                     $page_title = __('Install WP Customer Area', 'cuar');
@@ -235,32 +227,7 @@ if (!class_exists('CUAR_InstallerAddOn')) :
          */
         public function admin_head()
         {
-            remove_submenu_page('index.php', 'cuar-about');
             remove_submenu_page('index.php', 'cuar-setup');
-        }
-
-        /**
-         * Prints the page that gives information about the plugin when an update occurred
-         */
-        public function print_about_page()
-        {
-            $template = $this->plugin->get_template_file_path(
-                CUAR_INCLUDES_DIR . '/core-addons/installer',
-                'installer-page.template.php',
-                'templates');
-
-            if (!empty($template)) {
-                $page_title = sprintf(__('Welcome to WP Customer Area %s', 'cuar'), $this->plugin->get_major_version());
-                $hero_message_primary = sprintf(__('<strong>WP Customer Area</strong> %s is more powerful, stable and secure than ever before. We hope you will enjoy using it.', 'cuar'), $this->plugin->get_major_version());
-                $hero_message_secondary = __('Congratulations, you have just updated the plugin! ', 'cuar');
-                $content_template = $this->plugin->get_template_file_path(
-                    CUAR_INCLUDES_DIR . '/core-addons/installer',
-                    'installer-part-about.template.php',
-                    'templates');
-
-                /** @noinspection PhpIncludeInspection */
-                include($template);
-            }
         }
 
         /**
@@ -287,38 +254,6 @@ if (!class_exists('CUAR_InstallerAddOn')) :
                 /** @noinspection PhpIncludeInspection */
                 include($template);
             }
-        }
-
-        /**
-         * Prints the section of the about page to show the new features in current version
-         */
-        public function print_whats_new()
-        {
-            /** @noinspection PhpIncludeInspection */
-            include($this->plugin->get_template_file_path(
-                CUAR_INCLUDES_DIR . '/core-addons/installer',
-                'installer-part-whats-new.template.php',
-                'templates'));
-        }
-
-        /**
-         * Prints a toolbar with actions related to the plugin (links, tweet, etc.)
-         */
-        public function print_related_actions()
-        {
-            /** @noinspection PhpIncludeInspection */
-            include($this->plugin->get_template_file_path(
-                CUAR_INCLUDES_DIR . '/core-addons/installer',
-                'installer-part-related-actions.template.php',
-                'templates'));
-        }
-
-        /**
-         * Prints the latest blog posts fetched from the blog RSS
-         */
-        public function print_latest_blog_posts()
-        {
-            $this->print_feed_content(__('http://wp-customerarea.com/feed/rss', 'cuar'), 4);
         }
 
         /**
