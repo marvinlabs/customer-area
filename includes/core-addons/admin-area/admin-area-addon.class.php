@@ -30,7 +30,7 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('admin-area', '4.0.0');
+            parent::__construct('admin-area', '6.0.0');
         }
 
         public function get_addon_name()
@@ -275,7 +275,7 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
 
         public function print_dashboard()
         {
-            $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'whats-new';
+            $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'blog';
             $tabs = array(
                 'whats-new' => array(
                     'url' => admin_url('admin.php?page=customer-area&tab=whats-new'),
@@ -288,10 +288,6 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
                 'addons' => array(
                     'url' => admin_url('admin.php?page=customer-area&tab=addons'),
                     'label' => __("Add-ons &amp; themes", 'cuar')
-                ),
-                'changelog' => array(
-                    'url' => admin_url('admin.php?page=customer-area&tab=changelog'),
-                    'label' => __("Version history", 'cuar')
                 ),
             );
 
