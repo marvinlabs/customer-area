@@ -222,11 +222,13 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 			
 		return $this->pages;
 	}
-	/**
-	 * List all the pages expected by Customer Area and its add-ons. 
-	 * 
-	 * @return array see structure for each item in function get_customer_area_page
-	 */
+
+    /**
+     * List all the pages expected by Customer Area and its add-ons.
+     *
+     * @param string $parent_slug The slug of the parent page
+     * @return array see structure for each item in function get_customer_area_page
+     */
 	public function get_customer_area_child_pages( $parent_slug ) {
 		$child_pages = array();
 		
@@ -234,7 +236,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		foreach ( $pages as $slug => $page) {
 			$cur_parent_slug = $page->get_parent_slug();
 			if ( !isset( $cur_parent_slug ) && $parent_slug==$cur_parent_slug ) {
-				$child_pages[$slug] = $desc; 
+				$child_pages[$slug] = $page;
 			}	
 		}
 		
@@ -540,7 +542,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 
 			// Find parent if any
 			$parent_slug = $page->get_parent_slug();
-			if ( !empty( $parent_slug ) ) {
+			if ( !empty( $parent_slug ) && isset($menu_items[$parent_slug])) {
 				$args['menu-item-parent-id'] = $menu_items[$parent_slug];
 			}
 			
@@ -943,7 +945,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		
 		if ( $has_created_pages ) {					
 			$this->plugin->set_attention_needed( 'nav-menu-needs-sync',
-					__( 'Some pages of the customer area have been created or deleted. The customer area navigation menu needs to be updated.', 'cuar') );
+					__( 'Some pages of the customer area have been created or deleted. The customer area navigation menu needs to be updated.', 'cuar'), 30 );
 		}
 		
 		return $validated;
@@ -972,7 +974,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 			$this->plugin->add_admin_notice( sprintf( __('The following pages have been created: %s', 'cuar'), implode( ', ', $created_pages ) ), 'updated' );
 					
 			$this->plugin->set_attention_needed( 'nav-menu-needs-sync',
-					__( 'Some pages of the customer area have been created or deleted. The customer area navigation menu needs to be updated.', 'cuar') );
+					__( 'Some pages of the customer area have been created or deleted. The customer area navigation menu needs to be updated.', 'cuar'), 30 );
 		} else {
 			$this->plugin->add_admin_notice( __('There was no missing page that could be created.', 'cuar'), 'error' );
 		}
@@ -1011,7 +1013,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 
 		if ( !empty( $orphans ) ) {
 			$this->plugin->set_attention_needed( 'orphan-pages',
-					__( 'Some pages in your site seem to contain Customer Area shortcodes but are not registered in the Customer Area pages settings.', 'cuar') );
+					__( 'Some pages in your site seem to contain Customer Area shortcodes but are not registered in the Customer Area pages settings.', 'cuar'), 20 );
 		}
 		
 		return $orphans;
@@ -1031,7 +1033,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 
 		$this->plugin->clear_attention_needed( 'orphan-pages' );
 		$this->plugin->set_attention_needed( 'nav-menu-needs-sync',
-				__( 'Some pages of the customer area have been created or deleted. The customer area navigation menu needs to be updated.', 'cuar') );
+				__( 'Some pages of the customer area have been created or deleted. The customer area navigation menu needs to be updated.', 'cuar'), 30 );
 
 		flush_rewrite_rules();
 	}

@@ -27,7 +27,7 @@ class CUAR_PluginActivation implements CUAR_PluginActivationDelegate
     public function on_activate()
     {
         // Schedule checking for updating/setting up the plugin
-        CUAR_PluginActivationManager::schedule_deferred_action('check-plugin-needs-setup', 10);
+        CUAR_PluginActivationManager::schedule_deferred_action('check-plugin-version', 10);
 
         // Schedule a check of the template files
         CUAR_PluginActivationManager::schedule_deferred_action('check-template-files', 20);

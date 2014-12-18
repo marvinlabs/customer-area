@@ -176,15 +176,15 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		$args = extract( wp_parse_args( $args, array(
 				'echo'	=> false
 			) ), EXTR_SKIP );
-		
-		$content = sprintf( '<p>&raquo; ' . 
+
+		$content = '<p>&raquo; ' .
 				__( "You can also get notified when we've got something exciting to say (plugin updates, news, etc.). Simply "
 					. "subscribe to our newsletter, we won't spam, we send at most one email per month!", 'cuar' ) 
-				. '</p>', 'http://www.marvinlabs.com' );
+				. '</p>';
 		
 		$content .= '<!-- Begin MailChimp Signup Form -->';
 		$content .= '<div id="mc_embed_signup">';
-		$content .= '<form action="http://marvinlabs.us7.list-manage.com/subscribe/post?u=1bbbff0bec2e3841b42494431&amp;id=4b52ced231" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>';
+		$content .= '<form action="http://wp-customerarea.us9.list-manage.com/subscribe/post?u=eb8f58238080f8e12a1bd20ca&amp;id=4f311a0114" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>';
 	
 		$content .= '<p class="mc-field-group">';
 		$content .= '<label for="mce-EMAIL">' . __('Email Address', 'cuar' ) . ' </label>';

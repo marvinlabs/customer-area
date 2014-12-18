@@ -41,7 +41,7 @@ class CUAR_Plugin {
     private $licensing;
 	
 	public function __construct() {
-        $this->message_center = new CUAR_MessageCenter();
+        $this->message_center = new CUAR_MessageCenter(array('cuar-status', 'cuar-setup', 'customer-area'));
         $this->activation_manager = new CUAR_PluginActivationManager();
         $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
         $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
@@ -60,7 +60,6 @@ class CUAR_Plugin {
         add_action( 'init', array( &$this, 'load_defaults' ), 9 );
 		
 		if ( is_admin() ) {
-            add_action( 'admin_init', array( &$this, 'check_versions' ) );
 			add_action( 'admin_notices', array( &$this, 'print_admin_notices' ) );
             add_action( 'init', array( &$this, 'load_defaults' ), 9 );
 
@@ -150,27 +149,6 @@ class CUAR_Plugin {
 					$this->get_version()
 				);
 		}
-	}
-	
-	/**
-	 * 
-	 */
-	public function check_versions() {
-		$plugin_data = get_plugin_data( WP_CONTENT_DIR . '/plugins/' . CUAR_PLUGIN_FILE, false, false );
-		$current_version = $plugin_data[ 'Version' ];
-		$active_version = $this->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
-		if ( !isset( $active_version ) ) $active_version = '1.4.0';
-		
-		if ( CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION!==FALSE ) {
-			do_action( 'cuar/core/on-plugin-update', CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION, $current_version );
-		} else {
-			if ( $active_version != $current_version ) {
-				do_action( 'cuar/core/on-plugin-update', $active_version, $current_version );
-			} 
-			if ( empty( $active_version ) || $active_version != $current_version ) {
-				$this->settings->update_option( CUAR_Settings::$OPTION_CURRENT_VERSION, $current_version );
-			}
-		}		
 	}
 	
 	/**
@@ -358,6 +336,11 @@ class CUAR_Plugin {
 	public function get_version() {
 		return $this->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
 	}
+
+    public function get_major_version() {
+        $tokens = explode('.', $this->get_version());
+        return $tokens[0] . '.' . $tokens[1];
+    }
 	
 	public function get_options() {
 		return $this->settings->get_options();

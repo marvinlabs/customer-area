@@ -155,7 +155,8 @@ your wordpress.org profile with your other developed plugins.
 
 = 6.0.0 (2015/) =
 
-* New: support for the new shop at http://wp-customerarea.com
+* New: a setup assistant for first time installation & about page to introduce new versions features
+* New: support for the new website at http://wp-customerarea.com
 * New: permissions to protect the account pages (view/edit account from frontend)
 * New: improved the permissions settings page
 * New: new permission to restrict access to the account pages (view account details / edit account details)
