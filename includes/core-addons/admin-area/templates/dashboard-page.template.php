@@ -81,8 +81,7 @@
             <div id="mc_embed_signup">
                 <form action="http://wp-customerarea.us9.list-manage.com/subscribe/post?u=eb8f58238080f8e12a1bd20ca&amp;id=4f311a0114" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <p class="mc-field-group">
-                        <label for="mce-EMAIL"><?php _e('Email Address', 'cuar'); ?></label>
-                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" /><br/>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="<?php _e('Email Address', 'cuar'); ?>" /><br/>
                     </p>
                     <div id="mce-responses" class="clear">
                         <div class="response" id="mce-error-response" style="display:none"></div>
@@ -96,6 +95,6 @@
 
     </div>
 
-    <div class="cuar-divider"></div>
+    <div class="clear"></div>
 
 </div>
