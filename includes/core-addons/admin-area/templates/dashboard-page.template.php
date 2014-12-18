@@ -28,9 +28,6 @@
             <a href="<?php echo esc_url(__('http://wp-customerarea.com/support/', 'cuar')); ?>" class="button button-primary" target="_blank"><?php _e('Support', 'cuar'); ?></a>
         </li>
         <li>
-            <a href="<?php echo esc_url(__('http://wp-customerarea.com/add-ons-and-themes/', 'cuar')); ?>" class="button button-primary" target="_blank"><?php _e('Add-ons and themes', 'cuar'); ?></a>
-        </li>
-        <li>
             <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wp-customerarea.com/" data-text="<?php echo esc_url('An open-source (free) plugin for #WordPress to share private content, easily.', 'cuar'); ?>" data-via="WPCustomerArea" data-size="large" data-hashtags="WPCA">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
         </li>
@@ -51,7 +48,9 @@
     <div class="clear"></div>
 
     <div class="cuar-content">
-        <?php include($tab_content_template); ?>
+        <div class="cuar-dashboard-section cuar-<?php echo $current_tab; ?>-section">
+            <?php include($tab_content_template); ?>
+        </div>
     </div>
 
 </div>

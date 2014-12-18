@@ -375,7 +375,7 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
                 ),
                 'blog' => array(
                     'url' => admin_url('admin.php?page=customer-area&tab=blog'),
-                    'label' => __("From our blog", 'cuar')
+                    'label' => __("Live from the blog", 'cuar')
                 ),
                 'addons' => array(
                     'url' => admin_url('admin.php?page=customer-area&tab=addons'),
@@ -399,27 +399,6 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
                 CUAR_INCLUDES_DIR . '/core-addons/admin-area',
                 'dashboard-page.template.php',
                 'templates'));
-        }
-
-
-        /**
-         * Prints the section of the about page to show the new features in current version
-         */
-        public function print_whats_new()
-        {
-            /** @noinspection PhpIncludeInspection */
-            include($this->plugin->get_template_file_path(
-                CUAR_INCLUDES_DIR . '/core-addons/installer',
-                'installer-part-whats-new.template.php',
-                'templates'));
-        }
-
-        /**
-         * Prints the latest blog posts fetched from the blog RSS
-         */
-        public function print_latest_blog_posts()
-        {
-            $this->print_feed_content(__('http://wp-customerarea.com/feed/rss', 'cuar'), 4);
         }
 
         /**
