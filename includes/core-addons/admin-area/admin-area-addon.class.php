@@ -47,8 +47,6 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
                 add_action('admin_menu', array(&$this, 'build_admin_menu'));
                 add_action('cuar/core/on-plugin-update', array(&$this, 'plugin_version_upgrade'), 10, 2);
                 add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 5);
-
-                add_filter('admin_init', array(&$this, 'add_dashboard_metaboxes'));
                 add_action('admin_init', array(&$this, 'restrict_admin_access'), 1);
 
                 // Settings
