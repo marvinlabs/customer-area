@@ -307,46 +307,80 @@ div.cuar-needs-attention p {
 	        box-sizing: border-box;
 	        
 	float: left;
-	width: 48%;
+	width: 49%;
 	margin: 1%;
 	padding: 10px;
 	border: 1px solid #eee;
 	background: #fafafa;
+
+    -webkit-box-shadow: 0px 3px 6px 0px #ddd;
+       -moz-box-shadow: 0px 3px 6px 0px #ddd;
+         -o-box-shadow: 0px 3px 6px 0px #ddd;
+            box-shadow: 0px 3px 6px 0px #ddd;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#ddd, Direction=180, Strength=6);
+
+    -webkit-transition: all 0.5s ease;
+       -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.cuar-addon.cuar-odd {
+    margin-right: 0;
+}
+
+.cuar-addon.cuar-even {
+    margin-left: 0;
 }
 
 .cuar-addon:hover {
-	background: #f0f0f0;
+    -webkit-box-shadow: 0px 3px 6px 0px #aaa;
+       -moz-box-shadow: 0px 3px 6px 0px #aaa;
+         -o-box-shadow: 0px 3px 6px 0px #aaa;
+            box-shadow: 0px 3px 6px 0px #aaa;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#aaa, Direction=180, Strength=6);
 }
 
-.cuar-addon img {
+.cuar-addon .cuar-addon-image img {
 	max-width: 33%;
 	float: left;
 }
 
-.cuar-addon h2 {
-	text-align: center;
+.cuar-addon .cuar-addon-title {
+	text-align: left;
 	text-decoration: none;
-	font-size: 19px;
+    margin-top: 4px;
+    font-size: 1em;
+}
+
+.cuar-addon .cuar-addon-description {
+    text-align: left;
+    text-decoration: none;
+    margin-top: 4px;
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+.cuar-addon .meta {
+    margin-left: 35%;
+    padding: 0 10px;
 }
 
 p.forcelinebreak {
 	display: block;
-	height: 10px;
+	height: 0px;
 	width: 100%;
 	clear: both;
 	margin: 0;
 	padding: 0;
 }
 
-.cuar-addon .meta {
-	margin-left: 35%;
-	padding: 0 10px;
-}
-
 @media only screen and (max-width: 900px) {
 	.cuar-addon {
 		float: left;
-		width: 98%;
+		width: 100%;
+        margin: 0 0 15px;
 	}
 }
 
@@ -738,6 +772,65 @@ table.cuar-capabilities .checkbox-only {
     background: url('images/loading-indicator.gif') top left no-repeat;
 }
 
+/* -= RSS Feed items */
+
+.cuar-feed-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cuar-feed-content li {
+    background: #fff;
+    padding: 15px;
+    margin: 25px 0;
+
+    -webkit-box-shadow: 0px 3px 6px 0px #ddd;
+    -moz-box-shadow: 0px 3px 6px 0px #ddd;
+    -o-box-shadow: 0px 3px 6px 0px #ddd;
+    box-shadow: 0px 3px 6px 0px #ddd;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#ddd, Direction=180, Strength=6);
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.cuar-feed-content li:hover {
+    -webkit-box-shadow: 0px 3px 6px 0px #aaa;
+    -moz-box-shadow: 0px 3px 6px 0px #aaa;
+    -o-box-shadow: 0px 3px 6px 0px #aaa;
+    box-shadow: 0px 3px 6px 0px #aaa;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#aaa, Direction=180, Strength=6);
+}
+
+.cuar-feed-content .cuar-feed-date {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.cuar-feed-content .cuar-feed-title {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.cuar-feed-content .cuar-feed-summary {
+    color: #333;
+    margin-top: 15px;
+}
+
+.cuar-feed-content a {
+    text-decoration: none;
+}
+
+.cuar-feed-content .cuar-feed-image img {
+    float: left;
+    width: 30%;
+    height: auto;
+    margin-right: 15px;
+}
+
 /* -= Setup & about pages */
 
 .cuar-dashboard-screen .cuar-dashboard-tabs {
@@ -826,43 +919,6 @@ table.cuar-capabilities .checkbox-only {
     margin-bottom: 25px;
 }
 
-.cuar-dashboard-screen .cuar-feed-content ul {
-    list-style: none;
-    padding: 0;
-}
-
-.cuar-dashboard-screen .cuar-feed-content li {
-    background: #fff;
-    padding: 15px;
-    margin: 25px 0;
-}
-
-.cuar-dashboard-screen .cuar-feed-content .cuar-feed-date {
-    font-size: 0.8em;
-    color: #999;
-}
-
-.cuar-dashboard-screen .cuar-feed-content .cuar-feed-title {
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.cuar-dashboard-screen .cuar-feed-content .cuar-feed-summary {
-    color: #333;
-    margin-top: 15px;
-}
-
-.cuar-dashboard-screen .cuar-feed-content a {
-    text-decoration: none;
-}
-
-.cuar-dashboard-screen .cuar-feed-content .cuar-feed-image img {
-    float: left;
-    width: 30%;
-    height: auto;
-    margin-right: 15px;
-}
-
 .cuar-dashboard-screen .cuar-setup-section .cuar-instructions {
     float: left;
     width: 47%;
@@ -904,4 +960,8 @@ table.cuar-capabilities .checkbox-only {
 
 .cuar-dashboard-screen .cuar-setup-section .cuar-actions .cuar-response.cuar-error {
     color: #8D1818;
+}
+
+.cuar-addons-section h2 {
+    margin: 35px 0 15px;
 }
