@@ -2,6 +2,8 @@
 
 <div class="wrap cuar-dashboard-screen">
 
+    <!-- HERO BLOCK -->
+
     <div class="cuar-hero">
         <h1><?php echo $page_title; ?></h1>
 
@@ -16,6 +18,8 @@
     </div>
 
     <div class="clear"></div>
+
+    <!-- BUTTON BAR -->
 
     <ul class="cuar-related-actions">
         <li>
@@ -36,6 +40,8 @@
 
     <div class="clear"></div>
 
+    <!-- TAB BAR -->
+
     <h2 class="nav-tab-wrapper cuar-dashboard-tabs">
     <?php foreach ($tabs as $tab => $tab_desc) :
             $classes = 'nav-tab';
@@ -47,10 +53,49 @@
 
     <div class="clear"></div>
 
+    <!-- CURRENT TAB CONTENT -->
+
     <div class="cuar-content">
         <div class="cuar-dashboard-section cuar-<?php echo $current_tab; ?>-section">
             <?php include($tab_content_template); ?>
         </div>
     </div>
+
+    <div class="clear"></div>
+
+    <!-- NEWSLETTER -->
+
+    <div class="cuar-divider"></div>
+
+    <div class="cuar-dashboard-section cuar-newsletter-section">
+        <h2 class="cuar-section-title"><?php _e('Stay informed', 'cuar'); ?></h2>
+        <div class="clear"></div>
+
+        <p class="cuar-instructions">
+            <?php _e( "You can also get notified when we've got something exciting to say (plugin updates, news, etc.). Simply "
+                        . "subscribe to our newsletter, we won't spam, we send at most one email per month!", 'cuar' ); ?>
+        </p>
+
+        <div class="cuar-actions">
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup">
+                <form action="http://wp-customerarea.us9.list-manage.com/subscribe/post?u=eb8f58238080f8e12a1bd20ca&amp;id=4f311a0114" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <p class="mc-field-group">
+                        <label for="mce-EMAIL"><?php _e('Email Address', 'cuar'); ?></label>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" /><br/>
+                    </p>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <div class="clear"><input type="submit" value="<?php _e('Subscribe', 'cuar'); ?>" name="subscribe" id="mc-embedded-subscribe" class="button button-primary"></div>
+                </form>
+            </div>
+            <!--End mc_embed_signup-->
+        </div>
+
+    </div>
+
+    <div class="cuar-divider"></div>
 
 </div>

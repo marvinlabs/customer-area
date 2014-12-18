@@ -915,11 +915,11 @@ table.cuar-capabilities .checkbox-only {
     opacity: 0.3;
 }
 
-.cuar-dashboard-screen .cuar-installer-section .cuar-section-title {
+.cuar-dashboard-screen .cuar-section-title {
     margin-bottom: 25px;
 }
 
-.cuar-dashboard-screen .cuar-setup-section .cuar-instructions {
+.cuar-dashboard-screen .cuar-instructions {
     float: left;
     width: 47%;
     margin: 0 3% 0 0;
@@ -943,25 +943,59 @@ table.cuar-capabilities .checkbox-only {
     line-height: normal;
 }
 
-.cuar-dashboard-screen .cuar-setup-section .cuar-actions {
+.cuar-dashboard-screen .cuar-actions {
     float: left;
     width: 47%;
     margin: 0 0 0 3%;
     padding: 0;
 }
 
-.cuar-dashboard-screen .cuar-setup-section .cuar-actions .cuar-response {
+.cuar-dashboard-screen .cuar-actions .cuar-response {
     margin-top: 15px;
 }
 
-.cuar-dashboard-screen .cuar-setup-section .cuar-actions .cuar-response.cuar-success {
+.cuar-dashboard-screen .cuar-actions .cuar-response.cuar-success {
     color: #006505;
 }
 
-.cuar-dashboard-screen .cuar-setup-section .cuar-actions .cuar-response.cuar-error {
+.cuar-dashboard-screen .cuar-actions .cuar-response.cuar-error {
     color: #8D1818;
 }
 
 .cuar-addons-section h2 {
     margin: 35px 0 15px;
+}
+
+.cuar-newsletter-section .mc-field-group {
+    text-align: right;
+}
+
+.cuar-newsletter-section .mc-field-group label {
+    display: inline-block;
+    min-width: 40%;
+}
+
+.cuar-newsletter-section .mc-field-group label {
+    margin-right: 15px;
+}
+
+.cuar-newsletter-section .mc-field-group input {
+    display: inline-block;
+    width: 55%;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cuar-newsletter-section #mc-embedded-subscribe {
+    float: right;
+}
+
+.cuar-divider {
+    height: 40px;
+    width: 100%;
+    margin: 45px 0 30px;
+    background: url('images/divider.png') center no-repeat;
+    opacity: 0.5;
 }
