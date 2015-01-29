@@ -1,6 +1,6 @@
 <?php
 /*
-	Plugin Name: 	WP Customer Area - Main plugin
+	Plugin Name: 	WP Customer Area
 	Description: 	Customer area give your customers the possibility to get a page on your site where they can access private content. 
 	Plugin URI: 	http://wp-customerarea.com
 	Version: 		6.0.0
