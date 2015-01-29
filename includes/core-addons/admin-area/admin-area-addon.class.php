@@ -281,6 +281,10 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
                     'url' => admin_url('admin.php?page=customer-area&tab=whats-new'),
                     'label' => __("What's new", 'cuar')
                 ),
+                'changelog' => array(
+                    'url' => admin_url('admin.php?page=customer-area&tab=changelog'),
+                    'label' => __("Change log", 'cuar')
+                ),
                 'blog' => array(
                     'url' => admin_url('admin.php?page=customer-area&tab=blog'),
                     'label' => __("Live from the blog", 'cuar')
