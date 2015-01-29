@@ -35,6 +35,7 @@ abstract class CUAR_AddOn {
 		add_action( 'cuar/core/addons/init', array( &$this, 'run' ), 10 );
 		
 		if ( is_admin() ) {
+			add_action( 'admin_init', array( &$this, 'check_main_plugin_enabled' ), 10 );
 			add_action( 'cuar/core/addons/after-init', array( &$this, 'check_attention_needed' ), 10 );
 		}
 	}
@@ -68,8 +69,33 @@ abstract class CUAR_AddOn {
 	 * @param CUAR_Plugin $cuar_plugin The plugin instance
 	 */
 	public abstract function run_addon( $cuar_plugin );
-	
+
+	/**
+	 * Add-ons can check if something needs to be fixed at this point of time
+	 */
 	public function check_attention_needed() {
+	}
+
+	/**
+	 * Check that the main plugin is properly enabled. Else output a notice
+	 */
+	public function check_main_plugin_enabled() {
+		global $cuar_main_plugin_checked;
+		if (!is_plugin_active('customer-area/customer-area.php') && $cuar_main_plugin_checked!==true)
+		{
+			$cuar_main_plugin_checked = true;
+			add_action('admin_notices', array(&$this, 'add_main_plugin_disabled_notice'));
+		}
+	}
+
+	/**
+	 * Show a message to warn that the main plugin is either not installed or not activated
+	 */
+	public function add_main_plugin_disabled_notice()
+	{
+		echo '<div class="error"><p>';
+		echo __('<strong>Error: </strong>WP Customer Area add-ons are active but the main plugin is not installed!', 'cuar');
+		echo '</p></div>';
 	}
 	
 	public function set_default_options( $defaults ) {

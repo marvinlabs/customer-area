@@ -165,6 +165,7 @@ your wordpress.org profile with your other developed plugins.
 * Fix: bug that was showing the comments related to the last private content on the dashboard page
 * Fix: the function cuar_is_customer_area_private_content was not returning true for private containers (such as projects)
 * Fix: an email validation bug for additional profile fields created by code
+* Fix: improved detection of main plugin errors (not installed, disabled) for add-ons.
 
 = 5.0.7 (2014/07/31) =
 
