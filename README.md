@@ -20,10 +20,6 @@ You can [Follow us on Twitter](http://twitter.com/wp_customerarea)
 ## Contributors
 
 * [MarvinLabs](http://www.marvinlabs.com)
-* * [MarvinLabs](http://www.marvinlabs.com)
+* [Vincent Mimoun-Prat](http://vincentprat.info)
+* [Thomas Lartaud](http://thomaslartaud.com)
 
-If you want to get updates about our plugins, you can:
-
-* [Follow us on Twitter](http://twitter.com/wp_customerarea)
-* [Follow us on Google+](https://plus.google.com/u/0/117677945360605555441)
-* [Follow us on Facebook](http://www.facebook.com/studio.marvinlabs)
