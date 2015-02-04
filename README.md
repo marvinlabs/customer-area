@@ -1,6 +1,6 @@
 # WP Customer Area 
 
-![logo](http://www.marvinlabs.com/wp-content/uploads/2013/07/logo.png)
+![logo](http://ps.w.org/customer-area/assets/banner-772x250.jpg)
 
 Give your customers a page on your site where they can access private content in a secure and easy way. 
 
