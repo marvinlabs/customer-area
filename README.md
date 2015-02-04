@@ -1,6 +1,6 @@
 # WP Customer Area 
 
-![logo](http://ps.w.org/customer-area/assets/banner-772x250.jpg)
+![logo](http://plugins.svn.wordpress.org/customer-area/assets/banner-772x250.jpg)
 
 Give your customers a page on your site where they can access private content in a secure and easy way. 
 
