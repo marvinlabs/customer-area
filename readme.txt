@@ -1,13 +1,13 @@
 === WP Customer Area ===
 
-Contributors: 		vprat, marvinlabs
-Donate link: 		http://www.marvinlabs.com/donate/
-Tags: 				private files,client area,customer area,user files,secure area,crm,project,project management,access control
-Requires at least:	3.6
-Tested up to:		4.1
-Stable tag: 		6.0.0
-License: 			GPLv2 or later
-License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
+Contributors:       vprat, marvinlabs
+Donate link:        http://www.marvinlabs.com/donate/
+Tags:               private files,client area,customer area,user files,secure area,crm,project,project management,access control
+Requires at least:  3.6
+Tested up to:       4.1
+Stable tag:         6.0.0
+License:            GPLv2 or later
+License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
 Give your customers a page on your site where they can access private content (files, notices, ...). 
 
@@ -16,14 +16,16 @@ Give your customers a page on your site where they can access private content (f
 WP Customer Area is a modular all-in-one solution to manage private content with WordPress. Sharing files/pages with 
 one or multiple users is one of the main feature provided by our easy-to-use plugin. Give it a try!
 
-* [Demo](http://wp-customerarea.com/all-demos)
+* [Demos](http://wp-customerarea.com/all-demos)
 * [Add-ons](http://wp-customerarea.com/add-ons-and-themes/)
 * [Documentation](http://wp-customerarea.com/documentation/)
-* [FAQ](http://wp-customerarea.com/faq/)
-* [Support](http://wp-customerarea.com/support)
-* [Issue tracker](https://github.com/marvinlabs/customer-area/issues)
 * [Translations](http://wp-customerarea.com/documentation/)
+
+* [Support](http://wp-customerarea.com/support)
+* [FAQ](http://wp-customerarea.com/faq/)
+
 * [GitHub repository for contributors](https://github.com/marvinlabs/customer-area)
+* [Issue tracker](https://github.com/marvinlabs/customer-area/issues)
 
 **Current features**
 
@@ -38,22 +40,12 @@ one or multiple users is one of the main feature provided by our easy-to-use plu
 
 WP Customer Area is available for free and should cover the needs of most users. If you want to encourage us to actively 
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
-from [our online shop](http://wp-customerarea.com/add-ons-and-themes/): 
-
-* [Additional Owner Types](http://staging.wp-customerarea.com/downloads/additional-owner-types/)
-* [Advanced Custom Fields Integration](http://staging.wp-customerarea.com/downloads/advanced-custom-fields-integration/)
-* [Advanced Owner Restrictions](http://staging.wp-customerarea.com/downloads/advanced-owner-restrictions/)
-* [Conversations](http://staging.wp-customerarea.com/downloads/conversations/)
-
-* [Collaboration](http://www.marvinlabs.com/downloads/customer-area-collaboration/)
-* [Login forms](http://staging.wp-customerarea.com/downloads/login-forms/)
-* [Managed Groups](http://www.marvinlabs.com/downloads/customer-area-managed-groups/)
-* [Notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
-* [Projects](http://www.marvinlabs.com/downloads/customer-area-projects/)
-* [Search](http://www.marvinlabs.com/downloads/customer-area-search/)
-* [Switch Users](http://www.marvinlabs.com/downloads/customer-area-switch-users/)
+from [our online shop](http://wp-customerarea.com/add-ons-and-themes/)
 
 **Included translations**
+
+The community around WP Customer Area has contributed some [translations](http://wp-customerarea.com/documentation/) to
+the main plugin and some add-ons. They may no be all up-to-date but this could be a start for your project.
 
 * Catalan by Amanda Fontana
 * Dutch by [Paul Willems](http://wi4.nl) and [Peter Massar](http://profiles.wordpress.org/yourdigihands/)
@@ -69,21 +61,6 @@ from [our online shop](http://wp-customerarea.com/add-ons-and-themes/):
 If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
 you the credit for it on this page.
 
-**About us**
-
-If you like our plugins, you might want to [check our website](http://www.marvinlabs.com) for more.
-
-If you want to get updates about our plugins, you can:
-
-* [Follow us on Twitter](http://twitter.com/wp_customerarea)
-* [Follow us on Google+](https://plus.google.com/u/0/117677945360605555441)
-* [Follow us on Facebook](http://www.facebook.com/studio.marvinlabs)
-
-
-All the screenshots where done on a WordPress 3.6 development site, using the base Twenty Thirteen theme. No other
-customisation has been done to the plugin or to the add-ons.
-	
-	
 == Upgrade Notice ==
 
 We have a safe upgrade procedure that needs to be followed, specially if you have installed any add-ons to the main
@@ -147,13 +124,12 @@ Open a new topic on the plugin's support forum, I will consider every feature re
 
 = I implemented something, could you integrate it in the plugin? =
 
-Contributions are welcome. Additionally, if you wish to participate to development, you can send us an email 
-([check-out our website](http://www.marvinlabs.com)) and tell us a little bit about you (specially, send us a link to 
-your wordpress.org profile with your other developed plugins.
+Contributions are welcome. The plugin has a [GitHub repository for contributors](https://github.com/marvinlabs/customer-area)
+feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 6.0.0 (2015/) =
+= 6.0.0 (2015/02/) =
 
 * New: a setup assistant for first time installation & about page to introduce new versions features
 * New: support for the new website at http://wp-customerarea.com
