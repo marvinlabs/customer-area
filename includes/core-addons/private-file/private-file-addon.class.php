@@ -827,7 +827,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 						'publish_posts' 		=> 'cuar_pf_edit',
 						'read_post' 			=> 'cuar_pf_read',
 						'read_private_posts' 	=> 'cuar_pf_edit',
-						'delete_post' 			=> 'cuar_pf_delete'
+						'delete_post' 			=> 'cuar_pf_delete',
+						'delete_posts' 			=> 'cuar_pf_delete'
 					)
 			);
 
