@@ -149,7 +149,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		if ( file_exists( $filepath ) ) {
 			unlink( $filepath );
-			cuar_log_debug( "File deleted because the post has been removed:" . $filepath );
 		}
 	}
 	
@@ -249,8 +248,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 					
 				if ( $previous_file['path']==$new_file_path ) return;				
 				if ( copy( $previous_file['path'], $new_file_path ) ) unlink( $previous_file['path'] );
-					
-				cuar_log_debug( 'moved private file from ' . $previous_file['path'] . ' to ' . $new_file_path);
 			}
 		}
 	}
@@ -312,7 +309,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			if ( !in_array( $uploaded_type, $supported_types ) ) {
 				$msg =  sprintf( __("This file type is not allowed. You can only upload: %s", 'cuar',
 						implode( ', ', $supported_types ) ) );
-				cuar_log_debug( $msg );
 		
 				$this->plugin->add_admin_notice( $msg );
 				return array( 'error' => $msg );
@@ -326,7 +322,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 			if ( $previous_file['path'] && file_exists( $previous_file['path'] ) ) {
 				unlink( $previous_file['path'] );
-				cuar_log_debug( 'deleted old private file from ' . $previous_file['path'] );
 			}
 		}
 		
@@ -345,19 +340,16 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		if ( empty( $upload ) ) {
 			$msg = sprintf( __( 'An unknown error happened while uploading your file.', 'cuar' ) );
-			cuar_log_debug( $msg );
 			$this->plugin->add_admin_notice( $msg );
 			return array( 'error' => $msg );
 		} else if ( isset( $upload['error'] ) ) {
 			$msg = sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload['error'] );
-			cuar_log_debug( $msg );
 			$this->plugin->add_admin_notice( $msg );
 			return array( 'error' => $msg );
 		} else {
 			$upload['file'] = basename( $upload['file'] );
 			unset( $upload['url'] );
 			update_post_meta( $post_id, 'cuar_private_file_file', $upload );
-			cuar_log_debug( 'Uploaded new private file: ' . print_r( $upload, true ) );
 			return true;
 		}
 	}
@@ -380,7 +372,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 			if ( $previous_file['path'] && file_exists( $previous_file['path'] ) ) {
 				unlink( $previous_file['path'] );
-				cuar_log_debug( 'deleted old private file from ' . $previous_file['path'] );
 			}
 		}
 
@@ -397,7 +388,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			update_post_meta( $post_id, 'cuar_private_file_file', $upload );
 	  	} else {
 			$msg = __( 'An error happened while copying your file from the FTP folder', 'cuar' );
-			cuar_log_debug( $msg );
 			$this->plugin->add_admin_notice( $msg );
 	  	}
 	}
