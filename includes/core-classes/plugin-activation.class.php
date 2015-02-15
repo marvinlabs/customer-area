@@ -26,6 +26,9 @@ class CUAR_PluginActivation implements CUAR_PluginActivationDelegate
      */
     public function on_activate()
     {
+        // Reset all warnings, they should all be started new
+        CUAR_MessageCenter::reset_warnings();
+
         // Schedule checking for updating/setting up the plugin
         CUAR_PluginActivationManager::schedule_deferred_action('check-plugin-version', 10);
 

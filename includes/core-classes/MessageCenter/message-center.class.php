@@ -48,6 +48,14 @@ class CUAR_MessageCenter
     }
 
     /**
+     * Remove all warnings from database
+     */
+    public static function reset_warnings()
+    {
+        update_option(self::$OPTION_WARNINGS, array());
+    }
+
+    /**
      * Add a message to tell the user that the plugin may not be working properly
      *
      * @param string $message_id

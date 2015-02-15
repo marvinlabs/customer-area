@@ -63,6 +63,8 @@ class CUAR_Plugin {
 			add_action( 'admin_notices', array( &$this, 'print_admin_notices' ) );
             add_action( 'init', array( &$this, 'load_defaults' ), 9 );
 
+			add_action('permalink_structure_changed', array( &$this, 'check_permalinks_enabled'));
+
             add_action('cuar/core/activation/run-deferred-action?action_id=check-template-files', array( &$this, 'check_templates'));
             add_action('cuar/core/activation/run-deferred-action?action_id=check-permalink-settings', array( &$this, 'check_permalinks_enabled'));
 		} else {
