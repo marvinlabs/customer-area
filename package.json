@@ -1,0 +1,42 @@
+{
+    "name" : "bxslider-integration",
+    "version" : "1.7.2",
+    "description" : "WP Customer Area is a modular all-in-one solution to manage private content with WordPress. Files, pages, conversations, tasks, etc.: sharing private content with one or multiple users is the main feature provided by our plugin.",
+    "author" : {
+        "name" : "Vincent Mimoun-Prat",
+        "email" : "vincent@marvinlabs.com",
+        "url" : "http://marvinlabs.com/"
+    },
+    "homepage" : "http://wp-customerarea.com",
+    "bugs" : {
+        "url" : "http://github.com/marvinlabs/customer-area/issues"
+    },
+    "repository" : {
+        "type" : "git",
+        "url" : "git@github.com:marvinlabs/customer-area.git"
+    },
+    "license" : "GPL v2",
+    "devDependencies" : {
+        "glob" : "^4.4.0",
+        "grunt" : "^0.4.5",
+        "grunt-autoprefixer" : "^2.2.0",
+        "grunt-checkpending" : "^0.1.2",
+        "grunt-checktextdomain" : "^0.1.1",
+        "grunt-contrib-clean" : "^0.6.0",
+        "grunt-contrib-compress" : "^0.13.0",
+        "grunt-contrib-concat" : "^0.5.1",
+        "grunt-contrib-copy" : "^0.8.0",
+        "grunt-contrib-less" : "~0.11.0",
+        "grunt-contrib-uglify" : "^0.8.0",
+        "grunt-contrib-watch" : "~0.6.1",
+        "grunt-git" : "^0.3.4",
+        "grunt-text-replace" : "^0.4.0",
+        "grunt-transifex" : "^0.1.1",
+        "grunt-version" : "^0.3.1",
+        "grunt-wp-i18n" : "^0.5.0",
+        "grunt-exec": "~0.4.5",
+        "grunt-potomo": "~3.2.0",
+        "grunt-wp-readme-to-markdown" : "^0.8.0",
+        "load-grunt-config" : "^0.16.0"
+    }
+}
