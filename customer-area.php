@@ -61,7 +61,6 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin-store.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin-activation.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin.class.php' );
-include_once( CUAR_INCLUDES_DIR . '/core-classes/theme-utils.class.php' );
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/field-renderer.interface.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/abstract-field-renderer.class.php' );
