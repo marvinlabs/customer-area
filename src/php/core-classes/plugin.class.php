@@ -131,7 +131,15 @@ class CUAR_Plugin {
 	 * Loads the required javascript files (only when not in admin area)
 	 */
 	public function load_scripts() {
-		if ( is_admin() ) return;
+		if ( is_admin() ) {
+            wp_register_script('cuar.admin', CUAR_PLUGIN_URL . '/assets/admin/js/customer-area.min.js', array('jquery') );
+            wp_localize_script('cuar.admin', 'cuarAdminMessages', array(
+                'checkingLicense'                  => __( 'Checking license...', 'cuar' ),
+                'unreachableLicenseServerError'    => __( 'Failed to contact server', 'cuar' )
+            ));
+        } else {
+
+        }
 	}
 	
 	/**

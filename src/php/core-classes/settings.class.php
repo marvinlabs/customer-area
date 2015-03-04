@@ -702,12 +702,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 //			} else {
 //				$should_check_license = true;
 //			}
-
-            wp_enqueue_script('cuar-licensing', CUAR_PLUGIN_URL . '/assets/js/admin/customer-area.min.js', array('jquery') );
-            wp_localize_script('cuar-licensing', 'cuarLicensingMessages', array(
-                'checking'                  => __( 'Checking license...', 'cuar' ),
-                'unreachableServerError'    => __( 'Failed to contact server', 'cuar' )
-            ));
+            wp_enqueue_script('cuar.admin');
 		}
 		
 		/**

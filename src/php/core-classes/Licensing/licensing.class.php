@@ -188,7 +188,7 @@ class CUAR_Licensing
         $license_data = json_decode($response);
 
         // If not a valid license and license is missing, return null
-        if ($license_data->license != 'valid' && $license_data->error == 'missing') {
+        if (!isset($license_data) || ($license_data->license != 'valid' && $license_data->error == 'missing')) {
             return null;
         }
 

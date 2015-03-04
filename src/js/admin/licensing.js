@@ -38,7 +38,7 @@ function validateLicense($, licenseControl) {
         return;
     }
 
-    checkResultContainer.html(cuarLicensingMessages.checking).removeClass().addClass('cuar-ajax-running');
+    checkResultContainer.html(cuarAdminMessages.checking).removeClass().addClass('cuar-ajax-running');
     licenseInput.prop('disabled', true);
 
     var data = {
@@ -60,7 +60,7 @@ function validateLicense($, licenseControl) {
             checkResultContainer
                 .removeClass()
                 .addClass('cuar-ajax-failure')
-                .html(cuarLicensingMessages.unreachableServerError);
+                .html(cuarAdminMessages.unreachableLicenseServerError);
         }
     );
 }
