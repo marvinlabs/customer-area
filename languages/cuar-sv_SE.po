@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area v3.5.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-01 09:13+0100\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
+"environment/issues\n"
+"POT-Creation-Date: 2015-03-04 10:53:02+00:00\n"
 "PO-Revision-Date: 2014-09-01 09:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,324 +21,2539 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:35
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:38
 msgid "Administration Area"
 msgstr ""
 
-#: includes/core-addons/admin-area/admin-area-addon.class.php:53
-msgid "News"
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:92
+msgid "Restrict WP admin area"
 msgstr ""
 
-#: includes/core-addons/admin-area/admin-area-addon.class.php:55
-msgid "Frequently Asked Questions"
-msgstr ""
-
-#: includes/core-addons/admin-area/admin-area-addon.class.php:57
-msgid "Resources"
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:99
+msgid "Restrict the access to the administration panel of WordPress."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:69
-#: includes/core-addons/help/templates/troubleshooting.template.php:10
-#, php-format
-msgid ""
-"<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and "
-"for the add-ons."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:72
-#: includes/core-addons/help/templates/troubleshooting.template.php:13
-#, php-format
-msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:75
-#: includes/core-addons/help/templates/troubleshooting.template.php:16
-#, php-format
-msgid ""
-"A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support forum</"
-"a>, only for the main plugin (English only as per the wordpress.org rules)."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:78
-#: includes/core-addons/help/templates/troubleshooting.template.php:19
-#, php-format
-msgid ""
-"<a href=\"%1$s\" target=\"_blank\">Support forums</a> on our website for the "
-"main plugin as well as for the add-ons (English, French and Spanish are ok "
-"there). "
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:145
-#: includes/core-classes/settings.class.php:234
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:135
+#: src/php/core-classes/settings.class.php:234
 msgid "General"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:148
-#: includes/core-addons/private-file/private-file-addon.class.php:750
-#: includes/core-addons/private-page/private-page-addon.class.php:161
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:142
+#: src/php/core-addons/private-file/private-file-addon.class.php:740
+#: src/php/core-addons/private-page/private-page-addon.class.php:161
 msgid "Back-office"
 msgstr ""
 
-# @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:150
-msgid "View the menu"
-msgstr "Visa menyn"
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:144
+msgid "Access the WordPress admin area"
+msgstr ""
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:164
-#: includes/core-addons/admin-area/admin-area-addon.class.php:165
-#: includes/core-addons/admin-area/admin-area-addon.class.php:195
-#: includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:33
-#: includes/core-addons/customer-home/customer-home-addon.class.php:47
-#: includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:22
-#: includes/core-addons/status/templates/status-section-hooks.template.php:24
-#: includes/core-addons/status/templates/status-section-templates.template.php:24
-#: includes/core-classes/plugin.class.php:695
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:145
+#, fuzzy
+msgid "View the Customer Area menu"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:149
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:71
+#: src/php/core-addons/private-file/private-file-addon.class.php:753
+#: src/php/core-addons/private-page/private-page-addon.class.php:174
+msgid "Front-office"
+msgstr ""
+
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:151
+msgid "See the WordPress top bar"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:201
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:202
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:234
+#: src/php/core-addons/customer-home/customer-home-addon.class.php:47
+#: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:46
+#: src/php/core-addons/status/templates/status-section-hooks.template.php:24
+#: src/php/core-addons/status/templates/status-section-templates.template.php:22
+#: src/php/core-classes/plugin.class.php:573
 msgid "Customer Area"
 msgstr "Författarzon"
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:202
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:241
 #, fuzzy
 msgid "Your private area"
 msgstr "Privat sida"
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:215
-#: includes/core-addons/status/status-addon.class.php:141
-#: includes/core-classes/settings.class.php:71
-#: includes/core-classes/settings.class.php:72
-#: includes/core-classes/settings.class.php:110
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:254
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:26
+#: src/php/core-addons/status/status-addon.class.php:141
+#: src/php/core-classes/settings.class.php:71
+#: src/php/core-classes/settings.class.php:72
+#: src/php/core-classes/settings.class.php:110
 msgid "Settings"
 msgstr ""
 
-#: includes/core-addons/admin-area/admin-area-addon.class.php:224
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:263
 msgid "Help & support"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:231
-#: includes/core-addons/help/help-addon.class.php:57
-#: includes/core-addons/help/help-addon.class.php:65
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:270
+#: src/php/core-addons/help/help-addon.class.php:57
+#: src/php/core-addons/help/help-addon.class.php:65
 msgid "Add-ons"
 msgstr ""
 
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:282
+msgid "What's new"
+msgstr ""
+
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:286
+msgid "Change log"
+msgstr ""
+
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:290
+msgid "Live from the blog"
+msgstr ""
+
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:294
+msgid "Add-ons &amp; themes"
+msgstr ""
+
 # @ cuar
-#: includes/core-addons/capabilities/capabilities-addon.class.php:35
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:298
+#: src/php/core-addons/installer/installer-addon.class.php:246
+#, fuzzy
+msgid "Welcome to WP Customer Area %s"
+msgstr "Författarzon"
+
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:299
+#: src/php/core-addons/installer/installer-addon.class.php:247
+msgid ""
+"<strong>WP Customer Area</strong> %s is more powerful, stable and secure "
+"than ever before. We hope you will enjoy using it."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:16
+#: src/php/core-addons/installer/templates/installer-page.template.php:15
+#, fuzzy
+msgid "version %s"
+msgstr "Från: %s"
+
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:29
+msgid "http://wp-customerarea.com/documentation/"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:29
+msgid "Documentation"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:32
+msgid "http://wp-customerarea.com/support/"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:32
+#: src/php/core-addons/help/help-addon.class.php:66
+msgid "Support"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:71
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:58
+msgid "Stay informed"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:84
+#: src/php/core-addons/help/help-addon.class.php:190
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:71
+msgid "Email Address"
+msgstr "E-post"
+
+#: src/php/core-addons/admin-area/templates/dashboard-page.template.php:90
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:77
+msgid "Subscribe"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:8
+#: src/php/core-addons/help/templates/list-addons.template.php:20
+msgid "Save money with our bundles"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:9
+msgid "http://wp-customerarea.com/downloads/category/wpca-bundles/feed/rss"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:12
+#, fuzzy
+msgid "Add-ons to enhance your private area"
+msgstr "Privat sida"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:13
+msgid "http://wp-customerarea.com/downloads/category/wpca-add-ons/feed/rss"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:16
+#, fuzzy
+msgid "Themes optimised for WP Customer Area"
+msgstr "Författarzon"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:17
+msgid "http://wp-customerarea.com/downloads/category/wpca-themes/feed/rss"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-blog.template.php:7
+msgid "http://wp-customerarea.com/feed/rss"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
+msgid "Improved setup &amp; updates"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
+msgid "Better permissions"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+msgid "Stability improvements"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/capabilities/capabilities-addon.class.php:35
 msgid "Capabilities Manager"
 msgstr ""
 
-#: includes/core-addons/capabilities/capabilities-addon.class.php:55
+#: src/php/core-addons/capabilities/capabilities-addon.class.php:55
 msgid "You have not yet configured the plugin permissions."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/capabilities/capabilities-addon.class.php:79
+#: src/php/core-addons/capabilities/capabilities-addon.class.php:79
 msgid "Capabilities"
 msgstr ""
 
-#: includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:24
-#: includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:30
+#: src/php/core-addons/capabilities/templates/capabilities-table.template.php:50
+msgid "Toggle all permissions for this role"
+msgstr ""
+
+#: src/php/core-addons/capabilities/templates/capabilities-table.template.php:81
+msgid "Toggle this permission for all roles"
+msgstr ""
+
+#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:24
+#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:30
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:23
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:33
 msgid "Configure permissions"
 msgstr ""
 
-#: includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:26
-msgid ""
-"You have not yet configured the permissions. By default, the plugin will "
-"allows the administrators to do everything but the other roles will not be "
-"able to use the customer area. The permissions can easily be configured from "
-"the Customer Area settings."
-msgstr ""
-
-#: includes/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:29
-#: includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:31
-#: includes/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:30
-#: includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:31
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:79
-#: includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
+#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:29
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:31
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:30
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:31
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:79
+#: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
 msgid "Suggested action"
 msgstr ""
 
+#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:31
+msgid "Ignore this warning"
+msgstr ""
+
 # @ cuar
-#: includes/core-addons/container-owner/container-owner-addon.class.php:36
+#: src/php/core-addons/container-owner/container-owner-addon.class.php:36
 #, fuzzy
 msgid "Container Owner"
 msgstr "Ägare av inlägg"
 
 # @ cuar
-#: includes/core-addons/container-owner/container-owner-addon.class.php:107
-#: includes/core-addons/post-owner/post-owner-addon.class.php:746
+#: src/php/core-addons/container-owner/container-owner-addon.class.php:107
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:746
 msgid "You are not authorized to view this page"
 msgstr "Du har inte tillstånd att visa denna sida"
 
-#: includes/core-addons/customer-account/customer-account-addon.class.php:43
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:44
 msgid "Account - Details"
 msgstr ""
 
-#: includes/core-addons/customer-account/customer-account-addon.class.php:47
-#: includes/core-addons/user-profile/user-profile-addon.class.php:61
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:48
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:61
 msgid "Account details"
 msgstr ""
 
-#: includes/core-addons/customer-account/customer-account-addon.class.php:51
-#: includes/core-addons/customer-account-home/customer-account-home-addon.class.php:51
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
+#: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:51
 msgid "This page shows a summary of the user account"
 msgstr ""
 
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:76
+msgid "View account details"
+msgstr ""
+
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:77
+msgid "Edit account details"
+msgstr ""
+
 # @ cuar
-#: includes/core-addons/customer-account/templates/customer-account-content.template.php:14
-#: includes/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:11
-#, php-format
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:14
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:11
 msgid "Hello %s,"
 msgstr "Hej %s,"
 
-#: includes/core-addons/customer-account/templates/customer-account-content.template.php:19
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:19
 msgid "Your profile has been updated"
 msgstr ""
 
-#: includes/core-addons/customer-account/templates/customer-account-content.template.php:23
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:23
 msgid "Please find below your account details"
 msgstr ""
 
-#: includes/core-addons/customer-account-edit/customer-account-edit-addon.class.php:43
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:44
 msgid "Account - Edit"
 msgstr ""
 
-#: includes/core-addons/customer-account-edit/customer-account-edit-addon.class.php:47
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:48
 msgid "Edit account"
 msgstr ""
 
-#: includes/core-addons/customer-account-edit/customer-account-edit-addon.class.php:51
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
 msgid "This page shows a form where the user can edit his account"
 msgstr ""
 
-#: includes/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:14
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:14
 msgid ""
 "You can update your account details. If you leave the password fields empty, "
 "your password will not be modified."
 msgstr ""
 
-#: includes/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:21
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:21
 msgid "Submit"
 msgstr ""
 
-#: includes/core-addons/customer-account-home/customer-account-home-addon.class.php:43
+#: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:43
 msgid "Account - Home"
 msgstr ""
 
-#: includes/core-addons/customer-account-home/customer-account-home-addon.class.php:47
+#: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:47
 msgid "My account"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
-#: includes/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
-#: includes/core-classes/addon-container-page.class.php:597
-#: includes/core-classes/addon-content-page.class.php:665
+#: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
+#: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
+#: src/php/core-classes/addon-container-page.class.php:597
+#: src/php/core-classes/addon-content-page.class.php:669
 msgid "Dashboard"
 msgstr "Panel"
 
-#: includes/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
+#: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
 msgid ""
 "Shows a summary of the user's private content (files, pages, messages, ...)."
 msgstr ""
 
-#: includes/core-addons/customer-home/customer-home-addon.class.php:43
+#: src/php/core-addons/customer-home/customer-home-addon.class.php:43
 msgid "Home"
 msgstr ""
 
-#: includes/core-addons/customer-home/customer-home-addon.class.php:51
+#: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
 "This is the main page for your customers. It will redirect to the login page "
 "or to the customer area dashboard."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/customer-home/customer-home-addon.class.php:55
+#: src/php/core-addons/customer-home/customer-home-addon.class.php:55
 #, fuzzy
 msgid "customer-area"
 msgstr "Författarzon"
 
 # @ cuar
-#: includes/core-addons/customer-logout/customer-logout-addon.class.php:44
-#: includes/core-addons/customer-logout/customer-logout-addon.class.php:48
+#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
+#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
 msgstr "Logga ut"
 
-#: includes/core-addons/customer-logout/customer-logout-addon.class.php:52
+#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:36
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:677
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:36
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:681
 #, fuzzy
 msgid "Customer Pages"
 msgstr "Författarsida"
 
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:101
+msgid "Some pages of the customer area have not yet been created."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:118
+msgid "The navigation menu for the customer area has not been created."
+msgstr ""
+
 # @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:77
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:128
+#: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
+msgid "Pages"
+msgstr "Sidor"
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:129
+#, fuzzy
+msgid "Pages of the Customer Area"
+msgstr "Författarzon"
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:502
+msgid "Customer Area Menu"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:506
+msgid "Could not create the menu. %s"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:557
+msgid "The menu has been created: <a href=\"%s\">view menu</a>"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:674
+#, fuzzy
+msgid "Site Pages"
+msgstr "Privata sidor"
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:707
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:768
+msgid "Reset"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:713
+#, fuzzy
+msgid "Reset all pages &raquo;"
+msgstr "Lista alla sidor"
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:716
+msgid "Delete all existing pages and recreate them."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:717
+msgid ""
+"Are you sure that you want to delete all existing pages and recreate them "
+"(this operation cannot be undone)?"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:725
+msgid "Main Navigation Menu"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:733
+#, fuzzy
+msgid "Customer Area pages"
+msgstr "Författarzon"
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:740
+msgid ""
+"Automatically print the Customer Area navigation menu on the Customer Area "
+"pages."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:750
+#, fuzzy
+msgid "Private content single pages"
+msgstr "Kategorier Privat fil"
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:757
+msgid ""
+"Automatically print the Customer Area navigation menu on private content "
+"single pages."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:774
+#, fuzzy
+msgid "Recreate menu"
+msgstr "Visa menyn"
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:777
+msgid "Delete and recreate the main navigation menu."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:778
+msgid ""
+"Are you sure that you want to recreate the main navigation menu (this "
+"operation cannot be undone)?"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:784
+msgid "Permalinks"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:791
+msgid "Category Archive"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:808
+msgid "Date Archive"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:825
+msgid "Author Archive"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:842
+msgid "Update Content"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:851
+msgid "Slug that is used in the URL to update existing private content"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:858
+#, fuzzy
+msgid "Delete Content"
+msgstr "Radera filer"
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:867
+msgid "Slug that is used in the URL to delete existing private content"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:878
+msgid "Since version 4.0.0, Customer Area handles navigation using menus."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:889
+msgid ""
+"Since version 4.0.0, Customer Area is using various pages to show the "
+"content for your customers. Create those pages from here or simply indicate "
+"existing ones. "
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:948
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:977
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1036
+msgid ""
+"Some pages of the customer area have been created or deleted. The customer "
+"area navigation menu needs to be updated."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:974
+msgid "The following pages have been created: %s"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:979
+msgid "There was no missing page that could be created."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1016
+msgid ""
+"Some pages in your site seem to contain Customer Area shortcodes but are not "
+"registered in the Customer Area pages settings."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1032
+msgid "%s page has been deleted"
+msgid_plural "%s pages have been deleted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/php/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:8
+msgid "Toggle navigation"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/pagination.template.php:8
+msgid "(current)"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/templates/pagination.template.php:11
+#, fuzzy
+msgid "Page %1$s"
+msgstr "Sidor"
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:23
+msgid "Missing navigation menu"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:26
+msgid ""
+"A navigation menu organizes the customer area. It allows to browse the "
+"files, the pages, to view the account details and much more. It seems that "
+"this menu has not yet been created."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
+msgid ""
+"You can review which menus are currently created on the <a href=\"%1$s"
+"\">menus page</a>."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:32
+#, fuzzy
+msgid "Create the menu"
+msgstr "Visa menyn"
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:39
+msgid ""
+"Are you sure that you want to create the menu (this operation cannot be "
+"undone)?"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:23
+msgid "Navigation menu is out of sync"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
+msgid ""
+"Some pages of the customer area have been changed and our current navigation "
+"menu probably references the previous pages. We recommend to synchronize the "
+"menu with the new pages. "
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
+msgid ""
+"You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
+"&raquo; Menus</a> page."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:30
+msgid "Suggested actions"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:31
+msgid "Synchronize menu"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:34
+msgid "Ignore warning"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:41
+msgid ""
+"Are you sure that you want to clear current menu and create it again from "
+"scratch (this operation cannot be undone)?"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:46
+msgid ""
+"Are you sure that you want ignore this warning? You can also manually edit "
+"your menu in the page: \"Appearance > Menus\"."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:23
+msgid "Orphan pages"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:31
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:80
+#, fuzzy
+msgid "Delete orphan pages"
+msgstr "Radera sidor"
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:38
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:87
+msgid ""
+"Are you sure that you want to delete those pages (this operation cannot be "
+"undone)?"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:23
+msgid "Missing front-office pages"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:26
+msgid ""
+"Some pages of the customer area have not yet been created. Those pages are "
+"responsible for displaying the private content you have assigned to your "
+"users."
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
+msgid ""
+"You can review which pages are currently created on the <a href=\"%1$s"
+"\">pages settings page</a>."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:32
+#, fuzzy
+msgid "Create missing pages"
+msgstr "Skapa/Redigera sidor"
+
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:39
+msgid ""
+"Are you sure that you want to create all the pages that are currently "
+"missing (this operation cannot be undone)?"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
+#, fuzzy
+msgid "Page"
+msgstr "Sidor"
+
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:26
+msgid "Slug"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:27
+msgid "Order"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:28
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:100
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:28
+msgid "ID"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:29
+msgid "Sidebar"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:30
+#: src/php/core-addons/status/hook-finder.class.php:123
+msgid "Type"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:116
+#: src/php/core-classes/addon-update-content-page.class.php:249
+#: src/php/core-classes/addon-update-content-page.class.php:250
+msgid "Edit"
+msgstr ""
+
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:54
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:118
+msgid "View"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:71
+#, fuzzy
+msgid "Potential orphan pages"
+msgstr "Du har just nu inga sidor."
+
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:99
+msgid "Title"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:51
+#, fuzzy
+msgid "Private Files - Owned"
+msgstr "Privata filer"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:55
+#, fuzzy
+msgid "My files"
+msgstr "Filer"
+
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:59
+msgid "Page to list the files a customer owns."
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:86
+msgid "Files you created"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:90
+#, fuzzy
+msgid "Files created by %1$s"
+msgstr "Fil skapad den %1$s av %2$s för %3$s"
+
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:94
+msgid "Files under %1$s"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:100
+#, fuzzy
+msgid "Files published in %2$s %1$s"
+msgstr "Klicka för att visa filer publicerade i %s"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:102
+#, fuzzy
+msgid "Files published in %1$s"
+msgstr "Klicka för att visa filer publicerade i %s"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:109
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:113
+#: src/php/core-addons/customer-private-files/widget-private-files.class.php:49
+#, fuzzy
+msgid "Recent Files"
+msgstr "Senaste filer"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:121
+#: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:49
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:121
+#: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:49
+#, fuzzy
+msgid "Categories"
+msgstr "Filkategorier"
+
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:126
+#: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:49
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:126
+#: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:49
+msgid "Archives"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:131
+#: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:49
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:131
+#: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:49
+msgid "Created By"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:3
+#, fuzzy
+msgid "There are no files in that category."
+msgstr "Inga filer i denna kategori"
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:3
+msgid "There are no files for that period."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty.template.php:3
+msgid "You currently have no files."
+msgstr "Du har för närvarande inga filer."
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:19
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:19
+msgid "You uploaded this file"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:20
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:22
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:20
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:22
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:19
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:21
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:19
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:21
+msgid "Published for %s"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:23
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:23
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:22
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:22
+msgid "Published by %s"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:26
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:26
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:25
+#, fuzzy
+msgid "Uploaded on %s"
+msgstr "Tillagd den %s"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:43
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:51
+#, fuzzy
+msgid "Download (%1$s)"
+msgstr "Ladda ner"
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:30
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:28
+msgid "Author"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:35
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:33
+msgid "Recipient"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:40
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
+#: src/php/core-classes/widget-content-list.class.php:161
+msgid "Date"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
+msgid "Attachment"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:50
+#, fuzzy
+msgid "Download"
+msgstr "Ladda ner"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:37
+#, fuzzy
+msgid "Customer Area - File Authors"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:39
+msgid "Shows the private file author archives of the Customer Area"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:37
+#, fuzzy
+msgid "Customer Area - File Categories"
+msgstr "Alla filkategorier"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:39
+#, fuzzy
+msgid "Shows the private file categories of the Customer Area"
+msgstr "Separata filkategorier med komman"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:37
+#, fuzzy
+msgid "Customer Area - File Archives"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:39
+msgid "Shows the private file yearly archives of the Customer Area"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/widget-private-files.class.php:37
+#, fuzzy
+msgid "Customer Area - Recent Files"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/customer-private-files/widget-private-files.class.php:39
+msgid "Shows a list of files for the logged-in user"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-files/widget-private-files.class.php:53
+#, fuzzy
+msgid "No files"
+msgstr "Filer"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:46
+#, fuzzy
+msgid "Private Files - Home"
+msgstr "Privata filer"
+
+# @ cuar
+#: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:50
+msgid "Files"
+msgstr "Filer"
+
+#: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:54
+msgid "Root page for the customer files."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:51
+#, fuzzy
+msgid "Private Pages - Owned"
+msgstr "Privata sidor"
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:55
+#, fuzzy
+msgid "My pages"
+msgstr "Sidor"
+
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:59
+msgid "Page to list the pages a customer owns."
+msgstr ""
+
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:86
+msgid "Pages you created"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:90
+#, fuzzy
+msgid "Pages created by %1$s"
+msgstr "Sida skapad den  %1$s av %2$s för %3$s"
+
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:94
+msgid "Pages under %1$s"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:100
+#, fuzzy
+msgid "Pages published in %2$s %1$s"
+msgstr "Klicka för att visa filer publicerade i %s"
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:102
+#, fuzzy
+msgid "Pages published in %1$s"
+msgstr "Klicka för att visa filer publicerade i %s"
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:109
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:113
+#: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:49
+#, fuzzy
+msgid "Recent Pages"
+msgstr "Senaste Sidor"
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:3
+#, fuzzy
+msgid "There are no pages in that category."
+msgstr "Inga filer i denna kategori"
+
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-date_archive.template.php:3
+msgid "There are no pages for that period."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty.template.php:3
+msgid "You currently have no pages."
+msgstr "Du har just nu inga sidor."
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:18
+#, fuzzy
+msgid "You created this page"
+msgstr "Du har inte tillstånd att visa denna sida"
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:25
+#, fuzzy
+msgid "Created on %s"
+msgstr "Tillagd den %s"
+
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:18
+msgid "You published this page"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:37
+#, fuzzy
+msgid "Customer Area - Page Authors"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:39
+msgid "Shows the private page author archives of the Customer Area"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:37
+#, fuzzy
+msgid "Customer Area - Page Categories"
+msgstr "Alla filkategorier"
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:39
+#, fuzzy
+msgid "Shows the private page categories of the Customer Area"
+msgstr "Separata filkategorier med komman"
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:37
+#, fuzzy
+msgid "Customer Area - Page Archives"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:39
+msgid "Shows the private page yearly archives of the Customer Area"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:37
+#, fuzzy
+msgid "Customer Area - Recent Pages"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:39
+msgid "Shows a list of pages for the logged-in user"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:53
+#, fuzzy
+msgid "No pages"
+msgstr "Sidor"
+
+# @ cuar
+#: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:46
+#, fuzzy
+msgid "Private Pages - Home"
+msgstr "Privata sidor"
+
+#: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:54
+msgid "Root page for the customer pages."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:35
+msgid "Help"
+msgstr "Hjälp"
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:85
+#: src/php/core-addons/help/help-addon.class.php:97
+#: src/php/core-addons/help/templates/list-addons.template.php:9
+msgid "Enhance your customer area"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:87
+#: src/php/core-addons/help/help-addon.class.php:113
+msgid "Subscribe to our newsletter"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:89
+#: src/php/core-addons/help/help-addon.class.php:105
+msgid "Get more from MarvinLabs"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:132
+msgid "Browse all extensions"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:150
+msgid ""
+"If you like our plugins, you might want to <a href=\"%s\">check our website</"
+"a> for more."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:153
+msgid "If you want to get updates about our plugins, you can:"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:155
+msgid "Follow us on Twitter"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:158
+msgid "Follow us on Google+"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/help-addon.class.php:161
+msgid "Follow us on Facebook"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/templates/list-addons.template.php:14
+msgid ""
+"There has been an error while getting the list of add-ons, please <a href="
+"\"%s\">visit our shop directly</a>."
+msgstr ""
+
+#: src/php/core-addons/help/templates/list-addons.template.php:47
+msgid "Our add-ons"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/templates/troubleshooting.template.php:3
+msgid "Getting support"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/templates/troubleshooting.template.php:5
+msgid "Please note that we do not reply to support requests sent by email."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/templates/troubleshooting.template.php:6
+msgid "If you have any problem, we have some resources that could help you:"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/templates/troubleshooting.template.php:9
+msgid ""
+"<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and "
+"for the add-ons."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/templates/troubleshooting.template.php:12
+msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/templates/troubleshooting.template.php:15
+msgid ""
+"A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support forum</"
+"a>, only for the main plugin (English only as per the wordpress.org rules)."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/help/templates/troubleshooting.template.php:18
+msgid ""
+"<a href=\"%1$s\" target=\"_blank\">Support forums</a> on our website for the "
+"main plugin as well as for the add-ons (English, French and Spanish are ok "
+"there). "
+msgstr ""
+
+#: src/php/core-addons/installer/installer-addon.class.php:46
+msgid "Installer"
+msgstr ""
+
+#: src/php/core-addons/installer/installer-addon.class.php:184
+msgid "The required pages and the navigation menu have been created"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/installer/installer-addon.class.php:217
+#: src/php/core-addons/installer/installer-addon.class.php:218
+#, fuzzy
+msgid "Install WP Customer Area"
+msgstr "Författarzon"
+
+#: src/php/core-addons/installer/installer-addon.class.php:248
+msgid ""
+"There is a quick installation to run before being able to publish your first "
+"private files and pages. It should be over in less than a minute!"
+msgstr ""
+
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
+msgid "Setup pages and navigation menu"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:14
+#, fuzzy
+msgid "Create pages and menu"
+msgstr "Privata sidor"
+
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:34
+msgid "http://wp-customerarea.com/documentation/permissions-reference/"
+msgstr ""
+
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:34
+msgid "Permissions reference guide"
+msgstr ""
+
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:41
+msgid "Read our getting started guide"
+msgstr ""
+
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:51
+msgid "http://wp-customerarea.com/documentation/getting-started/"
+msgstr ""
+
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:51
+msgid "Getting started tutorial"
+msgstr ""
+
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:88
+msgid "Feeling ready?"
+msgstr ""
+
+#: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:90
+msgid "Let's go!"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:36
+msgid "Post Owner"
+msgstr "Ägare av inlägg"
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:190
+msgid "User"
+msgstr "Användare"
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:252
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:256
+msgid "Unknown"
+msgstr "Okänd"
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:367
+msgid "Owner"
+msgstr "Ägare"
+
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:433
+msgid "Assignment"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:458
+#, fuzzy
+msgid "Select the owner"
+msgstr "Välj typ av ägare"
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:609
+#, fuzzy
+msgid "It seems you cannot select any owner of that type."
+msgstr "Det verkar som du inte kan välja ägare."
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:618
+msgid "The owner is hidden"
+msgstr "Ägaren är gömd"
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:635
+#, fuzzy
+msgid "Select or search an owner"
+msgstr "Välj typ av ägare"
+
+# @ cuar
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:781
+msgid "User - %s"
+msgstr "Användare - %s"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:37
+#: src/php/core-addons/private-file/private-file-addon.class.php:86
+#: src/php/core-addons/private-file/private-file-addon.class.php:737
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:96
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:97
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:397
+msgid "Private Files"
+msgstr "Privata filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:95
+#, fuzzy
+msgid "All files"
+msgstr "Lista alla filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:104
+#, fuzzy
+msgid "New file"
+msgstr "Radera filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:113
+#: src/php/core-addons/private-file/private-file-addon.class.php:746
+#: src/php/core-addons/private-page/private-page-addon.class.php:110
+#: src/php/core-addons/private-page/private-page-addon.class.php:167
+msgid "Manage categories"
+msgstr "Hantera kategorier"
+
+#: src/php/core-addons/private-file/private-file-addon.class.php:296
+msgid "no file to upload"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:310
+msgid "This file type is not allowed. You can only upload: %s"
+msgstr "Denna filtyp är inte tillåten. Du kan endast ladda upp: %s"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:342
+msgid "An unknown error happened while uploading your file."
+msgstr "Ett okänt fel uppstod när du laddade upp filen."
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:346
+msgid "An error happened while uploading your file: %s"
+msgstr "Ett okänt fel uppstod under uppladdning av filen: %s"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:390
+#, fuzzy
+msgid "An error happened while copying your file from the FTP folder"
+msgstr "Ett okänt fel uppstod under uppladdning av filen: %s"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:424
+msgid "You are not authorized to access this file"
+msgstr "Du har inte tillstånd till den här filen"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:742
+msgid "List all files"
+msgstr "Lista alla filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:743
+msgid "Create/Edit files"
+msgstr "Skapa/Redigera filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:744
+msgid "Delete files"
+msgstr "Radera filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:745
+msgid "Access files"
+msgstr "Kom åt filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:747
+#: src/php/core-addons/private-page/private-page-addon.class.php:168
+msgid "Edit categories"
+msgstr "Redigera kategorier"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:748
+#: src/php/core-addons/private-page/private-page-addon.class.php:169
+msgid "Delete categories"
+msgstr "Radera kategorier"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:749
+#: src/php/core-addons/private-page/private-page-addon.class.php:170
+msgid "Assign categories"
+msgstr "Tilldela kategorier"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:755
+#, fuzzy
+msgid "View private files"
+msgstr "Visa privata filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-addon.class.php:756
+msgid "View any private file"
+msgstr "Visa privata filer"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:103
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:104
+msgid "New Private File"
+msgstr "Ny Privat fil"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:110
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:111
+msgid "Private File Categories"
+msgstr "Kategorier Privat fil"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:203
+#: src/php/core-addons/status/hook-finder.class.php:125
+#: src/php/core-addons/status/template-printer.class.php:39
+msgid "File"
+msgstr "Fil"
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:223
+msgid "File currently associated to this post"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:224
+msgid "Current file:"
+msgstr "Nuvarande fil:"
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:236
+msgid "Change the associated file"
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:237
+msgid "How to add the file?"
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:240
+msgid "Direct upload"
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:241
+msgid "Copy from FTP folder"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:247
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:257
+#, fuzzy
+msgid "Pick a file"
+msgstr "Lista alla filer"
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:260
+msgid "The FTP upload folder does not exist."
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:262
+msgid "The FTP upload folder is empty."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:265
+#, fuzzy
+msgid "Select a file"
+msgstr "Radera filer"
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:279
+msgid "Copy file or move it?"
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:282
+msgid ""
+"If checked, the file will be deleted after it has been copied to the owner's "
+"private storage directory"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:409
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:198
+msgid "General settings"
+msgstr "Allmänna inställningar"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:416
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:205
+msgid "Enable add-on"
+msgstr "Aktivera tillägg"
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:424
+msgid "Check this to enable the private files add-on."
+msgstr "Kryssa i här för att aktivera privata filer tillägg."
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:428
+msgid ""
+"This folder does not exist, please create it if you want to copy files from "
+"the FTP folder. Otherwise, you need not do anything."
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:435
+msgid "FTP uploads folder"
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:444
+msgid ""
+"This folder can be used when you want to use files uploaded with FTP. This "
+"is handy when direct upload is failing for big files for instance."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:451
+msgid "File Storage"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:495
+msgid "The files will be stored in the following directory: <code>%s</code>."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:500
+msgid ""
+"Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:37
+#: src/php/core-addons/private-page/private-page-addon.class.php:83
+#: src/php/core-addons/private-page/private-page-addon.class.php:158
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:91
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:92
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:186
+msgid "Private Pages"
+msgstr "Privata sidor"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:92
+#, fuzzy
+msgid "All pages"
+msgstr "Lista alla sidor"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:101
+#, fuzzy
+msgid "New page"
+msgstr "Radera sidor"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:163
+msgid "List all pages"
+msgstr "Lista alla sidor"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:164
+msgid "Create/Edit pages"
+msgstr "Skapa/Redigera sidor"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:165
+msgid "Delete pages"
+msgstr "Radera sidor"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:166
+msgid "Access pages"
+msgstr "Sidor åtkomst"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:176
+#, fuzzy
+msgid "View private pages"
+msgstr "Visa privata sidor"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-addon.class.php:177
+msgid "View any private page"
+msgstr "Visa privata sidor"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:98
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:99
+msgid "New Private Page"
+msgstr "Ny Privat sida"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:105
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:106
+#, fuzzy
+msgid "Private Page Categories"
+msgstr "Kategorier Privat fil"
+
+# @ cuar
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:213
+msgid "Check this to enable the private pages add-on."
+msgstr "Kryssa i här för att aktivera tillägg för Privata sidor."
+
+# @ cuar
+#: src/php/core-addons/status/hook-finder.class.php:124
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
+#: src/php/core-classes/widget-content-list.class.php:162
+msgid "Name"
+msgstr "Namn"
+
+#: src/php/core-addons/status/hook-finder.class.php:126
+msgid "Path"
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:35
+#: src/php/core-addons/status/status-addon.class.php:53
+#: src/php/core-addons/status/status-addon.class.php:70
+msgid "Status"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/status-addon.class.php:52
+#, fuzzy
+msgid "Customer Area - Plugin status"
+msgstr "Meny Författarzon"
+
+#: src/php/core-addons/status/status-addon.class.php:110
+msgid "Needs attention"
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:111
+msgid "Things that need your attention"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/status-addon.class.php:115
+msgid "Installed add-ons"
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:116
+msgid "Core and commercial add-ons currently enabled"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/status-addon.class.php:125
+#, fuzzy
+msgid "Actions and filters"
+msgstr "Lista alla filer"
+
+#: src/php/core-addons/status/status-addon.class.php:126
+msgid "Listing of all actions and filters"
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:131
+msgid "Templates"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/status-addon.class.php:132
+#, fuzzy
+msgid "Template files"
+msgstr "Radera filer"
+
+#: src/php/core-addons/status/status-addon.class.php:142
+msgid "Settings tools"
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:188
+msgid "Settings have been resetted to default values"
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:195
+msgid "Invalid parameters. No file sent"
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:203
+msgid "No file sent."
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:207
+msgid "Exceeded filesize limit."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/status-addon.class.php:210
+#, fuzzy
+msgid "Unknown errors."
+msgstr "Okänd"
+
+#: src/php/core-addons/status/status-addon.class.php:218
+msgid "Settings have been imported successfully"
+msgstr ""
+
+#: src/php/core-addons/status/template-printer.class.php:40
+msgid "Original"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/template-printer.class.php:41
+#, fuzzy
+msgid "Current"
+msgstr "Nuvarande fil:"
+
+# @ cuar
+#: src/php/core-addons/status/template-printer.class.php:66
+#: src/php/core-addons/status/template-printer.class.php:74
+#, fuzzy
+msgid "Version: %s"
+msgstr "Från: %s"
+
+# @ cuar
+#: src/php/core-addons/status/template-printer.class.php:66
+#: src/php/core-addons/status/template-printer.class.php:74
+#, fuzzy
+msgid "unknown"
+msgstr "Okänd"
+
+#: src/php/core-addons/status/template-printer.class.php:71
+msgid "Not overridden"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:26
+msgid "Outdated plugin version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
+msgid ""
+"Some add-ons require a newer version of the main plugin (you are currently "
+"running version %1$s). You can find the list of all add-ons on the <a href="
+"\"%2$s\">add-ons status pages</a>."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
+msgid "Update the plugin"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:24
+msgid "Outdated template files"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:66
+msgid "Other action"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:67
+msgid "Ignore until next update"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-hooks.template.php:29
+#: src/php/core-addons/status/templates/status-section-templates.template.php:26
+msgid "All"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-hooks.template.php:30
+msgid "Filters only"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-hooks.template.php:31
+msgid "Actions only"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-hooks.template.php:52
+msgid "%s: %d hook(s)"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:30
+msgid "Required customer area version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-needs-attention.template.php:33
+msgid "Issue #%d"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-needs-attention.template.php:64
+msgid ""
+"Congratulations, everything seems to be configured properly. You can enjoy "
+"your customer area now."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/templates/status-section-reset.template.php:22
+#: src/php/core-addons/status/templates/status-section-reset.template.php:28
+#, fuzzy
+msgid "Export settings"
+msgstr "Allmänna inställningar"
+
+#: src/php/core-addons/status/templates/status-section-reset.template.php:24
+msgid ""
+"You can export all the settings to a JSON file. You can then use that file "
+"to restore your settings using the import settings field below."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/templates/status-section-reset.template.php:31
+#: src/php/core-addons/status/templates/status-section-reset.template.php:38
+#, fuzzy
+msgid "Import settings"
+msgstr "Allmänna inställningar"
+
+#: src/php/core-addons/status/templates/status-section-reset.template.php:33
+msgid ""
+"You can import all the settings you had previously exported from a JSON file."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/templates/status-section-reset.template.php:42
+#, fuzzy
+msgid "Reset settings"
+msgstr "Allmänna inställningar"
+
+#: src/php/core-addons/status/templates/status-section-reset.template.php:44
+msgid ""
+"Pressing the button below will reset all your Customer Area settings to the "
+"default values. This cannot be undone!"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/status/templates/status-section-reset.template.php:48
+#, fuzzy
+msgid "Reset default settings"
+msgstr "Allmänna inställningar"
+
+#: src/php/core-addons/status/templates/status-section-reset.template.php:54
+msgid ""
+"Are you sure that you want to reset all the settings to their default values "
+"(this operation cannot be undone)?"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-templates.template.php:27
+msgid "Overridden only"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-templates.template.php:28
+msgid "Outdated only"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-templates.template.php:53
+msgid "%s: %d template(s)"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:35
+msgid "User Profile"
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:65
+#, fuzzy
+msgid "Username"
+msgstr "Användare"
+
+# @ cuar
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:67
+#, fuzzy
+msgid "Your username cannot be changed."
+msgstr "Välkomstsida för författare"
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:72
+msgid "Primary email"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:77
+#: src/php/core-classes/object-meta/field/user-password-field.class.php:70
+msgid "Password"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:78
+msgid "Password (confirm)"
+msgstr ""
+
+#: src/php/core-classes/Licensing/license-validation-result.class.php:81
+msgid ""
+"You have bought your license on the previous shop. We have a <a href=\"%1$s"
+"\">brand new website</a>, please contact us so that we can help you migrate "
+"your license to the new shop."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/Licensing/licensing.class.php:73
+#, fuzzy
+msgid "Unknown add-on"
+msgstr "Okänd"
+
+#: src/php/core-classes/Licensing/licensing.class.php:86
+msgid ""
+"Problem when contacting our license servers. Is the license key correct? Is "
+"PHP cURL enabled?"
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:94
+msgid "Your license is valid until: %s"
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:102
+msgid "This license key has been revoked."
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:109
+msgid ""
+"You have reached your maximum number of sites for this license key. You can "
+"use it on at most %s site(s)."
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:118
+msgid "Renew license"
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:120
+msgid "Your license has expired at the date: %s"
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:128
+msgid "This license key does not match."
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:135
+msgid "This license key seems to have been generated for another product."
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:142
+msgid "Problem when validating your license key"
+msgstr ""
+
+#: src/php/core-classes/MessageCenter/message-center.class.php:148
+msgid "<strong>WP Customer Area</strong> has detected some potential issues: "
+msgstr ""
+
+#: src/php/core-classes/MessageCenter/message-center.class.php:156
+msgid "Fix these potential issues"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/addon-container-page.class.php:566
+#: src/php/core-classes/addon-content-page.class.php:638
+msgid "Frontend Integration"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/addon-container-page.class.php:576
+#: src/php/core-classes/addon-content-page.class.php:648
+msgid "Show after post"
+msgstr "Visa efter inlägg"
+
+# @ cuar
+#: src/php/core-classes/addon-container-page.class.php:585
+#: src/php/core-classes/addon-content-page.class.php:657
+msgid "Show additional information after the post in the single post view."
+msgstr ""
+"Visa ytterligare information efter inlägget vid visning av enskilt inlägg."
+
+#: src/php/core-classes/addon-container-page.class.php:587
+#: src/php/core-classes/addon-content-page.class.php:659
+msgid ""
+"You can disable this if you have your own theme template file for single "
+"posts. The theme file to look for or create should be called: %s."
+msgstr ""
+
+#: src/php/core-classes/addon-container-page.class.php:605
+#: src/php/core-classes/addon-content-page.class.php:677
+msgid "Show recent content on the dashboard."
+msgstr ""
+
+#: src/php/core-classes/addon-container-page.class.php:618
+#: src/php/core-classes/addon-content-page.class.php:690
+msgid ""
+"Define how many items to allow on the dashboard page. -1 will show all items."
+msgstr ""
+
+#: src/php/core-classes/addon-container-page.class.php:692
+msgid "Slug that is used in the URL for archives of the taxonomy: "
+msgstr ""
+
+#: src/php/core-classes/addon-create-content-page.class.php:130
+msgid "Content creation (from front-office)"
+msgstr ""
+
+#: src/php/core-classes/addon-create-content-page.class.php:132
+msgid "Create content from front office"
+msgstr ""
+
+#: src/php/core-classes/addon-create-content-page.class.php:133
+msgid "Bypass moderation (content is automatically published)"
+msgstr ""
+
+#: src/php/core-classes/addon-create-content-page.class.php:158
+msgid "Content creation"
+msgstr ""
+
+#: src/php/core-classes/addon-create-content-page.class.php:169
+msgid "Moderation"
+msgstr ""
+
+#: src/php/core-classes/addon-create-content-page.class.php:177
+msgid "Enable moderation when new content is submitted by a user."
+msgstr ""
+
+#: src/php/core-classes/addon-create-content-page.class.php:192
+msgid "Default owner type"
+msgstr ""
+
+#: src/php/core-classes/addon-create-content-page.class.php:203
+msgid "Default owner"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/addon-create-content-page.class.php:218
+#, fuzzy
+msgid "Default category"
+msgstr "Radera kategorier"
+
+#: src/php/core-classes/addon-edit-content-page.class.php:485
+msgid "Content edition (from front-office)"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:487
+msgid "Select an owner (uses default else)"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:488
+msgid "Select a category (uses default else)"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:544
+msgid "Rich Editor"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:552
+msgid "Enable the rich editor when editing content."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/addon-page.class.php:45
+#, fuzzy
+msgid "Customer Page - %s"
+msgstr "Författarsida"
+
+#: src/php/core-classes/addon-page.class.php:239
+msgid "This page requires login, you should not be here"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/addon-page.class.php:247
+#, fuzzy
+msgid "You are not allowed to view this page"
+msgstr "Du har inte tillstånd att visa denna sida"
+
+# @ cuar
+#: src/php/core-classes/addon-page.class.php:336
+#, fuzzy
+msgid "Customer Area Sidebar - %s"
+msgstr "Meny Författarzon"
+
+#: src/php/core-classes/addon-update-content-page.class.php:130
+msgid "You must supply a post ID to delete"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/addon-update-content-page.class.php:135
+#, fuzzy
+msgid "You are not allowed to delete this post"
+msgstr "Du har inte tillstånd att visa denna sida"
+
+#: src/php/core-classes/addon-update-content-page.class.php:141
+msgid "The content has been deleted."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/addon-update-content-page.class.php:258
+#: src/php/core-classes/addon-update-content-page.class.php:259
+#, fuzzy
+msgid "Delete"
+msgstr "Radera filer"
+
+#: src/php/core-classes/addon-update-content-page.class.php:262
+msgid "Are you sure that you want to delete this content?"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:278
+msgid "Content update (from front-office)"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:280
+msgid "Update any content from front office"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:281
+msgid "Update authored content"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:282
+msgid "Update owned content"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:286
+msgid "Content removal (from front-office)"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:288
+msgid "Delete any content from front office"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/addon-update-content-page.class.php:289
+#, fuzzy
+msgid "Delete authored content"
+msgstr "Radera kategorier"
+
+#: src/php/core-classes/addon-update-content-page.class.php:290
+msgid "Delete owned content"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:302
+msgid "You must specify a post to delete"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:332
+msgid "You must specify a post to edit"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:366
+msgid "Content edition"
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:97
+msgid ""
+"<strong>Error: </strong>WP Customer Area add-ons are active but the main "
+"plugin is not installed!"
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:125
+msgid "License Keys"
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:137
+msgid "License keys for commercial add-ons"
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:179
+msgid ""
+"This page allows you to enter license key you have received when you "
+"purchased commercial addons."
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:180
+msgid ""
+"Do not activate your license on your development site. Only on the final "
+"site where you are running the plugin."
+msgstr ""
+
+#: src/php/core-classes/object-meta/field/email-field.class.php:47
+msgid "Email"
+msgstr ""
+
+#: src/php/core-classes/object-meta/field/header-field.class.php:45
+msgid "Header"
+msgstr ""
+
+#: src/php/core-classes/object-meta/field/number-field.class.php:49
+msgid "Number"
+msgstr ""
+
+#: src/php/core-classes/object-meta/field/text-field.class.php:58
+msgid "Text"
+msgstr ""
+
+#: src/php/core-classes/object-meta/field/user-password-field.class.php:81
+msgid "The password and its confirmation do not match"
+msgstr ""
+
+#: src/php/core-classes/object-meta/validation/email-validation.class.php:41
+msgid "%1$s is not a valid email address."
+msgstr ""
+
+#: src/php/core-classes/object-meta/validation/number-validation.class.php:45
+msgid "%1$s is not a valid number"
+msgstr ""
+
+#: src/php/core-classes/object-meta/validation/number-validation.class.php:46
+msgid "%1$s is not a valid integer"
+msgstr ""
+
+#: src/php/core-classes/object-meta/validation/number-validation.class.php:49
+msgid "%1$s must be greater than %2$s"
+msgstr ""
+
+#: src/php/core-classes/object-meta/validation/number-validation.class.php:50
+msgid "%1$s must be lower than %2$s"
+msgstr ""
+
+#: src/php/core-classes/object-meta/validation/password-validation.class.php:45
+#: src/php/core-classes/object-meta/validation/string-validation.class.php:45
+msgid "%1$s must contain at least %2$s characters"
+msgstr ""
+
+#: src/php/core-classes/object-meta/validation/password-validation.class.php:46
+#: src/php/core-classes/object-meta/validation/string-validation.class.php:46
+msgid "%1$s must contain at most %2$s characters"
+msgstr ""
+
+#: src/php/core-classes/object-meta/validation/simple-validation.class.php:37
+msgid "%1$s is required."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:404
+msgid ""
+"Permalinks are disabled, Customer Area will not work properly. Please <a "
+"href=\"%1$s\">enable them in the WordPress settings</a>."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:428
+msgid "Some add-ons require a newer version of the main plugin."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:578
+msgid "Some template files you have overridden seem to be outdated."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:125
+msgid "The page title cannot be empty"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:235
+msgid "Frontend"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:248
+#: src/php/core-classes/settings.class.php:302
+msgid "General Settings"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:253
+msgid "Admin theme"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:264
+msgid "Hide owner selection"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:271
+msgid "Hide the owner selection field when a single owner is possible."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:273
+msgid ""
+"The owner will not be displayed but included directly if a single owner type "
+"is available to the current user and if within that owner type, a single "
+"owner is available."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:308
+msgid "Include CSS"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:315
+msgid "Include the default stylesheet."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:315
+msgid "If not, you should style the plugin yourself in your theme."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:320
+msgid "Frontend theme"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:332
+msgid "Debug templates"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:339
+msgid "Print debug information about the templates used by Customer Area."
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:399
+msgid " is not a valid post"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:432
+msgid " is not a valid role"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:464
+msgid " cannot be empty"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:484
+msgid " is not a valid email"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:504
+msgid " is not a valid value"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:530
+msgid "must be an integer"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:538
+msgid "must be greater than %s"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:546
+msgid "must be lower than %s"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:572
+msgid " is not a valid owner type"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:596
+msgid " is not a valid owner"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:616
+#, fuzzy
+msgid "you cannot select multiple terms."
+msgstr "Det verkar som du inte kan välja ägare."
+
+#: src/php/core-classes/settings.class.php:708
+msgid "Checking license..."
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:709
+msgid "Failed to contact server"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:842
+msgid "None"
+msgstr "Ingen"
+
+#: src/php/core-classes/settings.class.php:861
+msgid "Delete existing &amp; create new &raquo;"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:866
+msgid "Edit it &raquo;"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:870
+msgid "Create it &raquo;"
+msgstr ""
+
+# @ cuarmg
+#: src/php/core-classes/settings.class.php:942
+msgid "Any Role"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:1039
+msgid "Main plugin folder"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:1045
+msgid "Current theme folder"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/settings.class.php:1051
+msgid "WordPress content folder"
+msgstr ""
+
+#: src/php/core-classes/widget-content-authors.class.php:110
+#: src/php/core-classes/widget-content-authors.class.php:120
+msgid "You"
+msgstr ""
+
+#: src/php/core-classes/widget-content-authors.class.php:137
+msgid "Show all content published by %s"
+msgstr ""
+
+#: src/php/core-classes/widget-content-authors.class.php:161
+#: src/php/core-classes/widget-content-dates.class.php:164
+#: src/php/core-classes/widget-content-list.class.php:147
+#: src/php/core-classes/widget-terms.class.php:125
+msgid "Title:"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/widget-content-dates.class.php:121
+#, fuzzy
+msgid "Show all content published in %s"
+msgstr "Klicka för att visa filer publicerade i %s"
+
+# @ cuar
+#: src/php/core-classes/widget-content-dates.class.php:135
+#, fuzzy
+msgid "Show all content published in %2$s %1$s"
+msgstr "Klicka för att visa filer publicerade i %s"
+
+#: src/php/core-classes/widget-content-list.class.php:122
+msgid "Link to %s"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:151
+msgid "Message shown when no posts:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:155
+msgid "Max. number of posts:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:159
+msgid "Order By:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:166
+msgid "Order:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:168
+msgid "Ascending"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:169
+msgid "Descending"
+msgstr ""
+
+# @ cuar
+#: src/php/core-classes/widget-content-list.class.php:176
+#, fuzzy
+msgid "Category:"
+msgstr "Filkategori"
+
+#: src/php/core-classes/widget-content-list.class.php:180
+msgid "Any"
+msgstr ""
+
+#: src/php/core-classes/widget-terms.class.php:86
+msgid "Show all content categorized under %s"
+msgstr ""
+
+#: src/php/core-classes/widget-terms.class.php:130
+msgid "Empty terms:"
+msgstr ""
+
+#: src/php/core-classes/widget-terms.class.php:132
+msgid "Show"
+msgstr ""
+
+#: src/php/core-classes/widget-terms.class.php:133
+msgid "Hide"
+msgstr ""
+
+#: src/php/functions/functions-private-files.php:144
+#: src/php/functions/functions-private-files.php:159
+msgid "bytes"
+msgstr ""
+
+#: src/php/functions/functions-private-files.php:148
+msgid "TB"
+msgstr ""
+
+#: src/php/functions/functions-private-files.php:151
+msgid "GB"
+msgstr ""
+
+#: src/php/functions/functions-private-files.php:154
+msgid "MB"
+msgstr ""
+
+#: src/php/functions/functions-private-files.php:157
+msgid "kB"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Customer area give your customers the possibility to get a page on your site "
+"where they can access private content."
+msgstr ""
+
+# @ cuar
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:77
 #, fuzzy
 msgctxt "Private content category archive slug"
 msgid "category"
 msgstr "Filkategori"
 
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:78
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:78
 msgctxt "Private content date archive slug"
 msgid "archive"
 msgstr ""
 
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:79
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:79
 msgctxt "Private content author archive slug"
 msgid "created-by"
 msgstr ""
 
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:80
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:80
 msgctxt "Private content update slug"
 msgid "update"
 msgstr ""
 
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:81
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:81
 msgctxt "Private content delete slug"
 msgid "delete"
 msgstr ""
 
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:101
-msgid "Some pages of the customer area have not yet been created."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:117
-msgid "The navigation menu for the customer area has not been created."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:126
-#: includes/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
-msgid "Pages"
-msgstr "Sidor"
-
-# @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:127
-#, fuzzy
-msgid "Pages of the Customer Area"
-msgstr "Författarzon"
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:301
-#: includes/core-classes/addon-container-page.class.php:314
-#: includes/core-classes/addon-content-page.class.php:371
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:305
+#: src/php/core-classes/addon-container-page.class.php:314
+#: src/php/core-classes/addon-content-page.class.php:371
 msgctxt "pagination_parameter_name (should not be \"page\")"
 msgid "page-num"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:497
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:501
 #, fuzzy
 msgctxt ""
 "Localised slug for the main navigation menu (small caps version of the "
@@ -346,2450 +2562,350 @@ msgid "customer-area-menu"
 msgstr "Meny Författarzon"
 
 # @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:498
-msgid "Customer Area Menu"
-msgstr "Meny Författarzon"
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:502
-#, php-format
-msgid "Could not create the menu. %s"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:553
-#, php-format
-msgid "The menu has been created: <a href=\"%s\">view menu</a>"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:670
-#, fuzzy
-msgid "Site Pages"
-msgstr "Privata sidor"
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:703
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:764
-msgid "Reset"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:709
-#, fuzzy
-msgid "Reset all pages &raquo;"
-msgstr "Lista alla sidor"
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:712
-msgid "Delete all existing pages and recreate them."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:713
-msgid ""
-"Are you sure that you want to delete all existing pages and recreate them "
-"(this operation cannot be undone)?"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:721
-msgid "Main Navigation Menu"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:729
-#, fuzzy
-msgid "Customer Area pages"
-msgstr "Författarzon"
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:736
-msgid ""
-"Automatically print the Customer Area navigation menu on the Customer Area "
-"pages."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:738
-msgid ""
-"By checking this box, the menu will automatically be shown automatically on "
-"the Customer Area pages (the ones defined in the tab named \"Site Pages\"). "
-"It may however not appear at the place you would want it. If that is the "
-"case, you can refer to our documentation to see how to edit your theme."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:746
-#, fuzzy
-msgid "Private content single pages"
-msgstr "Kategorier Privat fil"
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:753
-msgid ""
-"Automatically print the Customer Area navigation menu on private content "
-"single pages."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:755
-msgid ""
-"By checking this box, the menu will automatically be shown automatically on "
-"the pages displaying a single private content (a private page or a private "
-"file for example). It may however not appear at the place you would want it. "
-"If that is the case, you can refer to our documentation to see how to edit "
-"your theme."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:770
-#, fuzzy
-msgid "Recreate menu"
-msgstr "Visa menyn"
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:773
-msgid "Delete and recreate the main navigation menu."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:774
-msgid ""
-"Are you sure that you want to recreate the main navigation menu (this "
-"operation cannot be undone)?"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:780
-msgid "Permalinks"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:787
-msgid "Category Archive"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:796
-msgid ""
-"Slug that is used in the URL for category archives of private content. For "
-"example, the list of files in the \"my-awesome-category\" category would "
-"look like:<br/>http://example.com/customer-area/files/<b>my-slug</b>/my-"
-"awesome-category"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:804
-msgid "Date Archive"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:813
-msgid ""
-"Slug that is used in the URL for date archives of private content. For "
-"example, the list of files for 2014 would look like:<br/>http://example.com/"
-"customer-area/files/<b>my-slug</b>/2014"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:821
-msgid "Author Archive"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:830
-msgid ""
-"Slug that is used in the URL for author archives of private content. For "
-"example, the list of files created by user with ID 2 would look like:<br/"
-">http://example.com/customer-area/files/<b>my-slug</b>/2"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:838
-msgid "Update Content"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:847
-msgid "Slug that is used in the URL to update existing private content"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:854
-#, fuzzy
-msgid "Delete Content"
-msgstr "Radera filer"
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:863
-msgid "Slug that is used in the URL to delete existing private content"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:874
-msgid "Since version 4.0.0, Customer Area handles navigation using menus."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:876
-#, php-format
-msgid ""
-"You can customize the Customer Area menu in the <a href=\"%1$s\">Appearance "
-"&raquo; Menus</a> panel. If you do not define any custom menu there, "
-"Customer Area will generate a default menu for you with all the pages you "
-"have set below."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:885
-msgid ""
-"Since version 4.0.0, Customer Area is using various pages to show the "
-"content for your customers. Create those pages from here or simply indicate "
-"existing ones. "
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:944
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:973
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:1032
-msgid ""
-"Some pages of the customer area have been created or deleted. The customer "
-"area navigation menu needs to be updated."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:970
-#, php-format
-msgid "The following pages have been created: %s"
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:975
-msgid "There was no missing page that could be created."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:1012
-msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings."
-msgstr ""
-
-#: includes/core-addons/customer-pages/customer-pages-addon.class.php:1028
-#, php-format
-msgid "%s page has been deleted"
-msgid_plural "%s pages have been deleted"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:8
-msgid "Toggle navigation"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/pagination.template.php:8
-msgid "(current)"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:23
-msgid "Missing navigation menu"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:26
-msgid ""
-"A navigation menu organizes the customer area. It allows to browse the "
-"files, the pages, to view the account details and much more. It seems that "
-"this menu has not yet been created."
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
-#, php-format
-msgid ""
-"You can review which menus are currently created on the <a href=\"%1$s"
-"\">menus page</a>."
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:39
-msgid ""
-"Are you sure that you want to create the menu (this operation cannot be "
-"undone)?"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:23
-msgid "Navigation menu is out of sync"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
-msgid ""
-"Some pages of the customer area have been changed and our current navigation "
-"menu probably references the previous pages. We recommend to synchronize the "
-"menu with the new pages. "
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
-#, php-format
-msgid ""
-"You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
-"&raquo; Menus</a> page."
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:30
-msgid "Suggested actions"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:41
-msgid ""
-"Are you sure that you want to clear current menu and create it again from "
-"scratch (this operation cannot be undone)?"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:46
-msgid ""
-"Are you sure that you want ignore this warning? You can also manually edit "
-"your menu in the page: \"Appearance > Menus\"."
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:23
-msgid "Orphan pages"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:26
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:75
-msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings. Those are probably pages you "
-"had created and trashed when originally set up the plugin. You should delete "
-"them for good either manually or by letting us do it for you."
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:38
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:87
-msgid ""
-"Are you sure that you want to delete those pages (this operation cannot be "
-"undone)?"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:23
-msgid "Missing front-office pages"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:26
-msgid ""
-"Some pages of the customer area have not yet been created. Those pages are "
-"responsible for displaying the private content you have assigned to your "
-"users."
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
-#, php-format
-msgid ""
-"You can review which pages are currently created on the <a href=\"%1$s"
-"\">pages settings page</a>."
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:39
-msgid ""
-"Are you sure that you want to create all the pages that are currently "
-"missing (this operation cannot be undone)?"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
-#, fuzzy
-msgid "Page"
-msgstr "Sidor"
-
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:26
-msgid "Slug"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:27
-msgid "Order"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:28
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:100
-#: includes/core-addons/status/templates/status-section-installed-addons.template.php:28
-msgid "ID"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:29
-msgid "Sidebar"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:30
-#: includes/core-addons/status/hook-finder.class.php:123
-msgid "Type"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:116
-#: includes/core-classes/addon-update-content-page.class.php:249
-#: includes/core-classes/addon-update-content-page.class.php:250
-msgid "Edit"
-msgstr ""
-
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:54
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:118
-msgid "View"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:71
-#, fuzzy
-msgid "Potential orphan pages"
-msgstr "Du har just nu inga sidor."
-
-#: includes/core-addons/customer-pages/templates/status-section-customer-pages.template.php:99
-msgid "Title"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:51
-#, fuzzy
-msgid "Private Files - Owned"
-msgstr "Privata filer"
-
-# @ cuar
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:55
-#, fuzzy
-msgid "My files"
-msgstr "Filer"
-
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:59
-msgid "Page to list the files a customer owns."
-msgstr ""
-
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:86
-msgid "Files you created"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:90
-#, fuzzy, php-format
-msgid "Files created by %1$s"
-msgstr "Fil skapad den %1$s av %2$s för %3$s"
-
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:94
-#, php-format
-msgid "Files under %1$s"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:100
-#, fuzzy, php-format
-msgid "Files published in %2$s %1$s"
-msgstr "Klicka för att visa filer publicerade i %s"
-
-# @ cuar
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:102
-#, fuzzy, php-format
-msgid "Files published in %1$s"
-msgstr "Klicka för att visa filer publicerade i %s"
-
-# @ cuar
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:109
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:113
-#: includes/core-addons/customer-private-files/widget-private-files.class.php:49
-#, fuzzy
-msgid "Recent Files"
-msgstr "Senaste filer"
-
-# @ cuar
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:121
-#: includes/core-addons/customer-private-files/widget-private-file-categories.class.php:49
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:121
-#: includes/core-addons/customer-private-pages/widget-private-page-categories.class.php:49
-#, fuzzy
-msgid "Categories"
-msgstr "Filkategorier"
-
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:126
-#: includes/core-addons/customer-private-files/widget-private-file-dates.class.php:49
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:126
-#: includes/core-addons/customer-private-pages/widget-private-page-dates.class.php:49
-msgid "Archives"
-msgstr ""
-
-#: includes/core-addons/customer-private-files/customer-private-files-addon.class.php:131
-#: includes/core-addons/customer-private-files/widget-private-file-authors.class.php:49
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:131
-#: includes/core-addons/customer-private-pages/widget-private-page-authors.class.php:49
-msgid "Created By"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/widget-private-file-authors.class.php:37
-#, fuzzy
-msgid "Customer Area - File Authors"
-msgstr "Meny Författarzon"
-
-#: includes/core-addons/customer-private-files/widget-private-file-authors.class.php:39
-msgid "Shows the private file author archives of the Customer Area"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/widget-private-file-categories.class.php:37
-#, fuzzy
-msgid "Customer Area - File Categories"
-msgstr "Alla filkategorier"
-
-# @ cuar
-#: includes/core-addons/customer-private-files/widget-private-file-categories.class.php:39
-#, fuzzy
-msgid "Shows the private file categories of the Customer Area"
-msgstr "Separata filkategorier med komman"
-
-# @ cuar
-#: includes/core-addons/customer-private-files/widget-private-file-dates.class.php:37
-#, fuzzy
-msgid "Customer Area - File Archives"
-msgstr "Meny Författarzon"
-
-#: includes/core-addons/customer-private-files/widget-private-file-dates.class.php:39
-msgid "Shows the private file yearly archives of the Customer Area"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/widget-private-files.class.php:37
-#, fuzzy
-msgid "Customer Area - Recent Files"
-msgstr "Meny Författarzon"
-
-#: includes/core-addons/customer-private-files/widget-private-files.class.php:39
-msgid "Shows a list of files for the logged-in user"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/widget-private-files.class.php:53
-#, fuzzy
-msgid "No files"
-msgstr "Filer"
-
-# @ cuar
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:3
-#, fuzzy
-msgid "There are no files in that category."
-msgstr "Inga filer i denna kategori"
-
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:3
-msgid "There are no files for that period."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-empty.template.php:3
-msgid "You currently have no files."
-msgstr "Du har för närvarande inga filer."
-
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:19
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:19
-msgid "You uploaded this file"
-msgstr ""
-
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:20
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:22
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:20
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:22
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:19
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:21
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:19
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:21
-#, php-format
-msgid "Published for %s"
-msgstr ""
-
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:23
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:23
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:22
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:22
-#, php-format
-msgid "Published by %s"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:26
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:26
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:25
-#, fuzzy, php-format
-msgid "Uploaded on %s"
-msgstr "Tillagd den %s"
-
-# @ cuar
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:43
-#: includes/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:51
-#, fuzzy, php-format
-msgid "Download (%1$s)"
-msgstr "Ladda ner"
-
-#: includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:30
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:28
-msgid "Author"
-msgstr ""
-
-#: includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:35
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:33
-msgid "Recipient"
-msgstr ""
-
-#: includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:40
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
-#: includes/core-classes/widget-content-list.class.php:161
-msgid "Date"
-msgstr ""
-
-#: includes/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
-msgid "Attachment"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:46
-#, fuzzy
-msgid "Private Files - Home"
-msgstr "Privata filer"
-
-# @ cuar
-#: includes/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:50
-msgid "Files"
-msgstr "Filer"
-
-#: includes/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:54
-msgid "Root page for the customer files."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:51
-#, fuzzy
-msgid "Private Pages - Owned"
-msgstr "Privata sidor"
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:55
-#, fuzzy
-msgid "My pages"
-msgstr "Sidor"
-
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:59
-msgid "Page to list the pages a customer owns."
-msgstr ""
-
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:86
-msgid "Pages you created"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:90
-#, fuzzy, php-format
-msgid "Pages created by %1$s"
-msgstr "Sida skapad den  %1$s av %2$s för %3$s"
-
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:94
-#, php-format
-msgid "Pages under %1$s"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:100
-#, fuzzy, php-format
-msgid "Pages published in %2$s %1$s"
-msgstr "Klicka för att visa filer publicerade i %s"
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:102
-#, fuzzy, php-format
-msgid "Pages published in %1$s"
-msgstr "Klicka för att visa filer publicerade i %s"
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:109
-#: includes/core-addons/customer-private-pages/customer-private-pages-addon.class.php:113
-#: includes/core-addons/customer-private-pages/widget-private-pages.class.php:49
-#, fuzzy
-msgid "Recent Pages"
-msgstr "Senaste Sidor"
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/widget-private-page-authors.class.php:37
-#, fuzzy
-msgid "Customer Area - Page Authors"
-msgstr "Meny Författarzon"
-
-#: includes/core-addons/customer-private-pages/widget-private-page-authors.class.php:39
-msgid "Shows the private page author archives of the Customer Area"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/widget-private-page-categories.class.php:37
-#, fuzzy
-msgid "Customer Area - Page Categories"
-msgstr "Alla filkategorier"
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/widget-private-page-categories.class.php:39
-#, fuzzy
-msgid "Shows the private page categories of the Customer Area"
-msgstr "Separata filkategorier med komman"
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/widget-private-page-dates.class.php:37
-#, fuzzy
-msgid "Customer Area - Page Archives"
-msgstr "Meny Författarzon"
-
-#: includes/core-addons/customer-private-pages/widget-private-page-dates.class.php:39
-msgid "Shows the private page yearly archives of the Customer Area"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/widget-private-pages.class.php:37
-#, fuzzy
-msgid "Customer Area - Recent Pages"
-msgstr "Meny Författarzon"
-
-#: includes/core-addons/customer-private-pages/widget-private-pages.class.php:39
-msgid "Shows a list of pages for the logged-in user"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/widget-private-pages.class.php:53
-#, fuzzy
-msgid "No pages"
-msgstr "Sidor"
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:3
-#, fuzzy
-msgid "There are no pages in that category."
-msgstr "Inga filer i denna kategori"
-
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-date_archive.template.php:3
-msgid "There are no pages for that period."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-empty.template.php:3
-msgid "You currently have no pages."
-msgstr "Du har just nu inga sidor."
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:18
-#, fuzzy
-msgid "You created this page"
-msgstr "Du har inte tillstånd att visa denna sida"
-
-# @ cuar
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:25
-#, fuzzy, php-format
-msgid "Created on %s"
-msgstr "Tillagd den %s"
-
-#: includes/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:18
-msgid "You published this page"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:46
-#, fuzzy
-msgid "Private Pages - Home"
-msgstr "Privata sidor"
-
-#: includes/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:54
-msgid "Root page for the customer pages."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:35
-msgid "Help"
-msgstr "Hjälp"
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:66
-msgid "Support"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:85
-#: includes/core-addons/help/help-addon.class.php:97
-#: includes/core-addons/help/templates/list-addons.template.php:9
-msgid "Enhance your customer area"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:87
-#: includes/core-addons/help/help-addon.class.php:113
-msgid "Subscribe to our newsletter"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:89
-#: includes/core-addons/help/help-addon.class.php:105
-msgid "Get more from MarvinLabs"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:127
-msgid ""
-"&laquo Customer Area &raquo; is a very modular plugin. We have built it so "
-"that it can be extended in many ways. Some add-ons are presented in this "
-"page by selecting the &laquo Add-ons &raquo; tab. You can also view all "
-"extensions we have by clicking the link below."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:132
-msgid "Browse all extensions"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:150
-#, php-format
-msgid ""
-"If you like our plugins, you might want to <a href=\"%s\">check our website</"
-"a> for more."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:153
-msgid "If you want to get updates about our plugins, you can:"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:155
-msgid "Follow us on Twitter"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:158
-msgid "Follow us on Google+"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:161
-msgid "Follow us on Facebook"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:181
-msgid ""
-"You can also get notified when we've got something exciting to say (plugin "
-"updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
-"send at most one email per month!"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/help-addon.class.php:190
-msgid "Email Address"
-msgstr "E-post"
-
-# @ cuar
-#: includes/core-addons/help/templates/list-addons.template.php:14
-#, php-format
-msgid ""
-"There has been an error while getting the list of add-ons, please <a href="
-"\"%s\">visit our shop directly</a>."
-msgstr ""
-
-#: includes/core-addons/help/templates/list-addons.template.php:20
-msgid "Save money with our bundles"
-msgstr ""
-
-#: includes/core-addons/help/templates/list-addons.template.php:47
-msgid "Our add-ons"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/templates/troubleshooting.template.php:3
-msgid "Getting support"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/templates/troubleshooting.template.php:5
-msgid "Please note that we do not reply to support requests sent by email."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/help/templates/troubleshooting.template.php:6
-msgid "If you have any problem, we have some resources that could help you:"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:36
-msgid "Post Owner"
-msgstr "Ägare av inlägg"
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:190
-#: includes/core-addons/post-owner/post-owner-addon.class.php:515
-msgid "User"
-msgstr "Användare"
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:252
-#: includes/core-addons/post-owner/post-owner-addon.class.php:256
-msgid "Unknown"
-msgstr "Okänd"
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:367
-msgid "Owner"
-msgstr "Ägare"
-
-#: includes/core-addons/post-owner/post-owner-addon.class.php:433
-msgid "Assignment"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:458
-#, fuzzy
-msgid "Select the owner"
-msgstr "Välj typ av ägare"
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:609
-#, fuzzy
-msgid "It seems you cannot select any owner of that type."
-msgstr "Det verkar som du inte kan välja ägare."
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:618
-msgid "The owner is hidden"
-msgstr "Ägaren är gömd"
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:635
-#, fuzzy
-msgid "Select or search an owner"
-msgstr "Välj typ av ägare"
-
-# @ cuar
-#: includes/core-addons/post-owner/post-owner-addon.class.php:781
-#, php-format
-msgid "User - %s"
-msgstr "Användare - %s"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:37
-#: includes/core-addons/private-file/private-file-addon.class.php:86
-#: includes/core-addons/private-file/private-file-addon.class.php:747
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:96
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:97
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:397
-msgid "Private Files"
-msgstr "Privata filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:95
-#, fuzzy
-msgid "All files"
-msgstr "Lista alla filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:104
-#, fuzzy
-msgid "New file"
-msgstr "Radera filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:113
-#: includes/core-addons/private-file/private-file-addon.class.php:756
-#: includes/core-addons/private-page/private-page-addon.class.php:110
-#: includes/core-addons/private-page/private-page-addon.class.php:167
-msgid "Manage categories"
-msgstr "Hantera kategorier"
-
-#: includes/core-addons/private-file/private-file-addon.class.php:299
-msgid "no file to upload"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:313
-#, php-format
-msgid "This file type is not allowed. You can only upload: %s"
-msgstr "Denna filtyp är inte tillåten. Du kan endast ladda upp: %s"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:347
-msgid "An unknown error happened while uploading your file."
-msgstr "Ett okänt fel uppstod när du laddade upp filen."
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:352
-#, php-format
-msgid "An error happened while uploading your file: %s"
-msgstr "Ett okänt fel uppstod under uppladdning av filen: %s"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:399
-#, fuzzy
-msgid "An error happened while copying your file from the FTP folder"
-msgstr "Ett okänt fel uppstod under uppladdning av filen: %s"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:434
-msgid "You are not authorized to access this file"
-msgstr "Du har inte tillstånd till den här filen"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:752
-msgid "List all files"
-msgstr "Lista alla filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:753
-msgid "Create/Edit files"
-msgstr "Skapa/Redigera filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:754
-msgid "Delete files"
-msgstr "Radera filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:755
-msgid "Access files"
-msgstr "Kom åt filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:757
-#: includes/core-addons/private-page/private-page-addon.class.php:168
-msgid "Edit categories"
-msgstr "Redigera kategorier"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:758
-#: includes/core-addons/private-page/private-page-addon.class.php:169
-msgid "Delete categories"
-msgstr "Radera kategorier"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:759
-#: includes/core-addons/private-page/private-page-addon.class.php:170
-msgid "Assign categories"
-msgstr "Tilldela kategorier"
-
-#: includes/core-addons/private-file/private-file-addon.class.php:763
-#: includes/core-addons/private-page/private-page-addon.class.php:174
-msgid "Front-office"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:765
-#, fuzzy
-msgid "View private files"
-msgstr "Visa privata filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:766
-msgid "View any private file"
-msgstr "Visa privata filer"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:782
+#: src/php/core-addons/private-file/private-file-addon.class.php:772
 #, fuzzy
 msgctxt "cuar_private_file"
 msgid "File"
 msgstr "Fil"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:783
+#: src/php/core-addons/private-file/private-file-addon.class.php:773
 #, fuzzy
 msgctxt "cuar_private_file"
 msgid "Files"
 msgstr "Filer"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:804
-#: includes/core-addons/private-file/private-file-addon.class.php:815
+#: src/php/core-addons/private-file/private-file-addon.class.php:794
+#: src/php/core-addons/private-file/private-file-addon.class.php:805
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "Privata filer"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:805
+#: src/php/core-addons/private-file/private-file-addon.class.php:795
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "Privat fil"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:806
+#: src/php/core-addons/private-file/private-file-addon.class.php:796
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Lägg till ny"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:807
+#: src/php/core-addons/private-file/private-file-addon.class.php:797
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Lägg till ny privat fil"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:808
+#: src/php/core-addons/private-file/private-file-addon.class.php:798
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Redigera privat fil"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:809
+#: src/php/core-addons/private-file/private-file-addon.class.php:799
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Ny privat fil"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:810
+#: src/php/core-addons/private-file/private-file-addon.class.php:800
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Visa privat fil"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:811
+#: src/php/core-addons/private-file/private-file-addon.class.php:801
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Sök privata filer"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:812
+#: src/php/core-addons/private-file/private-file-addon.class.php:802
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "Inga privata filer hittades"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:813
+#: src/php/core-addons/private-file/private-file-addon.class.php:803
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "Inga privata filer hittades i Papperskorgen"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:814
+#: src/php/core-addons/private-file/private-file-addon.class.php:804
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "Förälder privat fil:"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:847
-#: includes/core-addons/private-file/private-file-addon.class.php:861
+#: src/php/core-addons/private-file/private-file-addon.class.php:838
+#: src/php/core-addons/private-file/private-file-addon.class.php:852
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:848
+#: src/php/core-addons/private-file/private-file-addon.class.php:839
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Filkategori"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:849
+#: src/php/core-addons/private-file/private-file-addon.class.php:840
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Sök filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:850
+#: src/php/core-addons/private-file/private-file-addon.class.php:841
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Populära filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:851
+#: src/php/core-addons/private-file/private-file-addon.class.php:842
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Alla filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:852
+#: src/php/core-addons/private-file/private-file-addon.class.php:843
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Förälder filkategori"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:853
+#: src/php/core-addons/private-file/private-file-addon.class.php:844
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Förälder filkategori:"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:854
+#: src/php/core-addons/private-file/private-file-addon.class.php:845
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Redigera filkategori"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:855
+#: src/php/core-addons/private-file/private-file-addon.class.php:846
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Uppdatera filkategori"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:856
+#: src/php/core-addons/private-file/private-file-addon.class.php:847
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Lägg till ny filkategori"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:857
+#: src/php/core-addons/private-file/private-file-addon.class.php:848
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Ny filkategori"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:858
+#: src/php/core-addons/private-file/private-file-addon.class.php:849
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Separata filkategorier med komman"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:859
+#: src/php/core-addons/private-file/private-file-addon.class.php:850
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Lägg till eller ta bort filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-addon.class.php:860
+#: src/php/core-addons/private-file/private-file-addon.class.php:851
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Välj från de mest använda filkategorierna"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:103
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:104
-msgid "New Private File"
-msgstr "Ny Privat fil"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:110
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:111
-msgid "Private File Categories"
-msgstr "Kategorier Privat fil"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:203
-#: includes/core-addons/status/hook-finder.class.php:125
-#: includes/core-addons/status/template-finder.class.php:69
-msgid "File"
-msgstr "Fil"
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:223
-msgid "File currently associated to this post"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:224
-msgid "Current file:"
-msgstr "Nuvarande fil:"
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:236
-msgid "Change the associated file"
-msgstr ""
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:237
-msgid "How to add the file?"
-msgstr ""
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:240
-msgid "Direct upload"
-msgstr ""
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:241
-msgid "Copy from FTP folder"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:247
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:257
-#, fuzzy
-msgid "Pick a file"
-msgstr "Lista alla filer"
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:260
-msgid "The FTP upload folder does not exist."
-msgstr ""
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:262
-msgid "The FTP upload folder is empty."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:265
-#, fuzzy
-msgid "Select a file"
-msgstr "Radera filer"
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:279
-msgid "Copy file or move it?"
-msgstr ""
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:282
-msgid ""
-"If checked, the file will be deleted after it has been copied to the owner's "
-"private storage directory"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:409
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:198
-msgid "General settings"
-msgstr "Allmänna inställningar"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:416
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:205
-msgid "Enable add-on"
-msgstr "Aktivera tillägg"
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:424
-msgid "Check this to enable the private files add-on."
-msgstr "Kryssa i här för att aktivera privata filer tillägg."
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:428
-msgid ""
-"This folder does not exist, please create it if you want to copy files from "
-"the FTP folder. Otherwise, you need not do anything."
-msgstr ""
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:435
-msgid "FTP uploads folder"
-msgstr ""
-
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:444
-msgid ""
-"This folder can be used when you want to use files uploaded with FTP. This "
-"is handy when direct upload is failing for big files for instance."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:451
-msgid "File Storage"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:495
-#, php-format
-msgid "The files will be stored in the following directory: <code>%s</code>."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:500
-#, php-format
-msgid ""
-"Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:506
-#, php-format
-msgid ""
-"That directory should at least have the permissions set to 705. Currently it "
-"is %s. You should adjust that directory permissions as upload or download "
-"might not work properly."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:37
-#: includes/core-addons/private-page/private-page-addon.class.php:83
-#: includes/core-addons/private-page/private-page-addon.class.php:158
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:91
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:92
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:186
-msgid "Private Pages"
-msgstr "Privata sidor"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:92
-#, fuzzy
-msgid "All pages"
-msgstr "Lista alla sidor"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:101
-#, fuzzy
-msgid "New page"
-msgstr "Radera sidor"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:163
-msgid "List all pages"
-msgstr "Lista alla sidor"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:164
-msgid "Create/Edit pages"
-msgstr "Skapa/Redigera sidor"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:165
-msgid "Delete pages"
-msgstr "Radera sidor"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:166
-msgid "Access pages"
-msgstr "Sidor åtkomst"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:176
-#, fuzzy
-msgid "View private pages"
-msgstr "Visa privata sidor"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:177
-msgid "View any private page"
-msgstr "Visa privata sidor"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:193
+#: src/php/core-addons/private-page/private-page-addon.class.php:193
 #, fuzzy
 msgctxt "cuar_private_page"
 msgid "Page"
 msgstr "Sidor"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:194
+#: src/php/core-addons/private-page/private-page-addon.class.php:194
 #, fuzzy
 msgctxt "cuar_private_page"
 msgid "Pages"
 msgstr "Sidor"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:215
-#: includes/core-addons/private-page/private-page-addon.class.php:226
+#: src/php/core-addons/private-page/private-page-addon.class.php:215
+#: src/php/core-addons/private-page/private-page-addon.class.php:226
 msgctxt "cuar_private_page"
 msgid "Private Pages"
 msgstr "Privata sidor"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:216
+#: src/php/core-addons/private-page/private-page-addon.class.php:216
 msgctxt "cuar_private_page"
 msgid "Private Page"
 msgstr "Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:217
+#: src/php/core-addons/private-page/private-page-addon.class.php:217
 msgctxt "cuar_private_page"
 msgid "Add New"
 msgstr "Lägg till ny"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:218
+#: src/php/core-addons/private-page/private-page-addon.class.php:218
 msgctxt "cuar_private_page"
 msgid "Add New Private Page"
 msgstr "Lägg till ny Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:219
+#: src/php/core-addons/private-page/private-page-addon.class.php:219
 msgctxt "cuar_private_page"
 msgid "Edit Private Page"
 msgstr "Redigera Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:220
+#: src/php/core-addons/private-page/private-page-addon.class.php:220
 msgctxt "cuar_private_page"
 msgid "New Private Page"
 msgstr "Ny Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:221
+#: src/php/core-addons/private-page/private-page-addon.class.php:221
 msgctxt "cuar_private_page"
 msgid "View Private Page"
 msgstr "Visa Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:222
+#: src/php/core-addons/private-page/private-page-addon.class.php:222
 msgctxt "cuar_private_page"
 msgid "Search Private Pages"
 msgstr "Sök Privata sidor"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:223
+#: src/php/core-addons/private-page/private-page-addon.class.php:223
 msgctxt "cuar_private_page"
 msgid "No private pages found"
 msgstr "Inga Privata sidor hittades"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:224
+#: src/php/core-addons/private-page/private-page-addon.class.php:224
 msgctxt "cuar_private_page"
 msgid "No private pages found in Trash"
 msgstr "Inga Privata sidor hittades i Papperskorgen"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:225
+#: src/php/core-addons/private-page/private-page-addon.class.php:225
 msgctxt "cuar_private_page"
 msgid "Parent Private Page:"
 msgstr "Förälder Privat sida:"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:258
-#: includes/core-addons/private-page/private-page-addon.class.php:274
+#: src/php/core-addons/private-page/private-page-addon.class.php:259
+#: src/php/core-addons/private-page/private-page-addon.class.php:275
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Page Categories"
 msgstr "Hantera kategorier"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:259
+#: src/php/core-addons/private-page/private-page-addon.class.php:260
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Page Category"
 msgstr "Filkategori"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:260
+#: src/php/core-addons/private-page/private-page-addon.class.php:261
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Search Page Categories"
 msgstr "Sök filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:261
+#: src/php/core-addons/private-page/private-page-addon.class.php:262
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Popular Page Categories"
 msgstr "Populära filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:262
+#: src/php/core-addons/private-page/private-page-addon.class.php:263
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "All Page Categories"
 msgstr "Alla filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:263
+#: src/php/core-addons/private-page/private-page-addon.class.php:264
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Parent Page Category"
 msgstr "Förälder filkategori"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:264
+#: src/php/core-addons/private-page/private-page-addon.class.php:265
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Parent Page Category:"
 msgstr "Förälder filkategori:"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:265
+#: src/php/core-addons/private-page/private-page-addon.class.php:266
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Edit Page Category"
 msgstr "Redigera filkategori"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:266
+#: src/php/core-addons/private-page/private-page-addon.class.php:267
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Update Page Category"
 msgstr "Uppdatera filkategori"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:267
+#: src/php/core-addons/private-page/private-page-addon.class.php:268
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Add New Page Category"
 msgstr "Lägg till ny filkategori"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:268
+#: src/php/core-addons/private-page/private-page-addon.class.php:269
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "New Page Category"
 msgstr "Ny filkategori"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:269
+#: src/php/core-addons/private-page/private-page-addon.class.php:270
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Separate page categories with commas"
 msgstr "Separata filkategorier med komman"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:271
+#: src/php/core-addons/private-page/private-page-addon.class.php:272
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Add or remove page categories"
 msgstr "Lägg till eller ta bort filkategorier"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:272
+#: src/php/core-addons/private-page/private-page-addon.class.php:273
 #, fuzzy
 msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Välj från de mest använda filkategorierna"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:98
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:99
-msgid "New Private Page"
-msgstr "Ny Privat sida"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:105
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:106
-#, fuzzy
-msgid "Private Page Categories"
-msgstr "Kategorier Privat fil"
-
-# @ cuar
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:213
-msgid "Check this to enable the private pages add-on."
-msgstr "Kryssa i här för att aktivera tillägg för Privata sidor."
-
-# @ cuar
-#: includes/core-addons/status/hook-finder.class.php:124
-#: includes/core-addons/status/templates/status-section-installed-addons.template.php:29
-#: includes/core-classes/widget-content-list.class.php:162
-msgid "Name"
-msgstr "Namn"
-
-#: includes/core-addons/status/hook-finder.class.php:126
-msgid "Path"
-msgstr ""
-
-#: includes/core-addons/status/status-addon.class.php:35
-#: includes/core-addons/status/status-addon.class.php:53
-#: includes/core-addons/status/status-addon.class.php:70
-msgid "Status"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/status-addon.class.php:52
-#, fuzzy
-msgid "Customer Area - Plugin status"
-msgstr "Meny Författarzon"
-
-#: includes/core-addons/status/status-addon.class.php:110
-msgid "Needs attention"
-msgstr ""
-
-#: includes/core-addons/status/status-addon.class.php:111
-msgid "Things that need your attention"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/status-addon.class.php:115
-msgid "Installed add-ons"
-msgstr ""
-
-#: includes/core-addons/status/status-addon.class.php:116
-msgid "Core and commercial add-ons currently enabled"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/status-addon.class.php:125
-#, fuzzy
-msgid "Actions and filters"
-msgstr "Lista alla filer"
-
-#: includes/core-addons/status/status-addon.class.php:126
-msgid "Listing of all actions and filters"
-msgstr ""
-
-#: includes/core-addons/status/status-addon.class.php:131
-msgid "Templates"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/status-addon.class.php:132
-#, fuzzy
-msgid "Template files"
-msgstr "Radera filer"
-
-#: includes/core-addons/status/status-addon.class.php:142
-msgid "Settings tools"
-msgstr ""
-
-#: includes/core-addons/status/status-addon.class.php:188
-msgid "Settings have been resetted to default values"
-msgstr ""
-
-#: includes/core-addons/status/status-addon.class.php:195
-msgid "Invalid parameters. No file sent"
-msgstr ""
-
-#: includes/core-addons/status/status-addon.class.php:203
-msgid "No file sent."
-msgstr ""
-
-#: includes/core-addons/status/status-addon.class.php:207
-msgid "Exceeded filesize limit."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/status-addon.class.php:210
-#, fuzzy
-msgid "Unknown errors."
-msgstr "Okänd"
-
-#: includes/core-addons/status/status-addon.class.php:218
-msgid "Settings have been imported successfully"
-msgstr ""
-
-#: includes/core-addons/status/template-finder.class.php:70
-msgid "Original"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/template-finder.class.php:71
-#, fuzzy
-msgid "Current"
-msgstr "Nuvarande fil:"
-
-# @ cuar
-#: includes/core-addons/status/template-finder.class.php:88
-#: includes/core-addons/status/template-finder.class.php:96
-#, fuzzy, php-format
-msgid "Version: %s"
-msgstr "Från: %s"
-
-# @ cuar
-#: includes/core-addons/status/template-finder.class.php:88
-#: includes/core-addons/status/template-finder.class.php:96
-#, fuzzy
-msgid "unknown"
-msgstr "Okänd"
-
-#: includes/core-addons/status/template-finder.class.php:93
-msgid "Not overriden"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:26
-msgid "Outdated plugin version"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
-#, php-format
-msgid ""
-"Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a href="
-"\"%2$s\">add-ons status pages</a>."
-msgstr ""
-
-#: includes/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
-msgid "Update the plugin"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:26
-msgid "Outdated template files"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:28
-#, php-format
-msgid ""
-"Some template files you have overridden have been modified in the current "
-"version of Customer Area. You have the list of these files below, but you "
-"can also find a list of all template files and their respective status on "
-"the <a href=\"%s\">corresponding templates status page</a>"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:35
-msgid ""
-"Since Customer Area 4.4.0, we are providing a way to make sure your template "
-"files are always up-to-date. For you, this is a great way to know when "
-"template files get changed when Customer Area is updated."
-msgstr ""
-
-#: includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:38
-msgid ""
-"If you still do not have any version number in your template files, please "
-"paste the following line of code as the first line of your template and make "
-"sure it is compatible with the the current template version."
-msgstr ""
-
-#: includes/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:66
-msgid "Other action"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-hooks.template.php:29
-#: includes/core-addons/status/templates/status-section-templates.template.php:29
-msgid "All"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-hooks.template.php:30
-msgid "Filters only"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-hooks.template.php:31
-msgid "Actions only"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-hooks.template.php:52
-#, php-format
-msgid "%s: %d hook(s)"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/templates/status-section-installed-addons.template.php:30
-msgid "Required customer area version"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-needs-attention.template.php:33
-#, php-format
-msgid "Issue #%d"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-needs-attention.template.php:63
-msgid ""
-"Congratulations, everything seems to be configured properly. You can enjoy "
-"your customer area now."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/templates/status-section-reset.template.php:22
-#, fuzzy
-msgid "Export settings"
-msgstr "Allmänna inställningar"
-
-#: includes/core-addons/status/templates/status-section-reset.template.php:24
-msgid ""
-"You can export all the settings to a JSON file. You can then use that file "
-"to restore your settings using the import settings field below."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/templates/status-section-reset.template.php:31
-#, fuzzy
-msgid "Import settings"
-msgstr "Allmänna inställningar"
-
-#: includes/core-addons/status/templates/status-section-reset.template.php:33
-msgid ""
-"You can import all the settings you had previously exported from a JSON file."
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/status/templates/status-section-reset.template.php:42
-#, fuzzy
-msgid "Reset settings"
-msgstr "Allmänna inställningar"
-
-#: includes/core-addons/status/templates/status-section-reset.template.php:44
-msgid ""
-"Pressing the button below will reset all your Customer Area settings to the "
-"default values. This cannot be undone!"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-reset.template.php:54
-msgid ""
-"Are you sure that you want to reset all the settings to their default values "
-"(this operation cannot be undone)?"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-templates.template.php:30
-msgid "Overriden only"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-templates.template.php:31
-msgid "Outdated only"
-msgstr ""
-
-#: includes/core-addons/status/templates/status-section-templates.template.php:52
-#, php-format
-msgid "%s: %d template(s)"
-msgstr ""
-
-#: includes/core-addons/user-profile/user-profile-addon.class.php:35
-msgid "User Profile"
-msgstr ""
-
-# @ cuar
-#: includes/core-addons/user-profile/user-profile-addon.class.php:65
-#, fuzzy
-msgid "Username"
-msgstr "Användare"
-
-# @ cuar
-#: includes/core-addons/user-profile/user-profile-addon.class.php:67
-#, fuzzy
-msgid "Your username cannot be changed."
-msgstr "Välkomstsida för författare"
-
-#: includes/core-addons/user-profile/user-profile-addon.class.php:72
-msgid "Primary email"
-msgstr ""
-
-#: includes/core-addons/user-profile/user-profile-addon.class.php:77
-#: includes/core-classes/object-meta/field/user-password-field.class.php:70
-msgid "Password"
-msgstr ""
-
-#: includes/core-addons/user-profile/user-profile-addon.class.php:78
-msgid "Password (confirm)"
-msgstr ""
-
-#: includes/core-addons/user-profile/user-profile-addon.class.php:79
-msgid ""
-"The password must at least be composed of 5 characters. You will be "
-"requested to login again after your password gets changed. Leave these "
-"fields empty if you want to keep your current password"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/addon-container-page.class.php:566
-#: includes/core-classes/addon-content-page.class.php:634
-msgid "Frontend Integration"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/addon-container-page.class.php:576
-#: includes/core-classes/addon-content-page.class.php:644
-msgid "Show after post"
-msgstr "Visa efter inlägg"
-
-# @ cuar
-#: includes/core-classes/addon-container-page.class.php:585
-#: includes/core-classes/addon-content-page.class.php:653
-msgid "Show additional information after the post in the single post view."
-msgstr ""
-"Visa ytterligare information efter inlägget vid visning av enskilt inlägg."
-
-#: includes/core-classes/addon-container-page.class.php:587
-#: includes/core-classes/addon-content-page.class.php:655
-#, php-format
-msgid ""
-"You can disable this if you have your own theme template file for single "
-"posts. The theme file to look for or create should be called: %s."
-msgstr ""
-
-#: includes/core-classes/addon-container-page.class.php:605
-#: includes/core-classes/addon-content-page.class.php:673
-msgid "Show recent content on the dashboard."
-msgstr ""
-
-#: includes/core-classes/addon-container-page.class.php:618
-#: includes/core-classes/addon-content-page.class.php:686
-msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all items."
-msgstr ""
-
-#: includes/core-classes/addon-container-page.class.php:633
-#: includes/core-classes/addon-content-page.class.php:701
-msgid ""
-"Define how many items to allow on the listing pages (main listing page, "
-"archive pages, etc.). -1 will show all items but this can slow down the page "
-"display if the user has a lot of private items."
-msgstr ""
-
-#: includes/core-classes/addon-container-page.class.php:692
-msgid "Slug that is used in the URL for archives of the taxonomy: "
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:130
-msgid "Content creation (from front-office)"
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:132
-msgid "Create content from front office"
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:133
-msgid "Bypass moderation (content is automatically published)"
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:158
-msgid "Content creation"
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:169
-msgid "Moderation"
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:177
-msgid "Enable moderation when new content is submitted by a user."
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:179
-msgid ""
-"An administrator will be required to review the content and publish it "
-"manually. This can be used to moderate the content created by users by "
-"saving it as draft. When content is saved as draft, it is not visible to "
-"anyone outside of the administration area. You can allow some roles to "
-"bypass the moderation process by setting the corresponding capability. This "
-"setting does not affect the backend interface."
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:192
-msgid "Default owner type"
-msgstr ""
-
-#: includes/core-classes/addon-create-content-page.class.php:203
-msgid "Default owner"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/addon-create-content-page.class.php:218
-#, fuzzy
-msgid "Default category"
-msgstr "Radera kategorier"
-
-#: includes/core-classes/addon-edit-content-page.class.php:485
-msgid "Content edition (from front-office)"
-msgstr ""
-
-#: includes/core-classes/addon-edit-content-page.class.php:487
-msgid "Select an owner (uses default else)"
-msgstr ""
-
-#: includes/core-classes/addon-edit-content-page.class.php:488
-msgid "Select a category (uses default else)"
-msgstr ""
-
-#: includes/core-classes/addon-edit-content-page.class.php:544
-msgid "Rich Editor"
-msgstr ""
-
-#: includes/core-classes/addon-edit-content-page.class.php:552
-msgid "Enable the rich editor when editing content."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/addon-page.class.php:45
-#, fuzzy, php-format
-msgid "Customer Page - %s"
-msgstr "Författarsida"
-
-#: includes/core-classes/addon-page.class.php:239
-msgid "This page requires login, you should not be here"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/addon-page.class.php:247
-#, fuzzy
-msgid "You are not allowed to view this page"
-msgstr "Du har inte tillstånd att visa denna sida"
-
-# @ cuar
-#: includes/core-classes/addon-page.class.php:336
-#, fuzzy, php-format
-msgid "Customer Area Sidebar - %s"
-msgstr "Meny Författarzon"
-
-#: includes/core-classes/addon-update-content-page.class.php:130
-msgid "You must supply a post ID to delete"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/addon-update-content-page.class.php:135
-#, fuzzy
-msgid "You are not allowed to delete this post"
-msgstr "Du har inte tillstånd att visa denna sida"
-
-#: includes/core-classes/addon-update-content-page.class.php:141
-msgid "The content has been deleted."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/addon-update-content-page.class.php:258
-#: includes/core-classes/addon-update-content-page.class.php:259
-#, fuzzy
-msgid "Delete"
-msgstr "Radera filer"
-
-#: includes/core-classes/addon-update-content-page.class.php:262
-msgid "Are you sure that you want to delete this content?"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:278
-msgid "Content update (from front-office)"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:280
-msgid "Update any content from front office"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:281
-msgid "Update authored content"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:282
-msgid "Update owned content"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:286
-msgid "Content removal (from front-office)"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:288
-msgid "Delete any content from front office"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/addon-update-content-page.class.php:289
-#, fuzzy
-msgid "Delete authored content"
-msgstr "Radera kategorier"
-
-#: includes/core-classes/addon-update-content-page.class.php:290
-msgid "Delete owned content"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:302
-msgid "You must specify a post to delete"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:332
-msgid "You must specify a post to edit"
-msgstr ""
-
-#: includes/core-classes/addon-update-content-page.class.php:366
-msgid "Content edition"
-msgstr ""
-
-#: includes/core-classes/addon.class.php:98
-msgid "License Keys"
-msgstr ""
-
-#: includes/core-classes/addon.class.php:110
-msgid "License keys for commercial add-ons"
-msgstr ""
-
-#: includes/core-classes/addon.class.php:152
-msgid ""
-"This page allows you to enter license key you have received when you "
-"purchased commercial addons."
-msgstr ""
-
-#: includes/core-classes/addon.class.php:153
-msgid ""
-"Do not activate your license on your development site. Only on the final "
-"site where you are running the plugin."
-msgstr ""
-
-#: includes/core-classes/plugin.class.php:410
-msgid ""
-"The Customer Area plugin requires your attention. The issues we have "
-"detected are the following: "
-msgstr ""
-
-#: includes/core-classes/plugin.class.php:418
-#, php-format
-msgid ""
-"You can view the details of those issues and fix them on the <a href=\"%1$s"
-"\">Customer Area status page</a>."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/plugin.class.php:519
-msgid ""
-"Permalinks are disabled, Customer Area will not work properly. Please enable "
-"them in the WordPress settings."
-msgstr ""
-
-#: includes/core-classes/plugin.class.php:541
-msgid "Some add-ons require a newer version of the main plugin."
-msgstr ""
-
-#: includes/core-classes/plugin.class.php:709
-msgid "Some template files you have overriden seem to be outdated."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:125
-msgid "The page title cannot be empty"
-msgstr ""
-
-#: includes/core-classes/settings.class.php:235
-msgid "Frontend"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:248
-#: includes/core-classes/settings.class.php:302
-msgid "General Settings"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:253
-msgid "Admin theme"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:264
-msgid "Hide owner selection"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:271
-msgid "Hide the owner selection field when a single owner is possible."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:273
-msgid ""
-"The owner will not be displayed but included directly if a single owner type "
-"is available to the current user and if within that owner type, a single "
-"owner is available."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:308
-msgid "Include CSS"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:315
-msgid "Include the default stylesheet."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:315
-msgid "If not, you should style the plugin yourself in your theme."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:320
-msgid "Frontend theme"
-msgstr ""
-
-#: includes/core-classes/settings.class.php:332
-msgid "Debug templates"
-msgstr ""
-
-#: includes/core-classes/settings.class.php:339
-msgid "Print debug information about the templates used by Customer Area."
-msgstr ""
-
-#: includes/core-classes/settings.class.php:340
-msgid ""
-"If checked, the plugin will print HTML comments in the page source code to "
-"show which template files are used. This is very helpful if you are a "
-"developer and want to customize the plugin layout."
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:399
-msgid " is not a valid post"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:432
-msgid " is not a valid role"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:501
-msgid " cannot be empty"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:521
-msgid " is not a valid email"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:541
-msgid " is not a valid value"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:567
-msgid "must be an integer"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:575
-#, php-format
-msgid "must be greater than %s"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:583
-#, php-format
-msgid "must be lower than %s"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:609
-msgid " is not a valid owner type"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:633
-msgid " is not a valid owner"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:653
-#, fuzzy
-msgid "you cannot select multiple terms."
-msgstr "Det verkar som du inte kan välja ägare."
-
-#: includes/core-classes/settings.class.php:719
-#, php-format
-msgid "Your license is valid until: %s"
-msgstr ""
-
-#: includes/core-classes/settings.class.php:725
-msgid "This license key has been revoked."
-msgstr ""
-
-#: includes/core-classes/settings.class.php:729
-#, php-format
-msgid ""
-"You have reached your maximum number of sites for this license key. You can "
-"use it on at most %s site(s)."
-msgstr ""
-
-#: includes/core-classes/settings.class.php:734
-#, php-format
-msgid "Your license has expired at the date: %s"
-msgstr ""
-
-#: includes/core-classes/settings.class.php:738
-msgid "This license key does not match."
-msgstr ""
-
-#: includes/core-classes/settings.class.php:742
-msgid "This license key seems to have been generated for another product."
-msgstr ""
-
-#: includes/core-classes/settings.class.php:746
-msgid "Problem when validating your license key"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:966
-msgid "None"
-msgstr "Ingen"
-
-#: includes/core-classes/settings.class.php:990
-msgid "Edit it &raquo;"
-msgstr ""
-
-# @ cuarmg
-#: includes/core-classes/settings.class.php:1066
-msgid "Any Role"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:1163
-msgid "Main plugin folder"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:1169
-msgid "Current theme folder"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/settings.class.php:1175
-msgid "WordPress content folder"
-msgstr ""
-
-#: includes/core-classes/widget-content-authors.class.php:110
-#: includes/core-classes/widget-content-authors.class.php:120
-msgid "You"
-msgstr ""
-
-#: includes/core-classes/widget-content-authors.class.php:161
-#: includes/core-classes/widget-content-dates.class.php:164
-#: includes/core-classes/widget-content-list.class.php:147
-#: includes/core-classes/widget-terms.class.php:125
-msgid "Title:"
-msgstr ""
-
-#: includes/core-classes/widget-content-list.class.php:151
-msgid "Message shown when no posts:"
-msgstr ""
-
-#: includes/core-classes/widget-content-list.class.php:155
-msgid "Max. number of posts:"
-msgstr ""
-
-#: includes/core-classes/widget-content-list.class.php:159
-msgid "Order By:"
-msgstr ""
-
-#: includes/core-classes/widget-content-list.class.php:166
-msgid "Order:"
-msgstr ""
-
-#: includes/core-classes/widget-content-list.class.php:168
-msgid "Ascending"
-msgstr ""
-
-#: includes/core-classes/widget-content-list.class.php:169
-msgid "Descending"
-msgstr ""
-
-# @ cuar
-#: includes/core-classes/widget-content-list.class.php:176
-#, fuzzy
-msgid "Category:"
-msgstr "Filkategori"
-
-#: includes/core-classes/widget-content-list.class.php:180
-msgid "Any"
-msgstr ""
-
-#: includes/core-classes/widget-terms.class.php:130
-msgid "Empty terms:"
-msgstr ""
-
-#: includes/core-classes/widget-terms.class.php:132
-msgid "Show"
-msgstr ""
-
-#: includes/core-classes/widget-terms.class.php:133
-msgid "Hide"
-msgstr ""
-
-#: includes/core-classes/object-meta/field/email-field.class.php:47
-msgid "Email"
-msgstr ""
-
-#: includes/core-classes/object-meta/field/header-field.class.php:45
-msgid "Header"
-msgstr ""
-
-#: includes/core-classes/object-meta/field/number-field.class.php:49
-msgid "Number"
-msgstr ""
-
-#: includes/core-classes/object-meta/field/text-field.class.php:58
-msgid "Text"
-msgstr ""
-
-#: includes/core-classes/object-meta/field/user-password-field.class.php:81
-msgid "The password and its confirmation do not match"
-msgstr ""
-
-#: includes/core-classes/object-meta/validation/email-validation.class.php:41
-#, php-format
-msgid "%1$s is not a valid email address."
-msgstr ""
-
-#: includes/core-classes/object-meta/validation/number-validation.class.php:45
-#, php-format
-msgid "%1$s is not a valid number"
-msgstr ""
-
-#: includes/core-classes/object-meta/validation/number-validation.class.php:46
-#, php-format
-msgid "%1$s is not a valid integer"
-msgstr ""
-
-#: includes/core-classes/object-meta/validation/number-validation.class.php:49
-#, php-format
-msgid "%1$s must be greater than %2$s"
-msgstr ""
-
-#: includes/core-classes/object-meta/validation/number-validation.class.php:50
-#, php-format
-msgid "%1$s must be lower than %2$s"
-msgstr ""
-
-#: includes/core-classes/object-meta/validation/password-validation.class.php:45
-#: includes/core-classes/object-meta/validation/string-validation.class.php:45
-#, php-format
-msgid "%1$s must contain at least %2$s characters"
-msgstr ""
-
-#: includes/core-classes/object-meta/validation/password-validation.class.php:46
-#: includes/core-classes/object-meta/validation/string-validation.class.php:46
-#, php-format
-msgid "%1$s must contain at most %2$s characters"
-msgstr ""
-
-#: includes/core-classes/object-meta/validation/simple-validation.class.php:37
-#, php-format
-msgid "%1$s is required."
-msgstr ""
-
-#: includes/functions/functions-private-files.php:144
-#: includes/functions/functions-private-files.php:159
-msgid "bytes"
-msgstr ""
-
-#: includes/functions/functions-private-files.php:148
-msgid "TB"
-msgstr ""
-
-#: includes/functions/functions-private-files.php:151
-msgid "GB"
-msgstr ""
-
-#: includes/functions/functions-private-files.php:154
-msgid "MB"
-msgstr ""
-
-#: includes/functions/functions-private-files.php:157
-msgid "kB"
-msgstr ""
-
-#: libs/wp-bootstrap-navwalker/wp_bootstrap_navwalker.php:198
-msgid "Add a menu"
-msgstr ""
 
 # @ cuar
 #~ msgid ""
