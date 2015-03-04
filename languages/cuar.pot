@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area 6.0.0\n"
 "Report-Msgid-Bugs-To: "
 "http://github.com/marvinlabs/customer-area-build-environment/issues\n"
-"POT-Creation-Date: 2015-03-04 10:53:02+00:00\n"
+"POT-Creation-Date: 2015-03-04 16:21:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -73,7 +73,7 @@ msgstr ""
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:46
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:24
 #: src/php/core-addons/status/templates/status-section-templates.template.php:22
-#: src/php/core-classes/plugin.class.php:573
+#: src/php/core-classes/plugin.class.php:581
 msgid "Customer Area"
 msgstr ""
 
@@ -1968,17 +1968,25 @@ msgstr ""
 msgid "%1$s is required."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:404
+#: src/php/core-classes/plugin.class.php:137
+msgid "Checking license..."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:138
+msgid "Failed to contact server"
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:412
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:428
+#: src/php/core-classes/plugin.class.php:436
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:578
+#: src/php/core-classes/plugin.class.php:586
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 
@@ -2082,43 +2090,35 @@ msgstr ""
 msgid "you cannot select multiple terms."
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:708
-msgid "Checking license..."
-msgstr ""
-
-#: src/php/core-classes/settings.class.php:709
-msgid "Failed to contact server"
-msgstr ""
-
-#: src/php/core-classes/settings.class.php:842
+#: src/php/core-classes/settings.class.php:837
 msgid "None"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:861
+#: src/php/core-classes/settings.class.php:856
 msgid "Delete existing &amp; create new &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:866
+#: src/php/core-classes/settings.class.php:861
 msgid "Edit it &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:870
+#: src/php/core-classes/settings.class.php:865
 msgid "Create it &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:942
+#: src/php/core-classes/settings.class.php:937
 msgid "Any Role"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1039
+#: src/php/core-classes/settings.class.php:1034
 msgid "Main plugin folder"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1045
+#: src/php/core-classes/settings.class.php:1040
 msgid "Current theme folder"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1051
+#: src/php/core-classes/settings.class.php:1046
 msgid "WordPress content folder"
 msgstr ""
 

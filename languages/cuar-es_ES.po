@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2015-03-04 10:53:02+00:00\n"
+"POT-Creation-Date: 2015-03-04 16:19:53+00:00\n"
 "PO-Revision-Date: 2014-09-03 11:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: e-rgonomy.com <info@e-rgonomy.com>\n"
@@ -72,7 +72,7 @@ msgstr "Téléchargez le plugin WordPress"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:46
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:24
 #: src/php/core-addons/status/templates/status-section-templates.template.php:22
-#: src/php/core-classes/plugin.class.php:573
+#: src/php/core-classes/plugin.class.php:581
 msgid "Customer Area"
 msgstr "Customer Area"
 
@@ -2084,7 +2084,15 @@ msgstr "%1$s debe contener como mucho %2$s caracteres"
 msgid "%1$s is required."
 msgstr "%1$s es necesaria."
 
-#: src/php/core-classes/plugin.class.php:404
+#: src/php/core-classes/plugin.class.php:137
+msgid "Checking license..."
+msgstr "Comprobación de licencia de ..."
+
+#: src/php/core-classes/plugin.class.php:138
+msgid "Failed to contact server"
+msgstr "No se pudo contactar con el servidor"
+
+#: src/php/core-classes/plugin.class.php:412
 #, fuzzy
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
@@ -2093,12 +2101,12 @@ msgstr ""
 "Los links permanentes estas desactivados y el Customer Area no funcinará "
 "bien. Por favor, actívalos en las opciones de Wordpress"
 
-#: src/php/core-classes/plugin.class.php:428
+#: src/php/core-classes/plugin.class.php:436
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr ""
 "Algunos complementos requieren una versión más reciente del plugin principal."
 
-#: src/php/core-classes/plugin.class.php:578
+#: src/php/core-classes/plugin.class.php:586
 #, fuzzy
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
@@ -2211,43 +2219,35 @@ msgstr "no es un propietario válido"
 msgid "you cannot select multiple terms."
 msgstr "no puede seleccionar varias opciones"
 
-#: src/php/core-classes/settings.class.php:708
-msgid "Checking license..."
-msgstr "Comprobación de licencia de ..."
-
-#: src/php/core-classes/settings.class.php:709
-msgid "Failed to contact server"
-msgstr "No se pudo contactar con el servidor"
-
-#: src/php/core-classes/settings.class.php:842
+#: src/php/core-classes/settings.class.php:837
 msgid "None"
 msgstr "Ninguno"
 
-#: src/php/core-classes/settings.class.php:861
+#: src/php/core-classes/settings.class.php:856
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Eliminar existente &amp; crear nueva &raquo;"
 
-#: src/php/core-classes/settings.class.php:866
+#: src/php/core-classes/settings.class.php:861
 msgid "Edit it &raquo;"
 msgstr "Editar &raquo;"
 
-#: src/php/core-classes/settings.class.php:870
+#: src/php/core-classes/settings.class.php:865
 msgid "Create it &raquo;"
 msgstr "Crear &raquo;"
 
-#: src/php/core-classes/settings.class.php:942
+#: src/php/core-classes/settings.class.php:937
 msgid "Any Role"
 msgstr "Cualquier Rol"
 
-#: src/php/core-classes/settings.class.php:1039
+#: src/php/core-classes/settings.class.php:1034
 msgid "Main plugin folder"
 msgstr "Carpeta principal del plugin"
 
-#: src/php/core-classes/settings.class.php:1045
+#: src/php/core-classes/settings.class.php:1040
 msgid "Current theme folder"
 msgstr "Carpeta del tema actual"
 
-#: src/php/core-classes/settings.class.php:1051
+#: src/php/core-classes/settings.class.php:1046
 msgid "WordPress content folder"
 msgstr "Carpeta de contenido de Wordpress"
 

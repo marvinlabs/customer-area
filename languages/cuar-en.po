@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2015-03-04 10:53:02+00:00\n"
+"POT-Creation-Date: 2015-03-04 16:19:53+00:00\n"
 "PO-Revision-Date: 2015-03-02 17:53+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: English (http://www.transifex.com/projects/p/wp-customer-area/"
@@ -75,7 +75,7 @@ msgstr "See the WordPress top bar"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:46
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:24
 #: src/php/core-addons/status/templates/status-section-templates.template.php:22
-#: src/php/core-classes/plugin.class.php:573
+#: src/php/core-classes/plugin.class.php:581
 msgid "Customer Area"
 msgstr "Customer Area"
 
@@ -2064,7 +2064,15 @@ msgstr "%1$s must contain at most %2$s characters"
 msgid "%1$s is required."
 msgstr "%1$s is required."
 
-#: src/php/core-classes/plugin.class.php:404
+#: src/php/core-classes/plugin.class.php:137
+msgid "Checking license..."
+msgstr "Checking license..."
+
+#: src/php/core-classes/plugin.class.php:138
+msgid "Failed to contact server"
+msgstr "Failed to contact server"
+
+#: src/php/core-classes/plugin.class.php:412
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
@@ -2072,11 +2080,11 @@ msgstr ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 
-#: src/php/core-classes/plugin.class.php:428
+#: src/php/core-classes/plugin.class.php:436
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr "Some add-ons require a newer version of the main plugin."
 
-#: src/php/core-classes/plugin.class.php:578
+#: src/php/core-classes/plugin.class.php:586
 msgid "Some template files you have overridden seem to be outdated."
 msgstr "Some template files you have overridden seem to be outdated."
 
@@ -2183,43 +2191,35 @@ msgstr " is not a valid owner"
 msgid "you cannot select multiple terms."
 msgstr "you cannot select multiple terms."
 
-#: src/php/core-classes/settings.class.php:708
-msgid "Checking license..."
-msgstr "Checking license..."
-
-#: src/php/core-classes/settings.class.php:709
-msgid "Failed to contact server"
-msgstr "Failed to contact server"
-
-#: src/php/core-classes/settings.class.php:842
+#: src/php/core-classes/settings.class.php:837
 msgid "None"
 msgstr "None"
 
-#: src/php/core-classes/settings.class.php:861
+#: src/php/core-classes/settings.class.php:856
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Delete existing &amp; create new &raquo;"
 
-#: src/php/core-classes/settings.class.php:866
+#: src/php/core-classes/settings.class.php:861
 msgid "Edit it &raquo;"
 msgstr "Edit it &raquo;"
 
-#: src/php/core-classes/settings.class.php:870
+#: src/php/core-classes/settings.class.php:865
 msgid "Create it &raquo;"
 msgstr "Create it &raquo;"
 
-#: src/php/core-classes/settings.class.php:942
+#: src/php/core-classes/settings.class.php:937
 msgid "Any Role"
 msgstr "Any Role"
 
-#: src/php/core-classes/settings.class.php:1039
+#: src/php/core-classes/settings.class.php:1034
 msgid "Main plugin folder"
 msgstr "Main plugin folder"
 
-#: src/php/core-classes/settings.class.php:1045
+#: src/php/core-classes/settings.class.php:1040
 msgid "Current theme folder"
 msgstr "Current theme folder"
 
-#: src/php/core-classes/settings.class.php:1051
+#: src/php/core-classes/settings.class.php:1046
 msgid "WordPress content folder"
 msgstr "WordPress content folder"
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2015-03-04 10:53:02+00:00\n"
+"POT-Creation-Date: 2015-03-04 16:19:53+00:00\n"
 "PO-Revision-Date: 2015-03-03 08:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
@@ -72,7 +72,7 @@ msgstr "Téléchargez le plugin WordPress"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:46
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:24
 #: src/php/core-addons/status/templates/status-section-templates.template.php:22
-#: src/php/core-classes/plugin.class.php:573
+#: src/php/core-classes/plugin.class.php:581
 msgid "Customer Area"
 msgstr "Àrea de Clients"
 
@@ -2086,7 +2086,15 @@ msgstr "%1$s ha de contindre com a màxim %2$s caràcters"
 msgid "%1$s is required."
 msgstr "%1$s és necessari."
 
-#: src/php/core-classes/plugin.class.php:404
+#: src/php/core-classes/plugin.class.php:137
+msgid "Checking license..."
+msgstr "Comprovant llicència..."
+
+#: src/php/core-classes/plugin.class.php:138
+msgid "Failed to contact server"
+msgstr "La comunicació amb el servidor ha fallat"
+
+#: src/php/core-classes/plugin.class.php:412
 #, fuzzy
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
@@ -2096,12 +2104,12 @@ msgstr ""
 "funcionarà correctament. Si us plau, habilita els enllaços permanents als "
 "Paràmetres de WordPress."
 
-#: src/php/core-classes/plugin.class.php:428
+#: src/php/core-classes/plugin.class.php:436
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr ""
 "Alguns complements necessiten una versió més nova de l'extensió principal."
 
-#: src/php/core-classes/plugin.class.php:578
+#: src/php/core-classes/plugin.class.php:586
 #, fuzzy
 msgid "Some template files you have overridden seem to be outdated."
 msgstr "Alguns arxius de plantilles que has sobreescrit semblen ser obsolets."
@@ -2213,43 +2221,35 @@ msgstr "no és un propietari vàlid"
 msgid "you cannot select multiple terms."
 msgstr "no pots seleccionar múltiples termes."
 
-#: src/php/core-classes/settings.class.php:708
-msgid "Checking license..."
-msgstr "Comprovant llicència..."
-
-#: src/php/core-classes/settings.class.php:709
-msgid "Failed to contact server"
-msgstr "La comunicació amb el servidor ha fallat"
-
-#: src/php/core-classes/settings.class.php:842
+#: src/php/core-classes/settings.class.php:837
 msgid "None"
 msgstr "Cap"
 
-#: src/php/core-classes/settings.class.php:861
+#: src/php/core-classes/settings.class.php:856
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Eliminar &amp; existents i crear nous &raquo;"
 
-#: src/php/core-classes/settings.class.php:866
+#: src/php/core-classes/settings.class.php:861
 msgid "Edit it &raquo;"
 msgstr "Edita'l &raquo;"
 
-#: src/php/core-classes/settings.class.php:870
+#: src/php/core-classes/settings.class.php:865
 msgid "Create it &raquo;"
 msgstr "Crea'l &raquo;"
 
-#: src/php/core-classes/settings.class.php:942
+#: src/php/core-classes/settings.class.php:937
 msgid "Any Role"
 msgstr "Qualsevol rol"
 
-#: src/php/core-classes/settings.class.php:1039
+#: src/php/core-classes/settings.class.php:1034
 msgid "Main plugin folder"
 msgstr "Carpeta de l'extensió principal"
 
-#: src/php/core-classes/settings.class.php:1045
+#: src/php/core-classes/settings.class.php:1040
 msgid "Current theme folder"
 msgstr "Carpeta del tema actual"
 
-#: src/php/core-classes/settings.class.php:1051
+#: src/php/core-classes/settings.class.php:1046
 msgid "WordPress content folder"
 msgstr "Carpeta del contingut de WordPress"
 
