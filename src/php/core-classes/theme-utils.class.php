@@ -18,15 +18,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
 	
-if (!class_exists('CUAR_ThemeUtils')) :
+if (!class_exists('CUAR_SkinUtils')) :
 
 /**
- * Gathers static functions to be used in themes 
+ * Gathers static functions to be used in skins
  * 
  * @author Vincent Prat @ MarvinLabs
  */
-class CUAR_ThemeUtils {
-	
+class CUAR_SkinUtils {
 }
 
-endif; // if (!class_exists('CUAR_ThemeUtils')) :
+endif; // if (!class_exists('CUAR_SkinUtils')) :

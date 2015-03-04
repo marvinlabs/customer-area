@@ -28,14 +28,14 @@
 */
 
 if ( !defined( 'CUAR_PLUGIN_DIR' ) ) define( 'CUAR_PLUGIN_DIR', 	plugin_dir_path( __FILE__ ) );
-if ( !defined( 'CUAR_INCLUDES_DIR' ) ) define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN_DIR . '/includes' );
+if ( !defined( 'CUAR_INCLUDES_DIR' ) ) define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN_DIR . '/src/php' );
 
 define( 'CUAR_LANGUAGE_DIR', 		'customer-area/languages' );
 
 define( 'CUAR_PLUGIN_URL', 			WP_PLUGIN_URL . '/customer-area/' ); // plugin_dir_url( __FILE__ ) );
 define( 'CUAR_SCRIPTS_URL', 		CUAR_PLUGIN_URL . 'scripts' );
-define( 'CUAR_ADMIN_THEME', 		'plugin%%default-wp38' );
-define( 'CUAR_FRONTEND_THEME', 		'plugin%%default-v4' );
+define( 'CUAR_ADMIN_SKIN', 		'plugin%%default-wp38' );
+define( 'CUAR_FRONTEND_SKIN', 		'plugin%%default-v4' );
 define( 'CUAR_PLUGIN_FILE', 		'customer-area/customer-area.php' );
 
 define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', FALSE );

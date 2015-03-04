@@ -249,13 +249,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					array ( &$cuar_settings, 'print_empty_section_info' ), 
 					self::$OPTIONS_PAGE_SLUG );
 			
-			add_settings_field ( self::$OPTION_ADMIN_THEME, 
+			add_settings_field ( self::$OPTION_ADMIN_SKIN,
 					__ ( 'Admin theme', 'cuar' ), 
 					array ( &$cuar_settings, 'print_theme_select_field' ), 
 					self::$OPTIONS_PAGE_SLUG, 
 					'cuar_general_settings', 
 					array (
-							'option_id' => self::$OPTION_ADMIN_THEME,
+							'option_id' => self::$OPTION_ADMIN_SKIN,
 							'theme_type' => 'admin' 
 						)
 				);
@@ -284,7 +284,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param array $validated        	
 		 */
 		public function validate_core_settings($validated, $cuar_settings, $input) {
-			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_ADMIN_THEME );
+			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_ADMIN_SKIN );
 			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_HIDE_SINGLE_OWNER_SELECT );
 			
 			return $validated;
@@ -316,13 +316,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 							) 
 					);
 				
-				add_settings_field ( self::$OPTION_FRONTEND_THEME, 
+				add_settings_field ( self::$OPTION_FRONTEND_SKIN,
 						__ ( 'Frontend theme', 'cuar' ), 
 						array ( &$cuar_settings, 'print_theme_select_field' ), 
 						self::$OPTIONS_PAGE_SLUG, 
 						'cuar_general_settings', 
 						array (
-								'option_id' => self::$OPTION_FRONTEND_THEME,
+								'option_id' => self::$OPTION_FRONTEND_SKIN,
 								'theme_type' => 'frontend' 
 							) 
 					);
@@ -355,7 +355,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			if ( !current_theme_supports( 'customer-area-css' ) ) {		
 				$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
-				$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME );
+				$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_SKIN );
 			}
 			
 			return $validated;
@@ -373,8 +373,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public static function set_default_core_options($defaults) {
 			$defaults [self::$OPTION_INCLUDE_CSS] = true;
 			$defaults [self::$OPTION_DEBUG_TEMPLATES] = false;
-			$defaults [self::$OPTION_ADMIN_THEME] = CUAR_ADMIN_THEME;
-			$defaults [self::$OPTION_FRONTEND_THEME] = CUAR_FRONTEND_THEME;
+			$defaults [self::$OPTION_ADMIN_SKIN] = CUAR_ADMIN_SKIN;
+			$defaults [self::$OPTION_FRONTEND_SKIN] = CUAR_FRONTEND_SKIN;
 			$defaults [self::$OPTION_HIDE_SINGLE_OWNER_SELECT] = false;
 			
 			return $defaults;
@@ -703,7 +703,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 //				$should_check_license = true;
 //			}
 
-            wp_enqueue_script('cuar-licensing', CUAR_PLUGIN_URL . '/js/admin/licensing.js', array('jquery') );
+            wp_enqueue_script('cuar-licensing', CUAR_PLUGIN_URL . '/assets/js/admin/customer-area.min.js', array('jquery') );
             wp_localize_script('cuar-licensing', 'cuarLicensingMessages', array(
                 'checking'                  => __( 'Checking license...', 'cuar' ),
                 'unreachableServerError'    => __( 'Failed to contact server', 'cuar' )
@@ -1035,19 +1035,19 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					array (
 							'base'	=> 'plugin',
 							'type'	=> $theme_type,
-							'dir' 	=> CUAR_PLUGIN_DIR . '/themes/' . $theme_type,
+							'dir' 	=> CUAR_PLUGIN_DIR . '/skins/' . $theme_type,
 							'label' => __ ( 'Main plugin folder', 'cuar' ) 
 						),
 					array (
 							'base'	=> 'user-theme',
 							'type'	=> $theme_type,
-							'dir' 	=> untrailingslashit(get_stylesheet_directory()) . '/customer-area/themes/' . $theme_type,
+							'dir' 	=> untrailingslashit(get_stylesheet_directory()) . '/customer-area/skins/' . $theme_type,
 							'label' => __ ( 'Current theme folder', 'cuar' ) 
 						),
 					array (
 							'base'	=> 'wp-content',
 							'type'	=> $theme_type,
-							'dir' 	=> untrailingslashit(WP_CONTENT_DIR) . '/customer-area/themes/' . $theme_type,
+							'dir' 	=> untrailingslashit(WP_CONTENT_DIR) . '/customer-area/skins/' . $theme_type,
 							'label' => __ ( 'WordPress content folder', 'cuar' ) 
 						) 
 				) );
@@ -1158,8 +1158,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public static $OPTION_DEBUG_TEMPLATES = 'cuar_debug_templates';
 		public static $OPTION_CURRENT_VERSION = 'cuar_current_version';
 		public static $OPTION_INCLUDE_CSS = 'cuar_include_css';
-		public static $OPTION_ADMIN_THEME = 'cuar_admin_theme_url';
-		public static $OPTION_FRONTEND_THEME = 'cuar_frontend_theme_url';
+		public static $OPTION_ADMIN_SKIN = 'cuar_admin_theme_url';
+		public static $OPTION_FRONTEND_SKIN = 'cuar_frontend_theme_url';
 		public static $OPTION_HIDE_SINGLE_OWNER_SELECT = 'cuar_hide_single_owner_select';
 		
 		/**

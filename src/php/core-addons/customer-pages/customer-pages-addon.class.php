@@ -1029,7 +1029,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 			}
 		}
 
-		$this->plugin->add_admin_notice( sprintf( _n( '%s page has been deleted', '%s pages have been deleted', $delete_count, 'cuar'), $delete_count ), 'updated' );
+		$this->plugin->add_admin_notice( sprintf( _n( '%s page has been deleted', '%s pages have been deleted', 'cuar', 'cuar'), $delete_count ), 'updated' );
 
 		$this->plugin->clear_attention_needed( 'orphan-pages' );
 		$this->plugin->set_attention_needed( 'nav-menu-needs-sync',
@@ -1059,4 +1059,4 @@ function cuar_sort_pages_by_priority( $a, $b ) {
 	return $b->get_priority() < $a->get_priority();
 }
 
-endif; // if (!class_exists('CUAR_CustomerPagesAddOn')) :
+endif; // if (!class_exists('CUAR_CustomerPagesAddOn')) :/ if (!class_exists('CUAR_CustomerPagesAddOn')) :

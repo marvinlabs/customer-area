@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once( CUAR_INCLUDES_DIR . '/core-classes/addon-content-page.class.php' );
 
-require_once( dirname(__FILE__) . '/widget-private-file-authors.class.php' );
-require_once( dirname(__FILE__) . '/widget-private-file-categories.class.php' );
-require_once( dirname(__FILE__) . '/widget-private-file-dates.class.php' );
-require_once( dirname(__FILE__) . '/widget-private-files.class.php' );
+require_once(dirname(__FILE__) . '/widget-private-file-authors.class.php');
+require_once(dirname(__FILE__) . '/widget-private-file-categories.class.php');
+require_once(dirname(__FILE__) . '/widget-private-file-dates.class.php');
+require_once(dirname(__FILE__) . '/widget-private-files.class.php');
 
 if (!class_exists('CUAR_CustomerPrivateFilesAddOn')) :
 

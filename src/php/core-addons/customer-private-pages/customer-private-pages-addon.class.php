@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once( CUAR_INCLUDES_DIR . '/core-classes/addon-content-page.class.php' );
 
-require_once( dirname(__FILE__) . '/widget-private-page-authors.class.php' );
-require_once( dirname(__FILE__) . '/widget-private-page-categories.class.php' );
-require_once( dirname(__FILE__) . '/widget-private-page-dates.class.php' );
-require_once( dirname(__FILE__) . '/widget-private-pages.class.php' );
+require_once(dirname(__FILE__) . '/widget-private-page-authors.class.php');
+require_once(dirname(__FILE__) . '/widget-private-page-categories.class.php');
+require_once(dirname(__FILE__) . '/widget-private-page-dates.class.php');
+require_once(dirname(__FILE__) . '/widget-private-pages.class.php');
 
 if (!class_exists('CUAR_CustomerPrivatePagesAddOn')) :
 

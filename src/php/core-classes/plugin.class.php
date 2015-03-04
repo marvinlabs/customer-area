@@ -164,7 +164,7 @@ class CUAR_Plugin {
 	/*------- TEMPLATING & THEMING ----------------------------------------------------------------------------------*/
 
 	public function get_theme( $theme_type ) {
-		return explode( '%%', $this->get_option( $theme_type=='admin' ? CUAR_Settings::$OPTION_ADMIN_THEME : CUAR_Settings::$OPTION_FRONTEND_THEME, '' ) );		
+		return explode( '%%', $this->get_option( $theme_type=='admin' ? CUAR_Settings::$OPTION_ADMIN_SKIN : CUAR_Settings::$OPTION_FRONTEND_SKIN, '' ) );
 	}
 	
 	public function get_theme_url( $theme_type ) {
@@ -177,13 +177,13 @@ class CUAR_Plugin {
 			$base = '';
 			switch ( $theme[0] ) {
 				case 'plugin':
-					$base = untrailingslashit(CUAR_PLUGIN_URL) . '/themes/';
+					$base = untrailingslashit(CUAR_PLUGIN_URL) . '/skins/';
 					break;
 				case 'user-theme':
-					$base = untrailingslashit(get_stylesheet_directory_uri()) . '/customer-area/themes/';
+					$base = untrailingslashit(get_stylesheet_directory_uri()) . '/customer-area/skins/';
 					break;
 				case 'wp-content':
-					$base = untrailingslashit(WP_CONTENT_URL) . '/customer-area/themes/';
+					$base = untrailingslashit(WP_CONTENT_URL) . '/customer-area/skins/';
 					break;
 			} 			
 			return $base . $theme_type . '/' . $theme[1];
@@ -202,13 +202,13 @@ class CUAR_Plugin {
 			$base = '';
 			switch ( $theme[0] ) {
 				case 'plugin':
-					$base = untrailingslashit(CUAR_PLUGIN_DIR) . '/themes';
+					$base = untrailingslashit(CUAR_PLUGIN_DIR) . '/skins';
 					break;
 				case 'user-theme':
-					$base = untrailingslashit(get_stylesheet_directory()) . '/customer-area/themes';
+					$base = untrailingslashit(get_stylesheet_directory()) . '/customer-area/skins';
 					break;
 				case 'wp-content':
-					$base = untrailingslashit(WP_CONTENT_DIR) . '/customer-area/themes';
+					$base = untrailingslashit(WP_CONTENT_DIR) . '/customer-area/skins';
 					break;
 			} 			
 			return $base . '/' . $theme_type . '/' . $theme[1];

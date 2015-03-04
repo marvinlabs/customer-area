@@ -71,14 +71,14 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	 * @param CUAR_Settings $cuar_settings
 	 */
 	public function print_addons( $cuar_settings ) {
-		include( dirname( __FILE__ ) . '/templates/list-addons.template.php' );
+		include(dirname(__FILE__) . '/templates/list-addons.template.php');
 	}
 	
 	/**
 	 * @param CUAR_Settings $cuar_settings
 	 */
 	public function print_troubleshooting( $cuar_settings ) {
-		include( dirname( __FILE__ ) . '/templates/troubleshooting.template.php' );
+		include(dirname(__FILE__) . '/templates/troubleshooting.template.php');
 	}
 	
 	public function add_dashboard_metaboxes() {	
