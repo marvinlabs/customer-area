@@ -1,7 +1,7 @@
 <?php
 /*
 	Plugin Name: 	WP Customer Area
-	Description: 	Customer area give your customers the possibility to get a page on your site where they can access private content. 
+	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
 	Version: 		6.0.0
 	Author: 		MarvinLabs

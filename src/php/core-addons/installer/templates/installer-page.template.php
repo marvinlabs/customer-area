@@ -11,7 +11,7 @@
         </div>
 
         <div class="cuar-badge">
-            <img src="<?php echo $this->plugin->get_admin_theme_url(); ?>/images/logo-badge.png" />
+            <img src="<?php echo $this->plugin->get_admin_theme_url(); ?>/assets/img/logo-badge.png" />
             <p><?php printf( __( 'version %s', 'cuar' ), $this->plugin->get_version() ); ?></p>
         </div>
     </div>
