@@ -92,7 +92,6 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/user-password
 
 // Core addons
 include_once( CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.class.php' );
-include_once( CUAR_INCLUDES_DIR . '/core-addons/help/help-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/installer/installer-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/container-owner/container-owner-addon.class.php' );
