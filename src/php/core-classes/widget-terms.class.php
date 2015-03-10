@@ -114,7 +114,7 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
         {
             $template = CUAR_Plugin::get_instance()->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
-                "widget-terms_" . $this->id_base . ".template.php",
+                "widget-terms-" . $this->id_base . ".template.php",
                 'templates',
                 "widget-terms.template.php"
             );

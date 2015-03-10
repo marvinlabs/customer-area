@@ -30,18 +30,42 @@ if ( !class_exists('CUAR_ContentListWidget')) :
 
         /**
          * Register widget with WordPress.
+         *
+         * @param string $id_base         Optional Base ID for the widget, lowercase and unique. If left empty,
+         *                                a portion of the widget's class name will be used Has to be unique.
+         * @param string $name            Name for the widget displayed on the configuration page.
+         * @param array  $widget_options  Optional. Widget options. See {@see wp_register_sidebar_widget()} for
+         *                                information on accepted arguments. Default empty array.
+         * @param array  $control_options Optional. Widget control options. See {@see wp_register_widget_control()}
+         *                                for information on accepted arguments. Default empty array.
          */
         function __construct($id_base, $name, $widget_options = array(), $control_options = array())
         {
             parent::__construct($id_base, $name, $widget_options, $control_options);
         }
 
+        /**
+         * Get the post type to use
+         * @return string The post type
+         */
         protected abstract function get_post_type();
 
+        /**
+         * Get the default title for the widget if none
+         * @return string The title
+         */
         protected abstract function get_default_title();
 
+        /**
+         * Get the message to show when no content is available
+         * @return string The message
+         */
         protected abstract function get_default_no_content_message();
 
+        /**
+         * Get the taxonomy associated to this post type
+         * @return string|null The taxonomy or null
+         */
         protected function get_associated_taxonomy()
         {
             return null;
@@ -85,6 +109,14 @@ if ( !class_exists('CUAR_ContentListWidget')) :
             echo $args['after_widget'];
         }
 
+        /**
+         * Get the posts to list in the widget
+         *
+         * @param $args
+         * @param $instance
+         *
+         * @return array
+         */
         protected function get_content($args, $instance)
         {
             // Get user content
@@ -121,27 +153,20 @@ if ( !class_exists('CUAR_ContentListWidget')) :
             return $posts;
         }
 
+        /**
+         * Print a list of posts
+         *
+         * @param array $posts The posts
+         */
         protected function print_content_list($posts)
         {
-            echo '<ul>';
-
-            foreach ($posts as $post)
-            {
-                echo '<li>';
-
-                $link = get_permalink($post);
-                $title = get_the_title($post);
-
-                printf('<a href="%1$s" title="%3$s">%2$s</a>',
-                    $link,
-                    $title,
-                    sprintf(esc_attr__('Link to %s', 'cuar'), $title)
-                );
-
-                echo '</li>';
-            }
-
-            echo '</ul>';
+            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                "widget-content-list-" . $this->id_base . ".template.php",
+                'templates',
+                "widget-content-list.template.php"
+            );
+            include($template);
         }
 
         /**
@@ -150,6 +175,8 @@ if ( !class_exists('CUAR_ContentListWidget')) :
          * @see WP_Widget::form()
          *
          * @param array $instance Previously saved values from database.
+         *
+         * @return string|void
          */
         public function form($instance)
         {
