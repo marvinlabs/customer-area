@@ -27,19 +27,41 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
      */
     abstract class CUAR_TermsWidget extends WP_Widget
     {
-
         /**
          * Register widget with WordPress.
+         *
+         * @param string $id_base         Optional Base ID for the widget, lowercase and unique. If left empty,
+         *                                a portion of the widget's class name will be used Has to be unique.
+         * @param string $name            Name for the widget displayed on the configuration page.
+         * @param array  $widget_options  Optional. Widget options. See {@see wp_register_sidebar_widget()} for
+         *                                information on accepted arguments. Default empty array.
+         * @param array  $control_options Optional. Widget control options. See {@see wp_register_widget_control()}
+         *                                for information on accepted arguments. Default empty array.
          */
         function __construct($id_base, $name, $widget_options = array(), $control_options = array())
         {
             parent::__construct($id_base, $name, $widget_options, $control_options);
         }
 
+        /**
+         * Get the URL to a term archive page
+         *
+         * @param $term The term
+         *
+         * @return string The URL
+         */
         protected abstract function get_link($term);
 
+        /**
+         * Get the taxonomy explored by this widget
+         * @return string The taxonomy
+         */
         protected abstract function get_taxonomy();
 
+        /**
+         * Get the default title for the widget if none
+         * @return string The title
+         */
         protected abstract function get_default_title();
 
         /**
@@ -60,11 +82,11 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
 
             $hide_empty = isset($instance['hide_empty']) ? $instance['hide_empty'] : 0;
 
-            $categories = get_terms($this->get_taxonomy(), array(
+            $terms = get_terms($this->get_taxonomy(), array(
                 'parent'     => 0,
                 'hide_empty' => $hide_empty
             ));
-            if (count($categories) <= 0)
+            if (count($terms) <= 0)
             {
                 return;
             }
@@ -77,49 +99,35 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
                 echo $args['before_title'] . $title . $args['after_title'];
             }
 
-            $this->print_category_list($categories, $hide_empty);
+            $this->print_term_list($terms, $hide_empty);
 
             echo $args['after_widget'];
         }
 
-        protected function print_category_list($categories, $hide_empty)
+        /**
+         * Print the list of terms
+         *
+         * @param array   $terms The terms
+         * @param boolean $hide_empty Shall we hide empty terms?
+         */
+        protected function print_term_list($terms, $hide_empty)
         {
-            echo '<ul>';
-
-            foreach ($categories as $cat)
-            {
-                echo '<li>';
-
-                $link = $this->get_link($cat);
-
-                printf('<a href="%1$s" title="%3$s">%2$s</a>',
-                    $link,
-                    $cat->name,
-                    sprintf(esc_attr__('Show all content categorized under %s', 'cuar'), $cat->name)
-                );
-
-                $children = get_terms('cuar_private_file_category', array(
-                    'parent'     => $cat->term_id,
-                    'hide_empty' => $hide_empty
-                ));
-
-                if (count($children) > 0)
-                {
-                    $this->print_category_list($children, $hide_empty);
-                }
-
-                echo '</li>';
-            }
-
-            echo '</ul>';
+            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                "widget-terms_" . $this->id_base . ".template.php",
+                'templates',
+                "widget-terms.template.php"
+            );
+            include($template);
         }
 
         /**
          * Back-end widget form.
-         *
          * @see WP_Widget::form()
          *
          * @param array $instance Previously saved values from database.
+         *
+         * @return string|void
          */
         public function form($instance)
         {
