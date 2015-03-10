@@ -30,16 +30,40 @@ if ( !class_exists('CUAR_ContentAuthorsWidget')) :
 
         /**
          * Register widget with WordPress.
+         *
+         * @param string $id_base         Optional Base ID for the widget, lowercase and unique. If left empty,
+         *                                a portion of the widget's class name will be used Has to be unique.
+         * @param string $name            Name for the widget displayed on the configuration page.
+         * @param array  $widget_options  Optional. Widget options. See {@see wp_register_sidebar_widget()} for
+         *                                information on accepted arguments. Default empty array.
+         * @param array  $control_options Optional. Widget control options. See {@see wp_register_widget_control()}
+         *                                for information on accepted arguments. Default empty array.
          */
         function __construct($id_base, $name, $widget_options = array(), $control_options = array())
         {
             parent::__construct($id_base, $name, $widget_options, $control_options);
         }
 
+        /**
+         * Get the URL to an author archive page
+         *
+         * @param int $author_id
+         *
+         * @return string The URL
+         *
+         */
         protected abstract function get_link($author_id);
 
+        /**
+         * Get the post type to use
+         * @return string The post type
+         */
         protected abstract function get_post_type();
 
+        /**
+         * Get the default title for the widget if none
+         * @return string The title
+         */
         protected abstract function get_default_title();
 
         /**
@@ -77,10 +101,12 @@ if ( !class_exists('CUAR_ContentAuthorsWidget')) :
             echo $args['after_widget'];
         }
 
+        /**
+         * Get the authors of private content for current user
+         * @return array
+         */
         protected function get_authors()
         {
-            global $wpdb;
-
             $current_user_id = get_current_user_id();
 
             // TODO SETUP SOME CACHING MECHANISM
@@ -127,7 +153,6 @@ if ( !class_exists('CUAR_ContentAuthorsWidget')) :
             natcasesort($out);
 
             // If current user if in that array, we place him in first position
-            $key = array_search($current_user_id, $out);
             if (isset($out[$current_user_id]))
             {
                 unset($out[$current_user_id]);
@@ -137,26 +162,18 @@ if ( !class_exists('CUAR_ContentAuthorsWidget')) :
             return $out;
         }
 
+        /**
+         * @param array $authors (id, display_name)
+         */
         protected function print_author_list($authors)
         {
-            echo '<ul>';
-
-            foreach ($authors as $id => $display_name)
-            {
-                echo '<li>';
-
-                $link = $this->get_link($id);
-
-                printf('<a href="%1$s" title="%3$s">%2$s</a>',
-                    $link,
-                    $display_name,
-                    sprintf(esc_attr__('Show all content published by %s', 'cuar'), $display_name)
-                );
-
-                echo '</li>';
-            }
-
-            echo '</ul>';
+            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                "widget-content-authors-" . $this->id_base . ".template.php",
+                'templates',
+                "widget-content-authors.template.php"
+            );
+            include($template);
         }
 
         /**
@@ -165,6 +182,8 @@ if ( !class_exists('CUAR_ContentAuthorsWidget')) :
          * @see WP_Widget::form()
          *
          * @param array $instance Previously saved values from database.
+         *
+         * @return string|void
          */
         public function form($instance)
         {

@@ -30,16 +30,41 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
 
         /**
          * Register widget with WordPress.
+         *
+         * @param string $id_base         Optional Base ID for the widget, lowercase and unique. If left empty,
+         *                                a portion of the widget's class name will be used Has to be unique.
+         * @param string $name            Name for the widget displayed on the configuration page.
+         * @param array  $widget_options  Optional. Widget options. See {@see wp_register_sidebar_widget()} for
+         *                                information on accepted arguments. Default empty array.
+         * @param array  $control_options Optional. Widget control options. See {@see wp_register_widget_control()}
+         *                                for information on accepted arguments. Default empty array.
          */
         function __construct($id_base, $name, $widget_options = array(), $control_options = array())
         {
             parent::__construct($id_base, $name, $widget_options, $control_options);
         }
 
+        /**
+         * Get the URL to a date archive page
+         *
+         * @param int $year
+         * @param int $month
+         *
+         * @return string The URL
+         *
+         */
         protected abstract function get_link($year, $month = 0);
 
+        /**
+         * Get the post type to use
+         * @return string The post type
+         */
         protected abstract function get_post_type();
 
+        /**
+         * Get the default title for the widget if none
+         * @return string The title
+         */
         protected abstract function get_default_title();
 
         /**
@@ -77,6 +102,10 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
             echo $args['after_widget'];
         }
 
+        /**
+         * Get the dates where content has been published
+         * @return array
+         */
         protected function get_dates()
         {
             global $wpdb;
@@ -101,7 +130,6 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
 
 
             $out = array();
-            $current_year = 0;
             if (count($posts) > 0)
             {
                 foreach ($posts as $p)
@@ -121,47 +149,20 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
             return $out;
         }
 
+        /**
+         * Print the list
+         * @param $dates
+         * @param $show_months
+         */
         protected function print_date_list($dates, $show_months)
         {
-            echo '<ul>';
-
-            foreach ($dates as $year => $months)
-            {
-                echo '<li>';
-
-                $link = $this->get_link($year);
-
-                printf('<a href="%1$s" title="%3$s">%2$s</a>',
-                    $link,
-                    $year,
-                    sprintf(esc_attr__('Show all content published in %s', 'cuar'), $year)
-                );
-
-                if (count($months) > 0)
-                {
-                    echo '<ul>';
-                    foreach ($months as $month)
-                    {
-                        echo '<li>';
-
-                        $link = $this->get_link($year, $month);
-                        $month_name = date_i18n("F", mktime(0, 0, 0, $month, 10));
-
-                        printf('<a href="%1$s" title="%3$s">%2$s</a>',
-                            $link,
-                            $month_name,
-                            sprintf(esc_attr__('Show all content published in %2$s %1$s', 'cuar'), $year, $month_name)
-                        );
-
-                        echo '</li>';
-                    }
-                    echo '</ul>';
-                }
-
-                echo '</li>';
-            }
-
-            echo '</ul>';
+            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                "widget-content-dates-" . $this->id_base . ".template.php",
+                'templates',
+                "widget-content-dates.template.php"
+            );
+            include($template);
         }
 
         /**
@@ -170,6 +171,8 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
          * @see WP_Widget::form()
          *
          * @param array $instance Previously saved values from database.
+         *
+         * @return string|void
          */
         public function form($instance)
         {
