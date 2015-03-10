@@ -333,7 +333,7 @@ abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn {
 		}
 			
 		// Register the sidebar
-		$this->register_sidebar( $this->get_sidebar_id(), sprintf( __( 'Customer Area Sidebar - %s', 'cuar' ), $this->get_title() ) );
+		$this->register_sidebar( $this->get_sidebar_id(), sprintf( __( 'WPCA - %s', 'cuar' ), $this->get_title() ) );
 	}
 	
 	protected function register_sidebar( $id, $name ) {

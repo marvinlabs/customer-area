@@ -198,8 +198,8 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
         public function build_admin_menu()
         {
             // Add the top-level admin menu
-            $page_title = __('Customer Area', 'cuar');
-            $menu_title = __('Customer Area', 'cuar');
+            $page_title = __('WP Customer Area', 'cuar');
+            $menu_title = __('WP Customer Area', 'cuar');
             $menu_slug = 'customer-area';
             $capability = 'view-customer-area-menu';
             $function = array(&$this, 'print_dashboard');
@@ -231,7 +231,7 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
         {
             $wp_admin_bar->add_menu(array(
                 'id' => 'customer-area',
-                'title' => __('Customer Area', 'cuar'),
+                'title' => __('WP Customer Area', 'cuar'),
                 'href' => admin_url('admin.php?page=customer-area')
             ));
 

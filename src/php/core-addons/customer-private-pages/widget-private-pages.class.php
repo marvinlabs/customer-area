@@ -34,7 +34,7 @@ class CUAR_PrivatePagesWidget extends CUAR_ContentListWidget {
 	function __construct() {
 		parent::__construct(
 				'cuar_private_pages', 
-				__('Customer Area - Recent Pages', 'cuar'),
+				__('WPCA - Recent Pages', 'cuar'),
 				array( 
 						'description' => __( 'Shows a list of pages for the logged-in user', 'cuar' ), 
 					)

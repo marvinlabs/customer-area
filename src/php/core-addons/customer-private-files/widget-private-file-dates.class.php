@@ -34,7 +34,7 @@ class CUAR_PrivateFileDatesWidget extends CUAR_ContentDatesWidget {
 	function __construct() {
 		parent::__construct(
 				'cuar_private_file_archives', 
-				__('Customer Area - File Archives', 'cuar'),
+				__('WPCA - File Archives', 'cuar'),
 				array( 
 						'description' => __( 'Shows the private file yearly archives of the Customer Area', 'cuar' ), 
 					)

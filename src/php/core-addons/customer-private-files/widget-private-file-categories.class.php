@@ -34,7 +34,7 @@ class CUAR_PrivateFileCategoriesWidget extends CUAR_TermsWidget {
 	function __construct() {
 		parent::__construct(
 				'cuar_private_file_categories', 
-				__('Customer Area - File Categories', 'cuar'),
+				__('WPCA - File Categories', 'cuar'),
 				array( 
 						'description' => __( 'Shows the private file categories of the Customer Area', 'cuar' ), 
 					)

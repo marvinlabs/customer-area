@@ -34,7 +34,7 @@ class CUAR_PrivateFileAuthorsWidget extends CUAR_ContentAuthorsWidget {
 	function __construct() {
 		parent::__construct(
 				'cuar_private_file_authors', 
-				__('Customer Area - File Authors', 'cuar'),
+				__('WPCA - File Authors', 'cuar'),
 				array( 
 						'description' => __( 'Shows the private file author archives of the Customer Area', 'cuar' ), 
 					)

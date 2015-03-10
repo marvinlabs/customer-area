@@ -39,7 +39,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		// Add a WordPress menu 
 		register_nav_menus( array(
-				'cuar_main_menu' => 'Customer Area Navigation Menu'
+				'cuar_main_menu' => 'WP Customer Area Navigation Menu'
 			) );
 		
 		add_filter( 'wp_nav_menu_objects', array( &$this, 'fix_menu_item_classes' ) );
@@ -498,8 +498,8 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		
 		// Create new menu if not existing already
 		if ( $menu==null ) {	
-			wp_delete_nav_menu( _x( 'customer-area-menu', 'Localised slug for the main navigation menu (small caps version of the "Customer Area Menu" translation)', 'cuar' ) );
-			$menu = wp_create_nav_menu( __('Customer Area Menu', 'cuar' ) );
+			wp_delete_nav_menu( _x( 'customer-area-menu', 'Localised slug for the main navigation menu (small caps version of the "WP Customer Area Menu" translation)', 'cuar' ) );
+			$menu = wp_create_nav_menu( __('WP Customer Area Menu', 'cuar' ) );
 		}
 		
 		if ( is_wp_error( $menu ) ) {
@@ -730,7 +730,7 @@ class CUAR_CustomerPagesAddOn extends CUAR_AddOn {
 		if ( !current_theme_supports( 'customer-area.navigation-menu' ) ) {
 			add_settings_field(
 					self::$OPTION_AUTO_MENU_ON_CUSTOMER_AREA_PAGES,
-					__('Customer Area pages', 'cuar'),
+					__('WP Customer Area pages', 'cuar'),
 					array( &$cuar_settings, 'print_input_field' ),
 					CUAR_Settings::$OPTIONS_PAGE_SLUG,
 					'cuar_core_nav_menu',

@@ -34,7 +34,7 @@ class CUAR_PrivatePageDatesWidget extends CUAR_ContentDatesWidget {
 	function __construct() {
 		parent::__construct(
 				'cuar_private_page_archives', 
-				__('Customer Area - Page Archives', 'cuar'),
+				__('WPCA - Page Archives', 'cuar'),
 				array( 
 						'description' => __( 'Shows the private page yearly archives of the Customer Area', 'cuar' ), 
 					)

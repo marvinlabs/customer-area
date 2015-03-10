@@ -34,7 +34,7 @@ class CUAR_PrivatePageAuthorsWidget extends CUAR_ContentAuthorsWidget {
 	function __construct() {
 		parent::__construct(
 				'cuar_private_page_authors', 
-				__('Customer Area - Page Authors', 'cuar'),
+				__('WPCA - Page Authors', 'cuar'),
 				array( 
 						'description' => __( 'Shows the private page author archives of the Customer Area', 'cuar' ), 
 					)

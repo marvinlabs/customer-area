@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 wp_enqueue_script( 'jquery-ui-tabs' );
-$dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
+$dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'WP Customer Area', 'cuar' ) ) );
 ?>
 
 <div>

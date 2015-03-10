@@ -34,7 +34,7 @@ class CUAR_PrivatePageCategoriesWidget extends CUAR_TermsWidget {
 	function __construct() {
 		parent::__construct(
 				'cuar_private_page_categories', 
-				__('Customer Area - Page Categories', 'cuar'),
+				__('WPCA - Page Categories', 'cuar'),
 				array( 
 						'description' => __( 'Shows the private page categories of the Customer Area', 'cuar' ), 
 					)

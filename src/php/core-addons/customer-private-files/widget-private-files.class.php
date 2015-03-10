@@ -34,7 +34,7 @@ class CUAR_PrivateFilesWidget extends CUAR_ContentListWidget {
 	function __construct() {
 		parent::__construct(
 				'cuar_private_files', 
-				__('Customer Area - Recent Files', 'cuar'),
+				__('WPCA - Recent Files', 'cuar'),
 				array( 
 						'description' => __( 'Shows a list of files for the logged-in user', 'cuar' ), 
 					)

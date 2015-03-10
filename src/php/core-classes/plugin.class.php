@@ -578,7 +578,7 @@ class CUAR_Plugin {
      * Check all template files and log a warning if there are any outdated templates
      */
 	public function check_templates() {
-		$dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'Customer Area', 'cuar' ) ) );
+		$dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'WP Customer Area', 'cuar' ) ) );
 
 		$outdated_templates = $this->template_engine->check_templates($dirs_to_scan);
 		
