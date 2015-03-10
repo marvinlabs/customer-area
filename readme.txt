@@ -129,7 +129,7 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 6.0.0 (2015/02/) =
+= 6.1.0 (2015/03/) =
 
 * New: a setup assistant for first time installation & about page to introduce new versions features
 * New: support for the new website at http://wp-customerarea.com
@@ -142,6 +142,8 @@ feel free to fork the project and send us pull requests!
 * Fix: the function cuar_is_customer_area_private_content was not returning true for private containers (such as projects)
 * Fix: an email validation bug for additional profile fields created by code
 * Fix: improved detection of main plugin errors (not installed, disabled) for add-ons.
+* Fix: the widgets have been made more flexible to be able to override the output by using templates
+* Fix: the term list widget was not properly printing child terms
 
 = 5.0.7 (2014/07/31) =
 
