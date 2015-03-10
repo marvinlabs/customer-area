@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Customer Area
-Plugin URI: http://customer-area.marvinlabs.com
-Version: 5.0.7
-Description: Customer area give your customers the possibility to get a page on your site where they can access private content. 
-Author: MarvinLabs
-Author URI: http://www.marvinlabs.com
-Text Domain: cuar
-Domain Path: /languages
+	Plugin Name: 	WP Customer Area
+	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
+	Plugin URI: 	http://wp-customerarea.com
+	Version: 		6.0.0
+	Author: 		MarvinLabs
+	Author URI: 	http://www.marvinlabs.com
+	Text Domain: 	cuar
+	Domain Path: 	/languages
 */
 
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
@@ -28,41 +28,39 @@ Domain Path: /languages
 */
 
 if ( !defined( 'CUAR_PLUGIN_DIR' ) ) define( 'CUAR_PLUGIN_DIR', 	plugin_dir_path( __FILE__ ) );
-if ( !defined( 'CUAR_INCLUDES_DIR' ) ) define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN_DIR . '/includes' );
+if ( !defined( 'CUAR_INCLUDES_DIR' ) ) define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN_DIR . '/src/php' );
 
 define( 'CUAR_LANGUAGE_DIR', 		'customer-area/languages' );
 
 define( 'CUAR_PLUGIN_URL', 			WP_PLUGIN_URL . '/customer-area/' ); // plugin_dir_url( __FILE__ ) );
 define( 'CUAR_SCRIPTS_URL', 		CUAR_PLUGIN_URL . 'scripts' );
-define( 'CUAR_ADMIN_THEME', 		'plugin%%default-wp38' );
-define( 'CUAR_FRONTEND_THEME', 		'plugin%%default-v4' );
+define( 'CUAR_ADMIN_SKIN', 		'plugin%%default-wp38' );
+define( 'CUAR_FRONTEND_SKIN', 		'plugin%%default-v4' );
 define( 'CUAR_PLUGIN_FILE', 		'customer-area/customer-area.php' );
 
 define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', FALSE );
 //define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' ); 
 
-/**
- * A function for debugging purposes
- */
-if ( !function_exists( 'cuar_log_debug' ) ) {
-function cuar_log_debug( $message ) {
-	if (WP_DEBUG === true){
-		if( is_array( $message ) || is_object( $message ) ){
-			$msg = "CUAR \t" . print_r( $message, true );
-		} else {
-			$msg = "CUAR \t" . $message;
-		}
+// Core Framework classes
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Activation/plugin-activation-delegate.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Activation/plugin-activation-manager.class.php' );
 
-		// ChromePhp::log( $msg );
-		error_log( $msg );
-	}
-}
-}
+include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-file.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-finder.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-engine.class.php' );
 
-// Core classes
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-store.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-validation-result.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/licensing.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/MessageCenter/message-center.class.php' );
+
+// Core Plugin classes
 include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin-store.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin-activation.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin.class.php' );
-include_once( CUAR_INCLUDES_DIR . '/core-classes/theme-utils.class.php' );
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/field-renderer.interface.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/abstract-field-renderer.class.php' );
@@ -95,6 +93,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/user-password
 // Core addons
 include_once( CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/help/help-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/installer/installer-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/container-owner/container-owner-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php' );
@@ -127,7 +126,9 @@ include_once( CUAR_INCLUDES_DIR . '/functions/functions-private-content.php' );
 include_once( CUAR_INCLUDES_DIR . '/functions/functions-private-files.php' );
 
 // Some hooks for activation, deactivation, ...
-register_activation_hook( __FILE__, array( 'CUAR_Plugin', 'on_activate' ) );
+CUAR_PluginActivationManager::set_delegate(new CUAR_PluginActivation());
+register_activation_hook( __FILE__, array( 'CUAR_PluginActivationManager', 'on_activate' ) );
+register_deactivation_hook( __FILE__, array( 'CUAR_PluginActivationManager', 'on_deactivate' ) );
 
 // Start the plugin!
 global $cuar_plugin;
