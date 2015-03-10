@@ -1,24 +1,27 @@
+# (c) Vincent Mimoun-Prat, MarvinLabs {2015}
+# Translators:
+# Istvan Jagri <istvan.jagri@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: Customer Area\n"
-"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
-"environment/issues\n"
-"POT-Creation-Date: 2015-03-04 16:19:53+00:00\n"
-"PO-Revision-Date: 2014-09-01 09:16+0100\n"
-"Last-Translator: \n"
-"Language-Team: MarvinLabs\n"
-"Language: hu_HU\n"
+"Project-Id-Version: WP Customer Area\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
+"POT-Creation-Date: 2015-03-10 14:54:45+00:00\n"
+"PO-Revision-Date: 2015-03-10 15:03+0000\n"
+"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/wp-customer-area/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-Basepath: .\n"
+"Language: hu_HU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: grunt-wp-i18n 0.5.0\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Textdomain-Support: yes\n"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:38
 msgid "Administration Area"
@@ -44,14 +47,12 @@ msgid "Back-office"
 msgstr "Back-office"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:144
-#, fuzzy
 msgid "Access the WordPress admin area"
-msgstr "Téléchargez le plugin WordPress"
+msgstr "A Wordpress admin felület elérése"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:145
-#, fuzzy
 msgid "View the Customer Area menu"
-msgstr "Customer Area menü"
+msgstr "A Customer Area menü megtekintése"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:149
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:71
@@ -61,20 +62,8 @@ msgid "Front-office"
 msgstr "Front-office"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:151
-#, fuzzy
 msgid "See the WordPress top bar"
-msgstr "Téléchargez le plugin WordPress"
-
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:201
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:202
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:234
-#: src/php/core-addons/customer-home/customer-home-addon.class.php:47
-#: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:46
-#: src/php/core-addons/status/templates/status-section-hooks.template.php:24
-#: src/php/core-addons/status/templates/status-section-templates.template.php:22
-#: src/php/core-classes/plugin.class.php:581
-msgid "Customer Area"
-msgstr "Customer Area"
+msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:241
 msgid "Your private area"
@@ -100,13 +89,12 @@ msgid "Add-ons"
 msgstr "Kiegészítők"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:282
-#, fuzzy
 msgid "What's new"
-msgstr "Et ensuite ?"
+msgstr "Mi újság?"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:286
 msgid "Change log"
-msgstr ""
+msgstr "Változások"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:290
 msgid "Live from the blog"
@@ -118,35 +106,32 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:298
 #: src/php/core-addons/installer/installer-addon.class.php:246
-#, fuzzy
 msgid "Welcome to WP Customer Area %s"
-msgstr "A Customer Area oldalai"
+msgstr "Üdvözöl a WP Customer Area %s"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:299
 #: src/php/core-addons/installer/installer-addon.class.php:247
 msgid ""
 "<strong>WP Customer Area</strong> %s is more powerful, stable and secure "
 "than ever before. We hope you will enjoy using it."
-msgstr ""
+msgstr "A <strong>WP Customer Area</strong> %s erőteljesebb, stabilabb és biztonságosabb, mint valaha. Reméljük, tetszeni fog. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:16
 #: src/php/core-addons/installer/templates/installer-page.template.php:15
-#, fuzzy
 msgid "version %s"
-msgstr "Verzió: %s"
+msgstr "verzió %s"
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:29
 msgid "http://wp-customerarea.com/documentation/"
-msgstr ""
+msgstr "http://wp-customerarea.com/documentation/"
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:29
-#, fuzzy
 msgid "Documentation"
-msgstr "Tartalom létrehozása"
+msgstr "Dokumentáció"
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:32
 msgid "http://wp-customerarea.com/support/"
-msgstr ""
+msgstr "http://wp-customerarea.com/support/"
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:32
 #: src/php/core-addons/help/help-addon.class.php:66
@@ -167,7 +152,7 @@ msgstr "Emai cím"
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:90
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:77
 msgid "Subscribe"
-msgstr ""
+msgstr "Feliratkozás"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:8
 #: src/php/core-addons/help/templates/list-addons.template.php:20
@@ -176,42 +161,39 @@ msgstr "Spórolj bővítmény-csomagokkal"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:9
 msgid "http://wp-customerarea.com/downloads/category/wpca-bundles/feed/rss"
-msgstr ""
+msgstr "http://wp-customerarea.com/downloads/category/wpca-bundles/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:12
-#, fuzzy
 msgid "Add-ons to enhance your private area"
-msgstr "Fejleszd a Custmer Area-t"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:13
 msgid "http://wp-customerarea.com/downloads/category/wpca-add-ons/feed/rss"
-msgstr ""
+msgstr "http://wp-customerarea.com/downloads/category/wpca-add-ons/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:16
-#, fuzzy
 msgid "Themes optimised for WP Customer Area"
-msgstr "A Customer Area oldalai"
+msgstr "A WP Customer Area-hoz optimalizált témák"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:17
 msgid "http://wp-customerarea.com/downloads/category/wpca-themes/feed/rss"
-msgstr ""
+msgstr "http://wp-customerarea.com/downloads/category/wpca-themes/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-blog.template.php:7
 msgid "http://wp-customerarea.com/feed/rss"
-msgstr ""
+msgstr "http://wp-customerarea.com/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
 msgid "Improved setup &amp; updates"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
-#, fuzzy
 msgid "Better permissions"
-msgstr "Engedélyek beállítása"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
 msgid "Stability improvements"
-msgstr ""
+msgstr "Javított stabilitás"
 
 #: src/php/core-addons/capabilities/capabilities-addon.class.php:35
 msgid "Capabilities Manager"
@@ -277,14 +259,12 @@ msgid "This page shows a summary of the user account"
 msgstr "A profil összefoglalója"
 
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:76
-#, fuzzy
 msgid "View account details"
-msgstr "A profil részletei"
+msgstr "A profil részleteinek megtekintése"
 
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:77
-#, fuzzy
 msgid "Edit account details"
-msgstr "A profil részletei"
+msgstr "A profil részleteinek szerkesztése"
 
 #: src/php/core-addons/customer-account/templates/customer-account-content.template.php:14
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:11
@@ -313,11 +293,9 @@ msgstr "Ezen az oldalon a felhasználó módosíthatja a profilját"
 
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:14
 msgid ""
-"You can update your account details. If you leave the password fields empty, "
-"your password will not be modified."
-msgstr ""
-"Állítsd be a profilod részleteit. Ha a jelszót üresen hagyod, akkor nem fog "
-"megváltozni. "
+"You can update your account details. If you leave the password fields empty,"
+" your password will not be modified."
+msgstr "Állítsd be a profilod részleteit. Ha a jelszót üresen hagyod, akkor nem fog megváltozni. "
 
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:21
 msgid "Submit"
@@ -341,20 +319,21 @@ msgstr "Home"
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
 msgid ""
 "Shows a summary of the user's private content (files, pages, messages, ...)."
-msgstr ""
-"A felhasználó privát tartalmát mutatja meg (fájlok, oldalak, üzenetek, ...)."
+msgstr "A felhasználó privát tartalmát mutatja meg (fájlok, oldalak, üzenetek, ...)."
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:43
 msgid "Home"
 msgstr "Home"
 
+#: src/php/core-addons/customer-home/customer-home-addon.class.php:47
+msgid "Customer Area"
+msgstr "Customer Area"
+
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
-"This is the main page for your customers. It will redirect to the login page "
-"or to the customer area dashboard."
-msgstr ""
-"Ez az ügyfelek fő oldala. Át fogja irányítani őket a login oldalra, vagy az "
-"ügyfél terület home-jára. "
+"This is the main page for your customers. It will redirect to the login page"
+" or to the customer area dashboard."
+msgstr "Ez az ügyfelek fő oldala. Át fogja irányítani őket a login oldalra, vagy az ügyfél terület home-jára. "
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:55
 msgid "customer-area"
@@ -368,8 +347,7 @@ msgstr "Kilépés"
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
-msgstr ""
-"Ez az oldal kilépteti az aktuális felhasználót és átirányítja logout oldalra"
+msgstr "Ez az oldal kilépteti az aktuális felhasználót és átirányítja logout oldalra"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:36
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:681
@@ -394,8 +372,8 @@ msgid "Pages of the Customer Area"
 msgstr "A Customer Area oldalai"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:502
-msgid "Customer Area Menu"
-msgstr "Customer Area menü"
+msgid "WP Customer Area Menu"
+msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:506
 msgid "Could not create the menu. %s"
@@ -426,25 +404,21 @@ msgstr "Minden lézető oldal törlése és újra létrehozása"
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
-msgstr ""
-"Biztos vagy benne, hogy minden létező oldalt törölni akarsz és újra "
-"létrehozni (ezt a műveletet nem lehet visszavonnni)?"
+msgstr "Biztos vagy benne, hogy minden létező oldalt törölni akarsz és újra létrehozni (ezt a műveletet nem lehet visszavonnni)?"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:725
 msgid "Main Navigation Menu"
 msgstr "Fő navigációs menü"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:733
-msgid "Customer Area pages"
-msgstr "Customer Area oldalai"
+msgid "WP Customer Area pages"
+msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:740
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
-msgstr ""
-"Automatikusan írja ki a Customer Area navigációs menüjét az Ügyfél felület "
-"oldalaira. "
+msgstr "Automatikusan írja ki a Customer Area navigációs menüjét az Ügyfél felület oldalaira. "
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:750
 msgid "Private content single pages"
@@ -454,9 +428,7 @@ msgstr "Privát tartalom oldalai"
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
-msgstr ""
-"Automatikusan jelenítse meg a Customer Area navigációs menüit a privát "
-"tartalom oldalain. "
+msgstr "Automatikusan jelenítse meg a Customer Area navigációs menüit a privát tartalom oldalain. "
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:774
 msgid "Recreate menu"
@@ -470,9 +442,7 @@ msgstr "Töröld és hozd létre újra a fő navigációs menüt. "
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
-msgstr ""
-"Biztos vagy benne, hogy újra létre akarod hozni a fő navigációs menüt (ezt a "
-"műveletet nem lehet visszavonnni)?"
+msgstr "Biztos vagy benne, hogy újra létre akarod hozni a fő navigációs menüt (ezt a műveletet nem lehet visszavonnni)?"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:784
 msgid "Permalinks"
@@ -496,8 +466,7 @@ msgstr "Tartalom frissítése"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:851
 msgid "Slug that is used in the URL to update existing private content"
-msgstr ""
-"\"Slug\", ami a privát tartalmak URL-jében a frissítéshez lesz használva"
+msgstr "\"Slug\", ami a privát tartalmak URL-jében a frissítéshez lesz használva"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:858
 msgid "Delete Content"
@@ -516,10 +485,7 @@ msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
-msgstr ""
-"A 4.0.0-ás verzió óta a Customer Area számos oldalt használ arra, hogy "
-"taralmat jelenítsen meg az ügyfelek számára. Ezeket az oldalakat "
-"létrehozhatod itt, vagy jelölj ki már létezőket. "
+msgstr "A 4.0.0-ás verzió óta a Customer Area számos oldalt használ arra, hogy taralmat jelenítsen meg az ügyfelek számára. Ezeket az oldalakat létrehozhatod itt, vagy jelölj ki már létezőket. "
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:948
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:977
@@ -527,9 +493,7 @@ msgstr ""
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
-msgstr ""
-"Az ügyfél felület néhány oldala létrehozásra, vagy törlésre került. Az "
-"ügyfél felület navigációs menüjének frissítése szükséges. "
+msgstr "Az ügyfél felület néhány oldala létrehozásra, vagy törlésre került. Az ügyfél felület navigációs menüjének frissítése szükséges. "
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:974
 msgid "The following pages have been created: %s"
@@ -541,17 +505,15 @@ msgstr "Nincsen hiányzó oldal. "
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1016
 msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings."
-msgstr ""
-"A site néhány oldala Customer Area shortcode-ot tartalmaz, de nincsenek "
-"regisztrálva a Customer Area oldalbeállításainál. "
+"Some pages in your site seem to contain Customer Area shortcodes but are not"
+" registered in the Customer Area pages settings."
+msgstr "A site néhány oldala Customer Area shortcode-ot tartalmaz, de nincsenek regisztrálva a Customer Area oldalbeállításainál. "
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1032
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
-msgstr[0] "%s oldal törölve"
-msgstr[1] "%s oldalak törölve"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/php/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:8
 msgid "Toggle navigation"
@@ -574,18 +536,13 @@ msgid ""
 "A navigation menu organizes the customer area. It allows to browse the "
 "files, the pages, to view the account details and much more. It seems that "
 "this menu has not yet been created."
-msgstr ""
-"A navigációs menü az ügyfél felület oldalait rendszerezi. Lehetővé teszi "
-"fájlok és oldalak megtekintését, a felhasználó profiljának megtekintését, "
-"stb. Úgy tűnik, ez a menü még nem lett létrehozva.  "
+msgstr "A navigációs menü az ügyfél felület oldalait rendszerezi. Lehetővé teszi fájlok és oldalak megtekintését, a felhasználó profiljának megtekintését, stb. Úgy tűnik, ez a menü még nem lett létrehozva.  "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
 msgid ""
-"You can review which menus are currently created on the <a href=\"%1$s"
-"\">menus page</a>."
-msgstr ""
-"Hogy jelenleg milyen menük elérhetőek, megnézheted <a href=\"%1$s\">ezen</a> "
-"a linken."
+"You can review which menus are currently created on the <a "
+"href=\"%1$s\">menus page</a>."
+msgstr "Hogy jelenleg milyen menük elérhetőek, megnézheted <a href=\"%1$s\">ezen</a> a linken."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:32
 msgid "Create the menu"
@@ -595,9 +552,7 @@ msgstr "Menü létrehozása"
 msgid ""
 "Are you sure that you want to create the menu (this operation cannot be "
 "undone)?"
-msgstr ""
-"Biztos, hogy létre akarod hozni ezt a menüt (ez a művelet nem vonható "
-"vissza)?"
+msgstr "Biztos, hogy létre akarod hozni ezt a menüt (ez a művelet nem vonható vissza)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:23
 msgid "Navigation menu is out of sync"
@@ -605,21 +560,16 @@ msgstr "A navigációs menü nincs szinkronizálva"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
 msgid ""
-"Some pages of the customer area have been changed and our current navigation "
-"menu probably references the previous pages. We recommend to synchronize the "
-"menu with the new pages. "
-msgstr ""
-"Néhány oldal az ügyfél felületen belül megváltozott, de a navigációs menü "
-"valószínűleg még a régi oldalra hivatkozik. Javasoljuk a menü "
-"szinkronizálását. "
+"Some pages of the customer area have been changed and our current navigation"
+" menu probably references the previous pages. We recommend to synchronize "
+"the menu with the new pages. "
+msgstr "Néhány oldal az ügyfél felületen belül megváltozott, de a navigációs menü valószínűleg még a régi oldalra hivatkozik. Javasoljuk a menü szinkronizálását. "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
 msgid ""
 "You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
 "&raquo; Menus</a> page."
-msgstr ""
-"Ezt a menüt manuálisan is szerkesztheted az <a href=\"%1$s\">Megjelenés "
-"&raquo; Menük</a> oldalon. "
+msgstr "Ezt a menüt manuálisan is szerkesztheted az <a href=\"%1$s\">Megjelenés &raquo; Menük</a> oldalon. "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:30
 msgid "Suggested actions"
@@ -637,17 +587,13 @@ msgstr "Figyelmeztetés figyelmen kívül hagyása"
 msgid ""
 "Are you sure that you want to clear current menu and create it again from "
 "scratch (this operation cannot be undone)?"
-msgstr ""
-"Biztos, hogy törölni szeretnéd és újra létrehozni az aktuális menüt (ez a "
-"művelet nem vonható vissza)?"
+msgstr "Biztos, hogy törölni szeretnéd és újra létrehozni az aktuális menüt (ez a művelet nem vonható vissza)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:46
 msgid ""
 "Are you sure that you want ignore this warning? You can also manually edit "
 "your menu in the page: \"Appearance > Menus\"."
-msgstr ""
-"Biztos, hogy figyelmen kívül akarod hagyni ezt a figyelmeztetést? Ezt a "
-"menüt manuálisan is szerkesztheted a \"Megjelenés > Menük\" oldalon. "
+msgstr "Biztos, hogy figyelmen kívül akarod hagyni ezt a figyelmeztetést? Ezt a menüt manuálisan is szerkesztheted a \"Megjelenés > Menük\" oldalon. "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:23
 msgid "Orphan pages"
@@ -663,9 +609,7 @@ msgstr "Árva oldalak törlése"
 msgid ""
 "Are you sure that you want to delete those pages (this operation cannot be "
 "undone)?"
-msgstr ""
-"Biztos, hogy törölni akarod ezeket az oldalakat (ez a művelet nem vonható "
-"vissza)?"
+msgstr "Biztos, hogy törölni akarod ezeket az oldalakat (ez a művelet nem vonható vissza)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:23
 msgid "Missing front-office pages"
@@ -676,17 +620,13 @@ msgid ""
 "Some pages of the customer area have not yet been created. Those pages are "
 "responsible for displaying the private content you have assigned to your "
 "users."
-msgstr ""
-"Néhány oldal hiányzik az ügyfél felületről. Ezek az oldalak hivatottak "
-"megeleníteni a privát tartalamakat. "
+msgstr "Néhány oldal hiányzik az ügyfél felületről. Ezek az oldalak hivatottak megeleníteni a privát tartalamakat. "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
 msgid ""
-"You can review which pages are currently created on the <a href=\"%1$s"
-"\">pages settings page</a>."
-msgstr ""
-"Megnézheted, milyen oldalak lettek létrehozva az <a href=\"%1$s"
-"\">oldalbeállításoknál</a>."
+"You can review which pages are currently created on the <a "
+"href=\"%1$s\">pages settings page</a>."
+msgstr "Megnézheted, milyen oldalak lettek létrehozva az <a href=\"%1$s\">oldalbeállításoknál</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:32
 msgid "Create missing pages"
@@ -696,9 +636,7 @@ msgstr "Hiányzó oldalak létrehozása"
 msgid ""
 "Are you sure that you want to create all the pages that are currently "
 "missing (this operation cannot be undone)?"
-msgstr ""
-"Biztos, hogy létre akarod hozni a hiányzó oldalakat (ez a művelet nem "
-"vonható vissza)?"
+msgstr "Biztos, hogy létre akarod hozni a hiányzó oldalakat (ez a művelet nem vonható vissza)?"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
 msgid "Page"
@@ -864,7 +802,7 @@ msgstr "Címzett"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:40
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
-#: src/php/core-classes/widget-content-list.class.php:161
+#: src/php/core-classes/widget-content-list.class.php:216
 msgid "Date"
 msgstr "Dátum"
 
@@ -877,32 +815,32 @@ msgid "Download"
 msgstr "Letöltés"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:37
-msgid "Customer Area - File Authors"
-msgstr "Customer Area - Fájlok szerzői"
+msgid "WPCA - File Authors"
+msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:39
 msgid "Shows the private file author archives of the Customer Area"
 msgstr "A Customer Area privát fájljainak szerzőit mutatja"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:37
-msgid "Customer Area - File Categories"
-msgstr "Customer Area - Fájl kategóriák"
+msgid "WPCA - File Categories"
+msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:39
 msgid "Shows the private file categories of the Customer Area"
 msgstr "A Customer Area privát fájljainak kategóriáit mutatja"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:37
-msgid "Customer Area - File Archives"
-msgstr "Customer Area - Fájl archívum"
+msgid "WPCA - File Archives"
+msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:39
 msgid "Shows the private file yearly archives of the Customer Area"
 msgstr "A Customer Area privát fájljainak évekre bontott archívumát mutatja"
 
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:37
-msgid "Customer Area - Recent Files"
-msgstr "Customer Area - Legújabb fájlok"
+msgid "WPCA - Recent Files"
+msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:39
 msgid "Shows a list of files for the logged-in user"
@@ -987,33 +925,32 @@ msgid "You published this page"
 msgstr "Ezt az oldalt te publikáltad"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:37
-msgid "Customer Area - Page Authors"
-msgstr "Customer Area - Oldalak szerzői"
+msgid "WPCA - Page Authors"
+msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:39
 msgid "Shows the private page author archives of the Customer Area"
 msgstr "A Customer Area privát oldalainak szerzőit listázza ki"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:37
-msgid "Customer Area - Page Categories"
-msgstr "Customer Area - Oldalak kategóriái"
+msgid "WPCA - Page Categories"
+msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:39
 msgid "Shows the private page categories of the Customer Area"
 msgstr "A Customer Area privát oldalak kategóriáit listázza ki"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:37
-msgid "Customer Area - Page Archives"
-msgstr "Customer Area - Oldal archívum"
+msgid "WPCA - Page Archives"
+msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:39
 msgid "Shows the private page yearly archives of the Customer Area"
-msgstr ""
-"A Customer Area privát oldalainak évekre bontott archívumát listázza ki"
+msgstr "A Customer Area privát oldalainak évekre bontott archívumát listázza ki"
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:37
-msgid "Customer Area - Recent Pages"
-msgstr "Customer Area - Legújabb oldalak"
+msgid "WPCA - Recent Pages"
+msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:39
 msgid "Shows a list of pages for the logged-in user"
@@ -1057,11 +994,9 @@ msgstr "Az összes bővítmény tallózása"
 
 #: src/php/core-addons/help/help-addon.class.php:150
 msgid ""
-"If you like our plugins, you might want to <a href=\"%s\">check our website</"
-"a> for more."
-msgstr ""
-"Ha tetszik a plugin, akkor a <a href=\"%s\">weboldalunkon</a> még többet "
-"kaphatsz."
+"If you like our plugins, you might want to <a href=\"%s\">check our "
+"website</a> for more."
+msgstr "Ha tetszik a plugin, akkor a <a href=\"%s\">weboldalunkon</a> még többet kaphatsz."
 
 #: src/php/core-addons/help/help-addon.class.php:153
 msgid "If you want to get updates about our plugins, you can:"
@@ -1081,11 +1016,9 @@ msgstr "Kövess a Facebook-on"
 
 #: src/php/core-addons/help/templates/list-addons.template.php:14
 msgid ""
-"There has been an error while getting the list of add-ons, please <a href="
-"\"%s\">visit our shop directly</a>."
-msgstr ""
-"A kiegészítők listázásakor hiba történt, kérlek <a href=\"%s\">látogasd meg "
-"a shop-ot.</a>."
+"There has been an error while getting the list of add-ons, please <a "
+"href=\"%s\">visit our shop directly</a>."
+msgstr "A kiegészítők listázásakor hiba történt, kérlek <a href=\"%s\">látogasd meg a shop-ot.</a>."
 
 #: src/php/core-addons/help/templates/list-addons.template.php:47
 msgid "Our add-ons"
@@ -1105,11 +1038,9 @@ msgstr "Probléma esetén az alábbiakkal tudunk első körben segíteni:"
 
 #: src/php/core-addons/help/templates/troubleshooting.template.php:9
 msgid ""
-"<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and "
-"for the add-ons."
-msgstr ""
-"<a href=\"%1$s\" target=\"_blank\">Dokumentáció</a> a fő modul és a "
-"kiegészítők számára"
+"<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and"
+" for the add-ons."
+msgstr "<a href=\"%1$s\" target=\"_blank\">Dokumentáció</a> a fő modul és a kiegészítők számára"
 
 #: src/php/core-addons/help/templates/troubleshooting.template.php:12
 msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
@@ -1117,55 +1048,48 @@ msgstr "<a href=\"%1$s\" target=\"_blank\">Gyakran Ismételt Kérdések</a>. "
 
 #: src/php/core-addons/help/templates/troubleshooting.template.php:15
 msgid ""
-"A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support forum</"
-"a>, only for the main plugin (English only as per the wordpress.org rules)."
-msgstr ""
-"Un <a href=\"%1$s\" target=\"_blank\">wordpress.org fórum</a> csak a fő "
-"modulnak (csak angolul a wordpress.org szabályai miatt)."
+"A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support "
+"forum</a>, only for the main plugin (English only as per the wordpress.org "
+"rules)."
+msgstr "Un <a href=\"%1$s\" target=\"_blank\">wordpress.org fórum</a> csak a fő modulnak (csak angolul a wordpress.org szabályai miatt)."
 
 #: src/php/core-addons/help/templates/troubleshooting.template.php:18
 msgid ""
-"<a href=\"%1$s\" target=\"_blank\">Support forums</a> on our website for the "
-"main plugin as well as for the add-ons (English, French and Spanish are ok "
+"<a href=\"%1$s\" target=\"_blank\">Support forums</a> on our website for the"
+" main plugin as well as for the add-ons (English, French and Spanish are ok "
 "there). "
-msgstr ""
-"<a href=\"%1$s\" target=\"_blank\">Support fórum </a> a website-unkon a fő "
-"modulnak és az kiegészítőknek is (angol, francia, spanyol nyelven). "
+msgstr "<a href=\"%1$s\" target=\"_blank\">Support fórum </a> a website-unkon a fő modulnak és az kiegészítőknek is (angol, francia, spanyol nyelven). "
 
 #: src/php/core-addons/installer/installer-addon.class.php:46
-#, fuzzy
 msgid "Installer"
-msgstr "Telepített kiegészítők"
+msgstr "Telepítő"
 
 #: src/php/core-addons/installer/installer-addon.class.php:184
 msgid "The required pages and the navigation menu have been created"
-msgstr ""
+msgstr "A szükséges oldalak és a navigációs menü elkészült"
 
 #: src/php/core-addons/installer/installer-addon.class.php:217
 #: src/php/core-addons/installer/installer-addon.class.php:218
-#, fuzzy
 msgid "Install WP Customer Area"
-msgstr "Customer Area"
+msgstr "A WP Customer Area telepítése"
 
 #: src/php/core-addons/installer/installer-addon.class.php:248
 msgid ""
-"There is a quick installation to run before being able to publish your first "
-"private files and pages. It should be over in less than a minute!"
+"There is a quick installation to run before being able to publish your first"
+" private files and pages. It should be over in less than a minute!"
 msgstr ""
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
-#, fuzzy
 msgid "Setup pages and navigation menu"
-msgstr "Hiányzó navigációs menü"
+msgstr "Oldalak és a navigációs menü beállítása"
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:14
-#, fuzzy
 msgid "Create pages and menu"
-msgstr "Menü létrehozása"
+msgstr "Oldalak és menük létrehozása"
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:34
 msgid "http://wp-customerarea.com/documentation/permissions-reference/"
-msgstr ""
+msgstr "http://wp-customerarea.com/documentation/permissions-reference/"
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:34
 msgid "Permissions reference guide"
@@ -1177,20 +1101,19 @@ msgstr ""
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:51
 msgid "http://wp-customerarea.com/documentation/getting-started/"
-msgstr ""
+msgstr "http://wp-customerarea.com/documentation/getting-started/"
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:51
-#, fuzzy
 msgid "Getting started tutorial"
-msgstr "Support"
+msgstr ""
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:88
 msgid "Feeling ready?"
-msgstr ""
+msgstr "Készen állsz? "
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:90
 msgid "Let's go!"
-msgstr ""
+msgstr "Gyerünk!"
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:36
 msgid "Post Owner"
@@ -1263,8 +1186,7 @@ msgstr "nincs mit felölteni"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:310
 msgid "This file type is not allowed. You can only upload: %s"
-msgstr ""
-"Ez a fájltípus nem engedélyezett. Csak a következőket tudod feltölteni: %s"
+msgstr "Ez a fájltípus nem engedélyezett. Csak a következőket tudod feltölteni: %s"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:342
 msgid "An unknown error happened while uploading your file."
@@ -1384,11 +1306,9 @@ msgstr "Másolás vagy áthelyezés? "
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:282
 msgid ""
-"If checked, the file will be deleted after it has been copied to the owner's "
-"private storage directory"
-msgstr ""
-"Kiválasztás esetén a fájl törlésre kerül, miután át lett másolva a "
-"felhasználó privát területére. "
+"If checked, the file will be deleted after it has been copied to the owner's"
+" private storage directory"
+msgstr "Kiválasztás esetén a fájl törlésre kerül, miután át lett másolva a felhasználó privát területére. "
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:409
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:198
@@ -1408,9 +1328,7 @@ msgstr "Válaszd ki, és engedélyezve lesz a Privát Fájlok kiegészítő. "
 msgid ""
 "This folder does not exist, please create it if you want to copy files from "
 "the FTP folder. Otherwise, you need not do anything."
-msgstr ""
-"A könyvtár nem létezik, kérlek hozd létre, amennyiben az FTP könyvtárból "
-"szeretnél másolni. Egyébként nincs teendőd. "
+msgstr "A könyvtár nem létezik, kérlek hozd létre, amennyiben az FTP könyvtárból szeretnél másolni. Egyébként nincs teendőd. "
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:435
 msgid "FTP uploads folder"
@@ -1420,10 +1338,7 @@ msgstr "FTP feltöltési könyvtár"
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
-msgstr ""
-"Ezt a könyvtárat akkor tudod használni, ha fájlokat töltöttél fel FTP-vel. "
-"Hasznos lehet akkor, ha a direkt feltöltés meghiúsul, pl. túl nagy fájlméret "
-"miatt. "
+msgstr "Ezt a könyvtárat akkor tudod használni, ha fájlokat töltöttél fel FTP-vel. Hasznos lehet akkor, ha a direkt feltöltés meghiúsul, pl. túl nagy fájlméret miatt. "
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:451
 msgid "File Storage"
@@ -1435,10 +1350,9 @@ msgstr "A fájlok a következő könyvtárba kerülnek: <code>%s</code>."
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:500
 msgid ""
-"Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
-msgstr ""
-"Minden felhasználónak van egy saját alkönyvtára. Például a tiéd itt van: "
+"Each user has his own sub-directory. For instance, yours is: "
 "<code>%s</code>."
+msgstr "Minden felhasználónak van egy saját alkönyvtára. Például a tiéd itt van: <code>%s</code>."
 
 #: src/php/core-addons/private-page/private-page-addon.class.php:37
 #: src/php/core-addons/private-page/private-page-addon.class.php:83
@@ -1497,7 +1411,7 @@ msgstr "Válaszd ki, és engedélyezve lesz a Privát Oldalak kiegészítő."
 
 #: src/php/core-addons/status/hook-finder.class.php:124
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
-#: src/php/core-classes/widget-content-list.class.php:162
+#: src/php/core-classes/widget-content-list.class.php:217
 msgid "Name"
 msgstr "Név"
 
@@ -1512,8 +1426,8 @@ msgid "Status"
 msgstr "Státusz"
 
 #: src/php/core-addons/status/status-addon.class.php:52
-msgid "Customer Area - Plugin status"
-msgstr "Customer Area - Plugin státusz"
+msgid "WP Customer Area - Plugin status"
+msgstr ""
 
 #: src/php/core-addons/status/status-addon.class.php:110
 msgid "Needs attention"
@@ -1594,9 +1508,8 @@ msgid "unknown"
 msgstr "ismeretlen"
 
 #: src/php/core-addons/status/template-printer.class.php:71
-#, fuzzy
 msgid "Not overridden"
-msgstr "Nincs felülírva"
+msgstr "A nem felülírtak"
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:26
 msgid "Outdated plugin version"
@@ -1605,12 +1518,9 @@ msgstr "Elavult plugin verzió"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a href="
-"\"%2$s\">add-ons status pages</a>."
-msgstr ""
-"Nehány kiegészítő a plugin újabb verzióját követeli meg (jelenleg a %1$s "
-"verzió fut). Az összes kiegészítőt a <a href=\"%2$s\">Kiegészítők státusz "
-"oldalon</a> találod meg."
+"running version %1$s). You can find the list of all add-ons on the <a "
+"href=\"%2$s\">add-ons status pages</a>."
+msgstr "Nehány kiegészítő a plugin újabb verzióját követeli meg (jelenleg a %1$s verzió fut). Az összes kiegészítőt a <a href=\"%2$s\">Kiegészítők státusz oldalon</a> találod meg."
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
 msgid "Update the plugin"
@@ -1657,9 +1567,7 @@ msgstr "Probléma #%d"
 msgid ""
 "Congratulations, everything seems to be configured properly. You can enjoy "
 "your customer area now."
-msgstr ""
-"Gratulálunk, minden konfiguráció helyesnek tűnik. Használhatod a Customer "
-"Area-t. "
+msgstr "Gratulálunk, minden konfiguráció helyesnek tűnik. Használhatod a Customer Area-t. "
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:22
 #: src/php/core-addons/status/templates/status-section-reset.template.php:28
@@ -1670,9 +1578,7 @@ msgstr "Beállítások exportálása"
 msgid ""
 "You can export all the settings to a JSON file. You can then use that file "
 "to restore your settings using the import settings field below."
-msgstr ""
-"A beállításokat JSON formátumban exportálhatod. Ezt a fájlt használhatod "
-"majd az importálás során, a beállítások visszaállításához. "
+msgstr "A beállításokat JSON formátumban exportálhatod. Ezt a fájlt használhatod majd az importálás során, a beállítások visszaállításához. "
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:31
 #: src/php/core-addons/status/templates/status-section-reset.template.php:38
@@ -1681,9 +1587,9 @@ msgstr "Beállítások importálása"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:33
 msgid ""
-"You can import all the settings you had previously exported from a JSON file."
-msgstr ""
-"Minden beállítást importálhatsz, amit előzőleg a JSON fájlba exportáltál. "
+"You can import all the settings you had previously exported from a JSON "
+"file."
+msgstr "Minden beállítást importálhatsz, amit előzőleg a JSON fájlba exportáltál. "
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:42
 msgid "Reset settings"
@@ -1693,9 +1599,7 @@ msgstr "Beállítások alapértelmezése"
 msgid ""
 "Pressing the button below will reset all your Customer Area settings to the "
 "default values. This cannot be undone!"
-msgstr ""
-"A gomb megnyomásával a Customer Area minden beállítása alapértelmezésre áll "
-"visssza. Ezt a műveletet nem lehet visszavonni!"
+msgstr "A gomb megnyomásával a Customer Area minden beállítása alapértelmezésre áll visssza. Ezt a műveletet nem lehet visszavonni!"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:48
 msgid "Reset default settings"
@@ -1703,16 +1607,13 @@ msgstr "Alapértelemzett beállítások visszaállítása"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:54
 msgid ""
-"Are you sure that you want to reset all the settings to their default values "
-"(this operation cannot be undone)?"
-msgstr ""
-"Biztos vagy benne, hogy minden beállítást alapértelmezésre akarsz "
-"visszaállítani (ezt a műveletet nem lehet visszavonni)?"
+"Are you sure that you want to reset all the settings to their default values"
+" (this operation cannot be undone)?"
+msgstr "Biztos vagy benne, hogy minden beállítást alapértelmezésre akarsz visszaállítani (ezt a műveletet nem lehet visszavonni)?"
 
 #: src/php/core-addons/status/templates/status-section-templates.template.php:27
-#, fuzzy
 msgid "Overridden only"
-msgstr "Csak a felülírtakat"
+msgstr "Csak a felülírtak"
 
 #: src/php/core-addons/status/templates/status-section-templates.template.php:28
 msgid "Outdated only"
@@ -1749,21 +1650,20 @@ msgstr "Jelszó (megerősítés)"
 
 #: src/php/core-classes/Licensing/license-validation-result.class.php:81
 msgid ""
-"You have bought your license on the previous shop. We have a <a href=\"%1$s"
-"\">brand new website</a>, please contact us so that we can help you migrate "
-"your license to the new shop."
-msgstr ""
+"You have bought your license on the previous shop. We have a <a "
+"href=\"%1$s\">brand new website</a>, please contact us so that we can help "
+"you migrate your license to the new shop."
+msgstr "A licencedet a régi shopunkban vásároltad meg. Van egy <a href=\"%1$s\">új weboldalunk</a>, kérünk, hogy vedd fel velünk a kapcsolatot, hogy segíthessünk a licenced migrálásában. "
 
 #: src/php/core-classes/Licensing/licensing.class.php:73
-#, fuzzy
 msgid "Unknown add-on"
-msgstr "Ismeretlen"
+msgstr "Ismeretlen kiegészítő"
 
 #: src/php/core-classes/Licensing/licensing.class.php:86
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
-msgstr ""
+msgstr "Probléma történt a licencszerver elérésekor. Helyes a licenckulcs? A PHP cURL engedélyezve van? "
 
 #: src/php/core-classes/Licensing/licensing.class.php:94
 msgid "Your license is valid until: %s"
@@ -1777,14 +1677,11 @@ msgstr "A licenszkulcsod érvényessége vissza lett vonva."
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
-msgstr ""
-"Elérted a licenszkulccsal használható maximális site-ok számát. Maximum %s "
-"site-on használhatod."
+msgstr "Elérted a licenszkulccsal használható maximális site-ok számát. Maximum %s site-on használhatod."
 
 #: src/php/core-classes/Licensing/licensing.class.php:118
-#, fuzzy
 msgid "Renew license"
-msgstr "Licensz ellenőrzése..."
+msgstr "Licenc megújítása"
 
 #: src/php/core-classes/Licensing/licensing.class.php:120
 msgid "Your license has expired at the date: %s"
@@ -1804,11 +1701,11 @@ msgstr "A licenszkulcs érvényesítése során probléma lépett fel"
 
 #: src/php/core-classes/MessageCenter/message-center.class.php:148
 msgid "<strong>WP Customer Area</strong> has detected some potential issues: "
-msgstr ""
+msgstr "A <strong>WP Customer Area</strong> néhány lehetséges problémát talált: "
 
 #: src/php/core-classes/MessageCenter/message-center.class.php:156
 msgid "Fix these potential issues"
-msgstr ""
+msgstr "Lehetséges hibák javítása"
 
 #: src/php/core-classes/addon-container-page.class.php:566
 #: src/php/core-classes/addon-content-page.class.php:638
@@ -1830,9 +1727,7 @@ msgstr "Mutasson egyéb információkat a post után szimpla post nézetben. "
 msgid ""
 "You can disable this if you have your own theme template file for single "
 "posts. The theme file to look for or create should be called: %s."
-msgstr ""
-"Ezt letilthatod, ha van saját template fájlod a szimpla postokhoz. A téma "
-"fájl neve, amt meg kell keresni, vagy létre kell hozni: %s."
+msgstr "Ezt letilthatod, ha van saját template fájlod a szimpla postokhoz. A téma fájl neve, amt meg kell keresni, vagy létre kell hozni: %s."
 
 #: src/php/core-classes/addon-container-page.class.php:605
 #: src/php/core-classes/addon-content-page.class.php:677
@@ -1842,10 +1737,9 @@ msgstr "Mutassa a legújabb tartalmakat a dashboard-on. "
 #: src/php/core-classes/addon-container-page.class.php:618
 #: src/php/core-classes/addon-content-page.class.php:690
 msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all items."
-msgstr ""
-"Hány tétel jelenjen meg a dashboard oldalon? A -1 azt jelenti, hogy minden "
-"jelenjen meg. "
+"Define how many items to allow on the dashboard page. -1 will show all "
+"items."
+msgstr "Hány tétel jelenjen meg a dashboard oldalon? A -1 azt jelenti, hogy minden jelenjen meg. "
 
 #: src/php/core-classes/addon-container-page.class.php:692
 msgid "Slug that is used in the URL for archives of the taxonomy: "
@@ -1873,8 +1767,7 @@ msgstr "Moderáció"
 
 #: src/php/core-classes/addon-create-content-page.class.php:177
 msgid "Enable moderation when new content is submitted by a user."
-msgstr ""
-"Moderáció engedélyezése, miután a felhasználó új tartalmat küldött be. "
+msgstr "Moderáció engedélyezése, miután a felhasználó új tartalmat küldött be. "
 
 #: src/php/core-classes/addon-create-content-page.class.php:192
 msgid "Default owner type"
@@ -1921,8 +1814,8 @@ msgid "You are not allowed to view this page"
 msgstr "Nincs jogosultságod az oldal megtekintéséhez"
 
 #: src/php/core-classes/addon-page.class.php:336
-msgid "Customer Area Sidebar - %s"
-msgstr "Customer Area oldalsáv - %s"
+msgid "WPCA - %s"
+msgstr ""
 
 #: src/php/core-classes/addon-update-content-page.class.php:130
 msgid "You must supply a post ID to delete"
@@ -1993,7 +1886,7 @@ msgstr "Tartalomszerkesztés"
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
-msgstr ""
+msgstr "<strong>Hiba: </strong>A WP Customer Area kiegészítő aktív, de a fő plugin nincs telepítve!"
 
 #: src/php/core-classes/addon.class.php:125
 msgid "License Keys"
@@ -2007,17 +1900,13 @@ msgstr "Licenszkulcsok a fizetős kiegészítőkhöz"
 msgid ""
 "This page allows you to enter license key you have received when you "
 "purchased commercial addons."
-msgstr ""
-"Ezen az oldalon kell megadnod azt a licenszkulcsot, amit a fizetős "
-"kiegészítő vásárlásakor kaptál."
+msgstr "Ezen az oldalon kell megadnod azt a licenszkulcsot, amit a fizetős kiegészítő vásárlásakor kaptál."
 
 #: src/php/core-classes/addon.class.php:180
 msgid ""
 "Do not activate your license on your development site. Only on the final "
 "site where you are running the plugin."
-msgstr ""
-"A fejlesztői site-on nem kell aktiválni a licenszkulcsot, csak azon a "
-"végleges site-on ahol a plugin futni fog. "
+msgstr "A fejlesztői site-on nem kell aktiválni a licenszkulcsot, csak azon a végleges site-on ahol a plugin futni fog. "
 
 #: src/php/core-classes/object-meta/field/email-field.class.php:47
 msgid "Email"
@@ -2082,22 +1971,18 @@ msgid "Failed to contact server"
 msgstr "Nem sikerült kapcsolatba lépni a szerverrel"
 
 #: src/php/core-classes/plugin.class.php:412
-#, fuzzy
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
-msgstr ""
-"A premalinkek le vannak tiltva, a Customer Area nem fog rendesen működni. "
-"Kérlek, engedélyezd a WordPress beállításaiban. "
+msgstr "A permalinkek le vannak tiltva. A Customer Area nem fog megfelelően működni. Kérünk, <a href=\"%1$s\">engedélyezd a WordPress beállításaiban</a>"
 
 #: src/php/core-classes/plugin.class.php:436
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr "Néhány kiegészítőnek újabb verziójú fő plugin-re van szüksége. "
 
 #: src/php/core-classes/plugin.class.php:586
-#, fuzzy
 msgid "Some template files you have overridden seem to be outdated."
-msgstr "Néhány, általad felülírt template fájl elavultnak tűnik. "
+msgstr ""
 
 #: src/php/core-classes/settings.class.php:125
 msgid "The page title cannot be empty"
@@ -2126,13 +2011,10 @@ msgstr "Rejtse el a tulajdonos részt, ha csak egyetlen tulajdonos létezik."
 
 #: src/php/core-classes/settings.class.php:273
 msgid ""
-"The owner will not be displayed but included directly if a single owner type "
-"is available to the current user and if within that owner type, a single "
+"The owner will not be displayed but included directly if a single owner type"
+" is available to the current user and if within that owner type, a single "
 "owner is available."
-msgstr ""
-"A tulajdonos nem lesz megjelenítve, de direktben be lesz illesztve, "
-"amennyiben az akutális felhasználónak az \"egyetlen tulajdonos típus\" "
-"elérhető. "
+msgstr "A tulajdonos nem lesz megjelenítve, de direktben be lesz illesztve, amennyiben az akutális felhasználónak az \"egyetlen tulajdonos típus\" elérhető. "
 
 #: src/php/core-classes/settings.class.php:308
 msgid "Include CSS"
@@ -2234,79 +2116,79 @@ msgstr "Akutális téma könyvtára"
 msgid "WordPress content folder"
 msgstr "WordPress tartalmak könyvtára"
 
-#: src/php/core-classes/widget-content-authors.class.php:110
-#: src/php/core-classes/widget-content-authors.class.php:120
-msgid "You"
-msgstr "Te"
-
-#: src/php/core-classes/widget-content-authors.class.php:137
+#: src/php/core-classes/templates/widget-content-authors.template.php:18
 msgid "Show all content published by %s"
 msgstr "Minden tartalom, amint %s publikált"
 
-#: src/php/core-classes/widget-content-authors.class.php:161
-#: src/php/core-classes/widget-content-dates.class.php:164
-#: src/php/core-classes/widget-content-list.class.php:147
-#: src/php/core-classes/widget-terms.class.php:125
-msgid "Title:"
-msgstr "Cím:"
-
-#: src/php/core-classes/widget-content-dates.class.php:121
+#: src/php/core-classes/templates/widget-content-dates.template.php:18
 msgid "Show all content published in %s"
 msgstr "Minden tartalom mutatása, ami %s-be lett publikálva"
 
-#: src/php/core-classes/widget-content-dates.class.php:135
+#: src/php/core-classes/templates/widget-content-dates.template.php:35
 msgid "Show all content published in %2$s %1$s"
 msgstr "Minden tartalom mutatása, ami %2$s %1$s lett publikálva"
 
-#: src/php/core-classes/widget-content-list.class.php:122
+#: src/php/core-classes/templates/widget-content-list.template.php:19
 msgid "Link to %s"
 msgstr "Link %s"
 
-#: src/php/core-classes/widget-content-list.class.php:151
-msgid "Message shown when no posts:"
-msgstr "Ha nincs post, mutassa ezt az üzenetet:"
-
-#: src/php/core-classes/widget-content-list.class.php:155
-msgid "Max. number of posts:"
-msgstr "Postok max. száma: "
-
-#: src/php/core-classes/widget-content-list.class.php:159
-msgid "Order By:"
-msgstr "Rendezve:"
-
-#: src/php/core-classes/widget-content-list.class.php:166
-msgid "Order:"
-msgstr "Sorrend:"
-
-#: src/php/core-classes/widget-content-list.class.php:168
-msgid "Ascending"
-msgstr "Növekvő"
-
-#: src/php/core-classes/widget-content-list.class.php:169
-msgid "Descending"
-msgstr "Csökkenő"
-
-#: src/php/core-classes/widget-content-list.class.php:176
-msgid "Category:"
-msgstr "Kategória:"
-
-#: src/php/core-classes/widget-content-list.class.php:180
-msgid "Any"
-msgstr "Bármely"
-
-#: src/php/core-classes/widget-terms.class.php:86
+#: src/php/core-classes/templates/widget-terms.template.php:18
 msgid "Show all content categorized under %s"
 msgstr "Minden tartalom mutatása a %s kategóriában"
 
-#: src/php/core-classes/widget-terms.class.php:130
+#: src/php/core-classes/widget-content-authors.class.php:149
+#: src/php/core-classes/widget-content-authors.class.php:159
+msgid "You"
+msgstr "Te"
+
+#: src/php/core-classes/widget-content-authors.class.php:200
+#: src/php/core-classes/widget-content-dates.class.php:189
+#: src/php/core-classes/widget-content-list.class.php:192
+#: src/php/core-classes/widget-terms.class.php:153
+msgid "Title:"
+msgstr "Cím:"
+
+#: src/php/core-classes/widget-content-list.class.php:199
+msgid "Message shown when no posts:"
+msgstr "Ha nincs post, mutassa ezt az üzenetet:"
+
+#: src/php/core-classes/widget-content-list.class.php:206
+msgid "Max. number of posts:"
+msgstr "Postok max. száma: "
+
+#: src/php/core-classes/widget-content-list.class.php:213
+msgid "Order By:"
+msgstr "Rendezve:"
+
+#: src/php/core-classes/widget-content-list.class.php:221
+msgid "Order:"
+msgstr "Sorrend:"
+
+#: src/php/core-classes/widget-content-list.class.php:224
+msgid "Ascending"
+msgstr "Növekvő"
+
+#: src/php/core-classes/widget-content-list.class.php:225
+msgid "Descending"
+msgstr "Csökkenő"
+
+#: src/php/core-classes/widget-content-list.class.php:232
+msgid "Category:"
+msgstr "Kategória:"
+
+#: src/php/core-classes/widget-content-list.class.php:236
+msgid "Any"
+msgstr "Bármely"
+
+#: src/php/core-classes/widget-terms.class.php:160
 msgid "Empty terms:"
 msgstr "Üres kifejezések:"
 
-#: src/php/core-classes/widget-terms.class.php:132
+#: src/php/core-classes/widget-terms.class.php:164
 msgid "Show"
 msgstr "Mutat"
 
-#: src/php/core-classes/widget-terms.class.php:133
+#: src/php/core-classes/widget-terms.class.php:165
 msgid "Hide"
 msgstr "Elrejt"
 
@@ -2333,8 +2215,8 @@ msgstr "kB"
 
 #. Description of the plugin/theme
 msgid ""
-"Customer area give your customers the possibility to get a page on your site "
-"where they can access private content."
+"WP Customer Area is a modular all-in-one solution to manage private content "
+"with WordPress."
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:77
@@ -2371,8 +2253,8 @@ msgstr "oldalszam"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:501
 msgctxt ""
-"Localised slug for the main navigation menu (small caps version of the "
-"\"Customer Area Menu\" translation)"
+"Localised slug for the main navigation menu (small caps version of the \"WP "
+"Customer Area Menu\" translation)"
 msgid "customer-area-menu"
 msgstr "customer-area-menu"
 
@@ -2649,870 +2531,3 @@ msgstr "Oldal kategóriák hozzáadása, eltávolítása"
 msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Válassz a leggyakrabban használt oldal kategóriákból"
-
-#~ msgid "News"
-#~ msgstr "Hírek"
-
-#~ msgid "Frequently Asked Questions"
-#~ msgstr "Gyakran Ismételt Kérdések"
-
-#~ msgid "Resources"
-#~ msgstr "Források"
-
-#~ msgid "View the menu"
-#~ msgstr "Menü megtekintése"
-
-#~ msgid ""
-#~ "You have not yet configured the permissions. By default, the plugin will "
-#~ "allows the administrators to do everything but the other roles will not "
-#~ "be able to use the customer area. The permissions can easily be "
-#~ "configured from the Customer Area settings."
-#~ msgstr ""
-#~ "Nem állítottál be engedélyeket. Alapértelmezés szerint az adminoknak "
-#~ "mindenhez joga van, de a többi szerepkör nem fogja tudni használni az "
-#~ "ügyfél felületet. Az engedélyeket könnyen be lehet állítani az Ügyfél "
-#~ "felület beállításainál. "
-
-#~ msgid ""
-#~ "By checking this box, the menu will automatically be shown automatically "
-#~ "on the Customer Area pages (the ones defined in the tab named \"Site Pages"
-#~ "\"). It may however not appear at the place you would want it. If that is "
-#~ "the case, you can refer to our documentation to see how to edit your "
-#~ "theme."
-#~ msgstr ""
-#~ "Ezt az opciót kiválasztva a menü automatikusan meg fog jelenni az Ügyfél "
-#~ "felület oldalain (melyek a Site oldalak tab-on vannak definiálva). "
-#~ "Azonban előfordulhat, hogy nem ott jelenik meg, ahol szeretnéd, ebben az "
-#~ "esetben a dokumentációban elolvashatod, hogy hogyan kell szerkeszteni a "
-#~ "témádat. "
-
-#~ msgid ""
-#~ "By checking this box, the menu will automatically be shown automatically "
-#~ "on the pages displaying a single private content (a private page or a "
-#~ "private file for example). It may however not appear at the place you "
-#~ "would want it. If that is the case, you can refer to our documentation to "
-#~ "see how to edit your theme."
-#~ msgstr ""
-#~ "Ezt az opciót kiválasztva a menü automatikusan meg fog jelenni az privát "
-#~ "oldalakon (privát oldal vagy provát fájl). Azonban előfordulhat, hogy nem "
-#~ "ott jelenik meg, ahol szeretnéd, ebben az esetben a dokumentációban "
-#~ "elolvashatod, hogy hogyan kell szerkeszteni a témádat. "
-
-#~ msgid ""
-#~ "Slug that is used in the URL for category archives of private content. "
-#~ "For example, the list of files in the \"my-awesome-category\" category "
-#~ "would look like:<br/>http://example.com/customer-area/files/<b>my-slug</"
-#~ "b>/my-awesome-category"
-#~ msgstr ""
-#~ "\"Slug\", ami a privát tartalmak URL-jében az archív kategóriákhoz lesz "
-#~ "használva. Például, a \"szuper-kategoriam\" -hoz tartozó fájlok listája "
-#~ "így nézne ki: <br/>http://example.hu/customer-area/files/<b>my-slug</b>/"
-#~ "szuper-kategoriam"
-
-#~ msgid ""
-#~ "Slug that is used in the URL for date archives of private content. For "
-#~ "example, the list of files for 2014 would look like:<br/>http://example."
-#~ "com/customer-area/files/<b>my-slug</b>/2014"
-#~ msgstr ""
-#~ "\"Slug\", ami a privát tartalmak URL-jében az archív dátumokhoz lesz "
-#~ "használva. Például, a 2014-hez tartozó fájlok listája így nézne ki: <br/"
-#~ ">http://example.hu/customer-area/files/<b>my-slug</b>/2014"
-
-#~ msgid ""
-#~ "Slug that is used in the URL for author archives of private content. For "
-#~ "example, the list of files created by user with ID 2 would look like:<br/"
-#~ ">http://example.com/customer-area/files/<b>my-slug</b>/2"
-#~ msgstr ""
-#~ "\"Slug\", ami a privát tartalmak URL-jében az archív szerzőkhöz lesz "
-#~ "használva. Például, at ID2 felhasználóhoz tartozó fájlok listája így "
-#~ "nézne ki: <br/>http://example.hu/customer-area/files/<b>my-slug</b>/2"
-
-#~ msgid ""
-#~ "You can customize the Customer Area menu in the <a href=\"%1$s"
-#~ "\">Appearance &raquo; Menus</a> panel. If you do not define any custom "
-#~ "menu there, Customer Area will generate a default menu for you with all "
-#~ "the pages you have set below."
-#~ msgstr ""
-#~ "Testreszabhatod a Customer Area menüit a <a href=\"%1$s\">Megjelenés "
-#~ "&raquo; Menük</a> panelen. Ha nem definiálsz egy menüt sem, akkor az "
-#~ "Ügyfél felület fogja legenerálni az alapértelmezett menüket az összes "
-#~ "oldalhoz. "
-
-#~ msgid ""
-#~ "Some pages in your site seem to contain Customer Area shortcodes but are "
-#~ "not registered in the Customer Area pages settings. Those are probably "
-#~ "pages you had created and trashed when originally set up the plugin. You "
-#~ "should delete them for good either manually or by letting us do it for "
-#~ "you."
-#~ msgstr ""
-#~ "A site néhány oldala Customer Area shortcode-ot tartalmaz, de nincsenek "
-#~ "regisztrálva a Customer Area oldalbeállításainál. Ezek valószínűleg olyan "
-#~ "oldalak, melyeket a Lomtárba raktál, amikor feltelepítetted a plugint. "
-#~ "Véglegesen törölheted manuálisan, vagy csak bízd ránk. "
-
-#~ msgid ""
-#~ "&laquo Customer Area &raquo; is a very modular plugin. We have built it "
-#~ "so that it can be extended in many ways. Some add-ons are presented in "
-#~ "this page by selecting the &laquo Add-ons &raquo; tab. You can also view "
-#~ "all extensions we have by clicking the link below."
-#~ msgstr ""
-#~ "&laquo A Customer Area &raquo; egy moduláris plugin. Úgy terveztük, hogy "
-#~ "tudását számos módon lehessen bővíteni. Néhány bővítést ezen az oldalon "
-#~ "is el lehet érni a &laquo Kiegészítők &raquo; tab kiválasztásával. A "
-#~ "lenti linken pedig valamennyi bővítményt megtekintheted. "
-
-#~ msgid ""
-#~ "You can also get notified when we've got something exciting to say "
-#~ "(plugin updates, news, etc.). Simply subscribe to our newsletter, we "
-#~ "won't spam, we send at most one email per month!"
-#~ msgstr ""
-#~ "Szintén értesülhetsz további hírekről (plugin frissíétsek, hírek, stb). "
-#~ "Csak iratkozz fel hírlevelünkre, nem fogunk spammelni, havonta legfeljebb "
-#~ "csak egy levelet küldünk!"
-
-#~ msgid ""
-#~ "That directory should at least have the permissions set to 705. Currently "
-#~ "it is %s. You should adjust that directory permissions as upload or "
-#~ "download might not work properly."
-#~ msgstr ""
-#~ "A könyvtárnak legalább 705-ös jogosultságot kell beállítani. Jelenleg %s "
-#~ "van beállítva. Mivel nem működik a feltöltés/letöltés, ezért javasolt a "
-#~ "módosítása. "
-
-#~ msgid ""
-#~ "Some template files you have overridden have been modified in the current "
-#~ "version of Customer Area. You have the list of these files below, but you "
-#~ "can also find a list of all template files and their respective status on "
-#~ "the <a href=\"%s\">corresponding templates status page</a>"
-#~ msgstr ""
-#~ "Néhány, általad felülírt template fájl módosításra került a Customer Area "
-#~ "aktuális verziójában. Alul láthatod ezen fájlok listáját, illetve ezen a "
-#~ "<a href=\"%s\">státusz oldalon</a> elérheted valamennyi template fájlt és "
-#~ "azok státuszát."
-
-#~ msgid ""
-#~ "Since Customer Area 4.4.0, we are providing a way to make sure your "
-#~ "template files are always up-to-date. For you, this is a great way to "
-#~ "know when template files get changed when Customer Area is updated."
-#~ msgstr ""
-#~ "A 4.4.0-ás verziójú Customer Area óta lehetőséget biztosítunk arra, hogy "
-#~ "a template fájlok mindig naprakészek legyenek. Ezáltal tudhatod, hogy a "
-#~ "template fájlok megváltoznak a Customer Area frissítése során. "
-
-#~ msgid ""
-#~ "If you still do not have any version number in your template files, "
-#~ "please paste the following line of code as the first line of your "
-#~ "template and make sure it is compatible with the the current template "
-#~ "version."
-#~ msgstr ""
-#~ "Ha nincs verziószám a template fájlodban, akkor a következő sort másold "
-#~ "be a template fájl első sorába, ezáltal kompatibilis lesz az aktuális "
-#~ "template verzióval. "
-
-#~ msgid ""
-#~ "The password must at least be composed of 5 characters. You will be "
-#~ "requested to login again after your password gets changed. Leave these "
-#~ "fields empty if you want to keep your current password"
-#~ msgstr ""
-#~ "A jelszónak minimum 5 karakterből kell állnia. A jelszó megváltoztatása "
-#~ "esetén újra be kell jelentkezned. Ha nem akarod a jelszavadat "
-#~ "megváltoztatni, akkor hagyd üresen ezeket a mezőket. "
-
-#~ msgid ""
-#~ "Define how many items to allow on the listing pages (main listing page, "
-#~ "archive pages, etc.). -1 will show all items but this can slow down the "
-#~ "page display if the user has a lot of private items."
-#~ msgstr ""
-#~ "Hány tétel jelenjen meg a listázó oldalakon (fő listázó oldal, archív "
-#~ "oldalak, stb)? A -1 azt jelenti, hogy minden jelenjen meg, de ez "
-#~ "lelassíthatja az oldal megjelenítését, ha a felhasználónak sok privát "
-#~ "tartalma van. "
-
-#~ msgid ""
-#~ "An administrator will be required to review the content and publish it "
-#~ "manually. This can be used to moderate the content created by users by "
-#~ "saving it as draft. When content is saved as draft, it is not visible to "
-#~ "anyone outside of the administration area. You can allow some roles to "
-#~ "bypass the moderation process by setting the corresponding capability. "
-#~ "This setting does not affect the backend interface."
-#~ msgstr ""
-#~ "Egy adminisztrátor jóváhagyására és manuális publikálásra lesz szükség. "
-#~ "Ezzel moderálható a felhasználók által létrehozott tartalom, mert csak "
-#~ "vázlatként tudják elmenteni. Amíg a tartalom vázlat, addig az "
-#~ "adminisztrátorokon kívül más nem láthajta. A megfelelő jogosultságok "
-#~ "beállításával engedélyezhető a moderációs folyamat kihagyása is. Ez a "
-#~ "beállítás nem érint a backend felületet. "
-
-#~ msgid ""
-#~ "The Customer Area plugin requires your attention. The issues we have "
-#~ "detected are the following: "
-#~ msgstr ""
-#~ "A Customer Area a figyelmedet kéri az alábbi hibák előfordulása miatt: "
-
-#~ msgid ""
-#~ "You can view the details of those issues and fix them on the <a href="
-#~ "\"%1$s\">Customer Area status page</a>."
-#~ msgstr ""
-#~ "A hibák részleteit a <a href=\"%1$s\">Customer Area státusz</a> oldalon "
-#~ "találod."
-
-#~ msgid ""
-#~ "If checked, the plugin will print HTML comments in the page source code "
-#~ "to show which template files are used. This is very helpful if you are a "
-#~ "developer and want to customize the plugin layout."
-#~ msgstr ""
-#~ "Ha ki van választva, akkor HTML kommenteket jelenít meg az oldal "
-#~ "forrásában arról, hogy melyik template fájl van használatban. "
-#~ "Fejlesztőknek nagyon hasznos a plugin kinézetének testre szabásánál. "
-
-#~ msgid "Add a menu"
-#~ msgstr "Menü hozzáadása"
-
-#, fuzzy
-#~ msgctxt "pagination_parameter_name"
-#~ msgid "page-num"
-#~ msgstr "Nombre de boucles"
-
-#~ msgid "More information about this file"
-#~ msgstr "Plus d'information sur ce fichier"
-
-#~ msgid "More information about this page"
-#~ msgstr "Plus d'information sur cette page"
-
-#~ msgid "From: %s"
-#~ msgstr "De : %s"
-
-#~ msgid "To: %s"
-#~ msgstr "A : %s"
-
-#~ msgid "%1$s must contain at least %1$s characters"
-#~ msgstr "%1$s doit contenir au moins %2$s caractères."
-
-#~ msgid "%1$s must contain at most %1$s characters"
-#~ msgstr "%1$s doit contenir au plus %2$s caractères."
-
-#~ msgid "Contact"
-#~ msgstr "Contact"
-
-#~ msgid "First Name"
-#~ msgstr "Prénom"
-
-#~ msgid "Last Name"
-#~ msgstr "Nom"
-
-#~ msgid "Website"
-#~ msgstr "Site Internet"
-
-#~ msgid "Category"
-#~ msgstr "Catégorie"
-
-#~ msgid "Well done!"
-#~ msgstr "Félicitations !"
-
-#~ msgid "Your Customer Area is ready"
-#~ msgstr "Votre espace client est prêt"
-
-#~ msgid ""
-#~ "A page has been published on your site and will display the private "
-#~ "content for the user who is logged-in. If you want, you can:"
-#~ msgstr ""
-#~ "Une page a été publiée sur votre site et affiche les contenus privés de "
-#~ "l'utilisateur connecté. Si vous le souhaitez, vous pouvez :"
-
-#~ msgid ""
-#~ "<a href=\"%1$s\" target=\"_blank\">See how it looks</a> on your site."
-#~ msgstr ""
-#~ "<a href=\"%1$s\" target=\"_blank\">Voir à quoi elle ressemble</a> sur "
-#~ "votre site."
-
-#~ msgid ""
-#~ "<a href=\"%1$s\" target=\"_blank\">Edit the page</a> if you want to "
-#~ "change the title or maybe make it a child page of another one. "
-#~ msgstr ""
-#~ "<a href=\"%1$s\" target=\"_blank\">Modifier la page</a> si vous voulez "
-#~ "changer le titre ou peut-être en faire une page enfant d'une autre page. "
-
-#~ msgid ""
-#~ "Of course, because the plugin has just been setup, you will not see any "
-#~ "private content in there. A good way to get started is to create a few "
-#~ "private files and private pages owned by yourself. This way, you will be "
-#~ "able to see how it looks in your site and no one else but you will be "
-#~ "able to see it."
-#~ msgstr ""
-#~ "Bien entendu, comme le plugin vient d'être installé, vous ne verrez aucun "
-#~ "contenu privé dans l'espace client. Un bon moyen de débuter est de créer "
-#~ "quelques fichiers privés et quelques pages privées dont le propriétaire "
-#~ "est vous-même. Ainsi, vous pourrez voir à quoi ça ressemble sur votre "
-#~ "site sans que personne d'autre ne puisse voir ces contenus."
-
-#~ msgid ""
-#~ "You can get notified when we've got something exciting to say (plugin "
-#~ "updates, news, etc.). Simply subscribe to our newsletter, we won't spam, "
-#~ "we send at most one email per month!"
-#~ msgstr ""
-#~ "Vous pouvez être tenu au courant quand nous avons quelque chose qui vaut "
-#~ "le coup (mise à jour de plugins, nouvelles, etc.). Inscrivez-vous "
-#~ "simplement à notre liste de diffusion, aucun spam - promis, nous envoyons "
-#~ "au maximum un courriel par mois !"
-
-#~ msgid "Getting help"
-#~ msgstr "Obtenir de l'aide"
-
-#~ msgid "Save money with our add-on bundles"
-#~ msgstr "Economisez avec nos packs d'extensions"
-
-#~ msgid "Get our add-ons individually"
-#~ msgstr "Nos extensions"
-
-#~ msgid "Setup your Customer Area in seconds"
-#~ msgstr "Configurez votre espace client en quelques secondes"
-
-#~ msgid ""
-#~ "Thanks for using our Customer Area plugin. It will be just a few seconds "
-#~ "before the plugin is ready to work."
-#~ msgstr ""
-#~ "Merci d'utiliser notre plugin Customer Area. Il faudra seulement quelques "
-#~ "secondes pour le mettre en route."
-
-#~ msgid "You can give any title you want to the customer area"
-#~ msgstr "Vous pouvez choisir un titre pour votre espace client."
-
-#~ msgid "Go, set it up!"
-#~ msgstr "C'est parti !"
-
-#~ msgid "Customer Page - User Account"
-#~ msgstr "Page client - Compte utilisateur"
-
-#~ msgid "Customer Page - Account Root"
-#~ msgstr "Page client - Accueil du compte"
-
-#~ msgid "Customer Page - Dashboard"
-#~ msgstr "Page client - Tableau de bord"
-
-#~ msgid "Customer Page - Home"
-#~ msgstr "Page client - Accueil"
-
-#~ msgid "Customer Page - Logout"
-#~ msgstr "Page client - Déconnexion"
-
-#~ msgid "Customer Page - Private Files"
-#~ msgstr "Page client - Fichiers privés"
-
-#~ msgid "Customer Page - Private Files Root"
-#~ msgstr "Page client - Racine fichiers privés"
-
-#~ msgid "Customer Page - Private Pages"
-#~ msgstr "Pages client - Pages privées"
-
-#~ msgid "Customer Page - Private Pages Root"
-#~ msgstr "Page client - Accueil pages privées"
-
-#~ msgid ""
-#~ "The \"%1$s\" add-on requires Customer Area %3$s. You are currently using "
-#~ "version %2$s. Please update the Customer Area plugin."
-#~ msgstr ""
-#~ "L'extension \"%1$s\" nécessite Espace Client %3$s. Vous utilisez "
-#~ "actuellement la version %2$s. Veuillez mettre à jour le plugin Espace "
-#~ "Client."
-
-#~ msgid "Your license is active!"
-#~ msgstr "Votre license est active !"
-
-#~ msgid "d/m/Y"
-#~ msgstr "d/m/Y"
-
-#~ msgid ""
-#~ "The license key you have received for this add-on. This is required in "
-#~ "order to get automatic plugin updates."
-#~ msgstr ""
-#~ "La clé de licence que vous avez reçu avec cette extension. Cette clé est "
-#~ "nécessaire pour obtenir des mises à jour automatiquement."
-
-#~ msgid ""
-#~ "We could not detect the Customer Area page on your site. This may be "
-#~ "because you have not yet setup the plugin, or because you are upgrading "
-#~ "from an older version."
-#~ msgstr ""
-#~ "Nous n'avons pas pu détecter la page Espace Client sur votre site. C'est "
-#~ "peut-être du au fait que vous n'ayez pas encore configuré le plugin ou "
-#~ "bien que vous le mettiez à jour depuis une version plus ancienne."
-
-#~ msgid ""
-#~ "If you already have this page, just visit the <a href=\"%s\">plugin "
-#~ "settings</a> to set it manually."
-#~ msgstr ""
-#~ "Si vous avez déjà cette page, rendez-vous sur <a href=\"%s\">les options "
-#~ "du plugin</a> pour indiquer laquelle c'est."
-
-#~ msgid ""
-#~ "If you have not yet setup the plugin, we have a <a href=\"%s\">quick "
-#~ "setup wizard</a>"
-#~ msgstr ""
-#~ "Si vous n'avez pas encore configuré le plugin, nous avons une <a href=\"%s"
-#~ "\">procédure d'installation rapide</a>"
-
-#~ msgid "Disconnect from your customer area"
-#~ msgstr "Se déconnecter de l'espace client"
-
-#~ msgid ""
-#~ "This page is the one where you have inserted the [customer-area] "
-#~ "shortcode. This should be set automatically when you first visit that "
-#~ "page. If for any reason it is not correct, you can change it though."
-#~ msgstr ""
-#~ "Cette page est celle où vous avez inséré le shortcode [customer-area]. "
-#~ "Cette option devrait être ajustée automatiquement la première fois que "
-#~ "vous visitez cette page. Si pour une raison quelconque ce n'est pas "
-#~ "correct, vous pouvez la modifier."
-
-#~ msgid "Number of items on dashboard"
-#~ msgstr "Nombre d'items dans l'accueil"
-
-#~ msgid "Hello"
-#~ msgstr "Bonjour"
-
-#~ msgid ""
-#~ "You must login to access your own customer area. If you do not have an "
-#~ "account yet, please register or contact us so that we can create it."
-#~ msgstr ""
-#~ "Vous devez être connecté pour avoir accès à votre zone client. Si vous "
-#~ "n'avez pas encore de compte utilisateur, merci de vous enregistrer ou de "
-#~ "nous contacter pour que nous puissions le créer."
-
-#~ msgid "Login"
-#~ msgstr "Connexion"
-
-#~ msgid "Register"
-#~ msgstr "S'enregistrer"
-
-#~ msgid "Troubleshooting information"
-#~ msgstr "Information de dépannage"
-
-#~ msgid "Plugin options"
-#~ msgstr "Options de l'extension"
-
-#~ msgid "Private Files (back-office)"
-#~ msgstr "Fichiers Privés (Zone admin.)"
-
-#~ msgid ""
-#~ "You can disable this if you have your own \"single-cuar_private_file.php"
-#~ "\" template file."
-#~ msgstr ""
-#~ "Vous pouvez désactiver ceci si vous avez votre propre fichier de thème "
-#~ "\"single-cuar_private_file.php\""
-
-#~ msgid "File list"
-#~ msgstr "Liste de fichiers"
-
-#~ msgid "Don't group files"
-#~ msgstr "Ne pas grouper les fichiers"
-
-#~ msgid "Group by month"
-#~ msgstr "Grouper par mois"
-
-#~ msgid "Group by year"
-#~ msgstr "Grouper par année"
-
-#~ msgid "Group by category"
-#~ msgstr "Grouper par catégorie"
-
-#~ msgid ""
-#~ "You can choose how files will be organized by default in the customer "
-#~ "area."
-#~ msgstr ""
-#~ "Vous pouvez choisir la manière par défaut dont seront groupés les "
-#~ "fichiers dans la zone client."
-
-#~ msgid ""
-#~ "When listing files by category, empty categories will be hidden if you "
-#~ "check this."
-#~ msgstr ""
-#~ "Si les fichiers sont groupés par catégorie, les catégories vides seront "
-#~ "ignorées si vous cochez cette case."
-
-#~ msgid "Show all private files"
-#~ msgstr "Voir tous les fichiers privés"
-
-#~ msgid "Clic to show the files in this category"
-#~ msgstr "Cliquer pour afficher les fichiers dans cette catégorie"
-
-#~ msgid "Private Pages (back-office)"
-#~ msgstr "Pages Privées (Zone admin.)"
-
-#~ msgid ""
-#~ "You can disable this if you have your own \"single-cuar_private_page.php"
-#~ "\" template file."
-#~ msgstr ""
-#~ "Vous pouvez désactiver ceci si vous avez votre propre fichier de thème "
-#~ "\"single-cuar_private_page.php\""
-
-#~ msgid "Page list"
-#~ msgstr "Liste de pages"
-
-#~ msgid ""
-#~ "You can choose how pages will be organized by default in the customer "
-#~ "area."
-#~ msgstr ""
-#~ "Vous pouvez choisir la manière par défaut dont seront groupées les pages "
-#~ "dans la zone client."
-
-#~ msgid ""
-#~ "When listing pages by category, empty categories will be hidden if you "
-#~ "check this."
-#~ msgstr ""
-#~ "Si les pages sont groupées par catégorie, les catégories vides seront "
-#~ "ignorées si vous cochez cette case."
-
-#~ msgid "Show all private pages"
-#~ msgstr "Voir toutes les pages privées"
-
-#~ msgid "Clic to show the pages in this category"
-#~ msgstr "Cliquer pour afficher les pages dans cette catégorie"
-
-#~ msgid ""
-#~ "You should have a look at the <a href=\"%1$s\" target=\"_blank\">plugin "
-#~ "settings</a> to adjust a few things."
-#~ msgstr ""
-#~ "Vous devriez jeter un oeil aux <a href=\"%1$s\" target=\"_blank"
-#~ "\">réglages du plugin</a> pour ajuster quelques bricoles."
-
-#~ msgid "Improving your Customer Area"
-#~ msgstr "Améliorez votre espace client"
-
-#~ msgid "Enhance your customer area with our add-ons"
-#~ msgstr "Améliorez votre espace client avec nos extensions"
-
-#~ msgid "Upload a file"
-#~ msgstr "Téléverser un fichier"
-
-#~ msgid "%s owning this content"
-#~ msgstr "%s propriétaire de ce contenu"
-
-#~ msgid "You are not authorized to view this file"
-#~ msgstr "Vous n'êtes pas autorisé à voir ce fichier"
-
-#~ msgid "Create a new private file"
-#~ msgstr "Nouveau fichier privé"
-
-#~ msgid "Create a new private page"
-#~ msgstr "Nouvelle page privée"
-
-#~ msgid ""
-#~ "There is no Customer Area page on your site. If you already have one, "
-#~ "just visit the plugin settings to set it. "
-#~ msgstr ""
-#~ "Il n'y a aucune page Customer Area sur votre site. Si vous en avez déjà "
-#~ "créé une, indiquez-la dans les options du plugin."
-
-#~ msgid "Troubleshooting"
-#~ msgstr "Dépannage"
-
-#~ msgid ""
-#~ "Show the view and download links below the post content for a customer "
-#~ "file."
-#~ msgstr ""
-#~ "Afficher les liens pour voir ou télécharger un fichier sous le contenu "
-#~ "d'un article représentant un fichier client."
-
-#~ msgid "Nobody"
-#~ msgstr "Personne"
-
-#~ msgid "Select the owner of this page"
-#~ msgstr "Sélectionner le propriétaire de cette page"
-
-#~ msgctxt "cuar_private_file"
-#~ msgid "Customer Files"
-#~ msgstr "Fichiers clients"
-
-#~ msgctxt "cuar_private_file"
-#~ msgid "Customer File"
-#~ msgstr "Fichier client"
-
-#~ msgctxt "cuar_private_file"
-#~ msgid "Add New Customer File"
-#~ msgstr "Ajouter un fichier client"
-
-#~ msgctxt "cuar_private_file"
-#~ msgid "Edit Customer File"
-#~ msgstr "Editer un fichier client"
-
-#~ msgctxt "cuar_private_file"
-#~ msgid "New Customer File"
-#~ msgstr "Nouveau fichier client"
-
-#~ msgctxt "cuar_private_file"
-#~ msgid "View Customer File"
-#~ msgstr "Voir le fichier client"
-
-#~ msgctxt "cuar_private_file"
-#~ msgid "Search Customer Files"
-#~ msgstr "Chercher des fichiers privés"
-
-#~ msgctxt "cuar_private_file"
-#~ msgid "Parent Customer File:"
-#~ msgstr "Fichier client parent :"
-
-#~ msgctxt "URL slug"
-#~ msgid "download-file"
-#~ msgstr "télécharger-fichier"
-
-#~ msgctxt "URL slug"
-#~ msgid "view-file"
-#~ msgstr "voir-fichier"
-
-#~ msgctxt "URL slug"
-#~ msgid "private-file-category"
-#~ msgstr "catégorie-fichier-privé"
-
-#~ msgctxt "URL slug"
-#~ msgid "private-file"
-#~ msgstr "fichier-privé"
-
-#~ msgid "Your files grouped by category"
-#~ msgstr "Vos fichiers groupés par catégorie"
-
-#~ msgid "Your files grouped by year"
-#~ msgstr "Vos fichiers groupés par année"
-
-#~ msgid "Houston&hellip; we have a problem!"
-#~ msgstr "Houston&hellip; on a un problème !"
-
-#~ msgid ""
-#~ "We have not found what you are looking for. You could simply close this "
-#~ "window out of rage, but you might also want to have a look at the rest of "
-#~ "the website. I am sure you won' be disappointed again. Promise."
-#~ msgstr ""
-#~ "Nous n'avons pas trouvé ce que vous cherchiez. Pour sûr, vous devez être "
-#~ "en pétard, mais vous devriez parcourir le reste du site, vous ne serez "
-#~ "pas déçu de nouveau, promis."
-
-#~ msgid "See our work"
-#~ msgstr "Voir nos projets"
-
-#~ msgid "Browse our blog"
-#~ msgstr "Parcourir le blog"
-
-#~ msgid "By Tag"
-#~ msgstr "Par étiquette"
-
-#~ msgid "Filter our work"
-#~ msgstr "Filtrer les projets"
-
-#~ msgid "All projects"
-#~ msgstr "Tous les projets"
-
-#~ msgid "By type"
-#~ msgstr "Par type"
-
-#~ msgid "Browse our archives"
-#~ msgstr "Parcourez nos archives"
-
-#~ msgid "Daily Archives: %s"
-#~ msgstr "Archives du jour : %s"
-
-#~ msgid "Monthly Archives: %s"
-#~ msgstr "Archives du mois : %s"
-
-#~ msgid "F Y"
-#~ msgstr "F Y"
-
-#~ msgid "Yearly Archives: %s"
-#~ msgstr "Archives de l'année : %s"
-
-#~ msgid "Y"
-#~ msgstr "Y"
-
-#~ msgid "&laquo; Older Comments"
-#~ msgstr "Commentaires plus anciens &laquo;"
-
-#~ msgid "Comments are closed."
-#~ msgstr "Les commentaires ne sont plus possibles."
-
-#~ msgid "Leave a comment"
-#~ msgstr "Laisser un commentaire"
-
-#~ msgid "Learn more about &laquo; %s &raquo;"
-#~ msgstr "En savoir plus sur &laquo; %s &raquo;"
-
-#~ msgid "<li>&raquo; Tagged: "
-#~ msgstr "<li>&raquo; Etiqueté : "
-
-#~ msgid "Read more"
-#~ msgstr "En savoir plus"
-
-#~ msgid "Edit this post"
-#~ msgstr "Editer ce post"
-
-#~ msgid "Get in touch"
-#~ msgstr "Contactez-nous"
-
-#~ msgid "+33 6 50 21 23 94"
-#~ msgstr "06 50 21 23 94"
-
-#~ msgid "hello@marvinlabs.com"
-#~ msgstr "bonjour@marvinlabs.com"
-
-#~ msgid "Use our code from GitHub"
-#~ msgstr "Utilisez notre code publié sur GitHub"
-
-#~ msgid "We help fellow developers on StackOverflow"
-#~ msgstr "Nous aidons nos collègues développeurs sur StackOverflow"
-
-#~ msgid "Get our free WordPress plugins & themes"
-#~ msgstr "Téléchargez nos plugins et thèmes gratuits pour WordPress"
-
-#~ msgid "Work"
-#~ msgstr "Projet"
-
-#~ msgid "work"
-#~ msgstr "projet"
-
-#~ msgid "Types"
-#~ msgstr "Types"
-
-#~ msgid "work-type"
-#~ msgstr "type-de-projet"
-
-#~ msgid "Skill"
-#~ msgstr "Compétence"
-
-#~ msgid "Skills"
-#~ msgstr "Compétences"
-
-#~ msgid "work-skill"
-#~ msgstr "competence"
-
-#~ msgid "Technology"
-#~ msgstr "Technologie"
-
-#~ msgid "Technologies"
-#~ msgstr "Technologies"
-
-#~ msgid "work-technology"
-#~ msgstr "technologie"
-
-#~ msgid "Single blog post"
-#~ msgstr "Post de blog unique"
-
-#~ msgid "Blog archive page"
-#~ msgstr "Archive du blog"
-
-#~ msgid "Footer, #getintouch"
-#~ msgstr "Footer, #getintouch"
-
-#~ msgid "Footer, #bottom"
-#~ msgstr "Footer, #bottom"
-
-#~ msgid "About this project"
-#~ msgstr "A propos de ce projet"
-
-#~ msgid "Project launched in %s"
-#~ msgstr "Projet lancé en %s"
-
-#~ msgid "View the live website"
-#~ msgstr "Visiter le site en ligne"
-
-#~ msgid "Get the app on Google Play"
-#~ msgstr "Télécharger l'application sur GooglePlay"
-
-#~ msgid "Get the app on Apple's AppStore"
-#~ msgstr "Télécharger l'application sur l'AppStore d'Apple"
-
-#~ msgid "Project type: "
-#~ msgstr "Type de projet : "
-
-#~ msgid "Skills: "
-#~ msgstr "Compétences : "
-
-#~ msgid "Technologies: "
-#~ msgstr "Technologies : "
-
-#~ msgid "You like this project and think we can do a good job with yours?"
-#~ msgstr ""
-#~ "Vous aimez ce projet et pensez que nous pourrions faire du bon travail "
-#~ "pour le votre ?"
-
-#~ msgid "Request a quote"
-#~ msgstr "Demandez un devis"
-
-#~ msgid "About this post"
-#~ msgstr "A propos de cet article"
-
-#~ msgid "Posted on: "
-#~ msgstr "Posté le :"
-
-#~ msgid "Tag Archives: %s"
-#~ msgstr "Archives d'étiquette : %s"
-
-#~ msgid "Our projects of type: %s"
-#~ msgstr "Nos projets de type : %s"
-
-#~ msgid "%1$s on %2$s"
-#~ msgstr "%1$s sur %2$s"
-
-#~ msgid "Posts navigation"
-#~ msgstr "Navigation"
-
-#~ msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
-#~ msgstr "<span class=\"meta-nav\">&laquo;</span> Articles plus anciens"
-
-#~ msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
-#~ msgstr "Articles plus récents <span class=\"meta-nav\">&raquo;</span>"
-
-#~ msgid "See all of our work"
-#~ msgstr "Voir tous nos projets"
-
-#~ msgid ""
-#~ "All content on this website is the property of &laquo;Constant le "
-#~ "jardinier&raquo; and may not be used without permission"
-#~ msgstr ""
-#~ "Tout le contenu sur ce site est la propriété exclusive de &laquo;Constant "
-#~ "le jardinier&raquo; et ne peut être utilisé sans permission"
-
-#~ msgid "&copy; Constant le jardinier"
-#~ msgstr "&copy; Constant le jardinier"
-
-#~ msgid ""
-#~ "Designed and carried out by MarvinLabs, digital creation studio in Basque "
-#~ "country, France (Biarritz, Anglet, Bayonne)"
-#~ msgstr ""
-#~ "Imaginé et réalisé par MarvinLabs, studio de création numérique au pays "
-#~ "basque (Biarritz, Anglet, Bayonne)"
-
-#~ msgid "A website planted with care by MarvinLabs"
-#~ msgstr "Un site délicatement planté par MarvinLabs"
-
-#~ msgid "and"
-#~ msgstr "et"
-
-#~ msgid "Paintings by Marilou Laure"
-#~ msgstr "Peintures par Marilou Laure"
-
-#~ msgid "illustrated with taste by Marilou Laure"
-#~ msgstr "illustré avec goût par Marilou Laure"
-
-#~ msgid "Left footer navigation"
-#~ msgstr "Navigation bas gauche"
-
-#~ msgid "Right footer navigation"
-#~ msgstr "Navigation bas droite"
-
-#~ msgid "Services"
-#~ msgstr "Services"
-
-#~ msgid "Service"
-#~ msgstr "Service"
-
-#~ msgid "Footer Widgets 1 (Left)"
-#~ msgstr "Footer Widgets 1 (Left)"
-
-#~ msgid "Footer Widgets 2 (Middle)"
-#~ msgstr "Footer Widgets 2 (Middle)"
-
-#~ msgid "Footer Widgets 3 (Right)"
-#~ msgstr "Footer Widgets 3 (Right)"
-
-#~ msgid "Nothing here"
-#~ msgstr "Rien ici"
-
-#~ msgid "You should not even be on this page!"
-#~ msgstr "Vous ne devriez même pas vous retrouver sur cette page !"

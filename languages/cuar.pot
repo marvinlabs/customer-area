@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area 6.0.0\n"
 "Report-Msgid-Bugs-To: "
 "http://github.com/marvinlabs/customer-area-build-environment/issues\n"
-"POT-Creation-Date: 2015-03-04 16:21:27+00:00\n"
+"POT-Creation-Date: 2015-03-10 14:54:45+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,17 +64,6 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:151
 msgid "See the WordPress top bar"
-msgstr ""
-
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:201
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:202
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:234
-#: src/php/core-addons/customer-home/customer-home-addon.class.php:47
-#: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:46
-#: src/php/core-addons/status/templates/status-section-hooks.template.php:24
-#: src/php/core-addons/status/templates/status-section-templates.template.php:22
-#: src/php/core-classes/plugin.class.php:581
-msgid "Customer Area"
 msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:241
@@ -336,6 +325,10 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+#: src/php/core-addons/customer-home/customer-home-addon.class.php:47
+msgid "Customer Area"
+msgstr ""
+
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
 "This is the main page for your customers. It will redirect to the login "
@@ -378,7 +371,7 @@ msgid "Pages of the Customer Area"
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:502
-msgid "Customer Area Menu"
+msgid "WP Customer Area Menu"
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:506
@@ -417,7 +410,7 @@ msgid "Main Navigation Menu"
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:733
-msgid "Customer Area pages"
+msgid "WP Customer Area pages"
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:740
@@ -808,7 +801,7 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:40
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
-#: src/php/core-classes/widget-content-list.class.php:161
+#: src/php/core-classes/widget-content-list.class.php:216
 msgid "Date"
 msgstr ""
 
@@ -821,7 +814,7 @@ msgid "Download"
 msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:37
-msgid "Customer Area - File Authors"
+msgid "WPCA - File Authors"
 msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:39
@@ -829,7 +822,7 @@ msgid "Shows the private file author archives of the Customer Area"
 msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:37
-msgid "Customer Area - File Categories"
+msgid "WPCA - File Categories"
 msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:39
@@ -837,7 +830,7 @@ msgid "Shows the private file categories of the Customer Area"
 msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:37
-msgid "Customer Area - File Archives"
+msgid "WPCA - File Archives"
 msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:39
@@ -845,7 +838,7 @@ msgid "Shows the private file yearly archives of the Customer Area"
 msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:37
-msgid "Customer Area - Recent Files"
+msgid "WPCA - Recent Files"
 msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:39
@@ -931,7 +924,7 @@ msgid "You published this page"
 msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:37
-msgid "Customer Area - Page Authors"
+msgid "WPCA - Page Authors"
 msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:39
@@ -939,7 +932,7 @@ msgid "Shows the private page author archives of the Customer Area"
 msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:37
-msgid "Customer Area - Page Categories"
+msgid "WPCA - Page Categories"
 msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:39
@@ -947,7 +940,7 @@ msgid "Shows the private page categories of the Customer Area"
 msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:37
-msgid "Customer Area - Page Archives"
+msgid "WPCA - Page Archives"
 msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:39
@@ -955,7 +948,7 @@ msgid "Shows the private page yearly archives of the Customer Area"
 msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:37
-msgid "Customer Area - Recent Pages"
+msgid "WPCA - Recent Pages"
 msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:39
@@ -1417,7 +1410,7 @@ msgstr ""
 
 #: src/php/core-addons/status/hook-finder.class.php:124
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
-#: src/php/core-classes/widget-content-list.class.php:162
+#: src/php/core-classes/widget-content-list.class.php:217
 msgid "Name"
 msgstr ""
 
@@ -1432,7 +1425,7 @@ msgid "Status"
 msgstr ""
 
 #: src/php/core-addons/status/status-addon.class.php:52
-msgid "Customer Area - Plugin status"
+msgid "WP Customer Area - Plugin status"
 msgstr ""
 
 #: src/php/core-addons/status/status-addon.class.php:110
@@ -1820,7 +1813,7 @@ msgid "You are not allowed to view this page"
 msgstr ""
 
 #: src/php/core-classes/addon-page.class.php:336
-msgid "Customer Area Sidebar - %s"
+msgid "WPCA - %s"
 msgstr ""
 
 #: src/php/core-classes/addon-update-content-page.class.php:130
@@ -2122,79 +2115,79 @@ msgstr ""
 msgid "WordPress content folder"
 msgstr ""
 
-#: src/php/core-classes/widget-content-authors.class.php:110
-#: src/php/core-classes/widget-content-authors.class.php:120
-msgid "You"
-msgstr ""
-
-#: src/php/core-classes/widget-content-authors.class.php:137
+#: src/php/core-classes/templates/widget-content-authors.template.php:18
 msgid "Show all content published by %s"
 msgstr ""
 
-#: src/php/core-classes/widget-content-authors.class.php:161
-#: src/php/core-classes/widget-content-dates.class.php:164
-#: src/php/core-classes/widget-content-list.class.php:147
-#: src/php/core-classes/widget-terms.class.php:125
-msgid "Title:"
-msgstr ""
-
-#: src/php/core-classes/widget-content-dates.class.php:121
+#: src/php/core-classes/templates/widget-content-dates.template.php:18
 msgid "Show all content published in %s"
 msgstr ""
 
-#: src/php/core-classes/widget-content-dates.class.php:135
+#: src/php/core-classes/templates/widget-content-dates.template.php:35
 msgid "Show all content published in %2$s %1$s"
 msgstr ""
 
-#: src/php/core-classes/widget-content-list.class.php:122
+#: src/php/core-classes/templates/widget-content-list.template.php:19
 msgid "Link to %s"
 msgstr ""
 
-#: src/php/core-classes/widget-content-list.class.php:151
-msgid "Message shown when no posts:"
-msgstr ""
-
-#: src/php/core-classes/widget-content-list.class.php:155
-msgid "Max. number of posts:"
-msgstr ""
-
-#: src/php/core-classes/widget-content-list.class.php:159
-msgid "Order By:"
-msgstr ""
-
-#: src/php/core-classes/widget-content-list.class.php:166
-msgid "Order:"
-msgstr ""
-
-#: src/php/core-classes/widget-content-list.class.php:168
-msgid "Ascending"
-msgstr ""
-
-#: src/php/core-classes/widget-content-list.class.php:169
-msgid "Descending"
-msgstr ""
-
-#: src/php/core-classes/widget-content-list.class.php:176
-msgid "Category:"
-msgstr ""
-
-#: src/php/core-classes/widget-content-list.class.php:180
-msgid "Any"
-msgstr ""
-
-#: src/php/core-classes/widget-terms.class.php:86
+#: src/php/core-classes/templates/widget-terms.template.php:18
 msgid "Show all content categorized under %s"
 msgstr ""
 
-#: src/php/core-classes/widget-terms.class.php:130
+#: src/php/core-classes/widget-content-authors.class.php:149
+#: src/php/core-classes/widget-content-authors.class.php:159
+msgid "You"
+msgstr ""
+
+#: src/php/core-classes/widget-content-authors.class.php:200
+#: src/php/core-classes/widget-content-dates.class.php:189
+#: src/php/core-classes/widget-content-list.class.php:192
+#: src/php/core-classes/widget-terms.class.php:153
+msgid "Title:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:199
+msgid "Message shown when no posts:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:206
+msgid "Max. number of posts:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:213
+msgid "Order By:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:221
+msgid "Order:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:224
+msgid "Ascending"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:225
+msgid "Descending"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:232
+msgid "Category:"
+msgstr ""
+
+#: src/php/core-classes/widget-content-list.class.php:236
+msgid "Any"
+msgstr ""
+
+#: src/php/core-classes/widget-terms.class.php:160
 msgid "Empty terms:"
 msgstr ""
 
-#: src/php/core-classes/widget-terms.class.php:132
+#: src/php/core-classes/widget-terms.class.php:164
 msgid "Show"
 msgstr ""
 
-#: src/php/core-classes/widget-terms.class.php:133
+#: src/php/core-classes/widget-terms.class.php:165
 msgid "Hide"
 msgstr ""
 
@@ -2221,8 +2214,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Customer area give your customers the possibility to get a page on your "
-"site where they can access private content."
+"WP Customer Area is a modular all-in-one solution to manage private content "
+"with WordPress."
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:77
@@ -2259,8 +2252,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:501
 msgctxt ""
-"Localised slug for the main navigation menu (small caps version of the "
-"\"Customer Area Menu\" translation)"
+"Localised slug for the main navigation menu (small caps version of the \"WP "
+"Customer Area Menu\" translation)"
 msgid "customer-area-menu"
 msgstr ""
 

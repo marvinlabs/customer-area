@@ -129,7 +129,7 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 6.1.0 (2015/03/) =
+= 6.0.0 (2015/03/10) =
 
 * New: a setup assistant for first time installation & about page to introduce new versions features
 * New: support for the new website at http://wp-customerarea.com

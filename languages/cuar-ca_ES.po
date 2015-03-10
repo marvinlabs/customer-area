@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2015-03-04 16:19:53+00:00\n"
+"POT-Creation-Date: 2015-03-10 14:51:14+00:00\n"
 "PO-Revision-Date: 2015-03-03 08:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
@@ -64,17 +64,6 @@ msgstr "Part pública"
 #, fuzzy
 msgid "See the WordPress top bar"
 msgstr "Téléchargez le plugin WordPress"
-
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:201
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:202
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:234
-#: src/php/core-addons/customer-home/customer-home-addon.class.php:47
-#: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:46
-#: src/php/core-addons/status/templates/status-section-hooks.template.php:24
-#: src/php/core-addons/status/templates/status-section-templates.template.php:22
-#: src/php/core-classes/plugin.class.php:581
-msgid "Customer Area"
-msgstr "Àrea de Clients"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:241
 msgid "Your private area"
@@ -349,6 +338,10 @@ msgstr ""
 msgid "Home"
 msgstr "Principal"
 
+#: src/php/core-addons/customer-home/customer-home-addon.class.php:47
+msgid "Customer Area"
+msgstr "Àrea de Clients"
+
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
 "This is the main page for your customers. It will redirect to the login page "
@@ -396,7 +389,8 @@ msgid "Pages of the Customer Area"
 msgstr "Pàgines per l'Àrea de Clients"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:502
-msgid "Customer Area Menu"
+#, fuzzy
+msgid "WP Customer Area Menu"
 msgstr "Menú Àrea de Clients"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:506
@@ -437,7 +431,8 @@ msgid "Main Navigation Menu"
 msgstr "Menú principal de navegació"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:733
-msgid "Customer Area pages"
+#, fuzzy
+msgid "WP Customer Area pages"
 msgstr "Pàgines de l`àrea de clients"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:740
@@ -869,7 +864,7 @@ msgstr "Destinatari"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:40
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
-#: src/php/core-classes/widget-content-list.class.php:161
+#: src/php/core-classes/widget-content-list.class.php:216
 msgid "Date"
 msgstr "Data"
 
@@ -882,7 +877,8 @@ msgid "Download"
 msgstr "Descàrrega"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:37
-msgid "Customer Area - File Authors"
+#, fuzzy
+msgid "WPCA - File Authors"
 msgstr "Àrea Privada - Arxiu d'autors"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:39
@@ -890,15 +886,17 @@ msgid "Shows the private file author archives of the Customer Area"
 msgstr "Mostra els arxius d'un autor d'arxius privats de l'Àrea de Clients"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:37
-msgid "Customer Area - File Categories"
-msgstr "Àrea Privada - Categoria d'arxius"
+#, fuzzy
+msgid "WPCA - File Categories"
+msgstr "Totes les categories d'arxius"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:39
 msgid "Shows the private file categories of the Customer Area"
 msgstr "Mostra les categories d'arxius privats de l'Àrea de Clients"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:37
-msgid "Customer Area - File Archives"
+#, fuzzy
+msgid "WPCA - File Archives"
 msgstr "Àrea Privada - Fitxer d'arxius"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:39
@@ -906,8 +904,9 @@ msgid "Shows the private file yearly archives of the Customer Area"
 msgstr "Mostra els arxius anuals de la pàgina privada de l'Àrea de Clients"
 
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:37
-msgid "Customer Area - Recent Files"
-msgstr "Àrea Privada - Arxius recents"
+#, fuzzy
+msgid "WPCA - Recent Files"
+msgstr "Arxius recents"
 
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:39
 msgid "Shows a list of files for the logged-in user"
@@ -992,7 +991,8 @@ msgid "You published this page"
 msgstr "Has publicat aquesta pàgina"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:37
-msgid "Customer Area - Page Authors"
+#, fuzzy
+msgid "WPCA - Page Authors"
 msgstr "Àrea Privada - Pàgina d'autors"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:39
@@ -1000,15 +1000,17 @@ msgid "Shows the private page author archives of the Customer Area"
 msgstr "Mostra els arxius de l'autor de la pàgina privada de l'Àrea de Clients"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:37
-msgid "Customer Area - Page Categories"
-msgstr "Àrea Privada - Pàgina de categories"
+#, fuzzy
+msgid "WPCA - Page Categories"
+msgstr "Totes les categories de pàgina"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:39
 msgid "Shows the private page categories of the Customer Area"
 msgstr "Mostra les categories de la pàgina privada de l'Àrea de Clients"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:37
-msgid "Customer Area - Page Archives"
+#, fuzzy
+msgid "WPCA - Page Archives"
 msgstr "Àrea Privada - Pàgina d'arxius"
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:39
@@ -1016,8 +1018,9 @@ msgid "Shows the private page yearly archives of the Customer Area"
 msgstr "Mostra els arxius anuals de la pàgina privada de l'Àrea de Clients"
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:37
-msgid "Customer Area - Recent Pages"
-msgstr "Àrea Privada - Pàgines recents"
+#, fuzzy
+msgid "WPCA - Recent Pages"
+msgstr "Pàgines recents"
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:39
 msgid "Shows a list of pages for the logged-in user"
@@ -1506,7 +1509,7 @@ msgstr "Verifica per habilitar el complement de pàgines privades."
 
 #: src/php/core-addons/status/hook-finder.class.php:124
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
-#: src/php/core-classes/widget-content-list.class.php:162
+#: src/php/core-classes/widget-content-list.class.php:217
 msgid "Name"
 msgstr "Nom"
 
@@ -1521,7 +1524,8 @@ msgid "Status"
 msgstr "Estat"
 
 #: src/php/core-addons/status/status-addon.class.php:52
-msgid "Customer Area - Plugin status"
+#, fuzzy
+msgid "WP Customer Area - Plugin status"
 msgstr "Àrea Privada - Estat de l'extensió"
 
 #: src/php/core-addons/status/status-addon.class.php:110
@@ -1934,8 +1938,8 @@ msgid "You are not allowed to view this page"
 msgstr "No et trobes autoritzat per visualitzar aquesta pàgina"
 
 #: src/php/core-classes/addon-page.class.php:336
-msgid "Customer Area Sidebar - %s"
-msgstr "Barra Lateral Àrea Privada - %s"
+msgid "WPCA - %s"
+msgstr ""
 
 #: src/php/core-classes/addon-update-content-page.class.php:130
 msgid "You must supply a post ID to delete"
@@ -2253,79 +2257,79 @@ msgstr "Carpeta del tema actual"
 msgid "WordPress content folder"
 msgstr "Carpeta del contingut de WordPress"
 
-#: src/php/core-classes/widget-content-authors.class.php:110
-#: src/php/core-classes/widget-content-authors.class.php:120
-msgid "You"
-msgstr "Tu"
-
-#: src/php/core-classes/widget-content-authors.class.php:137
+#: src/php/core-classes/templates/widget-content-authors.template.php:18
 msgid "Show all content published by %s"
 msgstr "Mostrar tot el contingut publicat per %s"
 
-#: src/php/core-classes/widget-content-authors.class.php:161
-#: src/php/core-classes/widget-content-dates.class.php:164
-#: src/php/core-classes/widget-content-list.class.php:147
-#: src/php/core-classes/widget-terms.class.php:125
-msgid "Title:"
-msgstr "Títol:"
-
-#: src/php/core-classes/widget-content-dates.class.php:121
+#: src/php/core-classes/templates/widget-content-dates.template.php:18
 msgid "Show all content published in %s"
 msgstr "Mostrar tot el contingut publicat a %s"
 
-#: src/php/core-classes/widget-content-dates.class.php:135
+#: src/php/core-classes/templates/widget-content-dates.template.php:35
 msgid "Show all content published in %2$s %1$s"
 msgstr "Mostrar tot el contingut publicat a %2$s %1$s"
 
-#: src/php/core-classes/widget-content-list.class.php:122
+#: src/php/core-classes/templates/widget-content-list.template.php:19
 msgid "Link to %s"
 msgstr "Enllaços a %s"
 
-#: src/php/core-classes/widget-content-list.class.php:151
-msgid "Message shown when no posts:"
-msgstr "Missatge mostrat quan no hi han entrades:"
-
-#: src/php/core-classes/widget-content-list.class.php:155
-msgid "Max. number of posts:"
-msgstr "Número màxim d'entrades:"
-
-#: src/php/core-classes/widget-content-list.class.php:159
-msgid "Order By:"
-msgstr "Ordenar per:"
-
-#: src/php/core-classes/widget-content-list.class.php:166
-msgid "Order:"
-msgstr "Ordre:"
-
-#: src/php/core-classes/widget-content-list.class.php:168
-msgid "Ascending"
-msgstr "Ascendent"
-
-#: src/php/core-classes/widget-content-list.class.php:169
-msgid "Descending"
-msgstr "Descendent"
-
-#: src/php/core-classes/widget-content-list.class.php:176
-msgid "Category:"
-msgstr "Categoria:"
-
-#: src/php/core-classes/widget-content-list.class.php:180
-msgid "Any"
-msgstr "Qualsevol"
-
-#: src/php/core-classes/widget-terms.class.php:86
+#: src/php/core-classes/templates/widget-terms.template.php:18
 msgid "Show all content categorized under %s"
 msgstr "Mostra tot el contingut categoritzat com  %s"
 
-#: src/php/core-classes/widget-terms.class.php:130
+#: src/php/core-classes/widget-content-authors.class.php:149
+#: src/php/core-classes/widget-content-authors.class.php:159
+msgid "You"
+msgstr "Tu"
+
+#: src/php/core-classes/widget-content-authors.class.php:200
+#: src/php/core-classes/widget-content-dates.class.php:189
+#: src/php/core-classes/widget-content-list.class.php:192
+#: src/php/core-classes/widget-terms.class.php:153
+msgid "Title:"
+msgstr "Títol:"
+
+#: src/php/core-classes/widget-content-list.class.php:199
+msgid "Message shown when no posts:"
+msgstr "Missatge mostrat quan no hi han entrades:"
+
+#: src/php/core-classes/widget-content-list.class.php:206
+msgid "Max. number of posts:"
+msgstr "Número màxim d'entrades:"
+
+#: src/php/core-classes/widget-content-list.class.php:213
+msgid "Order By:"
+msgstr "Ordenar per:"
+
+#: src/php/core-classes/widget-content-list.class.php:221
+msgid "Order:"
+msgstr "Ordre:"
+
+#: src/php/core-classes/widget-content-list.class.php:224
+msgid "Ascending"
+msgstr "Ascendent"
+
+#: src/php/core-classes/widget-content-list.class.php:225
+msgid "Descending"
+msgstr "Descendent"
+
+#: src/php/core-classes/widget-content-list.class.php:232
+msgid "Category:"
+msgstr "Categoria:"
+
+#: src/php/core-classes/widget-content-list.class.php:236
+msgid "Any"
+msgstr "Qualsevol"
+
+#: src/php/core-classes/widget-terms.class.php:160
 msgid "Empty terms:"
 msgstr "Termes buits:"
 
-#: src/php/core-classes/widget-terms.class.php:132
+#: src/php/core-classes/widget-terms.class.php:164
 msgid "Show"
 msgstr "Mostra"
 
-#: src/php/core-classes/widget-terms.class.php:133
+#: src/php/core-classes/widget-terms.class.php:165
 msgid "Hide"
 msgstr "Oculta"
 
@@ -2352,8 +2356,8 @@ msgstr "kB"
 
 #. Description of the plugin/theme
 msgid ""
-"Customer area give your customers the possibility to get a page on your site "
-"where they can access private content."
+"WP Customer Area is a modular all-in-one solution to manage private content "
+"with WordPress."
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:77
@@ -2389,9 +2393,10 @@ msgid "page-num"
 msgstr "num-pagina"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:501
+#, fuzzy
 msgctxt ""
-"Localised slug for the main navigation menu (small caps version of the "
-"\"Customer Area Menu\" translation)"
+"Localised slug for the main navigation menu (small caps version of the \"WP "
+"Customer Area Menu\" translation)"
 msgid "customer-area-menu"
 msgstr "menu-area-clients"
 
@@ -2668,6 +2673,21 @@ msgstr "Afegir o eliminar categories de pàgina"
 msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Elegir des de les categories de pàgina més utilitzades"
+
+#~ msgid "Customer Area - File Categories"
+#~ msgstr "Àrea Privada - Categoria d'arxius"
+
+#~ msgid "Customer Area - Recent Files"
+#~ msgstr "Àrea Privada - Arxius recents"
+
+#~ msgid "Customer Area - Page Categories"
+#~ msgstr "Àrea Privada - Pàgina de categories"
+
+#~ msgid "Customer Area - Recent Pages"
+#~ msgstr "Àrea Privada - Pàgines recents"
+
+#~ msgid "Customer Area Sidebar - %s"
+#~ msgstr "Barra Lateral Àrea Privada - %s"
 
 #~ msgid "News"
 #~ msgstr "Notícies"
