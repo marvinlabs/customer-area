@@ -9,7 +9,7 @@ Stable tag:         6.0.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
-Give your customers a page on your site where they can access private content (files, notices, ...). 
+WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 
 == Description ==
 
