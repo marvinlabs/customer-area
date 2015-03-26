@@ -1,0 +1,114 @@
+
+// Auto color palettes
+
+.color-variant(@color: #555, @lt-percent: 10%, @lter-percent: 15%, @dk-percent: 10%, @dker-percent: 15%) {
+	background-color: @color;	
+	&.lt,
+	.lt {
+		background-color: lighten(@color, @lt-percent);
+	}
+	&.lter,
+	.lter {
+		background-color: lighten(@color, @lter-percent);
+	}
+	&.dk,
+	.dk {
+		background-color: darken(@color, @dk-percent);
+	}
+	&.dker,
+	.dker {
+		background-color: darken(@color, @dker-percent);
+	}
+}
+
+// Button variants
+
+.button-variant(@color; @background; @border) {
+  color: @color !important;
+  background-color: @background;
+  border-color: @border;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    color: @color !important;
+    background-color: darken(@background, 8%);
+        border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @background;
+          border-color: @border
+    }
+  }
+}
+
+// Font variants
+
+.font-variant(@color: #555, @hover-color: #fff, @nav-link-percent: 40%, @nav-sublink-percent: 10%, @link-percent: 30%, @text-percent){
+	color: lighten(@color, @text-percent);
+	a {
+		color: lighten(@color, @link-percent);
+		&:hover{
+			color: @hover-color;
+		}
+		&.list-group-item{
+			&:hover,
+			&:focus{
+				background-color: inherit;
+			}
+		}
+	}
+	.nav {
+		li {
+			> a{
+				color: lighten(@color, @nav-link-percent);		
+				&:hover{
+					background-color: darken(@color, 5%);
+				}
+			}
+			> ul.dropdown-menu > li{
+				> a{
+					color: lighten(@color, @nav-link-percent);
+					&:hover {
+						color: @hover-color;
+            
+
+					}
+				}
+			}
+		}
+    .open > a{
+      background-color: darken(@color, 5%);
+    }
+	}
+  &.navbar .nav{
+    > li.active > a{
+      color: @hover-color;
+      background-color: darken(@color, 5%);
+    }
+  }
+	.open > a {
+    &,
+    &:hover,
+    &:focus{
+      color: @hover-color;
+    }		
+	}
+	.text-muted {
+		color: lighten(@color, @text-percent - 5%);
+	}
+}

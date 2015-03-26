@@ -1,0 +1,153 @@
+.cuar-field-section {
+		.make-row();
+
+	.cuar-section-title {
+			.make-xs-column(12);
+	}
+	
+	.cuar-field {
+			.make-sm-column(6);
+	}
+	
+	.cuar-field.wide {
+			.make-sm-column(12);
+	}
+}
+
+.cuar-field {
+	.cuar-field-label {
+			font-weight: bold;
+	}
+	
+	.cuar-field-value {
+			margin-bottom: 15px;
+	}
+
+	&.cuar-field-header {
+			font-weight: bold;
+			border-bottom: 1px solid #eee;
+			padding-bottom: 15px;
+			margin-bottom: 30px;
+	}
+}
+
+/* Select 2 fields */
+.cuar-form {
+	.select2-container-multi .select2-choices {
+			background-image: none;
+			border: 1px solid #ccc;
+			box-shadow: none;
+			height: 34px;
+			
+		.select2-search-field input {
+				background: #fff;
+				height: 30px;
+				padding: 6px 12px;
+		}
+	}
+}
+
+/* For ACF Integration */
+.cuar-form {
+	
+	.acf_postbox .field {
+			.make-row();	
+		
+		p.label {
+				&:extend( label all );
+				.make-sm-column(4);
+				margin-bottom: 15px;
+				text-align: right;
+				font-weight: normal;
+				color: lighten(@text-color, 25%);
+				font-style: italic;
+				 
+			label {
+					color: @text-color;
+					font-size: @font-size-base;
+					font-style: normal;
+			}
+		}
+		
+		.acf-radio-list, .acf-checkbox-list {
+				.list-unstyled;		
+				color: @text-color;
+				padding-top: 0;
+				
+			li {
+					margin-left: 0;
+				
+				input {	
+						margin-top: 5px;
+				}
+				
+				label {
+					font-weight: normal;
+				}
+			}
+		}
+		
+		.acf-radio-list li {
+				margin-left: 20px;
+		}
+		
+		input[type="text"], 
+		input[type="number"], 
+		input[type="password"], 
+		input[type="email"], 
+		textarea,
+		select {
+				&:extend( .form-control all );
+		}
+	
+		.acf-input-wrap, 
+		.acf-date_picker, 
+		.acf-radio-list, 
+		.acf-checkbox-list,
+		.acf-image-uploader {
+				.make-sm-column(8);
+		}
+		
+		.select, textarea, &.field_type-page_link select {
+				.make-sm-column(8);
+				width: -webkit-calc(~'66.66% - 30px') !important;
+				width:    -moz-calc(~'66.66% - 30px') !important;
+				width:      -o-calc(~'66.66% - 30px') !important;
+				width:         calc(~'66.66% - 30px') !important;
+				margin-left: 15px;
+		}
+		
+		textarea {
+				min-height: 150px !important;
+		}
+		
+		.acf_wysiwyg {
+				.make-sm-column(8);
+		}
+		
+		&.field_type-page_link select[multiple="multiple"] { 
+				min-height: 150px !important;
+		}
+	}
+	
+	.acf_postbox {
+		& > .inside > .field {
+				border-top: none;
+		}
+	}
+	
+	#poststuff {
+			margin-bottom: 15px;
+	}
+	
+}
+
+.acf_postbox, 
+.cuar-form .acf_postbox {
+	h3.hndle {
+			font-weight: bold;
+			border-bottom: 1px solid #eee;
+			padding-bottom: 15px;
+			margin-bottom: 30px;
+	}
+}

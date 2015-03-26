@@ -1,0 +1,33 @@
+.cuarsu-main {	
+		&:extend(.navbar, .navbar-default);
+		
+		margin-top: 15px;
+		
+	form {
+			&:extend(.navbar-form, .form-inline);
+			padding: 0;
+		.form-group {
+				padding: 0;
+		}
+	}
+		
+	.cuarsu-message {
+			&:extend(.navbar-btn);
+			font-weight: normal;
+			float: left; 
+			width: 50%;
+			height: 34px;
+	}
+	
+	.cuarsu-id-select {
+			&:extend(.form-control all);
+			float: left; 
+			width: 40%;
+	}
+	
+	input[type="submit"].cuarsu-submit {
+			&:extend(.btn all, .btn-default all);
+			float: left; 
+			margin-left: 0.5 * @grid-gutter-width;
+	} 
+}
