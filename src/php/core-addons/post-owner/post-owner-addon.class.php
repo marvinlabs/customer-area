@@ -943,11 +943,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 exit();
             }
 
-            // Log the fact that this post has been viewed
-            $this->plugin->get_logger()->log_event('content-viewed', '', '', $post->ID, array(
-                'user_id' => $current_user_id
-            ));
-
             do_action('cuar/core/ownership/protect-single-post/on-access-granted', $post);
         }
 

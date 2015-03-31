@@ -23,6 +23,8 @@ class CUAR_LogEvent extends CUAR_CustomPost
     /** @var string The post type corresponding to a log event */
     public static $POST_TYPE = 'cuar_log_event';
 
+    private $type = 0xdead;
+
     /**
      * Constructor
      *
@@ -32,6 +34,27 @@ class CUAR_LogEvent extends CUAR_CustomPost
     public function __construct($custom_post, $load_post = true)
     {
         parent::__construct($custom_post, $load_post);
+    }
+
+    /**
+     * @return WP_Term[]
+     */
+    public function get_type()
+    {
+        if ($this->type === 0xdead)
+        {
+            $terms = wp_get_post_terms($this->id, CUAR_LogEventType::$TAXONOMY);
+            if (empty($terms) || is_wp_error($terms))
+            {
+                $this->type = null;
+            }
+            else
+            {
+                $this->type = $terms[0]->slug;
+            }
+        }
+
+        return $this->type;
     }
 
     /**
@@ -69,7 +92,8 @@ class CUAR_LogEvent extends CUAR_CustomPost
      *
      * @return int|WP_Error Log ID or error
      */
-    public static function create($type, $title = '', $message = '', $related_object_id = 0, $log_meta = array())
+    public static function create($type, $title = '', $message = '', $related_object_id = 0,
+        $related_object_type = null, $log_meta = array())
     {
         $event_data = array(
             'post_status'  => 'publish',
@@ -89,12 +113,17 @@ class CUAR_LogEvent extends CUAR_CustomPost
         // Set the log type, if any
         wp_set_object_terms($log_id, $type, CUAR_LogEventType::$TAXONOMY, false);
 
+        if ($related_object_type != null)
+        {
+            $log_meta['related_object_type'] = $related_object_type;
+        }
+
         // Set log meta, if any
         if ($log_id && is_array($log_meta) && !empty($log_meta))
         {
             foreach ($log_meta as $key => $meta)
             {
-                update_post_meta($log_id, '_cuar_' . sanitize_key($key), $meta);
+                update_post_meta($log_id, 'cuar_' . sanitize_key($key), $meta);
             }
         }
 

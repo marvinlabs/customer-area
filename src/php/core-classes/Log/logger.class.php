@@ -28,6 +28,7 @@ class CUAR_Logger
      */
     function __construct()
     {
+        $this->register_hooks();
     }
 
     /**
@@ -41,11 +42,15 @@ class CUAR_Logger
 
     /**
      * Get the types of log event available
-     * @return  array $types
+     *
+     * @param bool $force_refresh Set to true if we must rebuild the event types array (useful to get
+     *                            translated strings)
+     *
+     * @return array $types
      */
-    public function get_valid_event_types()
+    public function get_valid_event_types($force_refresh = false)
     {
-        if ($this->valid_types)
+        if ($this->valid_types == null || $force_refresh)
         {
             $default_types = array();
             $this->valid_types = apply_filters('cuar/core/log/event-types', $default_types);
@@ -63,7 +68,7 @@ class CUAR_Logger
      */
     public function is_event_type_valid($type)
     {
-        return in_array($type, $this->get_valid_event_types());
+        return array_key_exists($type, $this->get_valid_event_types());
     }
 
     /**
@@ -72,26 +77,28 @@ class CUAR_Logger
      * This is just a simple and fast way to log something. Use $this->insert_log()
      * if you need to store custom meta data
      *
-     * @param string $type              Event type
-     * @param string $title             Event title
-     * @param string $message           Event message
-     * @param int    $related_object_id The related object ID (post, term, user, ...)
-     * @param array  $log_meta          Optional array of meta data (key, value)
+     * @param string $type                Event type
+     * @param int    $related_object_id   The related object ID (post, term, user, ...)
+     * @param string $related_object_type The type of related object (post, term, user, ...)
+     * @param array  $log_meta            Optional array of meta data (key, value)
+     * @param string $title               Event title
+     * @param string $message             Event message
      *
      * @return int|WP_Error Log ID or WP_Error if an error occurred
      */
-    public function log_event($type, $title = '', $message = '', $related_object_id = 0, $log_meta = array())
+    public function log_event($type, $related_object_id = -1, $related_object_type = null, $log_meta = array(),
+        $title = '', $message = '')
     {
         if ( !$this->is_event_type_valid($type))
         {
             return new WP_Error(0, "Log type is not valid");
         }
 
-        $log_id = CUAR_LogEvent::create($type, $title, $message, $related_object_id, $log_meta);
+        $log_id = CUAR_LogEvent::create($type, $title, $message, $related_object_id, $related_object_type, $log_meta);
 
         if ( !is_wp_error($log_id))
         {
-            do_action('cuar/core/log/on-log-event', $type, $title, $message, $related_object_id, $log_meta);
+            do_action('cuar/core/log/on-log-event', $type, $title, $message, $related_object_id, $related_object_type, $log_meta);
         }
 
         return $log_id;
@@ -154,17 +161,54 @@ class CUAR_Logger
      *
      * @return WP_Post[]
      */
-    public function get_events($related_object_id = 0, $type = null, $meta_query = null, $max_events = -1,
+    public function get_events($related_object_id = -1, $type = null, $meta_query = null, $max_events = -1,
         $paged = null)
     {
+        $query_args = $this->build_query_args($related_object_id, $type, $meta_query, $max_events, $paged);
+        $posts = get_posts($query_args);
+        $logs = array();
+        foreach ($posts as $p)
+        {
+            $logs[] = new CUAR_LogEvent($p);
+        }
+
+        return $logs;
+    }
+
+    public function count_events($related_object_id = -1, $type = null, $meta_query = null)
+    {
+        $query_args = $this->build_query_args($related_object_id, $type, $meta_query, -1, 1);
+        $query_args['fields'] = 'ids';
+        $query_args['paged'] = 1;
+        $query_args['posts_per_page'] = -1;
+
+        $ids = get_posts($query_args);
+
+        return count($ids);
+    }
+
+    /**
+     * @param $related_object_id
+     * @param $type
+     * @param $meta_query
+     * @param $max_events
+     * @param $paged
+     *
+     * @return array
+     */
+    private function build_query_args($related_object_id, $type, $meta_query, $max_events, $paged)
+    {
         $query_args = array(
-            'post_parent'    => $related_object_id,
             'post_type'      => CUAR_LogEvent::$POST_TYPE,
             'posts_per_page' => $max_events,
             'post_status'    => 'publish',
-            'fields'         => 'ids',
             'paged'          => $paged
         );
+
+        if ($related_object_id >= 0)
+        {
+            $query_args['post_parent'] = $related_object_id;
+        }
 
         if ( !empty($type) && $this->is_event_type_valid($type))
         {
@@ -180,8 +224,10 @@ class CUAR_Logger
         if ( !empty($meta_query))
         {
             $query_args['meta_query'] = $meta_query;
+
+            return $query_args;
         }
 
-        return get_posts($query_args);
+        return $query_args;
     }
 }
