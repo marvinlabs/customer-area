@@ -175,6 +175,17 @@ class CUAR_Logger
         return $logs;
     }
 
+    public function query_events($query_args) {
+        $posts = get_posts($query_args);
+        $logs = array();
+        foreach ($posts as $p)
+        {
+            $logs[] = new CUAR_LogEvent($p);
+        }
+
+        return $logs;
+    }
+
     public function count_events($related_object_id = -1, $type = null, $meta_query = null)
     {
         $query_args = $this->build_query_args($related_object_id, $type, $meta_query, -1, 1);
@@ -196,7 +207,7 @@ class CUAR_Logger
      *
      * @return array
      */
-    private function build_query_args($related_object_id, $type, $meta_query, $max_events, $paged)
+    public function build_query_args($related_object_id, $type, $meta_query, $max_events, $paged)
     {
         $query_args = array(
             'post_type'      => CUAR_LogEvent::$POST_TYPE,

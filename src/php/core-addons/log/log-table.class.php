@@ -146,18 +146,35 @@ class CUAR_LogTable extends WP_List_Table
      */
     public function extra_tablenav($which)
     {
-        /*
-        if ($which == "top")
+        if ($which != 'top')
         {
-            //The code that goes before the table is here
-            echo "Hello, I'm before the table";
+            return;
         }
-        if ($which == "bottom")
+
+        $logger = CUAR_Plugin::get_instance()->get_logger();
+        $type_filter = isset($_POST['filter-by-type']) ? $_POST['filter-by-type'] : 0;
+
+        $out = '<div class="alignleft actions">';
+
+        // Type filter
+        $out .= sprintf('<label for="filter-by-type" class="screen-reader-text">%1$s</label>', __('Type', 'cuar'));
+        $out .= '<select name="filter-by-type" id="cat" class="postform">';
+        $out .= '<option value="0">' . __('Any type', 'cuar') . '</option>';
+
+        $types = $logger->get_valid_event_types(true);
+        foreach ($types as $slug => $label)
         {
-            //The code that goes after the table is there
-            echo "Hi, I'm after the table";
+            $selected = selected($type_filter, $slug, false);
+            $out .= sprintf('<option value="%1$s" %3$s>%2$s</option>', $slug, $label, $selected);
         }
-        */
+        $out .= '</select>';
+
+        // Submit button
+        $out .= sprintf('<input type="submit" name="filter_action" id="post-query-submit" class="button" value="%1$s">',
+            esc_attr__('Filter', 'cuar'));
+        $out .= '</div>';
+
+        echo $out;
     }
 
     /**
@@ -178,11 +195,51 @@ class CUAR_LogTable extends WP_List_Table
 
         // Retrieve filter values
         $related_object_id = -1;
-        $event_type = null;
+        $event_type = isset($_POST['filter-by-type']) ? $_POST['filter-by-type'] : null;
         $meta = null;
+        $start_date = isset($_POST['start-date']) ? sanitize_text_field($_POST['start-date']) : null;
+        $end_date = isset($_POST['end-date']) ? sanitize_text_field($_POST['end-date'])
+            : $start_date == null ? null : $start_date;
 
         // Count events
-        $total_items = $logger->count_events($related_object_id, $event_type, $meta);
+        $item_query = $logger->build_query_args($related_object_id, $event_type, $meta, -1, 1);
+        $item_query['fields'] = 'ids';
+        $item_query['paged'] = 1;
+        $item_query['posts_per_page'] = -1;
+        if ($start_date != null || $end_date != null)
+        {
+            $start_tokens = explode('/', $start_date);
+            $end_tokens = explode('/', $end_date);
+            if (count($start_tokens) != 3)
+            {
+                $start_date = null;
+            }
+
+            if (count($end_date) != 3)
+            {
+                $end_date = null;
+            }
+
+            if ($start_date != null && $end_date != null)
+            {
+                $item_query['date_query'] = array(
+                    array(
+                        'after'     => array(
+                            'year'  => $end_tokens[2],
+                            'month' => $end_tokens[1],
+                            'day'   => $end_tokens[0],
+                        ),
+                        'before'    => array(
+                            'year'  => $start_tokens[2],
+                            'month' => $start_tokens[1],
+                            'day'   => $start_tokens[0],
+                        ),
+                        'inclusive' => true,
+                    ),
+                );
+            }
+        }
+        $total_items = count(get_posts($item_query));
 
         // Number of events per screen
         $items_per_page = 25;
@@ -201,6 +258,9 @@ class CUAR_LogTable extends WP_List_Table
         ));
 
         // Fetch the items
-        $this->items = $logger->get_events($related_object_id, $event_type, $meta, $items_per_page, $current_page);
+        $item_query['fields'] = 'all';
+        $item_query['paged'] = $current_page;
+        $item_query['posts_per_page'] = $items_per_page;
+        $this->items = $logger->query_events($item_query);
     }
 }

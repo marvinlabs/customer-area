@@ -26,15 +26,32 @@ $logsTable->prepare_items();
 ?>
 
 <div class="wrap cuar-plugin-logs">
-	<div class="cuar-logs-section">	
-		<h2><?php _e('Logs', 'cuar'); ?></h2>
-	
-		<form method="POST" action="" enctype="multipart/form-data">
-			<input type="hidden" name="cuar-do-logs-action" value="1" />
+    <h2><?php _e('Logs', 'cuar'); ?></h2>
 
-            <!-- Now we can render the completed list table -->
-            <?php $logsTable->display() ?>
+    <form method="POST" action="" enctype="multipart/form-data">
+        <input type="hidden" name="cuar-do-logs-action" value="1"/>
+        <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>"/>
 
-		</form>
-	</div>
+        <?php
+        $start_date = isset($_POST['start-date']) ? sanitize_text_field($_POST['start-date']) : '';
+        $end_date = isset($_POST['end-date']) ? sanitize_text_field($_POST['end-date']) : '';
+        ?>
+
+        <div class="cuar-list-table-filter">
+            <label for="start-date"><?php _e('Between', 'cuar'); ?> </label>
+            <input type="text" id="start-date" name="start-date" class="cuar_datepicker"
+                   value="<?php echo esc_attr($start_date); ?>" placeholder="dd/mm/yyyy"/>
+
+            <label for="end-date"> <?php _e('and', 'cuar'); ?> </label>
+            <input type="text" id="start-date" name="end-date" class="cuar_datepicker"
+                   value="<?php echo esc_attr($end_date); ?>" placeholder="dd/mm/yyyy"/>
+
+            <input type="submit" name="filter_action" id="post-query-submit" class="button"
+                   value="<?php esc_attr_e('Apply', 'cuar'); ?>">
+        </div>
+
+        <!-- Now we can render the completed list table -->
+        <?php $logsTable->display() ?>
+
+    </form>
 </div>
