@@ -212,15 +212,15 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 switch ($type)
                 {
                     case 'cuar-content-viewed':
-                        $format_str = __('<a href="%1$s" title="%2$s">%3$s</a> has been viewed by <a href="%4$s" title="%5$s">user %6$s</a>',
+                        $format_str = __('<a href="%1$s" title="Title: %2$s">%3$s</a> has been viewed by <a href="%4$s" title="Profile of %5$s">%6$s</a>',
                             'cuar');
                         break;
                     case   'cuar-file-download':
-                        $format_str = __('<a href="%1$s" title="%2$s">%3$s</a> has been downloaded by <a href="%4$s" title="%5$s">user %6$s</a>',
+                        $format_str = __('<a href="%1$s" title="Title: %2$s">%3$s</a> has been downloaded by <a href="%4$s" title="Profile of %5$s">%6$s</a>',
                             'cuar');
                         break;
                     default:
-                        $format_str = __('<a href="%1$s" title="%2$s">%3$s</a> ???? by <a href="%4$s" title="%5$s">user %6$s</a>',
+                        $format_str = __('<a href="%1$s" title="Title: %2$s">%3$s</a> ???? by <a href="%4$s" title="Profile of %5$s">%6$s</a>',
                             'cuar');
                 }
 
@@ -233,14 +233,15 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 $obj_link_text .= ' ' . $rel_object_id;
 
                 $user_id = $item->user_id;
+                $user = get_userdata($user_id);
 
                 return sprintf($format_str,
                     admin_url('edit.php?post_type=' . $rel_object_type . '&post_id=' . $rel_object_id),
                     esc_attr(get_the_title($rel_object_id)),
                     $obj_link_text,
                     admin_url('user-edit.php?user_id=' . $user_id),
-                    esc_attr(get_userdata($user_id)->display_name),
-                    $user_id
+                    esc_attr($user->display_name),
+                    $user->user_login
                 );
             }
         }
@@ -257,10 +258,10 @@ if ( !class_exists('CUAR_LogAddOn')) :
             $fields = array();
             if ($type == 'cuar-content-viewed' || $type == 'cuar-file-download')
             {
-                $fields[] = sprintf('<a href="%3$s" title="%1$s">%2$s</a>', esc_attr($item->ip), __('IP', 'cuar'), '#');
+                $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', __('IP address', 'cuar'), esc_attr($item->ip), 'ip', '#');
             }
 
-            return implode(', ', $fields);
+            return implode(' ', $fields);
         }
     }
 

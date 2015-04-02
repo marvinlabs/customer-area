@@ -140,44 +140,6 @@ class CUAR_LogTable extends WP_List_Table
     }
 
     /**
-     * Add extra markup in the toolbars before or after the list
-     *
-     * @param string $which , helps you decide if you add the markup after (bottom) or before (top) the list
-     */
-    public function extra_tablenav($which)
-    {
-        if ($which != 'top')
-        {
-            return;
-        }
-
-        $logger = CUAR_Plugin::get_instance()->get_logger();
-        $type_filter = isset($_POST['filter-by-type']) ? $_POST['filter-by-type'] : 0;
-
-        $out = '<div class="alignleft actions">';
-
-        // Type filter
-        $out .= sprintf('<label for="filter-by-type" class="screen-reader-text">%1$s</label>', __('Type', 'cuar'));
-        $out .= '<select name="filter-by-type" id="cat" class="postform">';
-        $out .= '<option value="0">' . __('Any type', 'cuar') . '</option>';
-
-        $types = $logger->get_valid_event_types(true);
-        foreach ($types as $slug => $label)
-        {
-            $selected = selected($type_filter, $slug, false);
-            $out .= sprintf('<option value="%1$s" %3$s>%2$s</option>', $slug, $label, $selected);
-        }
-        $out .= '</select>';
-
-        // Submit button
-        $out .= sprintf('<input type="submit" name="filter_action" id="post-query-submit" class="button" value="%1$s">',
-            esc_attr__('Filter', 'cuar'));
-        $out .= '</div>';
-
-        echo $out;
-    }
-
-    /**
      * Prepare the table with different parameters, pagination, columns and table elements
      */
     public function prepare_items()
@@ -199,7 +161,7 @@ class CUAR_LogTable extends WP_List_Table
         $meta = null;
         $start_date = isset($_POST['start-date']) ? sanitize_text_field($_POST['start-date']) : null;
         $end_date = isset($_POST['end-date']) ? sanitize_text_field($_POST['end-date'])
-            : $start_date == null ? null : $start_date;
+            : ($start_date == null ? null : $start_date);
 
         // Count events
         $item_query = $logger->build_query_args($related_object_id, $event_type, $meta, -1, 1);
@@ -215,7 +177,7 @@ class CUAR_LogTable extends WP_List_Table
                 $start_date = null;
             }
 
-            if (count($end_date) != 3)
+            if (count($end_tokens) != 3)
             {
                 $end_date = null;
             }
@@ -225,14 +187,14 @@ class CUAR_LogTable extends WP_List_Table
                 $item_query['date_query'] = array(
                     array(
                         'after'     => array(
-                            'year'  => $end_tokens[2],
-                            'month' => $end_tokens[1],
-                            'day'   => $end_tokens[0],
-                        ),
-                        'before'    => array(
                             'year'  => $start_tokens[2],
                             'month' => $start_tokens[1],
                             'day'   => $start_tokens[0],
+                        ),
+                        'before'    => array(
+                            'year'  => $end_tokens[2],
+                            'month' => $end_tokens[1],
+                            'day'   => $end_tokens[0],
                         ),
                         'inclusive' => true,
                     ),
