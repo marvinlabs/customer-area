@@ -368,9 +368,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     'type'      => 'checkbox',
                     'after'     => __('Only log the first time a private content is viewed by a user.', 'cuar')
                         . '<p class="description">'
-                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is '
-                            . 'viewing private content. There will be a single event per user and per content. Else, each time'
-                            . 'a user is viewing a private content, an event will be generated.', 'cuar')
+                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is viewing private content. There will be a single event per user and per content. Else, each time a user is viewing a private content, an event will be generated.', 'cuar')
                         . '</p>'
                 )
             );
@@ -386,9 +384,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     'type'      => 'checkbox',
                     'after'     => __('Only log the first time a private file is downloaded by a user.', 'cuar')
                         . '<p class="description">'
-                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is '
-                            . 'downloading a private file. There will be a single event per user and per file. Else, each time'
-                            . 'a user is downloading a private file, an event will be generated.', 'cuar')
+                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is downloading a private file. There will be a single event per user and per file. Else, each time a user is downloading a private file, an event will be generated.', 'cuar')
                         . '</p>'
                 )
             );

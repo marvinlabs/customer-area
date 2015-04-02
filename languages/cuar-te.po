@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
-"POT-Creation-Date: 2015-03-10 14:54:45+00:00\n"
-"PO-Revision-Date: 2015-03-10 15:03+0000\n"
+"POT-Creation-Date: 2015-04-02 10:54:08+00:00\n"
+"PO-Revision-Date: 2015-04-02 10:56+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Telugu (http://www.transifex.com/projects/p/wp-customer-area/language/te/)\n"
 "MIME-Version: 1.0\n"
@@ -78,37 +78,31 @@ msgid "Settings"
 msgstr "అమరికలు"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:263
-msgid "Help & support"
-msgstr ""
-
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:270
-#: src/php/core-addons/help/help-addon.class.php:57
-#: src/php/core-addons/help/help-addon.class.php:65
 msgid "Add-ons"
 msgstr ""
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:282
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:275
 msgid "What's new"
 msgstr ""
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:286
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:279
 msgid "Change log"
 msgstr ""
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:290
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:283
 msgid "Live from the blog"
 msgstr ""
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:294
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:287
 msgid "Add-ons &amp; themes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:298
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:291
 #: src/php/core-addons/installer/installer-addon.class.php:246
 msgid "Welcome to WP Customer Area %s"
 msgstr ""
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:299
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:292
 #: src/php/core-addons/installer/installer-addon.class.php:247
 msgid ""
 "<strong>WP Customer Area</strong> %s is more powerful, stable and secure "
@@ -133,7 +127,6 @@ msgid "http://wp-customerarea.com/support/"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:32
-#: src/php/core-addons/help/help-addon.class.php:66
 msgid "Support"
 msgstr ""
 
@@ -143,7 +136,6 @@ msgid "Stay informed"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:84
-#: src/php/core-addons/help/help-addon.class.php:190
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:71
 msgid "Email Address"
 msgstr ""
@@ -154,7 +146,6 @@ msgid "Subscribe"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:8
-#: src/php/core-addons/help/templates/list-addons.template.php:20
 msgid "Save money with our bundles"
 msgstr ""
 
@@ -239,7 +230,7 @@ msgid "Container Owner"
 msgstr ""
 
 #: src/php/core-addons/container-owner/container-owner-addon.class.php:107
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:746
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:942
 msgid "You are not authorized to view this page"
 msgstr ""
 
@@ -651,6 +642,7 @@ msgstr "క్రమం"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:28
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:100
+#: src/php/core-addons/log/log-table.class.php:55
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:28
 msgid "ID"
 msgstr ""
@@ -801,6 +793,7 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:40
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
+#: src/php/core-addons/log/log-table.class.php:56
 #: src/php/core-classes/widget-content-list.class.php:216
 msgid "Date"
 msgstr "తేదీ"
@@ -967,98 +960,6 @@ msgstr ""
 msgid "Root page for the customer pages."
 msgstr ""
 
-#: src/php/core-addons/help/help-addon.class.php:35
-msgid "Help"
-msgstr "సహాయం"
-
-#: src/php/core-addons/help/help-addon.class.php:85
-#: src/php/core-addons/help/help-addon.class.php:97
-#: src/php/core-addons/help/templates/list-addons.template.php:9
-msgid "Enhance your customer area"
-msgstr ""
-
-#: src/php/core-addons/help/help-addon.class.php:87
-#: src/php/core-addons/help/help-addon.class.php:113
-msgid "Subscribe to our newsletter"
-msgstr ""
-
-#: src/php/core-addons/help/help-addon.class.php:89
-#: src/php/core-addons/help/help-addon.class.php:105
-msgid "Get more from MarvinLabs"
-msgstr ""
-
-#: src/php/core-addons/help/help-addon.class.php:132
-msgid "Browse all extensions"
-msgstr ""
-
-#: src/php/core-addons/help/help-addon.class.php:150
-msgid ""
-"If you like our plugins, you might want to <a href=\"%s\">check our "
-"website</a> for more."
-msgstr ""
-
-#: src/php/core-addons/help/help-addon.class.php:153
-msgid "If you want to get updates about our plugins, you can:"
-msgstr ""
-
-#: src/php/core-addons/help/help-addon.class.php:155
-msgid "Follow us on Twitter"
-msgstr ""
-
-#: src/php/core-addons/help/help-addon.class.php:158
-msgid "Follow us on Google+"
-msgstr ""
-
-#: src/php/core-addons/help/help-addon.class.php:161
-msgid "Follow us on Facebook"
-msgstr ""
-
-#: src/php/core-addons/help/templates/list-addons.template.php:14
-msgid ""
-"There has been an error while getting the list of add-ons, please <a "
-"href=\"%s\">visit our shop directly</a>."
-msgstr ""
-
-#: src/php/core-addons/help/templates/list-addons.template.php:47
-msgid "Our add-ons"
-msgstr ""
-
-#: src/php/core-addons/help/templates/troubleshooting.template.php:3
-msgid "Getting support"
-msgstr ""
-
-#: src/php/core-addons/help/templates/troubleshooting.template.php:5
-msgid "Please note that we do not reply to support requests sent by email."
-msgstr ""
-
-#: src/php/core-addons/help/templates/troubleshooting.template.php:6
-msgid "If you have any problem, we have some resources that could help you:"
-msgstr ""
-
-#: src/php/core-addons/help/templates/troubleshooting.template.php:9
-msgid ""
-"<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and"
-" for the add-ons."
-msgstr ""
-
-#: src/php/core-addons/help/templates/troubleshooting.template.php:12
-msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
-msgstr ""
-
-#: src/php/core-addons/help/templates/troubleshooting.template.php:15
-msgid ""
-"A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support "
-"forum</a>, only for the main plugin (English only as per the wordpress.org "
-"rules)."
-msgstr ""
-
-#: src/php/core-addons/help/templates/troubleshooting.template.php:18
-msgid ""
-"<a href=\"%1$s\" target=\"_blank\">Support forums</a> on our website for the"
-" main plugin as well as for the add-ons (English, French and Spanish are ok "
-"there). "
-msgstr ""
-
 #: src/php/core-addons/installer/installer-addon.class.php:46
 msgid "Installer"
 msgstr ""
@@ -1114,44 +1015,157 @@ msgstr ""
 msgid "Let's go!"
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:36
+#: src/php/core-addons/log/log-addon.class.php:46
+#: src/php/core-addons/log/log-table.class.php:41
+msgid "Log"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:96
+msgid "WP Customer Area - Logs"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:97
+#: src/php/core-addons/log/log-addon.class.php:116
+#: src/php/core-addons/log/log-addon.class.php:355
+#: src/php/core-addons/log/log-table.class.php:42
+#: src/php/core-addons/log/templates/logs-page.template.php:29
+msgid "Logs"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:147
+msgid "Private content viewed"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:148
+msgid "Private file downloaded"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:267
+msgid ""
+"<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a> has been viewed by <a "
+"href=\"%4$s\" title=\"Profile of %5$s\">%6$s</a>"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:271
+msgid ""
+"<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a> has been downloaded by <a "
+"href=\"%4$s\" title=\"Profile of %5$s\">%6$s</a>"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:275
+msgid ""
+"<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a> ???? by <a href=\"%4$s\" "
+"title=\"Profile of %5$s\">%6$s</a>"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:313
+msgid "IP address"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:362
+msgid "Content viewed"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:369
+msgid "Only log the first time a private content is viewed by a user."
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:371
+msgid ""
+"If you check this box, WP Customer Area will only generate a log event the "
+"first time a user is viewing private content. There will be a single event "
+"per user and per content. Else, each time a user is viewing a private "
+"content, an event will be generated."
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:378
+msgid "File downloaded"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:385
+msgid "Only log the first time a private file is downloaded by a user."
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:387
+msgid ""
+"If you check this box, WP Customer Area will only generate a log event the "
+"first time a user is downloading a private file. There will be a single "
+"event per user and per file. Else, each time a user is downloading a private"
+" file, an event will be generated."
+msgstr ""
+
+#: src/php/core-addons/log/log-table.class.php:57
+msgid "Event"
+msgstr ""
+
+#: src/php/core-addons/log/log-table.class.php:58
+msgid "Extra info"
+msgstr ""
+
+#: src/php/core-addons/log/log-table.class.php:83
+#: src/php/core-classes/addon-update-content-page.class.php:258
+#: src/php/core-classes/addon-update-content-page.class.php:259
+msgid "Delete"
+msgstr "తొలగించు  "
+
+#: src/php/core-addons/log/templates/logs-page.template.php:44
+msgid "Event type"
+msgstr ""
+
+#: src/php/core-addons/log/templates/logs-page.template.php:46
+msgid "Any type"
+msgstr ""
+
+#: src/php/core-addons/log/templates/logs-page.template.php:58
+msgid "Filter events"
+msgstr ""
+
+#: src/php/core-addons/log/templates/logs-page.template.php:62
+msgid "Between"
+msgstr ""
+
+#: src/php/core-addons/log/templates/logs-page.template.php:66
+msgid "and"
+msgstr ""
+
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:39
 msgid "Post Owner"
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:190
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:247
 msgid "User"
 msgstr "వాడుకరి"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:252
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:256
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:335
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:345
 msgid "Unknown"
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:367
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:476
 msgid "Owner"
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:433
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:556
 msgid "Assignment"
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:458
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:582
 msgid "Select the owner"
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:609
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:763
 msgid "It seems you cannot select any owner of that type."
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:618
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:777
 msgid "The owner is hidden"
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:635
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:799
 msgid "Select or search an owner"
 msgstr ""
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:781
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:980
 msgid "User - %s"
 msgstr ""
 
@@ -1698,6 +1712,10 @@ msgstr ""
 msgid "Problem when validating your license key"
 msgstr ""
 
+#: src/php/core-classes/Log/log-event.class.php:66
+msgid "Log events"
+msgstr ""
+
 #: src/php/core-classes/MessageCenter/message-center.class.php:148
 msgid "<strong>WP Customer Area</strong> has detected some potential issues: "
 msgstr ""
@@ -1828,11 +1846,6 @@ msgstr ""
 msgid "The content has been deleted."
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:258
-#: src/php/core-classes/addon-update-content-page.class.php:259
-msgid "Delete"
-msgstr "తొలగించు  "
-
 #: src/php/core-classes/addon-update-content-page.class.php:262
 msgid "Are you sure that you want to delete this content?"
 msgstr ""
@@ -1961,25 +1974,25 @@ msgstr ""
 msgid "%1$s is required."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:137
+#: src/php/core-classes/plugin.class.php:149
 msgid "Checking license..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:138
+#: src/php/core-classes/plugin.class.php:150
 msgid "Failed to contact server"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:412
+#: src/php/core-classes/plugin.class.php:424
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:436
+#: src/php/core-classes/plugin.class.php:448
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:586
+#: src/php/core-classes/plugin.class.php:598
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 

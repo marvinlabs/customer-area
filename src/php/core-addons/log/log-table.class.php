@@ -52,10 +52,10 @@ class CUAR_LogTable extends WP_List_Table
     {
         $columns = array(
             'cb'              => '<input type="checkbox" />', //Render a checkbox instead of text
-            'log_id'          => __('ID'),
-            'log_timestamp'   => __('Date'),
-            'log_description' => __('Event'),
-            'log_extra'       => __('Extra info'),
+            'log_id'          => __('ID', 'cuar'),
+            'log_timestamp'   => __('Date', 'cuar'),
+            'log_description' => __('Event', 'cuar'),
+            'log_extra'       => __('Extra info', 'cuar'),
         );
 
         return $columns;
