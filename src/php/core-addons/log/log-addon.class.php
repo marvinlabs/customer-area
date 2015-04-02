@@ -28,6 +28,10 @@ if ( !class_exists('CUAR_LogAddOn')) :
      */
     class CUAR_LogAddOn extends CUAR_AddOn
     {
+        public static $TYPE_CONTENT_VIEWED = 'cuar-content-viewed';
+        public static $TYPE_FILE_DOWNLOADED = 'cuar-file-download';
+        public static $META_USER_ID = 'user_id';
+        public static $META_IP = 'ip';
 
         /** @var CUAR_Logger The logger object */
         private $logger = null;
@@ -49,10 +53,18 @@ if ( !class_exists('CUAR_LogAddOn')) :
             // Init the admin interface if needed
             if (is_admin())
             {
+                // Menu
                 add_action('cuar/core/admin/main-menu-pages', array(&$this, 'add_menu_items'), 99);
                 add_action('cuar/core/admin/adminbar-menu-items', array(&$this, 'add_adminbar_menu_items'), 100);
 
+                // Log table handling
                 add_filter('cuar/core/log/table-cell-content', array(&$this, 'get_log_cell_content'), 10, 3);
+
+                // Settings
+                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20,
+                    2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'),
+                    20, 3);
             }
             else
             {
@@ -132,8 +144,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public function add_default_event_types($default_types)
         {
             return array_merge($default_types, array(
-                'cuar-content-viewed' => __('Private content viewed', 'cuar'),
-                'cuar-file-download'  => __('Private file downloaded', 'cuar')
+                self::$TYPE_CONTENT_VIEWED  => __('Private content viewed', 'cuar'),
+                self::$TYPE_FILE_DOWNLOADED => __('Private file downloaded', 'cuar')
             ));
         }
 
@@ -144,13 +156,34 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function log_content_viewed($post)
         {
-            $this->logger->log_event('cuar-content-viewed',
-                $post->ID,
-                $post->post_type,
-                array(
-                    'user_id' => get_current_user_id(),
-                    'ip'      => $_SERVER['REMOTE_ADDR']
-                ));
+            $should_log_event = true;
+            $log_only_once = $this->only_log_first_view();
+            if ($log_only_once)
+            {
+                $count = $this->logger->count_events($post->ID, self::$TYPE_CONTENT_VIEWED,
+                    array(
+                        array(
+                            'key'     => self::$META_USER_ID,
+                            'value'   => get_current_user_id(),
+                            'compare' => '='
+                        )
+                    ));
+                if ($count >= 1)
+                {
+                    $should_log_event = false;
+                }
+            }
+
+            if ($should_log_event)
+            {
+                $this->logger->log_event(self::$TYPE_CONTENT_VIEWED,
+                    $post->ID,
+                    $post->post_type,
+                    array(
+                        self::$META_USER_ID => get_current_user_id(),
+                        self::$META_IP      => $_SERVER['REMOTE_ADDR']
+                    ));
+            }
         }
 
         /**
@@ -162,13 +195,34 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function log_file_downloaded($post_id, $current_user_id, $pf_addon)
         {
-            $this->logger->log_event('cuar-file-download',
-                $post_id,
-                get_post_type($post_id),
-                array(
-                    'user_id' => get_current_user_id(),
-                    'ip'      => $_SERVER['REMOTE_ADDR']
-                ));
+            $should_log_event = true;
+            $log_only_once = $this->only_log_first_download();
+            if ($log_only_once)
+            {
+                $count = $this->logger->count_events($post_id, self::$TYPE_FILE_DOWNLOADED,
+                    array(
+                        array(
+                            'key'     => self::$META_USER_ID,
+                            'value'   => get_current_user_id(),
+                            'compare' => '='
+                        )
+                    ));
+                if ($count >= 1)
+                {
+                    $should_log_event = false;
+                }
+            }
+
+            if ($should_log_event)
+            {
+                $this->logger->log_event(self::$TYPE_FILE_DOWNLOADED,
+                    $post_id,
+                    get_post_type($post_id),
+                    array(
+                        'user_id' => get_current_user_id(),
+                        'ip'      => $_SERVER['REMOTE_ADDR']
+                    ));
+            }
         }
 
         /*------- LOG VIEWER -----------------------------------------------------------------------------------------*/
@@ -205,15 +259,15 @@ if ( !class_exists('CUAR_LogAddOn')) :
             $rel_object_id = $item->get_post()->post_parent;
             $rel_object_type = $item->related_object_type;
 
-            if ($type == 'cuar-content-viewed' || $type == 'cuar-file-download')
+            if ($type == self::$TYPE_CONTENT_VIEWED || $type == self::$TYPE_FILE_DOWNLOADED)
             {
                 switch ($type)
                 {
-                    case 'cuar-content-viewed':
+                    case self::$TYPE_CONTENT_VIEWED:
                         $format_str = __('<a href="%1$s" title="Title: %2$s">%3$s</a> has been viewed by <a href="%4$s" title="Profile of %5$s">%6$s</a>',
                             'cuar');
                         break;
-                    case   'cuar-file-download':
+                    case   self::$TYPE_FILE_DOWNLOADED:
                         $format_str = __('<a href="%1$s" title="Title: %2$s">%3$s</a> has been downloaded by <a href="%4$s" title="Profile of %5$s">%6$s</a>',
                             'cuar');
                         break;
@@ -254,13 +308,112 @@ if ( !class_exists('CUAR_LogAddOn')) :
             $type = $item->get_type();
 
             $fields = array();
-            if ($type == 'cuar-content-viewed' || $type == 'cuar-file-download')
+            if ($type == self::$TYPE_CONTENT_VIEWED || $type == self::$TYPE_FILE_DOWNLOADED)
             {
-                $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', __('IP address', 'cuar'), esc_attr($item->ip), 'ip', '#');
+                $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', __('IP address', 'cuar'),
+                    esc_attr($item->ip), self::$META_IP, '#');
             }
 
             return implode(' ', $fields);
         }
+
+        /*------- SETTINGS -------------------------------------------------------------------------------------------*/
+
+
+        public function only_log_first_view()
+        {
+            return $this->plugin->get_option(self::$OPTION_LOG_ONLY_FIRST_VIEW)==true;
+        }
+
+        public function only_log_first_download()
+        {
+            return $this->plugin->get_option(self::$OPTION_LOG_ONLY_FIRST_DOWNLOAD)==true;
+        }
+
+        /**
+         * Set the default values for the options
+         *
+         * @param array $defaults
+         * @return array
+         */
+        public function set_default_options( $defaults ) {
+            $defaults = parent::set_default_options($defaults);
+            $defaults[self::$OPTION_LOG_ONLY_FIRST_VIEW] = true;
+            $defaults[self::$OPTION_LOG_ONLY_FIRST_DOWNLOAD] = true;
+            return $defaults;
+        }
+
+        /**
+         * Add our fields to the settings page
+         *
+         * @param CUAR_Settings $cuar_settings The settings class
+         */
+        public function print_core_settings($cuar_settings, $options_group)
+        {
+            add_settings_section(
+                'cuar_logs',
+                __('Logs', 'cuar'),
+                array(&$cuar_settings, 'print_empty_section_info'),
+                CUAR_Settings::$OPTIONS_PAGE_SLUG
+            );
+
+            add_settings_field(
+                self::$OPTION_LOG_ONLY_FIRST_VIEW,
+                __('Content viewed', 'cuar'),
+                array(&$cuar_settings, 'print_input_field'),
+                CUAR_Settings::$OPTIONS_PAGE_SLUG,
+                'cuar_logs',
+                array(
+                    'option_id' => self::$OPTION_LOG_ONLY_FIRST_VIEW,
+                    'type'      => 'checkbox',
+                    'after'     => __('Only log the first time a private content is viewed by a user.', 'cuar')
+                        . '<p class="description">'
+                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is '
+                            . 'viewing private content. There will be a single event per user and per content. Else, each time'
+                            . 'a user is viewing a private content, an event will be generated.', 'cuar')
+                        . '</p>'
+                )
+            );
+
+            add_settings_field(
+                self::$OPTION_LOG_ONLY_FIRST_DOWNLOAD,
+                __('File downloaded', 'cuar'),
+                array(&$cuar_settings, 'print_input_field'),
+                CUAR_Settings::$OPTIONS_PAGE_SLUG,
+                'cuar_logs',
+                array(
+                    'option_id' => self::$OPTION_LOG_ONLY_FIRST_DOWNLOAD,
+                    'type'      => 'checkbox',
+                    'after'     => __('Only log the first time a private file is downloaded by a user.', 'cuar')
+                        . '<p class="description">'
+                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is '
+                            . 'downloading a private file. There will be a single event per user and per file. Else, each time'
+                            . 'a user is downloading a private file, an event will be generated.', 'cuar')
+                        . '</p>'
+                )
+            );
+        }
+
+        /**
+         * Validate our options
+         *
+         * @param array         $validated
+         * @param CUAR_Settings $cuar_settings
+         * @param array         $input
+         *
+         * @return array
+         */
+        public function validate_core_options($validated, $cuar_settings, $input)
+        {
+            $cuar_settings->validate_boolean($input, $validated, self::$OPTION_LOG_ONLY_FIRST_VIEW);
+            $cuar_settings->validate_boolean($input, $validated, self::$OPTION_LOG_ONLY_FIRST_DOWNLOAD);
+
+            return $validated;
+        }
+
+        private static $OPTION_LOG_ONLY_FIRST_VIEW = 'cuar_log_view_first_only';
+        private static $OPTION_LOG_ONLY_FIRST_DOWNLOAD = 'cuar_log_download_first_only';
+
     }
 
     // Make sure the addon is loaded

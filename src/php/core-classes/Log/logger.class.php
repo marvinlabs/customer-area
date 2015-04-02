@@ -98,7 +98,8 @@ class CUAR_Logger
 
         if ( !is_wp_error($log_id))
         {
-            do_action('cuar/core/log/on-log-event', $type, $title, $message, $related_object_id, $related_object_type, $log_meta);
+            do_action('cuar/core/log/on-log-event', $type, $title, $message, $related_object_id, $related_object_type,
+                $log_meta);
         }
 
         return $log_id;
@@ -175,7 +176,8 @@ class CUAR_Logger
         return $logs;
     }
 
-    public function query_events($query_args) {
+    public function query_events($query_args)
+    {
         $posts = get_posts($query_args);
         $logs = array();
         foreach ($posts as $p)
@@ -235,6 +237,25 @@ class CUAR_Logger
         if ( !empty($meta_query))
         {
             $query_args['meta_query'] = $meta_query;
+
+            foreach ($meta_query as $i => $arg)
+            {
+                if (is_array($arg))
+                {
+                    $new_arg = array_merge_recursive($arg);
+                    foreach ($arg as $k => $v)
+                    {
+                        if ($k == 'key' && false == strstr($v, 'cuar_'))
+                        {
+                            $new_arg[$k] = 'cuar_' . $v;
+                        }
+                    }
+                    $query_args['meta_query'][$i] = $new_arg;
+                } else
+                {
+                    $query_args['meta_query'][$i] = $arg;
+                }
+            }
 
             return $query_args;
         }
