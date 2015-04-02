@@ -182,8 +182,6 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function get_log_cell_content($content, $column_name, $item)
         {
-            $type = $item->get_type();
-
             switch ($column_name)
             {
                 case 'log_extra':
@@ -193,7 +191,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     return $this->get_log_description_cell($item);
             }
 
-            return 'unknown column';
+            return $content;
         }
 
         /**

@@ -135,7 +135,7 @@ class CUAR_LogTable extends WP_List_Table
                 return get_the_date(get_option('date'), $item->id) . ' &dash; ' . get_the_time(get_option('time'),
                     $item->id);
             default:
-                return apply_filters('cuar/core/log/table-cell-content', '', $column_name, $item);
+                return apply_filters('cuar/core/log/table-cell-content', '?' . $column_name . '?', $column_name, $item);
         }
     }
 
