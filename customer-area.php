@@ -42,13 +42,16 @@ define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', FALSE );
 //define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' ); 
 
 // Core Framework classes
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/log-event.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/log-event-type.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/logger.class.php' );
+
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Activation/plugin-activation-delegate.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Activation/plugin-activation-manager.class.php' );
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-file.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-finder.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-engine.class.php' );
-
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-store.class.php');
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-validation-result.class.php');
@@ -93,6 +96,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/user-password
 // Core addons
 include_once( CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/installer/installer-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/log/log-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/container-owner/container-owner-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php' );

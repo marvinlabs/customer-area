@@ -39,12 +39,16 @@ class CUAR_Plugin {
 
     /** @var CUAR_Licensing */
     private $licensing;
+
+    /** @var CUAR_Logger */
+    private $logger;
 	
 	public function __construct() {
         $this->message_center = new CUAR_MessageCenter(array('cuar-status', 'cuar-setup', 'customer-area'));
         $this->activation_manager = new CUAR_PluginActivationManager();
         $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
         $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
+        $this->logger = new CUAR_Logger();
 	}
 	
 	public function run() {
@@ -102,6 +106,14 @@ class CUAR_Plugin {
     public function get_licensing()
     {
         return $this->licensing;
+    }
+
+    /**
+     * @return CUAR_Logger
+     */
+    public function get_logger()
+    {
+        return $this->logger;
     }
 	
 	/*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/

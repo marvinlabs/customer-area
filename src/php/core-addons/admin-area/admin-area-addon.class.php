@@ -259,16 +259,9 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
             if (current_user_can('manage_options')) {
                 $wp_admin_bar->add_menu(array(
                     'parent' => 'customer-area',
-                    'id' => 'customer-area-support',
-                    'title' => __('Help & support', 'cuar'),
-                    'href' => admin_url('admin.php?page=cuar-settings&cuar_tab=cuar_troubleshooting')
-                ));
-
-                $wp_admin_bar->add_menu(array(
-                    'parent' => 'customer-area',
                     'id' => 'customer-area-addons',
                     'title' => __('Add-ons', 'cuar'),
-                    'href' => admin_url('admin.php?page=cuar-settings&cuar_tab=cuar_addons')
+                    'href' => admin_url('admin.php?page=customer-area&tab=addons')
                 ));
             }
         }
