@@ -240,7 +240,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
          * @param $new_owner
          * @param $previous_owner
          */
-        public function log_owner_updated($post_id, $post, $new_owner, $previous_owner)
+        public function log_owner_updated($post_id, $post, $previous_owner, $new_owner)
         {
             // unhook this function so it doesn't loop infinitely
             remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
@@ -282,14 +282,16 @@ if ( !class_exists('CUAR_LogAddOn')) :
 
                 case self::$META_PREVIOUS_OWNER:
                     $o = $item->$meta;
-                    $pill['title'] = __('Previous owner: ', 'cuar') . $o['display_name'];
-                    $pill['value'] = __('From: ', 'cuar') . substr($o['display_name'], 0, 35);
+                    $dn = empty($o['ids']) ? __('None', 'cuar') : $o['display_name'];
+                    $pill['title'] = __('Previous owner: ', 'cuar') . $dn;
+                    $pill['value'] = __('From: ', 'cuar') . substr($dn, 0, 35);
                     break;
 
                 case self::$META_CURRENT_OWNER:
                     $o = $item->$meta;
-                    $pill['title'] = __('Current owner: ', 'cuar') . $o['display_name'];
-                    $pill['value'] = __('To: ', 'cuar') . substr($o['display_name'], 0, 35);
+                    $dn = empty($o['ids']) ? __('None', 'cuar') : $o['display_name'];
+                    $pill['title'] = __('Current owner: ', 'cuar') . $dn;
+                    $pill['value'] = __('To: ', 'cuar') . substr($dn, 0, 35);
                     break;
             }
             return $pill;
