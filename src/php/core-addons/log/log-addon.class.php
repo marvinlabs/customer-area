@@ -61,8 +61,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 add_action('cuar/core/admin/adminbar-menu-items', array(&$this, 'add_adminbar_menu_items'), 100);
 
                 // Log table handling
-                add_filter('cuar/core/log/table-cell-content', array(&$this, 'get_log_cell_content'), 10, 3);
-
+                add_filter('cuar/core/log/table-displayable-meta', array(&$this, 'get_table_displayable_meta'), 10, 1);
+                add_filter('cuar/core/log/table-meta-pill-descriptor', array(&$this, 'get_table_meta_pill'), 10, 3);
                 // Settings
                 add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20,
                     2);
@@ -261,146 +261,38 @@ if ( !class_exists('CUAR_LogAddOn')) :
 
         /*------- LOG VIEWER -----------------------------------------------------------------------------------------*/
 
-        /**
-         * @param string        $content
-         * @param string        $column_name
-         * @param CUAR_LogEvent $item
-         *
-         * @return string
-         */
-        public function get_log_cell_content($content, $column_name, $item)
+        public function get_table_displayable_meta($meta)
         {
-            switch ($column_name)
-            {
-                case 'log_extra':
-                    return $this->get_log_extra_cell($item);
-
-                case 'log_description':
-                    return $this->get_log_description_cell($item);
-            }
-
-            return $content;
+            return array_merge($meta, array(
+                self::$META_USER_ID,
+                self::$META_IP,
+                self::$META_PREVIOUS_OWNER,
+                self::$META_CURRENT_OWNER
+            ));
         }
 
-        /**
-         * @param CUAR_LogEvent $item
-         *
-         * @return string
-         */
-        private function get_log_description_cell($item)
+        public function get_table_meta_pill($pill, $meta, $item)
         {
-            $type = $item->get_type();
-            $rel_object_id = $item->get_post()->post_parent;
-            $rel_object_type = $item->related_object_type;
-
-            if ($type == self::$TYPE_CONTENT_VIEWED || $type == self::$TYPE_FILE_DOWNLOADED || $type == self::$TYPE_OWNER_CHANGED)
+            switch ($meta)
             {
-                switch ($type)
-                {
-                    case self::$TYPE_CONTENT_VIEWED:
-                        $format_str = __('&laquo;<a href="%1$s" title="Title: %2$s">%3$s</a>&raquo; has been viewed by &laquo;<a href="%4$s" title="Profile of %5$s">%6$s</a>&raquo;',
-                            'cuar');
-                        break;
-                    case self::$TYPE_FILE_DOWNLOADED:
-                        $format_str = __('&laquo;<a href="%1$s" title="Title: %2$s">%3$s</a>&raquo; has been downloaded by &laquo;<a href="%4$s" title="Profile of %5$s">%6$s</a>&raquo;',
-                            'cuar');
-                        break;
-                    case self::$TYPE_OWNER_CHANGED:
-                        $format_str = __('&laquo;<a href="%4$s" title="Profile of %5$s">%6$s</a>&raquo; changed the owner of &laquo;<a href="%1$s" title="Title: %2$s">%3$s</a>&raquo;',
-                            'cuar');
-                        break;
-                    default:
-                        $format_str = '&laquo;<a href="%1$s" title="Title: %2$s">%3$s</a>&raquo; ???? by &laquo;<a href="%4$s" title="Profile of %5$s">%6$s</a>&raquo;';
-                }
+                case self::$META_IP:
+                    $pill['title'] = __('IP address', 'cuar');
+                    $pill['value'] = $item->$meta;
+                    break;
 
-                $content_types = array_merge($this->plugin->get_content_types(),
-                    $this->plugin->get_container_types());
+                case self::$META_PREVIOUS_OWNER:
+                    $o = $item->$meta;
+                    $pill['title'] = __('Previous owner: ', 'cuar') . $o['display_name'];
+                    $pill['value'] = __('From: ', 'cuar') . substr($o['display_name'], 0, 35);
+                    break;
 
-                $obj_link_text = isset($content_types[$rel_object_type])
-                    ? $content_types[$rel_object_type]['label-singular']
-                    : $rel_object_type;
-                $obj_link_text .= ' ' . $rel_object_id;
-
-                $user_id = $item->user_id;
-                $user = get_userdata($user_id);
-
-                return sprintf($format_str,
-                    admin_url('edit.php?post_type=' . $rel_object_type . '&post_id=' . $rel_object_id),
-                    esc_attr(get_the_title($rel_object_id)),
-                    $obj_link_text,
-                    admin_url('user-edit.php?user_id=' . $user_id),
-                    esc_attr($user->display_name),
-                    $user->user_login
-                );
+                case self::$META_CURRENT_OWNER:
+                    $o = $item->$meta;
+                    $pill['title'] = __('Current owner: ', 'cuar') . $o['display_name'];
+                    $pill['value'] = __('To: ', 'cuar') . substr($o['display_name'], 0, 35);
+                    break;
             }
-        }
-
-        /**
-         * @param CUAR_LogEvent $item
-         *
-         * @return string
-         */
-        private function get_log_extra_cell($item)
-        {
-            $fields = array();
-
-            // IP address
-            $metas = array(
-                self::$META_IP             => array(
-                    'title' => function ($item, $key) { return __('IP address', 'cuar'); },
-                    'value' => function ($item, $key) { return $item->$key; }
-                ),
-                self::$META_PREVIOUS_OWNER => array(
-                    'title' => function ($item, $key)
-                    {
-                        $o = $item->$key;
-
-                        return __('Previous owner: ', 'cuar') . $o['display_name'];
-                    },
-                    'value' => function ($item, $key)
-                    {
-                        $o = $item->$key;
-
-                        return __('From: ', 'cuar') . substr($o['display_name'], 0, 35);
-                    }
-                ),
-                self::$META_CURRENT_OWNER  => array(
-                    'title' => function ($item, $key)
-                    {
-                        $o = $item->$key;
-
-                        return __('Current owner: ', 'cuar') . $o['display_name'];
-                    },
-                    'value' => function ($item, $key)
-                    {
-                        $o = $item->$key;
-
-                        return __('To: ', 'cuar') . substr($o['display_name'], 0, 35);
-                    }
-                )
-            );
-
-            foreach ($metas as $key => $meta)
-            {
-                if (isset($item->$key))
-                {
-                    $title = $meta['title']($item, $key);
-                    $value = $meta['value']($item, $key);
-                    $link = isset($meta['link']) ? $meta['link'] : '';
-                    if (empty($link))
-                    {
-                        $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', $title,
-                            esc_attr($value), $key);
-                    }
-                    else
-                    {
-                        $fields[] = sprintf('<a href="%4$s" title="%1$s" class="cuar-btn-xs %3$s">%2$s</a>', $title,
-                            esc_attr($value), $key, esc_attr($link));
-                    }
-                }
-            }
-
-            return implode(' ', $fields);
+            return $pill;
         }
 
         /*------- SETTINGS -------------------------------------------------------------------------------------------*/

@@ -31,17 +31,26 @@ if ( !class_exists('WP_List_Table'))
 class CUAR_LogTable extends WP_List_Table
 {
 
+    public $plugin = null;
+    public $content_types = array();
+
     /**
      * Constructor, we override the parent to pass our own arguments
      * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
+     *
+     * @param CUAR_Plugin $plugin
      */
-    public function __construct()
+    public function __construct($plugin)
     {
         parent::__construct(array(
             'singular' => __('Log', 'cuar'),
             'plural'   => __('Logs', 'cuar'),
             'ajax'     => false
         ));
+
+        $this->plugin = $plugin;
+        $this->content_types = array_merge($plugin->get_content_types(), $plugin->get_container_types());
+        $this->displayable_meta = apply_filters('cuar/core/log/table-displayable-meta', array());
     }
 
     /**
@@ -51,11 +60,13 @@ class CUAR_LogTable extends WP_List_Table
     function get_columns()
     {
         $columns = array(
-            'cb'              => '<input type="checkbox" />', //Render a checkbox instead of text
-            'log_id'          => __('ID', 'cuar'),
-            'log_timestamp'   => __('Date', 'cuar'),
-            'log_description' => __('Event', 'cuar'),
-            'log_extra'       => __('Extra info', 'cuar'),
+            'cb'            => '<input type="checkbox" />', //Render a checkbox instead of text
+            'log_id'        => __('ID', 'cuar'),
+            'log_timestamp' => __('Date', 'cuar'),
+            'log_event'     => __('Event', 'cuar'),
+            'log_object'    => __('Object', 'cuar'),
+            'log_user'      => __('User', 'cuar'),
+            'log_extra'     => __('Extra info', 'cuar'),
         );
 
         return $columns;
@@ -127,16 +138,88 @@ class CUAR_LogTable extends WP_List_Table
      */
     public function column_default($item, $column_name)
     {
-        switch ($column_name)
+        return apply_filters('cuar/core/log/table-cell-content', '?' . $column_name . '?', $column_name, $item);
+    }
+
+    public function column_log_id($item)
+    {
+        return $item->id;
+    }
+
+    public function column_log_timestamp($item)
+    {
+        return get_the_date(get_option('date'), $item->id) . ' &dash; ' . get_the_time(get_option('time'),
+            $item->id);
+    }
+
+    public function column_log_object($item)
+    {
+        $rel_object_id = $item->get_post()->post_parent;
+        $rel_object_type = $item->related_object_type;
+        $obj_link_text = isset($this->content_types[$rel_object_type])
+            ? $this->content_types[$rel_object_type]['label-singular']
+            : $rel_object_type;
+        $obj_link_text .= ' ' . $rel_object_id;
+
+        return sprintf('<a href="%1$s" title="Title: %2$s">%3$s</a>',
+            admin_url('edit.php?post_type=' . $rel_object_type . '&post_id=' . $rel_object_id),
+            esc_attr(get_the_title($rel_object_id)),
+            $obj_link_text);
+    }
+
+    public function column_log_user($item)
+    {
+        $user_id = isset($item->user_id) ? $item->user_id : 0;
+        if ($user_id == 0)
         {
-            case 'log_id':
-                return $item->id;
-            case 'log_timestamp':
-                return get_the_date(get_option('date'), $item->id) . ' &dash; ' . get_the_time(get_option('time'),
-                    $item->id);
-            default:
-                return apply_filters('cuar/core/log/table-cell-content', '?' . $column_name . '?', $column_name, $item);
+            return '';
         }
+
+        $user = get_userdata($user_id);
+
+        return sprintf('<a href="%1$s" title="Profile of %2$s">%3$s</a>',
+            admin_url('user-edit.php?user_id=' . $user_id),
+            esc_attr($user->display_name),
+            $user->user_login);
+    }
+
+    public function column_log_event($item)
+    {
+        $type = $item->get_type();
+        $logger = $this->plugin->get_logger();
+        $types = $logger->get_valid_event_types();
+
+        return isset($types[$type]) ? $types[$type] : 'Unknown';
+    }
+
+    public function column_log_extra($item)
+    {
+        $fields = array();
+
+        foreach ($this->displayable_meta as $key)
+        {
+            if (isset($item->$key))
+            {
+                $meta = apply_filters('cuar/core/log/table-meta-pill-descriptor', array(
+                    'title' => $item->$key,
+                    'value' => $key,
+                    'link'  => ''
+                ), $key, $item);
+
+                if (empty($meta['link']))
+                {
+                    $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', $meta['title'],
+                        esc_attr($meta['value']), $key);
+                }
+                else
+                {
+                    $fields[] = sprintf('<a href="%4$s" title="%1$s" class="cuar-btn-xs %3$s">%2$s</a>', $meta['title'],
+                        esc_attr($meta['value']), $key, esc_attr($meta['link']));
+                }
+            }
+        }
+
+        return implode(' ', $fields);
     }
 
     /**
@@ -144,7 +227,7 @@ class CUAR_LogTable extends WP_List_Table
      */
     public function prepare_items()
     {
-        $logger = CUAR_Plugin::get_instance()->get_logger();
+        $logger = $this->plugin->get_logger();
 
         // Process bulk actions
         $this->process_bulk_action();
