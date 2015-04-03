@@ -357,8 +357,9 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         public function get_post_owner($post_id)
         {
             $owner = array(
-                'ids'  => $this->get_post_owner_ids($post_id),
-                'type' => $this->get_post_owner_type($post_id)
+                'ids'          => $this->get_post_owner_ids($post_id),
+                'type'         => $this->get_post_owner_type($post_id),
+                'display_name' => $this->get_post_owner_displayname($post_id, true)
             );
 
             if ( !is_array($owner['ids']))
@@ -367,6 +368,13 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             }
 
             return $owner;
+        }
+
+        public function is_owner_assigned_to_post($post_id)
+        {
+            $ids = $this->get_post_owner_ids($post_id);
+
+            return empty($ids) ? false : true;
         }
 
         /**
@@ -874,6 +882,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $this->save_post_owners($post_id, $new_owner['ids'], $new_owner['type']);
 
             // Other addons can do something after we save
+            $new_owner = $this->get_post_owner($post_id);
             do_action("cuar/core/ownership/after-save-owner", $post_id, $post, $previous_owner, $new_owner);
 
             return $post_id;

@@ -30,8 +30,11 @@ if ( !class_exists('CUAR_LogAddOn')) :
     {
         public static $TYPE_CONTENT_VIEWED = 'cuar-content-viewed';
         public static $TYPE_FILE_DOWNLOADED = 'cuar-file-download';
+        public static $TYPE_OWNER_CHANGED = 'cuar-owner-changed';
         public static $META_USER_ID = 'user_id';
         public static $META_IP = 'ip';
+        public static $META_PREVIOUS_OWNER = 'previous_owner';
+        public static $META_CURRENT_OWNER = 'current_owner';
 
         /** @var CUAR_Logger The logger object */
         private $logger = null;
@@ -70,7 +73,11 @@ if ( !class_exists('CUAR_LogAddOn')) :
             {
             }
 
+            // Add some event types by default
             add_filter('cuar/core/log/event-types', array(&$this, 'add_default_event_types'));
+
+            // Owner changed
+            add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
 
             // Content viewed
             add_action('cuar/core/ownership/protect-single-post/on-access-granted',
@@ -144,8 +151,9 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public function add_default_event_types($default_types)
         {
             return array_merge($default_types, array(
-                self::$TYPE_CONTENT_VIEWED  => __('Private content viewed', 'cuar'),
-                self::$TYPE_FILE_DOWNLOADED => __('Private file downloaded', 'cuar')
+                self::$TYPE_CONTENT_VIEWED  => __('Content viewed', 'cuar'),
+                self::$TYPE_FILE_DOWNLOADED => __('File downloaded', 'cuar'),
+                self::$TYPE_OWNER_CHANGED   => __('Owner changed', 'cuar')
             ));
         }
 
@@ -219,10 +227,36 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     $post_id,
                     get_post_type($post_id),
                     array(
-                        'user_id' => get_current_user_id(),
-                        'ip'      => $_SERVER['REMOTE_ADDR']
+                        self::$META_USER_ID => get_current_user_id(),
+                        self::$META_IP      => $_SERVER['REMOTE_ADDR']
                     ));
             }
+        }
+
+        /**
+         * Log an event when the post owner changes
+         *
+         * @param $post_id
+         * @param $new_owner
+         * @param $previous_owner
+         */
+        public function log_owner_updated($post_id, $post, $new_owner, $previous_owner)
+        {
+            // unhook this function so it doesn't loop infinitely
+            remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+
+            $this->logger->log_event(self::$TYPE_OWNER_CHANGED,
+                $post_id,
+                get_post_type($post_id),
+                array(
+                    self::$META_USER_ID        => get_current_user_id(),
+                    self::$META_IP             => $_SERVER['REMOTE_ADDR'],
+                    self::$META_PREVIOUS_OWNER => $previous_owner,
+                    self::$META_CURRENT_OWNER  => $new_owner
+                ));
+
+            // re-hook this function
+            add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
         }
 
         /*------- LOG VIEWER -----------------------------------------------------------------------------------------*/
@@ -259,21 +293,24 @@ if ( !class_exists('CUAR_LogAddOn')) :
             $rel_object_id = $item->get_post()->post_parent;
             $rel_object_type = $item->related_object_type;
 
-            if ($type == self::$TYPE_CONTENT_VIEWED || $type == self::$TYPE_FILE_DOWNLOADED)
+            if ($type == self::$TYPE_CONTENT_VIEWED || $type == self::$TYPE_FILE_DOWNLOADED || $type == self::$TYPE_OWNER_CHANGED)
             {
                 switch ($type)
                 {
                     case self::$TYPE_CONTENT_VIEWED:
-                        $format_str = __('<a href="%1$s" title="Title: %2$s">%3$s</a> has been viewed by <a href="%4$s" title="Profile of %5$s">%6$s</a>',
+                        $format_str = __('&laquo;<a href="%1$s" title="Title: %2$s">%3$s</a>&raquo; has been viewed by &laquo;<a href="%4$s" title="Profile of %5$s">%6$s</a>&raquo;',
                             'cuar');
                         break;
-                    case   self::$TYPE_FILE_DOWNLOADED:
-                        $format_str = __('<a href="%1$s" title="Title: %2$s">%3$s</a> has been downloaded by <a href="%4$s" title="Profile of %5$s">%6$s</a>',
+                    case self::$TYPE_FILE_DOWNLOADED:
+                        $format_str = __('&laquo;<a href="%1$s" title="Title: %2$s">%3$s</a>&raquo; has been downloaded by &laquo;<a href="%4$s" title="Profile of %5$s">%6$s</a>&raquo;',
+                            'cuar');
+                        break;
+                    case self::$TYPE_OWNER_CHANGED:
+                        $format_str = __('&laquo;<a href="%4$s" title="Profile of %5$s">%6$s</a>&raquo; changed the owner of &laquo;<a href="%1$s" title="Title: %2$s">%3$s</a>&raquo;',
                             'cuar');
                         break;
                     default:
-                        $format_str = __('<a href="%1$s" title="Title: %2$s">%3$s</a> ???? by <a href="%4$s" title="Profile of %5$s">%6$s</a>',
-                            'cuar');
+                        $format_str = '&laquo;<a href="%1$s" title="Title: %2$s">%3$s</a>&raquo; ???? by &laquo;<a href="%4$s" title="Profile of %5$s">%6$s</a>&raquo;';
                 }
 
                 $content_types = array_merge($this->plugin->get_content_types(),
@@ -305,13 +342,62 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         private function get_log_extra_cell($item)
         {
-            $type = $item->get_type();
-
             $fields = array();
-            if ($type == self::$TYPE_CONTENT_VIEWED || $type == self::$TYPE_FILE_DOWNLOADED)
+
+            // IP address
+            $metas = array(
+                self::$META_IP             => array(
+                    'title' => function ($item, $key) { return __('IP address', 'cuar'); },
+                    'value' => function ($item, $key) { return $item->$key; }
+                ),
+                self::$META_PREVIOUS_OWNER => array(
+                    'title' => function ($item, $key)
+                    {
+                        $o = $item->$key;
+
+                        return __('Previous owner: ', 'cuar') . $o['display_name'];
+                    },
+                    'value' => function ($item, $key)
+                    {
+                        $o = $item->$key;
+
+                        return __('From: ', 'cuar') . substr($o['display_name'], 0, 35);
+                    }
+                ),
+                self::$META_CURRENT_OWNER  => array(
+                    'title' => function ($item, $key)
+                    {
+                        $o = $item->$key;
+
+                        return __('Current owner: ', 'cuar') . $o['display_name'];
+                    },
+                    'value' => function ($item, $key)
+                    {
+                        $o = $item->$key;
+
+                        return __('To: ', 'cuar') . substr($o['display_name'], 0, 35);
+                    }
+                )
+            );
+
+            foreach ($metas as $key => $meta)
             {
-                $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', __('IP address', 'cuar'),
-                    esc_attr($item->ip), self::$META_IP, '#');
+                if (isset($item->$key))
+                {
+                    $title = $meta['title']($item, $key);
+                    $value = $meta['value']($item, $key);
+                    $link = isset($meta['link']) ? $meta['link'] : '';
+                    if (empty($link))
+                    {
+                        $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', $title,
+                            esc_attr($value), $key);
+                    }
+                    else
+                    {
+                        $fields[] = sprintf('<a href="%4$s" title="%1$s" class="cuar-btn-xs %3$s">%2$s</a>', $title,
+                            esc_attr($value), $key, esc_attr($link));
+                    }
+                }
             }
 
             return implode(' ', $fields);
@@ -322,24 +408,27 @@ if ( !class_exists('CUAR_LogAddOn')) :
 
         public function only_log_first_view()
         {
-            return $this->plugin->get_option(self::$OPTION_LOG_ONLY_FIRST_VIEW)==true;
+            return $this->plugin->get_option(self::$OPTION_LOG_ONLY_FIRST_VIEW) == true;
         }
 
         public function only_log_first_download()
         {
-            return $this->plugin->get_option(self::$OPTION_LOG_ONLY_FIRST_DOWNLOAD)==true;
+            return $this->plugin->get_option(self::$OPTION_LOG_ONLY_FIRST_DOWNLOAD) == true;
         }
 
         /**
          * Set the default values for the options
          *
          * @param array $defaults
+         *
          * @return array
          */
-        public function set_default_options( $defaults ) {
+        public function set_default_options($defaults)
+        {
             $defaults = parent::set_default_options($defaults);
             $defaults[self::$OPTION_LOG_ONLY_FIRST_VIEW] = true;
             $defaults[self::$OPTION_LOG_ONLY_FIRST_DOWNLOAD] = true;
+
             return $defaults;
         }
 
@@ -368,7 +457,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     'type'      => 'checkbox',
                     'after'     => __('Only log the first time a private content is viewed by a user.', 'cuar')
                         . '<p class="description">'
-                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is viewing private content. There will be a single event per user and per content. Else, each time a user is viewing a private content, an event will be generated.', 'cuar')
+                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is viewing private content. There will be a single event per user and per content. Else, each time a user is viewing a private content, an event will be generated.',
+                            'cuar')
                         . '</p>'
                 )
             );
@@ -384,7 +474,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     'type'      => 'checkbox',
                     'after'     => __('Only log the first time a private file is downloaded by a user.', 'cuar')
                         . '<p class="description">'
-                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is downloading a private file. There will be a single event per user and per file. Else, each time a user is downloading a private file, an event will be generated.', 'cuar')
+                        . __('If you check this box, WP Customer Area will only generate a log event the first time a user is downloading a private file. There will be a single event per user and per file. Else, each time a user is downloading a private file, an event will be generated.',
+                            'cuar')
                         . '</p>'
                 )
             );
