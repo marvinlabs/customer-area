@@ -177,10 +177,11 @@ class CUAR_LogTable extends WP_List_Table
 
         $user = get_userdata($user_id);
 
-        return sprintf('<a href="%1$s" title="Profile of %2$s">%3$s</a>',
+        return sprintf('<span title="%4$s" class="cuar-btn-xs ip">IP</span> <a href="%1$s" title="Profile of %2$s" class="cuar-btn-xs user">%3$s</a>',
             admin_url('user-edit.php?user_id=' . $user_id),
             esc_attr($user->display_name),
-            $user->user_login);
+            $user->user_login,
+            $item->ip);
     }
 
     public function column_log_event($item)
@@ -195,9 +196,14 @@ class CUAR_LogTable extends WP_List_Table
     public function column_log_extra($item)
     {
         $fields = array();
+        $exclude = array('user_id', 'ip');
 
         foreach ($this->displayable_meta as $key)
         {
+            if (in_array($key, $exclude))
+            {
+                continue;
+            }
             if (isset($item->$key))
             {
                 $meta = apply_filters('cuar/core/log/table-meta-pill-descriptor', array(

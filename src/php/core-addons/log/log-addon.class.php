@@ -187,10 +187,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 $this->logger->log_event(self::$TYPE_CONTENT_VIEWED,
                     $post->ID,
                     $post->post_type,
-                    array(
-                        self::$META_USER_ID => get_current_user_id(),
-                        self::$META_IP      => $_SERVER['REMOTE_ADDR']
-                    ));
+                    $this->get_default_event_meta());
             }
         }
 
@@ -226,10 +223,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 $this->logger->log_event(self::$TYPE_FILE_DOWNLOADED,
                     $post_id,
                     get_post_type($post_id),
-                    array(
-                        self::$META_USER_ID => get_current_user_id(),
-                        self::$META_IP      => $_SERVER['REMOTE_ADDR']
-                    ));
+                    $this->get_default_event_meta());
             }
         }
 
@@ -248,15 +242,24 @@ if ( !class_exists('CUAR_LogAddOn')) :
             $this->logger->log_event(self::$TYPE_OWNER_CHANGED,
                 $post_id,
                 get_post_type($post_id),
-                array(
-                    self::$META_USER_ID        => get_current_user_id(),
-                    self::$META_IP             => $_SERVER['REMOTE_ADDR'],
+                array_merge($this->get_default_event_meta(), array(
                     self::$META_PREVIOUS_OWNER => $previous_owner,
                     self::$META_CURRENT_OWNER  => $new_owner
-                ));
+                )));
 
             // re-hook this function
             add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+        }
+
+        /**
+         * @return array
+         */
+        public function get_default_event_meta()
+        {
+            return array(
+                self::$META_USER_ID => get_current_user_id(),
+                self::$META_IP      => $_SERVER['REMOTE_ADDR']
+            );
         }
 
         /*------- LOG VIEWER -----------------------------------------------------------------------------------------*/
@@ -294,6 +297,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     $pill['value'] = __('To: ', 'cuar') . substr($dn, 0, 35);
                     break;
             }
+
             return $pill;
         }
 
