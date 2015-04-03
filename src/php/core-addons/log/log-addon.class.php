@@ -282,14 +282,14 @@ if ( !class_exists('CUAR_LogAddOn')) :
 
                 case self::$META_PREVIOUS_OWNER:
                     $o = $item->$meta;
-                    $dn = empty($o['ids']) ? __('None', 'cuar') : $o['display_name'];
+                    $dn = empty($o['ids']) ? __('Nobody', 'cuar') : $o['display_name'];
                     $pill['title'] = __('Previous owner: ', 'cuar') . $dn;
                     $pill['value'] = __('From: ', 'cuar') . substr($dn, 0, 35);
                     break;
 
                 case self::$META_CURRENT_OWNER:
                     $o = $item->$meta;
-                    $dn = empty($o['ids']) ? __('None', 'cuar') : $o['display_name'];
+                    $dn = empty($o['ids']) ? __('Nobody', 'cuar') : $o['display_name'];
                     $pill['title'] = __('Current owner: ', 'cuar') . $dn;
                     $pill['value'] = __('To: ', 'cuar') . substr($dn, 0, 35);
                     break;
