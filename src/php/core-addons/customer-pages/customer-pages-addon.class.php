@@ -382,18 +382,52 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 return;
             }
 
+            // Don't print all pages if there are too many of them
+            $skip_middle_pages = ($total > 10);
+            $left_spacer_added = false;
+            $right_spacer_added = false;
+
             // Build the array of page links
             $pagination_param_name = _x('page-num', 'pagination_parameter_name (should not be "page")', 'cuar');
             $page_links = array();
 
             for ($i = 1; $i <= $total; ++$i)
             {
+                if ($skip_middle_pages)
+                {
+                    if ($i > 2 && $i < $current_page - 1)
+                    {
+                        if (!$left_spacer_added)
+                        {
+                            $left_spacer_added  = true;
+                            $page_links[$i] = array(
+                                'link'       => false,
+                                'is_current' => false
+                            );
+                        }
+                        continue;
+                    }
+                    if ($i > $current_page + 1 && $i < $total - 1)
+                    {
+                        if (!$right_spacer_added)
+                        {
+                            $right_spacer_added  = true;
+                            $page_links[$i] = array(
+                                'link'       => false,
+                                'is_current' => false
+                            );
+                        }
+                        continue;
+                    }
+                }
                 $link = add_query_arg($pagination_param_name, $i, $pagination_base);
                 $page_links[$i] = array(
                     'link'       => $link,
                     'is_current' => ($i == $current_page)
                 );
             }
+
+            $page_links = apply_filters('cuar/core/page/pagination-items', $page_links, $current_page, $total);
 
             include($this->plugin->get_template_file_path(
                 array(
