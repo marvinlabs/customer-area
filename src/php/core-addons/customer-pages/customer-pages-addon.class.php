@@ -61,6 +61,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
             add_filter('wp_page_menu_args', array(&$this, 'exclude_pages_from_wp_page_menu'));
 
+            add_action('pre_get_posts', array(&$this, 'exclude_pages_from_search_results'));
+
             if (is_admin())
             {
                 add_filter('cuar/core/status/sections', array(&$this, 'add_status_sections'));
@@ -372,6 +374,36 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
         /*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 
+        /**
+         * Do not include the customer area pages in the search results
+         *
+         * @param WP_Query $query
+         */
+        public function exclude_pages_from_search_results($query)
+        {
+            if ( !is_admin() && $query->is_main_query())
+            {
+                if ($query->is_search)
+                {
+                    $customer_area_pages = $this->get_customer_area_pages();
+                    $pages_to_exclude = array();
+                    foreach ($customer_area_pages as $slug => $page)
+                    {
+                        $pages_to_exclude[] = $page->get_page_id();
+                    }
+                    $query->set('post__not_in', $pages_to_exclude);
+                }
+            }
+        }
+
+        /**
+         * Print the pagination links
+         *
+         * @param CUAR_AddOn $current_page_addon
+         * @param WP_Query   $query
+         * @param string     $pagination_base
+         * @param int        $current_page
+         */
         public function print_pagination($current_page_addon, $query, $pagination_base, $current_page)
         {
             $total = $query->max_num_pages;
@@ -397,9 +429,9 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 {
                     if ($i > 2 && $i < $current_page - 1)
                     {
-                        if (!$left_spacer_added)
+                        if ( !$left_spacer_added)
                         {
-                            $left_spacer_added  = true;
+                            $left_spacer_added = true;
                             $page_links[$i] = array(
                                 'link'       => false,
                                 'is_current' => false
@@ -409,9 +441,9 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                     }
                     if ($i > $current_page + 1 && $i < $total - 1)
                     {
-                        if (!$right_spacer_added)
+                        if ( !$right_spacer_added)
                         {
-                            $right_spacer_added  = true;
+                            $right_spacer_added = true;
                             $page_links[$i] = array(
                                 'link'       => false,
                                 'is_current' => false
