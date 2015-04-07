@@ -485,7 +485,48 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 add_action("manage_{$type}_posts_custom_column", array(&$this, 'owner_column_display'), 10, 2);
                 add_filter("manage_edit-{$type}_sortable_columns", array(&$this, 'owner_column_register_sortable'));
             }
+
+            add_action('restrict_manage_posts', array(&$this, 'print_visible_by_select_box'));
+            add_filter('pre_get_posts', array(&$this, 'filter_admin_post_list'), 2);
             add_filter('request', array(&$this, 'owner_column_orderby'));
+        }
+
+        function print_visible_by_select_box()
+        {
+            $visible_by = isset($_GET['visible_by']) ? $_GET['visible_by'] : 0;
+
+            echo '<select id="visible_by" name="visible_by" class="postform">';
+            echo '<option value="0">' . __('Visible by...', 'cuar') . '</option>';
+
+            $all_users = get_users(array('orderby' => 'display_name', 'fields' => 'all_with_meta'));
+            foreach ($all_users as $u)
+            {
+                $selected = selected($u->ID, $visible_by, false);
+                printf('<option value="%1$s" %2$s>%3$s</option>', $u->ID, $selected, $u->display_name);
+            }
+
+            echo '</select>';
+        }
+
+        /**
+         * @param WP_Query $query
+         */
+        public function filter_admin_post_list($query)
+        {
+            global $pagenow;
+            $type = isset($_GET['post_type']) ? $_GET['post_type'] : 'post';
+
+            $post_types = $this->plugin->get_private_post_types();
+
+            if ($query->is_main_query() && is_admin()
+                && $pagenow == 'edit.php'
+                && in_array($type, $post_types)
+                && isset($_GET['visible_by'])
+                && !empty($_GET['visible_by'])
+            )
+            {
+                $query->set('meta_query', $this->get_meta_query_post_owned_by($_GET['visible_by']));
+            }
         }
 
         /**

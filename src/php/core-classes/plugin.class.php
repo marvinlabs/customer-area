@@ -610,6 +610,28 @@ class CUAR_Plugin {
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 
+    /**
+     * Get both private content and container types
+     * @return array
+     */
+    public function get_private_types() {
+        return array_merge(
+            $this->get_content_types(),
+            $this->get_container_types()
+        );
+    }
+
+    /**
+     * Get both private content and container types
+     * @return array
+     */
+    public function get_private_post_types() {
+        return array_merge(
+            $this->get_content_post_types(),
+            $this->get_container_post_types()
+        );
+    }
+
 	/**
 	 * Tells which post types are private (shown on the customer area page)
 	 * @return array
