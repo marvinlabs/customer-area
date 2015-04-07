@@ -130,6 +130,7 @@ feel free to fork the project and send us pull requests!
 = 6.1.0 (2015/04/) =
 
 * New: events are now logged. We have implemented a few events (content viewed, file download, owner changed). Many more to come soon!
+* Fix: admin bar was shown to guests when admin restriction setting was not enabled
 
 = 6.0.0 (2015/03/10) =
 
