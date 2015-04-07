@@ -194,6 +194,16 @@ function cuar_format_human_file_size($size)
  */
 function cuar_create_private_file($post_data, $owner, $files)
 {
+    if (count($files)!=1)
+    {
+        return new WP_Error(0, 'cuar_create_private_file only support a single private file');
+    }
+
+    if (!isset($owner['type']) || !isset($owner['ids']) || empty($owner['ids']))
+    {
+        return new WP_Error(0, 'cuar_create_private_file needs owner data to create the private file');
+    }
+
     // Create the post object
     $post_data['post_type'] = 'cuar_private_file';
     $post_id = wp_insert_post( $post_data );
@@ -207,11 +217,6 @@ function cuar_create_private_file($post_data, $owner, $files)
     $po_addon->save_post_owners( $post_id, $owner['ids'], $owner['type'] );
 
     // Attach the file
-    if (count($files)!=1)
-    {
-        return new WP_Error(0, 'cuar_create_private_file only support a single private file');
-    }
-
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
     foreach ($files as $file) {
