@@ -36,7 +36,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 10 );
 			
 			if (is_admin ()) {
-				add_action ( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_settings_menu_item' ), 100 );
+				add_action ( 'admin_menu', array( &$this, 'add_settings_menu_item' ), 100 );
 				add_action ( 'admin_init', array( &$this, 'page_init' ) );
 				
 				// Links under the plugin name
@@ -64,23 +64,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		/**
 		 * Add the menu item
 		 */
-		public function add_settings_menu_item($submenus) {
-			$separator = '<span class="cuar-menu-divider"></span>';	
-			
-			$submenu = array (
-					'page_title' => __ ( 'Settings', 'cuar' ),
-					'title' => $separator . __ ( 'Settings', 'cuar' ),
-					'slug' => self::$OPTIONS_PAGE_SLUG,
-					'function' => array (
-							&$this,
-							'print_settings_page' 
-					),
-					'capability' => 'manage_options' 
-			);
-			
-			$submenus [] = $submenu;
-			
-			return $submenus;
+		public function add_settings_menu_item() {
+            add_options_page( __('WP Customer Area Settings', 'cuar' ),
+                __('WP Customer Area', 'cuar'),
+                'manage_options',
+                self::$OPTIONS_PAGE_SLUG,
+                array(&$this, 'print_settings_page')
+            );
 		}
 	
 		/**
