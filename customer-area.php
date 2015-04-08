@@ -42,6 +42,9 @@ define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', FALSE );
 //define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' ); 
 
 // Core Framework classes
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Content/custom-post.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Content/custom-taxonomy.class.php' );
+
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/log-event.class.php');
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/log-event-type.class.php');
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/logger.class.php' );
