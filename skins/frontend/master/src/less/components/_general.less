@@ -1,8 +1,20 @@
+
+// Commons properties from bootstrap
+// --------------------------------------------------
+.open:extend(.cuar-open all){};
+.active:extend(.cuar-active all){};
+.disabled:extend(.cuar-disabled all){};
+.on:extend(.cuar-on all){};
+.in:extend(.cuar-in all){};
+.collapse:extend(.cuar-collapse all){};
+.collapsed:extend(.cuar-collapsed all){};
+.collapsing:extend(.cuar-collapsing all){};
+
 // Slim progress bar & progress customizations
 // --------------------------------------------------
 
 .progress {
-		.box-shadow(none);
+		.cuar-box-shadow(none);
 }
 
 .progress-slim {
@@ -79,7 +91,7 @@
 	.circle {
 			background-color: #CCC;
 			float: left;
-			.square(8px);
+			.cuar-square(8px);
 			border-radius: 4px;
 			-webkit-animation: ajax_loading_anim 1s infinite;
 			        animation: ajax_loading_anim 1s infinite;
@@ -143,26 +155,26 @@
 }
 
 .cuar-page {
-		.make-row();
+		.cuar-make-row();
 		
 	.cuar-page-header {
-			.make-xs-column(12);
+			.cuar-make-xs-column(12);
 	}
 		
 	.cuar-page-footer {
-			.make-xs-column(12);
+			.cuar-make-xs-column(12);
 	}
 		
 	.cuar-page-content {
-			.make-xs-column(12);
+			.cuar-make-xs-column(12);
 	}
 		
 	&.cuar-page-with-sidebar {
 		.cuar-page-content {
-				.make-md-column(8);
+				.cuar-make-md-column(8);
 		}
 		.cuar-page-sidebar {
-				.make-md-column(4);
+				.cuar-make-md-column(4);
 		
 			@media (max-width: @screen-sm-max) {
 				clear:left;

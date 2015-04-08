@@ -1,29 +1,40 @@
 
+// Reset
+// attempt to reset the most common standards styles
+// to match the import variables cheatsheet
+
+.cuar-reset-styles(){
+  background: @body-bg;
+  color: @text-color;
+  padding: @padding-base-vertical @padding-base-horizontal;
+}
+
+
 // Auto color palettes
 
-.color-variant(@color: #555, @lt-percent: 10%, @lter-percent: 15%, @dk-percent: 10%, @dker-percent: 15%) {
+.cuar-color-variant(@color: #555, @lt-percent: 10%, @lter-percent: 15%, @dk-percent: 10%, @dker-percent: 15%) {
 	background-color: @color;	
-	&.lt,
-	.lt {
+	&.cuar-lt,
+	.cuar-lt {
 		background-color: lighten(@color, @lt-percent);
 	}
-	&.lter,
-	.lter {
+	&.cuar-lter,
+	.cuar-lter {
 		background-color: lighten(@color, @lter-percent);
 	}
-	&.dk,
-	.dk {
+	&.cuar-dk,
+	.cuar-dk {
 		background-color: darken(@color, @dk-percent);
 	}
-	&.dker,
-	.dker {
+	&.cuar-dker,
+	.cuar-dker {
 		background-color: darken(@color, @dker-percent);
 	}
 }
 
 // Button variants
 
-.button-variant(@color; @background; @border) {
+.cuar-button-variant(@color; @background; @border) {
   color: @color !important;
   background-color: @background;
   border-color: @border;
@@ -31,25 +42,25 @@
   &:hover,
   &:focus,
   &:active,
-  &.active,
-  .open .dropdown-toggle& {
+  &.cuar-active,
+  .cuar-open .cuar-dropdown-toggle& {
     color: @color !important;
     background-color: darken(@background, 8%);
         border-color: darken(@border, 12%);
   }
   &:active,
-  &.active,
-  .open .dropdown-toggle& {
+  &.cuar-active,
+  .cuar-open .cuar-dropdown-toggle& {
     background-image: none;
   }
-  &.disabled,
+  &.cuar-disabled,
   &[disabled],
   fieldset[disabled] & {
     &,
     &:hover,
     &:focus,
     &:active,
-    &.active {
+    &.cuar-active {
       background-color: @background;
           border-color: @border
     }
@@ -58,21 +69,21 @@
 
 // Font variants
 
-.font-variant(@color: #555, @hover-color: #fff, @nav-link-percent: 40%, @nav-sublink-percent: 10%, @link-percent: 30%, @text-percent){
+.cuar-font-variant(@color: #555, @hover-color: #fff, @nav-link-percent: 40%, @nav-sublink-percent: 10%, @link-percent: 30%, @text-percent){
 	color: lighten(@color, @text-percent);
 	a {
 		color: lighten(@color, @link-percent);
 		&:hover{
 			color: @hover-color;
 		}
-		&.list-group-item{
+		&.cuar-list-group-item{
 			&:hover,
 			&:focus{
 				background-color: inherit;
 			}
 		}
 	}
-	.nav {
+	.cuar-nav {
 		li {
 			> a{
 				color: lighten(@color, @nav-link-percent);		
@@ -80,7 +91,7 @@
 					background-color: darken(@color, 5%);
 				}
 			}
-			> ul.dropdown-menu > li{
+			> ul.cuar-dropdown-menu > li{
 				> a{
 					color: lighten(@color, @nav-link-percent);
 					&:hover {
@@ -91,24 +102,24 @@
 				}
 			}
 		}
-    .open > a{
+    .cuar-open > a{
       background-color: darken(@color, 5%);
     }
 	}
-  &.navbar .nav{
-    > li.active > a{
+  &.cuar-navbar .cuar-nav{
+    > li.cuar-active > a{
       color: @hover-color;
       background-color: darken(@color, 5%);
     }
   }
-	.open > a {
+	.cuar-open > a {
     &,
     &:hover,
     &:focus{
       color: @hover-color;
     }		
 	}
-	.text-muted {
+	.cuar-text-muted {
 		color: lighten(@color, @text-percent - 5%);
 	}
 }

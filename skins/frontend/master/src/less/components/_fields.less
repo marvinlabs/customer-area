@@ -1,16 +1,16 @@
 .cuar-field-section {
-		.make-row();
+		.cuar-make-row();
 
 	.cuar-section-title {
-			.make-xs-column(12);
+			.cuar-make-xs-column(12);
 	}
 	
 	.cuar-field {
-			.make-sm-column(6);
+			.cuar-make-sm-column(6);
 	}
 	
 	.cuar-field.wide {
-			.make-sm-column(12);
+			.cuar-make-sm-column(12);
 	}
 }
 
@@ -51,11 +51,11 @@
 .cuar-form {
 	
 	.acf_postbox .field {
-			.make-row();	
+			.cuar-make-row();	
 		
 		p.label {
 				&:extend( label all );
-				.make-sm-column(4);
+				.cuar-make-sm-column(4);
 				margin-bottom: 15px;
 				text-align: right;
 				font-weight: normal;
@@ -105,11 +105,11 @@
 		.acf-radio-list, 
 		.acf-checkbox-list,
 		.acf-image-uploader {
-				.make-sm-column(8);
+				.cuar-make-sm-column(8);
 		}
 		
 		.select, textarea, &.field_type-page_link select {
-				.make-sm-column(8);
+				.cuar-make-sm-column(8);
 				width: -webkit-calc(~'66.66% - 30px') !important;
 				width:    -moz-calc(~'66.66% - 30px') !important;
 				width:      -o-calc(~'66.66% - 30px') !important;
@@ -122,7 +122,7 @@
 		}
 		
 		.acf_wysiwyg {
-				.make-sm-column(8);
+				.cuar-make-sm-column(8);
 		}
 		
 		&.field_type-page_link select[multiple="multiple"] { 

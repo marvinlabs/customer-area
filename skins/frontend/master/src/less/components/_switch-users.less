@@ -1,33 +1,44 @@
-.cuarsu-main {	
-		&:extend(.navbar, .navbar-default);
-		
-		margin-top: 15px;
-		
-	form {
-			&:extend(.navbar-form, .form-inline);
-			padding: 0;
-		.form-group {
-				padding: 0;
-		}
-	}
-		
-	.cuarsu-message {
-			&:extend(.navbar-btn);
-			font-weight: normal;
-			float: left; 
-			width: 50%;
-			height: 34px;
-	}
-	
-	.cuarsu-id-select {
-			&:extend(.form-control all);
-			float: left; 
-			width: 40%;
-	}
-	
-	input[type="submit"].cuarsu-submit {
-			&:extend(.btn all, .btn-default all);
-			float: left; 
-			margin-left: 0.5 * @grid-gutter-width;
-	} 
+.cuarsu-main {
+
+  .cuar-reset-styles();
+
+  form {
+
+    .cuar-form-group {
+      padding: 0;
+    }
+    .cuarsu-form-wrapper{
+      &:extend(.cuar-well, .cuar-well-sm);
+      * {
+        box-sizing: border-box;
+      }
+      .cuar-clearfix();
+    }
+    .cuarsu-message-wrapper {
+      .cuar-make-sm-column(4);
+      .cuarsu-message {
+      }
+    }
+
+    .cuarsu-inputs-wrapper {
+      &:extend(.cuar-input-group all);
+      .cuar-make-sm-column(8);
+    }
+
+    .cuarsu-id-select-wrapper {
+      .cuar-cuarsu-id-select {
+        &:extend(.cuar-form-control all);
+      }
+    }
+
+    .cuarsu-submit-wrapper {
+      &:extend(.cuar-input-group-btn all);
+    }
+
+    input[type="submit"].cuarsu-submit {
+      &:extend(.cuar-btn all, .cuar-btn-primary all);
+    }
+
+  }
+
 }
