@@ -104,6 +104,7 @@ class CUAR_LogTable extends WP_List_Table
     {
         if ('delete' === $this->current_action())
         {
+
             $logs = isset($_POST['logs']) ? $_POST['logs'] : array();
             if (empty($logs))
             {
@@ -112,6 +113,11 @@ class CUAR_LogTable extends WP_List_Table
 
             foreach ($logs as $log_id)
             {
+                if ( !current_user_can('delete_post', $log_id))
+                {
+                    wp_die(__('You are not allowed to delete this item.'));
+                }
+
                 wp_delete_post($log_id, true);
             }
         }
