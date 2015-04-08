@@ -26,8 +26,8 @@ if ( !function_exists( 'cuar_enable_bootstrap_nav_walker' ) ) {
 		
 		$new_args['depth'] = 2;
 		$new_args['container'] = 'div';
-		$new_args['container_class'] = 'collapse navbar-collapse cuar-nav-container';
-		$new_args['menu_class'] = 'nav navbar-nav';
+		$new_args['container_class'] = 'cuar-nav-container cuar-collapse cuar-navbar-collapse';
+		$new_args['menu_class'] = 'cuar-nav cuar-navbar-nav';
 		$new_args['fallback_cb'] = 'wp_bootstrap_navwalker::fallback';
 		$new_args['walker'] = new wp_bootstrap_navwalker();		
 		
