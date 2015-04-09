@@ -80,7 +80,6 @@ class CUAR_PrivateContentTable extends WP_List_Table
      */
     protected function parse_parameters()
     {
-        // TODO Read what has to be read
         $this->parameters['status'] = isset($_GET['status']) ? $_GET['status'] : 'any';
         $this->parameters['search-field'] = isset($_GET['search-field']) ? $_GET['search-field'] : 'title';
         $this->parameters['search-query'] = isset($_GET['search-query']) ? $_GET['search-query'] : '';
@@ -354,7 +353,7 @@ class CUAR_PrivateContentTable extends WP_List_Table
         if (current_user_can($this->post_type_object->cap->delete_post))
         {
             $row_actions['delete'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
-                wp_nonce_url(add_query_arg(array('cuar-action' => 'delete', 'post_id' => $item->ID), $this->base_url),
+                wp_nonce_url(add_query_arg(array('action' => 'cuar-delete', 'posts' => $item->ID), $this->base_url),
                     'cuar_content_row_nonce'),
                 __('Delete', 'cuar'));
         }
@@ -419,7 +418,7 @@ class CUAR_PrivateContentTable extends WP_List_Table
     public function get_bulk_actions()
     {
         $actions = array(
-            'delete' => __('Delete', 'cuar')
+            'cuar-delete' => __('Delete', 'cuar')
         );
 
         return apply_filters('cuar/core/admin/content-list-table/bulk-actions', $actions, $this);
@@ -431,18 +430,21 @@ class CUAR_PrivateContentTable extends WP_List_Table
     public function process_bulk_action()
     {
         $action = $this->current_action();
-        $posts = isset($_POST['posts']) ? $_POST['posts'] : array();
+        $posts = isset($_GET['posts']) ? $_GET['posts'] : array();
         if (empty($posts))
         {
             return;
+        }
+        if (!is_array($posts)) {
+            $posts = array($posts);
         }
 
         foreach ($posts as $post_id)
         {
             switch ($action)
             {
-                case 'delete':
-                    if ( !current_user_can('delete_post', $post_id))
+                case 'cuar-delete':
+                    if ( !current_user_can($this->post_type_object->cap->delete_post))
                     {
                         wp_die(__('You are not allowed to delete this item.', 'cuar'));
                     }

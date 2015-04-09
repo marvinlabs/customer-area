@@ -102,19 +102,26 @@ class CUAR_AdminMenuHelper
     {
         $items = array();
 
-        $private_types = $this->plugin->get_private_types();
-        foreach ($private_types as $type => $desc)
+        $types = array(
+            'content'   => $this->plugin->get_content_types(),
+            'container' => $this->plugin->get_container_types()
+        );
+
+        foreach ($types as $t => $private_types)
         {
-            $post_type = get_post_type_object($type);
-            if (current_user_can($post_type->cap->edit_post) || current_user_can($post_type->cap->read_post))
+            foreach ($private_types as $type => $desc)
             {
-                $items[] = array(
-                    'page_title' => $desc['label-plural'],
-                    'title'      => $desc['label-plural'],
-                    'slug'       => $type,
-                    'function'   => array($this->aa_addon, 'print_content_list_page'),
-                    'capability' => 'view-customer-area-menu'
-                );
+                $post_type = get_post_type_object($type);
+                if (current_user_can($post_type->cap->edit_post) || current_user_can($post_type->cap->read_post))
+                {
+                    $items[] = array(
+                        'page_title' => $desc['label-plural'],
+                        'title'      => $desc['label-plural'],
+                        'slug'       => $type,
+                        'function'   => array($this->aa_addon, 'print_' . $t . '_list_page'),
+                        'capability' => 'view-customer-area-menu'
+                    );
+                }
             }
         }
 

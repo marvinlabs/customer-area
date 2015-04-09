@@ -17,6 +17,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 require_once(CUAR_INCLUDES_DIR . '/core-classes/addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/private-content-table.class.php');
 require_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/helpers/adminbar-helper.class.php');
 require_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/helpers/admin-menu-helper.class.php');
 
@@ -207,7 +208,25 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     /**
      * Print a page that lists private content
      */
+    public function print_container_list_page()
+    {
+        $this->print_private_post_list_page('container');
+    }
+
+    /**
+     * Print a page that lists private content
+     */
     public function print_content_list_page()
+    {
+        $this->print_private_post_list_page('content');
+    }
+
+    /**
+     * Print a page that lists private content
+     *
+     * @param string $private_type_group (container|content)
+     */
+    protected function print_private_post_list_page($private_type_group)
     {
         $post_type = $_GET['page'];
         $post_type_object = get_post_type_object($post_type);
@@ -216,25 +235,48 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $title_links = $this->add_new_post_link($post_type_object, $post_type, $title_links);
         $title_links = $this->add_manage_taxonomy_links($post_type, $title_links);
 
-        $title_links = apply_filters('cuar/core/admin/content-list-page/title-links?post_type=' . $post_type,
-            $title_links);
+        switch ($private_type_group) {
+            case 'content':
+                $title_links = apply_filters('cuar/core/admin/content-list-page/title-links?post_type=' . $post_type,
+                    $title_links);
+                $list_table = apply_filters('cuar/core/admin/content-list-page/list-table-object?post_type=' . $post_type, null);
+                $default_list_table_class = 'CUAR_PrivateContentTable';
+                break;
 
-        $list_table = apply_filters('cuar/core/admin/content-list-page/list-table-object?post_type=' . $post_type, null);
+            case 'container':
+                $title_links = apply_filters('cuar/core/admin/container-list-page/title-links?post_type=' . $post_type,
+                    $title_links);
+                $list_table = apply_filters('cuar/core/admin/container-list-page/list-table-object?post_type=' . $post_type, null);
+                $default_list_table_class = 'CUAR_PrivateContentTable';
+                break;
+
+            default:
+                wp_die('Unknown private type. Must either be container or content');
+                exit;
+        }
+
         if ($list_table == null)
         {
-            $list_table = new CUAR_PrivateContentTable($this->plugin, array(
+            $list_table = new $default_list_table_class($this->plugin, array(
                 'plural'   => $post_type_object->labels->name,
                 'singular' => $post_type_object->labels->singular_name,
                 'ajax'     => false
             ), $post_type);
         }
+
         $list_table->process_bulk_action();
         $list_table->prepare_items();
+
+        $default_filter_template = $this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/admin-area',
+            'private-post-list-default-filters-' . $private_type_group . '.template.php',
+            'templates',
+            'private-post-list-default-filters.template.php');
 
         /** @noinspection PhpIncludeInspection */
         include($this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/admin-area',
-            'content-list-page.template.php',
+            'private-post-list-page.template.php',
             'templates'));
     }
 
