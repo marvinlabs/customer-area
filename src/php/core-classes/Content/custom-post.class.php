@@ -26,7 +26,7 @@ if ( !class_exists('CUAR_CustomPost')) :
     {
 
         /** @var int The custom post ID. */
-        public $id;
+        public $ID;
 
         /** @var WP_Post The actual post object. */
         public $post;
@@ -41,12 +41,12 @@ if ( !class_exists('CUAR_CustomPost')) :
         {
             if ($custom_post instanceof WP_Post)
             {
-                $this->id = absint($custom_post->ID);
+                $this->ID = absint($custom_post->ID);
                 $this->post = $custom_post;
             }
             else
             {
-                $this->id = absint($custom_post);
+                $this->ID = absint($custom_post);
                 $this->post = null;
                 if ($load_post)
                 {
@@ -66,7 +66,7 @@ if ( !class_exists('CUAR_CustomPost')) :
         {
             $meta_key = 'cuar_' . $key;
 
-            return metadata_exists('post', $this->id, $meta_key);
+            return metadata_exists('post', $this->ID, $meta_key);
         }
 
         /**
@@ -79,7 +79,7 @@ if ( !class_exists('CUAR_CustomPost')) :
         public function __get($key)
         {
             $meta_key = 'cuar_' . $key;
-            $value = get_post_meta($this->id, $meta_key, true);
+            $value = get_post_meta($this->ID, $meta_key, true);
 
             return $value ? $value : $this->get_default_meta_value($key);
         }
@@ -101,7 +101,7 @@ if ( !class_exists('CUAR_CustomPost')) :
         {
             if ($this->post == null)
             {
-                $this->post = get_post($this->id);
+                $this->post = get_post($this->ID);
             }
 
             return $this->post;

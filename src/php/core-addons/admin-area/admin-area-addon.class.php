@@ -264,8 +264,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             ), $post_type);
         }
 
-        $list_table->process_bulk_action();
-        $list_table->prepare_items();
+        $list_table->initialize();
 
         $default_filter_template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/admin-area',

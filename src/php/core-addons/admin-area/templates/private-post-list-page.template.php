@@ -1,6 +1,6 @@
 <?php /** Template version: 1.0.0 */ ?>
 
-<div class="wrap cuar-private-post-list-page">
+<div class="wrap cuar-private-post-list-page cuar-list-table-page">
     <h2><?php
         echo $post_type_object->labels->name;
         foreach ($title_links as $label => $url)
@@ -17,7 +17,7 @@
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>"/>
 
         <?php $list_table->views(); ?>
-
+        <br/>
         <div class="cuar-list-table-filter">
             <a class="cuar-filter-toggle"><?php _e('Toggle advanced filters', 'cuar'); ?></a>
 

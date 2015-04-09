@@ -132,10 +132,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public function print_logs_page()
         {
             require_once(CUAR_INCLUDES_DIR . '/core-addons/log/log-table.class.php');
-            $logsTable = new CUAR_LogTable($this->plugin);
-
-            $logsTable->process_bulk_action();
-            $logsTable->prepare_items();
+            $logs_table = new CUAR_LogTable($this->plugin);
+            $logs_table->initialize();
 
             /** @noinspection PhpIncludeInspection */
             include($this->plugin->get_template_file_path(

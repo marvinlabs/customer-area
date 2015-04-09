@@ -28,7 +28,7 @@
         <?php if ($is_locked) : ?>
             <option value="<?php echo get_current_user_id(); ?>"><?php _e('Yourself', 'cuar'); ?></option>
         <?php else : ?>
-            <option value="0"><?php _e('Not set', 'cuar'); ?></option>
+            <option value="0">-</option>
             <?php
             $all_users = get_users(array('orderby' => 'display_name', 'fields' => 'all_with_meta'));
             foreach ($all_users as $u)

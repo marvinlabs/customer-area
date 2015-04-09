@@ -16,10 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-if ( !class_exists('WP_List_Table'))
-{
-    require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
-}
+require_once(CUAR_INCLUDES_DIR . '/core-classes/Content/list-table.class.php');
 
 /**
  * Class CUAR_PrivateContentTable
@@ -28,11 +25,8 @@ if ( !class_exists('WP_List_Table'))
  *
  * @link http://plugins.svn.wordpress.org/custom-list-table-example/tags/1.3/list-table-example.php
  */
-class CUAR_PrivateContentTable extends WP_List_Table
+class CUAR_PrivateContentTable extends CUAR_ListTable
 {
-    /** @var CUAR_Plugin The plugin instance */
-    public $plugin = null;
-
     /** @var CUAR_PostOwnerAddOn */
     public $po_addon = null;
 
@@ -44,15 +38,6 @@ class CUAR_PrivateContentTable extends WP_List_Table
 
     /** @var array The taxonomies linked to this post type */
     public $associated_taxonomies = null;
-
-    /** @var int Total number of posts */
-    public $total_count = 0;
-
-    /** @var array Number of posts for each view. */
-    public $view_counts = array();
-
-    /** @var array Page parameters to pass to the query. */
-    public $parameters = array();
 
     /** @var string The base URL for this table page */
     public $base_url = '';
@@ -67,16 +52,12 @@ class CUAR_PrivateContentTable extends WP_List_Table
      */
     public function __construct($plugin, $args, $post_type)
     {
-        parent::__construct($args);
-        $this->plugin = $plugin;
+        parent::__construct($plugin, $args);
         $this->po_addon = $plugin->get_addon('post-owner');
         $this->post_type = $post_type;
         $this->post_type_object = get_post_type_object($post_type);
         $this->associated_taxonomies = get_object_taxonomies($post_type, 'object');
         $this->base_url = admin_url('admin.php?page=' . $post_type);
-
-        $this->parse_parameters();
-        $this->count_posts();
     }
 
     /**
@@ -106,42 +87,6 @@ class CUAR_PrivateContentTable extends WP_List_Table
 
         $this->parameters = apply_filters('cuar/core/admin/content-list-table/search-parameters', $this->parameters,
             $this);
-    }
-
-    /**
-     * @param $key
-     *
-     * @return string
-     */
-    public function get_parameter($key)
-    {
-        return isset($this->parameters[$key]) ? $this->parameters[$key] : '';
-    }
-
-    /**
-     * Count the posts to be displayed in the table
-     */
-    protected function count_posts()
-    {
-        $query_args = $this->get_query_args();
-
-        $statuses = array('any', 'publish', 'draft');
-
-        foreach ($statuses as $status)
-        {
-            $args = array_merge($query_args, array(
-                'fields'         => 'ids',
-                'paged'          => 1,
-                'posts_per_page' => -1,
-                'post_status'    => $status
-            ));
-
-            $q = new WP_Query($args);
-            $this->view_counts[$status] = $q->post_count;
-        }
-
-        $this->view_counts = apply_filters('cuar/core/admin/content-list-table/view-counts', $this->view_counts, $this);
-        $this->total_count = $this->view_counts[$this->parameters['status']];
     }
 
     /**
@@ -233,56 +178,23 @@ class CUAR_PrivateContentTable extends WP_List_Table
         return $args;
     }
 
+    /*------- VIEWS --------------------------------------------------------------------------------------------------*/
+
+    protected function get_view_statuses()
+    {
+        return array_merge(parent::get_view_statuses(), array(
+            'publish' => __('Published', 'cuar'),
+            'draft'   => __('Draft', 'cuar')
+        ));
+    }
+
     /**
      * Retrieve the view types
      * @return array $views All the views available
      */
     public function get_views()
     {
-        $current = $this->parameters['status'];
-
-        $views = array();
-
-        $views['all'] = $this->format_view_item(__('All', 'cuar'),
-            $this->view_counts['any'],
-            remove_query_arg(array('status', 'paged')),
-            $current === 'all' || $current == 'any');
-
-        $views['publish'] = $this->format_view_item(__('Published', 'cuar'),
-            $this->view_counts['publish'],
-            add_query_arg(array('status' => 'publish', 'paged' => false)),
-            $current === 'publish');
-
-        $views['draft'] = $this->format_view_item(__('Draft', 'cuar'),
-            $this->view_counts['draft'],
-            add_query_arg(array('status' => 'draft', 'paged' => false)),
-            $current === 'draft');
-
-        return apply_filters('cuar/core/admin/content-list-table/views', $views, $this);
-    }
-
-    /**
-     * Get the properly formatted view item (items shown above the table with post count)
-     *
-     * @param $label
-     * @param $count
-     * @param $link
-     * @param $is_current
-     *
-     * @return string
-     */
-    public function format_view_item($label, $count, $link, $is_current)
-    {
-        if ($count === null)
-        {
-            return sprintf('<a href="%1$s"%2$s>%3$s</a>',
-                $link, $is_current ? ' class="current"' : '', $label);
-        }
-        else
-        {
-            return sprintf('<a href="%1$s"%2$s>%3$s</a>&nbsp;<span class="count">(%4$s)</span>',
-                $link, $is_current ? ' class="current"' : '', $label, $count);
-        }
+        return apply_filters('cuar/core/admin/content-list-table/views', parent::get_views(), $this);
     }
 
     /*------- COLUMNS ------------------------------------------------------------------------------------------------*/
@@ -293,46 +205,28 @@ class CUAR_PrivateContentTable extends WP_List_Table
      */
     public function get_columns()
     {
-        $columns = array(
-            'cb'     => '<input type="checkbox" />', //Render a checkbox instead of text
+        $columns = array_merge(parent::get_columns(), array(
             'title'  => __('Title', 'cuar'),
             'date'   => __('Date', 'cuar'),
             'author' => __('Author', 'cuar'),
-        );
+        ));
 
-        if (!empty($this->associated_taxonomies))
+        if ( !empty($this->associated_taxonomies))
         {
-            foreach ($this->associated_taxonomies as $id => $tax) {
+            foreach ($this->associated_taxonomies as $id => $tax)
+            {
                 $columns[$id] = $tax->labels->name;
             }
         }
 
-        $columns['owner']  = __('Owner', 'cuar');
+        $columns['owner'] = __('Owner', 'cuar');
 
         return apply_filters('cuar/core/admin/content-list-table/columns', $columns, $this);
     }
 
-    /**
-     *
-     * @return array An associative array containing all the columns that should be sortable:
-     *               'slugs'=>array('data_values',bool)
-     */
-    public function get_sortable_columns()
-    {
-        $sortable_columns = array(// 'title'    => array('title', false),     //true means it's already sorted
-        );
-
-        return apply_filters('cuar/core/admin/content-list-table/sortable-columns', $sortable_columns, $this);
-    }
-
-    public function column_cb($item)
-    {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'posts', $item->ID);
-    }
-
     public function column_default($item, $column_name)
     {
-        if (!empty($this->associated_taxonomies) && isset($this->associated_taxonomies[$column_name]))
+        if ( !empty($this->associated_taxonomies) && isset($this->associated_taxonomies[$column_name]))
         {
             return $this->column_taxonomy($item, $column_name);
         }
@@ -341,20 +235,16 @@ class CUAR_PrivateContentTable extends WP_List_Table
             $column_name, $this);
     }
 
-    public function column_id($item)
-    {
-        return $item->ID;
-    }
-
     public function column_taxonomy($item, $taxonomy)
     {
         $terms = wp_get_post_terms($item->ID, $taxonomy);
         $out = array();
-        foreach($terms as $t)
+        foreach ($terms as $t)
         {
             $out[] = $t->name;
         }
-        return implode(', ', $out);
+
+        return empty($out) ? '-' : implode(', ', $out);
     }
 
     public function column_date($item)
@@ -494,71 +384,25 @@ class CUAR_PrivateContentTable extends WP_List_Table
     }
 
     /**
-     * Execute the bulk action on all selected posts
+     * Execute a bulk action on a single post
+     *
+     * @param string $action
+     * @param int    $post_id
      */
-    public function process_bulk_action()
+    protected function execute_action($action, $post_id)
     {
-        $action = $this->current_action();
-        $posts = isset($_GET['posts']) ? $_GET['posts'] : array();
-        if (empty($posts))
+        switch ($action)
         {
-            return;
+            case 'cuar-delete':
+                if ( !current_user_can($this->post_type_object->cap->delete_post))
+                {
+                    wp_die(__('You are not allowed to delete this item.', 'cuar'));
+                }
+                wp_delete_post($post_id, true);
+                break;
+
+            default:
+                do_action('cuar/core/admin/content-list-table/do-bulk-action', $post_id, $action, $this);
         }
-        if ( !is_array($posts))
-        {
-            $posts = array($posts);
-        }
-
-        foreach ($posts as $post_id)
-        {
-            switch ($action)
-            {
-                case 'cuar-delete':
-                    if ( !current_user_can($this->post_type_object->cap->delete_post))
-                    {
-                        wp_die(__('You are not allowed to delete this item.', 'cuar'));
-                    }
-                    wp_delete_post($post_id, true);
-                    break;
-
-                default:
-                    do_action('cuar/core/admin/content-list-table/do-bulk-action', $post_id, $action, $this);
-            }
-        }
-    }
-
-    /*------- OTHER FUNCTIONS ----------------------------------------------------------------------------------------*/
-
-    /**
-     * Prepare the table with different parameters, pagination, columns and table elements
-     */
-    public function prepare_items()
-    {
-        // Prepare our columns
-        $columns = $this->get_columns();
-        $hidden = array();
-        $sortable = $this->get_sortable_columns();
-        $this->_column_headers = array($columns, $hidden, $sortable);
-
-        // Register the pagination
-        $total_items = $this->total_count;
-        $items_per_page = $this->get_items_per_page('private-content-list-page');
-        $current_page = $this->get_pagenum();
-        $page_count = ceil($total_items / $items_per_page);
-
-        $this->set_pagination_args(array(
-            "total_items" => $total_items,
-            "total_pages" => $page_count,
-            "per_page"    => $items_per_page,
-        ));
-
-        // Fetch the items
-        $args = $this->get_query_args();
-        $args = array_merge($args, array(
-            'paged'          => $current_page,
-            'posts_per_page' => $items_per_page
-        ));
-
-        $this->items = get_posts($args);
     }
 }
