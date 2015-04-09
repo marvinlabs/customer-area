@@ -213,9 +213,8 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $post_type_object = get_post_type_object($post_type);
 
         $title_links = array();
-        $title_links[__('Add new', 'cuar')] = admin_url('post-new.php?post_type=' . $post_type);
-
-        // TODO If there is a friendly taxonomy, add a link to manage it
+        $title_links = $this->add_new_post_link($post_type_object, $post_type, $title_links);
+        $title_links = $this->add_manage_taxonomy_links($post_type, $title_links);
 
         $title_links = apply_filters('cuar/core/admin/content-list-page/title-links?post_type=' . $post_type,
             $title_links);
@@ -303,8 +302,42 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         }
     }
 
-    /** @var string */
-    private $pagehook;
+    /**
+     * @param $post_type_object
+     * @param $post_type
+     * @param $title_links
+     *
+     * @return mixed
+     */
+    private function add_new_post_link($post_type_object, $post_type, $title_links)
+    {
+        if (current_user_can($post_type_object->cap->edit_posts))
+        {
+            $title_links[__('Add new', 'cuar')] = admin_url('post-new.php?post_type=' . $post_type);
+        }
+
+        return $title_links;
+    }
+
+    /**
+     * @param $post_type
+     * @param $title_links
+     *
+     * @return mixed
+     */
+    private function add_manage_taxonomy_links($post_type, $title_links)
+    {
+        $taxonomies = get_object_taxonomies( $post_type, 'objects' );
+        foreach ($taxonomies as $tax) {
+            if (current_user_can($tax->cap->manage_terms))
+            {
+                $title_links[sprintf(__('Manage %1$s', 'cuar'), $tax->labels->name)] = admin_url('edit-tags.php?taxonomy=' . $tax->name);
+            }
+        }
+
+        return $title_links;
+    }
+
 }
 
 // Make sure the addon is loaded
