@@ -57,7 +57,7 @@ class CUAR_LogTable extends WP_List_Table
      * Define the columns that are going to be used in the table
      * @return array $columns, the array of columns to use with the table
      */
-    function get_columns()
+    public function get_columns()
     {
         $columns = array(
             'cb'            => '<input type="checkbox" />', //Render a checkbox instead of text
@@ -77,7 +77,7 @@ class CUAR_LogTable extends WP_List_Table
      * @return array An associative array containing all the columns that should be sortable:
      *               'slugs'=>array('data_values',bool)
      */
-    function get_sortable_columns()
+    public function get_sortable_columns()
     {
         $sortable_columns = array(// 'title'    => array('title', false),     //true means it's already sorted
         );
@@ -88,7 +88,7 @@ class CUAR_LogTable extends WP_List_Table
     /**
      * @return array An associative array containing all the bulk actions: 'slugs'=>'Visible Titles'
      */
-    function get_bulk_actions()
+    public function get_bulk_actions()
     {
         $actions = array(
             'delete' => __('Delete', 'cuar')
@@ -100,7 +100,7 @@ class CUAR_LogTable extends WP_List_Table
     /**
      *
      */
-    function process_bulk_action()
+    public function process_bulk_action()
     {
         if ('delete' === $this->current_action())
         {
@@ -112,6 +112,11 @@ class CUAR_LogTable extends WP_List_Table
 
             foreach ($logs as $log_id)
             {
+                if ( !current_user_can('delete_post', $log_id))
+                {
+                    wp_die(__('You are not allowed to delete this item.'));
+                }
+
                 wp_delete_post($log_id, true);
             }
         }
@@ -122,7 +127,7 @@ class CUAR_LogTable extends WP_List_Table
      *
      * @return string Text to be placed inside the column <td> (movie title only)
      */
-    function column_cb($item)
+    public function column_cb($item)
     {
         return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'logs', $item->id);
     }
@@ -234,9 +239,6 @@ class CUAR_LogTable extends WP_List_Table
     public function prepare_items()
     {
         $logger = $this->plugin->get_logger();
-
-        // Process bulk actions
-        $this->process_bulk_action();
 
         // Prepare our columns
         $columns = $this->get_columns();

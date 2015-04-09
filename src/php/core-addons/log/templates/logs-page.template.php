@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php
 require_once(CUAR_INCLUDES_DIR . '/core-addons/log/log-table.class.php');
 $logsTable = new CUAR_LogTable($this->plugin);
+
+$logsTable->process_bulk_action();
 $logsTable->prepare_items();
 ?>
 

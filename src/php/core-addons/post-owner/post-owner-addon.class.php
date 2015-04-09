@@ -401,8 +401,9 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          * Save the owner details for the given post
          *
          * @param int    $post_id
-         * @param string $owner_id
+         * @param array  $owner_ids
          * @param string $owner_type
+         * @param bool   $ensure_type_exists
          */
         public function save_post_owners($post_id, $owner_ids, $owner_type, $ensure_type_exists = true)
         {
@@ -414,6 +415,12 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
                 return;
             }
+
+            $previous_owner = $this->get_post_owner($post_id);
+            $new_owner = $this->get_owner_from_post_data();
+
+            // Other addons can do something before we save
+            do_action("cuar/core/ownership/before-save-owner", $post_id, $previous_owner, $new_owner);
 
             // Serialize the owner ids for queries
             $queryable_ids = $this->encode_queryable_owner_ids($owner_ids, $owner_type);
@@ -445,6 +452,11 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             update_post_meta($post_id, self::$META_OWNER_QUERYABLE, $queryable_ids);
             update_post_meta($post_id, self::$META_OWNER_DISPLAYNAME, $displayname);
             update_post_meta($post_id, self::$META_OWNER_SORTABLE_DISPLAYNAME, $sortable_displayname);
+
+            // Other addons can do something after we save
+            $new_owner = $this->get_post_owner($post_id);
+            $post = get_post($post_id);
+            do_action("cuar/core/ownership/after-save-owner", $post_id, $post, $previous_owner, $new_owner);
         }
 
         /**
@@ -473,7 +485,48 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 add_action("manage_{$type}_posts_custom_column", array(&$this, 'owner_column_display'), 10, 2);
                 add_filter("manage_edit-{$type}_sortable_columns", array(&$this, 'owner_column_register_sortable'));
             }
+
+            add_action('restrict_manage_posts', array(&$this, 'print_visible_by_select_box'));
+            add_filter('pre_get_posts', array(&$this, 'filter_admin_post_list'), 2);
             add_filter('request', array(&$this, 'owner_column_orderby'));
+        }
+
+        function print_visible_by_select_box()
+        {
+            $visible_by = isset($_GET['visible_by']) ? $_GET['visible_by'] : 0;
+
+            echo '<select id="visible_by" name="visible_by" class="postform">';
+            echo '<option value="0">' . __('Visible by...', 'cuar') . '</option>';
+
+            $all_users = get_users(array('orderby' => 'display_name', 'fields' => 'all_with_meta'));
+            foreach ($all_users as $u)
+            {
+                $selected = selected($u->ID, $visible_by, false);
+                printf('<option value="%1$s" %2$s>%3$s</option>', $u->ID, $selected, $u->display_name);
+            }
+
+            echo '</select>';
+        }
+
+        /**
+         * @param WP_Query $query
+         */
+        public function filter_admin_post_list($query)
+        {
+            global $pagenow;
+            $type = isset($_GET['post_type']) ? $_GET['post_type'] : 'post';
+
+            $post_types = $this->plugin->get_private_post_types();
+
+            if ($query->is_main_query() && is_admin()
+                && $pagenow == 'edit.php'
+                && in_array($type, $post_types)
+                && isset($_GET['visible_by'])
+                && !empty($_GET['visible_by'])
+            )
+            {
+                $query->set('meta_query', $this->get_meta_query_post_owned_by($_GET['visible_by']));
+            }
         }
 
         /**
@@ -872,18 +925,10 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 return $post_id;
             }
 
-            $previous_owner = $this->get_post_owner($post_id);
             $new_owner = $this->get_owner_from_post_data();
-
-            // Other addons can do something before we save
-            do_action("cuar/core/ownership/before-save-owner", $post_id, $previous_owner, $new_owner);
 
             // Save owner details
             $this->save_post_owners($post_id, $new_owner['ids'], $new_owner['type']);
-
-            // Other addons can do something after we save
-            $new_owner = $this->get_post_owner($post_id);
-            do_action("cuar/core/ownership/after-save-owner", $post_id, $post, $previous_owner, $new_owner);
 
             return $post_id;
         }
