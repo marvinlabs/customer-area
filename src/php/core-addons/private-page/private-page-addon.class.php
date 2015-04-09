@@ -247,7 +247,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 						'edit_others_posts' 	=> 'cuar_pp_edit',
 						'publish_posts' 		=> 'cuar_pp_edit',
 						'read_post' 			=> 'cuar_pp_read',
-						'read_private_posts' 	=> 'cuar_pp_edit',
+						'read_private_posts' 	=> 'cuar_pp_list_all',
 						'delete_post' 			=> 'cuar_pp_delete',
 						'delete_posts' 			=> 'cuar_pp_delete'
 					)

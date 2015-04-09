@@ -94,6 +94,12 @@ class CUAR_PrivateContentTable extends WP_List_Table
             $this->parameters['visible-by'] = 0;
         }
 
+        // If current user cannot list all posts, only show what belongs to him
+        if (!current_user_can($this->post_type_object->cap->read_private_posts))
+        {
+            $this->parameters['visible-by'] = get_current_user_id();
+        }
+
         $this->parameters = apply_filters('cuar/core/admin/content-list-table/search-parameters', $this->parameters,
             $this);
     }
