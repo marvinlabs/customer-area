@@ -30,9 +30,29 @@ if ( !class_exists('WP_List_Table'))
  */
 class CUAR_PrivateContentTable extends WP_List_Table
 {
-
-    public $post_type = null;
+    /** @var CUAR_Plugin The plugin instance */
     public $plugin = null;
+
+    /** @var CUAR_PostOwnerAddOn */
+    public $po_addon = null;
+
+    /** @var string The post type to be displayed by this table */
+    public $post_type = null;
+
+    /** @var object The post type object */
+    public $post_type_object = null;
+
+    /** @var int Total number of posts */
+    public $total_count = 0;
+
+    /** @var array Number of posts for each view. */
+    public $view_counts = array();
+
+    /** @var array Page parameters to pass to the query. */
+    public $parameters = array();
+
+    /** @var string The base URL for this table page */
+    public $base_url = '';
 
     /**
      * Constructor, we override the parent to pass our own arguments
@@ -46,8 +66,221 @@ class CUAR_PrivateContentTable extends WP_List_Table
     {
         parent::__construct($args);
         $this->plugin = $plugin;
+        $this->po_addon = $plugin->get_addon('post-owner');
         $this->post_type = $post_type;
+        $this->post_type_object = get_post_type_object($post_type);
+        $this->base_url = admin_url('admin.php?page=' . $post_type);
+
+        $this->parse_parameters();
+        $this->count_posts();
     }
+
+    /**
+     * Read the parameters from the query and store them for later use
+     */
+    protected function parse_parameters()
+    {
+        // TODO Read what has to be read
+        $this->parameters['status'] = isset($_GET['status']) ? $_GET['status'] : 'any';
+        $this->parameters['search-field'] = isset($_GET['search-field']) ? $_GET['search-field'] : 'title';
+        $this->parameters['search-query'] = isset($_GET['search-query']) ? $_GET['search-query'] : '';
+        $this->parameters['visible-by'] = isset($_GET['visible-by']) ? $_GET['visible-by'] : 0;
+        $this->parameters['start-date'] = isset($_GET['start-date']) ? sanitize_text_field($_GET['start-date']) : null;
+        $this->parameters['end-date'] = isset($_GET['end-date']) ? sanitize_text_field($_GET['end-date']) : null;
+
+        // These criterias are not compatible
+        if ( !empty($this->parameters['search-query']) && $this->parameters['search-field'] == 'owner')
+        {
+            $this->parameters['visible-by'] = 0;
+        }
+
+        $this->parameters = apply_filters('cuar/core/admin/content-list-table/search-parameters', $this->parameters,
+            $this);
+    }
+
+    protected function is_search_active()
+    {
+        $is_active = !empty($this->parameters['search-query'])
+            || 0 != $this->parameters['visible-by']
+            || !empty($this->parameters['start-date'])
+            || !empty($this->parameters['end-date']);
+
+        return apply_filters('cuar/core/admin/content-list-table/is-search-active', $is_active, $this);
+    }
+
+    /**
+     * @param $key
+     *
+     * @return string
+     */
+    public function get_parameter($key)
+    {
+        return isset($this->parameters[$key]) ? $this->parameters[$key] : '';
+    }
+
+    /**
+     * Count the posts to be displayed in the table
+     */
+    protected function count_posts()
+    {
+        $query_args = $this->get_query_args();
+
+        $statuses = array('any', 'publish', 'draft');
+
+        foreach ($statuses as $status)
+        {
+            $args = array_merge($query_args, array(
+                'fields'         => 'ids',
+                'paged'          => 1,
+                'posts_per_page' => -1,
+                'post_status'    => $status
+            ));
+
+            $q = new WP_Query($args);
+            $this->view_counts[$status] = $q->post_count;
+        }
+
+        $this->view_counts = apply_filters('cuar/core/admin/content-list-table/view-counts', $this->view_counts, $this);
+        $this->total_count = $this->view_counts[$this->parameters['status']];
+    }
+
+    /**
+     * Get the query parameters
+     * @return array
+     */
+    protected function get_query_args()
+    {
+        $args = array(
+            'post_type'   => $this->post_type,
+            'post_status' => $this->parameters['status']
+        );
+
+        $args['meta_query'] = array('relation' => 'OR');
+        if ( !empty($this->parameters['visible-by']))
+        {
+            $args['meta_query'] = $this->po_addon->get_meta_query_post_owned_by($this->parameters['visible-by']);
+        }
+
+        if ( !empty($this->parameters['search-query']))
+        {
+            switch ($this->parameters['search-field'])
+            {
+                case 'title':
+                    $args['s'] = $this->parameters['search-query'];
+                    break;
+
+                case 'owner':
+                    $args['meta_query'][] = array(
+                        'key'     => CUAR_PostOwnerAddOn::$META_OWNER_SORTABLE_DISPLAYNAME,
+                        'value'   => $this->parameters['search-query'],
+                        'compare' => 'LIKE'
+                    );
+                    break;
+            }
+        }
+
+        $args['date_query'] = array();
+
+        $start_date = $this->parameters['start-date'];
+        if ($start_date != null)
+        {
+            $start_tokens = explode('/', $start_date);
+            if (count($start_tokens) != 3)
+            {
+                $start_date = null;
+            }
+            else
+            {
+                $args['date_query'][] =
+                    array(
+                        'after'     => array(
+                            'year'  => $start_tokens[2],
+                            'month' => $start_tokens[1],
+                            'day'   => $start_tokens[0],
+                        ),
+                        'inclusive' => true
+                    );
+            }
+        }
+
+        $end_date = $this->parameters['end-date'];
+        if ($end_date != null)
+        {
+            $end_tokens = explode('/', $end_date);
+            if (count($end_tokens) != 3)
+            {
+                $end_date = null;
+            }
+            else
+            {
+                $args['date_query'][] =
+                    array(
+                        'before'    => array(
+                            'year'  => $end_tokens[2],
+                            'month' => $end_tokens[1],
+                            'day'   => $end_tokens[0],
+                        ),
+                        'inclusive' => true,
+                    );
+            }
+        }
+
+        return $args;
+    }
+
+    /**
+     * Retrieve the view types
+     * @return array $views All the views available
+     */
+    public function get_views()
+    {
+        $current = $this->parameters['status'];
+
+        $views = array();
+
+        $views['all'] = $this->format_view_item(__('All', 'cuar'),
+            $this->view_counts['any'],
+            remove_query_arg(array('status', 'paged')),
+            $current === 'all' || $current == 'any');
+
+        $views['publish'] = $this->format_view_item(__('Published', 'cuar'),
+            $this->view_counts['publish'],
+            add_query_arg(array('status' => 'publish', 'paged' => false)),
+            $current === 'publish');
+
+        $views['draft'] = $this->format_view_item(__('Draft', 'cuar'),
+            $this->view_counts['draft'],
+            add_query_arg(array('status' => 'draft', 'paged' => false)),
+            $current === 'draft');
+
+        return apply_filters('cuar/core/admin/content-list-table/views', $views, $this);
+    }
+
+    /**
+     * Get the properly formatted view item (items shown above the table with post count)
+     *
+     * @param $label
+     * @param $count
+     * @param $link
+     * @param $is_current
+     *
+     * @return string
+     */
+    public function format_view_item($label, $count, $link, $is_current)
+    {
+        if ($count === null)
+        {
+            return sprintf('<a href="%1$s"%2$s>%3$s</a>',
+                $link, $is_current ? ' class="current"' : '', $label);
+        }
+        else
+        {
+            return sprintf('<a href="%1$s"%2$s>%3$s</a>&nbsp;<span class="count">(%4$s)</span>',
+                $link, $is_current ? ' class="current"' : '', $label, $count);
+        }
+    }
+
+    /*------- COLUMNS ------------------------------------------------------------------------------------------------*/
 
     /**
      * Define the columns that are going to be used in the table
@@ -63,7 +296,7 @@ class CUAR_PrivateContentTable extends WP_List_Table
             'date'   => __('Date', 'cuar'),
         );
 
-        return $columns;
+        return apply_filters('cuar/core/admin/content-list-table/columns', $columns, $this);
     }
 
     /**
@@ -76,43 +309,7 @@ class CUAR_PrivateContentTable extends WP_List_Table
         $sortable_columns = array(// 'title'    => array('title', false),     //true means it's already sorted
         );
 
-        return $sortable_columns;
-    }
-
-    /**
-     * @return array An associative array containing all the bulk actions: 'slugs'=>'Visible Titles'
-     */
-    public function get_bulk_actions()
-    {
-        $actions = array(
-            'delete' => __('Delete', 'cuar')
-        );
-
-        return $actions;
-    }
-
-    /**
-     *
-     */
-    public function process_bulk_action()
-    {
-        if ('delete' === $this->current_action())
-        {
-            $posts = isset($_POST['posts']) ? $_POST['posts'] : array();
-            if (empty($posts))
-            {
-                return;
-            }
-
-            foreach ($posts as $post_id)
-            {
-                if ( !current_user_can('delete_post', $post_id))
-                {
-                    wp_die(__('You are not allowed to delete this item.', 'cuar'));
-                }
-                wp_delete_post($post_id, true);
-            }
-        }
+        return apply_filters('cuar/core/admin/content-list-table/sortable-columns', $sortable_columns, $this);
     }
 
     public function column_cb($item)
@@ -122,7 +319,8 @@ class CUAR_PrivateContentTable extends WP_List_Table
 
     public function column_default($item, $column_name)
     {
-        return 'Column not implemented yet';
+        return apply_filters('cuar/core/admin/content-list-table/column-content', 'Not implemented yet', $item,
+            $column_name, $this);
     }
 
     public function column_id($item)
@@ -138,12 +336,58 @@ class CUAR_PrivateContentTable extends WP_List_Table
 
     public function column_title($item)
     {
-        $title = get_the_title($item->ID);
+        $row_actions = array();
 
-        return sprintf('<a href="%1$s" title="Edit %2$s">%3$s</a>',
-            admin_url('edit.php?post_type=' . $this->post_type . '&post_id=' . $item->ID),
-            esc_attr($title),
-            $title);
+        if (current_user_can($this->post_type_object->cap->edit_post))
+        {
+            $row_actions['edit'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                admin_url('post.php?post=' . $item->ID . '&action=edit&post_type=' . $this->post_type),
+                __('Edit', 'cuar'));
+        }
+
+        if (current_user_can($this->post_type_object->cap->delete_post))
+        {
+            $row_actions['delete'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                wp_nonce_url(add_query_arg(array('cuar-action' => 'delete', 'post_id' => $item->ID), $this->base_url),
+                    'cuar_content_row_nonce'),
+                __('Delete', 'cuar'));
+        }
+
+
+        if ($item->post_status == 'draft')
+        {
+            $row_actions['view'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                get_permalink($item->ID),
+                __('View', 'cuar'));
+        }
+        else
+        {
+            $row_actions['view'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                get_permalink($item->ID),
+                __('Preview', 'cuar'));
+        }
+
+        $row_actions = apply_filters('cuar/core/admin/content-list-table/row-actions', $row_actions, $item);
+
+        if (current_user_can($this->post_type_object->cap->edit_post))
+        {
+            $title = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                admin_url('post.php?post=' . $item->ID . '&action=edit&post_type=' . $this->post_type),
+                get_the_title($item->ID));
+        }
+        else
+        {
+            $title = get_the_title($item->ID);
+        }
+
+        if ($item->post_status == 'draft')
+        {
+            $title .= ' - <span class="post-state">' . __('Draft', 'cuar') . '</span>';
+        }
+
+        $value = $title . $this->row_actions($row_actions);
+
+        return $value;
     }
 
     public function column_author($item)
@@ -156,6 +400,57 @@ class CUAR_PrivateContentTable extends WP_List_Table
             $user->user_login);
     }
 
+    public function column_owner($item)
+    {
+        return $this->po_addon->get_post_owner_displayname($item->ID, true);
+    }
+
+    /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/
+
+    /**
+     * @return array An associative array containing all the bulk actions: 'slugs'=>'Label'
+     */
+    public function get_bulk_actions()
+    {
+        $actions = array(
+            'delete' => __('Delete', 'cuar')
+        );
+
+        return apply_filters('cuar/core/admin/content-list-table/bulk-actions', $actions, $this);
+    }
+
+    /**
+     * Execute the bulk action on all selected posts
+     */
+    public function process_bulk_action()
+    {
+        $action = $this->current_action();
+        $posts = isset($_POST['posts']) ? $_POST['posts'] : array();
+        if (empty($posts))
+        {
+            return;
+        }
+
+        foreach ($posts as $post_id)
+        {
+            switch ($action)
+            {
+                case 'delete':
+                    if ( !current_user_can('delete_post', $post_id))
+                    {
+                        wp_die(__('You are not allowed to delete this item.', 'cuar'));
+                    }
+                    wp_delete_post($post_id, true);
+                    break;
+
+                default:
+                    do_action('cuar/core/admin/content-list-table/do-bulk-action', $post_id, $action, $this);
+            }
+        }
+    }
+
+    /*------- OTHER FUNCTIONS ----------------------------------------------------------------------------------------*/
+
     /**
      * Prepare the table with different parameters, pagination, columns and table elements
      */
@@ -167,29 +462,12 @@ class CUAR_PrivateContentTable extends WP_List_Table
         $sortable = $this->get_sortable_columns();
         $this->_column_headers = array($columns, $hidden, $sortable);
 
-        // Retrieve filter values
-
-        // Count events
-        $args = array(
-            'post_type' => $this->post_type
-        );
-        $args['fields'] = 'ids';
-        $args['paged'] = 1;
-        $args['posts_per_page'] = -1;
-
-        $item_query = new WP_Query($args);
-        $total_items = $item_query->post_count;
-
-        // Number of events per screen
-        $items_per_page = 25;
-
-        // Current page Number
+        // Register the pagination
+        $total_items = $this->total_count;
+        $items_per_page = $this->get_items_per_page('private-content-list-page');
         $current_page = $this->get_pagenum();
-
-        // Number of pages in total
         $page_count = ceil($total_items / $items_per_page);
 
-        // Register the pagination
         $this->set_pagination_args(array(
             "total_items" => $total_items,
             "total_pages" => $page_count,
@@ -197,9 +475,11 @@ class CUAR_PrivateContentTable extends WP_List_Table
         ));
 
         // Fetch the items
-        $args['fields'] = 'all';
-        $args['paged'] = $current_page;
-        $args['posts_per_page'] = $items_per_page;
+        $args = $this->get_query_args();
+        $args = array_merge($args, array(
+            'paged'          => $current_page,
+            'posts_per_page' => $items_per_page
+        ));
 
         $this->items = get_posts($args);
     }

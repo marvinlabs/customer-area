@@ -138,7 +138,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
     private static $OPTION_RESTRICT_ADMIN_AREA_ACCESS = 'cuar_restrict_admin_area_access';
 
-    /*------- OTHER FUNCTIONS --------------------------------------------------------------*/
+    /*------- OTHER FUNCTIONS ----------------------------------------------------------------------------------------*/
 
     /**
      * Declare the configurable capabilities for Customer Area
@@ -220,17 +220,17 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $title_links = apply_filters('cuar/core/admin/content-list-page/title-links?post_type=' . $post_type,
             $title_links);
 
-        $listTable = apply_filters('cuar/core/admin/content-list-page/list-table-object?post_type=' . $post_type, null);
-        if ($listTable == null)
+        $list_table = apply_filters('cuar/core/admin/content-list-page/list-table-object?post_type=' . $post_type, null);
+        if ($list_table == null)
         {
-            $listTable = new CUAR_PrivateContentTable($this->plugin, array(
+            $list_table = new CUAR_PrivateContentTable($this->plugin, array(
                 'plural'   => $post_type_object->labels->name,
                 'singular' => $post_type_object->labels->singular_name,
                 'ajax'     => false
             ), $post_type);
         }
-        $listTable->process_bulk_action();
-        $listTable->prepare_items();
+        $list_table->process_bulk_action();
+        $list_table->prepare_items();
 
         /** @noinspection PhpIncludeInspection */
         include($this->plugin->get_template_file_path(
