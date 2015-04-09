@@ -20,6 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 class CUAR_AdminMenuHelper
 {
+    private static $MENU_SLUG = 'customer-area';
     private static $MENU_SEPARATOR = '<span class="cuar-menu-divider"></span>';
 
     /** @var CUAR_Plugin */
@@ -41,22 +42,13 @@ class CUAR_AdminMenuHelper
      */
     public function build_admin_menu()
     {
-
         // Add the top-level admin menu
-        $main_menu_slug = $this->add_main_menu_item();
+        $this->add_main_menu_item();
 
         $submenus = array(
-            // Add one menu item per private content type
             $this->get_private_types_menu_items(),
-
-            // Add one menu item per container type
-            apply_filters('cuar/core/admin/container-types-menu-pages', array()),
-
-            // Add one menu item per owner type
-            apply_filters('cuar/core/admin/owner-types-menu-pages', array()),
-
-            // Add one menu item per extra page
-            apply_filters('cuar/core/admin/owner-types-menu-pages', array()),
+            $this->get_users_menu_items(),
+            $this->get_tools_menu_items()
         );
 
         foreach ($submenus as $submenu_items)
@@ -76,7 +68,7 @@ class CUAR_AdminMenuHelper
                     $submenu_title = self::$MENU_SEPARATOR . $submenu_title;
                 }
 
-                add_submenu_page($main_menu_slug, $submenu_page_title, $submenu_title,
+                add_submenu_page(self::$MENU_SLUG, $submenu_page_title, $submenu_title,
                     $submenu_capability, $submenu_slug, $submenu_function);
             }
         }
@@ -88,17 +80,18 @@ class CUAR_AdminMenuHelper
      */
     private function add_main_menu_item()
     {
-        $page_title = __('WP Customer Area', 'cuar');
-        $menu_title = __('WP Customer Area', 'cuar');
-        $menu_slug = 'customer-area';
-        $capability = 'view-customer-area-menu';
-        $function = array($this->aa_addon, 'print_dashboard');
-        $icon = "";
-        $position = '2.1.cuar';
+        add_menu_page(__('WP Customer Area', 'cuar'),
+            __('Customer Area', 'cuar'),
+            'view-customer-area-menu',
+            self::$MENU_SLUG, null, '', '2.1.cuar');
 
-        add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon, $position);
-
-        return $menu_slug;
+        add_submenu_page(self::$MENU_SLUG,
+            __('About WP Customer Area', 'cuar'),
+            __('About', 'cuar'),
+            'view-customer-area-menu',
+            self::$MENU_SLUG,
+            array($this->aa_addon, 'print_dashboard')
+        );
     }
 
     /**
@@ -120,10 +113,12 @@ class CUAR_AdminMenuHelper
                     'title'      => $desc['label-plural'],
                     'slug'       => $type,
                     'function'   => array($this->aa_addon, 'print_content_list_page'),
-                    'capability' => 'administrator'
+                    'capability' => 'view-customer-area-menu'
                 );
             }
         }
+
+        $items = apply_filters('cuar/core/admin/submenu-items?group=private-types', $items);
 
         // Sort alphabetically
         usort($items, function ($a, $b)
@@ -131,39 +126,33 @@ class CUAR_AdminMenuHelper
             return strcmp($a['title'], $b['title']);
         });
 
-        return apply_filters('cuar/core/admin/submenu-items?group=private-types', $items);
+        return $items;
+    }
+
+    /**
+     * Get all submenu items corresponding to user management (groups, CRM, ...)
+     * @return array
+     */
+    private function get_users_menu_items()
+    {
+        $items = apply_filters('cuar/core/admin/submenu-items?group=users', array());
+
+        // Sort alphabetically
+        usort($items, function ($a, $b)
+        {
+            return strcmp($a['title'], $b['title']);
+        });
+
+        return $items;
     }
 
     /**
      * Get all submenu items corresponding to private content type listing
      * @return array
      */
-    private function get_owner_types_menu_items()
+    private function get_tools_menu_items()
     {
-        $items = array();
-
-        $groups = array(
-            'content'   => $this->plugin->get_content_types(),
-            'container' => $this->plugin->get_container_types()
-        );
-
-        foreach ($groups as $group => $private_types)
-        {
-            foreach ($private_types as $type => $desc)
-            {
-                $post_type = get_post_type_object($type);
-                if (current_user_can($post_type->cap->edit_post) || current_user_can($post_type->cap->read_post))
-                {
-                    $items[] = array(
-                        'page_title' => $desc['label-plural'],
-                        'title'      => $desc['label-plural'],
-                        'slug'       => $type,
-                        'function'   => array($this->aa_addon, 'print_' . $group . '_list_page'),
-                        'capability' => 0
-                    );
-                }
-            }
-        }
+        $items = apply_filters('cuar/core/admin/submenu-items?group=tools', array());
 
         // Sort alphabetically
         usort($items, function ($a, $b)
@@ -171,6 +160,6 @@ class CUAR_AdminMenuHelper
             return strcmp($a['title'], $b['title']);
         });
 
-        return apply_filters('cuar/core/admin/submenu-items?group=private-types', $items);
+        return $items;
     }
 }

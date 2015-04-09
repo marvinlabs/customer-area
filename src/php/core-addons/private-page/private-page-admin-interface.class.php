@@ -36,7 +36,7 @@ class CUAR_PrivatePageAdminInterface {
 		
 		if ( $this->private_page_addon->is_enabled() ) {
 			// Admin menu
-			add_action( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 11 );		
+			add_action( 'cuar/core/admin/content-types-menu-pages', array( &$this, 'add_menu_items' ), 11 );
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 
 			// File list page
@@ -84,35 +84,13 @@ jQuery(document).ready( function($) {
 	 * Add the menu item
 	 */
 	public function add_menu_items( $submenus ) {
-		$separator = '<span class="cuar-menu-divider"></span>';
-		
-		$my_submenus = array(
-				array(
-					'page_title'	=> __( 'Private Pages', 'cuar' ),
-					'title'			=> $separator . __( 'Private Pages', 'cuar' ),
-					'slug'			=> "edit.php?post_type=cuar_private_page",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pp_edit'
-				),
-				array(
-					'page_title'	=> __( 'New Private Page', 'cuar' ),
-					'title'			=> __( 'New Private Page', 'cuar' ),
-					'slug'			=> "post-new.php?post_type=cuar_private_page",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pp_edit'
-				),
-				array(
-					'page_title'	=> __( 'Private Page Categories', 'cuar' ),
-					'title'			=> __( 'Private Page Categories', 'cuar' ),
-					'slug'			=> "edit-tags.php?taxonomy=cuar_private_page_category",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pp_manage_categories'
-				)
-			); 
-	
-		foreach ( $my_submenus as $submenu ) {
-			$submenus[] = $submenu;
-		}
+        $submenus[] = array(
+            'page_title'	=> __( 'Private Pages', 'cuar' ),
+            'title'			=> __( 'Private Pages', 'cuar' ),
+            'slug'			=> "admin.php?page=cuar_list&post_type=cuar_private_page",
+            'function' 		=> null,
+            'capability'	=> 'cuar_pp_edit'
+        );
 	
 		return $submenus;
 	}

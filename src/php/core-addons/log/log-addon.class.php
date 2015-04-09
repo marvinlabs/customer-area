@@ -57,7 +57,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
             if (is_admin())
             {
                 // Menu
-                add_action('cuar/core/admin/main-menu-pages', array(&$this, 'add_menu_items'), 99);
+                add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 99);
                 add_action('cuar/core/admin/adminbar-menu-items', array(&$this, 'add_adminbar_menu_items'), 100);
 
                 // Log table handling
@@ -97,11 +97,9 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function add_menu_items($submenus)
         {
-            $separator = '<span class="cuar-menu-divider"></span>';
-
             $submenus[] = array(
                 'page_title' => __('WP Customer Area - Logs', 'cuar'),
-                'title'      => $separator . __('Logs', 'cuar'),
+                'title'      => __('Logs', 'cuar'),
                 'slug'       => self::$LOG_PAGE_SLUG,
                 'function'   => array(&$this, 'print_logs_page'),
                 'capability' => 'manage_options'
@@ -133,6 +131,13 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function print_logs_page()
         {
+            require_once(CUAR_INCLUDES_DIR . '/core-addons/log/log-table.class.php');
+            $logsTable = new CUAR_LogTable($this->plugin);
+
+            $logsTable->process_bulk_action();
+            $logsTable->prepare_items();
+
+            /** @noinspection PhpIncludeInspection */
             include($this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/log',
                 'logs-page.template.php',

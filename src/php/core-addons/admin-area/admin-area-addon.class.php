@@ -17,6 +17,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 require_once(CUAR_INCLUDES_DIR . '/core-classes/addon.class.php');
+require_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/helpers/adminbar-helper.class.php');
 require_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/helpers/admin-menu-helper.class.php');
 
 
@@ -30,6 +31,9 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     /** @var CUAR_AdminMenuHelper */
     private $admin_menu_helper;
 
+    /** @var CUAR_AdminBarHelper */
+    private $adminbar_helper;
+
     public function __construct()
     {
         parent::__construct('admin-area', '6.0.0');
@@ -42,8 +46,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
     public function run_addon($plugin)
     {
-        add_action('admin_bar_menu', array(&$this, 'build_adminbar_menu'), 32);
-        add_action('show_admin_bar', array(&$this, 'restrict_admin_bar'));
+        $this->adminbar_helper = new CUAR_AdminBarHelper($plugin, $this);
 
         if (is_admin())
         {
@@ -202,69 +205,43 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     }
 
     /**
-     * If necessary, hide the admin bar to some users
-     * @return bool true if the admin bar is visible
+     * Print a page that lists private content
      */
-    public function restrict_admin_bar()
+    public function print_content_list_page()
     {
-        if ( !is_user_logged_in()
-            || ($this->is_admin_area_access_restricted()
-                && !current_user_can('cuar_view_top_bar'))
-        )
-        {
-            return false;
-        }
+        $post_type = $_GET['page'];
+        $post_type_object = get_post_type_object($post_type);
 
-        return true;
+        $title_links = array();
+        $title_links[__('Add new', 'cuar')] = admin_url('post-new.php?post_type=' . $post_type);
+
+        // TODO If there is a friendly taxonomy, add a link to manage it
+
+        $title_links = apply_filters('cuar/core/admin/content-list-page/title-links?post_type=' . $post_type,
+            $title_links);
+
+        $listTable = apply_filters('cuar/core/admin/content-list-page/list-table-object?post_type=' . $post_type, null);
+        if ($listTable == null)
+        {
+            $listTable = new CUAR_PrivateContentTable($this->plugin, array(
+                'plural'   => $post_type_object->labels->name,
+                'singular' => $post_type_object->labels->singular_name,
+                'ajax'     => false
+            ), $post_type);
+        }
+        $listTable->process_bulk_action();
+        $listTable->prepare_items();
+
+        /** @noinspection PhpIncludeInspection */
+        include($this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/admin-area',
+            'content-list-page.template.php',
+            'templates'));
     }
 
     /**
-     * Build the admin bar menu
-     *
-     * @param WP_Admin_Bar $wp_admin_bar
+     * Print the dashboard/about page
      */
-    public function build_adminbar_menu($wp_admin_bar)
-    {
-        $wp_admin_bar->add_menu(array(
-            'id'    => 'customer-area',
-            'title' => __('WP Customer Area', 'cuar'),
-            'href'  => admin_url('admin.php?page=customer-area')
-        ));
-
-        $wp_admin_bar->add_menu(array(
-            'parent' => 'customer-area',
-            'id'     => 'customer-area-front-office',
-            'title'  => __('Your private area', 'cuar'),
-            'href'   => '#'
-        ));
-
-        $submenu_items = apply_filters('cuar/core/admin/adminbar-menu-items', array());
-        foreach ($submenu_items as $item)
-        {
-            $wp_admin_bar->add_menu($item);
-        }
-
-        if (current_user_can('manage_options'))
-        {
-            $wp_admin_bar->add_menu(array(
-                'parent' => 'customer-area',
-                'id'     => 'customer-area-settings',
-                'title'  => __('Settings', 'cuar'),
-                'href'   => admin_url('admin.php?page=cuar-settings')
-            ));
-        }
-
-        if (current_user_can('manage_options'))
-        {
-            $wp_admin_bar->add_menu(array(
-                'parent' => 'customer-area',
-                'id'     => 'customer-area-addons',
-                'title'  => __('Add-ons', 'cuar'),
-                'href'   => admin_url('admin.php?page=customer-area&tab=addons')
-            ));
-        }
-    }
-
     public function print_dashboard()
     {
         $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'blog';
