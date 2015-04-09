@@ -42,6 +42,9 @@ class CUAR_PrivateContentTable extends WP_List_Table
     /** @var object The post type object */
     public $post_type_object = null;
 
+    /** @var array The taxonomies linked to this post type */
+    public $associated_taxonomies = null;
+
     /** @var int Total number of posts */
     public $total_count = 0;
 
@@ -69,6 +72,7 @@ class CUAR_PrivateContentTable extends WP_List_Table
         $this->po_addon = $plugin->get_addon('post-owner');
         $this->post_type = $post_type;
         $this->post_type_object = get_post_type_object($post_type);
+        $this->associated_taxonomies = get_object_taxonomies($post_type, 'object');
         $this->base_url = admin_url('admin.php?page=' . $post_type);
 
         $this->parse_parameters();
@@ -81,6 +85,7 @@ class CUAR_PrivateContentTable extends WP_List_Table
     protected function parse_parameters()
     {
         $this->parameters['status'] = isset($_GET['status']) ? $_GET['status'] : 'any';
+        $this->parameters['author'] = isset($_GET['author']) ? $_GET['author'] : 0;
         $this->parameters['search-field'] = isset($_GET['search-field']) ? $_GET['search-field'] : 'title';
         $this->parameters['search-query'] = isset($_GET['search-query']) ? $_GET['search-query'] : '';
         $this->parameters['visible-by'] = isset($_GET['visible-by']) ? $_GET['visible-by'] : 0;
@@ -94,23 +99,13 @@ class CUAR_PrivateContentTable extends WP_List_Table
         }
 
         // If current user cannot list all posts, only show what belongs to him
-        if (!current_user_can($this->post_type_object->cap->read_private_posts))
+        if ( !current_user_can($this->post_type_object->cap->read_private_posts))
         {
             $this->parameters['visible-by'] = get_current_user_id();
         }
 
         $this->parameters = apply_filters('cuar/core/admin/content-list-table/search-parameters', $this->parameters,
             $this);
-    }
-
-    protected function is_search_active()
-    {
-        $is_active = !empty($this->parameters['search-query'])
-            || 0 != $this->parameters['visible-by']
-            || !empty($this->parameters['start-date'])
-            || !empty($this->parameters['end-date']);
-
-        return apply_filters('cuar/core/admin/content-list-table/is-search-active', $is_active, $this);
     }
 
     /**
@@ -159,6 +154,11 @@ class CUAR_PrivateContentTable extends WP_List_Table
             'post_type'   => $this->post_type,
             'post_status' => $this->parameters['status']
         );
+
+        if ( !empty($this->parameters['author']))
+        {
+            $args['author'] = $this->parameters['author'];
+        }
 
         $args['meta_query'] = array('relation' => 'OR');
         if ( !empty($this->parameters['visible-by']))
@@ -296,10 +296,18 @@ class CUAR_PrivateContentTable extends WP_List_Table
         $columns = array(
             'cb'     => '<input type="checkbox" />', //Render a checkbox instead of text
             'title'  => __('Title', 'cuar'),
-            'author' => __('Author', 'cuar'),
-            'owner'  => __('Owner', 'cuar'),
             'date'   => __('Date', 'cuar'),
+            'author' => __('Author', 'cuar'),
         );
+
+        if (!empty($this->associated_taxonomies))
+        {
+            foreach ($this->associated_taxonomies as $id => $tax) {
+                $columns[$id] = $tax->labels->name;
+            }
+        }
+
+        $columns['owner']  = __('Owner', 'cuar');
 
         return apply_filters('cuar/core/admin/content-list-table/columns', $columns, $this);
     }
@@ -324,6 +332,11 @@ class CUAR_PrivateContentTable extends WP_List_Table
 
     public function column_default($item, $column_name)
     {
+        if (!empty($this->associated_taxonomies) && isset($this->associated_taxonomies[$column_name]))
+        {
+            return $this->column_taxonomy($item, $column_name);
+        }
+
         return apply_filters('cuar/core/admin/content-list-table/column-content', 'Not implemented yet', $item,
             $column_name, $this);
     }
@@ -333,10 +346,66 @@ class CUAR_PrivateContentTable extends WP_List_Table
         return $item->ID;
     }
 
+    public function column_taxonomy($item, $taxonomy)
+    {
+        $terms = wp_get_post_terms($item->ID, $taxonomy);
+        $out = array();
+        foreach($terms as $t)
+        {
+            $out[] = $t->name;
+        }
+        return implode(', ', $out);
+    }
+
     public function column_date($item)
     {
-        return get_the_date(get_option('date'), $item->ID) . ' &dash; ' . get_the_time(get_option('time'),
-            $item->ID);
+        if ('0000-00-00 00:00:00' == $item->post_date)
+        {
+            $t_time = $h_time = __('Unpublished');
+            $time_diff = 0;
+        }
+        else
+        {
+            $t_time = get_the_time(__('Y/m/d g:i:s A'));
+            $m_time = $item->post_date;
+            $time = get_post_time('G', true, $item);
+
+            $time_diff = time() - $time;
+
+            if ($time_diff > 0 && $time_diff < DAY_IN_SECONDS)
+            {
+                $h_time = sprintf(__('%s ago'), human_time_diff($time));
+            }
+            else
+            {
+                $h_time = mysql2date(__('Y/m/d'), $m_time);
+            }
+        }
+
+        $out = '<abbr title="' . $t_time . '">' . apply_filters('post_date_column_time', $h_time, $item, 'date', 'list')
+            . '</abbr>';
+        $out .= '<br />';
+        if ('publish' == $item->post_status)
+        {
+            $out .= __('Published', 'cuar');
+        }
+        elseif ('future' == $item->post_status)
+        {
+            if ($time_diff > 0)
+            {
+                $out .= '<strong class="attention">' . __('Missed schedule', 'cuar') . '</strong>';
+            }
+            else
+            {
+                $out .= __('Scheduled', 'cuar');
+            }
+        }
+        else
+        {
+            $out .= __('Last Modified', 'cuar');
+        }
+
+        return $out;
     }
 
     public function column_title($item)
@@ -435,7 +504,8 @@ class CUAR_PrivateContentTable extends WP_List_Table
         {
             return;
         }
-        if (!is_array($posts)) {
+        if ( !is_array($posts))
+        {
             $posts = array($posts);
         }
 

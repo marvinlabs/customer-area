@@ -1,6 +1,6 @@
 <?php /** Template version: 1.0.0 */ ?>
 
-<div class="wrap cuar-content-list">
+<div class="wrap cuar-private-post-list-page">
     <h2><?php
         echo $post_type_object->labels->name;
         foreach ($title_links as $label => $url)
@@ -16,18 +16,23 @@
         <input type="hidden" name="referrer" value="<?php echo admin_url('admin.php?post_type=' . $post_type); ?>"/>
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>"/>
 
-        <div class="cuar-list-table-filter">
-            <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/before-filters'); ?>
-
-            <?php include($default_filter_template); ?>
-
-            <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/after-filters'); ?>
-        </div>
-
         <?php $list_table->views(); ?>
 
+        <div class="cuar-list-table-filter">
+            <a class="cuar-filter-toggle"><?php _e('Toggle advanced filters', 'cuar'); ?></a>
+
+            <div class="cuar-filter-panel">
+                <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/before-filters'); ?>
+
+                <?php include($default_filter_template); ?>
+
+                <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/after-filters'); ?>
+            </div>
+        </div>
+
         <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/before-table'); ?>
-        <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/before-table?post_type=' . $post_type); ?>
+        <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/before-table?post_type='
+            . $post_type); ?>
 
         <?php $list_table->display(); ?>
 
@@ -35,3 +40,16 @@
         <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/after-table'); ?>
     </form>
 </div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        var filterBox = $(".cuar-list-table-filter");
+        var filterToggle = filterBox.find('.cuar-filter-toggle');
+        var filterPanel = filterBox.find('.cuar-filter-panel');
+
+        filterToggle.click(function (e) {
+            filterPanel.slideToggle();
+            e.preventDefault();
+        });
+    });
+</script>

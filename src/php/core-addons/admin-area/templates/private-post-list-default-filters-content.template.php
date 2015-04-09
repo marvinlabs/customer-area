@@ -5,7 +5,7 @@
     $search_query = $list_table->get_parameter('search-query');
     $search_field = $list_table->get_parameter('search-field');
     ?>
-    <label for="search-field"><?php _e('Find', 'cuar'); ?> </label>
+    <label for="search-field"><?php _e('Search', 'cuar'); ?> </label>
     <input type="text" id="search-query" name="search-query" class="postform"
            value="<?php echo esc_attr($search_query); ?>"/>
 
@@ -16,10 +16,6 @@
         <option value="owner" <?php selected($search_field, 'owner'); ?>>
             <?php _e('Owner', 'cuar'); ?></option>
     </select>
-
-    <input type="submit" name="filter_action" id="post-query-submit" class="button cuar-filter-button"
-           value="<?php echo esc_attr(sprintf(__('Search %s', 'cuar'),
-               $post_type_object->labels->name)); ?>">
 </div>
 
 <div class="cuar-filter-row">
@@ -58,3 +54,7 @@
     <input type="text" id="end-date" name="end-date" class="postform"
            value="<?php echo esc_attr($end_date); ?>" placeholder="dd/mm/yyyy"/>
 </div>
+
+<input type="submit" name="filter_action" id="post-query-submit" class="button cuar-filter-button"
+       value="<?php echo esc_attr(sprintf(__('Search %s', 'cuar'),
+           $post_type_object->labels->name)); ?>">
