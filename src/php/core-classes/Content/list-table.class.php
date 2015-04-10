@@ -45,18 +45,23 @@ abstract class CUAR_ListTable extends WP_List_Table
     /** @var string Class to wrap the WP_Post objects (leave empty to use only WP_Post) */
     public $item_wrapper_class = '';
 
+    /** @var string The base URL for this table page */
+    public $base_url = '';
+
     /**
      * Constructor, we override the parent to pass our own arguments
      * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
      *
      * @param CUAR_Plugin $plugin
      * @param array       $args
+     * @param             $base_url
      * @param string      $item_wrapper_class Class to wrap the WP_Post objects (leave empty to use only WP_Post)
      */
-    public function __construct($plugin, $args, $item_wrapper_class = '')
+    public function __construct($plugin, $args, $base_url, $item_wrapper_class = '')
     {
         parent::__construct($args);
         $this->plugin = $plugin;
+        $this->base_url = $base_url;
         $this->item_wrapper_class = $item_wrapper_class;
     }
 
@@ -205,6 +210,128 @@ abstract class CUAR_ListTable extends WP_List_Table
     {
         return apply_filters('cuar/core/list-table/column-content', 'Not implemented yet', $item,
             $column_name, $this);
+    }
+
+    public function column_taxonomy($item, $taxonomy)
+    {
+        $terms = wp_get_post_terms($item->ID, $taxonomy);
+        $out = array();
+        foreach ($terms as $t)
+        {
+            $out[] = sprintf('<a href="%1$s" title="Show content classified under %2$s" class="cuar-taxonomy-term">%3$s</a>',
+                $this->base_url . '&' . $taxonomy . '=' . $t->slug,
+                esc_attr($t->name),
+                $t->name);
+        }
+
+        return empty($out) ? '-' : implode(', ', $out);
+    }
+
+    public function column_date($item)
+    {
+        if ('0000-00-00 00:00:00' == $item->post_date)
+        {
+            $t_time = $h_time = __('Unpublished');
+            $time_diff = 0;
+        }
+        else
+        {
+            $t_time = get_the_time(__('Y/m/d g:i:s A'));
+            $m_time = $item->post_date;
+            $time = get_post_time('G', true, $item);
+
+            $time_diff = time() - $time;
+
+            if ($time_diff > 0 && $time_diff < DAY_IN_SECONDS)
+            {
+                $h_time = sprintf(__('%s ago'), human_time_diff($time));
+            }
+            else
+            {
+                $h_time = mysql2date(__('Y/m/d'), $m_time);
+            }
+        }
+
+        $out = '<abbr title="' . $t_time . '">' . apply_filters('post_date_column_time', $h_time, $item, 'date', 'list')
+            . '</abbr>';
+        $out .= '<br />';
+        if ('publish' == $item->post_status)
+        {
+            $out .= __('Published', 'cuar');
+        }
+        elseif ('future' == $item->post_status)
+        {
+            if ($time_diff > 0)
+            {
+                $out .= '<strong class="attention">' . __('Missed schedule', 'cuar') . '</strong>';
+            }
+            else
+            {
+                $out .= __('Scheduled', 'cuar');
+            }
+        }
+        else
+        {
+            $out .= __('Last Modified', 'cuar');
+        }
+
+        return $out;
+    }
+
+    public function column_title($item)
+    {
+        $row_actions = array();
+
+        if (current_user_can($this->post_type_object->cap->edit_post))
+        {
+            $row_actions['edit'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                admin_url('post.php?post=' . $item->ID . '&action=edit&post_type=' . $this->post_type),
+                __('Edit', 'cuar'));
+        }
+
+        if (current_user_can($this->post_type_object->cap->delete_post))
+        {
+            $row_actions['delete'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                wp_nonce_url(add_query_arg(array('action' => 'cuar-delete', 'posts' => $item->ID), $this->base_url),
+                    'cuar_content_row_nonce'),
+                __('Delete', 'cuar'));
+        }
+
+        $row_actions['view'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+            get_permalink($item->ID),
+            $item->post_status != 'draft' ? __('View', 'cuar') : __('Preview', 'cuar'));
+
+        $row_actions = apply_filters('cuar/core/admin/content-list-table/row-actions', $row_actions, $item);
+
+        if (current_user_can($this->post_type_object->cap->edit_post))
+        {
+            $title = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                admin_url('post.php?post=' . $item->ID . '&action=edit&post_type=' . $this->post_type),
+                get_the_title($item->ID));
+        }
+        else
+        {
+            $title = get_the_title($item->ID);
+        }
+
+        if ($item->post_status == 'draft')
+        {
+            $title .= ' - <span class="post-state">' . __('Draft', 'cuar') . '</span>';
+        }
+
+        $value = $title . $this->row_actions($row_actions);
+
+        return $value;
+    }
+
+    public function column_author($item)
+    {
+        $user = get_userdata($item->post_author);
+
+        return sprintf('<a href="%1$s" title="Show content authored by %2$s" class="cuar-author">%3$s</a>',
+            $this->base_url . '&author=' . $user->ID,
+            esc_attr($user->display_name),
+            $user->user_login);
     }
 
     /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/

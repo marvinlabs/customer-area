@@ -19,16 +19,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 require_once(CUAR_INCLUDES_DIR . '/core-classes/Content/list-table.class.php');
 
 /**
- * Class CUAR_PrivateContentTable
+ * Class CUAR_PrivateContainerTable
  *
  * List private content on the admin side
  *
  * @link http://plugins.svn.wordpress.org/custom-list-table-example/tags/1.3/list-table-example.php
  */
-class CUAR_PrivateContentTable extends CUAR_ListTable
+class CUAR_PrivateContainerTable extends CUAR_ListTable
 {
-    /** @var CUAR_PostOwnerAddOn */
-    public $po_addon = null;
+    /** @var CUAR_ContainerOwnerAddOn */
+    public $co_addon = null;
 
     /** @var string The post type to be displayed by this table */
     public $post_type = null;
@@ -38,9 +38,6 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
 
     /** @var array The taxonomies linked to this post type */
     public $associated_taxonomies = null;
-
-    /** @var string The base URL for this table page */
-    public $base_url = '';
 
     /**
      * Constructor, we override the parent to pass our own arguments
@@ -53,8 +50,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
      */
     public function __construct($plugin, $args, $post_type_object, $associated_taxonomies)
     {
-        parent::__construct($plugin, $args, admin_url('admin.php?page=wpca-list,content,' . $post_type_object->name));
-        $this->po_addon = $plugin->get_addon('post-owner');
+        parent::__construct($plugin, $args, admin_url('admin.php?page=wpca-list,container,' . $post_type_object->name));
+        $this->co_addon = $plugin->get_addon('container-owner');
         $this->post_type = $post_type_object->name;
         $this->post_type_object = $post_type_object;
         $this->associated_taxonomies = $associated_taxonomies;
@@ -95,7 +92,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             $this->parameters[$slug] = isset($form_data[$slug]) ? $form_data[$slug] : '';
         }
 
-        $this->parameters = apply_filters('cuar/core/admin/content-list-table/search-parameters?post_type='
+        $this->parameters = apply_filters('cuar/core/admin/container-list-table/search-parameters?post_type='
             . $this->post_type, $this->parameters, $this);
     }
 
@@ -118,7 +115,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
         $args['meta_query'] = array('relation' => 'OR');
         if ( !empty($this->parameters['visible-by']))
         {
-            $args['meta_query'] = $this->po_addon->get_meta_query_post_owned_by($this->parameters['visible-by']);
+            $args['meta_query'] = $this->co_addon->get_meta_query_containers_owned_by($this->parameters['visible-by']);
         }
 
         if ( !empty($this->parameters['search-query']))
@@ -199,7 +196,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             }
         }
 
-        return apply_filters('cuar/core/admin/content-list-table/query-args?post_type=' . $this->post_type,
+        return apply_filters('cuar/core/admin/container-list-table/query-args?post_type=' . $this->post_type,
             $args, $this);
     }
 
@@ -207,7 +204,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
 
     protected function get_view_statuses()
     {
-        return apply_filters('cuar/core/admin/content-list-table/view_statuses?post_type=' . $this->post_type,
+        return apply_filters('cuar/core/admin/container-list-table/view_statuses?post_type=' . $this->post_type,
             array_merge(parent::get_view_statuses(), array(
                 'publish' => __('Published', 'cuar'),
                 'draft'   => __('Draft', 'cuar')
@@ -220,7 +217,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
      */
     public function get_views()
     {
-        return apply_filters('cuar/core/admin/content-list-table/views?post_type=' . $this->post_type,
+        return apply_filters('cuar/core/admin/container-list-table/views?post_type=' . $this->post_type,
             parent::get_views(), $this);
     }
 
@@ -245,10 +242,9 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             }
         }
 
-        $columns['owner'] = __('Owner', 'cuar');
         $columns['date'] = __('Date', 'cuar');
 
-        return apply_filters('cuar/core/admin/content-list-table/columns?post_type=' . $this->post_type,
+        return apply_filters('cuar/core/admin/container-list-table/columns?post_type=' . $this->post_type,
             $columns, $this);
     }
 
@@ -259,13 +255,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             return $this->column_taxonomy($item, $column_name);
         }
 
-        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+        return apply_filters('cuar/core/admin/container-list-table/column-content?post_type=' . $this->post_type,
             'Not implemented yet', $item, $column_name, $this);
-    }
-
-    public function column_owner($item)
-    {
-        return $this->po_addon->get_post_owner_displayname($item->ID, true);
     }
 
     /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/
@@ -279,7 +270,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             'cuar-delete' => __('Delete', 'cuar')
         );
 
-        return apply_filters('cuar/core/admin/content-list-table/bulk-actions?post_type=' . $this->post_type,
+        return apply_filters('cuar/core/admin/container-list-table/bulk-actions?post_type=' . $this->post_type,
             $actions, $this);
     }
 
@@ -302,7 +293,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
                 break;
         }
 
-        do_action('cuar/core/admin/content-list-table/do-bulk-action?post_type=' . $this->post_type,
+        do_action('cuar/core/admin/container-list-table/do-bulk-action?post_type=' . $this->post_type,
             $post_id, $action, $this);
     }
 }

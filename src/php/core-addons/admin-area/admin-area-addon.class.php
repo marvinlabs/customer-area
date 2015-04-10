@@ -18,6 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once(CUAR_INCLUDES_DIR . '/core-classes/addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/private-content-table.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/private-container-table.class.php');
 require_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/helpers/adminbar-helper.class.php');
 require_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/helpers/admin-menu-helper.class.php');
 
@@ -260,7 +261,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                     $title_links);
                 $default_list_table_class = apply_filters(
                     'cuar/core/admin/container-list-page/list-table-class?post_type=' . $post_type,
-                    'CUAR_PrivateContentTable');
+                    'CUAR_PrivateContainerTable');
                 break;
 
             default:
@@ -278,9 +279,9 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
         $default_filter_template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/admin-area',
-            'private-post-list-default-filters-' . $private_type_group . '.template.php',
+            'private-post-list-filters-' . $private_type_group . '.template.php',
             'templates',
-            'private-post-list-default-filters.template.php');
+            'private-post-list-filters.template.php');
 
         /** @noinspection PhpIncludeInspection */
         include($this->plugin->get_template_file_path(

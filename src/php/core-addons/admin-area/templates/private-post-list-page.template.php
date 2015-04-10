@@ -21,7 +21,7 @@
         <div class="cuar-list-table-filter">
             <a class="cuar-filter-toggle"><?php _e('Toggle advanced filters', 'cuar'); ?></a>
 
-            <div class="cuar-filter-panel">
+            <div class="cuar-filter-panel" style="display: none;">
                 <?php do_action('cuar/core/admin/' . $private_type_group . '-list-page/before-filters'); ?>
 
                 <?php include($default_filter_template); ?>
