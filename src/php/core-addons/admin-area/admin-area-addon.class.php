@@ -59,6 +59,9 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             add_action('admin_init', array(&$this, 'restrict_admin_access'), 1);
             add_action('admin_footer', array(&$this, 'highlight_menu_item'));
 
+            // Block the list pages we already handle
+            add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
+
             // Settings
             add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20,
                 2);
@@ -207,6 +210,31 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         }
     }
 
+    /**
+     * Protect the default edition and listing pages
+     */
+    public function block_default_admin_pages()
+    {
+        if (isset($_GET["post_type"]) && !isset($_GET['post']))
+        {
+            $post_type = $_GET["post_type"];
+            $private_types = $this->plugin->get_content_post_types();
+            if (in_array($post_type, $private_types))
+            {
+                wp_redirect(admin_url("admin.php?page=wpca-list,content," . $post_type));
+            }
+
+            $private_types = $this->plugin->get_container_post_types();
+            if (in_array($post_type, $private_types))
+            {
+                wp_redirect(admin_url("admin.php?page=wpca-list,container," . $post_type));
+            }
+        }
+    }
+
+    /**
+     * The function that handles printing an admin page
+     */
     public function print_admin_page()
     {
         $page = isset($_GET['page']) ? $_GET['page'] : 'wpca-dashboard';

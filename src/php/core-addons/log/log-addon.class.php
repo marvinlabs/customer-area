@@ -87,11 +87,25 @@ if ( !class_exists('CUAR_LogAddOn')) :
             // File downloaded
             add_action('cuar/private-content/files/on-download', array(&$this, 'log_file_downloaded'), 10, 3);
             add_action('cuar/private-content/files/on-view', array(&$this, 'log_file_downloaded'), 10, 3);
+
+            add_action("load-post-new.php", array(&$this, 'block_default_admin_pages'));
+            add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
         }
 
         /*------- ADMIN PAGE -----------------------------------------------------------------------------------------*/
 
         private static $LOG_PAGE_SLUG = "wpca-logs";
+
+        /**
+         * Protect the default edition and listing pages
+         */
+        public function block_default_admin_pages()
+        {
+            if (isset($_GET["post_type"]) && $_GET["post_type"] == "cuar_log_event")
+            {
+                wp_redirect(admin_url("admin.php?page=" . self::$LOG_PAGE_SLUG));
+            }
+        }
 
         /**
          * Add the menu item
