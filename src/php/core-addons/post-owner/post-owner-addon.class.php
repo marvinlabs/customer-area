@@ -45,10 +45,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             if (is_admin())
             {
                 add_action('cuar/core/on-plugin-update', array(&$this, 'plugin_version_upgrade'), 10, 2);
-
                 add_action('cuar/core/addons/after-init', array(&$this, 'customize_post_edit_pages'));
-                add_action('cuar/core/addons/after-init', array(&$this, 'customize_post_list_pages'));
-
                 add_action('admin_enqueue_scripts', array(&$this, 'enqueue_scripts'));
             }
             else
@@ -473,71 +470,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
         /** @var array $owner_types */
         private $owner_types = null;
-
-        /*------- CUSTOMISATION OF THE LISTING OF POSTS -----------------------------------------------------------------*/
-
-        public function customize_post_list_pages()
-        {
-            $post_types = $this->plugin->get_content_post_types();
-            foreach ($post_types as $type)
-            {
-                add_filter("manage_edit-{$type}_columns", array(&$this, 'owner_column_register'));
-                add_action("manage_{$type}_posts_custom_column", array(&$this, 'owner_column_display'), 10, 2);
-                add_filter("manage_edit-{$type}_sortable_columns", array(&$this, 'owner_column_register_sortable'));
-            }
-
-            add_filter('request', array(&$this, 'owner_column_orderby'));
-        }
-
-        /**
-         * Register the owner column
-         */
-        public function owner_column_register($columns)
-        {
-            $columns['cuar_owner'] = __('Owner', 'cuar');
-
-            return $columns;
-        }
-
-        /**
-         * Display the column content
-         */
-        public function owner_column_display($column_name, $post_id)
-        {
-            if ('cuar_owner' != $column_name)
-            {
-                return;
-            }
-
-            $txt = apply_filters('cuar/core/ownership/owner-column-text', null, $post_id);
-            echo $txt != null ? $txt : $this->get_post_owner_displayname($post_id, true);
-        }
-
-        /**
-         * Register the column as sortable
-         */
-        public function owner_column_register_sortable($columns)
-        {
-            $columns['cuar_owner'] = 'cuar_owner';
-
-            return $columns;
-        }
-
-        /**
-         * Handle sorting of data
-         */
-        public function owner_column_orderby($vars)
-        {
-            if (isset($vars['orderby']) && 'cuar_owner' == $vars['orderby'])
-            {
-                $vars = array_merge($vars, array(
-                    'meta_key' => self::$META_OWNER_SORTABLE_DISPLAYNAME,
-                    'orderby'  => 'meta_value'
-                ));
-            }
-
-            return $vars;
-        }
 
         /*------- CUSTOMISATION OF THE EDIT PAGE FOR A POST WITH OWNER INFO ---------------------------------------------*/
 

@@ -210,7 +210,6 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
     {
         $columns = array_merge(parent::get_columns(), array(
             'title'  => __('Title', 'cuar'),
-            'date'   => __('Date', 'cuar'),
             'author' => __('Author', 'cuar'),
         ));
 
@@ -223,6 +222,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
         }
 
         $columns['owner'] = __('Owner', 'cuar');
+        $columns['date'] = __('Date', 'cuar');
 
         return apply_filters('cuar/core/admin/content-list-table/columns?post_type=' . $this->post_type,
             $columns, $this);
@@ -321,19 +321,9 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
                 __('Delete', 'cuar'));
         }
 
-
-        if ($item->post_status == 'draft')
-        {
-            $row_actions['view'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
-                get_permalink($item->ID),
-                __('View', 'cuar'));
-        }
-        else
-        {
-            $row_actions['view'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
-                get_permalink($item->ID),
-                __('Preview', 'cuar'));
-        }
+        $row_actions['view'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+            get_permalink($item->ID),
+            $item->post_status != 'draft' ? __('View', 'cuar') : __('Preview', 'cuar'));
 
         $row_actions = apply_filters('cuar/core/admin/content-list-table/row-actions', $row_actions, $item);
 
