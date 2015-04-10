@@ -85,8 +85,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             $this->parameters['visible-by'] = get_current_user_id();
         }
 
-        $this->parameters = apply_filters('cuar/core/admin/content-list-table/search-parameters', $this->parameters,
-            $this);
+        $this->parameters = apply_filters('cuar/core/admin/content-list-table/search-parameters?post_type='
+            . $this->post_type, $this->parameters, $this);
     }
 
     /**
@@ -175,17 +175,19 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             }
         }
 
-        return $args;
+        return apply_filters('cuar/core/admin/content-list-table/query-args?post_type=' . $this->post_type,
+            $args, $this);
     }
 
     /*------- VIEWS --------------------------------------------------------------------------------------------------*/
 
     protected function get_view_statuses()
     {
-        return array_merge(parent::get_view_statuses(), array(
-            'publish' => __('Published', 'cuar'),
-            'draft'   => __('Draft', 'cuar')
-        ));
+        return apply_filters('cuar/core/admin/content-list-table/view_statuses?post_type=' . $this->post_type,
+            array_merge(parent::get_view_statuses(), array(
+                'publish' => __('Published', 'cuar'),
+                'draft'   => __('Draft', 'cuar')
+            )), $this);
     }
 
     /**
@@ -194,7 +196,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
      */
     public function get_views()
     {
-        return apply_filters('cuar/core/admin/content-list-table/views', parent::get_views(), $this);
+        return apply_filters('cuar/core/admin/content-list-table/views?post_type=' . $this->post_type,
+            parent::get_views(), $this);
     }
 
     /*------- COLUMNS ------------------------------------------------------------------------------------------------*/
@@ -221,7 +224,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
 
         $columns['owner'] = __('Owner', 'cuar');
 
-        return apply_filters('cuar/core/admin/content-list-table/columns', $columns, $this);
+        return apply_filters('cuar/core/admin/content-list-table/columns?post_type=' . $this->post_type,
+            $columns, $this);
     }
 
     public function column_default($item, $column_name)
@@ -231,8 +235,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             return $this->column_taxonomy($item, $column_name);
         }
 
-        return apply_filters('cuar/core/admin/content-list-table/column-content', 'Not implemented yet', $item,
-            $column_name, $this);
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            'Not implemented yet', $item, $column_name, $this);
     }
 
     public function column_taxonomy($item, $taxonomy)
@@ -380,7 +384,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
             'cuar-delete' => __('Delete', 'cuar')
         );
 
-        return apply_filters('cuar/core/admin/content-list-table/bulk-actions', $actions, $this);
+        return apply_filters('cuar/core/admin/content-list-table/bulk-actions?post_type=' . $this->post_type,
+            $actions, $this);
     }
 
     /**
@@ -400,9 +405,9 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
                 }
                 wp_delete_post($post_id, true);
                 break;
-
-            default:
-                do_action('cuar/core/admin/content-list-table/do-bulk-action', $post_id, $action, $this);
         }
+
+        do_action('cuar/core/admin/content-list-table/do-bulk-action?post_type=' . $this->post_type,
+            $post_id, $action, $this);
     }
 }
