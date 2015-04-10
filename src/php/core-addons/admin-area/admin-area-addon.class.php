@@ -239,6 +239,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     protected function print_private_post_list_page($post_type, $private_type_group)
     {
         $post_type_object = get_post_type_object($post_type);
+        $associated_taxonomies = get_object_taxonomies($post_type, 'object');
 
         $title_links = array();
         $title_links = $this->add_new_post_link($post_type_object, $post_type, $title_links);
@@ -249,17 +250,17 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             case 'content':
                 $title_links = apply_filters('cuar/core/admin/content-list-page/title-links?post_type=' . $post_type,
                     $title_links);
-                $list_table = apply_filters('cuar/core/admin/content-list-page/list-table-object?post_type='
-                    . $post_type, null);
-                $default_list_table_class = 'CUAR_PrivateContentTable';
+                $default_list_table_class = apply_filters(
+                    'cuar/core/admin/content-list-page/list-table-class?post_type=' . $post_type,
+                    'CUAR_PrivateContentTable');
                 break;
 
             case 'container':
                 $title_links = apply_filters('cuar/core/admin/container-list-page/title-links?post_type=' . $post_type,
                     $title_links);
-                $list_table = apply_filters('cuar/core/admin/container-list-page/list-table-object?post_type='
-                    . $post_type, null);
-                $default_list_table_class = 'CUAR_PrivateContentTable';
+                $default_list_table_class = apply_filters(
+                    'cuar/core/admin/container-list-page/list-table-class?post_type=' . $post_type,
+                    'CUAR_PrivateContentTable');
                 break;
 
             default:
@@ -267,14 +268,11 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                 exit;
         }
 
-        if ($list_table == null)
-        {
-            $list_table = new $default_list_table_class($this->plugin, array(
-                'plural'   => $post_type_object->labels->name,
-                'singular' => $post_type_object->labels->singular_name,
-                'ajax'     => false
-            ), $post_type);
-        }
+        $list_table = new $default_list_table_class($this->plugin, array(
+            'plural'   => $post_type_object->labels->name,
+            'singular' => $post_type_object->labels->singular_name,
+            'ajax'     => false
+        ), $post_type_object, $associated_taxonomies);
 
         $list_table->initialize();
 
@@ -409,7 +407,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $container_types = $this->plugin->get_container_post_types();
 
         // New post & post edit pages
-        if (!$found && isset($post))
+        if ( !$found && isset($post))
         {
             $post_type = get_post_type($post);
 
@@ -438,7 +436,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         }
 
         // Taxonomy pages
-        if (!$found && isset($_REQUEST['taxonomy']))
+        if ( !$found && isset($_REQUEST['taxonomy']))
         {
             $tax = $_REQUEST['taxonomy'];
 

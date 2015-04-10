@@ -48,16 +48,17 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
      *
      * @param CUAR_Plugin $plugin
      * @param array       $args
-     * @param string      $post_type
+     * @param object      $post_type_object
+     * @param array       $associated_taxonomies
      */
-    public function __construct($plugin, $args, $post_type)
+    public function __construct($plugin, $args, $post_type_object, $associated_taxonomies)
     {
         parent::__construct($plugin, $args);
         $this->po_addon = $plugin->get_addon('post-owner');
-        $this->post_type = $post_type;
-        $this->post_type_object = get_post_type_object($post_type);
-        $this->associated_taxonomies = get_object_taxonomies($post_type, 'object');
-        $this->base_url = admin_url('admin.php?page=' . $post_type);
+        $this->post_type = $post_type_object->name;
+        $this->post_type_object = $post_type_object;
+        $this->associated_taxonomies = $associated_taxonomies;
+        $this->base_url = admin_url('admin.php?page=wpca-list,content,' . $this->post_type);
     }
 
     /**
@@ -65,13 +66,17 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
      */
     protected function parse_parameters()
     {
-        $this->parameters['status'] = isset($_GET['status']) ? $_GET['status'] : 'any';
-        $this->parameters['author'] = isset($_GET['author']) ? $_GET['author'] : 0;
-        $this->parameters['search-field'] = isset($_GET['search-field']) ? $_GET['search-field'] : 'title';
-        $this->parameters['search-query'] = isset($_GET['search-query']) ? $_GET['search-query'] : '';
-        $this->parameters['visible-by'] = isset($_GET['visible-by']) ? $_GET['visible-by'] : 0;
-        $this->parameters['start-date'] = isset($_GET['start-date']) ? sanitize_text_field($_GET['start-date']) : null;
-        $this->parameters['end-date'] = isset($_GET['end-date']) ? sanitize_text_field($_GET['end-date']) : null;
+        $form_data = $_GET;
+
+        $this->parameters['status'] = isset($form_data['status']) ? $form_data['status'] : 'any';
+        $this->parameters['author'] = isset($form_data['author']) ? $form_data['author'] : 0;
+        $this->parameters['search-field'] = isset($form_data['search-field']) ? $form_data['search-field'] : 'title';
+        $this->parameters['search-query'] = isset($form_data['search-query']) ? $form_data['search-query'] : '';
+        $this->parameters['visible-by'] = isset($form_data['visible-by']) ? $form_data['visible-by'] : 0;
+        $this->parameters['start-date'] = isset($form_data['start-date'])
+            ? sanitize_text_field($form_data['start-date']) : null;
+        $this->parameters['end-date'] = isset($form_data['end-date']) ? sanitize_text_field($form_data['end-date'])
+            : null;
 
         // These criterias are not compatible
         if ( !empty($this->parameters['search-query']) && $this->parameters['search-field'] == 'owner')
@@ -83,6 +88,12 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
         if ( !current_user_can($this->post_type_object->cap->read_private_posts))
         {
             $this->parameters['visible-by'] = get_current_user_id();
+        }
+
+        // Taxonomies
+        foreach ($this->associated_taxonomies as $slug => $tax)
+        {
+            $this->parameters[$slug] = isset($form_data[$slug]) ? $form_data[$slug] : '';
         }
 
         $this->parameters = apply_filters('cuar/core/admin/content-list-table/search-parameters?post_type='
@@ -172,6 +183,20 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
                         ),
                         'inclusive' => true,
                     );
+            }
+        }
+
+        // Taxonomies
+        $args['tax_query'] = array();
+        foreach ($this->associated_taxonomies as $slug => $tax)
+        {
+            if ( !empty($this->parameters[$slug]))
+            {
+                $args['tax_query'][] = array(
+                    'taxonomy' => $slug,
+                    'field'    => 'slug',
+                    'terms'    => $this->parameters[$slug],
+                );
             }
         }
 
