@@ -34,7 +34,8 @@ class CUAR_AdminBarHelper
         $this->plugin = $plugin;
         $this->aa_addon = $aa_addon;
 
-        add_action('admin_bar_menu', array(&$this, 'build_adminbar_menu'), 32);
+        // TODO Enable it when it works with new admin structure
+        // add_action('admin_bar_menu', array(&$this, 'build_adminbar_menu'), 32);
         add_action('show_admin_bar', array(&$this, 'restrict_admin_bar'));
     }
 

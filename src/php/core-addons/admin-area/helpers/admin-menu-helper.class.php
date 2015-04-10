@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 class CUAR_AdminMenuHelper
 {
-    private static $MENU_SLUG = 'customer-area';
+    private static $MENU_SLUG = 'wpca';
     private static $MENU_SEPARATOR = '<span class="cuar-menu-divider"></span>';
 
     /** @var CUAR_Plugin */
@@ -42,6 +42,9 @@ class CUAR_AdminMenuHelper
      */
     public function build_admin_menu()
     {
+        global $submenu;
+        $admin_menu = &$submenu;
+
         // Add the top-level admin menu
         $this->add_main_menu_item();
 
@@ -59,8 +62,18 @@ class CUAR_AdminMenuHelper
                 $submenu_page_title = $item['page_title'];
                 $submenu_title = $item['title'];
                 $submenu_slug = $item['slug'];
-                $submenu_function = $item['function'];
                 $submenu_capability = $item['capability'];
+
+                if (strstr($submenu_slug, '.php') === false)
+                {
+                    $submenu_function = isset($item['function'])
+                        ? $item['function']
+                        : array($this->aa_addon, 'print_admin_page');
+                }
+                else
+                {
+                    $submenu_function = null;
+                }
 
                 if ( !$separator_added)
                 {
@@ -90,7 +103,7 @@ class CUAR_AdminMenuHelper
             __('About', 'cuar'),
             'view-customer-area-menu',
             self::$MENU_SLUG,
-            array($this->aa_addon, 'print_dashboard')
+            array($this->aa_addon, 'print_admin_page')
         );
     }
 
@@ -117,8 +130,7 @@ class CUAR_AdminMenuHelper
                     $items[] = array(
                         'page_title' => $desc['label-plural'],
                         'title'      => $desc['label-plural'],
-                        'slug'       => $type,
-                        'function'   => array($this->aa_addon, 'print_' . $t . '_list_page'),
+                        'slug'       => 'wpca-list,' . $t . ',' . $type,
                         'capability' => 'view-customer-area-menu'
                     );
                 }

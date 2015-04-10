@@ -38,6 +38,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			if (is_admin ()) {
 				add_action ( 'admin_menu', array( &$this, 'add_settings_menu_item' ), 100 );
 				add_action ( 'admin_init', array( &$this, 'page_init' ) );
+                add_action('cuar/core/admin/print-admin-page?page=settings', array(&$this, 'print_settings_page'), 99);
 				
 				// Links under the plugin name
 				$plugin_file = 'customer-area/customer-area.php';
@@ -88,7 +89,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 							'parent'=> 'customer-area-settings',
 							'id' 	=> 'customer-area-admin-settings-' . $tab_id,
 							'title' => $tab_label,
-							'href' 	=> admin_url( 'admin.php?page=cuar-settings&cuar_tab=' . $tab_id )
+							'href' 	=> admin_url( 'admin.php?page=' . self::$OPTIONS_PAGE_SLUG . '&tab=' . $tab_id )
 						);
 				}
 			}
@@ -179,9 +180,9 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$this->tabs = apply_filters ( 'cuar/core/settings/settings-tabs', array () );
 			
 			// Get current tab from GET or POST params or default to first in list
-			$this->current_tab =  isset( $_GET ['cuar_tab'] ) ? $_GET ['cuar_tab'] : '';
+			$this->current_tab =  isset( $_GET ['tab'] ) ? $_GET ['tab'] : '';
 			if (!  isset( $this->tabs [$this->current_tab] )) {
-				$this->current_tab =  isset( $_POST ['cuar_tab'] ) ? $_POST ['cuar_tab'] : '';
+				$this->current_tab =  isset( $_POST ['tab'] ) ? $_POST ['tab'] : '';
 			}
 			if (!  isset( $this->tabs [$this->current_tab] )) {
 				reset ( $this->tabs );
@@ -1136,7 +1137,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			do_action ( 'cuar/core/settings/on-options-loaded', $this->options );
 		}
-		public static $OPTIONS_PAGE_SLUG = 'cuar-settings';
+		public static $OPTIONS_PAGE_SLUG = 'wpca-settings';
 		public static $OPTIONS_GROUP = 'cuar_options';
 		
 		// Core options

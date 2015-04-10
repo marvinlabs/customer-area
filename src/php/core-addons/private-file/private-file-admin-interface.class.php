@@ -35,10 +35,6 @@ class CUAR_PrivateFileAdminInterface {
 		add_filter( 'cuar/core/settings/validate-settings?tab=cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
 		
 		if ( $this->private_file_addon->is_enabled() ) {
-			// Admin menu
-			add_action( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 10 );
-			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
-			
 			// File edit page
 			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
 			add_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ), 10, 4 );				
@@ -50,78 +46,7 @@ class CUAR_PrivateFileAdminInterface {
 			add_action( 'restrict_manage_posts', array( &$this, 'restrict_manage_posts' ) );
 		}		
 	}
-			
-	/**
-	 * Highlight the proper menu item in the customer area
-	 */
-	public function highlight_menu_item() {
-		global $post;
-		
-		// For posts
-		if ( isset( $_REQUEST['taxonomy'] ) && $_REQUEST['taxonomy']=='cuar_private_file_category' ) {		
-			$highlight_top 	= '#toplevel_page_customer-area';
-			$unhighligh_top = '#menu-posts';
-		} else if ( isset( $post ) && get_post_type( $post )=='cuar_private_file' ) {		
-			$highlight_top 	= '#toplevel_page_customer-area';
-			$unhighligh_top = '#menu-posts';
-		} else {
-			$highlight_top 	= null;
-			$unhighligh_top = null;
-		}
-		
-		if ( $highlight_top && $unhighligh_top ) {
-?>
-<script type="text/javascript">
-jQuery(document).ready( function($) {
-	$('<?php echo $unhighligh_top; ?>')
-		.removeClass('wp-has-current-submenu')
-		.addClass('wp-not-current-submenu');
-	$('<?php echo $highlight_top; ?>')
-		.removeClass('wp-not-current-submenu')
-		.addClass('wp-has-current-submenu current');
-});     
-</script>
-<?php
-		}
-	}
 
-	/**
-	 * Add the menu item
-	 */
-	public function add_menu_items( $submenus ) {
-		$separator = '<span class="cuar-menu-divider"></span>';
-				
-		$my_submenus = array(
-				array(
-					'page_title'	=> __( 'Private Files', 'cuar' ),
-					'title'			=> $separator . __( 'Private Files', 'cuar' ),
-					'slug'			=> "edit.php?post_type=cuar_private_file",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pf_edit'
-				),
-				array(
-					'page_title'	=> __( 'New Private File', 'cuar' ),
-					'title'			=> __( 'New Private File', 'cuar' ),
-					'slug'			=> "post-new.php?post_type=cuar_private_file",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pf_edit'
-				),
-				array(
-					'page_title'	=> __( 'Private File Categories', 'cuar' ),
-					'title'			=> __( 'Private File Categories', 'cuar' ),
-					'slug'			=> "edit-tags.php?taxonomy=cuar_private_file_category",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pf_manage_categories'
-				)
-			); 
-	
-		foreach ( $my_submenus as $submenu ) {
-			$submenus[] = $submenu;
-		}
-	
-		return $submenus;
-	}
-	
 	/*------- CUSTOMISATION OF THE LISTING OF POSTS -----------------------------------------------------------------*/
 	
 	public function customize_post_list_pages() {

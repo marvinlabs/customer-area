@@ -40,6 +40,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 		if ( is_admin() ) {
 			add_action( 'cuar/core/admin/submenu-items?group=tools', array( &$this, 'add_menu_items' ) );
 			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 10000 );
+            add_action('cuar/core/admin/print-admin-page?page=status', array(&$this, 'print_status_page'), 99);
 			add_action( 'admin_init', array( &$this, 'handle_core_section_actions' ), 500 );
 		} 
 	}
@@ -51,8 +52,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 		$submenus[] = array(
 				'page_title'	=> __( 'WP Customer Area - Plugin status', 'cuar' ),
 				'title'			=> __( 'Status', 'cuar' ),
-				'slug' 			=> self::$STATUS_PAGE_SLUG,
-				'function' 		=> array( &$this, 'print_status_page' ),
+				'slug' 			=> self::$PAGE_SLUG,
 				'capability' 	=> 'manage_options' 
 			); 
 		
@@ -68,7 +68,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 					'parent'=> 'customer-area',
 					'id' 	=> 'customer-area-status',
 					'title' => __( 'Status', 'cuar' ),
-					'href' 	=> admin_url( 'admin.php?page=cuar-status' )
+					'href' 	=> admin_url( 'admin.php?page=' . self::$PAGE_SLUG )
 				);
 			
 			$sections = $this->get_status_sections();
@@ -79,7 +79,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 						'parent'=> 'customer-area-status',
 						'id' 	=> 'customer-area-status-' . $section['id'],
 						'title' => $section['label'],
-						'href' 	=> admin_url( 'admin.php?page=cuar-status&cuar_section=' . $section['id'] )
+						'href' 	=> admin_url( 'admin.php?page=' . self::$PAGE_SLUG . '&tab=' . $section['id'] )
 					);
 			}
 		}
@@ -253,7 +253,7 @@ class CUAR_StatusAddOn extends CUAR_AddOn {
 	
 	protected $sections = null;
 	
-	public static $STATUS_PAGE_SLUG = 'cuar-status';
+	public static $PAGE_SLUG = 'wpca-status';
 }
 
 // Make sure the addon is loaded

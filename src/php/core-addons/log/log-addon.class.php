@@ -59,6 +59,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 // Menu
                 add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 99);
                 add_action('cuar/core/admin/adminbar-menu-items', array(&$this, 'add_adminbar_menu_items'), 100);
+                add_action('cuar/core/admin/print-admin-page?page=logs', array(&$this, 'print_logs_page'), 99);
 
                 // Log table handling
                 add_filter('cuar/core/log/table-displayable-meta', array(&$this, 'get_table_displayable_meta'), 10, 1);
@@ -90,7 +91,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
 
         /*------- ADMIN PAGE -----------------------------------------------------------------------------------------*/
 
-        private static $LOG_PAGE_SLUG = "cuar_logs";
+        private static $LOG_PAGE_SLUG = "wpca-logs";
 
         /**
          * Add the menu item
@@ -101,7 +102,6 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 'page_title' => __('WP Customer Area - Logs', 'cuar'),
                 'title'      => __('Logs', 'cuar'),
                 'slug'       => self::$LOG_PAGE_SLUG,
-                'function'   => array(&$this, 'print_logs_page'),
                 'capability' => 'manage_options'
             );
 

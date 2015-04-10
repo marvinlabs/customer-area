@@ -56,6 +56,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             add_action('cuar/core/on-plugin-update', array(&$this, 'plugin_version_upgrade'), 10, 2);
             add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 5);
             add_action('admin_init', array(&$this, 'restrict_admin_access'), 1);
+            add_action('admin_footer', array(&$this, 'highlight_menu_item'));
 
             // Settings
             add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20,
@@ -205,48 +206,59 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         }
     }
 
-    /**
-     * Print a page that lists private content
-     */
-    public function print_container_list_page()
+    public function print_admin_page()
     {
-        $this->print_private_post_list_page('container');
-    }
+        $page = isset($_GET['page']) ? $_GET['page'] : 'wpca-dashboard';
+        $tokens = explode(',', $page);
+        $page = str_replace('wpca-', '', $tokens[0]);
 
-    /**
-     * Print a page that lists private content
-     */
-    public function print_content_list_page()
-    {
-        $this->print_private_post_list_page('content');
+        switch ($page)
+        {
+            case 'wpca':
+            case 'dashboard':
+                $this->print_dashboard();
+                break;
+
+            case 'list':
+                $type = $tokens[1];
+                $post_type = $tokens[2];
+                $this->print_private_post_list_page($post_type, $type);
+                break;
+
+            default:
+                do_action('cuar/core/admin/print-admin-page?page=' . $page, $this, $_GET['page']);
+        }
     }
 
     /**
      * Print a page that lists private content
      *
+     * @param string $post_type
      * @param string $private_type_group (container|content)
      */
-    protected function print_private_post_list_page($private_type_group)
+    protected function print_private_post_list_page($post_type, $private_type_group)
     {
-        $post_type = $_GET['page'];
         $post_type_object = get_post_type_object($post_type);
 
         $title_links = array();
         $title_links = $this->add_new_post_link($post_type_object, $post_type, $title_links);
         $title_links = $this->add_manage_taxonomy_links($post_type, $title_links);
 
-        switch ($private_type_group) {
+        switch ($private_type_group)
+        {
             case 'content':
                 $title_links = apply_filters('cuar/core/admin/content-list-page/title-links?post_type=' . $post_type,
                     $title_links);
-                $list_table = apply_filters('cuar/core/admin/content-list-page/list-table-object?post_type=' . $post_type, null);
+                $list_table = apply_filters('cuar/core/admin/content-list-page/list-table-object?post_type='
+                    . $post_type, null);
                 $default_list_table_class = 'CUAR_PrivateContentTable';
                 break;
 
             case 'container':
                 $title_links = apply_filters('cuar/core/admin/container-list-page/title-links?post_type=' . $post_type,
                     $title_links);
-                $list_table = apply_filters('cuar/core/admin/container-list-page/list-table-object?post_type=' . $post_type, null);
+                $list_table = apply_filters('cuar/core/admin/container-list-page/list-table-object?post_type='
+                    . $post_type, null);
                 $default_list_table_class = 'CUAR_PrivateContentTable';
                 break;
 
@@ -282,7 +294,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     /**
      * Print the dashboard/about page
      */
-    public function print_dashboard()
+    protected function print_dashboard()
     {
         $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'blog';
         $tabs = array(
@@ -368,17 +380,151 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
      */
     private function add_manage_taxonomy_links($post_type, $title_links)
     {
-        $taxonomies = get_object_taxonomies( $post_type, 'objects' );
-        foreach ($taxonomies as $tax) {
+        $taxonomies = get_object_taxonomies($post_type, 'objects');
+        foreach ($taxonomies as $tax)
+        {
             if (current_user_can($tax->cap->manage_terms))
             {
-                $title_links[sprintf(__('Manage %1$s', 'cuar'), $tax->labels->name)] = admin_url('edit-tags.php?taxonomy=' . $tax->name);
+                $title_links[sprintf(__('Manage %1$s', 'cuar'),
+                    $tax->labels->name)] = admin_url('edit-tags.php?taxonomy=' . $tax->name);
             }
         }
 
         return $title_links;
     }
 
+    /**
+     * Highlight the proper menu item in the customer area
+     */
+    public function highlight_menu_item()
+    {
+        global $post;
+
+        $top_on = '';
+        $top_off = '';
+        $sub_on = '';
+        $found = false;
+
+        $content_types = $this->plugin->get_content_post_types();
+        $container_types = $this->plugin->get_container_post_types();
+
+        // New post & post edit pages
+        if (!$found && isset($post))
+        {
+            $post_type = get_post_type($post);
+
+            if ( !$found)
+            {
+                if (in_array($post_type, $content_types))
+                {
+                    $top_on = 'toplevel_page_wpca';
+                    $top_off = 'menu-posts';
+                    $sub_on = 'admin.php?page=wpca-list,content,' . $post_type;
+                    $found = true;
+                }
+            }
+
+            // New post & post edit pages
+            if ( !$found)
+            {
+                if (in_array($post_type, $container_types))
+                {
+                    $top_on = 'toplevel_page_wpca';
+                    $top_off = 'menu-posts';
+                    $sub_on = 'admin.php?page=wpca-list,container,' . $post_type;
+                    $found = true;
+                }
+            }
+        }
+
+        // Taxonomy pages
+        if (!$found && isset($_REQUEST['taxonomy']))
+        {
+            $tax = $_REQUEST['taxonomy'];
+
+            if ( !$found)
+            {
+                foreach ($content_types as $post_type)
+                {
+                    $taxonomies = get_object_taxonomies($post_type);
+                    if (in_array($tax, $taxonomies))
+                    {
+                        $top_on = 'toplevel_page_wpca';
+                        $top_off = 'menu-posts';
+                        $sub_on = 'admin.php?page=wpca-list,content,' . $post_type;
+                        $found = true;
+                        break;
+                    }
+                }
+            }
+
+            // New post & post edit pages
+            if ( !$found)
+            {
+                foreach ($container_types as $post_type)
+                {
+                    $taxonomies = get_object_taxonomies($post_type);
+                    if (in_array($tax, $taxonomies))
+                    {
+                        $top_on = 'toplevel_page_wpca';
+                        $top_off = 'menu-posts';
+                        $sub_on = 'admin.php?page=wpca-list,content,' . $post_type;
+                        $found = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Bail if nothing to do
+        if ( !$found)
+        {
+            return;
+        }
+
+        ?>
+        <script type="text/javascript">
+            function cuar_unsetCurrentSubmenu(menu, href) {
+                menu.find('a[href="' + href + '"]').parent('li').removeClass('current');
+            }
+
+            function cuar_setCurrentSubmenu(menu, href) {
+                menu.find('a[href="' + href + '"]').parent('li').addClass('current');
+            }
+
+            function cuar_unsetCurrentMenu(menu, id) {
+                menu.find('#' + id + ',#' + id + '>a:first-child')
+                    .removeClass('wp-has-current-submenu')
+                    .removeClass('wp-menu-open')
+                    .addClass('wp-not-current-submenu');
+            }
+
+            function cuar_setCurrentMenu(menu, id) {
+                menu.find('#' + id + ',#' + id + '>a:first-child')
+                    .removeClass('wp-not-current-submenu')
+                    .addClass('wp-menu-open')
+                    .addClass('wp-has-current-submenu current');
+            }
+
+            jQuery(document).ready(function ($) {
+                var menu = $('#adminmenu');
+
+                <?php if (!empty($sub_on)) : ?>
+                cuar_unsetCurrentSubmenu(menu, 'admin.php?page=wpca');
+                cuar_setCurrentSubmenu(menu, '<?php echo $sub_on; ?>');
+                <?php endif; ?>
+
+                <?php if (!empty($top_on)) : ?>
+                cuar_setCurrentMenu(menu, '<?php echo $top_on; ?>');
+                <?php endif; ?>
+
+                <?php if (!empty($top_off)) : ?>
+                cuar_unsetCurrentMenu(menu, '<?php echo $top_off; ?>');
+                <?php endif; ?>
+            });
+        </script>
+    <?php
+    }
 }
 
 // Make sure the addon is loaded
