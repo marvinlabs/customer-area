@@ -493,7 +493,12 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         public function customize_post_edit_pages()
         {
             add_action('admin_menu', array(&$this, 'register_post_edit_meta_boxes'));
-            add_action('save_post', array(&$this, 'do_save_post'), 10, 2);
+
+            $private_post_types = $this->plugin->get_content_post_types();
+            foreach ($private_post_types as $pt)
+            {
+                add_action('save_post_' . $pt, array(&$this, 'do_save_post'), 10, 2);
+            }
         }
 
         /**
