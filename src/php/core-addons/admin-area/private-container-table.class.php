@@ -96,6 +96,28 @@ class CUAR_PrivateContainerTable extends CUAR_ListTable
             . $this->post_type, $this->parameters, $this);
     }
 
+    public function is_search_active()
+    {
+        $is_active = $this->parameters['author'] != 0
+            || $this->parameters['visible-by'] != 0
+            || !empty($this->parameters['search-query'])
+            || !empty($this->parameters['start-date'])
+            || !empty($this->parameters['end-date']);
+
+        // Taxonomies
+        foreach ($this->associated_taxonomies as $slug => $tax)
+        {
+            if (!empty($this->parameters[$slug]))
+            {
+                $is_active = true;
+                break;
+            }
+        }
+
+        return apply_filters('cuar/core/admin/container-list-table/is-search-active?post_type=' . $this->post_type,
+            $is_active, $this);
+    }
+
     /**
      * Get the query parameters
      * @return array
