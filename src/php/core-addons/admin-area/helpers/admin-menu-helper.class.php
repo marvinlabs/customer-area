@@ -29,12 +29,86 @@ class CUAR_AdminMenuHelper
     /** @var CUAR_AdminAreaAddOn */
     private $aa_addon;
 
+    private $private_types_items = null;
+    private $tools_items = null;
+    private $users_items = null;
+    private $frontoffice_items = null;
+
     public function __construct($plugin, $aa_addon)
     {
         $this->plugin = $plugin;
         $this->aa_addon = $aa_addon;
 
         add_action('admin_menu', array(&$this, 'build_admin_menu'));
+        add_action('admin_bar_menu', array(&$this, 'build_adminbar_menu'), 32);
+    }
+
+    /**
+     * Build the admin bar menu
+     *
+     * @param WP_Admin_Bar $wp_admin_bar
+     */
+    public function build_adminbar_menu($wp_admin_bar)
+    {
+        $wp_admin_bar->add_menu(array(
+            'id'    => 'customer-area',
+            'title' => __('WP Customer Area', 'cuar'),
+            'href'  => admin_url('admin.php?page=wpca')
+        ));
+
+        $wp_admin_bar->add_menu(array(
+            'parent' => 'customer-area',
+            'id'     => 'wpca-frontoffice',
+            'title'  => __('Your private area', 'cuar'),
+            'href'   => '#'
+        ));
+
+        $submenus = array(
+            $this->get_frontoffice_menu_items(),
+            $this->get_private_types_menu_items(),
+            $this->get_users_menu_items(),
+            $this->get_tools_menu_items()
+        );
+
+        foreach ($submenus as $submenu_items)
+        {
+            foreach ($submenu_items as $item)
+            {
+                $main_id = sanitize_title($item['slug']);
+                $wp_admin_bar->add_menu(array(
+                    'parent' => isset($item['parent']) ? $item['parent'] : 'customer-area',
+                    'id'     => $main_id,
+                    'title'  => $item['title'],
+                    'href'   => isset($item['href']) ? $item['href'] : '#'
+                ));
+
+                if ( !isset($item['children']))
+                {
+                    continue;
+                }
+
+                foreach ($item['children'] as $subitem)
+                {
+                    $sub_id = sanitize_title($subitem['slug']);
+                    $wp_admin_bar->add_menu(array(
+                        'parent' => isset($subitem['parent']) ? $subitem['parent'] : $main_id,
+                        'id'     => $sub_id,
+                        'title'  => $subitem['title'],
+                        'href'   => isset($subitem['href']) ? $subitem['href'] : '#'
+                    ));
+                }
+            }
+        }
+
+        if (current_user_can('manage_options'))
+        {
+            $wp_admin_bar->add_menu(array(
+                'parent' => 'customer-area',
+                'id'     => 'customer-area-addons',
+                'title'  => __('Add-ons', 'cuar'),
+                'href'   => admin_url('admin.php?page=wpca&tab=addons')
+            ));
+        }
     }
 
     /**
@@ -59,30 +133,32 @@ class CUAR_AdminMenuHelper
             $separator_added = false;
             foreach ($submenu_items as $item)
             {
-                $submenu_page_title = $item['page_title'];
-                $submenu_title = $item['title'];
-                $submenu_slug = $item['slug'];
-                $submenu_capability = $item['capability'];
+                if (isset($item['adminbar-only']) && $item['adminbar-only'])
+                {
+                    continue;
+                }
 
-                if (strstr($submenu_slug, '.php') === false)
+                $submenu_function = null;
+                if (strstr($item['slug'], '.php') === false)
                 {
                     $submenu_function = isset($item['function'])
                         ? $item['function']
                         : array($this->aa_addon, 'print_admin_page');
                 }
-                else
-                {
-                    $submenu_function = null;
-                }
 
+                $submenu_title = $item['title'];
                 if ( !$separator_added)
                 {
                     $separator_added = true;
                     $submenu_title = self::$MENU_SEPARATOR . $submenu_title;
                 }
 
-                add_submenu_page(self::$MENU_SLUG, $submenu_page_title, $submenu_title,
-                    $submenu_capability, $submenu_slug, $submenu_function);
+                add_submenu_page(self::$MENU_SLUG,
+                    $item['page_title'],
+                    $submenu_title,
+                    $item['capability'],
+                    $item['slug'],
+                    $submenu_function);
             }
         }
     }
@@ -113,39 +189,68 @@ class CUAR_AdminMenuHelper
      */
     private function get_private_types_menu_items()
     {
-        $items = array();
-
-        $types = array(
-            'content'   => $this->plugin->get_content_types(),
-            'container' => $this->plugin->get_container_types()
-        );
-
-        foreach ($types as $t => $private_types)
+        if ($this->private_types_items == null)
         {
-            foreach ($private_types as $type => $desc)
+            $this->private_types_items = array();
+
+            $types = array(
+                'content'   => $this->plugin->get_content_types(),
+                'container' => $this->plugin->get_container_types()
+            );
+
+            foreach ($types as $t => $private_types)
             {
-                $post_type = get_post_type_object($type);
-                if (current_user_can($post_type->cap->edit_post) || current_user_can($post_type->cap->read_post))
+                foreach ($private_types as $type => $desc)
                 {
-                    $items[] = array(
-                        'page_title' => $desc['label-plural'],
-                        'title'      => $desc['label-plural'],
-                        'slug'       => 'wpca-list,' . $t . ',' . $type,
-                        'capability' => 'view-customer-area-menu'
-                    );
+                    $post_type = get_post_type_object($type);
+                    $taxonomies = get_object_taxonomies($post_type->name, 'object');
+
+                    if (current_user_can($post_type->cap->edit_post) || current_user_can($post_type->cap->read_post))
+                    {
+                        $item = array(
+                            'page_title' => $desc['label-plural'],
+                            'title'      => $desc['label-plural'],
+                            'slug'       => 'wpca-list,' . $t . ',' . $type,
+                            'capability' => 'view-customer-area-menu'
+                        );
+
+                        $item['children'] = array();
+                        $item['children'][] = array(
+                            'title' => sprintf(__('All %s', 'cuar'), strtolower($desc['label-plural'])),
+                            'slug'  => 'list-' . $type,
+                            'href'  => admin_url('admin.php?page=wpca-list,' . $t . ',' . $type)
+                        );
+                        $item['children'][] = array(
+                            'title' => sprintf(__('New %s', 'cuar'), strtolower($desc['label-singular'])),
+                            'slug'  => 'new-' . $type,
+                            'href'  => admin_url('post-new.php?post_type=' . $type)
+                        );
+
+                        foreach ($taxonomies as $tax_slug => $tax)
+                        {
+                            $item['children'][] = array(
+                                'title' => sprintf(__('Manage %s', 'cuar'), strtolower(__($tax->labels->name, 'cuar'))),
+                                'slug'  => 'manage-' . $tax_slug,
+                                'href'  => admin_url('edit-tags.php?taxonomy=' . $tax_slug)
+                            );
+                        }
+
+                        $this->private_types_items[] = $item;
+                    }
                 }
             }
+
+            $this->private_types_items = apply_filters('cuar/core/admin/submenu-items?group=private-types',
+                $this->private_types_items);
+
+            // Sort alphabetically
+            usort($this->private_types_items, function ($a, $b)
+            {
+                return strcmp($a['title'], $b['title']);
+            });
         }
 
-        $items = apply_filters('cuar/core/admin/submenu-items?group=private-types', $items);
-
-        // Sort alphabetically
-        usort($items, function ($a, $b)
-        {
-            return strcmp($a['title'], $b['title']);
-        });
-
-        return $items;
+        return $this->private_types_items;
     }
 
     /**
@@ -154,15 +259,41 @@ class CUAR_AdminMenuHelper
      */
     private function get_users_menu_items()
     {
-        $items = apply_filters('cuar/core/admin/submenu-items?group=users', array());
-
-        // Sort alphabetically
-        usort($items, function ($a, $b)
+        if ($this->users_items == null)
         {
-            return strcmp($a['title'], $b['title']);
-        });
+            $this->users_items = array();
+            $this->users_items = apply_filters('cuar/core/admin/submenu-items?group=users', $this->users_items);
 
-        return $items;
+            // Sort alphabetically
+            usort($this->users_items, function ($a, $b)
+            {
+                return strcmp($a['title'], $b['title']);
+            });
+        }
+
+        return $this->users_items;
+    }
+
+    /**
+     * Get all submenu items corresponding to front-office listing
+     * @return array
+     */
+    private function get_frontoffice_menu_items()
+    {
+        if ($this->frontoffice_items == null)
+        {
+            $this->frontoffice_items = array();
+            $this->frontoffice_items = apply_filters('cuar/core/admin/submenu-items?group=frontoffice',
+                $this->frontoffice_items);
+
+            // Sort alphabetically
+            usort($this->frontoffice_items, function ($a, $b)
+            {
+                return strcmp($a['title'], $b['title']);
+            });
+        }
+
+        return $this->frontoffice_items;
     }
 
     /**
@@ -171,14 +302,18 @@ class CUAR_AdminMenuHelper
      */
     private function get_tools_menu_items()
     {
-        $items = apply_filters('cuar/core/admin/submenu-items?group=tools', array());
-
-        // Sort alphabetically
-        usort($items, function ($a, $b)
+        if ($this->tools_items == null)
         {
-            return strcmp($a['title'], $b['title']);
-        });
+            $this->tools_items = array();
+            $this->tools_items = apply_filters('cuar/core/admin/submenu-items?group=tools', $this->tools_items);
 
-        return $items;
+            // Sort alphabetically
+            usort($this->tools_items, function ($a, $b)
+            {
+                return strcmp($a['title'], $b['title']);
+            });
+        }
+
+        return $this->tools_items;
     }
 }

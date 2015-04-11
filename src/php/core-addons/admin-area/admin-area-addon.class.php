@@ -19,7 +19,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 require_once(CUAR_INCLUDES_DIR . '/core-classes/addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/private-content-table.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/private-container-table.class.php');
-require_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/helpers/adminbar-helper.class.php');
 require_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/helpers/admin-menu-helper.class.php');
 
 
@@ -48,12 +47,10 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
     public function run_addon($plugin)
     {
-        $this->adminbar_helper = new CUAR_AdminBarHelper($plugin, $this);
+        $this->admin_menu_helper = new CUAR_AdminMenuHelper($plugin, $this);
 
         if (is_admin())
         {
-            $this->admin_menu_helper = new CUAR_AdminMenuHelper($plugin, $this);
-
             add_action('cuar/core/on-plugin-update', array(&$this, 'plugin_version_upgrade'), 10, 2);
             add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 5);
             add_action('admin_init', array(&$this, 'restrict_admin_access'), 1);
@@ -63,10 +60,9 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
 
             // Settings
-            add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20,
-                2);
-            add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'),
-                20, 3);
+            add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20, 2);
+            add_filter('cuar/core/settings/validate-settings?tab=cuar_core',
+                array(&$this, 'validate_core_options'), 20, 3);
         }
         else
         {

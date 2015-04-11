@@ -57,8 +57,6 @@ if ( !class_exists('CUAR_LogAddOn')) :
             if (is_admin())
             {
                 // Menu
-                add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 99);
-                add_action('cuar/core/admin/adminbar-menu-items', array(&$this, 'add_adminbar_menu_items'), 100);
                 add_action('cuar/core/admin/print-admin-page?page=logs', array(&$this, 'print_logs_page'), 99);
 
                 // Log table handling
@@ -73,6 +71,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
             else
             {
             }
+
+            add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 99);
 
             // Add some event types by default
             add_filter('cuar/core/log/event-types', array(&$this, 'add_default_event_types'));
@@ -116,26 +116,9 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 'page_title' => __('WP Customer Area - Logs', 'cuar'),
                 'title'      => __('Logs', 'cuar'),
                 'slug'       => self::$LOG_PAGE_SLUG,
+                'href'       => 'admin.php?page=' . self::$LOG_PAGE_SLUG,
                 'capability' => 'manage_options'
             );
-
-            return $submenus;
-        }
-
-        /**
-         * Add the menu item
-         */
-        public function add_adminbar_menu_items($submenus)
-        {
-            if (current_user_can('manage_options'))
-            {
-                $submenus[] = array(
-                    'parent' => 'customer-area',
-                    'id'     => 'customer-area-logs',
-                    'title'  => __('Logs', 'cuar'),
-                    'href'   => admin_url('admin.php?page=' . self::$LOG_PAGE_SLUG)
-                );
-            }
 
             return $submenus;
         }
