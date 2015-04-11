@@ -127,6 +127,13 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 6.1.0 (2015/04/) =
+
+* New: important events are now logged: content viewed, file download, owner changed. Many more event types to come soon!
+* New: filter the private content lists to see only the content visible by a given user
+* Fix: pagination is now filtered if there are too many ages to show
+* Fix: hide customer area pages in search results
+
 = 6.0.0 (2015/03/10) =
 
 * New: a setup assistant for first time installation & about page to introduce new versions features
