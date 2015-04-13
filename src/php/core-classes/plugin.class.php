@@ -124,19 +124,42 @@ class CUAR_Plugin {
         // Configure some components
         $this->template_engine->enable_debug($this->get_option(CUAR_Settings::$OPTION_DEBUG_TEMPLATES));
 	}
-	
-	/**
-	 * Load the translation file for current language. Checks in wp-content/languages first
-	 * and then the customer-area/languages.
-	 *
-	 * Edits to translation files inside customer-area/languages will be lost with an update
-	 * **If you're creating custom translation files, please use the global language folder.**
-	 */
+
+    /**
+     * Load the translation file for current language. Checks in wp-content/languages first
+     * and then the customer-area/languages.
+     *
+     * Edits to translation files inside customer-area/languages will be lost with an update
+     * **If you're creating custom translation files, please use the global language folder.**
+     *
+     * @param string $domain The text domain
+     * @param string $plugin_name The plugin folder name
+     */
 	public function load_textdomain( $domain = 'cuar', $plugin_name = 'customer-area' ) {
 		if ( empty( $domain ) ) $domain = 'cuar';
 		if ( empty( $plugin_name ) ) $plugin_name = 'customer-area';
-		
-		load_plugin_textdomain( $domain, false, $plugin_name . '/languages' );
+
+        // Traditional WordPress plugin locale filter
+        $locale        = apply_filters( 'plugin_locale',  get_locale(), $domain );
+        $mo_file        = sprintf( '%1$s-%2$s.mo', $domain, $locale );
+
+        $locations = array(
+            WP_CONTENT_DIR . '/customer-area/languages/' . $mo_file,
+            WP_LANG_DIR . '/customer-area/' . $mo_file,
+            WP_LANG_DIR . '/' . $mo_file
+        );
+
+        // Try the user locations
+        foreach ($locations as $path)
+        {
+            if ( file_exists( $path ) ) {
+                load_textdomain( $domain, $path );
+                return;
+            }
+        }
+
+        // Not found above, load the default plugin file if it exists
+        load_plugin_textdomain( $domain, false, $plugin_name . '/languages' );
 	}
 
 	/**
