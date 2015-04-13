@@ -16,10 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-if ( !class_exists('WP_List_Table'))
-{
-    require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
-}
+require_once(CUAR_INCLUDES_DIR . '/core-classes/Content/list-table.class.php');
 
 /**
  * Class CUAR_LogTable
@@ -28,10 +25,9 @@ if ( !class_exists('WP_List_Table'))
  *
  * @link http://plugins.svn.wordpress.org/custom-list-table-example/tags/1.3/list-table-example.php
  */
-class CUAR_LogTable extends WP_List_Table
+class CUAR_LogTable extends CUAR_ListTable
 {
 
-    public $plugin = null;
     public $content_types = array();
 
     /**
@@ -42,16 +38,92 @@ class CUAR_LogTable extends WP_List_Table
      */
     public function __construct($plugin)
     {
-        parent::__construct(array(
-            'singular' => __('Log', 'cuar'),
-            'plural'   => __('Logs', 'cuar'),
-            'ajax'     => false
-        ));
+        parent::__construct($plugin,
+            array(
+                'singular' => __('Log', 'cuar'),
+                'plural'   => __('Logs', 'cuar'),
+                'ajax'     => false
+            ),
+            admin_url('admin.php?page=wpca-logs'),
+            'CUAR_LogEvent');
 
-        $this->plugin = $plugin;
         $this->content_types = array_merge($plugin->get_content_types(), $plugin->get_container_types());
         $this->displayable_meta = apply_filters('cuar/core/log/table-displayable-meta', array());
     }
+
+    /**
+     * Read the parameters from the query and store them for later use
+     */
+    protected function parse_parameters()
+    {
+        $this->parameters['status'] = isset($_GET['status']) ? $_GET['status'] : 'any';
+        $this->parameters['related-object'] = isset($_GET['related-object']) ? $_GET['related-object'] : -1;
+        $this->parameters['event-type'] = isset($_GET['event-type']) ? $_GET['event-type'] : 0;
+        $this->parameters['start-date'] = isset($_GET['start-date']) ? sanitize_text_field($_GET['start-date']) : null;
+        $this->parameters['end-date'] = isset($_GET['end-date']) ? sanitize_text_field($_GET['end-date']) : null;
+    }
+
+    /**
+     * Get the query parameters
+     * @return array
+     */
+    protected function get_query_args()
+    {
+        $logger = $this->plugin->get_logger();
+        $args = $logger->build_query_args($this->parameters['related-object'],
+            $this->parameters['event-type'],
+            null, -1, 1);
+
+        $args['date_query'] = array();
+
+        $start_date = $this->parameters['start-date'];
+        if ($start_date != null)
+        {
+            $start_tokens = explode('/', $start_date);
+            if (count($start_tokens) != 3)
+            {
+                $start_date = null;
+            }
+            else
+            {
+                $args['date_query'][] =
+                    array(
+                        'after'     => array(
+                            'year'  => $start_tokens[2],
+                            'month' => $start_tokens[1],
+                            'day'   => $start_tokens[0],
+                        ),
+                        'inclusive' => true
+                    );
+            }
+        }
+
+        $end_date = $this->parameters['end-date'];
+        if ($end_date != null)
+        {
+            $end_tokens = explode('/', $end_date);
+            if (count($end_tokens) != 3)
+            {
+                $end_date = null;
+            }
+            else
+            {
+                $args['date_query'][] =
+                    array(
+                        'before'    => array(
+                            'year'  => $end_tokens[2],
+                            'month' => $end_tokens[1],
+                            'day'   => $end_tokens[0],
+                        ),
+                        'inclusive' => true,
+                    );
+            }
+        }
+
+        return $args;
+    }
+
+    /*------- COLUMNS ------------------------------------------------------------------------------------------------*/
 
     /**
      * Define the columns that are going to be used in the table
@@ -59,102 +131,23 @@ class CUAR_LogTable extends WP_List_Table
      */
     public function get_columns()
     {
-        $columns = array(
-            'cb'            => '<input type="checkbox" />', //Render a checkbox instead of text
-            'log_id'        => __('ID', 'cuar'),
+        $columns = array_merge(parent::get_columns(), array(
             'log_timestamp' => __('Date', 'cuar'),
             'log_event'     => __('Event', 'cuar'),
             'log_object'    => __('Object', 'cuar'),
             'log_user'      => __('User', 'cuar'),
             'log_extra'     => __('Extra info', 'cuar'),
-        );
+        ));
 
         return $columns;
     }
 
-    /**
-     *
-     * @return array An associative array containing all the columns that should be sortable:
-     *               'slugs'=>array('data_values',bool)
-     */
-    public function get_sortable_columns()
-    {
-        $sortable_columns = array(// 'title'    => array('title', false),     //true means it's already sorted
-        );
-
-        return $sortable_columns;
-    }
-
-    /**
-     * @return array An associative array containing all the bulk actions: 'slugs'=>'Visible Titles'
-     */
-    public function get_bulk_actions()
-    {
-        $actions = array(
-            'delete' => __('Delete', 'cuar')
-        );
-
-        return $actions;
-    }
-
-    /**
-     *
-     */
-    public function process_bulk_action()
-    {
-        if ('delete' === $this->current_action())
-        {
-            $logs = isset($_POST['logs']) ? $_POST['logs'] : array();
-            if (empty($logs))
-            {
-                return;
-            }
-
-            foreach ($logs as $log_id)
-            {
-                if ( !current_user_can('delete_post', $log_id))
-                {
-                    wp_die(__('You are not allowed to delete this item.'));
-                }
-
-                wp_delete_post($log_id, true);
-            }
-        }
-    }
-
-    /**
-     * @param CUAR_LogEvent $item A singular item (one full row's worth of data)
-     *
-     * @return string Text to be placed inside the column <td> (movie title only)
-     */
-    public function column_cb($item)
-    {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'logs', $item->id);
-    }
-
-    /**
-     * This method is called when the parent class can't find a method
-     * specifically build for a given column.
-     *
-     * @param CUAR_LogEvent $item        A singular item (one full row's worth of data)
-     * @param array         $column_name The name/slug of the column to be processed
-     *
-     * @return string Text or HTML to be placed inside the column <td>
-     */
-    public function column_default($item, $column_name)
-    {
-        return apply_filters('cuar/core/log/table-cell-content', '?' . $column_name . '?', $column_name, $item);
-    }
-
-    public function column_log_id($item)
-    {
-        return $item->id;
-    }
-
     public function column_log_timestamp($item)
     {
-        return get_the_date(get_option('date'), $item->id) . ' &dash; ' . get_the_time(get_option('time'),
-            $item->id);
+        $m_time = $item->get_post()->post_date;
+        $h_time = mysql2date(__('Y/m/d - g:i:s'), $m_time);
+
+        return $h_time;
     }
 
     public function column_log_object($item)
@@ -233,87 +226,37 @@ class CUAR_LogTable extends WP_List_Table
         return implode(' ', $fields);
     }
 
+    /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/
+
     /**
-     * Prepare the table with different parameters, pagination, columns and table elements
+     * @return array An associative array containing all the bulk actions: 'slugs'=>'Visible Titles'
      */
-    public function prepare_items()
+    public function get_bulk_actions()
     {
-        $logger = $this->plugin->get_logger();
+        $actions = array(
+            'delete' => __('Delete', 'cuar')
+        );
 
-        // Prepare our columns
-        $columns = $this->get_columns();
-        $hidden = array();
-        $sortable = $this->get_sortable_columns();
-        $this->_column_headers = array($columns, $hidden, $sortable);
-
-        // Retrieve filter values
-        $related_object_id = -1;
-        $event_type = isset($_POST['filter-by-type']) ? $_POST['filter-by-type'] : null;
-        $meta = null;
-        $start_date = isset($_POST['start-date']) ? sanitize_text_field($_POST['start-date']) : null;
-        $end_date = isset($_POST['end-date']) ? sanitize_text_field($_POST['end-date'])
-            : ($start_date == null ? null : $start_date);
-
-        // Count events
-        $item_query = $logger->build_query_args($related_object_id, $event_type, $meta, -1, 1);
-        $item_query['fields'] = 'ids';
-        $item_query['paged'] = 1;
-        $item_query['posts_per_page'] = -1;
-        if ($start_date != null || $end_date != null)
-        {
-            $start_tokens = explode('/', $start_date);
-            $end_tokens = explode('/', $end_date);
-            if (count($start_tokens) != 3)
-            {
-                $start_date = null;
-            }
-
-            if (count($end_tokens) != 3)
-            {
-                $end_date = null;
-            }
-
-            if ($start_date != null && $end_date != null)
-            {
-                $item_query['date_query'] = array(
-                    array(
-                        'after'     => array(
-                            'year'  => $start_tokens[2],
-                            'month' => $start_tokens[1],
-                            'day'   => $start_tokens[0],
-                        ),
-                        'before'    => array(
-                            'year'  => $end_tokens[2],
-                            'month' => $end_tokens[1],
-                            'day'   => $end_tokens[0],
-                        ),
-                        'inclusive' => true,
-                    ),
-                );
-            }
-        }
-        $total_items = count(get_posts($item_query));
-
-        // Number of events per screen
-        $items_per_page = 25;
-
-        // Current page Number
-        $current_page = $this->get_pagenum();
-
-        // Number of pages in total
-        $page_count = ceil($total_items / $items_per_page);
-
-        // Register the pagination
-        $this->set_pagination_args(array(
-            "total_items" => $total_items,
-            "total_pages" => $page_count,
-            "per_page"    => $items_per_page,
-        ));
-
-        // Fetch the items
-        $item_query['fields'] = 'all';
-        $item_query['paged'] = $current_page;
-        $item_query['posts_per_page'] = $items_per_page;
-        $this->items = $logger->query_events($item_query);
+        return $actions;
     }
+
+    /**
+     * Execute a bulk action on a single post
+     *
+     * @param string $action
+     * @param int    $post_id
+     */
+    protected function execute_action($action, $post_id)
+    {
+        if ('delete' === $action)
+        {
+            if ( !current_user_can('delete_post', $post_id))
+            {
+                wp_die(__('You are not allowed to delete this item.'));
+            }
+
+            wp_delete_post($post_id, true);
+        }
+    }
+
 }

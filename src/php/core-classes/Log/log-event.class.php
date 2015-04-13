@@ -43,7 +43,7 @@ class CUAR_LogEvent extends CUAR_CustomPost
     {
         if ($this->type === 0xdead)
         {
-            $terms = wp_get_post_terms($this->id, CUAR_LogEventType::$TAXONOMY);
+            $terms = wp_get_post_terms($this->ID, CUAR_LogEventType::$TAXONOMY);
             if (empty($terms) || is_wp_error($terms))
             {
                 $this->type = null;

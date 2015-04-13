@@ -134,6 +134,12 @@ feel free to fork the project and send us pull requests!
 * New: hook to change the default owner type (See http://wp-customerarea.com/snippet/changing-default-owner-type/)
 * Fix: pagination is now filtered if there are too many ages to show
 * Fix: hide customer area pages in search results
+* Fix: admin bar was shown to guests if the setting "restrict admin access" was not enabled
+
+**Add-on changes**
+
+* New: the authentication forms add-on now plays nice with Peters' login redirect plugin for even more control
+* New: project property updates are now logged (progress, dates, etc.)
 
 = 6.0.0 (2015/03/10) =
 

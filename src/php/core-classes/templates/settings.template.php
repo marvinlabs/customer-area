@@ -1,4 +1,4 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /** Template version: 1.1.0 */ ?>
 
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
@@ -20,11 +20,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ?>
 
 <div class="wrap cuar-settings-<?php echo $this->current_tab; ?>">
-	<?php screen_icon( 'icon32-settings' ); ?>
-	
 	<h2 class="nav-tab-wrapper">
 <?php foreach ( $this->tabs as $tab_id => $tab_label) : ?>
-			<?php  printf( '<a href="?page=%s&cuar_tab=%s" class="nav-tab %s">%s</a>',
+			<?php  printf( '<a href="options-general.php?page=%s&tab=%s" class="nav-tab %s">%s</a>',
 						CUAR_Settings::$OPTIONS_PAGE_SLUG,
 						$tab_id,
 						( $this->current_tab == $tab_id ? 'nav-tab-active' : '' ),
@@ -40,7 +38,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php do_action( 'cuar/templates/settings/before-settings?tab=' . $this->current_tab, $this ); ?>
 	
 	<form method="post" action="options.php"> 	
-		<input type="hidden" id="cuar_tab" name="cuar_tab" value="<?php echo $this->current_tab; ?>" />
+		<input type="hidden" id="tab" name="tab" value="<?php echo $this->current_tab; ?>" />
 		<input type="hidden" id="cuar_do_save_settings" name="cuar_do_save_settings" value="1" />
 	
 	<?php 

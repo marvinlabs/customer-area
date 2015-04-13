@@ -57,8 +57,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
             if (is_admin())
             {
                 // Menu
-                add_action('cuar/core/admin/main-menu-pages', array(&$this, 'add_menu_items'), 99);
-                add_action('cuar/core/admin/adminbar-menu-items', array(&$this, 'add_adminbar_menu_items'), 100);
+                add_action('cuar/core/admin/print-admin-page?page=logs', array(&$this, 'print_logs_page'), 99);
 
                 // Log table handling
                 add_filter('cuar/core/log/table-displayable-meta', array(&$this, 'get_table_displayable_meta'), 10, 1);
@@ -73,6 +72,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
             {
             }
 
+            add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 99);
+
             // Add some event types by default
             add_filter('cuar/core/log/event-types', array(&$this, 'add_default_event_types'));
 
@@ -86,44 +87,38 @@ if ( !class_exists('CUAR_LogAddOn')) :
             // File downloaded
             add_action('cuar/private-content/files/on-download', array(&$this, 'log_file_downloaded'), 10, 3);
             add_action('cuar/private-content/files/on-view', array(&$this, 'log_file_downloaded'), 10, 3);
+
+            add_action("load-post-new.php", array(&$this, 'block_default_admin_pages'));
+            add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
         }
 
         /*------- ADMIN PAGE -----------------------------------------------------------------------------------------*/
 
-        private static $LOG_PAGE_SLUG = "cuar_logs";
+        private static $LOG_PAGE_SLUG = "wpca-logs";
+
+        /**
+         * Protect the default edition and listing pages
+         */
+        public function block_default_admin_pages()
+        {
+            if (isset($_GET["post_type"]) && $_GET["post_type"] == "cuar_log_event")
+            {
+                wp_redirect(admin_url("admin.php?page=" . self::$LOG_PAGE_SLUG));
+            }
+        }
 
         /**
          * Add the menu item
          */
         public function add_menu_items($submenus)
         {
-            $separator = '<span class="cuar-menu-divider"></span>';
-
             $submenus[] = array(
                 'page_title' => __('WP Customer Area - Logs', 'cuar'),
-                'title'      => $separator . __('Logs', 'cuar'),
+                'title'      => __('Logs', 'cuar'),
                 'slug'       => self::$LOG_PAGE_SLUG,
-                'function'   => array(&$this, 'print_logs_page'),
+                'href'       => 'admin.php?page=' . self::$LOG_PAGE_SLUG,
                 'capability' => 'manage_options'
             );
-
-            return $submenus;
-        }
-
-        /**
-         * Add the menu item
-         */
-        public function add_adminbar_menu_items($submenus)
-        {
-            if (current_user_can('manage_options'))
-            {
-                $submenus[] = array(
-                    'parent' => 'customer-area',
-                    'id'     => 'customer-area-logs',
-                    'title'  => __('Logs', 'cuar'),
-                    'href'   => admin_url('admin.php?page=' . self::$LOG_PAGE_SLUG)
-                );
-            }
 
             return $submenus;
         }
@@ -133,6 +128,11 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function print_logs_page()
         {
+            require_once(CUAR_INCLUDES_DIR . '/core-addons/log/log-table.class.php');
+            $logs_table = new CUAR_LogTable($this->plugin);
+            $logs_table->initialize();
+
+            /** @noinspection PhpIncludeInspection */
             include($this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/log',
                 'logs-page.template.php',
