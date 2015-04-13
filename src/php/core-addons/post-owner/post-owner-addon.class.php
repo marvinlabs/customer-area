@@ -309,7 +309,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $owner_type = get_post_meta($post_id, self::$META_OWNER_TYPE, true);
             if ( !$owner_type || empty($owner_type))
             {
-                $owner_type = 'usr';
+                $owner_type = apply_filters('cuar/core/ownership/default-owner-type', 'usr');
             }
 
             return $owner_type;
