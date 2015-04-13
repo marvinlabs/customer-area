@@ -30,7 +30,7 @@
     </p>
 
     <div class="cuar-actions">
-        <a href="<?php echo admin_url('admin.php?page=cuar-settings&cuar_tab=cuar_capabilities'); ?>" class="button button-primary cuar-configure-permissions" target="_blank"><?php _e('Configure permissions', 'cuar'); ?></a>
+        <a href="<?php echo admin_url('admin.php?page=wpca-settings&tab=cuar_capabilities'); ?>" class="button button-primary cuar-configure-permissions" target="_blank"><?php _e('Configure permissions', 'cuar'); ?></a>
         <a href="<?php _e('http://wp-customerarea.com/documentation/permissions-reference/', 'cuar'); ?>" class="button button-primary cuar-permissions-guide" target="_blank"><?php _e('Permissions reference guide', 'cuar'); ?></a>
     </div>
 </div>

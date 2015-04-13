@@ -116,7 +116,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                     . sprintf(__('If you check this box, you will be able to control access to various WordPress administrative features (the area under /wp-admin/, the top bar, etc.). '
                         . 'Once enabled, you can select which roles will be allowed to access it in the <a href="%1$s">general permissions tab</a>.',
                         'cuar'),
-                        admin_url('admin.php?page=cuar-settings&cuar_tab=cuar_capabilities'))
+                        admin_url('admin.php?page=wpca-settings&tab=cuar_capabilities'))
                     . '</p>'
             )
         );
