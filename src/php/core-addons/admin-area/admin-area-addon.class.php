@@ -491,7 +491,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                     {
                         $top_on = 'toplevel_page_wpca';
                         $top_off = 'menu-posts';
-                        $sub_on = 'admin.php?page=wpca-list,content,' . $post_type;
+                        $sub_on = 'admin.php?page=wpca-list,container,' . $post_type;
                         $found = true;
                         break;
                     }
