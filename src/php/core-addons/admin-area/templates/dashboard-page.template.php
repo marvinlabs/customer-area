@@ -23,7 +23,7 @@
 
     <ul class="cuar-related-actions">
         <li>
-            <a href="<?php echo admin_url('admin.php?page=cuar-settings'); ?>" class="button button-primary"><?php _e('Settings', 'cuar'); ?></a>
+            <a href="<?php echo admin_url('admin.php?page=wpca-settings'); ?>" class="button button-primary"><?php _e('Settings', 'cuar'); ?></a>
         </li>
         <li>
             <a href="<?php echo esc_url(__('http://wp-customerarea.com/documentation/', 'cuar')); ?>" class="button button-primary" target="_blank"><?php _e('Documentation', 'cuar'); ?></a>
