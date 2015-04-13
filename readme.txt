@@ -131,6 +131,7 @@ feel free to fork the project and send us pull requests!
 
 * New: important events are now logged: content viewed, file download, owner changed. Many more event types to come soon!
 * New: filter the private content lists to see only the content visible by a given user
+* New: hook to change the default owner type (See http://wp-customerarea.com/snippet/changing-default-owner-type/)
 * Fix: pagination is now filtered if there are too many ages to show
 * Fix: hide customer area pages in search results
 * Fix: admin bar was shown to guests when admin restriction setting was not enabled
