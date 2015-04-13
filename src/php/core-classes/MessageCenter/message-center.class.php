@@ -153,7 +153,7 @@ class CUAR_MessageCenter
         }
         echo '</ol>';
 
-        echo '<p><a href="' . admin_url('admin.php?page=cuar-status&cuar_section=needs-attention') . '" class="button-primary button-cuar">' . __('Fix these potential issues', 'cuar') . ' &raquo;</a></p>';
+        echo '<p><a href="' . admin_url('admin.php?page=wpca-status&tab=needs-attention') . '" class="button-primary button-cuar">' . __('Fix these potential issues', 'cuar') . ' &raquo;</a></p>';
         echo '</div>';
     }
 

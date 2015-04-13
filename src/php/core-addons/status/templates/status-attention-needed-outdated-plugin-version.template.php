@@ -27,7 +27,7 @@ $current_plugin_version = $plugin_data[ 'Version' ];
 
 	<p><?php printf( __('Some add-ons require a newer version of the main plugin (you are currently running version %1$s). You can find the list of all add-ons on the <a href="%2$s">add-ons status pages</a>.', 'cuar'), 
 					$current_plugin_version,
-					admin_url('admin.php?page=cuar-status&cuar_section=installed-addons')
+					admin_url('admin.php?page=wpca-status&tab=installed-addons')
 		 		); ?></p>
 		 
 	<p class="cuar-suggested-action"><span class="text"><?php _e('Suggested action', 'cuar' ); ?></span> 
