@@ -322,19 +322,19 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'blog';
         $tabs = array(
             'whats-new' => array(
-                'url'   => admin_url('admin.php?page=customer-area&tab=whats-new'),
+                'url'   => admin_url('admin.php?page=wpca&tab=whats-new'),
                 'label' => __("What's new", 'cuar')
             ),
             'changelog' => array(
-                'url'   => admin_url('admin.php?page=customer-area&tab=changelog'),
+                'url'   => admin_url('admin.php?page=wpca&tab=changelog'),
                 'label' => __("Change log", 'cuar')
             ),
             'blog'      => array(
-                'url'   => admin_url('admin.php?page=customer-area&tab=blog'),
+                'url'   => admin_url('admin.php?page=wpca&tab=blog'),
                 'label' => __("Live from the blog", 'cuar')
             ),
             'addons'    => array(
-                'url'   => admin_url('admin.php?page=customer-area&tab=addons'),
+                'url'   => admin_url('admin.php?page=wpca&tab=addons'),
                 'label' => __("Add-ons &amp; themes", 'cuar')
             ),
         );

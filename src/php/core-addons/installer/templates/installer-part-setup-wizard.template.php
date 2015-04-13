@@ -87,7 +87,7 @@
 <div class="cuar-installer-section cuar-setup-section cuar-readynow-section cuar-faded">
     <h2 class="cuar-section-title"><?php _e("Feeling ready?", 'cuar'); ?></h2>
     <p>
-        <a href="<?php echo admin_url('admin.php?page=customer-area'); ?>" class="button button-primary cuar-lets-go"><?php _e("Let's go!", 'cuar'); ?></a>
+        <a href="<?php echo admin_url('admin.php?page=wpca'); ?>" class="button button-primary cuar-lets-go"><?php _e("Let's go!", 'cuar'); ?></a>
     </p>
 </div>
 

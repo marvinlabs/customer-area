@@ -44,7 +44,7 @@ class CUAR_Plugin {
     private $logger;
 	
 	public function __construct() {
-        $this->message_center = new CUAR_MessageCenter(array('wpca-status', 'wpca-setup', 'customer-area'));
+        $this->message_center = new CUAR_MessageCenter(array('wpca-status', 'wpca-setup', 'wpca'));
         $this->activation_manager = new CUAR_PluginActivationManager();
         $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
         $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
