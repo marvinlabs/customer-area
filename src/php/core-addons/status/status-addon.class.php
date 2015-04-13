@@ -185,7 +185,7 @@ if ( !class_exists('CUAR_StatusAddOn')) :
                         call_user_func($callback);
 
                         $current_section_id = isset($_GET['cuar_section']) ? $_GET['cuar_section'] : 'needs-attention';
-                        wp_redirect(admin_url('admin.php?page=cuar-status&cuar_section=' . $current_section_id));
+                        wp_redirect(admin_url('admin.php?page=' . self::$PAGE_SLUG . '&tab=' . $current_section_id));
                         exit;
                     }
                 }

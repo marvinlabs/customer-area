@@ -116,7 +116,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                     . sprintf(__('If you check this box, you will be able to control access to various WordPress administrative features (the area under /wp-admin/, the top bar, etc.). '
                         . 'Once enabled, you can select which roles will be allowed to access it in the <a href="%1$s">general permissions tab</a>.',
                         'cuar'),
-                        admin_url('admin.php?page=cuar-settings&cuar_tab=cuar_capabilities'))
+                        admin_url('admin.php?page=wpca-settings&tab=cuar_capabilities'))
                     . '</p>'
             )
         );
@@ -322,19 +322,19 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'blog';
         $tabs = array(
             'whats-new' => array(
-                'url'   => admin_url('admin.php?page=customer-area&tab=whats-new'),
+                'url'   => admin_url('admin.php?page=wpca&tab=whats-new'),
                 'label' => __("What's new", 'cuar')
             ),
             'changelog' => array(
-                'url'   => admin_url('admin.php?page=customer-area&tab=changelog'),
+                'url'   => admin_url('admin.php?page=wpca&tab=changelog'),
                 'label' => __("Change log", 'cuar')
             ),
             'blog'      => array(
-                'url'   => admin_url('admin.php?page=customer-area&tab=blog'),
+                'url'   => admin_url('admin.php?page=wpca&tab=blog'),
                 'label' => __("Live from the blog", 'cuar')
             ),
             'addons'    => array(
-                'url'   => admin_url('admin.php?page=customer-area&tab=addons'),
+                'url'   => admin_url('admin.php?page=wpca&tab=addons'),
                 'label' => __("Add-ons &amp; themes", 'cuar')
             ),
         );

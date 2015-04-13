@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	<p>
 		<?php _e( 'Some pages of the customer area have not yet been created. Those pages are responsible for displaying the private content you have assigned to your users.', 'cuar' ); ?>
 		<?php printf( __( 'You can review which pages are currently created on the <a href="%1$s">pages settings page</a>.', 'cuar' ), 
-					admin_url( 'admin.php?page=cuar-settings&cuar_tab=cuar_customer_pages' ) ); ?>
+					admin_url( 'admin.php?page=wpca-settings&tab=cuar_customer_pages' ) ); ?>
 	</p>
 		 
 	<p class="cuar-suggested-action"><span class="text"><?php _e('Suggested action', 'cuar' ); ?></span>

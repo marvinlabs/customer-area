@@ -598,7 +598,7 @@ abstract class CUAR_AbstractEditContentPageAddOn extends CUAR_AbstractPageAddOn 
 	public function enqueue_scripts() {	
 		if ( is_admin() ) {
 			$screen = get_current_screen();
-			if ( isset( $screen->id ) && $screen->id=='customer-area_page_cuar-settings' ) {
+			if ( isset( $screen->id ) && $screen->id=='customer-area_page_wpca-settings' ) {
 				$this->plugin->enable_library('jquery.select2');
 			}
 		} else {
