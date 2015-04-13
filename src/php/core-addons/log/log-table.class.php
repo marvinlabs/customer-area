@@ -164,7 +164,7 @@ class CUAR_LogTable extends CUAR_ListTable
         $obj_link_text .= ' ' . $rel_object_id;
 
         return sprintf('<a href="%1$s" title="Title: %2$s">%3$s</a>',
-            admin_url('edit.php?post_type=' . $rel_object_type . '&post_id=' . $rel_object_id),
+            admin_url('post.php?post_type=' . $rel_object_type . '&action=edit&post=' . $rel_object_id),
             esc_attr(get_the_title($rel_object_id)),
             $obj_link_text);
     }
