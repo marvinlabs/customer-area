@@ -62,12 +62,13 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
 
     /**
      * Read the parameters from the query and store them for later use
+     *
+     * @param array $form_data The form data
      */
-    protected function parse_parameters()
+    protected function parse_parameters($form_data)
     {
-        $form_data = $_GET;
+        parent::parse_parameters($form_data);
 
-        $this->parameters['status'] = isset($form_data['status']) ? $form_data['status'] : 'any';
         $this->parameters['author'] = isset($form_data['author']) ? $form_data['author'] : 0;
         $this->parameters['search-field'] = isset($form_data['search-field']) ? $form_data['search-field'] : 'title';
         $this->parameters['search-query'] = isset($form_data['search-query']) ? $form_data['search-query'] : '';
@@ -110,7 +111,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
         // Taxonomies
         foreach ($this->associated_taxonomies as $slug => $tax)
         {
-            if (!empty($this->parameters[$slug]))
+            if ( !empty($this->parameters[$slug]))
             {
                 $is_active = true;
                 break;
@@ -232,7 +233,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
         return apply_filters('cuar/core/admin/content-list-table/view_statuses?post_type=' . $this->post_type,
             array_merge(parent::get_view_statuses(), array(
                 'publish' => __('Published', 'cuar'),
-                'draft'   => __('Draft', 'cuar')
+                'draft'   => __('Draft', 'cuar'),
+                'trash'   => __('Trash', 'cuar')
             )), $this);
     }
 
@@ -297,9 +299,7 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
      */
     public function get_bulk_actions()
     {
-        $actions = array(
-            'cuar-delete' => __('Delete', 'cuar')
-        );
+        $actions = parent::get_bulk_actions();
 
         return apply_filters('cuar/core/admin/content-list-table/bulk-actions?post_type=' . $this->post_type,
             $actions, $this);
@@ -313,18 +313,29 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
      */
     protected function execute_action($action, $post_id)
     {
-        switch ($action)
-        {
-            case 'cuar-delete':
-                if ( !current_user_can($this->post_type_object->cap->delete_post))
-                {
-                    wp_die(__('You are not allowed to delete this item.', 'cuar'));
-                }
-                wp_delete_post($post_id, true);
-                break;
-        }
+        parent::execute_action($action, $post_id);
 
         do_action('cuar/core/admin/content-list-table/do-bulk-action?post_type=' . $this->post_type,
             $post_id, $action, $this);
+    }
+
+    /**
+     * @return bool true if the current user is allowed to delete items
+     */
+    protected function current_user_can_delete()
+    {
+        return current_user_can($this->post_type_object->cap->delete_post);
+    }
+
+    /**
+     * @return array Get all posts in trash
+     */
+    protected function get_trashed_post_ids()
+    {
+        return get_posts(array(
+            'fields'      => 'ids',
+            'post_status' => 'trash',
+            'post_type'   => $this->post_type
+        ));
     }
 }

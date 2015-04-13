@@ -48,6 +48,9 @@ abstract class CUAR_ListTable extends WP_List_Table
     /** @var string The base URL for this table page */
     public $base_url = '';
 
+    /** @var bool Are we currently viewing the trashed posts */
+    public $is_trash = false;
+
     /**
      * Constructor, we override the parent to pass our own arguments
      * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
@@ -70,17 +73,33 @@ abstract class CUAR_ListTable extends WP_List_Table
      */
     public function initialize()
     {
-        $this->parse_parameters();
-        $this->count_posts();
+        $this->parse_form_data();
         $this->process_bulk_action();
+        $this->count_posts();
         $this->prepare_items();
+    }
+
+    protected function parse_form_data()
+    {
+        $form_data = $_GET;
+
+        $this->parse_parameters($form_data);
     }
 
     /**
      * Read the parameters from the query and store them for later use
+     *
+     * @param array $form_data The form data
      */
-    protected function parse_parameters()
+    protected function parse_parameters($form_data)
     {
+        $this->parameters['status'] = isset($form_data['status']) ? $form_data['status'] : 'any';
+        $this->parameters['posts'] = isset($form_data['posts']) ? $form_data['posts'] : array();
+
+        if ($this->parameters['status'] == 'trash')
+        {
+            $this->is_trash = true;
+        }
     }
 
     /**
@@ -145,7 +164,7 @@ abstract class CUAR_ListTable extends WP_List_Table
         {
             $views[$id] = $this->format_view_item($label,
                 $this->view_counts[$id],
-                add_query_arg(array('status' => $id, 'paged' => 1)),
+                add_query_arg(array('status' => $id, 'paged' => 1), $this->base_url),
                 $current === $id);
         }
 
@@ -291,10 +310,26 @@ abstract class CUAR_ListTable extends WP_List_Table
 
         if (current_user_can($this->post_type_object->cap->delete_post))
         {
-            $row_actions['delete'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
-                wp_nonce_url(add_query_arg(array('action' => 'cuar-delete', 'posts' => $item->ID), $this->base_url),
-                    'cuar_content_row_nonce'),
-                __('Delete', 'cuar'));
+            if ($this->is_trash)
+            {
+                $row_actions['untrash'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                    wp_nonce_url(add_query_arg(array('action' => 'cuar-untrash', 'posts' => $item->ID),
+                        $this->base_url),
+                        'cuar_content_row_nonce'),
+                    __('Restore', 'cuar'));
+
+                $row_actions['delete'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                    wp_nonce_url(add_query_arg(array('action' => 'cuar-delete', 'posts' => $item->ID), $this->base_url),
+                        'cuar_content_row_nonce'),
+                    __('Delete permanently', 'cuar'));
+            }
+            else
+            {
+                $row_actions['trash'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+                    wp_nonce_url(add_query_arg(array('action' => 'cuar-trash', 'posts' => $item->ID), $this->base_url),
+                        'cuar_content_row_nonce'),
+                    __('Trash', 'cuar'));
+            }
         }
 
         $row_actions['view'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
@@ -341,7 +376,22 @@ abstract class CUAR_ListTable extends WP_List_Table
      */
     public function get_bulk_actions()
     {
-        return array();
+        $actions = array();
+
+        if ($this->current_user_can_delete())
+        {
+            if ($this->is_trash)
+            {
+                $actions['cuar-untrash'] = __('Restore', 'cuar');
+                $actions['cuar-delete'] = __('Delete permanently', 'cuar');
+            }
+            else
+            {
+                $actions['cuar-trash'] = __('Move to trash', 'cuar');
+            }
+        }
+
+        return $actions;
     }
 
     /**
@@ -350,7 +400,14 @@ abstract class CUAR_ListTable extends WP_List_Table
     public function process_bulk_action()
     {
         $action = $this->current_action();
-        $posts = isset($_GET['posts']) ? $_GET['posts'] : array();
+        $posts = $this->parameters['posts'];
+
+        if (isset($_REQUEST['delete_all']) && !empty($_REQUEST['delete_all']))
+        {
+            $action = 'cuar-delete';
+            $posts = $this->get_trashed_post_ids();
+        }
+        
         if (empty($posts))
         {
             return;
@@ -375,6 +432,48 @@ abstract class CUAR_ListTable extends WP_List_Table
      */
     protected function execute_action($action, $post_id)
     {
+        switch ($action)
+        {
+            case 'cuar-untrash':
+                if ( !$this->current_user_can_delete())
+                {
+                    wp_die(__('You are not allowed to restore this item.', 'cuar'));
+                }
+                wp_untrash_post($post_id);
+                break;
+
+            case 'cuar-trash':
+                if ( !$this->current_user_can_delete())
+                {
+                    wp_die(__('You are not allowed to move this item to trash.', 'cuar'));
+                }
+                wp_trash_post($post_id, false);
+                break;
+
+            case 'cuar-delete':
+                if ( !$this->current_user_can_delete())
+                {
+                    wp_die(__('You are not allowed to delete this item.', 'cuar'));
+                }
+                wp_delete_post($post_id, true);
+                break;
+        }
+    }
+
+    /**
+     * @return bool true if the current user is allowed to delete items
+     */
+    protected function current_user_can_delete()
+    {
+        return false;
+    }
+
+    /**
+     * @return array Get all posts in trash
+     */
+    protected function get_trashed_post_ids()
+    {
+        return array();
     }
 
     /*------- OTHER FUNCTIONS ----------------------------------------------------------------------------------------*/
@@ -419,5 +518,25 @@ abstract class CUAR_ListTable extends WP_List_Table
                 $this->items[$i] = new $item_class($p);
             }
         }
+    }
+
+    /**
+     * @global int   $cat
+     *
+     * @param string $which
+     */
+    protected function extra_tablenav($which)
+    {
+        global $cat;
+        ?>
+        <div class="alignleft actions">
+            <?php
+            if ($this->is_trash && $this->current_user_can_delete())
+            {
+                submit_button(__('Empty Trash', 'cuar'), 'apply', 'delete_all', false);
+            }
+            ?>
+        </div>
+    <?php
     }
 }
