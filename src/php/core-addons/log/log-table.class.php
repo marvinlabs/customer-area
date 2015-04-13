@@ -53,14 +53,18 @@ class CUAR_LogTable extends CUAR_ListTable
 
     /**
      * Read the parameters from the query and store them for later use
+     *
+     * @param array $form_data The form data
      */
-    protected function parse_parameters()
+    protected function parse_parameters($form_data)
     {
-        $this->parameters['status'] = isset($_GET['status']) ? $_GET['status'] : 'any';
-        $this->parameters['related-object'] = isset($_GET['related-object']) ? $_GET['related-object'] : -1;
-        $this->parameters['event-type'] = isset($_GET['event-type']) ? $_GET['event-type'] : 0;
-        $this->parameters['start-date'] = isset($_GET['start-date']) ? sanitize_text_field($_GET['start-date']) : null;
-        $this->parameters['end-date'] = isset($_GET['end-date']) ? sanitize_text_field($_GET['end-date']) : null;
+        parent::parse_parameters($form_data);
+
+        $this->parameters['status'] = isset($form_data['status']) ? $form_data['status'] : 'any';
+        $this->parameters['related-object'] = isset($form_data['related-object']) ? $form_data['related-object'] : -1;
+        $this->parameters['event-type'] = isset($form_data['event-type']) ? $form_data['event-type'] : 0;
+        $this->parameters['start-date'] = isset($form_data['start-date']) ? sanitize_text_field($form_data['start-date']) : null;
+        $this->parameters['end-date'] = isset($form_data['end-date']) ? sanitize_text_field($form_data['end-date']) : null;
     }
 
     /**
