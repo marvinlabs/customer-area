@@ -136,6 +136,11 @@ feel free to fork the project and send us pull requests!
 * Fix: hide customer area pages in search results
 * Fix: admin bar was shown to guests when admin restriction setting was not enabled
 
+**Add-on changes**
+
+* New: the authentication forms add-on now plays nice with Peters' login redirect plugin for even more control
+* New: project property updates are now logged (progress, dates, etc.)
+
 = 6.0.0 (2015/03/10) =
 
 * New: a setup assistant for first time installation & about page to introduce new versions features

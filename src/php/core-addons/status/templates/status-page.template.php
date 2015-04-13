@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	
 <?php 
 	$sections = $this->get_status_sections();
-	$current_section = isset( $_GET['cuar_section'] ) ? $_GET['cuar_section'] : 'needs-attention';
+	$current_section = isset( $_GET['tab'] ) ? $_GET['tab'] : 'needs-attention';
    	$current_section = $sections[$current_section];
 ?>
 	
@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 		$is_current = $section_id==$current_section['id'];
 
 		printf( '<a href="%1$s" class="nav-tab %2$s">%3$s</a>',
-						esc_attr( admin_url( 'admin.php?page=cuar-status&cuar_section=' . $section_id ) ),
+						esc_attr( admin_url( 'admin.php?page=' . self::$PAGE_SLUG . '&tab=' . $section_id ) ),
 						$is_current ? 'nav-tab-active' : '',
 						esc_html( $section_label ) );
 	}
