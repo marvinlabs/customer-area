@@ -1,6 +1,6 @@
 # Breaking changes  
 
-## Introduced in 6.1
+## Introduced in 6.0
 
 - "Themes" have been renamed "skins" to avoid confusion with WordPress themes. If you have any custom skin, in 
   `wp-content/customer-area/themes` or in `wp-content/themes/my-theme/customer-area/themes` please rename the last 
