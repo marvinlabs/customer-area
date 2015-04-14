@@ -936,6 +936,13 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 return;
             }
 
+            // If post is not protected, we do nothing
+            $post = get_queried_object();
+            if (!$this->is_post_protected($post->ID))
+            {
+                return;
+            }
+
             // If not logged-in, we ask for details
             if ( !is_user_logged_in())
             {
@@ -943,7 +950,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             }
 
             // If not authorized to view the page, we bail
-            $post = get_queried_object();
             $author_id = $post->post_author;
             $current_user_id = apply_filters('cuar/core/ownership/protect-single-post/override-user-id',
                 get_current_user_id());
