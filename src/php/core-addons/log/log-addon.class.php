@@ -236,6 +236,12 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function log_owner_updated($post_id, $post, $previous_owner, $new_owner)
         {
+            // Compare previous and new, log only if actually changed
+            if ($previous_owner['type'] == $new_owner['type'] && $previous_owner['ids'] == $new_owner['ids'])
+            {
+                return;
+            }
+
             // unhook this function so it doesn't loop infinitely
             remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
 

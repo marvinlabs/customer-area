@@ -420,6 +420,11 @@ abstract class CUAR_ListTable extends WP_List_Table
 
         foreach ($posts as $post_id)
         {
+            if (get_post_type($post_id)===false)
+            {
+                continue;
+            }
+
             $this->execute_action($action, $post_id);
         }
     }
