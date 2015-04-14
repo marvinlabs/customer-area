@@ -32,9 +32,6 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     /** @var CUAR_AdminMenuHelper */
     private $admin_menu_helper;
 
-    /** @var CUAR_AdminBarHelper */
-    private $adminbar_helper;
-
     public function __construct()
     {
         parent::__construct('admin-area', '6.0.0');
@@ -156,7 +153,6 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             'groups' => array()
         );
 
-
         if ($this->is_admin_area_access_restricted())
         {
             $capability_groups['cuar_general']['groups'] = array(
@@ -190,7 +186,6 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php'
         )
         {
-
             $cp_addon = $this->plugin->get_addon('customer-pages');
             $customer_area_url = apply_filters('cuar/core/admin/admin-area-forbidden-redirect-url',
                 $cp_addon->get_page_url("customer-home"));
@@ -214,16 +209,17 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         if (isset($_GET["post_type"]) && !isset($_GET['post']))
         {
             $post_type = $_GET["post_type"];
-            $private_types = $this->plugin->get_content_post_types();
-            if (in_array($post_type, $private_types))
+            $is_managed = $this->plugin->is_type_managed($post_type);
+            if ( !$is_managed)
             {
-                wp_redirect(admin_url("admin.php?page=wpca-list,content," . $post_type));
+                return;
             }
 
-            $private_types = $this->plugin->get_container_post_types();
-            if (in_array($post_type, $private_types))
+            $private_types = $this->plugin->get_private_types();
+            if (isset($private_types[$post_type]))
             {
-                wp_redirect(admin_url("admin.php?page=wpca-list,container," . $post_type));
+                $type = $private_types[$post_type]['type'];
+                wp_redirect(admin_url("admin.php?page=wpca-list," . $type . "," . $post_type));
             }
         }
     }
@@ -428,33 +424,22 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $sub_on = '';
         $found = false;
 
-        $content_types = $this->plugin->get_content_post_types();
-        $container_types = $this->plugin->get_container_post_types();
+        $private_types = $this->plugin->get_private_types();
 
         // New post & post edit pages
         if ( !$found && isset($post))
         {
             $post_type = get_post_type($post);
+            $is_managed = $this->plugin->is_type_managed($post_type, $private_types);
 
-            if ( !$found)
+            if ($is_managed && !$found)
             {
-                if (in_array($post_type, $content_types))
+                $type = isset($private_types[$post_type]) ? $private_types[$post_type] : null;
+                if ($type != null)
                 {
                     $top_on = 'toplevel_page_wpca';
                     $top_off = 'menu-posts';
-                    $sub_on = 'admin.php?page=wpca-list,content,' . $post_type;
-                    $found = true;
-                }
-            }
-
-            // New post & post edit pages
-            if ( !$found)
-            {
-                if (in_array($post_type, $container_types))
-                {
-                    $top_on = 'toplevel_page_wpca';
-                    $top_off = 'menu-posts';
-                    $sub_on = 'admin.php?page=wpca-list,container,' . $post_type;
+                    $sub_on = 'admin.php?page=wpca-list,' . $type['type'] . ',' . $post_type;
                     $found = true;
                 }
             }
@@ -467,31 +452,20 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
             if ( !$found)
             {
-                foreach ($content_types as $post_type)
+                foreach ($private_types as $post_type => $desc)
                 {
-                    $taxonomies = get_object_taxonomies($post_type);
-                    if (in_array($tax, $taxonomies))
+                    $is_managed = $this->plugin->is_type_managed($post_type, $private_types);
+                    if ( !$is_managed)
                     {
-                        $top_on = 'toplevel_page_wpca';
-                        $top_off = 'menu-posts';
-                        $sub_on = 'admin.php?page=wpca-list,content,' . $post_type;
-                        $found = true;
-                        break;
+                        continue;
                     }
-                }
-            }
 
-            // New post & post edit pages
-            if ( !$found)
-            {
-                foreach ($container_types as $post_type)
-                {
                     $taxonomies = get_object_taxonomies($post_type);
                     if (in_array($tax, $taxonomies))
                     {
                         $top_on = 'toplevel_page_wpca';
                         $top_off = 'menu-posts';
-                        $sub_on = 'admin.php?page=wpca-list,container,' . $post_type;
+                        $sub_on = 'admin.php?page=wpca-list,' . $desc['type'] . ',' . $post_type;
                         $found = true;
                         break;
                     }
