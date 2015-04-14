@@ -133,6 +133,7 @@ feel free to fork the project and send us pull requests!
 * New: filter the private content lists to see only the content visible by a given user
 * New: hook to change the default owner type (See http://wp-customerarea.com/snippet/changing-default-owner-type/)
 * New: improved the administration panel. The menu has been made much clearer. Added advanced filters for private content.
+* New: translation files can now be stored outside the plugin folder
 * Fix: pagination is now filtered if there are too many ages to show
 * Fix: hide customer area pages in search results
 * Fix: admin bar was shown to guests when admin restriction setting was not enabled
