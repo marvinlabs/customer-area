@@ -62,11 +62,10 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 // Log table handling
                 add_filter('cuar/core/log/table-displayable-meta', array(&$this, 'get_table_displayable_meta'), 10, 1);
                 add_filter('cuar/core/log/table-meta-pill-descriptor', array(&$this, 'get_table_meta_pill'), 10, 3);
+
                 // Settings
-                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20,
-                    2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'),
-                    20, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'), 20, 3);
             }
             else
             {
@@ -81,8 +80,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
             add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
 
             // Content viewed
-            add_action('cuar/core/ownership/protect-single-post/on-access-granted',
-                array(&$this, 'log_content_viewed'));
+            add_action('cuar/core/ownership/protect-single-post/on-access-granted', array(&$this, 'log_content_viewed'));
 
             // File downloaded
             add_action('cuar/private-content/files/on-download', array(&$this, 'log_file_downloaded'), 10, 3);
