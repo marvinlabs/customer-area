@@ -328,17 +328,19 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	  	$dest_folder = trailingslashit( $po_addon->get_private_storage_directory( $post_id, true, true ) );
 	  	$dest_file = $dest_folder . wp_unique_filename( $dest_folder, basename( $ftp_file ), null );	  	
 	  	$delete_after_copy = isset( $_POST['cuar_ftp_delete_file_after_copy'] );
-	  	
+	  	$ret_val = false;
 	  	if ( copy( $ftp_file, $dest_file ) ) {
 	  		if ( $delete_after_copy ) {
 	  			unlink( $ftp_file );
 	  		}
 			$upload = array( 'file' => basename( $dest_file ) );
 			update_post_meta( $post_id, 'cuar_private_file_file', $upload );
+			$ret_val = true;
 	  	} else {
 			$msg = __( 'An error happened while copying your file from the FTP folder', 'cuar' );
 			$this->plugin->add_admin_notice( $msg );
 	  	}
+	  	return($ret_val);
 	}
 
 	/*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/
