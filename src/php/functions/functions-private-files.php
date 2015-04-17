@@ -222,7 +222,8 @@ function cuar_format_human_file_size($size)
 
 /**
  * @param array $args The arguments to pass to each cuar_create_private_file function call.
- *
+ * @param bool  delete_after_copy 
+ *                         TRUE to delete source files after copy, FALSE to leave in place. Defaults to FALSE.
  * ´cuar_bulk_create_private_files(array(
  *      array(
  *          'post_data' => (...),
@@ -233,7 +234,8 @@ function cuar_format_human_file_size($size)
  *          'post_data' => (...),
  *          'owner'     => (...),
  *          'files'     => (...),
- *      ))
+ *      )),
+ *      true
  * );´
  *
  * @return array An array containing the created post IDs and the errors
@@ -268,6 +270,8 @@ function cuar_bulk_create_private_files($args, $delete_after_copy=false)
  *                         of corresponding objects
  * @param array $files     An array containing the paths to the files to attache to the post object. Currently we only
  *                         support a single file.
+ * @param bool  delete_after_copy 
+ *                         TRUE to delete source files after copy, FALSE to leave in place. Defaults to FALSE.
  *
  * @return int¦WP_Error the post ID if the function could insert the post, else, a WP_Error object
  *
@@ -283,7 +287,8 @@ function cuar_bulk_create_private_files($args, $delete_after_copy=false)
  *      ),
  *      array(
  *          '/path/to/file/on/server/the-file.txt'
- *      )
+ *      ),
+ *      true
  * );´
  */
 function cuar_create_private_file($post_data, $owner, $files, $delete_after_copy=false)
