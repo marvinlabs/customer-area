@@ -1,0 +1,1 @@
+<ul class="cuar-sc-protected-content cuar-sc-protected-content-<?php echo $layout ?>">

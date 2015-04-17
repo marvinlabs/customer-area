@@ -131,9 +131,11 @@ feel free to fork the project and send us pull requests!
 
 * New: important events are now logged: content viewed, file download, owner changed. Many more event types to come soon!
 * New: filter the private content lists to see only the content visible by a given user
-* New: hook to change the default owner type (See http://wp-customerarea.com/snippet/changing-default-owner-type/)
+* New: hook to change the default owner type (See [our corresponding code snippet](http://wp-customerarea.com/snippet/changing-default-owner-type/))
 * New: improved the administration panel. The menu has been made much clearer. Added advanced filters for private content.
 * New: translation files can now be stored outside the plugin folder
+* New: added a shortcode to display the navigation menu (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
+* New: added a shortcode to list protected content (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
 * Fix: pagination is now filtered if there are too many ages to show
 * Fix: hide customer area pages in search results
 * Fix: admin bar was shown to guests if the setting "restrict admin access" was not enabled
