@@ -627,8 +627,11 @@ class CUAR_Plugin {
     /**
      * Delegate function for the template engine
      */
-    public function get_template_file_path( $default_root, $filename, $sub_directory = '', $fallback_filename = '' ) {
-        return $this->template_engine->get_template_file_path( $default_root, $filename, $sub_directory, $fallback_filename);
+    public function get_template_file_path( $default_root, $filenames, $relative_path = 'templates', $fallback_filename = '' ) {
+        if (!is_array($filenames)) $filenames = array($filenames);
+        if (!empty($fallback_filename)) $filenames[] = $fallback_filename;
+
+        return $this->template_engine->get_template_file_path( $default_root, $filenames, $relative_path);
     }
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
