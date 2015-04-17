@@ -1,1 +1,4 @@
-<ul class="cuar-sc-protected-content cuar-sc-protected-content-<?php echo $layout ?>">
+<?php /** Template version: 1.0.0 */ ?>
+
+<div class="cuar-content-block">
+    <div class="cuar-item-list">

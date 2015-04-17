@@ -1,16 +1,22 @@
-<?php
-global $post;
-$post_backup = $post;
+<?php /** Template version: 1.0.0 */ ?>
 
-include($before_items_template);
-
-while ( $query->have_posts() ) {
-    $query->the_post();
+<div class="cuar-sc-protected-content cuar-sc-protected-content-<?php echo $layout ?>">
+    <?php
     global $post;
+    $post_backup = $post;
 
-    include( $item_template );
-}
+    include($before_items_template);
 
-include($after_items_template);
+    while ($query->have_posts())
+    {
+        $query->the_post();
+        global $post;
 
-$post = $post_backup;
+        include($item_template);
+    }
+
+    include($after_items_template);
+
+    $post = $post_backup;
+    ?>
+</div>
