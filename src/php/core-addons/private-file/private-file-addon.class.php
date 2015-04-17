@@ -307,7 +307,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * folder and into the user's private folder
 	 * drsprite
 	 */
-	 public function handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner, $ftp_file ) {
+	 public function handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner, $ftp_file, $delete_after_copy ) {
 		if ( !isset( $ftp_file ) || empty( $ftp_file ) ) return;
 
          /** @var CUAR_PostOwnerAddOn $po_addon */
@@ -327,7 +327,11 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	  	// copy from ftp_file to dest_folder
 	  	$dest_folder = trailingslashit( $po_addon->get_private_storage_directory( $post_id, true, true ) );
 	  	$dest_file = $dest_folder . wp_unique_filename( $dest_folder, basename( $ftp_file ), null );	  	
-	  	$delete_after_copy = isset( $_POST['cuar_ftp_delete_file_after_copy'] );
+
+	  	// if it's not passed in as a parameter, try to get it from $_POST
+	  	if (! isset($delete_after_copy)){
+		  	$delete_after_copy = isset( $_POST['cuar_ftp_delete_file_after_copy'] );
+		}
 	  	$ret_val = false;
 	  	if ( copy( $ftp_file, $dest_file ) ) {
 	  		if ( $delete_after_copy ) {
