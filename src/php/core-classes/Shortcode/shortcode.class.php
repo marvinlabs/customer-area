@@ -86,7 +86,7 @@ abstract class CUAR_Shortcode
         // Check required parameters
         foreach ($this->get_required_params() as $key)
         {
-            if ( !isset($params[$key]))
+            if ( !isset($params[$key]) || empty($params[$key]))
             {
                 return sprintf(__('The shortcode <code>[%1$s]</code> is missing required parameter: %2$s'),
                     $this->name, $key);

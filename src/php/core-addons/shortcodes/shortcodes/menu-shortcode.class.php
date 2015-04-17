@@ -28,6 +28,14 @@ class CUAR_MenuShortcode extends CUAR_Shortcode {
         parent::__construct('customer-area-menu');
 	}
 
+    /**
+     * Actually process the shortcode (output stuff, ...)
+     *
+     * @param array  $params  The parameters
+     * @param string $content The content between the shortcode tags
+     *
+     * @return string The shortcode final output
+     */
 	public function process_shortcode( $params, $content ) {
         ob_start();
         cuar_the_customer_area_menu();

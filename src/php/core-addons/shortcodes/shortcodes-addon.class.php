@@ -39,6 +39,7 @@ class CUAR_ShortcodesAddOn extends CUAR_AddOn
     public function run_addon($plugin)
     {
         include(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes/menu-shortcode.class.php');
+        include(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes/protected-content-shortcode.class.php');
     }
 }
 
