@@ -233,7 +233,7 @@ class CUAR_PrivateFileAdminInterface {
 			}
 			
 			if ( !empty( $_FILES['cuar_private_file_file']['name'] ) ) {
-				$delete_after_copy = $_POST['cuar_ftp_delete_file_after_copy'];
+				$delete_after_copy = isset($_POST['cuar_ftp_delete_file_after_copy']);
 				$upload_result = $this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner,
 						$_FILES['cuar_private_file_file'], $delete_after_copy);
 
