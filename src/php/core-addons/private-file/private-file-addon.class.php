@@ -307,10 +307,11 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * folder and into the user's private folder
 	 * drsprite
 	 */
-	 public function handle_copy_private_file_from_ftp_folder( $post_id, $previous_owner, $new_owner, $ftp_file ) {
+	 public function handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner, $ftp_file ) {
 		if ( !isset( $ftp_file ) || empty( $ftp_file ) ) return;
-		
-		$po_addon = $this->plugin->get_addon('post-owner');
+
+         /** @var CUAR_PostOwnerAddOn $po_addon */
+         $po_addon = $this->plugin->get_addon('post-owner');
 		
 		// Delete the existing file if any
 		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );

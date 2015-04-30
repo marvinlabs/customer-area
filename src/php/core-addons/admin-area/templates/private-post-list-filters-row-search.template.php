@@ -12,7 +12,7 @@
     <label for="search-field"> <?php _e('in', 'cuar'); ?> </label>
     <select id="search-field" name="search-field" class="postform">
         <option value="title" <?php selected($search_field, 'title'); ?>>
-            <?php _e('Title', 'cuar'); ?></option>
+            <?php _e('Title or content', 'cuar'); ?></option>
         <option value="owner" <?php selected($search_field, 'owner'); ?>>
             <?php _e('Owner', 'cuar'); ?></option>
     </select>
