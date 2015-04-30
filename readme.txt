@@ -138,7 +138,7 @@ feel free to fork the project and send us pull requests!
 * New: added a shortcode to list protected content (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
 * Fix: pagination is now filtered if there are too many ages to show
 * Fix: hide customer area pages in search results
-* Fix: admin bar was shown to guests if the setting "restrict admin access" was not enabled
+* Fix: admin bar was shown to guests when admin restriction setting was not enabled
 
 **Add-on changes**
 

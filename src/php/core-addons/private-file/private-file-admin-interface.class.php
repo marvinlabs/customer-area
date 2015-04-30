@@ -222,7 +222,7 @@ class CUAR_PrivateFileAdminInterface {
 			if ( !empty( $_POST['cuar_selected_ftp_file'] ) ) {
 				$ftp_dir = trailingslashit( $this->private_file_addon->get_ftp_path() );
 
-				$this->private_file_addon->handle_copy_private_file_from_ftp_folder( $post_id, $previous_owner, $new_owner,
+				$this->private_file_addon->handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner,
 						$ftp_dir . $_POST['cuar_selected_ftp_file']);
 			}
 		} else {
