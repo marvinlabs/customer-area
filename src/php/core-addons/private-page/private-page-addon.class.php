@@ -139,7 +139,8 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$types['cuar_private_page'] = array(
 				'label-singular'		=> _x( 'Page', 'cuar_private_page', 'cuar' ),
 				'label-plural'			=> _x( 'Pages', 'cuar_private_page', 'cuar' ),
-				'content-page-addon'	=> 'customer-private-pages'
+				'content-page-addon'	=> 'customer-private-pages',
+                'type'                  => 'content'
 			);
 		return $types;
 	}

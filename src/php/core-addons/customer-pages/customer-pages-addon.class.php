@@ -699,19 +699,22 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             if (isset($locations[$menu_name]) && $locations[$menu_name] > 0)
             {
                 $menu = wp_get_nav_menu_object($locations[$menu_name]);
-                $menu_items = wp_get_nav_menu_items($menu->term_id);
-
-                // Delete existing menu items
-                foreach ($menu_items as $item)
+                if ($menu!=false)
                 {
-                    wp_delete_post($item->ID, true);
+                    $menu_items = wp_get_nav_menu_items($menu->term_id);
+
+                    // Delete existing menu items
+                    foreach ($menu_items as $item)
+                    {
+                        wp_delete_post($item->ID, true);
+                    }
                 }
             }
 
             // Create new menu if not existing already
             if ($menu == null)
             {
-                wp_delete_nav_menu(_x('customer-area-menu',
+                wp_delete_nav_menu(_x('wp-customer-area-menu',
                     'Localised slug for the main navigation menu (small caps version of the "WP Customer Area Menu" translation)',
                     'cuar'));
                 $menu = wp_create_nav_menu(__('WP Customer Area Menu', 'cuar'));

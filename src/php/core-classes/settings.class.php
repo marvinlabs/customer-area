@@ -704,14 +704,46 @@ if ( !class_exists('CUAR_Settings')) :
         /**
          * Validate a term id (for now, we just check it is not empty and strictly positive)
          *
-         * @param array  $input
-         *            Input array
-         * @param array  $validated
-         *            Output array
-         * @param string $option_id
-         *            Key of the value to check in the input array
+         * @param array  $input     Input array
+         * @param array  $validated Output array
+         * @param string $option_id Key of the value to check in the input array
          */
         public function validate_term($input, &$validated, $option_id, $taxonomy, $allow_multiple = false)
+        {
+            $term_ids = isset($input[$option_id]) ? $input[$option_id] : '';
+
+            if ( !$allow_multiple && is_array($term_ids))
+            {
+                add_settings_error($option_id, 'settings-errors',
+                    $option_id . ': ' . __('you cannot select multiple terms.', 'cuar'), 'error');
+                $validated[$option_id] = -1;
+
+                return;
+            }
+
+            if ($allow_multiple)
+            {
+                if ( !is_array($term_ids))
+                {
+                    $term_ids = empty($term_ids) ? array() : array($term_ids);
+                }
+
+                $validated[$option_id] = $term_ids;
+            }
+            else
+            {
+                $validated[$option_id] = empty($term_ids) ? -1 : $term_ids;
+            }
+        }
+
+        /**
+         * Validate a post type
+         *
+         * @param array  $input     Input array
+         * @param array  $validated Output array
+         * @param string $option_id Key of the value to check in the input array
+         */
+        public function validate_post_type($input, &$validated, $option_id, $allow_multiple = false)
         {
             $term_ids = isset($input[$option_id]) ? $input[$option_id] : '';
 
@@ -1215,6 +1247,78 @@ if ( !class_exists('CUAR_Settings')) :
                 <?php foreach ($terms as $term) :
                     $value = $term->term_id;
                     $label = $term->name;
+
+                    if (is_array($current_option_value))
+                    {
+                        $selected = in_array($value, $current_option_value) ? 'selected="selected"' : '';
+                    }
+                    else
+                    {
+                        $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
+                    }
+                    ?>
+                    <option
+                        value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+
+                <?php endforeach; ?>
+
+            </select>
+
+            <script type="text/javascript">
+                <!--
+                jQuery("document").ready(function ($) {
+                    $("#<?php echo esc_attr( $option_id ); ?>").select2({
+                        width: "100%"
+                    });
+                });
+                //-->
+            </script>
+            <?php
+            if (isset($after))
+            {
+                echo $after;
+            }
+        }
+
+        /**
+         * Output a select field for a post type
+         *
+         * @param string $option_id
+         * @param array  $options
+         * @param string $caption
+         */
+        public function print_post_type_select_field($args)
+        {
+            extract($args);
+
+            if (isset($before))
+            {
+                echo $before;
+            }
+
+            $this->plugin->enable_library('jquery.select2');
+
+            $post_types = get_post_types('', 'objects');
+            $current_option_value = $this->options[$option_id];
+
+            $field_name = esc_attr(self::$OPTIONS_GROUP) . '[' . esc_attr($option_id) . ']';
+            if (isset($multiple) && $multiple)
+            {
+                $field_name .= '[]';
+            }
+
+            $field_id = esc_attr($option_id);
+
+            $multiple = isset($multiple) && $multiple ? 'multiple="multiple" ' : '';
+            ?>
+
+            <select id="<?php echo $field_id; ?>" name="<?php echo $field_name; ?>" <?php echo $multiple; ?>>
+
+                <?php foreach ($post_types as $type => $obj) :
+                    if (isset($exclude) && in_array($type, $exclude)) continue;
+
+                    $value = $type;
+                    $label = isset($obj->labels->singular_name) ? $obj->labels->singular_name : $type;
 
                     if (is_array($current_option_value))
                     {

@@ -627,11 +627,34 @@ class CUAR_Plugin {
     /**
      * Delegate function for the template engine
      */
-    public function get_template_file_path( $default_root, $filename, $sub_directory = '', $fallback_filename = '' ) {
-        return $this->template_engine->get_template_file_path( $default_root, $filename, $sub_directory, $fallback_filename);
+    public function get_template_file_path( $default_root, $filenames, $relative_path = 'templates', $fallback_filename = '' ) {
+        if (!is_array($filenames)) $filenames = array($filenames);
+        if (!empty($fallback_filename)) $filenames[] = $fallback_filename;
+
+        return $this->template_engine->get_template_file_path( $default_root, $filenames, $relative_path);
     }
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
+
+    /**
+     * Tell if the post type is managed by the plugin or not (used to build the menu, etc.)
+     *
+     * @param string $post_type     The post type to check
+     * @param array  $private_types The private types of the plugin (null if you simply want the plugin to fetch them
+     *                              dynamically
+     *
+     * @return bool
+     */
+    public function is_type_managed($post_type, $private_types=null)
+    {
+        if ($private_types==null)
+        {
+            $private_types = $this->get_private_types();
+        }
+
+        return apply_filters('cuar/core/types/is-type-managed',
+            isset($private_types[$post_type]), $post_type, $private_types);
+    }
 
     /**
      * Get both private content and container types
@@ -667,12 +690,13 @@ class CUAR_Plugin {
 	 * Get the content types descriptors. Each descriptor is an array with:
 	 * - 'label-plural'				- plural label
 	 * - 'label-singular'			- singular label
-	 * - 'content-page-addon'		- content page addon associated to this type 
+	 * - 'content-page-addon'		- content page addon associated to this type
+     * - 'type'                     - 'content'
 	 * 
 	 * @return array keys are post_type and values are arrays as described above
 	 */
 	public function get_content_types() {
-		return apply_filters( 'cuar/core/types/content', array() );
+        return apply_filters( 'cuar/core/types/content', array() );
 	}	
 	
 	/**
@@ -688,7 +712,7 @@ class CUAR_Plugin {
 	 * - 'label-plural'				- plural label
 	 * - 'label-singular'			- singular label
 	 * - 'container-page-slug'		- main page slug associated to this type 
-	 * 
+	 * - 'type'                     - 'container'
 	 * @return array
 	 */
 	public function get_container_types() {
