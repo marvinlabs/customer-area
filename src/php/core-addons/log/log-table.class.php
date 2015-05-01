@@ -68,6 +68,20 @@ class CUAR_LogTable extends CUAR_ListTable
     }
 
     /**
+     * Returns true if any of our search parameters does not have a default value
+     *
+     * @return bool
+     */
+    public function is_search_active()
+    {
+        $is_active = $this->parameters['event-type'] != 0
+            || !empty($this->parameters['start-date'])
+            || !empty($this->parameters['end-date']);
+
+        return $is_active;
+    }
+
+    /**
      * Get the query parameters
      * @return array
      */
