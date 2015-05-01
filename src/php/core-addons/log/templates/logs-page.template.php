@@ -19,7 +19,8 @@
         <div class="cuar-list-table-filter">
             <a class="cuar-filter-toggle"><?php _e('Toggle advanced filters', 'cuar'); ?></a>
 
-            <div class="cuar-filter-panel">
+            <?php $collapse_panel = $logs_table->is_search_active() ? '' : 'display: none;'; ?>
+            <div class="cuar-filter-panel" style="<?php echo $collapse_panel; ?>">
                 <div class="cuar-filter-row">
                     <label for="filter-by-type"><?php _e('Event type', 'cuar'); ?> </label>
                     <select name="filter-by-type" id="cat" class="postform">
@@ -65,6 +66,12 @@
         filterToggle.click(function (e) {
             filterPanel.slideToggle();
             e.preventDefault();
+        });
+
+        $("#delete_all").click(function(event) {
+           if (!confirm("<?php esc_attr_e('Are you sure?', 'cuar'); ?>")) {
+              event.preventDefault();
+           }
         });
     });
 </script>
