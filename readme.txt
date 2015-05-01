@@ -136,9 +136,11 @@ feel free to fork the project and send us pull requests!
 * New: translation files can now be stored outside the plugin folder
 * New: added a shortcode to display the navigation menu (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
 * New: added a shortcode to list protected content (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
+* New: hook to change the name shown in the owner selection box (see [corresponding code snippet](http://wp-customerarea.com/snippet/change-the-name-displayed-in-user-selection-box/))
 * Fix: pagination is now filtered if there are too many ages to show
 * Fix: hide customer area pages in search results
 * Fix: admin bar was shown to guests when admin restriction setting was not enabled
+* Fix: PHP error in the front-end publishing module
 
 **Add-on changes**
 

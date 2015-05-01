@@ -489,7 +489,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                     foreach ($owner_ids as $id)
                     {
                         $u = new WP_User($id);
-                        $names[] = $u->display_name;
+                        $names[] = apply_filters('cuar/core/ownership/owner-display-name?owner-type=usr', $u->display_name, $u);
                     }
                     asort($names);
                     $displayname = implode(', ', $names);
@@ -636,7 +636,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
             foreach ($all_users as $u)
             {
-                $out[$u->ID] = $u->display_name;
+                $out[$u->ID] = apply_filters('cuar/core/ownership/owner-display-name?owner-type=usr', $u->display_name, $u);
             }
 
             return $out;

@@ -52,5 +52,11 @@
             filterPanel.slideToggle();
             e.preventDefault();
         });
+
+        $("#delete_all").click(function(event) {
+            if (!confirm("<?php esc_attr_e('Are you sure?', 'cuar'); ?>")) {
+                event.preventDefault();
+            }
+        });
     });
 </script>
