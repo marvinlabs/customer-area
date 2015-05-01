@@ -333,9 +333,10 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
     protected function get_trashed_post_ids()
     {
         return get_posts(array(
-            'fields'      => 'ids',
-            'post_status' => 'trash',
-            'post_type'   => $this->post_type
+            'fields'         => 'ids',
+            'post_status'    => 'trash',
+            'post_type'      => $this->post_type,
+            'posts_per_page' => -1
         ));
     }
 }
