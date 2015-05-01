@@ -25,16 +25,25 @@ class CUAR_TemplateEngine
     /** @var string The slug of the plugin (usually its folder name) */
     private $plugin_slug = 'define-me';
 
+    /** @var array Default root folders for the template files */
+    private $default_roots;
+
     /**
      * Constructor
      *
      * @param string $plugin_slug
-     * @param bool $enable_debug
+     * @param bool   $enable_debug
      */
     function __construct($plugin_slug, $enable_debug = false)
     {
         $this->plugin_slug = $plugin_slug;
         $this->enable_debug = $enable_debug;
+
+        $this->default_roots = array(
+            untrailingslashit(WP_CONTENT_DIR) . '/' . $this->plugin_slug,
+            untrailingslashit(get_stylesheet_directory()) . '/' . $this->plugin_slug,
+            untrailingslashit(get_stylesheet_directory())
+        );
     }
 
 
@@ -48,19 +57,23 @@ class CUAR_TemplateEngine
 
     /**
      * Checks all templates overridden by the user to see if they need an update
+     *
      * @param $dirs_to_scan The directories to scan
+     *
      * @return array An array containing all the outdated template files found
      */
     public function check_templates($dirs_to_scan)
     {
         $outdated_templates = array();
 
-        foreach ($dirs_to_scan as $dir => $title) {
+        foreach ($dirs_to_scan as $dir => $title)
+        {
             $template_finder = new CUAR_TemplateFinder($this);
             $template_finder->scan_directory($dir);
 
             $tmp = $template_finder->get_outdated_templates();
-            if (!empty($tmp)) {
+            if ( !empty($tmp))
+            {
                 $outdated_templates[$title] = $tmp;
             }
 
@@ -81,104 +94,86 @@ class CUAR_TemplateEngine
      * 3. default-directory/filename
      * 4. default-directory/fallback-filename
      *
-     * @param $default_root
-     * @param $filename
-     * @param string $sub_directory
-     * @param string $fallback_filename
+     * @param string|array $default_root
+     * @param string|array $filenames
+     * @param string       $relative_path
+     *
      * @return string
      */
-    public function get_template_file_path($default_root, $filename, $sub_directory = '', $fallback_filename = '')
+    public function get_template_file_path($template_roots, $filenames, $relative_path = '')
     {
-        $relative_path = (!empty($sub_directory)) ? trailingslashit($sub_directory) . $filename : $filename;
+        $enable_debug = $this->enable_debug && !is_admin();
 
-        $possible_locations = apply_filters('cuar/ui/template-directories',
-            array(
-                untrailingslashit(WP_CONTENT_DIR) . '/' . $this->plugin_slug,
-                untrailingslashit(get_stylesheet_directory()) . '/' . $this->plugin_slug,
-                untrailingslashit(get_stylesheet_directory())));
+        // Build the possible locations list
+        if ( !is_array($template_roots)) $template_roots = array($template_roots);
 
-        // Look for the preferred file first
-        foreach ($possible_locations as $dir) {
-            $path = trailingslashit($dir) . $relative_path;
-            if (file_exists($path)) {
-                if ($this->enable_debug) {
-                    $this->print_template_path_debug_info($path);
-                }
+        $possible_locations = array_merge($template_roots, $this->default_roots);
+        $possible_locations = apply_filters('cuar/ui/template-directories', $possible_locations);
 
-                return $path;
-            }
-        }
+        // Handle cas when only a single filename is given
+        if ( !is_array($filenames)) $filenames = array($filenames);
 
-        // Then for the fallback alternative if any
-        if (!empty($fallback_filename)) {
-            $fallback_relative_path = (!empty($sub_directory))
-                ? trailingslashit($sub_directory) . $fallback_filename
-                : $fallback_filename;
+        // Make sure we have trailing slashes
+        if ( !empty($relative_path)) $relative_path = trailingslashit($relative_path);
 
-            foreach ($possible_locations as $dir) {
-                $path = trailingslashit($dir) . $fallback_relative_path;
-                if (file_exists($path)) {
-                    if ($this->enable_debug) {
-                        $this->print_template_path_debug_info($path);
-                    }
+        // For each location, try to look for a file from the stack
+        foreach ($possible_locations as $dir)
+        {
+            $dir = trailingslashit($dir);
+            foreach ($filenames as $filename)
+            {
+                $path = $dir . $relative_path . $filename;
+                if (file_exists($path))
+                {
+                    if ($enable_debug) $this->print_template_debug_info($filenames, $possible_locations, $filename, $dir . $relative_path);
 
                     return $path;
                 }
             }
         }
 
-        // Then from default directories. We allow multiple default root directories.
-        if (!is_array($default_root)) {
-            $default_root = array($default_root);
-        }
-
-        foreach ($default_root as $root_path) {
-            $path = trailingslashit($root_path) . $relative_path;
-            if (file_exists($path)) {
-                if ($this->enable_debug) {
-                    $this->print_template_path_debug_info($path);
-                }
-
-                return $path;
-            }
-
-            if (!empty($fallback_filename)) {
-                /** @noinspection PhpUndefinedVariableInspection because of the if(!empty... */
-                $path = trailingslashit($root_path) . $fallback_relative_path;
-                if (file_exists($path)) {
-                    if ($this->enable_debug) {
-                        $this->print_template_path_debug_info($path, $filename);
-                    }
-
-                    return $path;
-                }
-            }
-        }
-
-        if ($this->enable_debug) {
-            echo "\n<!-- TEMPLATE < $filename > REQUESTED BUT NOT FOUND (WILL NOT BE USED) -->\n";
-        }
+        if ($enable_debug) $this->print_template_debug_info($filenames, $possible_locations);
 
         return '';
     }
 
     /**
      * Output some debugging information about a template we have included (or tried to)
-     * @param string $path
-     * @param string $original_filename
+     *
+     * @param array  $filenames          The filenames which were provided
+     * @param array  $possible_locations The locations we have been told to explore
+     * @param string $filename           File that got chosen
+     * @param string $path               The path where the file was found
      */
-    private function print_template_path_debug_info($path, $original_filename = null)
+    private function print_template_debug_info($filenames, $possible_locations, $filename = null, $path = '')
     {
-        $dirname = dirname($path);
-        $strip_from = strpos($path, 'customer-area');
-        $dirname = $strip_from > 0 ? strstr($dirname, 'customer-area') : $dirname;
+        echo "\n<!-- WPCA DEBUG - TEMPLATE REQUESTED \n";
+        echo "       ## FOUND     : " . (($filename == null) ? 'NO' : 'YES') . "\n";
 
-        $filename = basename($path);
-
-        if ($original_filename == null) {
-            echo "\n<!-- TEMPLATE < $filename > IN FOLDER < $dirname > -->\n";
-        } else {
-            echo "\n<!-- TEMPLATE < $original_filename > NOT FOUND BUT USING FALLBACK: < $filename > IN FOLDER < $dirname > -->\n";
+        if ( !empty($filename))
+        {
+            echo "       ## PICKED    : $filename \n";
         }
+
+        echo "       ## FROM STACK: \n";
+        foreach ($filenames as $f)
+        {
+            echo "           - " . $f . "\n";
+        }
+
+        if ( !empty($path))
+        {
+            echo "       ## IN PATH   : $path \n";
+        }
+
+        echo "       ## FROM ROOTS: \n";
+        foreach ($possible_locations as $loc)
+        {
+            $to_remove = dirname(WP_CONTENT_DIR);
+            $loc = str_replace($to_remove, '', $loc);
+            echo "           - " . $loc . "\n";
+        }
+
+        echo "-->\n";
     }
 }

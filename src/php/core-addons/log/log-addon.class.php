@@ -62,11 +62,10 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 // Log table handling
                 add_filter('cuar/core/log/table-displayable-meta', array(&$this, 'get_table_displayable_meta'), 10, 1);
                 add_filter('cuar/core/log/table-meta-pill-descriptor', array(&$this, 'get_table_meta_pill'), 10, 3);
+
                 // Settings
-                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20,
-                    2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'),
-                    20, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'), 20, 3);
             }
             else
             {
@@ -81,8 +80,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
             add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
 
             // Content viewed
-            add_action('cuar/core/ownership/protect-single-post/on-access-granted',
-                array(&$this, 'log_content_viewed'));
+            add_action('cuar/core/ownership/protect-single-post/on-access-granted', array(&$this, 'log_content_viewed'));
 
             // File downloaded
             add_action('cuar/private-content/files/on-download', array(&$this, 'log_file_downloaded'), 10, 3);
@@ -182,6 +180,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 }
             }
 
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_CONTENT_VIEWED,
+                $should_log_event, $post);
             if ($should_log_event)
             {
                 $this->logger->log_event(self::$TYPE_CONTENT_VIEWED,
@@ -218,6 +218,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 }
             }
 
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_FILE_DOWNLOADED,
+                $should_log_event, $post_id, $current_user_id, $pf_addon);
             if ($should_log_event)
             {
                 $this->logger->log_event(self::$TYPE_FILE_DOWNLOADED,
@@ -242,19 +244,24 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 return;
             }
 
-            // unhook this function so it doesn't loop infinitely
-            remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_OWNER_CHANGED,
+                true, $post_id, $post, $previous_owner, $new_owner);
+            if ($should_log_event)
+            {
+                // unhook this function so it doesn't loop infinitely
+                remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
 
-            $this->logger->log_event(self::$TYPE_OWNER_CHANGED,
-                $post_id,
-                get_post_type($post_id),
-                array_merge($this->get_default_event_meta(), array(
-                    self::$META_PREVIOUS_OWNER => $previous_owner,
-                    self::$META_CURRENT_OWNER  => $new_owner
-                )));
+                $this->logger->log_event(self::$TYPE_OWNER_CHANGED,
+                    $post_id,
+                    get_post_type($post_id),
+                    array_merge($this->get_default_event_meta(), array(
+                        self::$META_PREVIOUS_OWNER => $previous_owner,
+                        self::$META_CURRENT_OWNER  => $new_owner
+                    )));
 
-            // re-hook this function
-            add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+                // re-hook this function
+                add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+            }
         }
 
         /**

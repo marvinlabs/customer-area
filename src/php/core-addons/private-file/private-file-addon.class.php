@@ -723,7 +723,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$types['cuar_private_file'] = array(
 				'label-singular'		=> _x( 'File', 'cuar_private_file', 'cuar' ),
 				'label-plural'			=> _x( 'Files', 'cuar_private_file', 'cuar' ),
-				'content-page-addon'	=> 'customer-private-files'
+				'content-page-addon'	=> 'customer-private-files',
+                'type'                  => 'content'
 			);
 		return $types;
 	}

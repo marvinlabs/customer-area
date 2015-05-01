@@ -116,9 +116,6 @@ class CUAR_AdminMenuHelper
      */
     public function build_admin_menu()
     {
-        global $submenu;
-        $admin_menu = &$submenu;
-
         // Add the top-level admin menu
         $this->add_main_menu_item();
 
@@ -202,6 +199,11 @@ class CUAR_AdminMenuHelper
             {
                 foreach ($private_types as $type => $desc)
                 {
+                    if (!$this->plugin->is_type_managed($type, $private_types))
+                    {
+                        continue;
+                    }
+
                     $post_type = get_post_type_object($type);
                     $taxonomies = get_object_taxonomies($post_type->name, 'object');
 

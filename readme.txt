@@ -4,8 +4,8 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least:  3.6
-Tested up to:       4.1.1
-Stable tag:         6.0.0
+Tested up to:       4.2.1
+Stable tag:         6.1.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -131,12 +131,16 @@ feel free to fork the project and send us pull requests!
 
 * New: important events are now logged: content viewed, file download, owner changed. Many more event types to come soon!
 * New: filter the private content lists to see only the content visible by a given user
-* New: hook to change the default owner type (See http://wp-customerarea.com/snippet/changing-default-owner-type/)
+* New: hook to change the default owner type (See [our corresponding code snippet](http://wp-customerarea.com/snippet/changing-default-owner-type/))
 * New: improved the administration panel. The menu has been made much clearer. Added advanced filters for private content.
 * New: translation files can now be stored outside the plugin folder
+* New: added a shortcode to display the navigation menu (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
+* New: added a shortcode to list protected content (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
+* New: hook to change the name shown in the owner selection box (see [corresponding code snippet](http://wp-customerarea.com/snippet/change-the-name-displayed-in-user-selection-box/))
 * Fix: pagination is now filtered if there are too many ages to show
 * Fix: hide customer area pages in search results
 * Fix: admin bar was shown to guests when admin restriction setting was not enabled
+* Fix: PHP error in the front-end publishing module
 
 **Add-on changes**
 

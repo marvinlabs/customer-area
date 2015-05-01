@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		6.0.0
+	Version: 		6.1.0
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -62,6 +62,8 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/licensing.class.php' 
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/MessageCenter/message-center.class.php' );
 
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Shortcode/shortcode.class.php' );
+
 // Core Plugin classes
 include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/plugin-store.class.php' );
@@ -106,6 +108,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes-addon.class.php' );
 
 // Core content types
 include_once( CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php' );

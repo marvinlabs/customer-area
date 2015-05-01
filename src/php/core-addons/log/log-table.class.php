@@ -68,6 +68,20 @@ class CUAR_LogTable extends CUAR_ListTable
     }
 
     /**
+     * Returns true if any of our search parameters does not have a default value
+     *
+     * @return bool
+     */
+    public function is_search_active()
+    {
+        $is_active = $this->parameters['event-type'] != 0
+            || !empty($this->parameters['start-date'])
+            || !empty($this->parameters['end-date']);
+
+        return $is_active;
+    }
+
+    /**
      * Get the query parameters
      * @return array
      */
@@ -238,10 +252,42 @@ class CUAR_LogTable extends CUAR_ListTable
     public function get_bulk_actions()
     {
         $actions = array(
-            'delete' => __('Delete', 'cuar')
+            'delete'    => __('Delete permanently', 'cuar')
         );
 
         return $actions;
+    }
+
+    /**
+     * Execute the bulk action on all selected posts
+     */
+    public function process_bulk_action()
+    {
+        if (isset($_REQUEST['delete_all']) && !empty($_REQUEST['delete_all']))
+        {
+            if ( !current_user_can('delete_posts'))
+            {
+                wp_die(__('You are not allowed to delete logs.', 'cuar'));
+            }
+
+            $post_ids = get_posts(array(
+                'post_type'      => CUAR_LogEvent::$POST_TYPE,
+                'posts_per_page' => -1,
+                'fields'         => 'ids'
+            ));
+
+            if ( !is_wp_error($post_ids))
+            {
+                foreach ($post_ids as $post_id)
+                {
+                    wp_delete_post($post_id, true);
+                }
+            }
+
+            return;
+        }
+
+        parent::process_bulk_action();
     }
 
     /**
@@ -252,15 +298,46 @@ class CUAR_LogTable extends CUAR_ListTable
      */
     protected function execute_action($action, $post_id)
     {
-        if ('delete' === $action)
+        switch ($action)
         {
-            if ( !current_user_can('delete_post', $post_id))
-            {
-                wp_die(__('You are not allowed to delete this item.'));
-            }
+            case 'delete':
+                if ( !current_user_can('delete_post', $post_id))
+                {
+                    wp_die(__('You are not allowed to delete this item.'));
+                }
 
-            wp_delete_post($post_id, true);
+                wp_delete_post($post_id, true);
+                break;
         }
     }
+
+    /**
+     * @return bool true if the current user is allowed to delete items
+     */
+    protected function current_user_can_delete()
+    {
+        return current_user_can('delete_posts');
+    }
+
+    /**
+     * @global int   $cat
+     *
+     * @param string $which
+     */
+    protected function extra_tablenav($which)
+    {
+        global $cat;
+        ?>
+        <div class="alignleft actions">
+            <?php
+            if ($this->current_user_can_delete())
+            {
+                submit_button(__('Delete all events permanently', 'cuar'), 'apply', 'delete_all', false);
+            }
+            ?>
+        </div>
+    <?php
+    }
+
 
 }
