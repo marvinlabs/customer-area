@@ -3,16 +3,22 @@
 <?php
 $whats_new = array(
     '6.1' => array(
-        'blog_post' => __('http://wp-customerarea.com/whats-new-in-wp-customer-area-6-1', 'cuar'),
+        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-6-1', 'cuar'),
         'codename'  => 'Jimi Hendrix',
         'tagline'   => __("WP Customer Area 6.1 focuses mainly on making administrator's life easier, introducing event logging and a better administration panel.",
             'cuar'),
         'blocks'    => array(
             array(
+                'title' => __('Protect post types', 'cuar'),
+                'text'  => __('We are introducing a new add-on which will allow protecting any kind of external post types. Posts created from third party plugins can be made private and assigned just like private pages or files.',
+                    'cuar'),
+                'more'  => 'http://wp-customerarea.com' . __('/downloads/wpca-protect-post-types', 'cuar')
+            ),
+            array(
                 'title' => __('Shortcodes', 'cuar'),
                 'text'  => __('we have added shortcodes to display the navigation menu, list protected content, etc. You will now be able to easily build custom pages with a list of the content you want to pull for the connected user.',
                     'cuar'),
-                'more'  => 'http://wp-customerarea.com/documentation/shortcodes'
+                'more'  => 'http://wp-customerarea.com' . __('/documentation/shortcodes', 'cuar')
             ),
             array(
                 'title' => __('Better admin panel', 'cuar'),
@@ -33,7 +39,7 @@ $whats_new = array(
         )
     ),
     '6.0' => array(
-        'blog_post' => __('http://wp-customerarea.com/customer-area-is-dead-long-live-wp-customer-area/', 'cuar'),
+        'blog_post' => 'http://wp-customerarea.com' . __('/customer-area-is-dead-long-live-wp-customer-area/', 'cuar'),
         'codename'  => 'John Lennon',
         'tagline'   => __("WP Customer Area 6.0 is a major release which sees a lot of changes not only inside the plugin but also on the website.", 'cuar'),
         'blocks'    => array(

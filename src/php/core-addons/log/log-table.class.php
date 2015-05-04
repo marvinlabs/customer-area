@@ -163,7 +163,7 @@ class CUAR_LogTable extends CUAR_ListTable
     public function column_log_timestamp($item)
     {
         $m_time = $item->get_post()->post_date;
-        $h_time = mysql2date(__('Y/m/d - g:i:s'), $m_time);
+        $h_time = mysql2date(__('Y/m/d - g:i:s', 'cuar'), $m_time);
 
         return $h_time;
     }
@@ -303,7 +303,7 @@ class CUAR_LogTable extends CUAR_ListTable
             case 'delete':
                 if ( !current_user_can('delete_post', $post_id))
                 {
-                    wp_die(__('You are not allowed to delete this item.'));
+                    wp_die(__('You are not allowed to delete this item.', 'cuar'));
                 }
 
                 wp_delete_post($post_id, true);

@@ -100,7 +100,7 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
                 break;
 
             default:
-                return sprintf(__('The parameter %2$s of shortcode <code>[%1$s]</code> has an invalid value: <code>%3$s</code>'),
+                return sprintf(__('The parameter %2$s of shortcode <code>[%1$s]</code> has an invalid value: <code>%3$s</code>', 'cuar'),
                     $this->name, 'show', $params['mode']);
         }
 
