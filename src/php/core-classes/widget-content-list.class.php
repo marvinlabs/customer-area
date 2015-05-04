@@ -98,8 +98,8 @@ if ( !class_exists('CUAR_ContentListWidget')) :
             $posts = $this->get_content($args, $instance);
             if (count($posts) <= 0)
             {
-                echo '<p>' . isset($instance['no_content_message']) ? $instance['no_content_message']
-                    : $this->get_default_no_content_message() . '</p>';
+                echo '<p>' . (isset($instance['no_content_message']) ? $instance['no_content_message']
+                    : $this->get_default_no_content_message()) . '</p>';
             }
             else
             {
