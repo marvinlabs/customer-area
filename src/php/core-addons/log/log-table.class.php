@@ -29,6 +29,7 @@ class CUAR_LogTable extends CUAR_ListTable
 {
 
     public $content_types = array();
+    public $displayable_meta = array();
 
     /**
      * Constructor, we override the parent to pass our own arguments
@@ -47,8 +48,8 @@ class CUAR_LogTable extends CUAR_ListTable
             admin_url('admin.php?page=wpca-logs'),
             'CUAR_LogEvent');
 
-        $this->content_types = array_merge($plugin->get_content_types(), $plugin->get_container_types());
         $this->displayable_meta = apply_filters('cuar/core/log/table-displayable-meta', array());
+        $this->content_types = array_merge($this->plugin->get_content_types(), $this->plugin->get_container_types());
     }
 
     /**
