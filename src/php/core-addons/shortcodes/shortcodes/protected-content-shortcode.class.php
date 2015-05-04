@@ -37,12 +37,16 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
     {
         return array(
             // Required
-            'type'      => '',
+            'type'           => '',
 
             // Optional
-            'show'      => 'owned',
-            'max_items' => -1,
-            'layout'    => 'default'
+            'show'           => 'owned',
+            'max_items'      => -1,
+            'layout'         => 'default',
+            'taxonomy'       => '',
+            'terms'          => '',
+            'terms_operator' => 'IN',
+            'terms_field'    => 'term_id'
         );
     }
 
@@ -65,7 +69,7 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
     public function process_shortcode($params, $content)
     {
         // Do not consider guests
-        if (!is_user_logged_in())
+        if ( !is_user_logged_in())
         {
             return '';
         }
@@ -100,6 +104,20 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
                     $this->name, 'show', $params['mode']);
         }
 
+        // Taxonomy
+        $terms = explode(',', $params['terms']);
+        if ( !empty($params['taxonomy']) && !empty($terms))
+        {
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => $params['taxonomy'],
+                    'field'    => $params['terms_field'],
+                    'terms'    => $terms,
+                    'operator' => $params['terms_operator'],
+                )
+            );
+        }
+
         $query = new WP_Query(apply_filters('cuar/shortcodes/protected-content/query-args', $args, $params));
 
         // Determine the template files to use
@@ -114,7 +132,9 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
                     'protected-content-shortcode-loop-' . $type . '.template.php',
                     'protected-content-shortcode-loop-default.template.php'
                 ));
-        } else {
+        }
+        else
+        {
             $loop_template = $plugin->get_template_file_path(
                 $template_root,
                 array(
