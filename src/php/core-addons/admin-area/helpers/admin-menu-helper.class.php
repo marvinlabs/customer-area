@@ -74,6 +74,8 @@ class CUAR_AdminMenuHelper
         {
             foreach ($submenu_items as $item)
             {
+                if (isset($item['capability']) && !current_user_can($item['capability'])) continue;
+
                 $main_id = sanitize_title($item['slug']);
                 $wp_admin_bar->add_menu(array(
                     'parent' => isset($item['parent']) ? $item['parent'] : 'customer-area',
@@ -89,6 +91,8 @@ class CUAR_AdminMenuHelper
 
                 foreach ($item['children'] as $subitem)
                 {
+                    if (isset($subitem['capability']) && !current_user_can($subitem['capability'])) continue;
+
                     $sub_id = sanitize_title($subitem['slug']);
                     $wp_admin_bar->add_menu(array(
                         'parent' => isset($subitem['parent']) ? $subitem['parent'] : $main_id,
@@ -199,7 +203,7 @@ class CUAR_AdminMenuHelper
             {
                 foreach ($private_types as $type => $desc)
                 {
-                    if (!$this->plugin->is_type_managed($type, $private_types))
+                    if ( !$this->plugin->is_type_managed($type, $private_types))
                     {
                         continue;
                     }
@@ -216,25 +220,35 @@ class CUAR_AdminMenuHelper
                             'capability' => 'view-customer-area-menu'
                         );
 
-                        $item['children'] = array();
-                        $item['children'][] = array(
-                            'title' => sprintf(__('All %s', 'cuar'), strtolower($desc['label-plural'])),
-                            'slug'  => 'list-' . $type,
-                            'href'  => admin_url('admin.php?page=wpca-list,' . $t . ',' . $type)
-                        );
-                        $item['children'][] = array(
-                            'title' => sprintf(__('New %s', 'cuar'), strtolower($desc['label-singular'])),
-                            'slug'  => 'new-' . $type,
-                            'href'  => admin_url('post-new.php?post_type=' . $type)
-                        );
+                        if (current_user_can($post_type->cap->read_post))
+                        {
+                            $item['children'] = array();
+                            $item['children'][] = array(
+                                'title' => sprintf(__('All %s', 'cuar'), strtolower($desc['label-plural'])),
+                                'slug'  => 'list-' . $type,
+                                'href'  => admin_url('admin.php?page=wpca-list,' . $t . ',' . $type)
+                            );
+                        }
+
+                        if (current_user_can($post_type->cap->edit_post))
+                        {
+                            $item['children'][] = array(
+                                'title' => sprintf(__('New %s', 'cuar'), strtolower($desc['label-singular'])),
+                                'slug'  => 'new-' . $type,
+                                'href'  => admin_url('post-new.php?post_type=' . $type)
+                            );
+                        }
 
                         foreach ($taxonomies as $tax_slug => $tax)
                         {
-                            $item['children'][] = array(
-                                'title' => sprintf(__('Manage %s', 'cuar'), strtolower(__($tax->labels->name, 'cuar'))),
-                                'slug'  => 'manage-' . $tax_slug,
-                                'href'  => admin_url('edit-tags.php?taxonomy=' . $tax_slug)
-                            );
+                            if (current_user_can($tax->cap->manage_terms))
+                            {
+                                $item['children'][] = array(
+                                    'title' => sprintf(__('Manage %s', 'cuar'), strtolower(__($tax->labels->name, 'cuar'))),
+                                    'slug'  => 'manage-' . $tax_slug,
+                                    'href'  => admin_url('edit-tags.php?taxonomy=' . $tax_slug)
+                                );
+                            }
                         }
 
                         $this->private_types_items[] = $item;
