@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 	<p><?php printf( __('Some template files you have overridden have been modified in the current version of WP Customer Area. You have the list of these files below, but you can also '
 							. 'find a list of all template files and their respective status on the <a href="%s">corresponding templates status page</a>', 'cuar'),
-					admin_url('admin.php?page=cuar-status&cuar_section=templates')
+					admin_url('admin.php?page=wpca-status&tab=templates')
 		 		); ?></p>
 	
 <?php if ( version_compare( $this->plugin->get_version(), '4.4.0', '<=' ) ) : ?>	

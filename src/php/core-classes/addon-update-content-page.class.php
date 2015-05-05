@@ -78,6 +78,10 @@ abstract class CUAR_AbstractUpdateContentPageAddOn extends CUAR_AbstractEditCont
 		return array('cuar_title', 'cuar_content', 'cuar_category', 'cuar_owner');
 	}
 
+    public function get_default_owner_type() {
+        return $this->plugin->get_option( $this->get_slug() . self::$OPTION_DEFAULT_OWNER_TYPE, 'usr' );
+    }
+
 	/*------- FORM HANDLING -----------------------------------------------------------------------------------------*/
 	
 	protected function is_action_authorized( $action ) {

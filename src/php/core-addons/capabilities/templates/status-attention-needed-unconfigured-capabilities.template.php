@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 				. 'The permissions can easily be configured from the Customer Area settings.', 'cuar'); ?></p>
 		 
 	<p class="cuar-suggested-action"><span class="text"><?php _e('Suggested action', 'cuar' ); ?></span> 
-		<a href="<?php echo admin_url('admin.php?page=cuar-settings&cuar_tab=cuar_capabilities'); ?>" class="button button-primary"><?php _e( 'Configure permissions', 'cuar' ); ?> &raquo;</a>
+		<a href="<?php echo admin_url('admin.php?page=wpca-settings&tab=cuar_capabilities'); ?>" class="button button-primary"><?php _e( 'Configure permissions', 'cuar' ); ?> &raquo;</a>
 		<input type="submit" id="cuar-ignore-unconfigured-capabilities" name="cuar-ignore-unconfigured-capabilities" class="button button-primary" value="<?php esc_attr_e( 'Ignore this warning', 'cuar' ); ?> &raquo;" />
 		<?php wp_nonce_field( 'cuar-ignore-unconfigured-capabilities', 'cuar-ignore-unconfigured-capabilities_nonce' ); ?>
 	</p>	

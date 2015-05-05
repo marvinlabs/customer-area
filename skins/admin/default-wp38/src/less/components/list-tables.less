@@ -1,0 +1,91 @@
+.cuar-list-table-page {
+  .subsubsub {
+    margin-bottom: 8px;
+  }
+}
+
+.cuar-list-table-filter {
+  position: relative;
+  margin: 8px 0;
+
+  .cuar-filter-toggle {
+    position: absolute;
+    top: -12px;
+    right: 0;
+    cursor: pointer;
+  }
+
+  .cuar-filter-panel {
+    position: relative;
+    clear: both;
+    background: #f5f5f5;
+    overflow: auto;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 2.1em;
+
+    .cuar-filter-button {
+      position: absolute;
+      bottom: 16px;
+      right: 8px;
+    }
+
+    .cuar-filter-row {
+      margin: 12px 0;
+      padding: 0 12px;
+      clear: both;
+      overflow: auto;
+
+      & > label {
+        display: inline-block;
+        margin-left: 12px;
+        margin-right: 12px;
+      }
+
+      & > label:first-child {
+        min-width: 125px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    select.postform {
+      vertical-align: inherit;
+    }
+  }
+}
+
+/* LOG TABLE */
+
+.column-log_id {
+  width: 50px;
+}
+
+.column-log_timestamp {
+  width: 180px;
+}
+
+.column-log_user {
+  width: 180px;
+}
+
+.column-log_object {
+  width: 180px;
+}
+
+.column-log_event {
+  width: 180px;
+}
+
+.column-log_extra a {
+  display: inline-block;
+  padding: 0 4px;
+  background: #f5f5f5;
+  border: 1px solid #dfdfdf;
+  border-radius: 3px;
+
+  &:hover {
+    background: #efefef;
+  }
+}

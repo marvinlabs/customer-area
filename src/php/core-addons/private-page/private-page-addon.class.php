@@ -44,7 +44,6 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 			add_filter( 'cuar/core/types/content', array( &$this, 'register_content_type' ) );
 			
 			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ) );
-			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 11 );	
 		}
 				
 		// Init the admin interface if needed
@@ -67,58 +66,6 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		return $defaults;
 	}
 
-	/**
-	 * Add the menu item
-	 */
-	public function add_adminbar_menu_items( $submenus ) {
-		$my_submenus = array();
-
-
-		if ( current_user_can( 'cuar_pp_read' )
-				|| current_user_can( 'cuar_pp_edit' )
-				|| current_user_can( 'cuar_pp_manage_categories' ) ) {
-			$my_submenus[] = array(
-					'parent'=> 'customer-area',
-					'id' 	=> 'customer-area-pages',
-					'title' => __( 'Private Pages', 'cuar' ),
-					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_page' )
-				);
-		}
-		
-		if ( current_user_can( 'cuar_pp_read' ) ) {
-			$my_submenus[] = array(
-					'parent'=> 'customer-area-pages',
-					'id' 	=> 'customer-area-pages-list',
-					'title' => __( 'All pages', 'cuar' ),
-					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_page' )
-				);
-		}
-		
-		if ( current_user_can( 'cuar_pp_edit' ) ) {			
-			$my_submenus[] = array(
-					'parent'=> 'customer-area-pages',
-					'id' 	=> 'customer-area-pages-new',
-					'title' => __( 'New page', 'cuar' ),
-					'href' 	=> admin_url( 'post-new.php?post_type=cuar_private_page' )
-				);
-		}
-		
-		if ( current_user_can( 'cuar_pp_manage_categories' ) ) {
-			$my_submenus[] = array(
-					'parent'=> 'customer-area-pages',
-					'id' 	=> 'customer-area-pages-categories',
-					'title' => __( 'Manage categories', 'cuar' ),
-					'href' 	=> admin_url( 'edit-tags.php?taxonomy=cuar_private_page_category' )
-				);
-		}
-	
-		foreach ( $my_submenus as $submenu ) {
-			$submenus[] = $submenu;
-		}
-	
-		return $submenus;
-	}
-	
 	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 	
 	public function is_enabled() {
@@ -192,7 +139,8 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$types['cuar_private_page'] = array(
 				'label-singular'		=> _x( 'Page', 'cuar_private_page', 'cuar' ),
 				'label-plural'			=> _x( 'Pages', 'cuar_private_page', 'cuar' ),
-				'content-page-addon'	=> 'customer-private-pages'
+				'content-page-addon'	=> 'customer-private-pages',
+                'type'                  => 'content'
 			);
 		return $types;
 	}
@@ -247,7 +195,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 						'edit_others_posts' 	=> 'cuar_pp_edit',
 						'publish_posts' 		=> 'cuar_pp_edit',
 						'read_post' 			=> 'cuar_pp_read',
-						'read_private_posts' 	=> 'cuar_pp_edit',
+						'read_private_posts' 	=> 'cuar_pp_list_all',
 						'delete_post' 			=> 'cuar_pp_delete',
 						'delete_posts' 			=> 'cuar_pp_delete'
 					)

@@ -47,7 +47,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 			
 			add_filter( 'cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ) );
-			add_action( 'cuar/core/admin/adminbar-menu-items', array( &$this, 'add_adminbar_menu_items' ), 10 );
 		}
 				
 		// Init the admin interface if needed
@@ -71,57 +70,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		return $defaults;
 	}
 
-	/**
-	 * Add the menu item
-	 */
-	public function add_adminbar_menu_items( $submenus ) {
-		$my_submenus = array();
-
-		if ( current_user_can( 'cuar_pf_read' ) 
-				|| current_user_can( 'cuar_pf_edit' ) 
-				|| current_user_can( 'cuar_pf_manage_categories' ) ) {
-			$my_submenus[] = array(
-					'parent'=> 'customer-area',
-					'id' 	=> 'customer-area-files',
-					'title' => __( 'Private Files', 'cuar' ),
-					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_file' )
-				);
-		}
-		
-		if ( current_user_can( 'cuar_pf_read' ) ) {
-			$my_submenus[] = array(
-					'parent'=> 'customer-area-files',
-					'id' 	=> 'customer-area-files-list',
-					'title' => __( 'All files', 'cuar' ),
-					'href' 	=> admin_url( 'edit.php?post_type=cuar_private_file' )
-				);
-		}
-		
-		if ( current_user_can( 'cuar_pf_edit' ) ) {
-			$my_submenus[] = array(
-					'parent'=> 'customer-area-files',
-					'id' 	=> 'customer-area-files-new',
-					'title' => __( 'New file', 'cuar' ),
-					'href' 	=> admin_url( 'post-new.php?post_type=cuar_private_file' )
-				);
-		}
-		
-		if ( current_user_can( 'cuar_pf_manage_categories' ) ) {
-			$my_submenus[] = array(
-					'parent'=> 'customer-area-files',
-					'id' 	=> 'customer-area-files-categories',
-					'title' => __( 'Manage categories', 'cuar' ),
-					'href' 	=> admin_url( 'edit-tags.php?taxonomy=cuar_private_file_category' )
-				);
-		}
-	
-		foreach ( $my_submenus as $submenu ) {
-			$submenus[] = $submenu;
-		}
-	
-		return $submenus;
-	}
-	
 	/*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 	
 	public function is_enabled() {
@@ -359,10 +307,11 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * folder and into the user's private folder
 	 * drsprite
 	 */
-	 public function handle_copy_private_file_from_ftp_folder( $post_id, $previous_owner, $new_owner, $ftp_file ) {
+	 public function handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner, $ftp_file ) {
 		if ( !isset( $ftp_file ) || empty( $ftp_file ) ) return;
-		
-		$po_addon = $this->plugin->get_addon('post-owner');
+
+         /** @var CUAR_PostOwnerAddOn $po_addon */
+         $po_addon = $this->plugin->get_addon('post-owner');
 		
 		// Delete the existing file if any
 		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );
@@ -771,7 +720,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$types['cuar_private_file'] = array(
 				'label-singular'		=> _x( 'File', 'cuar_private_file', 'cuar' ),
 				'label-plural'			=> _x( 'Files', 'cuar_private_file', 'cuar' ),
-				'content-page-addon'	=> 'customer-private-files'
+				'content-page-addon'	=> 'customer-private-files',
+                'type'                  => 'content'
 			);
 		return $types;
 	}
@@ -826,9 +776,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 						'edit_others_posts' 	=> 'cuar_pf_edit',
 						'publish_posts' 		=> 'cuar_pf_edit',
 						'read_post' 			=> 'cuar_pf_read',
-						'read_private_posts' 	=> 'cuar_pf_edit',
+						'read_private_posts' 	=> 'cuar_pf_list_all',
 						'delete_post' 			=> 'cuar_pf_delete',
-						'delete_posts' 			=> 'cuar_pf_delete'
+						'delete_posts' 			=> 'cuar_pf_delete',
 					)
 			);
 

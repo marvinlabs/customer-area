@@ -152,13 +152,13 @@ if (!class_exists('CUAR_InstallerAddOn')) :
 
             // Redirect to the setup assistant if we have a first time install
             // Else launch update scripts if necessary
-            if (!$this->is_installed() && !(isset($_GET['page']) && $_GET['page'] == 'cuar-setup')) {
-                $this->set_pending_redirect('cuar-setup');
+            if (!$this->is_installed() && !(isset($_GET['page']) && $_GET['page'] == 'wpca-setup')) {
+                $this->set_pending_redirect('wpca-setup');
             } else if (CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION !== FALSE) {
                 do_action('cuar/core/on-plugin-update', CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION, $current_version);
             } else if ($active_version != $current_version) {
                 do_action('cuar/core/on-plugin-update', $active_version, $current_version);
-                $this->set_pending_redirect('customer-area&tab=whats-new');
+                $this->set_pending_redirect('wpca&tab=whats-new');
             }
         }
 
@@ -213,10 +213,10 @@ if (!class_exists('CUAR_InstallerAddOn')) :
             if (empty($_GET['page'])) return;
 
             switch ($_GET['page']) {
-                case 'cuar-setup' : {
+                case 'wpca-setup' : {
                     $page_name = __('Install WP Customer Area', 'cuar');
                     $page_title = __('Install WP Customer Area', 'cuar');
-                    add_dashboard_page($page_title, $page_name, 'manage_options', 'cuar-setup', array($this, 'print_setup_page'));
+                    add_dashboard_page($page_title, $page_name, 'manage_options', 'wpca-setup', array($this, 'print_setup_page'));
                     break;
                 }
             }
@@ -227,7 +227,7 @@ if (!class_exists('CUAR_InstallerAddOn')) :
          */
         public function admin_head()
         {
-            remove_submenu_page('index.php', 'cuar-setup');
+            remove_submenu_page('index.php', 'wpca-setup');
         }
 
         /**

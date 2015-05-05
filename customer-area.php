@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		6.0.0
+	Version: 		6.1.0
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -42,6 +42,13 @@ define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', FALSE );
 //define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' ); 
 
 // Core Framework classes
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Content/custom-post.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Content/custom-taxonomy.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/log-event.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/log-event-type.class.php');
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Log/logger.class.php' );
+
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Activation/plugin-activation-delegate.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Activation/plugin-activation-manager.class.php' );
 
@@ -49,12 +56,13 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-file.cl
 include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-finder.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-classes/TemplateEngine/template-engine.class.php' );
 
-
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-store.class.php');
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-validation-result.class.php');
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/licensing.class.php' );
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/MessageCenter/message-center.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Shortcode/shortcode.class.php' );
 
 // Core Plugin classes
 include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
@@ -93,12 +101,14 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/user-password
 // Core addons
 include_once( CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/installer/installer-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/log/log-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/container-owner/container-owner-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes-addon.class.php' );
 
 // Core content types
 include_once( CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php' );
