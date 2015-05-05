@@ -127,7 +127,7 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 6.1.0 (2015/04/) =
+= 6.1.0 (2015/05/06) =
 
 * New: important events are now logged: content viewed, file download, owner changed. Many more event types to come soon!
 * New: filter the private content lists to see only the content visible by a given user
@@ -144,8 +144,15 @@ feel free to fork the project and send us pull requests!
 
 **Add-on changes**
 
-* New: the authentication forms add-on now plays nice with Peters' login redirect plugin for even more control
-* New: project property updates are now logged (progress, dates, etc.)
+* New: *Authentication forms* - now plays nice with Peters' login redirect plugin for even more control
+* New: *Projects* - project property updates are now logged (progress, dates, etc.)
+* New: *Protect post types* - brand new add-on to protect external custom post types (from other plugins)
+* New: *ACF Integration* - updated supported version of ACF to 4.4.1
+* Fix: *Front-office publishing* - the "page created" message was displayed twice
+* Fix: *Conversations* - fix PHP error in template file to list replies
+* Fix: *Managed groups* - PHP warning in the group edition page and support for WPCA 6.1
+* Fix: *Additional Owner Types* - support for WPCA 6.1
+* Fix: *Tasks* - support for WPCA 6.1
 
 = 6.0.0 (2015/03/10) =
 
