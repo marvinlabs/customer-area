@@ -63,6 +63,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         }
         else
         {
+            add_action('init', array(&$this, 'hide_admin_bar'));
         }
     }
 
@@ -138,6 +139,20 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     private static $OPTION_RESTRICT_ADMIN_AREA_ACCESS = 'cuar_restrict_admin_area_access';
 
     /*------- OTHER FUNCTIONS ----------------------------------------------------------------------------------------*/
+
+    /**
+     * Hide the admin bar to users who should not see it
+     */
+    function hide_admin_bar()
+    {
+        if ( !is_admin()
+            && $this->is_admin_area_access_restricted()
+            && !current_user_can('cuar_view_top_bar')
+        )
+        {
+            show_admin_bar(false);
+        }
+    }
 
     /**
      * Declare the configurable capabilities for Customer Area

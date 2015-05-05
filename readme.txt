@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least:  3.6
 Tested up to:       4.2.1
-Stable tag:         6.1.0
+Stable tag:         6.1.1
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,7 @@ the main plugin and some add-ons. They may no be all up-to-date but this could b
 * Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com) and [Marcos Meyer Hollerweger](http://marcosh.eng.br/)
 * Italian by [Andrea Starz](http://www.work-on-web.it) and [Antonio Cicirelli](http://www.ideacommerce.it)
 * Swedish by Patric Liljestrand
+* Turkish by [Mehmet HAKAN](http://wpsitesi.com)
 
 If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
 you the credit for it on this page.
@@ -126,6 +127,11 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 6.1.1 (2015/05/06) =
+
+* Fix: A small bug preventing to select category in the front-office publishing add-on if no content had previously been assigned to any category
+* Fix: The admin bar was not hidden anymore to users who should not be able to see it
 
 = 6.1.0 (2015/05/06) =
 
