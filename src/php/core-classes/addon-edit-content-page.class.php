@@ -351,7 +351,10 @@ abstract class CUAR_AbstractEditContentPageAddOn extends CUAR_AbstractPageAddOn 
 	}
 
 	public function print_category_field( $label, $help_text='' ) {		
-		$categories = get_terms( $this->get_friendly_taxonomy() );
+		$categories = get_terms( $this->get_friendly_taxonomy(), array(
+            'hide_empty'        => false,
+            'fields'            => 'count'
+        ) );
 		if ( empty( $categories ) )	{	
 			$field_code = '<input type="hidden" name="cuar_category" value="-1" />';			
 			echo $field_code;
