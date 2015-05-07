@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least:  3.6
 Tested up to:       4.2.1
-Stable tag:         6.1.1
+Stable tag:         6.1.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,10 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 6.1.2 (2015/05/07) =
+
+* Fix: Some PHP versions did not like a method visibility change in the list table classes
 
 = 6.1.1 (2015/05/06) =
 

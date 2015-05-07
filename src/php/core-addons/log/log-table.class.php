@@ -325,7 +325,7 @@ class CUAR_LogTable extends CUAR_ListTable
      *
      * @param string $which
      */
-    protected function extra_tablenav($which)
+    public function extra_tablenav($which)
     {
         global $cat;
         ?>

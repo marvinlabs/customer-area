@@ -530,7 +530,7 @@ abstract class CUAR_ListTable extends WP_List_Table
      *
      * @param string $which
      */
-    protected function extra_tablenav($which)
+    public function extra_tablenav($which)
     {
         global $cat;
         ?>
