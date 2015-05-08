@@ -347,32 +347,36 @@ if ( !class_exists('CUAR_Settings')) :
             // General settings
             add_settings_section('cuar_general_settings',
                 __('General Settings', 'cuar'),
-                array(&$cuar_settings, 'print_empty_section_info'),
+                array(&$cuar_settings, 'print_frontend_section_info'),
                 self::$OPTIONS_PAGE_SLUG);
 
             if ( !current_theme_supports('customer-area.stylesheet'))
             {
                 add_settings_field(self::$OPTION_INCLUDE_CSS,
-                    __('Include CSS', 'cuar'),
+                    __('Use skin', 'cuar'),
                     array(&$cuar_settings, 'print_input_field'),
                     self::$OPTIONS_PAGE_SLUG,
                     'cuar_general_settings',
                     array(
                         'option_id' => self::$OPTION_INCLUDE_CSS,
                         'type'      => 'checkbox',
-                        'after'     => __('Include the default stylesheet.', 'cuar') . '<p class="description">'
-                            . __('If not, you should style the plugin yourself in your theme.', 'cuar') . '</p>'
+                        'after'     => __('Includes the WP Customer Area skin to provide a stylesheet for the plugin.', 'cuar') . '<p class="description">'
+                            . __('You can uncheck this if your theme includes support for WP Customer Area.', 'cuar') . '</p>'
                     )
                 );
 
                 add_settings_field(self::$OPTION_FRONTEND_SKIN,
-                    __('Frontend theme', 'cuar'),
+                    __('Skin to use', 'cuar'),
                     array(&$cuar_settings, 'print_theme_select_field'),
                     self::$OPTIONS_PAGE_SLUG,
                     'cuar_general_settings',
                     array(
                         'option_id'  => self::$OPTION_FRONTEND_SKIN,
-                        'theme_type' => 'frontend'
+                        'theme_type' => 'frontend',
+                        'after'     => '<p class="description">'
+                            . sprintf(__('You can make your own skin, please refer to <a href="%1$s">our documentation about skins</a>.', 'cuar'),
+                                'http://wp-customerarea.com' . __('/documentation/the-skin-system/', 'cuar'))
+                            . '</p>'
                     )
                 );
             }
@@ -416,6 +420,24 @@ if ( !class_exists('CUAR_Settings')) :
 
         public function print_empty_section_info()
         {
+        }
+
+        public function print_frontend_section_info()
+        {
+            ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                   $('#cuar_include_css').change(function() {
+                       $('#cuar_frontend_theme_url').parents('tr').slideToggle();
+                   });
+                    if ($('#cuar_include_css').is(':checked')) {
+                        $('#cuar_frontend_theme_url').parents('tr').show();
+                    } else {
+                        $('#cuar_frontend_theme_url').parents('tr').hide();
+                    }
+                });
+            </script>
+            <?php
         }
 
         /**
