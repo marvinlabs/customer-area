@@ -4,7 +4,7 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least:  3.6
-Tested up to:       4.2.1
+Tested up to:       4.2.2
 Stable tag:         6.1.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
@@ -127,6 +127,15 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 6.2.0 (2015/) =
+
+* New: support for the Smart groups add-on
+* Fix: permalinks to categories (private files or pages) were not correct when included as menu items
+
+**Add-on changes**
+
+* New: *Authentication forms* - Hooks to change the form links (see [code snippet](http://wp-customerarea.com/snippet/authentication-forms-change-the-links-below-the-forms/))
 
 = 6.1.2 (2015/05/07) =
 
