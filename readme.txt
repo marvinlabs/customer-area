@@ -40,10 +40,11 @@ WP Customer Area is available for free and should cover the needs of most users.
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
 from [our online shop](http://wp-customerarea.com/add-ons-and-themes/)
 
-**Included translations**
+**Special thanks**
 
-The community around WP Customer Area has contributed some [translations](http://wp-customerarea.com/documentation/) to
-the main plugin and some add-ons. They may no be all up-to-date but this could be a start for your project.
+To [Steve Steiner](www.websaucesoftware.com) for his intensive testing on the plugin, his bug reports and support.
+
+To the translators who send us [their translations](http://wp-customerarea.com/documentation/):
 
 * Catalan by Amanda Fontana
 * Dutch by [Paul Willems](http://wi4.nl) and [Peter Massar](http://profiles.wordpress.org/yourdigihands/)
@@ -55,7 +56,7 @@ the main plugin and some add-ons. They may no be all up-to-date but this could b
 * Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com) and [Marcos Meyer Hollerweger](http://marcosh.eng.br/)
 * Italian by [Andrea Starz](http://www.work-on-web.it) and [Antonio Cicirelli](http://www.ideacommerce.it)
 * Swedish by Patric Liljestrand
-* Turkish by [Mehmet HAKAN](http://wpsitesi.com)
+* Turkish by [Mehmet Hakan](http://wpsitesi.com)
 
 If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
 you the credit for it on this page.
