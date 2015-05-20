@@ -133,13 +133,12 @@
 }
 
 /* Adding border-box resizing mode to CUAR elements only */
-.cuar-page *,
-.cuar-page *:before,
-.cuar-page *:after,
-.cuar-single-post-footer *,
-.cuar-single-post-footer *:before,
-.cuar-single-post-footer *:after {
-  box-sizing: border-box;
+.cuar-page, .cuar-single-post-footer, .cuar-sc-protected-content {
+    *,
+    *:before,
+    *:after {
+            box-sizing: border-box;
+    }
 }
 
 .cuar-page {

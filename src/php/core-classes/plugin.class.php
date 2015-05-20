@@ -44,7 +44,7 @@ class CUAR_Plugin {
     private $logger;
 	
 	public function __construct() {
-        $this->message_center = new CUAR_MessageCenter(array('cuar-status', 'cuar-setup', 'customer-area'));
+        $this->message_center = new CUAR_MessageCenter(array('wpca-status', 'wpca-setup', 'wpca'));
         $this->activation_manager = new CUAR_PluginActivationManager();
         $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
         $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
@@ -124,19 +124,42 @@ class CUAR_Plugin {
         // Configure some components
         $this->template_engine->enable_debug($this->get_option(CUAR_Settings::$OPTION_DEBUG_TEMPLATES));
 	}
-	
-	/**
-	 * Load the translation file for current language. Checks in wp-content/languages first
-	 * and then the customer-area/languages.
-	 *
-	 * Edits to translation files inside customer-area/languages will be lost with an update
-	 * **If you're creating custom translation files, please use the global language folder.**
-	 */
+
+    /**
+     * Load the translation file for current language. Checks in wp-content/languages first
+     * and then the customer-area/languages.
+     *
+     * Edits to translation files inside customer-area/languages will be lost with an update
+     * **If you're creating custom translation files, please use the global language folder.**
+     *
+     * @param string $domain The text domain
+     * @param string $plugin_name The plugin folder name
+     */
 	public function load_textdomain( $domain = 'cuar', $plugin_name = 'customer-area' ) {
 		if ( empty( $domain ) ) $domain = 'cuar';
 		if ( empty( $plugin_name ) ) $plugin_name = 'customer-area';
-		
-		load_plugin_textdomain( $domain, false, $plugin_name . '/languages' );
+
+        // Traditional WordPress plugin locale filter
+        $locale        = apply_filters( 'plugin_locale',  get_locale(), $domain );
+        $mo_file        = sprintf( '%1$s-%2$s.mo', $domain, $locale );
+
+        $locations = array(
+            WP_CONTENT_DIR . '/customer-area/languages/' . $mo_file,
+            WP_LANG_DIR . '/customer-area/' . $mo_file,
+            WP_LANG_DIR . '/' . $mo_file
+        );
+
+        // Try the user locations
+        foreach ($locations as $path)
+        {
+            if ( file_exists( $path ) ) {
+                load_textdomain( $domain, $path );
+                return;
+            }
+        }
+
+        // Not found above, load the default plugin file if it exists
+        load_plugin_textdomain( $domain, false, $plugin_name . '/languages' );
 	}
 
 	/**
@@ -576,6 +599,11 @@ class CUAR_Plugin {
 				wp_enqueue_script( 'jquery.knob', CUAR_PLUGIN_URL . 'libs/knob/jquery.knob.min.js', array('jquery'), $this->get_version() );
 			}
 			break;
+
+            case 'jquery.repeatable-fields': {
+                wp_enqueue_script( 'jquery.repeatable-fields', CUAR_PLUGIN_URL . 'libs/repeatable-fields/repeatable-fields.min.js', array('jquery', 'jquery-ui-sortable'), $this->get_version() );
+            }
+            break;
 			
 			default:
 				do_action( 'cuar/core/libraries/enable?id=' . $library_id );
@@ -604,11 +632,34 @@ class CUAR_Plugin {
     /**
      * Delegate function for the template engine
      */
-    public function get_template_file_path( $default_root, $filename, $sub_directory = '', $fallback_filename = '' ) {
-        return $this->template_engine->get_template_file_path( $default_root, $filename, $sub_directory, $fallback_filename);
+    public function get_template_file_path( $default_root, $filenames, $relative_path = 'templates', $fallback_filename = '' ) {
+        if (!is_array($filenames)) $filenames = array($filenames);
+        if (!empty($fallback_filename)) $filenames[] = $fallback_filename;
+
+        return $this->template_engine->get_template_file_path( $default_root, $filenames, $relative_path);
     }
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
+
+    /**
+     * Tell if the post type is managed by the plugin or not (used to build the menu, etc.)
+     *
+     * @param string $post_type     The post type to check
+     * @param array  $private_types The private types of the plugin (null if you simply want the plugin to fetch them
+     *                              dynamically
+     *
+     * @return bool
+     */
+    public function is_type_managed($post_type, $private_types=null)
+    {
+        if ($private_types==null)
+        {
+            $private_types = $this->get_private_types();
+        }
+
+        return apply_filters('cuar/core/types/is-type-managed',
+            isset($private_types[$post_type]), $post_type, $private_types);
+    }
 
     /**
      * Get both private content and container types
@@ -644,12 +695,13 @@ class CUAR_Plugin {
 	 * Get the content types descriptors. Each descriptor is an array with:
 	 * - 'label-plural'				- plural label
 	 * - 'label-singular'			- singular label
-	 * - 'content-page-addon'		- content page addon associated to this type 
+	 * - 'content-page-addon'		- content page addon associated to this type
+     * - 'type'                     - 'content'
 	 * 
 	 * @return array keys are post_type and values are arrays as described above
 	 */
 	public function get_content_types() {
-		return apply_filters( 'cuar/core/types/content', array() );
+        return apply_filters( 'cuar/core/types/content', array() );
 	}	
 	
 	/**
@@ -665,7 +717,7 @@ class CUAR_Plugin {
 	 * - 'label-plural'				- plural label
 	 * - 'label-singular'			- singular label
 	 * - 'container-page-slug'		- main page slug associated to this type 
-	 * 
+	 * - 'type'                     - 'container'
 	 * @return array
 	 */
 	public function get_container_types() {

@@ -35,155 +35,14 @@ class CUAR_PrivateFileAdminInterface {
 		add_filter( 'cuar/core/settings/validate-settings?tab=cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
 		
 		if ( $this->private_file_addon->is_enabled() ) {
-			// Admin menu
-			add_action( 'cuar/core/admin/main-menu-pages', array( &$this, 'add_menu_items' ), 10 );
-			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
-			
 			// File edit page
 			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
 			add_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ), 10, 4 );				
-			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );		
-			
-			// File list page	
-			add_action( 'parse_query' , array( &$this, 'restrict_edit_post_listing' ) );
-			add_action( 'cuar/core/addons/after-init', array( &$this, 'customize_post_list_pages' ) );
-			add_action( 'restrict_manage_posts', array( &$this, 'restrict_manage_posts' ) );
+			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );
 		}		
 	}
-			
-	/**
-	 * Highlight the proper menu item in the customer area
-	 */
-	public function highlight_menu_item() {
-		global $post;
-		
-		// For posts
-		if ( isset( $_REQUEST['taxonomy'] ) && $_REQUEST['taxonomy']=='cuar_private_file_category' ) {		
-			$highlight_top 	= '#toplevel_page_customer-area';
-			$unhighligh_top = '#menu-posts';
-		} else if ( isset( $post ) && get_post_type( $post )=='cuar_private_file' ) {		
-			$highlight_top 	= '#toplevel_page_customer-area';
-			$unhighligh_top = '#menu-posts';
-		} else {
-			$highlight_top 	= null;
-			$unhighligh_top = null;
-		}
-		
-		if ( $highlight_top && $unhighligh_top ) {
-?>
-<script type="text/javascript">
-jQuery(document).ready( function($) {
-	$('<?php echo $unhighligh_top; ?>')
-		.removeClass('wp-has-current-submenu')
-		.addClass('wp-not-current-submenu');
-	$('<?php echo $highlight_top; ?>')
-		.removeClass('wp-not-current-submenu')
-		.addClass('wp-has-current-submenu current');
-});     
-</script>
-<?php
-		}
-	}
 
-	/**
-	 * Add the menu item
-	 */
-	public function add_menu_items( $submenus ) {
-		$separator = '<span class="cuar-menu-divider"></span>';
-				
-		$my_submenus = array(
-				array(
-					'page_title'	=> __( 'Private Files', 'cuar' ),
-					'title'			=> $separator . __( 'Private Files', 'cuar' ),
-					'slug'			=> "edit.php?post_type=cuar_private_file",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pf_edit'
-				),
-				array(
-					'page_title'	=> __( 'New Private File', 'cuar' ),
-					'title'			=> __( 'New Private File', 'cuar' ),
-					'slug'			=> "post-new.php?post_type=cuar_private_file",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pf_edit'
-				),
-				array(
-					'page_title'	=> __( 'Private File Categories', 'cuar' ),
-					'title'			=> __( 'Private File Categories', 'cuar' ),
-					'slug'			=> "edit-tags.php?taxonomy=cuar_private_file_category",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pf_manage_categories'
-				)
-			); 
-	
-		foreach ( $my_submenus as $submenu ) {
-			$submenus[] = $submenu;
-		}
-	
-		return $submenus;
-	}
-	
-	/*------- CUSTOMISATION OF THE LISTING OF POSTS -----------------------------------------------------------------*/
-	
-	public function customize_post_list_pages() {
-		$type = "cuar_private_file";
-
-		// Removed because we don't need the category column for now (automatically created). Uncomment if we add a column some day
-		// add_filter( "manage_edit-{$type}_columns", array( &$this, 'register_post_list_columns' ), 5 );
-		// add_action( "manage_{$type}_posts_custom_column", array( &$this, 'display_post_list_column'), 8, 2 );
-	}
-	
-	public function register_post_list_columns( $columns ) {
-		return $columns;
-	}
-	
-	public function display_post_list_column( $column_name, $post_id ) {
-	}
-	
-	public function restrict_manage_posts() {
-		// only display these taxonomy filters on desired custom post_type listings
-		global $typenow;
-		if ($typenow == 'cuar_private_file') {
-			
-			$filters = array( 'cuar_private_file_category' );
-	
-			foreach ($filters as $tax_slug) {
-				// retrieve the taxonomy object
-				$tax_obj = get_taxonomy( $tax_slug );
-				$tax_name = $tax_obj->labels->name;
-				
-				// retrieve array of term objects per taxonomy
-				$terms = get_terms($tax_slug);
-	
-				// output html for taxonomy dropdown filter
-				echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
-				echo "<option value=''>Show All $tax_name</option>";
-				
-				foreach ($terms as $term) {
-					$selected = selected( isset( $_GET[$tax_slug] ) ? $_GET[$tax_slug] : null, $term->slug, false );
-					
-					echo '<option value="' . $term->slug . '" ' . $selected . '>' . $term->name .' (' . $term->count .')</option>';
-				}
-				echo "</select>";
-			}
-		}
-	}
-	
 	/*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE FILES ------------------------------------------------------*/
-
-	/**
-	 * @param WP_Query $query
-	 */
-	public function restrict_edit_post_listing( $query ) {
-		global $pagenow;
-		if ( !is_admin() || $pagenow!='edit.php' ) return;
-	
-		$post_type = $query->get( 'post_type' );
-		if ( $post_type!='cuar_private_file' ) return;
-		
-		if ( !current_user_can( 'cuar_pf_list_all' ) ) {
-			$query->set( 'author', get_current_user_id() );
-		}
-	}
 
 	/**
 	 * Alter the edit form tag to say we have files to upload
@@ -363,7 +222,7 @@ jQuery(document).ready( function($) {
 			if ( !empty( $_POST['cuar_selected_ftp_file'] ) ) {
 				$ftp_dir = trailingslashit( $this->private_file_addon->get_ftp_path() );
 
-				$this->private_file_addon->handle_copy_private_file_from_ftp_folder( $post_id, $previous_owner, $new_owner,
+				$this->private_file_addon->handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner,
 						$ftp_dir . $_POST['cuar_selected_ftp_file']);
 			}
 		} else {

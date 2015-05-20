@@ -57,21 +57,21 @@ if ( !class_exists('CUAR_LogAddOn')) :
             if (is_admin())
             {
                 // Menu
-                add_action('cuar/core/admin/main-menu-pages', array(&$this, 'add_menu_items'), 99);
-                add_action('cuar/core/admin/adminbar-menu-items', array(&$this, 'add_adminbar_menu_items'), 100);
+                add_action('cuar/core/admin/print-admin-page?page=logs', array(&$this, 'print_logs_page'), 99);
 
                 // Log table handling
                 add_filter('cuar/core/log/table-displayable-meta', array(&$this, 'get_table_displayable_meta'), 10, 1);
                 add_filter('cuar/core/log/table-meta-pill-descriptor', array(&$this, 'get_table_meta_pill'), 10, 3);
+
                 // Settings
-                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20,
-                    2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'),
-                    20, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'), 20, 3);
             }
             else
             {
             }
+
+            add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 99);
 
             // Add some event types by default
             add_filter('cuar/core/log/event-types', array(&$this, 'add_default_event_types'));
@@ -80,50 +80,43 @@ if ( !class_exists('CUAR_LogAddOn')) :
             add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
 
             // Content viewed
-            add_action('cuar/core/ownership/protect-single-post/on-access-granted',
-                array(&$this, 'log_content_viewed'));
+            add_action('cuar/core/ownership/protect-single-post/on-access-granted', array(&$this, 'log_content_viewed'));
 
             // File downloaded
             add_action('cuar/private-content/files/on-download', array(&$this, 'log_file_downloaded'), 10, 3);
             add_action('cuar/private-content/files/on-view', array(&$this, 'log_file_downloaded'), 10, 3);
+
+            add_action("load-post-new.php", array(&$this, 'block_default_admin_pages'));
+            add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
         }
 
         /*------- ADMIN PAGE -----------------------------------------------------------------------------------------*/
 
-        private static $LOG_PAGE_SLUG = "cuar_logs";
+        private static $LOG_PAGE_SLUG = "wpca-logs";
+
+        /**
+         * Protect the default edition and listing pages
+         */
+        public function block_default_admin_pages()
+        {
+            if (isset($_GET["post_type"]) && $_GET["post_type"] == "cuar_log_event")
+            {
+                wp_redirect(admin_url("admin.php?page=" . self::$LOG_PAGE_SLUG));
+            }
+        }
 
         /**
          * Add the menu item
          */
         public function add_menu_items($submenus)
         {
-            $separator = '<span class="cuar-menu-divider"></span>';
-
             $submenus[] = array(
                 'page_title' => __('WP Customer Area - Logs', 'cuar'),
-                'title'      => $separator . __('Logs', 'cuar'),
+                'title'      => __('Logs', 'cuar'),
                 'slug'       => self::$LOG_PAGE_SLUG,
-                'function'   => array(&$this, 'print_logs_page'),
+                'href'       => 'admin.php?page=' . self::$LOG_PAGE_SLUG,
                 'capability' => 'manage_options'
             );
-
-            return $submenus;
-        }
-
-        /**
-         * Add the menu item
-         */
-        public function add_adminbar_menu_items($submenus)
-        {
-            if (current_user_can('manage_options'))
-            {
-                $submenus[] = array(
-                    'parent' => 'customer-area',
-                    'id'     => 'customer-area-logs',
-                    'title'  => __('Logs', 'cuar'),
-                    'href'   => admin_url('admin.php?page=' . self::$LOG_PAGE_SLUG)
-                );
-            }
 
             return $submenus;
         }
@@ -133,6 +126,11 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function print_logs_page()
         {
+            require_once(CUAR_INCLUDES_DIR . '/core-addons/log/log-table.class.php');
+            $logs_table = new CUAR_LogTable($this->plugin);
+            $logs_table->initialize();
+
+            /** @noinspection PhpIncludeInspection */
             include($this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/log',
                 'logs-page.template.php',
@@ -182,6 +180,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 }
             }
 
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_CONTENT_VIEWED,
+                $should_log_event, $post);
             if ($should_log_event)
             {
                 $this->logger->log_event(self::$TYPE_CONTENT_VIEWED,
@@ -218,6 +218,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 }
             }
 
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_FILE_DOWNLOADED,
+                $should_log_event, $post_id, $current_user_id, $pf_addon);
             if ($should_log_event)
             {
                 $this->logger->log_event(self::$TYPE_FILE_DOWNLOADED,
@@ -236,19 +238,30 @@ if ( !class_exists('CUAR_LogAddOn')) :
          */
         public function log_owner_updated($post_id, $post, $previous_owner, $new_owner)
         {
-            // unhook this function so it doesn't loop infinitely
-            remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+            // Compare previous and new, log only if actually changed
+            if ($previous_owner['type'] == $new_owner['type'] && $previous_owner['ids'] == $new_owner['ids'])
+            {
+                return;
+            }
 
-            $this->logger->log_event(self::$TYPE_OWNER_CHANGED,
-                $post_id,
-                get_post_type($post_id),
-                array_merge($this->get_default_event_meta(), array(
-                    self::$META_PREVIOUS_OWNER => $previous_owner,
-                    self::$META_CURRENT_OWNER  => $new_owner
-                )));
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_OWNER_CHANGED,
+                true, $post_id, $post, $previous_owner, $new_owner);
+            if ($should_log_event)
+            {
+                // unhook this function so it doesn't loop infinitely
+                remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
 
-            // re-hook this function
-            add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+                $this->logger->log_event(self::$TYPE_OWNER_CHANGED,
+                    $post_id,
+                    get_post_type($post_id),
+                    array_merge($this->get_default_event_meta(), array(
+                        self::$META_PREVIOUS_OWNER => $previous_owner,
+                        self::$META_CURRENT_OWNER  => $new_owner
+                    )));
+
+                // re-hook this function
+                add_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+            }
         }
 
         /**

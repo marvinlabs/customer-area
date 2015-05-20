@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		6.0.0
+	Version: 		6.1.2
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -32,7 +32,7 @@ if ( !defined( 'CUAR_INCLUDES_DIR' ) ) define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN
 
 define( 'CUAR_LANGUAGE_DIR', 		'customer-area/languages' );
 
-define( 'CUAR_PLUGIN_URL', 			WP_PLUGIN_URL . '/customer-area/' ); // plugin_dir_url( __FILE__ ) );
+define( 'CUAR_PLUGIN_URL', 			untrailingslashit(WP_PLUGIN_URL) . '/customer-area/' ); // plugin_dir_url( __FILE__ ) );
 define( 'CUAR_SCRIPTS_URL', 		CUAR_PLUGIN_URL . 'scripts' );
 define( 'CUAR_ADMIN_SKIN', 		'plugin%%default-wp38' );
 define( 'CUAR_FRONTEND_SKIN', 		'plugin%%default-v4' );
@@ -61,6 +61,8 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/license-validation-re
 include_once( CUAR_INCLUDES_DIR . '/core-classes/Licensing/licensing.class.php' );
 
 include_once( CUAR_INCLUDES_DIR . '/core-classes/MessageCenter/message-center.class.php' );
+
+include_once( CUAR_INCLUDES_DIR . '/core-classes/Shortcode/shortcode.class.php' );
 
 // Core Plugin classes
 include_once( CUAR_INCLUDES_DIR . '/core-classes/settings.class.php' );
@@ -106,6 +108,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.class.php' );
+include_once( CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes-addon.class.php' );
 
 // Core content types
 include_once( CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php' );
