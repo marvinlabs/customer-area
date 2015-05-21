@@ -10,6 +10,10 @@
 .collapsed:extend(.cuar-collapsed all){};
 .collapsing:extend(.cuar-collapsing all){};
 
+.cuar-page {
+  .cuar-clearfix();
+}
+
 // Slim progress bar & progress customizations
 // --------------------------------------------------
 
@@ -18,9 +22,9 @@
 }
 
 .progress-slim {
-		height: 5px; 
+		height: 5px;
 		margin-bottom: 0;
-		
+
 	.progress-bar {
 			height: 5px;
   	}
@@ -87,7 +91,7 @@
 		z-index: 1000;
 		margin-top: -4px;
 		margin-left: -14px;
-		
+
 	.circle {
 			background-color: #CCC;
 			float: left;
@@ -155,27 +159,26 @@
 }
 
 .cuar-page {
-		.cuar-make-row();
-		
+
 	.cuar-page-header {
 			.cuar-make-xs-column(12);
 	}
-		
+
 	.cuar-page-footer {
 			.cuar-make-xs-column(12);
 	}
-		
+
 	.cuar-page-content {
 			.cuar-make-xs-column(12);
 	}
-		
+
 	&.cuar-page-with-sidebar {
 		.cuar-page-content {
 				.cuar-make-md-column(8);
 		}
 		.cuar-page-sidebar {
 				.cuar-make-md-column(4);
-		
+
 			@media (max-width: @screen-sm-max) {
 				clear:left;
 			}
@@ -195,4 +198,4 @@
 
 #wp-admin-bar-customer-area > a:before {
 	content: "\f332";
-} 
+}

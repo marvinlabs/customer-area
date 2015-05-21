@@ -1,44 +1,38 @@
-.cuarsu-main {
+form#cuar-user-switcher {
 
-  .cuar-reset-styles();
-
-  form {
-
-    .cuar-form-group {
-      padding: 0;
+  .cuar-form-group {
+    padding: 0;
+  }
+  .cuarsu-form-wrapper {
+    &:extend(.cuar-well, .cuar-well-sm);
+    * {
+      box-sizing: border-box;
     }
-    .cuarsu-form-wrapper{
-      &:extend(.cuar-well, .cuar-well-sm);
-      * {
-        box-sizing: border-box;
-      }
-      .cuar-clearfix();
+    .cuar-clearfix();
+  }
+  .cuarsu-message-wrapper {
+    .cuar-make-sm-column(4);
+    .cuarsu-message {
     }
-    .cuarsu-message-wrapper {
-      .cuar-make-sm-column(4);
-      .cuarsu-message {
-      }
-    }
+  }
 
-    .cuarsu-inputs-wrapper {
-      &:extend(.cuar-input-group all);
-      .cuar-make-sm-column(8);
-    }
+  .cuarsu-inputs-wrapper {
+    &:extend(.cuar-input-group all);
+    .cuar-make-sm-column(8);
+  }
 
-    .cuarsu-id-select-wrapper {
-      .cuar-cuarsu-id-select {
-        &:extend(.cuar-form-control all);
-      }
+  .cuarsu-id-select-wrapper {
+    .cuar-cuarsu-id-select {
+      &:extend(.cuar-form-control all);
     }
+  }
 
-    .cuarsu-submit-wrapper {
-      &:extend(.cuar-input-group-btn all);
-    }
+  .cuarsu-submit-wrapper {
+    &:extend(.cuar-input-group-btn all);
+  }
 
-    input[type="submit"].cuarsu-submit {
-      &:extend(.cuar-btn all, .cuar-btn-primary all);
-    }
-
+  input[type="submit"].cuarsu-submit {
+    &:extend(.cuar-btn all, .cuar-btn-primary all);
   }
 
 }
