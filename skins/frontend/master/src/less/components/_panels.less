@@ -1,0 +1,303 @@
+.cuar-panel {
+  position: relative;
+  background: #ffffff;
+  padding: @base-margin @default-padding;
+  border: 0;
+  margin-bottom: @default-padding;
+  .cuar-box-shadow(none);
+
+  &.cuar-panel-headerless .cuar-panel-body {
+    padding-top: 0;
+  }
+
+  .cuar-panel-heading {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background: none;
+    font-size: @font-size-h4;
+    padding-bottom: @default-padding/2;
+    border-bottom: 2px solid #f5f5f5;
+    &:extend(.cuar-clearfix all);
+
+    > .cuar-panel-title {
+      float: left;
+      font-size: @font-size-h4;
+
+      > a {
+        color: inherit;
+      }
+    }
+
+    > .cuar-panel-options {
+      float: right;
+      font-size: @font-size-base;
+
+      a {
+        display: inline-block;
+        color: @text-color;
+        margin-left: @base-padding - 3;
+        line-height: 1;
+
+        i {
+          line-height: 1;
+        }
+
+        &.cuar-btn{
+          margin: 0;
+        }
+
+        &[data-toggle="panel"] {
+
+          span {
+            display: block;
+
+            &.cuar-expand-icon {
+              display: none;
+            }
+          }
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      // Tabs
+      .cuar-nav-tabs {
+        border: 0;
+
+        > li {
+          border: 0;
+
+          > a {
+            padding: 0;
+            border: 0;
+            margin-left: @base-padding + 5;
+            color: @text-color;
+            background: none;
+
+            &:hover {
+              background: none;
+            }
+          }
+
+          &.cuar-active > a {
+            color: darken(@text-color, 30%);
+          }
+        }
+      }
+    }
+  }
+
+  .cuar-panel-body {
+    padding: 0;
+    padding-top: @base-margin;
+    color: @text-color;
+
+    &.cuar-no-padding {
+      padding: 0;
+      margin-top: -2px;
+      margin-left:  -@default-padding;
+      margin-right:  -@default-padding;
+      margin-bottom: -@base-margin;
+    }
+
+    &.cuar-panel-border {
+      border-top: 1px solid #f5f5f5;
+      padding-top: @default-padding;
+    }
+
+    p {
+      margin-bottom: 0;
+
+      + p {
+        margin-top: @default-padding/2;
+      }
+    }
+  }
+
+  .cuar-panel-disabled {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    background: fade(#FFF, 70%);
+  }
+
+  // Collapsed panel
+  &.cuar-collapsed {
+
+    .cuar-panel-heading {
+
+      .cuar-panel-options {
+
+        a[data-toggle="panel"] {
+
+          .cuar-collapse-icon {
+            display: none;
+          }
+
+          .cuar-expand-icon {
+            display: block;
+          }
+        }
+      }
+    }
+
+    > .cuar-panel-body, > .cuar-table {
+      display: none;
+    }
+  }
+
+
+  // Panel Border
+  &.cuar-panel-border {
+    border: 1px solid #cccccc;
+  }
+
+
+  // Panel Shadow
+  &.cuar-panel-shadow {
+    .cuar-box-shadow(~"0 1px 1px rgba(0,1,1,.08)");
+  }
+
+
+  // Panel Styles
+  &cuar-panel-default {
+
+  }
+
+  &.cuar-panel-inverted {
+    background: @brand-primary;
+    color: #FFF;
+
+    > .cuar-panel-heading {
+      border-bottom-color: #393c3e;
+    }
+
+    > .cuar-panel-disabled {
+      background: fade(@brand-primary, 50%);
+    }
+  }
+
+  &.cuar-panel-tabs {
+    background: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: @default-padding - @base-margin;
+    padding-top: 7px;
+
+    > .cuar-panel-heading {
+      border-bottom: 0;
+
+      .cuar-nav-tabs {
+        position: relative;
+        margin-bottom: -@base-margin - 1;
+        margin-right: -2px;
+
+        > li {
+
+          > a {
+            position: relative;
+            background-color: #f5f5f5;
+            padding: @base-padding + 5 @base-margin;
+            margin-left: @base-padding/2;
+            top: -6px;
+          }
+
+          &:hover, &.active {
+
+            > a {
+              background-color: #FFF;
+            }
+          }
+        }
+      }
+    }
+
+    > .cuar-panel-body {
+      background: #FFF;
+      padding: @base-margin @default-padding;
+    }
+  }
+
+
+  &.cuar-panel-flat {
+    background: none;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    .cuar-panel-heading {
+      border-bottom-color: #dddddd;
+    }
+
+    .cuar-panel-disabled {
+      background: fade(@body-bg, 60%);
+    }
+  }
+
+  &.cuar-panel-success { .xe-panel-variation(@brand-success; #FFF); }
+  &.cuar-panel-info { .xe-panel-variation(@brand-info; #FFF); }
+  &.cuar-panel-warning { .xe-panel-variation(@brand-warning; #FFF); }
+  &.cuar-panel-danger { .xe-panel-variation(@brand-danger; #FFF); }
+
+  &.cuar-panel-red { .xe-panel-variation(@cuar-red; #FFF); }
+  &.cuar-panel-black { .xe-panel-variation(@cuar-black; #FFF); }
+  &.cuar-panel-purple { .xe-panel-variation(@cuar-purple; #FFF); }
+  &.cuar-panel-blue { .xe-panel-variation(@cuar-blue; #FFF); }
+  &.cuar-panel-light-blue { .xe-panel-variation(@cuar-light-blue; #FFF); }
+  &.cuar-panel-gray { .xe-panel-variation(darken(@cuar-gray, 5%); darken(@text-color, 15%)); }
+
+  // Different styling panels
+  &.cuar-panel-color {
+
+    .cuar-panel-heading {
+      margin-top: -@base-margin;
+      margin-left: -@default-padding;
+      margin-right: -@default-padding;
+      padding: @base-margin @default-padding;
+      border-bottom: 0;
+    }
+
+    &.cuar-collapsed {
+
+      > .cuar-panel-heading {
+        margin-bottom: -@base-margin;
+      }
+    }
+  }
+}
+
+
+
+.xe-panel-variation(@bg-color; @text-color)
+{
+  .cuar-panel-heading {
+    background-color: @bg-color;
+    color: @text-color;
+
+    > .cuar-panel-title {
+      color: @text-color;
+
+      > a {
+        color: inherit;
+      }
+    }
+
+    > .cuar-panel-options {
+      color: @text-color;
+
+      a {
+        color: fade(@text-color, 60%);
+
+        &:hover {
+          color: @text-color;
+        }
+      }
+    }
+  }
+
+  > .cuar-panel-disabled {
+    background-color: fade(@bg-color, 15%);
+  }
+}
