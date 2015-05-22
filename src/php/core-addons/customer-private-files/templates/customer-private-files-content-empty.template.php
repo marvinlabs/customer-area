@@ -30,12 +30,12 @@
         <div class="cuar-panel-options">
 
             <a href="#" data-toggle="panel" class="cuar-btn cuar-btn-xs cuar-btn-default" title="<?php esc_attr_e( 'Toggle this panel', 'cuarfl_text' ); ?>">
-                <span class="cuar-collapse-icon"><i class="fa-chevron-up"></i></span>
-                <span class="cuar-expand-icon"><i class="fa-chevron-down"></i></span>
+                <span class="cuar-collapse-icon"><i class="dashicons dashicons-arrow-up-alt2"></i></span>
+                <span class="cuar-expand-icon"><i class="dashicons dashicons-arrow-down-alt2"></i></span>
             </a>
 
             <a href="#" data-toggle="remove" class="cuar-btn cuar-btn-xs cuar-btn-default" title="<?php esc_attr_e( 'Remove this panel', 'cuarfl_text' ); ?>">
-                <i class="fa fa-close"></i>
+                <i class="dashicons dashicons-no-alt"></i>
             </a>
 
         </div>

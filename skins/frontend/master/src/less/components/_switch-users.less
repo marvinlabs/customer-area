@@ -1,35 +1,27 @@
 form#cuar-user-switcher {
 
-  .cuar-form-group {
-    padding: 0;
-  }
   .cuarsu-form-wrapper {
-    &:extend(.cuar-well, .cuar-well-sm);
-    * {
-      box-sizing: border-box;
-    }
+    &:extend(.cuar-container-fluid);
     .cuar-clearfix();
   }
   .cuarsu-message-wrapper {
-    .cuar-make-sm-column(4);
     .cuarsu-message {
+      float: left;
+      &:extend(.cuar-h4 all);
     }
-  }
-
-  .cuarsu-inputs-wrapper {
-    &:extend(.cuar-input-group all);
-    .cuar-make-sm-column(8);
   }
 
   .cuarsu-id-select-wrapper {
-    .cuar-cuarsu-id-select {
+    &:extend(.cuar-input-group all);
+
+    .cuarsu-id-select{
       &:extend(.cuar-form-control all);
     }
-  }
 
-  .cuarsu-submit-wrapper {
-    &:extend(.cuar-input-group-btn all);
-  }
+    .cuarsu-submit-wrapper{
+      &:extend(.cuar-input-group-btn all); 
+    }
+  }  
 
   input[type="submit"].cuarsu-submit {
     &:extend(.cuar-btn all, .cuar-btn-primary all);
