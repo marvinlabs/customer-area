@@ -1,4 +1,14 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php
+/** Template version: 2.0.0
+ *
+ * -= 2.0.0 =-
+ * - Add cuar- prefix to bootstrap classes
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ *
+ */
+?>
 
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
@@ -49,9 +59,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 			<td><?php echo $page->get_type(); ?></td>
 			<td>
 <?php 			if ( $page_id>0 ) {
-					printf( '<a href="%1$s" class="button">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $page_id), __('Edit', 'cuar') );	
+					printf( '<a href="%1$s" class="cuar-button">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $page_id), __('Edit', 'cuar') );
 					echo ' ';
-					printf( '<a href="%1$s" class="button">%2$s &raquo;</a>', get_permalink( $page_id ), __('View', 'cuar') );			
+					printf( '<a href="%1$s" class="cuar-button">%2$s &raquo;</a>', get_permalink( $page_id ), __('View', 'cuar') );
 				}
 ?>
 			</td>
@@ -76,8 +86,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 				. 'trashed when originally set up the plugin. You should delete them for good either manually or by letting us do it for you.', 'cuar' ); ?>
 	</p>
 		 
-	<p class="cuar-suggested-action"><span class="text"><?php _e('Suggested action', 'cuar' ); ?></span>
-		<input type="submit" id="cuar-remove-orphan-pages" name="cuar-remove-orphan-pages" class="button button-primary" value="<?php esc_attr_e( 'Delete orphan pages', 'cuar' ); ?> &raquo;" />
+	<p class="cuar-suggested-action"><span class="cuar-text"><?php _e('Suggested action', 'cuar' ); ?></span>
+		<input type="submit" id="cuar-remove-orphan-pages" name="cuar-remove-orphan-pages" class="cuar-button cuar-button-primary" value="<?php esc_attr_e( 'Delete orphan pages', 'cuar' ); ?> &raquo;" />
 		<?php wp_nonce_field( 'cuar-remove-orphan-pages', 'cuar-remove-orphan-pages_nonce' ); ?>
 		
 		<script type="text/javascript">
@@ -93,7 +103,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	</p>	
 </div>
 
-<table class="widefat cuar-status-table">
+<table class="cuar-widefat cuar-status-table">
 	<thead>
 		<tr>
 			<th><?php _e( 'Title', 'cuar' ); ?></th>
@@ -113,9 +123,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 			<td><?php echo $o->ID; ?></td>
 			<td>
 <?php 			if ( $page_id>0 ) {
-					printf( '<a href="%1$s" class="button">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $o->ID), __('Edit', 'cuar') );	
+					printf( '<a href="%1$s" class="cuar-button">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $o->ID), __('Edit', 'cuar') );
 					echo ' ';
-					printf( '<a href="%1$s" class="button">%2$s &raquo;</a>', get_permalink( $o->ID ), __('View', 'cuar') );			
+					printf( '<a href="%1$s" class="cuar-button">%2$s &raquo;</a>', get_permalink( $o->ID ), __('View', 'cuar') );
 				}
 ?>
 			</td>
