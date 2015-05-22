@@ -5,12 +5,24 @@ if ( !function_exists( 'cuar_load_theme_scripts' ) ) {
 	/**
 	 * Load theme particular scripts
 	 */
-	function cuar_load_theme_scripts() {
-		$cuar_plugin = CUAR_Plugin::get_instance();	
-		$cuar_plugin->enable_library( 'bootstrap.dropdown' );		
-		$cuar_plugin->enable_library( 'bootstrap.collapse' );		
+	function cuar_load_skin_scripts() {
+		$cuar_plugin = CUAR_Plugin::get_instance();
+        $cuar_plugin->enable_library( 'bootstrap.affix' );
+        $cuar_plugin->enable_library( 'bootstrap.alert' );
+        $cuar_plugin->enable_library( 'bootstrap.button' );
+        $cuar_plugin->enable_library( 'bootstrap.carousel' );
+		$cuar_plugin->enable_library( 'bootstrap.collapse' );
+		$cuar_plugin->enable_library( 'bootstrap.dropdown' );
+        $cuar_plugin->enable_library( 'bootstrap.modal' );
+        $cuar_plugin->enable_library( 'bootstrap.popover' );
+        $cuar_plugin->enable_library( 'bootstrap.scrollspy' );
+        $cuar_plugin->enable_library( 'bootstrap.tab' );
+        $cuar_plugin->enable_library( 'bootstrap.tooltip' );
+        $cuar_plugin->enable_library( 'bootstrap.transition' );
+
+        wp_enqueue_script('master-main', CUAR_PLUGIN_URL . '/skins/frontend/master/assets/js/main.js', array('jquery'), $cuar_plugin->get_version());
 	}
-	add_action('wp_enqueue_scripts', 'cuar_load_theme_scripts');
+	add_action('wp_enqueue_scripts', 'cuar_load_skin_scripts');
 }
 
 

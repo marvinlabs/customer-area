@@ -579,19 +579,64 @@ class CUAR_Plugin {
 			}
 			break;
 
-			case 'bootstrap.dropdown': {
+            case 'bootstrap.affix': {
+                wp_enqueue_script( 'bootstrap.affix', CUAR_PLUGIN_URL . 'libs/bootstrap/js/affix.js', array('jquery'), $this->get_version() );
+            }
+            break;
+
+            case 'bootstrap.alert': {
+                wp_enqueue_script( 'bootstrap.alert', CUAR_PLUGIN_URL . 'libs/bootstrap/js/alert.js', array('jquery'), $this->get_version() );
+            }
+            break;
+
+            case 'bootstrap.button': {
+                wp_enqueue_script( 'bootstrap.button', CUAR_PLUGIN_URL . 'libs/bootstrap/js/button.js', array('jquery'), $this->get_version() );
+            }
+            break;
+
+            case 'bootstrap.carousel': {
+                wp_enqueue_script( 'bootstrap.carousel', CUAR_PLUGIN_URL . 'libs/bootstrap/js/carousel.js', array('jquery'), $this->get_version() );
+            }
+            break;
+
+            case 'bootstrap.collapse': {
+                wp_enqueue_script( 'bootstrap.collapse', CUAR_PLUGIN_URL . 'libs/bootstrap/js/collapse.js', array('jquery'), $this->get_version() );
+            }
+            break;
+            case 'bootstrap.dropdown': {
 				wp_enqueue_script( 'bootstrap.transition', CUAR_PLUGIN_URL . 'libs/bootstrap/js/transition.js', array('jquery'), $this->get_version() );
 				wp_enqueue_script( 'bootstrap.dropdown', CUAR_PLUGIN_URL . 'libs/bootstrap/js/dropdown.js', array('jquery', 'bootstrap.transition'), $this->get_version() );
 			}
 			break;
 
+            case 'bootstrap.modal': {
+                wp_enqueue_script( 'bootstrap.modal', CUAR_PLUGIN_URL . 'libs/bootstrap/js/modal.js', array('jquery'), $this->get_version() );
+            }
+            break;
+
+            case 'bootstrap.popover': {
+                wp_enqueue_script( 'bootstrap.tooltip', CUAR_PLUGIN_URL . 'libs/bootstrap/js/tooltip.js', array('jquery'), $this->get_version() );
+                wp_enqueue_script( 'bootstrap.popover', CUAR_PLUGIN_URL . 'libs/bootstrap/js/popover.js', array('jquery', 'bootstrap.tooltip'), $this->get_version() );
+            }
+            break;
+
+            case 'bootstrap.scrollspy': {
+                wp_enqueue_script( 'bootstrap.scrollspy', CUAR_PLUGIN_URL . 'libs/bootstrap/js/scrollspy.js', array('jquery'), $this->get_version() );
+            }
+            break;
+
+            case 'bootstrap.tab': {
+                wp_enqueue_script( 'bootstrap.tab', CUAR_PLUGIN_URL . 'libs/bootstrap/js/tab.js', array('jquery'), $this->get_version() );
+            }
+            break;
+
+            case 'bootstrap.tooltip': {
+                wp_enqueue_script( 'bootstrap.tooltip', CUAR_PLUGIN_URL . 'libs/bootstrap/js/tooltip.js', array('jquery'), $this->get_version() );
+            }
+                break;
+
 			case 'bootstrap.transition': {
 				wp_enqueue_script( 'bootstrap.transition', CUAR_PLUGIN_URL . 'libs/bootstrap/js/transition.js', array('jquery'), $this->get_version() );
-			}
-			break;
-
-			case 'bootstrap.collapse': {
-				wp_enqueue_script( 'bootstrap.collapse', CUAR_PLUGIN_URL . 'libs/bootstrap/js/collapse.js', array('jquery'), $this->get_version() );
 			}
 			break;
 
