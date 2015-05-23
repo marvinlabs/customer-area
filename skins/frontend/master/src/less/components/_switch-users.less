@@ -10,8 +10,8 @@ form#cuar-user-switcher {
       margin-right: @base-margin;
       &:extend(.cuar-h4 all);
     }
-  } 
-  
+  }
+
   .cuarsu-id-select-wrapper {
     //&:extend(.cuar-input-group all);
 
@@ -20,12 +20,12 @@ form#cuar-user-switcher {
     }
 
     .cuarsu-submit-wrapper{
-      //&:extend(.cuar-input-group-btn all); 
+      //&:extend(.cuar-input-group-btn all);
     }
-  } 
+  }  
 
   input[type="submit"].cuarsu-submit {
-    &:extend(.cuar-btn all, .cuar-btn-primary all);
+    .cuar-button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
   }
 
 }
