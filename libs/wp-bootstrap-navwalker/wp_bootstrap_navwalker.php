@@ -23,7 +23,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
-		$output .= "\n$indent<ul role=\"menu\" class=\" cuar-dropdown-menu dropdown-menu\">\n";
+		$output .= "\n$indent<ul role=\"menu\" class=\"cuar-dropdown-menu\">\n";
 	}
 
 	/**
@@ -65,10 +65,10 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 
 			if ( $args->has_children )
-				$class_names .= ' cuar-dropdown dropdown';
+				$class_names .= ' cuar-dropdown';
 
 			if ( in_array( 'current-menu-item', $classes ) )
-				$class_names .= ' cuar-active active';
+				$class_names .= ' cuar-active';
 
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
@@ -86,7 +86,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			if ( $args->has_children && $depth === 0 ) {
 				$atts['href']   		= '#';
 				$atts['data-toggle']	= 'dropdown';
-				$atts['class']			= 'cuar-dropdown-toggle dropdown-toggle';
+				$atts['class']			= 'cuar-dropdown-toggle';
 			} else {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
 			}
@@ -111,12 +111,12 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			 * property is NOT null we apply it as the class name for the glyphicon.
 			 */
 			if ( ! empty( $item->attr_title ) )
-				$item_output .= '<a'. $attributes .'><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
+				$item_output .= '<a'. $attributes .'><span class="dashicons ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
 			else
 				$item_output .= '<a'. $attributes .'>';
 
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';
+			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="cuar-caret"></span></a>' : '</a>';
 			$item_output .= $args->after;
 
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
