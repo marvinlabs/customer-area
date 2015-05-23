@@ -1,27 +1,28 @@
 form#cuar-user-switcher {
 
   .cuarsu-form-wrapper {
-    &:extend(.cuar-container-fluid);
+    &:extend(.cuar-well all);
     .cuar-clearfix();
   }
   .cuarsu-message-wrapper {
     .cuarsu-message {
       float: left;
+      margin-right: @base-margin;
       &:extend(.cuar-h4 all);
     }
-  }
-
+  } 
+  
   .cuarsu-id-select-wrapper {
-    &:extend(.cuar-input-group all);
+    //&:extend(.cuar-input-group all);
 
     .cuarsu-id-select{
-      &:extend(.cuar-form-control all);
+      //&:extend(.cuar-form-control all);
     }
 
     .cuarsu-submit-wrapper{
-      &:extend(.cuar-input-group-btn all); 
+      //&:extend(.cuar-input-group-btn all); 
     }
-  }  
+  } 
 
   input[type="submit"].cuarsu-submit {
     &:extend(.cuar-btn all, .cuar-btn-primary all);
