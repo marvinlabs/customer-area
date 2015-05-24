@@ -19,6 +19,7 @@ if ( !function_exists( 'cuar_load_theme_scripts' ) ) {
         $cuar_plugin->enable_library( 'bootstrap.tab' );
         $cuar_plugin->enable_library( 'bootstrap.tooltip' );
         $cuar_plugin->enable_library( 'bootstrap.transition' );
+        $cuar_plugin->enable_library( 'jquery.fuelux' );
 
         wp_enqueue_script('master-main', CUAR_PLUGIN_URL . '/skins/frontend/master/assets/js/main.js', array('jquery'), $cuar_plugin->get_version());
 	}

@@ -649,6 +649,11 @@ class CUAR_Plugin {
                 wp_enqueue_script( 'jquery.repeatable-fields', CUAR_PLUGIN_URL . 'libs/repeatable-fields/repeatable-fields.min.js', array('jquery', 'jquery-ui-sortable'), $this->get_version() );
             }
             break;
+
+            case 'jquery.fuelux': {
+                wp_enqueue_script( 'jquery.fuelux', CUAR_PLUGIN_URL . 'libs/fuelux/js/fuelux.min.js', array('jquery', 'jquery-ui-sortable'), $this->get_version() );
+            }
+            break;
 			
 			default:
 				do_action( 'cuar/core/libraries/enable?id=' . $library_id );
