@@ -1,0 +1,25 @@
+{
+  "name": "customer-area",
+  "version": "6.1.2",
+  "homepage": "http://wp-customerarea.com",
+  "authors": [
+    "Vincent Mimoun-Prat <contact@marvinlabs.com> (http://marvinlabs.com)",
+    "Thomas Lartaud <contact@thomaslartaud.com> (http://thomaslartaud.com)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marvinlabs/customer-area"
+  },
+  "license": "",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "extras"
+  ],
+  "dependencies": {
+    "modernizr": "*",
+    "jquery": "*",
+    "bootstrap": "*"
+  }
+}
