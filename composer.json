@@ -1,0 +1,35 @@
+{
+  "name": "customer-area",
+  "type": "project",
+  "description": "WP Customer Area is a modular all-in-one solution to manage private content with WordPress.",
+  "authors": [
+    {
+      "name": "Vincent Mimoun-Prat",
+      "email": "contact@marvinlabs.com",
+      "homepage": "http://marvinlabs.com/"
+    },
+    {
+      "name": "Thomas Lartaud",
+      "email": "contact@thomaslartaud.com",
+      "homepage": "http://thomaslartaud.com/"
+    }
+  ],
+  "keywords": [
+    "wordpress", "customer", "area", "private"
+  ],
+  "require": {
+    "php": ">=5.4",
+    "composer/installers": "*",
+    "michelf/php-markdown": "*"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "vendor-dir": "vendor/composer"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    }
+  ]
+}
