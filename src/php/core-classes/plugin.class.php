@@ -555,7 +555,7 @@ class CUAR_Plugin {
 		switch ( $library_id ) {
 			case 'jquery.select2': {
 				wp_enqueue_script( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.min.js', array('jquery'), $this->get_version() );
-
+                /*
 				$locale = get_locale();
 				if ( $locale && !empty( $locale ) ) {
 					$locale = str_replace("_", "-", $locale );
@@ -574,8 +574,10 @@ class CUAR_Plugin {
 						}
 					}					
 				}
+                */
 				
-				wp_enqueue_style( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.css', $this->get_version() );
+				//wp_enqueue_style( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.min.css', $this->get_version() );
+                //wp_enqueue_style( 'jquery.select2-bootstrap', CUAR_PLUGIN_URL . 'libs/select2/select2-bootstrap.min.css', $this->get_version() );
 			}
 			break;
 
@@ -647,11 +649,6 @@ class CUAR_Plugin {
 
             case 'jquery.repeatable-fields': {
                 wp_enqueue_script( 'jquery.repeatable-fields', CUAR_PLUGIN_URL . 'libs/repeatable-fields/repeatable-fields.min.js', array('jquery', 'jquery-ui-sortable'), $this->get_version() );
-            }
-            break;
-
-            case 'jquery.fuelux': {
-                wp_enqueue_script( 'jquery.fuelux', CUAR_PLUGIN_URL . 'libs/fuelux/js/fuelux.min.js', array('jquery', 'jquery-ui-sortable'), $this->get_version() );
             }
             break;
 			

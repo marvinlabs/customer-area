@@ -57,6 +57,11 @@
             $panel.toggleClass('cuar-collapsed');
         });
 
+        // Bind Select2 on .cuar-select2 elements
+        if (typeof select2 == 'function') {
+            $(".cuar-select2").select2();
+        }
+
     });
 
 })(jQuery, window);
