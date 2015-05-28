@@ -75,7 +75,7 @@ class CUAR_CustomerPrivatePagesAddOn extends CUAR_AbstractContentPageAddOn {
 		if ( is_admin() ) { 
 			$this->enable_settings( 'cuar_private_pages' );
 		}
-	}	
+	}
 
 	public function get_page_addon_path() {
 		return CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages';
