@@ -550,16 +550,30 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             if ($content_query->have_posts())
             {
                 $item_template = $this->plugin->get_template_file_path(
-                    $this->get_page_addon_path(),
-                    $this->get_slug() . "-content-item-{$display_mode}.template.php",
+                    array(
+                        $this->get_page_addon_path(),
+                        CUAR_INCLUDES_DIR . '/core-classes'
+                    ),
+                    array(
+                        $this->get_slug() . "-content-item-{$display_mode}.template.php",
+                        $this->get_slug() . "-content-item.template.php",
+                        "content-page-content-item-{$display_mode}.template.php"
+                    ),
                     'templates',
-                    $this->get_slug() . "-content-item.template.php");
+                    "content-page-content-item.template.php");
 
                 include($this->plugin->get_template_file_path(
-                    $this->get_page_addon_path(),
-                    $this->get_slug() . "-content-{$display_mode}.template.php",
+                    array(
+                        $this->get_page_addon_path(),
+                        CUAR_INCLUDES_DIR . '/core-classes'
+                    ),
+                    array(
+                        $this->get_slug() . "-content-{$display_mode}.template.php",
+                        $this->get_slug() . "-content.template.php",
+                        "content-page-content-{$display_mode}.template.php"
+                    ),
                     'templates',
-                    $this->get_slug() . "-content.template.php"));
+                    "content-page-content.template.php"));
 
                 // Include paging navigation if necessary
                 $cp_addon = $this->plugin->get_addon('customer-pages');
@@ -570,10 +584,17 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             else
             {
                 include($this->plugin->get_template_file_path(
-                    $this->get_page_addon_path(),
-                    $this->get_slug() . "-content-empty-{$display_mode}.template.php",
+                    array(
+                        $this->get_page_addon_path(),
+                        CUAR_INCLUDES_DIR . '/core-classes'
+                    ),
+                    array(
+                        $this->get_slug() . "-content-empty-{$display_mode}.template.php",
+                        $this->get_slug() . "-content-empty.template.php",
+                        "content-page-content-empty-{$display_mode}.template.php"
+                    ),
                     'templates',
-                    $this->get_slug() . "-content-empty.template.php"));
+                    "content-page-content-empty.template.php"));
             }
         }
 
@@ -722,9 +743,13 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                         $this->get_page_addon_path(),
                         CUAR_INCLUDES_DIR . '/core-classes'
                     ),
-                    $this->get_slug() . "-content-empty-dashboard.template.php",
+                    array(
+                        $this->get_slug() . "-content-empty-dashboard.template.php",
+                        $this->get_slug() . "-content-empty.template.php",
+                        "content-page-content-empty-dashboard.template.php"
+                    ),
                     'templates',
-                    $this->get_slug() . "-content-empty.template.php"));
+                    "content-page-content-empty.template.php"));
             }
         }
 
