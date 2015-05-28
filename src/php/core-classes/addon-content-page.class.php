@@ -619,18 +619,8 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             return $out . $content;
         }
 
-        public function print_single_private_content_footer($content)
+        public function print_single_private_content_footer()
         {
-            // If theme is taking care of it, don't do anything
-            $theme_support = get_theme_support('customer-area.single-post-templates');
-            if (is_array($theme_support) && in_array($this->get_friendly_post_type(), $theme_support[0])) return $content;
-
-            // If not on a matching post type, we do nothing
-            if ( !is_singular($this->get_friendly_post_type())) return $content;
-            if (get_post_type() != $this->get_friendly_post_type()) return $content;
-
-            ob_start();
-
             do_action('cuar/private-content/view/before_footer', $this);
             do_action('cuar/private-content/view/before_footer?post-type=' . $this->get_friendly_post_type(), $this);
 
@@ -646,6 +636,21 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
             do_action('cuar/private-content/view/after_footer', $this);
             do_action('cuar/private-content/view/after_footer?post-type=' . $this->get_friendly_post_type(), $this);
+        }
+
+        public function print_single_private_content_footer_filter($content)
+        {
+            // If theme is taking care of it, don't do anything
+            $theme_support = get_theme_support('customer-area.single-post-templates');
+            if (is_array($theme_support) && in_array($this->get_friendly_post_type(), $theme_support[0])) return $content;
+
+            // If not on a matching post type, we do nothing
+            if ( !is_singular($this->get_friendly_post_type())) return $content;
+            if (get_post_type() != $this->get_friendly_post_type()) return $content;
+
+            ob_start();
+
+            $this->print_single_private_content_footer();
 
             $out = ob_get_contents();
             ob_end_clean();
@@ -875,7 +880,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())
                 {
-                    add_filter('the_content', array(&$this, 'print_single_private_content_footer'), 3000);
+                    add_filter('the_content', array(&$this, 'print_single_private_content_footer_filter'), 3000);
                 }
 
                 // Optionally output the latest files on the dashboard
