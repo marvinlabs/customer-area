@@ -38,3 +38,14 @@ function cuar_get_the_owner( $post_id = 0 ) {
 	$owner_name = $po_addon->get_post_owner_displayname( $post_id );
 	return apply_filters( 'cuar/private-content/the-owner', $owner_name, $post_id );
 }
+
+function cuar_get_single_content_addon() {
+    $pt = get_post_type();
+    $types = cuar()->get_private_types();
+
+    if (isset($types[$pt])) {
+        return cuar_addon($types[$pt]['content-page-addon']);
+    }
+
+    return null;
+}
