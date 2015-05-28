@@ -689,15 +689,23 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             {
                 $item_template = $this->plugin->get_template_file_path(
                     $this->get_page_addon_path(),
-                    $this->get_slug() . "-content-item-dashboard.template.php",
+                    array(
+                        $this->get_slug() . "-content-item-dashboard.template.php",
+                        $this->get_slug() . "-content-item.template.php",
+                        "content-page-content-item-dashboard.template.php"
+                    ),
                     'templates',
-                    $this->get_slug() . "-content-item.template.php");
+                    "content-page-content-item.template.php");
 
                 include($this->plugin->get_template_file_path(
                     $this->get_page_addon_path(),
-                    $this->get_slug() . "-content-dashboard.template.php",
+                    array(
+                        $this->get_slug() . "-content-dashboard.template.php",
+                        $this->get_slug() . "-content.template.php",
+                        "content-page-content-dashboard.template.php"
+                    ),
                     'templates',
-                    $this->get_slug() . "-content.template.php"));
+                    "content-page-content.template.php");
 
                 wp_reset_query();
             }
