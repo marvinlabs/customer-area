@@ -732,7 +732,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                         "content-page-content-dashboard.template.php"
                     ),
                     'templates',
-                    "content-page-content.template.php");
+                    "content-page-content.template.php"));
 
                 wp_reset_query();
             }
