@@ -256,14 +256,10 @@ class CUAR_AdminMenuHelper
                 }
             }
 
-            $this->private_types_items = apply_filters('cuar/core/admin/submenu-items?group=private-types',
-                $this->private_types_items);
+            $this->private_types_items = apply_filters('cuar/core/admin/submenu-items?group=private-types', $this->private_types_items);
 
             // Sort alphabetically
-            usort($this->private_types_items, function ($a, $b)
-            {
-                return strcmp($a['title'], $b['title']);
-            });
+            usort($this->private_types_items, array('CUAR_AdminMenuHelper', 'sort_menu_items_by_title'));
         }
 
         return $this->private_types_items;
@@ -296,8 +292,7 @@ class CUAR_AdminMenuHelper
         if ($this->frontoffice_items == null)
         {
             $this->frontoffice_items = array();
-            $this->frontoffice_items = apply_filters('cuar/core/admin/submenu-items?group=frontoffice',
-                $this->frontoffice_items);
+            $this->frontoffice_items = apply_filters('cuar/core/admin/submenu-items?group=frontoffice', $this->frontoffice_items);
 
             // Sort alphabetically
             usort($this->frontoffice_items, array('CUAR_AdminMenuHelper', 'sort_menu_items_by_title'));
@@ -318,10 +313,7 @@ class CUAR_AdminMenuHelper
             $this->tools_items = apply_filters('cuar/core/admin/submenu-items?group=tools', $this->tools_items);
 
             // Sort alphabetically
-            usort($this->tools_items, function ($a, $b)
-            {
-                return strcmp($a['title'], $b['title']);
-            });
+            usort($this->tools_items, array('CUAR_AdminMenuHelper', 'sort_menu_items_by_title'));
         }
 
         return $this->tools_items;
@@ -335,7 +327,8 @@ class CUAR_AdminMenuHelper
      *
      * @return int
      */
-    public static function sort_menu_items_by_title($a, $b) {
+    public static function sort_menu_items_by_title($a, $b)
+    {
         return strcmp($a['title'], $b['title']);
     }
 }
