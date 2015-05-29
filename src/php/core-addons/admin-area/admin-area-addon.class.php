@@ -50,7 +50,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         {
             add_action('cuar/core/on-plugin-update', array(&$this, 'plugin_version_upgrade'), 10, 2);
             add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 5);
-            add_action('admin_init', array(&$this, 'restrict_admin_access'), 1);
+            add_action('init', array(&$this, 'restrict_admin_access'), 1);
             add_action('admin_footer', array(&$this, 'highlight_menu_item'));
 
             // Block the list pages we already handle
@@ -58,8 +58,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
             // Settings
             add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20, 2);
-            add_filter('cuar/core/settings/validate-settings?tab=cuar_core',
-                array(&$this, 'validate_core_options'), 20, 3);
+            add_filter('cuar/core/settings/validate-settings?tab=cuar_core',                array(&$this, 'validate_core_options'), 20, 3);
         }
         else
         {
@@ -196,10 +195,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
      */
     public function restrict_admin_access()
     {
-        if ($this->is_admin_area_access_restricted()
-            && !current_user_can('cuar_access_admin_panel')
-            && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php'
-        )
+        if ( !$this->current_user_can_access_admin() && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php')
         {
             $cp_addon = $this->plugin->get_addon('customer-pages');
             $customer_area_url = apply_filters('cuar/core/admin/admin-area-forbidden-redirect-url',
@@ -214,6 +210,14 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                 wp_redirect(home_url());
             }
         }
+    }
+
+    /**
+     * @return bool
+     */
+    public function current_user_can_access_admin()
+    {
+        return !$this->is_admin_area_access_restricted() || current_user_can('cuar_access_admin_panel');
     }
 
     /**
