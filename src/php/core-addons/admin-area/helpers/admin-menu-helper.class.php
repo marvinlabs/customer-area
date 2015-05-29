@@ -281,10 +281,7 @@ class CUAR_AdminMenuHelper
             $this->users_items = apply_filters('cuar/core/admin/submenu-items?group=users', $this->users_items);
 
             // Sort alphabetically
-            usort($this->users_items, function ($a, $b)
-            {
-                return strcmp($a['title'], $b['title']);
-            });
+            usort($this->users_items, array('CUAR_AdminMenuHelper', 'sort_menu_items_by_title'));
         }
 
         return $this->users_items;
@@ -303,10 +300,7 @@ class CUAR_AdminMenuHelper
                 $this->frontoffice_items);
 
             // Sort alphabetically
-            usort($this->frontoffice_items, function ($a, $b)
-            {
-                return strcmp($a['title'], $b['title']);
-            });
+            usort($this->frontoffice_items, array('CUAR_AdminMenuHelper', 'sort_menu_items_by_title'));
         }
 
         return $this->frontoffice_items;
@@ -331,5 +325,17 @@ class CUAR_AdminMenuHelper
         }
 
         return $this->tools_items;
+    }
+
+    /**
+     * Sort a menu item by title
+     *
+     * @param $a
+     * @param $b
+     *
+     * @return int
+     */
+    public static function sort_menu_items_by_title($a, $b) {
+        return strcmp($a['title'], $b['title']);
     }
 }
