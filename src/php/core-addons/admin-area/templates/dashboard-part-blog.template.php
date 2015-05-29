@@ -4,7 +4,7 @@
 include_once(ABSPATH . WPINC . '/feed.php');
 
 $max_blog_items = 5;
-$feed_link = __('http://wp-customerarea.com/feed/rss', 'cuar');
+$feed_link = 'http://wp-customerarea.com' . __('/feed/rss', 'cuar');
 $feed = fetch_feed($feed_link);
 ?>
 

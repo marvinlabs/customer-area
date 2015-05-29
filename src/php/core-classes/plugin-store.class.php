@@ -35,6 +35,6 @@ class CUAR_PluginStore implements CUAR_LicenseStore
      */
     public function get_legacy_store_url()
     {
-        return 'http://www.marvinlabs.com';
+        return 'http://deprecated.marvinlabs.com/';
     }
 }

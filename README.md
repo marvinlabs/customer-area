@@ -4,12 +4,12 @@
 **Donate link:**        http://www.marvinlabs.com/donate/  
 **Tags:**               private files,client area,customer area,user files,secure area,crm,project,project management,access control  
 **Requires at least:**  3.6  
-**Tested up to:**       4.1  
-**Stable tag:**         6.0.0  
+**Tested up to:**       4.2.1  
+**Stable tag:**         6.1.0  
 **License:**            GPLv2 or later  
 **License URI:**        http://www.gnu.org/licenses/gpl-2.0.html  
 
-Give your customers a page on your site where they can access private content (files, notices, ...). 
+WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 
 ## Description ##
 
@@ -20,10 +20,8 @@ one or multiple users is one of the main feature provided by our easy-to-use plu
 * [Add-ons](http://wp-customerarea.com/add-ons-and-themes/)
 * [Documentation](http://wp-customerarea.com/documentation/)
 * [Translations](http://wp-customerarea.com/documentation/)
-
 * [Support](http://wp-customerarea.com/support)
 * [FAQ](http://wp-customerarea.com/faq/)
-
 * [GitHub repository for contributors](https://github.com/marvinlabs/customer-area)
 * [Issue tracker](https://github.com/marvinlabs/customer-area/issues)
 
@@ -155,7 +153,34 @@ feel free to fork the project and send us pull requests!
 
 ## Changelog ##
 
-### 6.0.0 (2015/02/) ###
+### 6.1.0 (2015/05/06) ###
+
+* New: important events are now logged: content viewed, file download, owner changed. Many more event types to come soon!
+* New: filter the private content lists to see only the content visible by a given user
+* New: hook to change the default owner type (See [our corresponding code snippet](http://wp-customerarea.com/snippet/changing-default-owner-type/))
+* New: improved the administration panel. The menu has been made much clearer. Added advanced filters for private content.
+* New: translation files can now be stored outside the plugin folder
+* New: added a shortcode to display the navigation menu (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
+* New: added a shortcode to list protected content (see [the shortcodes documentation](http://wp-customerarea.com/documentation/shortcodes/))
+* New: hook to change the name shown in the owner selection box (see [corresponding code snippet](http://wp-customerarea.com/snippet/change-the-name-displayed-in-user-selection-box/))
+* Fix: pagination is now filtered if there are too many ages to show
+* Fix: hide customer area pages in search results
+* Fix: admin bar was shown to guests when admin restriction setting was not enabled
+* Fix: PHP error in the front-end publishing module
+
+**Add-on changes**
+
+* New: *Authentication forms* - now plays nice with Peters' login redirect plugin for even more control
+* New: *Projects* - project property updates are now logged (progress, dates, etc.)
+* New: *Protect post types* - brand new add-on to protect external custom post types (from other plugins)
+* New: *ACF Integration* - updated supported version of ACF to 4.4.1
+* Fix: *Front-office publishing* - the "page created" message was displayed twice
+* Fix: *Conversations* - fix PHP error in template file to list replies
+* Fix: *Managed groups* - PHP warning in the group edition page and support for WPCA 6.1
+* Fix: *Additional Owner Types* - support for WPCA 6.1
+* Fix: *Tasks* - support for WPCA 6.1
+
+### 6.0.0 (2015/03/10) ###
 
 * New: a setup assistant for first time installation & about page to introduce new versions features
 * New: support for the new website at http://wp-customerarea.com
@@ -168,6 +193,8 @@ feel free to fork the project and send us pull requests!
 * Fix: the function cuar_is_customer_area_private_content was not returning true for private containers (such as projects)
 * Fix: an email validation bug for additional profile fields created by code
 * Fix: improved detection of main plugin errors (not installed, disabled) for add-ons.
+* Fix: the widgets have been made more flexible to be able to override the output by using templates
+* Fix: the term list widget was not properly printing child terms
 
 ### 5.0.7 (2014/07/31) ###
 

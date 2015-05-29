@@ -1,0 +1,67 @@
+.cuar-repeatable-wrapper {
+
+  .cuar-repeatable-container {
+
+    .cuar-repeatable-item {
+      margin: 0;
+      background: #fafafa;
+      border-bottom: 1px solid #ebebeb;
+      border-spacing: 0;
+
+      &:first-child {
+        border-top: 1px solid #ebebeb;
+      }
+
+      td {
+        padding: 4px 8px;
+      }
+
+      .cuar-move {
+        padding: 0;
+        background: #f0f0f0;
+        text-align: center;
+        width: 30px;
+        &:hover {
+          cursor: pointer;
+          background: #ebebeb;
+        }
+      }
+
+      .cuar-remove {
+        padding: 0;
+        background: #f0f0f0;
+        text-align: center;
+        width: 25px;
+        &:hover {
+          cursor: pointer;
+          background: #a00;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .cuar-repeatable-header {
+    margin: 0;
+    background: #444;
+    color: white;
+    border-spacing: 0;
+
+    td {
+      padding: 4px 8px;
+      font-width: bold;
+    }
+
+    .cuar-add {
+      width: 10%;
+      text-align: center;
+      font-width: normal;
+      background: #00a0d2;
+      color: white;
+      &:hover {
+        background: #0091cd;
+      }
+    }
+  }
+
+}

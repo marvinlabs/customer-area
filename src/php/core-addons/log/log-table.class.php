@@ -29,6 +29,7 @@ class CUAR_LogTable extends CUAR_ListTable
 {
 
     public $content_types = array();
+    public $displayable_meta = array();
 
     /**
      * Constructor, we override the parent to pass our own arguments
@@ -47,8 +48,8 @@ class CUAR_LogTable extends CUAR_ListTable
             admin_url('admin.php?page=wpca-logs'),
             'CUAR_LogEvent');
 
-        $this->content_types = array_merge($plugin->get_content_types(), $plugin->get_container_types());
         $this->displayable_meta = apply_filters('cuar/core/log/table-displayable-meta', array());
+        $this->content_types = array_merge($this->plugin->get_content_types(), $this->plugin->get_container_types());
     }
 
     /**
@@ -163,7 +164,7 @@ class CUAR_LogTable extends CUAR_ListTable
     public function column_log_timestamp($item)
     {
         $m_time = $item->get_post()->post_date;
-        $h_time = mysql2date(__('Y/m/d - g:i:s'), $m_time);
+        $h_time = mysql2date(__('Y/m/d - g:i:s', 'cuar'), $m_time);
 
         return $h_time;
     }
@@ -303,7 +304,7 @@ class CUAR_LogTable extends CUAR_ListTable
             case 'delete':
                 if ( !current_user_can('delete_post', $post_id))
                 {
-                    wp_die(__('You are not allowed to delete this item.'));
+                    wp_die(__('You are not allowed to delete this item.', 'cuar'));
                 }
 
                 wp_delete_post($post_id, true);
@@ -324,7 +325,7 @@ class CUAR_LogTable extends CUAR_ListTable
      *
      * @param string $which
      */
-    protected function extra_tablenav($which)
+    public function extra_tablenav($which)
     {
         global $cat;
         ?>

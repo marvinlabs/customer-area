@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  * Print the owner of a post
  */
 function cuar_the_owner( $post_id = 0 ) {
-	echo get_the_owner( $post_id );
+	echo cuar_get_the_owner( $post_id );
 }
 
 /**
@@ -37,4 +37,20 @@ function cuar_get_the_owner( $post_id = 0 ) {
 	$post_id = $post_id==0 ? get_the_ID() : $post_id;		
 	$owner_name = $po_addon->get_post_owner_displayname( $post_id );
 	return apply_filters( 'cuar/private-content/the-owner', $owner_name, $post_id );
+}
+
+/**
+ * Get the add-on corresponding to the current single post we are viewing
+ *
+ * @return CUAR_AddOn|null
+ */
+function cuar_get_single_content_addon() {
+    $pt = get_post_type();
+    $types = cuar()->get_private_types();
+
+    if (isset($types[$pt])) {
+        return cuar_addon($types[$pt]['content-page-addon']);
+    }
+
+    return null;
 }

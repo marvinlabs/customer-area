@@ -88,7 +88,7 @@ abstract class CUAR_Shortcode
         {
             if ( !isset($params[$key]) || empty($params[$key]))
             {
-                return sprintf(__('The shortcode <code>[%1$s]</code> is missing required parameter: %2$s'),
+                return sprintf(__('The shortcode <code>[%1$s]</code> is missing required parameter: %2$s', 'cuar'),
                     $this->name, $key);
             }
         }

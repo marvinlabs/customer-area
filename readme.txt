@@ -4,8 +4,8 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,user files,secure area,crm,project,project management,access control
 Requires at least:  3.6
-Tested up to:       4.2.1
-Stable tag:         6.1.0
+Tested up to:       4.2.2
+Stable tag:         6.1.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,10 +40,11 @@ WP Customer Area is available for free and should cover the needs of most users.
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
 from [our online shop](http://wp-customerarea.com/add-ons-and-themes/)
 
-**Included translations**
+**Special thanks**
 
-The community around WP Customer Area has contributed some [translations](http://wp-customerarea.com/documentation/) to
-the main plugin and some add-ons. They may no be all up-to-date but this could be a start for your project.
+To [Steve Steiner](www.websaucesoftware.com) for his intensive testing on the plugin, his bug reports and support.
+
+To the translators who send us [their translations](http://wp-customerarea.com/documentation/):
 
 * Catalan by Amanda Fontana
 * Dutch by [Paul Willems](http://wi4.nl) and [Peter Massar](http://profiles.wordpress.org/yourdigihands/)
@@ -55,6 +56,7 @@ the main plugin and some add-ons. They may no be all up-to-date but this could b
 * Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com) and [Marcos Meyer Hollerweger](http://marcosh.eng.br/)
 * Italian by [Andrea Starz](http://www.work-on-web.it) and [Antonio Cicirelli](http://www.ideacommerce.it)
 * Swedish by Patric Liljestrand
+* Turkish by [Mehmet Hakan](http://wpsitesi.com)
 
 If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
 you the credit for it on this page.
@@ -127,7 +129,26 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 6.1.0 (2015/04/) =
+= 6.2.0 (2015/) =
+
+* New: support for the Smart groups add-on
+* Fix: permalinks to categories (private files or pages) were not correct when included as menu items
+* Fix: bug in admin access restriction
+
+**Add-on changes**
+
+* New: *Authentication forms* - Hooks to change the form links (see [code snippet](http://wp-customerarea.com/snippet/authentication-forms-change-the-links-below-the-forms/))
+
+= 6.1.2 (2015/05/07) =
+
+* Fix: Some PHP versions did not like a method visibility change in the list table classes
+
+= 6.1.1 (2015/05/06) =
+
+* Fix: A small bug preventing to select category in the front-office publishing add-on if no content had previously been assigned to any category
+* Fix: The admin bar was not hidden anymore to users who should not be able to see it
+
+= 6.1.0 (2015/05/06) =
 
 * New: important events are now logged: content viewed, file download, owner changed. Many more event types to come soon!
 * New: filter the private content lists to see only the content visible by a given user
@@ -144,8 +165,15 @@ feel free to fork the project and send us pull requests!
 
 **Add-on changes**
 
-* New: the authentication forms add-on now plays nice with Peters' login redirect plugin for even more control
-* New: project property updates are now logged (progress, dates, etc.)
+* New: *Authentication forms* - now plays nice with Peters' login redirect plugin for even more control
+* New: *Projects* - project property updates are now logged (progress, dates, etc.)
+* New: *Protect post types* - brand new add-on to protect external custom post types (from other plugins)
+* New: *ACF Integration* - updated supported version of ACF to 4.4.1
+* Fix: *Front-office publishing* - the "page created" message was displayed twice
+* Fix: *Conversations* - fix PHP error in template file to list replies
+* Fix: *Managed groups* - PHP warning in the group edition page and support for WPCA 6.1
+* Fix: *Additional Owner Types* - support for WPCA 6.1
+* Fix: *Tasks* - support for WPCA 6.1
 
 = 6.0.0 (2015/03/10) =
 

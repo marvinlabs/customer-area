@@ -79,6 +79,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                     array(&$this, 'print_pages_settings'), 50, 2);
                 add_filter('cuar/core/settings/validate-settings?tab=cuar_customer_pages',
                     array(&$this, 'validate_pages_settings'), 50, 3);
+            } else {
+                add_filter('body_class', array(&$this, 'add_body_class'));
             }
         }
 
@@ -469,6 +471,13 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 $current_page_addon->get_slug() . "-pagination.template.php",
                 'templates',
                 "pagination.template.php"));
+        }
+
+        public function add_body_class($classes) {
+            if (cuar_is_customer_area_page() || cuar_is_customer_area_private_content()) {
+                $classes[] = 'cuar-body';
+            }
+            return $classes;
         }
 
         /*------- NAV MENU ----------------------------------------------------------------------------------------------*/

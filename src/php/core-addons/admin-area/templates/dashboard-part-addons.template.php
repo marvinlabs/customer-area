@@ -6,15 +6,15 @@ include_once(ABSPATH . WPINC . '/feed.php');
 $feeds = array(
     array(
         'title'     => __('Save money with our bundles', 'cuar'),
-        'url'       => __('http://wp-customerarea.com/downloads/category/wpca-bundles/feed/rss', 'cuar')
+        'url'       => 'http://wp-customerarea.com' . __('/downloads/category/wpca-bundles/feed/rss', 'cuar')
     ),
     array(
         'title'     => __('Add-ons to enhance your private area', 'cuar'),
-        'url'       => __('http://wp-customerarea.com/downloads/category/wpca-add-ons/feed/rss', 'cuar')
+        'url'       => 'http://wp-customerarea.com' . __('/downloads/category/wpca-add-ons/feed/rss', 'cuar')
     ),
     array(
         'title'     => __('Themes optimised for WP Customer Area', 'cuar'),
-        'url'       => __('http://wp-customerarea.com/downloads/category/wpca-themes/feed/rss', 'cuar')
+        'url'       => 'http://wp-customerarea.com' . __('/downloads/category/wpca-themes/feed/rss', 'cuar')
     ),
 );
 

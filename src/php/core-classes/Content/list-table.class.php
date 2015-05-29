@@ -250,12 +250,12 @@ abstract class CUAR_ListTable extends WP_List_Table
     {
         if ('0000-00-00 00:00:00' == $item->post_date)
         {
-            $t_time = $h_time = __('Unpublished');
+            $t_time = $h_time = __('Unpublished', 'cuar');
             $time_diff = 0;
         }
         else
         {
-            $t_time = get_the_time(__('Y/m/d g:i:s A'));
+            $t_time = get_the_time(__('Y/m/d g:i:s A', 'cuar'));
             $m_time = $item->post_date;
             $time = get_post_time('G', true, $item);
 
@@ -263,11 +263,11 @@ abstract class CUAR_ListTable extends WP_List_Table
 
             if ($time_diff > 0 && $time_diff < DAY_IN_SECONDS)
             {
-                $h_time = sprintf(__('%s ago'), human_time_diff($time));
+                $h_time = sprintf(__('%s ago', 'cuar'), human_time_diff($time));
             }
             else
             {
-                $h_time = mysql2date(__('Y/m/d'), $m_time);
+                $h_time = mysql2date(__('Y/m/d', 'cuar'), $m_time);
             }
         }
 
@@ -530,7 +530,7 @@ abstract class CUAR_ListTable extends WP_List_Table
      *
      * @param string $which
      */
-    protected function extra_tablenav($which)
+    public function extra_tablenav($which)
     {
         global $cat;
         ?>
