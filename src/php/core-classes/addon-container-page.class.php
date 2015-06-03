@@ -573,23 +573,48 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		$content_query = new WP_Query( $args );
 		
 		if ( $content_query->have_posts() ) {
-			$item_template = $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-item-dashboard.template.php",
-					'templates',
-					$this->get_slug() . "-content-item.template.php" );
-			
-			include( $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-dashboard.template.php",
-					'templates',
-					$this->get_slug() . "-content.template.php" ));
-		} else {
-			include( $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-empty-dashboard.template.php",
-					'templates',
-					$this->get_slug() . "-content-empty.template.php" ));
+            $item_template = $this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-item-dashboard.template.php",
+                    $this->get_slug() . "-content-item.template.php",
+                    "content-page-content-item-dashboard.template.php"
+                ),
+                'templates',
+                "content-page-content-item.template.php");
+
+            include($this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-dashboard.template.php",
+                    $this->get_slug() . "-content.template.php",
+                    "content-page-content-dashboard.template.php"
+                ),
+                'templates',
+                "content-page-content.template.php"));
+
+            wp_reset_query();
+        }
+        else
+        {
+            include($this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-empty-dashboard.template.php",
+                    $this->get_slug() . "-content-empty.template.php",
+                    "content-page-content-empty-dashboard.template.php"
+                ),
+                'templates',
+                "content-page-content-empty.template.php"));
 		}
 	}
 	
