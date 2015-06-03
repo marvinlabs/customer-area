@@ -8,7 +8,6 @@ if ( !function_exists( 'cuar_load_theme_scripts' ) ) {
 	function cuar_load_skin_scripts() {
         $cuar_plugin = CUAR_Plugin::get_instance();
 
-        /*
         $cuar_plugin->enable_library( 'bootstrap.affix' );
         $cuar_plugin->enable_library( 'bootstrap.alert' );
         $cuar_plugin->enable_library( 'bootstrap.button' );
@@ -21,7 +20,6 @@ if ( !function_exists( 'cuar_load_theme_scripts' ) ) {
         $cuar_plugin->enable_library( 'bootstrap.tab' );
         $cuar_plugin->enable_library( 'bootstrap.tooltip' );
         $cuar_plugin->enable_library( 'bootstrap.transition' );
-        */
 
         $cuar_plugin->enable_library( 'jquery.mixitup' );
 
