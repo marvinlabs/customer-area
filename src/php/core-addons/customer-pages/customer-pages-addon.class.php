@@ -79,6 +79,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                     array(&$this, 'print_pages_settings'), 50, 2);
                 add_filter('cuar/core/settings/validate-settings?tab=cuar_customer_pages',
                     array(&$this, 'validate_pages_settings'), 50, 3);
+            } else {
+                add_action('cuar/core/navigation/subpages_menu',array(&$this, 'subpages_menu'));
             }
         }
 
@@ -882,7 +884,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
         }
 
         // Print a row of buttons that allow to click the child pages even on mobile
-        protected function get_subpages_menu()
+        public function get_subpages_menu()
         {
             $theme_locations = get_nav_menu_locations();
             if ( !isset($theme_locations['cuar_main_menu']))
