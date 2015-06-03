@@ -1,8 +1,8 @@
 <?php
-/** Template version: 2.0.0
+/** Template version: 3.0.0
  *
- * -= 2.0.0 =-
- * - Add cuar- prefix to bootstrap classes
+ * -= 3.0.0 =-
+ * - Improve UI for new master-skin
  *
  * -= 1.1.0 =-
  * - Updated markup
@@ -34,31 +34,29 @@ $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
 ?>
 
-<div class="cuar-private-file cuar-item cuar-item-large<?php echo $extra_class; ?>">
-    <div class="cuar-panel">
-        <div class="cuar-title">
-            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
-        </div>
+<div class="cuar-content-block cuar-private-files cuar-item cuar-item-large<?php echo $extra_class; ?>">
+    <div class="cuar-title">
+        <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
+    </div>
 
-        <div class="cuar-subtitle">
-            <a href="<?php the_permalink(); ?>"
-               title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
-        </div>
+    <div class="cuar-subtitle">
+        <a href="<?php the_permalink(); ?>"
+           title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
+    </div>
 
-        <?php if (has_post_thumbnail(get_the_ID())) : ?>
-            <div class="cuar-cover">
-                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>">
-                    <?php the_post_thumbnail('medium', array('class' => "cuar-img-responsive")); ?>
-                </a>
-            </div>
-        <?php endif; ?>
-
-        <div class="cuar-badges">
-            <a href="<?php cuar_the_file_link(get_the_ID(), 'download'); ?>"
-               title="<?php echo esc_attr(sprintf(__('Download (%1$s)', 'cuar'), $file_size)); ?>">
-                <span
-                    class="cuar-download-badge cuar-dashicons cuar-dashicons-download cuar-dashicon-badge cuar-pull-right"></span>
+    <?php if (has_post_thumbnail(get_the_ID())) : ?>
+        <div class="cuar-cover">
+            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>">
+                <?php the_post_thumbnail('medium', array('class' => "cuar-img-responsive")); ?>
             </a>
         </div>
+    <?php endif; ?>
+
+    <div class="cuar-badges">
+        <a href="<?php cuar_the_file_link(get_the_ID(), 'download'); ?>"
+           title="<?php echo esc_attr(sprintf(__('Download (%1$s)', 'cuar'), $file_size)); ?>">
+            <span
+                class="cuar-download-badge cuar-dashicons cuar-dashicons-download cuar-dashicon-badge cuar-pull-right"></span>
+        </a>
     </div>
 </div>

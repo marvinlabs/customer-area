@@ -7,13 +7,15 @@
  * -= 1.0.0 =-
  * - Initial version
  *
- */
-?>
+ */ ?>
 
-<div class="cuar-content-block cuar-private-pages-block">
-    <h3><?php echo $page_subtitle; ?></h3>
-
-    <div class="cuar-private-page-list cuar-item-list">
+<div class="cuar-content-block panel">
+    <div class="panel-heading">
+        <span class="cuar-title panel-title">
+            <?php echo $page_subtitle; ?>
+        </span>
+    </div>
+    <div class="cuar-item-list panel-body">
         <?php
         while ($content_query->have_posts()) {
             $content_query->the_post();

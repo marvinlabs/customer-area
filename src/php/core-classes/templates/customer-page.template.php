@@ -10,7 +10,7 @@
 		$this->print_page_header( $args, $shortcode_content ); 
 	?></div>
 	
-	<div class="cuar-page-content"><?php 
+	<div class="cuar-page-content admin-panels"><?php
 		$this->print_page_content( $args, $shortcode_content ); 
 	?></div>
 	
