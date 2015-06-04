@@ -133,6 +133,7 @@ feel free to fork the project and send us pull requests!
 
 * New: support for the Smart groups add-on
 * Fix: permalinks to categories (private files or pages) were not correct when included as menu items
+* Fix: bug in admin access restriction
 
 **Add-on changes**
 
