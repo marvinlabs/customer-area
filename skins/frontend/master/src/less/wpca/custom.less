@@ -10,3 +10,68 @@ body.admin-bar .nano > .nano-content{
 
 // Extend required gallery-page class to not only work on body.gallery-page
 .gallery-page:extend(body.gallery-page all){};
+
+// Switch users in toolbar extra styling
+// TODO: Replace pixels values by variables
+#topbar #cuar-topbar-actions {
+  height: 32px;
+
+  .cuar-single-post-actions {
+    height: 32px;
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+
+    > a {
+      &:extend(.btn-sm all);
+    }
+  }
+
+  #cuarsu_identity_selection{
+    display: inline-block;
+    vertical-align: top;
+
+    .cuarsu-message{
+      display: none;
+    }
+  }
+
+  #cuarsu_do_switch_identity{
+    &:extend(.btn-sm all);
+    height: 32px;
+  }
+
+
+  #toggle_sidemenu_r {
+    vertical-align: top;
+    display: inline;
+    > a{
+      &:extend(.btn-sm all, .btn-default all);
+      height: 32px;
+      padding-top: 6px;
+      display: inline;
+      float: right;
+
+    }
+  }
+
+  .cuarsu-id-select-wrapper{
+    max-width: 200px;
+
+    .select2-container{
+      width: 100%!important;
+
+      .select2-selection{
+        height: 32px;
+
+        .select2-selection__rendered{
+          line-height: 30px;
+        }
+
+        .select2-selection__arrow{
+          height: 30px;
+        }
+      }
+    }
+  }
+}
