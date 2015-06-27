@@ -15,14 +15,18 @@
             $count = "";
             if($show_count){   // only bother if we're showing them
                 $objects_in_term = get_objects_in_term( $term->term_id, $this->get_taxonomy());
-                $count = count($objects_in_term);
+                $object_count = count($objects_in_term);
+                $fmt_string = '<a href="%1$s" title="%4$s">%2$s (%3$s)</a>';
+            }
+            else{
+                $fmt_string = '<a href="%1$s" title="%4$s">%2$s</a>';
             }
 
-            printf('<a href="%1$s" title="%4$s">%2$s (%3$s)</a>',
-                $link,
-                $term->name,
-                $count,
-                sprintf(esc_attr__('Show all content categorized under %s', 'cuar'), $term->name)
+            printf( $fmt_string,
+                    $link,
+                    $term->name,
+                    $object_count,
+                    sprintf(esc_attr__('Show all content categorized under %s', 'cuar'), $term->name)
             );
             ?>
 
