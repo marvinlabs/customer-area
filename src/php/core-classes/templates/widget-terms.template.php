@@ -12,9 +12,16 @@
         ?>
         <li><?php
             // Print the current term
-            printf('<a href="%1$s" title="%3$s">%2$s</a>',
+            $count = "";
+            if($show_count){   // only bother if we're showing them
+                $objects_in_term = get_objects_in_term( $term->term_id, $this->get_taxonomy());
+                $count = count($objects_in_term);
+            }
+
+            printf('<a href="%1$s" title="%4$s">%2$s (%3$s)</a>',
                 $link,
                 $term->name,
+                $count,
                 sprintf(esc_attr__('Show all content categorized under %s', 'cuar'), $term->name)
             );
             ?>
@@ -25,9 +32,10 @@
                 'parent'     => $term->term_id,
                 'hide_empty' => $hide_empty
             ));
-            if (count($children) > 0)
+            $count = count($children);
+            if ($count > 0)
             {
-                $this->print_term_list($children, $hide_empty);
+                $this->print_term_list($children, $hide_empty, $show_count);
             }
             ?>
         </li>
