@@ -33,6 +33,13 @@ $title_popup = sprintf(__('Uploaded on %s', 'cuar'), get_the_date());
 
 $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
+
+$extensions = apply_filters('cuar/templates/list-item/extensions-icons?post-type=' . get_post_type(), array(
+    'default' => 'fa-file-o',
+    'jpg' => 'fa fa-file-picture-o',
+    'png' => 'fa fa-file-picture-o',
+    'zip' => 'fa fa-file-zip-o'
+), $post);
 ?>
 
 <div class="cuar-private-file cuar-item cuar-item-wide<?php echo $extra_class; ?> mix label1 folder1">
@@ -40,13 +47,12 @@ $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' .
     <div class="panel p6 bg-light dark">
         <div class="of-h">
             <?php
-            $images_extensions = array('jpg','png');
-            if (in_array( cuar_get_the_file_type(get_the_ID()), $images_extensions )) {
-                echo '<img src="' . cuar_get_the_file_link(get_the_ID(), 'download') . '" class="img-responsive" title="lost_typewritter.jpg">';
+            if (has_post_thumbnail(get_the_ID())) {
+                the_post_thumbnail('medium');
             }else{ ?>
                 <div class="va-m fs40 text-center bg-info light" style="display: inline-block; height: 200px; width: 100%;">
-                    <i class="fa fa-twitter mt30 mr30 text-info dark icon-bg"></i>
-                    <h6 class="text-white mn fs100" style="margin-top: 20%!important;">
+                    <i class="<?php if(isset($extensions[cuar_get_the_file_type(get_the_ID())])) echo $extensions[cuar_get_the_file_type(get_the_ID())]; else echo $extensions['default']; ?> mt30 mr30 text-info dark icon-bg"></i>
+                    <h6 class="text-white mn fs100" style="margin-top: 20%!important;z-index: 2;position: relative;">
                         <?php cuar_the_file_type(get_the_ID()); ?>
                     </h6>
                 </div>
