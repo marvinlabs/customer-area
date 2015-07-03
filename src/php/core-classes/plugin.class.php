@@ -176,25 +176,26 @@ class CUAR_Plugin {
 
         }
 	}
-	
-	/**
-	 * Loads the required css (only when not in admin area)
-	 */
-	public function load_styles() {
-		if ( is_admin() ) {
-			wp_enqueue_style(
-				'cuar.admin',
-				$this->get_admin_theme_url() . '/assets/css/styles.min.css' );
-		} else if ( !current_theme_supports( 'customer-area.stylesheet' ) 
-					&& $this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS ) ) {
-			wp_enqueue_style(
-					'cuar.frontend',
-					$this->get_frontend_theme_url() . '/assets/css/styles.min.css',
-					array( 'dashicons' ), 
-					$this->get_version()
-				);
-		}
-	}
+
+    /**
+     * Loads the required css (only when not in admin area)
+     */
+    public function load_styles() {
+        if ( is_admin() ) {
+            wp_enqueue_style(
+                'cuar.admin',
+                $this->get_admin_theme_url() . '/assets/css/styles.min.css' );
+        } else if ( !current_theme_supports( 'customer-area.stylesheet' )
+            && $this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS )
+            && cuar_is_customer_area_page( get_queried_object_id() ) ) {
+            wp_enqueue_style(
+                'cuar.frontend',
+                $this->get_frontend_theme_url() . '/assets/css/styles.min.css',
+                array( 'dashicons' ),
+                $this->get_version()
+            );
+        }
+    }
 	
 	/**
 	 * Initialise some defaults for the plugin (add basic capabilities, ...)
