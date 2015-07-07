@@ -81,7 +81,7 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
             }
 
             $hide_empty = isset($instance['hide_empty']) ? $instance['hide_empty'] : 0;
-            $show_count = isset($instance['show_count']) ? $instance['show_count'] : 1;
+            $show_count = isset($instance['show_count']) ? $instance['show_count'] : 0;
 
             $terms = get_terms($this->get_taxonomy(), array(
                 'parent'     => 0,
@@ -110,6 +110,7 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
          *
          * @param array   $terms The terms
          * @param boolean $hide_empty Shall we hide empty terms?
+         * @param boolean $show_count Shall we show the count of items for terms?
          */
         protected function print_term_list($terms, $hide_empty, $show_count)
         {
@@ -149,6 +150,14 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
             {
                 $hide_empty = 0;
             }
+            if (isset($instance['show_count']))
+            {
+                $show_count = $instance['show_count'];
+            }
+            else
+            {
+                $show_count = 0;
+            }
             ?>
             <p>
                 <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cuar'); ?></label>
@@ -172,8 +181,8 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
                         'cuar'); ?></label>
                 <select class="widefat" id="<?php echo $this->get_field_id('show_count'); ?>"
                         name="<?php echo $this->get_field_name('show_count'); ?>">
-                    <option value="0" <?php selected(0, $hide_empty); ?>><?php _e('Show', 'cuar'); ?></option>
-                    <option value="1" <?php selected(1, $hide_empty); ?>><?php _e('Hide', 'cuar'); ?></option>
+                    <option value="0" <?php selected(1, $show_count); ?>><?php _e('Show', 'cuar'); ?></option>
+                    <option value="1" <?php selected(0, $show_count); ?>><?php _e('Hide', 'cuar'); ?></option>
                 </select>
             </p>
 
@@ -195,6 +204,7 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
             $instance = array();
             $instance['title'] = ( !empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
             $instance['hide_empty'] = ( !empty($new_instance['hide_empty'])) ? 1 : 0;
+            $instance['show_count'] = ( !empty($new_instance['show_count'])) ? 0 : 1;
 
             return $instance;
         }

@@ -12,7 +12,7 @@
         ?>
         <li><?php
             // Print the current term
-            $count = "";
+            $object_count = 0;
             if($show_count){   // only bother if we're showing them
                 $objects_in_term = get_objects_in_term( $term->term_id, $this->get_taxonomy());
                 $object_count = count($objects_in_term);
