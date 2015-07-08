@@ -428,11 +428,12 @@
 
                 // Loop each tray and set height to match body
                 trayMatch.each(function() {
-                    var bodyH = $('body').height();
-                    var TopbarH = $('#topbar').height();
-                    var NavbarH = $('.navbar').height();
-                    var Height = bodyH - (TopbarH + NavbarH);
-                    $(this).height(Height - 60);
+                    var bodyH = $('body').innerHeight();
+                    var TopbarH = $('#topbar').outerHeight();
+                    var NavbarH = $('#main > .main-header').outerHeight();
+                    var AdminbarH = $('#wpadminbar').outerHeight();
+                    var Height = bodyH - (TopbarH + NavbarH + AdminbarH);
+                    $(this).height(Height - 45);
                 });
 
             };

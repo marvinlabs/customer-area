@@ -1,11 +1,11 @@
 // Prevent adminbar from overriding theme
 body.admin-bar .navbar-fixed-top,
-body.admin-bar .nano > .nano-content{
+body.admin-bar .navbar-fixed-top + #sidebar_left,
+body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper + #sidebar_right {
   top: 32px !important;
 }
-body.admin-bar .navbar-fixed-top,
-body.admin-bar .nano > .nano-content{
-  top: 32px !important;
+body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper{
+  margin-bottom: -32px;
 }
 
 // Extend required gallery-page class to not only work on body.gallery-page
