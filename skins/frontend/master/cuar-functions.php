@@ -7,7 +7,7 @@ if ( !function_exists( 'cuar_load_theme_scripts' ) ) {
 	 */
 	function cuar_load_skin_scripts() {
 
-        if ( cuar_is_customer_area_page( get_queried_object_id() ) ) {
+        if ( cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID()) ) {
             $cuar_plugin = CUAR_Plugin::get_instance();
 
             $cuar_plugin->enable_library('bootstrap.affix');
