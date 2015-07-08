@@ -2,14 +2,11 @@
 /** Template version: 3.0.0
  *
  * -= 3.0.0 =-
- * - Improve UI for new master-skin
- *
- * -= 1.0.0 =-
  * - Initial version
  *
  */ ?>
 
-<div class="cuar-content-block cuar-private-pages cuar-empty panel">
+<div class="cuar-content-block cuar-private-pages panel">
     <div class="panel-heading">
         <?php
         $pp_addon = $this->plugin->get_addon('customer-private-pages');
@@ -25,6 +22,13 @@
         </span>
     </div>
     <div class="cuar-private-pages-list cuar-item-list panel-body">
-        <p><?php _e( 'You currently have no pages.', 'cuar' ); ?></p>
+        <?php
+        while ($content_query->have_posts()) {
+            $content_query->the_post();
+            global $post;
+
+            include($item_template);
+        }
+        ?>
     </div>
 </div>
