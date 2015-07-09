@@ -375,31 +375,94 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		$page_subtitle = apply_filters( 'cuar/core/page/subtitle?slug=' .  $page_slug . '&display-mode=' . $display_mode, $page_subtitle );
 		
 		if ( $content_query->have_posts() ) {
-			$item_template = $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-item-{$display_mode}.template.php",
-					'templates',
-					$this->get_slug() . "-content-item.template.php" );
-			
-			include( $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-{$display_mode}.template.php",
-					'templates',
-					$this->get_slug() . "-content.template.php" ));
+            $item_template = $this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-item-{$display_mode}.template.php",
+                    $this->get_slug() . "-content-item.template.php",
+                    "content-page-content-item-{$display_mode}.template.php"
+                ),
+                'templates',
+                "content-page-content-item.template.php");
+
+            include($this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-{$display_mode}.template.php",
+                    $this->get_slug() . "-content.template.php",
+                    "content-page-content-{$display_mode}.template.php"
+                ),
+                'templates',
+                "content-page-content.template.php"));
 			
 			// Include paging navigation if necessary
 			$cp_addon = $this->plugin->get_addon('customer-pages');
 			$cp_addon->print_pagination( $this, $content_query, $pagination_base, $current_page );
+
+            wp_reset_query();
 		} else {
-			include( $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-empty-{$display_mode}.template.php",
-					'templates',
-					$this->get_slug() . "-content-empty.template.php" ));
+            include($this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-empty-{$display_mode}.template.php",
+                    $this->get_slug() . "-content-empty.template.php",
+                    "content-page-content-empty-{$display_mode}.template.php"
+                ),
+                'templates',
+                "content-page-content-empty.template.php"));
 		}
 	}
 	
 	/*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
+
+    public function print_single_private_content_action_links() {
+        do_action('cuar/private-container/view/before_action_links', $this);
+        do_action('cuar/private-container/view/before_action_links?post-type=' . $this->get_friendly_post_type(), $this);
+
+        $links = apply_filters('cuar/private-container/view/single-post-action-links', array());
+        $links = apply_filters('cuar/private-container/view/single-post-action-links?post-type=' . $this->get_friendly_post_type(), $links);
+
+        include($this->plugin->get_template_file_path(
+            array(
+                $this->get_page_addon_path(),
+                CUAR_INCLUDES_DIR . '/core-classes'
+            ),
+            $this->get_slug() . '-single-post-action-links.template.php',
+            'templates',
+            'single-post-action-links.template.php'));
+
+        do_action('cuar/private-container/view/after_action_links', $this);
+        do_action('cuar/private-container/view/after_action_links?post-type=' . $this->get_friendly_post_type(), $this);
+    }
+
+    public function print_single_private_content_action_links_filter($content)
+    {
+        // If theme is taking care of it, don't do anything
+        $theme_support = get_theme_support('customer-area.single-post-templates');
+        if (is_array($theme_support) && in_array($this->get_friendly_post_type(), $theme_support[0])) return $content;
+
+        // If not on a matching post type, we do nothing
+        if ( !is_singular($this->get_friendly_post_type())) return $content;
+        if (get_post_type() != $this->get_friendly_post_type()) return $content;
+
+        ob_start();
+
+        $this->print_single_private_content_action_links();
+
+        $out = ob_get_contents();
+        ob_end_clean();
+
+        return $out . $content;
+    }
 	
 	public function print_single_container_footer( $content ) {				
 		// If theme is taking care of it, don't do anything
@@ -510,23 +573,48 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 		$content_query = new WP_Query( $args );
 		
 		if ( $content_query->have_posts() ) {
-			$item_template = $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-item-dashboard.template.php",
-					'templates',
-					$this->get_slug() . "-content-item.template.php" );
-			
-			include( $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-dashboard.template.php",
-					'templates',
-					$this->get_slug() . "-content.template.php" ));
-		} else {
-			include( $this->plugin->get_template_file_path(
-					$this->get_page_addon_path(),
-					$this->get_slug() . "-content-empty-dashboard.template.php",
-					'templates',
-					$this->get_slug() . "-content-empty.template.php" ));
+            $item_template = $this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-item-dashboard.template.php",
+                    $this->get_slug() . "-content-item.template.php",
+                    "content-page-content-item-dashboard.template.php"
+                ),
+                'templates',
+                "content-page-content-item.template.php");
+
+            include($this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-dashboard.template.php",
+                    $this->get_slug() . "-content.template.php",
+                    "content-page-content-dashboard.template.php"
+                ),
+                'templates',
+                "content-page-content.template.php"));
+
+            wp_reset_query();
+        }
+        else
+        {
+            include($this->plugin->get_template_file_path(
+                array(
+                    $this->get_page_addon_path(),
+                    CUAR_INCLUDES_DIR . '/core-classes'
+                ),
+                array(
+                    $this->get_slug() . "-content-empty-dashboard.template.php",
+                    $this->get_slug() . "-content-empty.template.php",
+                    "content-page-content-empty-dashboard.template.php"
+                ),
+                'templates',
+                "content-page-content-empty.template.php"));
 		}
 	}
 	

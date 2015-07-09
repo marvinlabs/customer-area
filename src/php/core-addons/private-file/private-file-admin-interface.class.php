@@ -222,8 +222,9 @@ class CUAR_PrivateFileAdminInterface {
 			if ( !empty( $_POST['cuar_selected_ftp_file'] ) ) {
 				$ftp_dir = trailingslashit( $this->private_file_addon->get_ftp_path() );
 
+				$delete_after_copy = $_POST['cuar_ftp_delete_file_after_copy'];
 				$this->private_file_addon->handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner,
-						$ftp_dir . $_POST['cuar_selected_ftp_file']);
+						$ftp_dir . $_POST['cuar_selected_ftp_file'], $delete_after_copy);
 			}
 		} else {
 			if ( $has_owner_changed && empty( $_FILES['cuar_private_file_file']['name'] ) ) {
@@ -232,8 +233,9 @@ class CUAR_PrivateFileAdminInterface {
 			}
 			
 			if ( !empty( $_FILES['cuar_private_file_file']['name'] ) ) {
+				$delete_after_copy = isset($_POST['cuar_ftp_delete_file_after_copy']);
 				$upload_result = $this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner,
-						$_FILES['cuar_private_file_file']);
+						$_FILES['cuar_private_file_file'], $delete_after_copy);
 
 				if ( $upload_result!==true ) {
 					remove_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ) );
