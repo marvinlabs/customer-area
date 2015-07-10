@@ -340,7 +340,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             }
 
             // Not found
-            return null;
+            return false;
         }
 
         /**
