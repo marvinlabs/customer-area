@@ -92,6 +92,8 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * This is the base directory where we will store the user files
          *
+         * @param bool $create_dirs Shall we create the directory if missing
+         *
          * @return string
          */
         public function get_base_private_storage_directory($create_dirs = false)
@@ -120,20 +122,24 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * Get the absolute path to a private file.
          *
-         * @param int     $post_id
-         * @param string  $filename
-         * @param boolean $create_dirs
+         * @param int    $post_id             The ID of the post which is assigned to an owner
+         * @param string $filename            The name of the file
+         * @param bool   $create_dirs         Shall we create the directory if missing
+         * @param bool   $with_post_id_suffix Shall we suffix the path with the post ID as a sub directory?
          *
          * @return boolean|string
          */
-        public function get_private_file_path($filename, $post_id, $create_dirs = false)
+        public function get_private_file_path($filename, $post_id, $create_dirs = false, $with_post_id_suffix = true)
         {
             if (empty($post_id) || empty($filename))
             {
                 return false;
             }
 
-            $dir = $this->get_base_private_storage_directory() . '/' . $this->get_private_storage_directory($post_id);
+            $dir = $this->get_base_private_storage_directory()
+                . '/'
+                . $this->get_private_storage_directory($post_id, false, false, $with_post_id_suffix);
+
             if ($create_dirs && !file_exists($dir))
             {
                 mkdir($dir, 0775, true);
@@ -145,21 +151,31 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * Get the absolute path to a private file.
          *
-         * @param int     $post_id
-         * @param string  $filename
-         * @param boolean $create_dirs
+         * @param int    $post_id             The ID of the post which is assigned to an owner
+         * @param string $filename            The name of the file
+         * @param array  $owner_ids           The IDs of the owners
+         * @param string $owner_type          The type of owner
+         * @param bool   $create_dirs         Shall we create the directory if missing
+         * @param bool   $with_post_id_suffix Shall we suffix the path with the post ID as a sub directory?
          *
-         * @return boolean|string
+         * @return bool|string
          */
-        public function get_owner_file_path($filename, $owner_ids, $owner_type, $create_dirs = false)
+        public function get_owner_file_path($post_id, $filename, $owner_ids, $owner_type, $create_dirs = false, $with_post_id_suffix = true)
         {
             if (empty($owner_ids) || empty($owner_type) || empty($filename))
             {
                 return false;
             }
 
-            $dir = $this->get_base_private_storage_directory() . '/' . $this->get_owner_storage_directory($owner_ids,
-                    $owner_type);
+            $dir = $this->get_base_private_storage_directory()
+                . '/'
+                . $this->get_owner_storage_directory($owner_ids, $owner_type);
+
+            if ($with_post_id_suffix)
+            {
+                $dir .= '/' . $post_id;
+            }
+
             if ($create_dirs && !file_exists($dir))
             {
                 mkdir($dir, 0775, true);
@@ -171,9 +187,14 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * Get a user's private storage directory. This directory is relative to the main upload directory
          *
-         * @param int $user_id The id of the user, or null to get the base directory
+         * @param int  $post_id             The ID of the post which is assigned to an owner
+         * @param bool $absolute            Do we need the absolute path?
+         * @param bool $create_dirs         Shall we create the directory if missing
+         * @param bool $with_post_id_suffix Shall we suffix the path with the post ID as a sub directory?
+         *
+         * @return bool|string The path
          */
-        public function get_private_storage_directory($post_id, $absolute = false, $create_dirs = false)
+        public function get_private_storage_directory($post_id, $absolute = false, $create_dirs = false, $with_post_id_suffix = true)
         {
             if (empty($post_id))
             {
@@ -183,15 +204,25 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $owner_ids = $this->get_post_owner_ids($post_id);
             $owner_type = $this->get_post_owner_type($post_id);
 
-            return $this->get_owner_storage_directory($owner_ids, $owner_type, $absolute, $create_dirs);
+            return $this->get_owner_storage_directory($owner_ids,
+                $owner_type,
+                $absolute,
+                $create_dirs,
+                $with_post_id_suffix ? $post_id : false);
         }
 
         /**
          * Get a user's private storage directory. This directory is relative to the main upload directory
          *
-         * @param int $user_id The id of the user, or null to get the base directory
+         * @param array    $owner_ids   The IDs of the owners
+         * @param string   $owner_type  The type of owner
+         * @param bool     $absolute    Do we need the absolute path?
+         * @param bool     $create_dirs Shall we create the directory if missing
+         * @param int|bool $post_id     The ID of the post which is assigned to an owner
+         *
+         * @return string The storage directory for an owner
          */
-        public function get_owner_storage_directory($owner_ids, $owner_type, $absolute = false, $create_dirs = false)
+        public function get_owner_storage_directory($owner_ids, $owner_type, $absolute = false, $create_dirs = false, $post_id = false)
         {
             if (empty($owner_ids) || empty($owner_type))
             {
@@ -207,10 +238,16 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 $dir = md5($owner_type . '_' . $owner_ids);
             }
 
+            if ($post_id !== false)
+            {
+                $dir .= '/' . $post_id;
+            }
+
             if ($absolute)
             {
                 $dir = $this->get_base_private_storage_directory() . "/" . $dir;
             }
+
             if ($create_dirs && !file_exists($dir))
             {
                 mkdir($dir, 0775, true);
@@ -221,7 +258,12 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
         /*------- ACCESS TO OWNER INFO ----------------------------------------------------------------------------------*/
 
-        /** Check if the given value is a valid owner type */
+        /** Check if the given value is a valid owner type
+         *
+         * @param string $type The owner type to test
+         *
+         * @return bool true if the owner type seems correct
+         */
         public function is_valid_owner_type($type)
         {
             $types = $this->get_owner_types();
@@ -305,8 +347,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function is_user_owner_of_post($post_id, $user_id)
         {
-            $result = false;
-
             // We take care of the single user ownership
             $owner_type = $this->get_post_owner_type($post_id);
             $owner_ids = $this->get_post_owner_ids($post_id);
@@ -329,7 +369,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          *
          * @param int $post_id The post ID
          *
-         * @return int 0 if no owner is set
+         * @return array
          */
         public function get_post_owner_ids($post_id)
         {
@@ -398,7 +438,9 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * Get the owner details (id and type) from post metadata
          *
-         * @return NULL|array associative array with keys 'ids' and 'type'
+         * @param int $post_id The post ID
+         *
+         * @return array|NULL associative array with keys 'ids' and 'type'
          */
         public function get_post_owner($post_id)
         {
@@ -426,6 +468,8 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * Get the real user ids behind the logical owner of the post
          *
+         * @param int $post_id The post ID
+         *
          * @return array User ids
          */
         public function get_post_owner_user_ids($post_id)
@@ -446,7 +490,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * Save the owner details for the given post
          *
-         * @param int    $post_id
+         * @param int    $post_id The post ID
          * @param array  $owner_ids
          * @param string $owner_type
          * @param bool   $ensure_type_exists
@@ -938,7 +982,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
             // If post is not protected, we do nothing
             $post = get_queried_object();
-            if (!$this->is_post_protected($post->ID))
+            if ( !$this->is_post_protected($post->ID))
             {
                 return;
             }
