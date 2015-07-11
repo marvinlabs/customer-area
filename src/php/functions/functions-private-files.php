@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @return string
  */
-function cuar_get_the_file_link($post_id = null, $action = 'download')
+function cuar_get_the_file_link($post_id = null, $action = 'download', $index = 0)
 {
     if ( !$post_id)
     {
@@ -34,10 +34,9 @@ function cuar_get_the_file_link($post_id = null, $action = 'download')
         return '';
     }
 
-    $cuar_plugin = CUAR_Plugin::get_instance();
-    $pf_addon = $cuar_plugin->get_addon('private-files');
-
-    return $pf_addon->get_file_permalink($post_id, $action);
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+    return $pf_addon->get_file_permalink($post_id, $action, $index);
 }
 
 /**
@@ -47,9 +46,9 @@ function cuar_get_the_file_link($post_id = null, $action = 'download')
  *
  * @param int $post_id Defaults to the current post ID from the loop
  */
-function cuar_the_file_link($post_id = null, $action = 'download')
+function cuar_the_file_link($post_id = null, $action = 'download', $index = 0)
 {
-    echo cuar_get_the_file_link($post_id, $action);
+    echo cuar_get_the_file_link($post_id, $action, $index);
 }
 
 /**
@@ -59,7 +58,7 @@ function cuar_the_file_link($post_id = null, $action = 'download')
  *
  * @return string|mixed
  */
-function cuar_get_the_file_name($post_id = null)
+function cuar_get_the_file_name($post_id = null, $index = 0)
 {
     if ( !$post_id)
     {
@@ -70,14 +69,9 @@ function cuar_get_the_file_name($post_id = null)
         return '';
     }
 
-    $file = get_post_meta($post_id, 'cuar_private_file_file', true);
-
-    if ( !$file || empty($file))
-    {
-        return '';
-    }
-
-    return apply_filters('cuar/private-content/files/the-name', $file['file'], $post_id);
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+    return $pf_addon->get_file_name($post_id, $index);
 }
 
 /**
@@ -89,9 +83,9 @@ function cuar_get_the_file_name($post_id = null)
  *
  * @return string|mixed
  */
-function cuar_the_file_name($post_id = null)
+function cuar_the_file_name($post_id = null, $index = 0)
 {
-    echo cuar_get_the_file_name($post_id);
+    echo cuar_get_the_file_name($post_id, $index);
 }
 
 /**
@@ -101,7 +95,7 @@ function cuar_the_file_name($post_id = null)
  *
  * @return string|mixed
  */
-function cuar_get_the_file_type($post_id = null)
+function cuar_get_the_file_type($post_id = null, $index = 0)
 {
     if ( !$post_id)
     {
@@ -112,14 +106,9 @@ function cuar_get_the_file_type($post_id = null)
         return '';
     }
 
-    $file = get_post_meta($post_id, 'cuar_private_file_file', true);
-
-    if ( !$file || empty($file))
-    {
-        return '';
-    }
-
-    return apply_filters('cuar/private-content/files/the-type', pathinfo($file['file'], PATHINFO_EXTENSION), $post_id);
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+    return $pf_addon->get_file_type($post_id, $index);
 }
 
 /**
@@ -131,9 +120,9 @@ function cuar_get_the_file_type($post_id = null)
  *
  * @return string|mixed
  */
-function cuar_the_file_type($post_id = null)
+function cuar_the_file_type($post_id = null, $index = 0)
 {
-    echo cuar_get_the_file_type($post_id);
+    echo cuar_get_the_file_type($post_id, $index);
 }
 
 /**
@@ -143,7 +132,7 @@ function cuar_the_file_type($post_id = null)
  *
  * @return string|mixed
  */
-function cuar_get_the_file_size($post_id = null, $human = true)
+function cuar_get_the_file_size($post_id = null, $human = true, $index = 0)
 {
     if ( !$post_id)
     {
@@ -154,10 +143,11 @@ function cuar_get_the_file_size($post_id = null, $human = true)
         return '';
     }
 
-    $cuar_plugin = CUAR_Plugin::get_instance();
-    $pf_addon = $cuar_plugin->get_addon('private-files');
 
-    $size = $pf_addon->get_file_size($post_id);
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+    $size = $pf_addon->get_file_size($post_id, $index);
+
     if (false === $size)
     {
         return '';
@@ -180,9 +170,9 @@ function cuar_get_the_file_size($post_id = null, $human = true)
  *
  * @return string|mixed
  */
-function cuar_the_file_size($post_id = null, $human = true)
+function cuar_the_file_size($post_id = null, $human = true, $index = 0)
 {
-    echo cuar_get_the_file_size($post_id, $human);
+    echo cuar_get_the_file_size($post_id, $human, $index);
 }
 
 
