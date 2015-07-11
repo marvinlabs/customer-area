@@ -125,12 +125,44 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          *
          * @return mixed|string
          */
+        public function get_file_path($post_id, $index = 0)
+        {
+            $file = $this->get_attached_file($post_id, $index);
+            if ( !$file || empty($file)) return '';
+
+            /** @var CUAR_PostOwnerAddOn $po_addon */
+            $po_addon = $this->plugin->get_addon('post-owner');
+            $file_path = $po_addon->get_private_file_path($file['file'], $post_id, false, true);
+
+            // If the file does not exist, try with the old path format (without post ID)
+            if ( !file_exists($file_path))
+            {
+                $file_path = $po_addon->get_private_file_path($file['file'], $post_id, false, false);
+            }
+
+            // Does not exist at all? -> return false
+            if ( !file_exists($file_path))
+            {
+                $file_path = false;
+            }
+
+            return apply_filters('cuar/private-content/files/file-path', $file_path, $post_id, $index);
+        }
+
+        /**
+         * Get the name of the file associated to the given post
+         *
+         * @param int $post_id
+         * @param int $index
+         *
+         * @return mixed|string
+         */
         public function get_file_name($post_id, $index = 0)
         {
             $file = $this->get_attached_file($post_id, $index);
             if ( !$file || empty($file)) return '';
 
-            return apply_filters('cuar/private-content/files/file-name', $file['file']);
+            return apply_filters('cuar/private-content/files/file-name', $file['file'], $post_id, $index);
         }
 
         /**
@@ -146,7 +178,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $file = $this->get_attached_file($post_id, $index);
             if ( !$file || empty($file)) return '';
 
-            return apply_filters('cuar/private-content/files/file-type', pathinfo($file['file'], PATHINFO_EXTENSION));
+            return apply_filters('cuar/private-content/files/file-type', pathinfo($file['file'], PATHINFO_EXTENSION), $post_id, $index);
         }
 
         /**
@@ -158,12 +190,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          */
         public function get_file_size($post_id, $index = 0)
         {
-            $po_addon = $this->plugin->get_addon('post-owner');
+            $file_path = $this->get_file_path($post_id, $index);
 
-            $file_name = $this->get_file_name($post_id, $index);
-            $file_path = $po_addon->get_private_file_path($file_name, $post_id);
-
-            return apply_filters('cuar/private-content/files/file-size', filesize($file_path));
+            return apply_filters('cuar/private-content/files/file-size', filesize($file_path), $post_id, $index);
         }
 
         /**
@@ -218,9 +247,13 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          *
          * @param int    $post_id
          * @param string $action
+         * @param int    $index
+         *
+         * @return string
          */
         public function get_file_permalink($post_id, $action = 'download', $index = 0)
         {
+            /** @var CUAR_CustomerPrivateFilesAddOn $cpf_addon */
             $cpf_addon = $this->plugin->get_addon('customer-private-files');
             $url = $cpf_addon->get_single_private_content_action_url($post_id, $action, $index);
 
@@ -534,12 +567,20 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 return;
             }
 
+            // If no index, default to 0
+            $file_index = get_query_var('cuar_action_param');
+            if (empty($file_index))
+            {
+                $file_index = 0;
+            }
+
             // If not logged-in, we ask for details
             if ( !is_user_logged_in())
             {
                 $this->plugin->login_then_redirect_to_url($_SERVER['REQUEST_URI']);
             }
 
+            /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
 
             // If not authorized to download the file, we bail
@@ -555,18 +596,24 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // Seems we are all good, checkout the requested action and do something
-            $file_type = $this->get_file_type($post->ID);
-            $file_name = $this->get_file_name($post->ID);
-            $file_path = $po_addon->get_private_file_path($file_name, $post->ID);
+            $file_type = $this->get_file_type($post->ID, $file_index);
+            $file_name = $this->get_file_name($post->ID, $file_index);
+            $file_path = $this->get_file_path($post->ID, $file_index);
+
+            if (false === $file_path)
+            {
+                // File does not exist at all -> 404
+                wp_die("This file does not exist");
+            }
 
             if ($action == 'download')
             {
                 if ($author_id != $current_user_id)
                 {
-                    $this->increment_file_download_count($post->ID);
+                    $this->increment_file_download_count($post->ID, $file_index);
                 }
 
-                do_action('cuar/private-content/files/on-download', $post->ID, $current_user_id, $this);
+                do_action('cuar/private-content/files/on-download', $post->ID, $current_user_id, $this, $file_index);
 
                 $this->output_file($file_path, $file_name, $file_type, 'download');
             }
@@ -574,16 +621,16 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             {
                 if ($author_id != $current_user_id)
                 {
-                    $this->increment_file_download_count($post->ID);
+                    $this->increment_file_download_count($post->ID, $file_index);
                 }
 
-                do_action('cuar/private-content/files/on-view', $post->ID, $current_user_id, $this);
+                do_action('cuar/private-content/files/on-view', $post->ID, $current_user_id, $this, $file_index);
 
                 $this->output_file($file_path, $file_name, $file_type, 'view');
             }
             else
             {
-                // Do nothing
+                wp_die("Invalid file action");
             }
         }
 

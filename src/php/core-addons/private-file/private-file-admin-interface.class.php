@@ -27,14 +27,14 @@ class CUAR_PrivateFileAdminInterface {
 	
 	public function __construct( $plugin, $private_file_addon ) {
 		$this->plugin = $plugin;
-		$this->private_file_addon = $private_file_addon;
+		$this->pf_addon = $private_file_addon;
 
 		// Settings
 		add_filter( 'cuar/core/settings/settings-tabs', array( &$this, 'add_settings_tab' ), 520, 1 );
 		add_action( 'cuar/core/settings/print-settings?tab=cuar_private_files', array( &$this, 'print_settings' ), 10, 2 );
 		add_filter( 'cuar/core/settings/validate-settings?tab=cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
 		
-		if ( $this->private_file_addon->is_enabled() ) {
+		if ( $this->pf_addon->is_enabled() ) {
 			// File edit page
 			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
 			add_action( 'cuar/core/ownership/after-save-owner', array( &$this, 'do_save_post' ), 10, 4 );				
@@ -57,24 +57,82 @@ class CUAR_PrivateFileAdminInterface {
 	 * Register some additional boxes on the page to edit the files
 	 */
 	public function register_edit_page_meta_boxes() {
+        add_meta_box(
+            'cuar_private_file_ajax_upload',
+            __('Attached Files', 'cuar'),
+            array( &$this, 'print_ajax_upload_meta_box'),
+            'cuar_private_file',
+            'normal', 'high');
+
 		add_meta_box( 
 				'cuar_private_file_upload', 
-				__('File', 'cuar'), 
+				__('File (deprecated)', 'cuar'),
 				array( &$this, 'print_upload_meta_box'), 
 				'cuar_private_file', 
 				'normal', 'high');
 	}
 
+    /**
+     * Print the metabox to upload a file
+     */
+    public function print_ajax_upload_meta_box()
+    {
+        global $post;
+        $attached_files = $this->pf_addon->get_attached_files($post->ID);
+
+        do_action("cuar/private-content/files/before-upload-meta-box");
+
+        wp_nonce_field(plugin_basename(__FILE__), 'wp_cuar_nonce_file');
+
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        $current_attachment_list_item_template = $this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/private-file',
+            'private-files-upload-current-attachments-item.template.php',
+            'templates');
+
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        $current_attachment_list_template = $this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/private-file',
+            'private-files-upload-current-attachments-list.template.php',
+            'templates');
+
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        $ajax_upload_file_template = $this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/private-file',
+            'private-files-upload-select-files.template.php',
+            'templates');
+
+        $fields_template = $this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/private-file',
+            'private-files-upload-fields.template.php',
+            'templates');
+
+        include($fields_template);
+
+        do_action( "cuar/private-content/files/after-upload-meta-box" );
+    }
+
 	/**
 	 * Print the metabox to upload a file
+     *
+     * @deprecated
 	 */
 	public function print_upload_meta_box() {
 		global $post;
 		wp_nonce_field( plugin_basename(__FILE__), 'wp_cuar_nonce_file' );
-	
-		$current_file = get_post_meta( $post->ID, 'cuar_private_file_file', true );
 
 		do_action( "cuar/private-content/files/before-upload-meta-box" );
+
+        $count = $this->pf_addon->get_attached_file_count($post->ID);
+        for ($i=0; $i<$count; ++$i)
+        {
+            $current_file = $this->pf_addon->get_attached_file($post->ID, $i);
+            echo '<h4>DEBUG ATTACHED FILES</h4>';
+            echo '<pre>';
+            var_dump($current_file);
+            echo '</pre>';
+        }
+        $current_file = $this->pf_addon->get_attached_file($post->ID, 0);
 ?>
 		
 <?php	if ( !empty( $current_file ) && isset( $current_file['file'] ) ) : ?>
@@ -88,7 +146,7 @@ class CUAR_PrivateFileAdminInterface {
 <?php 	endif; ?> 
 	
 <?php 
-		$ftp_dir = trailingslashit( $this->private_file_addon->get_ftp_path() );
+		$ftp_dir = trailingslashit( $this->pf_addon->get_ftp_path() );
 ?>
 		<div>
 			<hr>
@@ -215,24 +273,24 @@ class CUAR_PrivateFileAdminInterface {
 		
 		if ( isset( $_POST['cuar_file_select_method'] ) && $_POST['cuar_file_select_method']=='cuar_from_ftp_folder' ) {
 			if ( $has_owner_changed && empty( $_POST['cuar_selected_ftp_file'] ) ) {
-				$this->private_file_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
+				$this->pf_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
 				return $post_id;
 			}
 			
 			if ( !empty( $_POST['cuar_selected_ftp_file'] ) ) {
-				$ftp_dir = trailingslashit( $this->private_file_addon->get_ftp_path() );
+				$ftp_dir = trailingslashit( $this->pf_addon->get_ftp_path() );
 
-				$this->private_file_addon->handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner,
+				$this->pf_addon->handle_copy_private_file_from_local_folder( $post_id, $previous_owner, $new_owner,
 						$ftp_dir . $_POST['cuar_selected_ftp_file']);
 			}
 		} else {
 			if ( $has_owner_changed && empty( $_FILES['cuar_private_file_file']['name'] ) ) {
-				$this->private_file_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
+				$this->pf_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
 				return $post_id;
 			}
 			
 			if ( !empty( $_FILES['cuar_private_file_file']['name'] ) ) {
-				$upload_result = $this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner,
+				$upload_result = $this->pf_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner,
 						$_FILES['cuar_private_file_file']);
 
 				if ( $upload_result!==true ) {
@@ -283,7 +341,7 @@ class CUAR_PrivateFileAdminInterface {
 						__( 'Check this to enable the private files add-on.', 'cuar' ) )
 			);
 		
-		if ( !file_exists( $this->private_file_addon->get_ftp_path() ) ) {
+		if ( !file_exists( $this->pf_addon->get_ftp_path() ) ) {
 			$folder_exists_message = '<span style="color: #c33;">' . __('This folder does not exist, please create it if you want to copy files from the FTP folder. Otherwise, you need not do anything.', 'cuar' ) . '</span>';
 		} else {
 			$folder_exists_message = "";
@@ -374,7 +432,7 @@ class CUAR_PrivateFileAdminInterface {
 	private $plugin;
 
 	/** @var CUAR_PrivateFileAddOn */
-	private $private_file_addon;
+	private $pf_addon;
 }
 
 endif; // if (!class_exists('CUAR_PrivateFileAdminInterface')) :

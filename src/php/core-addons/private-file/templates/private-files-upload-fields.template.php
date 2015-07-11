@@ -2,11 +2,11 @@
 
  */
 
-/** @var array $attached_files */
+/** @var string $current_attachment_list_template */
+/** @var string $ajax_upload_file_template */
 ?>
 
 <div class="cuar-private-file-upload-fields">
-<?php foreach ($attached_files as $attached_file) : ?>
-
-<?php endforeach; ?>
+    <?php include($current_attachment_list_template); ?>
+    <?php include($ajax_upload_file_template); ?>
 </div>
