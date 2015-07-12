@@ -40,9 +40,6 @@ class CUAR_PrivateFileAdminInterface
             add_action('admin_menu', array(&$this, 'register_edit_page_meta_boxes'), 100);
             add_action('cuar/core/ownership/after-save-owner', array(&$this, 'do_save_post'), 10, 4);
             add_action('post_edit_form_tag', array(&$this, 'post_edit_form_tag'));
-
-            include('private-file-select-methods.class.php');
-            new CUAR_PrivateFilesSelectMethods($this->plugin);
         }
     }
 

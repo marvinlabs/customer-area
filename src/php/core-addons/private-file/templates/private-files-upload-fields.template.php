@@ -10,7 +10,7 @@
 <div class="cuar-private-file-upload-fields">
     <?php include($current_attachment_list_template); ?>
 
-    <hr/><br/>
+    <br/>
 
     <span class="label"><label for="cuar_file_select_method"><?php _e('How do you want to add the files?', 'cuar'); ?></label></span>
     <select id="cuar_file_select_method" name="cuar_file_select_method">

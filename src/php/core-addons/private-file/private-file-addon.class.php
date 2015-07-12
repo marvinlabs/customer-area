@@ -19,6 +19,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 require_once(CUAR_INCLUDES_DIR . '/core-classes/addon.class.php');
 
 require_once(dirname(__FILE__) . '/private-file-admin-interface.class.php');
+require_once(dirname(__FILE__) . '/private-file-default-handlers.class.php');
 
 if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
@@ -29,6 +30,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
      */
     class CUAR_PrivateFileAddOn extends CUAR_AddOn
     {
+
+        private $default_handlers;
 
         public function __construct()
         {
@@ -53,7 +56,10 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
                 add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'));
 
-                add_action('wp_ajax_cuar_upload_private_file', array(&$this, "ajax_upload_file"));
+                add_action('wp_ajax_cuar_remove_attached_file', array(&$this, 'ajax_remove_attached_file'));
+                add_action('wp_ajax_nopriv_cuar_remove_attached_file', array(&$this, 'ajax_remove_attached_file'));
+
+                $this->default_handlers = new CUAR_PrivateFilesDefaultHandlers($plugin);
             }
 
             // Init the admin interface if needed
@@ -147,6 +153,24 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             return apply_filters('cuar/private-content/files/file-path', $file_path, $post_id, $index);
+        }
+
+        /**
+         * Get the source of the file associated to the given post
+         *
+         * @param int $post_id
+         * @param int $index
+         *
+         * @return mixed|string
+         */
+        public function get_file_source($post_id, $index = 0)
+        {
+            $file = $this->get_attached_file($post_id, $index);
+            if ( !$file || empty($file)) return '';
+
+            $source = empty($file['source']) ? 'local' : $file['source'];
+
+            return apply_filters('cuar/private-content/files/file-source', $source, $post_id, $index);
         }
 
         /**
@@ -491,6 +515,19 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /**
          * Get the descriptors of all files attached to this content
          *
+         * @param int   $post_id The content ID
+         * @param array $files   The files to save
+         *
+         * @return bool|mixed
+         */
+        public function save_attached_files($post_id, $files)
+        {
+            update_post_meta($post_id, 'cuar_private_file_file', $files);
+        }
+
+        /**
+         * Get the descriptors of all files attached to this content
+         *
          * @param int $post_id
          *
          * @return bool|mixed
@@ -542,6 +579,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          * @param int $post_id
          *
          * @return int
+         *
+         * @since 6.2
          */
         public function get_attached_file_count($post_id)
         {
@@ -555,15 +594,67 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          */
         public function ajax_upload_file()
         {
-
         }
 
         /**
          * Handle the file upload process via AJAX
+         *
+         * @since 6.2
+         */
+        public function ajax_remove_attached_file()
+        {
+            $errors = array();
+            $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
+            $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
+
+            if (empty($post_id) || empty($filename))
+            {
+                $errors[] = __('Missing parameters', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // Check file exists
+            $found_file_index = null;
+            $files = $this->get_attached_files($post_id);
+            foreach ($files as $file_index => $file)
+            {
+                if ($file['file'] == $filename)
+                {
+                    $found_file_index = $file_index;
+                }
+            }
+
+            if ($found_file_index === null)
+            {
+                $errors[] = __('File not found', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // File exists, we'll remove it now. First physically
+            $errors = apply_filters('cuar/private-content/files/on-remove-attached-file', $errors, $post_id, $found_file_index);
+            if ( !empty($errors))
+            {
+                wp_send_json_error($errors);
+            }
+
+            // Then from post meta if we could handle the physical removal
+            unset($files[$found_file_index]);
+            $this->save_attached_files($post_id, $files);
+
+            wp_send_json_success();
+        }
+
+        /**
+         * Update the file meta data from the old single file meta format to the new meta format.
+         *
+         * @since 6.2
          */
         private function update_single_file_meta($file)
         {
-            $file['source'] = 'local';
+            if ( !isset($file['source']))
+            {
+                $file['source'] = 'local';
+            }
 
             return $file;
         }

@@ -17,11 +17,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 /**
- * Select methods by default
+ * Default file handling routines
  *
  * @author Vincent Prat @ MarvinLabs
  */
-class CUAR_PrivateFilesSelectMethods
+class CUAR_PrivateFilesDefaultHandlers
 {
     /** @var CUAR_Plugin */
     private $plugin;
@@ -30,10 +30,32 @@ class CUAR_PrivateFilesSelectMethods
     {
         $this->plugin = $plugin;
 
+        // Select methods
         add_filter('cuar/private-content/files/select-methods', array(&$this, 'register_select_methods'));
         add_action('cuar/private-content/files/render-select-method?id=classic-upload', array(&$this, 'render_classic_upload_form'));
         add_action('cuar/private-content/files/render-select-method?id=ftp-copy', array(&$this, 'render_ftp_copy_form'));
         add_action('cuar/private-content/files/render-select-method?id=ftp-move', array(&$this, 'render_ftp_move_form'));
+
+        // Removal of local files
+        add_filter('cuar/private-content/files/on-remove-attached-file', array(&$this, 'remove_attached_file'), 10, 3);
+    }
+
+    public function remove_attached_file($errors, $post_id, $file_index)
+    {
+        /** @var CUAR_PrivateFileAddOn $pf_addon */
+        $pf_addon = $this->plugin->get_addon('private-files');
+
+        $source = $pf_addon->get_file_source($post_id, $file_index);
+        if ($source == 'local')
+        {
+            $file_path = $pf_addon->get_file_path($post_id, $file_index);
+            if (file_exists($file_path))
+            {
+                unlink($file_path);
+            }
+        }
+
+        return $errors;
     }
 
     /**
