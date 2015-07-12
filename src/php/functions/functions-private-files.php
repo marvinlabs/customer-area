@@ -16,6 +16,30 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
+
+/**
+ * Get the number of files attached to a post
+ *
+ * @param int $post_id Defaults to the current post ID from the loop
+ *
+ * @return string
+ */
+function cuar_get_the_file_count($post_id = null)
+{
+    if ( !$post_id)
+    {
+        $post_id = get_the_ID();
+    }
+    if ( !$post_id)
+    {
+        return '';
+    }
+
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+    return $pf_addon->get_attached_file_count($post_id);
+}
+
 /**
  * Get the URL where the file linked to the specified post can be downloaded directly
  *
