@@ -4,5 +4,5 @@
 
 ?>
 
-<div class="cuar-private-file-upload-select">
+<div class="cuar-private-file-select">
 </div>
