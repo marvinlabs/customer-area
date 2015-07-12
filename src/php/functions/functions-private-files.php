@@ -82,6 +82,43 @@ function cuar_the_file_link($post_id = null, $action = 'download', $index = 0)
  *
  * @return string|mixed
  */
+function cuar_get_the_file_caption($post_id = null, $index = 0)
+{
+    if ( !$post_id)
+    {
+        $post_id = get_the_ID();
+    }
+    if ( !$post_id)
+    {
+        return '';
+    }
+
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+    return $pf_addon->get_file_caption($post_id, $index);
+}
+
+/**
+ * Prints the name of the file associated to the given post
+ *
+ * @see get_the_file_name
+ *
+ * @param int $post_id
+ *
+ * @return string|mixed
+ */
+function cuar_the_file_caption($post_id = null, $index = 0)
+{
+    echo cuar_get_the_file_caption($post_id, $index);
+}
+
+/**
+ * Get the name of the file associated to the given post
+ *
+ * @param int $post_id
+ *
+ * @return string|mixed
+ */
 function cuar_get_the_file_name($post_id = null, $index = 0)
 {
     if ( !$post_id)

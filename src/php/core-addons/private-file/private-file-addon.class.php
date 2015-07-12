@@ -150,6 +150,24 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         }
 
         /**
+         * Get the caption of the file associated to the given post
+         *
+         * @param int $post_id
+         * @param int $index
+         *
+         * @return mixed|string
+         */
+        public function get_file_caption($post_id, $index = 0)
+        {
+            $file = $this->get_attached_file($post_id, $index);
+            if ( !$file || empty($file)) return '';
+
+            $caption = empty($file['caption']) ? $file['file'] : $file['caption'];
+
+            return apply_filters('cuar/private-content/files/file-caption', $caption, $post_id, $index);
+        }
+
+        /**
          * Get the name of the file associated to the given post
          *
          * @param int $post_id
