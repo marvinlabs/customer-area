@@ -166,6 +166,10 @@ class CUAR_Plugin {
 	 * Loads the required javascript files (only when not in admin area)
 	 */
 	public function load_scripts() {
+        wp_localize_script('cuar', 'cuar', array(
+            'ajaxUrl'                  => admin_url( 'admin-ajax.php' )
+        ));
+
 		if ( is_admin() ) {
             wp_register_script('cuar.admin', CUAR_PLUGIN_URL . '/assets/admin/js/customer-area.min.js', array('jquery') );
             wp_localize_script('cuar.admin', 'cuarAdminMessages', array(

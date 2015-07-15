@@ -90,6 +90,8 @@ class CUAR_PrivateFilesDefaultHandlers
 
     public function render_classic_upload_form()
     {
+        global $post;
+
         $template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
             'private-files-upload-select-classic-upload.template.php',
@@ -104,6 +106,8 @@ class CUAR_PrivateFilesDefaultHandlers
 
     private function render_ftp_form($ftp_operation)
     {
+        global $post;
+
         /** @var CUAR_PrivateFileAddOn $pf_addon */
         $pf_addon = $this->plugin->get_addon('private-files');
 
