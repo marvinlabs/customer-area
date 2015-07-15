@@ -28,6 +28,7 @@ function cuar()
 
 /**
  * @param $id The ID of the add-on to find
+ *
  * @return CUAR_AddOn The addon you are looking for
  */
 function cuar_addon($id)
@@ -49,20 +50,40 @@ function cuar_the_customer_area_menu()
 /**
  * Returns true if we are currently viewing one of the Customer Area pages
  *
- * @param int $post_id The page ID to test
+ * @param int         $post_id   The page ID to test
+ * @param string|null $page_slug The slug of the page to check (null to only check if we are on a WP Customer Area page)
+ *
+ * @return bool
  */
-function cuar_is_customer_area_page($post_id = 0)
+function cuar_is_customer_area_page($post_id = 0, $page_slug = null)
 {
     $cuar_plugin = CUAR_Plugin::get_instance();
+    /** @var CUAR_CustomerPagesAddOn $cp_addon */
     $cp_addon = $cuar_plugin->get_addon('customer-pages');
 
-    return $cp_addon->is_customer_area_page($post_id);
+    if ($page_slug == null)
+    {
+        return $cp_addon->is_customer_area_page($post_id);
+    }
+
+    /** @var CUAR_AbstractPageAddOn $page */
+    $page = $cp_addon->get_customer_area_page_from_id($post_id);
+
+    // Not found/not a page
+    if ($page == false) return false;
+
+    // Found, no need to match slug
+    if ($page_slug == null) return true;
+
+    // Found, check slug too
+    return $page->get_slug() == $page_slug;
 }
 
 /**
  * Returns true if the type of the given post is a private post type of Customer Area
  *
  * @param WP_Post|int $post The post/post ID to test
+ *
  * @return boolean
  */
 function cuar_is_customer_area_private_content($post = null)

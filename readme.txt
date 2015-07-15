@@ -132,6 +132,7 @@ feel free to fork the project and send us pull requests!
 = 6.2.0 (2015/) =
 
 * New: support for the Smart groups add-on
+* New: function to test if we are currently on a given WP Customer Area page (for theme developers)
 * Fix: permalinks to categories (private files or pages) were not correct when included as menu items
 * Fix: bug in admin access restriction
 
