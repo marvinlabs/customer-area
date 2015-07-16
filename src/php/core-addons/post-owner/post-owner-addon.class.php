@@ -159,6 +159,8 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          * @param bool   $with_post_id_suffix Shall we suffix the path with the post ID as a sub directory?
          *
          * @return bool|string
+         *
+         * @deprecated
          */
         public function get_owner_file_path($post_id, $filename, $owner_ids, $owner_type, $create_dirs = false, $with_post_id_suffix = true)
         {
@@ -221,6 +223,8 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          * @param int|bool $post_id     The ID of the post which is assigned to an owner
          *
          * @return string The storage directory for an owner
+         *
+         * @deprecated
          */
         public function get_owner_storage_directory($owner_ids, $owner_type, $absolute = false, $create_dirs = false, $post_id = false)
         {
