@@ -27,7 +27,7 @@ function cuar()
 }
 
 /**
- * @param $id The ID of the add-on to find
+ * @param string $id The ID of the add-on to find
  *
  * @return CUAR_AddOn The addon you are looking for
  */
