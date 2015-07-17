@@ -59,6 +59,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 add_action('wp_ajax_cuar_remove_attached_file', array(&$this, 'ajax_remove_attached_file'));
                 add_action('wp_ajax_nopriv_cuar_remove_attached_file', array(&$this, 'ajax_remove_attached_file'));
 
+                add_action('wp_ajax_cuar_attach_file', array(&$this, 'ajax_attach_file'));
+                add_action('wp_ajax_nopriv_cuar_attach_file', array(&$this, 'ajax_attach_file'));
+
                 $this->default_handlers = new CUAR_PrivateFilesDefaultHandlers($plugin);
             }
 
@@ -109,41 +112,67 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         {
             if (get_post_type($post_id) != 'cuar_private_file') return;
 
-            $filename = $this->get_file_name($post_id);
-            if (empty($filename)) return;
-
+            /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
-            $filepath = $po_addon->get_private_file_path($filename, $post_id);
 
-            if (file_exists($filepath))
+            $files = $this->get_attached_files($post_id);
+            foreach ($files as $file_id => $file)
             {
-                unlink($filepath);
+                $filename = $file['file'];
+                $source = $file['source'];
+
+                // New file structure
+                if ( !empty($source))
+                {
+                    apply_filters('cuar/private-content/files/on-remove-attached-file?source=' . $source,
+                        array(),
+                        $post_id,
+                        $file);
+                }
+
+                // Legacy files
+                $legacy_filepath = $po_addon->get_legacy_private_file_path($filename, $post_id);
+                if (file_exists($legacy_filepath))
+                {
+                    unlink($legacy_filepath);
+                }
             }
         }
 
         /*------- FUNCTIONS TO ACCESS THE POST META ---------------------------------------------------------------------*/
 
         /**
+         * Compute an ID from the file name
+         *
+         * @param string $filename The file name
+         *
+         * @return string The ID
+         */
+        public function get_file_id_from_name($filename)
+        {
+            return md5($filename);
+        }
+
+        /**
          * Get the name of the file associated to the given post
          *
-         * @param int $post_id
-         * @param int $index
+         * @param int   $post_id
+         * @param array $file
          *
          * @return mixed|string
          */
-        public function get_file_path($post_id, $index = 0)
+        public function get_file_path($post_id, $file)
         {
-            $file = $this->get_attached_file($post_id, $index);
             if ( !$file || empty($file)) return '';
 
             /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
-            $file_path = $po_addon->get_private_file_path($file['file'], $post_id, false, true);
+            $file_path = $po_addon->get_private_file_path($file['file'], $post_id, false);
 
             // If the file does not exist, try with the old path format (without post ID)
             if ( !file_exists($file_path))
             {
-                $file_path = $po_addon->get_private_file_path($file['file'], $post_id, false, false);
+                $file_path = $po_addon->get_legacy_private_file_path($file['file'], $post_id, false);
             }
 
             // Does not exist at all? -> return false
@@ -152,107 +181,106 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 $file_path = false;
             }
 
-            return apply_filters('cuar/private-content/files/file-path', $file_path, $post_id, $index);
+            return apply_filters('cuar/private-content/files/file-path', $file_path, $post_id, $file);
         }
 
         /**
          * Get the source of the file associated to the given post
          *
-         * @param int $post_id
-         * @param int $index
+         * @param int   $post_id
+         * @param array $file
          *
          * @return mixed|string
          */
-        public function get_file_source($post_id, $index = 0)
+        public function get_file_source($post_id, $file)
         {
-            $file = $this->get_attached_file($post_id, $index);
             if ( !$file || empty($file)) return '';
 
             $source = empty($file['source']) ? 'local' : $file['source'];
 
-            return apply_filters('cuar/private-content/files/file-source', $source, $post_id, $index);
+            return apply_filters('cuar/private-content/files/file-source', $source, $post_id, $file);
         }
 
         /**
          * Get the caption of the file associated to the given post
          *
-         * @param int $post_id
-         * @param int $index
+         * @param int   $post_id
+         * @param array $file
          *
          * @return mixed|string
          */
-        public function get_file_caption($post_id, $index = 0)
+        public function get_file_caption($post_id, $file)
         {
-            $file = $this->get_attached_file($post_id, $index);
             if ( !$file || empty($file)) return '';
 
             $caption = empty($file['caption']) ? $file['file'] : $file['caption'];
 
-            return apply_filters('cuar/private-content/files/file-caption', $caption, $post_id, $index);
+            return apply_filters('cuar/private-content/files/file-caption', $caption, $post_id, $file);
         }
 
         /**
          * Get the name of the file associated to the given post
          *
-         * @param int $post_id
-         * @param int $index
+         * @param int   $post_id
+         * @param array $file
          *
          * @return mixed|string
          */
-        public function get_file_name($post_id, $index = 0)
+        public function get_file_name($post_id, $file)
         {
-            $file = $this->get_attached_file($post_id, $index);
             if ( !$file || empty($file)) return '';
 
-            return apply_filters('cuar/private-content/files/file-name', $file['file'], $post_id, $index);
+            return apply_filters('cuar/private-content/files/file-name', $file['file'], $post_id, $file);
         }
 
         /**
          * Get the type of the file associated to the given post
          *
-         * @param int $post_id
-         * @param int $index
+         * @param int   $post_id
+         * @param array $file
          *
          * @return string|mixed
          */
-        public function get_file_type($post_id, $index = 0)
+        public function get_file_type($post_id, $file)
         {
-            $file = $this->get_attached_file($post_id, $index);
             if ( !$file || empty($file)) return '';
 
-            return apply_filters('cuar/private-content/files/file-type', pathinfo($file['file'], PATHINFO_EXTENSION), $post_id, $index);
+            return apply_filters('cuar/private-content/files/file-type', pathinfo($file['file'], PATHINFO_EXTENSION), $post_id, $file);
         }
 
         /**
          * Get the size of the file associated to the given post
          *
-         * @param int $post_id
+         * @param int   $post_id
+         * @param array $file
          *
          * @return boolean|int false if the file does not exist
          */
-        public function get_file_size($post_id, $index = 0)
+        public function get_file_size($post_id, $file)
         {
-            $file_path = $this->get_file_path($post_id, $index);
+            $file_path = $this->get_file_path($post_id, $file);
+            $size = @filesize($file_path);
 
-            return apply_filters('cuar/private-content/files/file-size', filesize($file_path), $post_id, $index);
+            return apply_filters('cuar/private-content/files/file-size', $size, $post_id, $file);
         }
 
         /**
          * Get the number of times the file has been downloaded
          *
-         * @param int $post_id
+         * @param int    $post_id
+         * @param string $file_id
          *
          * @return int
          */
-        public function get_file_download_count($post_id, $index = 0)
+        public function get_file_download_count($post_id, $file_id = null)
         {
-            if ($index == 0)
+            if ($file_id == null)
             {
                 $count = get_post_meta($post_id, 'cuar/private-content/files/on-download_count', true);
             }
             else
             {
-                $count = get_post_meta($post_id, 'cuar/private-content/files/on-download_count?index=' . $index, true);
+                $count = get_post_meta($post_id, 'cuar/private-content/files/on-download_count?name=' . $file_id, true);
             }
 
             if ( !$count || empty($count)) return 0;
@@ -263,14 +291,15 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /**
          * Get the number of times the file has been downloaded
          *
-         * @param int $post_id
+         * @param int    $post_id
+         * @param string $file_id
          *
          * @return int
          */
-        public function increment_file_download_count($post_id, $index = 0)
+        public function increment_file_download_count($post_id, $file_id = null)
         {
-            $current_count = $this->get_file_download_count($post_id, $index);
-            if ($index == 0)
+            $current_count = $this->get_file_download_count($post_id, $file_id);
+            if ($file_id == null)
             {
                 update_post_meta($post_id,
                     'cuar/private-content/files/on-download_count',
@@ -279,7 +308,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             else
             {
                 update_post_meta($post_id,
-                    'cuar/private-content/files/on-download_count?index=' . $index,
+                    'cuar/private-content/files/on-download_count?id=' . $file_id,
                     $current_count + 1);
             }
         }
@@ -289,18 +318,280 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          *
          * @param int    $post_id
          * @param string $action
-         * @param int    $index
+         * @param string $file_id
          *
          * @return string
          */
-        public function get_file_permalink($post_id, $action = 'download', $index = 0)
+        public function get_file_permalink($post_id, $file_id, $action = 'download')
         {
             /** @var CUAR_CustomerPrivateFilesAddOn $cpf_addon */
             $cpf_addon = $this->plugin->get_addon('customer-private-files');
-            $url = $cpf_addon->get_single_private_content_action_url($post_id, $action, $index);
+            $url = $cpf_addon->get_single_private_content_action_url($post_id, $action, $file_id);
 
             return $url;
         }
+
+        /**
+         * Attach a file to the post
+         *
+         * @param int    $post_id
+         * @param string $filename
+         * @param string $caption
+         * @param string $source
+         * @param mixed  $extra
+         */
+        public function add_attached_file($post_id, $filename, $caption, $source, $extra)
+        {
+            $file_id = $this->get_file_id_from_name($filename);
+            $meta = array(
+                'id'      => $file_id,
+                'source'  => $source,
+                'post_id' => $post_id,
+                'file'    => $filename,
+                'caption' => $caption,
+                'extra'   => $extra
+            );
+
+            // Update an existing file if any
+            $files = $this->get_attached_files($post_id);
+            $found = false;
+            foreach ($files as $fid => $file)
+            {
+                if ($fid == $file_id || $file['file'] == $filename)
+                {
+                    unset($files[$fid]);
+                    $files[$file_id] = $meta;
+                    $found = true;
+                    break;
+                }
+            }
+
+            // File not updated, just add it
+            if ( !$found)
+            {
+                $files[$file_id] = $meta;
+            }
+
+            $this->save_attached_files($post_id, $files);
+        }
+
+        /**
+         * Get the descriptors of all files attached to this content
+         *
+         * @param int   $post_id The content ID
+         * @param array $files   The files to save
+         *
+         * @return bool|mixed
+         */
+        public function save_attached_files($post_id, $files)
+        {
+            update_post_meta($post_id, 'cuar_private_file_file', $files);
+        }
+
+        /**
+         * Get the descriptors of all files attached to this content
+         *
+         * @param int $post_id
+         *
+         * @return bool|mixed
+         */
+        public function get_attached_files($post_id)
+        {
+            $file_meta = get_post_meta($post_id, 'cuar_private_file_file', true);
+
+            // No files at all
+            if ( !$file_meta)
+            {
+                return array();
+            }
+
+            // We have a single file attached to the content type, this is the legacy meta format
+            if (isset($file_meta['file']))
+            {
+                // Use this opportunity to update that meta field to the new format
+                $file_meta = $this->update_legacy_file_meta($file_meta);
+                $file_meta = array($file_meta['id'] => $file_meta);
+                update_post_meta($post_id, 'cuar_private_file_file', $file_meta);
+            }
+
+            return $file_meta;
+        }
+
+        /**
+         * Get the descriptor of a file attached to this content from the file name
+         *
+         * @param int    $post_id   The post ID
+         * @param string $filename The name of the file we are looking for
+         * @param array  $files     The files attached to the post (to save some CPU/queries if you already have it)
+         *
+         * @return array|bool false if not found
+         */
+        public function get_attached_file_by_name($post_id, $filename, $files = null)
+        {
+            if ($files == null)
+            {
+                $files = $this->get_attached_files($post_id);
+            }
+
+            // Check if present
+            $file_id = $this->get_file_id_from_name($filename);
+            if (isset($files[$file_id]))
+            {
+                return $files[$file_id];
+            }
+
+            return false;
+        }
+
+        /**
+         * Get the descriptor of a file attached to this content
+         *
+         * @param int    $post_id The post ID
+         * @param string $file_id The ID of the file we are looking for
+         * @param array  $files   The files attached to the post (to save some CPU/queries if you already have it)
+         *
+         * @return array|bool false if not found
+         */
+        public function get_attached_file($post_id, $file_id, $files = null)
+        {
+            if ($files == null)
+            {
+                $files = $this->get_attached_files($post_id);
+            }
+
+            // Check if present
+            if (isset($files[$file_id]))
+            {
+                return $files[$file_id];
+            }
+
+            return false;
+        }
+
+        /**
+         * Get the the number of files attached to this content
+         *
+         * @param int $post_id
+         *
+         * @return int
+         *
+         * @since 6.2
+         */
+        public function get_attached_file_count($post_id)
+        {
+            $files = $this->get_attached_files($post_id);
+
+            return count($files);
+        }
+
+        /**
+         * Update the file meta data from the old single file meta format to the new meta format.
+         *
+         * @since 6.2
+         *
+         * @param array $file The file
+         *
+         * @return array
+         */
+        private function update_legacy_file_meta($file)
+        {
+            if ( !isset($file['source']))
+            {
+                $file['id'] = $this->get_file_id_from_name($file['file']);
+                $file['source'] = 'local';
+                $file['caption'] = $file['file'];
+                $file['extra'] = '';
+            }
+
+            return $file;
+        }
+
+        /*------- AJAX FUNCTIONS ----------------------------------------------------------------------------------------*/
+
+        /**
+         * Handle the file attachment process with AJAX
+         */
+        public function ajax_attach_file()
+        {
+            $errors = array();
+            $method = isset($_POST['method']) ? $_POST['method'] : 0;
+            $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
+            $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
+            $caption = isset($_POST['caption']) ? $_POST['caption'] : $filename;
+            $extra = isset($_POST['extra']) ? $_POST['extra'] : '';
+
+            if (empty($post_id) || empty($filename) || empty($method))
+            {
+                $errors[] = __('Missing parameters', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // Check file exists
+            $found_file_index = null;
+            $found_file = $this->get_attached_file_by_name($post_id, $filename);
+            if ($found_file)
+            {
+                $errors[] = __('You cannot attach files with the same name', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // File does not exist, we'll add it now
+            $errors = apply_filters('cuar/private-content/files/on-attach-file?method=' . $method, $errors, $this, $post_id, $filename, $caption, $extra);
+            if ( !empty($errors))
+            {
+                wp_send_json_error($errors);
+            }
+
+            // Fine, update file meta
+            $source = apply_filters('cuar/private-content/files/file-source?method=' . $method, 'local');
+            if (empty($caption)) $caption = $filename;
+            $this->add_attached_file($post_id, $filename, $caption, $source, $extra);
+
+            wp_send_json_success();
+        }
+
+        /**
+         * Handle the file removal process via AJAX
+         *
+         * @since 6.2
+         */
+        public function ajax_remove_attached_file()
+        {
+            $errors = array();
+            $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
+            $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
+
+            if (empty($post_id) || empty($filename))
+            {
+                $errors[] = __('Missing parameters', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // Check file exists
+            $files = $this->get_attached_files($post_id);
+            $found_file = $this->get_attached_file_by_name($post_id, $filename, $files);
+            if ($found_file==false)
+            {
+                $errors[] = __('File not found', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // File exists, we'll remove it now. First physically
+            $source = $this->get_file_source($post_id, $found_file);
+            $errors = apply_filters('cuar/private-content/files/on-remove-attached-file?source=' . $source, $errors, $post_id, $found_file);
+            if ( !empty($errors))
+            {
+                wp_send_json_error($errors);
+            }
+
+            // Then from post meta if we could handle the physical removal
+            unset($files[$found_file['id']]);
+            $this->save_attached_files($post_id, $files);
+
+            wp_send_json_success();
+        }
+
+        /*------- LEGACY FUNCTION ---------------------------------------------------------------------------------------*/
 
         /**
          * Handles the case when we need to change the owner of the file of an existing post
@@ -319,7 +610,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 $previous_file = $this->get_attached_file($post_id, $i);
                 if ($previous_file)
                 {
-                    $previous_file['path'] = $po_addon->get_owner_file_path($post_id,
+                    $previous_file['path'] = $po_addon->get_legacy_owner_file_path($post_id,
                         $previous_file['file'],
                         $previous_owner['ids'],
                         $previous_owner['type'],
@@ -327,7 +618,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
                     if (file_exists($previous_file['path']))
                     {
-                        $new_file_path = $po_addon->get_owner_file_path($post_id,
+                        $new_file_path = $po_addon->get_legacy_owner_file_path($post_id,
                             $previous_file['file'],
                             $new_owner['ids'],
                             $new_owner['type'],
@@ -346,6 +637,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          * @param unknown $default_dir
          *
          * @return unknown|multitype:boolean string unknown
+         *
+         * @deprecated
          */
         public function custom_upload_dir($default_dir)
         {
@@ -383,6 +676,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          * @param int   $post_id
          * @param array $previous_owner
          * @param array $new_owner
+         *
+         * @deprecated
          */
         public function handle_new_private_file_upload($post_id, $previous_owner, $new_owner, $file)
         {
@@ -461,202 +756,6 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
                 return true;
             }
-        }
-
-        /**
-         * Handle the assignment and move of the private file from the FTP upload
-         * folder and into the user's private folder
-         * drsprite
-         */
-        public function handle_copy_private_file_from_local_folder($post_id, $previous_owner, $new_owner, $ftp_file)
-        {
-            if ( !isset($ftp_file) || empty($ftp_file)) return;
-
-            /** @var CUAR_PostOwnerAddOn $po_addon */
-            $po_addon = $this->plugin->get_addon('post-owner');
-
-            // Delete the existing file if any
-            $previous_file = get_post_meta($post_id, 'cuar_private_file_file', true);
-            if ($previous_file)
-            {
-                $previous_file['path'] = $po_addon->get_owner_file_path($post_id,
-                    $previous_file['file'],
-                    $previous_owner['ids'],
-                    $previous_owner['type'],
-                    true);
-
-                if ($previous_file['path'] && file_exists($previous_file['path']))
-                {
-                    unlink($previous_file['path']);
-                }
-            }
-
-            // copy from ftp_file to dest_folder
-            $dest_folder = trailingslashit($po_addon->get_private_storage_directory($post_id, true, true));
-            $dest_file = $dest_folder . wp_unique_filename($dest_folder, basename($ftp_file), null);
-            $delete_after_copy = isset($_POST['cuar_ftp_delete_file_after_copy']);
-
-            if (copy($ftp_file, $dest_file))
-            {
-                if ($delete_after_copy)
-                {
-                    unlink($ftp_file);
-                }
-                $upload = array('file' => basename($dest_file));
-                update_post_meta($post_id, 'cuar_private_file_file', $upload);
-            }
-            else
-            {
-                $msg = __('An error happened while copying your file from the FTP folder', 'cuar');
-                $this->plugin->add_admin_notice($msg);
-            }
-        }
-
-        /**
-         * Get the descriptors of all files attached to this content
-         *
-         * @param int   $post_id The content ID
-         * @param array $files   The files to save
-         *
-         * @return bool|mixed
-         */
-        public function save_attached_files($post_id, $files)
-        {
-            update_post_meta($post_id, 'cuar_private_file_file', $files);
-        }
-
-        /**
-         * Get the descriptors of all files attached to this content
-         *
-         * @param int $post_id
-         *
-         * @return bool|mixed
-         */
-        public function get_attached_files($post_id)
-        {
-            $file_meta = get_post_meta($post_id, 'cuar_private_file_file', true);
-
-            // No files at all
-            if ( !$file_meta)
-            {
-                return array();
-            }
-
-            // We have a single file attached to the content type, this is the old format
-            if (isset($file_meta['file']))
-            {
-                // Use this opportunity to update that meta field to the new format
-                $file_meta = array($this->update_single_file_meta($file_meta));
-                update_post_meta($post_id, 'cuar_private_file_file', $file_meta);
-            }
-
-            return $file_meta;
-        }
-
-        /**
-         * Get the descriptor of a file attached to this content
-         *
-         * @param int $post_id
-         * @param int $index
-         *
-         * @return bool|mixed
-         */
-        public function get_attached_file($post_id, $index = 0)
-        {
-            $files = $this->get_attached_files($post_id);
-            $file_count = count($files);
-            if ($index < 0 || $index >= $file_count)
-            {
-                return false;
-            }
-
-            return $files[$index];
-        }
-
-        /**
-         * Get the the number of files attached to this content
-         *
-         * @param int $post_id
-         *
-         * @return int
-         *
-         * @since 6.2
-         */
-        public function get_attached_file_count($post_id)
-        {
-            $files = $this->get_attached_files($post_id);
-
-            return count($files);
-        }
-
-        /**
-         * Handle the file upload process via AJAX
-         */
-        public function ajax_upload_file()
-        {
-        }
-
-        /**
-         * Handle the file upload process via AJAX
-         *
-         * @since 6.2
-         */
-        public function ajax_remove_attached_file()
-        {
-            $errors = array();
-            $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
-            $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
-
-            if (empty($post_id) || empty($filename))
-            {
-                $errors[] = __('Missing parameters', 'cuar');
-                wp_send_json_error($errors);
-            }
-
-            // Check file exists
-            $found_file_index = null;
-            $files = $this->get_attached_files($post_id);
-            foreach ($files as $file_index => $file)
-            {
-                if ($file['file'] == $filename)
-                {
-                    $found_file_index = $file_index;
-                }
-            }
-
-            if ($found_file_index === null)
-            {
-                $errors[] = __('File not found', 'cuar');
-                wp_send_json_error($errors);
-            }
-
-            // File exists, we'll remove it now. First physically
-            $errors = apply_filters('cuar/private-content/files/on-remove-attached-file', $errors, $post_id, $found_file_index);
-            if ( !empty($errors))
-            {
-                wp_send_json_error($errors);
-            }
-
-            // Then from post meta if we could handle the physical removal
-            unset($files[$found_file_index]);
-            $this->save_attached_files($post_id, $files);
-
-            wp_send_json_success();
-        }
-
-        /**
-         * Update the file meta data from the old single file meta format to the new meta format.
-         *
-         * @since 6.2
-         */
-        private function update_single_file_meta($file)
-        {
-            if ( !isset($file['source']))
-            {
-                $file['source'] = 'local';
-            }
-
-            return $file;
         }
 
         /*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/

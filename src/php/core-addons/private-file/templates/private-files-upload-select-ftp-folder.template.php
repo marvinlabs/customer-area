@@ -17,9 +17,10 @@
     <?php else : ?>
         <span class="label"><label for="cuar_ftp_<?php echo $ftp_operation; ?>_file_selection"><?php _e('Pick a file', 'cuar'); ?></label></span>
         <span class="field">
-            <select id="cuar_ftp_<?php echo $ftp_operation; ?>_file_selection" name="cuar_ftp_<?php echo $ftp_operation; ?>_file_selection" multiple="multiple" class='cuar-ftp-file-selection' data-post-id="<?php echo esc_attr($post->ID); ?>">
-                <?php foreach ($ftp_files as $filename) : $filepath = $ftp_dir . '/' . $filename; ?>
-                    <?php if (is_file($filepath)) : ?>
+            <select id="cuar_ftp_<?php echo $ftp_operation; ?>_file_selection" name="cuar_ftp_<?php echo $ftp_operation; ?>_file_selection" multiple="multiple"
+                    class='cuar-ftp-file-selection' data-post-id="<?php echo esc_attr($post->ID); ?>">
+                <?php foreach ($ftp_files as $filename) : $file_path = $ftp_dir . '/' . $filename; ?>
+                    <?php if (is_file($file_path)) : ?>
                         <option value="<?php echo esc_attr($filename); ?>"><?php echo esc_html($filename); ?></option>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -45,49 +46,35 @@
 <script type="text/javascript">
     <!--
     jQuery(document).ready(function ($) {
-        $('.cuar-ftp-<?php echo $ftp_operation; ?>-files').live('click', function (event) {
+        $('.cuar-ftp-<?php echo $ftp_operation; ?>-files').click(function (event) {
             event.preventDefault();
 
-            var button = $(this);
-            var selectBox = button.siblings('.cuar-ftp-file-selection');
+            var selectBox = $(this).siblings('.cuar-ftp-file-selection').first();
             var selectedFiles = selectBox.val();
             var postId = selectBox.data('post-id');
 
-            if (selectedFiles==null) return;
+            if (selectedFiles == null || selectedFiles.length == 0) return;
 
-                addPendingFile($, postId, selectedFiles);
+            // Add all selected files using the attachment manager
+            for (var i = 0, len = selectedFiles.length; i < len; i++) {
+                var filename = selectedFiles[i];
+                $(document).trigger('cuar:attachmentManager:addItem', [
+                    'ftp-<?php echo $ftp_operation; ?>',
+                    postId,
+                    filename,
+                    filename
+                ]);
             }
+        });
 
-//            // Let's go to a state where we cannot do any action anymore
-//            actions.hide();
-//            progress.show();
-//            attachedFileItem.css('opacity', '0.5');
-//
-            // Post the ajax request
-            $.post(
-                cuar.ajaxUrl,
-                {
-                    'action': 'cuar_add_files_from_ftp_folder',
-                    'post_id': postId,
-                    'filenames': selectedFiles
-                },
-                function (response) {
-                    // Not ok. Alert
-                    if (response.success == false) {
-                        if (response.data.length > 0) {
-                            alert(response.data[0]);
-                        }
-                        actions.show();
-                        progress.hide();
-                        attachedFileItem.css('opacity', '1');
-                    } else {
-                        // Ok. Remove the line
-                        attachedFileItem.slideUp(400, function () {
-                            attachedFileItem.remove();
-                        });
-                    }
-                }
-            );
+        // When the file has been attached, we remove it from the select box
+        $(document).on('cuar:attachmentManager:fileAttached', function(event, postId, filename) {
+            $('.cuar-ftp-file-selection')
+                .children()
+                .filter(function() {
+                    return $(this).val()==filename;
+                })
+                .remove();
         });
     });
     //-->

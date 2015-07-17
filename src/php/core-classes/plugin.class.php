@@ -15,12 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
-	
+
 if (!class_exists('CUAR_Plugin')) :
 
 /**
  * The main plugin class
- * 
+ *
  * @author Vincent Prat @ MarvinLabs
  */
 class CUAR_Plugin {
@@ -42,7 +42,7 @@ class CUAR_Plugin {
 
     /** @var CUAR_Logger */
     private $logger;
-	
+
 	public function __construct() {
         $this->message_center = new CUAR_MessageCenter(array('wpca-status', 'wpca-setup', 'wpca'));
         $this->activation_manager = new CUAR_PluginActivationManager();
@@ -50,7 +50,7 @@ class CUAR_Plugin {
         $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
         $this->logger = new CUAR_Logger();
 	}
-	
+
 	public function run() {
         $this->message_center->register_hooks();
         $this->activation_manager->register_hooks();
@@ -58,11 +58,11 @@ class CUAR_Plugin {
 		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ), 3 );
 		add_action( 'plugins_loaded', array( &$this, 'load_settings' ), 5 );
 		add_action( 'plugins_loaded', array( &$this, 'load_addons' ), 10 );
-		
+
 		add_action( 'init', array( &$this, 'load_scripts' ), 7 );
 		add_action( 'init', array( &$this, 'load_styles' ), 8 );
         add_action( 'init', array( &$this, 'load_defaults' ), 9 );
-		
+
 		if ( is_admin() ) {
 			add_action( 'admin_notices', array( &$this, 'print_admin_notices' ) );
             add_action( 'init', array( &$this, 'load_defaults' ), 9 );
@@ -115,9 +115,9 @@ class CUAR_Plugin {
     {
         return $this->logger;
     }
-	
+
 	/*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/
-	
+
 	public function load_settings() {
 		$this->settings = new CUAR_Settings( $this );
 
@@ -166,18 +166,23 @@ class CUAR_Plugin {
 	 * Loads the required javascript files (only when not in admin area)
 	 */
 	public function load_scripts() {
-        wp_localize_script('cuar', 'cuar', array(
-            'ajaxUrl'                  => admin_url( 'admin-ajax.php' )
-        ));
-
+        // TODO Move those messages to their respective add-ons
 		if ( is_admin() ) {
-            wp_register_script('cuar.admin', CUAR_PLUGIN_URL . '/assets/admin/js/customer-area.min.js', array('jquery') );
-            wp_localize_script('cuar.admin', 'cuarAdminMessages', array(
-                'checkingLicense'                  => __( 'Checking license...', 'cuar' ),
-                'unreachableLicenseServerError'    => __( 'Failed to contact server', 'cuar' )
+            $messages = apply_filters('cuar/core/js-messages?zone=admin', array(
+                'ajaxUrl'                           => admin_url('admin-ajax.php'),
+                'checkingLicense'                   => __('Checking license...', 'cuar'),
+                'unreachableLicenseServerError'     => __('Failed to contact server', 'cuar'),
+                'confirmDeleteAttachedFile'         => __('Do you really want to remove this file?', 'cuar')
             ));
+            wp_register_script('cuar.admin', CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js', array('jquery') );
+            wp_localize_script('cuar.admin', 'cuar', $messages);
         } else {
-
+            $messages = apply_filters('cuar/core/js-messages?zone=frontend', array(
+                'ajaxUrl'                           => admin_url('admin-ajax.php'),
+                'confirmDeleteAttachedFile'         => __('Do you really want to remove this file?', 'cuar')
+            ));
+            wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery') );
+            wp_localize_script('cuar.frontend', 'cuar', $messages);
         }
 	}
 
@@ -200,11 +205,11 @@ class CUAR_Plugin {
             );
         }
     }
-	
+
 	/**
 	 * Initialise some defaults for the plugin (add basic capabilities, ...)
 	 */
-	public function load_defaults() {	
+	public function load_defaults() {
 		// Start a session when we save a post in order to store error logs
 		if (!session_id()) session_start();
 	}
@@ -214,10 +219,10 @@ class CUAR_Plugin {
 	public function get_theme( $theme_type ) {
 		return explode( '%%', $this->get_option( $theme_type=='admin' ? CUAR_Settings::$OPTION_ADMIN_SKIN : CUAR_Settings::$OPTION_FRONTEND_SKIN, '' ) );
 	}
-	
+
 	public function get_theme_url( $theme_type ) {
 		$theme = $this->get_theme( $theme_type );
-		
+
 		if ( count( $theme )==1 ) {
 			// Still not on CUAR 4.0? Option value is already the URL
 			return $theme[0];
@@ -233,18 +238,18 @@ class CUAR_Plugin {
 				case 'wp-content':
 					$base = untrailingslashit(WP_CONTENT_URL) . '/customer-area/skins/';
 					break;
-			} 			
+			}
 			return $base . $theme_type . '/' . $theme[1];
 		}
-		
+
 		return '';
 	}
-	
+
 	public function get_theme_path( $theme_type ) {
 		$theme = $this->get_theme( $theme_type );
-		
+
 		if ( count( $theme )==1 ) {
-			// Still not on CUAR 4.0? then we have a problem			
+			// Still not on CUAR 4.0? then we have a problem
 			return '';
 		} else if ( count( $theme )==2 ) {
 			$base = '';
@@ -258,56 +263,56 @@ class CUAR_Plugin {
 				case 'wp-content':
 					$base = untrailingslashit(WP_CONTENT_DIR) . '/customer-area/skins';
 					break;
-			} 			
+			}
 			return $base . '/' . $theme_type . '/' . $theme[1];
 		}
-		
+
 		return '';
 	}
 
 	public function get_admin_theme_url() {
 		return $this->get_theme_url('admin');
 	}
-	
+
 	/**
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
 	public function get_frontend_theme_url() {
 		return $this->get_theme_url('frontend');
 	}
-	
+
 	/**
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
 	public function get_frontend_theme_path() {
 		return $this->get_theme_path('frontend');
 	}
-	
+
 	public function load_theme_functions() {
 		if ( current_theme_supports( 'customer-area.stylesheet' )
 			|| !$this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS ) ) {
 			return;
 		}
-		
+
 		$theme_path = trailingslashit($this->get_frontend_theme_path());
 		if ( empty( $theme_path ) ) return;
-		
+
 		$functions_path = $theme_path . 'cuar-functions.php';
 		if ( file_exists( $functions_path ) ) {
 			include_once( $functions_path );
 		}
 	}
-	
+
 	public function is_customer_area_page() {
 		$cp_addon = $this->get_addon( 'customer-pages' );
 		return $cp_addon->is_customer_area_page();
 	}
-	
+
 	public function get_customer_page_id( $slug ) {
 		$cp_addon = $this->get_addon( 'customer-pages' );
 		return $cp_addon->get_page_id( $slug );
 	}
-	
+
 	public function login_then_redirect_to_page( $page_slug ) {
 		$cp_addon = $this->get_addon('customer-pages');
 		$redirect_page_id = $cp_addon->get_page_id( $page_slug );
@@ -316,46 +321,46 @@ class CUAR_Plugin {
 		} else {
 			$redirect_url = '';
 		}
-	
+
 		$this->login_then_redirect_to_url( $redirect_url );
 	}
-	
+
 	public function login_then_redirect_to_url( $redirect_to='' ) {
-		$login_url = apply_filters( 'cuar/routing/login-url', null, $redirect_to );		
+		$login_url = apply_filters( 'cuar/routing/login-url', null, $redirect_to );
 		if ( $login_url==null ) {
 			$login_url = wp_login_url( $redirect_to );
-		}	
-		
+		}
+
 		wp_redirect( $login_url );
 		exit;
 	}
 
 	/*------- GENERAL MAINTENANCE -----------------------------------------------------------------------------------*/
-	
+
 	public function set_attention_needed( $message_id, $message, $priority ) {
         $this->message_center->add_warning( $message_id, $message, $priority );
 	}
-	
+
 	public function clear_attention_needed( $message_id ) {
         $this->message_center->remove_warning( $message_id );
 	}
-	
+
 	public function is_attention_needed( $message_id ) {
 		return $this->message_center->is_warning_registered($message_id);
 	}
-	
+
 	public function is_warning_ignored( $warning_id ) {
         return $this->message_center->is_warning_ignored($warning_id);
 	}
-	
+
 	public function ignore_warning( $warning_id ) {
         $this->message_center->ignore_warning($warning_id);
 	}
-	
+
 	public function get_attention_needed_messages() {
         return $this->message_center->get_warnings();
 	}
-	
+
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 
     /**
@@ -366,23 +371,23 @@ class CUAR_Plugin {
 	public function get_option( $option_id ) {
 		return $this->settings->get_option( $option_id );
 	}
-	
+
 	public function update_option( $option_id, $new_value, $commit = true ) {
 		$this->settings->update_option( $option_id, $new_value, $commit );
 	}
-	
+
 	public function save_options() {
 		$this->settings->save_options();
 	}
-	
+
 	public function reset_defaults() {
 		$this->settings->reset_defaults();
 	}
-	
+
 	public function get_default_options() {
 		return $this->settings->get_default_options();
 	}
-	
+
 	public function get_version() {
 		return $this->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
 	}
@@ -391,11 +396,11 @@ class CUAR_Plugin {
         $tokens = explode('.', $this->get_version());
         return $tokens[0] . '.' . $tokens[1];
     }
-	
+
 	public function get_options() {
 		return $this->settings->get_options();
 	}
-	
+
 	public function set_options( $opt ) {
 		$this->settings->set_options( $opt );
 	}
@@ -405,7 +410,7 @@ class CUAR_Plugin {
 	/**
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
-	public function load_addons() {		
+	public function load_addons() {
 		do_action( 'cuar/core/addons/before-init', $this );
 		do_action( 'cuar/core/addons/init', $this );
 		do_action( 'cuar/core/addons/after-init', $this );
@@ -415,7 +420,7 @@ class CUAR_Plugin {
 			$this->check_addons_required_versions();
 		}
 	}
-	
+
 	/**
 	 * Register an add-on in the plugin
 	 * @param CUAR_AddOn $addon
@@ -423,26 +428,26 @@ class CUAR_Plugin {
 	public function register_addon( $addon ) {
 		$this->registered_addons[$addon->addon_id] = $addon;
 	}
-	
+
 	/**
 	 * Get registered add-ons
 	 */
 	public function get_registered_addons() {
 		return $this->registered_addons;
 	}
-	
+
 	public function tag_addon_as_commercial( $addon_id ) {
 		$this->commercial_addons[$addon_id] = $this->get_addon( $addon_id );
 	}
-	
+
 	public function get_commercial_addons() {
 		return $this->commercial_addons;
 	}
-	
+
 	public function has_commercial_addons() {
 		return !empty( $this->commercial_addons );
 	}
-	
+
 	/**
 	 * Shows a compatibity warning
 	 */
@@ -456,21 +461,21 @@ class CUAR_Plugin {
 			$this->clear_attention_needed( 'permalinks-disabled' );
 		}
 	}
-	
+
 	/**
 	 * Shows a compatibity warning
 	 */
 	public function check_addons_required_versions() {
 		$current_version = $this->get_version();
 		$needs_attention = false;
-		
+
 		foreach ( $this->registered_addons as $id => $addon ) {
 			if ( $current_version < $addon->min_cuar_version ) {
 				$needs_attention = true;
 				break;
 			}
 		}
-		
+
 		if ( $needs_attention ) {
 			$this->set_attention_needed( 'outdated-plugin-version',
 					__('Some add-ons require a newer version of the main plugin.', 'cuar'),
@@ -479,28 +484,28 @@ class CUAR_Plugin {
 			$this->clear_attention_needed( 'outdated-plugin-version' );
 		}
 	}
-	
+
 	/**
 	 * Get add-on
 	 */
 	public function get_addon($id) {
 		return isset( $this->registered_addons[$id] ) ? $this->registered_addons[$id] : null;
 	}
-	
+
 	/** @var array */
 	private $registered_addons = array();
-	
+
 	/** @var array */
 	private $commercial_addons = array();
 
 	/*------- ADMIN NOTICES -----------------------------------------------------------------------------------------*/
-	
+
 	/**
 	 * Print the eventual errors that occured during a post save/update
 	 */
 	public function print_admin_notices() {
 		$notices = $this->get_admin_notices();
-		
+
 		if ( $notices ) {
 			foreach ( $notices as $n ) {
 				echo sprintf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $n['type'] ), $n['msg'] );
@@ -508,13 +513,13 @@ class CUAR_Plugin {
 		}
 		$this->clear_admin_notices();
 	}
-	
+
 	/**
 	 * Remove the notices stored in the session for save posts
 	 */
 	public function clear_admin_notices() {
 		if ( isset( $_SESSION['cuar_admin_notices'] ) ) {
-			unset( $_SESSION['cuar_admin_notices'] ); 
+			unset( $_SESSION['cuar_admin_notices'] );
 		}
 	}
 
@@ -524,10 +529,10 @@ class CUAR_Plugin {
 	private function get_admin_notices() {
 		return isset( $_SESSION[ 'cuar_admin_notices' ] ) && !empty( $_SESSION[ 'cuar_admin_notices' ] ) ? $_SESSION['cuar_admin_notices'] : false;
 	}
-	
+
 	/**
 	 * Add an admin notice (useful when in a save post function for example)
-	 * 
+	 *
 	 * @param string $msg
 	 * @param string $type error or updated
 	 */
@@ -537,15 +542,15 @@ class CUAR_Plugin {
 	 	}
 	 	$_SESSION[ 'cuar_admin_notices' ][] = array(
 				'type' 	=> $type,
-				'msg' 	=> $msg 
+				'msg' 	=> $msg
 	 		);
 	}
 
 	/*------- EXTERNAL LIBRARIES ------------------------------------------------------------------------------------*/
-	
+
 	/**
 	 * Allow the use of an external library provided by Customer Area
-	 * 
+	 *
 	 * @param string $id The ID for the external library
 	 */
 	public function enable_library( $library_id ) {
@@ -554,9 +559,9 @@ class CUAR_Plugin {
 			$theme_support = get_theme_support( 'customer-area.library.' . $library_id );
 			if ( $theme_support===true || ( is_array( $theme_support ) && in_array( 'files', $theme_support[0] ) ) ) return;
 		}
-		
+
 		do_action( 'cuar/core/libraries/before-enable?id=' . $library_id );
-		
+
 		switch ( $library_id ) {
 			case 'jquery.select2': {
 				wp_enqueue_script( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.min.js', array('jquery'), $this->get_version() );
@@ -565,21 +570,21 @@ class CUAR_Plugin {
 				if ( $locale && !empty( $locale ) ) {
 					$locale = str_replace("_", "-", $locale );
 					$locale_parts = explode( "-", $locale );
-					
+
 					$loc_files = array( 'select2_locale_' . $locale . '.js' );
-					
+
 					if ( count( $locale_parts ) > 0 ) {
 						$loc_files[] = 'select2_locale_' . $locale_parts[0] . '.js';
 					}
-					
+
 					foreach ( $loc_files as $lf ) {
 						if ( file_exists( CUAR_PLUGIN_DIR . '/libs/select2/' . $lf ) ) {
 							wp_enqueue_script( 'jquery.select2.locale', CUAR_PLUGIN_URL . 'libs/select2/' . $lf, array('jquery.select2'), $this->get_version() );
 							break;
 						}
-					}					
+					}
 				}
-				
+
 				wp_enqueue_style( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.css', $this->get_version() );
 			}
 			break;
@@ -609,11 +614,11 @@ class CUAR_Plugin {
                 wp_enqueue_script( 'jquery.repeatable-fields', CUAR_PLUGIN_URL . 'libs/repeatable-fields/repeatable-fields.min.js', array('jquery', 'jquery-ui-sortable'), $this->get_version() );
             }
             break;
-			
+
 			default:
 				do_action( 'cuar/core/libraries/enable?id=' . $library_id );
 		}
-		
+
 		do_action( 'cuar/core/libraries/after-enable?id=' . $library_id );
 	}
 
@@ -626,7 +631,7 @@ class CUAR_Plugin {
 		$dirs_to_scan = apply_filters( 'cuar/core/status/directories-to-scan', array( CUAR_PLUGIN_DIR => __( 'WP Customer Area', 'cuar' ) ) );
 
 		$outdated_templates = $this->template_engine->check_templates($dirs_to_scan);
-		
+
 		if ( !empty( $outdated_templates ) ) {
 			$this->set_attention_needed( 'outdated-templates', __( 'Some template files you have overridden seem to be outdated.', 'cuar' ), 100 );
 		} else {
@@ -643,7 +648,7 @@ class CUAR_Plugin {
 
         return $this->template_engine->get_template_file_path( $default_root, $filenames, $relative_path);
     }
-	
+
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
 
     /**
@@ -694,41 +699,41 @@ class CUAR_Plugin {
 	 */
 	public function get_content_post_types() {
 		return apply_filters( 'cuar/core/post-types/content', array() );
-	}	
-	
+	}
+
 	/**
 	 * Get the content types descriptors. Each descriptor is an array with:
 	 * - 'label-plural'				- plural label
 	 * - 'label-singular'			- singular label
 	 * - 'content-page-addon'		- content page addon associated to this type
      * - 'type'                     - 'content'
-	 * 
+	 *
 	 * @return array keys are post_type and values are arrays as described above
 	 */
 	public function get_content_types() {
         return apply_filters( 'cuar/core/types/content', array() );
-	}	
-	
+	}
+
 	/**
 	 * Tells which container post types are available
 	 * @return array
 	 */
 	public function get_container_post_types() {
 		return apply_filters( 'cuar/core/post-types/container', array() );
-	}	
-	
+	}
+
 	/**
 	 * Get the post type descriptors. Each descriptor is an array with:
 	 * - 'label-plural'				- plural label
 	 * - 'label-singular'			- singular label
-	 * - 'container-page-slug'		- main page slug associated to this type 
+	 * - 'container-page-slug'		- main page slug associated to this type
 	 * - 'type'                     - 'container'
 	 * @return array
 	 */
 	public function get_container_types() {
 		return apply_filters( 'cuar/core/types/container', array() );
-	}	
-		
+	}
+
 	public function get_default_wp_editor_settings() {
 		return apply_filters( 'cuar/ui/default-wp-editor-settings', array(
 				'textarea_rows'	=> 5,

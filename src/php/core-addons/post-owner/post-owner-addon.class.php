@@ -98,7 +98,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_base_private_storage_directory($create_dirs = false)
         {
-            $dir = WP_CONTENT_DIR . '/customer-area';
+            $dir = WP_CONTENT_DIR . '/customer-area/storage';
             $dir = apply_filters('cuar/core/ownership/base-private-storage-directory', $dir);
             if ($create_dirs && !file_exists($dir))
             {
@@ -116,20 +116,19 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_base_private_storage_url()
         {
-            return WP_CONTENT_URL . '/customer-area';
+            return WP_CONTENT_URL . '/customer-area/storage';
         }
 
         /**
          * Get the absolute path to a private file.
          *
-         * @param int    $post_id             The ID of the post which is assigned to an owner
-         * @param string $filename            The name of the file
-         * @param bool   $create_dirs         Shall we create the directory if missing
-         * @param bool   $with_post_id_suffix Shall we suffix the path with the post ID as a sub directory?
+         * @param int    $post_id     The ID of the post which is assigned to an owner
+         * @param string $filename    The name of the file
+         * @param bool   $create_dirs Shall we create the directory if missing
          *
          * @return boolean|string
          */
-        public function get_private_file_path($filename, $post_id, $create_dirs = false, $with_post_id_suffix = true)
+        public function get_private_file_path($filename, $post_id, $create_dirs = false)
         {
             if (empty($post_id) || empty($filename))
             {
@@ -138,7 +137,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
             $dir = $this->get_base_private_storage_directory()
                 . '/'
-                . $this->get_private_storage_directory($post_id, false, false, $with_post_id_suffix);
+                . $this->get_private_storage_directory($post_id, false, false);
 
             if ($create_dirs && !file_exists($dir))
             {
@@ -146,6 +145,86 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             }
 
             return $dir . '/' . $filename;
+        }
+
+        /**
+         * Get a user's private storage directory. This directory is relative to the main upload directory
+         *
+         * @param int  $post_id     The ID of the post which is assigned to an owner
+         * @param bool $absolute    Do we need the absolute path?
+         * @param bool $create_dirs Shall we create the directory if missing
+         *
+         * @return bool|string The path
+         */
+        public function get_private_storage_directory($post_id, $absolute = false, $create_dirs = false)
+        {
+            if (empty($post_id))
+            {
+                return false;
+            }
+
+            // Do something to make a directory out of the post_id
+            $dir = md5('wpca-' . $post_id . md5(-$post_id * $post_id * $post_id));
+
+            if ($absolute)
+            {
+                $dir = $this->get_base_private_storage_directory() . "/" . $dir;
+            }
+
+            if ($create_dirs && !file_exists($dir))
+            {
+                mkdir($dir, 0775, true);
+            }
+
+            return $dir;
+        }
+
+        // region Deprecated support functions (change of storage directory structure in 6.2)
+
+        /**
+         * Support function for versions of WP Customer Area older than 6.2
+         *
+         * @param bool $create_dirs
+         *
+         * @return string
+         * @deprecated
+         */
+        public function get_legacy_base_private_storage_directory($create_dirs = false)
+        {
+            $dir = WP_CONTENT_DIR . '/customer-area';
+            $dir = apply_filters('cuar/core/ownership/base-private-storage-directory', $dir);
+            if ($create_dirs && !file_exists($dir))
+            {
+                mkdir($dir, 0775, true);
+            }
+
+            return $dir;
+        }
+
+        /**
+         * Get a user's private storage directory. This directory is relative to the main upload directory
+         *
+         * @param int  $post_id     The ID of the post which is assigned to an owner
+         * @param bool $absolute    Do we need the absolute path?
+         * @param bool $create_dirs Shall we create the directory if missing
+         *
+         * @return bool|string The path
+         * @deprecated
+         */
+        public function get_legacy_private_storage_directory($post_id, $absolute = false, $create_dirs = false)
+        {
+            if (empty($post_id))
+            {
+                return false;
+            }
+
+            $owner_ids = $this->get_post_owner_ids($post_id);
+            $owner_type = $this->get_post_owner_type($post_id);
+
+            return $this->get_legacy_owner_storage_directory($owner_ids,
+                $owner_type,
+                $absolute,
+                $create_dirs);
         }
 
         /**
@@ -162,16 +241,16 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          *
          * @deprecated
          */
-        public function get_owner_file_path($post_id, $filename, $owner_ids, $owner_type, $create_dirs = false, $with_post_id_suffix = true)
+        public function get_legacy_owner_file_path($post_id, $filename, $owner_ids, $owner_type, $create_dirs = false, $with_post_id_suffix = true)
         {
             if (empty($owner_ids) || empty($owner_type) || empty($filename))
             {
                 return false;
             }
 
-            $dir = $this->get_base_private_storage_directory()
+            $dir = $this->get_legacy_base_private_storage_directory()
                 . '/'
-                . $this->get_owner_storage_directory($owner_ids, $owner_type);
+                . $this->get_legacy_owner_storage_directory($owner_ids, $owner_type);
 
             if ($with_post_id_suffix)
             {
@@ -189,33 +268,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * Get a user's private storage directory. This directory is relative to the main upload directory
          *
-         * @param int  $post_id             The ID of the post which is assigned to an owner
-         * @param bool $absolute            Do we need the absolute path?
-         * @param bool $create_dirs         Shall we create the directory if missing
-         * @param bool $with_post_id_suffix Shall we suffix the path with the post ID as a sub directory?
-         *
-         * @return bool|string The path
-         */
-        public function get_private_storage_directory($post_id, $absolute = false, $create_dirs = false, $with_post_id_suffix = true)
-        {
-            if (empty($post_id))
-            {
-                return false;
-            }
-
-            $owner_ids = $this->get_post_owner_ids($post_id);
-            $owner_type = $this->get_post_owner_type($post_id);
-
-            return $this->get_owner_storage_directory($owner_ids,
-                $owner_type,
-                $absolute,
-                $create_dirs,
-                $with_post_id_suffix ? $post_id : false);
-        }
-
-        /**
-         * Get a user's private storage directory. This directory is relative to the main upload directory
-         *
          * @param array    $owner_ids   The IDs of the owners
          * @param string   $owner_type  The type of owner
          * @param bool     $absolute    Do we need the absolute path?
@@ -226,7 +278,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          *
          * @deprecated
          */
-        public function get_owner_storage_directory($owner_ids, $owner_type, $absolute = false, $create_dirs = false, $post_id = false)
+        public function get_legacy_owner_storage_directory($owner_ids, $owner_type, $absolute = false, $create_dirs = false, $post_id = false)
         {
             if (empty($owner_ids) || empty($owner_type))
             {
@@ -249,7 +301,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
             if ($absolute)
             {
-                $dir = $this->get_base_private_storage_directory() . "/" . $dir;
+                $dir = $this->get_legacy_base_private_storage_directory() . "/" . $dir;
             }
 
             if ($create_dirs && !file_exists($dir))
@@ -259,6 +311,37 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
             return $dir;
         }
+
+        /**
+         * Get the absolute path to a private file.
+         *
+         * @param int    $post_id     The ID of the post which is assigned to an owner
+         * @param string $filename    The name of the file
+         * @param bool   $create_dirs Shall we create the directory if missing
+         *
+         * @return boolean|string
+         * @deprecated
+         */
+        public function get_legacy_private_file_path($filename, $post_id, $create_dirs = false)
+        {
+            if (empty($post_id) || empty($filename))
+            {
+                return false;
+            }
+
+            $dir = $this->get_legacy_base_private_storage_directory()
+                . '/'
+                . $this->get_legacy_private_storage_directory($post_id, false, false);
+
+            if ($create_dirs && !file_exists($dir))
+            {
+                mkdir($dir, 0775, true);
+            }
+
+            return $dir . '/' . $filename;
+        }
+
+        // endregion
 
         /*------- ACCESS TO OWNER INFO ----------------------------------------------------------------------------------*/
 

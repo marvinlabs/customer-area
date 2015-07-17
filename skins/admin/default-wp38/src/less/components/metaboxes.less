@@ -3,8 +3,8 @@
     color: #999;
   }
 
-  .cuar-private-file-attachments {
-    .cuar-private-file-attachment {
+  .cuar-file-attachments {
+    .cuar-file-attachment {
       border: 1px solid #e0e0e0;
       background: #fafafa;
       padding: 4px 7px;
@@ -22,16 +22,29 @@
         a, a:hover {
           text-decoration: none;
         }
+        a:focus {
+          -webkit-box-shadow: none;
+                  box-shadow: none;
+        }
       }
 
       .cuar-progress {
+        display: none;
         float: right;
-        display: block;
         width: 20px;
         height: 28px;
         background-image: url('../img/loading-indicator.gif');
         background-position-y: 4px;
         background-repeat: no-repeat;
+      }
+      &.cuar-state-pending {
+        background-color: #D4E9FF;
+      }
+      &.cuar-state-error {
+        background-color: #FF777F;
+      }
+      &.cuar-state-success {
+        background-color: #fafafa;
       }
     }
   }
