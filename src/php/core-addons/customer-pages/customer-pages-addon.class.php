@@ -540,7 +540,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             }
 
             $menu = wp_get_nav_menu_object($theme_locations['cuar_main_menu']);
-            if ( !isset($menu))
+            if (!isset($menu) || !$menu)
             {
                 return;
             }
