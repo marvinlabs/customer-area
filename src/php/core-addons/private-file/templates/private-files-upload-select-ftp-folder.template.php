@@ -2,6 +2,7 @@
 
  */
 
+/** @var WP_Post $post */
 /** @var string $ftp_dir */
 /** @var array $ftp_files */
 /** @var string $ftp_operation */

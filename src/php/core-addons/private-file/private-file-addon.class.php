@@ -520,6 +520,10 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $caption = isset($_POST['caption']) ? $_POST['caption'] : $filename;
             $extra = isset($_POST['extra']) ? $_POST['extra'] : '';
 
+            // Get a unique name for this file
+            $filename = apply_filters('cuar/private-content/files/unique-filename?method=' . $method, $filename, $post_id, $extra);
+
+            // Check for missing parameters
             if (empty($post_id) || empty($filename) || empty($method))
             {
                 $errors[] = __('Missing parameters', 'cuar');
@@ -547,7 +551,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             if (empty($caption)) $caption = $filename;
             $this->add_attached_file($post_id, $filename, $caption, $source, $extra);
 
-            wp_send_json_success();
+            wp_send_json_success(array('filename' => $filename));
         }
 
         /**

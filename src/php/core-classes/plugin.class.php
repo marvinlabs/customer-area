@@ -615,6 +615,13 @@ class CUAR_Plugin {
             }
             break;
 
+            case 'jquery.fileupload': {
+                wp_enqueue_script( 'jquery.ui.widget', CUAR_PLUGIN_URL . 'libs/fileupload/vendor/jquery.ui.widget.js', array('jquery'), $this->get_version() );
+                wp_enqueue_script( 'jquery.iframe-transport', CUAR_PLUGIN_URL . 'libs/fileupload/jquery.iframe-transport.js', array('jquery'), $this->get_version() );
+                wp_enqueue_script( 'jquery.fileupload', CUAR_PLUGIN_URL . 'libs/fileupload/jquery.fileupload.js', array('jquery'), $this->get_version() );
+            }
+            break;
+
 			default:
 				do_action( 'cuar/core/libraries/enable?id=' . $library_id );
 		}

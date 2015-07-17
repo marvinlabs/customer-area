@@ -41,6 +41,11 @@ class CUAR_PrivateFilesDefaultHandlers
         add_filter('cuar/private-content/files/on-attach-file?method=ftp-move', array(&$this, 'move_ftp_file'), 10, 6);
         add_filter('cuar/private-content/files/on-attach-file?method=classic-upload', array(&$this, 'upload_file'), 10, 6);
 
+        // Get a unique filename for the methods we manage
+        add_filter('cuar/private-content/files/unique-filename?method=ftp-copy', array(&$this, 'unique_local_filename'), 10, 4);
+        add_filter('cuar/private-content/files/unique-filename?method=ftp-move', array(&$this, 'unique_local_filename'), 10, 4);
+        add_filter('cuar/private-content/files/unique-filename?method=classic-upload', array(&$this, 'unique_local_filename_from_files_param'), 10, 4);
+
         // Handling of local files
         add_action('cuar/private-content/files/on-remove-attached-file?source=local', array(&$this, 'remove_attached_file'), 10, 3);
         add_filter('cuar/private-content/files/is-missing?source=local', array(&$this, 'is_local_file_missing'), 10, 3);
@@ -54,6 +59,58 @@ class CUAR_PrivateFilesDefaultHandlers
         add_action('cuar/private-content/files/output-file?source=legacy', array(&$this, 'output_legacy_file'), 10, 3);
     }
 
+    /**
+     * Get a unique filename for storing a file in the post's storage folder
+     *
+     * @param string $filename The original filename
+     * @param int    $post_id  The post ID
+     * @param mixed  $extra    Available extra information
+     *
+     * @return string A unique filename
+     */
+    public function unique_local_filename_from_files_param($filename, $post_id, $extra)
+    {
+        if (empty($filename) && isset($_FILES['cuar_file']))
+        {
+            $filename = $_FILES['cuar_file']['name'];
+        }
+
+        if (empty($filename)) return '';
+
+        /** @var CUAR_PostOwnerAddOn $po_addon */
+        $po_addon = $this->plugin->get_addon('post-owner');
+        $path = $po_addon->get_private_storage_directory($post_id, true, false);
+        $unique_filename = wp_unique_filename($path, $filename, null);
+
+        return $unique_filename;
+    }
+
+    /**
+     * Get a unique filename for storing a file in the post's storage folder
+     *
+     * @param string $filename The original filename
+     * @param int    $post_id  The post ID
+     * @param mixed  $extra    Available extra information
+     *
+     * @return string A unique filename
+     */
+    public function unique_local_filename($filename, $post_id, $extra)
+    {
+        /** @var CUAR_PostOwnerAddOn $po_addon */
+        $po_addon = $this->plugin->get_addon('post-owner');
+        $path = $po_addon->get_private_storage_directory($post_id, true, false);
+        $unique_filename = wp_unique_filename($path, $filename, null);
+
+        return $unique_filename;
+    }
+
+    /**
+     * Stream a local file to the client from the post's storage folder
+     *
+     * @param int    $post_id    The post ID
+     * @param array  $found_file The file description
+     * @param string $action     The action (download|view)
+     */
     public function output_local_file($post_id, $found_file, $action)
     {
         /** @var CUAR_PostOwnerAddOn $po_addon */
@@ -62,9 +119,16 @@ class CUAR_PrivateFilesDefaultHandlers
         $filename = $found_file['file'];
         $filepath = $po_addon->get_private_file_path($filename, $post_id, false);
 
-        $this->output_file($filepath, $filename);
+        $this->output_file($filepath, $filename, $action);
     }
 
+    /**
+     * Stream a local file to the client from the post owner's storage folder (legacy file storage)
+     *
+     * @param int    $post_id    The post ID
+     * @param array  $found_file The file description
+     * @param string $action     The action (download|view)
+     */
     public function output_legacy_file($post_id, $found_file, $action)
     {
         /** @var CUAR_PostOwnerAddOn $po_addon */
@@ -73,7 +137,7 @@ class CUAR_PrivateFilesDefaultHandlers
         $filename = $found_file['file'];
         $filepath = $po_addon->get_legacy_private_file_path($filename, $post_id, false);
 
-        $this->output_file($filepath, $filename);
+        $this->output_file($filepath, $filename, $action);
     }
 
     /**
@@ -176,6 +240,19 @@ class CUAR_PrivateFilesDefaultHandlers
      */
     public function attach_ftp_file($ftp_operation, $errors, $pf_addon, $post_id, $filename, $caption, $extra)
     {
+        $supported_types = apply_filters('cuar/private-content/files/supported-types', null);
+        if ($supported_types != null)
+        {
+            $arr_file_type = wp_check_filetype(basename($filename));
+            $uploaded_type = $arr_file_type['type'];
+            if ( !in_array($uploaded_type, $supported_types))
+            {
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+
+                return $errors;
+            }
+        }
+
         /** @var CUAR_PostOwnerAddOn $po_addon */
         $po_addon = $this->plugin->get_addon('post-owner');
 
@@ -183,8 +260,7 @@ class CUAR_PrivateFilesDefaultHandlers
         $src_path = $src_folder . $filename;
 
         $dest_folder = trailingslashit($po_addon->get_private_storage_directory($post_id, true, true));
-        $dest_filename = wp_unique_filename($dest_folder, $filename, null);
-        $dest_path = $dest_folder . $dest_filename;
+        $dest_path = $dest_folder . $filename;
 
         if (copy($src_path, $dest_path))
         {
@@ -213,7 +289,91 @@ class CUAR_PrivateFilesDefaultHandlers
      */
     public function upload_file($errors, $pf_addon, $post_id, $filename, $caption, $extra)
     {
+        $uploaded_file = isset($_FILES['cuar_file']) ? $_FILES['cuar_file'] : null;
+        if (empty($uploaded_file))
+        {
+            $errors[] = sprintf(__('No file has been uploaded', 'cuar'), $filename);
+            return $errors;
+        }
+
+        $supported_types = apply_filters('cuar/private-content/files/supported-types', null);
+        if ($supported_types != null)
+        {
+            $arr_file_type = wp_check_filetype(basename($uploaded_file['name']));
+            $uploaded_type = $arr_file_type['type'];
+            if ( !in_array($uploaded_type, $supported_types))
+            {
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+
+                return $errors;
+            }
+        }
+
+        // Use the WordPress API to upload the file
+        require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+        require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+        require_once(ABSPATH . "wp-admin" . '/includes/media.php');
+
+        // We will send files to a custom directory
+        // Let WP handle the rest
+        if ( !isset($_POST['post_ID']) || $_POST['post_ID'] < 0) $_POST['post_ID'] = $post_id;
+        // if ( !isset($_POST['post_type']) || $_POST['post_type'] != 'cuar_private_file') $_POST['post_type'] = 'cuar_private_file';
+
+        add_filter('upload_dir', array(&$this, 'custom_upload_dir'));
+        $upload_result = wp_handle_upload($uploaded_file, array('test_form' => false));
+        remove_filter('upload_dir', array(&$this, 'custom_upload_dir'));
+
+        if (empty($upload_result))
+        {
+            $errors[] = sprintf(__('An unknown error happened while uploading your file.', 'cuar'));
+            return $errors;
+        }
+        else if (isset($upload_result['error']))
+        {
+            $errors[] = sprintf(__('An error happened while uploading your file: %s', 'cuar'), $upload_result['error']);
+            return $errors;
+        }
+
         return $errors;
+    }
+
+    /**
+     * Change the upload directory on the fly when uploading our private file
+     *
+     * @param unknown $default_dir
+     *
+     * @return unknown|multitype:boolean string unknown
+     *
+     * @deprecated
+     */
+    public function custom_upload_dir($default_dir)
+    {
+        if ( !isset($_POST['post_ID']) || $_POST['post_ID'] < 0) return $default_dir;
+
+        /** @var CUAR_PostOwnerAddOn $po_addon */
+        $po_addon = $this->plugin->get_addon('post-owner');
+
+        $dir = $po_addon->get_base_private_storage_directory();
+        $url = $po_addon->get_base_private_storage_url();
+
+        $bdir = $dir;
+        $burl = $url;
+
+        $subdir = '/' . $po_addon->get_private_storage_directory($_POST['post_ID']);
+
+        $dir .= $subdir;
+        $url .= $subdir;
+
+        $custom_dir = array(
+            'path'    => $dir,
+            'url'     => $url,
+            'subdir'  => $subdir,
+            'basedir' => $bdir,
+            'baseurl' => $burl,
+            'error'   => false,
+        );
+
+        return $custom_dir;
     }
 
     /**
@@ -274,6 +434,8 @@ class CUAR_PrivateFilesDefaultHandlers
     public function render_classic_upload_form()
     {
         global $post;
+
+        $this->plugin->enable_library('jquery.fileupload');
 
         $template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
