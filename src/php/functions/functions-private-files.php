@@ -101,7 +101,7 @@ function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'down
  */
 function cuar_the_attached_file_link($post_id = null, $file, $action = 'download')
 {
-    echo cuar_get_the_attached_file_link($post_id, $action, $file);
+    echo cuar_get_the_attached_file_link($post_id, $file, $action);
 }
 
 /**
@@ -232,7 +232,7 @@ function cuar_the_attached_file_type($post_id = null, $file)
  *
  * @return string|mixed
  */
-function cuar_get_the_attached_file_size($post_id = null, $human = true, $file)
+function cuar_get_the_attached_file_size($post_id = null, $file, $human = true)
 {
     if ( !$post_id)
     {
@@ -271,9 +271,9 @@ function cuar_get_the_attached_file_size($post_id = null, $human = true, $file)
  *
  * @return string|mixed
  */
-function cuar_the_attached_file_size($post_id = null, $human = true, $file)
+function cuar_the_attached_file_size($post_id = null, $file, $human = true)
 {
-    echo cuar_get_the_attached_file_size($post_id, $human, $file);
+    echo cuar_get_the_attached_file_size($post_id, $file, $human);
 }
 
 
