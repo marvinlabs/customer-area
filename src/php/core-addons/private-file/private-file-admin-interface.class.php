@@ -283,7 +283,7 @@ else
         // Security check
         if ( !wp_verify_nonce($_POST['wp_cuar_nonce_file'], plugin_basename(__FILE__))) return $post_id;
 
-        // Handle classic upload?
+        // TODO Handle classic upload here?
 
         // Remove files which are physically missing
         $files = $this->pf_addon->get_attached_files($post_id);
@@ -299,62 +299,6 @@ else
 
         // Delete physical files which are not registered in meta
         do_action('cuar/private-content/files/remove-orphan-files?source=local', $post_id);
-
-
-//        // If nothing to upload but owner changed, we'll simply move the file
-//        $has_owner_changed = false;
-//        if (($new_owner['type'] != $previous_owner['type'])
-//            || !(array_diff($previous_owner['ids'], $new_owner['ids']) === array_diff($new_owner['ids'], $previous_owner['ids']))
-//        )
-//        {
-//            $has_owner_changed = true;
-//        }
-//
-//        if (isset($_POST['cuar_file_select_method']) && $_POST['cuar_file_select_method'] == 'cuar_from_ftp_folder')
-//        {
-//            if ($has_owner_changed && empty($_POST['cuar_selected_ftp_file']))
-//            {
-//                $this->pf_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
-//
-//                return $post_id;
-//            }
-//
-//            if ( !empty($_POST['cuar_selected_ftp_file']))
-//            {
-//                $ftp_dir = trailingslashit($this->pf_addon->get_ftp_path());
-//
-//                $this->pf_addon->handle_copy_private_file_from_local_folder($post_id, $previous_owner, $new_owner,
-//                    $ftp_dir . $_POST['cuar_selected_ftp_file']);
-//            }
-//        }
-//        else
-//        {
-//            if ($has_owner_changed && empty($_FILES['cuar_private_file_file']['name']))
-//            {
-//                $this->pf_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
-//
-//                return $post_id;
-//            }
-//
-//            if ( !empty($_FILES['cuar_private_file_file']['name']))
-//            {
-//                $upload_result = $this->pf_addon->handle_new_private_file_upload($post_id, $previous_owner, $new_owner,
-//                    $_FILES['cuar_private_file_file']);
-//
-//                if ($upload_result !== true)
-//                {
-//                    remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'do_save_post'));
-//
-//                    $my_post = array(
-//                        'ID'          => $post_id,
-//                        'post_status' => 'draft'
-//                    );
-//                    wp_update_post($my_post);
-//
-//                    add_action('cuar/core/ownership/after-save-owner', array(&$this, 'do_save_post'), 10, 4);
-//                }
-//            }
-//        }
     }
 
     /*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/

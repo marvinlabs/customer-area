@@ -420,9 +420,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /**
          * Get the descriptor of a file attached to this content from the file name
          *
-         * @param int    $post_id   The post ID
+         * @param int    $post_id  The post ID
          * @param string $filename The name of the file we are looking for
-         * @param array  $files     The files attached to the post (to save some CPU/queries if you already have it)
+         * @param array  $files    The files attached to the post (to save some CPU/queries if you already have it)
          *
          * @return array|bool false if not found
          */
@@ -498,7 +498,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             if ( !isset($file['source']))
             {
                 $file['id'] = $this->get_file_id_from_name($file['file']);
-                $file['source'] = 'local';
+                $file['source'] = 'legacy';
                 $file['caption'] = $file['file'];
                 $file['extra'] = '';
             }
@@ -570,7 +570,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check file exists
             $files = $this->get_attached_files($post_id);
             $found_file = $this->get_attached_file_by_name($post_id, $filename, $files);
-            if ($found_file==false)
+            if ($found_file == false)
             {
                 $errors[] = __('File not found', 'cuar');
                 wp_send_json_error($errors);
@@ -599,6 +599,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          * @param int   $post_id
          * @param array $previous_owner
          * @param array $new_owner
+         *
+         * @deprecated
          */
         public function handle_private_file_owner_changed($post_id, $previous_owner, $new_owner)
         {
@@ -776,16 +778,14 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // If no index, default to 0
-            $file_index = get_query_var('cuar_action_param');
-            if (empty($file_index))
-            {
-                $file_index = 0;
-            }
+            $file_id = get_query_var('cuar_action_param');
 
             // If not logged-in, we ask for details
             if ( !is_user_logged_in())
             {
                 $this->plugin->login_then_redirect_to_url($_SERVER['REQUEST_URI']);
+
+                return;
             }
 
             /** @var CUAR_PostOwnerAddOn $po_addon */
@@ -803,342 +803,48 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 exit();
             }
 
-            // Seems we are all good, checkout the requested action and do something
-            $file_type = $this->get_file_type($post->ID, $file_index);
-            $file_name = $this->get_file_name($post->ID, $file_index);
-            $file_path = $this->get_file_path($post->ID, $file_index);
-
-            if (false === $file_path)
+            // Look up that file given its ID
+            $files = $this->get_attached_files($post->ID);
+            $found_file = null;
+            foreach ($files as $fid => $file)
             {
-                // File does not exist at all -> 404
-                wp_die("This file does not exist");
+                // Default case
+                if ($fid == $file_id)
+                {
+                    $found_file = $file;
+                    break;
+                }
             }
 
+            // File not found
+            if ($found_file == null)
+            {
+                wp_die(__("There is no such file attached to this private content", "cuar"));
+                exit();
+            }
+
+            // Seems we are all good, do some stuff before sending the file
             if ($action == 'download')
             {
                 if ($author_id != $current_user_id)
                 {
-                    $this->increment_file_download_count($post->ID, $file_index);
+                    $this->increment_file_download_count($post->ID, $file_id);
                 }
 
-                do_action('cuar/private-content/files/on-download', $post->ID, $current_user_id, $this, $file_index);
-
-                $this->output_file($file_path, $file_name, $file_type, 'download');
+                do_action('cuar/private-content/files/on-download', $post->ID, $current_user_id, $this, $file_id);
             }
             else if ($action == 'view')
             {
                 if ($author_id != $current_user_id)
                 {
-                    $this->increment_file_download_count($post->ID, $file_index);
+                    $this->increment_file_download_count($post->ID, $file_id);
                 }
 
-                do_action('cuar/private-content/files/on-view', $post->ID, $current_user_id, $this, $file_index);
-
-                $this->output_file($file_path, $file_name, $file_type, 'view');
-            }
-            else
-            {
-                wp_die("Invalid file action");
-            }
-        }
-
-        /**
-         * Output the content of a file to the http stream
-         *
-         * @param string $file      The path to the file
-         * @param string $name      The name to give to the file
-         * @param string $mime_type The mime type (determined automatically for well-known file types if blank)
-         * @param string $action    view or download the file (hint to the browser)
-         */
-        private function output_file($file, $name, $mime_type = '', $action = 'download')
-        {
-            if ( !is_readable($file))
-            {
-                die('File not found or inaccessible!<br />' . $file . '<br /> ' . $name);
-
-                return;
+                do_action('cuar/private-content/files/on-view', $post->ID, $current_user_id, $this, $file_id);
             }
 
-            $size = filesize($file);
-            $name = rawurldecode($name);
-
-            $known_mime_types = array(
-                "323"     => "text/h323",
-                "acx"     => "application/internet-property-stream",
-                "ai"      => "application/postscript",
-                "aif"     => "audio/x-aiff",
-                "aifc"    => "audio/x-aiff",
-                "aiff"    => "audio/x-aiff",
-                "asf"     => "video/x-ms-asf",
-                "asr"     => "video/x-ms-asf",
-                "asx"     => "video/x-ms-asf",
-                "au"      => "audio/basic",
-                "avi"     => "video/x-msvideo",
-                "axs"     => "application/olescript",
-                "bas"     => "text/plain",
-                "bcpio"   => "application/x-bcpio",
-                "bin"     => "application/octet-stream",
-                "bmp"     => "image/bmp",
-                "c"       => "text/plain",
-                "cat"     => "application/vnd.ms-pkiseccat",
-                "cdf"     => "application/x-cdf",
-                "cdf"     => "application/x-netcdf",
-                "cer"     => "application/x-x509-ca-cert",
-                "class"   => "application/octet-stream",
-                "clp"     => "application/x-msclip",
-                "cmx"     => "image/x-cmx",
-                "cod"     => "image/cis-cod",
-                "cpio"    => "application/x-cpio",
-                "crd"     => "application/x-mscardfile",
-                "crl"     => "application/pkix-crl",
-                "crt"     => "application/x-x509-ca-cert",
-                "csh"     => "application/x-csh",
-                "css"     => "text/css",
-                "dcr"     => "application/x-director",
-                "der"     => "application/x-x509-ca-cert",
-                "dir"     => "application/x-director",
-                "dll"     => "application/x-msdownload",
-                "dms"     => "application/octet-stream",
-                "doc"     => "application/msword",
-                "dot"     => "application/msword",
-                "dvi"     => "application/x-dvi",
-                "dxr"     => "application/x-director",
-                "eps"     => "application/postscript",
-                "etx"     => "text/x-setext",
-                "evy"     => "application/envoy",
-                "exe"     => "application/octet-stream",
-                "fif"     => "application/fractals",
-                "flr"     => "x-world/x-vrml",
-                "gif"     => "image/gif",
-                "gtar"    => "application/x-gtar",
-                "gz"      => "application/x-gzip",
-                "h"       => "text/plain",
-                "hdf"     => "application/x-hdf",
-                "hlp"     => "application/winhlp",
-                "hqx"     => "application/mac-binhex40",
-                "hta"     => "application/hta",
-                "htc"     => "text/x-component",
-                "htm"     => "text/html",
-                "html"    => "text/html",
-                "htt"     => "text/webviewhtml",
-                "ico"     => "image/x-icon",
-                "ief"     => "image/ief",
-                "iii"     => "application/x-iphone",
-                "ins"     => "application/x-internet-signup",
-                "isp"     => "application/x-internet-signup",
-                "jfif"    => "image/pipeg",
-                "jpe"     => "image/jpeg",
-                "jpeg"    => "image/jpeg",
-                "jpg"     => "image/jpeg",
-                "js"      => "application/x-javascript",
-                "latex"   => "application/x-latex",
-                "lha"     => "application/octet-stream",
-                "lsf"     => "video/x-la-asf",
-                "lsx"     => "video/x-la-asf",
-                "lzh"     => "application/octet-stream",
-                "m13"     => "application/x-msmediaview",
-                "m14"     => "application/x-msmediaview",
-                "m3u"     => "audio/x-mpegurl",
-                "man"     => "application/x-troff-man",
-                "mdb"     => "application/x-msaccess",
-                "me"      => "application/x-troff-me",
-                "mht"     => "message/rfc822",
-                "mhtml"   => "message/rfc822",
-                "mid"     => "audio/mid",
-                "mny"     => "application/x-msmoney",
-                "mov"     => "video/quicktime",
-                "movie"   => "video/x-sgi-movie",
-                "mp2"     => "video/mpeg",
-                "mp3"     => "audio/mpeg",
-                "mpa"     => "video/mpeg",
-                "mpe"     => "video/mpeg",
-                "mpeg"    => "video/mpeg",
-                "mpg"     => "video/mpeg",
-                "mpp"     => "application/vnd.ms-project",
-                "mpv2"    => "video/mpeg",
-                "ms"      => "application/x-troff-ms",
-                "msg"     => "application/vnd.ms-outlook",
-                "mvb"     => "application/x-msmediaview",
-                "nc"      => "application/x-netcdf",
-                "nws"     => "message/rfc822",
-                "oda"     => "application/oda",
-                "p10"     => "application/pkcs10",
-                "p12"     => "application/x-pkcs12",
-                "p7b"     => "application/x-pkcs7-certificates",
-                "p7c"     => "application/x-pkcs7-mime",
-                "p7m"     => "application/x-pkcs7-mime",
-                "p7r"     => "application/x-pkcs7-certreqresp",
-                "p7s"     => "application/x-pkcs7-signature",
-                "pbm"     => "image/x-portable-bitmap",
-                "pdf"     => "application/pdf",
-                "pfx"     => "application/x-pkcs12",
-                "pgm"     => "image/x-portable-graymap",
-                "pko"     => "application/ynd.ms-pkipko",
-                "pma"     => "application/x-perfmon",
-                "pmc"     => "application/x-perfmon",
-                "pml"     => "application/x-perfmon",
-                "pmr"     => "application/x-perfmon",
-                "pmw"     => "application/x-perfmon",
-                "pnm"     => "image/x-portable-anymap",
-                "pot"     => "application/vnd.ms-powerpoint",
-                "ppm"     => "image/x-portable-pixmap",
-                "pps"     => "application/vnd.ms-powerpoint",
-                "ppt"     => "application/vnd.ms-powerpoint",
-                "prf"     => "application/pics-rules",
-                "ps"      => "application/postscript",
-                "pub"     => "application/x-mspublisher",
-                "qt"      => "video/quicktime",
-                "ra"      => "audio/x-pn-realaudio",
-                "ram"     => "audio/x-pn-realaudio",
-                "ras"     => "image/x-cmu-raster",
-                "rgb"     => "image/x-rgb",
-                "rmi"     => "audio/mid",
-                "roff"    => "application/x-troff",
-                "rtf"     => "application/rtf",
-                "rtx"     => "text/richtext",
-                "scd"     => "application/x-msschedule",
-                "sct"     => "text/scriptlet",
-                "setpay"  => "application/set-payment-initiation",
-                "setreg"  => "application/set-registration-initiation",
-                "sh"      => "application/x-sh",
-                "shar"    => "application/x-shar",
-                "sit"     => "application/x-stuffit",
-                "snd"     => "audio/basic",
-                "spc"     => "application/x-pkcs7-certificates",
-                "spl"     => "application/futuresplash",
-                "src"     => "application/x-wais-source",
-                "sst"     => "application/vnd.ms-pkicertstore",
-                "stl"     => "application/vnd.ms-pkistl",
-                "stm"     => "text/html",
-                "sv4cpio" => "application/x-sv4cpio",
-                "sv4crc"  => "application/x-sv4crc",
-                "svg"     => "image/svg+xml",
-                "swf"     => "application/x-shockwave-flash",
-                "t"       => "application/x-troff",
-                "tar"     => "application/x-tar",
-                "tcl"     => "application/x-tcl",
-                "tex"     => "application/x-tex",
-                "texi"    => "application/x-texinfo",
-                "texinfo" => "application/x-texinfo",
-                "tgz"     => "application/x-compressed",
-                "tif"     => "image/tiff",
-                "tiff"    => "image/tiff",
-                "tr"      => "application/x-troff",
-                "trm"     => "application/x-msterminal",
-                "tsv"     => "text/tab-separated-values",
-                "txt"     => "text/plain",
-                "uls"     => "text/iuls",
-                "ustar"   => "application/x-ustar",
-                "vcf"     => "text/x-vcard",
-                "vrml"    => "x-world/x-vrml",
-                "wav"     => "audio/x-wav",
-                "wcm"     => "application/vnd.ms-works",
-                "wdb"     => "application/vnd.ms-works",
-                "wks"     => "application/vnd.ms-works",
-                "wmf"     => "application/x-msmetafile",
-                "wps"     => "application/vnd.ms-works",
-                "wri"     => "application/x-mswrite",
-                "wrl"     => "x-world/x-vrml",
-                "wrz"     => "x-world/x-vrml",
-                "xaf"     => "x-world/x-vrml",
-                "xbm"     => "image/x-xbitmap",
-                "xla"     => "application/vnd.ms-excel",
-                "xlc"     => "application/vnd.ms-excel",
-                "xlm"     => "application/vnd.ms-excel",
-                "xls"     => "application/vnd.ms-excel",
-                "xlt"     => "application/vnd.ms-excel",
-                "xlw"     => "application/vnd.ms-excel",
-                "xof"     => "x-world/x-vrml",
-                "xpm"     => "image/x-xpixmap",
-                "xwd"     => "image/x-xwindowdump",
-                "z"       => "application/x-compress",
-                "zip"     => "application/zip"
-            );
-
-            if ($mime_type == '')
-            {
-                $file_extension = pathinfo($file, PATHINFO_EXTENSION);
-                if (array_key_exists($file_extension, $known_mime_types))
-                {
-                    $mime_type = $known_mime_types[$file_extension];
-                }
-                else
-                {
-                    $mime_type = "application/octet-stream";
-                }
-            };
-
-            // Fix http://wordpress.org/support/topic/problems-with-image-files
-            @ob_end_clean(); //turn off output buffering to decrease cpu usage
-            @ob_clean();
-
-            // required for IE, otherwise Content-Disposition may be ignored
-            if (ini_get('zlib.output_compression')) ini_set('zlib.output_compression', 'Off');
-
-            header('Content-Type: ' . $mime_type);
-            if ($action == 'download')
-            {
-                header('Content-Disposition: attachment; filename="' . $name . '"');
-            }
-            else header('Content-Disposition: inline; filename="' . $name . '"');
-            header("Content-Transfer-Encoding: binary");
-            header('Accept-Ranges: bytes');
-
-            /* The three lines below basically make the	download non-cacheable */
-            header("Cache-control: private");
-            header('Pragma: private');
-            header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-
-            // multipart-download and download resuming support
-            if (isset($_SERVER['HTTP_RANGE']))
-            {
-                list($a, $range) = explode("=", $_SERVER['HTTP_RANGE'], 2);
-                list($range) = explode(",", $range, 2);
-                list($range, $range_end) = explode("-", $range);
-                $range = intval($range);
-
-                if ( !$range_end)
-                {
-                    $range_end = $size - 1;
-                }
-                else
-                {
-                    $range_end = intval($range_end);
-                }
-
-                $new_length = $range_end - $range + 1;
-                header("HTTP/1.1 206 Partial Content");
-                header("Content-Length: $new_length");
-                header("Content-Range: bytes $range-$range_end/$size");
-            }
-            else
-            {
-                $new_length = $size;
-                header("Content-Length: " . $size);
-            }
-
-            /* output the file itself */
-            $chunksize = 1 * (1024 * 1024); //you may want to change this
-            $bytes_send = 0;
-            if ($file = fopen($file, 'r'))
-            {
-                if (isset($_SERVER['HTTP_RANGE']))
-                {
-                    fseek($file, $range);
-                }
-
-                while ( !feof($file) && ( !connection_aborted()) && ($bytes_send < $new_length))
-                {
-                    $buffer = fread($file, $chunksize);
-                    print($buffer); //echo($buffer); // is also possible
-                    flush();
-                    $bytes_send += strlen($buffer);
-                }
-                fclose($file);
-            }
-            else die('Error - can not open file.');
-
-            die();
+            // Send the file
+            do_action('cuar/private-content/files/output-file?source=' . $found_file['source'], $post->ID, $found_file, $action);
         }
 
         /*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/

@@ -59,7 +59,7 @@ $attached_files = cuar_get_the_attached_files($post->ID);
                 <ul class="cuar-attached-files">
                     <?php foreach ($attached_files as $file_id => $file) : ?>
                         <li>
-                            <a href="<?php cuar_the_attached_file_link($post->ID, $file, 'download'); ?>" title="<?php esc_attr_e('Download', 'cuar'); ?>">
+                            <a href="<?php cuar_the_attached_file_link($post->ID, $file, 'view'); ?>" title="<?php esc_attr_e('Download', 'cuar'); ?>">
                                 <?php cuar_the_attached_file_caption($post->ID, $file); ?> (<?php cuar_the_attached_file_size($post->ID, $file); ?>)
                             </a>
                         </li>
