@@ -80,6 +80,8 @@ class CUAR_PrivateFileAdminInterface
      */
     public function print_upload_meta_box()
     {
+        wp_nonce_field( plugin_basename(__FILE__), 'wp_cuar_nonce_file' );
+
         wp_enqueue_script('cuar.admin');
 
         do_action("cuar/private-content/files/before-upload-meta-box");

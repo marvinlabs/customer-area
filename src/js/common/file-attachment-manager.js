@@ -332,12 +332,12 @@
     };
 
     $.cuar.fileAttachmentManager.defaultOptions = {
-        attachmentList: '.cuar-file-attachments',             // The container for the list of attachments
-        attachmentItem: '.cuar-file-attachment',              // An item for the file attachment list
-        attachmentItemTemplate: '.cuar-file-attachment-template',     // The template for new items
-        selectorList: '.cuar-file-selectors',               // The container for the selectors
-        selectorItem: '.cuar-file-selector',                // An item for the selectors list
-        selectorInput: '.cuar-file-selector-input'                // An item for the selectors list
+        attachmentList: '.cuar-file-attachments',                   // The container for the list of attachments
+        attachmentItem: '.cuar-file-attachment',                    // An item for the file attachment list
+        attachmentItemTemplate: '.cuar-file-attachment-template',   // The template for new items
+        selectorList: '.cuar-file-selectors',                       // The container for the selectors
+        selectorItem: '.cuar-file-selector',                        // An item for the selectors list
+        selectorInput: '.cuar-file-selector-input'                  // An item for the selectors list
     };
 
     $.fn.fileAttachmentManager = function (options) {
