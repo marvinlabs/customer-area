@@ -5,6 +5,7 @@
 
   .cuar-file-attachments {
     .cuar-file-attachment {
+      position: relative;
       border: 1px solid #e0e0e0;
       background: #fafafa;
       padding: 4px 7px;
@@ -29,14 +30,37 @@
       }
 
       .cuar-progress {
-        display: none;
-        float: right;
-        width: 20px;
-        height: 28px;
-        background-image: url('../img/loading-indicator.gif');
-        background-position-y: 4px;
-        background-repeat: no-repeat;
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+
+        .indeterminate {
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 8px;
+          bottom: 0;
+          height: 100%;
+          background: url('../img/loading-indicator.gif') no-repeat;
+          background-position-x: 100%;
+          background-position-y: 8px;
+        }
+
+        .determinate {
+          display: none;
+          position: absolute;
+          background-color: #a7cfa5;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 50%;
+          height: 6px;
+        }
       }
+
       &.cuar-state-pending {
         background-color: #D4E9FF;
       }

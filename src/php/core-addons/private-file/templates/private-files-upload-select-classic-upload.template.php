@@ -7,10 +7,7 @@
 
 <div class="metabox-row">
     <div class="dropzone" id="cuar_dropzone" data-post-id="<?php echo esc_attr($post->ID); ?>">
-    </div>
-    <div class="dropzone-result">
-    </div>
-    <div class="dropzone-progress">
+        <input type="file" name="cuar_file" />
     </div>
 </div>
 
@@ -45,9 +42,9 @@
                 data.submit();
             },
             done: function (e, data) {
-                if (data.result.success) {
-                    for (var i = 0, len = data.files.length; i < len; i++) {
-                        var filename = data.files[i].name;
+                for (var i = 0, len = data.files.length; i < len; i++) {
+                    var filename = data.files[i].name;
+                    if (data.result.success) {
                         var newFilename = data.result.data.file;
                         var newCaption = data.result.data.caption;
                         $(document).trigger('cuar:attachmentManager:updateItem', [
@@ -61,14 +58,27 @@
                             'success'
                         ]);
                     }
-                } else {
-                    for (var i = 0, len = data.files.length; i < len; i++) {
-                        var filename = data.files[i].name;
+                    else {
+                        if (data.result.data.length > 0) {
+                            alert(data.result.data[0]);
+                        }
+
                         $(document).trigger('cuar:attachmentManager:updateItemState', [
                             filename,
                             'error'
                         ]);
                     }
+                }
+            },
+            fail: function (e, data) {
+                for (var i = 0, len = data.files.length; i < len; i++) {
+                    alert(data.errorThrown);
+
+                    var filename = data.files[i].name;
+                    $(document).trigger('cuar:attachmentManager:updateItemState', [
+                        filename,
+                        'error'
+                    ]);
                 }
             },
             progress: function (e, data) {
@@ -112,51 +122,7 @@
                 dropZone.removeClass('in hover');
             }, 100);
         });
-
-//            url: cuar.ajaxUrl,
-//            paramName: 'cuar_file',
-//            params: {
-//                'action': 'cuar_attach_file',
-//                'method': 'classic-upload',
-//                'post_id': "<?php //echo esc_attr($post->ID); ?>//"
-//            },
-//            success: function (file, response) {
-//            },
-//            error: function (file, response) {
-//            }
-//        });
-
-
-//        $('.cuar-ftp-<?php //echo $ftp_operation; ?>//-files').click(function (event) {
-//            event.preventDefault();
-//
-//            var selectBox = $(this).siblings('.cuar-ftp-file-selection').first();
-//            var selectedFiles = selectBox.val();
-//            var postId = selectBox.data('post-id');
-//
-//            if (selectedFiles == null || selectedFiles.length == 0) return;
-//
-//            // Add all selected files using the attachment manager
-//            for (var i = 0, len = selectedFiles.length; i < len; i++) {
-//                var filename = selectedFiles[i];
-//                $(document).trigger('cuar:attachmentManager:addItem', [
-//                    'ftp-<?php //echo $ftp_operation; ?>//',
-//                    postId,
-//                    filename,
-//                    filename
-//                ]);
-//            }
-//        });
-//
-//        // When the file has been attached, we remove it from the select box
-//        $(document).on('cuar:attachmentManager:fileAttached', function(event, postId, filename) {
-//            $('.cuar-ftp-file-selection')
-//                .children()
-//                .filter(function() {
-//                    return $(this).val()==filename;
-//                })
-//                .remove();
-//        });
-    });
+    })
+    ;
     //-->
 </script>

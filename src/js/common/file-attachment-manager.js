@@ -260,6 +260,7 @@
                 case 'pending':
                     actions.hide();
                     progress.show();
+                    base._updateAttachmentItemProgress(item, 0);
                     break;
 
                 case 'error':
@@ -282,7 +283,17 @@
          */
         base._updateAttachmentItemProgress = function (item, progress) {
             var progressElt = item.children('.cuar-progress');
-            progressElt.text(progress);
+            var indeterminateElt = progressElt.children('.indeterminate');
+            var determinateElt = progressElt.children('.determinate');
+
+            if (progress<=0) {
+                indeterminateElt.show();
+                determinateElt.hide();
+            } else {
+                indeterminateElt.hide();
+                determinateElt.show();
+                determinateElt.css({'width': progress + '%'});
+            }
         };
 
         /** Getter */

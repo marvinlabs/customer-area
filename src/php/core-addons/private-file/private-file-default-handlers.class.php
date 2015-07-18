@@ -39,7 +39,7 @@ class CUAR_PrivateFilesDefaultHandlers
         // Addition of files for the methods we manage
         add_filter('cuar/private-content/files/on-attach-file?method=ftp-copy', array(&$this, 'copy_ftp_file'), 10, 6);
         add_filter('cuar/private-content/files/on-attach-file?method=ftp-move', array(&$this, 'move_ftp_file'), 10, 6);
-        add_filter('cuar/private-content/files/on-attach-file?method=classic-upload', array(&$this, 'upload_file'), 10, 6);
+        add_filter('cuar/private-content/files/on-attach-file?method=classic-upload', array(&$this, 'attach_uploaded_file'), 10, 6);
 
         // Get a unique filename for the methods we manage
         add_filter('cuar/private-content/files/unique-filename?method=ftp-copy', array(&$this, 'unique_local_filename'), 10, 4);
@@ -287,7 +287,7 @@ class CUAR_PrivateFilesDefaultHandlers
      *
      * @return array Errors if any
      */
-    public function upload_file($errors, $pf_addon, $post_id, $filename, $caption, $extra)
+    public function attach_uploaded_file($errors, $pf_addon, $post_id, $filename, $caption, $extra)
     {
         $uploaded_file = isset($_FILES['cuar_file']) ? $_FILES['cuar_file'] : null;
         if (empty($uploaded_file))

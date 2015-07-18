@@ -14,5 +14,8 @@
         <a href="#" class="cuar-remove-action" title="<?php esc_attr_e('Remove', 'cuar'); ?>">
             <span class="dashicons dashicons-dismiss"></span></a>
     </span>
-    <span class="cuar-progress" style="display: none;"></span>
+    <span class="cuar-progress" style="display: none;">
+        <span class="determinate"></span>
+        <span class="indeterminate"></span>
+    </span>
 </div>

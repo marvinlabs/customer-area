@@ -673,8 +673,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $found_file = $this->get_attached_file_by_name($post_id, $filename, $files);
             if ($found_file == false)
             {
-                $errors[] = __('File not found', 'cuar');
-                wp_send_json_error($errors);
+                // Consider that is ok with us
+                wp_send_json_success();
             }
 
             // File exists, we'll remove it now. First physically
