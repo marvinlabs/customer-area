@@ -339,6 +339,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          * @param string $caption
          * @param string $source
          * @param mixed  $extra
+         *
+         * @return array The file description
          */
         public function add_attached_file($post_id, $filename, $caption, $source, $extra)
         {
@@ -373,6 +375,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             $this->save_attached_files($post_id, $files);
+
+            return $meta;
         }
 
         /**
@@ -642,9 +646,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Fine, update file meta
             $source = apply_filters('cuar/private-content/files/file-source?method=' . $method, 'local');
             if (empty($caption)) $caption = $filename;
-            $this->add_attached_file($post_id, $filename, $caption, $source, $extra);
+            $added_file = $this->add_attached_file($post_id, $filename, $caption, $source, $extra);
 
-            wp_send_json_success(array('filename' => $filename));
+            wp_send_json_success($added_file);
         }
 
         /**

@@ -46,6 +46,7 @@
 
 <script type="text/javascript">
     <!--
+    // TODO Get all this in a proper JS file
     jQuery(document).ready(function ($) {
         $('.cuar-ftp-<?php echo $ftp_operation; ?>-files').click(function (event) {
             event.preventDefault();
@@ -60,6 +61,11 @@
             for (var i = 0, len = selectedFiles.length; i < len; i++) {
                 var filename = selectedFiles[i];
                 $(document).trigger('cuar:attachmentManager:addItem', [
+                    postId,
+                    filename,
+                    filename
+                ]);
+                $(document).trigger('cuar:attachmentManager:sendFile', [
                     'ftp-<?php echo $ftp_operation; ?>',
                     postId,
                     filename,
@@ -69,11 +75,11 @@
         });
 
         // When the file has been attached, we remove it from the select box
-        $(document).on('cuar:attachmentManager:fileAttached', function(event, postId, filename) {
+        $(document).on('cuar:attachmentManager:fileAttached', function(event, postId, oldFilename, newFilename, newCaption) {
             $('.cuar-ftp-file-selection')
                 .children()
                 .filter(function() {
-                    return $(this).val()==filename;
+                    return $(this).val()==oldFilename;
                 })
                 .remove();
         });

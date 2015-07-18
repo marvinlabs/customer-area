@@ -37,6 +37,49 @@
 
             // Bind to our custom events
             $(document).on('cuar:attachmentManager:addItem', base._onAddAttachmentItem);
+            $(document).on('cuar:attachmentManager:sendFile', base._onSendFile);
+            $(document).on('cuar:attachmentManager:updateItem', base._onUpdateAttachmentItem);
+            $(document).on('cuar:attachmentManager:updateItemProgress', base._onUpdateAttachmentItemProgress);
+            $(document).on('cuar:attachmentManager:updateItemState', base._onUpdateAttachmentItemState);
+        };
+
+        /**
+         * When a remove attachment button is clicked, send an AJAX request
+         */
+        base._onUpdateAttachmentItem = function (event, filename, postId, newFilename, newCaption) {
+            var existingItem = base._getAttachmentItemByFilename(filename);
+            if (existingItem.length==0) {
+                console.log('_onUpdateAttachmentItem :: Item ' + filename + ' not found');
+                return;
+            }
+
+            base._updateAttachmentItem(existingItem, postId, newFilename, newCaption);
+        };
+
+        /**
+         * Show some progress on the item
+         */
+        base._onUpdateAttachmentItemProgress = function (event, filename, progress) {
+            var existingItem = base._getAttachmentItemByFilename(filename);
+            if (existingItem.length==0) {
+                console.log('_onUpdateAttachmentItemProgress :: Item ' + filename + ' not found');
+                return;
+            }
+
+            base._updateAttachmentItemProgress(existingItem, progress);
+        };
+
+        /**
+         * Show some progress on the item
+         */
+        base._onUpdateAttachmentItemState = function (event, filename, state) {
+            var existingItem = base._getAttachmentItemByFilename(filename);
+            if (existingItem.length==0) {
+                console.log('_onUpdateAttachmentItemState :: Item ' + filename + ' not found');
+                return;
+            }
+
+            base._updateAttachmentItemState(existingItem, state);
         };
 
         /**
@@ -104,7 +147,7 @@
         };
 
         /**
-         * Callback for the event cuar:attachmentManager:addItem
+         * Callback for the event cuar:attachmentManager:sendFile
          * @param event
          * @param method
          * @param postId
@@ -112,11 +155,8 @@
          * @param caption
          * @private
          */
-        base._onAddAttachmentItem = function (event, method, postId, filename, caption, extra) {
-            var existingItem = base._getAttachmentItems().filter(function () {
-                return $(this).data('filename') == filename;
-            });
-
+        base._onSendFile = function (event, method, postId, filename, caption, extra) {
+            var existingItem = base._getAttachmentItemByFilename(filename);
             if (existingItem.length==0) {
                 existingItem = base._getAttachmentTemplate().clone();
                 existingItem.appendTo(base.options.attachmentList);
@@ -148,15 +188,39 @@
                         }
                         base._updateAttachmentItemState(existingItem, 'error');
                     } else {
+                        var newFilename = response.data.file;
+                        var newCaption = response.data.caption;
+
+                        base._updateAttachmentItem(existingItem, postId, newFilename, newCaption);
                         base._updateAttachmentItemState(existingItem, 'success');
 
                         $(document).trigger('cuar:attachmentManager:fileAttached', [
                             postId,
-                            filename
+                            filename,
+                            newFilename,
+                            newCaption
                         ]);
                     }
                 }
             );
+        };
+
+        /**
+         * Callback for the event cuar:attachmentManager:addItem
+         * @param event
+         * @param postId
+         * @param filename
+         * @param caption
+         * @private
+         */
+        base._onAddAttachmentItem = function (event, postId, filename, caption, extra) {
+            var existingItem = base._getAttachmentItemByFilename(filename);
+            if (existingItem.length==0) {
+                existingItem = base._getAttachmentTemplate().clone();
+                existingItem.appendTo(base.options.attachmentList);
+            }
+
+            base._updateAttachmentItem(existingItem, postId, filename, caption);
         };
 
         /**
@@ -168,6 +232,10 @@
          * @private
          */
         base._updateAttachmentItem = function (item, postId, filename, caption) {
+            if (caption===undefined || caption.trim().length==0) {
+                caption = filename;
+            }
+
             item.data('post-id', postId);
             item.data('filename', filename);
             item.children('.cuar-caption').html(caption);
@@ -206,6 +274,17 @@
             }
         };
 
+        /**
+         * Change the progress value of an attachment item
+         * @param item
+         * @param progress
+         * @private
+         */
+        base._updateAttachmentItemProgress = function (item, progress) {
+            var progressElt = item.children('.cuar-progress');
+            progressElt.text(progress);
+        };
+
         /** Getter */
         base._getAttachmentList = function () {
             return $(base.options.attachmentList, base.el);
@@ -214,6 +293,13 @@
         /** Getter */
         base._getAttachmentItems = function () {
             return $(base.options.attachmentList + '>' + base.options.attachmentItem, base.el);
+        };
+
+        /** Getter */
+        base._getAttachmentItemByFilename = function (filename) {
+            return base._getAttachmentItems().filter(function () {
+                return $(this).data('filename') == filename;
+            });
         };
 
         /** Getter */

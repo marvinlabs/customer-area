@@ -32,26 +32,54 @@
                 // Add all selected files using the attachment manager
                 for (var i = 0, len = data.files.length; i < len; i++) {
                     var filename = data.files[i].name;
-//                    $(document).trigger('cuar:attachmentManager:addItem', [
-//                        'classic-upload',
-//                        "<?php //echo esc_attr($post->ID); ?>//",
-//                        filename,
-//                        filename
-//                    ]);
-                    $('<p/>').text('started ' + filename).appendTo('.dropzone-result');
+                    $(document).trigger('cuar:attachmentManager:addItem', [
+                        "<?php echo esc_attr($post->ID); ?>",
+                        filename,
+                        filename
+                    ]);
+                    $(document).trigger('cuar:attachmentManager:updateItemState', [
+                        filename,
+                        'pending'
+                    ]);
                 }
                 data.submit();
             },
             done: function (e, data) {
                 if (data.result.success) {
-                    $('<p/>').text('done ' + file.name).appendTo('.dropzone-result');
+                    for (var i = 0, len = data.files.length; i < len; i++) {
+                        var filename = data.files[i].name;
+                        var newFilename = data.result.data.file;
+                        var newCaption = data.result.data.caption;
+                        $(document).trigger('cuar:attachmentManager:updateItem', [
+                            filename,
+                            "<?php echo esc_attr($post->ID); ?>",
+                            newFilename,
+                            newCaption
+                        ]);
+                        $(document).trigger('cuar:attachmentManager:updateItemState', [
+                            newFilename,
+                            'success'
+                        ]);
+                    }
                 } else {
-                    $('<p/>').text('error ' + data.result.data).appendTo('.dropzone-result');
+                    for (var i = 0, len = data.files.length; i < len; i++) {
+                        var filename = data.files[i].name;
+                        $(document).trigger('cuar:attachmentManager:updateItemState', [
+                            filename,
+                            'error'
+                        ]);
+                    }
                 }
             },
-            progressall: function (e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('.dropzone-progress').text(progress + '%');
+            progress: function (e, data) {
+                for (var i = 0, len = data.files.length; i < len; i++) {
+                    var filename = data.files[i].name;
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $(document).trigger('cuar:attachmentManager:updateItemProgress', [
+                        filename,
+                        progress
+                    ]);
+                }
             }
         });
 
