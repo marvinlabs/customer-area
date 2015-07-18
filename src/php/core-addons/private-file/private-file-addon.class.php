@@ -506,6 +506,75 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             return $file;
         }
 
+        /*------- UTILITY FUNCTIONS FOR MAINTENANCE ---------------------------------------------------------------------*/
+
+        /**
+         * Delete physical files which are not registered in meta
+         *
+         * @param int $post_id The post ID
+         */
+        public function remove_orphan_files($post_id)
+        {
+            do_action('cuar/private-content/files/remove-orphan-files?source=local', $post_id);
+        }
+
+        /**
+         * Move all legacy files to the new storage folder
+         *
+         * @param int   $post_id The post ID
+         * @param array $owner   The current owner of the post (or previous one if calling this when saving post
+         */
+        public function move_legacy_files($post_id, $owner)
+        {
+            /** @var CUAR_PostOwnerAddOn $po_addon */
+            $po_addon = $this->plugin->get_addon('post-owner');
+
+            // TODO TEST MOVE LEGACY FILES TO NEW FOLDER
+            $files = $this->pf_addon->get_attached_files($post_id);
+            foreach ($files as $file_id => $file)
+            {
+                if ($file['source'] == 'legacy')
+                {
+                    $old_path = $po_addon->get_legacy_owner_file_path($post_id, $file['file'], $owner['ids'], $owner['type'], false);
+                    $new_path = $po_addon->get_private_file_path($file['file'], $post_id, true);
+
+                    if (file_exists($old_path))
+                    {
+                        @copy($old_path, $new_path);
+                        @unlink($old_path);
+
+                        // Maybe delete empty folder
+                        if ((count(scandir(basename($old_path))) == 2))
+                        {
+                            @unlink(basename($old_path));
+                        }
+                    }
+
+                    $files[$file_id]['source'] = 'local';
+                }
+            }
+            $this->pf_addon->save_attached_files($post_id, $files);
+        }
+
+        /**
+         * Remove all file entries in meta which are not physically present
+         *
+         * @param int $post_id The post ID
+         */
+        public function remove_missing_files($post_id)
+        {
+            $files = $this->pf_addon->get_attached_files($post_id);
+            foreach ($files as $file_id => $file)
+            {
+                $is_missing = apply_filters('cuar/private-content/files/is-missing?source=' . $file['source'], false, $post_id, $file);
+                if ($is_missing)
+                {
+                    unset($files[$file_id]);
+                }
+            }
+            $this->pf_addon->save_attached_files($post_id, $files);
+        }
+
         /*------- AJAX FUNCTIONS ----------------------------------------------------------------------------------------*/
 
         /**
@@ -593,175 +662,6 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $this->save_attached_files($post_id, $files);
 
             wp_send_json_success();
-        }
-
-        /*------- LEGACY FUNCTION ---------------------------------------------------------------------------------------*/
-
-        /**
-         * Handles the case when we need to change the owner of the file of an existing post
-         *
-         * @param int   $post_id
-         * @param array $previous_owner
-         * @param array $new_owner
-         *
-         * @deprecated
-         */
-        public function handle_private_file_owner_changed($post_id, $previous_owner, $new_owner)
-        {
-            $po_addon = $this->plugin->get_addon('post-owner');
-
-            $count = $this->get_attached_file_count($post_id);
-            for ($i = 0; $i < $count; ++$i)
-            {
-                $previous_file = $this->get_attached_file($post_id, $i);
-                if ($previous_file)
-                {
-                    $previous_file['path'] = $po_addon->get_legacy_owner_file_path($post_id,
-                        $previous_file['file'],
-                        $previous_owner['ids'],
-                        $previous_owner['type'],
-                        true);
-
-                    if (file_exists($previous_file['path']))
-                    {
-                        $new_file_path = $po_addon->get_legacy_owner_file_path($post_id,
-                            $previous_file['file'],
-                            $new_owner['ids'],
-                            $new_owner['type'],
-                            true);
-
-                        if ($previous_file['path'] == $new_file_path) return;
-                        if (copy($previous_file['path'], $new_file_path)) unlink($previous_file['path']);
-                    }
-                }
-            }
-        }
-
-        /**
-         * Change the upload directory on the fly when uploading our private file
-         *
-         * @param unknown $default_dir
-         *
-         * @return unknown|multitype:boolean string unknown
-         *
-         * @deprecated
-         */
-        public function custom_upload_dir($default_dir)
-        {
-            if ( !isset($_POST['post_ID']) || $_POST['post_ID'] < 0) return $default_dir;
-            if ($_POST['post_type'] != 'cuar_private_file') return $default_dir;
-
-            /** @var CUAR_PostOwnerAddOn $po_addon */
-            $po_addon = $this->plugin->get_addon('post-owner');
-
-            $dir = $po_addon->get_base_private_storage_directory();
-            $url = $po_addon->get_base_private_storage_url();
-
-            $bdir = $dir;
-            $burl = $url;
-
-            $subdir = '/' . $po_addon->get_private_storage_directory($_POST['post_ID']);
-
-            $dir .= $subdir;
-            $url .= $subdir;
-
-            $custom_dir = array(
-                'path'    => $dir,
-                'url'     => $url,
-                'subdir'  => $subdir,
-                'basedir' => $bdir,
-                'baseurl' => $burl,
-                'error'   => false,
-            );
-
-            return $custom_dir;
-        }
-
-        /**
-         *
-         * @param int   $post_id
-         * @param array $previous_owner
-         * @param array $new_owner
-         *
-         * @deprecated
-         */
-        public function handle_new_private_file_upload($post_id, $previous_owner, $new_owner, $file)
-        {
-            if ( !isset($file) || empty($file)) return array('error' => __('no file to upload', 'cuar'));
-
-            $po_addon = $this->plugin->get_addon('post-owner');
-
-            $previous_file = get_post_meta($post_id, 'cuar_private_file_file', true);
-
-            // Do some file type checking on the uploaded file if needed
-            $new_file_name = $file['name'];
-            $supported_types = apply_filters('cuar/private-content/files/supported-types', null);
-            if ($supported_types != null)
-            {
-                $arr_file_type = wp_check_filetype(basename($file['name']));
-                $uploaded_type = $arr_file_type['type'];
-
-                if ( !in_array($uploaded_type, $supported_types))
-                {
-                    $msg = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar',
-                        implode(', ', $supported_types)));
-
-                    $this->plugin->add_admin_notice($msg);
-
-                    return array('error' => $msg);
-                }
-            }
-
-            // Delete the existing file if any
-            if ($previous_file)
-            {
-                $previous_file['path'] = $po_addon->get_owner_file_path($post_id,
-                    $previous_file['file'],
-                    $previous_owner['ids'],
-                    $previous_owner['type'],
-                    true);
-
-                if ($previous_file['path'] && file_exists($previous_file['path']))
-                {
-                    unlink($previous_file['path']);
-                }
-            }
-
-            // Use the WordPress API to upload the file
-            require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-            require_once(ABSPATH . "wp-admin" . '/includes/file.php');
-            require_once(ABSPATH . "wp-admin" . '/includes/media.php');
-
-            // We will send files to a custom directory
-            add_filter('upload_dir', array(&$this, 'custom_upload_dir'));
-            if ( !isset($_POST['post_ID']) || $_POST['post_ID'] < 0) $_POST['post_ID'] = $post_id;
-            if ( !isset($_POST['post_type']) || $_POST['post_type'] != 'cuar_private_file') $_POST['post_type'] = 'cuar_private_file';
-
-            // Let WP handle the rest
-            $upload = wp_handle_upload($file, array('test_form' => false));
-
-            if (empty($upload))
-            {
-                $msg = sprintf(__('An unknown error happened while uploading your file.', 'cuar'));
-                $this->plugin->add_admin_notice($msg);
-
-                return array('error' => $msg);
-            }
-            else if (isset($upload['error']))
-            {
-                $msg = sprintf(__('An error happened while uploading your file: %s', 'cuar'), $upload['error']);
-                $this->plugin->add_admin_notice($msg);
-
-                return array('error' => $msg);
-            }
-            else
-            {
-                $upload['file'] = basename($upload['file']);
-                unset($upload['url']);
-                update_post_meta($post_id, 'cuar_private_file_file', $upload);
-
-                return true;
-            }
         }
 
         /*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/

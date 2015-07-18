@@ -267,58 +267,28 @@ else
      * @param unknown $post
      * @param array   $previous_owner
      * @param array   $new_owner
-     *
-     * @return void|unknown
      */
     public function do_save_post($post_id, $post, $previous_owner, $new_owner)
     {
         global $post;
 
         // When auto-saving, we don't do anything
-        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
         // Only take care of our own post type
         if ( !$post || get_post_type($post->ID) != 'cuar_private_file') return;
 
         // Security check
-        if ( !wp_verify_nonce($_POST['wp_cuar_nonce_file'], plugin_basename(__FILE__))) return $post_id;
+        if ( !wp_verify_nonce($_POST['wp_cuar_nonce_file'], plugin_basename(__FILE__))) return;
 
-        /** @var CUAR_PostOwnerAddOn $po_addon */
-        $po_addon = $this->plugin->get_addon('post-owner');
-
-        // TODO TEST MOVE LEGACY FILES TO NEW FOLDER
-        $files = $this->pf_addon->get_attached_files($post_id);
-        foreach ($files as $file_id => $file)
-        {
-            if ($file['source'] == 'legacy')
-            {
-                $old_path = $po_addon->get_legacy_owner_file_path($post_id, $file['file'], $previous_owner['ids'], $previous_owner['type'], false);
-                $new_path = $po_addon->get_private_file_path($file['file'], $post_id, true);
-
-                if (file_exists($old_path))
-                {
-                    @copy($old_path, $new_path);
-                    @unlink($old_path);
-                }
-
-                $files[$file_id]['source'] = 'local';
-            }
-        }
-        $this->pf_addon->save_attached_files($post_id, $files);
+        // Move the legacy files to the new storage folders
+        $this->pf_addon->move_legacy_files($post_id, $previous_owner);
 
         // Remove files which are physically missing
-        foreach ($files as $file_id => $file)
-        {
-            $is_missing = apply_filters('cuar/private-content/files/is-missing?source=' . $file['source'], false, $post_id, $file);
-            if ($is_missing)
-            {
-                unset($files[$file_id]);
-            }
-        }
-        $this->pf_addon->save_attached_files($post_id, $files);
+        $this->pf_addon->remove_missing_files($post_id);
 
         // Delete physical files which are not registered in meta
-        do_action('cuar/private-content/files/remove-orphan-files?source=local', $post_id);
+        $this->pf_addon->remove_orphan_files($post_id);
     }
 
     /*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/

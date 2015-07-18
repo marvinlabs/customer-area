@@ -235,13 +235,12 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          * @param array  $owner_ids           The IDs of the owners
          * @param string $owner_type          The type of owner
          * @param bool   $create_dirs         Shall we create the directory if missing
-         * @param bool   $with_post_id_suffix Shall we suffix the path with the post ID as a sub directory?
          *
          * @return bool|string
          *
          * @deprecated
          */
-        public function get_legacy_owner_file_path($post_id, $filename, $owner_ids, $owner_type, $create_dirs = false, $with_post_id_suffix = true)
+        public function get_legacy_owner_file_path($post_id, $filename, $owner_ids, $owner_type, $create_dirs = false)
         {
             if (empty($owner_ids) || empty($owner_type) || empty($filename))
             {
@@ -251,11 +250,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $dir = $this->get_legacy_base_private_storage_directory()
                 . '/'
                 . $this->get_legacy_owner_storage_directory($owner_ids, $owner_type);
-
-            if ($with_post_id_suffix)
-            {
-                $dir .= '/' . $post_id;
-            }
 
             if ($create_dirs && !file_exists($dir))
             {
@@ -272,13 +266,12 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          * @param string   $owner_type  The type of owner
          * @param bool     $absolute    Do we need the absolute path?
          * @param bool     $create_dirs Shall we create the directory if missing
-         * @param int|bool $post_id     The ID of the post which is assigned to an owner
          *
          * @return string The storage directory for an owner
          *
          * @deprecated
          */
-        public function get_legacy_owner_storage_directory($owner_ids, $owner_type, $absolute = false, $create_dirs = false, $post_id = false)
+        public function get_legacy_owner_storage_directory($owner_ids, $owner_type, $absolute = false, $create_dirs = false)
         {
             if (empty($owner_ids) || empty($owner_type))
             {
@@ -292,11 +285,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             else
             {
                 $dir = md5($owner_type . '_' . $owner_ids);
-            }
-
-            if ($post_id !== false)
-            {
-                $dir .= '/' . $post_id;
             }
 
             if ($absolute)
