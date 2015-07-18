@@ -46,40 +46,37 @@
         /**
          * When a remove attachment button is clicked, send an AJAX request
          */
-        base._onUpdateAttachmentItem = function (event, filename, postId, newFilename, newCaption) {
-            var existingItem = base._getAttachmentItemByFilename(filename);
-            if (existingItem.length==0) {
-                console.log('_onUpdateAttachmentItem :: Item ' + filename + ' not found');
+        base._onUpdateAttachmentItem = function (event, item, postId, newFilename, newCaption) {
+            if (item.length==0) {
+                console.log('_onUpdateAttachmentItem :: Item for not found');
                 return;
             }
 
-            base._updateAttachmentItem(existingItem, postId, newFilename, newCaption);
+            base._updateAttachmentItem(item, postId, newFilename, newCaption);
         };
 
         /**
          * Show some progress on the item
          */
-        base._onUpdateAttachmentItemProgress = function (event, filename, progress) {
-            var existingItem = base._getAttachmentItemByFilename(filename);
-            if (existingItem.length==0) {
-                console.log('_onUpdateAttachmentItemProgress :: Item ' + filename + ' not found');
+        base._onUpdateAttachmentItemProgress = function (event, item, progress) {
+            if (item.length==0) {
+                console.log('_onUpdateAttachmentItemProgress :: Item not found');
                 return;
             }
 
-            base._updateAttachmentItemProgress(existingItem, progress);
+            base._updateAttachmentItemProgress(item, progress);
         };
 
         /**
          * Show some progress on the item
          */
-        base._onUpdateAttachmentItemState = function (event, filename, state) {
-            var existingItem = base._getAttachmentItemByFilename(filename);
-            if (existingItem.length==0) {
-                console.log('_onUpdateAttachmentItemState :: Item ' + filename + ' not found');
+        base._onUpdateAttachmentItemState = function (event, item, state) {
+            if (item.length==0) {
+                console.log('_onUpdateAttachmentItemState :: Item not found');
                 return;
             }
 
-            base._updateAttachmentItemState(existingItem, state);
+            base._updateAttachmentItemState(item, state);
         };
 
         /**
@@ -140,6 +137,10 @@
                         // Ok. Remove the line
                         attachedItem.slideUp(400, function () {
                             attachedItem.remove();
+
+                            if (base._getAttachmentItems().length==0) {
+                                base._getAttachmentList().children('cuar-empty-message').hide();
+                            }
                         });
                     }
                 }
@@ -155,19 +156,14 @@
          * @param caption
          * @private
          */
-        base._onSendFile = function (event, method, postId, filename, caption, extra) {
-            var existingItem = base._getAttachmentItemByFilename(filename);
-            if (existingItem.length==0) {
-                existingItem = base._getAttachmentTemplate().clone();
-                existingItem.appendTo(base.options.attachmentList);
-            }
-
+        base._onSendFile = function (event, item, method, postId, filename, caption, extra) {
+            var tempCaption = caption;
             if (caption===undefined || caption.trim().length==0) {
-                caption = filename;
+                tempCaption = filename;
             }
 
-            base._updateAttachmentItem(existingItem, postId, filename, caption);
-            base._updateAttachmentItemState(existingItem, 'pending');
+            base._updateAttachmentItem(item, postId, filename, tempCaption);
+            base._updateAttachmentItemState(item, 'pending');
 
             // Send some Ajax
             $.post(
@@ -186,13 +182,13 @@
                         if (response.data.length > 0) {
                             alert(response.data[0]);
                         }
-                        base._updateAttachmentItemState(existingItem, 'error');
+                        base._updateAttachmentItemState(item, 'error');
                     } else {
                         var newFilename = response.data.file;
                         var newCaption = response.data.caption;
 
-                        base._updateAttachmentItem(existingItem, postId, newFilename, newCaption);
-                        base._updateAttachmentItemState(existingItem, 'success');
+                        base._updateAttachmentItem(item, postId, newFilename, newCaption);
+                        base._updateAttachmentItemState(item, 'success');
 
                         $(document).trigger('cuar:attachmentManager:fileAttached', [
                             postId,
@@ -214,13 +210,14 @@
          * @private
          */
         base._onAddAttachmentItem = function (event, postId, filename, caption, extra) {
-            var existingItem = base._getAttachmentItemByFilename(filename);
-            if (existingItem.length==0) {
-                existingItem = base._getAttachmentTemplate().clone();
-                existingItem.appendTo(base.options.attachmentList);
-            }
+            item = base._getAttachmentTemplate().clone();
+            item.appendTo(base.options.attachmentList);
 
-            base._updateAttachmentItem(existingItem, postId, filename, caption);
+            base._updateAttachmentItem(item, postId, filename, caption);
+
+            base._getAttachmentList().children('cuar-empty-message').hide();
+
+            return item;
         };
 
         /**
@@ -298,12 +295,12 @@
 
         /** Getter */
         base._getAttachmentList = function () {
-            return $(base.options.attachmentList, base.el);
+            return $(base.options.attachmentList);
         };
 
         /** Getter */
         base._getAttachmentItems = function () {
-            return $(base.options.attachmentList + '>' + base.options.attachmentItem, base.el);
+            return $(base.options.attachmentList + '>' + base.options.attachmentItem);
         };
 
         /** Getter */
@@ -315,7 +312,7 @@
 
         /** Getter */
         base._getAttachmentTemplate = function () {
-            return $(base.options.attachmentItemTemplate, base.el)
+            return $(base.options.attachmentItemTemplate)
                 .children(base.options.attachmentItem)
                 .first();
         };

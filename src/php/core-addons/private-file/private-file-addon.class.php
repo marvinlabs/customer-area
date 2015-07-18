@@ -613,15 +613,15 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $errors = array();
             $method = isset($_POST['method']) ? $_POST['method'] : 0;
             $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
-            $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
-            $caption = isset($_POST['caption']) ? $_POST['caption'] : $filename;
             $extra = isset($_POST['extra']) ? $_POST['extra'] : '';
 
-            // Get a unique name for this file
-            $filename = apply_filters('cuar/private-content/files/unique-filename?method=' . $method, $filename, $post_id, $extra);
+            $initial_filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
+            $unique_filename = apply_filters('cuar/private-content/files/unique-filename?method=' . $method, $initial_filename, $post_id, $extra);
+
+            $caption = isset($_POST['caption']) ? $_POST['caption'] : $unique_filename;
 
             // Check for missing parameters
-            if (empty($post_id) || empty($filename) || empty($method))
+            if (empty($post_id) || empty($unique_filename) || empty($method))
             {
                 $errors[] = __('Missing parameters', 'cuar');
                 wp_send_json_error($errors);
@@ -629,7 +629,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
             // Check file exists
             $found_file_index = null;
-            $found_file = $this->get_attached_file_by_name($post_id, $filename);
+            $found_file = $this->get_attached_file_by_name($post_id, $unique_filename);
             if ($found_file)
             {
                 $errors[] = __('You cannot attach files with the same name', 'cuar');
@@ -637,7 +637,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // File does not exist, we'll add it now
-            $errors = apply_filters('cuar/private-content/files/on-attach-file?method=' . $method, $errors, $this, $post_id, $filename, $caption, $extra);
+            $errors = apply_filters('cuar/private-content/files/on-attach-file?method=' . $method, $errors, $this, $initial_filename, $post_id, $unique_filename, $caption, $extra);
             if ( !empty($errors))
             {
                 wp_send_json_error($errors);
@@ -645,8 +645,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
             // Fine, update file meta
             $source = apply_filters('cuar/private-content/files/file-source?method=' . $method, 'local');
-            if (empty($caption)) $caption = $filename;
-            $added_file = $this->add_attached_file($post_id, $filename, $caption, $source, $extra);
+            if (empty($caption)) $caption = $unique_filename;
+            $added_file = $this->add_attached_file($post_id, $unique_filename, $caption, $source, $extra);
 
             wp_send_json_success($added_file);
         }

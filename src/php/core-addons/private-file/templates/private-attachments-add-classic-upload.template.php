@@ -6,7 +6,12 @@
 ?>
 
 <div class="metabox-row">
-    <div class="dropzone" id="cuar_dropzone" data-post-id="<?php echo esc_attr($post->ID); ?>">
+    <div class="cuar-dropzone" id="cuar_dropzone" data-post-id="<?php echo esc_attr($post->ID); ?>">
+        <p class="cuar-dropzone-message">
+            <span class="dashicons dashicons-upload"></span>
+            <br/>
+            <?php _e('Drop your files here or click me!', 'cuar'); ?>
+        </p>
         <input type="file" name="cuar_file" />
     </div>
 </div>
@@ -15,6 +20,9 @@
     <!--
     jQuery(document).ready(function ($) {
         var dropzone = $("#cuar_dropzone");
+
+        dropzone.children('input[type=file]').css({'opacity': 0});
+
         dropzone.fileupload({
             url: cuar.ajaxUrl,
             dataType: 'json',
@@ -29,13 +37,13 @@
                 // Add all selected files using the attachment manager
                 for (var i = 0, len = data.files.length; i < len; i++) {
                     var filename = data.files[i].name;
-                    $(document).trigger('cuar:attachmentManager:addItem', [
+                    data.files[i].attachmentItem = $(document).triggerHandler('cuar:attachmentManager:addItem', [
                         "<?php echo esc_attr($post->ID); ?>",
                         filename,
                         filename
-                    ]);
+                    ]);                     
                     $(document).trigger('cuar:attachmentManager:updateItemState', [
-                        filename,
+                        data.files[i].attachmentItem,
                         'pending'
                     ]);
                 }
@@ -43,18 +51,17 @@
             },
             done: function (e, data) {
                 for (var i = 0, len = data.files.length; i < len; i++) {
-                    var filename = data.files[i].name;
                     if (data.result.success) {
                         var newFilename = data.result.data.file;
                         var newCaption = data.result.data.caption;
                         $(document).trigger('cuar:attachmentManager:updateItem', [
-                            filename,
+                            data.files[i].attachmentItem,
                             "<?php echo esc_attr($post->ID); ?>",
                             newFilename,
                             newCaption
                         ]);
                         $(document).trigger('cuar:attachmentManager:updateItemState', [
-                            newFilename,
+                            data.files[i].attachmentItem,
                             'success'
                         ]);
                     }
@@ -64,7 +71,7 @@
                         }
 
                         $(document).trigger('cuar:attachmentManager:updateItemState', [
-                            filename,
+                            data.files[i].attachmentItem,
                             'error'
                         ]);
                     }
@@ -74,19 +81,17 @@
                 for (var i = 0, len = data.files.length; i < len; i++) {
                     alert(data.errorThrown);
 
-                    var filename = data.files[i].name;
                     $(document).trigger('cuar:attachmentManager:updateItemState', [
-                        filename,
+                        data.files[i].attachmentItem,
                         'error'
                     ]);
                 }
             },
             progress: function (e, data) {
                 for (var i = 0, len = data.files.length; i < len; i++) {
-                    var filename = data.files[i].name;
                     var progress = parseInt(data.loaded / data.total * 100, 10);
                     $(document).trigger('cuar:attachmentManager:updateItemProgress', [
-                        filename,
+                        data.files[i].attachmentItem,
                         progress
                     ]);
                 }

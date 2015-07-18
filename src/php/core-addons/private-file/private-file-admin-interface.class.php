@@ -37,7 +37,7 @@ class CUAR_PrivateFileAdminInterface
         if ($this->pf_addon->is_enabled())
         {
             // File edit page
-            add_action('admin_menu', array(&$this, 'register_edit_page_meta_boxes'), 100);
+            add_action('admin_menu', array(&$this, 'register_edit_page_meta_boxes'), 120);
             add_action('cuar/core/ownership/after-save-owner', array(&$this, 'do_save_post'), 10, 4);
             add_action('post_edit_form_tag', array(&$this, 'post_edit_form_tag'));
         }
@@ -61,9 +61,16 @@ class CUAR_PrivateFileAdminInterface
     public function register_edit_page_meta_boxes()
     {
         add_meta_box(
-            'cuar_private_file_ajax_upload',
+            'cuar_upload_metabox',
+            __('Add file attachments', 'cuar'),
+            array(&$this, 'print_upload_meta_box'),
+            'cuar_private_file',
+            'normal', 'high');
+
+        add_meta_box(
+            'cuar_attachments_metabox',
             __('Attached Files', 'cuar'),
-            array(&$this, 'print_ajax_upload_meta_box'),
+            array(&$this, 'print_attachments_meta_box'),
             'cuar_private_file',
             'normal', 'high');
     }
@@ -71,11 +78,34 @@ class CUAR_PrivateFileAdminInterface
     /**
      * Print the metabox to upload a file
      */
-    public function print_ajax_upload_meta_box()
+    public function print_upload_meta_box()
     {
         wp_enqueue_script('cuar.admin');
 
         do_action("cuar/private-content/files/before-upload-meta-box");
+
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        global $post;
+
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        $select_methods = apply_filters('cuar/private-content/files/select-methods', array());
+
+        include($this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/private-file',
+            'private-attachments-add-methods-browser.template.php',
+            'templates'));
+
+        do_action("cuar/private-content/files/after-upload-meta-box");
+    }
+
+    /**
+     * Print the metabox to upload a file
+     */
+    public function print_attachments_meta_box()
+    {
+        wp_enqueue_script('cuar.admin');
+
+        do_action("cuar/private-content/files/before-attachments-meta-box");
 
         global $post;
 
@@ -83,30 +113,17 @@ class CUAR_PrivateFileAdminInterface
         $attached_files = $this->pf_addon->get_attached_files($post->ID);
 
         /** @noinspection PhpUnusedLocalVariableInspection */
-        $select_methods = apply_filters('cuar/private-content/files/select-methods', array());
-
-        wp_nonce_field(plugin_basename(__FILE__), 'wp_cuar_nonce_file');
-
-        /** @noinspection PhpUnusedLocalVariableInspection */
-        $current_attachment_list_item_template = $this->plugin->get_template_file_path(
+        $attachment_item_template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
-            'private-files-upload-current-attachments-item.template.php',
+            'private-attachments-list-item.template.php',
             'templates');
 
-        /** @noinspection PhpUnusedLocalVariableInspection */
-        $current_attachment_list_template = $this->plugin->get_template_file_path(
+        include($this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
-            'private-files-upload-current-attachments-list.template.php',
-            'templates');
+            'private-attachments-list.template.php',
+            'templates'));
 
-        $fields_template = $this->plugin->get_template_file_path(
-            CUAR_INCLUDES_DIR . '/core-addons/private-file',
-            'private-files-upload-fields.template.php',
-            'templates');
-
-        include($fields_template);
-
-        do_action("cuar/private-content/files/after-upload-meta-box");
+        do_action("cuar/private-content/files/after-attachments-meta-box");
     }
 
     /**

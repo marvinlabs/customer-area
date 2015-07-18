@@ -2,23 +2,10 @@
 
  */
 
-/** @var string $current_attachment_list_template */
-/** @var string $ajax_upload_file_template */
 /** @var array $select_methods */
 ?>
 
 <div class="cuar-file-attachment-manager">
-    <?php include($current_attachment_list_template); ?>
-
-    <div class="cuar-file-attachment-template" style="display: none;"><?php
-        $file_id = null;
-        $attached_file = null;
-        include($current_attachment_list_item_template);
-        ?>
-    </div>
-
-    <br/>
-
     <span class="label">
         <label for="cuar_file_selector_input"><?php _e('How do you want to add the files?', 'cuar'); ?></label>
     </span>

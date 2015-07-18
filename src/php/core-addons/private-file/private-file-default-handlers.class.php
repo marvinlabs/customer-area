@@ -33,17 +33,14 @@ class CUAR_PrivateFilesDefaultHandlers
         // Select methods
         add_filter('cuar/private-content/files/select-methods', array(&$this, 'register_select_methods'));
         add_action('cuar/private-content/files/render-select-method?id=classic-upload', array(&$this, 'render_classic_upload_form'));
-        add_action('cuar/private-content/files/render-select-method?id=ftp-copy', array(&$this, 'render_ftp_copy_form'));
-        add_action('cuar/private-content/files/render-select-method?id=ftp-move', array(&$this, 'render_ftp_move_form'));
+        add_action('cuar/private-content/files/render-select-method?id=ftp-folder', array(&$this, 'render_ftp_folder_form'));
 
         // Addition of files for the methods we manage
-        add_filter('cuar/private-content/files/on-attach-file?method=ftp-copy', array(&$this, 'copy_ftp_file'), 10, 6);
-        add_filter('cuar/private-content/files/on-attach-file?method=ftp-move', array(&$this, 'move_ftp_file'), 10, 6);
-        add_filter('cuar/private-content/files/on-attach-file?method=classic-upload', array(&$this, 'attach_uploaded_file'), 10, 6);
+        add_filter('cuar/private-content/files/on-attach-file?method=ftp-folder', array(&$this, 'attach_ftp_file'), 10, 7);
+        add_filter('cuar/private-content/files/on-attach-file?method=classic-upload', array(&$this, 'attach_uploaded_file'), 10, 7);
 
         // Get a unique filename for the methods we manage
-        add_filter('cuar/private-content/files/unique-filename?method=ftp-copy', array(&$this, 'unique_local_filename'), 10, 4);
-        add_filter('cuar/private-content/files/unique-filename?method=ftp-move', array(&$this, 'unique_local_filename'), 10, 4);
+        add_filter('cuar/private-content/files/unique-filename?method=ftp-folder', array(&$this, 'unique_local_filename'), 10, 4);
         add_filter('cuar/private-content/files/unique-filename?method=classic-upload', array(&$this, 'unique_local_filename_from_files_param'), 10, 4);
 
         // Handling of local files
@@ -192,53 +189,19 @@ class CUAR_PrivateFilesDefaultHandlers
     }
 
     /**
-     * Copy a file from the local FTP upload folder to the final storage directory
-     *
-     * @param array                 $errors   The eventual errors
-     * @param CUAR_PrivateFileAddOn $pf_addon The private files add-on instance
-     * @param int                   $post_id  The post ID owning the files
-     * @param string                $filename The file name
-     * @param string                $caption  The caption
-     * @param string                $extra    Optional extra information
-     *
-     * @return array Errors if any
-     */
-    public function copy_ftp_file($errors, $pf_addon, $post_id, $filename, $caption, $extra)
-    {
-        return $this->attach_ftp_file('copy', $errors, $pf_addon, $post_id, $filename, $caption, $extra);
-    }
-
-    /**
-     * Move a file from the local FTP upload folder to the final storage directory
-     *
-     * @param array                 $errors   The eventual errors
-     * @param CUAR_PrivateFileAddOn $pf_addon The private files add-on instance
-     * @param int                   $post_id  The post ID owning the files
-     * @param string                $filename The file name
-     * @param string                $caption  The caption
-     * @param string                $extra    Optional extra information
-     *
-     * @return array Errors if any
-     */
-    public function move_ftp_file($errors, $pf_addon, $post_id, $filename, $caption, $extra)
-    {
-        return $this->attach_ftp_file('move', $errors, $pf_addon, $post_id, $filename, $caption, $extra);
-    }
-
-    /**
      * Move or copy a file from the local FTP upload folder to the final directory
      *
-     * @param string                $ftp_operation
-     * @param array                 $errors   The eventual errors
-     * @param CUAR_PrivateFileAddOn $pf_addon The private files add-on instance
-     * @param int                   $post_id  The post ID owning the files
-     * @param string                $filename The file name
-     * @param string                $caption  The caption
-     * @param string                $extra    Optional extra information
+     * @param array                 $errors           The eventual errors
+     * @param CUAR_PrivateFileAddOn $pf_addon         The private files add-on instance
+     * @param string                $initial_filename The filename as it had been transmitted from AJAX
+     * @param int                   $post_id          The post ID owning the files
+     * @param string                $filename         The file name
+     * @param string                $caption          The caption
+     * @param string                $extra            Contains the FTP operation (ftp-move|ftp-copy)
      *
      * @return array Errors if any
      */
-    public function attach_ftp_file($ftp_operation, $errors, $pf_addon, $post_id, $filename, $caption, $extra)
+    public function attach_ftp_file($errors, $pf_addon, $initial_filename, $post_id, $filename, $caption, $extra)
     {
         $supported_types = apply_filters('cuar/private-content/files/supported-types', null);
         if ($supported_types != null)
@@ -257,16 +220,16 @@ class CUAR_PrivateFilesDefaultHandlers
         $po_addon = $this->plugin->get_addon('post-owner');
 
         $src_folder = trailingslashit($pf_addon->get_ftp_path());
-        $src_path = $src_folder . $filename;
+        $src_path = $src_folder . $initial_filename;
 
         $dest_folder = trailingslashit($po_addon->get_private_storage_directory($post_id, true, true));
         $dest_path = $dest_folder . $filename;
 
-        if (copy($src_path, $dest_path))
+        if (@copy($src_path, $dest_path))
         {
-            if ($ftp_operation == 'move')
+            if ($extra == 'ftp-move')
             {
-                unlink($src_path);
+                @unlink($src_path);
             }
         }
         else
@@ -278,21 +241,23 @@ class CUAR_PrivateFilesDefaultHandlers
     }
 
     /**
-     * @param array                 $errors   The eventual errors
-     * @param CUAR_PrivateFileAddOn $pf_addon The private files add-on instance
-     * @param int                   $post_id  The post ID owning the files
-     * @param string                $filename The file name
-     * @param string                $caption  The caption
-     * @param string                $extra    Optional extra information
+     * @param array                 $errors           The eventual errors
+     * @param CUAR_PrivateFileAddOn $pf_addon         The private files add-on instance
+     * @param string                $initial_filename The filename as it had been transmitted from AJAX
+     * @param int                   $post_id          The post ID owning the files
+     * @param string                $filename         The file name
+     * @param string                $caption          The caption
+     * @param string                $extra            Optional extra information
      *
      * @return array Errors if any
      */
-    public function attach_uploaded_file($errors, $pf_addon, $post_id, $filename, $caption, $extra)
+    public function attach_uploaded_file($errors, $pf_addon, $initial_filename, $post_id, $filename, $caption, $extra)
     {
         $uploaded_file = isset($_FILES['cuar_file']) ? $_FILES['cuar_file'] : null;
         if (empty($uploaded_file))
         {
             $errors[] = sprintf(__('No file has been uploaded', 'cuar'), $filename);
+
             return $errors;
         }
 
@@ -326,11 +291,13 @@ class CUAR_PrivateFilesDefaultHandlers
         if (empty($upload_result))
         {
             $errors[] = sprintf(__('An unknown error happened while uploading your file.', 'cuar'));
+
             return $errors;
         }
         else if (isset($upload_result['error']))
         {
             $errors[] = sprintf(__('An error happened while uploading your file: %s', 'cuar'), $upload_result['error']);
+
             return $errors;
         }
 
@@ -390,9 +357,9 @@ class CUAR_PrivateFilesDefaultHandlers
         /** @var CUAR_PrivateFileAddOn $pf_addon */
         $pf_addon = $this->plugin->get_addon('private-files');
         $file_path = $pf_addon->get_file_path($post_id, $file);
-        if (file_exists($file_path))
+        if (@file_exists($file_path))
         {
-            unlink($file_path);
+            @unlink($file_path);
         }
 
         return $errors;
@@ -413,16 +380,10 @@ class CUAR_PrivateFilesDefaultHandlers
                 __('Select the files you want to upload, they will be processed when you save the post.', 'cuar')
         );
 
-        $methods['ftp-move'] = array(
-            'label'   => __('Move from FTP folder', 'cuar'),
+        $methods['ftp-folder'] = array(
+            'label'   => __('Get from server FTP folder', 'cuar'),
             'caption' =>
-                __('Below are the files listed from the FTP folder you have set. Those files will be moved to their final location.', 'cuar')
-        );
-
-        $methods['ftp-copy'] = array(
-            'label'   => __('Copy from FTP folder', 'cuar'),
-            'caption' =>
-                __('Below are the files listed from the FTP folder you have set. Those files will be copied to their final location.', 'cuar')
+                __('Below are the files listed from the FTP folder you have set in the plugin options. Those files will be moved or copied to their final location.', 'cuar')
         );
 
         return $methods;
@@ -439,7 +400,7 @@ class CUAR_PrivateFilesDefaultHandlers
 
         $template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
-            'private-files-upload-select-classic-upload.template.php',
+            'private-attachments-add-classic-upload.template.php',
             'templates');
 
         include($template);
@@ -448,19 +409,7 @@ class CUAR_PrivateFilesDefaultHandlers
     /**
      * Display a form to move files from the local FTP upload folder
      */
-    public function render_ftp_move_form() { $this->render_ftp_form('move'); }
-
-    /**
-     * Display a form to move files from the local FTP upload folder
-     */
-    public function render_ftp_copy_form() { $this->render_ftp_form('copy'); }
-
-    /**
-     * Display a form to move or copy files from the local FTP upload folder
-     *
-     * @param string $ftp_operation The type of operation we want to perform (move|copy)
-     */
-    private function render_ftp_form($ftp_operation)
+    public function render_ftp_folder_form()
     {
         global $post;
 
@@ -469,14 +418,14 @@ class CUAR_PrivateFilesDefaultHandlers
 
         $ftp_dir = trailingslashit($pf_addon->get_ftp_path());
         $ftp_files = array();
-        if (file_exists($ftp_dir))
+        if (@file_exists($ftp_dir))
         {
-            $ftp_files = scandir($ftp_dir);
+            $ftp_files = @scandir($ftp_dir);
         }
 
         $template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
-            'private-files-upload-select-ftp-folder.template.php',
+            'private-attachments-add-ftp-folder.template.php',
             'templates');
 
         include($template);
