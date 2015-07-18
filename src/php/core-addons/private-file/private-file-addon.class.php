@@ -529,7 +529,6 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
 
-            // TODO TEST MOVE LEGACY FILES TO NEW FOLDER
             $files = $this->get_attached_files($post_id);
             foreach ($files as $file_id => $file)
             {
