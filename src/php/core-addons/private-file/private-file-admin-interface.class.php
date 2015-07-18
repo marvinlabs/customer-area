@@ -283,10 +283,30 @@ else
         // Security check
         if ( !wp_verify_nonce($_POST['wp_cuar_nonce_file'], plugin_basename(__FILE__))) return $post_id;
 
-        // TODO Handle classic upload here?
+        /** @var CUAR_PostOwnerAddOn $po_addon */
+        $po_addon = $this->plugin->get_addon('post-owner');
+
+        // TODO TEST MOVE LEGACY FILES TO NEW FOLDER
+        $files = $this->pf_addon->get_attached_files($post_id);
+        foreach ($files as $file_id => $file)
+        {
+            if ($file['source'] == 'legacy')
+            {
+                $old_path = $po_addon->get_legacy_owner_file_path($post_id, $file['file'], $previous_owner['ids'], $previous_owner['type'], false);
+                $new_path = $po_addon->get_private_file_path($file['file'], $post_id, true);
+
+                if (file_exists($old_path))
+                {
+                    @copy($old_path, $new_path);
+                    @unlink($old_path);
+                }
+
+                $files[$file_id]['source'] = 'local';
+            }
+        }
+        $this->pf_addon->save_attached_files($post_id, $files);
 
         // Remove files which are physically missing
-        $files = $this->pf_addon->get_attached_files($post_id);
         foreach ($files as $file_id => $file)
         {
             $is_missing = apply_filters('cuar/private-content/files/is-missing?source=' . $file['source'], false, $post_id, $file);
