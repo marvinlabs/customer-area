@@ -530,7 +530,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $po_addon = $this->plugin->get_addon('post-owner');
 
             // TODO TEST MOVE LEGACY FILES TO NEW FOLDER
-            $files = $this->pf_addon->get_attached_files($post_id);
+            $files = $this->get_attached_files($post_id);
             foreach ($files as $file_id => $file)
             {
                 if ($file['source'] == 'legacy')
@@ -544,16 +544,41 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                         @unlink($old_path);
 
                         // Maybe delete empty folder
-                        if ((count(scandir(basename($old_path))) == 2))
+                        if ($this->is_dir_empty(basename($old_path)))
                         {
-                            @unlink(basename($old_path));
+                            @rmdir(basename($old_path));
                         }
                     }
 
                     $files[$file_id]['source'] = 'local';
                 }
             }
-            $this->pf_addon->save_attached_files($post_id, $files);
+            $this->save_attached_files($post_id, $files);
+        }
+
+        /**
+         * Supporting function for displaying the dropdown select box
+         * for empty FTP upload directory or not.
+         * Adapted from http://stackoverflow.com/a/7497848/1177153
+         *
+         * @param string $dir
+         *
+         * @return bool
+         */
+        public function is_dir_empty($dir)
+        {
+            if ( !is_readable($dir)) return false;
+
+            $handle = opendir($dir);
+            while (false !== ($entry = readdir($handle)))
+            {
+                if ($entry != "." && $entry != "..")
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /**
@@ -563,7 +588,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          */
         public function remove_missing_files($post_id)
         {
-            $files = $this->pf_addon->get_attached_files($post_id);
+            $files = $this->get_attached_files($post_id);
             foreach ($files as $file_id => $file)
             {
                 $is_missing = apply_filters('cuar/private-content/files/is-missing?source=' . $file['source'], false, $post_id, $file);
@@ -572,7 +597,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                     unset($files[$file_id]);
                 }
             }
-            $this->pf_addon->save_attached_files($post_id, $files);
+            $this->save_attached_files($post_id, $files);
         }
 
         /*------- AJAX FUNCTIONS ----------------------------------------------------------------------------------------*/
