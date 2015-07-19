@@ -131,6 +131,7 @@ feel free to fork the project and send us pull requests!
 
 = 6.2.0 (2015/) =
 
+* New: private files attachment interface has been improved drastically with AJAX and drag'n'drop
 * New: support for the Smart groups add-on
 * New: function to test if we are currently on a given WP Customer Area page (for theme developers)
 * Fix: updated all template functions for files to be able to pass the file index as a parameter
@@ -140,6 +141,7 @@ feel free to fork the project and send us pull requests!
 **Add-on changes**
 
 * New: *Authentication forms* - Hooks to change the form links (see [code snippet](http://wp-customerarea.com/snippet/authentication-forms-change-the-links-below-the-forms/))
+* New: *Smart groups* - first add-on release
 
 = 6.1.2 (2015/05/07) =
 

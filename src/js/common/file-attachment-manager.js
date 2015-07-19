@@ -140,11 +140,10 @@
                     } else {
                         // Ok. Remove the line
                         attachedItem.slideUp(400, function () {
-                            attachedItem.remove();
-
-                            if (base._getAttachmentItems().length==0) {
-                                base._getAttachmentList().children('cuar-empty-message').hide();
+                            if (base._getAttachmentItems().length==1) {
+                                base._getAttachmentListEmptyMessage().show();
                             }
+                            attachedItem.remove();
                         });
                     }
                 }
@@ -224,8 +223,7 @@
             item.appendTo(base.options.attachmentList);
 
             base._updateAttachmentItem(item, postId, filename, caption);
-
-            base._getAttachmentList().children('cuar-empty-message').hide();
+            base._getAttachmentListEmptyMessage().hide();
 
             return item;
         };
@@ -306,6 +304,11 @@
         /** Getter */
         base._getAttachmentList = function () {
             return $(base.options.attachmentList);
+        };
+
+        /** Getter */
+        base._getAttachmentListEmptyMessage = function () {
+            return $('.cuar-empty-message', base._getAttachmentList());
         };
 
         /** Getter */
