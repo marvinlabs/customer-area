@@ -6,7 +6,7 @@
 ?>
 
 <div class="cuar-classic-uploader" data-post-id="<?php echo esc_attr($post->ID); ?>">
-    <?php wp_nonce_field( 'cuar-classic-uploader', 'cuar_classic_uploader_' . $post->ID ); ?>
+    <?php wp_nonce_field('cuar-attach-classic-upload-' . $post->ID, 'cuar_classic-upload_' . $post->ID); ?>
 
     <div class="metabox-row">
         <div class="cuar-dropzone" id="cuar_dropzone" data-post-id="<?php echo esc_attr($post->ID); ?>">

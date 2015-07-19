@@ -81,6 +81,7 @@
                     attachmentItem,
                     'ftp-folder',
                     postId,
+                    base._getNonce(),
                     filename,
                     '',
                     ftpOperation
@@ -91,6 +92,11 @@
         /** Getter */
         base._getFtpOperation = function () {
             return base._getCopyCheckbox().is(':checked') ? 'ftp-copy' : 'ftp-move';
+        };
+
+        /** Getter */
+        base._getNonce = function () {
+            return $('#cuar_ftp-folder_' + base._getPostId(), base.el).val();
         };
 
         /** Getter */

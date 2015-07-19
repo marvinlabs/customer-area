@@ -30,16 +30,22 @@
             base._getFileInput().css({'opacity': 0});
 
             // Enable the dropzone
+            var postId = base._getPostId();
+            var nonceName = 'cuar_classic-upload_' + postId;
+
+            var formData = {
+                'action': 'cuar_attach_file',
+                'method': 'classic-upload',
+                'post_id': postId
+            };
+            formData[nonceName] = base._getNonce();
+
             var dropzone = base._getDropZone();
             dropzone.fileupload({
                 url: cuar.ajaxUrl,
                 dataType: 'json',
                 paramName: 'cuar_file',
-                formData: {
-                    'action': 'cuar_attach_file',
-                    'method': 'classic-upload',
-                    'post_id': base._getPostId()
-                },
+                formData: formData,
                 dropZone: dropzone,
                 add: base._onFileUploadAdd,
                 done: base._onFileUploadDone,
@@ -168,6 +174,11 @@
             if (errorMessage != null && errorMessage.length > 0) {
                 alert(errorMessage);
             }
+        };
+
+        /** Getter */
+        base._getNonce = function () {
+            return $('#cuar_classic-upload_' + base._getPostId(), base.el).val();
         };
 
         /** Getter */

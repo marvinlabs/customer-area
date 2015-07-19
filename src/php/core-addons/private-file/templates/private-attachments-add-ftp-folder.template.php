@@ -8,7 +8,7 @@
 ?>
 
 <div class="cuar-ftp-uploader" data-post-id="<?php echo esc_attr($post->ID); ?>">
-    <?php wp_nonce_field( 'cuar-ftp-uploader', 'cuar_ftp_uploader_' . $post->ID ); ?>
+    <?php wp_nonce_field('cuar-attach-ftp-folder-' . $post->ID, 'cuar_ftp-folder_' . $post->ID); ?>
 
     <div class="metabox-row">
         <label for="cuar_ftp_copy_file" class="selectit">

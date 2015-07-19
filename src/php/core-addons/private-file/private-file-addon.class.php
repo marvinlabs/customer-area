@@ -613,6 +613,16 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $errors = array();
             $method = isset($_POST['method']) ? $_POST['method'] : 0;
             $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
+
+            // Check nonce
+            $nonce_action = 'cuar-attach-' . $method . '-' . $post_id;
+            $nonce_name = 'cuar_' . $method . '_' . $post_id;
+            if (!isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
+            {
+                $errors[] = __('Trying to cheat?', 'cuar');
+                wp_send_json_error($errors);
+            }
+
             $extra = isset($_POST['extra']) ? $_POST['extra'] : '';
 
             $initial_filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
@@ -661,6 +671,15 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $errors = array();
             $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
             $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
+
+            // Check nonce
+            $nonce_action = 'cuar-remove-attachment-' . $post_id;
+            $nonce_name = 'cuar_remove_attachment_nonce';
+            if (!isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
+            {
+                $errors[] = __('Trying to cheat?', 'cuar');
+                wp_send_json_error($errors);
+            }
 
             if (empty($post_id) || empty($filename))
             {

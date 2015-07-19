@@ -2,11 +2,14 @@
 
  */
 
+/** @var WP_Post $post */
 /** @var array $attached_files */
 /** @var string $attachment_item_template */
 ?>
 
 <div class="cuar-file-attachments">
+    <?php wp_nonce_field('cuar-remove-attachment-' . $post->ID, 'cuar_remove_attachment_nonce'); ?>
+
     <?php
     foreach ($attached_files as $file_id => $attached_file)
     {

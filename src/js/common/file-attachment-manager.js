@@ -114,18 +114,22 @@
             var attachedItem = $(this).closest(base.options.attachmentItem);
             var postId = attachedItem.data('post-id');
             var filename = attachedItem.data('filename');
+            var nonceValue = base._getAttachmentListRemoveNonce();
 
             // Let's go to a state where we cannot do any action anymore
             base._updateAttachmentItemState(attachedItem, 'pending');
 
             // Post the ajax request
+            var ajaxParams = {
+                'action': 'cuar_remove_attached_file',
+                'post_id': postId,
+                'filename': filename,
+                'cuar_remove_attachment_nonce': nonceValue
+            };
+
             $.post(
                 cuar.ajaxUrl,
-                {
-                    'action': 'cuar_remove_attached_file',
-                    'post_id': postId,
-                    'filename': filename
-                },
+                ajaxParams,
                 function (response) {
                     // Not ok. Alert
                     if (response.success == false) {
@@ -156,7 +160,7 @@
          * @param caption
          * @private
          */
-        base._onSendFile = function (event, item, method, postId, filename, caption, extra) {
+        base._onSendFile = function (event, item, method, postId, nonceValue, filename, caption, extra) {
             var tempCaption = caption;
             if (caption===undefined || caption.trim().length==0) {
                 tempCaption = filename;
@@ -165,17 +169,23 @@
             base._updateAttachmentItem(item, postId, filename, tempCaption);
             base._updateAttachmentItemState(item, 'pending');
 
+
             // Send some Ajax
+            var ajaxParams = {
+                'action': 'cuar_attach_file',
+                'method': method,
+                'post_id': postId,
+                'filename': filename,
+                'caption': caption,
+                'extra': extra
+            };
+
+            var nonceName = 'cuar_' + method + '_' + postId;
+            ajaxParams[nonceName] = nonceValue;
+
             $.post(
                 cuar.ajaxUrl,
-                {
-                    'action': 'cuar_attach_file',
-                    'method': method,
-                    'post_id': postId,
-                    'filename': filename,
-                    'caption': caption,
-                    'extra': extra
-                },
+                ajaxParams,
                 function (response) {
                     // Not ok. Alert
                     if (response.success == false) {
@@ -308,6 +318,11 @@
             return base._getAttachmentItems().filter(function () {
                 return $(this).data('filename') == filename;
             });
+        };
+
+        /** Getter */
+        base._getAttachmentListRemoveNonce = function () {
+            return $('#cuar_remove_attachment_nonce', base._getAttachmentList()).val();
         };
 
         /** Getter */
