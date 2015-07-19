@@ -102,6 +102,11 @@
                     filename,
                     filename
                 ]);
+
+                if (data.files[i].attachmentItem == null) {
+                    return false;
+                }
+
                 $(document).trigger('cuar:attachmentManager:updateItemState', [
                     data.files[i].attachmentItem,
                     'pending'
@@ -135,7 +140,12 @@
                         errorMessage = data.result.data[0];
                     }
 
-                    base._showError(data.files[i].attachmentItem, errorMessage);
+                    $(document).trigger('cuar:attachmentManager:showError', [
+                        data.files[i].attachmentItem,
+                        data.files[i].name,
+                        errorMessage,
+                        true
+                    ]);
                 }
             }
         };
@@ -145,7 +155,12 @@
          */
         base._onFileUploadFail = function (e, data) {
             for (var i = 0, len = data.files.length; i < len; i++) {
-                base._showError(data.files[i].attachmentItem, data.errorThrown);
+                $(document).trigger('cuar:attachmentManager:showError', [
+                    data.files[i].attachmentItem,
+                    data.files[i].name,
+                    data.errorThrown,
+                    true
+                ]);
             }
         };
 
@@ -159,20 +174,6 @@
                     data.files[i].attachmentItem,
                     progress
                 ]);
-            }
-        };
-
-        /** Getter */
-        base._showError = function (item, errorMessage) {
-            if (item != null) {
-                $(document).trigger('cuar:attachmentManager:updateItemState', [
-                    item,
-                    'error'
-                ]);
-            }
-
-            if (errorMessage != null && errorMessage.length > 0) {
-                alert(errorMessage);
             }
         };
 

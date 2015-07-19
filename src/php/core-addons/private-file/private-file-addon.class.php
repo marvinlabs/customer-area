@@ -62,6 +62,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 add_action('wp_ajax_cuar_attach_file', array(&$this, 'ajax_attach_file'));
                 add_action('wp_ajax_nopriv_cuar_attach_file', array(&$this, 'ajax_attach_file'));
 
+                add_filter('cuar/core/js-messages?zone=admin', array(&$this, 'add_js_messages'));
+                add_filter('cuar/core/js-messages?zone=frontend', array(&$this, 'add_js_messages'));
+
                 $this->default_handlers = new CUAR_PrivateFilesDefaultHandlers($plugin);
             }
 
@@ -510,6 +513,14 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             return $file;
         }
 
+        /**
+         * @return mixed|void
+         */
+        public function get_max_attachment_count()
+        {
+            return apply_filters('cuar/private-content/files/max-attachment-count', 1);
+        }
+
         /*------- UTILITY FUNCTIONS FOR MAINTENANCE ---------------------------------------------------------------------*/
 
         /**
@@ -606,6 +617,31 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /*------- AJAX FUNCTIONS ----------------------------------------------------------------------------------------*/
 
         /**
+         * Append our javascript messages
+         *
+         * @param array $messages
+         *
+         * @return array
+         */
+        public function add_js_messages($messages)
+        {
+            $max_attachment_count = $this->get_max_attachment_count();
+
+            $messages['confirmDeleteAttachedFile'] = __('Do you really want to remove this file?', 'cuar');
+            $messages['tooManyAttachmentsAlready'] = sprintf(
+                _n(
+                    'You are not allowed to attach more than %d file',
+                    'You are not allowed to attach more than %d files',
+                    $max_attachment_count,
+                    'cuar'),
+                $max_attachment_count);
+
+            $messages['maxAttachmentCount'] = $max_attachment_count;
+
+            return $messages;
+        }
+
+        /**
          * Handle the file attachment process with AJAX
          */
         public function ajax_attach_file()
@@ -646,10 +682,16 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
             // Check allowed number of attached files
             $file_count = $this->get_attached_file_count($post_id);
-            $max_file_count = apply_filters('cuar/private-content/files/max-attachment-count', 1);
+            $max_file_count = $this->get_max_attachment_count();
             if ($max_file_count >= 0 && $file_count >= $max_file_count)
             {
-                $errors[] = sprintf(__('You can attach at most %d file(s) to this private content', 'cuar'), $max_file_count);
+                $errors[] = sprintf(
+                    _n(
+                        'You are not allowed to attach more than %d file',
+                        'You are not allowed to attach more than %d files',
+                        $max_file_count,
+                        'cuar'),
+                    $max_file_count);
                 wp_send_json_error($errors);
             }
 

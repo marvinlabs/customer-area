@@ -23,6 +23,8 @@
             </div>
         <?php endforeach; ?>
     </div>
+
+    <div class="cuar-file-attachment-errors"></div>
 </div>
 
 

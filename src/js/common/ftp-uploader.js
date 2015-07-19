@@ -77,15 +77,18 @@
                     filename,
                     filename
                 ]);
-                $(document).trigger('cuar:attachmentManager:sendFile', [
-                    attachmentItem,
-                    'ftp-folder',
-                    postId,
-                    base._getNonce(),
-                    filename,
-                    '',
-                    ftpOperation
-                ]);
+                
+                if (attachmentItem!=null) {
+                    $(document).trigger('cuar:attachmentManager:sendFile', [
+                        attachmentItem,
+                        'ftp-folder',
+                        postId,
+                        base._getNonce(),
+                        filename,
+                        '',
+                        ftpOperation
+                    ]);
+                }
             }
         };
 

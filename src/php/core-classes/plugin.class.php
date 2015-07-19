@@ -171,15 +171,13 @@ class CUAR_Plugin {
             $messages = apply_filters('cuar/core/js-messages?zone=admin', array(
                 'ajaxUrl'                           => admin_url('admin-ajax.php'),
                 'checkingLicense'                   => __('Checking license...', 'cuar'),
-                'unreachableLicenseServerError'     => __('Failed to contact server', 'cuar'),
-                'confirmDeleteAttachedFile'         => __('Do you really want to remove this file?', 'cuar')
+                'unreachableLicenseServerError'     => __('Failed to contact server', 'cuar')
             ));
             wp_register_script('cuar.admin', CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js', array('jquery') );
             wp_localize_script('cuar.admin', 'cuar', $messages);
         } else {
             $messages = apply_filters('cuar/core/js-messages?zone=frontend', array(
                 'ajaxUrl'                           => admin_url('admin-ajax.php'),
-                'confirmDeleteAttachedFile'         => __('Do you really want to remove this file?', 'cuar')
             ));
             wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery') );
             wp_localize_script('cuar.frontend', 'cuar', $messages);

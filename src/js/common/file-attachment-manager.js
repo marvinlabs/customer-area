@@ -41,13 +41,21 @@
             $(document).on('cuar:attachmentManager:updateItem', base._onUpdateAttachmentItem);
             $(document).on('cuar:attachmentManager:updateItemProgress', base._onUpdateAttachmentItemProgress);
             $(document).on('cuar:attachmentManager:updateItemState', base._onUpdateAttachmentItemState);
+            $(document).on('cuar:attachmentManager:showError', base._onShowError);
+        };
+
+        /**
+         * When a remove attachment button is clicked, send an AJAX request
+         */
+        base._onShowError = function (event, item, filename, errorMessage) {
+            base._showError(item, filename, errorMessage);
         };
 
         /**
          * When a remove attachment button is clicked, send an AJAX request
          */
         base._onUpdateAttachmentItem = function (event, item, postId, newFilename, newCaption) {
-            if (item.length==0) {
+            if (item.length == 0) {
                 console.log('_onUpdateAttachmentItem :: Item for not found');
                 return;
             }
@@ -59,7 +67,7 @@
          * Show some progress on the item
          */
         base._onUpdateAttachmentItemProgress = function (event, item, progress) {
-            if (item.length==0) {
+            if (item.length == 0) {
                 console.log('_onUpdateAttachmentItemProgress :: Item not found');
                 return;
             }
@@ -71,7 +79,7 @@
          * Show some progress on the item
          */
         base._onUpdateAttachmentItemState = function (event, item, state) {
-            if (item.length==0) {
+            if (item.length == 0) {
                 console.log('_onUpdateAttachmentItemState :: Item not found');
                 return;
             }
@@ -133,14 +141,15 @@
                 function (response) {
                     // Not ok. Alert
                     if (response.success == false) {
+                        var errorMessage = '';
                         if (response.data.length > 0) {
-                            alert(response.data[0]);
+                            errorMessage = data.result.data[0];
                         }
-                        base._updateAttachmentItemState(attachedItem, 'error');
+                        base._showError(attachedItem, filename, errorMessage, false);
                     } else {
                         // Ok. Remove the line
                         attachedItem.slideUp(400, function () {
-                            if (base._getAttachmentItems().length==1) {
+                            if (base._getAttachmentItems().length == 1) {
                                 base._getAttachmentListEmptyMessage().show();
                             }
                             attachedItem.remove();
@@ -161,13 +170,12 @@
          */
         base._onSendFile = function (event, item, method, postId, nonceValue, filename, caption, extra) {
             var tempCaption = caption;
-            if (caption===undefined || caption.trim().length==0) {
+            if (caption === undefined || caption.trim().length == 0) {
                 tempCaption = filename;
             }
 
             base._updateAttachmentItem(item, postId, filename, tempCaption);
             base._updateAttachmentItemState(item, 'pending');
-
 
             // Send some Ajax
             var ajaxParams = {
@@ -188,10 +196,11 @@
                 function (response) {
                     // Not ok. Alert
                     if (response.success == false) {
+                        var errorMessage = '';
                         if (response.data.length > 0) {
-                            alert(response.data[0]);
+                            errorMessage = response.data[0];
                         }
-                        base._updateAttachmentItemState(item, 'error');
+                        base._showError(item, filename, errorMessage, true);
                     } else {
                         var newFilename = response.data.file;
                         var newCaption = response.data.caption;
@@ -219,7 +228,13 @@
          * @private
          */
         base._onAddAttachmentItem = function (event, postId, filename, caption, extra) {
-            item = base._getAttachmentTemplate().clone();
+            // See if we have more items than allowed
+            if (base._getAttachmentItems().length > cuar.maxAttachmentCount) {
+                base._showError(null, filename, cuar.tooManyAttachmentsAlready, false);
+                return null;
+            }
+
+            var item = base._getAttachmentTemplate().clone();
             item.appendTo(base.options.attachmentList);
 
             base._updateAttachmentItem(item, postId, filename, caption);
@@ -237,7 +252,7 @@
          * @private
          */
         base._updateAttachmentItem = function (item, postId, filename, caption) {
-            if (caption===undefined || caption.trim().length==0) {
+            if (caption === undefined || caption.trim().length == 0) {
                 caption = filename;
             }
 
@@ -253,8 +268,8 @@
          * @private
          */
         base._updateAttachmentItemState = function (item, state) {
-            item.removeClass (function (index, css) {
-                return (css.match (/(^|\s)cuar-state-\S+/g) || []).join(' ');
+            item.removeClass(function (index, css) {
+                return (css.match(/(^|\s)cuar-state-\S+/g) || []).join(' ');
             });
             item.addClass('cuar-state-' + state);
 
@@ -291,7 +306,7 @@
             var indeterminateElt = progressElt.children('.indeterminate');
             var determinateElt = progressElt.children('.determinate');
 
-            if (progress<=0) {
+            if (progress <= 0) {
                 indeterminateElt.show();
                 determinateElt.hide();
             } else {
@@ -299,6 +314,34 @@
                 determinateElt.show();
                 determinateElt.css({'width': progress + '%'});
             }
+        };
+
+        /** Getter */
+        base._showError = function (item, filename, errorMessage, isRemoveItemRequired) {
+            if (item != null) {
+                if (isRemoveItemRequired) {
+                    item.remove();
+                } else {
+                    base._updateAttachmentItemState(item, 'error');
+                }
+            }
+
+            if (errorMessage != null && errorMessage.length > 0) {
+                var html = '<p class="cuar-error">';
+                if (filename != null && filename.length > 0) html += '<strong>' + filename + '</strong> - ';
+                html += errorMessage;
+                html += '</p>';
+
+                $(html)
+                    .appendTo(base._getErrorList())
+                    .delay(2000)
+                    .slideUp('fast');
+            }
+        };
+
+        /** Getter */
+        base._getErrorList = function () {
+            return $(base.options.errorList, base.el);
         };
 
         /** Getter */
@@ -350,6 +393,7 @@
     };
 
     $.cuar.fileAttachmentManager.defaultOptions = {
+        errorList: '.cuar-file-attachment-errors',                  // The container for the list of errors
         attachmentList: '.cuar-file-attachments',                   // The container for the list of attachments
         attachmentItem: '.cuar-file-attachment',                    // An item for the file attachment list
         attachmentItemTemplate: '.cuar-file-attachment-template',   // The template for new items
