@@ -617,9 +617,16 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check nonce
             $nonce_action = 'cuar-attach-' . $method . '-' . $post_id;
             $nonce_name = 'cuar_' . $method . '_' . $post_id;
-            if (!isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
             {
                 $errors[] = __('Trying to cheat?', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // Check permissions
+            if ( !is_user_logged_in() || !current_user_can('cuar_pf_add_attachment'))
+            {
+                $errors[] = __('You are not allowed to attach files to this kind of content', 'cuar');
                 wp_send_json_error($errors);
             }
 
@@ -637,6 +644,15 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 wp_send_json_error($errors);
             }
 
+            // Check allowed number of attached files
+            $file_count = $this->get_attached_file_count($post_id);
+            $max_file_count = apply_filters('cuar/private-content/files/max-attachment-count', 1);
+            if ($max_file_count >= 0 && $file_count >= $max_file_count)
+            {
+                $errors[] = sprintf(__('You can attach at most %d file(s) to this private content', 'cuar'), $max_file_count);
+                wp_send_json_error($errors);
+            }
+
             // Check file exists
             $found_file_index = null;
             $found_file = $this->get_attached_file_by_name($post_id, $unique_filename);
@@ -647,7 +663,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // File does not exist, we'll add it now
-            $errors = apply_filters('cuar/private-content/files/on-attach-file?method=' . $method, $errors, $this, $initial_filename, $post_id, $unique_filename, $caption, $extra);
+            $errors = apply_filters('cuar/private-content/files/on-attach-file?method=' . $method, $errors, $this, $initial_filename, $post_id,
+                $unique_filename, $caption, $extra);
             if ( !empty($errors))
             {
                 wp_send_json_error($errors);
@@ -672,18 +689,26 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
             $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
 
+            // Check parameters
+            if (empty($post_id) || empty($filename))
+            {
+                $errors[] = __('Missing parameters', 'cuar');
+                wp_send_json_error($errors);
+            }
+
             // Check nonce
             $nonce_action = 'cuar-remove-attachment-' . $post_id;
             $nonce_name = 'cuar_remove_attachment_nonce';
-            if (!isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
             {
                 $errors[] = __('Trying to cheat?', 'cuar');
                 wp_send_json_error($errors);
             }
 
-            if (empty($post_id) || empty($filename))
+            // Check permissions
+            if ( !is_user_logged_in() || !current_user_can('cuar_pf_remove_attachment'))
             {
-                $errors[] = __('Missing parameters', 'cuar');
+                $errors[] = __('You are not allowed to remove attached files', 'cuar');
                 wp_send_json_error($errors);
             }
 

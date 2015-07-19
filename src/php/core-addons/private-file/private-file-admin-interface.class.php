@@ -30,6 +30,7 @@ class CUAR_PrivateFileAdminInterface
         $this->pf_addon = $private_file_addon;
 
         // Settings
+        add_filter('cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ), 1000);
         add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_settings_tab'), 520, 1);
         add_action('cuar/core/settings/print-settings?tab=cuar_private_files', array(&$this, 'print_settings'), 10, 2);
         add_filter('cuar/core/settings/validate-settings?tab=cuar_private_files', array(&$this, 'validate_options'), 10, 3);
@@ -41,6 +42,17 @@ class CUAR_PrivateFileAdminInterface
             add_action('cuar/core/ownership/after-save-owner', array(&$this, 'do_save_post'), 10, 4);
             add_action('post_edit_form_tag', array(&$this, 'post_edit_form_tag'));
         }
+    }
+
+    /*------- CAPABILITIES ------------------------------------------------------------------------------------------*/
+
+    public function get_configurable_capability_groups( $capability_groups ) {
+        $bo_caps = &$capability_groups['cuar_private_file']['groups']['back-office']['capabilities'];
+
+        $bo_caps['cuar_pf_add_attachment'] = __( 'Add file attachment', 'cuar' );
+        $bo_caps['cuar_pf_remove_attachment'] = __( 'Remove file attachment', 'cuar' );
+
+        return $capability_groups;
     }
 
     /*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE FILES ------------------------------------------------------*/
