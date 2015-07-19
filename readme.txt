@@ -134,6 +134,7 @@ feel free to fork the project and send us pull requests!
 * New: private files attachment interface has been improved drastically with AJAX and drag'n'drop
 * New: support for the Smart groups add-on
 * New: function to test if we are currently on a given WP Customer Area page (for theme developers)
+* Fix: most 404 problems happening because of SSL should now be fixed
 * Fix: updated all template functions for files to be able to pass the file index as a parameter
 * Fix: permalinks to categories (private files or pages) were not correct when included as menu items
 * Fix: bug in admin access restriction
