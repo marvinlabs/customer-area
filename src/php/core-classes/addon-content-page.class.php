@@ -126,11 +126,20 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             if ($page_id == 0)
             {
+                /** @var CUAR_CustomerPagesAddOn $cp_addon */
                 $cp_addon = $this->plugin->get_addon('customer-pages');
                 $page_id = $cp_addon->get_page_id($this->get_slug());
             }
 
-            return untrailingslashit(str_replace(trailingslashit(home_url()), '', get_permalink($page_id)));
+            $page_url = get_permalink($page_id);
+            $page_url = str_replace('http://', '', $page_url);
+            $page_url = str_replace('https://', '', $page_url);
+
+            $home_url = trailingslashit(home_url());
+            $home_url = str_replace('http://', '', $home_url);
+            $home_url = str_replace('https://', '', $home_url);
+
+            return untrailingslashit(str_replace($home_url, '', $page_url));
         }
 
         /**
