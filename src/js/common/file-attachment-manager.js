@@ -342,6 +342,7 @@
 
         base._onDismissError = function (event) {
             $(this).closest('.cuar-error').remove();
+            event.preventDefault();
         };
 
         /** Getter */
