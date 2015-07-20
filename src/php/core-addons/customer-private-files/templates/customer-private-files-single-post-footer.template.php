@@ -2,6 +2,7 @@
  *
  * -= 1.3.0 =-
  * - Compatibility with the new multiple attached files
+ * - New hooks for attachment items
  *
  * -= 1.2.0 =-
  * - Updated to new responsive markup
@@ -59,8 +60,11 @@ $attached_files = cuar_get_the_attached_files($post->ID);
                 <ul class="cuar-attached-files">
                     <?php foreach ($attached_files as $file_id => $file) : ?>
                         <li>
-                            <a href="<?php cuar_the_attached_file_link($post->ID, $file, 'view'); ?>" title="<?php esc_attr_e('Download', 'cuar'); ?>">
-                                <?php cuar_the_attached_file_caption($post->ID, $file); ?> (<?php cuar_the_attached_file_size($post->ID, $file); ?>)
+                            <a href="<?php cuar_the_attached_file_link($post->ID, $file); ?>" title="<?php esc_attr_e('Get file', 'cuar'); ?>">
+                                <?php do_action('cuar/templates/file-attachment-item/before-caption', $post->ID, $file); ?>
+                                <?php cuar_the_attached_file_caption($post->ID, $file); ?>
+                                <?php do_action('cuar/templates/file-attachment-item/after-caption', $post->ID, $file); ?>
+                                (<?php cuar_the_attached_file_size($post->ID, $file); ?>)
                             </a>
                         </li>
                     <?php endforeach; ?>

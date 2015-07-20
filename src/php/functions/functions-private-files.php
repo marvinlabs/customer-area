@@ -87,7 +87,7 @@ function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'down
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
 
-    return $pf_addon->get_file_permalink($post_id, $file['id'], $action);
+    return $pf_addon->get_file_permalink($post_id, $file['id'], $action, $file);
 }
 
 /**

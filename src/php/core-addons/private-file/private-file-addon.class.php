@@ -350,8 +350,10 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          *
          * @return string
          */
-        public function get_file_permalink($post_id, $file_id, $action = 'download')
+        public function get_file_permalink($post_id, $file_id, $action = 'download', $file = null)
         {
+            $action = apply_filters('cuar/private-content/files/default-link-action', $action, $post_id, $file_id, $file);
+
             /** @var CUAR_CustomerPrivateFilesAddOn $cpf_addon */
             $cpf_addon = $this->plugin->get_addon('customer-private-files');
             $url = $cpf_addon->get_single_private_content_action_url($post_id, $action, $file_id);
