@@ -50,8 +50,7 @@ class CUAR_PrivateFileAdminInterface
     {
         $bo_caps = &$capability_groups['cuar_private_file']['groups']['back-office']['capabilities'];
 
-        $bo_caps['cuar_pf_add_attachment'] = __('Add file attachment', 'cuar');
-        $bo_caps['cuar_pf_remove_attachment'] = __('Remove file attachment', 'cuar');
+        $bo_caps['cuar_pf_manage_attachments'] = __('Manage file attachments', 'cuar');
 
         return $capability_groups;
     }
@@ -73,12 +72,15 @@ class CUAR_PrivateFileAdminInterface
      */
     public function register_edit_page_meta_boxes()
     {
-        add_meta_box(
-            'cuar_upload_metabox',
-            __('Add file attachments', 'cuar'),
-            array(&$this, 'print_upload_meta_box'),
-            'cuar_private_file',
-            'normal', 'high');
+        if (current_user_can('cuar_pf_manage_attachments'))
+        {
+            add_meta_box(
+                'cuar_upload_metabox',
+                __('Add file attachments', 'cuar'),
+                array(&$this, 'print_upload_meta_box'),
+                'cuar_private_file',
+                'normal', 'high');
+        }
 
         add_meta_box(
             'cuar_attachments_metabox',
@@ -127,11 +129,22 @@ class CUAR_PrivateFileAdminInterface
         /** @noinspection PhpUnusedLocalVariableInspection */
         $attached_files = $this->pf_addon->get_attached_files($post->ID);
 
-        /** @noinspection PhpUnusedLocalVariableInspection */
-        $attachment_item_template = $this->plugin->get_template_file_path(
-            CUAR_INCLUDES_DIR . '/core-addons/private-file',
-            'private-attachments-list-item.template.php',
-            'templates');
+        if (current_user_can('cuar_pf_manage_attachments'))
+        {
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $attachment_item_template = $this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                'private-attachments-list-item.template.php',
+                'templates');
+        }
+        else
+        {
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $attachment_item_template = $this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                'private-attachments-list-item-readonly.template.php',
+                'templates');
+        }
 
         include($this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
@@ -306,7 +319,8 @@ class CUAR_PrivateFileAdminInterface
         // Folder does not exist.
         if ( !file_exists($path))
         {
-            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path) . '" data-action="mkdir" data-extra="0' . $permissions . '" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
+            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path) . '" data-action="mkdir" data-extra="0' . $permissions
+                . '" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
             $out .= __('The folder does not exist.', 'cuar');
 
             // Propose to try create it
@@ -323,7 +337,8 @@ class CUAR_PrivateFileAdminInterface
         $current_perms = substr(sprintf('%o', fileperms($path)), -3);
         if ($permissions < $current_perms)
         {
-            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path) . '" data-action="chmod" data-extra="0' . $permissions . '" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
+            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path) . '" data-action="chmod" data-extra="0' . $permissions
+                . '" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
             $out .= sprintf(__('That directory should at least have the permissions set to %s. Currently it is %s. You should adjust that directory permissions as upload or download might not work properly.',
                 'cuar'), $permissions, $current_perms);
 
@@ -336,9 +351,10 @@ class CUAR_PrivateFileAdminInterface
         }
 
         $accessible_from_web = $this->pf_addon->is_folder_accessible_from_web($path);
-        if ($accessible_from_web!==false)
+        if ($accessible_from_web !== false)
         {
-            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path) . '" data-action="secure-htaccess" data-extra="" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
+            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path)
+                . '" data-action="secure-htaccess" data-extra="" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
             $out .= __('That directory seems to be accessible from the web. <strong>This is not safe</strong>. The most secure would be to move it outside of the web folder of your server',
                 'cuar');
             $out .= '<br/>';

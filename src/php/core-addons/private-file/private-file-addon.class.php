@@ -727,7 +727,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // Check permissions
-            if ( !is_user_logged_in() || !current_user_can('cuar_pf_add_attachment'))
+            if ( !is_user_logged_in() || !current_user_can('cuar_pf_manage_attachments'))
             {
                 $errors[] = __('You are not allowed to attach files to this kind of content', 'cuar');
                 wp_send_json_error($errors);
@@ -784,7 +784,71 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             if (empty($caption)) $caption = $unique_filename;
             $added_file = $this->add_attached_file($post_id, $unique_filename, $caption, $source, $extra);
 
+            // Log an event
+            do_action('cuar/private-content/files/on-add-attachment', $post_id, $added_file);
+
             wp_send_json_success($added_file);
+        }
+
+        /**
+         * Handle the attachment meta edition process via AJAX
+         *
+         * @since 6.2
+         */
+        public function ajax_update_attached_file_meta()
+        {
+            $errors = array();
+            $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
+            $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
+
+            // Check parameters
+            if (empty($post_id) || empty($filename))
+            {
+                $errors[] = __('Missing parameters', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // Check nonce
+            $nonce_action = 'cuar-update-attachment-' . $post_id;
+            $nonce_name = 'cuar_update_attachment_nonce';
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
+            {
+                $errors[] = __('Trying to cheat?', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // Check permissions
+            if ( !is_user_logged_in() || !current_user_can('cuar_pf_manage_attachments'))
+            {
+                $errors[] = __('You are not allowed to remove attached files', 'cuar');
+                wp_send_json_error($errors);
+            }
+
+            // Check file exists
+            $files = $this->get_attached_files($post_id);
+            $found_file = $this->get_attached_file_by_name($post_id, $filename, $files);
+            if ($found_file == false)
+            {
+                // Consider that is ok with us
+                wp_send_json_success();
+            }
+
+            // File exists, we'll remove it now. First physically
+            $source = $this->get_file_source($post_id, $found_file);
+            $errors = apply_filters('cuar/private-content/files/on-remove-attached-file?source=' . $source, $errors, $post_id, $found_file);
+            if ( !empty($errors))
+            {
+                wp_send_json_error($errors);
+            }
+
+            // Then from post meta if we could handle the physical removal
+            unset($files[$found_file['id']]);
+            $this->save_attached_files($post_id, $files);
+
+            // Log an event
+            do_action('cuar/private-content/files/on-update-attachment', $post_id, $found_file);
+
+            wp_send_json_success();
         }
 
         /**
@@ -841,6 +905,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Then from post meta if we could handle the physical removal
             unset($files[$found_file['id']]);
             $this->save_attached_files($post_id, $files);
+
+            // Log an event
+            do_action('cuar/private-content/files/on-remove-attachment', $post_id, $found_file);
 
             wp_send_json_success();
         }

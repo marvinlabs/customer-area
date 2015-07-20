@@ -608,10 +608,15 @@ class CUAR_Plugin {
 			}
 			break;
 
-            case 'jquery.repeatable-fields': {
-                wp_enqueue_script( 'jquery.repeatable-fields', CUAR_PLUGIN_URL . 'libs/repeatable-fields/repeatable-fields.min.js', array('jquery', 'jquery-ui-sortable'), $this->get_version() );
-            }
-            break;
+			case 'jquery.repeatable-fields': {
+				wp_enqueue_script( 'jquery.repeatable-fields', CUAR_PLUGIN_URL . 'libs/repeatable-fields/repeatable-fields.min.js', array('jquery', 'jquery-ui-sortable'), $this->get_version() );
+			}
+			break;
+
+			case 'jquery.jeditable': {
+				wp_enqueue_script( 'jquery.jeditable', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.min.js', array('jquery'), $this->get_version() );
+			}
+			break;
 
             case 'jquery.fileupload': {
                 wp_enqueue_script( 'jquery.ui.widget', CUAR_PLUGIN_URL . 'libs/fileupload/vendor/jquery.ui.widget.js', array('jquery'), $this->get_version() );
