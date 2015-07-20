@@ -35,6 +35,9 @@
             // Removal of items
             base._getAttachmentList().on('click', '.cuar-remove-action', base._onRemoveActionClick);
 
+            // Errors
+            base._getErrorList().on('click', '.cuar-dismiss', base._onDismissError);
+
             // Bind to our custom events
             $(document).on('cuar:attachmentManager:addItem', base._onAddAttachmentItem);
             $(document).on('cuar:attachmentManager:sendFile', base._onSendFile);
@@ -229,7 +232,7 @@
          */
         base._onAddAttachmentItem = function (event, postId, filename, caption, extra) {
             // See if we have more items than allowed
-            if (base._getAttachmentItems().length > cuar.maxAttachmentCount) {
+            if (cuar.maxAttachmentCount > 0 && base._getAttachmentItems().length >= cuar.maxAttachmentCount) {
                 base._showError(null, filename, cuar.tooManyAttachmentsAlready, false);
                 return null;
             }
@@ -330,13 +333,15 @@
                 var html = '<p class="cuar-error">';
                 if (filename != null && filename.length > 0) html += '<strong>' + filename + '</strong> - ';
                 html += errorMessage;
+                html += '<a href="#" class="cuar-dismiss"><span class="dashicons dashicons-dismiss"></span></a>';
                 html += '</p>';
 
-                $(html)
-                    .appendTo(base._getErrorList())
-                    .delay(2000)
-                    .slideUp('fast');
+                $(html).appendTo(base._getErrorList());
             }
+        };
+
+        base._onDismissError = function (event) {
+            $(this).closest('.cuar-error').remove();
         };
 
         /** Getter */
