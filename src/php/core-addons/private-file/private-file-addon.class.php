@@ -51,6 +51,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 add_filter('cuar/core/post-types/content', array(&$this, 'register_private_post_types'));
                 add_filter('cuar/core/types/content', array(&$this, 'register_content_type'));
 
+                add_filter('cuar/core/ownership/base-private-storage-directory', array(&$this, 'filter_storage_path'));
+
                 add_action('template_redirect', array(&$this, 'handle_file_actions'));
                 add_action('before_delete_post', array(&$this, 'before_post_deleted'));
 
@@ -88,6 +90,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
             $defaults[self::$OPTION_ENABLE_ADDON] = true;
             $defaults[self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
+            $defaults[self::$OPTION_STORAGE_PATH] = '';
 
             return $defaults;
         }
@@ -99,9 +102,28 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             return $this->plugin->get_option(self::$OPTION_ENABLE_ADDON);
         }
 
-        public function get_ftp_path()
+        public function get_ftp_path($create_dirs = false)
         {
-            return $this->plugin->get_option(self::$OPTION_FTP_PATH);
+            $path = $this->plugin->get_option(self::$OPTION_FTP_PATH);
+
+            if ($create_dirs)
+            {
+                @mkdir($path, 0750, true);
+            }
+
+            return $path;
+        }
+
+        public function get_custom_storage_path()
+        {
+            return $this->plugin->get_option(self::$OPTION_STORAGE_PATH);
+        }
+
+        public function filter_storage_path($path)
+        {
+            $custom_path = $this->plugin->get_option(self::$OPTION_STORAGE_PATH);
+
+            return empty($custom_path) ? $path : $custom_path;
         }
 
         /*------- GENERAL MAINTAINANCE FUNCTIONS ------------------------------------------------------------------------*/
@@ -522,6 +544,51 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         }
 
         /*------- UTILITY FUNCTIONS FOR MAINTENANCE ---------------------------------------------------------------------*/
+
+        public function is_folder_accessible_from_web($path)
+        {
+            // Create temp file in that folder
+            $tmp_filename = md5("test") . ".txt";
+            $tmp_filepath = untrailingslashit($path) . '/' . $tmp_filename;
+            @unlink($tmp_filepath);
+
+            $tmp_file = @fopen($tmp_filepath, "w");
+            if ($tmp_file === false) return false;
+
+            if (false === @fwrite($tmp_file, '0123456789'))
+            {
+                @unlink($tmp_filepath);
+                @fclose($tmp_file);
+
+                return false;
+            }
+
+            // Tokenize folder and start from the last token
+            $url_path = '';
+            $home_url = trailingslashit(home_url());
+            $path_tokens = explode('/', $path);
+            for ($i = count($path_tokens) - 1; $i >= 0; $i--)
+            {
+                $url_path = $path_tokens[$i] . '/' . $url_path;
+                $full_url = $home_url . $url_path . $tmp_filename;
+
+                $response = wp_remote_get($full_url, array('method' => 'GET'));
+                $response_code = wp_remote_retrieve_response_code($response);
+                $body = wp_remote_retrieve_body($response);
+                if ($response_code < 400 && !empty($body) && $body == '0123456789')
+                {
+                    return sprintf(__('<a href="%s">Public URL to a test file in that folder</a>. Response code: %s. File content: %s', 'cuar'),
+                        $full_url,
+                        $response_code,
+                        substr($body, 0, 10) . '...');
+                }
+            }
+
+            // Delete temp file in that folder
+            @unlink($tmp_filepath);
+
+            return false;
+        }
 
         /**
          * Delete physical files which are not registered in meta
@@ -1024,6 +1091,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         // General options
         public static $OPTION_ENABLE_ADDON = 'enable_private_files';
         public static $OPTION_FTP_PATH = 'frontend_ftp_upload_path';
+        public static $OPTION_STORAGE_PATH = 'frontend_storage_path';
 
         /** @var CUAR_PrivateFileAdminInterface */
         private $admin_interface;

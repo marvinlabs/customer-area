@@ -30,7 +30,7 @@ class CUAR_PrivateFileAdminInterface
         $this->pf_addon = $private_file_addon;
 
         // Settings
-        add_filter('cuar/core/permission-groups', array( &$this, 'get_configurable_capability_groups' ), 1000);
+        add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 1000);
         add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_settings_tab'), 520, 1);
         add_action('cuar/core/settings/print-settings?tab=cuar_private_files', array(&$this, 'print_settings'), 10, 2);
         add_filter('cuar/core/settings/validate-settings?tab=cuar_private_files', array(&$this, 'validate_options'), 10, 3);
@@ -46,11 +46,12 @@ class CUAR_PrivateFileAdminInterface
 
     /*------- CAPABILITIES ------------------------------------------------------------------------------------------*/
 
-    public function get_configurable_capability_groups( $capability_groups ) {
+    public function get_configurable_capability_groups($capability_groups)
+    {
         $bo_caps = &$capability_groups['cuar_private_file']['groups']['back-office']['capabilities'];
 
-        $bo_caps['cuar_pf_add_attachment'] = __( 'Add file attachment', 'cuar' );
-        $bo_caps['cuar_pf_remove_attachment'] = __( 'Remove file attachment', 'cuar' );
+        $bo_caps['cuar_pf_add_attachment'] = __('Add file attachment', 'cuar');
+        $bo_caps['cuar_pf_remove_attachment'] = __('Remove file attachment', 'cuar');
 
         return $capability_groups;
     }
@@ -92,7 +93,7 @@ class CUAR_PrivateFileAdminInterface
      */
     public function print_upload_meta_box()
     {
-        wp_nonce_field( plugin_basename(__FILE__), 'wp_cuar_nonce_file' );
+        wp_nonce_field(plugin_basename(__FILE__), 'wp_cuar_nonce_file');
 
         wp_enqueue_script('cuar.admin');
 
@@ -190,7 +191,7 @@ class CUAR_PrivateFileAdminInterface
         add_settings_section(
             'cuar_private_files_addon_general',
             __('General settings', 'cuar'),
-            array(&$this, 'print_frontend_section_info'),
+            array(&$cuar_settings, 'print_empty_section_info'),
             CUAR_Settings::$OPTIONS_PAGE_SLUG
         );
 
@@ -208,40 +209,39 @@ class CUAR_PrivateFileAdminInterface
             )
         );
 
-        if ( !file_exists($this->pf_addon->get_ftp_path()))
-        {
-            $folder_exists_message = '<span style="color: #c33;">'
-                . __('This folder does not exist, please create it if you want to copy files from the FTP folder. Otherwise, you need not do anything.', 'cuar')
-                . '</span>';
-        }
-        else
-        {
-            $folder_exists_message = "";
-        }
+        add_settings_section(
+            'cuar_private_files_addon_storage',
+            __('File Storage', 'cuar'),
+            array(&$this, 'print_storage_section_info'),
+            CUAR_Settings::$OPTIONS_PAGE_SLUG
+        );
+
+        add_settings_field(
+            CUAR_PrivateFileAddOn::$OPTION_STORAGE_PATH,
+            __('File storage', 'cuar'),
+            array(&$cuar_settings, 'print_input_field'),
+            CUAR_Settings::$OPTIONS_PAGE_SLUG,
+            'cuar_private_files_addon_storage',
+            array(
+                'option_id' => CUAR_PrivateFileAddOn::$OPTION_STORAGE_PATH,
+                'type'      => 'text',
+                'is_large'  => true,
+                'after'     => $this->get_storage_setting_description()
+            )
+        );
 
         add_settings_field(
             CUAR_PrivateFileAddOn::$OPTION_FTP_PATH,
             __('FTP uploads folder', 'cuar'),
             array(&$cuar_settings, 'print_input_field'),
             CUAR_Settings::$OPTIONS_PAGE_SLUG,
-            'cuar_private_files_addon_general',
+            'cuar_private_files_addon_storage',
             array(
                 'option_id' => CUAR_PrivateFileAddOn::$OPTION_FTP_PATH,
                 'type'      => 'text',
                 'is_large'  => true,
-                'after'     => '<p class="description">'
-                    . __('This folder can be used when you want to use files uploaded with FTP. This is handy when direct upload is failing for big files for instance.',
-                        'cuar')
-                    . $folder_exists_message
-                    . '</p>'
+                'after'     => $this->get_ftp_folder_setting_description()
             )
-        );
-
-        add_settings_section(
-            'cuar_private_files_addon_storage',
-            __('File Storage', 'cuar'),
-            array(&$this, 'print_storage_section_info'),
-            CUAR_Settings::$OPTIONS_PAGE_SLUG
         );
     }
 
@@ -251,6 +251,8 @@ class CUAR_PrivateFileAdminInterface
      * @param CUAR_Settings $cuar_settings
      * @param array         $input
      * @param array         $validated
+     *
+     * @return array
      */
     public function validate_options($validated, $cuar_settings, $input)
     {
@@ -259,17 +261,101 @@ class CUAR_PrivateFileAdminInterface
         $cuar_settings->validate_boolean($input, $validated, CUAR_PrivateFileAddOn::$OPTION_ENABLE_ADDON);
 
         // TODO: Would be good to have a validate_valid_folder function in CUAR_Settings class.
+        $cuar_settings->validate_always($input, $validated, CUAR_PrivateFileAddOn::$OPTION_STORAGE_PATH);
         $cuar_settings->validate_not_empty($input, $validated, CUAR_PrivateFileAddOn::$OPTION_FTP_PATH);
 
         return $validated;
     }
 
-    /**
-     * Print some info about the section
-     */
-    public function print_frontend_section_info()
+    private function get_storage_setting_description()
     {
-        // echo '<p>' . __( 'Options for the private files add-on.', 'cuar' ) . '</p>';
+        /** @var CUAR_PostOwnerAddOn $po_addon */
+        $po_addon = $this->plugin->get_addon('post-owner');
+        $storage_dir = $po_addon->get_base_private_storage_directory(true);
+
+        $out = '<p>' . sprintf(__('<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>', 'cuar'), $storage_dir) . '</p>';
+
+        $out .= '<p class="description">';
+        $out .= __('This folder is the root folder for storing private files. This should preferably be located outside of the web server public area or secured using a <code>.htaccess</code> file',
+            'cuar');
+        $out .= '</p>';
+
+        $out .= $this->get_folder_proposed_actions($storage_dir, '770');
+
+        return $out;
+    }
+
+    private function get_ftp_folder_setting_description()
+    {
+        $ftp_dir = $this->pf_addon->get_ftp_path();
+
+        $out = '<p class="description">'
+            . __('This folder can be used when you want to use files uploaded with FTP. This is handy when direct upload is failing for big files for instance.',
+                'cuar')
+            . '</p>';
+
+        $out .= $this->get_folder_proposed_actions($ftp_dir, '770');
+
+        return $out;
+    }
+
+    private function get_folder_proposed_actions($path, $permissions)
+    {
+        $out = '';
+
+        // Folder does not exist.
+        if ( !file_exists($path))
+        {
+            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path) . '" data-action="mkdir" data-extra="0' . $permissions . '" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
+            $out .= __('The folder does not exist.', 'cuar');
+
+            // Propose to try create it
+            $out .= '<br/><a href="#" class="button">';
+            $out .= __('Create folder', 'cuar');
+            $out .= '</a>';
+
+            $out .= '</p>';
+
+            return $out;
+        }
+
+        // Folder does not have proper permissions. Propose to change them?
+        $current_perms = substr(sprintf('%o', fileperms($path)), -3);
+        if ($permissions < $current_perms)
+        {
+            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path) . '" data-action="chmod" data-extra="0' . $permissions . '" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
+            $out .= sprintf(__('That directory should at least have the permissions set to %s. Currently it is %s. You should adjust that directory permissions as upload or download might not work properly.',
+                'cuar'), $permissions, $current_perms);
+
+            // Propose to try create it
+            $out .= '<br/><a href="#" class="button">';
+            $out .= __('Change permissions', 'cuar');
+            $out .= '</a>';
+
+            $out .= '</p>';
+        }
+
+        $accessible_from_web = $this->pf_addon->is_folder_accessible_from_web($path);
+        if ($accessible_from_web!==false)
+        {
+            $out .= '<p class="cuar-error cuar-folder-action" data-path="' . esc_attr($path) . '" data-action="secure-htaccess" data-extra="" data-success-message="' . __('Save settings to check again', 'cuar') . '">';
+            $out .= __('That directory seems to be accessible from the web. <strong>This is not safe</strong>. The most secure would be to move it outside of the web folder of your server',
+                'cuar');
+            $out .= '<br/>';
+            $out .= $accessible_from_web;
+            $out .= '<br/>';
+            $out .= __('We can try to protect it with a <code>.htaccess</code> file with the button below, but <strong>this only works for Apache servers</strong> (will do nothing if you are running nginx or IIS)',
+                'cuar');
+
+            // Propose to try create it
+            $out .= '<br/><a href="#" class="button">';
+            $out .= __('Try to secure it', 'cuar');
+            $out .= '</a>';
+
+            $out .= '</p>';
+        }
+
+        return $out;
     }
 
     /**
@@ -277,33 +363,16 @@ class CUAR_PrivateFileAdminInterface
      */
     public function print_storage_section_info()
     {
-        $po_addon = $this->plugin->get_addon('post-owner');
-        $storage_dir = $po_addon->get_base_private_storage_directory(true);
-        $sample_storage_dir = $po_addon->get_owner_storage_directory(array(get_current_user_id()), 'usr', true, true);
-
-        $required_perms = '705';
-        $current_perms = substr(sprintf('%o', fileperms($storage_dir)), -3);
-
-        echo '<div class="cuar-section-description">';
-        echo '<p>'
-            . sprintf(__('The files will be stored in the following directory: <code>%s</code>.', 'cuar'),
-                $storage_dir)
-            . '</p>';
-
-        echo '<p>'
-            . sprintf(__('Each user has his own sub-directory. For instance, yours is: <code>%s</code>.', 'cuar'),
-                $sample_storage_dir)
-            . '</p>';
-
-        if ($required_perms > $current_perms)
-        {
-            echo '<p style="color: orange;">'
-                . sprintf(__('That directory should at least have the permissions set to 705. Currently it is '
-                    . '%s. You should adjust that directory permissions as upload or download might not work '
-                    . 'properly.', 'cuar'), $current_perms)
-                . '</p>';
-        }
-        echo '</div>';
+        wp_enqueue_script('cuar.admin');
+        ?>
+        <script type="text/javascript">
+            <!--
+            jQuery(document).ready(function ($) {
+                $('.cuar-folder-action').ajaxFolderAction();
+            });
+            // -->
+        </script>
+        <?php
     }
 
     /** @var CUAR_Plugin */
