@@ -7,6 +7,8 @@
 /** @var string $attachment_item_template */
 ?>
 
+<?php do_action('cuar/private-content/attachment-manager/before-file-attachment-list'); ?>
+
 <div class="cuar-file-attachments">
     <?php wp_nonce_field('cuar-remove-attachment-' . $post->ID, 'cuar_remove_attachment_nonce'); ?>
     <?php wp_nonce_field('cuar-update-attachment-' . $post->ID, 'cuar_update_attachment_nonce'); ?>
@@ -28,3 +30,5 @@
     include($attachment_item_template);
     ?>
 </div>
+
+<?php do_action('cuar/private-content/attachment-manager/after-file-attachment-list'); ?>
