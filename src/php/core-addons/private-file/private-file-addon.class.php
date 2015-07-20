@@ -64,6 +64,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 add_action('wp_ajax_cuar_attach_file', array(&$this, 'ajax_attach_file'));
                 add_action('wp_ajax_nopriv_cuar_attach_file', array(&$this, 'ajax_attach_file'));
 
+                add_action('wp_ajax_cuar_update_attached_file', array(&$this, 'ajax_update_attached_file_meta'));
+                add_action('wp_ajax_nopriv_cuar_update_attached_file', array(&$this, 'ajax_update_attached_file_meta'));
+
                 add_filter('cuar/core/js-messages?zone=admin', array(&$this, 'add_js_messages'));
                 add_filter('cuar/core/js-messages?zone=frontend', array(&$this, 'add_js_messages'));
 
@@ -820,7 +823,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check permissions
             if ( !is_user_logged_in() || !current_user_can('cuar_pf_manage_attachments'))
             {
-                $errors[] = __('You are not allowed to remove attached files', 'cuar');
+                $errors[] = __('You are not allowed to update attached files', 'cuar');
                 wp_send_json_error($errors);
             }
 
@@ -829,26 +832,27 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $found_file = $this->get_attached_file_by_name($post_id, $filename, $files);
             if ($found_file == false)
             {
-                // Consider that is ok with us
-                wp_send_json_success();
-            }
-
-            // File exists, we'll remove it now. First physically
-            $source = $this->get_file_source($post_id, $found_file);
-            $errors = apply_filters('cuar/private-content/files/on-remove-attached-file?source=' . $source, $errors, $post_id, $found_file);
-            if ( !empty($errors))
-            {
+                $errors[] = __('File not found', 'cuar');
                 wp_send_json_error($errors);
             }
 
-            // Then from post meta if we could handle the physical removal
-            unset($files[$found_file['id']]);
-            $this->save_attached_files($post_id, $files);
+            // File exists, change the details which need to be changed
+            $has_changed = false;
+            if (isset($_POST['caption']) && 0 != strcmp($_POST['caption'], $found_file['caption']))
+            {
+                $has_changed = true;
+                $files[$found_file['id']]['caption'] = $_POST['caption'];
+            }
 
-            // Log an event
-            do_action('cuar/private-content/files/on-update-attachment', $post_id, $found_file);
+            if ($has_changed)
+            {
+                $this->save_attached_files($post_id, $files);
 
-            wp_send_json_success();
+                // Log an event
+                do_action('cuar/private-content/files/on-update-attachment', $post_id, $found_file);
+            }
+
+            wp_send_json_success($files[$found_file['id']]);
         }
 
         /**

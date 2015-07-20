@@ -9,6 +9,7 @@
 
 <div class="cuar-file-attachments">
     <?php wp_nonce_field('cuar-remove-attachment-' . $post->ID, 'cuar_remove_attachment_nonce'); ?>
+    <?php wp_nonce_field('cuar-update-attachment-' . $post->ID, 'cuar_update_attachment_nonce'); ?>
 
     <?php
     foreach ($attached_files as $file_id => $attached_file)

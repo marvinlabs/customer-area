@@ -41,6 +41,7 @@
             // Bind to our custom events
             $(document).on('cuar:attachmentManager:addItem', base._onAddAttachmentItem);
             $(document).on('cuar:attachmentManager:sendFile', base._onSendFile);
+            $(document).on('cuar:attachmentManager:updateFile', base._onUpdateFile);
             $(document).on('cuar:attachmentManager:updateItem', base._onUpdateAttachmentItem);
             $(document).on('cuar:attachmentManager:updateItemProgress', base._onUpdateAttachmentItemProgress);
             $(document).on('cuar:attachmentManager:updateItemState', base._onUpdateAttachmentItemState);
@@ -186,7 +187,7 @@
                 'method': method,
                 'post_id': postId,
                 'filename': filename,
-                'caption': caption,
+                'caption': tempCaption,
                 'extra': extra
             };
 
@@ -217,6 +218,55 @@
                             newFilename,
                             newCaption
                         ]);
+                    }
+                }
+            );
+        };
+
+        /**
+         * Callback for the event cuar:attachmentManager:updateFile
+         * @param event
+         * @param item
+         * @param postId
+         * @param nonceValue
+         * @param filename
+         * @param caption
+         * @private
+         */
+        base._onUpdateFile = function (event, item, postId, nonceValue, filename, caption) {
+            var tempCaption = caption;
+            if (caption === undefined || caption.trim().length == 0) {
+                tempCaption = filename;
+            }
+
+            base._updateAttachmentItemState(item, 'pending');
+
+            // Send some Ajax
+            var ajaxParams = {
+                'action': 'cuar_update_attached_file',
+                'post_id': postId,
+                'filename': filename,
+                'caption': tempCaption,
+                'cuar_update_attachment_nonce': nonceValue
+            };
+
+            $.post(
+                cuar.ajaxUrl,
+                ajaxParams,
+                function (response) {
+                    // Not ok. Alert
+                    if (response.success == false) {
+                        var errorMessage = '';
+                        if (response.data.length > 0) {
+                            errorMessage = response.data[0];
+                        }
+                        base._showError(item, filename, errorMessage, true);
+                    } else {
+                        var newFilename = response.data.file;
+                        var newCaption = response.data.caption;
+
+                        base._updateAttachmentItem(item, postId, newFilename, newCaption);
+                        base._updateAttachmentItemState(item, 'success');
                     }
                 }
             );
