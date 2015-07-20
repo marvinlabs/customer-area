@@ -1,5 +1,4 @@
 <?php /** Template version: 1.0.0
-
  */
 
 /** @var WP_Post $post */
@@ -27,9 +26,7 @@
             <span class="field">
                 <select id="cuar_ftp_file_selection" name="cuar_ftp_file_selection" multiple="multiple" class='cuar-ftp-file-selection'>
                     <?php foreach ($ftp_files as $filename) : $file_path = $ftp_dir . '/' . $filename; ?>
-                        <?php if (is_file($file_path)) : ?>
-                            <option value="<?php echo esc_attr($filename); ?>"><?php echo esc_html($filename); ?></option>
-                        <?php endif; ?>
+                        <option value="<?php echo esc_attr($filename); ?>"><?php echo esc_html($filename); ?></option>
                     <?php endforeach; ?>
                 </select>
                 <a href="#" class="cuar-ftp-add-files button"><?php _e('Attach selected file(s)', 'cuar'); ?></a>

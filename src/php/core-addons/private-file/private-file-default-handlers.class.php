@@ -420,7 +420,19 @@ class CUAR_PrivateFilesDefaultHandlers
         $ftp_files = array();
         if (@file_exists($ftp_dir))
         {
+            $file_filter = apply_filters('cuar/private-content/files/ftp-folder-exclusions', array(
+               '.htaccess'
+            ));
+
             $ftp_files = @scandir($ftp_dir);
+            foreach ($ftp_files as $key => $filename)
+            {
+                $file_path = $ftp_dir . '/' . $filename;
+                if (!is_file($file_path) || in_array($filename, $file_filter))
+                {
+                    unset($ftp_files[$key]);
+                }
+            }
         }
 
         $template = $this->plugin->get_template_file_path(
