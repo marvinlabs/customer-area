@@ -43,7 +43,7 @@
          * @param newCaption
          * @private
          */
-        base._removeFileFromSelect = function (event, postId, oldFilename, newFilename, newCaption) {
+        base._removeFileFromSelect = function (event, item, postId, oldFilename, newFilename, newCaption) {
             var ftpOperation = base._getFtpOperation();
             if (ftpOperation == 'ftp-move') {
                 base._getSelectBox()

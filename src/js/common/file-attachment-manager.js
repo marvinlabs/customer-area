@@ -213,6 +213,7 @@
                         base._updateAttachmentItemState(item, 'success');
 
                         $(document).trigger('cuar:attachmentManager:fileAttached', [
+                            item,
                             postId,
                             filename,
                             newFilename,
