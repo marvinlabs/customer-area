@@ -62,9 +62,9 @@ $attached_files = cuar_get_the_attached_files($post->ID);
                         <li>
                             <a href="<?php cuar_the_attached_file_link($post->ID, $file); ?>" title="<?php esc_attr_e('Get file', 'cuar'); ?>">
                                 <?php do_action('cuar/templates/file-attachment-item/before-caption', $post->ID, $file); ?>
-                                <?php cuar_the_attached_file_caption($post->ID, $file); ?>
+                                <span class="cuar-file-caption"><?php cuar_the_attached_file_caption($post->ID, $file); ?></span>
                                 <?php do_action('cuar/templates/file-attachment-item/after-caption', $post->ID, $file); ?>
-                                (<?php cuar_the_attached_file_size($post->ID, $file); ?>)
+                                <span class="cuar-file-size">(<?php cuar_the_attached_file_size($post->ID, $file); ?>)</span>
                             </a>
                         </li>
                     <?php endforeach; ?>
