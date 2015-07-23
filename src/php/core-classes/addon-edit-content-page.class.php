@@ -73,6 +73,12 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 add_action('admin_enqueue_scripts', array(&$this, 'enqueue_scripts'));
                 add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 1000);
             }
+
+            if ($this->get_wizard_step_count() > 1)
+            {
+                // Enable rewrite rules for the wizard steps
+                $this->enable_wizard_permalinks();
+            }
         }
 
         /*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
@@ -102,6 +108,18 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 return false;
             }
 
+            // Form ID should match
+            if ( !isset($_POST['cuar_form_id']) || $_POST['cuar_form_id'] != $this->get_slug())
+            {
+                return false;
+            }
+
+            // Nonce check
+            if ( !wp_verify_nonce($_POST["cuar_" . $this->get_slug() . "_nonce"], 'cuar_' . $this->get_slug()))
+            {
+                die('An attempt to bypass security checks was detected! Please go back and try again.');
+            }
+
             do_action('cuar/private-content/edit/before_' . $action, $this, $this->form_errors);
             do_action('cuar/private-content/edit/before_' . $action . '/page-slug=' . $this->get_slug(), $this, $this->form_errors);
 
@@ -112,7 +130,21 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
             if (true === $result && empty($this->form_errors))
             {
-                $redirect_url = apply_filters('cuar/private-content/edit/after_' . $action . '/redirect_url', $this->get_redirect_url_after_action(),
+                // If we still have some wizard steps to go, redirect to the next step
+                $step_count = $this->get_wizard_step_count();
+                if ($step_count > 1)
+                {
+                    $current_step = $this->get_current_wizard_step();
+                    if ($current_step < $step_count - 1)
+                    {
+                        wp_redirect($this->get_wizard_step_url($this->get_current_post_id(), $current_step + 1));
+                        exit;
+                    }
+                }
+
+                // No more wizard steps, use the URL we are given if any
+                $redirect_url = apply_filters('cuar/private-content/edit/after_' . $action . '/redirect_url',
+                    $this->get_redirect_url_after_action(),
                     $this->get_slug());
                 if ($redirect_url != null)
                 {
@@ -122,6 +154,22 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             }
 
             return true;
+        }
+
+        public function print_page_content($args = array(), $shortcode_content = '')
+        {
+            $action = $this->get_action();
+            if (get_query_var('cuar_action', null) != null)
+            {
+                $action = get_query_var('cuar_action', null);
+            }
+
+            if ( !$this->is_action_authorized($action))
+            {
+                return;
+            }
+
+            parent::print_page_content($args, $shortcode_content);
         }
 
         public abstract function get_default_owner_type();
@@ -265,6 +313,75 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             return 'publish';
         }
 
+        /*------- WIZARD FUNCTIONS --------------------------------------------------------------------------------------*/
+
+        /**
+         * Allow this page to get URLs for the wizard steps
+         */
+        protected function enable_wizard_permalinks()
+        {
+            add_filter('rewrite_rules_array', array(&$this, 'insert_wizard_rewrite_rules'));
+            add_filter('query_vars', array(&$this, 'insert_wizard_query_vars'));
+        }
+
+        /**
+         * Add rewrite rules for the wizard steps
+         *
+         * @param array $rules
+         *
+         * @return array
+         */
+        public function insert_wizard_rewrite_rules($rules)
+        {
+            $page_id = $this->get_page_id();
+            $page_slug = $this->get_full_page_path();
+
+            $new_rules = array();
+
+            // We need post ID + step number
+            $rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_post_id=$matches[1]&cuar_wizard_step=$matches[2]';
+            $rewrite_regex = $page_slug . '/([0-9]+)/([0-9]+)/?$';
+            $new_rules[$rewrite_regex] = $rewrite_rule;
+
+            return $new_rules + $rules;
+        }
+
+        /**
+         * Add query variables for the wizard steps
+         *
+         * @param array $vars
+         *
+         * @return array
+         */
+        public function insert_wizard_query_vars($vars)
+        {
+            array_push($vars, 'cuar_post_id');
+            array_push($vars, 'cuar_wizard_step');
+
+            return $vars;
+        }
+
+        /**
+         * The URL for a particular step of the wizard
+         *
+         * @param int $edited_post_id
+         * @param int $step
+         *
+         * @return int The number of steps
+         */
+        protected function get_wizard_step_url($edited_post_id, $step)
+        {
+            if ($edited_post_id <= 0
+                || $step < 0
+                || $step >= $this->get_wizard_step_count()
+            )
+            {
+                return $this->get_page_url();
+            }
+
+            return trailingslashit($this->get_page_url()) . $edited_post_id . '/' . $step;
+        }
+
         /**
          * The number of steps for the edition process
          *
@@ -280,13 +397,20 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
          */
         protected function get_current_wizard_step()
         {
-            $step = get_query_var('cuar_wizard_step', 1);
-            if ( !is_int($step)) return 1;
+            $step = (int)get_query_var('cuar_wizard_step', 0);
+            if ( !is_int($step)) return 0;
             if ($step > $this->get_wizard_step_count()) return $this->get_wizard_step_count();
 
             return $step;
         }
 
+        /**
+         * Get the steps of the wizard in the form of an array with keys:
+         *
+         * - label: string The label to show
+         *
+         * @return array The steps
+         */
         public function get_wizard_steps()
         {
             return array();
@@ -308,6 +432,8 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 'templates'));
         }
 
+        /*------- EDIT FORM ---------------------------------------------------------------------------------------------*/
+
         public function should_print_form()
         {
             if ( !empty($this->form_messages))
@@ -323,8 +449,19 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         public function print_form_header()
         {
+            if ($this->get_wizard_step_count() > 1)
+            {
+                $form_url = $this->get_wizard_step_url($this->get_current_post_id(), $this->get_current_wizard_step());
+            }
+            else
+            {
+                $form_url = $this->get_page_url();
+            }
+
             printf('<form name="%1$s" method="post" class="cuar-form cuar-%3$s-content-form cuar-%1$s-form" action="%2$s" enctype="multipart/form-data">',
-                $this->get_slug(), $this->get_page_url(), $this->get_action());
+                $this->get_slug(),
+                $form_url,
+                $this->get_action());
 
             printf('<input type="hidden" name="cuar_form_id" value="%1$s" />', $this->get_slug());
             printf('<input type="hidden" name="cuar_post_type" value="%1$s" />', $this->get_friendly_post_type());
@@ -586,6 +723,10 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 if (isset($_POST['cuar_post_id']))
                 {
                     $this->current_post_id = $_POST['cuar_post_id'];
+                }
+                else if (get_query_var('cuar_post_id', 0) > 0)
+                {
+                    $this->current_post_id = get_query_var('cuar_post_id', 0);
                 }
                 else if (get_query_var('cuar_post_name', null) != null)
                 {

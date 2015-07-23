@@ -68,21 +68,14 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
         {
             if (get_query_var('cuar_action', null) == 'delete')
             {
+                /** @var CUAR_CustomerPagesAddOn $cp_addon */
                 $cp_addon = $this->plugin->get_addon('customer-pages');
                 $post_id = $cp_addon->get_page_id($this->get_parent_slug());
 
                 return get_permalink($post_id);
             }
 
-            return null;
-
-            // TODO handle confirmation messages at the global page level
-// 		$post_id = $this->get_current_post_id();
-// 		if ( $post_id<=0 || $post_id==null ) {
-// 			$cp_addon = $this->plugin->get_addon('customer-pages');
-// 			$post_id = $cp_addon->get_page_id( $this->get_parent_slug() );
-// 		}
-// 		return get_permalink( $post_id );
+            return get_permalink($this->get_current_post_id());
         }
 
         protected function get_default_required_fields()
@@ -192,20 +185,6 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
         /*------- PERMALINKS --------------------------------------------------------------------------------------------*/
 
         /**
-         * The path of the page (slug + parent slugs)
-         */
-        private function get_full_page_path($page_id = 0)
-        {
-            if ($page_id == 0)
-            {
-                $cp_addon = $this->plugin->get_addon('customer-pages');
-                $page_id = $cp_addon->get_page_id($this->get_slug());
-            }
-
-            return untrailingslashit(str_replace(trailingslashit(home_url()), '', get_permalink($page_id)));
-        }
-
-        /**
          * Allow this page to get URLs for content archives
          */
         protected function enable_update_content_permalink()
@@ -223,6 +202,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
          */
         public function insert_update_content_rewrite_rules($rules)
         {
+            /** @var CUAR_CustomerPagesAddOn $cp_addon */
             $cp_addon = $this->plugin->get_addon('customer-pages');
 
             $parent_page_id = $cp_addon->get_page_id($this->get_parent_slug());
@@ -230,21 +210,21 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
 
             $page_id = $cp_addon->get_page_id($this->get_slug());
 
-            $newrules = array();
+            $new_rules = array();
 
             // Single post rule with action update
             $rewrite_rule = 'index.php?page_id=' . $page_id . '&year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&cuar_post_name=$matches[4]&cuar_action='
                 . $this->get_action();
             $rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/' . $cp_addon->get_update_content_slug() . '/?$';
-            $newrules[$rewrite_regex] = $rewrite_rule;
+            $new_rules[$rewrite_regex] = $rewrite_rule;
 
             // Single post rule with action delete
             $rewrite_rule = 'index.php?page_id=' . $page_id
                 . '&year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&cuar_post_name=$matches[4]&cuar_action=delete';
             $rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/' . $cp_addon->get_delete_content_slug() . '/?$';
-            $newrules[$rewrite_regex] = $rewrite_rule;
+            $new_rules[$rewrite_regex] = $rewrite_rule;
 
-            return $newrules + $rules;
+            return $new_rules + $rules;
         }
 
         /**

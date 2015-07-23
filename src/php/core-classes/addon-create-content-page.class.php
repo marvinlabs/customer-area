@@ -43,10 +43,15 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
 
         protected function get_redirect_url_after_action()
         {
-            $cp_addon = $this->plugin->get_addon('customer-pages');
-            $page_id = $cp_addon->get_page_id($this->get_parent_slug());
+            // Let the user decide where he wants to go next
+            return null;
 
-            return get_permalink($page_id);
+            // Redirect to the main content page linked to this creation page
+//            /** @var CUAR_CustomerPagesAddOn $cp_addon */
+//            $cp_addon = $this->plugin->get_addon('customer-pages');
+//            $page_id = $cp_addon->get_page_id($this->get_parent_slug());
+//
+//            return get_permalink($page_id);
         }
 
         protected function get_default_publish_status()
@@ -61,7 +66,7 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
 
         protected function get_default_required_fields()
         {
-            return array('cuar_title', 'cuar_content', 'cuar_category', 'cuar_owner', 'cuar_file');
+            return array('cuar_title', 'cuar_content', 'cuar_category', 'cuar_owner');
         }
 
         /*------- FORM HANDLING -----------------------------------------------------------------------------------------*/
@@ -74,19 +79,23 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
                     // If not logged-in, bail
                     if ( !is_user_logged_in()) return false;
 
-                    // Form ID should match
-                    if ( !isset($_POST['cuar_form_id']) || $_POST['cuar_form_id'] != $this->get_slug()) return false;
-
-                    // Nonce check
-                    if ( !wp_verify_nonce($_POST["cuar_" . $this->get_slug() . "_nonce"], 'cuar_' . $this->get_slug()))
-                    {
-                        die('An attempt to bypass security checks was detected! Please go back and try again.');
-                    }
-
                     // User can create content
                     if ( !$this->current_user_can_create_content())
                     {
-                        die('You are not allowed to create this type of content.');
+                        die(__('You are not allowed to create this type of content.', 'cuar'));
+                    }
+
+                    // There is a current post and we are not the author
+                    $current_post = $this->get_current_post();
+                    if ( !empty($current_post) && $current_post->post_author != get_current_user_id())
+                    {
+                        die(__('Trying to cheat?', 'cuar'));
+                    }
+
+                    // Current post type must match ours
+                    if ( !empty($current_post) && $current_post->post_type!=$this->get_friendly_post_type())
+                    {
+                        die(__('Trying to cheat?', 'cuar'));
                     }
 
                     return true;
