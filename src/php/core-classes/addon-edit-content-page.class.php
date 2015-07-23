@@ -257,9 +257,55 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             return false;
         }
 
+        /**
+         * @return string The default status for the post when it gets created
+         */
         protected function get_default_publish_status()
         {
             return 'publish';
+        }
+
+        /**
+         * The number of steps for the edition process
+         *
+         * @return int The number of steps
+         */
+        protected function get_wizard_step_count()
+        {
+            return 1;
+        }
+
+        /**
+         * @return int The current step for the wizard
+         */
+        protected function get_current_wizard_step()
+        {
+            $step = get_query_var('cuar_wizard_step', 1);
+            if ( !is_int($step)) return 1;
+            if ($step > $this->get_wizard_step_count()) return $this->get_wizard_step_count();
+
+            return $step;
+        }
+
+        public function get_wizard_steps()
+        {
+            return array();
+        }
+
+        public function print_wizard_header()
+        {
+            if ($this->get_wizard_step_count() == 1) return;
+
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $steps = $this->get_wizard_steps();
+
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $current_step = $this->get_current_wizard_step();
+
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                'edit-content-form-wizard-header.template.php',
+                'templates'));
         }
 
         public function should_print_form()
@@ -722,6 +768,8 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
          * @param CUAR_Settings $cuar_settings
          * @param array         $input
          * @param array         $validated
+         *
+         * @return array
          */
         public function validate_options($validated, $cuar_settings, $input)
         {
