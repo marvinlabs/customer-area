@@ -318,15 +318,17 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             echo '</form>';
         }
 
-        public function print_submit_button($label)
+        public function print_submit_button($field_label)
         {
             do_action('cuar/private-content/edit/before_submit_button', $this);
 
-            echo '<div class="form-group">';
-            echo '	<div class="submit-container">';
-            echo '		<input type="submit" name="cuar_do_register" value="' . esc_attr($label) . '" class="btn btn-default" />';
-            echo '	</div>';
-            echo '</div>';
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $field_name = 'cuar_do_register';
+
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                'edit-content-form-field-submit.template.php',
+                'templates'));
 
             do_action('cuar/private-content/edit/after_submit_button', $this);
         }
