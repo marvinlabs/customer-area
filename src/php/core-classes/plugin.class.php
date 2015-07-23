@@ -193,8 +193,8 @@ class CUAR_Plugin {
                 'cuar.admin',
                 $this->get_admin_theme_url() . '/assets/css/styles.min.css' );
         } else if ( !current_theme_supports( 'customer-area.stylesheet' )
-            && $this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS )
-            && cuar_is_customer_area_page( get_queried_object_id() ) ) {
+            && $this->get_option( CUAR_Settings::$OPTION_INCLUDE_CSS )) {
+
             wp_enqueue_style(
                 'cuar.frontend',
                 $this->get_frontend_theme_url() . '/assets/css/styles.min.css',
