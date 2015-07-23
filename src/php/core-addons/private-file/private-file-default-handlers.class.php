@@ -392,10 +392,8 @@ class CUAR_PrivateFilesDefaultHandlers
     /**
      * Display a form to upload files with the classic browser upload method
      */
-    public function render_classic_upload_form()
+    public function render_classic_upload_form($post_id)
     {
-        global $post;
-
         $this->plugin->enable_library('jquery.fileupload');
 
         $template = $this->plugin->get_template_file_path(
@@ -409,10 +407,8 @@ class CUAR_PrivateFilesDefaultHandlers
     /**
      * Display a form to move files from the local FTP upload folder
      */
-    public function render_ftp_folder_form()
+    public function render_ftp_folder_form($post_id)
     {
-        global $post;
-
         /** @var CUAR_PrivateFileAddOn $pf_addon */
         $pf_addon = $this->plugin->get_addon('private-files');
 

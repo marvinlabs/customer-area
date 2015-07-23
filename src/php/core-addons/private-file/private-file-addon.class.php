@@ -548,6 +548,57 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             return apply_filters('cuar/private-content/files/max-attachment-count', 1);
         }
 
+        /*------- ATTACHMENTS MANAGER -----------------------------------------------------------------------------------*/
+
+        /**
+         * Print the add attachment ajax methods
+         *
+         * @param int $post_id The post ID
+         */
+        public function print_add_attachment_method_browser($post_id)
+        {
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $select_methods = apply_filters('cuar/private-content/files/select-methods', array());
+
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                'private-attachments-add-methods-browser.template.php',
+                'templates'));
+        }
+
+        /**
+         * Print the current attachments manager
+         *
+         * @param int $post_id The post ID
+         */
+        public function print_current_attachments_manager($post_id)
+        {
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $attached_files = $this->get_attached_files($post_id);
+
+            if (current_user_can('cuar_pf_manage_attachments'))
+            {
+                /** @noinspection PhpUnusedLocalVariableInspection */
+                $attachment_item_template = $this->plugin->get_template_file_path(
+                    CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                    'private-attachments-list-item.template.php',
+                    'templates');
+            }
+            else
+            {
+                /** @noinspection PhpUnusedLocalVariableInspection */
+                $attachment_item_template = $this->plugin->get_template_file_path(
+                    CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                    'private-attachments-list-item-readonly.template.php',
+                    'templates');
+            }
+
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                'private-attachments-list.template.php',
+                'templates'));
+        }
+
         /*------- UTILITY FUNCTIONS FOR MAINTENANCE ---------------------------------------------------------------------*/
 
         public function is_folder_accessible_from_web($path)

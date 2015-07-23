@@ -1,9 +1,10 @@
 <?php /** Template version: 1.0.0
 
  */
-
-/** @var array $select_methods */
 ?>
+
+<?php /** @var int $post_id */ ?>
+<?php /** @var array $select_methods */ ?>
 
 <div class="cuar-file-attachment-manager">
     <span class="label">
@@ -19,7 +20,7 @@
         <?php foreach ($select_methods as $method_id => $method) : ?>
             <div class="cuar-file-selector" style="display: none;" data-method="<?php echo esc_attr($method_id); ?>">
                 <p class="cuar-hint"><?php echo $method['caption']; ?></p>
-                <?php do_action('cuar/private-content/files/render-select-method?id=' . $method_id); ?>
+                <?php do_action('cuar/private-content/files/render-select-method?id=' . $method_id, $post_id); ?>
             </div>
         <?php endforeach; ?>
     </div>

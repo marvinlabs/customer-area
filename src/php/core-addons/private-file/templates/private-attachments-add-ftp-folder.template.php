@@ -1,13 +1,13 @@
 <?php /** Template version: 1.0.0
  */
 
-/** @var WP_Post $post */
+/** @var int $post_id */
 /** @var string $ftp_dir */
 /** @var array $ftp_files */
 ?>
 
-<div class="cuar-ftp-uploader" data-post-id="<?php echo esc_attr($post->ID); ?>">
-    <?php wp_nonce_field('cuar-attach-ftp-folder-' . $post->ID, 'cuar_ftp-folder_' . $post->ID); ?>
+<div class="cuar-ftp-uploader" data-post-id="<?php echo esc_attr($post_id); ?>">
+    <?php wp_nonce_field('cuar-attach-ftp-folder-' . $post_id, 'cuar_ftp-folder_' . $post_id); ?>
 
     <div class="metabox-row">
         <label for="cuar_ftp_copy_file" class="selectit">
