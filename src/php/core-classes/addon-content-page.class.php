@@ -126,11 +126,20 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             if ($page_id == 0)
             {
+                /** @var CUAR_CustomerPagesAddOn $cp_addon */
                 $cp_addon = $this->plugin->get_addon('customer-pages');
                 $page_id = $cp_addon->get_page_id($this->get_slug());
             }
 
-            return untrailingslashit(str_replace(trailingslashit(home_url()), '', get_permalink($page_id)));
+            $page_url = get_permalink($page_id);
+            $page_url = str_replace('http://', '', $page_url);
+            $page_url = str_replace('https://', '', $page_url);
+
+            $home_url = trailingslashit(home_url());
+            $home_url = str_replace('http://', '', $home_url);
+            $home_url = str_replace('https://', '', $home_url);
+
+            return untrailingslashit(str_replace($home_url, '', $page_url));
         }
 
         /**
@@ -145,6 +154,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
         /**
          * Build the link for a given term
+         *
          * @param $termlink
          * @param $term
          * @param $taxonomy
@@ -333,6 +343,12 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             $rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/([^/]+)/?$';
             $newrules[$rewrite_regex] = $rewrite_rule;
 
+            // Single post rule with action & action param
+            $rewrite_rule = 'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&' . $this->page_description['friendly_post_type']
+                . '=$matches[4]&cuar_action=$matches[5]&cuar_action_param=$matches[6]';
+            $rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/([^/]+)/([^/]+)/?$';
+            $newrules[$rewrite_regex] = $rewrite_rule;
+
             return $newrules + $rules;
         }
 
@@ -346,6 +362,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         public function insert_single_post_query_vars($vars)
         {
             array_push($vars, 'cuar_action');
+            array_push($vars, 'cuar_action_param');
             array_push($vars, $this->page_description['friendly_post_type']);
 
             return $vars;
@@ -381,6 +398,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
          */
         public function get_single_private_content_url($post)
         {
+            /** @var CUAR_CustomerPagesAddOn $cp_addon */
             $cp_addon = $this->plugin->get_addon('customer-pages');
             $page_id = $cp_addon->get_page_id($this->get_slug());
             if ($page_id == false) return '';
@@ -393,21 +411,20 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             $url = trailingslashit(get_permalink($page_id));
             $url .= sprintf('%04d/%02d/%02d/%s', $date[0], $date[1], $date[2], $post->post_name);
 
-            if ( !empty($action))
-            {
-                $url .= '/' . $action;
-            }
-
             return $url;
         }
 
-        public function get_single_private_content_action_url($post, $action = '')
+        public function get_single_private_content_action_url($post, $action = '', $action_param = '')
         {
             $url = $this->get_single_private_content_url($post);
-
             if ( !empty($action))
             {
                 $url .= '/' . $action;
+
+                if (!empty($action_param))
+                {
+                    $url .= '/' . $action_param;
+                }
             }
 
             return $url;
@@ -600,7 +617,8 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
         /*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 
-        public function print_single_private_content_action_links() {
+        public function print_single_private_content_action_links()
+        {
             do_action('cuar/private-content/view/before_action_links', $this);
             do_action('cuar/private-content/view/before_action_links?post-type=' . $this->get_friendly_post_type(), $this);
 

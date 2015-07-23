@@ -1,19 +1,21 @@
-<?php /** Template version: 1.1.0 
+<?php /** Template version: 1.2.0
+ *
+ * -= 1.2.0 =-
+ * - Compatibility with the new multiple attached files
+ *
+ * -= 1.1.0 =-
+ * - Updated markup
+ * - Normalized the extra class filter name
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ *
+ */ ?>
 
--= 1.1.0 =-
-- Updated markup
-- Normalized the extra class filter name
+<?php
+global $post;
 
--= 1.0.0 =-
-- Initial version
-
-*/ ?>
-
-<?php 
-	global $post;	
-	
-	$is_author = get_the_author_meta('ID')==get_current_user_id();
-	$file_size = cuar_get_the_file_size( get_the_ID() );
+    $is_author = get_the_author_meta('ID')==get_current_user_id();
 		
 	if ( $is_author ) {
 		$subtitle_popup = __( 'You uploaded this file', 'cuar' );
@@ -27,6 +29,8 @@
 	
 	$extra_class = ' ' . get_post_type();
 	$extra_class = apply_filters( 'cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post );
+
+    $file_count = cuar_get_the_attached_file_count($post->ID);
 ?>
 
 <div class="cuar-private-file cuar-item cuar-item-wide<?php echo $extra_class; ?>">
@@ -40,9 +44,9 @@
 		</div>
 		
 		<div class="badges">
-			<a href="<?php cuar_the_file_link( get_the_ID(), 'download' ); ?>" title="<?php echo esc_attr( sprintf( __( 'Download (%1$s)', 'cuar' ), $file_size ) ); ?>">
-				<span class="download-badge dashicons dashicons-download dashicon-badge small pull-right"></span>
-			</a>
+            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( '%1$s file(s) attached', 'cuar' ), $file_count ) ); ?>">
+                <span class="download-badge pull-right"><?php echo $file_count; ?></span>
+            </a>
 		</div>
 	</div>
 </div>
