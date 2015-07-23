@@ -479,24 +479,27 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             }
         }
 
-        public function print_form_field($name, $label, $field_code, $help_text = '')
+        /**
+         * Print a field for the edit form
+         *
+         * @param string $field_name
+         * @param string $field_label
+         * @param string $field_code
+         * @param string $field_help_text
+         */
+        public function print_form_field($field_name, $field_label, $field_code, $field_help_text = '')
         {
-            do_action('cuar/private-content/edit/before_field?id=' . $name, $this);
+            do_action('cuar/private-content/edit/before_field?id=' . $field_name, $this);
 
-            echo '<div class="form-group">';
-            echo '	<label for="' . $name . '" class="control-label">' . $label . '</label>';
-            echo '	<div class="control-container">';
-            echo $field_code;
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                array(
+                    'edit-content-form-field-wrapper-' . $field_name . '.template.php',
+                    'edit-content-form-field-wrapper.template.php'
+                ),
+                'templates'));
 
-            if ( !empty($help_text))
-            {
-                echo '		<span class="help-block">' . $help_text . '</span>';
-            }
-
-            echo '	</div>';
-            echo '</div>';
-
-            do_action('cuar/private-content/edit/after_field?id=' . $name, $this);
+            do_action('cuar/private-content/edit/after_field?id=' . $field_name, $this);
         }
 
         public function set_current_post_id($post_id)
