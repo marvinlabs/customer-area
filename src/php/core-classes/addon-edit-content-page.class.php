@@ -124,6 +124,12 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             return true;
         }
 
+        public abstract function get_default_owner_type();
+
+        public abstract function get_default_owner();
+
+        public abstract function get_default_category();
+
         protected abstract function is_action_authorized($action);
 
         /**
