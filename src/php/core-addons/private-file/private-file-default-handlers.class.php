@@ -383,7 +383,8 @@ class CUAR_PrivateFilesDefaultHandlers
         $methods['ftp-folder'] = array(
             'label'   => __('Get from server FTP folder', 'cuar'),
             'caption' =>
-                __('Below are the files listed from the FTP folder you have set in the plugin options. Those files will be moved or copied to their final location.', 'cuar')
+                __('Below are the files listed from the FTP folder you have set in the plugin options. Those files will be moved or copied to their final location.',
+                    'cuar')
         );
 
         return $methods;
@@ -396,9 +397,14 @@ class CUAR_PrivateFilesDefaultHandlers
     {
         $this->plugin->enable_library('jquery.fileupload');
 
+        $template_suffix = is_admin() ? '-admin' : '-frontend';
+
         $template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
-            'private-attachments-add-classic-upload.template.php',
+            array(
+                'private-attachments-add-classic-upload' . $template_suffix . '.template.php',
+                'private-attachments-add-classic-upload.template.php'
+            ),
             'templates');
 
         include($template);
@@ -417,23 +423,28 @@ class CUAR_PrivateFilesDefaultHandlers
         if (@file_exists($ftp_dir))
         {
             $file_filter = apply_filters('cuar/private-content/files/ftp-folder-exclusions', array(
-               '.htaccess'
+                '.htaccess'
             ));
 
             $ftp_files = @scandir($ftp_dir);
             foreach ($ftp_files as $key => $filename)
             {
                 $file_path = $ftp_dir . '/' . $filename;
-                if (!is_file($file_path) || in_array($filename, $file_filter))
+                if ( !is_file($file_path) || in_array($filename, $file_filter))
                 {
                     unset($ftp_files[$key]);
                 }
             }
         }
 
+        $template_suffix = is_admin() ? '-admin' : '-frontend';
+
         $template = $this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/private-file',
-            'private-attachments-add-ftp-folder.template.php',
+            array(
+                'private-attachments-add-ftp-folder' . $template_suffix . '.template.php',
+                'private-attachments-add-ftp-folder.template.php'
+            ),
             'templates');
 
         include($template);
@@ -488,7 +499,6 @@ class CUAR_PrivateFilesDefaultHandlers
             "c"       => "text/plain",
             "cat"     => "application/vnd.ms-pkiseccat",
             "cdf"     => "application/x-cdf",
-            "cdf"     => "application/x-netcdf",
             "cer"     => "application/x-x509-ca-cert",
             "class"   => "application/octet-stream",
             "clp"     => "application/x-msclip",

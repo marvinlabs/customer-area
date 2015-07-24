@@ -560,9 +560,14 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             /** @noinspection PhpUnusedLocalVariableInspection */
             $select_methods = apply_filters('cuar/private-content/files/select-methods', array());
 
+            $template_suffix = is_admin() ? '-admin' : '-frontend';
+
             include($this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/private-file',
-                'private-attachments-add-methods-browser.template.php',
+                array(
+                    'private-attachments-add-methods-browser' . $template_suffix . '.template.php',
+                    'private-attachments-add-methods-browser.template.php'
+                ),
                 'templates'));
         }
 
@@ -576,12 +581,17 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             /** @noinspection PhpUnusedLocalVariableInspection */
             $attached_files = $this->get_attached_files($post_id);
 
+            $template_suffix = is_admin() ? '-admin' : '-frontend';
+
             if (current_user_can('cuar_pf_manage_attachments'))
             {
                 /** @noinspection PhpUnusedLocalVariableInspection */
                 $attachment_item_template = $this->plugin->get_template_file_path(
                     CUAR_INCLUDES_DIR . '/core-addons/private-file',
-                    'private-attachments-list-item.template.php',
+                    array(
+                        'private-attachments-list-item' . $template_suffix . '.template.php',
+                        'private-attachments-list-item.template.php',
+                    ),
                     'templates');
             }
             else
@@ -589,13 +599,19 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 /** @noinspection PhpUnusedLocalVariableInspection */
                 $attachment_item_template = $this->plugin->get_template_file_path(
                     CUAR_INCLUDES_DIR . '/core-addons/private-file',
-                    'private-attachments-list-item-readonly.template.php',
+                    array(
+                        'private-attachments-list-item-readonly' . $template_suffix . '.template.php',
+                        'private-attachments-list-item-readonly.template.php',
+                    ),
                     'templates');
             }
 
             include($this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/private-file',
-                'private-attachments-list.template.php',
+                array(
+                    'private-attachments-list' . $template_suffix . '.template.php',
+                    'private-attachments-list.template.php',
+                ),
                 'templates'));
         }
 
