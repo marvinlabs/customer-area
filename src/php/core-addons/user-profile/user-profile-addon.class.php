@@ -76,8 +76,7 @@ class CUAR_UserProfileAddOn extends CUAR_AddOn {
 				'user_pass' 		=> new CUAR_UserPasswordField( 'user_pass', array(
 						'label'					=> __( 'Password', 'cuar' ),
 						'confirm_label'			=> __( 'Password (confirm)', 'cuar' ),
-						'confirm_inline_help'	=> __( 'The password must at least be composed of 5 characters. You will be requested to login again after '
-								. 'your password gets changed. Leave these fields empty if you want to keep your current password', 'cuar' ),
+						'confirm_inline_help'	=> __( 'The password must at least be composed of 5 characters. You will be requested to login again after your password gets changed. Leave these fields empty if you want to keep your current password', 'cuar' ),
 						'min_length'			=> 5,
 					) )
 			);
