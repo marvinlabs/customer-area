@@ -136,10 +136,11 @@ feel free to fork the project and send us pull requests!
 * New: support for the Smart groups add-on
 * New: function to test if we are currently on a given WP Customer Area page (for theme developers)
 * New: the private files settings page now helps you to secure the storage and FTP folders
-* Fix: most 404 problems happening because of SSL should now be fixed [#145](https://github.com/marvinlabs/customer-area/issues/145)
 * Fix: updated all template functions for files to be able to pass the file index as a parameter
 * Fix: permalinks to categories (private files or pages) were not correct when included as menu items
 * Fix: bug in admin access restriction
+* Fix: most 404 problems happening because of SSL should now be fixed [#145](https://github.com/marvinlabs/customer-area/issues/145)
+* Fix: log advanced filters not working properly on event type [#147](https://github.com/marvinlabs/customer-area/issues/147)
 
 **Add-on changes**
 
