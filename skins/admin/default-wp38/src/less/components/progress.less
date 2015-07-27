@@ -1,7 +1,57 @@
+/* The progress indicator used in tasks and file items for AJAX */
+
+.cuar-progress {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+
+  .indeterminate {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 8px;
+    bottom: 0;
+    height: 100%;
+    background: url('../img/loading-indicator.gif') no-repeat;
+    background-position-x: 100%;
+    background-position-y: 8px;
+  }
+
+  .determinate {
+    display: none;
+    position: absolute;
+    background-color: #a7cfa5;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 6px;
+  }
+}
+
+/* @deprecated A horizontal progress indicator as used in projects.
+ You should be using the `.cuar-progress .determinate` class!
+ */
+
 .cuar-horizontal-progress {
   border: 1px solid #efefef;
   background: #fafafa;
   height: 15px;
+
+  &>div {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: #87CEEB;
+    text-indent: -9999px;
+  }
+
+  &>.caption {
+    color: #999;
+  }
 }
 
 .wp-list-table .cuar-horizontal-progress {
@@ -9,17 +59,7 @@
   text-align: center;
 }
 
-.cuar-horizontal-progress>div {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: #87CEEB;
-  text-indent: -9999px;
-}
-
-.cuar-horizontal-progress>.caption {
-  color: #999;
-}
+/* The jQuery Knob control used in Projects */
 
 input.knob {
   -webkit-box-shadow: none;
