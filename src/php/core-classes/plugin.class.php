@@ -187,7 +187,9 @@ if ( !class_exists('CUAR_Plugin')) :
                     'checkingLicense'               => __('Checking license...', 'cuar'),
                     'unreachableLicenseServerError' => __('Failed to contact server', 'cuar'),
                     'jeditableIndicator'            => esc_attr__('Saving...', 'cuar'),
-                    'jeditableTooltip'              => esc_attr__('Click to edit...', 'cuar')
+                    'jeditableTooltip'              => esc_attr__('Click to edit...', 'cuar'),
+                    'jeditableSubmit'               => esc_attr__('OK', 'cuar'),
+                    'jeditableCancel'               => esc_attr__('Cancel', 'cuar')
                 ));
                 wp_register_script('cuar.admin', CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js', array('jquery'));
                 wp_localize_script('cuar.admin', 'cuar', $messages);
@@ -197,7 +199,9 @@ if ( !class_exists('CUAR_Plugin')) :
                 $messages = apply_filters('cuar/core/js-messages?zone=frontend', array(
                     'ajaxUrl'            => admin_url('admin-ajax.php'),
                     'jeditableIndicator' => esc_attr__('Saving...', 'cuar'),
-                    'jeditableTooltip'   => esc_attr__('Click to edit...', 'cuar')
+                    'jeditableTooltip'   => esc_attr__('Click to edit...', 'cuar'),
+                    'jeditableSubmit'    => esc_attr__('OK', 'cuar'),
+                    'jeditableCancel'    => esc_attr__('Cancel', 'cuar')
                 ));
                 wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery'));
                 wp_localize_script('cuar.frontend', 'cuar', $messages);
@@ -733,7 +737,10 @@ if ( !class_exists('CUAR_Plugin')) :
 
                 case 'jquery.jeditable':
                 {
+                    wp_enqueue_script('jquery.autogrow', CUAR_PLUGIN_URL . 'libs/autogrow/autogrow.min.js', array('jquery'), $this->get_version());
                     wp_enqueue_script('jquery.jeditable', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.min.js', array('jquery'), $this->get_version());
+                    wp_enqueue_script('jquery.jeditable.autogrow', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.autogrow.min.js',
+                        array('jquery', 'jquery.jeditable', 'jquery.autogrow'), $this->get_version());
                 }
                     break;
 
