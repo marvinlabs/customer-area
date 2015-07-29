@@ -85,7 +85,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
 
         public function get_default_owner_type()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_DEFAULT_OWNER_TYPE, 'usr');
+            return 'usr';
         }
 
         public function get_default_owner()
