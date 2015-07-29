@@ -179,6 +179,8 @@ if ( !class_exists('CUAR_Plugin')) :
          */
         public function load_scripts()
         {
+            global $wp_locale;
+
             // TODO Move those messages to their respective add-ons
             if (is_admin())
             {
@@ -189,7 +191,18 @@ if ( !class_exists('CUAR_Plugin')) :
                     'jeditableIndicator'            => esc_attr__('Saving...', 'cuar'),
                     'jeditableTooltip'              => esc_attr__('Click to edit...', 'cuar'),
                     'jeditableSubmit'               => esc_attr__('OK', 'cuar'),
-                    'jeditableCancel'               => esc_attr__('Cancel', 'cuar')
+                    'jeditableCancel'               => esc_attr__('Cancel', 'cuar'),
+                    'datepickerDateFormat'          => _x('MM d, yy', 'Date picker JS date format', 'cuar'),
+                    'datepickerCloseText'           => _x('Done', 'Date picker text', 'cuar'),
+                    'datepickerCurrentText'         => _x('Today', 'Date picker text', 'cuar'),
+                    'datepickerMonthNames'          => array_values($wp_locale->month),
+                    'datepickerMonthNamesShort'     => array_values($wp_locale->month_abbrev),
+                    'datepickerMonthStatus'         => __('Show a different month', 'Date picker text', 'cuar'),
+                    'datepickerDayNames'            => array_values($wp_locale->weekday),
+                    'datepickerDayNamesShort'       => array_values($wp_locale->weekday_abbrev),
+                    'datepickerDayNamesMin'         => array_values($wp_locale->weekday_initial),
+                    'datepickerFirstDay'            => get_option('start_of_week'),
+                    'datepickerIsRTL'               => $wp_locale->is_rtl(),
                 ));
                 wp_register_script('cuar.admin', CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js', array('jquery'));
                 wp_localize_script('cuar.admin', 'cuar', $messages);
@@ -197,11 +210,22 @@ if ( !class_exists('CUAR_Plugin')) :
             else
             {
                 $messages = apply_filters('cuar/core/js-messages?zone=frontend', array(
-                    'ajaxUrl'            => admin_url('admin-ajax.php'),
-                    'jeditableIndicator' => esc_attr__('Saving...', 'cuar'),
-                    'jeditableTooltip'   => esc_attr__('Click to edit...', 'cuar'),
-                    'jeditableSubmit'    => esc_attr__('OK', 'cuar'),
-                    'jeditableCancel'    => esc_attr__('Cancel', 'cuar')
+                    'ajaxUrl'                   => admin_url('admin-ajax.php'),
+                    'jeditableIndicator'        => esc_attr__('Saving...', 'cuar'),
+                    'jeditableTooltip'          => esc_attr__('Click to edit...', 'cuar'),
+                    'jeditableSubmit'           => esc_attr__('OK', 'cuar'),
+                    'jeditableCancel'           => esc_attr__('Cancel', 'cuar'),
+                    'datepickerDateFormat'      => _x('MM d, yy', 'Date picker JS date format', 'cuar'),
+                    'datepickerCloseText'       => _x('Done', 'Date picker text', 'cuar'),
+                    'datepickerCurrentText'     => _x('Today', 'Date picker text', 'cuar'),
+                    'datepickerMonthNames'      => array_values($wp_locale->month),
+                    'datepickerMonthNamesShort' => array_values($wp_locale->month_abbrev),
+                    'datepickerMonthStatus'     => __('Show a different month', 'Date picker text', 'cuar'),
+                    'datepickerDayNames'        => array_values($wp_locale->weekday),
+                    'datepickerDayNamesShort'   => array_values($wp_locale->weekday_abbrev),
+                    'datepickerDayNamesMin'     => array_values($wp_locale->weekday_initial),
+                    'datepickerFirstDay'        => get_option('start_of_week'),
+                    'datepickerIsRTL'           => $wp_locale->is_rtl(),
                 ));
                 wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery'));
                 wp_localize_script('cuar.frontend', 'cuar', $messages);
@@ -741,6 +765,8 @@ if ( !class_exists('CUAR_Plugin')) :
                     wp_enqueue_script('jquery.jeditable', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.min.js', array('jquery'), $this->get_version());
                     wp_enqueue_script('jquery.jeditable.autogrow', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.autogrow.min.js',
                         array('jquery', 'jquery.jeditable', 'jquery.autogrow'), $this->get_version());
+                    wp_enqueue_script('jquery.jeditable.datepicker', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.datepicker.js',
+                        array('jquery', 'jquery.jeditable', 'jquery-ui-datepicker'), $this->get_version());
                 }
                     break;
 

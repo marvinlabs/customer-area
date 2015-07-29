@@ -12,6 +12,20 @@
     border-bottom: 0 none;
   }
 
+  .cuar-meta {
+    .cuar-meta-row {
+      clear: both;
+      width: 100%;
+      margin-top: 12px;
+    }
+    .cuar-meta-icon {
+      float: left;
+    }
+    .cuar-meta-value {
+      margin-left: @status-width;
+    }
+  }
+
   .cuar-status {
     float: left;
     width: @status-width;
@@ -24,8 +38,12 @@
   .cuar-due-date {
     opacity: 0.8;
     font-size: 0.9em;
-    margin-top: 7px;
     display: inline-block;
+
+    .dashicons {
+      text-align: left;
+      font-size: 1.5em;
+    }
   }
 
   .cuar-actions {
