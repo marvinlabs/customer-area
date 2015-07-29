@@ -193,7 +193,7 @@ if ( !class_exists('CUAR_Plugin')) :
                     'jeditableSubmit'               => esc_attr__('OK', 'cuar'),
                     'jeditableCancel'               => esc_attr__('Cancel', 'cuar'),
                     'datepickerDateFormat'          => _x('MM d, yy', 'Date picker JS date format', 'cuar'),
-                    'datepickerCloseText'           => _x('Done', 'Date picker text', 'cuar'),
+                    'datepickerCloseText'           => _x('Clear', 'Date picker text', 'cuar'),
                     'datepickerCurrentText'         => _x('Today', 'Date picker text', 'cuar'),
                     'datepickerMonthNames'          => array_values($wp_locale->month),
                     'datepickerMonthNamesShort'     => array_values($wp_locale->month_abbrev),

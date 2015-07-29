@@ -51,15 +51,15 @@ jQuery.expr[':'].focus = function (elem) {
         element: function (settings, original) {
             var form = $(this);
 
-            var input = $('<input />');
-            input.attr('autocomplete', 'off');
-            input.addClass('formatted-input');
-            form.append(input);
-
             var hidden = $('<input />');
             hidden.attr('type', 'hidden');
             hidden.addClass('raw-input');
             form.append(hidden);
+
+            var input = $('<input />');
+            input.attr('autocomplete', 'off');
+            input.addClass('formatted-input');
+            form.append(input);
 
             return hidden;
         },
@@ -83,8 +83,19 @@ jQuery.expr[':'].focus = function (elem) {
                 },
 
                 onClose: function () {
+                    var forceSubmit = false;
+                    var event = arguments.callee.caller.caller.arguments[0];
+                    // If "Clear" gets clicked, then really clear it
+                    if ($(event.delegateTarget).hasClass('ui-datepicker-close')) {
+                        $(this).val('');
+                        $('.raw-input', original).val('');
+                        forceSubmit = true;
+                    }
+
                     setTimeout(function () {
-                        if (!input.is(':focus')) {
+                        if (forceSubmit) {
+                            form.submit();
+                        } else if (!input.is(':focus')) {
                             // input has NO focus after 150ms which means
                             // calendar was closed due to click outside of it
                             // so let's close the input field without saving
