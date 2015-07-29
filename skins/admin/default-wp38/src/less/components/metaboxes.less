@@ -41,6 +41,32 @@
           }
         }
       }
+
+      .cuar-progress {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+
+        .indeterminate {
+          display: block;
+          position: absolute;
+          right: 8px;
+          bottom: 0;
+          height: 100%;
+          background-position-x: 100%;
+          background-position-y: 8px;
+        }
+
+        .determinate {
+          display: none;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
     }
   }
 }

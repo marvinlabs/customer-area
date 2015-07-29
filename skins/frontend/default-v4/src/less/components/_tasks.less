@@ -51,74 +51,121 @@
 	}
 }
 
-// Add a task with AJAX
+// Task manager
 // --------------------------------------------------
 
-.cuar-tasklist-task-list {
-	.cuar-task.cuar-task-editable {
-		.panel, .panel:hover {
-			padding: 0;
-		}
-		
-		.cuar-header {
-				position: relative;
-				padding: 15px;
-			.cuar-title {
-			}
-			.cuar-actions {
-					position: absolute;
-					right: 15px;		
-					top: 15px;
-			}
-		}
-		
-		.cuar-content {
-				padding: 15px;
-				border-top: 1px solid #ddd;
-				border-right: 1px solid #ddd;
-				background: #fafafa;
-				
-			.cuar-left {
-					float: left; 
-					width: 60%;				
-			}
-			.cuar-right {
-					float: left; 
-					width: 35%;		
-					margin-left: 4%;				
-			}
-		}
-		
-		.cuar-check-task {
-				margin: 10px;
-		}
-		
-		.btn-update-task {
-			margin-top: 15px;
-		}
-		
-		.cuar-round-button {	
-				display: inline-block;
-				.square(26px);		
-				.img-rounded;
-				margin-left: 5px;
-				color: #333;
-				background: #efefef;
-				padding: 3px;
-			&:hover {
-				background: #d0d0d0;
-			}
-		}
-	}
+@status-width: 50px;
+
+.cuar-task-manager {
+  .cuar-list-progress {
+	position: relative;
+	height: 6px;
+	width: 100%;
+	background: #dbebdb;
+	margin: 15px 0;
+  }
 }
 
-.cuar-form.cuar-add-task-form {
-	.control-container {
-			width: 100%;
-			margin: 0;
+.cuar-task {
+  position: relative;
+
+  .cuar-task-panel {
+	padding: 10px 0;
+	border-bottom: 1px solid #efefef;
+  }
+
+  &:last-child .cuar-task-panel {
+	border-bottom: 0 none;
+  }
+
+  .cuar-meta {
+	.cuar-meta-row {
+	  clear: both;
+	  width: 100%;
+	  margin-top: 12px;
 	}
-	
-	.save-task {
-		margin-top: 45px;
+	.cuar-meta-icon {
+	  float: left;
 	}
-} 
+	.cuar-meta-value {
+	  margin-left: @status-width;
+	}
+  }
+
+  .cuar-status {
+	float: left;
+	width: @status-width;
+  }
+
+  .cuar-details {
+	margin-left: @status-width;
+  }
+
+  .cuar-due-date {
+	opacity: 0.8;
+	font-size: 0.9em;
+	display: inline-block;
+
+	.dashicons {
+	  text-align: left;
+	  font-size: 1.5em;
+	}
+  }
+
+  .cuar-actions {
+	position: absolute;
+	top: 2px;
+	right: 0;
+	background-color: white;
+	opacity: 0;
+	padding: 2px 0 0;
+
+	a {
+	  margin: 0 3px;
+	}
+
+	.cuar-move-action .dashicons {
+	  cursor: move;
+	  transform: rotate(90deg);
+	}
+  }
+
+  &.completed {
+	.cuar-details {
+	  text-decoration: line-through;
+	}
+  }
+
+  &.cuar-state-pending {
+	opacity: 0.5;
+  }
+
+  &:hover {
+	.cuar-actions {
+	  opacity: 1;
+	}
+  }
+
+  .cuar-editable {
+	margin-right: 90px;
+	textarea {
+	  max-width: 100%;
+	}
+  }
+}
+
+.cuar-add-task-form {
+  padding-left: @status-width - 3px;
+  margin-top: 20px;
+
+  .cuar-add-action {
+	.btn;
+	.btn-default;
+	display: inline-block;
+  }
+  .cuar-new-task-description {
+	min-width: 550px;
+	max-width: 100%;
+	display: inline-block;
+  }
+}

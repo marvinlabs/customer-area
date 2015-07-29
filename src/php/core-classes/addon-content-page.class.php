@@ -937,4 +937,4 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         protected $enabled_settings = array();
     }
 
-endif; // CUAR_AbstractContentPageAddOn
+endif; // CUAR_AbstractContentPageAddOn/ CUAR_AbstractContentPageAddOn

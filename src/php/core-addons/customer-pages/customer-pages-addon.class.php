@@ -1400,4 +1400,4 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
         return $b->get_priority() < $a->get_priority();
     }
 
-endif; // if (!class_exists('CUAR_CustomerPagesAddOn')) :/ if (!class_exists('CUAR_CustomerPagesAddOn')) :
+endif; // if (!class_exists('CUAR_CustomerPagesAddOn')) :/ if (!class_exists('CUAR_CustomerPagesAddOn')) :/ if (!class_exists('CUAR_CustomerPagesAddOn')) :/ if (!class_exists('CUAR_CustomerPagesAddOn')) :
