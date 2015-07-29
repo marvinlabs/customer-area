@@ -1,0 +1,72 @@
+.postbox .inside {
+  .cuar-hint {
+    color: #999;
+  }
+
+  .cuar-file-attachments {
+    .cuar-file-attachment {
+      position: relative;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      padding: 4px 7px;
+      margin: 4px 0;
+      min-height: 28px;
+      line-height: 28px;
+
+      &.cuar-state-pending {
+        background-color: #D4E9FF;
+      }
+      &.cuar-state-error {
+        background-color: #FF777F;
+      }
+      &.cuar-state-success {
+        background-color: #fafafa;
+      }
+
+      .cuar-caption {
+        display: inline-block;
+      }
+
+      .cuar-editable-caption {
+        input {
+          background: transparent;
+          min-width: 200px;
+          border: none;
+          border-bottom: 1px solid #aaa;
+          padding: 0;
+          font-size: 13px;
+
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
+
+      .cuar-progress {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+
+        .indeterminate {
+          display: block;
+          position: absolute;
+          right: 8px;
+          bottom: 0;
+          height: 100%;
+          background-position-x: 100%;
+          background-position-y: 8px;
+        }
+
+        .determinate {
+          display: none;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
+}

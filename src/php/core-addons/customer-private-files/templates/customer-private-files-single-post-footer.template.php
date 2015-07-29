@@ -4,6 +4,10 @@
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
  *
+ * -= 1.3.0 =-
+ * - Compatibility with the new multiple attached files
+ * - New hooks for attachment items
+ *
  * -= 1.2.0 =-
  * - Updated to new responsive markup
  *
@@ -24,6 +28,9 @@ $extra_class = apply_filters('cuar/templates/single-post/footer/extra-class?post
 $date = sprintf("<em>%s</em>", get_the_date());
 $author = sprintf("<em>%s</em>", get_the_author_meta('display_name'));
 $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
+
+/** @var array $attached_files */
+$attached_files = cuar_get_the_attached_files($post->ID);
 ?>
 
 <div class="cuar-single-post-footer cuar-file<?php echo $extra_class; ?>">
@@ -53,13 +60,20 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
     <div class="cuar-meta-category cuar-file-meta">
         <div class="cuar-row">
             <div class="cuar-meta-block cuar-file">
-                <h4><span class="cuar-dashicons cuar-dashicons-admin-links"></span> <?php _e('Attachment', 'cuar'); ?>
+                <h4><span class="cuar-dashicons cuar-dashicons-admin-links"></span> <?php _e('Attached files', 'cuar'); ?>
                 </h4>
-
-                <p><a href="<?php cuar_the_file_link(get_the_ID(), 'download'); ?>"
-                      title="<?php esc_attr_e('Download', 'cuar'); ?>">
-                        <?php cuar_the_file_name(get_the_ID()); ?> (<?php cuar_the_file_size(get_the_ID()); ?>)
-                    </a></p>
+                <ul class="cuar-attached-files">
+                    <?php foreach ($attached_files as $file_id => $file) : ?>
+                        <li>
+                            <a href="<?php cuar_the_attached_file_link($post->ID, $file); ?>" title="<?php esc_attr_e('Get file', 'cuar'); ?>">
+                                <?php do_action('cuar/templates/file-attachment-item/before-caption', $post->ID, $file); ?>
+                                <span class="cuar-file-caption"><?php cuar_the_attached_file_caption($post->ID, $file); ?></span>
+                                <?php do_action('cuar/templates/file-attachment-item/after-caption', $post->ID, $file); ?>
+                                <span class="cuar-file-size">(<?php cuar_the_attached_file_size($post->ID, $file); ?>)</span>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
     </div>

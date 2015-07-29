@@ -11,7 +11,7 @@
         $start_date = isset($_POST['start-date']) ? sanitize_text_field($_POST['start-date']) : '';
         $end_date = isset($_POST['end-date']) ? sanitize_text_field($_POST['end-date']) : '';
         $logger = CUAR_Plugin::get_instance()->get_logger();
-        $type_filter = isset($_POST['filter-by-type']) ? $_POST['filter-by-type'] : 0;
+        $type_filter = isset($_POST['event-type']) ? $_POST['event-type'] : 0;
         ?>
 
         <?php $logs_table->views() ?>
@@ -22,8 +22,8 @@
             <?php $collapse_panel = $logs_table->is_search_active() ? '' : 'display: none;'; ?>
             <div class="cuar-filter-panel" style="<?php echo $collapse_panel; ?>">
                 <div class="cuar-filter-row">
-                    <label for="filter-by-type"><?php _e('Event type', 'cuar'); ?> </label>
-                    <select name="filter-by-type" id="cat" class="postform">
+                    <label for="event-type"><?php _e('Event type', 'cuar'); ?> </label>
+                    <select name="event-type" id="cat" class="postform">
                         <option value="0"><?php _e('Any type', 'cuar'); ?></option>
                         <?php
                         $types = $logger->get_valid_event_types(true);

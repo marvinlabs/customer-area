@@ -850,4 +850,4 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	protected $enabled_settings = array();
 }
 
-endif; // CUAR_AbstractContainerPageAddOn
+endif; // CUAR_AbstractContainerPageAddOn/ CUAR_AbstractContainerPageAddOn

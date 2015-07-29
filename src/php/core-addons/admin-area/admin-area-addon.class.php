@@ -58,12 +58,81 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
             // Settings
             add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20, 2);
-            add_filter('cuar/core/settings/validate-settings?tab=cuar_core',                array(&$this, 'validate_core_options'), 20, 3);
+            add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'), 20, 3);
+
+            // Ajax
+            add_action('wp_ajax_cuar_folder_action', array(&$this, 'ajax_folder_action'));
         }
         else
         {
             add_action('init', array(&$this, 'hide_admin_bar'));
         }
+    }
+
+    /*------- AJAX --------------------------------------------------------------------------------------------------*/
+
+    public function ajax_folder_action()
+    {
+        if ( !current_user_can('manage_options'))
+        {
+            wp_send_json_error(__('You are not allowed to do that', 'cuar'));
+        }
+
+        $action = isset($_POST['folder_action']) ? $_POST['folder_action'] : '';
+        $path = isset($_POST['path']) ? $_POST['path'] : '';
+        $extra = isset($_POST['extra']) ? $_POST['extra'] : '';
+        if (empty($action) || empty($path))
+        {
+            wp_send_json_error(__('Missing parameters', 'cuar'));
+        }
+
+        switch ($action)
+        {
+            case 'chmod':
+                if (empty($extra))
+                {
+                    wp_send_json_error(__('Missing parameters', 'cuar'));
+                }
+
+                $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
+                foreach($iterator as $item) {
+                    if (false===chmod($item, octdec($extra)))
+                    {
+                        wp_send_json_error(__('Error while changing permissions. PHP probably does not have the required permissions. Please do it manually using FTP or SSH.', 'cuar'));
+                    }
+                }
+
+                $current_perms = @fileperms($path) & 0777;
+                if ($current_perms !== octdec($extra))
+                {
+                    wp_send_json_error(__('Permissions could not be changed. PHP probably does not have the required permissions. Please do it manually using FTP or SSH.', 'cuar'));
+                }
+                break;
+
+            case 'mkdir':
+                if (empty($extra)) $extra = 0700;
+                if ( !is_int($extra)) $extra = octdec($extra);
+                @mkdir($path, $extra, true);
+                if ( !file_exists($path))
+                {
+                    wp_send_json_error(__('Folder could not be created', 'cuar'));
+                }
+                break;
+
+            case 'secure-htaccess':
+                $htaccess_template_path = trailingslashit(CUAR_PLUGIN_DIR) . 'extras/protect-folder.htaccess';
+                $dest_htaccess_path = trailingslashit($path) . '.htaccess';
+
+                @copy($htaccess_template_path, $dest_htaccess_path);
+                if ( !file_exists($dest_htaccess_path))
+                {
+                    wp_send_json_error(__('htaccess file could not be copied. Please do it manually using FTP or SSH.', 'cuar'));
+                }
+
+                break;
+        }
+
+        wp_send_json_success();
     }
 
     /*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
@@ -539,7 +608,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                 <?php endif; ?>
             });
         </script>
-    <?php
+        <?php
     }
 }
 

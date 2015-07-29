@@ -1,0 +1,147 @@
+// Source: http://www.cssscript.com/responsive-step-progress-indicator-with-pure-css/
+
+// colors
+@inactive: #bbb;
+@active: #555;
+@hover: #333;
+@step-danger: #d3140f;
+@step-warning: #edb10a;
+@step-info: #5b32d6;
+
+// sizing
+@bubble-size: 12px;
+@bubble-line-thickness: 2px;
+@border-thickness: 0px;
+@darken-amount: 30%;
+
+// Mixin for the round indicators
+.cuar-wizard-bubble-style(@color) {
+  background-color: @color;
+  color: @color;
+  border-color: darken(@color, @darken-amount);
+  &:before,
+  &:after {
+    background-color: @color;
+    border-color: darken(@color, @darken-amount);
+  }
+}
+
+.cuar-body ul.cuar-wizard-progress-indicator {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  padding: 0;
+  font-size: 100%;
+  text-transform: uppercase;
+  margin: 0 0 50px;
+
+  > li.cuar-wizard-step {
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    flex: 1;
+
+    list-style: none;
+    text-align: center;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    text-overflow: ellipsis;
+    color: @inactive;
+    display: block;
+    &:hover {
+      color: darken(@inactive, @darken-amount);
+    }
+  }
+  > li .cuar-bubble {
+    border-radius: 1000px;
+    width: @bubble-size;
+    height: @bubble-size;
+    background-color: @inactive;
+    display: block;
+    margin: 0 auto 0.5em auto;
+    border-bottom: @border-thickness solid darken(@inactive, 20%);
+  }
+
+  // line connectors
+
+  > li .cuar-bubble:before,
+  > li .cuar-bubble:after {
+    display: block;
+    position: absolute;
+    top: @bubble-size / 2 - @border-thickness;
+    width: 100%;
+    height: @bubble-line-thickness;
+    content: '';
+    background-color: @inactive;
+  }
+  > li .cuar-bubble:before {
+    left: 0;
+  }
+  > li .cuar-bubble:after {
+    right: 0;
+  }
+
+  // completed state
+
+  > li.cuar-completed {
+    color: @active;
+    .cuar-bubble {
+      .cuar-wizard-bubble-style(@active);
+    }
+  }
+
+  // button states
+
+  > li a:hover .cuar-bubble {
+    .cuar-wizard-bubble-style(@hover);
+  }
+
+  // override states
+
+  > li.cuar-danger .cuar-bubble {
+    .cuar-wizard-bubble-style(@step-danger);
+  }
+  > li.cuar-warning .cuar-bubble {
+    .cuar-wizard-bubble-style(@step-warning);
+  }
+  > li.cuar-info .cuar-bubble {
+    .cuar-wizard-bubble-style(@step-info);
+  }
+
+  // stacked version
+
+  &.cuar-stacked {
+    display: block;
+
+    > li {
+      text-indent: -10px;
+      text-align: center;
+      display: block;
+    }
+    > li .cuar-bubble:before,
+    > li .cuar-bubble:after {
+      left: 50%;
+      margin-left: -@bubble-line-thickness / 2;
+      width: @bubble-line-thickness;
+      height: 100%;
+    }
+    .cuar-stacked-text {
+      position: relative;
+      z-index: 10;
+      top: 0;
+      margin-left: 60% !important;
+      width: 45% !important;
+      display: inline-block;
+      text-align: left;
+      line-height: 1.2em;
+    }
+    > li a {
+      border: none;
+    }
+  }
+}

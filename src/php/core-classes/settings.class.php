@@ -461,6 +461,21 @@ if ( !class_exists('CUAR_Settings')) :
         /* ------------ VALIDATION HELPERS ------------------------------------------------------------------------------ */
 
         /**
+         * Validate a value in any case
+         *
+         * @param array  $input
+         *            Input array
+         * @param array  $validated
+         *            Output array
+         * @param string $option_id
+         *            Key of the value to check in the input array
+         */
+        public function validate_always($input, &$validated, $option_id)
+        {
+            $validated[$option_id] = trim($input[$option_id]);
+        }
+
+        /**
          * Validate a page
          *
          * @param array  $input

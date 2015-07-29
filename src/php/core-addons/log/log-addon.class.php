@@ -31,10 +31,14 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public static $TYPE_CONTENT_VIEWED = 'cuar-content-viewed';
         public static $TYPE_FILE_DOWNLOADED = 'cuar-file-download';
         public static $TYPE_OWNER_CHANGED = 'cuar-owner-changed';
+        public static $TYPE_FILE_ATTACHMENT_ADDED = 'cuar_file_attachment_added';
+        public static $TYPE_FILE_ATTACHMENT_REMOVED = 'cuar_file_attachment_removed';
+        public static $TYPE_FILE_ATTACHMENT_UPDATED = 'cuar_file_attachment_updated';
         public static $META_USER_ID = 'user_id';
         public static $META_IP = 'ip';
         public static $META_PREVIOUS_OWNER = 'previous_owner';
         public static $META_CURRENT_OWNER = 'current_owner';
+        public static $META_FILE_ATTACHMENT = 'attachment';
 
         /** @var CUAR_Logger The logger object */
         private $logger = null;
@@ -85,6 +89,11 @@ if ( !class_exists('CUAR_LogAddOn')) :
             // File downloaded
             add_action('cuar/private-content/files/on-download', array(&$this, 'log_file_downloaded'), 10, 3);
             add_action('cuar/private-content/files/on-view', array(&$this, 'log_file_downloaded'), 10, 3);
+
+            // File attachment operations
+            add_action('cuar/private-content/files/on-add-attachment', array(&$this, 'log_add_file_attachment'), 10, 2);
+            add_action('cuar/private-content/files/on-remove-attachment', array(&$this, 'log_remove_file_attachment'), 10, 2);
+            add_action('cuar/private-content/files/on-update-attachment', array(&$this, 'log_update_file_attachment'), 10, 2);
 
             add_action("load-post-new.php", array(&$this, 'block_default_admin_pages'));
             add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
@@ -149,9 +158,12 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public function add_default_event_types($default_types)
         {
             return array_merge($default_types, array(
-                self::$TYPE_CONTENT_VIEWED  => __('Content viewed', 'cuar'),
-                self::$TYPE_FILE_DOWNLOADED => __('File downloaded', 'cuar'),
-                self::$TYPE_OWNER_CHANGED   => __('Owner changed', 'cuar')
+                self::$TYPE_CONTENT_VIEWED          => __('Content viewed', 'cuar'),
+                self::$TYPE_FILE_DOWNLOADED         => __('File downloaded', 'cuar'),
+                self::$TYPE_OWNER_CHANGED           => __('Owner changed', 'cuar'),
+                self::$TYPE_FILE_ATTACHMENT_ADDED   => __('Attachment added', 'cuar'),
+                self::$TYPE_FILE_ATTACHMENT_REMOVED => __('Attachment removed', 'cuar'),
+                self::$TYPE_FILE_ATTACHMENT_UPDATED => __('Attachment updated', 'cuar')
             ));
         }
 
@@ -264,6 +276,48 @@ if ( !class_exists('CUAR_LogAddOn')) :
             }
         }
 
+        public function log_add_file_attachment($post_id, $file)
+        {
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_FILE_ATTACHMENT_ADDED, true, $post_id, $file);
+            if ($should_log_event)
+            {
+                $this->logger->log_event(self::$TYPE_FILE_ATTACHMENT_ADDED,
+                    $post_id,
+                    get_post_type($post_id),
+                    array_merge($this->get_default_event_meta(), array(
+                        self::$META_FILE_ATTACHMENT => $file
+                    )));
+            }
+        }
+
+        public function log_remove_file_attachment($post_id, $file)
+        {
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_FILE_ATTACHMENT_REMOVED, true, $post_id, $file);
+            if ($should_log_event)
+            {
+                $this->logger->log_event(self::$TYPE_FILE_ATTACHMENT_REMOVED,
+                    $post_id,
+                    get_post_type($post_id),
+                    array_merge($this->get_default_event_meta(), array(
+                        self::$META_FILE_ATTACHMENT => $file
+                    )));
+            }
+        }
+
+        public function log_update_file_attachment($post_id, $file)
+        {
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_FILE_ATTACHMENT_UPDATED, true, $post_id, $file);
+            if ($should_log_event)
+            {
+                $this->logger->log_event(self::$TYPE_FILE_ATTACHMENT_UPDATED,
+                    $post_id,
+                    get_post_type($post_id),
+                    array_merge($this->get_default_event_meta(), array(
+                        self::$META_FILE_ATTACHMENT => $file
+                    )));
+            }
+        }
+
         /**
          * @return array
          */
@@ -283,7 +337,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 self::$META_USER_ID,
                 self::$META_IP,
                 self::$META_PREVIOUS_OWNER,
-                self::$META_CURRENT_OWNER
+                self::$META_CURRENT_OWNER,
+                self::$META_FILE_ATTACHMENT
             ));
         }
 
@@ -308,6 +363,12 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     $dn = empty($o['ids']) ? __('Nobody', 'cuar') : $o['display_name'];
                     $pill['title'] = __('Current owner: ', 'cuar') . $dn;
                     $pill['value'] = __('To: ', 'cuar') . substr($dn, 0, 35);
+                    break;
+
+                case self::$META_FILE_ATTACHMENT:
+                    $o = $item->$meta;
+                    $pill['title'] = __('Caption: ', 'cuar') . $o['caption'];
+                    $pill['value'] = __('File: ', 'cuar') . $o['file'];
                     break;
             }
 
@@ -411,7 +472,6 @@ if ( !class_exists('CUAR_LogAddOn')) :
 
         private static $OPTION_LOG_ONLY_FIRST_VIEW = 'cuar_log_view_first_only';
         private static $OPTION_LOG_ONLY_FIRST_DOWNLOAD = 'cuar_log_download_first_only';
-
     }
 
     // Make sure the addon is loaded
