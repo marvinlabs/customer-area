@@ -1079,6 +1079,12 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $capability_groups['cuar_private_file'] = array(
                 'label'  => __('Private Files', 'cuar'),
                 'groups' => array(
+                    'global'       => array(
+                        'group_name'   => __('Global', 'cuar'),
+                        'capabilities' => array(
+                            'cuar_pf_manage_attachments' => __('Manage file attachments', 'cuar'),
+                        )
+                    ),
                     'back-office'  => array(
                         'group_name'   => __('Back-office', 'cuar'),
                         'capabilities' => array(
