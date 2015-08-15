@@ -1,0 +1,49 @@
+#cuar-user-switcher{
+  &:extend(.panel-heading all);
+  margin-bottom: 20px;
+  vertical-align: top;
+  height: 42px;
+
+  .cuarsu-form-wrapper{
+    .cuarsu-message-wrapper,
+    .cuarsu-inputs-wrapper{
+      display: inline-block;
+
+      .select2-container,
+      .cuarsu-submit-wrapper{
+        display: inline-block;
+        width: auto;
+      }
+    }
+  }
+  #cuarsu_do_switch_identity{
+    &:extend(.btn-sm all);
+    height: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .cuarsu-message{
+    &:extend(.panel-title all);
+    font-weight: 300;
+    display: block;
+    float: left;
+  }
+  .cuarsu-id-select-wrapper{
+    white-space: nowrap;
+
+    .select2-container{
+      width: 100%!important;
+
+      .select2-selection{
+        height: 32px;
+
+        .select2-selection__rendered{
+          line-height: 30px;
+        }
+
+        .select2-selection__arrow{
+          height: 30px;
+        }
+      }
+    }
+  }
+}
