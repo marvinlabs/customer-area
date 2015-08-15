@@ -10,17 +10,20 @@
  */
 ?>
 
-    <nav class="cuar-navbar cuar-navbar-default" role="navigation">
-        <div class="cuar-navbar-header">
-            <button type="button" class="cuar-navbar-toggle" data-toggle="collapse"
-                    data-target=".cuar-nav-container">
-                <span class="cuar-sr-only"><?php __('Toggle navigation', 'cuar'); ?></span>
-                <span class="cuar-icon-bar"></span>
-                <span class="cuar-icon-bar"></span>
-                <span class="cuar-icon-bar"></span>
-            </button>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".nav-container">
+                    <span class="sr-only"><?php _e('Toggle navigation', 'cuar'); ?></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><?php _e('Menu', 'cuar'); ?></a>
+            </div>
+            <?php wp_nav_menu($nav_menu_args); ?>
         </div>
-        <?php wp_nav_menu($nav_menu_args); ?>
     </nav>
 
 <?php echo $this->get_subpages_menu(); ?>
