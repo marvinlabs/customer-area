@@ -17,13 +17,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 /**
- * Get the URL where the file linked to the specified post can be downloaded directly
+ * Get the files attached to a post
  *
  * @param int $post_id Defaults to the current post ID from the loop
  *
  * @return string
  */
-function cuar_get_the_file_link($post_id = null, $action = 'download')
+function cuar_get_the_attached_files($post_id = null)
 {
     if ( !$post_id)
     {
@@ -34,10 +34,60 @@ function cuar_get_the_file_link($post_id = null, $action = 'download')
         return '';
     }
 
-    $cuar_plugin = CUAR_Plugin::get_instance();
-    $pf_addon = $cuar_plugin->get_addon('private-files');
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
 
-    return $pf_addon->get_file_permalink($post_id, $action);
+    return $pf_addon->get_attached_files($post_id);
+}
+
+/**
+ * Get the number of files attached to a post
+ *
+ * @param int $post_id Defaults to the current post ID from the loop
+ *
+ * @return string
+ */
+function cuar_get_the_attached_file_count($post_id = null)
+{
+    if ( !$post_id)
+    {
+        $post_id = get_the_ID();
+    }
+    if ( !$post_id)
+    {
+        return '';
+    }
+
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+
+    return $pf_addon->get_attached_file_count($post_id);
+}
+
+/**
+ * Get the URL where the file linked to the specified post can be downloaded directly
+ *
+ * @param int    $post_id Defaults to the current post ID from the loop
+ * @param array  $file    The file description
+ * @param string $action  The action (download|view)
+ *
+ * @return string
+ */
+function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'download')
+{
+    if ( !$post_id)
+    {
+        $post_id = get_the_ID();
+    }
+    if ( !$post_id)
+    {
+        return '';
+    }
+
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+
+    return $pf_addon->get_file_permalink($post_id, $file['id'], $action, $file);
 }
 
 /**
@@ -45,21 +95,24 @@ function cuar_get_the_file_link($post_id = null, $action = 'download')
  *
  * @see get_the_download_link
  *
- * @param int $post_id Defaults to the current post ID from the loop
+ * @param int    $post_id Defaults to the current post ID from the loop
+ * @param array  $file    The file description
+ * @param string $action  The action (download|view)
  */
-function cuar_the_file_link($post_id = null, $action = 'download')
+function cuar_the_attached_file_link($post_id = null, $file, $action = 'download')
 {
-    echo cuar_get_the_file_link($post_id, $action);
+    echo cuar_get_the_attached_file_link($post_id, $file, $action);
 }
 
 /**
  * Get the name of the file associated to the given post
  *
- * @param int $post_id
+ * @param int   $post_id Defaults to the current post ID from the loop
+ * @param array $file    The file description
  *
  * @return string|mixed
  */
-function cuar_get_the_file_name($post_id = null)
+function cuar_get_the_attached_file_caption($post_id = null, $file)
 {
     if ( !$post_id)
     {
@@ -70,38 +123,36 @@ function cuar_get_the_file_name($post_id = null)
         return '';
     }
 
-    $file = get_post_meta($post_id, 'cuar_private_file_file', true);
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
 
-    if ( !$file || empty($file))
-    {
-        return '';
-    }
-
-    return apply_filters('cuar/private-content/files/the-name', $file['file'], $post_id);
+    return $pf_addon->get_file_caption($post_id, $file);
 }
 
 /**
  * Prints the name of the file associated to the given post
  *
- * @see get_the_file_name
+ * @see get_the_attached_file_name
  *
- * @param int $post_id
+ * @param int   $post_id Defaults to the current post ID from the loop
+ * @param array $file    The file description
  *
  * @return string|mixed
  */
-function cuar_the_file_name($post_id = null)
+function cuar_the_attached_file_caption($post_id = null, $file)
 {
-    echo cuar_get_the_file_name($post_id);
+    echo cuar_get_the_attached_file_caption($post_id, $file);
 }
 
 /**
- * Get the type of the file associated to the given post
+ * Get the name of the file associated to the given post
  *
- * @param int $post_id
+ * @param int   $post_id Defaults to the current post ID from the loop
+ * @param array $file    The file description
  *
  * @return string|mixed
  */
-function cuar_get_the_file_type($post_id = null)
+function cuar_get_the_attached_file_name($post_id = null, $file)
 {
     if ( !$post_id)
     {
@@ -112,38 +163,76 @@ function cuar_get_the_file_type($post_id = null)
         return '';
     }
 
-    $file = get_post_meta($post_id, 'cuar_private_file_file', true);
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
 
-    if ( !$file || empty($file))
+    return $pf_addon->get_file_name($post_id, $file);
+}
+
+/**
+ * Prints the name of the file associated to the given post
+ *
+ * @see get_the_attached_file_name
+ *
+ * @param int   $post_id Defaults to the current post ID from the loop
+ * @param array $file    The file description
+ *
+ * @return string|mixed
+ */
+function cuar_the_attached_file_name($post_id = null, $file)
+{
+    echo cuar_get_the_attached_file_name($post_id, $file);
+}
+
+/**
+ * Get the type of the file associated to the given post
+ *
+ * @param int   $post_id Defaults to the current post ID from the loop
+ * @param array $file    The file description
+ *
+ * @return string|mixed
+ */
+function cuar_get_the_attached_file_type($post_id = null, $file)
+{
+    if ( !$post_id)
+    {
+        $post_id = get_the_ID();
+    }
+    if ( !$post_id)
     {
         return '';
     }
 
-    return apply_filters('cuar/private-content/files/the-type', pathinfo($file['file'], PATHINFO_EXTENSION), $post_id);
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+
+    return $pf_addon->get_file_type($post_id, $file);
 }
 
 /**
  * Prints the type of the file associated to the given post
  *
- * @see get_the_file_type
+ * @see get_the_attached_file_type
  *
- * @param int $post_id
+ * @param int   $post_id Defaults to the current post ID from the loop
+ * @param array $file    The file description
  *
  * @return string|mixed
  */
-function cuar_the_file_type($post_id = null)
+function cuar_the_attached_file_type($post_id = null, $file)
 {
-    echo cuar_get_the_file_type($post_id);
+    echo cuar_get_the_attached_file_type($post_id, $file);
 }
 
 /**
  * Get the type of the file associated to the given post
  *
- * @param int $post_id
+ * @param int   $post_id Defaults to the current post ID from the loop
+ * @param array $file    The file description
  *
  * @return string|mixed
  */
-function cuar_get_the_file_size($post_id = null, $human = true)
+function cuar_get_the_attached_file_size($post_id = null, $file, $human = true)
 {
     if ( !$post_id)
     {
@@ -154,10 +243,11 @@ function cuar_get_the_file_size($post_id = null, $human = true)
         return '';
     }
 
-    $cuar_plugin = CUAR_Plugin::get_instance();
-    $pf_addon = $cuar_plugin->get_addon('private-files');
 
-    $size = $pf_addon->get_file_size($post_id);
+    /** @var CUAR_PrivateFileAddOn $pf_addon */
+    $pf_addon = cuar_addon('private-files');
+    $size = $pf_addon->get_file_size($post_id, $file);
+
     if (false === $size)
     {
         return '';
@@ -174,15 +264,16 @@ function cuar_get_the_file_size($post_id = null, $human = true)
 /**
  * Prints the type of the file associated to the given post
  *
- * @see get_the_file_type
+ * @see cuar_get_the_attached_file_size
  *
- * @param int $post_id
+ * @param int   $post_id Defaults to the current post ID from the loop
+ * @param array $file    The file description
  *
  * @return string|mixed
  */
-function cuar_the_file_size($post_id = null, $human = true)
+function cuar_the_attached_file_size($post_id = null, $file, $human = true)
 {
-    echo cuar_get_the_file_size($post_id, $human);
+    echo cuar_get_the_attached_file_size($post_id, $file, $human);
 }
 
 
@@ -211,10 +302,6 @@ function cuar_format_human_file_size($size)
     {
         $factor = 1024;
         $unit = __('kB', 'cuar');
-    }
-    else
-    {
-        $unit = __('bytes', 'cuar');
     }
 
     return sprintf('%1$s %2$s', number_format($size / $factor, 2), $unit);

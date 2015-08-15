@@ -1,0 +1,1 @@
+!function(t){t.editable.addInputType("autogrow",{element:function(e){var o=t("<textarea />");return e.rows?o.attr("rows",e.rows):o.height(e.height),e.cols?o.attr("cols",e.cols):o.width(e.width),t(this).append(o),o},plugin:function(e){t("textarea",this).autogrow(e.autogrow)}})}(jQuery);

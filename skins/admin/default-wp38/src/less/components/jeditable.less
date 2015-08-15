@@ -1,0 +1,57 @@
+.cuar-editable {
+  button {
+    color: #555;
+    background: #f7f7f7;
+    -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0, 0, 0, .08);
+    box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0, 0, 0, .08);
+    vertical-align: top;
+    border: 1px solid #ccc;
+    margin: 7px 0 0;
+    padding: 0 10px 1px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    line-height: 26px;
+    height: 28px;
+    border-radius: 3px;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+
+    &:hover {
+      background: #fafafa;
+      border-color: #999;
+      color: #23282d;
+    }
+
+    &:focus {
+      -webkit-box-shadow: 0 0 0 1px #5b9dd9,
+                          0 0 2px 1px rgba(30, 140, 190, .8);
+      box-shadow: 0 0 0 1px #5b9dd9,
+                  0 0 2px 1px rgba(30, 140, 190, .8);
+    }
+
+    &:active {
+      background: #eee;
+      border-color: #999;
+      color: #32373c;
+      -webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+      box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+    }
+
+    &[type=submit] {
+      margin-right: 2px;
+    }
+    &[type=cancel] {
+      margin-left: 2px;
+    }
+  }
+
+  button.clearButton {
+    margin-top: 0;
+  }
+}
