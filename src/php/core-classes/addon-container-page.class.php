@@ -107,7 +107,7 @@ abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn {
 	/**
 	 * The path of the page (slug + parent slugs)
 	 */
-	private function get_full_page_path( $page_id=0 ) { 
+	protected function get_full_page_path( $page_id=0 ) {
 		if ( $page_id==0 ) {
 			$cp_addon = $this->plugin->get_addon( 'customer-pages' );
 			$page_id = $cp_addon->get_page_id( $this->get_slug() );
