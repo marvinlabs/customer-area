@@ -698,7 +698,7 @@ if ( !class_exists('CUAR_Plugin')) :
             {
                 case 'jquery.select2':
                 {
-                    wp_enqueue_script('jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.min.js', array('jquery'), $cuar_version);
+                    wp_enqueue_script('jquery.select2', CUAR_PLUGIN_URL . 'libs/js/framework/select2/select2.min.js', array('jquery'), $cuar_version);
 
                     $locale = get_locale();
                     if ($locale && !empty($locale))
@@ -706,24 +706,24 @@ if ( !class_exists('CUAR_Plugin')) :
                         $locale = str_replace("_", "-", $locale);
                         $locale_parts = explode("-", $locale);
 
-                        $loc_files = array('select2_locale_' . $locale . '.js');
+                        $loc_files = array($locale . '.js');
 
                         if (count($locale_parts) > 0)
                         {
-                            $loc_files[] = 'select2_locale_' . $locale_parts[0] . '.js';
+                            $loc_files[] = $locale_parts[0] . '.js';
                         }
 
                         foreach ($loc_files as $lf)
                         {
-                            if (file_exists(CUAR_PLUGIN_DIR . '/libs/select2/' . $lf))
+                            if (file_exists(CUAR_PLUGIN_DIR . '/libs/js/framework/select2/i18n/' . $lf))
                             {
-                                wp_enqueue_script('jquery.select2.locale', CUAR_PLUGIN_URL . 'libs/select2/' . $lf, array('jquery.select2'), $cuar_version);
+                                wp_enqueue_script('jquery.select2.locale', CUAR_PLUGIN_URL . 'libs/js/framework/select2/i18n/' . $lf, array('jquery.select2'), $cuar_version);
                                 break;
                             }
                         }
                     }
 
-                    wp_enqueue_style('jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.css', $cuar_version);
+                    wp_enqueue_style('jquery.select2', CUAR_PLUGIN_URL . 'libs/js/framework/select2/css/core.css', $cuar_version);
                     break;
                 }
 
