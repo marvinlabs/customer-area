@@ -567,6 +567,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             return;
         }
 
+        // TODO MOVE THOSE SCRIPTS TO THE JS FILE
         ?>
         <script type="text/javascript">
             function cuar_unsetCurrentSubmenu(menu, href) {
