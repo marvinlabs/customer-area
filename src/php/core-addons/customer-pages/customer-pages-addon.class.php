@@ -79,7 +79,9 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                     array(&$this, 'print_pages_settings'), 50, 2);
                 add_filter('cuar/core/settings/validate-settings?tab=cuar_customer_pages',
                     array(&$this, 'validate_pages_settings'), 50, 3);
-            } else {
+            }
+            else
+            {
                 add_filter('body_class', array(&$this, 'add_body_class'));
             }
         }
@@ -473,10 +475,13 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 "pagination.template.php"));
         }
 
-        public function add_body_class($classes) {
-            if (cuar_is_customer_area_page() || cuar_is_customer_area_private_content()) {
+        public function add_body_class($classes)
+        {
+            if (cuar_is_customer_area_page() || cuar_is_customer_area_private_content())
+            {
                 $classes[] = 'cuar-body';
             }
+
             return $classes;
         }
 
@@ -484,6 +489,9 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
         public function filter_nav_menu_items($items, $menu, $args)
         {
+            // Don't filter anything on admin side
+            if (is_admin()) return $items;
+
             // Augment the pages list with their page IDs
             $pages = $this->get_customer_area_pages();
             $page_ids = array();
@@ -512,6 +520,21 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                     }
                 }
 
+                // Filter all items which are marked as private
+                if ( !empty($item->classes))
+                {
+                    $is_user_logged_in = is_user_logged_in();
+                    if ($is_user_logged_in && false!==array_search("wpca-guest-only", $item->classes))
+                    {
+                        $exclude = true;
+                    }
+                    else if ( !$is_user_logged_in && false!==array_search("wpca-logged-only", $item->classes))
+                    {
+                        $exclude = true;
+                    }
+                }
+
+                // Proceed to exclusion
                 if ( !$exclude)
                 {
                     if (in_array($item->menu_item_parent, $excluded_item_ids))
@@ -539,7 +562,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             }
 
             $menu = wp_get_nav_menu_object($theme_locations['cuar_main_menu']);
-            if (!isset($menu) || !$menu)
+            if ( !isset($menu) || !$menu)
             {
                 return;
             }
@@ -708,7 +731,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             if (isset($locations[$menu_name]) && $locations[$menu_name] > 0)
             {
                 $menu = wp_get_nav_menu_object($locations[$menu_name]);
-                if ($menu!=false)
+                if ($menu != false)
                 {
                     $menu_items = wp_get_nav_menu_items($menu->term_id);
 
