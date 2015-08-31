@@ -136,6 +136,7 @@ feel free to fork the project and send us pull requests!
 * New: support for the Smart groups add-on
 * New: function to test if we are currently on a given WP Customer Area page (for theme developers)
 * New: the private files settings page now helps you to secure the storage and FTP folders
+* New: allow tagging menu items to hide/show them [#117](https://github.com/marvinlabs/customer-area/issues/117)
 * Fix: updated all template functions for files to be able to pass the file index as a parameter
 * Fix: permalinks to categories (private files or pages) were not correct when included as menu items
 * Fix: bug in admin access restriction
