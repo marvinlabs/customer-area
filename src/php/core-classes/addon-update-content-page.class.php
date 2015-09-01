@@ -108,15 +108,6 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
                     // If not logged-in, bail
                     if ( !is_user_logged_in()) return false;
 
-                    // Form ID should match
-                    if ( !isset($_POST['cuar_form_id']) || $_POST['cuar_form_id'] != $this->get_slug()) return false;
-
-                    // Nonce check
-                    if ( !wp_verify_nonce($_POST["cuar_" . $this->get_slug() . "_nonce"], 'cuar_' . $this->get_slug()))
-                    {
-                        die('An attempt to bypass security checks was detected! Please go back and try again.');
-                    }
-
                     // User can create content
                     if ( !$this->current_user_can_edit_content())
                     {
@@ -128,12 +119,6 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
                 case 'delete':
                     // If not logged-in, bail
                     if ( !is_user_logged_in()) return false;
-
-                    // Nonce check
-                    if ( !isset($_GET["nonce"]) || !wp_verify_nonce($_GET["nonce"], 'cuar_' . $this->get_slug()))
-                    {
-                        die('An attempt to bypass security checks was detected! Please go back and try again.');
-                    }
 
                     // User can delete content
                     if ( !$this->current_user_can_delete_content())

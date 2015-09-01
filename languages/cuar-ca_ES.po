@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2015-07-29 13:23:53+00:00\n"
+"POT-Creation-Date: 2015-08-05 09:01:33+00:00\n"
 "PO-Revision-Date: 2015-03-03 08:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
@@ -73,7 +73,7 @@ msgid "General"
 msgstr "General"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:243
-#: src/php/core-addons/private-file/private-file-addon.class.php:1083
+#: src/php/core-addons/private-file/private-file-addon.class.php:1089
 #: src/php/core-addons/private-page/private-page-addon.class.php:108
 msgid "Back-office"
 msgstr "Part privada"
@@ -90,7 +90,7 @@ msgstr "Menú Àrea de Clients"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:250
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:71
-#: src/php/core-addons/private-file/private-file-addon.class.php:1096
+#: src/php/core-addons/private-file/private-file-addon.class.php:1102
 #: src/php/core-addons/private-page/private-page-addon.class.php:121
 msgid "Front-office"
 msgstr "Part pública"
@@ -601,7 +601,7 @@ msgstr "El meu compte"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
-#: src/php/core-classes/addon-container-page.class.php:685
+#: src/php/core-classes/addon-container-page.class.php:695
 #: src/php/core-classes/addon-content-page.class.php:819
 msgid "Dashboard"
 msgstr "Tauler"
@@ -1005,8 +1005,8 @@ msgstr "Tipus"
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:116
 #: src/php/core-classes/Content/list-table.class.php:308
-#: src/php/core-classes/addon-update-content-page.class.php:289
-#: src/php/core-classes/addon-update-content-page.class.php:290
+#: src/php/core-classes/addon-update-content-page.class.php:274
+#: src/php/core-classes/addon-update-content-page.class.php:275
 msgid "Edit"
 msgstr "Editar"
 
@@ -1579,7 +1579,7 @@ msgstr "Usuari - %s"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:43
 #: src/php/core-addons/private-file/private-file-addon.class.php:1080
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:158
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:146
 msgid "Private Files"
 msgstr "Arxius privats"
 
@@ -1641,103 +1641,107 @@ msgstr "No et trobes autoritzat/da per accedir a aquest arxiu"
 msgid "There is no such file attached to this private content"
 msgstr ""
 
+#: src/php/core-addons/private-file/private-file-addon.class.php:1083
+msgid "Global"
+msgstr ""
+
 #: src/php/core-addons/private-file/private-file-addon.class.php:1085
+msgid "Manage file attachments"
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-addon.class.php:1091
 msgid "List all files"
 msgstr "Llistar tots els arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1086
+#: src/php/core-addons/private-file/private-file-addon.class.php:1092
 msgid "Create/Edit files"
 msgstr "Crear/Editar arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1087
+#: src/php/core-addons/private-file/private-file-addon.class.php:1093
 msgid "Delete files"
 msgstr "Eliminar arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1088
+#: src/php/core-addons/private-file/private-file-addon.class.php:1094
 msgid "Access files"
 msgstr "Accedir als arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1089
+#: src/php/core-addons/private-file/private-file-addon.class.php:1095
 #: src/php/core-addons/private-page/private-page-addon.class.php:114
 msgid "Manage categories"
 msgstr "Gestionar categories"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1090
+#: src/php/core-addons/private-file/private-file-addon.class.php:1096
 #: src/php/core-addons/private-page/private-page-addon.class.php:115
 msgid "Edit categories"
 msgstr "Editar categories"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1091
+#: src/php/core-addons/private-file/private-file-addon.class.php:1097
 #: src/php/core-addons/private-page/private-page-addon.class.php:116
 msgid "Delete categories"
 msgstr "Eliminar categories"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1092
+#: src/php/core-addons/private-file/private-file-addon.class.php:1098
 #: src/php/core-addons/private-page/private-page-addon.class.php:117
 msgid "Assign categories"
 msgstr "Assignar categories"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1098
+#: src/php/core-addons/private-file/private-file-addon.class.php:1104
 msgid "View private files"
 msgstr "Mostrar arxius privats"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1099
+#: src/php/core-addons/private-file/private-file-addon.class.php:1105
 msgid "View any private file"
 msgstr "Mostrar qualsevol arxiu privat"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:53
-msgid "Manage file attachments"
-msgstr ""
-
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:79
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:67
 #, fuzzy
 msgid "Add file attachments"
 msgstr "Adjunt"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:87
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:75
 #, fuzzy
 msgid "Attached Files"
 msgstr "Arxius recents"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:172
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:160
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:123
 msgid "General settings"
 msgstr "Paràmetres generals"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:179
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:167
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:130
 msgid "Enable add-on"
 msgstr "Habilitar complement"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:187
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:175
 msgid "Check this to enable the private files add-on."
 msgstr "Verifica-ho per habilitar el complement d'arxius privat."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:193
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:181
 msgid "File Storage"
 msgstr "Emmagatzematge d'arxius"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:200
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:188
 #, fuzzy
 msgid "File storage"
 msgstr "Emmagatzematge d'arxius"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:214
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:202
 msgid "FTP uploads folder"
 msgstr "Carpeta FTP de càrrega"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:255
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:243
 msgid "<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:258
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:246
 msgid ""
 "This folder is the root folder for storing private files. This should "
 "preferably be located outside of the web server public area or secured using "
 "a <code>.htaccess</code> file"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:272
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:260
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
@@ -1746,23 +1750,23 @@ msgstr ""
 "resultarà útil, per exemple, si falla la càrrega directa amb arxius molt "
 "grans."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:289
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:307
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:323
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:277
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:295
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:311
 msgid "Save settings to check again"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:290
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:278
 #, fuzzy
 msgid "The folder does not exist."
 msgstr "El directori de càrrega FTP no existeix."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:294
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:282
 #, fuzzy
 msgid "Create folder"
 msgstr "Carpeta del tema actual"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:308
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:296
 #, fuzzy
 msgid ""
 "That directory should at least have the permissions set to %s. Currently it "
@@ -1773,26 +1777,26 @@ msgstr ""
 "L'actual és de %s. Cal que ajustis els permisos del directori o la càrrega i "
 "descàrrega no funcionarà correctament."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:313
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:301
 #, fuzzy
 msgid "Change permissions"
 msgstr "Configurar permissos"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:324
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:312
 msgid ""
 "That directory seems to be accessible from the web. <strong>This is not "
 "safe</strong>. The most secure would be to move it outside of the web folder "
 "of your server"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:329
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:317
 msgid ""
 "We can try to protect it with a <code>.htaccess</code> file with the button "
 "below, but <strong>this only works for Apache servers</strong> (will do "
 "nothing if you are running nginx or IIS)"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:334
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:322
 msgid "Try to secure it"
 msgstr ""
 
@@ -2333,24 +2337,24 @@ msgstr ""
 msgid "The shortcode <code>[%1$s]</code> is missing required parameter: %2$s"
 msgstr ""
 
-#: src/php/core-classes/addon-container-page.class.php:654
+#: src/php/core-classes/addon-container-page.class.php:664
 #: src/php/core-classes/addon-content-page.class.php:783
 msgid "Frontend Integration"
 msgstr "Integració de la part pública"
 
-#: src/php/core-classes/addon-container-page.class.php:664
+#: src/php/core-classes/addon-container-page.class.php:674
 #: src/php/core-classes/addon-content-page.class.php:795
 msgid "Show after post"
 msgstr "Mostrar després de l'entrada"
 
-#: src/php/core-classes/addon-container-page.class.php:673
+#: src/php/core-classes/addon-container-page.class.php:683
 #: src/php/core-classes/addon-content-page.class.php:804
 msgid "Show additional information after the post in the single post view."
 msgstr ""
 "Mostrar informació addicional després de l'entrada a la vista d'entrada "
 "individual."
 
-#: src/php/core-classes/addon-container-page.class.php:675
+#: src/php/core-classes/addon-container-page.class.php:685
 #: src/php/core-classes/addon-content-page.class.php:806
 msgid ""
 "You can disable this if you have your own theme template file for single "
@@ -2360,12 +2364,12 @@ msgstr ""
 "entrades individuals. Hauràs de recòrrer a l'arxiu del tema per veure-ho o "
 "crea'l: %s."
 
-#: src/php/core-classes/addon-container-page.class.php:693
+#: src/php/core-classes/addon-container-page.class.php:703
 #: src/php/core-classes/addon-content-page.class.php:827
 msgid "Show recent content on the dashboard."
 msgstr "Mostrar contingut recent de la Papelera."
 
-#: src/php/core-classes/addon-container-page.class.php:706
+#: src/php/core-classes/addon-container-page.class.php:716
 #: src/php/core-classes/addon-content-page.class.php:842
 msgid ""
 "Define how many items to allow on the dashboard page. -1 will show all items."
@@ -2373,7 +2377,7 @@ msgstr ""
 "Definir quants ítems permets a la Papelera (és a dir, la pàgina Papelera). "
 "-1 mostrarà tots els ítems."
 
-#: src/php/core-classes/addon-container-page.class.php:780
+#: src/php/core-classes/addon-container-page.class.php:790
 msgid "Slug that is used in the URL for archives of the taxonomy: "
 msgstr "Resum (slug) que s'utilitza a l'adreça URL per arxius de la taxonomia:"
 
@@ -2438,84 +2442,84 @@ msgstr "Editor enriquit"
 msgid "Enable the rich editor when editing content."
 msgstr "Habilita l'editor enriquit quan editis contingut."
 
-#: src/php/core-classes/addon-page.class.php:45
+#: src/php/core-classes/addon-page.class.php:49
 msgid "Customer Page - %s"
 msgstr "Pàgina d'usuari - %s"
 
-#: src/php/core-classes/addon-page.class.php:264
+#: src/php/core-classes/addon-page.class.php:313
 msgid "This page requires login, you should not be here"
 msgstr "Aquesta pàgina demana iniciar sessió, no hauries de rondar per aquí"
 
-#: src/php/core-classes/addon-page.class.php:272
+#: src/php/core-classes/addon-page.class.php:325
 msgid "You are not allowed to view this page"
 msgstr "No et trobes autoritzat per visualitzar aquesta pàgina"
 
-#: src/php/core-classes/addon-page.class.php:361
+#: src/php/core-classes/addon-page.class.php:431
 msgid "WPCA - %s"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:161
+#: src/php/core-classes/addon-update-content-page.class.php:146
 msgid "You must supply a post ID to delete"
 msgstr "Has de subministrar un ID d'entrada per eliminar"
 
-#: src/php/core-classes/addon-update-content-page.class.php:168
+#: src/php/core-classes/addon-update-content-page.class.php:153
 msgid "You are not allowed to delete this post"
 msgstr "No et trobes autoritzar per eliminar aquesta entrada"
 
-#: src/php/core-classes/addon-update-content-page.class.php:176
+#: src/php/core-classes/addon-update-content-page.class.php:161
 msgid "The content has been deleted."
 msgstr "El contingut s'ha eliminat."
 
-#: src/php/core-classes/addon-update-content-page.class.php:299
-#: src/php/core-classes/addon-update-content-page.class.php:300
+#: src/php/core-classes/addon-update-content-page.class.php:284
+#: src/php/core-classes/addon-update-content-page.class.php:285
 msgid "Delete"
 msgstr "Eliminar"
 
-#: src/php/core-classes/addon-update-content-page.class.php:303
+#: src/php/core-classes/addon-update-content-page.class.php:288
 msgid "Are you sure that you want to delete this content?"
 msgstr "Estàs segur/a que vols eliminar aquest contingut?"
 
-#: src/php/core-classes/addon-update-content-page.class.php:321
+#: src/php/core-classes/addon-update-content-page.class.php:306
 msgid "Content update (from front-office)"
 msgstr "Actualitzar contingut (part pública)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:323
+#: src/php/core-classes/addon-update-content-page.class.php:308
 msgid "Update any content from front office"
 msgstr "Actualitzar qualsevol contingut de la part pública"
 
-#: src/php/core-classes/addon-update-content-page.class.php:324
+#: src/php/core-classes/addon-update-content-page.class.php:309
 msgid "Update authored content"
 msgstr "Actualitzar contingut amb autor"
 
-#: src/php/core-classes/addon-update-content-page.class.php:325
+#: src/php/core-classes/addon-update-content-page.class.php:310
 msgid "Update owned content"
 msgstr "Actualitzar contingut amb propietari"
 
-#: src/php/core-classes/addon-update-content-page.class.php:329
+#: src/php/core-classes/addon-update-content-page.class.php:314
 msgid "Content removal (from front-office)"
 msgstr "Eliminació de contingut (part pública)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:331
+#: src/php/core-classes/addon-update-content-page.class.php:316
 msgid "Delete any content from front office"
 msgstr "Eliminar qualsevol contingut de la part pública"
 
-#: src/php/core-classes/addon-update-content-page.class.php:332
+#: src/php/core-classes/addon-update-content-page.class.php:317
 msgid "Delete authored content"
 msgstr "Eliminar contingut amb autor"
 
-#: src/php/core-classes/addon-update-content-page.class.php:333
+#: src/php/core-classes/addon-update-content-page.class.php:318
 msgid "Delete owned content"
 msgstr "Eliminar contingut amb propietari"
 
-#: src/php/core-classes/addon-update-content-page.class.php:348
+#: src/php/core-classes/addon-update-content-page.class.php:333
 msgid "You must specify a post to delete"
 msgstr "Cal que especifiquis una entrada a eliminar"
 
-#: src/php/core-classes/addon-update-content-page.class.php:385
+#: src/php/core-classes/addon-update-content-page.class.php:370
 msgid "You must specify a post to edit"
 msgstr "Cal que especifiquis una entrada per editar"
 
-#: src/php/core-classes/addon-update-content-page.class.php:426
+#: src/php/core-classes/addon-update-content-page.class.php:411
 msgid "Content edition"
 msgstr "Edició de contingut"
 
@@ -2935,7 +2939,7 @@ msgid "delete"
 msgstr "eliminar"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:425
-#: src/php/core-classes/addon-container-page.class.php:314
+#: src/php/core-classes/addon-container-page.class.php:324
 #: src/php/core-classes/addon-content-page.class.php:440
 msgctxt "pagination_parameter_name (should not be \"page\")"
 msgid "page-num"
@@ -2949,139 +2953,139 @@ msgctxt ""
 msgid "wp-customer-area-menu"
 msgstr "menu-area-clients"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1118
+#: src/php/core-addons/private-file/private-file-addon.class.php:1124
 msgctxt "cuar_private_file"
 msgid "File"
 msgstr "Arxiu"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1119
+#: src/php/core-addons/private-file/private-file-addon.class.php:1125
 msgctxt "cuar_private_file"
 msgid "Files"
 msgstr "Arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1147
-#: src/php/core-addons/private-file/private-file-addon.class.php:1158
+#: src/php/core-addons/private-file/private-file-addon.class.php:1153
+#: src/php/core-addons/private-file/private-file-addon.class.php:1164
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "Arxius privats"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1148
+#: src/php/core-addons/private-file/private-file-addon.class.php:1154
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "Arxiu privat"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1149
+#: src/php/core-addons/private-file/private-file-addon.class.php:1155
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Afegir nou"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1150
+#: src/php/core-addons/private-file/private-file-addon.class.php:1156
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Afegir nou arxiu privat"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1151
+#: src/php/core-addons/private-file/private-file-addon.class.php:1157
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Editar arxiu privat"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1152
+#: src/php/core-addons/private-file/private-file-addon.class.php:1158
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Nou arxiu privat"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1153
+#: src/php/core-addons/private-file/private-file-addon.class.php:1159
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Mostrar arxiu privat"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1154
+#: src/php/core-addons/private-file/private-file-addon.class.php:1160
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Cercar arxius privats"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1155
+#: src/php/core-addons/private-file/private-file-addon.class.php:1161
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "No s'han trobat arxius privats"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1156
+#: src/php/core-addons/private-file/private-file-addon.class.php:1162
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "No s'han trobat arxius privat a la Papelera"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1157
+#: src/php/core-addons/private-file/private-file-addon.class.php:1163
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "Arxiu privat pare:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1191
-#: src/php/core-addons/private-file/private-file-addon.class.php:1205
+#: src/php/core-addons/private-file/private-file-addon.class.php:1197
+#: src/php/core-addons/private-file/private-file-addon.class.php:1211
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Categories d'arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1192
+#: src/php/core-addons/private-file/private-file-addon.class.php:1198
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Categoria de l'arxiu"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1193
+#: src/php/core-addons/private-file/private-file-addon.class.php:1199
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Cercar categories d'arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1194
+#: src/php/core-addons/private-file/private-file-addon.class.php:1200
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Categories d'arxius populars"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1195
+#: src/php/core-addons/private-file/private-file-addon.class.php:1201
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Totes les categories d'arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1196
+#: src/php/core-addons/private-file/private-file-addon.class.php:1202
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Categoria d'arxiu pare"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1197
+#: src/php/core-addons/private-file/private-file-addon.class.php:1203
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Categoria d'arxiu pare:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1198
+#: src/php/core-addons/private-file/private-file-addon.class.php:1204
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Editar categoria d'arxiu"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1199
+#: src/php/core-addons/private-file/private-file-addon.class.php:1205
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Actualitzar categoria d'arxiu"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1200
+#: src/php/core-addons/private-file/private-file-addon.class.php:1206
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Afegir nova categoria d'arxiu"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1201
+#: src/php/core-addons/private-file/private-file-addon.class.php:1207
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Nova categoria d'arxiu"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1202
+#: src/php/core-addons/private-file/private-file-addon.class.php:1208
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Separar categories d'arxius amb comes"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1203
+#: src/php/core-addons/private-file/private-file-addon.class.php:1209
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Afegir o eliminar categories d'arxius"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1204
+#: src/php/core-addons/private-file/private-file-addon.class.php:1210
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Selecciona des de les categories d'arxius més utilitzades"
@@ -3230,6 +3234,7 @@ msgid "MM d, yy"
 msgstr ""
 
 #: src/php/core-classes/plugin.class.php:196
+#: src/php/core-classes/plugin.class.php:219
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr ""
@@ -3246,11 +3251,6 @@ msgstr ""
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr "Mostrar després de l'entrada"
-
-#: src/php/core-classes/plugin.class.php:219
-msgctxt "Date picker text"
-msgid "Done"
-msgstr ""
 
 #~ msgid "Download (%1$s)"
 #~ msgstr "Descàrrega (%1$s)"

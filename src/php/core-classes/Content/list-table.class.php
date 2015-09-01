@@ -496,7 +496,7 @@ abstract class CUAR_ListTable extends WP_List_Table
 
         // Register the pagination
         $total_items = $this->total_count;
-        $items_per_page = $this->get_items_per_page(get_class($this));
+        $items_per_page = $this->get_items_per_page(get_class($this) . '_per_page');
         $current_page = $this->get_pagenum();
         $page_count = ceil($total_items / $items_per_page);
 

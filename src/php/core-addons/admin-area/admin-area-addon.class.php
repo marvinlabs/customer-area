@@ -264,7 +264,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
      */
     public function restrict_admin_access()
     {
-        if ( !$this->current_user_can_access_admin() && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php')
+        if ( !$this->current_user_can_access_admin() && !(defined( 'DOING_AJAX' ) && DOING_AJAX))
         {
             $cp_addon = $this->plugin->get_addon('customer-pages');
             $customer_area_url = apply_filters('cuar/core/admin/admin-area-forbidden-redirect-url',
@@ -567,6 +567,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             return;
         }
 
+        // TODO MOVE THOSE SCRIPTS TO THE JS FILE
         ?>
         <script type="text/javascript">
             function cuar_unsetCurrentSubmenu(menu, href) {
