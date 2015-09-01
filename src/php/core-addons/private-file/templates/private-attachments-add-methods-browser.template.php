@@ -7,7 +7,7 @@
 <?php /** @var array $select_methods */ ?>
 
 <div class="cuar-file-attachment-manager">
-    <span class="label">
+    <span class="cuar-label">
         <label for="cuar_file_selector_input"><?php _e('How do you want to add the files?', 'cuar'); ?></label>
     </span>
     <select id="cuar_file_selector_input" name="cuar_file_selector_input" class="cuar-file-selector-input">

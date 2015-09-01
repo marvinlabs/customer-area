@@ -1,27 +1,109 @@
-// Skin Variables
+// Define base path
+// ----------------------------
+@base-path:	 "../../../../../../../vendor/other/framework/theme/assets/skin/base";
+
+// Base Resources
+// ----------------------------
+
+// Frameworks Variables
 @import "core/theme_variables";
 
-.cuar-page,
-.cuar-single-post-actions,
-.cuar-single-post-footer,
-.cuar-conversation-reply-form,
-.cuar-menu-container{
+// Base Mixins
+@import "@{base-path}/mixins.less";
 
+body .entry-content .cuar-content-container,
+body .entry-content .cuar-menu-container,
+.cuar-content-container,
+.cuar-menu-container {
+
+  .clearfix;
   font-family: @font-family-base;
   font-size: @font-size-base;
   font-weight: @font-weight-base;
   line-height: @line-height-base;
   color: @text-color;
-  padding: 10px;
   width: 100%;
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: @line-height-computed;
+
+  background: @body-bg;
+  border: 1px solid lighten(@body-bg, 3%);
+  padding: @padding-base-vertical @padding-base-horizontal;
+
+  .box-sizing(border-box);
+  &:before,
+  &:after {
+    .box-sizing(border-box);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+  }
+
+  th {
+    text-transform: uppercase;
+  }
+
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
 
   // Skin Settings
-  @import "../../../master/src/less/core/theme_settings";
+  @import "core/theme_settings";
 
   // Base Elements and Mixins
   @import "../../../master/src/less/core/theme_base";
+
+  // Main WPCA components
+  @import "../../../master/src/less/wpca/wrapped";
+
+  // Sub-theme additions
+  @import "wpca/variant";
+
 }
 
-@import "../../../master/src/less/wpca/theme_custom";
-
+// Main WPCA components that require to be outside containers
+@import "../../../master/src/less/wpca/inline";
 

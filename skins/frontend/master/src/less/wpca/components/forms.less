@@ -1,0 +1,106 @@
+.cuar-form {
+  .cuar-field {
+    margin-bottom: 10px;
+  }
+  .cuar-form-links {
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+.cuar-form {
+  .form-horizontal;
+
+  .form-group{
+    .make-row();
+    .clearfix;
+
+    .cuar-control-label {
+      margin-bottom: 15px;
+      .make-sm-column(4);
+    }
+    .cuar-control-container {
+      .make-sm-column(8);
+    }
+    .cuar-submit-container, .cuar-checkbox-container {
+      .make-sm-column(6);
+      .make-sm-column-offset(4);
+    }
+  }
+
+  img.cuar-captcha {
+    .center-block;
+    margin-bottom: 10px;
+  }
+
+  legend {
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+  }
+}
+
+.cuar-big-form {
+  .form-group {
+    // .make-sm-column(12);
+  }
+  .cuar-two-columns {
+    .make-row();
+    .cuar-half-width {
+      .make-sm-column(6);
+      margin-bottom: 15px;
+    }
+  }
+  .cuar-control-label {
+    .make-sm-column(4);
+  }
+  .cuar-control-container {
+    .make-sm-column(8);
+  }
+  .cuar-submit-container, .cuar-checkbox-container {
+    .make-sm-column(12);
+  }
+  img.cuar-captcha {
+    .center-block;
+    margin-bottom: 10px;
+  }
+}
+
+.cuar-login-form {
+  .cuar-control-label {
+    .make-xs-column(6);
+    .make-sm-column(6);
+  }
+  .cuar-control-container {
+    .make-xs-column(6);
+    .make-sm-column(6);
+  }
+  .cuar-submit-container, .cuar-checkbox-container {
+    .make-sm-column(6);
+    .make-sm-column-offset(6);
+  }
+}
+
+.cuar-form {
+  #cuar_owner_type {
+    margin-bottom: 10px;
+  }
+
+  .select2-choices {
+    &:extend( .form-control );
+  }
+
+  .select2-container-multi .select2-choices .select2-search-choice {
+  }
+}
+
+.cuar-form {
+  .wp-editor-wrap {
+    border: 1px solid @item-border-color;
+    border-radius: @border-radius-base;
+  }
+  .wp-editor-container {
+    overflow: hidden;
+  }
+}

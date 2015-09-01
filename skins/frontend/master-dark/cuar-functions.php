@@ -1,4 +1,4 @@
 <?php
 
 // Includes functions from base theme
-include('../master/src/cuar-functions.php');
+include(CUAR_PLUGIN_DIR . '/skins/frontend/master/cuar-functions.php');

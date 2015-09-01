@@ -24,27 +24,25 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
 ?>
 
 
-<div class="cuar-single-post-footer cuar-page<?php echo $extra_class; ?>">
+<div class="cuar-single-post-footer<?php echo $extra_class; ?>">
 
     <div class="cuar-meta-category cuar-content-meta">
-        <div class="cuar-row">
-            <div class="cuar-meta-block cuar-author">
-                <h4><span class="cuar-dashicons cuar-dashicons-businessman"></span> <?php _e('Author', 'cuar'); ?></h4>
+        <div class="cuar-meta-block cuar-author">
+            <h4><span class="fa fa-user"></span> <?php _e('Author', 'cuar'); ?></h4>
 
-                <p><?php echo $author; ?></p>
-            </div>
+            <p><?php echo $author; ?></p>
+        </div>
 
-            <div class="cuar-meta-block cuar-owner">
-                <h4><span class="cuar-dashicons cuar-dashicons-groups"></span> <?php _e('Recipient', 'cuar'); ?></h4>
+        <div class="cuar-meta-block cuar-owner">
+            <h4><span class="fa fa-users"></span> <?php _e('Recipient', 'cuar'); ?></h4>
 
-                <p><?php echo $recipients; ?></p>
-            </div>
+            <p><?php echo $recipients; ?></p>
+        </div>
 
-            <div class="cuar-meta-block cuar-date">
-                <h4><span class="cuar-dashicons cuar-dashicons-calendar"></span> <?php _e('Date', 'cuar'); ?></h4>
+        <div class="cuar-meta-block cuar-date">
+            <h4><span class="fa fa-calendar"></span> <?php _e('Date', 'cuar'); ?></h4>
 
-                <p><?php echo $date; ?></p>
-            </div>
+            <p><?php echo $date; ?></p>
         </div>
     </div>
 

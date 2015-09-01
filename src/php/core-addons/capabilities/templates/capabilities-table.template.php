@@ -36,7 +36,7 @@ wp_enqueue_script('jquery-ui-tabs');
             <p>&nbsp;</p>
 
             <div style="overflow-x: scroll; overflow-y: visible;">
-                <table class="cuar-widefat cuar-capabilities">
+                <table class="widefat cuar-capabilities">
                     <thead>
                     <tr>
                         <th class="cuar-checkbox-only"></th>

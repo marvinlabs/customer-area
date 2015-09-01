@@ -22,7 +22,7 @@
 
 <?php
 if (isset($_GET['updated']) && $_GET['updated'] == 1) {
-    printf('<p class="cuar-alert cuar-alert-info">%s</p>', __('Your profile has been updated', 'cuar'));
+    printf('<p class="alert alert-info">%s</p>', __('Your profile has been updated', 'cuar'));
 }
 ?>
 

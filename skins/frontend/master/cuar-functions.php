@@ -52,6 +52,8 @@ if ( !function_exists('cuar_enable_bootstrap_nav_walker'))
 
     /**
      * Use the bootstrap navwalker for our navigation menu to output bootstrap-friendly HTML.
+     * @param $args
+     * @return
      */
     function cuar_enable_bootstrap_nav_walker($args)
     {
@@ -69,4 +71,24 @@ if ( !function_exists('cuar_enable_bootstrap_nav_walker'))
     }
 
     add_filter('cuar/core/page/nav-menu-args', 'cuar_enable_bootstrap_nav_walker');
+}
+
+
+if ( !function_exists('cuar_wrap_content_into_container'))
+{
+
+    /**
+     * Wrap the whole content result into a div on customer area pages
+     * @param $content
+     * @return string
+     */
+    function cuar_wrap_content_into_container($content)
+    {
+        if(cuar_is_customer_area_page( get_queried_object_id() ) || cuar_is_customer_area_private_content( get_the_ID() ))
+            return '<div class="cuar-content-container">' . $content . '</div>';
+        else
+            return $content;
+    }
+
+    add_filter('the_content', 'cuar_wrap_content_into_container', 9999);
 }

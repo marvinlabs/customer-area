@@ -1,0 +1,24 @@
+// Extend required gallery-page class to not only work on body.gallery-page
+.cuar-gallery-page:extend(body.gallery-page all){};
+
+// Prevent adminbar from overriding theme
+body.admin-bar .navbar-fixed-top,
+body.admin-bar .navbar-fixed-top + #sidebar_left,
+body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper + #sidebar_right {
+  top: 32px !important;
+}
+body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper{
+  margin-bottom: -32px;
+}
+
+// Possible fix for links color for theme that often use .entry-content class
+body .entry-content .cuar-page a,
+body .entry-content .cuar-page a:visited,
+body .comment-content .cuar-page a,
+body .comment-content .cuar-page a:visited {
+  color: @link-color;
+}
+body .entry-content .cuar-page a:hover,
+body .comment-content .cuar-page a:hover {
+  color: @link-hover-color;
+}

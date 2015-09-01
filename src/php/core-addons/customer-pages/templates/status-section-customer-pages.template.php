@@ -59,9 +59,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 			<td><?php echo $page->get_type(); ?></td>
 			<td>
 <?php 			if ( $page_id>0 ) {
-					printf( '<a href="%1$s" class="cuar-button">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $page_id), __('Edit', 'cuar') );
+					printf( '<a href="%1$s">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $page_id), __('Edit', 'cuar') );
 					echo ' ';
-					printf( '<a href="%1$s" class="cuar-button">%2$s &raquo;</a>', get_permalink( $page_id ), __('View', 'cuar') );
+					printf( '<a href="%1$s">%2$s &raquo;</a>', get_permalink( $page_id ), __('View', 'cuar') );
 				}
 ?>
 			</td>
@@ -103,7 +103,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	</p>	
 </div>
 
-<table class="cuar-widefat cuar-status-table">
+<table class="widefat cuar-status-table">
 	<thead>
 		<tr>
 			<th><?php _e( 'Title', 'cuar' ); ?></th>

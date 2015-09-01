@@ -9,7 +9,7 @@
  *
  */ ?>
 
-<div class="cuar-content-block" style="background: red;">
+<div class="cuar-content-block">
     <h3><?php echo $page_subtitle; ?></h3>
 
     <div class="cuar-private-file-list cuar-item-list">

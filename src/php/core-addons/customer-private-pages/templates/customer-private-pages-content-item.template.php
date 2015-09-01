@@ -34,22 +34,20 @@ $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' .
 ?>
 
 <div class="cuar-private-page cuar-item cuar-item-large<?php echo $extra_class; ?>">
-    <div class="cuar-panel">
-        <div class="cuar-title">
-            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
-        </div>
-
-        <div class="cuar-subtitle">
-            <a href="<?php the_permalink(); ?>"
-               title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
-        </div>
-
-        <?php if (has_post_thumbnail(get_the_ID())) : ?>
-            <div class="cuar-cover">
-                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>">
-                    <?php the_post_thumbnail('medium', array('class' => "img-responsive")); ?>
-                </a>
-            </div>
-        <?php endif; ?>
+    <div class="cuar-title">
+        <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
     </div>
+
+    <div class="cuar-subtitle">
+        <a href="<?php the_permalink(); ?>"
+           title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
+    </div>
+
+    <?php if (has_post_thumbnail(get_the_ID())) : ?>
+        <div class="cuar-cover">
+            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>">
+                <?php the_post_thumbnail('medium', array('class' => "img-responsive")); ?>
+            </a>
+        </div>
+    <?php endif; ?>
 </div>

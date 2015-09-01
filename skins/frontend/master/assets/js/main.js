@@ -341,7 +341,6 @@
                 var count = items.length - 1;
 
                 items.not("." + plusClass).each(function (i) {
-
                     if (container.width() - plus.width() < $(this).offset().left + $(this).width() - container.offset().left) {
                         items.eq(i).addClass('just-hide');
                         clone.eq(i).removeClass('hidden');
@@ -367,6 +366,7 @@
             $(window).on('resize', function () {
                 fluidify();
             });
+
 
             // Searchbar - Mobile modifcations
             $('.navbar-search').on('click', function (e) {

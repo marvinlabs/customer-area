@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	</p>
 		 
 	<p class="cuar-suggested-action"><span class="text"><?php _e('Suggested action', 'cuar' ); ?></span>
-		<input type="submit" id="cuar-create-all-missing-pages" name="cuar-create-all-missing-pages" class="cuar-button cuar-button-primary" value="<?php esc_attr_e( 'Create missing pages', 'cuar' ); ?> &raquo;" />
+		<input type="submit" id="cuar-create-all-missing-pages" name="cuar-create-all-missing-pages" value="<?php esc_attr_e( 'Create missing pages', 'cuar' ); ?> &raquo;" />
 		<?php wp_nonce_field( 'cuar-create-all-missing-pages', 'cuar-create-all-missing-pages_nonce' ); ?>
 		
 		<script type="text/javascript">

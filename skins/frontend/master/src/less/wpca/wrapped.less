@@ -1,24 +1,26 @@
-
-@import "navigation/navbar";
-@import "addon/switch_users";
-
-// Prevent adminbar from overriding theme
-body.admin-bar .navbar-fixed-top,
-body.admin-bar .navbar-fixed-top + #sidebar_left,
-body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper + #sidebar_right {
-  top: 32px !important;
-}
-body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper{
-  margin-bottom: -32px;
-}
-
-// Extend required gallery-page class to not only work on body.gallery-page
-.gallery-page:extend(body.gallery-page all){};
-
+// Components
+@import "variables";
+@import "components/conversations";
+@import "components/dropzone";
+@import "components/fields";
+//@import "components/forms";
+@import "components/general";
+//@import "components/items";
+@import "components/nav_bar";
+//@import "components/nav_menu";
+@import "components/private-files";
+@import "components/private-pages";
+//@import "components/progress";
+//@import "components/projects";
+@import "components/single-footers";
+@import "components/switch-users";
+//@import "components/tasks";
+@import "components/wizard";
 
 // Switch users in toolbar extra styling
 // TODO: Replace pixels values by variables
 // TODO: Theme related, move this into premium theme
+/*
 #topbar #cuar-topbar-actions {
   height: 32px;
 
@@ -81,3 +83,4 @@ body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper{
     }
   }
 }
+*/

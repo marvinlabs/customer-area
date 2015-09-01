@@ -20,16 +20,22 @@
 <?php
 global $post;
 
-$is_author = get_the_author_meta('ID') == get_current_user_id();
-$file_size = cuar_get_the_file_size(get_the_ID());
+$files = cuar_get_the_attached_files($post->ID);
+$files_data = array();
+if ($files && is_array($files)) {
+    foreach ($files as $file) {
+        $files_data[] = array(
+            'size' => cuar_get_the_attached_file_size($post->ID, $file),
+            'type' => cuar_get_the_attached_file_type($post->ID, $file)
+        );
+    }
+}
 
-if ($is_author)
-{
+$is_author = get_the_author_meta('ID') == get_current_user_id();
+if ($is_author) {
     $subtitle_popup = __('You uploaded this file', 'cuar');
     $subtitle = sprintf(__('Published for %s', 'cuar'), cuar_get_the_owner());
-}
-else
-{
+} else {
     $subtitle_popup = sprintf(__('Published for %s', 'cuar'), cuar_get_the_owner());
     $subtitle = sprintf(__('Published by %s', 'cuar'), get_the_author_meta('display_name'));
 }
@@ -63,7 +69,9 @@ $file_count = cuar_get_the_attached_file_count($post->ID);
     <div class="cuar-badges">
         <a href="<?php the_permalink(); ?>"
            title="<?php echo esc_attr(sprintf(_n('%1$s file attached', '%1$s files attached', $file_count, 'cuar'), $file_count)); ?>">
-            <span class="cuar-download-badge cuar-dashicons cuar-dashicons-download cuar-dashicon-badge cuar-pull-right"></span>
+            <span class="download-badge dashicons dashicons-download dashicon-badge pull-right">
+                <?php echo $file_count; ?>
+            </span>
         </a>
     </div>
 </div>

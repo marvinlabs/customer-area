@@ -1,14 +1,13 @@
 <?php
-/** Template version: 2.0.0
+/** Template version: 3.0.0
  *
- * -= 2.0.0 =-
- * - Add cuar- prefix to bootstrap classes
+ * -= 3.0.0 =-
+ * - Improve UI for new master-skin
  *
  * -= 1.0.0 =-
  * - Initial version
  *
- */
-?>
+ */ ?>
 
 <?php
 global $post;
@@ -30,22 +29,20 @@ $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' .
 ?>
 
 <div class="cuar-private-content cuar-item cuar-item-wide<?php echo $extra_class; ?>">
-    <div class="cuar-panel">
-        <div class="cuar-title">
-            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
-        </div>
-
-        <div class="cuar-subtitle">
-            <a href="<?php the_permalink(); ?>"
-               title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
-        </div>
-
-        <?php if (has_post_thumbnail(get_the_ID())) : ?>
-            <div class="cuar-cover">
-                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>">
-                    <?php the_post_thumbnail('medium', array('class' => "cuar-img-responsive")); ?>
-                </a>
-            </div>
-        <?php endif; ?>
+    <div class="cuar-title">
+        <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
     </div>
+
+    <div class="cuar-subtitle">
+        <a href="<?php the_permalink(); ?>"
+           title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
+    </div>
+
+    <?php if (has_post_thumbnail(get_the_ID())) : ?>
+        <div class="cuar-cover">
+            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>">
+                <?php the_post_thumbnail('medium', array('class' => "cuar-img-responsive")); ?>
+            </a>
+        </div>
+    <?php endif; ?>
 </div>

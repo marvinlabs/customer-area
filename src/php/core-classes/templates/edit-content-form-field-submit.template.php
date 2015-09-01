@@ -4,7 +4,7 @@
 <?php /** @var string $field_label */ ?>
 
 <div class="form-group">
-    <div class="submit-container">
+    <div class="cuar-submit-container">
         <input type="submit" name="<?php echo esc_attr($field_name); ?>" value="<?php echo esc_attr($field_label); ?>" class="btn btn-default" />
     </div>
 </div>

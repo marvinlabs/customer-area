@@ -34,14 +34,12 @@ $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' .
 ?>
 
 <div class="cuar-private-page cuar-item cuar-item-wide<?php echo $extra_class; ?>">
-    <div class="cuar-panel">
-        <div class="cuar-title">
-            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
-        </div>
+    <div class="cuar-title">
+        <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
+    </div>
 
-        <div class="cuar-subtitle">
-            <a href="<?php the_permalink(); ?>"
-               title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
-        </div>
+    <div class="cuar-subtitle">
+        <a href="<?php the_permalink(); ?>"
+           title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
     </div>
 </div>

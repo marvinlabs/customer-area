@@ -12,13 +12,13 @@
  *
  */ ?>
 
-<ul class="cuar-pagination cuar-pagination-sm">
+<ul class="pagination pagination-sm">
     <?php
     foreach ($page_links as $num => $page_args) :
         if ($page_args['is_current']) :
             ?>
-            <li class="cuar-active"><span><?php echo $num; ?> <span
-                        class="cuar-sr-only"><?php _e('(current)', 'cuar'); ?></span></span>
+            <li class="active"><span><?php echo $num; ?> <span
+                        class="sr-only"><?php _e('(current)', 'cuar'); ?></span></span>
             </li>
         <?php
         elseif (false === $page_args['link']): ?>

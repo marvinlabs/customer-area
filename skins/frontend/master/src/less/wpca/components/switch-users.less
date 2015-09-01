@@ -1,10 +1,12 @@
-#cuar-user-switcher{
-  &:extend(.panel-heading all);
-  margin-bottom: 20px;
-  vertical-align: top;
+.cuarsu-main #cuar-user-switcher{
+  .panel;
+  vertical-align: middle;
   height: 42px;
 
   .cuarsu-form-wrapper{
+    .panel-heading;
+    height: 42px;
+
     .cuarsu-message-wrapper,
     .cuarsu-inputs-wrapper{
       display: inline-block;
@@ -15,14 +17,18 @@
         width: auto;
       }
     }
+    .cuarsu-inputs-wrapper{
+      float: right;
+      margin-right: 40px;
+    }
   }
   #cuarsu_do_switch_identity{
-    &:extend(.btn-sm all);
+    .btn-sm;
     height: 32px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid @cuarsu-border-color;
   }
   .cuarsu-message{
-    &:extend(.panel-title all);
+    .panel-title;
     font-weight: 300;
     display: block;
     float: left;

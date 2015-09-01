@@ -17,7 +17,6 @@
 @white:                 #fff;
 @muted:                 #999;
 @transparent:           transparent;
-@brand-light:           #fafafa;
 
 @gray-darker:           lighten(#000, 13.5%); // #222
 @gray-dark:             lighten(#000, 20%);   // #333
@@ -27,6 +26,8 @@
 
 // default contextual colors
 @brand-default:         #f0f0f0;
+@brand-light:           #fafafa;
+@brand-dark:            #3b3f4f; // dark/black
 @brand-primary:         #3498db; // blue
 @brand-success:         #70ca63; // green
 @brand-info:            #3bafda; // light blue
@@ -34,21 +35,30 @@
 @brand-danger:          #df5640; // red
 @brand-alert:           #967adc; // purple 
 @brand-system:          #37bc9b; // teal
-@brand-dark:            #3b3f4f; // dark/black
 
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               #f9f9f9;
+.make-color(@mk-color, @mk-action, @mk-percent, @mk-gray: 43%) when (@mk-action = 'darker') {
+  @made-color: contrast(@body-bg, lighten(@mk-color, @mk-percent), darken(@mk-color, @mk-percent), @mk-gray );
+}
+.make-color(@mk-color, @mk-action, @mk-percent, @mk-gray: 57%) when (@mk-action = 'lighter') {
+  @made-color: contrast(@body-bg, darken(@mk-color, @mk-percent), lighten(@mk-color, @mk-percent), @mk-gray );
+}
+
 //** Global text color on `<body>`.
-@text-color:            #666;
+.make-color(@body-bg, 'darker', 45%);
+@text-color:            @made-color;
 
 //** Global textual link color.
-@link-color:            @brand-primary;
+.make-color(@brand-primary, 'darker', 70%);
+@link-color:            @made-color;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+
+@link-hover-color:      @brand-primary;
 
 //** Background color for `<#main>`.
 @main-bg: 				#eee;

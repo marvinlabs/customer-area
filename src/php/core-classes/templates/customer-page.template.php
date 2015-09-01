@@ -1,16 +1,18 @@
 <?php /** Template version: 1.0.0 */ ?>
 
 <?php
-	$page_classes = array( 'cuar-page-' . $this->page_description['slug'] ); 
+	$page_classes = array( 'cuar-page-' . $this->page_description['slug'] );
 	if ( $this->has_page_sidebar() ) $page_classes[] = "cuar-page-with-sidebar";
 	else $page_classes[] = "cuar-page-without-sidebar";
+
+	$content_classe = $this->page_description['slug'] == 'customer-dashboard' ? ' admin-panels' : '';
 ?>
 <div class="cuar-page <?php echo implode( ' ', $page_classes ); ?>">
 	<div class="cuar-page-header"><?php 
 		$this->print_page_header( $args, $shortcode_content ); 
 	?></div>
 	
-	<div class="cuar-page-content admin-panels"><?php
+	<div class="cuar-page-content<?php echo $content_classe; ?>"><?php
 		$this->print_page_content( $args, $shortcode_content ); 
 	?></div>
 	

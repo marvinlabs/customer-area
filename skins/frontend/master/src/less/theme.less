@@ -1,23 +1,49 @@
-// Skin Variables
+// Define base path
+// ----------------------------
+@base-path:	 "../../../../../../../vendor/other/framework/theme/assets/skin/base";
+
+// Base Resources
+// ----------------------------
+
+// Frameworks Variables
 @import "core/theme_variables";
 
-.cuar-page,
-.cuarsu-main,
-.cuar-single-post-actions,
-.cuar-single-post-footer,
-.cuar-conversation-reply-form,
-.cuar-menu-container{
+// Base Mixins
+@import "@{base-path}/mixins.less";
 
+body .entry-content .cuar-content-container,
+body .entry-content .cuar-menu-container,
+.cuar-content-container,
+.cuar-menu-container {
+
+  .clearfix;
   font-family: @font-family-base;
   font-size: @font-size-base;
   font-weight: @font-weight-base;
   line-height: @line-height-base;
   color: @text-color;
   width: 100%;
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: @line-height-computed;
+
+  background: @body-bg;
+  border: 1px solid darken(@body-bg, 3%);
+  padding: @padding-base-vertical @padding-base-horizontal;
+
+  .box-sizing(border-box);
+  &:before,
+  &:after {
+    .box-sizing(border-box);
+  }
 
   a {
     border: 0;
     text-decoration: none;
+  }
+
+  th {
+    color: inherit;
   }
 
   // Skin Settings
@@ -25,10 +51,15 @@
 
   // Base Elements and Mixins
   @import "core/theme_base";
+
+  // Main WPCA components
+  @import "wpca/wrapped";
+
 }
 
-// Your Theme Modifications
-// ----------------------------
-@import "wpca/theme_custom";
+// Main WPCA components that require to be outside containers
+@import "wpca/inline";
+
+
 
 
