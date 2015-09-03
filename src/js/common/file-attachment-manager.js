@@ -147,7 +147,7 @@
                     if (response.success == false) {
                         var errorMessage = '';
                         if (response.data.length > 0) {
-                            errorMessage = data.result.data[0];
+                            errorMessage = response.data[0];
                         }
                         base._showError(attachedItem, filename, errorMessage, false);
                     } else {

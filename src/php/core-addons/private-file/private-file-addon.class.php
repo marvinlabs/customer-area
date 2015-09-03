@@ -952,7 +952,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // Check permissions
-            if ( !is_user_logged_in() || !current_user_can('cuar_pf_remove_attachment'))
+            if ( !is_user_logged_in() || !current_user_can('cuar_pf_manage_attachments'))
             {
                 $errors[] = __('You are not allowed to remove attached files', 'cuar');
                 wp_send_json_error($errors);
