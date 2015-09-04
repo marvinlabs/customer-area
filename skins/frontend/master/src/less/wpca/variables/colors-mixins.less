@@ -1,0 +1,237 @@
+/* TEXT COLORS
+ * ------------------------------------------------- */
+@cuar-color-text-darker: contrast(@cuar-color-neutral, lighten(@cuar-color-neutral, 60%), darken(@cuar-color-neutral, 60%));
+@cuar-color-text-dark: contrast(@cuar-color-neutral, lighten(@cuar-color-neutral, 65%), darken(@cuar-color-neutral, 65%));
+@cuar-color-text: contrast(@cuar-color-neutral, lighten(@cuar-color-neutral, 70%), darken(@cuar-color-neutral, 70%));
+@cuar-color-text-light: contrast(@cuar-color-neutral, lighten(@cuar-color-neutral, 75%), darken(@cuar-color-neutral, 75%));
+@cuar-color-text-lighter: contrast(@cuar-color-neutral, lighten(@cuar-color-neutral, 80%), darken(@cuar-color-neutral, 80%));
+
+/* CHECK THEME LIGHTNESS
+ * ------------------------------------------------- */
+.cuar-check-light-or-dark() when (lightness(@cuar-color-neutral) > 43) {
+  @cuar-dark-scheme: false;
+}
+.cuar-check-light-or-dark() when (lightness(@cuar-color-neutral) <= 57) {
+  @cuar-dark-scheme: true;
+}
+.cuar-check-light-or-dark();
+
+/* PRIMARY COLORS
+ * ------------------------------------------------- */
+.cuar-set-primary-palette(@cuar-from-color: @cuar-color-primary) when (@cuar-dark-scheme=false) {
+  @cuar-color-primary-10: lighten(spin(@cuar-from-color, 10), 20%);
+  @cuar-color-primary-20: lighten(spin(@cuar-from-color, 7.5), 15%);
+  @cuar-color-primary-30: lighten(spin(@cuar-from-color, 5), 10%);
+  @cuar-color-primary-40: lighten(spin(@cuar-from-color, 2.5), 5%);
+  @cuar-color-primary-50: @cuar-from-color;
+  @cuar-color-primary-60: darken(spin(@cuar-from-color, -2.5), 5%);
+  @cuar-color-primary-70: darken(spin(@cuar-from-color, -5), 10%);
+  @cuar-color-primary-80: darken(spin(@cuar-from-color, -7.5), 15%);
+  @cuar-color-primary-90: darken(spin(@cuar-from-color, -10), 20%);
+
+  @cuar-color-primary-lighter: @cuar-color-primary-10;
+  @cuar-color-primary-light: @cuar-color-primary-30;
+  @cuar-color-primary-dark: @cuar-color-primary-70;
+  @cuar-color-primary-darker: @cuar-color-primary-90;
+}
+.cuar-set-primary-palette(@cuar-from-color: @cuar-color-primary) when (@cuar-dark-scheme=true) {
+  @cuar-color-primary-10: darken(spin(@cuar-from-color, -10), 20%);
+  @cuar-color-primary-20: darken(spin(@cuar-from-color, -7.5), 15%);
+  @cuar-color-primary-30: darken(spin(@cuar-from-color, -5), 10%);
+  @cuar-color-primary-40: darken(spin(@cuar-from-color, -2.5), 5%);
+  @cuar-color-primary-50: @cuar-from-color;
+  @cuar-color-primary-60: lighten(spin(@cuar-from-color, 2.5), 5%);
+  @cuar-color-primary-70: lighten(spin(@cuar-from-color, 5), 10%);
+  @cuar-color-primary-80: lighten(spin(@cuar-from-color, 7.5), 15%);
+  @cuar-color-primary-90: lighten(spin(@cuar-from-color, 10), 20%);
+
+  @cuar-color-primary-lighter: @cuar-color-primary-90;
+  @cuar-color-primary-light: @cuar-color-primary-70;
+  @cuar-color-primary-dark: @cuar-color-primary-30;
+  @cuar-color-primary-darker: @cuar-color-primary-10;
+}
+
+/* SECONDARY COLORS
+ * ------------------------------------------------- */
+.cuar-set-secondary-palette(@cuar-from-color: @cuar-color-primary) when (@cuar-dark-scheme=false) {
+  @cuar-color-secondary-10: lighten(spin(@cuar-from-color, 180), 20%);
+  @cuar-color-secondary-20: lighten(spin(@cuar-from-color, 180), 15%);
+  @cuar-color-secondary-30: lighten(spin(@cuar-from-color, 180), 10%);
+  @cuar-color-secondary-40: lighten(spin(@cuar-from-color, 180), 5%);
+  @cuar-color-secondary-50: spin(@cuar-from-color, 180);
+  @cuar-color-secondary-60: darken(spin(@cuar-from-color, 180), 5%);
+  @cuar-color-secondary-70: darken(spin(@cuar-from-color, 180), 10%);
+  @cuar-color-secondary-80: darken(spin(@cuar-from-color, 180), 15%);
+  @cuar-color-secondary-90: darken(spin(@cuar-from-color, 180), 20%);
+  @cuar-color-secondary: @cuar-color-secondary-50;
+
+  @cuar-color-secondary-lighter: @cuar-color-secondary-10;
+  @cuar-color-secondary-light: @cuar-color-secondary-30;
+  @cuar-color-secondary-dark: @cuar-color-secondary-70;
+  @cuar-color-secondary-darker: @cuar-color-secondary-90;
+}
+.cuar-set-secondary-palette(@cuar-from-color: @cuar-color-primary) when (@cuar-dark-scheme=true) {
+  @cuar-color-secondary-10: darken(spin(@cuar-from-color, 180), 20%);
+  @cuar-color-secondary-20: darken(spin(@cuar-from-color, 180), 15%);
+  @cuar-color-secondary-30: darken(spin(@cuar-from-color, 180), 10%);
+  @cuar-color-secondary-40: darken(spin(@cuar-from-color, 180), 5%);
+  @cuar-color-secondary-50: spin(@cuar-from-color, 180);
+  @cuar-color-secondary-60: lighten(spin(@cuar-from-color, 180), 5%);
+  @cuar-color-secondary-70: lighten(spin(@cuar-from-color, 180), 10%);
+  @cuar-color-secondary-80: lighten(spin(@cuar-from-color, 180), 15%);
+  @cuar-color-secondary-90: lighten(spin(@cuar-from-color, 180), 20%);
+  @cuar-color-secondary: @cuar-color-secondary-50;
+
+  @cuar-color-secondary-lighter: @cuar-color-secondary-90;
+  @cuar-color-secondary-light: @cuar-color-secondary-70;
+  @cuar-color-secondary-dark: @cuar-color-secondary-30;
+  @cuar-color-secondary-darker: @cuar-color-secondary-10;
+}
+
+/* NEUTRAL COLORS
+ * ------------------------------------------------- */
+.cuar-set-neutral-palette(@cuar-from-color: @cuar-color-neutral) when (@cuar-dark-scheme=false) {
+  @cuar-color-neutral-10: lighten(spin(@cuar-from-color, 10), 20%);
+  @cuar-color-neutral-20: lighten(spin(@cuar-from-color, 7.5), 15%);
+  @cuar-color-neutral-30: lighten(spin(@cuar-from-color, 5), 10%);
+  @cuar-color-neutral-40: lighten(spin(@cuar-from-color, 2.5), 5%);
+  @cuar-color-neutral-50: @cuar-from-color;
+  @cuar-color-neutral-60: darken(spin(@cuar-from-color, -2.5), 5%);
+  @cuar-color-neutral-70: darken(spin(@cuar-from-color, -5), 10%);
+  @cuar-color-neutral-80: darken(spin(@cuar-from-color, -7.5), 15%);
+  @cuar-color-neutral-90: darken(spin(@cuar-from-color, -10), 20%);
+
+  @cuar-color-neutral-lighter: @cuar-color-neutral-10;
+  @cuar-color-neutral-light: @cuar-color-neutral-30;
+  @cuar-color-neutral-dark: @cuar-color-neutral-70;
+  @cuar-color-neutral-darker: @cuar-color-neutral-90;
+}
+.cuar-set-neutral-palette(@cuar-from-color: @cuar-color-neutral) when (@cuar-dark-scheme=true) {
+  @cuar-color-neutral-10: darken(spin(@cuar-from-color, -10), 20%);
+  @cuar-color-neutral-20: darken(spin(@cuar-from-color, -7.5), 15%);
+  @cuar-color-neutral-30: darken(spin(@cuar-from-color, -5), 10%);
+  @cuar-color-neutral-40: darken(spin(@cuar-from-color, -2.5), 5%);
+  @cuar-color-neutral-50: @cuar-from-color;
+  @cuar-color-neutral-60: lighten(spin(@cuar-from-color, 2.5), 5%);
+  @cuar-color-neutral-70: lighten(spin(@cuar-from-color, 5), 10%);
+  @cuar-color-neutral-80: lighten(spin(@cuar-from-color, 7.5), 15%);
+  @cuar-color-neutral-90: lighten(spin(@cuar-from-color, 10), 20%);
+
+  @cuar-color-neutral-lighter: @cuar-color-neutral-90;
+  @cuar-color-neutral-light: @cuar-color-neutral-70;
+  @cuar-color-neutral-dark: @cuar-color-neutral-30;
+  @cuar-color-neutral-darker: @cuar-color-neutral-10;
+}
+
+/* DEFAULTS COLORS
+ * ------------------------------------------------- */
+.cuar-set-defaults-palette(@cuar-from-color: @cuar-color-neutral) when (@cuar-dark-scheme=false) {
+  @cuar-color-contrast: @palette-Black-500;
+  @cuar-color-contrast-text: @palette-Black-Text;
+  @cuar-color-contrast-secondary-text: @palette-Black-Secondary-Text;
+  @cuar-color-contrast-icons: @palette-Black-Icons;
+  @cuar-color-contrast-disabled: @palette-Black-Disabled;
+  @cuar-color-contrast-hint-text: @palette-Black-Hint-Text;
+  @cuar-color-contrast-dividers: @palette-Black-Dividers;
+
+  @cuar-color-overlay: rgba(0, 0, 0, 0.6);
+}
+.cuar-set-defaults-palette(@cuar-from-color: @cuar-color-neutral) when (@cuar-dark-scheme=true) {
+  @cuar-color-contrast: @palette-White-500;
+  @cuar-color-contrast-text: @palette-White-Text;
+  @cuar-color-contrast-secondary-text: @palette-White-Secondary-Text;
+  @cuar-color-contrast-icons: @palette-White-Icons;
+  @cuar-color-contrast-disabled: @palette-White-Disabled;
+  @cuar-color-contrast-hint-text: @palette-White-Hint-Text;
+  @cuar-color-contrast-dividers: @palette-White-Dividers;
+
+  @cuar-color-overlay: rgba(255, 255, 255, 0.9);
+}
+
+/* RUN MIXIN CONFIG
+ * ------------------------------------------------- */
+.cuar-set-primary-palette();
+.cuar-set-secondary-palette();
+.cuar-set-neutral-palette();
+.cuar-set-defaults-palette();
+
+/* TEST PALETTES MIXIN
+ * ------------------------------------------------- */
+.cuar-test-palette(@color) {
+  @colorVar: %('cuar-color-%s', replace(@color, ' ', '-'));
+  > div {
+    &:nth-child(n+1) {
+      @colorString: "@{colorVar}-10";
+      background-color: @@colorString;
+    }
+    &:nth-child(n+2) {
+      @colorString: "@{colorVar}-20";
+      background-color: @@colorString;
+    }
+    &:nth-child(n+3) {
+      @colorString: "@{colorVar}-30";
+      background-color: @@colorString;
+    }
+    &:nth-child(n+4) {
+      @colorString: "@{colorVar}-40";
+      background-color: @@colorString;
+    }
+    &:nth-child(n+5) {
+      @colorString: "@{colorVar}-50";
+      background-color: @@colorString;
+    }
+    &:nth-child(n+6) {
+      @colorString: "@{colorVar}-60";
+      background-color: @@colorString;
+    }
+    &:nth-child(n+7) {
+      @colorString: "@{colorVar}-70";
+      background-color: @@colorString;
+    }
+    &:nth-child(n+8) {
+      @colorString: "@{colorVar}-80";
+      background-color: @@colorString;
+    }
+    &:nth-child(n+9) {
+      @colorString: "@{colorVar}-90";
+      background-color: @@colorString;
+    }
+  }
+}
+
+/* TEST PALETTES CLASS
+ * ------------------------------------------------- *
+ Paste this code inside a Customer Area div into
+ your page to test and display the theme palette.
+
+ <div class="cuar-color-test">
+ <div class="neutral"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+ <div class="primary"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+ <div class="secondary"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+ </div>
+ * ------------------------------------------------- *
+ */
+.cuar-color-test{
+  width: 100%;
+
+  > div {
+    width: 100%;
+    clear: both;
+    padding: 0 5%;
+
+    > div {
+      width: 10%;
+      float: left;
+      height: 80px;
+    }
+  }
+  .neutral{
+    .cuar-test-palette('neutral');
+  }
+  .primary{
+    .cuar-test-palette('primary');
+  }
+  .secondary{
+    .cuar-test-palette('secondary');
+  }
+}
