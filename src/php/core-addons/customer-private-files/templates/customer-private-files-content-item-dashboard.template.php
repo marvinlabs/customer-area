@@ -99,13 +99,13 @@ if ($files && is_array($files) && $file_count >= 1) {
             } ?>
             <div class="row table-layout">
                 <div class="cuar-title col-xs-8 va-m pln">
-                    <a href="<?php the_permalink(); ?>" title="<?php esc_attr_e($title_popup); ?>">
+                    <a href="<?php the_permalink(); ?>" title="<?php esc_attr_e($title_popup, 'cuar'); ?>">
                         <h6><?php the_title(); ?></h6>
                     </a>
 
                     <div class="cuar-subtitle">
                         <a href="<?php the_permalink(); ?>"
-                           title="<?php esc_attr_e($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
+                           title="<?php echo esc_attr($subtitle_popup, 'cuar'); ?>"><?php echo $subtitle; ?></a>
                     </div>
 
                     <div class="cuar-badges">
