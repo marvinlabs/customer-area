@@ -723,7 +723,9 @@ if ( !class_exists('CUAR_Plugin')) :
                         }
                     }
 
-                    wp_enqueue_style('jquery.select2', CUAR_PLUGIN_URL . 'libs/js/framework/select2/css/core.css', $cuar_version);
+                    // Core styles load removed and added directly to master skin CSS.
+                    // wp_enqueue_style('jquery.select2', CUAR_PLUGIN_URL . 'libs/js/framework/select2/css/core.css', $cuar_version);
+
                     break;
                 }
 
