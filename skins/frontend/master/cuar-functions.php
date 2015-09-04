@@ -90,5 +90,5 @@ if ( !function_exists('cuar_wrap_content_into_container'))
             return $content;
     }
 
-    add_filter('the_content', 'cuar_wrap_content_into_container', 9999);
+    add_filter('the_content', 'cuar_wrap_content_into_container', 9998);
 }
