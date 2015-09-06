@@ -2,6 +2,31 @@
 
 <?php
 $whats_new = array(
+    '6.2' => array(
+        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-6-2', 'cuar'),
+        'codename'  => 'Jim Morrison',
+        'tagline'   => __("WP Customer Area 6.2 has been aimed at improving the attachments to private files and everything around that.",
+            'cuar'),
+        'blocks'    => array(
+            array(
+                'title' => __('New upload system', 'cuar'),
+                'text'  => __('The file upload system has been completely rewritten. You can now drag and drop files and watch the upload progress. Additionally, we have also added some more settings and provide a security helper to make sure your setup is as secure as it can.',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('Enhanced Files', 'cuar'),
+                'text'  => __('We are introducing a new add-on which improves the file attachments: upload multiple attachments on the same private file, change the attachment caption and automatically add file type icons in front of the download links.',
+                    'cuar'),
+                'more'  => 'http://wp-customerarea.com' . __('/downloads/wpca-enhanced-files', 'cuar')
+            ),
+            array(
+                'title' => __('Smart Groups', 'cuar'),
+                'text'  => __('Smart Groups will change the way to build your user groups. No more adding or removing users by hand, you will simply make dynamic groups based on criteria such as name, domain of the email address, and any other meta information linked to your user profiles.',
+                    'cuar'),
+                'more'  => 'http://wp-customerarea.com' . __('/downloads/wpca-smart-groups', 'cuar')
+            ),
+        )
+    ),
     '6.1' => array(
         'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-6-1', 'cuar'),
         'codename'  => 'Jimi Hendrix',
