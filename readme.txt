@@ -146,6 +146,7 @@ feel free to fork the project and send us pull requests!
 **Add-on changes**
 
 * New: *Authentication forms* - Hooks to change the form links (see [code snippet](http://wp-customerarea.com/snippet/authentication-forms-change-the-links-below-the-forms/))
+* New: *Authentication forms* - Allow users to login using their email address too
 * New: *Enhanced Files* - first add-on release
 * New: *Smart groups* - first add-on release
 
