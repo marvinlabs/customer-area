@@ -9,7 +9,7 @@ if ( $is_author ) {
     $subtitle = sprintf( __( 'Published for %s', 'cuar' ), cuar_get_the_owner() );
 } else {
     $subtitle_popup = esc_attr(sprintf( __( 'Published for %s', 'cuar' ), cuar_get_the_owner() ));
-    $subtitle = sprintf( __( 'Published by %s on %s', 'cuar' ), get_the_author_meta( 'display_name' ) );
+    $subtitle = sprintf( __( 'Published by %s on %s', 'cuar' ), get_the_author_meta( 'display_name' ), get_the_date() );
 }
 
 $title_popup = esc_attr(sprintf( __( 'Uploaded on %s', 'cuar' ), get_the_date() ));

@@ -107,7 +107,7 @@ class CUAR_TemplateEngine
         // Build the possible locations list
         if ( !is_array($template_roots)) $template_roots = array($template_roots);
 
-        $possible_locations = array_merge($template_roots, $this->default_roots);
+        $possible_locations = array_merge($this->default_roots, $template_roots);
         $possible_locations = apply_filters('cuar/ui/template-directories', $possible_locations);
 
         // Handle cas when only a single filename is given

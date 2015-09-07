@@ -1,149 +1,152 @@
+@status-width: 50px;
 
+.cuar-task-manager {
+  .cuar-list-progress {
+    position: relative;
+    height: 6px;
+    width: 100%;
+    background: #dbebdb;
+    margin: 15px 0;
+  }
 
-/* -= Tasks */
+  .cuar-task-manager-errors {
+    p.cuar-error,
+    div.cuar-error,
+    p.cuar-warn,
+    div.cuar-warn,
+    p.cuar-info,
+    div.cuar-info {
+      background-color: #FFf7f4;
+      border-left: 4px solid #dd3d36;
+      -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+      padding: 8px 12px;
+      margin: 5px 0 15px;
 
-#ui-datepicker-div {
-  display: none;
-}
+      .cuar-dismiss {
+        float: right;
+        text-decoration: none;
+      }
+    }
 
-.cuar-tasks {
-  margin-top: 15px;
-  border-top: 1px solid #e5e5e5;
-  border-left: 1px solid #e5e5e5;
-  border-right: 1px solid #e5e5e5;
-  background: #999;
-}
+    p.cuar-error,
+    div.cuar-error {
+      background-color: #FFf7f4;
+      border-left-color: #dd3d36;
+    }
 
-.cuar-tasks.cuar-empty-list {
-  background: transparent;
-  border: none;
+    p.cuar-warn,
+    div.cuar-warn {
+      background-color: #FFFBBF;
+      border-left-color: #DDBC36;
+    }
+
+    p.cuar-info,
+    div.cuar-info {
+      background-color: #CDE1F0;
+      border-left-color: #29648E;
+    }
+  }
 }
 
 .cuar-task {
-  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+
+  .cuar-task-panel {
+    padding: 10px 0;
+    border-bottom: 1px solid #efefef;
+  }
+
+  &:last-child .cuar-task-panel {
+    border-bottom: 0 none;
+  }
+
+  .cuar-meta {
+    .cuar-meta-row {
+      clear: both;
+      width: 100%;
+      margin-top: 12px;
+    }
+    .cuar-meta-icon {
+      float: left;
+    }
+    .cuar-meta-value {
+      margin-left: @status-width;
+    }
+  }
+
+  .cuar-status {
+    float: left;
+    width: @status-width;
+  }
+
+  .cuar-details {
+    margin-left: @status-width;
+  }
+
+  .cuar-due-date {
+    opacity: 0.8;
+    font-size: 0.9em;
+    display: inline-block;
+
+    .dashicons {
+      text-align: left;
+      font-size: 1.5em;
+    }
+  }
+
+  .cuar-actions {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    background-color: white;
+    opacity: 0;
+    padding: 2px 0 0;
+
+    a {
+      margin: 0 3px;
+    }
+
+    .cuar-move-action .dashicons {
+      cursor: move;
+      transform: rotate(90deg);
+    }
+  }
+
+  &.completed {
+    .cuar-details {
+      text-decoration: line-through;
+    }
+  }
+
+  &.cuar-state-pending {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    .cuar-actions {
+      opacity: 1;
+    }
+  }
+
+  .cuar-editable {
+    margin-right: 90px;
+    textarea {
+      max-width: 100%;
+    }
+  }
 }
 
-.cuar-task .cuar-header {
-  padding: 10px;
-  background: #fff;
-}
+.cuar-add-task-form {
+  padding-left: @status-width - 3px;
+  margin-top: 20px;
 
-.cuar-task .cuar-panel {
-  padding: 20px 10px;
-  border-top: 1px solid #e5e5e5;
-  background: #fafafa;
-}
-
-.cuar-task .cuar-left {
-  width: 60%;
-  float: left;
-
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.cuar-task .cuar-right {
-  width: 38%;
-  float: right;
-
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.cuar-task label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.cuar-task label .title {
-  display: inline-block;
-  width: 33%;
-  margin-right: 5%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.cuar-task label input[type=text],
-.cuar-task label input[type=number] {
-  display: inline-block;
-  width: 60%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.cuar-task .cuar-datepicker .dashicons {
-  right: 10px;
-}
-
-.cuar-task .cuar-add-task-button {
-  float: right;
-  margin-top: 15px;
-}
-
-.cuar-task .cuar-header .cuar-title {
-  float: left;
-  line-height: 24px;
-}
-
-.cuar-task .cuar-header .cuar-actions {
-  float: right;
-}
-
-.cuar-task textarea {
-  display: block;
-  width: 100%;
-  font-family: Consolas,Monaco,monospace;
-  font-size: 13px;
-  padding: 10px;
-  line-height: 150%;
-  resize: vertical;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.cuar-new-task {
-  background: #e14d43;
-  border-left: 1px solid #e5e5e5;
-  border-right: 1px solid #e5e5e5;
-  margin-top: 30px;
-}
-
-.cuar-new-task .cuar-header {
-  background: #e14d43;
-}
-
-.cuar-new-task .cuar-title h4 {
-  margin: 0;
-  color: #fff;
-}
-
-.cuar-task .cuar-round-button {
-  margin-left: 5px;
-}
-
-.cuar-task.completed .cuar-title {
-  text-decoration: line-through;
-}
-
-.cuar-task.completed .cuar-check-task {
-  background: #209900;
-}
-
-.cuar-task.completed .cuar-check-task:hover {
-  background: #00992B;
-}
-
-.cuar-completed-checkbox {
-  display: none;
-}
-
-table.tasklists {
-  .column-progress {
-    width: 100px;
+  .cuar-add-action {
+    display: inline-block;
+  }
+  .cuar-new-task-description {
+    min-width: 550px;
+    max-width: 100%;
+    display: inline-block;
   }
 }
