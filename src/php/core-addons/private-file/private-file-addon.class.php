@@ -804,8 +804,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $post = get_post($post_id);
             if ( !is_user_logged_in()
                 || $post===null
-                || $post->post_author!=get_current_user_id()
-                || !current_user_can('cuar_pf_manage_attachments'))
+                || ($post->post_author!=get_current_user_id() && !current_user_can('cuar_pf_manage_attachments')))
             {
                 $errors[] = __('You are not allowed to attach files to this kind of content', 'cuar');
                 wp_send_json_error($errors);
@@ -899,8 +898,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $post = get_post($post_id);
             if ( !is_user_logged_in()
                 || $post===null
-                || $post->post_author!=get_current_user_id()
-                || !current_user_can('cuar_pf_manage_attachments'))
+                || ($post->post_author!=get_current_user_id() && !current_user_can('cuar_pf_manage_attachments')))
             {
                 $errors[] = __('You are not allowed to update attached files', 'cuar');
                 wp_send_json_error($errors);
@@ -965,8 +963,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $post = get_post($post_id);
             if ( !is_user_logged_in()
                 || $post===null
-                || $post->post_author!=get_current_user_id()
-                || !current_user_can('cuar_pf_manage_attachments'))
+                || ($post->post_author!=get_current_user_id() && !current_user_can('cuar_pf_manage_attachments')))
             {
                 $errors[] = __('You are not allowed to remove attached files', 'cuar');
                 wp_send_json_error($errors);
