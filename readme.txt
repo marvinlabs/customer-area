@@ -2,8 +2,8 @@
 
 Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
-Tags:               private files,client area,customer area,user files,secure area,crm,project,project management,access control
-Requires at least:  3.6
+Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
+Requires at least:  3.8
 Tested up to:       4.3
 Stable tag:         6.2.0
 License:            GPLv2 or later
@@ -129,7 +129,7 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 6.2.0 (2015/) =
+= 6.2.0 (2015/09/09) =
 
 * New: private files attachment interface has been improved drastically with AJAX and drag'n'drop
 * New: private files storage folder can now be set with a setting
@@ -146,6 +146,7 @@ feel free to fork the project and send us pull requests!
 **Add-on changes**
 
 * New: *Authentication forms* - Hooks to change the form links (see [code snippet](http://wp-customerarea.com/snippet/authentication-forms-change-the-links-below-the-forms/))
+* New: *Authentication forms* - Allow users to login using their email address too
 * New: *Enhanced Files* - first add-on release
 * New: *Smart groups* - first add-on release
 
