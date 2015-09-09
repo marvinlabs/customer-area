@@ -37,7 +37,7 @@ class CUAR_PrivateFileAdminInterface
         if ($this->pf_addon->is_enabled())
         {
             // File edit page
-            add_action('admin_menu', array(&$this, 'register_edit_page_meta_boxes'), 120);
+            add_action('add_meta_boxes', array(&$this, 'register_edit_page_meta_boxes'), 120);
             add_action('cuar/core/ownership/after-save-owner', array(&$this, 'do_save_post'), 10, 4);
             add_action('post_edit_form_tag', array(&$this, 'post_edit_form_tag'));
         }
@@ -58,10 +58,11 @@ class CUAR_PrivateFileAdminInterface
     /**
      * Register some additional boxes on the page to edit the files
      */
-    public function register_edit_page_meta_boxes()
+    public function register_edit_page_meta_boxes($post_type)
     {
-        global $post;
+        if ($post_type!='cuar_private_file') return;
 
+        global $post;
         if ($post->post_author==get_current_user_id() || current_user_can('cuar_pf_manage_attachments'))
         {
             add_meta_box(
