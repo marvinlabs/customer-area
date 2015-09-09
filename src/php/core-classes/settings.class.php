@@ -1208,6 +1208,8 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
+            $this->plugin->enable_library('jquery.select2');
+
             echo sprintf('<select id="%s" name="%s[%s]">', esc_attr($option_id), self::$OPTIONS_GROUP,
                 esc_attr($option_id));
 
@@ -1237,6 +1239,16 @@ if ( !class_exists('CUAR_Settings')) :
             }
 
             echo '</select>';
+
+            echo '<script type="text/javascript">
+                <!--
+                jQuery("document").ready(function ($) {
+                    $("#' . esc_attr( $option_id ) . '").select2({
+                        width: "100%"
+                    });
+                });
+                //-->
+            </script>';
 
             if (isset($after))
             {
@@ -1405,6 +1417,8 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
+            $this->plugin->enable_library('jquery.select2');
+
             echo sprintf('<select id="%s" name="%s[%s]">', esc_attr($option_id), self::$OPTIONS_GROUP,
                 esc_attr($option_id));
 
@@ -1451,6 +1465,16 @@ if ( !class_exists('CUAR_Settings')) :
             }
 
             echo '</select>';
+
+            echo '<script type="text/javascript">
+                <!--
+                jQuery("document").ready(function ($) {
+                    $("#' . esc_attr( $option_id ) . '").select2({
+                        width: "100%"
+                    });
+                });
+                //-->
+            </script>';
 
             if (isset($after))
             {
