@@ -296,9 +296,6 @@ if ( !class_exists('CUAR_Plugin')) :
                     case 'wp-content':
                         $base = untrailingslashit(WP_CONTENT_URL) . '/customer-area/skins/';
                         break;
-                    case 'master-colors':
-                        $base = defined('CUARMC_PLUGIN_URL') ? untrailingslashit(CUARMC_PLUGIN_URL) . '/skins/' : untrailingslashit(CUAR_PLUGIN_URL) . '/skins/';
-                        break;
                 }
 
                 return $base . $theme_type . '/' . $theme[1];
@@ -341,9 +338,6 @@ if ( !class_exists('CUAR_Plugin')) :
                         break;
                     case 'wp-content':
                         $base = untrailingslashit(WP_CONTENT_DIR) . '/customer-area/skins';
-                        break;
-                    case 'master-colors':
-                        $base = defined('CUARMC_PLUGIN_DIR') ? untrailingslashit(CUARMC_PLUGIN_DIR) . '/skins' : untrailingslashit(CUAR_PLUGIN_DIR) . '/skins';
                         break;
                 }
 
