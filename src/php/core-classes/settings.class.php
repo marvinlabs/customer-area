@@ -1457,7 +1457,14 @@ if ( !class_exists('CUAR_Settings')) :
                 {
                     $theme_name = basename($s);
                     $label = $theme_location['label'] . ' - ' . $theme_name;
-                    $value = esc_attr($theme_location['base'] . '%%' . $theme_name);
+                    if ($theme_location['base']=='addon')
+                    {
+                        $value = esc_attr($theme_location['base'] . '%%' . $theme_location['addon-name'] . '%%' . $theme_name);
+                    }
+                    else
+                    {
+                        $value = esc_attr($theme_location['base'] . '%%' . $theme_name);
+                    }
                     $selected = ($this->options[$option_id] == $value) ? 'selected="selected"' : '';
 
                     echo sprintf('<option value="%s" %s>%s</option>', esc_attr($value), $selected, $label);

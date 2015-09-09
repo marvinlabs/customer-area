@@ -303,6 +303,18 @@ if ( !class_exists('CUAR_Plugin')) :
 
                 return $base . $theme_type . '/' . $theme[1];
             }
+            else if (count($theme) == 3)
+            {
+                // For addons
+                // 0 = 'addon'
+                // 1 = addon folder name
+                // 2 = skin folder name
+                switch ($theme[0])
+                {
+                    case 'addon':
+                        return untrailingslashit(WP_CONTENT_URL) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
+                }
+            }
 
             return '';
         }
@@ -336,6 +348,18 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
 
                 return $base . '/' . $theme_type . '/' . $theme[1];
+            }
+            else if (count($theme) == 3)
+            {
+                // For addons
+                // 0 = 'addon'
+                // 1 = addon folder name
+                // 2 = skin folder name
+                switch ($theme[0])
+                {
+                    case 'addon':
+                        return untrailingslashit(WP_CONTENT_DIR) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
+                }
             }
 
             return '';
