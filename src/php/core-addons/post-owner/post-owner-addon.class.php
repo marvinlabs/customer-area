@@ -671,7 +671,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
         public function customize_post_edit_pages()
         {
-            add_action('admin_menu', array(&$this, 'register_post_edit_meta_boxes'));
+            add_action('add_meta_boxes', array(&$this, 'register_post_edit_meta_boxes'));
 
             $private_post_types = $this->plugin->get_content_post_types();
             foreach ($private_post_types as $pt)
@@ -683,11 +683,13 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * Register some additional boxes on the page to edit the files
          */
-        public function register_post_edit_meta_boxes()
+        public function register_post_edit_meta_boxes($post_type)
         {
             $post_types = $this->plugin->get_content_post_types();
             foreach ($post_types as $type)
             {
+                if ($post_type!=$type) continue;
+
                 add_meta_box(
                     'cuar_post_owner',
                     __('Assignment', 'cuar'),
