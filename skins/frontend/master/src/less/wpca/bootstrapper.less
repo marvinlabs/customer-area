@@ -1,0 +1,42 @@
+// Define main paths
+// ----------------------------
+@base-path: "../../../../../../../../vendor/other/framework/theme/assets/skin/base";
+
+// Define main variables
+// ----------------------------
+@root-path: @theme-root-path;
+@assets-path: @theme-assets-path;
+@img-path: @theme-img-path;
+@fonts-path: @theme-fonts-path;
+
+// Base Resources
+// ----------------------------
+
+// Base variables
+@import "../core/theme_variables";
+
+// Base Mixins
+@import "@{base-path}/mixins.less";
+
+// Base Wrapper
+body .entry-content .cuar-content-container,
+body .entry-content .cuar-menu-container,
+.cuar-content-container,
+.cuar-menu-container {
+
+  // Hard resets to nto allow parent theme modifying WPCA
+  @import "resets";
+
+  // Skin Settings
+  @import "../core/theme_settings";
+
+  // Base Elements and Mixins
+  @import "../core/theme_base";
+
+  // Main WPCA components
+  @import "wrapped";
+
+}
+
+// Main WPCA components that require to be outside containers
+@import "inline";

@@ -1,87 +1,20 @@
 // Define main paths
 // ----------------------------
-@base-path: "../../../../../../../vendor/other/framework/theme/assets/skin/base";
+@master-sub-theme: false;
+@theme-root-path: "../../";
+@theme-assets-path: "@{theme-root-path}assets";
+@theme-img-path: "@{theme-root-path}assets/img/framework";
+@theme-fonts-path: "@{theme-root-path}assets/fonts/framework";
+@theme-less-path: ".";
 
-// Check if master or sub-theme
-// This variable will be defined if not already defined by a sub-theme.
+// Theme Variant Variables
 // ----------------------------
-.check-loaded-theme() when (@master-sub-theme=true) {
-  @root-path: @theme-root-path;
-  @assets-path: @theme-assets-path;
-  @img-path: @theme-img-path;
-  @fonts-path: @theme-fonts-path;
-}
+@import "wpca/variables/all";
 
-.check-loaded-theme() when not(@master-sub-theme=true) {
-  @master-sub-theme: false;
-  @root-path: "../../";
-  @assets-path: "../../assets";
-  @img-path: "../../assets/img/framework";
-  @fonts-path: "../../assets/fonts/framework";
-
-  @import "wpca/variables/all";
-}
-
-.check-loaded-theme();
-
-// Base Resources
+// Theme Boostrapper
 // ----------------------------
+@import "wpca/bootstrapper.less";
 
-// Base variables
-@import "core/theme_variables";
-
-// Base Mixins
-@import "@{base-path}/mixins.less";
-
-// Base Wrapper
-body .entry-content .cuar-content-container,
-body .entry-content .cuar-menu-container,
-.cuar-content-container,
-.cuar-menu-container {
-
-  .clearfix;
-  font-family: @font-family-base;
-  font-size: @font-size-base;
-  font-weight: @font-weight-base;
-  line-height: @line-height-base;
-  color: @text-color;
-  width: 100%;
-  box-sizing: border-box;
-  display: block;
-  margin-bottom: @line-height-computed;
-
-  background: @body-bg;
-  border: 1px solid darken(@body-bg, 3%);
-  padding: @padding-base-vertical @padding-base-horizontal;
-
-  .box-sizing(border-box);
-  &:before,
-  &:after {
-    .box-sizing(border-box);
-  }
-
-  a {
-    border: 0;
-    text-decoration: none;
-  }
-
-  th {
-    color: inherit;
-  }
-
-  // Skin Settings
-  @import "core/theme_settings";
-
-  // Base Elements and Mixins
-  @import "core/theme_base";
-
-  // Main WPCA components
-  @import "wpca/wrapped";
-
-}
-
-// Main WPCA components that require to be outside containers
-@import "wpca/inline";
 
 
 
