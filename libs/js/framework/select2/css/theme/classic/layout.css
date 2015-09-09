@@ -190,10 +190,14 @@
 .select2-container--classic .select2-search--dropdown .select2-search__field {
   border: 1px solid #aaaaaa;
   outline: 0;
+  box-shadow: none;
+  cursor: auto;
 }
 /* line 16, ../../../scss/theme/classic/layout.scss */
 .select2-container--classic .select2-search--inline .select2-search__field {
   outline: 0;
+  box-shadow: none;
+  cursor: auto;
 }
 /* line 21, ../../../scss/theme/classic/layout.scss */
 .select2-container--classic .select2-dropdown {
