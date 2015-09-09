@@ -62,7 +62,7 @@ class CUAR_PrivateFileAdminInterface
     {
         global $post;
 
-        if (($post && $post->post_author==get_current_user_id()) || current_user_can('cuar_pf_manage_attachments'))
+        if ($post->post_author==get_current_user_id() || current_user_can('cuar_pf_manage_attachments'))
         {
             add_meta_box(
                 'cuar_upload_metabox',
