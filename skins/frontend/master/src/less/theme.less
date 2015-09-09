@@ -1,17 +1,39 @@
-// Define base path
+// Define main paths
 // ----------------------------
-@base-path:	 "../../../../../../../vendor/other/framework/theme/assets/skin/base";
+@base-path: "../../../../../../../vendor/other/framework/theme/assets/skin/base";
+
+// Check if master or sub-theme
+// This variable will be defined if not already defined by a sub-theme.
+// ----------------------------
+.check-loaded-theme() when (@master-sub-theme=true) {
+  @root-path: @theme-root-path;
+  @assets-path: @theme-assets-path;
+  @img-path: @theme-img-path;
+  @fonts-path: @theme-fonts-path;
+}
+
+.check-loaded-theme() when not(@master-sub-theme=true) {
+  @master-sub-theme: false;
+  @root-path: "../../";
+  @assets-path: "../../assets";
+  @img-path: "../../assets/img/framework";
+  @fonts-path: "../../assets/fonts/framework";
+
+  @import "wpca/variables/all";
+}
+
+.check-loaded-theme();
 
 // Base Resources
 // ----------------------------
 
-// Frameworks Variables
-@import "wpca/variables/all";
+// Base variables
 @import "core/theme_variables";
 
 // Base Mixins
 @import "@{base-path}/mixins.less";
 
+// Base Wrapper
 body .entry-content .cuar-content-container,
 body .entry-content .cuar-menu-container,
 .cuar-content-container,
