@@ -309,7 +309,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 switch ($theme[0])
                 {
                     case 'addon':
-                        return untrailingslashit(WP_CONTENT_URL) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
+                        return untrailingslashit(WP_PLUGIN_URL) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
                 }
             }
 
@@ -352,7 +352,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 switch ($theme[0])
                 {
                     case 'addon':
-                        return untrailingslashit(WP_CONTENT_DIR) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
+                        return untrailingslashit(WP_PLUGIN_DIR) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
                 }
             }
 
