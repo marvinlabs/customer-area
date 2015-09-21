@@ -132,6 +132,7 @@ feel free to fork the project and send us pull requests!
 = 6.2.2 (2015/09/21) =
 
 * Fix: Fix "don't have access to this page" for WPCA menus
+* Fix: CSS glitch on file badges
 
 = 6.2.1 (2015/09/09) =
 
