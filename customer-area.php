@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		6.2.1
+	Version: 		6.2.2
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
