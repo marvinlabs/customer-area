@@ -711,13 +711,13 @@ class CUAR_PrivateFilesDefaultHandlers
         if (ini_get('zlib.output_compression')) ini_set('zlib.output_compression', 'Off');
 
         header('Content-Type: ' . $mime_type);
-        if ($action == 'download')
+        if ($action == 'view')
         {
-            header('Content-Disposition: attachment; filename="' . $filename . '"');
+            header('Content-Disposition: inline; filename="' . $filename . '"');
         }
         else
         {
-            header('Content-Disposition: inline; filename="' . $filename . '"');
+            header('Content-Disposition: attachment; filename="' . $filename . '"');
         }
 
         header("Content-Transfer-Encoding: binary");
