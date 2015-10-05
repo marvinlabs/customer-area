@@ -1,4 +1,4 @@
-=== WP Customer Area ===
+﻿=== WP Customer Area ===
 
 Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
@@ -128,6 +128,13 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 6.3.0 (2015/) =
+
+* New: Allow overriding the action (download/view) on a per file basis using hooks (or via settings in the Enhanced Files addon)
+* Fix: Compatibility problem between the Projects addon and the Protect Post Types addon (https://github.com/marvinlabs/customer-area/issues/164)
+* Fix: A bug was not showing the proper owner on the content edition page when using the Front-office publishing add-on
+* Fix: Do not mark create/update pages as current in the navigation menu
 
 = 6.2.2 (2015/09/21) =
 
