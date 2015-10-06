@@ -11,6 +11,13 @@ if ( !class_exists('CUAR_CountryHelper')) :
     class CUAR_CountryHelper
     {
 
+        /**
+         * Ge the name of a country given the ISO-2 country code
+         *
+         * @param string $code 2-letter country code
+         *
+         * @return string
+         */
         public static function getCountryName($code)
         {
             $countries = self::getCountries();
@@ -18,6 +25,11 @@ if ( !class_exists('CUAR_CountryHelper')) :
             return isset($countries[$code]) ? $countries[$code] : '-';
         }
 
+        /**
+         * Get all countries known to Customer Area, indexed by 2-letter ISO country code
+         *
+         * @return array
+         */
         public static function getCountries()
         {
             return apply_filters('cuar/core/countries', array(
@@ -277,6 +289,13 @@ if ( !class_exists('CUAR_CountryHelper')) :
             ));
         }
 
+        /**
+         * Get the states of a country given the ISO-2 country code
+         *
+         * @param string $countryCode 2-letter country code
+         *
+         * @return array
+         */
         public static function getStates($countryCode)
         {
             switch ($countryCode)
