@@ -34,9 +34,6 @@ if ( !class_exists('CUAR_CountryHelper')) :
         {
             return apply_filters('cuar/core/countries', array(
                 ''   => '',
-                'US' => __('United States', 'cuar'),
-                'CA' => __('Canada', 'cuar'),
-                'GB' => __('United Kingdom', 'cuar'),
                 'AF' => __('Afghanistan', 'cuar'),
                 'AX' => __('&#197;land Islands', 'cuar'),
                 'AL' => __('Albania', 'cuar'),
@@ -76,6 +73,7 @@ if ( !class_exists('CUAR_CountryHelper')) :
                 'BI' => __('Burundi', 'cuar'),
                 'KH' => __('Cambodia', 'cuar'),
                 'CM' => __('Cameroon', 'cuar'),
+                'CA' => __('Canada', 'cuar'),
                 'CV' => __('Cape Verde', 'cuar'),
                 'KY' => __('Cayman Islands', 'cuar'),
                 'CF' => __('Central African Republic', 'cuar'),
@@ -272,6 +270,8 @@ if ( !class_exists('CUAR_CountryHelper')) :
                 'UG' => __('Uganda', 'cuar'),
                 'UA' => __('Ukraine', 'cuar'),
                 'AE' => __('United Arab Emirates', 'cuar'),
+                'GB' => __('United Kingdom', 'cuar'),
+                'US' => __('United States', 'cuar'),
                 'UY' => __('Uruguay', 'cuar'),
                 'UM' => __('US Minor Outlying Islands', 'cuar'),
                 'UZ' => __('Uzbekistan', 'cuar'),
