@@ -1,0 +1,60 @@
+.cuar-invoice-billing-address {
+  position: relative;
+
+  .row {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 -7px;
+  }
+
+  .form-group {
+    box-sizing: border-box;
+    float: left;
+    padding: 7px;
+    width: 100%;
+
+    .control-label {
+      display: block;
+      margin: 0 0 7px 2px;
+    }
+
+    &.disabled .control-label {
+      opacity: 0.5;
+    }
+
+    .form-control {
+      width: 100%;
+    }
+
+    &:after {
+      content:"";
+      display:table;
+      clear:both;
+    }
+  }
+
+  .billing-address-actions {
+    text-align: right;
+  }
+
+  .cuar-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .billing-address-name,
+  .billing-address-company,
+  .billing-address-zip,
+  .billing-address-city,
+  .billing-address-country,
+  .billing-address-state {
+    width: 50%;
+  }
+
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
