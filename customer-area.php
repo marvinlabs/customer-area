@@ -42,6 +42,7 @@ define('CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', false);
 //define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' );
 
 // Helpers
+include_once(CUAR_INCLUDES_DIR . '/helpers/currency-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/country-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/wordpress-helper.class.php');
 
