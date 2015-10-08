@@ -22,7 +22,22 @@ if ( !class_exists('CUAR_CountryHelper')) :
         {
             $countries = self::getCountries();
 
-            return isset($countries[$code]) ? $countries[$code] : '-';
+            return isset($countries[$code]) ? $countries[$code] : '';
+        }
+
+        /**
+         * Ge the name of a country given the ISO-2 country code
+         *
+         * @param string $countryCode 2-letter country code
+         * @param string $stateCode   state code
+         *
+         * @return string
+         */
+        public static function getStateName($countryCode, $stateCode)
+        {
+            $states = self::getStates($countryCode);
+
+            return !empty($states) && isset($states[$stateCode]) ? $states[$stateCode] : '';
         }
 
         /**
