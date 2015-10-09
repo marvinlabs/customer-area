@@ -42,6 +42,7 @@ define('CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', false);
 //define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' );
 
 // Helpers
+include_once(CUAR_INCLUDES_DIR . '/helpers/address-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/currency-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/country-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/wordpress-helper.class.php');
@@ -114,6 +115,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-add
 include_once(CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/addresses/addresses-addon.class.php');
 
 // Core content types
 include_once(CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php');
