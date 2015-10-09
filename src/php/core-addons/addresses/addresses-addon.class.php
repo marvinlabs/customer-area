@@ -335,6 +335,7 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
             $extra_scripts = '',
             $template_prefix = '')
         {
+            $this->plugin->enable_library('jquery.select2');
             wp_enqueue_script(is_admin() ? 'cuar.admin' : 'cuar.frontend');
 
             $address_class = str_replace('_', '-', $address_id);
