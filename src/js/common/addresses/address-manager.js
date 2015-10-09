@@ -202,7 +202,7 @@
             for (var i = 0; i < base.fields.length; i++) {
                 var field = base.fields[i];
                 var value = base._getField(field).val();
-                if (value.length > 0) return false;
+                if (value!=null && value.length > 0) return false;
             }
 
             return true;
