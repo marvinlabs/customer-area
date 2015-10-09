@@ -34,11 +34,102 @@
             base.$el.on('cuar:address:set', base._onSetAddress);
             base.$el.on('cuar:address:get', base._onGetAddress);
             base.$el.on('cuar:address:getNonce', base._onGetNonce);
+            base.$el.on('cuar:address:getAddressId', base._onGetAddressId);
             base.$el.on('cuar:address:isEmpty', base._onIsAddressEmpty);
             base.$el.on('cuar:address:setBusy', base._onSetBusy);
             base.$el.on('cuar:address:isBusy', base._onIsBusy);
+            base.$el.on('cuar:address:loadFromOwner', base._onLoadAddressFromOwner);
+            base.$el.on('cuar:address:saveForOwner', base._onSaveAddressForOwner);
 
             base.$el.on('click', '.cuar-action.cuar-reset', base._onResetAddressAction);
+        };
+
+        /**
+         * Load the address from an owner preferences
+         * @param event
+         * @param owner
+         * @returns {boolean}
+         * @private
+         */
+        base._onLoadAddressFromOwner = function (event, owner) {
+            if (base._onIsBusy()) return false;
+
+            if (owner == null) {
+                alert(cuar.addressMustPickOwnerFirst);
+                return;
+            }
+
+            var isAddressEmpty = base._onIsAddressEmpty();
+            if (!isAddressEmpty && !confirm(cuar.addressConfirmLoadAddressFromOwner)) return false;
+
+            var ajaxParams = {
+                'action': 'cuar_load_address_from_owner',
+                'cuar_nonce': base._onGetNonce(),
+                'owner': owner,
+                'address_id': base._onGetAddressId()
+            };
+
+            base._onSetBusy(null, true);
+
+            $.post(
+                cuar.ajaxUrl,
+                ajaxParams,
+                function (response) {
+                    base._onSetBusy(null, false);
+
+                    if (response.success == false) {
+                        alert(response.data);
+                        return;
+                    }
+
+                    if (response.data.address != null) {
+                        base._onSetAddress(null, [response.data.address]);
+                    } else {
+                        alert(cuar.addressNoAddressFromOwner);
+                    }
+                }
+            );
+        };
+
+        /**
+         * Save the address to the owner preferences
+         * @param event
+         * @param owner
+         * @returns {boolean}
+         * @private
+         */
+        base._onSaveAddressForOwner = function (event, owner) {
+            if (base._onIsBusy()) return false;
+
+            if (owner == null) {
+                alert(cuar.addressMustPickOwnerFirst);
+                return;
+            }
+
+            if (!confirm(cuar.addressConfirmSaveAddressForOwner)) return false;
+
+            var ajaxParams = {
+                'action': 'cuar_save_address_for_owner',
+                'cuar_nonce': base._onGetNonce(),
+                'owner': owner,
+                'address_id': base._onGetAddressId(),
+                'address': base._onGetAddress()
+            };
+
+            base._onSetBusy(null, true);
+
+            $.post(
+                cuar.ajaxUrl,
+                ajaxParams,
+                function (response) {
+                    base._onSetBusy(null, false);
+
+                    if (response.success == false) {
+                        alert(response.data);
+                        return;
+                    }
+                }
+            );
         };
 
         /**
@@ -49,7 +140,7 @@
          */
         base._onResetAddressAction = function (event) {
             event.preventDefault();
-            if (base._onIsBusy(null)) return false;
+            if (base._onIsBusy()) return false;
 
             if (!confirm(cuar.addressConfirmResetAddress)) return false;
 
@@ -149,6 +240,11 @@
         /** Getter */
         base._onGetNonce = function () {
             return $('input[name=cuar_nonce]', base.el).val();
+        };
+
+        /** Getter */
+        base._onGetAddressId = function () {
+            return base.$el.data('address-id');
         };
 
         /** Getter */

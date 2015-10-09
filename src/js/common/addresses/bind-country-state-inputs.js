@@ -104,7 +104,7 @@
 
         /** Getter */
         base._getAddressId = function () {
-            return base._getCountryField().data('address-id');
+            return base._getAddressControl().triggerHandler('cuar:address:getAddressId');
         };
 
         /** Getter */

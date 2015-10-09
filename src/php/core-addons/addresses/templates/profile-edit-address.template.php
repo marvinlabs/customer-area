@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php /** @var $address_actions array */ ?>
 <?php /** @var $extra_scripts string */ ?>
 
-<div class="cuar-address cuar-<?php echo $address_class; ?>">
+<div class="cuar-address cuar-<?php echo $address_class; ?>" data-address-id="<?php echo $address_id; ?>">
     <h3><?php echo $address_label; ?></h3>
 
     <?php wp_nonce_field('cuar_' . $address_id, 'cuar_nonce'); ?>
@@ -101,7 +101,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         <tr class="form-group cuar-address-country">
             <th><label for="<?php echo $address_id; ?>_country" class="control-label"><?php _e('Country', 'cuarin'); ?></label></th>
             <td>
-                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country" class="regular-text cuar-address-field" data-address-id="<?php echo $address_id; ?>">
+                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country" class="regular-text cuar-address-field">
                     <?php foreach (CUAR_CountryHelper::getCountries() as $code => $label) : ?>
                         <option value="<?php echo esc_attr($code); ?>" <?php selected($address['country'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>

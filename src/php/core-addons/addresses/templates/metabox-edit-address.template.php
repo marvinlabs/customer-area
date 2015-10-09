@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php /** @var $address_actions array */ ?>
 <?php /** @var $extra_scripts string */ ?>
 
-<div class="cuar-address cuar-<?php echo $address_class; ?>">
+<div class="cuar-address cuar-<?php echo $address_class; ?>" data-address-id="<?php echo $address_id; ?>">
     <?php wp_nonce_field('cuar_' . $address_id, 'cuar_nonce'); ?>
 
     <div class="cuar-progress" style="display: none;">
@@ -111,7 +111,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
             <label for="<?php echo $address_id; ?>_country" class="control-label"><?php _e('Country', 'cuarin'); ?></label>
 
             <div class="control-container">
-                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country" class="form-control cuar-address-field" data-address-id="<?php echo $address_id; ?>">
+                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country" class="form-control cuar-address-field">
                     <?php foreach (CUAR_CountryHelper::getCountries() as $code => $label) : ?>
                         <option value="<?php echo esc_attr($code); ?>" <?php selected($address['country'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>
@@ -124,7 +124,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
             <label for="<?php echo $address_id; ?>_state" class="control-label"><?php _e('State/Province', 'cuarin'); ?></label>
 
             <div class="control-container">
-                <select name="<?php echo $address_id; ?>[state]" id="<?php echo $address_id; ?>_state" class="form-control cuar-address-field" autocomplete="off">
+                <select name="<?php echo $address_id; ?>[state]" id="<?php echo $address_id; ?>_state" class="form-control cuar-address-field">
                     <?php foreach ($country_states as $code => $label) : ?>
                         <option value="<?php echo esc_attr($code); ?>" <?php selected($address['state'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>
