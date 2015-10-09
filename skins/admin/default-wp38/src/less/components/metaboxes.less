@@ -4,7 +4,19 @@
   .row {
     box-sizing: border-box;
     width: 100%;
-    margin: 0 -7px;
+    margin: 0 -7px 0 0;
+
+    &:after {
+      content:"";
+      display:table;
+      clear:both;
+    }
+  }
+
+  .block {
+    display: block;
+    box-sizing: border-box;
+    padding: 0 7px;
   }
 
   .form-group {

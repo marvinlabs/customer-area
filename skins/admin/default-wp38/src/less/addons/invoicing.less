@@ -1,3 +1,136 @@
+/** ITEMS IN METABOX */
+
+.postbox .inside {
+  .cuar-invoice-item {
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    background: #fafafa;
+    padding: 0;
+    margin: 4px 0;
+    min-height: 28px;
+
+    &.cuar-invoice-item-header {
+      background: none;
+      border: 0 none;
+      margin: 14px 0;
+      font-weight: bold;
+    }
+    
+    &.cuar-state-pending {
+      background-color: #D4E9FF;
+    }
+    &.cuar-state-error {
+      background-color: #FF777F;
+    }
+    &.cuar-state-success {
+      background-color: #fafafa;
+    }
+
+    .cuar-actions {
+      position: absolute;
+      box-sizing: border-box;
+      top: -29px;
+      right: -1px;
+      background-color: #fafafa;
+      opacity: 0;
+      border: 1px solid #e0e0e0;
+      border-bottom: 0 none;
+      line-height: inherit;
+
+      a {
+        margin: 0 3px;
+      }
+
+      .cuar-move-action .dashicons {
+        cursor: move;
+        transform: rotate(90deg);
+      }
+    }
+
+    &:hover {
+      .cuar-actions {
+        opacity: 1;
+      }
+    }
+
+    .cuar-editable {
+      margin-right: 90px;
+      textarea {
+        max-width: 100%;
+      }
+    }
+    .block {
+      padding-top: 7px;
+      padding-bottom: 7px;
+      float: left;
+    }
+
+    .cuar-title,
+    .cuar-quantity,
+    .cuar-unit,
+    .cuar-unit-price {
+    }
+
+    .cuar-quantity,
+    .cuar-unit-price {
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .cuar-description {
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .cuar-title {
+      width: 65%;
+    }
+    .cuar-quantity {
+      width: 10%;
+    }
+    .cuar-unit {
+      width: 15%;
+    }
+    .cuar-unit-price {
+      width: 10%;
+    }
+
+    .cuar-editable-caption {
+      input {
+        background: transparent;
+        min-width: 200px;
+        border: none;
+        border-bottom: 1px solid #aaa;
+        padding: 0;
+        font-size: 13px;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+
+    .cuar-progress {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+
+      .indeterminate {
+        display: block;
+        position: absolute;
+        right: 8px;
+        bottom: 0;
+        height: 100%;
+        background-position-x: 100%;
+        background-position-y: 8px;
+      }
+    }
+  }
+}
+
 /** DISCOUNT
 .postbox .inside .cuar-invoice-discount {
 
