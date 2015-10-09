@@ -84,22 +84,22 @@
 
         /** Is the address disabled */
         base._isAddressBusy = function () {
-            return base._getParentAddress().triggerHandler('cuar:address:setBusy');
+            return base._getAddressControl().triggerHandler('cuar:address:setBusy');
         };
 
         /** Set the address as disabled for some time */
         base._setAddressBusy = function (isBusy) {
-            base._getParentAddress().trigger('cuar:address:setBusy', [isBusy]);
+            base._getAddressControl().trigger('cuar:address:setBusy', [isBusy]);
         };
 
-        /** Getter */
-        base._getParentAddress = function () {
+        /** The control we belong to */
+        base._getAddressControl = function () {
             return base.$el.parents('.cuar-address');
         };
 
         /** Getter */
         base._getNonce = function () {
-            return base._getParentAddress().find('input[name=cuar_nonce]').first().val();
+            return base._getAddressControl().triggerHandler('cuar:address:getNonce');
         };
 
         /** Getter */
@@ -132,7 +132,7 @@
         select2: {
             width: '100%',
             allowClear: true,
-            placeholder: "",
+            placeholder: ""
         }
     };
 
