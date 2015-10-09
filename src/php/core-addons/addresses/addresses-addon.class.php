@@ -76,6 +76,11 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
 
         /*------- CUSTOMISATION OF THE USER PROFILE PAGE ----------------------------------------------------------------*/
 
+        /**
+         * Callback for the user profile page
+         *
+         * @param WP_User $user The user being edited
+         */
         public function edit_user_profile($user)
         {
             $user_addresses = $this->get_registered_user_addresses();
@@ -96,6 +101,11 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
             }
         }
 
+        /**
+         * Called when the user profile is saved in the admin
+         *
+         * @param int $user_id
+         */
         public function edit_user_profile_update($user_id)
         {
             $user_addresses = $this->get_registered_user_addresses();
