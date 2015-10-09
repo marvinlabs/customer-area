@@ -8,7 +8,7 @@
         $.cuar = {};
     }
 
-    $.cuar.manageAddressInputs = function (el, options) {
+    $.cuar.addressManager = function (el, options) {
 
         var base = this;
 
@@ -21,14 +21,14 @@
         base.el = el;
 
         // Add a reverse reference to the DOM object
-        base.$el.data("cuar.manageAddressInputs", base);
+        base.$el.data("cuar.addressManager", base);
 
         /**
          * Initialisation
          */
         base.init = function () {
             // Merge default options
-            base.options = $.extend({}, $.cuar.manageAddressInputs.defaultOptions, options);
+            base.options = $.extend({}, $.cuar.addressManager.defaultOptions, options);
 
             base.$el.on('cuar:address:clear', base._onClearAddress);
             base.$el.on('cuar:address:set', base._onSetAddress);
@@ -83,7 +83,7 @@
                     }
 
                     if (response.data.address != null) {
-                        base._onSetAddress(null, [response.data.address]);
+                        base._onSetAddress(null, response.data.address);
                     } else {
                         alert(cuar.addressNoAddressFromOwner);
                     }
@@ -276,11 +276,11 @@
         base.init();
     };
 
-    $.cuar.manageAddressInputs.defaultOptions = {};
+    $.cuar.addressManager.defaultOptions = {};
 
-    $.fn.manageAddressInputs = function (options) {
+    $.fn.addressManager = function (options) {
         return this.each(function () {
-            (new $.cuar.manageAddressInputs(this, options));
+            (new $.cuar.addressManager(this, options));
         });
     };
 

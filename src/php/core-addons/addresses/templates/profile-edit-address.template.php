@@ -125,7 +125,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $('.cuar-<?php echo $address_class; ?>').manageAddressInputs();
+        $('.cuar-<?php echo $address_class; ?>').addressManager();
         $('.cuar-<?php echo $address_class; ?> table').bindCountryStateInputs({
             select2: {
                 allowClear: true,
