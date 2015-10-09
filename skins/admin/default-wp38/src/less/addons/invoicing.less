@@ -4,11 +4,19 @@
   .cuar-invoice-item {
     box-sizing: border-box;
     position: relative;
-    border: 1px solid #e0e0e0;
-    background: #fafafa;
-    padding: 0;
-    margin: 4px 0;
+    border-top: 1px solid #e0e0e0;
+    background: none;
+    padding: 10px 0;
+    margin: 0;
     min-height: 28px;
+
+    &:hover {
+      background: #fafafa;
+
+      .cuar-actions {
+        opacity: 1;
+      }
+    }
 
     &.cuar-invoice-item-header {
       background: none;
@@ -24,7 +32,6 @@
       background-color: #FF777F;
     }
     &.cuar-state-success {
-      background-color: #fafafa;
     }
 
     .cuar-actions {
@@ -48,12 +55,6 @@
       }
     }
 
-    &:hover {
-      .cuar-actions {
-        opacity: 1;
-      }
-    }
-
     .cuar-editable {
       margin-right: 90px;
       textarea {
@@ -66,10 +67,8 @@
       float: left;
     }
 
-    .cuar-title,
-    .cuar-quantity,
-    .cuar-unit,
-    .cuar-unit-price {
+    .cuar-unit {
+      text-align: right;
     }
 
     .cuar-quantity,
@@ -84,16 +83,16 @@
     }
 
     .cuar-title {
-      width: 65%;
+      width: 64%;
     }
     .cuar-quantity {
-      width: 10%;
+      width: 12%;
     }
     .cuar-unit {
-      width: 15%;
+      width: 12%;
     }
     .cuar-unit-price {
-      width: 10%;
+      width: 12%;
     }
 
     .cuar-editable-caption {
