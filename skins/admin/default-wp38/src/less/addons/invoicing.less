@@ -4,14 +4,19 @@
   .cuar-invoice-item {
     box-sizing: border-box;
     position: relative;
-    border-top: 1px solid #e0e0e0;
-    background: none;
+    border: 0 solid #e0e0e0;
+    border-width: 1px 1px 0 1px;
+    background: #fafafa;
     padding: 10px 0;
     margin: 0;
     min-height: 28px;
 
+    &:last-child {
+      border-bottom-width: 1px;
+    }
+
     &:hover {
-      background: #fafafa;
+      background: #f0f0f0;
 
       .cuar-actions {
         opacity: 1;
@@ -24,22 +29,13 @@
       margin: 14px 0;
       font-weight: bold;
     }
-    
-    &.cuar-state-pending {
-      background-color: #D4E9FF;
-    }
-    &.cuar-state-error {
-      background-color: #FF777F;
-    }
-    &.cuar-state-success {
-    }
 
     .cuar-actions {
       position: absolute;
       box-sizing: border-box;
       top: -29px;
-      right: -1px;
-      background-color: #fafafa;
+      left: -1px;
+      background-color: #f0f0f0;
       opacity: 0;
       border: 1px solid #e0e0e0;
       border-bottom: 0 none;
@@ -72,60 +68,48 @@
     }
 
     .cuar-quantity,
-    .cuar-unit-price {
+    .cuar-unit-price,
+    .cuar-item-total {
       text-align: right;
       font-weight: bold;
+    }
+    .cuar-item-total {
+      font-size: 1.2em;
+      padding-right: 27px;
     }
 
     .cuar-description {
       font-style: italic;
       opacity: 0.8;
+      width: 86%;
     }
 
     .cuar-title {
-      width: 64%;
+      width: 62%;
     }
     .cuar-quantity {
-      width: 12%;
+      width: 10%;
     }
     .cuar-unit {
-      width: 12%;
+      width: 14%;
     }
     .cuar-unit-price {
-      width: 12%;
+      width: 14%;
+    }
+    .cuar-item-total {
+      width: 14%;
     }
 
-    .cuar-editable-caption {
-      input {
-        background: transparent;
-        min-width: 200px;
-        border: none;
-        border-bottom: 1px solid #aaa;
-        padding: 0;
-        font-size: 13px;
-
-        &:focus {
-          outline: 0;
-        }
-      }
+    textarea,
+    input,
+    select {
+      width: 100%;
+      min-height: 28px;
     }
 
-    .cuar-progress {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 100%;
-
-      .indeterminate {
-        display: block;
-        position: absolute;
-        right: 8px;
-        bottom: 0;
-        height: 100%;
-        background-position-x: 100%;
-        background-position-y: 8px;
-      }
+    input,
+    select {
+      text-align: right;
     }
   }
 }

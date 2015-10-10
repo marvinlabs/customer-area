@@ -783,6 +783,12 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
                     break;
 
+                case 'jquery.autogrow':
+                {
+                    wp_enqueue_script('jquery.autogrow', CUAR_PLUGIN_URL . 'libs/autogrow/autogrow.min.js', array('jquery'), $this->get_version());
+                }
+                    break;
+
                 case 'jquery.jeditable':
                 {
                     wp_enqueue_script('jquery.autogrow', CUAR_PLUGIN_URL . 'libs/autogrow/autogrow.min.js', array('jquery'), $this->get_version());
