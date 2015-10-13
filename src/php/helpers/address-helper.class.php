@@ -1,9 +1,9 @@
 <?php
 
 // Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) exit;
 
-if ( !class_exists('CUAR_AddressHelper')) :
+if (!class_exists('CUAR_AddressHelper')) :
 
     /**
      * Gathers some helper functions to facilitate some coding
@@ -23,14 +23,14 @@ if ( !class_exists('CUAR_AddressHelper')) :
         public static function sanitize_address($address)
         {
             $address = array_merge(array(
-                'name'    => '',
+                'name' => '',
                 'company' => '',
-                'line1'   => '',
-                'line2'   => '',
-                'zip'     => '',
-                'city'    => '',
+                'line1' => '',
+                'line2' => '',
+                'zip' => '',
+                'city' => '',
                 'country' => '',
-                'state'   => ''
+                'state' => ''
             ), $address);
 
             if (empty($address['country'])) $address['state'] = '';
@@ -45,6 +45,31 @@ if ( !class_exists('CUAR_AddressHelper')) :
             $address['state'] = stripslashes($address['state']);
 
             return apply_filters('cuar/core/address', $address);
+        }
+
+        public static function get_address_as_short_string($address)
+        {
+            $out = '';
+            if (!empty($address['line1'])) {
+                $out .= $address['line1'];
+            }
+
+            if (!empty($address['zip'])) {
+                if (!empty($out)) $out .= ', ';
+                $out .= $address['zip'];
+            }
+
+            if (!empty($address['city'])) {
+                if (!empty($address['zip'])) $out .= ' ';
+                $out .= $address['city'];
+            }
+
+            if (!empty($address['country'])) {
+                if (!empty($out)) $out .= ', ';
+                $out .= $address['country'];
+            }
+
+            return apply_filters('cuar/core/address-as-short-string', $out, $address);
         }
     }
 
