@@ -1,0 +1,29 @@
+.cuar-invoice-list {
+  .cuar-invoice {
+    .title {
+      width: 70%;
+      float: left;
+    }
+    .amount {
+      width: 30%;
+      float: right;
+      font-size: 1.5em;
+      text-align: right;
+      margin-top: 12px;
+    }
+    .due-date {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+    &.expired.open {
+      .due-date {
+        color: #cc1111;
+      }
+    }
+    &.closed {
+      .due-date {
+        opacity: 0.5;
+      }
+    }
+  }
+}
