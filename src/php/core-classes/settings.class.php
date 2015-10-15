@@ -967,6 +967,35 @@ if ( !class_exists('CUAR_Settings')) :
 
                 wp_editor($this->options [$option_id], $option_id, $editor_settings);
             }
+            else if ($type == 'upload')
+            {
+                wp_enqueue_script('cuar.admin');
+                wp_enqueue_media();
+
+                $extra_class = 'cuar-upload-input regular-text';
+
+                if (isset($before))
+                {
+                    echo $before;
+                }
+
+                echo '<div id="cuar-upload-control-' . $option_id . '">';
+                echo sprintf('<input type="%s" id="%s" name="%s[%s]" value="%s" class="%s" />', esc_attr($type),
+                    esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id),
+                    esc_attr(stripslashes($this->options [$option_id])), esc_attr($extra_class));
+
+                echo '<span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="' . __( 'Upload File', 'cuar' ) . '"/></span>';
+
+                echo '<script type="text/javascript">';
+                echo '    jQuery(document).ready(function($) { $("#cuar-upload-control-' . $option_id . '").mediaInputControl(); });';
+                echo '</script>';
+                echo '</div>';
+
+                if (isset($after))
+                {
+                    echo $after;
+                }
+            }
             else
             {
                 $extra_class = isset($is_large) && $is_large == true ? 'large-text' : 'regular-text';

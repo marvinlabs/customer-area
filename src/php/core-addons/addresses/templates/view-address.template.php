@@ -23,10 +23,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php /** @var $address_id string */ ?>
 <?php /** @var $address_class string */ ?>
 <?php /** @var $address_label string */ ?>
+<?php /** @var $excluded_fields array */ ?>
 
+<?php if (!empty($address_label)) : ?>
 <h3><?php echo $address_label; ?></h3>
+<?php endif; ?>
 
 <div class="cuar-address cuar-<?php echo $address_class; ?>">
+    <?php if (!empty($address['name']) || !empty($address['company'])) : ?>
     <p>
         <?php if ( !empty($address['company'])) : ?>
             <strong><?php echo $address['company']; ?></strong><br>
@@ -35,7 +39,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         <?php if ( !empty($address['name'])) : ?>
             <strong><?php echo $address['name']; ?></strong>
         <?php endif; ?>
+
+        <?php if ( !empty($address['vat_number'])) : ?>
+            <?php echo __('VAT ID -', 'cuarin') . ' ' . $address['vat_number']; ?>
+        <?php endif; ?>
     </p>
+    <?php endif; ?>
 
     <p>
         <?php if ( !empty($address['line1'])) : ?>

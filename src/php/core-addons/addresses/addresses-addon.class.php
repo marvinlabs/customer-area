@@ -336,9 +336,12 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
             $template_prefix = '')
         {
             $this->plugin->enable_library('jquery.select2');
+
+            wp_enqueue_media();
             wp_enqueue_script(is_admin() ? 'cuar.admin' : 'cuar.frontend');
 
             $address_class = str_replace('_', '-', $address_id);
+            $excluded_fields = apply_filters('cuar/core/addresses/excluded-fields?mode=edit', array(), $address_id, $address);
             $template_suffix = is_admin() ? '-admin' : '-frontend';
 
             $template_stack = array();
@@ -372,6 +375,7 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
             $template_prefix = '')
         {
             $address_class = str_replace('_', '-', $address_id);
+            $excluded_fields = apply_filters('cuar/core/addresses/excluded-fields?mode=view', array('logo'), $address_id, $address);
             $template_suffix = is_admin() ? '-admin' : '-frontend';
 
             $template_stack = array();

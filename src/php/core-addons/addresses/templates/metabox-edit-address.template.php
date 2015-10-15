@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php /** @var $address_label string */ ?>
 <?php /** @var $address_actions array */ ?>
 <?php /** @var $extra_scripts string */ ?>
+<?php /** @var $excluded_fields array */ ?>
 
 <div class="cuar-address cuar-<?php echo $address_class; ?>" data-address-id="<?php echo $address_id; ?>">
     <?php wp_nonce_field('cuar_' . $address_id, 'cuar_nonce'); ?>
@@ -34,30 +35,36 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
     </div>
 
     <?php if (!empty($address_actions)) : ?>
-    <div class="row">
-        <div class="form-group cuar-address-actions">
-            <?php foreach ($address_actions as $action => $desc) : ?>
-                <a href="#" class="button cuar-action cuar-<?php echo esc_attr($action); ?>" title="<?php echo esc_attr($desc['tooltip']); ?>"><?php
-                    echo $desc['label'];
-                    ?></a>&nbsp;
-            <?php endforeach; ?>
+        <div class="row">
+            <div class="form-group cuar-address-actions">
+                <?php foreach ($address_actions as $action => $desc) : ?>
+                    <a href="#" class="button cuar-action cuar-<?php echo esc_attr($action); ?>"
+                       title="<?php echo esc_attr($desc['tooltip']); ?>"><?php
+                        echo $desc['label'];
+                        ?></a>&nbsp;
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
     <?php endif; ?>
 
     <div class="row">
-        <div class="form-group cuar-address-name">
-            <label for="<?php echo $address_id; ?>_name" class="control-label"><?php _e('Name', 'cuarin'); ?></label>
+        <?php if (!in_array('name', $excluded_fields)) : ?>
+            <div class="form-group cuar-address-name">
+                <label for="<?php echo $address_id; ?>_name"
+                       class="control-label"><?php _e('Name', 'cuarin'); ?></label>
 
-            <div class="control-container">
-                <input type="text" name="<?php echo $address_id; ?>[name]" id="<?php echo $address_id; ?>_name"
-                       value="<?php echo esc_attr($address['name']); ?>"
-                       placeholder="<?php esc_attr_e('Name', 'cuarin'); ?>" class="form-control cuar-address-field"/>
+                <div class="control-container">
+                    <input type="text" name="<?php echo $address_id; ?>[name]" id="<?php echo $address_id; ?>_name"
+                           value="<?php echo esc_attr($address['name']); ?>"
+                           placeholder="<?php esc_attr_e('Name', 'cuarin'); ?>"
+                           class="form-control cuar-address-field"/>
+                </div>
             </div>
-        </div>
-
+        <?php endif; ?>
+        <?php if (!in_array('company', $excluded_fields)) : ?>
         <div class="form-group cuar-address-company">
-            <label for="<?php echo $address_id; ?>_company" class="control-label"><?php _e('Company', 'cuarin'); ?></label>
+            <label for="<?php echo $address_id; ?>_company"
+                   class="control-label"><?php _e('Company', 'cuarin'); ?></label>
 
             <div class="control-container">
                 <input type="text" name="<?php echo $address_id; ?>[company]" id="<?php echo $address_id; ?>_company"
@@ -65,37 +72,82 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
                        placeholder="<?php esc_attr_e('Company', 'cuarin'); ?>" class="form-control cuar-address-field"/>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <div class="row">
+        <?php if (!in_array('vat_number', $excluded_fields)) : ?>
+        <div class="form-group cuar-address-vat-number">
+            <label for="<?php echo $address_id; ?>_vat_id"
+                   class="control-label"><?php _e('VAT Number', 'cuarin'); ?></label>
+
+            <input type="text" name="<?php echo $address_id; ?>[vat_number]"
+                   id="<?php echo $address_id; ?>_vat_number"
+                   value="<?php echo esc_attr($address['vat_number']); ?>"
+                   placeholder="<?php esc_attr_e('VAT Number', 'cuarin'); ?>" class="form-control cuar-address-field"/>
+        </div>
+        <?php endif; ?>
+    </div>
+    <div class="row">
+        <?php if (!in_array('logo_url', $excluded_fields)) : ?>
+        <div class="form-group cuar-address-logo-url">
+            <label for="<?php echo $address_id; ?>_logo_url"
+                   class="control-label"><?php _e('Logo', 'cuarin'); ?></label>
+
+            <div class="cuar-upload-control">
+                <input type="text" name="<?php echo $address_id; ?>[logo_url]"
+                       id="<?php echo $address_id; ?>_logo"
+                       value="<?php echo esc_attr($address['logo_url']); ?>"
+                       placeholder="<?php esc_attr_e('Logo URL', 'cuarin'); ?>"
+                       class="regular-text cuar-address-field cuar-upload-input"/>
+                <span>&nbsp;<input type="button" class="cuar-upload-button button-secondary"
+                                   value="<?php _e('Upload Logo', 'cuar'); ?>"/></span>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+    <div class="row">
+        <?php if (!in_array('line1', $excluded_fields)) : ?>
         <div class="form-group cuar-address-line1">
-            <label for="<?php echo $address_id; ?>_line1" class="control-label"><?php _e('Street address', 'cuarin'); ?></label>
+            <label for="<?php echo $address_id; ?>_line1"
+                   class="control-label"><?php _e('Street address', 'cuarin'); ?></label>
 
             <div class="control-container">
                 <input type="text" name="<?php echo $address_id; ?>[line1]" id="<?php echo $address_id; ?>_line1"
                        value="<?php echo esc_attr($address['line1']); ?>"
-                       placeholder="<?php esc_attr_e('Street address, line 1', 'cuarin'); ?>" class="form-control cuar-address-field"/>
+                       placeholder="<?php esc_attr_e('Street address, line 1', 'cuarin'); ?>"
+                       class="form-control cuar-address-field"/>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <div class="row">
+        <?php if (!in_array('line2', $excluded_fields)) : ?>
         <div class="form-group cuar-address-line2">
             <div class="control-container">
                 <input type="text" name="<?php echo $address_id; ?>[line2]" id="<?php echo $address_id; ?>_line2"
                        value="<?php echo esc_attr($address['line2']); ?>"
-                       placeholder="<?php esc_attr_e('Street address, line 2', 'cuarin'); ?>" class="form-control cuar-address-field"/>
+                       placeholder="<?php esc_attr_e('Street address, line 2', 'cuarin'); ?>"
+                       class="form-control cuar-address-field"/>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <div class="row">
+        <?php if (!in_array('zip', $excluded_fields)) : ?>
         <div class="form-group cuar-address-zip">
-            <label for="<?php echo $address_id; ?>_zip" class="control-label"><?php _e('Zip/Postal code', 'cuarin'); ?></label>
+            <label for="<?php echo $address_id; ?>_zip"
+                   class="control-label"><?php _e('Zip/Postal code', 'cuarin'); ?></label>
 
             <div class="control-container">
-                <input type="text" name="<?php echo $address_id; ?>[zip]" id="<?php echo $address_id; ?>_zip" value="<?php echo esc_attr($address['zip']); ?>"
-                       placeholder="<?php esc_attr_e('Zip/Postal code', 'cuarin'); ?>" class="form-control cuar-address-field"/>
+                <input type="text" name="<?php echo $address_id; ?>[zip]" id="<?php echo $address_id; ?>_zip"
+                       value="<?php echo esc_attr($address['zip']); ?>"
+                       placeholder="<?php esc_attr_e('Zip/Postal code', 'cuarin'); ?>"
+                       class="form-control cuar-address-field"/>
             </div>
         </div>
+        <?php endif; ?>
 
+        <?php if (!in_array('city', $excluded_fields)) : ?>
         <div class="form-group cuar-address-city">
             <label for="<?php echo $address_id; ?>_city" class="control-label"><?php _e('City', 'cuarin'); ?></label>
 
@@ -105,38 +157,50 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
                        placeholder="<?php esc_attr_e('City', 'cuarin'); ?>" class="form-control cuar-address-field"/>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <div class="row cuar-country-state-inputs">
+        <?php if (!in_array('country', $excluded_fields)) : ?>
         <div class="form-group cuar-address-country">
-            <label for="<?php echo $address_id; ?>_country" class="control-label"><?php _e('Country', 'cuarin'); ?></label>
+            <label for="<?php echo $address_id; ?>_country"
+                   class="control-label"><?php _e('Country', 'cuarin'); ?></label>
 
             <div class="control-container">
-                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country" class="form-control cuar-address-field">
+                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country"
+                        class="form-control cuar-address-field">
                     <?php foreach (CUAR_CountryHelper::getCountries() as $code => $label) : ?>
-                        <option value="<?php echo esc_attr($code); ?>" <?php selected($address['country'], $code); ?>><?php echo $label; ?></option>
+                        <option
+                            value="<?php echo esc_attr($code); ?>" <?php selected($address['country'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
         </div>
+        <?php endif; ?>
 
+        <?php if (!in_array('state', $excluded_fields)) : ?>
         <?php $country_states = CUAR_CountryHelper::getStates($address['country']); ?>
         <div class="form-group cuar-address-state" <?php if (empty($country_states)) echo 'style="display: none;"'; ?>>
-            <label for="<?php echo $address_id; ?>_state" class="control-label"><?php _e('State/Province', 'cuarin'); ?></label>
+            <label for="<?php echo $address_id; ?>_state"
+                   class="control-label"><?php _e('State/Province', 'cuarin'); ?></label>
 
             <div class="control-container">
-                <select name="<?php echo $address_id; ?>[state]" id="<?php echo $address_id; ?>_state" class="form-control cuar-address-field">
+                <select name="<?php echo $address_id; ?>[state]" id="<?php echo $address_id; ?>_state"
+                        class="form-control cuar-address-field">
                     <?php foreach ($country_states as $code => $label) : ?>
-                        <option value="<?php echo esc_attr($code); ?>" <?php selected($address['state'], $code); ?>><?php echo $label; ?></option>
+                        <option
+                            value="<?php echo esc_attr($code); ?>" <?php selected($address['state'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </div>
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $('.cuar-<?php echo $address_class; ?>').addressManager();
+        $(".cuar-<?php echo $address_class; ?> .cuar-upload-control").mediaInputControl();
         $('.cuar-<?php echo $address_class; ?> .cuar-country-state-inputs').bindCountryStateInputs();
         <?php echo $extra_scripts; ?>
     });
