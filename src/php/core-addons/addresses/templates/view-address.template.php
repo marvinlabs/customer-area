@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         <?php endif; ?>
 
         <?php if ( !empty($address['name'])) : ?>
-            <?php echo $address['name']; ?>
+            <strong><?php echo $address['name']; ?></strong>
         <?php endif; ?>
     </p>
 

@@ -111,7 +111,7 @@ if (!class_exists('CUAR_CurrencyHelper')) :
         {
             $format = __('%2$s %1$s', 'Currency amount (1=amount, 2=currency)', 'cuar');
             $symbol = self::getSymbol($currencyCode);
-            $amount = sprintf('%.2f', doubleval($amount));
+            $amount = number_format_i18n(doubleval($amount), 2);
 
             if ($wrapper != null) {
                 $symbol = '<' . $wrapper . ' class="cuar-currency">' . $symbol . '</' . $wrapper . '>';

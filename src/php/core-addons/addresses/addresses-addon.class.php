@@ -371,19 +371,19 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
             $address_label = '',
             $template_prefix = '')
         {
-            $template_prefix = is_admin() ? '-admin' : '-frontend';
+            $address_class = str_replace('_', '-', $address_id);
             $template_suffix = is_admin() ? '-admin' : '-frontend';
 
             $template_stack = array();
             if ( !empty($template_prefix))
             {
-                $template_stack[] = $template_prefix . '-' . $address_id . 'view-address' . $template_suffix . '.template.php';
+                $template_stack[] = $template_prefix . '-' . $address_class . 'view-address' . $template_suffix . '.template.php';
                 $template_stack[] = $template_prefix . 'view-address' . $template_suffix . '.template.php';
                 $template_stack[] = $template_prefix . 'view-address.template.php';
             }
 
-            $template_stack[] = $address_id . 'view-address' . $template_suffix . '.template.php';
-            $template_stack[] = $address_id . 'view-address.template.php';
+            $template_stack[] = $address_class . 'view-address' . $template_suffix . '.template.php';
+            $template_stack[] = $address_class . 'view-address.template.php';
 
             $template_stack[] = 'view-address' . $template_suffix . '.template.php';
             $template_stack[] = 'view-address.template.php';

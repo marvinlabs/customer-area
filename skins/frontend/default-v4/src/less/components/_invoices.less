@@ -27,3 +27,100 @@
     }
   }
 }
+
+// Invoice info in the single post footer
+// --------------------------------------------------
+
+.cuar-single-post-footer.cuar_invoice {
+  .addresses-meta {
+    .billing-address,
+    .emitter-address {
+      .make-sm-column(6);
+    }
+  }
+
+  .properties-meta {
+    .total {
+      .make-sm-column(12);
+      font-size: 3em;
+    }
+    .properties {
+      .make-sm-column(6);
+      .make-sm-column-push(6);
+
+      th, td {
+        width: 50%;
+      }
+    }
+  }
+
+  .items-meta {
+    margin-top: 18px;
+    margin-bottom: 18px;
+
+    .title {
+      .make-xs-column(12);
+      .make-md-column(8);
+    }
+    .unit-price,
+    .quantity {
+      .make-xs-column(6);
+      .make-md-column(2);
+    }
+    .quantity {
+    }
+    .unit-price {
+      text-align: right;
+    }
+    .description {
+      .make-md-column(8);
+      opacity: 0.8;
+      font-style: italic;
+      margin-top: 7px;
+    }
+    .row {
+      border-bottom: 1px solid #eee;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      &:last-child {
+        border: none;
+      }
+    }
+    .row.item-heading {
+      .title,
+      .unit-price,
+      .quantity {
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+  }
+
+  .totals-meta {
+    .title {
+      .make-md-column(8);
+      font-weight: bold;
+      text-align: right;
+    }
+    .price {
+      .make-md-column(4);
+      font-weight: bold;
+      text-align: right;
+    }
+    .description {
+      .make-md-column(8);
+      opacity: 0.8;
+      font-style: italic;
+      margin-top: 7px;
+      text-align: right;
+    }
+    .row {
+      border-bottom: 0px solid #eee;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}
