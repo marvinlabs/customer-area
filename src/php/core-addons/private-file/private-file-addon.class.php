@@ -1059,25 +1059,15 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 exit();
             }
 
+            // Default action to apply on file
+            $action = apply_filters('cuar/private-content/files/default-action', $action, $found_file);
+
             // Seems we are all good, do some stuff before sending the file
-            if ($action == 'download')
+            if ($author_id != $current_user_id)
             {
-                if ($author_id != $current_user_id)
-                {
-                    $this->increment_file_download_count($post->ID, $file_id);
-                }
-
-                do_action('cuar/private-content/files/on-download', $post->ID, $current_user_id, $this, $file_id);
+                $this->increment_file_download_count($post->ID, $file_id);
             }
-            else if ($action == 'view')
-            {
-                if ($author_id != $current_user_id)
-                {
-                    $this->increment_file_download_count($post->ID, $file_id);
-                }
-
-                do_action('cuar/private-content/files/on-view', $post->ID, $current_user_id, $this, $file_id);
-            }
+            do_action('cuar/private-content/files/on-' . $action, $post->ID, $current_user_id, $this, $file_id);
 
             // Send the file
             do_action('cuar/private-content/files/output-file?source=' . $found_file['source'], $post->ID, $found_file, $action);

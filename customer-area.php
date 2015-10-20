@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		6.2.1
+	Version: 		6.3.0
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -39,7 +39,13 @@ define('CUAR_FRONTEND_SKIN', 'plugin%%default-v4');
 define('CUAR_PLUGIN_FILE', 'customer-area/customer-area.php');
 
 define('CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', false);
-//define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' ); 
+//define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' );
+
+// Helpers
+include_once(CUAR_INCLUDES_DIR . '/helpers/address-helper.class.php');
+include_once(CUAR_INCLUDES_DIR . '/helpers/currency-helper.class.php');
+include_once(CUAR_INCLUDES_DIR . '/helpers/country-helper.class.php');
+include_once(CUAR_INCLUDES_DIR . '/helpers/wordpress-helper.class.php');
 
 // Core Framework classes
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Content/custom-post.class.php');
@@ -109,6 +115,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-add
 include_once(CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/addresses/addresses-addon.class.php');
 
 // Core content types
 include_once(CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php');

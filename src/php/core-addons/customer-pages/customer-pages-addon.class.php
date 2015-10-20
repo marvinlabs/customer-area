@@ -604,6 +604,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
                     if ($menu_item->type == 'post_type' && $menu_item->object == 'page')
                     {
+                        /** @var CUAR_AbstractPageAddOn $menu_item_page */
                         $menu_item_page = isset($page_ids[$menu_item->object_id]) ? $page_ids[$menu_item->object_id]
                             : null;
 
@@ -612,7 +613,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                             continue;
                         }
 
-                        if ($menu_item_page->get_friendly_post_type() == $post_type)
+                        if ($menu_item_page->get_friendly_post_type() == $post_type
+                            && in_array($menu_item_page->get_type(), array('list-content', 'redirect')))
                         {
                             if ($highlighted_menu_item == null)
                             {

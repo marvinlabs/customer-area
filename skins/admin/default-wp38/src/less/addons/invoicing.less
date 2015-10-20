@@ -1,0 +1,139 @@
+/** INVOICE TOTALS */
+.postbox .inside {
+  .cuar-total-caption {
+    margin-bottom: 0;
+  }
+  .cuar-total-value {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 7px;
+  }
+  .cuar-main-total {
+    font-size: 1.2em;
+  }
+}
+
+/** ITEMS IN METABOX */
+
+.postbox .inside {
+  .cuar-invoice-item {
+    box-sizing: border-box;
+    position: relative;
+    border: 0 solid #e0e0e0;
+    border-width: 1px 1px 0 1px;
+    background: #fafafa;
+    padding: 10px 0;
+    margin: 0;
+    min-height: 28px;
+
+    &:last-child {
+      border-bottom-width: 1px;
+    }
+
+    &:hover {
+      background: #f0f0f0;
+
+      .cuar-actions {
+        opacity: 1;
+      }
+    }
+
+    &.cuar-invoice-item-header {
+      background: none;
+      border: 0 none;
+      margin: 14px 0;
+      font-weight: bold;
+    }
+
+    .cuar-actions {
+      position: absolute;
+      box-sizing: border-box;
+      top: -29px;
+      left: -1px;
+      background-color: #f0f0f0;
+      opacity: 0;
+      border: 1px solid #e0e0e0;
+      border-bottom: 0 none;
+      line-height: inherit;
+
+      a {
+        margin: 0 3px;
+      }
+
+      .cuar-move-action .dashicons {
+        cursor: move;
+        transform: rotate(90deg);
+      }
+    }
+
+    .cuar-editable {
+      margin-right: 90px;
+      textarea {
+        max-width: 100%;
+      }
+    }
+    .block {
+      padding-top: 7px;
+      padding-bottom: 7px;
+      float: left;
+    }
+
+    .cuar-unit {
+      text-align: right;
+    }
+
+    .cuar-quantity,
+    .cuar-unit-price,
+    .cuar-item-total {
+      text-align: right;
+      font-weight: bold;
+    }
+    .cuar-item-total {
+      font-size: 1.2em;
+      padding-right: 27px;
+    }
+
+    .cuar-description {
+      font-style: italic;
+      opacity: 0.8;
+      width: 86%;
+    }
+
+    .cuar-title {
+      width: 62%;
+    }
+    .cuar-quantity {
+      width: 10%;
+    }
+    .cuar-unit {
+      width: 14%;
+    }
+    .cuar-unit-price {
+      width: 14%;
+    }
+    .cuar-item-total {
+      width: 14%;
+    }
+
+    textarea,
+    input,
+    select {
+      width: 100%;
+      min-height: 28px;
+    }
+
+    input,
+    select {
+      text-align: right;
+    }
+  }
+}
+
+/** DISCOUNT
+.postbox .inside .cuar-invoice-discount {
+
+  .discount-amount,
+  .discount-when {
+    width: 50%;
+  }
+}*/

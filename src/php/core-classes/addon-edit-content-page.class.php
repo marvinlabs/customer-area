@@ -598,7 +598,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 /** @var CUAR_PostOwnerAddOn $po_addon */
                 $po_addon = $this->plugin->get_addon('post-owner');
                 $owner = $po_addon->get_owner_from_post_data();
-                if ($owner != null)
+                if ($owner != null && !empty($owner['type']))
                 {
                     $owner_type = $owner['type'];
                     $owner_ids = $owner['ids'];

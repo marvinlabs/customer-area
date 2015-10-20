@@ -243,7 +243,10 @@ abstract class CUAR_ListTable extends WP_List_Table
                 $t->name);
         }
 
-        return empty($out) ? '-' : implode(', ', $out);
+        $out = empty($out) ? '-' : implode(', ', $out);
+
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $out, $item, $taxonomy, $this);
     }
 
     public function column_date($item)
@@ -294,7 +297,8 @@ abstract class CUAR_ListTable extends WP_List_Table
             $out .= __('Last Modified', 'cuar');
         }
 
-        return $out;
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $out, $item, 'date', $this);
     }
 
     public function column_title($item)
@@ -356,17 +360,21 @@ abstract class CUAR_ListTable extends WP_List_Table
 
         $value = $title . $this->row_actions($row_actions);
 
-        return $value;
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $value, $item, 'title', $this);
     }
 
     public function column_author($item)
     {
         $user = get_userdata($item->post_author);
 
-        return sprintf('<a href="%1$s" title="Show content authored by %2$s" class="cuar-author">%3$s</a>',
+        $value = sprintf('<a href="%1$s" title="Show content authored by %2$s" class="cuar-author">%3$s</a>',
             $this->base_url . '&author=' . $user->ID,
             esc_attr($user->display_name),
             $user->user_login);
+
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $value, $item, 'author', $this);
     }
 
     /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/

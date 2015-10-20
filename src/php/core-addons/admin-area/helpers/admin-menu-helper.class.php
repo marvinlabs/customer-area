@@ -39,7 +39,8 @@ class CUAR_AdminMenuHelper
         $this->plugin = $plugin;
         $this->aa_addon = $aa_addon;
 
-        if (is_admin() && $this->aa_addon->is_admin_area_access_restricted())
+        if (is_admin() &&
+            (!$this->aa_addon->is_admin_area_access_restricted() || $this->aa_addon->current_user_can_access_admin()))
         {
             add_action('admin_menu', array(&$this, 'build_admin_menu'));
         }

@@ -61,8 +61,7 @@ function cuar_is_customer_area_page($post_id = 0, $page_slug = null)
     /** @var CUAR_CustomerPagesAddOn $cp_addon */
     $cp_addon = $cuar_plugin->get_addon('customer-pages');
 
-    if ($page_slug == null)
-    {
+    if ($page_slug == null) {
         return $cp_addon->is_customer_area_page($post_id);
     }
 
@@ -106,5 +105,15 @@ function cuar_ajax_loading($is_visible = false)
         <div class="circle right"></div>
         <div class="clearfix"></div>
     </div>
-<?php
+    <?php
+}
+
+/**
+ * Print an address
+ */
+function cuar_print_address($address, $address_id, $address_label = '', $template_prefix = '')
+{
+    /** @var CUAR_AddressesAddOn $ad_addon */
+    $ad_addon = cuar_addon('address-manager');
+    $ad_addon->print_address($address, $address_id, $address_label, $template_prefix);
 }

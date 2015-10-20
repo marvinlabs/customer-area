@@ -1,11 +1,11 @@
-=== WP Customer Area ===
+﻿=== WP Customer Area ===
 
 Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
 Tested up to:       4.3
-Stable tag:         6.2.1
+Stable tag:         6.2.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,19 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 6.3.0 (2015/) =
+
+* New: Add addresses (home, billing) to the user profile - one step towards better CRM integrated into WP Customer Area
+* New: Allow overriding the action (download/view) on a per file basis using hooks (or via settings in the Enhanced Files addon)
+* Fix: Compatibility problem between the Projects addon and the Protect Post Types addon (https://github.com/marvinlabs/customer-area/issues/164)
+* Fix: A bug was not showing the proper owner on the content edition page when using the Front-office publishing add-on
+* Fix: Do not mark create/update pages as current in the navigation menu
+
+= 6.2.2 (2015/09/21) =
+
+* Fix: Fix "don't have access to this page" for WPCA menus
+* Fix: CSS glitch on file badges
 
 = 6.2.1 (2015/09/09) =
 
