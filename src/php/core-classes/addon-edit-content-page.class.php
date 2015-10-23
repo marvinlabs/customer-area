@@ -109,13 +109,18 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             }
 
             // Form ID should match
-            if ( !isset($_POST['cuar_form_id']) || $_POST['cuar_form_id'] != $this->get_slug())
+            if (isset($_POST['cuar_form_id']) && $_POST['cuar_form_id'] != $this->get_slug())
             {
                 return false;
             }
 
             // Nonce check
-            if ( !wp_verify_nonce($_POST["cuar_" . $this->get_slug() . "_nonce"], 'cuar_' . $this->get_slug()))
+            $nonce = isset($_POST["cuar_" . $this->get_slug() . "_nonce"])
+                ? $_POST["cuar_" . $this->get_slug() . "_nonce"]
+                : isset($_GET["nonce"]) ? $_GET["nonce"]
+                    : '';
+
+            if ( !wp_verify_nonce($nonce, 'cuar_' . $this->get_slug()))
             {
                 die('An attempt to bypass security checks was detected! Please go back and try again.');
             }
