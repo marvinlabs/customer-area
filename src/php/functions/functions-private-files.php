@@ -403,13 +403,26 @@ function cuar_create_private_file($post_data, $owner, $files)
     $pf_addon = cuar_addon('private-files');
     foreach ($files as $file)
     {
-        $upload_result = $pf_addon->handle_copy_private_file_from_local_folder($post_id, null, $owner, $file);
+        $initial_filename = basename($file);
+        $filename = apply_filters('cuar/private-content/files/unique-filename?method=ftp-folder',
+            basename($file),
+            $post_id,
+            null);
 
-        if ($upload_result !== true)
+        $errors = apply_filters('cuar/private-content/files/on-attach-file?method=ftp-folder',
+            array(),
+            $pf_addon,
+            $initial_filename,
+            $post_id,
+            $filename,
+            $filename,
+            'ftp-move');
+
+        if (!empty($errors))
         {
             wp_delete_post($post_id);
 
-            return new WP_Error('upload_error', $upload_result['error']);
+            return new WP_Error('upload_error', implode(', ', $errors));
         }
     }
 
