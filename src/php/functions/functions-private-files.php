@@ -315,11 +315,13 @@ function cuar_format_human_file_size($size)
  *          'post_data' => (...),
  *          'owner'     => (...),
  *          'files'     => (...),
+ *          'method'    => (...),
  *      ),
  *      array(
  *          'post_data' => (...),
  *          'owner'     => (...),
  *          'files'     => (...),
+ *          'method'    => (...),
  *      ))
  * );´
  *
@@ -334,7 +336,7 @@ function cuar_bulk_create_private_files($args)
 
     foreach ($args as $a)
     {
-        $res = cuar_create_private_file($a['post_data'], $a['owner'], $a['files']);
+        $res = cuar_create_private_file($a['post_data'], $a['owner'], $a['files'], isset($a['method']) ? $a['method'] : 'ftp-move');
         if (is_wp_error($res))
         {
             $result['errors'][] = $res;
@@ -349,12 +351,13 @@ function cuar_bulk_create_private_files($args)
 }
 
 /**
- * @param array $post_data The same array you would give to wp_insert_post to create your post. No need to set the post
- *                         type, this will automatically be set.
- * @param array $owner     An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs
- *                         of corresponding objects
- * @param array $files     An array containing the paths to the files to attache to the post object. Currently we only
- *                         support a single file.
+ * @param array  $post_data The same array you would give to wp_insert_post to create your post. No need to set the post
+ *                          type, this will automatically be set.
+ * @param array  $owner     An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs
+ *                          of corresponding objects
+ * @param array  $files     An array containing the paths to the files to attache to the post object. Currently we only
+ *                          support a single file.
+ * @param string $method    Either 'ftp-move' (default) or 'ftp-copy'
  *
  * @return int¦WP_Error the post ID if the function could insert the post, else, a WP_Error object
  *
@@ -369,17 +372,14 @@ function cuar_bulk_create_private_files($args)
  *          'ids'  => array(1)
  *      ),
  *      array(
- *          '/path/to/file/on/server/the-file.txt'
+ *          'the-file.txt'
  *      )
  * );´
+ *
+ * IMPORTANT NOTE: The files have to be located in the plugin's FTP upload folder.
  */
-function cuar_create_private_file($post_data, $owner, $files)
+function cuar_create_private_file($post_data, $owner, $files, $method = 'ftp-move')
 {
-    if (count($files) != 1)
-    {
-        return new WP_Error(0, 'cuar_create_private_file only support a single private file');
-    }
-
     if ( !isset($owner['type']) || !isset($owner['ids']) || empty($owner['ids']))
     {
         return new WP_Error(0, 'cuar_create_private_file needs owner data to create the private file');
@@ -416,9 +416,11 @@ function cuar_create_private_file($post_data, $owner, $files)
             $post_id,
             $filename,
             $filename,
-            'ftp-move');
+            $method);
 
-        if (!empty($errors))
+        $pf_addon->add_attached_file($post_id, $filename, $filename, 'local', '');
+
+        if ( !empty($errors))
         {
             wp_delete_post($post_id);
 
