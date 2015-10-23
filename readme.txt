@@ -137,6 +137,7 @@ feel free to fork the project and send us pull requests!
 * Fix: A bug was not showing the proper owner on the content edition page when using the Front-office publishing add-on
 * Fix: Do not mark create/update pages as current in the navigation menu
 * Fix: Fix delete button not working in Front-office publishing add-on (https://github.com/marvinlabs/customer-area/issues/173)
+* Fix: Trashed content was shown in the admin-side listing pages
 
 = 6.2.2 (2015/09/21) =
 
