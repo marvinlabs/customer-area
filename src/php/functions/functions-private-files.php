@@ -314,15 +314,22 @@ function cuar_format_human_file_size($size)
  *      array(
  *          'post_data' => (...),
  *          'owner'     => (...),
- *          'files'     => (...),
- *          'method'    => (...),
+ *          'files'     => array(
+ *              array(
+ *                 'name'   => 'example.txt',
+ *                 'path'   => '/absolute/path/to/file/',
+ *                 'method' => 'noop|copy|move'
+ *              ),
+ *              ...
+ *          ),
  *      ),
  *      array(
  *          'post_data' => (...),
  *          'owner'     => (...),
  *          'files'     => (...),
- *          'method'    => (...),
- *      ))
+ *      ),
+ *      ...
+ *   )
  * );´
  *
  * @return array An array containing the created post IDs and the errors
@@ -336,7 +343,7 @@ function cuar_bulk_create_private_files($args)
 
     foreach ($args as $a)
     {
-        $res = cuar_create_private_file($a['post_data'], $a['owner'], $a['files'], isset($a['method']) ? $a['method'] : 'ftp-move');
+        $res = cuar_create_private_file($a['post_data'], $a['owner'], $a['files']);
         if (is_wp_error($res))
         {
             $result['errors'][] = $res;
@@ -351,13 +358,12 @@ function cuar_bulk_create_private_files($args)
 }
 
 /**
- * @param array  $post_data The same array you would give to wp_insert_post to create your post. No need to set the post
+ * @param array $post_data  The same array you would give to wp_insert_post to create your post. No need to set the post
  *                          type, this will automatically be set.
- * @param array  $owner     An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs
+ * @param array $owner      An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs
  *                          of corresponding objects
- * @param array  $files     An array containing the paths to the files to attache to the post object. Currently we only
+ * @param array $files      An array containing the paths to the files to attache to the post object. Currently we only
  *                          support a single file.
- * @param string $method    Either 'ftp-move' (default) or 'ftp-copy'
  *
  * @return int¦WP_Error the post ID if the function could insert the post, else, a WP_Error object
  *
@@ -371,14 +377,19 @@ function cuar_bulk_create_private_files($args)
  *          'type' => 'usr',
  *          'ids'  => array(1)
  *      ),
- *      array(
- *          'the-file.txt'
+ *      'files'     => array(
+ *          array(
+ *            'name'   => 'example.txt',
+ *            'path'   => '/absolute/path/to/file/',
+ *            'method' => 'noop|copy|move'
+ *          ),
+ *          ...
  *      )
  * );´
  *
  * IMPORTANT NOTE: The files have to be located in the plugin's FTP upload folder.
  */
-function cuar_create_private_file($post_data, $owner, $files, $method = 'ftp-move')
+function cuar_create_private_file($post_data, $owner, $files)
 {
     if ( !isset($owner['type']) || !isset($owner['ids']) || empty($owner['ids']))
     {
@@ -403,22 +414,27 @@ function cuar_create_private_file($post_data, $owner, $files, $method = 'ftp-mov
     $pf_addon = cuar_addon('private-files');
     foreach ($files as $file)
     {
-        $initial_filename = basename($file);
-        $filename = apply_filters('cuar/private-content/files/unique-filename?method=ftp-folder',
-            basename($file),
+        $initial_filename = basename($file['name']);
+        $filename = apply_filters('cuar/private-content/files/unique-filename?method=server',
+            $initial_filename,
             $post_id,
-            null);
+            $file);
 
-        $errors = apply_filters('cuar/private-content/files/on-attach-file?method=ftp-folder',
+        $errors = apply_filters('cuar/private-content/files/on-attach-file?method=server',
             array(),
             $pf_addon,
             $initial_filename,
             $post_id,
             $filename,
             $filename,
-            $method);
+            $file);
 
-        $pf_addon->add_attached_file($post_id, $filename, $filename, 'local', '');
+        $extra = array(
+            'is_protected' => ($file['method'] == 'noop' ? 0 : 1),
+            'abs_path'     => ($file['method'] == 'noop' ? trailingslashit($file['path']) . $file['name'] : ''),
+        );
+
+        $pf_addon->add_attached_file($post_id, $filename, $filename, 'server', $extra);
 
         if ( !empty($errors))
         {
