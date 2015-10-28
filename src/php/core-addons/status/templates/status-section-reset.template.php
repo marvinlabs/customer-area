@@ -1,4 +1,9 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /** Template version: 1.1.0
+
+ -= 1.1.0 =-
+ * Add uninstall button
+
+ */ ?>
 
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
@@ -47,11 +52,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	<?php wp_nonce_field( 'cuar-reset-all-settings', 'cuar-reset-all-settings_nonce' ); ?>
 	<input type="submit" name="cuar-reset-all-settings" id="cuar-reset-all-settings" class="button button-primary cuar-reset-all-settings" value="<?php esc_attr_e( 'Reset default settings', 'cuar' ); ?>" />
 </p>
+
+<h3><?php _e( 'Uninstall WP Customer Area', 'cuar' ); ?></h3>
+
+<p><?php _e('Pressing the button below will clean-up any data related to WP Customer Area (posts, taxonomies, etc.). This cannot be undone!', 'cuar' ); ?></p>
+
+<p>
+	<?php wp_nonce_field( 'cuar-uninstall', 'cuar-uninstall_nonce' ); ?>
+	<input type="submit" name="cuar-uninstall" id="cuar-uninstall" class="button button-primary cuar-uninstall" value="<?php esc_attr_e( 'Clean-up database', 'cuar' ); ?>" />
+</p>
 <script type="text/javascript">
 <!--
 	jQuery(document).ready(function($) {
 		$('input.cuar-reset-all-settings').click('click', function(){
 			var answer = confirm( "<?php echo str_replace( '"', '\\"', __('Are you sure that you want to reset all the settings to their default values (this operation cannot be undone)?', 'cuar' ) ); ?>" );
+			return answer;
+		});
+
+		$('input.cuar-uninstall').click('click', function(){
+			var answer = confirm( "<?php echo str_replace( '"', '\\"', __('Are you sure that you want to delete everything related to WP Customer Area (this operation cannot be undone)?', 'cuar' ) ); ?>" );
 			return answer;
 		});
 	});
