@@ -108,6 +108,12 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 return false;
             }
 
+            // If not submitting the form, just stop here
+            if ( !isset($_POST['cuar_do_register']) && !isset($_GET["nonce"]))
+            {
+                return true;
+            }
+
             // Form ID should match
             if (isset($_POST['cuar_form_id']) && $_POST['cuar_form_id'] != $this->get_slug())
             {

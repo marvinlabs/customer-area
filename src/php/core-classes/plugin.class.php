@@ -778,9 +778,9 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
                     break;
 
-                case 'jquery.knob':
+                case 'bootstrap.slider':
                 {
-                    wp_enqueue_script('jquery.knob', CUAR_PLUGIN_URL . 'libs/knob/jquery.knob.min.js', array('jquery'), $this->get_version());
+                    wp_enqueue_script('bootstrap.slider', CUAR_PLUGIN_URL . 'libs/bootstrap-slider/dist/bootstrap-slider.min.js', array('jquery'), $this->get_version());
                 }
                     break;
 
