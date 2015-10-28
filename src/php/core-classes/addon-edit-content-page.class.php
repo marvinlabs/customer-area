@@ -117,8 +117,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             // Nonce check
             $nonce = isset($_POST["cuar_" . $this->get_slug() . "_nonce"])
                 ? $_POST["cuar_" . $this->get_slug() . "_nonce"]
-                : isset($_GET["nonce"]) ? $_GET["nonce"]
-                    : '';
+                : (isset($_GET["nonce"]) ? $_GET["nonce"] : '');
 
             if ( !wp_verify_nonce($nonce, 'cuar_' . $this->get_slug()))
             {
