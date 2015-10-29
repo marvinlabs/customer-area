@@ -948,6 +948,8 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
 
             if ( !is_admin())
             {
+                add_filter('the_content', array(&$this, 'print_single_private_content_action_links_filter'), 2990);
+
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())
                 {

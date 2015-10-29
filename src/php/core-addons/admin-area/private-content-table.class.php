@@ -129,9 +129,18 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
     protected function get_query_args()
     {
         $args = array(
-            'post_type'   => $this->post_type,
-            'post_status' => $this->parameters['status']
+            'post_type' => $this->post_type
         );
+
+        if (empty($this->parameters['status']) || $this->parameters['status'] == 'any')
+        {
+            $statuses = array_diff(get_available_post_statuses(), array('trash'));
+            $args['post_status'] = $statuses;
+        }
+        else
+        {
+            $args['post_status'] = $this->parameters['status'];
+        }
 
         if ( !empty($this->parameters['author']))
         {

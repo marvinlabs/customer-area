@@ -121,8 +121,14 @@ abstract class CUAR_ListTable extends WP_List_Table
 
         $statuses = $this->get_view_statuses();
 
-        foreach ($statuses as $status => $label)
+        foreach ($statuses as $id => $label)
         {
+            $status = $id;
+            if ($id == 'any')
+            {
+                $status = array_diff(get_available_post_statuses(), array('trash'));
+            }
+
             $args = array_merge($query_args, array(
                 'fields'         => 'ids',
                 'paged'          => 1,
@@ -131,7 +137,7 @@ abstract class CUAR_ListTable extends WP_List_Table
             ));
 
             $q = new WP_Query($args);
-            $this->view_counts[$status] = $q->post_count;
+            $this->view_counts[$id] = $q->post_count;
         }
 
         $this->total_count = $this->view_counts[$this->parameters['status']];

@@ -59,6 +59,9 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
             {
                 add_action('cuar/private-content/view/single-post-action-links?post-type=' . $this->get_friendly_post_type(),
                     array(&$this, 'get_single_content_action_links'));
+
+                add_action('cuar/private-container/view/single-post-action-links?post-type=' . $this->get_friendly_post_type(),
+                    array(&$this, 'get_single_content_action_links'));
             }
         }
 
