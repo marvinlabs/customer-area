@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
 Tested up to:       4.3
-Stable tag:         6.2.2
+Stable tag:         6.3.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,6 +136,9 @@ feel free to fork the project and send us pull requests!
 * Fix: Compatibility problem between the Projects addon and the Protect Post Types addon (https://github.com/marvinlabs/customer-area/issues/164)
 * Fix: A bug was not showing the proper owner on the content edition page when using the Front-office publishing add-on
 * Fix: Do not mark create/update pages as current in the navigation menu
+* Fix: Fix delete button not working in Front-office publishing add-on (https://github.com/marvinlabs/customer-area/issues/173)
+* Fix: Trashed content was shown in the admin-side listing pages
+* Fix: Function to create files from code was not working since 6.2
 
 = 6.2.2 (2015/09/21) =
 

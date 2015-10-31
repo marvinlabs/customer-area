@@ -1,3 +1,18 @@
+// Box sizing
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+  -moz-box-sizing: @boxmodel;
+  box-sizing: @boxmodel;
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
 .cuar-page *, .cuar-page *:before, .cuar-page *:after {
 	-webkit-box-sizing: border-box; 
 	   -moz-box-sizing: border-box; 
@@ -20,11 +35,11 @@ span.label {
 	vertical-align: top;
 }
 
-.metabox-row input[type=text], .metabox-row select, .metabox-row text-area {
+.metabox-row input[type=text], .metabox-row select, .metabox-row textarea {
 	min-width: 200px;
 }
 
-.form-table input[type=text], .form-table select, .form-table text-area {
+.form-table input[type=text], .form-table select, .form-table textarea {
 	min-width: 200px;
 }
 

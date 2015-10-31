@@ -314,13 +314,22 @@ function cuar_format_human_file_size($size)
  *      array(
  *          'post_data' => (...),
  *          'owner'     => (...),
- *          'files'     => (...),
+ *          'files'     => array(
+ *              array(
+ *                 'name'   => 'example.txt',
+ *                 'path'   => '/absolute/path/to/file/',
+ *                 'method' => 'noop|copy|move'
+ *              ),
+ *              ...
+ *          ),
  *      ),
  *      array(
  *          'post_data' => (...),
  *          'owner'     => (...),
  *          'files'     => (...),
- *      ))
+ *      ),
+ *      ...
+ *   )
  * );´
  *
  * @return array An array containing the created post IDs and the errors
@@ -349,12 +358,12 @@ function cuar_bulk_create_private_files($args)
 }
 
 /**
- * @param array $post_data The same array you would give to wp_insert_post to create your post. No need to set the post
- *                         type, this will automatically be set.
- * @param array $owner     An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs
- *                         of corresponding objects
- * @param array $files     An array containing the paths to the files to attache to the post object. Currently we only
- *                         support a single file.
+ * @param array $post_data  The same array you would give to wp_insert_post to create your post. No need to set the post
+ *                          type, this will automatically be set.
+ * @param array $owner      An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs
+ *                          of corresponding objects
+ * @param array $files      An array containing the paths to the files to attache to the post object. Currently we only
+ *                          support a single file.
  *
  * @return int¦WP_Error the post ID if the function could insert the post, else, a WP_Error object
  *
@@ -368,18 +377,20 @@ function cuar_bulk_create_private_files($args)
  *          'type' => 'usr',
  *          'ids'  => array(1)
  *      ),
- *      array(
- *          '/path/to/file/on/server/the-file.txt'
+ *      'files'     => array(
+ *          array(
+ *            'name'   => 'example.txt',
+ *            'path'   => '/absolute/path/to/file/',
+ *            'method' => 'noop|copy|move'
+ *          ),
+ *          ...
  *      )
  * );´
+ *
+ * IMPORTANT NOTE: The files have to be located in the plugin's FTP upload folder.
  */
 function cuar_create_private_file($post_data, $owner, $files)
 {
-    if (count($files) != 1)
-    {
-        return new WP_Error(0, 'cuar_create_private_file only support a single private file');
-    }
-
     if ( !isset($owner['type']) || !isset($owner['ids']) || empty($owner['ids']))
     {
         return new WP_Error(0, 'cuar_create_private_file needs owner data to create the private file');
@@ -403,13 +414,33 @@ function cuar_create_private_file($post_data, $owner, $files)
     $pf_addon = cuar_addon('private-files');
     foreach ($files as $file)
     {
-        $upload_result = $pf_addon->handle_copy_private_file_from_local_folder($post_id, null, $owner, $file);
+        $initial_filename = basename($file['name']);
+        $filename = apply_filters('cuar/private-content/files/unique-filename?method=server',
+            $initial_filename,
+            $post_id,
+            $file);
 
-        if ($upload_result !== true)
+        $errors = apply_filters('cuar/private-content/files/on-attach-file?method=server',
+            array(),
+            $pf_addon,
+            $initial_filename,
+            $post_id,
+            $filename,
+            $filename,
+            $file);
+
+        $extra = array(
+            'is_protected' => ($file['method'] == 'noop' ? 0 : 1),
+            'abs_path'     => ($file['method'] == 'noop' ? trailingslashit($file['path']) . $file['name'] : ''),
+        );
+
+        $pf_addon->add_attached_file($post_id, $filename, $filename, 'server', $extra);
+
+        if ( !empty($errors))
         {
             wp_delete_post($post_id);
 
-            return new WP_Error('upload_error', $upload_result['error']);
+            return new WP_Error('upload_error', implode(', ', $errors));
         }
     }
 

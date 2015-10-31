@@ -1,0 +1,189 @@
+@slider-line-height: 16px;
+@slider-width: 100%;
+@slider-track-height: 1px;
+@slider-track-color: #ccc;
+@slider-thumb-color: #444;
+
+.slider {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-top: @slider-line-height * 0.75;
+
+  &.slider-horizontal {
+    width: @slider-width;
+    height: @slider-line-height;
+    .slider-track {
+      height: @slider-line-height;
+      width: @slider-width;
+      top: 0;
+      left: 0;
+    }
+    .slider-selection, .slider-track-low, .slider-track-high {
+      height: @slider-track-height;
+      top: @slider-line-height/2;
+    }
+    .slider-tick,
+    .slider-handle {
+      margin-left: (-@slider-line-height/2);
+      margin-top: 0;
+      &.triangle {
+        border-width: 0 (@slider-line-height/2) (@slider-line-height/2) (@slider-line-height/2);
+        width: 0;
+        height: 0;
+        border-bottom-color: #0480be;
+        margin-top: 0;
+      }
+    }
+    .slider-tick-label-container {
+      white-space: nowrap;
+      margin-top: @slider-line-height;
+
+      .slider-tick-label {
+        padding-top: @slider-line-height * .2;
+        display: inline-block;
+        text-align: center;
+      }
+    }
+  }
+  &.slider-vertical {
+    height: @slider-width;
+    width: @slider-line-height;
+    .slider-track {
+      width: @slider-track-height;
+      height: 100%;
+      margin-left: (-@slider-line-height/4);
+      left: 50%;
+      top: 0;
+    }
+    .slider-selection {
+      width: 100%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+    .slider-track-low, .slider-track-high {
+      width: 100%;
+      left: 0;
+      right: 0;
+    }
+    .slider-tick,
+    .slider-handle {
+      margin-left: (-@slider-line-height/4);
+      margin-top: (-@slider-line-height/2);
+      &.triangle {
+        border-width: (@slider-line-height/2) 0 (@slider-line-height/2) (@slider-line-height/2);
+        width: 1px;
+        height: 1px;
+        border-left-color: #0480be;
+        margin-left: 0;
+      }
+    }
+  }
+  &.slider-disabled {
+    .slider-handle {
+      background: lighten(@slider-thumb-color, 15%);
+    }
+    .slider-track {
+      background: lighten(@slider-track-color, 15%);
+      cursor: not-allowed;
+    }
+  }
+  input {
+    display: none;
+  }
+  .tooltip {
+    &.top {
+      margin-top: -36px;
+    }
+  }
+  .tooltip-inner {
+    white-space: nowrap;
+  }
+  .hide {
+    display: none;
+  }
+}
+
+.slider-track {
+  position: absolute;
+  cursor: pointer;
+  background: transparent;
+}
+
+.slider-track-low {
+  background: darken(@slider-track-color, 10%);
+}
+
+.slider-track-high {
+  background: @slider-track-color;
+}
+
+.slider-selection {
+  position: absolute;
+  background-color: @slider-thumb-color;
+  .box-sizing(border-box);
+}
+
+.slider-selection.tick-slider-selection {
+  background-color: @slider-thumb-color;
+}
+
+.slider-track-low, .slider-track-high {
+  position: absolute;
+  .box-sizing(border-box);
+}
+
+.slider-handle {
+  position: absolute;
+  width: @slider-line-height * 1.5;
+  height: @slider-line-height;
+  background-color: @slider-thumb-color;
+  filter: none;
+  border: 0 none;
+  border-radius: @slider-line-height / 2;
+  &.round {
+    width: @slider-line-height;
+    border-radius: @slider-line-height / 2;
+  }
+  &.triangle {
+    background: transparent none;
+  }
+  &.custom {
+    background: transparent none;
+    &::before {
+      line-height: @slider-line-height;
+      font-size: 20px;
+      content: '\2605'; //unicode star character
+      color: #726204;
+    }
+  }
+}
+
+.slider-tick {
+  position: absolute;
+  width: @slider-line-height;
+  height: @slider-line-height;
+  .box-sizing(border-box);
+  filter: none;
+  opacity: 0.8;
+  border: 0 none;
+  &.round {
+    border-radius: 50%;
+  }
+  &.triangle {
+    background: transparent none;
+  }
+  &.custom {
+    background: transparent none;
+    &::before {
+      line-height: @slider-line-height;
+      font-size: 20px;
+      content: '\2605'; //unicode star character
+      color: #726204;
+    }
+  }
+  &.in-selection {
+    opacity: 1;
+  }
+}

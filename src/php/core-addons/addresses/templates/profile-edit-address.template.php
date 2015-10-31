@@ -88,30 +88,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         <?php endif; ?>
         <?php if (!in_array('logo_url', $excluded_fields)) : ?>
         <tr class="form-group cuar-address-logo-url">
-            <th><label for="<?php echo $address_id; ?>_logo_url"
-                       class="control-label"><?php _e('Logo', 'cuarin'); ?></label></th>
+            <th><label for="<?php echo $address_id; ?>_logo_url" class="control-label"><?php _e('Logo', 'cuarin'); ?></label></th>
             <td>
                 <div class="cuar-upload-control">
-                    <input type="text" name="<?php echo $address_id; ?>[logo_url]"
-                           id="<?php echo $address_id; ?>_logo"
-                           value="<?php echo esc_attr($address['logo_url']); ?>"
-                           placeholder="<?php esc_attr_e('Logo URL', 'cuarin'); ?>"
-                           class="regular-text cuar-address-field cuar-upload-input"/>
-                    <span>&nbsp;<input type="button" class="cuar-upload-button button-secondary"
-                                       value="<?php _e('Upload Logo', 'cuar'); ?>"/></span>
+                    <input type="text" name="<?php echo $address_id; ?>[logo_url]" id="<?php echo $address_id; ?>_logo" value="<?php echo esc_attr($address['logo_url']); ?>" placeholder="<?php esc_attr_e('Logo URL', 'cuarin'); ?>" class="regular-text cuar-address-field cuar-upload-input"/>
+                    <span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="<?php _e('Upload Logo', 'cuar'); ?>"/></span>
                 </div>
             </td>
         </tr>
         <?php endif; ?>
         <?php if (!in_array('line1', $excluded_fields)) : ?>
         <tr class="form-group cuar-address-line1">
-            <th><label for="<?php echo $address_id; ?>_line1"
-                       class="control-label"><?php _e('Street address', 'cuarin'); ?></label></th>
+            <th><label for="<?php echo $address_id; ?>_line1" class="control-label"><?php _e('Street address', 'cuarin'); ?></label></th>
             <td>
-                <input type="text" name="<?php echo $address_id; ?>[line1]" id="<?php echo $address_id; ?>_line1"
-                       value="<?php echo esc_attr($address['line1']); ?>"
-                       placeholder="<?php esc_attr_e('Street address, line 1', 'cuarin'); ?>"
-                       class="regular-text cuar-address-field"/>
+                <input type="text" name="<?php echo $address_id; ?>[line1]" id="<?php echo $address_id; ?>_line1" value="<?php echo esc_attr($address['line1']); ?>" placeholder="<?php esc_attr_e('Street address, line 1', 'cuarin'); ?>" class="regular-text cuar-address-field"/>
             </td>
         </tr>
         <?php endif; ?>
@@ -119,46 +109,33 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         <tr class="form-group cuar-address-line2">
             <th></th>
             <td>
-                <input type="text" name="<?php echo $address_id; ?>[line2]" id="<?php echo $address_id; ?>_line2"
-                       value="<?php echo esc_attr($address['line2']); ?>"
-                       placeholder="<?php esc_attr_e('Street address, line 2', 'cuarin'); ?>"
-                       class="regular-text cuar-address-field"/>
+                <input type="text" name="<?php echo $address_id; ?>[line2]" id="<?php echo $address_id; ?>_line2" value="<?php echo esc_attr($address['line2']); ?>" placeholder="<?php esc_attr_e('Street address, line 2', 'cuarin'); ?>" class="regular-text cuar-address-field"/>
             </td>
         </tr>
         <?php endif; ?>
         <?php if (!in_array('zip', $excluded_fields)) : ?>
         <tr class="form-group cuar-address-zip">
-            <th><label for="<?php echo $address_id; ?>_zip"
-                       class="control-label"><?php _e('Zip/Postal code', 'cuarin'); ?></label></th>
+            <th><label for="<?php echo $address_id; ?>_zip" class="control-label"><?php _e('Zip/Postal code', 'cuarin'); ?></label></th>
             <td>
-                <input type="text" name="<?php echo $address_id; ?>[zip]" id="<?php echo $address_id; ?>_zip"
-                       value="<?php echo esc_attr($address['zip']); ?>"
-                       placeholder="<?php esc_attr_e('Zip/Postal code', 'cuarin'); ?>"
-                       class="regular-text cuar-address-field"/>
+                <input type="text" name="<?php echo $address_id; ?>[zip]" id="<?php echo $address_id; ?>_zip" value="<?php echo esc_attr($address['zip']); ?>" placeholder="<?php esc_attr_e('Zip/Postal code', 'cuarin'); ?>" class="regular-text cuar-address-field"/>
             </td>
         </tr>
         <?php endif; ?>
         <?php if (!in_array('city', $excluded_fields)) : ?>
         <tr class="form-group cuar-address-city">
-            <th><label for="<?php echo $address_id; ?>_city"
-                       class="control-label"><?php _e('City', 'cuarin'); ?></label></th>
+            <th><label for="<?php echo $address_id; ?>_city" class="control-label"><?php _e('City', 'cuarin'); ?></label></th>
             <td>
-                <input type="text" name="<?php echo $address_id; ?>[city]" id="<?php echo $address_id; ?>_city"
-                       value="<?php echo esc_attr($address['city']); ?>"
-                       placeholder="<?php esc_attr_e('City', 'cuarin'); ?>" class="regular-text cuar-address-field"/>
+                <input type="text" name="<?php echo $address_id; ?>[city]" id="<?php echo $address_id; ?>_city" value="<?php echo esc_attr($address['city']); ?>" placeholder="<?php esc_attr_e('City', 'cuarin'); ?>" class="regular-text cuar-address-field"/>
             </td>
         </tr>
         <?php endif; ?>
         <?php if (!in_array('country', $excluded_fields)) : ?>
         <tr class="form-group cuar-address-country">
-            <th><label for="<?php echo $address_id; ?>_country"
-                       class="control-label"><?php _e('Country', 'cuarin'); ?></label></th>
+            <th><label for="<?php echo $address_id; ?>_country" class="control-label"><?php _e('Country', 'cuarin'); ?></label></th>
             <td>
-                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country"
-                        class="regular-text cuar-address-field">
+                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country" class="regular-text cuar-address-field">
                     <?php foreach (CUAR_CountryHelper::getCountries() as $code => $label) : ?>
-                        <option
-                            value="<?php echo esc_attr($code); ?>" <?php selected($address['country'], $code); ?>><?php echo $label; ?></option>
+                        <option value="<?php echo esc_attr($code); ?>" <?php selected($address['country'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>
                 </select>
             </td>
@@ -167,14 +144,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         <?php if (!in_array('state', $excluded_fields)) : ?>
         <?php $country_states = CUAR_CountryHelper::getStates($address['country']); ?>
         <tr class="form-group cuar-address-state" <?php if (empty($country_states)) echo 'style="display: none;"'; ?>>
-            <th><label for="<?php echo $address_id; ?>_state"
-                       class="control-label"><?php _e('State/Province', 'cuarin'); ?></label></th>
+            <th><label for="<?php echo $address_id; ?>_state" class="control-label"><?php _e('State/Province', 'cuarin'); ?></label></th>
             <td>
-                <select name="<?php echo $address_id; ?>[state]" id="<?php echo $address_id; ?>_state"
-                        class="regular-text cuar-address-field">
+                <select name="<?php echo $address_id; ?>[state]" id="<?php echo $address_id; ?>_state" class="regular-text cuar-address-field">
                     <?php foreach ($country_states as $code => $label) : ?>
-                        <option
-                            value="<?php echo esc_attr($code); ?>" <?php selected($address['state'], $code); ?>><?php echo $label; ?></option>
+                        <option value="<?php echo esc_attr($code); ?>" <?php selected($address['state'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>
                 </select>
             </td>
