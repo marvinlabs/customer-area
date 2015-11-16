@@ -133,6 +133,7 @@ feel free to fork the project and send us pull requests!
 
 * New: Add addresses (home, billing) to the user profile - one step towards better CRM integrated into WP Customer Area
 * New: Allow overriding the action (download/view) on a per file basis using hooks (or via settings in the Enhanced Files addon)
+* New: add attachment details to log event for download/view
 * Fix: Compatibility problem between the Projects addon and the Protect Post Types addon (https://github.com/marvinlabs/customer-area/issues/164)
 * Fix: A bug was not showing the proper owner on the content edition page when using the Front-office publishing add-on
 * Fix: Do not mark create/update pages as current in the navigation menu
