@@ -1,5 +1,8 @@
 <?php
-/** Template version: 2.0.0
+/** Template version: 3.0.0
+ *
+ * -= 3.0.0 =-
+ * - Improve UI for new master-skin
  *
  * -= 2.0.0 =-
  * - Add cuar- prefix to bootstrap classes
@@ -33,21 +36,13 @@ $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
 ?>
 
-<div class="cuar-private-page cuar-item cuar-item-large<?php echo $extra_class; ?>">
-    <div class="cuar-title">
+<tr class="cuar-private-page cuar-item cuar-item-large<?php echo $extra_class; ?>">
+    <td class="cuar-title">
         <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
-    </div>
+    </td>
 
-    <div class="cuar-subtitle">
+    <td class="cuar-subtitle">
         <a href="<?php the_permalink(); ?>"
            title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
-    </div>
-
-    <?php if (has_post_thumbnail(get_the_ID())) : ?>
-        <div class="cuar-cover">
-            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>">
-                <?php the_post_thumbnail('medium', array('class' => "img-responsive")); ?>
-            </a>
-        </div>
-    <?php endif; ?>
-</div>
+    </td>
+</tr>

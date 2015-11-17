@@ -5,9 +5,12 @@
 
 &.cuar-menu-container {
   display:block;
+  margin-bottom: @line-height-computed;
+  background: @body-bg;
 
   .navbar {
-    min-height: 52px;
+    margin: 0;
+    min-height: initial;
 
     .navbar-brand {
       display: none;
@@ -16,7 +19,6 @@
 
   @media (max-width: @screen-xs) {
     .navbar {
-      min-height: 50px;
 
       .nav-container {
         margin: 0;

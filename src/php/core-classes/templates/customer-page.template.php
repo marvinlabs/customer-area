@@ -8,7 +8,7 @@
 	$content_classe = $this->page_description['slug'] == 'customer-dashboard' ? ' admin-panels' : '';
 ?>
 <div class="cuar-page <?php echo implode( ' ', $page_classes ); ?>">
-	<div class="cuar-page-header"><?php 
+	<div class="cuar-page-header"><?php
 		$this->print_page_header( $args, $shortcode_content ); 
 	?></div>
 	

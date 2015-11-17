@@ -8,11 +8,16 @@
   width: 100%;
   box-sizing: border-box;
   display: block;
-  margin-bottom: @line-height-computed;
+  margin: 0;
+  padding: 0;
+  border: none;
 
-  background: @body-bg;
-  border: 1px solid darken(@body-bg, 3%);
-  padding: @padding-base-vertical @padding-base-horizontal;
+  &.cuar-content-container {
+    margin-bottom: @line-height-computed;
+    background: @body-bg;
+    border: 1px solid darken(@body-bg, 3%);
+    padding: @padding-base-vertical @padding-base-horizontal;
+  }
 }
 
 .box-sizing(border-box);
@@ -26,6 +31,18 @@ a {
   text-decoration: none;
 }
 
-th {
+table, th, .table>thead>tr>th, table>thead>tr>th, td, .table>tbody>tr>td, table>tbody>tr>td {
+  font-family: @font-family-sans-serif;
+  font-size: @font-size-base;
   color: inherit;
+  border-color: inherit;
+}
+
+th, .table>thead>tr>th, table>thead>tr>th {
+  text-transform: uppercase;
+  font-size: @font-size-small;
+}
+
+td.progress, .table>thead>tr>td.progress, table>thead>tr>td.progress {
+  border-radius: 0;
 }

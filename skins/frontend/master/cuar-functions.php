@@ -1,9 +1,29 @@
 <?php
+if ( !function_exists('cuar_load_theme_scripts'))
+{
+    /**
+     * TODO: Move into CUAR php classes and maybe improve toolbar to be more functional.
+     * This will take care of rendering a toolbar area where to place buttons and so on.
+     * @param $content
+     * @return string
+     */
+    function cuar_print_page_toolbar($content)
+    {
+        if (is_admin()) return $content;
+        $toolbar = '<div class="cuar-toolbar panel-footer">';
+        $toolbar .= apply_filters('cuar/core/page/toolbar', '');
+        $toolbar .= '</div>';
+        return $toolbar . $content;
+    }
+
+    add_filter('the_content', 'cuar_print_page_toolbar', 880);
+}
 
 if ( !function_exists('cuar_load_theme_scripts'))
 {
 
     /**
+     * TODO: Librairies shouldn't always be enabled.
      * Load theme particular scripts
      */
     function cuar_load_skin_scripts()
@@ -73,7 +93,6 @@ if ( !function_exists('cuar_enable_bootstrap_nav_walker'))
     add_filter('cuar/core/page/nav-menu-args', 'cuar_enable_bootstrap_nav_walker');
 }
 
-
 if ( !function_exists('cuar_wrap_content_into_container'))
 {
 
@@ -91,4 +110,17 @@ if ( !function_exists('cuar_wrap_content_into_container'))
     }
 
     add_filter('the_content', 'cuar_wrap_content_into_container', 9998);
+}
+
+if ( ! function_exists('cuar_custom_editor_styles'))
+{
+    /**
+     * Load custom styles for TinyMCE
+     */
+    function cuar_custom_editor_styles( $mce_css ) {
+        if (is_admin()) return $mce_css;
+        $mce_css .= ', ' . plugins_url( 'assets/css/custom-editor-style.css', __FILE__ );
+        return $mce_css;
+    }
+    add_action( 'mce_css', 'cuar_custom_editor_styles' );
 }

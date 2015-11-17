@@ -22,13 +22,24 @@
         </span>
     </div>
     <div class="cuar-private-pages-list cuar-item-list panel-body">
-        <?php
-        while ($content_query->have_posts()) {
-            $content_query->the_post();
-            global $post;
+        <table class="table">
+            <thead>
+            <tr class="">
+                <th><?php _e('Title', 'cuar'); ?></th>
+                <th><?php _e('Owners', 'cuar'); ?></th>
+            </tr>
+            </thead>
 
-            include($item_template);
-        }
-        ?>
+            <tbody>
+            <?php
+            while ($content_query->have_posts()) {
+                $content_query->the_post();
+                global $post;
+
+                include($item_template);
+            }
+            ?>
+            </tbody>
+        </table>
     </div>
 </div>

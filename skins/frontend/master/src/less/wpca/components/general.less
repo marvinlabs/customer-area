@@ -118,7 +118,7 @@
 
 .cuar-page {
 
-  &.cuar-page-with-sidebar{
+  &.cuar-page-with-sidebar {
     .make-row();
     .clearfix;
 
@@ -130,10 +130,6 @@
     }
     .cuar-page-sidebar {
       .make-md-column(4);
-
-      @media (max-width: @screen-sm-max) {
-        clear: left;
-      }
     }
   }
 }
@@ -151,4 +147,15 @@
 
 #wp-admin-bar-customer-area > a:before {
   content: "\f332";
+}
+
+// Dividers Colors
+// --------------------------------------------------
+
+hr {
+  border-top: 1px solid @hr-border;
+}
+hr.alt { border-top: 1px dashed @hr-border-alt }
+.divider {
+  background: #e2e2e2;
 }

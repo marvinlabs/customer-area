@@ -16,7 +16,7 @@
 @import "../core/theme_variables";
 
 // Base Mixins
-@import "@{base-path}/mixins.less";
+@import "../core/theme_mixins.less";
 
 // Base Wrapper
 body .entry-content .cuar-content-container,
@@ -38,5 +38,14 @@ body .entry-content .cuar-menu-container,
 
 }
 
+// Main Base components that require to be outside containers
+// ----------------------------
+@import "@{base-path}/modals.less";
+@import "@{base-path}/tooltip.less";
+// @import "@{base-path}/popovers.less";
+// @import "@{base-path}/carousel.less";
+@import "components/select2";
+
 // Main WPCA components that require to be outside containers
+// ----------------------------
 @import "inline";

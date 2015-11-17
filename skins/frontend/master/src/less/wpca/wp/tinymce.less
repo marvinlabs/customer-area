@@ -1,0 +1,207 @@
+& {
+  // Variables
+  // Syntax: <control>-(<sub control>)-<bg|border|text>-(<state>)-(<extra>);
+  // Example: @btn-primary-bg-hover-hlight;
+
+  @prefix: mce;
+
+  // Default font
+  @font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @font-size: 14px;
+  @line-height: 20px;
+  @has-gradients: false;
+  @has-radius: false;
+  @has-boxshadow: false;
+  @has-button-borders: false;
+
+  // Text colors
+  @text: @text-color;
+  @text-inverse: spin(@text-color, 180);
+  @text-disabled: @muted;
+  @text-shadow: 0 1px 1px hsla(hue(@text-inverse), saturation(@text-inverse), lightness(@text-inverse), 0.75);
+  @text-error: @brand-danger;
+
+  // Button
+  @btn-text: @text;
+  @btn-text-shadow: none;
+  @btn-border-top: transparent;
+  @btn-border-right: transparent;
+  @btn-border-bottom: transparent;
+  @btn-border-left: transparent;
+  @btn-caret-border: @btn-text;
+  @btn-text-disabled: @text-disabled;
+  @btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+  @btn-box-shadow-active: inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05);
+  @btn-box-disabled-opacity: 0.4;
+  @btn-bg: @btn-default-bg;
+  @btn-bg-hlight: lighten(@btn-bg, 5%);
+  @btn-bg-hover: darken(@btn-bg, 5%);
+  @btn-bg-hlight-hover: darken(@btn-bg-hlight, 5%);
+  @btn-border-hover: darken(@btn-bg, 20%);
+  @btn-border-active: darken(@btn-bg, 20%);
+  @btn-padding: 4px 8px;
+
+  //@btn-primary-bg: @btn-primary-bg;
+  @btn-primary-bg-hlight: lighten(@btn-primary-bg, 5%);
+  @btn-primary-bg-hover: darken(@btn-primary-bg, 5%);
+  @btn-primary-bg-hover-hlight: darken(@btn-primary-bg-hlight, 5%);
+  @btn-primary-text: @btn-primary-color;
+  @btn-primary-text-shadow: none;
+  @btn-primary-border-top: mix(@btn-border-top, @btn-primary-bg, 50%);
+  @btn-primary-border-right: mix(@btn-border-right, @btn-primary-bg, 50%);
+  @btn-primary-border-bottom: mix(@btn-border-bottom, @btn-primary-bg, 50%);
+  @btn-primary-border-left: mix(@btn-border-left, @btn-primary-bg, 50%);
+  @btn-primary-border: transparent;
+  @btn-primary-border-hover: transparent;
+
+  // Button group
+  @btn-group-border-width: 1px;
+
+  // Menu
+  @menuitem-text: @text;
+  @menu-bg: @navbar-default-bg;
+  @menu-margin: -1px 0 0;
+  @menu-border: @navbar-default-border;
+  @menubar-border: mix(@panel-border, @panel-bg, 60%);
+  @menuitem-text-inverse: @text-inverse;
+  @menubar-bg-active: darken(@btn-bg, 10%);
+  @menuitem-bg-hover: @navbar-default-link-hover-bg;
+  @menuitem-bg-selected: @navbar-default-link-active-bg;
+  @menuitem-bg-selected-hlight: lighten(@navbar-default-bg, 5%);
+  @menuitem-bg-disabled: @navbar-default-link-disabled-bg;
+  @menuitem-caret: @menuitem-text;
+  @menuitem-caret-selected: @menuitem-text-inverse;
+  @menuitem-separator-top: transparent;
+  @menuitem-separator-bottom: rgba(0, 0, 0, 0.1);
+  @menuitem-bg-active: @navbar-default-link-active-bg;
+  @menuitem-text-active: @navbar-default-link-active-color;
+  @menuitem-preview-border-active: @navbar-default-toggle-border-color;
+  @menubar-menubtn-text: @navbar-default-link-color;
+
+  // Panel
+  @panel-border: @panel-border-color;
+  //@panel-bg: @panel-bg;
+  @panel-bg-hlight: lighten(@panel-border-color, 5%);
+
+  // Tabs
+  @tab-border: @nav-tabs-border-color;
+  @tab-bg: @menu-bg;
+  @tab-bg-hover: @menuitem-bg-hover;
+  @tab-bg-active: @menuitem-bg-active;
+  @tabs-bg: darken(@menu-bg, 2%);
+
+  // Tooltip
+  //@tooltip-bg: @tooltip-bg;
+  @tooltip-text: @tooltip-color;
+  @tooltip-font-size: 11px;
+
+  // Window
+  @window-bg: @modal-backdrop-bg;
+  @window-border: @modal-content-fallback-border-color;
+  @window-head-border: @window-border;
+  @window-head-close: mix(@text, @window-bg, 60%);
+  @window-head-close-hover: mix(@text, @window-bg, 40%);
+  @window-foot-border: @window-border;
+  @window-foot-bg: @window-bg;
+  @window-fullscreen-bg: @modal-backdrop-bg;
+  @window-modalblock-bg: @modal-content-bg;
+  @window-modalblock-opacity: 0.3;
+  @window-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  @window-title-font-size: 20px;
+
+  // Popover
+  @popover-bg: @window-bg;
+  @popover-arrow-width: 10px;
+  @popover-arrow: @window-bg;
+  @popover-arrow-outer-width: @popover-arrow-width + 1;
+  @popover-arrow-outer: rgba(0, 0, 0, 0.25);
+
+  // Floatpanel
+  @floatpanel-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+  // Checkbox
+  @checkbox-bg: @btn-bg;
+  @checkbox-bg-hlight: @btn-bg-hlight;
+  @checkbox-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+  @checkbox-border: @btn-default-border;
+  @checkbox-border-focus: darkden(@checkbox-border, 5%);
+
+  // Path
+  @path-text: @breadcrumb-color;
+  @path-bg-focus: @breadcrumb-bg;
+  @path-text-focus: @breadcrumb-active-color;
+
+  // Textbox
+  @textbox-text-placeholder: @input-color-placeholder;
+  @textbox-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  @textbox-bg: @input-bg;
+  @textbox-border: @input-border;
+  @textbox-border-focus: @input-border-focus;
+
+  // Throbber
+  @throbber-bg: @window-bg url('../img/tinymce/loader.gif') no-repeat center center;
+
+  // Combobox
+  @combobox-border: @textbox-border;
+
+  // Colorpicker
+  @colorpicker-border: @textbox-border;
+  @colorpicker-hue-bg: #fff;
+  @colorpicker-hue-border: #333;
+
+  // Grid
+  @grid-bg-active: @menuitem-bg-active;
+  @grid-border-active: @menuitem-bg-active;
+  @grid-border: #d6d6d6;
+
+  // Misc
+  @colorbtn-backcolor-bg: @btn-default-bg;
+  @iframe-border: @panel-border;
+
+  // Slider
+  @slider-border: #AAA;
+  @slider-bg: #EEE;
+  @slider-handle-border: #BBB;
+  @slider-handle-bg: #DDD;
+
+  // Flow layout
+  @flow-layout-spacing: 2px;
+
+  @import "tinymce/Reset";
+  @import "tinymce/Mixins";
+  @import "tinymce/TinyMCE";
+  @import "tinymce/Button";
+  @import "tinymce/ButtonGroup";
+  @import "tinymce/Checkbox";
+  @import "tinymce/ColorBox";
+  @import "tinymce/ColorButton";
+  @import "tinymce/ColorPicker";
+  @import "tinymce/ComboBox";
+  @import "tinymce/FloatPanel";
+  @import "tinymce/FlowLayout";
+  @import "tinymce/Iframe";
+  @import "tinymce/Icons";
+  @import "tinymce/Icons.Ie7";
+  @import "tinymce/Label";
+  @import "tinymce/ListBox";
+  @import "tinymce/Menu";
+  @import "tinymce/MenuBar";
+  @import "tinymce/MenuButton";
+  @import "tinymce/MenuItem";
+  @import "tinymce/Panel";
+  @import "tinymce/Path";
+  @import "tinymce/Radio";
+  @import "tinymce/ResizeHandle";
+  @import "tinymce/Slider";
+  @import "tinymce/SplitButton";
+  @import "tinymce/TabPanel";
+  @import "tinymce/TextBox";
+  @import "tinymce/Throbber";
+  @import "tinymce/Tooltip";
+  @import "tinymce/Window";
+
+  div.@{prefix}-edit-area {
+    background: @input-bg;
+    color: @input-color;
+  }
+}

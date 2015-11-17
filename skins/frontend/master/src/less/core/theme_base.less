@@ -1,28 +1,28 @@
-
 // Define base path
 // ----------------------------
 @base-path:	 "../../../../../../../../vendor/other/framework/theme/assets/skin/base";
 
-// Base Resources 
-// ----------------------------
-
 // Base Mixins
+// ------------------------------------------------
 // @import "@{base-path}/mixins.less";
 
 // Base Dependencies
+// ------------------------------------------------
 @import "@{base-path}/normalize.less";
 @import "@{base-path}/print.less";
 
 // Base Elements
+// ------------------------------------------------
 @import "@{base-path}/scaffolding.less";
 @import "@{base-path}/type.less";
 @import "@{base-path}/code.less";
-// @import "@{base-path}/grid.less";
+@import "@{base-path}/grid.less";
 @import "@{base-path}/tables.less";
 @import "@{base-path}/forms.less";
 @import "@{base-path}/buttons.less";
 
 // Base Components
+// ------------------------------------------------
 @import "@{base-path}/component-animations.less";
 @import "@{base-path}/dropdowns.less";
 @import "@{base-path}/button-groups.less";
@@ -52,25 +52,35 @@
 @import "@{base-path}/icons.less";
 @import "@{base-path}/widgets.less";
 
-// Base Components w/ JavaScript
-@import "@{base-path}/modals.less";
-@import "@{base-path}/tooltip.less";
-@import "@{base-path}/popovers.less";
-@import "@{base-path}/carousel.less";
+// Base Components w/ JavaScript // Move to inline elements
+// ------------------------------------------------
+// @import "@{base-path}/modals.less";
+// @import "@{base-path}/tooltip.less";
+// @import "@{base-path}/popovers.less";
+// @import "@{base-path}/carousel.less";
 
 // Base Utility classes
+// ------------------------------------------------
 @import "@{base-path}/utilities.less";
 @import "@{base-path}/responsive-utilities.less";
 @import "@{base-path}/helpers.less";
 @import "@{base-path}/table-tools.less";
 
 // Theme Settings
+// ------------------------------------------------
 @import "@{base-path}/shared.less";
 @import "@{base-path}/settings.less";
 
 // Primary Components - includes:
 // Sidebars, Topbar, Navbar, Footer, and Trays
-// @import "@{base-path}/components/all.less";
+// ------------------------------------------------
+// @import "@{base-path}/components/navbar";
+// @import "@{base-path}/components/content_trays";
+// @import "@{base-path}/components/sidebar_left";
+// @import "@{base-path}/components/sidebar_right";
+// @import "@{base-path}/components/sidebar_actions";
+// @import "@{base-path}/components/topbar";
+// @import "@{base-path}/components/footer"; // Added update v1.45
 
 // Page specific styles
 @import "@{base-path}/pages.less";
@@ -80,4 +90,8 @@
 
 // Theme Utility - includes:
 // demo, responsive, print, and boxed layout styles
-@import "@{base-path}/utility/all.less";
+// ------------------------------------------------
+// @import "@{base-path}/utility/boxed.less";
+// @import "@{base-path}/utility/demo.less";
+@import "@{base-path}/utility/print.less";
+@import "@{base-path}/utility/responsive.less";

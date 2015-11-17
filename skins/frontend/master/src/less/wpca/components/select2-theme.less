@@ -3,8 +3,8 @@
   /* SINGLE LIST
    * ------------------------------------------------- */
   .select2-selection--single {
-    background-color: darken(@input-color, 5%);
-    border: 1px solid @cuar-color-overlay;
+    background-color: @input-bg;
+    border: 1px solid @input-border;
     border-radius: 0;
 
     &:focus {
@@ -37,7 +37,7 @@
       width: 20px;
 
       b {
-        border-color: @input-border @transparent @transparent @transparent;
+        border-color: @input-color transparent transparent transparent;
         border-style: solid;
         border-width: 5px 4px 0 4px;
 
@@ -93,7 +93,7 @@
   /* MULTIPLE LIST
    * ------------------------------------------------- */
   .select2-selection--multiple {
-    background-color: darken(@input-color, 5%);
+    background-color: darken(@input-bg, 5%);
     border: 1px solid @cuar-color-overlay;
     border-radius: 0;
     cursor: text;
@@ -206,6 +206,7 @@
 
   .select2-search--dropdown {
     .select2-search__field {
+      background: @input-bg;
       border: 1px solid @input-border;
       &:focus {
         outline: 0;
@@ -215,7 +216,7 @@
 
   .select2-search--inline {
     .select2-search__field {
-      background: transparent;
+      background: @input-bg;
       border: none;
       outline: 0;
     }

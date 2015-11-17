@@ -632,7 +632,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             $out = ob_get_contents();
             ob_end_clean();
 
-            return $out . $content;
+            return $content . $out;
         }
 
         public function print_single_private_content_footer()
@@ -912,7 +912,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
             if ( !is_admin())
             {
-                add_filter('the_content', array(&$this, 'print_single_private_content_action_links_filter'), 2990);
+                add_filter('cuar/core/page/toolbar', array(&$this, 'print_single_private_content_action_links_filter'));
 
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())

@@ -1,5 +1,8 @@
 <?php
-/** Template version: 2.0.0
+/** Template version: 3.0.0
+ *
+ * -= 3.0.0 =-
+ * - Improve UI for new master-skin
  *
  * -= 2.0.0 =-
  * - Add cuar- prefix to bootstrap classes

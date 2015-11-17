@@ -59,8 +59,8 @@ if ($files && is_array($files) && $file_count >= 1) {
     } else {
         if ($file_count > 1 && isset($extensions[cuar_get_the_attached_file_type($post->ID, $files)])) {
             $files_icon = $extensions[cuar_get_the_attached_file_type($post->ID, $files)];
-        } else if ($file_count == 1 && isset($files[0]) && isset($extensions[cuar_get_the_attached_file_type($post->ID, $files[0])])) {
-            $files_icon = $extensions[cuar_get_the_attached_file_type($post->ID, $files[0])];
+        } else if ($file_count == 1 && isset(array_values($files)[0]) && isset($extensions[cuar_get_the_attached_file_type($post->ID, array_values($files[0]))])) {
+            $files_icon = $extensions[cuar_get_the_attached_file_type($post->ID, array_values($files)[0])];
         } else {
             $files_icon = 'default';
         }
@@ -80,17 +80,17 @@ if ($files && is_array($files) && $file_count >= 1) {
                 the_post_thumbnail('medium');
             } else {
                 ?>
-                <div class="va-m fs40 text-center bg-info light"
-                     style="display: inline-block; height: 200px; width: 100%;">
-                    <i class="<?php echo $extensions[$files_icon]; ?> mt30 mr30 text-info dark icon-bg"></i>
-                    <h6 class="text-white mn fs50" style="margin-top: 20%!important;z-index: 2;position: relative;">
+                <div class="va-m pt40 text-center bg-primary light"
+                     style="display: inline-block; height: 150px; width: 100%;">
+                    <i class="<?php echo $extensions[$files_icon]; ?> mt30 mr5 text-primary dark icon-bg"></i>
+                    <h6 class="text-white mn fs30" style="margin-top: 20%!important;z-index: 2;position: relative;">
                         <?php
                         if ($file_count == 0) {
                             _e('no file', 'cuar');
                         } else if ($file_count > 1) {
                             _e(sprintf(_n('%1$s file', '%1$s files', $file_count, 'cuar'), $file_count));
                         } else {
-                            cuar_the_attached_file_type($post->ID, $files[0]);
+                            cuar_the_attached_file_type($post->ID, array_values($files)[0]);
                         }
                         ?>
                     </h6>

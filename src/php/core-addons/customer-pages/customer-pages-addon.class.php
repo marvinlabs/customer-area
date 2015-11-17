@@ -83,6 +83,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             else
             {
                 add_filter('body_class', array(&$this, 'add_body_class'));
+                add_filter('cuar/core/page/toolbar', array(&$this, 'get_subpages_menu'));
             }
         }
 
@@ -916,7 +917,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
         }
 
         // Print a row of buttons that allow to click the child pages even on mobile
-        public function get_subpages_menu()
+        public function get_subpages_menu($content)
         {
             $theme_locations = get_nav_menu_locations();
             if ( !isset($theme_locations['cuar_main_menu']))
@@ -944,10 +945,10 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
             if ( !empty($out))
             {
-                $out = '<div class="cuar-child-pages-menu btn-toolbar"><div class="btn-group">' . $out . '</div></div>';
+                $out = '<div class="cuar-child-pages-menu btn-group">' . $out . '</div>';
             }
 
-            return $out;
+            return $content . $out;
         }
 
         public function get_current_menu_item_id()

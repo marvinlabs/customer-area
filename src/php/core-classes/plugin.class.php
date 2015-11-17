@@ -842,7 +842,7 @@ if ( !class_exists('CUAR_Plugin')) :
 
                 case 'bootstrap.slider':
                 {
-                    wp_enqueue_script('bootstrap.slider', CUAR_PLUGIN_URL . 'libs/bootstrap-slider/dist/bootstrap-slider.min.js', array('jquery'), $cuar_version);
+                    wp_enqueue_script('bootstrap.slider', CUAR_PLUGIN_URL . 'libs/js/bootstrap-slider/bootstrap-slider.min.js', array('jquery'), $cuar_version);
                     break;
                 }
 
@@ -864,27 +864,27 @@ if ( !class_exists('CUAR_Plugin')) :
 
                 case 'jquery.autogrow':
                 {
-                    wp_enqueue_script('jquery.autogrow', CUAR_PLUGIN_URL . 'libs/autogrow/autogrow.min.js', array('jquery'), $this->get_version());
+                    wp_enqueue_script('jquery.autogrow', CUAR_PLUGIN_URL . 'libs/js/other/autogrow/autogrow.min.js', array('jquery'), $cuar_version);
                 }
                     break;
 
                 case 'jquery.jeditable':
                 {
-                    wp_enqueue_script('jquery.autogrow', CUAR_PLUGIN_URL . 'libs/autogrow/autogrow.min.js', array('jquery'), $cuar_version);
-                    wp_enqueue_script('jquery.jeditable', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.min.js', array('jquery'), $cuar_version);
-                    wp_enqueue_script('jquery.jeditable.autogrow', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.autogrow.min.js',
+                    wp_enqueue_script('jquery.autogrow', CUAR_PLUGIN_URL . 'libs/js/other/autogrow/autogrow.min.js', array('jquery'), $cuar_version);
+                    wp_enqueue_script('jquery.jeditable', CUAR_PLUGIN_URL . 'libs/js/other/jeditable/jquery.jeditable.min.js', array('jquery'), $cuar_version);
+                    wp_enqueue_script('jquery.jeditable.autogrow', CUAR_PLUGIN_URL . 'libs/js/other/jeditable/jquery.jeditable.autogrow.min.js',
                         array('jquery', 'jquery.jeditable', 'jquery.autogrow'), $cuar_version);
-                    wp_enqueue_script('jquery.jeditable.datepicker', CUAR_PLUGIN_URL . 'libs/jeditable/jquery.jeditable.datepicker.js',
+                    wp_enqueue_script('jquery.jeditable.datepicker', CUAR_PLUGIN_URL . 'libs/js/other/jeditable/jquery.jeditable.datepicker.min.js',
                         array('jquery', 'jquery.jeditable', 'jquery-ui-datepicker'), $cuar_version);
                     break;
                 }
 
                 case 'jquery.fileupload':
                 {
-                    wp_enqueue_script('jquery.ui.widget', CUAR_PLUGIN_URL . 'libs/fileupload/vendor/jquery.ui.widget.js', array('jquery'), $cuar_version);
-                    wp_enqueue_script('jquery.iframe-transport', CUAR_PLUGIN_URL . 'libs/fileupload/jquery.iframe-transport.js', array('jquery'),
+                    wp_enqueue_script('jquery.ui.widget', CUAR_PLUGIN_URL . 'libs/js/fileupload/vendor/jquery.ui.widget.min.js', array('jquery'), $cuar_version);
+                    wp_enqueue_script('jquery.iframe-transport', CUAR_PLUGIN_URL . 'libs/js/fileupload/jquery.iframe-transport.min.js', array('jquery'),
                         $cuar_version);
-                    wp_enqueue_script('jquery.fileupload', CUAR_PLUGIN_URL . 'libs/fileupload/jquery.fileupload.js', array('jquery'), $cuar_version);
+                    wp_enqueue_script('jquery.fileupload', CUAR_PLUGIN_URL . 'libs/js/fileupload/jquery.fileupload.min.js', array('jquery'), $cuar_version);
                     break;
                 }
 

@@ -40,7 +40,7 @@
 //** Global textual link color.
 @link-color:            @cuar-color-primary;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      @cuar-color-primary-70;
+@link-hover-color:      darken(@link-color, 5%);
 
 //** Background color for `<#main>`.
 @main-bg: 				@cuar-color-neutral-30;
@@ -149,13 +149,13 @@
 //** Default background color used for all tables.
 @table-bg:                      @transparent;
 //** Background color used for `.table-striped`.
-@table-bg-accent:               @gray-light;
+@table-bg-accent:               mix(@gray-light, @gray-lighter, 60%);
 //** Background color used for `.table-hover`.
 @table-bg-hover:                @gray-lighter;
 @table-bg-active:               @table-bg-hover;
 
 //** Border color for table and cell borders.
-@table-border-color:            @gray-dark;
+@table-border-color:            mix(@gray-dark, @gray-darker, 50%);
 
 
 //== Buttons
@@ -164,7 +164,7 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-bg:                 @brand-default;
+@btn-default-bg:                 @cuar-color-neutral-10;
 @btn-default-color:              contrast(@btn-default-bg, @palette-Black-Text, @palette-White-Text);
 @btn-default-border:             darken(@btn-default-bg, 8%);
 
@@ -208,18 +208,18 @@
 //##
 
 //** `<input>` background color
-@input-bg:                       @cuar-color-neutral-dark;
+@input-bg:                       @cuar-color-neutral-10;
 //** `<input disabled>` background color
-@input-bg-disabled:              @cuar-color-contrast-disabled;
+@input-bg-disabled:              @cuar-color-neutral-30;
 
 //** Text color for `<input>`s
-@input-color:                    @cuar-color-neutral-light;
+@input-color:                    contrast(@input-bg, @palette-Black-Text, @palette-White-Text);
 //** `<input>` border color
-@input-border:                   darken(@input-bg, 8%);
+@input-border:                   contrast(@input-bg, darken(@input-bg, 20%), darken(@input-bg, 8%));
 //** `<input>` border radius
 @input-border-radius:            @border-radius-small;
 //** Border color for inputs on focus
-@input-border-focus:             @cuar-color-primary-80;
+@input-border-focus:             mix(@main-bg, @cuar-color-primary-80, 40%);
 
 
 //** Placeholder text color
@@ -242,6 +242,9 @@
 @input-group-addon-bg:           contrast(@input-group-addon-color, @cuar-color-neutral-dark, @cuar-color-neutral-light);
 //** Border color for textual input addons
 @input-group-addon-border-color: darken(@input-group-addon-bg, 8%);
+
+//** Disabled cursor for form controls and buttons.
+@cursor-disabled:                not-allowed;
 
 
 //== Dropdowns
@@ -405,8 +408,8 @@
 @navbar-collapse-max-height:       340px;
 
 @navbar-default-color:             @cuar-color-neutral-90;
-@navbar-default-bg:                @cuar-color-neutral-40;
-@navbar-default-border:            darken(@navbar-default-bg, 8%);
+@navbar-default-bg:                @cuar-color-neutral-10;
+@navbar-default-border:            darken(@navbar-default-bg, 16%);
 
 // Navbar links
 @navbar-default-link-hover-bg:             @cuar-color-neutral-20;
@@ -460,7 +463,7 @@
 
 //=== Shared nav styles
 @nav-link-padding:                          10px 15px;
-@nav-link-hover-bg:                         @gray-lighter;
+@nav-link-hover-bg:                         darken(@navbar-default-bg, 5%);
 
 @nav-disabled-link-color:                   @gray-light;
 @nav-disabled-link-hover-color:             @gray-light;
@@ -740,14 +743,14 @@
 //##
 
 //** Background color of the whole progress component
-@progress-bg:                 #ececec;
+@progress-bg:                 @cuar-color-neutral-darker;
 
 //** Progress bar text color
-@progress-bar-color:          #fff;
+@progress-bar-color:          contrast(@progress-bg, @palette-Black-Text, @palette-White-Text);
 
 //** Default progress bar color
-@progress-bar-bg:             #999999;
-@progress-bar-default-bg:     #999999;
+@progress-bar-bg:             lighten(@cuar-color-neutral-dark, 3%);
+@progress-bar-default-bg:     @progress-bar-bg;
 
 //** Primary progress bar color
 @progress-bar-primary-bg:     @brand-primary;
@@ -819,8 +822,8 @@
 @panel-heading-font-color:     @cuar-color-text;
 @panel-heading-font-size:      13px;
 @panel-heading-font-weight:    600;
-@panel-heading-bg:             @cuar-color-neutral-30;
-@panel-heading-border-color:   @cuar-color-neutral-20;
+@panel-heading-bg:             @navbar-default-bg;
+@panel-heading-border-color:   darken(@panel-heading-bg, 16%);
 
 // Panel Body
 @panel-body-padding:          15px;
@@ -830,9 +833,9 @@
 @panel-footer-padding:        10px 15px;
 
 // Panel Border Settings
-@panel-border-color:          @cuar-color-neutral-20; // Contextual classes apply colored borders. ie: ".panel-info"
+@panel-border-color:          @panel-heading-border-color; // Contextual classes apply colored borders. ie: ".panel-info"
 @panel-border-radius:         2px;
-@panel-inner-border:          @cuar-color-contrast-hint-text;
+@panel-inner-border:          @panel-heading-border-color;
 
 // Panel Contextuals
 @panel-default-text:          @cuar-color-text;
@@ -894,8 +897,8 @@
 //
 //##
 
-@well-bg:                     #f5f5f5;
-@well-border:                 darken(@well-bg, 7%);
+@well-bg:                     mix(@main-bg, @body-bg, 50%);
+@well-border:                 mix(@well-bg, @gray-darker, 20%);
 
 
 //== Badges
@@ -964,15 +967,15 @@
 //
 //##
 
-@code-color:                  #c7254e;
-@code-bg:                     #f9f2f4;
+@code-bg:                     @cuar-color-neutral-10;
+@code-color:                  mix(@text-color, @code-bg, 70%);
 
 @kbd-color:                   #fff;
 @kbd-bg:                      #333;
 
-@pre-bg:                      #eaeef0;
-@pre-color:                   @gray-dark;
-@pre-border-color:            #cbd6d6;
+@pre-bg:                      @cuar-color-neutral-10;
+@pre-color:                   mix(@text-color, @pre-bg, 70%);
+@pre-border-color:            lighten(@pre-bg, 5%);
 @pre-scrollable-max-height:   340px;
 
 
@@ -983,18 +986,19 @@
 //** Horizontal offset for forms and lists.
 @component-offset-horizontal: 180px;
 //** Text muted color
-@text-muted:                  @muted;
+@text-muted:                  mix(@muted, @main-bg, 60%);
 //** Abbreviations and acronyms border color
-@abbr-border-color:           @gray-light;
+@abbr-border-color:           mix(@text-color, @main-bg, 60%);
 //** Blockquote small color
-@blockquote-small-color:      @gray-light;
+@blockquote-small-color:      mix(@text-color, @main-bg, 60%);
 //** Blockquote font size
 @blockquote-font-size:        (@font-size-base * 1.25);
 //** Blockquote border color
-@blockquote-border-color:     @gray-lighter;
+@blockquote-border-color:     mix(@text-color, @main-bg, 20%);
 //** Page header border color
-@page-header-border-color:    #DDD;
+@page-header-border-color:    mix(@text-color, @main-bg, 20%);
 //** Width of horizontal description list titles
 @dl-horizontal-offset:        @component-offset-horizontal;
 //** Horizontal line color.
-@hr-border:                   @gray-lighter;
+@hr-border:                   @page-header-border-color;
+@hr-border-alt:               darken(@hr-border, 10%);

@@ -1,53 +1,66 @@
-.cuarsu-main #cuar-user-switcher{
-  .panel;
-  vertical-align: middle;
-  height: 42px;
+.cuarsu-main {
 
-  .cuarsu-form-wrapper{
-    .panel-heading;
-    height: 42px;
+  > .select2-container{
+    top: 40px!important;
+    left: auto!important;
 
-    .cuarsu-message-wrapper,
-    .cuarsu-inputs-wrapper{
-      display: inline-block;
+    li {
+      margin: 0;
+    }
+  }
 
-      .select2-container,
-      .cuarsu-submit-wrapper{
+  #cuar-user-switcher{
+
+    .cuarsu-form-wrapper{
+
+      .cuarsu-message-wrapper,
+      .cuarsu-inputs-wrapper{
         display: inline-block;
-        width: auto;
-      }
-    }
-    .cuarsu-inputs-wrapper{
-      float: right;
-      margin-right: 40px;
-    }
-  }
-  #cuarsu_do_switch_identity{
-    .btn-sm;
-    height: 32px;
-    border: 1px solid @cuarsu-border-color;
-  }
-  .cuarsu-message{
-    .panel-title;
-    font-weight: 300;
-    display: block;
-    float: left;
-  }
-  .cuarsu-id-select-wrapper{
-    white-space: nowrap;
 
-    .select2-container{
-      width: 100%!important;
-
-      .select2-selection{
-        height: 32px;
-
-        .select2-selection__rendered{
-          line-height: 30px;
+        .cuarsu-submit-wrapper{
+          display: inline-block;
+          width: auto;
+          margin-left: -4px;
         }
 
-        .select2-selection__arrow{
-          height: 30px;
+        .select2-container{
+          vertical-align: top;
+        }
+      }
+      .cuarsu-inputs-wrapper{
+        display: block;
+      }
+    }
+    #cuarsu_do_switch_identity{
+      .btn;
+      //.btn-sm;
+      .btn-default;
+      height: 40px;
+      border: 1px solid @input-border;
+    }
+    .cuarsu-message{
+      .panel-title;
+      font-weight: 300;
+      display: block;
+      float: left;
+    }
+    .cuarsu-id-select-wrapper{
+      white-space: nowrap;
+      padding-right: 40px;
+
+      .select2-container{
+        width: 100%!important;
+
+        .select2-selection{
+         height: 40px;
+
+          .select2-selection__rendered{
+            line-height: 38px;
+          }
+
+          .select2-selection__arrow{
+           height: 40px;
+          }
         }
       }
     }

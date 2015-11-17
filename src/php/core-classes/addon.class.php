@@ -39,7 +39,7 @@ abstract class CUAR_AddOn {
 			add_action( 'cuar/core/addons/after-init', array( &$this, 'check_attention_needed' ), 10 );
 		}
 	}
-	
+
 	public abstract function get_addon_name();
 	
 	public function get_id() {
