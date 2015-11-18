@@ -32,28 +32,39 @@
 // --------------------------------------------------
 
 .cuar-single-post-footer.cuar_invoice {
-  .addresses-meta {
-    .billing-address,
-    .emitter-address,
-    .emitter-logo {
-      .make-sm-column(6);
+  .header-meta {
+    .invoice-header {
+      .make-md-column(6);
     }
+    margin-bottom: 20px;
   }
 
-  .emitter-logo {
-    text-align: center;
-    img {
-      max-height: 150px;
+  .footer-meta {
+    .invoice-footer {
+      .make-md-column(6);
     }
+    margin-top: 20px;
+  }
+
+  .addresses-meta {
+    .billing-address,
+    .emitter-address {
+      .make-md-column(6);
+    }
+    margin-bottom: 20px;
+  }
+
+  .cuar-address-logo {
+    max-height: 150px;
+    margin-bottom: 20px;
   }
 
   .properties-meta {
-    .billing-address,
-    .emitter-address {
-      .make-sm-column(6);
+    .notice {
+      .make-md-column(6);
     }
     .properties {
-      .make-sm-column(6);
+      .make-md-column(6);
 
       th, td {
         width: 50%;
@@ -87,8 +98,8 @@
     }
     .row {
       border-bottom: 1px solid #eee;
-      padding-top: 14px;
-      padding-bottom: 14px;
+      padding-top: 7px;
+      padding-bottom: 7px;
       &:last-child {
         border: none;
       }
