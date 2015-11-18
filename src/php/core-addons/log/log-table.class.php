@@ -164,7 +164,7 @@ class CUAR_LogTable extends CUAR_ListTable
     public function column_log_timestamp($item)
     {
         $m_time = $item->get_post()->post_date;
-        $h_time = mysql2date(__('Y/m/d - g:i:s', 'cuar'), $m_time);
+        $h_time = mysql2date(__('Y/m/d - H:i:s', 'cuar'), $m_time);
 
         return $h_time;
     }
