@@ -34,6 +34,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public static $TYPE_FILE_ATTACHMENT_ADDED = 'cuar_file_attachment_added';
         public static $TYPE_FILE_ATTACHMENT_REMOVED = 'cuar_file_attachment_removed';
         public static $TYPE_FILE_ATTACHMENT_UPDATED = 'cuar_file_attachment_updated';
+        public static $TYPE_LOGIN = 'cuar_user_login';
+
         public static $META_USER_ID = 'user_id';
         public static $META_IP = 'ip';
         public static $META_PREVIOUS_OWNER = 'previous_owner';
@@ -72,11 +74,11 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20, 2);
                 add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'), 20, 3);
             }
-            else
-            {
-            }
 
             add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 99);
+
+            // User login
+            add_action('wp_login', array(&$this, 'log_user_login'), 10, 2);
 
             // Add some event types by default
             add_filter('cuar/core/log/event-types', array(&$this, 'add_default_event_types'));
@@ -159,6 +161,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public function add_default_event_types($default_types)
         {
             return array_merge($default_types, array(
+                self::$TYPE_LOGIN                   => __('Login', 'cuar'),
                 self::$TYPE_CONTENT_VIEWED          => __('Content viewed', 'cuar'),
                 self::$TYPE_FILE_DOWNLOADED         => __('File downloaded', 'cuar'),
                 self::$TYPE_OWNER_CHANGED           => __('Owner changed', 'cuar'),
@@ -166,6 +169,25 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 self::$TYPE_FILE_ATTACHMENT_REMOVED => __('Attachment removed', 'cuar'),
                 self::$TYPE_FILE_ATTACHMENT_UPDATED => __('Attachment updated', 'cuar')
             ));
+        }
+
+        /**
+         * Log a successful login
+         *
+         * @param string  $username
+         * @param WP_User $user
+         */
+        public function log_user_login($username, $user)
+        {
+            $should_log_event = true;
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_LOGIN, $should_log_event, $user);
+            if ($should_log_event)
+            {
+                $this->logger->log_event(self::$TYPE_LOGIN,
+                    $user->ID,
+                    'WP_User',
+                    $this->get_default_event_meta());
+            }
         }
 
         /**
