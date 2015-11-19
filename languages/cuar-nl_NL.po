@@ -4,24 +4,207 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
-"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
+"environment/issues\n"
 "POT-Creation-Date: 2015-09-07 07:35:27+00:00\n"
 "PO-Revision-Date: 2015-09-11 20:23+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/wp-translations/wp-customer-area/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/wp-translations/"
+"wp-customer-area/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: grunt-wp-i18n 0.5.3\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:38
+msgid "Address Manager"
+msgstr ""
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:72
+#, fuzzy
+msgid "Home address"
+msgstr "IP-adres"
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:73
+#, fuzzy
+msgid "Billing address"
+msgstr "E-mail adres"
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:92
+#, fuzzy
+msgid "Clear"
+msgstr "Wissen"
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:93
+msgid "Clear the address"
+msgstr ""
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:131
+msgid "Error: you must choose an owner first"
+msgstr ""
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:132
+#, fuzzy
+msgid "Are you sure that you want to associate this address with that owner?"
+msgstr ""
+"Weet u zeker dat u deze content wilt verwijdren (deze actie kan niet "
+"ongedaan worden gemaakt)?"
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:133
+msgid "Do you really want to replace current address?"
+msgstr ""
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:134
+#, fuzzy
+msgid "There is no address linked to that owner"
+msgstr "Er zijn geen bestanden in deze categorie"
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:135
+msgid "Do you really want to clear the address?"
+msgstr ""
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:148
+#: src/php/core-addons/addresses/addresses-addon.class.php:186
+#: src/php/core-addons/addresses/addresses-addon.class.php:219
+msgid "Address ID must be specified"
+msgstr ""
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:156
+#: src/php/core-addons/addresses/addresses-addon.class.php:194
+#: src/php/core-addons/addresses/addresses-addon.class.php:227
+#: src/php/core-addons/private-file/private-file-addon.class.php:799
+#: src/php/core-addons/private-file/private-file-addon.class.php:893
+#: src/php/core-addons/private-file/private-file-addon.class.php:958
+#: src/php/core-classes/addon-create-content-page.class.php:92
+#: src/php/core-classes/addon-create-content-page.class.php:98
+msgid "Trying to cheat?"
+msgstr ""
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:200
+#: src/php/core-addons/addresses/addresses-addon.class.php:233
+#, fuzzy
+msgid "You must specify the owner"
+msgstr "U moet een bericht ID opgeven om bij te werken"
+
+#: src/php/core-addons/addresses/addresses-addon.class.php:239
+#, fuzzy
+msgid "You must specify the address"
+msgstr "U moet een bericht aangeven om te verwijderen"
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:52
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:55
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:57
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:61
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:49
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:51
+#: src/php/core-addons/status/hook-finder.class.php:124
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
+#: src/php/core-classes/widget-content-list.class.php:217
+msgid "Name"
+msgstr "Naam"
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:61
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:64
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:68
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:72
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:56
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:58
+msgid "Company"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:72
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:74
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:79
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:84
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:63
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:65
+#, fuzzy
+msgid "VAT Number"
+msgstr "Nummer"
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:81
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:91
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:70
+#, fuzzy
+msgid "Logo"
+msgstr "Uitloggen"
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:84
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:94
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:73
+msgid "Logo URL"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:85
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:95
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:74
+#, fuzzy
+msgid "Upload Logo"
+msgstr "Toegevoegd op %s"
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:93
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:102
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:80
+#, fuzzy
+msgid "Street address"
+msgstr "IP-adres"
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:96
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:104
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
+msgid "Street address, line 1"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:112
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:87
+msgid "Street address, line 2"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:113
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:116
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:118
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:120
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:92
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:94
+msgid "Zip/Postal code"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:123
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:126
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:126
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:128
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:99
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
+msgid "City"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:134
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:134
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:107
+msgid "Country"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:149
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:147
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:119
+msgid "State/Province"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/view-address.template.php:44
+msgid "VAT ID -"
+msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:42
 msgid "Administration Area"
@@ -33,9 +216,9 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:86
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:94
-#: src/php/core-addons/private-file/private-file-addon.class.php:824
-#: src/php/core-addons/private-file/private-file-addon.class.php:885
-#: src/php/core-addons/private-file/private-file-addon.class.php:951
+#: src/php/core-addons/private-file/private-file-addon.class.php:823
+#: src/php/core-addons/private-file/private-file-addon.class.php:884
+#: src/php/core-addons/private-file/private-file-addon.class.php:949
 msgid "Missing parameters"
 msgstr ""
 
@@ -74,7 +257,7 @@ msgid "General"
 msgstr "Algemeen"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:243
-#: src/php/core-addons/private-file/private-file-addon.class.php:1103
+#: src/php/core-addons/private-file/private-file-addon.class.php:1090
 #: src/php/core-addons/private-page/private-page-addon.class.php:108
 msgid "Back-office"
 msgstr "Beheerders kant"
@@ -89,7 +272,7 @@ msgstr "Bekijk de Customer Area menu"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:250
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:71
-#: src/php/core-addons/private-file/private-file-addon.class.php:1116
+#: src/php/core-addons/private-file/private-file-addon.class.php:1103
 #: src/php/core-addons/private-page/private-page-addon.class.php:121
 msgid "Front-office"
 msgstr "Gebruikerskant"
@@ -134,72 +317,72 @@ msgstr ""
 msgid "Manage %1$s"
 msgstr ""
 
-#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:66
+#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:67
 msgid "Your private area"
 msgstr "Uw privé zone"
 
-#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:116
+#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:117
 msgid "Add-ons"
 msgstr "Add-on extensies"
 
-#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:178
+#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:179
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:47
 msgid "Customer Area"
 msgstr "Klanten Zone"
 
-#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:183
+#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:184
 msgid "About WP Customer Area"
 msgstr ""
 
-#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:184
+#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:185
 msgid "About"
 msgstr "Over"
 
-#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:231
+#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:232
 msgid "All %s"
 msgstr "Alle %s"
 
-#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:240
+#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:241
 msgid "New %s"
 msgstr "Nieuwe %s"
 
-#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:251
+#: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:252
 msgid "Manage %s"
 msgstr ""
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:232
-#: src/php/core-addons/admin-area/private-content-table.class.php:235
-#: src/php/core-classes/Content/list-table.class.php:279
+#: src/php/core-addons/admin-area/private-content-table.class.php:244
+#: src/php/core-classes/Content/list-table.class.php:288
 msgid "Published"
 msgstr "Gepubliceerd"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:233
-#: src/php/core-addons/admin-area/private-content-table.class.php:236
-#: src/php/core-classes/Content/list-table.class.php:354
+#: src/php/core-addons/admin-area/private-content-table.class.php:245
+#: src/php/core-classes/Content/list-table.class.php:364
 msgid "Draft"
 msgstr "Concept"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:234
-#: src/php/core-addons/admin-area/private-content-table.class.php:237
-#: src/php/core-classes/Content/list-table.class.php:331
+#: src/php/core-addons/admin-area/private-content-table.class.php:246
+#: src/php/core-classes/Content/list-table.class.php:341
 msgid "Trash"
 msgstr "Verwijderen"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:257
-#: src/php/core-addons/admin-area/private-content-table.class.php:260
+#: src/php/core-addons/admin-area/private-content-table.class.php:269
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:99
 msgid "Title"
 msgstr "Titel:"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:258
-#: src/php/core-addons/admin-area/private-content-table.class.php:261
+#: src/php/core-addons/admin-area/private-content-table.class.php:270
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:37
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:28
 msgid "Author"
 msgstr "Schrijver"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:269
-#: src/php/core-addons/admin-area/private-content-table.class.php:273
+#: src/php/core-addons/admin-area/private-content-table.class.php:282
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
 #: src/php/core-addons/log/log-table.class.php:154
@@ -207,7 +390,7 @@ msgstr "Schrijver"
 msgid "Date"
 msgstr "Datum"
 
-#: src/php/core-addons/admin-area/private-content-table.class.php:272
+#: src/php/core-addons/admin-area/private-content-table.class.php:281
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-search.template.php:17
 msgid "Owner"
 msgstr "Eigenaar"
@@ -312,8 +495,8 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:18
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
-"multiple attachments on the same private file, change the attachment caption"
-" and automatically add file type icons in front of the download links."
+"multiple attachments on the same private file, change the attachment caption "
+"and automatically add file type icons in front of the download links."
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:20
@@ -384,8 +567,8 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
-"better organised. The content lists now feature powerful filters to help you"
-" find the content you are looking for faster."
+"better organised. The content lists now feature powerful filters to help you "
+"find the content you are looking for faster."
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:54
@@ -416,8 +599,8 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:69
 msgid ""
-"WP Customer Area 6.0 is a major release which sees a lot of changes not only"
-" inside the plugin but also on the website."
+"WP Customer Area 6.0 is a major release which sees a lot of changes not only "
+"inside the plugin but also on the website."
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:72
@@ -493,17 +676,22 @@ msgid "Created between"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-timestamp.template.php:13
-#: src/php/core-addons/log/templates/logs-page.template.php:47
+#: src/php/core-addons/log/templates/logs-page.template.php:54
 msgid "and"
 msgstr "en"
 
-#: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:22
-#: src/php/core-addons/log/templates/logs-page.template.php:20
+#: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:17
+#, fuzzy
+msgid "Filter %1$s List"
+msgstr "Bestanden onder %1$s"
+
+#: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:30
+#: src/php/core-addons/log/templates/logs-page.template.php:27
 msgid "Toggle advanced filters"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:57
-#: src/php/core-addons/log/templates/logs-page.template.php:72
+#: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:65
+#: src/php/core-addons/log/templates/logs-page.template.php:79
 msgid "Are you sure?"
 msgstr ""
 
@@ -547,12 +735,12 @@ msgstr "Voorgestelde actie"
 msgid "Ignore this warning"
 msgstr "Negeer deze waarschuwing"
 
-#: src/php/core-addons/container-owner/container-owner-addon.class.php:36
+#: src/php/core-addons/container-owner/container-owner-addon.class.php:39
 msgid "Container Owner"
 msgstr "Bericht eigenaar"
 
-#: src/php/core-addons/container-owner/container-owner-addon.class.php:107
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:1081
+#: src/php/core-addons/container-owner/container-owner-addon.class.php:124
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:1083
 msgid "You are not authorized to view this page"
 msgstr "U bent niet geautoriseerd om deze pagina te zien"
 
@@ -561,7 +749,7 @@ msgid "Account - Details"
 msgstr "Gebruikersprofiel - details"
 
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:48
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:61
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:72
 msgid "Account details"
 msgstr "Gebruikersprofiel details"
 
@@ -601,13 +789,17 @@ msgstr "Wijzig gebruikesprofiel"
 
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
 msgid "This page shows a form where the user can edit his account"
-msgstr "Deze pagina toont een formulier waar de gebruiker zijn/haar profiel kan wijzigen"
+msgstr ""
+"Deze pagina toont een formulier waar de gebruiker zijn/haar profiel kan "
+"wijzigen"
 
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:14
 msgid ""
-"You can update your account details. If you leave the password fields empty,"
-" your password will not be modified."
-msgstr "U kunt uw gebruikersprofiel bijwerken. Indien u uw wachtwoord niet invult, dan wordt deze niet bijgewerkt."
+"You can update your account details. If you leave the password fields empty, "
+"your password will not be modified."
+msgstr ""
+"U kunt uw gebruikersprofiel bijwerken. Indien u uw wachtwoord niet invult, "
+"dan wordt deze niet bijgewerkt."
 
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:21
 msgid "Submit"
@@ -623,7 +815,7 @@ msgstr "Mijn profiel"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
-#: src/php/core-classes/addon-container-page.class.php:695
+#: src/php/core-classes/addon-container-page.class.php:789
 #: src/php/core-classes/addon-content-page.class.php:819
 msgid "Dashboard"
 msgstr "Werkblad"
@@ -631,7 +823,9 @@ msgstr "Werkblad"
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
 msgid ""
 "Shows a summary of the user's private content (files, pages, messages, ...)."
-msgstr "Geeft een samenvatting van de gebruikers privé content (bestanden, pagina's, conversaties)"
+msgstr ""
+"Geeft een samenvatting van de gebruikers privé content (bestanden, pagina's, "
+"conversaties)"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:43
 msgid "Home"
@@ -639,9 +833,11 @@ msgstr "Home"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
-"This is the main page for your customers. It will redirect to the login page"
-" or to the customer area dashboard."
-msgstr "Dit is de hoofdpagina voor uw klanten. Deze wordt doorverwezen naar de inlog pagina of naar het klantzone werkblad."
+"This is the main page for your customers. It will redirect to the login page "
+"or to the customer area dashboard."
+msgstr ""
+"Dit is de hoofdpagina voor uw klanten. Deze wordt doorverwezen naar de inlog "
+"pagina of naar het klantzone werkblad."
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:55
 msgid "customer-area"
@@ -655,10 +851,12 @@ msgstr "Uitloggen"
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
-msgstr "Deze pagina logt de hudige gebruiker af en verwijst deze door naar de uitlog pagina."
+msgstr ""
+"Deze pagina logt de hudige gebruiker af en verwijst deze door naar de uitlog "
+"pagina."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:988
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
 msgid "Customer Pages"
 msgstr "Klantenpagina's"
 
@@ -679,145 +877,158 @@ msgstr "Pagina's"
 msgid "Pages of the Customer Area"
 msgstr "Pagina's van de Klantenzone"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:752
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:754
 msgid "WP Customer Area Menu"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:757
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:759
 msgid "Could not create the menu. %s"
 msgstr "Kan het menu niet aanmaken. %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:823
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:825
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "Het menu is aangemaakt: <a href=\"%s\">toon menu</a>"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:979
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:981
 msgid "Site Pages"
 msgstr "Website pagina's"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1015
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1085
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1017
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1087
 msgid "Reset"
 msgstr "Reset"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1021
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1023
 msgid "Reset all pages &raquo;"
 msgstr "Reset alle pagina's &raquo;"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1024
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1026
 msgid "Delete all existing pages and recreate them."
 msgstr "Verwijder alle bestaande Klantzone pagina's en maak deze opnieuw aan."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1025
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1027
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
-msgstr "Weet u zeker dat u alle bestaande Klantzone pagina's wilt verwijderen en opnieuw wilt aanmaken. (deze actie kan niet ongedaan worden gemaakt!)?"
+msgstr ""
+"Weet u zeker dat u alle bestaande Klantzone pagina's wilt verwijderen en "
+"opnieuw wilt aanmaken. (deze actie kan niet ongedaan worden gemaakt!)?"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1035
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1037
 msgid "Main Navigation Menu"
 msgstr "Hoofd navigatie menu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1044
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1046
 msgid "WP Customer Area pages"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1052
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1054
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
 msgstr "Beeld automatisch het Klantzone menu af op privé pagina's."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1064
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1066
 msgid "Private content single pages"
 msgstr "Privé content enkelvoudige pagina's"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1072
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1074
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
-msgstr "Beeld automatisch het Klantzone menu af op een enkelvoudige privé pagina."
+msgstr ""
+"Beeld automatisch het Klantzone menu af op een enkelvoudige privé pagina."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1091
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1093
 msgid "Recreate menu"
 msgstr "Maak het menu opniew aan"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1094
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1096
 msgid "Delete and recreate the main navigation menu."
 msgstr "Verwijder en maak het hoofd navigatie menu opnieuw aan."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1095
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1097
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
-msgstr "Weet u zeker dat u het hoofd navigatie menu opnieuw wilt maken (deze actie kan niet ongedaan worden gemaakt)?"
+msgstr ""
+"Weet u zeker dat u het hoofd navigatie menu opnieuw wilt maken (deze actie "
+"kan niet ongedaan worden gemaakt)?"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1102
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
 msgid "Permalinks"
 msgstr "Permalinks"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1109
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
 msgid "Category Archive"
 msgstr "Categorie Archief"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1127
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1129
 msgid "Date Archive"
 msgstr "Datum archief"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1144
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1146
 msgid "Author Archive"
 msgstr "Schrijvers archief"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1161
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1163
 msgid "Update Content"
 msgstr "Content bijwerken"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1170
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1172
 msgid "Slug that is used in the URL to update existing private content"
 msgstr "Synoniem welke is gebruikt in de URL om uw privé content bij te werken"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1177
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1179
 msgid "Delete Content"
 msgstr "Verwijder content"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1186
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1188
 msgid "Slug that is used in the URL to delete existing private content"
-msgstr "Synoniem welke is gebruikt in de URL om uw privé content te verwijderen"
+msgstr ""
+"Synoniem welke is gebruikt in de URL om uw privé content te verwijderen"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1200
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1202
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
 msgstr "Sinds versie 4.0.0, Klantzone navigeert via menu's"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1212
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1214
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
-msgstr "Sinds versie 4.0.0., gebruikt Klantzone diverse pagina's om de content af te beelden voor uw klanten. Maak hier deze pagina's of selecteer bestaande pagina's. "
+msgstr ""
+"Sinds versie 4.0.0., gebruikt Klantzone diverse pagina's om de content af te "
+"beelden voor uw klanten. Maak hier deze pagina's of selecteer bestaande "
+"pagina's. "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1285
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1323
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1398
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1325
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1400
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
-msgstr "Sommige pagina's van Klantzone zijn aangemaakt of verwijderd. Het Klantzone navigatie menu moet worden bijgewerkt."
+msgstr ""
+"Sommige pagina's van Klantzone zijn aangemaakt of verwijderd. Het Klantzone "
+"navigatie menu moet worden bijgewerkt."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1319
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
 msgid "The following pages have been created: %s"
 msgstr "De volgende pagina's zijn gemaakt: %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1328
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1330
 msgid "There was no missing page that could be created."
 msgstr "Er was geen ontbrekende pagina welke kon worden aangemaakt."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1373
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1375
 msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not"
-" registered in the Customer Area pages settings."
-msgstr "Sommige pagina's in uw website lijken Klantzone shortcodes te bevatten maar zijn niet geregistreerd in de Klantzone pagina instellingen."
+"Some pages in your site seem to contain Customer Area shortcodes but are not "
+"registered in the Customer Area pages settings."
+msgstr ""
+"Sommige pagina's in uw website lijken Klantzone shortcodes te bevatten maar "
+"zijn niet geregistreerd in de Klantzone pagina instellingen."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1393
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1395
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] "%s pagina is verwijderd"
@@ -844,13 +1055,18 @@ msgid ""
 "A navigation menu organizes the customer area. It allows to browse the "
 "files, the pages, to view the account details and much more. It seems that "
 "this menu has not yet been created."
-msgstr "Een navigatie menu organiseerd de Klantzone. Via dit menu kunt u bestanden en pagina's bekijken, uw gebruikers profiel details bekijken en veel meer. Het lijkt erop dat het menu nog niet is aangemaakt."
+msgstr ""
+"Een navigatie menu organiseerd de Klantzone. Via dit menu kunt u bestanden "
+"en pagina's bekijken, uw gebruikers profiel details bekijken en veel meer. "
+"Het lijkt erop dat het menu nog niet is aangemaakt."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
 msgid ""
-"You can review which menus are currently created on the <a "
-"href=\"%1$s\">menus page</a>."
-msgstr "U kunt nakijken welke menus momenteel zijn aangemaakt via de <a href=\"%1$s\">menus page</a>."
+"You can review which menus are currently created on the <a href=\"%1$s"
+"\">menus page</a>."
+msgstr ""
+"U kunt nakijken welke menus momenteel zijn aangemaakt via de <a href=\"%1$s"
+"\">menus page</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:32
 msgid "Create the menu"
@@ -860,7 +1076,9 @@ msgstr "Maak het menu"
 msgid ""
 "Are you sure that you want to create the menu (this operation cannot be "
 "undone)?"
-msgstr "Weet u zeker dat u het menu wilt aanmaken (deze actie kan niet ongedaan worden gemaakt)?"
+msgstr ""
+"Weet u zeker dat u het menu wilt aanmaken (deze actie kan niet ongedaan "
+"worden gemaakt)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:23
 msgid "Navigation menu is out of sync"
@@ -868,16 +1086,21 @@ msgstr "Navigatie menu is niet gesynchoniseerd."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
 msgid ""
-"Some pages of the customer area have been changed and our current navigation"
-" menu probably references the previous pages. We recommend to synchronize "
-"the menu with the new pages. "
-msgstr "Sommige pagina's van de Klantzone zijn gewijzigd en uw huidige navigatie menu verwijst waarschijnlijk naar oudere pagina's. Wij raden u aan om het menu te synchroniseren met de nieuwe pagina's."
+"Some pages of the customer area have been changed and our current navigation "
+"menu probably references the previous pages. We recommend to synchronize the "
+"menu with the new pages. "
+msgstr ""
+"Sommige pagina's van de Klantzone zijn gewijzigd en uw huidige navigatie "
+"menu verwijst waarschijnlijk naar oudere pagina's. Wij raden u aan om het "
+"menu te synchroniseren met de nieuwe pagina's."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
 msgid ""
 "You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
 "&raquo; Menus</a> page."
-msgstr "U kunt ook het menu handmatig wijzigen via de <a href=\"%1$s\">Appearance &raquo; Menus</a> pagina."
+msgstr ""
+"U kunt ook het menu handmatig wijzigen via de <a href=\"%1$s\">Appearance "
+"&raquo; Menus</a> pagina."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:30
 msgid "Suggested actions"
@@ -895,13 +1118,17 @@ msgstr "Negeer waarschuwing"
 msgid ""
 "Are you sure that you want to clear current menu and create it again from "
 "scratch (this operation cannot be undone)?"
-msgstr "Weet u zeker dat u het huidige menu wilt verwijderen en opnieuw wilt aanmaken (deze actie kan niet ongedaan worden gemaakt)?"
+msgstr ""
+"Weet u zeker dat u het huidige menu wilt verwijderen en opnieuw wilt "
+"aanmaken (deze actie kan niet ongedaan worden gemaakt)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:46
 msgid ""
 "Are you sure that you want ignore this warning? You can also manually edit "
 "your menu in the page: \"Appearance > Menus\"."
-msgstr "Weet u zeker dat u deze waarschuwing wilt negeren? U kunt ook handmatig uw menu wijzigen via de pagina: \"Appearance > Menus\"."
+msgstr ""
+"Weet u zeker dat u deze waarschuwing wilt negeren? U kunt ook handmatig uw "
+"menu wijzigen via de pagina: \"Appearance > Menus\"."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:23
 msgid "Orphan pages"
@@ -917,7 +1144,9 @@ msgstr "Verwijder zwevende pagina's"
 msgid ""
 "Are you sure that you want to delete those pages (this operation cannot be "
 "undone)?"
-msgstr "Weet u zeker dat u deze pagina's wilt verwijderen (deze actie kan niet ongedaan worden gemaakt)?"
+msgstr ""
+"Weet u zeker dat u deze pagina's wilt verwijderen (deze actie kan niet "
+"ongedaan worden gemaakt)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:23
 msgid "Missing front-office pages"
@@ -928,13 +1157,18 @@ msgid ""
 "Some pages of the customer area have not yet been created. Those pages are "
 "responsible for displaying the private content you have assigned to your "
 "users."
-msgstr "Sommige pagina's van de Klantzone zijn nog niet aangemaakt. Deze pagina's zijn verantwoordelijke voor het afbeelden van privé content welke u heeft toegewezen aan uw gebruikers."
+msgstr ""
+"Sommige pagina's van de Klantzone zijn nog niet aangemaakt. Deze pagina's "
+"zijn verantwoordelijke voor het afbeelden van privé content welke u heeft "
+"toegewezen aan uw gebruikers."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
 msgid ""
-"You can review which pages are currently created on the <a "
-"href=\"%1$s\">pages settings page</a>."
-msgstr "U kunt de pagina's bekijken welk momenteel zijn aangemaakt via de <a href=\"%1$s\">pages settings page</a>."
+"You can review which pages are currently created on the <a href=\"%1$s"
+"\">pages settings page</a>."
+msgstr ""
+"U kunt de pagina's bekijken welk momenteel zijn aangemaakt via de <a href="
+"\"%1$s\">pages settings page</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:32
 msgid "Create missing pages"
@@ -944,7 +1178,9 @@ msgstr "Maak de ontbrekende pagina's"
 msgid ""
 "Are you sure that you want to create all the pages that are currently "
 "missing (this operation cannot be undone)?"
-msgstr "Weet u zeker dat u alle pagina's wilt aanmaken welke momenteel ontbreken (deze actie kan niet ongedaan worden gemaakt)?"
+msgstr ""
+"Weet u zeker dat u alle pagina's wilt aanmaken welke momenteel ontbreken "
+"(deze actie kan niet ongedaan worden gemaakt)?"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
 msgid "Page"
@@ -975,15 +1211,15 @@ msgstr "Type"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:116
-#: src/php/core-classes/Content/list-table.class.php:308
-#: src/php/core-classes/addon-update-content-page.class.php:274
-#: src/php/core-classes/addon-update-content-page.class.php:275
+#: src/php/core-classes/Content/list-table.class.php:318
+#: src/php/core-classes/addon-update-content-page.class.php:277
+#: src/php/core-classes/addon-update-content-page.class.php:278
 msgid "Edit"
 msgstr "Wijzig"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:54
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:118
-#: src/php/core-classes/Content/list-table.class.php:337
+#: src/php/core-classes/Content/list-table.class.php:347
 msgid "View"
 msgstr "Bekijk"
 
@@ -1079,6 +1315,8 @@ msgstr "U heeft dit bestand toegevoegd"
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:12
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:9
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:11
+#: src/php/core-classes/templates/default-container-content-item.template.php:15
+#: src/php/core-classes/templates/default-container-content-item.template.php:17
 msgid "Published for %s"
 msgstr "Gepubliceerd voor %1$s"
 
@@ -1087,6 +1325,7 @@ msgstr "Gepubliceerd voor %1$s"
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:22
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:22
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:13
+#: src/php/core-classes/templates/default-container-content-item.template.php:18
 msgid "Published by %s"
 msgstr "Gepubliceerd door %1$s"
 
@@ -1122,7 +1361,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:39
 msgid "Shows the private file author archives of the Customer Area"
-msgstr "Geeft de jaarlijkse archieven van de privé bestanden in de Klantzone weer."
+msgstr ""
+"Geeft de jaarlijkse archieven van de privé bestanden in de Klantzone weer."
 
 #: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:37
 msgid "WPCA - File Categories"
@@ -1138,7 +1378,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:39
 msgid "Shows the private file yearly archives of the Customer Area"
-msgstr "Geeft de jaarlijkse archieven van de privé bestanden in de Klantzone weer."
+msgstr ""
+"Geeft de jaarlijkse archieven van de privé bestanden in de Klantzone weer."
 
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:37
 msgid "WPCA - Recent Files"
@@ -1219,6 +1460,7 @@ msgid "You created this page"
 msgstr "U heeft deze pagina gemaakt"
 
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:25
+#: src/php/core-classes/templates/default-container-content-item.template.php:21
 msgid "Created on %s"
 msgstr "Gemaakt op %s"
 
@@ -1232,7 +1474,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:39
 msgid "Shows the private page author archives of the Customer Area"
-msgstr "Geeft de jaarlijkse archieven voor de klant pagina's in de Klantzone weer."
+msgstr ""
+"Geeft de jaarlijkse archieven voor de klant pagina's in de Klantzone weer."
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:37
 msgid "WPCA - Page Categories"
@@ -1248,7 +1491,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:39
 msgid "Shows the private page yearly archives of the Customer Area"
-msgstr "Geeft de jaarlijkse archieven voor de klant pagina's in de Klantzone weer."
+msgstr ""
+"Geeft de jaarlijkse archieven voor de klant pagina's in de Klantzone weer."
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:37
 msgid "WPCA - Recent Pages"
@@ -1285,8 +1529,8 @@ msgstr ""
 
 #: src/php/core-addons/installer/installer-addon.class.php:248
 msgid ""
-"There is a quick installation to run before being able to publish your first"
-" private files and pages. It should be over in less than a minute!"
+"There is a quick installation to run before being able to publish your first "
+"private files and pages. It should be over in less than a minute!"
 msgstr ""
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
@@ -1325,86 +1569,92 @@ msgstr ""
 msgid "Let's go!"
 msgstr ""
 
-#: src/php/core-addons/log/log-addon.class.php:53
+#: src/php/core-addons/log/log-addon.class.php:56
 #: src/php/core-addons/log/log-table.class.php:44
 msgid "Log"
 msgstr "Logboek"
 
-#: src/php/core-addons/log/log-addon.class.php:123
+#: src/php/core-addons/log/log-addon.class.php:126
 msgid "WP Customer Area - Logs"
 msgstr "WP Customer Area - Logboeken"
 
-#: src/php/core-addons/log/log-addon.class.php:124
-#: src/php/core-addons/log/log-addon.class.php:416
+#: src/php/core-addons/log/log-addon.class.php:127
+#: src/php/core-addons/log/log-addon.class.php:457
 #: src/php/core-addons/log/log-table.class.php:45
-#: src/php/core-addons/log/templates/logs-page.template.php:4
+#: src/php/core-addons/log/templates/logs-page.template.php:9
 msgid "Logs"
 msgstr "Logboeken"
 
-#: src/php/core-addons/log/log-addon.class.php:161
-#: src/php/core-addons/log/log-addon.class.php:423
-msgid "Content viewed"
-msgstr ""
-
-#: src/php/core-addons/log/log-addon.class.php:162
-#: src/php/core-addons/log/log-addon.class.php:440
-msgid "File downloaded"
-msgstr "Bestand gedownload"
-
-#: src/php/core-addons/log/log-addon.class.php:163
-msgid "Owner changed"
-msgstr "Veranderd van eigenaar"
-
 #: src/php/core-addons/log/log-addon.class.php:164
-msgid "Attachment added"
+msgid "Login"
 msgstr ""
 
 #: src/php/core-addons/log/log-addon.class.php:165
-msgid "Attachment removed"
+#: src/php/core-addons/log/log-addon.class.php:464
+msgid "Content viewed"
 msgstr ""
 
 #: src/php/core-addons/log/log-addon.class.php:166
+#: src/php/core-addons/log/log-addon.class.php:481
+msgid "File downloaded"
+msgstr "Bestand gedownload"
+
+#: src/php/core-addons/log/log-addon.class.php:167
+msgid "Owner changed"
+msgstr "Veranderd van eigenaar"
+
+#: src/php/core-addons/log/log-addon.class.php:168
+msgid "Attachment added"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:169
+msgid "Attachment removed"
+msgstr ""
+
+#: src/php/core-addons/log/log-addon.class.php:170
 msgid "Attachment updated"
 msgstr ""
 
-#: src/php/core-addons/log/log-addon.class.php:350
+#: src/php/core-addons/log/log-addon.class.php:382
 msgid "IP address"
 msgstr "IP-adres"
 
-#: src/php/core-addons/log/log-addon.class.php:356
-#: src/php/core-addons/log/log-addon.class.php:363
+#: src/php/core-addons/log/log-addon.class.php:388
+#: src/php/core-addons/log/log-addon.class.php:395
 msgid "Nobody"
 msgstr "Niemand"
 
-#: src/php/core-addons/log/log-addon.class.php:357
+#: src/php/core-addons/log/log-addon.class.php:389
 msgid "Previous owner: "
 msgstr "Vorige eigenaar:"
 
-#: src/php/core-addons/log/log-addon.class.php:358
+#: src/php/core-addons/log/log-addon.class.php:390
 msgid "From: "
 msgstr "Van:"
 
-#: src/php/core-addons/log/log-addon.class.php:364
+#: src/php/core-addons/log/log-addon.class.php:396
 msgid "Current owner: "
 msgstr "Huidige eigenaar:"
 
-#: src/php/core-addons/log/log-addon.class.php:365
+#: src/php/core-addons/log/log-addon.class.php:397
 msgid "To: "
 msgstr "Aan:"
 
-#: src/php/core-addons/log/log-addon.class.php:370
+#: src/php/core-addons/log/log-addon.class.php:402
+#: src/php/core-addons/log/log-addon.class.php:411
 msgid "Caption: "
 msgstr ""
 
-#: src/php/core-addons/log/log-addon.class.php:371
-msgid "File: "
+#: src/php/core-addons/log/log-addon.class.php:403
+#: src/php/core-addons/log/log-addon.class.php:412
+msgid "Attachment: "
 msgstr ""
 
-#: src/php/core-addons/log/log-addon.class.php:430
+#: src/php/core-addons/log/log-addon.class.php:471
 msgid "Only log the first time a private content is viewed by a user."
 msgstr ""
 
-#: src/php/core-addons/log/log-addon.class.php:432
+#: src/php/core-addons/log/log-addon.class.php:473
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is viewing private content. There will be a single event "
@@ -1412,16 +1662,16 @@ msgid ""
 "content, an event will be generated."
 msgstr ""
 
-#: src/php/core-addons/log/log-addon.class.php:447
+#: src/php/core-addons/log/log-addon.class.php:488
 msgid "Only log the first time a private file is downloaded by a user."
 msgstr ""
 
-#: src/php/core-addons/log/log-addon.class.php:449
+#: src/php/core-addons/log/log-addon.class.php:490
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is downloading a private file. There will be a single "
-"event per user and per file. Else, each time a user is downloading a private"
-" file, an event will be generated."
+"event per user and per file. Else, each time a user is downloading a private "
+"file, an event will be generated."
 msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:155
@@ -1442,41 +1692,59 @@ msgid "Extra info"
 msgstr "Extra informatie"
 
 #: src/php/core-addons/log/log-table.class.php:167
-msgid "Y/m/d - g:i:s"
+#, fuzzy
+msgid "Y/m/d - H:i:s"
+msgstr "Y/m/d g:i:s A"
+
+#: src/php/core-addons/log/log-table.class.php:178
+#, fuzzy
+msgid "User %1$s"
+msgstr "Gebruiker - %s"
+
+#: src/php/core-addons/log/log-table.class.php:180
+msgid "<a href=\"%1$s\" title=\"Username: %2$s\">%3$s</a>"
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:256
-#: src/php/core-classes/Content/list-table.class.php:324
-#: src/php/core-classes/Content/list-table.class.php:386
+#: src/php/core-addons/log/log-table.class.php:192
+msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
+msgstr ""
+
+#: src/php/core-addons/log/log-table.class.php:268
+#: src/php/core-classes/Content/list-table.class.php:334
+#: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr "Permanent verwijderd"
 
-#: src/php/core-addons/log/log-table.class.php:271
+#: src/php/core-addons/log/log-table.class.php:283
 msgid "You are not allowed to delete logs."
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:307
-#: src/php/core-classes/Content/list-table.class.php:461
+#: src/php/core-addons/log/log-table.class.php:319
+#: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "Je hebt onvoldoende rechten om dit item te verwijderen. "
 
-#: src/php/core-addons/log/log-table.class.php:336
+#: src/php/core-addons/log/log-table.class.php:348
 msgid "Delete all events permanently"
 msgstr ""
 
-#: src/php/core-addons/log/templates/logs-page.template.php:25
+#: src/php/core-addons/log/templates/logs-page.template.php:11
+msgid "Filter Log Event List"
+msgstr ""
+
+#: src/php/core-addons/log/templates/logs-page.template.php:32
 msgid "Event type"
 msgstr ""
 
-#: src/php/core-addons/log/templates/logs-page.template.php:27
+#: src/php/core-addons/log/templates/logs-page.template.php:34
 msgid "Any type"
 msgstr "Alle types"
 
-#: src/php/core-addons/log/templates/logs-page.template.php:39
+#: src/php/core-addons/log/templates/logs-page.template.php:46
 msgid "Filter events"
 msgstr ""
 
-#: src/php/core-addons/log/templates/logs-page.template.php:43
+#: src/php/core-addons/log/templates/logs-page.template.php:50
 msgid "Between"
 msgstr ""
 
@@ -1489,33 +1757,33 @@ msgstr "Bericht eigenaar"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:693
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:695
 msgid "Assignment"
 msgstr "Toewijzing"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:719
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:721
 msgid "Select the owner"
 msgstr "Selecteer de eigenaar"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:900
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:902
 msgid "It seems you cannot select any owner of that type."
 msgstr "U kunt blijkbaar geen enkele eigenaar selecteren"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:914
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:916
 msgid "The owner is hidden"
 msgstr "De eigenaar is verborgen"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:936
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:938
 msgid "Select or search an owner"
 msgstr "Selecteer het type eigenaar"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:1119
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:1121
 msgid "User - %s"
 msgstr "Gebruiker - %s"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:43
-#: src/php/core-addons/private-file/private-file-addon.class.php:1094
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:148
+#: src/php/core-addons/private-file/private-file-addon.class.php:1081
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:149
 msgid "Private Files"
 msgstr "Privé-Bestanden"
 
@@ -1530,231 +1798,238 @@ msgid "Do you really want to remove this file?"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:773
-#: src/php/core-addons/private-file/private-file-addon.class.php:834
+#: src/php/core-addons/private-file/private-file-addon.class.php:833
 msgid "You are not allowed to attach more than %d file"
 msgid_plural "You are not allowed to attach more than %d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:799
-#: src/php/core-addons/private-file/private-file-addon.class.php:894
-#: src/php/core-addons/private-file/private-file-addon.class.php:960
-#: src/php/core-classes/addon-create-content-page.class.php:92
-#: src/php/core-classes/addon-create-content-page.class.php:98
-msgid "Trying to cheat?"
-msgstr ""
-
-#: src/php/core-addons/private-file/private-file-addon.class.php:810
+#: src/php/core-addons/private-file/private-file-addon.class.php:809
 msgid "You are not allowed to attach files to this kind of content"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:848
+#: src/php/core-addons/private-file/private-file-addon.class.php:847
 msgid "You cannot attach files with the same name"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:905
+#: src/php/core-addons/private-file/private-file-addon.class.php:903
 msgid "You are not allowed to update attached files"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:914
+#: src/php/core-addons/private-file/private-file-addon.class.php:912
 msgid "File not found"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:971
+#: src/php/core-addons/private-file/private-file-addon.class.php:968
 msgid "You are not allowed to remove attached files"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1041
+#: src/php/core-addons/private-file/private-file-addon.class.php:1038
 msgid "You are not authorized to access this file"
 msgstr "U bent niet geautoriseerd om dit bestand te openen"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1061
+#: src/php/core-addons/private-file/private-file-addon.class.php:1058
 msgid "There is no such file attached to this private content"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1097
+#: src/php/core-addons/private-file/private-file-addon.class.php:1084
 msgid "Global"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1099
+#: src/php/core-addons/private-file/private-file-addon.class.php:1086
 msgid "Manage file attachments"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1105
+#: src/php/core-addons/private-file/private-file-addon.class.php:1092
 msgid "List all files"
 msgstr "Alle bestanden opsommen"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1106
+#: src/php/core-addons/private-file/private-file-addon.class.php:1093
 msgid "Create/Edit files"
 msgstr "Maak/Wijzig bestanden"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1107
+#: src/php/core-addons/private-file/private-file-addon.class.php:1094
 msgid "Delete files"
 msgstr "Verwijder bestanden"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1108
+#: src/php/core-addons/private-file/private-file-addon.class.php:1095
 msgid "Access files"
 msgstr "Toegang verkrijgen tot bestanden"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1109
+#: src/php/core-addons/private-file/private-file-addon.class.php:1096
 #: src/php/core-addons/private-page/private-page-addon.class.php:114
 msgid "Manage categories"
 msgstr "Beheer categoriën"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1110
+#: src/php/core-addons/private-file/private-file-addon.class.php:1097
 #: src/php/core-addons/private-page/private-page-addon.class.php:115
 msgid "Edit categories"
 msgstr "Wijzig categoriën"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1111
+#: src/php/core-addons/private-file/private-file-addon.class.php:1098
 #: src/php/core-addons/private-page/private-page-addon.class.php:116
 msgid "Delete categories"
 msgstr "Verwijder categoriën"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1112
+#: src/php/core-addons/private-file/private-file-addon.class.php:1099
 #: src/php/core-addons/private-page/private-page-addon.class.php:117
 msgid "Assign categories"
 msgstr "Wijs categoriën toe"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1118
+#: src/php/core-addons/private-file/private-file-addon.class.php:1105
 msgid "View private files"
 msgstr "Bekijk privé bestanden"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1119
+#: src/php/core-addons/private-file/private-file-addon.class.php:1106
 msgid "View any private file"
 msgstr "Open het Privé-bestand"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:69
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:70
 msgid "Add file attachments"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:77
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:78
 msgid "Attached Files"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:162
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:163
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:123
 msgid "General settings"
 msgstr "Algemene instellingen"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:169
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:170
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:130
 msgid "Enable add-on"
 msgstr "Extenties aanzetten"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:177
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:178
 msgid "Check this to enable the private files add-on."
 msgstr "Controleer dit om de privé-bestanden ad-on aan te zetten"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:183
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:184
 msgid "File Storage"
 msgstr "Bestandsopslag"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:190
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:191
 msgid "File storage"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:204
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:205
 msgid "FTP uploads folder"
 msgstr "FTP upload map"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:245
-msgid ""
-"<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:246
+msgid "<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:248
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:249
 msgid ""
 "This folder is the root folder for storing private files. This should "
-"preferably be located outside of the web server public area or secured using"
-" a <code>.htaccess</code> file"
+"preferably be located outside of the web server public area or secured using "
+"a <code>.htaccess</code> file"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:262
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:263
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
-msgstr "Deze map kan worden gebruikt wanneer u bestandne wilt uploaden via FTP. Dit is makkelijk wanneer direct uploaden mislukt bij grote bestanden. "
+msgstr ""
+"Deze map kan worden gebruikt wanneer u bestandne wilt uploaden via FTP. Dit "
+"is makkelijk wanneer direct uploaden mislukt bij grote bestanden. "
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:279
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:297
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:313
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:280
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:298
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:314
 msgid "Save settings to check again"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:280
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:281
 msgid "The folder does not exist."
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:284
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:285
 msgid "Create folder"
 msgstr "Map aanmaken"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:298
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:299
 msgid ""
 "That directory should at least have the permissions set to %s. Currently it "
 "is %s. You should adjust that directory permissions as upload or download "
 "might not work properly."
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:303
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:304
 msgid "Change permissions"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:314
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:315
 msgid ""
 "That directory seems to be accessible from the web. <strong>This is not "
-"safe</strong>. The most secure would be to move it outside of the web folder"
-" of your server"
+"safe</strong>. The most secure would be to move it outside of the web folder "
+"of your server"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:319
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:320
 msgid ""
 "We can try to protect it with a <code>.htaccess</code> file with the button "
 "below, but <strong>this only works for Apache servers</strong> (will do "
 "nothing if you are running nginx or IIS)"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:324
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:325
 msgid "Try to secure it"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:213
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:271
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:342
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:414
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:472
 msgid "This file type is not allowed. You can only upload: %s"
 msgstr "Dit bestandstype is niet toegestaan. U kunt alleen uploaden: %s"
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:237
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:350
+msgid "A method must be specified (copy|move|noop) in the extra parameter"
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:357
+msgid "A path must be specified in the extra parameter"
+msgstr ""
+
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:386
+#, fuzzy
+msgid "An error happened while copying %1$s from the server folder %2$s"
+msgstr "Er is een fout opgetreden tijdens het uploaden van uw bestand: %s"
+
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:438
 msgid "An error happened while copying %s from the FTP folder"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:259
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:460
 msgid "No file has been uploaded"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:293
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:494
 msgid "An unknown error happened while uploading your file."
 msgstr "Een onbekende fout is opgetreden tijdens het uploaden van uw bestand."
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:299
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:500
 msgid "An error happened while uploading your file: %s"
 msgstr "Er is een fout opgetreden tijdens het uploaden van uw bestand: %s"
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:378
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:611
 msgid "Classic upload"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:380
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:613
 msgid ""
 "Select the files you want to upload, they will be processed when you save "
 "the post."
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:384
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:617
 msgid "Get from server FTP folder"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-default-handlers.class.php:386
+#: src/php/core-addons/private-file/private-file-default-handlers.class.php:619
 msgid ""
 "Below are the files listed from the FTP folder you have set in the plugin "
 "options. Those files will be moved or copied to their final location."
@@ -1788,7 +2063,12 @@ msgstr ""
 msgid "How do you want to add the files?"
 msgstr ""
 
-#: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:20
+#: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:21
+#, fuzzy
+msgid "Download"
+msgstr "Bestand gedownload"
+
+#: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:24
 msgid "Remove"
 msgstr "Verwijderen"
 
@@ -1849,12 +2129,6 @@ msgstr ""
 msgid "Published by %s on %s"
 msgstr ""
 
-#: src/php/core-addons/status/hook-finder.class.php:124
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
-#: src/php/core-classes/widget-content-list.class.php:217
-msgid "Name"
-msgstr "Naam"
-
 #: src/php/core-addons/status/hook-finder.class.php:125
 #: src/php/core-addons/status/template-printer.class.php:39
 msgid "File"
@@ -1887,7 +2161,8 @@ msgstr "Geïnstalleerde extenties"
 
 #: src/php/core-addons/status/status-addon.class.php:114
 msgid "Core and commercial add-ons currently enabled"
-msgstr "Basis en commerciële Klantzone uitbreidingen welke momenteel actief zijn"
+msgstr ""
+"Basis en commerciële Klantzone uitbreidingen welke momenteel actief zijn"
 
 #: src/php/core-addons/status/status-addon.class.php:123
 msgid "Actions and filters"
@@ -1909,27 +2184,31 @@ msgstr "Tempalte bestanden"
 msgid "Settings tools"
 msgstr "Instellingen"
 
-#: src/php/core-addons/status/status-addon.class.php:198
+#: src/php/core-addons/status/status-addon.class.php:206
+msgid "The database has been cleaned up, you can now remove the plugin"
+msgstr ""
+
+#: src/php/core-addons/status/status-addon.class.php:212
 msgid "Settings have been resetted to default values"
 msgstr "Instellingen zijn teruggezet naar de standaard waarden"
 
-#: src/php/core-addons/status/status-addon.class.php:208
+#: src/php/core-addons/status/status-addon.class.php:222
 msgid "Invalid parameters. No file sent"
 msgstr "Incorrecte variabelen. Bestand is niet verstuurd"
 
-#: src/php/core-addons/status/status-addon.class.php:218
+#: src/php/core-addons/status/status-addon.class.php:232
 msgid "No file sent."
 msgstr "Geen bestand verstuurd"
 
-#: src/php/core-addons/status/status-addon.class.php:223
+#: src/php/core-addons/status/status-addon.class.php:237
 msgid "Exceeded filesize limit."
 msgstr "Bestand is groter dan maximum limiet"
 
-#: src/php/core-addons/status/status-addon.class.php:227
+#: src/php/core-addons/status/status-addon.class.php:241
 msgid "Unknown errors."
 msgstr "Onbekende fouten"
 
-#: src/php/core-addons/status/status-addon.class.php:236
+#: src/php/core-addons/status/status-addon.class.php:250
 msgid "Settings have been imported successfully"
 msgstr "Instellingen zijn succesvol geïmporteerd"
 
@@ -1962,9 +2241,12 @@ msgstr "Verouderde plugin versie"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a "
-"href=\"%2$s\">add-ons status pages</a>."
-msgstr "Sommige Klantzone uitbreidingen hebben een nieuwere versie van de basis plug-in nodig. (u gebruikt momenteel versie %1$s). U kunt de lijst met alle Klantzone uitbreidingen vinden op <a href=\"%2$s\">add-ons status pages</a>."
+"running version %1$s). You can find the list of all add-ons on the <a href="
+"\"%2$s\">add-ons status pages</a>."
+msgstr ""
+"Sommige Klantzone uitbreidingen hebben een nieuwere versie van de basis plug-"
+"in nodig. (u gebruikt momenteel versie %1$s). U kunt de lijst met alle "
+"Klantzone uitbreidingen vinden op <a href=\"%2$s\">add-ons status pages</a>."
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
 msgid "Update the plugin"
@@ -1984,7 +2266,7 @@ msgstr "Sla over tot de volgende update"
 
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:29
 #: src/php/core-addons/status/templates/status-section-templates.template.php:26
-#: src/php/core-classes/Content/list-table.class.php:151
+#: src/php/core-classes/Content/list-table.class.php:157
 msgid "All"
 msgstr "Alle"
 
@@ -2012,49 +2294,88 @@ msgstr "Item #%d"
 msgid ""
 "Congratulations, everything seems to be configured properly. You can enjoy "
 "your customer area now."
-msgstr "Gefeliciteerd, alles lijkt goed te zijn geconfigureerd. U kunt nu genieten van uw Klantzone."
+msgstr ""
+"Gefeliciteerd, alles lijkt goed te zijn geconfigureerd. U kunt nu genieten "
+"van uw Klantzone."
 
-#: src/php/core-addons/status/templates/status-section-reset.template.php:22
-#: src/php/core-addons/status/templates/status-section-reset.template.php:28
+#: src/php/core-addons/status/templates/status-section-reset.template.php:27
+#: src/php/core-addons/status/templates/status-section-reset.template.php:33
 msgid "Export settings"
 msgstr "Exporteer instellingen"
 
-#: src/php/core-addons/status/templates/status-section-reset.template.php:24
+#: src/php/core-addons/status/templates/status-section-reset.template.php:29
 msgid ""
 "You can export all the settings to a JSON file. You can then use that file "
 "to restore your settings using the import settings field below."
-msgstr "U kuhnt alle instellingen exporteren naar een JSON bestand. U kunt dat bestand gebruiken om uw instellingen terug te zetten via importeren instellingen."
+msgstr ""
+"U kuhnt alle instellingen exporteren naar een JSON bestand. U kunt dat "
+"bestand gebruiken om uw instellingen terug te zetten via importeren "
+"instellingen."
 
-#: src/php/core-addons/status/templates/status-section-reset.template.php:31
-#: src/php/core-addons/status/templates/status-section-reset.template.php:38
+#: src/php/core-addons/status/templates/status-section-reset.template.php:36
+#: src/php/core-addons/status/templates/status-section-reset.template.php:43
 msgid "Import settings"
 msgstr "Importeer instellingen"
 
-#: src/php/core-addons/status/templates/status-section-reset.template.php:33
+#: src/php/core-addons/status/templates/status-section-reset.template.php:38
 msgid ""
-"You can import all the settings you had previously exported from a JSON "
-"file."
-msgstr "U kunt alle instellingen importeren die u daarvoor heeft geexporteerd in een JSON bestand"
+"You can import all the settings you had previously exported from a JSON file."
+msgstr ""
+"U kunt alle instellingen importeren die u daarvoor heeft geexporteerd in een "
+"JSON bestand"
 
-#: src/php/core-addons/status/templates/status-section-reset.template.php:42
+#: src/php/core-addons/status/templates/status-section-reset.template.php:47
 msgid "Reset settings"
 msgstr "Reset instellingen"
 
-#: src/php/core-addons/status/templates/status-section-reset.template.php:44
+#: src/php/core-addons/status/templates/status-section-reset.template.php:49
 msgid ""
 "Pressing the button below will reset all your Customer Area settings to the "
 "default values. This cannot be undone!"
-msgstr "Door op onderstaande knop te klikken zullen al uw Klantzone instellingen teruggezet worden naar de standaard waarden. Deze actie kan niet ongedaan worden gemaakt!"
+msgstr ""
+"Door op onderstaande knop te klikken zullen al uw Klantzone instellingen "
+"teruggezet worden naar de standaard waarden. Deze actie kan niet ongedaan "
+"worden gemaakt!"
 
-#: src/php/core-addons/status/templates/status-section-reset.template.php:48
+#: src/php/core-addons/status/templates/status-section-reset.template.php:53
 msgid "Reset default settings"
 msgstr "Reset standaard instellingen"
 
-#: src/php/core-addons/status/templates/status-section-reset.template.php:54
+#: src/php/core-addons/status/templates/status-section-reset.template.php:56
+#, fuzzy
+msgid "Uninstall WP Customer Area"
+msgstr "Klanten Zone"
+
+#: src/php/core-addons/status/templates/status-section-reset.template.php:58
+#, fuzzy
 msgid ""
-"Are you sure that you want to reset all the settings to their default values"
-" (this operation cannot be undone)?"
-msgstr "Weet u zeker dat u alle instellingen naar hun standaard waarden wilt terugzetten (deze actie kan niet ongedaan worden gemaakt)?"
+"Pressing the button below will clean-up any data related to WP Customer Area "
+"(posts, taxonomies, etc.). This cannot be undone!"
+msgstr ""
+"Door op onderstaande knop te klikken zullen al uw Klantzone instellingen "
+"teruggezet worden naar de standaard waarden. Deze actie kan niet ongedaan "
+"worden gemaakt!"
+
+#: src/php/core-addons/status/templates/status-section-reset.template.php:62
+msgid "Clean-up database"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-reset.template.php:68
+msgid ""
+"Are you sure that you want to reset all the settings to their default values "
+"(this operation cannot be undone)?"
+msgstr ""
+"Weet u zeker dat u alle instellingen naar hun standaard waarden wilt "
+"terugzetten (deze actie kan niet ongedaan worden gemaakt)?"
+
+#: src/php/core-addons/status/templates/status-section-reset.template.php:73
+#, fuzzy
+msgid ""
+"Are you sure that you want to delete everything related to WP Customer Area "
+"(this operation cannot be undone)?"
+msgstr ""
+"Weet u zeker dat u deze pagina's wilt verwijderen (deze actie kan niet "
+"ongedaan worden gemaakt)?"
 
 #: src/php/core-addons/status/templates/status-section-templates.template.php:27
 msgid "Overridden only"
@@ -2068,97 +2389,100 @@ msgstr "Alleen verouderde"
 msgid "%s: %d template(s)"
 msgstr "%s: %d template(s)"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:35
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:38
 msgid "User Profile"
 msgstr "Gebruikersprofiel"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:65
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:76
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:67
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:78
 msgid "Your username cannot be changed."
 msgstr "Uw gebruikersnaam kan niet worden gewijzigd"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:72
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:83
 msgid "Primary email"
 msgstr "Primaire e-mail "
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:77
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:88
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:78
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:89
 msgid "Password (confirm)"
 msgstr "Wachtwoord (bevestigen)"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:79
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:90
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
 "fields empty if you want to keep your current password"
 msgstr ""
 
-#: src/php/core-classes/Content/list-table.class.php:253
+#: src/php/core-classes/Content/list-table.class.php:262
 msgid "Unpublished"
 msgstr "Niet gepubliceerd"
 
-#: src/php/core-classes/Content/list-table.class.php:258
+#: src/php/core-classes/Content/list-table.class.php:267
 msgid "Y/m/d g:i:s A"
 msgstr "Y/m/d g:i:s A"
 
-#: src/php/core-classes/Content/list-table.class.php:266
+#: src/php/core-classes/Content/list-table.class.php:275
 msgid "%s ago"
 msgstr "%s geleden"
 
-#: src/php/core-classes/Content/list-table.class.php:270
+#: src/php/core-classes/Content/list-table.class.php:279
 msgid "Y/m/d"
 msgstr "d/m/Y"
 
-#: src/php/core-classes/Content/list-table.class.php:285
+#: src/php/core-classes/Content/list-table.class.php:294
 msgid "Missed schedule"
 msgstr "Planning mislukt"
 
-#: src/php/core-classes/Content/list-table.class.php:289
+#: src/php/core-classes/Content/list-table.class.php:298
 msgid "Scheduled"
 msgstr "Gepland"
 
-#: src/php/core-classes/Content/list-table.class.php:294
+#: src/php/core-classes/Content/list-table.class.php:303
 msgid "Last Modified"
 msgstr "Laatst aangepast"
 
-#: src/php/core-classes/Content/list-table.class.php:319
-#: src/php/core-classes/Content/list-table.class.php:385
+#: src/php/core-classes/Content/list-table.class.php:329
+#: src/php/core-classes/Content/list-table.class.php:399
 msgid "Restore"
 msgstr "Herstellen"
 
-#: src/php/core-classes/Content/list-table.class.php:337
+#: src/php/core-classes/Content/list-table.class.php:347
 msgid "Preview"
 msgstr "Voorbeeld"
 
-#: src/php/core-classes/Content/list-table.class.php:390
+#: src/php/core-classes/Content/list-table.class.php:404
 msgid "Move to trash"
 msgstr "Naar de prullenbak verplaatsen"
 
-#: src/php/core-classes/Content/list-table.class.php:445
+#: src/php/core-classes/Content/list-table.class.php:459
 msgid "You are not allowed to restore this item."
 msgstr ""
 
-#: src/php/core-classes/Content/list-table.class.php:453
+#: src/php/core-classes/Content/list-table.class.php:467
 msgid "You are not allowed to move this item to trash."
 msgstr ""
 
-#: src/php/core-classes/Content/list-table.class.php:541
+#: src/php/core-classes/Content/list-table.class.php:555
 msgid "Empty Trash"
 msgstr "Prullenbak leegmaken "
 
 #: src/php/core-classes/Licensing/license-validation-result.class.php:81
 msgid ""
-"You have bought your license on the previous shop. We have a <a "
-"href=\"%1$s\">brand new website</a>, please contact us so that we can help "
-"you migrate your license to the new shop."
-msgstr "U heeft uw licentie op de vorige winkel gekocht. We hebben een <a href=\"%1$s\"> gloednieuwe website </a>, neem dan contact met ons op zodat wij u kunnen helpen uw licentie te migreren naar de nieuwe winkel."
+"You have bought your license on the previous shop. We have a <a href=\"%1$s"
+"\">brand new website</a>, please contact us so that we can help you migrate "
+"your license to the new shop."
+msgstr ""
+"U heeft uw licentie op de vorige winkel gekocht. We hebben een <a href=\"%1$s"
+"\"> gloednieuwe website </a>, neem dan contact met ons op zodat wij u kunnen "
+"helpen uw licentie te migreren naar de nieuwe winkel."
 
 #: src/php/core-classes/Licensing/licensing.class.php:73
 msgid "Unknown add-on"
@@ -2182,7 +2506,9 @@ msgstr "Deze licentie is ingetgrokken."
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
-msgstr "U heeft uw maximum aantal website bereikt voor de Klantzone licenties. U heeft licentie tot %s website(s)."
+msgstr ""
+"U heeft uw maximum aantal website bereikt voor de Klantzone licenties. U "
+"heeft licentie tot %s website(s)."
 
 #: src/php/core-classes/Licensing/licensing.class.php:118
 msgid "Renew license"
@@ -2210,7 +2536,9 @@ msgstr ""
 
 #: src/php/core-classes/MessageCenter/message-center.class.php:148
 msgid "<strong>WP Customer Area</strong> has detected some potential issues: "
-msgstr "<strong>WP Customer Area</strong> heeft een aantal potentiële problemen ontdekt:"
+msgstr ""
+"<strong>WP Customer Area</strong> heeft een aantal potentiële problemen "
+"ontdekt:"
 
 #: src/php/core-classes/MessageCenter/message-center.class.php:156
 msgid "Fix these potential issues"
@@ -2220,43 +2548,49 @@ msgstr "Fix deze potentiële problemen"
 msgid "The shortcode <code>[%1$s]</code> is missing required parameter: %2$s"
 msgstr ""
 
-#: src/php/core-classes/addon-container-page.class.php:664
+#: src/php/core-classes/addon-container-page.class.php:753
 #: src/php/core-classes/addon-content-page.class.php:783
 msgid "Frontend Integration"
 msgstr "Frontend Intergratie"
 
-#: src/php/core-classes/addon-container-page.class.php:674
+#: src/php/core-classes/addon-container-page.class.php:765
 #: src/php/core-classes/addon-content-page.class.php:795
 msgid "Show after post"
 msgstr "Laat zien na het bericht"
 
-#: src/php/core-classes/addon-container-page.class.php:683
+#: src/php/core-classes/addon-container-page.class.php:774
 #: src/php/core-classes/addon-content-page.class.php:804
 msgid "Show additional information after the post in the single post view."
-msgstr "Laat extra informatie zien na het bericht in de enkelvoudige bericht weergave."
+msgstr ""
+"Laat extra informatie zien na het bericht in de enkelvoudige bericht "
+"weergave."
 
-#: src/php/core-classes/addon-container-page.class.php:685
+#: src/php/core-classes/addon-container-page.class.php:776
 #: src/php/core-classes/addon-content-page.class.php:806
 msgid ""
 "You can disable this if you have your own theme template file for single "
 "posts. The theme file to look for or create should be called: %s."
-msgstr "U kunt deze uitschakelen indien u een eigen thema heeft voor enkele nieuwsberichten. Het te zoeken of maken thema moet heten: %s."
+msgstr ""
+"U kunt deze uitschakelen indien u een eigen thema heeft voor enkele "
+"nieuwsberichten. Het te zoeken of maken thema moet heten: %s."
 
-#: src/php/core-classes/addon-container-page.class.php:703
+#: src/php/core-classes/addon-container-page.class.php:797
 #: src/php/core-classes/addon-content-page.class.php:827
 msgid "Show recent content on the dashboard."
 msgstr "Beeld de laatste content af op het werkblad"
 
-#: src/php/core-classes/addon-container-page.class.php:716
+#: src/php/core-classes/addon-container-page.class.php:811
 #: src/php/core-classes/addon-content-page.class.php:842
 msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all "
-"items."
-msgstr "Bepaald het aantal weer te geven items op het werkblad. -1 zal alle items weergeven."
+"Define how many items to allow on the dashboard page. -1 will show all items."
+msgstr ""
+"Bepaald het aantal weer te geven items op het werkblad. -1 zal alle items "
+"weergeven."
 
-#: src/php/core-classes/addon-container-page.class.php:790
+#: src/php/core-classes/addon-container-page.class.php:892
 msgid "Slug that is used in the URL for archives of the taxonomy: "
-msgstr "Synoniem welke is gebruikt in de URL voor het archiveren van de taxanomie."
+msgstr ""
+"Synoniem welke is gebruikt in de URL voor het archiveren van de taxanomie."
 
 #: src/php/core-classes/addon-create-content-page.class.php:85
 msgid "You are not allowed to create this type of content."
@@ -2284,7 +2618,9 @@ msgstr "Nakijken"
 
 #: src/php/core-classes/addon-create-content-page.class.php:216
 msgid "Enable moderation when new content is submitted by a user."
-msgstr "Inschakelen \"nakijken\" wanneer er nieuwe content door een gebruiker worden aangeleverd."
+msgstr ""
+"Inschakelen \"nakijken\" wanneer er nieuwe content door een gebruiker worden "
+"aangeleverd."
 
 #: src/php/core-classes/addon-create-content-page.class.php:232
 msgid "Default owner type"
@@ -2298,23 +2634,23 @@ msgstr "Standaard eigenaar"
 msgid "Default category"
 msgstr "Standaard categorie"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:822
+#: src/php/core-classes/addon-edit-content-page.class.php:832
 msgid "Content edition (from front-office)"
 msgstr "Content versie (vanuit de gebruikers pagina's)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:824
+#: src/php/core-classes/addon-edit-content-page.class.php:834
 msgid "Select an owner (uses default else)"
 msgstr "Selecteer een eigenaar (anders wordt de standaard gebruikt)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:825
+#: src/php/core-classes/addon-edit-content-page.class.php:835
 msgid "Select a category (uses default else)"
 msgstr "Selecteer een categorie (anders wordt de standaard gebruikt)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:890
+#: src/php/core-classes/addon-edit-content-page.class.php:900
 msgid "Rich Editor"
 msgstr "Tekst editor"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:898
+#: src/php/core-classes/addon-edit-content-page.class.php:908
 msgid "Enable the rich editor when editing content."
 msgstr "Inschakelen van de tekstverwerker bij aanmaken van nieuwe content."
 
@@ -2334,68 +2670,70 @@ msgstr "U bent niet geautoriseerd om deze pagina te zien"
 msgid "WPCA - %s"
 msgstr "WPCA - %s"
 
-#: src/php/core-classes/addon-update-content-page.class.php:146
+#: src/php/core-classes/addon-update-content-page.class.php:149
 msgid "You must supply a post ID to delete"
 msgstr "U moet een bericht ID opgeven om dte verwijderen"
 
-#: src/php/core-classes/addon-update-content-page.class.php:153
+#: src/php/core-classes/addon-update-content-page.class.php:156
 msgid "You are not allowed to delete this post"
 msgstr "U bent niet geautoriseerd om dit bericht te verwijdren"
 
-#: src/php/core-classes/addon-update-content-page.class.php:161
+#: src/php/core-classes/addon-update-content-page.class.php:164
 msgid "The content has been deleted."
 msgstr "De content is verwijderd"
 
-#: src/php/core-classes/addon-update-content-page.class.php:284
-#: src/php/core-classes/addon-update-content-page.class.php:285
+#: src/php/core-classes/addon-update-content-page.class.php:287
+#: src/php/core-classes/addon-update-content-page.class.php:288
 msgid "Delete"
 msgstr "Verwijder"
 
-#: src/php/core-classes/addon-update-content-page.class.php:288
+#: src/php/core-classes/addon-update-content-page.class.php:291
 msgid "Are you sure that you want to delete this content?"
-msgstr "Weet u zeker dat u deze content wilt verwijdren (deze actie kan niet ongedaan worden gemaakt)?"
+msgstr ""
+"Weet u zeker dat u deze content wilt verwijdren (deze actie kan niet "
+"ongedaan worden gemaakt)?"
 
-#: src/php/core-classes/addon-update-content-page.class.php:306
+#: src/php/core-classes/addon-update-content-page.class.php:309
 msgid "Content update (from front-office)"
 msgstr "Content bijwerken (vanuit de gebruikers pagina's)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:308
+#: src/php/core-classes/addon-update-content-page.class.php:311
 msgid "Update any content from front office"
 msgstr "Content bijwerken vanuit de gebruikers pagina's"
 
-#: src/php/core-classes/addon-update-content-page.class.php:309
+#: src/php/core-classes/addon-update-content-page.class.php:312
 msgid "Update authored content"
 msgstr "Bijwerken gepubliceerde content"
 
-#: src/php/core-classes/addon-update-content-page.class.php:310
+#: src/php/core-classes/addon-update-content-page.class.php:313
 msgid "Update owned content"
 msgstr "Bijwerken content in eigendom"
 
-#: src/php/core-classes/addon-update-content-page.class.php:314
+#: src/php/core-classes/addon-update-content-page.class.php:317
 msgid "Content removal (from front-office)"
 msgstr "Content verwijdering (vanuit de gebruikers pagina's)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:316
+#: src/php/core-classes/addon-update-content-page.class.php:319
 msgid "Delete any content from front office"
 msgstr "Verwijder content vanuit de gebruikers pagina's"
 
-#: src/php/core-classes/addon-update-content-page.class.php:317
+#: src/php/core-classes/addon-update-content-page.class.php:320
 msgid "Delete authored content"
 msgstr "Verwijder gepubliceerde content"
 
-#: src/php/core-classes/addon-update-content-page.class.php:318
+#: src/php/core-classes/addon-update-content-page.class.php:321
 msgid "Delete owned content"
 msgstr "Verwijder content waarvan ik de eigenaar ben"
 
-#: src/php/core-classes/addon-update-content-page.class.php:333
+#: src/php/core-classes/addon-update-content-page.class.php:336
 msgid "You must specify a post to delete"
 msgstr "U moet een bericht aangeven om te verwijderen"
 
-#: src/php/core-classes/addon-update-content-page.class.php:370
+#: src/php/core-classes/addon-update-content-page.class.php:373
 msgid "You must specify a post to edit"
 msgstr "U moet een bericht ID opgeven om bij te werken"
 
-#: src/php/core-classes/addon-update-content-page.class.php:411
+#: src/php/core-classes/addon-update-content-page.class.php:414
 msgid "Content edition"
 msgstr "Content versie"
 
@@ -2403,7 +2741,9 @@ msgstr "Content versie"
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
-msgstr "<strong> ERROR:</strong> WP Customer Area add-ons zijn actief, maar de belangrijkste plugin is niet geïnstalleerd!"
+msgstr ""
+"<strong> ERROR:</strong> WP Customer Area add-ons zijn actief, maar de "
+"belangrijkste plugin is niet geïnstalleerd!"
 
 #: src/php/core-classes/addon.class.php:125
 msgid "License Keys"
@@ -2417,13 +2757,17 @@ msgstr "Licentie sleutel voor commerciële Klantzone uitbreidingen"
 msgid ""
 "This page allows you to enter license key you have received when you "
 "purchased commercial addons."
-msgstr "Deze pagina stelt u in staat om de licentie sleutels in te geven welke u heeft ontvangen bij het kopen van de commerciële Klantzone uitbreidingen."
+msgstr ""
+"Deze pagina stelt u in staat om de licentie sleutels in te geven welke u "
+"heeft ontvangen bij het kopen van de commerciële Klantzone uitbreidingen."
 
 #: src/php/core-classes/addon.class.php:180
 msgid ""
 "Do not activate your license on your development site. Only on the final "
 "site where you are running the plugin."
-msgstr "Activeer niet uw licentie sleutels op uw ontwikkel omgeving. Activeer deze alleen binnen de website op de definitieve plaats. "
+msgstr ""
+"Activeer niet uw licentie sleutels op uw ontwikkel omgeving. Activeer deze "
+"alleen binnen de website op de definitieve plaats. "
 
 #: src/php/core-classes/object-meta/field/email-field.class.php:47
 msgid "Email"
@@ -2507,17 +2851,21 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: src/php/core-classes/plugin.class.php:567
+#: src/php/core-classes/plugin.class.php:591
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
-msgstr "Permalinks zijn uitgeschakeld, Customer Area zal hier door niet goed werken. <a href=\"%1$s\"> Wijzig dit in de WordPress instellingen</a>."
+msgstr ""
+"Permalinks zijn uitgeschakeld, Customer Area zal hier door niet goed werken. "
+"<a href=\"%1$s\"> Wijzig dit in de WordPress instellingen</a>."
 
-#: src/php/core-classes/plugin.class.php:598
+#: src/php/core-classes/plugin.class.php:622
 msgid "Some add-ons require a newer version of the main plugin."
-msgstr "Sommige Klantzone uitbreidingen hebben een nieuwere versie van de basis plugin nodig."
+msgstr ""
+"Sommige Klantzone uitbreidingen hebben een nieuwere versie van de basis "
+"plugin nodig."
 
-#: src/php/core-classes/plugin.class.php:803
+#: src/php/core-classes/plugin.class.php:841
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 
@@ -2553,10 +2901,12 @@ msgstr "Verberg de selectie van de eigenaar wanneer er maar één eigenaar is"
 
 #: src/php/core-classes/settings.class.php:317
 msgid ""
-"The owner will not be displayed but included directly if a single owner type"
-" is available to the current user and if within that owner type, a single "
+"The owner will not be displayed but included directly if a single owner type "
+"is available to the current user and if within that owner type, a single "
 "owner is available."
-msgstr "De eigenaar wordt niet weergegeven maar direct geselecteerd wanneer er binnen het type eigenaar maar één eigenaar beschikbaar is. "
+msgstr ""
+"De eigenaar wordt niet weergegeven maar direct geselecteerd wanneer er "
+"binnen het type eigenaar maar één eigenaar beschikbaar is. "
 
 #: src/php/core-classes/settings.class.php:356
 msgid "Use skin"
@@ -2592,84 +2942,95 @@ msgstr "Debug templates"
 
 #: src/php/core-classes/settings.class.php:392
 msgid "Print debug information about the templates used by Customer Area."
-msgstr "Print debug informatie m.b.t. de templates welke doro Klantzone worden gebruikt."
+msgstr ""
+"Print debug informatie m.b.t. de templates welke doro Klantzone worden "
+"gebruikt."
 
-#: src/php/core-classes/settings.class.php:497
+#: src/php/core-classes/settings.class.php:512
 msgid " is not a valid post"
 msgstr "is geen geldige waarde"
 
-#: src/php/core-classes/settings.class.php:536
+#: src/php/core-classes/settings.class.php:551
 msgid " is not a valid role"
 msgstr "is geen geldige waarde"
 
-#: src/php/core-classes/settings.class.php:574
+#: src/php/core-classes/settings.class.php:589
 msgid " cannot be empty"
 msgstr "kan niet leeg zijn"
 
-#: src/php/core-classes/settings.class.php:599
+#: src/php/core-classes/settings.class.php:614
 msgid " is not a valid email"
 msgstr "is geen geldig email adres"
 
-#: src/php/core-classes/settings.class.php:622
+#: src/php/core-classes/settings.class.php:637
 msgid " is not a valid value"
 msgstr "is geen geldige waarde"
 
-#: src/php/core-classes/settings.class.php:651
+#: src/php/core-classes/settings.class.php:666
 msgid "must be an integer"
 msgstr "moet een nummer zijn"
 
-#: src/php/core-classes/settings.class.php:663
+#: src/php/core-classes/settings.class.php:678
 msgid "must be greater than %s"
 msgstr "moet groter zijn dan %s"
 
-#: src/php/core-classes/settings.class.php:674
+#: src/php/core-classes/settings.class.php:689
 msgid "must be lower than %s"
 msgstr "moet kleiner zijn dan %s"
 
-#: src/php/core-classes/settings.class.php:706
+#: src/php/core-classes/settings.class.php:721
 msgid " is not a valid owner type"
 msgstr "is niet een geldige type voor de eigenaar"
 
-#: src/php/core-classes/settings.class.php:735
+#: src/php/core-classes/settings.class.php:750
 msgid " is not a valid owner"
 msgstr "is niet een geldige eigenaar"
 
-#: src/php/core-classes/settings.class.php:755
-#: src/php/core-classes/settings.class.php:790
+#: src/php/core-classes/settings.class.php:770
+#: src/php/core-classes/settings.class.php:805
 msgid "you cannot select multiple terms."
 msgstr "u kunt niet meerdere termen selecteren."
 
-#: src/php/core-classes/settings.class.php:1087
+#: src/php/core-classes/settings.class.php:987
+msgid "Upload File"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:1131
 msgid "None"
 msgstr "Geen"
 
-#: src/php/core-classes/settings.class.php:1111
+#: src/php/core-classes/settings.class.php:1155
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Verwijder betaande &amp; aanmaken nieuwe &raquo;"
 
-#: src/php/core-classes/settings.class.php:1116
+#: src/php/core-classes/settings.class.php:1160
 msgid "Edit it &raquo;"
 msgstr "Wijzig &raquo;"
 
-#: src/php/core-classes/settings.class.php:1124
+#: src/php/core-classes/settings.class.php:1168
 msgid "Create it &raquo;"
 msgstr "Maak het &raquo;"
 
-#: src/php/core-classes/settings.class.php:1224
+#: src/php/core-classes/settings.class.php:1296
 msgid "Any Role"
 msgstr "Elke Rol"
 
-#: src/php/core-classes/settings.class.php:1416
+#: src/php/core-classes/settings.class.php:1488
 msgid "Main plugin folder"
 msgstr "Plugin hoofdmap"
 
-#: src/php/core-classes/settings.class.php:1422
+#: src/php/core-classes/settings.class.php:1494
 msgid "Current theme folder"
 msgstr "Huidige map voor het thema"
 
-#: src/php/core-classes/settings.class.php:1428
+#: src/php/core-classes/settings.class.php:1500
 msgid "WordPress content folder"
 msgstr "WordPress contentfolder"
+
+#: src/php/core-classes/templates/default-container-content-item.template.php:14
+#, fuzzy
+msgid "You created this content"
+msgstr "U heeft deze pagina gemaakt"
 
 #: src/php/core-classes/templates/widget-content-authors.template.php:18
 msgid "Show all content published by %s"
@@ -2763,6 +3124,1335 @@ msgstr "MB"
 msgid "kB"
 msgstr "kB"
 
+#: src/php/helpers/country-helper.class.php:52
+msgid "Afghanistan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:53
+msgid "&#197;land Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:54
+msgid "Albania"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:55
+msgid "Algeria"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:56
+msgid "American Samoa"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:57
+msgid "Andorra"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:58
+msgid "Angola"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:59
+msgid "Anguilla"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:60
+msgid "Antarctica"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:61
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:62
+msgid "Argentina"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:63
+msgid "Armenia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:64
+msgid "Aruba"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:65
+msgid "Australia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:66
+msgid "Austria"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:67
+msgid "Azerbaijan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:68
+msgid "Bahamas"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:69
+msgid "Bahrain"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:70
+msgid "Bangladesh"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:71
+msgid "Barbados"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:72
+msgid "Belarus"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:73
+msgid "Belgium"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:74
+msgid "Belize"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:75
+msgid "Benin"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:76
+msgid "Bermuda"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:77
+msgid "Bhutan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:78
+msgid "Bolivia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:79
+msgid "Bonaire, Saint Eustatius and Saba"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:80
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:81
+msgid "Botswana"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:82
+msgid "Bouvet Island"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:83
+msgid "Brazil"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:84
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:85
+msgid "Brunei Darrussalam"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:86
+msgid "Bulgaria"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:87
+msgid "Burkina Faso"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:88
+msgid "Burundi"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:89
+msgid "Cambodia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:90
+msgid "Cameroon"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:91
+msgid "Canada"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:92
+msgid "Cape Verde"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:93
+msgid "Cayman Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:94
+msgid "Central African Republic"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:95
+msgid "Chad"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:96
+msgid "Chile"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:97
+msgid "China"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:98
+msgid "Christmas Island"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:99
+msgid "Cocos Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:100
+msgid "Colombia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:101
+msgid "Comoros"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:102
+msgid "Congo, Democratic People's Republic"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:103
+msgid "Congo, Republic of"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:104
+msgid "Cook Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:105
+msgid "Costa Rica"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:106
+msgid "Cote d'Ivoire"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:107
+msgid "Croatia/Hrvatska"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:108
+msgid "Cuba"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:109
+msgid "Cura&Ccedil;ao"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:110
+msgid "Cyprus"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:111
+msgid "Czech Republic"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:112
+msgid "Denmark"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:113
+#, fuzzy
+msgid "Djibouti"
+msgstr "Over"
+
+#: src/php/helpers/country-helper.class.php:114
+msgid "Dominica"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:115
+msgid "Dominican Republic"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:116
+msgid "East Timor"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:117
+msgid "Ecuador"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:118
+msgid "Egypt"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:119
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:120
+msgid "El Salvador"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:121
+msgid "Eritrea"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:122
+msgid "Estonia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:123
+msgid "Ethiopia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:124
+msgid "Falkland Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:125
+msgid "Faroe Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:126
+msgid "Fiji"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:127
+msgid "Finland"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:128
+#, fuzzy
+msgid "France"
+msgstr "Annuleer"
+
+#: src/php/helpers/country-helper.class.php:129
+msgid "French Guiana"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:130
+msgid "French Polynesia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:131
+msgid "French Southern Territories"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:132
+msgid "Gabon"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:133
+msgid "Gambia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:134
+msgid "Georgia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:135
+msgid "Germany"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:136
+msgid "Greece"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:137
+msgid "Ghana"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:138
+msgid "Gibraltar"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:139
+msgid "Greenland"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:140
+msgid "Grenada"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:141
+msgid "Guadeloupe"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:142
+msgid "Guam"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:143
+msgid "Guatemala"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:144
+msgid "Guernsey"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:145
+msgid "Guinea"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:146
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:147
+msgid "Guyana"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:148
+msgid "Haiti"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:149
+msgid "Heard and McDonald Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:150
+msgid "Holy See (City Vatican State)"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:151
+msgid "Honduras"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:152
+msgid "Hong Kong"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:153
+msgid "Hungary"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:154
+msgid "Iceland"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:155
+msgid "India"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:156
+msgid "Indonesia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:157
+msgid "Iran"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:158
+msgid "Iraq"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:159
+msgid "Ireland"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:160
+msgid "Isle of Man"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:161
+msgid "Israel"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:162
+msgid "Italy"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:163
+msgid "Jamaica"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:164
+msgid "Japan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:165
+msgid "Jersey"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:166
+msgid "Jordan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:167
+msgid "Kazakhstan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:168
+msgid "Kenya"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:169
+msgid "Kiribati"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:170
+msgid "Kuwait"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:171
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:172
+msgid "Lao People's Democratic Republic"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:173
+msgid "Latvia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:174
+msgid "Lebanon"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:175
+msgid "Lesotho"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:176
+msgid "Liberia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:177
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:178
+msgid "Liechtenstein"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:179
+msgid "Lithuania"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:180
+msgid "Luxembourg"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:181
+msgid "Macau"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:182
+msgid "Macedonia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:183
+msgid "Madagascar"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:184
+msgid "Malawi"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:185
+msgid "Malaysia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:186
+msgid "Maldives"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:187
+msgid "Mali"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:188
+msgid "Malta"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:189
+msgid "Marshall Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:190
+msgid "Martinique"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:191
+msgid "Mauritania"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:192
+msgid "Mauritius"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:193
+msgid "Mayotte"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:194
+msgid "Mexico"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:195
+msgid "Micronesia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:196
+msgid "Moldova, Republic of"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:197
+msgid "Monaco"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:198
+msgid "Mongolia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:199
+#, fuzzy
+msgid "Montenegro"
+msgstr "Frontend Intergratie"
+
+#: src/php/helpers/country-helper.class.php:200
+msgid "Montserrat"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:201
+msgid "Morocco"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:202
+msgid "Mozambique"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:203
+msgid "Myanmar"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:204
+msgid "Namibia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:205
+msgid "Nauru"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:206
+msgid "Nepal"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:207
+msgid "Netherlands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:208
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:209
+msgid "New Caledonia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:210
+msgid "New Zealand"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:211
+msgid "Nicaragua"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:212
+msgid "Niger"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:213
+msgid "Nigeria"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:214
+msgid "Niue"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:215
+msgid "Norfolk Island"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:216
+msgid "North Korea"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:217
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:218
+msgid "Norway"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:219
+msgid "Oman"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:220
+msgid "Pakistan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:221
+msgid "Palau"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:222
+msgid "Palestinian Territories"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:223
+msgid "Panama"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:224
+msgid "Papua New Guinea"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:225
+msgid "Paraguay"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:226
+msgid "Peru"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:227
+msgid "Phillipines"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:228
+msgid "Pitcairn Island"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:229
+msgid "Poland"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:230
+msgid "Portugal"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:231
+msgid "Puerto Rico"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:232
+msgid "Qatar"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:233
+msgid "Republic of Kosovo"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:234
+msgid "Reunion Island"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:235
+msgid "Romania"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:236
+msgid "Russian Federation"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:237
+msgid "Rwanda"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:238
+msgid "Saint Barth&eacute;lemy"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:239
+msgid "Saint Helena"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:240
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:241
+msgid "Saint Lucia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:242
+msgid "Saint Martin (French)"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:243
+msgid "Saint Martin (Dutch)"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:244
+msgid "Saint Pierre and Miquelon"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:245
+msgid "Saint Vincent and the Grenadines"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:246
+msgid "San Marino"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:247
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:248
+msgid "Saudi Arabia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:249
+msgid "Senegal"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:250
+msgid "Serbia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:251
+msgid "Seychelles"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:252
+msgid "Sierra Leone"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:253
+msgid "Singapore"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:254
+msgid "Slovak Republic"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:255
+msgid "Slovenia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:256
+msgid "Solomon Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:257
+msgid "Somalia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:258
+msgid "South Africa"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:259
+msgid "South Georgia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:260
+msgid "South Korea"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:261
+msgid "South Sudan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:262
+msgid "Spain"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:263
+msgid "Sri Lanka"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:264
+msgid "Sudan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:265
+#, fuzzy
+msgid "Suriname"
+msgstr "Gebruikersnaam"
+
+#: src/php/helpers/country-helper.class.php:266
+msgid "Svalbard and Jan Mayen Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:267
+msgid "Swaziland"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:268
+msgid "Sweden"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:269
+msgid "Switzerland"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:270
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:271
+msgid "Taiwan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:272
+msgid "Tajikistan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:273
+msgid "Tanzania"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:274
+msgid "Thailand"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:275
+msgid "Timor-Leste"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:276
+msgid "Togo"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:277
+msgid "Tokelau"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:278
+msgid "Tonga"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:279
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:280
+msgid "Tunisia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:281
+msgid "Turkey"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:282
+msgid "Turkmenistan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:283
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:284
+msgid "Tuvalu"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:285
+msgid "Uganda"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:286
+msgid "Ukraine"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:287
+msgid "United Arab Emirates"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:288
+msgid "United Kingdom"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:289
+msgid "United States"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:290
+msgid "Uruguay"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:291
+msgid "US Minor Outlying Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:292
+msgid "Uzbekistan"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:293
+msgid "Vanuatu"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:294
+msgid "Venezuela"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:295
+msgid "Vietnam"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:296
+msgid "Virgin Islands (British)"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:297
+msgid "Virgin Islands (USA)"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:298
+msgid "Wallis and Futuna Islands"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:299
+msgid "Western Sahara"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:300
+msgid "Western Samoa"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:301
+msgid "Yemen"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:302
+msgid "Zambia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:303
+msgid "Zimbabwe"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1303
+msgid "A Coru&ntilde;a"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1304
+msgid "Araba"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1305
+msgid "Albacete"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1306
+msgid "Alicante"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1307
+msgid "Almer&iacute;a"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1308
+msgid "Asturias"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1309
+msgid "&Aacute;vila"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1310
+msgid "Badajoz"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1311
+#, fuzzy
+msgid "Baleares"
+msgstr "Wissen"
+
+#: src/php/helpers/country-helper.class.php:1312
+msgid "Barcelona"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1313
+msgid "Burgos"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1314
+msgid "C&aacute;ceres"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1315
+msgid "C&aacute;diz"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1316
+msgid "Cantabria"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1317
+msgid "Castell&oacute;n"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1318
+msgid "Ceuta"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1319
+msgid "Ciudad Real"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1320
+msgid "C&oacute;rdoba"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1321
+msgid "Cuenca"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1322
+msgid "Girona"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1323
+msgid "Granada"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1324
+msgid "Guadalajara"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1325
+msgid "Gipuzkoa"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1326
+msgid "Huelva"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1327
+msgid "Huesca"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1328
+msgid "Ja&eacute;n"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1329
+msgid "La Rioja"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1330
+msgid "Las Palmas"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1331
+msgid "Le&oacute;n"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1332
+msgid "Lleida"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1333
+msgid "Lugo"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1334
+msgid "Madrid"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1335
+msgid "M&aacute;laga"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1336
+msgid "Melilla"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1337
+msgid "Murcia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1338
+msgid "Navarra"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1339
+msgid "Ourense"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1340
+msgid "Palencia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1341
+msgid "Pontevedra"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1342
+msgid "Salamanca"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1343
+msgid "Santa Cruz de Tenerife"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1344
+msgid "Segovia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1345
+msgid "Sevilla"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1346
+msgid "Soria"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1347
+msgid "Tarragona"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1348
+msgid "Teruel"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1349
+msgid "Toledo"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1350
+msgid "Valencia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1351
+msgid "Valladolid"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1352
+msgid "Bizkaia"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1353
+msgid "Zamora"
+msgstr ""
+
+#: src/php/helpers/country-helper.class.php:1354
+msgid "Zaragoza"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:36
+msgid "Australian Dollar (&#36;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:37
+msgid "Brazilian Real (R&#36;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:38
+msgid "Canadian Dollar (&#36;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:39
+msgid "Czech Koruna"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:40
+msgid "Danish Krone"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:41
+msgid "Euro (&euro;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:42
+msgid "Hong Kong Dollar (&#36;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:43
+msgid "Hungarian Forint"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:44
+msgid "Indian Rupee (&#8377;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:45
+msgid "Iranian Rial (&#65020;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:46
+msgid "Israeli Shekel (&#8362;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:47
+msgid "Japanese Yen (&yen;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:48
+msgid "Malaysian Ringgit"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:49
+msgid "Mexican Peso (&#36;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:50
+msgid "New Zealand Dollar (&#36;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:51
+msgid "Norwegian Krone"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:52
+msgid "Philippine Peso"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:53
+msgid "Polish Zloty"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:54
+msgid "Pounds Sterling (&pound;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:55
+msgid "Russian Ruble"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:56
+msgid "Singapore Dollar (&#36;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:57
+msgid "Swedish Krona"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:58
+msgid "Swiss Franc"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:59
+msgid "Taiwan New Dollar"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:60
+msgid "Thai Baht (&#3647;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:61
+msgid "Turkish Lira (&#8378;)"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:62
+msgid "US Dollar (&#36;)"
+msgstr ""
+
 #. Description of the plugin/theme
 msgid ""
 "WP Customer Area is a modular all-in-one solution to manage private content "
@@ -2795,152 +4485,152 @@ msgid "delete"
 msgstr "Verwijder"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:427
-#: src/php/core-classes/addon-container-page.class.php:324
+#: src/php/core-classes/addon-container-page.class.php:379
 #: src/php/core-classes/addon-content-page.class.php:440
 msgctxt "pagination_parameter_name (should not be \"page\")"
 msgid "page-num"
 msgstr "Pagina nummer"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:749
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:751
 msgctxt ""
 "Localised slug for the main navigation menu (small caps version of the \"WP "
 "Customer Area Menu\" translation)"
 msgid "wp-customer-area-menu"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1138
+#: src/php/core-addons/private-file/private-file-addon.class.php:1125
 msgctxt "cuar_private_file"
 msgid "File"
 msgstr "Bestand"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1139
+#: src/php/core-addons/private-file/private-file-addon.class.php:1126
 msgctxt "cuar_private_file"
 msgid "Files"
 msgstr "Bestanden"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1167
-#: src/php/core-addons/private-file/private-file-addon.class.php:1178
+#: src/php/core-addons/private-file/private-file-addon.class.php:1154
+#: src/php/core-addons/private-file/private-file-addon.class.php:1165
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "Privé-bestanden"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1168
+#: src/php/core-addons/private-file/private-file-addon.class.php:1155
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "Privé-bestand"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1169
+#: src/php/core-addons/private-file/private-file-addon.class.php:1156
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Voeg een nieuwe toe"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1170
+#: src/php/core-addons/private-file/private-file-addon.class.php:1157
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Voeg een nieuw Privé-bestand toe"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1171
+#: src/php/core-addons/private-file/private-file-addon.class.php:1158
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Bewerk het Privé-bestand"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1172
+#: src/php/core-addons/private-file/private-file-addon.class.php:1159
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Nieuw privé bestand"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1173
+#: src/php/core-addons/private-file/private-file-addon.class.php:1160
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Open het Privé-bestand"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1174
+#: src/php/core-addons/private-file/private-file-addon.class.php:1161
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Zoek Privé-Bestanden"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1175
+#: src/php/core-addons/private-file/private-file-addon.class.php:1162
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "Er zijn geen privé-bestanden gevonden"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1176
+#: src/php/core-addons/private-file/private-file-addon.class.php:1163
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "Er zijn geen privé-bestanden gevonden in de Prullenbak"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1177
+#: src/php/core-addons/private-file/private-file-addon.class.php:1164
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "Hoofd Privé-bestand:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1211
-#: src/php/core-addons/private-file/private-file-addon.class.php:1225
+#: src/php/core-addons/private-file/private-file-addon.class.php:1198
+#: src/php/core-addons/private-file/private-file-addon.class.php:1212
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Bestandscategoriën"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1212
+#: src/php/core-addons/private-file/private-file-addon.class.php:1199
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Bestandscategorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1213
+#: src/php/core-addons/private-file/private-file-addon.class.php:1200
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Doorzoek bestandscategoriën"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1214
+#: src/php/core-addons/private-file/private-file-addon.class.php:1201
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Populaire bestandscategoriën"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1215
+#: src/php/core-addons/private-file/private-file-addon.class.php:1202
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Alle bestandcategoriën"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1216
+#: src/php/core-addons/private-file/private-file-addon.class.php:1203
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Hoofd Bestandscategorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1217
+#: src/php/core-addons/private-file/private-file-addon.class.php:1204
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Hoofd bestandscategorie:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1218
+#: src/php/core-addons/private-file/private-file-addon.class.php:1205
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Bewerk bestandscategorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1219
+#: src/php/core-addons/private-file/private-file-addon.class.php:1206
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Vernieuw bestandscategorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1220
+#: src/php/core-addons/private-file/private-file-addon.class.php:1207
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Voeg een nieuw bestandscategorie toe"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1221
+#: src/php/core-addons/private-file/private-file-addon.class.php:1208
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Nieuwe Bestandscategorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1222
+#: src/php/core-addons/private-file/private-file-addon.class.php:1209
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Scheidt bestandscategoriën met comma's"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1223
+#: src/php/core-addons/private-file/private-file-addon.class.php:1210
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Een bestandscategorie toevoegen of verwijderen"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1224
+#: src/php/core-addons/private-file/private-file-addon.class.php:1211
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Kies uit de meest gebruikte bestandscategoriën"
@@ -3104,4 +4794,9 @@ msgstr "Vandaag"
 #: src/php/core-classes/plugin.class.php:223
 msgctxt "Date picker text"
 msgid "Show a different month"
+msgstr ""
+
+#: src/php/helpers/currency-helper.class.php:113
+msgctxt "Currency amount (1=amount, 2=currency)"
+msgid "%2$s %1$s"
 msgstr ""
