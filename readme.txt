@@ -4,7 +4,7 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
-Tested up to:       4.3
+Tested up to:       4.4
 Stable tag:         6.3.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
@@ -131,6 +131,7 @@ feel free to fork the project and send us pull requests!
 
 = 6.3.0 (2015/) =
 
+* New: changes for better WordPress 4.4 support
 * New: Add addresses (home, billing) to the user profile - one step towards better CRM integrated into WP Customer Area
 * New: Allow overriding the action (download/view) on a per file basis using hooks (or via settings in the Enhanced Files addon)
 * New: add attachment details to log event for download/view
