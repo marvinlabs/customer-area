@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         <?php endif; ?>
 
         <?php if ( !empty($address['vat_number'])) : ?>
-            <br><?php echo __('VAT ID -', 'cuarin') . ' ' . $address['vat_number']; ?>
+            <br><?php echo __('VAT ID -', 'cuar') . ' ' . $address['vat_number']; ?>
         <?php endif; ?>
     </p>
     <?php endif; ?>

@@ -89,8 +89,8 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
                 $address = $this->get_owner_address('usr', array($user->ID), $address_id);
                 $address_actions = array(
                     'reset' => array(
-                        'label'   => __('Clear', 'cuarin'),
-                        'tooltip' => __('Clear the address', 'cuarin')
+                        'label'   => __('Clear', 'cuar'),
+                        'tooltip' => __('Clear the address', 'cuar')
                     ),
                 );
                 $extra_scripts = '';
