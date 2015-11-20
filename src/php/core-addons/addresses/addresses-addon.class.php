@@ -282,7 +282,7 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
         {
             $addresses = $this->get_owner_addresses($owner_type, $owner_ids);
 
-            return isset($addresses[$address_id]) ? $addresses[$address_id] : CUAR_AddressHelper::sanitize_address(array());
+            return CUAR_AddressHelper::sanitize_address(isset($addresses[$address_id]) ? $addresses[$address_id] : array());
         }
 
         /**
