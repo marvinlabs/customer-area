@@ -4,25 +4,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
-"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
-"environment/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2015-09-07 07:35:27+00:00\n"
-"PO-Revision-Date: 2015-07-29 13:25+0000\n"
+"PO-Revision-Date: 2015-11-20 11:26+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/wp-"
-"customer-area/language/fa_IR/)\n"
-"Language: fa_IR\n"
+"Language-Team: Persian (Iran) (http://www.transifex.com/wp-translations/wp-customer-area/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa_IR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: grunt-wp-i18n 0.5.2\n"
+"X-Generator: grunt-wp-i18n 0.5.3\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
@@ -32,21 +28,20 @@ msgid "Address Manager"
 msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:72
-#, fuzzy
 msgid "Home address"
-msgstr "IP address"
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:73
-#, fuzzy
 msgid "Billing address"
-msgstr "آدرس ایمیل"
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:92
-#, fuzzy
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:190
 msgid "Clear"
 msgstr "پاکسازی"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:93
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:191
 msgid "Clear the address"
 msgstr ""
 
@@ -96,6 +91,8 @@ msgstr ""
 msgid "You must specify the address"
 msgstr ""
 
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:46
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:49
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:52
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:55
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:57
@@ -108,6 +105,8 @@ msgstr ""
 msgid "Name"
 msgstr "نام پیوند"
 
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:55
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:58
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:61
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:64
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:68
@@ -117,6 +116,8 @@ msgstr "نام پیوند"
 msgid "Company"
 msgstr ""
 
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:65
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:68
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:72
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:74
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:79
@@ -126,12 +127,68 @@ msgstr ""
 msgid "VAT Number"
 msgstr ""
 
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:75
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:93
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:102
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:80
+msgid "Street address"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:78
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:96
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:104
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
+msgid "Street address, line 1"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:87
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:112
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:87
+msgid "Street address, line 2"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:94
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:97
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:113
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:116
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:118
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:120
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:92
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:94
+msgid "Zip/Postal code"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:104
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:107
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:123
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:126
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:126
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:128
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:99
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
+msgid "City"
+msgstr "شهر"
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:115
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:134
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:134
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:107
+msgid "Country"
+msgstr "کشور"
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:130
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:149
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:147
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:119
+msgid "State/Province"
+msgstr ""
+
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:81
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:91
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:70
-#, fuzzy
 msgid "Logo"
-msgstr "بیرون‌رفتن"
+msgstr "لوگو"
 
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:84
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:94
@@ -143,58 +200,13 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:95
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:74
 msgid "Upload Logo"
+msgstr "بارگذاری لوگو"
+
+#: src/php/core-addons/addresses/templates/view-address.template.php:34
+msgid "No address yet"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:93
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:102
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:80
-#, fuzzy
-msgid "Street address"
-msgstr "IP address"
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:96
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:104
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
-msgid "Street address, line 1"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:112
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:87
-msgid "Street address, line 2"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:113
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:116
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:118
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:120
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:92
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:94
-msgid "Zip/Postal code"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:123
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:126
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:126
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:128
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:99
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
-msgid "City"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:134
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:134
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:107
-msgid "Country"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:149
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:147
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:119
-msgid "State/Province"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/view-address.template.php:44
+#: src/php/core-addons/addresses/templates/view-address.template.php:49
 msgid "VAT ID -"
 msgstr ""
 
@@ -487,8 +499,8 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:18
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
-"multiple attachments on the same private file, change the attachment caption "
-"and automatically add file type icons in front of the download links."
+"multiple attachments on the same private file, change the attachment caption"
+" and automatically add file type icons in front of the download links."
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:20
@@ -559,8 +571,8 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
-"better organised. The content lists now feature powerful filters to help you "
-"find the content you are looking for faster."
+"better organised. The content lists now feature powerful filters to help you"
+" find the content you are looking for faster."
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:54
@@ -591,8 +603,8 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:69
 msgid ""
-"WP Customer Area 6.0 is a major release which sees a lot of changes not only "
-"inside the plugin but also on the website."
+"WP Customer Area 6.0 is a major release which sees a lot of changes not only"
+" inside the plugin but also on the website."
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:72
@@ -757,17 +769,21 @@ msgstr "نمایش جزییات حساب‌کاربری"
 msgid "Edit account details"
 msgstr "ویرایش جزییات حساب‌کاربری"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:14
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:11
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:17
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:13
 msgid "Hello %s,"
 msgstr " سلام %s,"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:19
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:22
 msgid "Your profile has been updated"
 msgstr "حساب‌کاربری شما بروز شد"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:23
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:26
 msgid "Please find below your account details"
+msgstr ""
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:30
+msgid "Addresses"
 msgstr ""
 
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:44
@@ -782,13 +798,13 @@ msgstr "ویرایش حساب‌کاربری"
 msgid "This page shows a form where the user can edit his account"
 msgstr ""
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:14
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:16
 msgid ""
-"You can update your account details. If you leave the password fields empty, "
-"your password will not be modified."
+"You can update your account details. If you leave the password fields empty,"
+" your password will not be modified."
 msgstr ""
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:21
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:25
 msgid "Submit"
 msgstr "ارسال"
 
@@ -818,8 +834,8 @@ msgstr "خانه"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
-"This is the main page for your customers. It will redirect to the login page "
-"or to the customer area dashboard."
+"This is the main page for your customers. It will redirect to the login page"
+" or to the customer area dashboard."
 msgstr ""
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:55
@@ -992,8 +1008,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1375
 msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings."
+"Some pages in your site seem to contain Customer Area shortcodes but are not"
+" registered in the Customer Area pages settings."
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1395
@@ -1026,8 +1042,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
 msgid ""
-"You can review which menus are currently created on the <a href=\"%1$s"
-"\">menus page</a>."
+"You can review which menus are currently created on the <a "
+"href=\"%1$s\">menus page</a>."
 msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:32
@@ -1046,9 +1062,9 @@ msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
 msgid ""
-"Some pages of the customer area have been changed and our current navigation "
-"menu probably references the previous pages. We recommend to synchronize the "
-"menu with the new pages. "
+"Some pages of the customer area have been changed and our current navigation"
+" menu probably references the previous pages. We recommend to synchronize "
+"the menu with the new pages. "
 msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
@@ -1110,8 +1126,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
 msgid ""
-"You can review which pages are currently created on the <a href=\"%1$s"
-"\">pages settings page</a>."
+"You can review which pages are currently created on the <a "
+"href=\"%1$s\">pages settings page</a>."
 msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:32
@@ -1467,8 +1483,8 @@ msgstr ""
 
 #: src/php/core-addons/installer/installer-addon.class.php:248
 msgid ""
-"There is a quick installation to run before being able to publish your first "
-"private files and pages. It should be over in less than a minute!"
+"There is a quick installation to run before being able to publish your first"
+" private files and pages. It should be over in less than a minute!"
 msgstr ""
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
@@ -1525,7 +1541,7 @@ msgstr "وقایع"
 
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
-msgstr ""
+msgstr "ورود"
 
 #: src/php/core-addons/log/log-addon.class.php:165
 #: src/php/core-addons/log/log-addon.class.php:464
@@ -1608,8 +1624,8 @@ msgstr ""
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is downloading a private file. There will be a single "
-"event per user and per file. Else, each time a user is downloading a private "
-"file, an event will be generated."
+"event per user and per file. Else, each time a user is downloading a private"
+" file, an event will be generated."
 msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:155
@@ -1630,14 +1646,12 @@ msgid "Extra info"
 msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:167
-#, fuzzy
 msgid "Y/m/d - H:i:s"
-msgstr "Y/m/d g:i:s A"
+msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:178
-#, fuzzy
 msgid "User %1$s"
-msgstr " برگه %1$s"
+msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:180
 msgid "<a href=\"%1$s\" title=\"Username: %2$s\">%3$s</a>"
@@ -1856,14 +1870,15 @@ msgid "FTP uploads folder"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:246
-msgid "<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
+msgid ""
+"<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:249
 msgid ""
 "This folder is the root folder for storing private files. This should "
-"preferably be located outside of the web server public area or secured using "
-"a <code>.htaccess</code> file"
+"preferably be located outside of the web server public area or secured using"
+" a <code>.htaccess</code> file"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:263
@@ -1900,8 +1915,8 @@ msgstr ""
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:315
 msgid ""
 "That directory seems to be accessible from the web. <strong>This is not "
-"safe</strong>. The most secure would be to move it outside of the web folder "
-"of your server"
+"safe</strong>. The most secure would be to move it outside of the web folder"
+" of your server"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:320
@@ -1999,7 +2014,7 @@ msgstr ""
 
 #: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:21
 msgid "Download"
-msgstr ""
+msgstr "بارگیری"
 
 #: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:24
 msgid "Remove"
@@ -2173,8 +2188,8 @@ msgstr ""
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a href="
-"\"%2$s\">add-ons status pages</a>."
+"running version %1$s). You can find the list of all add-ons on the <a "
+"href=\"%2$s\">add-ons status pages</a>."
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
@@ -2243,7 +2258,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:38
 msgid ""
-"You can import all the settings you had previously exported from a JSON file."
+"You can import all the settings you had previously exported from a JSON "
+"file."
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:47
@@ -2266,8 +2282,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:58
 msgid ""
-"Pressing the button below will clean-up any data related to WP Customer Area "
-"(posts, taxonomies, etc.). This cannot be undone!"
+"Pressing the button below will clean-up any data related to WP Customer Area"
+" (posts, taxonomies, etc.). This cannot be undone!"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:62
@@ -2276,8 +2292,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:68
 msgid ""
-"Are you sure that you want to reset all the settings to their default values "
-"(this operation cannot be undone)?"
+"Are you sure that you want to reset all the settings to their default values"
+" (this operation cannot be undone)?"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:73
@@ -2385,9 +2401,9 @@ msgstr "خالی کردن زباله‌دان"
 
 #: src/php/core-classes/Licensing/license-validation-result.class.php:81
 msgid ""
-"You have bought your license on the previous shop. We have a <a href=\"%1$s"
-"\">brand new website</a>, please contact us so that we can help you migrate "
-"your license to the new shop."
+"You have bought your license on the previous shop. We have a <a "
+"href=\"%1$s\">brand new website</a>, please contact us so that we can help "
+"you migrate your license to the new shop."
 msgstr ""
 
 #: src/php/core-classes/Licensing/licensing.class.php:73
@@ -2480,7 +2496,8 @@ msgstr ""
 #: src/php/core-classes/addon-container-page.class.php:811
 #: src/php/core-classes/addon-content-page.class.php:842
 msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all items."
+"Define how many items to allow on the dashboard page. -1 will show all "
+"items."
 msgstr ""
 
 #: src/php/core-classes/addon-container-page.class.php:892
@@ -2664,7 +2681,7 @@ msgstr "عنوان جدول"
 
 #: src/php/core-classes/object-meta/field/number-field.class.php:49
 msgid "Number"
-msgstr ""
+msgstr "عدد"
 
 #: src/php/core-classes/object-meta/field/text-field.class.php:58
 msgid "Text"
@@ -2782,8 +2799,8 @@ msgstr ""
 
 #: src/php/core-classes/settings.class.php:317
 msgid ""
-"The owner will not be displayed but included directly if a single owner type "
-"is available to the current user and if within that owner type, a single "
+"The owner will not be displayed but included directly if a single owner type"
+" is available to the current user and if within that owner type, a single "
 "owner is available."
 msgstr ""
 
@@ -2870,7 +2887,7 @@ msgstr ""
 
 #: src/php/core-classes/settings.class.php:987
 msgid "Upload File"
-msgstr ""
+msgstr "آپلود فایل"
 
 #: src/php/core-classes/settings.class.php:1131
 msgid "None"
@@ -3002,7 +3019,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:52
 msgid "Afghanistan"
-msgstr ""
+msgstr "افغانستان"
 
 #: src/php/helpers/country-helper.class.php:53
 msgid "&#197;land Islands"
@@ -3010,127 +3027,127 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:54
 msgid "Albania"
-msgstr ""
+msgstr "آلبانی"
 
 #: src/php/helpers/country-helper.class.php:55
 msgid "Algeria"
-msgstr ""
+msgstr "الجزایر"
 
 #: src/php/helpers/country-helper.class.php:56
 msgid "American Samoa"
-msgstr ""
+msgstr "ساموآی آمریکا"
 
 #: src/php/helpers/country-helper.class.php:57
 msgid "Andorra"
-msgstr ""
+msgstr "آندورا"
 
 #: src/php/helpers/country-helper.class.php:58
 msgid "Angola"
-msgstr ""
+msgstr "آنگولا"
 
 #: src/php/helpers/country-helper.class.php:59
 msgid "Anguilla"
-msgstr ""
+msgstr "آنگوییلا"
 
 #: src/php/helpers/country-helper.class.php:60
 msgid "Antarctica"
-msgstr ""
+msgstr "جنوبگان"
 
 #: src/php/helpers/country-helper.class.php:61
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "آنتیگوا و باربودا"
 
 #: src/php/helpers/country-helper.class.php:62
 msgid "Argentina"
-msgstr ""
+msgstr "آرژنتینا"
 
 #: src/php/helpers/country-helper.class.php:63
 msgid "Armenia"
-msgstr ""
+msgstr "ارمنستان"
 
 #: src/php/helpers/country-helper.class.php:64
 msgid "Aruba"
-msgstr ""
+msgstr "آروبا"
 
 #: src/php/helpers/country-helper.class.php:65
 msgid "Australia"
-msgstr ""
+msgstr "استرالیا"
 
 #: src/php/helpers/country-helper.class.php:66
 msgid "Austria"
-msgstr ""
+msgstr "اتریش"
 
 #: src/php/helpers/country-helper.class.php:67
 msgid "Azerbaijan"
-msgstr ""
+msgstr "آذربایجان"
 
 #: src/php/helpers/country-helper.class.php:68
 msgid "Bahamas"
-msgstr ""
+msgstr "باهاما"
 
 #: src/php/helpers/country-helper.class.php:69
 msgid "Bahrain"
-msgstr ""
+msgstr "بحرین"
 
 #: src/php/helpers/country-helper.class.php:70
 msgid "Bangladesh"
-msgstr ""
+msgstr "بنگلادش"
 
 #: src/php/helpers/country-helper.class.php:71
 msgid "Barbados"
-msgstr ""
+msgstr "باربادوس"
 
 #: src/php/helpers/country-helper.class.php:72
 msgid "Belarus"
-msgstr ""
+msgstr "بلاروس"
 
 #: src/php/helpers/country-helper.class.php:73
 msgid "Belgium"
-msgstr ""
+msgstr "بلژیک"
 
 #: src/php/helpers/country-helper.class.php:74
 msgid "Belize"
-msgstr ""
+msgstr "بلیز"
 
 #: src/php/helpers/country-helper.class.php:75
 msgid "Benin"
-msgstr ""
+msgstr "بنین"
 
 #: src/php/helpers/country-helper.class.php:76
 msgid "Bermuda"
-msgstr ""
+msgstr "برمودا"
 
 #: src/php/helpers/country-helper.class.php:77
 msgid "Bhutan"
-msgstr ""
+msgstr "بوتان"
 
 #: src/php/helpers/country-helper.class.php:78
 msgid "Bolivia"
-msgstr ""
+msgstr "بولیوی"
 
 #: src/php/helpers/country-helper.class.php:79
 msgid "Bonaire, Saint Eustatius and Saba"
-msgstr ""
+msgstr "بونیر، سینت یوستیشس و صبا"
 
 #: src/php/helpers/country-helper.class.php:80
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "بوسنی و هرزگوین"
 
 #: src/php/helpers/country-helper.class.php:81
 msgid "Botswana"
-msgstr ""
+msgstr "بوتسوانا"
 
 #: src/php/helpers/country-helper.class.php:82
 msgid "Bouvet Island"
-msgstr ""
+msgstr "جزیره بووت"
 
 #: src/php/helpers/country-helper.class.php:83
 msgid "Brazil"
-msgstr ""
+msgstr "برزیل"
 
 #: src/php/helpers/country-helper.class.php:84
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "قلمرو اقیانوس هند بریتانیا"
 
 #: src/php/helpers/country-helper.class.php:85
 msgid "Brunei Darrussalam"
@@ -3138,55 +3155,55 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:86
 msgid "Bulgaria"
-msgstr ""
+msgstr "بلغارستان"
 
 #: src/php/helpers/country-helper.class.php:87
 msgid "Burkina Faso"
-msgstr ""
+msgstr "بورکینافاسو"
 
 #: src/php/helpers/country-helper.class.php:88
 msgid "Burundi"
-msgstr ""
+msgstr "بروندی"
 
 #: src/php/helpers/country-helper.class.php:89
 msgid "Cambodia"
-msgstr ""
+msgstr "کامبوج"
 
 #: src/php/helpers/country-helper.class.php:90
 msgid "Cameroon"
-msgstr ""
+msgstr "کامرون"
 
 #: src/php/helpers/country-helper.class.php:91
 msgid "Canada"
-msgstr ""
+msgstr "کانادا"
 
 #: src/php/helpers/country-helper.class.php:92
 msgid "Cape Verde"
-msgstr ""
+msgstr "کیپ‌ورد"
 
 #: src/php/helpers/country-helper.class.php:93
 msgid "Cayman Islands"
-msgstr ""
+msgstr "جزایر کیمن"
 
 #: src/php/helpers/country-helper.class.php:94
 msgid "Central African Republic"
-msgstr ""
+msgstr "جمهوری آفریقای مرکزی"
 
 #: src/php/helpers/country-helper.class.php:95
 msgid "Chad"
-msgstr ""
+msgstr "چاد"
 
 #: src/php/helpers/country-helper.class.php:96
 msgid "Chile"
-msgstr ""
+msgstr "شیلی"
 
 #: src/php/helpers/country-helper.class.php:97
 msgid "China"
-msgstr ""
+msgstr "چین"
 
 #: src/php/helpers/country-helper.class.php:98
 msgid "Christmas Island"
-msgstr ""
+msgstr "جزیره کریسمس"
 
 #: src/php/helpers/country-helper.class.php:99
 msgid "Cocos Islands"
@@ -3194,11 +3211,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:100
 msgid "Colombia"
-msgstr ""
+msgstr "کلمبیا"
 
 #: src/php/helpers/country-helper.class.php:101
 msgid "Comoros"
-msgstr ""
+msgstr "کومور"
 
 #: src/php/helpers/country-helper.class.php:102
 msgid "Congo, Democratic People's Republic"
@@ -3210,11 +3227,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:104
 msgid "Cook Islands"
-msgstr ""
+msgstr "جزایر کوک"
 
 #: src/php/helpers/country-helper.class.php:105
 msgid "Costa Rica"
-msgstr ""
+msgstr "کاستاریکا"
 
 #: src/php/helpers/country-helper.class.php:106
 msgid "Cote d'Ivoire"
@@ -3226,7 +3243,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:108
 msgid "Cuba"
-msgstr ""
+msgstr "کوبا"
 
 #: src/php/helpers/country-helper.class.php:109
 msgid "Cura&Ccedil;ao"
@@ -3234,28 +3251,27 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:110
 msgid "Cyprus"
-msgstr ""
+msgstr "قبرس"
 
 #: src/php/helpers/country-helper.class.php:111
 msgid "Czech Republic"
-msgstr ""
+msgstr "جمهوری چک"
 
 #: src/php/helpers/country-helper.class.php:112
 msgid "Denmark"
-msgstr ""
+msgstr "دانمارک"
 
 #: src/php/helpers/country-helper.class.php:113
-#, fuzzy
 msgid "Djibouti"
-msgstr "درباره"
+msgstr "جیبوتی"
 
 #: src/php/helpers/country-helper.class.php:114
 msgid "Dominica"
-msgstr ""
+msgstr "دومینیکا"
 
 #: src/php/helpers/country-helper.class.php:115
 msgid "Dominican Republic"
-msgstr ""
+msgstr "جمهوری دومینیکن"
 
 #: src/php/helpers/country-helper.class.php:116
 msgid "East Timor"
@@ -3263,132 +3279,131 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:117
 msgid "Ecuador"
-msgstr ""
+msgstr "اکوادور"
 
 #: src/php/helpers/country-helper.class.php:118
 msgid "Egypt"
-msgstr ""
+msgstr "مصر"
 
 #: src/php/helpers/country-helper.class.php:119
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "گینه استوایی"
 
 #: src/php/helpers/country-helper.class.php:120
 msgid "El Salvador"
-msgstr ""
+msgstr "السالوادور"
 
 #: src/php/helpers/country-helper.class.php:121
 msgid "Eritrea"
-msgstr ""
+msgstr "اریتره"
 
 #: src/php/helpers/country-helper.class.php:122
 msgid "Estonia"
-msgstr ""
+msgstr "استونی"
 
 #: src/php/helpers/country-helper.class.php:123
 msgid "Ethiopia"
-msgstr ""
+msgstr "اتیوپی"
 
 #: src/php/helpers/country-helper.class.php:124
 msgid "Falkland Islands"
-msgstr ""
+msgstr "جزایر فالکلند"
 
 #: src/php/helpers/country-helper.class.php:125
 msgid "Faroe Islands"
-msgstr ""
+msgstr "جزایر فارو"
 
 #: src/php/helpers/country-helper.class.php:126
 msgid "Fiji"
-msgstr ""
+msgstr "فیجی"
 
 #: src/php/helpers/country-helper.class.php:127
 msgid "Finland"
-msgstr ""
+msgstr "فنلاند"
 
 #: src/php/helpers/country-helper.class.php:128
-#, fuzzy
 msgid "France"
-msgstr "انصراف"
+msgstr "فرانسه"
 
 #: src/php/helpers/country-helper.class.php:129
 msgid "French Guiana"
-msgstr ""
+msgstr "گویان فرانسه"
 
 #: src/php/helpers/country-helper.class.php:130
 msgid "French Polynesia"
-msgstr ""
+msgstr "پلینزی فرانسه"
 
 #: src/php/helpers/country-helper.class.php:131
 msgid "French Southern Territories"
-msgstr ""
+msgstr "سرزمین های جنوبی فرانسه"
 
 #: src/php/helpers/country-helper.class.php:132
 msgid "Gabon"
-msgstr ""
+msgstr "گابون"
 
 #: src/php/helpers/country-helper.class.php:133
 msgid "Gambia"
-msgstr ""
+msgstr "گامبیا"
 
 #: src/php/helpers/country-helper.class.php:134
 msgid "Georgia"
-msgstr ""
+msgstr "گرجستان"
 
 #: src/php/helpers/country-helper.class.php:135
 msgid "Germany"
-msgstr ""
+msgstr "آلمان"
 
 #: src/php/helpers/country-helper.class.php:136
 msgid "Greece"
-msgstr ""
+msgstr "یونان"
 
 #: src/php/helpers/country-helper.class.php:137
 msgid "Ghana"
-msgstr ""
+msgstr "غنا"
 
 #: src/php/helpers/country-helper.class.php:138
 msgid "Gibraltar"
-msgstr ""
+msgstr "جبل‌الطارق"
 
 #: src/php/helpers/country-helper.class.php:139
 msgid "Greenland"
-msgstr ""
+msgstr "گرینلند"
 
 #: src/php/helpers/country-helper.class.php:140
 msgid "Grenada"
-msgstr ""
+msgstr "گرانادا"
 
 #: src/php/helpers/country-helper.class.php:141
 msgid "Guadeloupe"
-msgstr ""
+msgstr "گوادالوپ"
 
 #: src/php/helpers/country-helper.class.php:142
 msgid "Guam"
-msgstr ""
+msgstr "گوام"
 
 #: src/php/helpers/country-helper.class.php:143
 msgid "Guatemala"
-msgstr ""
+msgstr "گواتمالا"
 
 #: src/php/helpers/country-helper.class.php:144
 msgid "Guernsey"
-msgstr ""
+msgstr "گرنزی"
 
 #: src/php/helpers/country-helper.class.php:145
 msgid "Guinea"
-msgstr ""
+msgstr "گینه"
 
 #: src/php/helpers/country-helper.class.php:146
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "گینه بیسائو"
 
 #: src/php/helpers/country-helper.class.php:147
 msgid "Guyana"
-msgstr ""
+msgstr "گویانا"
 
 #: src/php/helpers/country-helper.class.php:148
 msgid "Haiti"
-msgstr ""
+msgstr "هائیتی"
 
 #: src/php/helpers/country-helper.class.php:149
 msgid "Heard and McDonald Islands"
@@ -3400,35 +3415,35 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:151
 msgid "Honduras"
-msgstr ""
+msgstr "هندوراس"
 
 #: src/php/helpers/country-helper.class.php:152
 msgid "Hong Kong"
-msgstr ""
+msgstr "هنگ‌کنگ"
 
 #: src/php/helpers/country-helper.class.php:153
 msgid "Hungary"
-msgstr ""
+msgstr "مجارستان"
 
 #: src/php/helpers/country-helper.class.php:154
 msgid "Iceland"
-msgstr ""
+msgstr "ایسلند"
 
 #: src/php/helpers/country-helper.class.php:155
 msgid "India"
-msgstr ""
+msgstr "هند"
 
 #: src/php/helpers/country-helper.class.php:156
 msgid "Indonesia"
-msgstr ""
+msgstr "اندونزی"
 
 #: src/php/helpers/country-helper.class.php:157
 msgid "Iran"
-msgstr ""
+msgstr "ایران"
 
 #: src/php/helpers/country-helper.class.php:158
 msgid "Iraq"
-msgstr ""
+msgstr "عراق"
 
 #: src/php/helpers/country-helper.class.php:159
 msgid "Ireland"
@@ -3436,51 +3451,51 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:160
 msgid "Isle of Man"
-msgstr ""
+msgstr "جزیره من"
 
 #: src/php/helpers/country-helper.class.php:161
 msgid "Israel"
-msgstr ""
+msgstr "اسرائيل"
 
 #: src/php/helpers/country-helper.class.php:162
 msgid "Italy"
-msgstr ""
+msgstr "ایتالیا"
 
 #: src/php/helpers/country-helper.class.php:163
 msgid "Jamaica"
-msgstr ""
+msgstr "جاماییکا"
 
 #: src/php/helpers/country-helper.class.php:164
 msgid "Japan"
-msgstr ""
+msgstr "ژاپن"
 
 #: src/php/helpers/country-helper.class.php:165
 msgid "Jersey"
-msgstr ""
+msgstr "جرسی"
 
 #: src/php/helpers/country-helper.class.php:166
 msgid "Jordan"
-msgstr ""
+msgstr "اردن"
 
 #: src/php/helpers/country-helper.class.php:167
 msgid "Kazakhstan"
-msgstr ""
+msgstr "قزاقستان"
 
 #: src/php/helpers/country-helper.class.php:168
 msgid "Kenya"
-msgstr ""
+msgstr "کنیا"
 
 #: src/php/helpers/country-helper.class.php:169
 msgid "Kiribati"
-msgstr ""
+msgstr "کیریباتی"
 
 #: src/php/helpers/country-helper.class.php:170
 msgid "Kuwait"
-msgstr ""
+msgstr "کویت"
 
 #: src/php/helpers/country-helper.class.php:171
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "قرقیزستان"
 
 #: src/php/helpers/country-helper.class.php:172
 msgid "Lao People's Democratic Republic"
@@ -3488,19 +3503,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:173
 msgid "Latvia"
-msgstr ""
+msgstr "لتونی"
 
 #: src/php/helpers/country-helper.class.php:174
 msgid "Lebanon"
-msgstr ""
+msgstr "لبنان"
 
 #: src/php/helpers/country-helper.class.php:175
 msgid "Lesotho"
-msgstr ""
+msgstr "لسوتو"
 
 #: src/php/helpers/country-helper.class.php:176
 msgid "Liberia"
-msgstr ""
+msgstr "لیبریا"
 
 #: src/php/helpers/country-helper.class.php:177
 msgid "Libyan Arab Jamahiriya"
@@ -3508,75 +3523,75 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:178
 msgid "Liechtenstein"
-msgstr ""
+msgstr "لیختن اشتاین"
 
 #: src/php/helpers/country-helper.class.php:179
 msgid "Lithuania"
-msgstr ""
+msgstr "لیتوانی"
 
 #: src/php/helpers/country-helper.class.php:180
 msgid "Luxembourg"
-msgstr ""
+msgstr "لوکزامبورگ"
 
 #: src/php/helpers/country-helper.class.php:181
 msgid "Macau"
-msgstr ""
+msgstr "ماکایو"
 
 #: src/php/helpers/country-helper.class.php:182
 msgid "Macedonia"
-msgstr ""
+msgstr "مقدونیه"
 
 #: src/php/helpers/country-helper.class.php:183
 msgid "Madagascar"
-msgstr ""
+msgstr "ماداگاسکار"
 
 #: src/php/helpers/country-helper.class.php:184
 msgid "Malawi"
-msgstr ""
+msgstr "مالاوی"
 
 #: src/php/helpers/country-helper.class.php:185
 msgid "Malaysia"
-msgstr ""
+msgstr "مالزی"
 
 #: src/php/helpers/country-helper.class.php:186
 msgid "Maldives"
-msgstr ""
+msgstr "مالدیو"
 
 #: src/php/helpers/country-helper.class.php:187
 msgid "Mali"
-msgstr ""
+msgstr "مالی"
 
 #: src/php/helpers/country-helper.class.php:188
 msgid "Malta"
-msgstr ""
+msgstr "مالت"
 
 #: src/php/helpers/country-helper.class.php:189
 msgid "Marshall Islands"
-msgstr ""
+msgstr "جزایر مارشال"
 
 #: src/php/helpers/country-helper.class.php:190
 msgid "Martinique"
-msgstr ""
+msgstr "مارتینیک"
 
 #: src/php/helpers/country-helper.class.php:191
 msgid "Mauritania"
-msgstr ""
+msgstr "موریتانی"
 
 #: src/php/helpers/country-helper.class.php:192
 msgid "Mauritius"
-msgstr ""
+msgstr "مائوریتی"
 
 #: src/php/helpers/country-helper.class.php:193
 msgid "Mayotte"
-msgstr ""
+msgstr "مایوت"
 
 #: src/php/helpers/country-helper.class.php:194
 msgid "Mexico"
-msgstr ""
+msgstr "مکزیک"
 
 #: src/php/helpers/country-helper.class.php:195
 msgid "Micronesia"
-msgstr ""
+msgstr "میکرونزی"
 
 #: src/php/helpers/country-helper.class.php:196
 msgid "Moldova, Republic of"
@@ -3584,103 +3599,103 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:197
 msgid "Monaco"
-msgstr ""
+msgstr "موناکو"
 
 #: src/php/helpers/country-helper.class.php:198
 msgid "Mongolia"
-msgstr ""
+msgstr "مغولستان"
 
 #: src/php/helpers/country-helper.class.php:199
 msgid "Montenegro"
-msgstr ""
+msgstr "مونته نگرو"
 
 #: src/php/helpers/country-helper.class.php:200
 msgid "Montserrat"
-msgstr ""
+msgstr "مونتسرات"
 
 #: src/php/helpers/country-helper.class.php:201
 msgid "Morocco"
-msgstr ""
+msgstr "مراکش"
 
 #: src/php/helpers/country-helper.class.php:202
 msgid "Mozambique"
-msgstr ""
+msgstr "موزامبیک"
 
 #: src/php/helpers/country-helper.class.php:203
 msgid "Myanmar"
-msgstr ""
+msgstr "میانمار"
 
 #: src/php/helpers/country-helper.class.php:204
 msgid "Namibia"
-msgstr ""
+msgstr "نامیبیا"
 
 #: src/php/helpers/country-helper.class.php:205
 msgid "Nauru"
-msgstr ""
+msgstr "نائورو"
 
 #: src/php/helpers/country-helper.class.php:206
 msgid "Nepal"
-msgstr ""
+msgstr "نپال"
 
 #: src/php/helpers/country-helper.class.php:207
 msgid "Netherlands"
-msgstr ""
+msgstr "هلند"
 
 #: src/php/helpers/country-helper.class.php:208
 msgid "Netherlands Antilles"
-msgstr ""
+msgstr "آنتیل هلند"
 
 #: src/php/helpers/country-helper.class.php:209
 msgid "New Caledonia"
-msgstr ""
+msgstr "کالدونیای جدید"
 
 #: src/php/helpers/country-helper.class.php:210
 msgid "New Zealand"
-msgstr ""
+msgstr "نیوزلند"
 
 #: src/php/helpers/country-helper.class.php:211
 msgid "Nicaragua"
-msgstr ""
+msgstr "نیکاراگوئه"
 
 #: src/php/helpers/country-helper.class.php:212
 msgid "Niger"
-msgstr ""
+msgstr "نیجر"
 
 #: src/php/helpers/country-helper.class.php:213
 msgid "Nigeria"
-msgstr ""
+msgstr "نیجریه"
 
 #: src/php/helpers/country-helper.class.php:214
 msgid "Niue"
-msgstr ""
+msgstr "نیواِی"
 
 #: src/php/helpers/country-helper.class.php:215
 msgid "Norfolk Island"
-msgstr ""
+msgstr "جزیره نورفولک"
 
 #: src/php/helpers/country-helper.class.php:216
 msgid "North Korea"
-msgstr ""
+msgstr "کره شمالی"
 
 #: src/php/helpers/country-helper.class.php:217
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "جزایر ماریانای شمالی"
 
 #: src/php/helpers/country-helper.class.php:218
 msgid "Norway"
-msgstr ""
+msgstr "نروژ"
 
 #: src/php/helpers/country-helper.class.php:219
 msgid "Oman"
-msgstr ""
+msgstr "عمان"
 
 #: src/php/helpers/country-helper.class.php:220
 msgid "Pakistan"
-msgstr ""
+msgstr "پاکستان"
 
 #: src/php/helpers/country-helper.class.php:221
 msgid "Palau"
-msgstr ""
+msgstr "پالائو"
 
 #: src/php/helpers/country-helper.class.php:222
 msgid "Palestinian Territories"
@@ -3688,19 +3703,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:223
 msgid "Panama"
-msgstr ""
+msgstr "پاناما"
 
 #: src/php/helpers/country-helper.class.php:224
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "پاپوآ گینه نو"
 
 #: src/php/helpers/country-helper.class.php:225
 msgid "Paraguay"
-msgstr ""
+msgstr "پاراگوئه"
 
 #: src/php/helpers/country-helper.class.php:226
 msgid "Peru"
-msgstr ""
+msgstr "پرو"
 
 #: src/php/helpers/country-helper.class.php:227
 msgid "Phillipines"
@@ -3712,19 +3727,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:229
 msgid "Poland"
-msgstr ""
+msgstr "لهستان"
 
 #: src/php/helpers/country-helper.class.php:230
 msgid "Portugal"
-msgstr ""
+msgstr "پرتغال"
 
 #: src/php/helpers/country-helper.class.php:231
 msgid "Puerto Rico"
-msgstr ""
+msgstr "پورتوریکو"
 
 #: src/php/helpers/country-helper.class.php:232
 msgid "Qatar"
-msgstr ""
+msgstr "قطر"
 
 #: src/php/helpers/country-helper.class.php:233
 msgid "Republic of Kosovo"
@@ -3736,7 +3751,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:235
 msgid "Romania"
-msgstr ""
+msgstr "رومانی"
 
 #: src/php/helpers/country-helper.class.php:236
 msgid "Russian Federation"
@@ -3744,7 +3759,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:237
 msgid "Rwanda"
-msgstr ""
+msgstr "رواندا"
 
 #: src/php/helpers/country-helper.class.php:238
 msgid "Saint Barth&eacute;lemy"
@@ -3752,15 +3767,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:239
 msgid "Saint Helena"
-msgstr ""
+msgstr "سنت هلن"
 
 #: src/php/helpers/country-helper.class.php:240
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "سنت کیتس و نویس"
 
 #: src/php/helpers/country-helper.class.php:241
 msgid "Saint Lucia"
-msgstr ""
+msgstr "سنت لوسیا"
 
 #: src/php/helpers/country-helper.class.php:242
 msgid "Saint Martin (French)"
@@ -3772,15 +3787,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:244
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "سنت پیر و میکلون"
 
 #: src/php/helpers/country-helper.class.php:245
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "سنت وینسنت و گرنادین"
 
 #: src/php/helpers/country-helper.class.php:246
 msgid "San Marino"
-msgstr ""
+msgstr "سن‌مارینو"
 
 #: src/php/helpers/country-helper.class.php:247
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
@@ -3788,27 +3803,27 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:248
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "عربستان سعودی"
 
 #: src/php/helpers/country-helper.class.php:249
 msgid "Senegal"
-msgstr ""
+msgstr "سنگال"
 
 #: src/php/helpers/country-helper.class.php:250
 msgid "Serbia"
-msgstr ""
+msgstr "صربستان"
 
 #: src/php/helpers/country-helper.class.php:251
 msgid "Seychelles"
-msgstr ""
+msgstr "سیشل"
 
 #: src/php/helpers/country-helper.class.php:252
 msgid "Sierra Leone"
-msgstr ""
+msgstr "سیرا لئون"
 
 #: src/php/helpers/country-helper.class.php:253
 msgid "Singapore"
-msgstr ""
+msgstr "سنگاپور"
 
 #: src/php/helpers/country-helper.class.php:254
 msgid "Slovak Republic"
@@ -3816,48 +3831,47 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:255
 msgid "Slovenia"
-msgstr ""
+msgstr "اسلوونی"
 
 #: src/php/helpers/country-helper.class.php:256
 msgid "Solomon Islands"
-msgstr ""
+msgstr "جزایر سلیمان"
 
 #: src/php/helpers/country-helper.class.php:257
 msgid "Somalia"
-msgstr ""
+msgstr "سومالی"
 
 #: src/php/helpers/country-helper.class.php:258
 msgid "South Africa"
-msgstr ""
+msgstr "آفریقای جنوبی"
 
 #: src/php/helpers/country-helper.class.php:259
 msgid "South Georgia"
-msgstr ""
+msgstr "گرجستان جنوبی"
 
 #: src/php/helpers/country-helper.class.php:260
 msgid "South Korea"
-msgstr ""
+msgstr "کره جنوبی"
 
 #: src/php/helpers/country-helper.class.php:261
 msgid "South Sudan"
-msgstr ""
+msgstr "سودان جنوبی"
 
 #: src/php/helpers/country-helper.class.php:262
 msgid "Spain"
-msgstr ""
+msgstr "اسپانیا"
 
 #: src/php/helpers/country-helper.class.php:263
 msgid "Sri Lanka"
-msgstr ""
+msgstr "سری لانکا"
 
 #: src/php/helpers/country-helper.class.php:264
 msgid "Sudan"
-msgstr ""
+msgstr "سودان"
 
 #: src/php/helpers/country-helper.class.php:265
-#, fuzzy
 msgid "Suriname"
-msgstr "نام کاربری"
+msgstr "سورینام"
 
 #: src/php/helpers/country-helper.class.php:266
 msgid "Svalbard and Jan Mayen Islands"
@@ -3865,15 +3879,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:267
 msgid "Swaziland"
-msgstr ""
+msgstr "سوازیلند"
 
 #: src/php/helpers/country-helper.class.php:268
 msgid "Sweden"
-msgstr ""
+msgstr "سوئد"
 
 #: src/php/helpers/country-helper.class.php:269
 msgid "Switzerland"
-msgstr ""
+msgstr "سوئیس"
 
 #: src/php/helpers/country-helper.class.php:270
 msgid "Syrian Arab Republic"
@@ -3881,71 +3895,71 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:271
 msgid "Taiwan"
-msgstr ""
+msgstr "تایوان"
 
 #: src/php/helpers/country-helper.class.php:272
 msgid "Tajikistan"
-msgstr ""
+msgstr "تاجیکستان"
 
 #: src/php/helpers/country-helper.class.php:273
 msgid "Tanzania"
-msgstr ""
+msgstr "تانزانیا"
 
 #: src/php/helpers/country-helper.class.php:274
 msgid "Thailand"
-msgstr ""
+msgstr "تایلند"
 
 #: src/php/helpers/country-helper.class.php:275
 msgid "Timor-Leste"
-msgstr ""
+msgstr "تیمور شرقی"
 
 #: src/php/helpers/country-helper.class.php:276
 msgid "Togo"
-msgstr ""
+msgstr "توگو"
 
 #: src/php/helpers/country-helper.class.php:277
 msgid "Tokelau"
-msgstr ""
+msgstr "توکلائو"
 
 #: src/php/helpers/country-helper.class.php:278
 msgid "Tonga"
-msgstr ""
+msgstr "تونگا"
 
 #: src/php/helpers/country-helper.class.php:279
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "ترینیداد و توباگو"
 
 #: src/php/helpers/country-helper.class.php:280
 msgid "Tunisia"
-msgstr ""
+msgstr "تونس"
 
 #: src/php/helpers/country-helper.class.php:281
 msgid "Turkey"
-msgstr ""
+msgstr "ترکیه"
 
 #: src/php/helpers/country-helper.class.php:282
 msgid "Turkmenistan"
-msgstr ""
+msgstr "ترکمنستان"
 
 #: src/php/helpers/country-helper.class.php:283
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "جزایر تورکس و کایکوس"
 
 #: src/php/helpers/country-helper.class.php:284
 msgid "Tuvalu"
-msgstr ""
+msgstr "تووالو"
 
 #: src/php/helpers/country-helper.class.php:285
 msgid "Uganda"
-msgstr ""
+msgstr "اوگاندا"
 
 #: src/php/helpers/country-helper.class.php:286
 msgid "Ukraine"
-msgstr ""
+msgstr "اوکراین"
 
 #: src/php/helpers/country-helper.class.php:287
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "امارات متحده عربی"
 
 #: src/php/helpers/country-helper.class.php:288
 msgid "United Kingdom"
@@ -3957,27 +3971,27 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:290
 msgid "Uruguay"
-msgstr ""
+msgstr "اروگوئه"
 
 #: src/php/helpers/country-helper.class.php:291
 msgid "US Minor Outlying Islands"
-msgstr ""
+msgstr "جزایر کوچک حاشیه آمریکا"
 
 #: src/php/helpers/country-helper.class.php:292
 msgid "Uzbekistan"
-msgstr ""
+msgstr "ازبکستان"
 
 #: src/php/helpers/country-helper.class.php:293
 msgid "Vanuatu"
-msgstr ""
+msgstr "وانواتو"
 
 #: src/php/helpers/country-helper.class.php:294
 msgid "Venezuela"
-msgstr ""
+msgstr "ونزوئلا"
 
 #: src/php/helpers/country-helper.class.php:295
 msgid "Vietnam"
-msgstr ""
+msgstr "ویتنام"
 
 #: src/php/helpers/country-helper.class.php:296
 msgid "Virgin Islands (British)"
@@ -3993,232 +4007,231 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:299
 msgid "Western Sahara"
-msgstr ""
+msgstr "صحرای غربی"
 
 #: src/php/helpers/country-helper.class.php:300
 msgid "Western Samoa"
-msgstr ""
+msgstr "ساموآی غربی"
 
 #: src/php/helpers/country-helper.class.php:301
 msgid "Yemen"
-msgstr ""
+msgstr "یمن"
 
 #: src/php/helpers/country-helper.class.php:302
 msgid "Zambia"
-msgstr ""
+msgstr "زامبیا"
 
 #: src/php/helpers/country-helper.class.php:303
 msgid "Zimbabwe"
-msgstr ""
+msgstr "زیمبابوه"
 
 #: src/php/helpers/country-helper.class.php:1303
 msgid "A Coru&ntilde;a"
-msgstr ""
+msgstr "A Coru&ntilde;a"
 
 #: src/php/helpers/country-helper.class.php:1304
 msgid "Araba"
-msgstr ""
+msgstr "Araba"
 
 #: src/php/helpers/country-helper.class.php:1305
 msgid "Albacete"
-msgstr ""
+msgstr "Albacete"
 
 #: src/php/helpers/country-helper.class.php:1306
 msgid "Alicante"
-msgstr ""
+msgstr "Alicante"
 
 #: src/php/helpers/country-helper.class.php:1307
 msgid "Almer&iacute;a"
-msgstr ""
+msgstr "Almer&iacute;a"
 
 #: src/php/helpers/country-helper.class.php:1308
 msgid "Asturias"
-msgstr ""
+msgstr "Asturias"
 
 #: src/php/helpers/country-helper.class.php:1309
 msgid "&Aacute;vila"
-msgstr ""
+msgstr "&Aacute;vila"
 
 #: src/php/helpers/country-helper.class.php:1310
 msgid "Badajoz"
-msgstr ""
+msgstr "Badajoz"
 
 #: src/php/helpers/country-helper.class.php:1311
-#, fuzzy
 msgid "Baleares"
-msgstr "پاکسازی"
+msgstr "Baleares"
 
 #: src/php/helpers/country-helper.class.php:1312
 msgid "Barcelona"
-msgstr ""
+msgstr "Barcelona"
 
 #: src/php/helpers/country-helper.class.php:1313
 msgid "Burgos"
-msgstr ""
+msgstr "Burgos"
 
 #: src/php/helpers/country-helper.class.php:1314
 msgid "C&aacute;ceres"
-msgstr ""
+msgstr "C&aacute;ceres"
 
 #: src/php/helpers/country-helper.class.php:1315
 msgid "C&aacute;diz"
-msgstr ""
+msgstr "C&aacute;diz"
 
 #: src/php/helpers/country-helper.class.php:1316
 msgid "Cantabria"
-msgstr ""
+msgstr "Cantabria"
 
 #: src/php/helpers/country-helper.class.php:1317
 msgid "Castell&oacute;n"
-msgstr ""
+msgstr "Castell&oacute;n"
 
 #: src/php/helpers/country-helper.class.php:1318
 msgid "Ceuta"
-msgstr ""
+msgstr "سئوتا"
 
 #: src/php/helpers/country-helper.class.php:1319
 msgid "Ciudad Real"
-msgstr ""
+msgstr "Ciudad Real"
 
 #: src/php/helpers/country-helper.class.php:1320
 msgid "C&oacute;rdoba"
-msgstr ""
+msgstr "C&oacute;rdoba"
 
 #: src/php/helpers/country-helper.class.php:1321
 msgid "Cuenca"
-msgstr ""
+msgstr "Cuenca"
 
 #: src/php/helpers/country-helper.class.php:1322
 msgid "Girona"
-msgstr ""
+msgstr "Girona"
 
 #: src/php/helpers/country-helper.class.php:1323
 msgid "Granada"
-msgstr ""
+msgstr "Granada"
 
 #: src/php/helpers/country-helper.class.php:1324
 msgid "Guadalajara"
-msgstr ""
+msgstr "Guadalajara"
 
 #: src/php/helpers/country-helper.class.php:1325
 msgid "Gipuzkoa"
-msgstr ""
+msgstr "Gipuzkoa"
 
 #: src/php/helpers/country-helper.class.php:1326
 msgid "Huelva"
-msgstr ""
+msgstr "Huelva"
 
 #: src/php/helpers/country-helper.class.php:1327
 msgid "Huesca"
-msgstr ""
+msgstr "Huesca"
 
 #: src/php/helpers/country-helper.class.php:1328
 msgid "Ja&eacute;n"
-msgstr ""
+msgstr "Ja&eacute;n"
 
 #: src/php/helpers/country-helper.class.php:1329
 msgid "La Rioja"
-msgstr ""
+msgstr "لاریوجا"
 
 #: src/php/helpers/country-helper.class.php:1330
 msgid "Las Palmas"
-msgstr ""
+msgstr "Las Palmas"
 
 #: src/php/helpers/country-helper.class.php:1331
 msgid "Le&oacute;n"
-msgstr ""
+msgstr "Le&oacute;n"
 
 #: src/php/helpers/country-helper.class.php:1332
 msgid "Lleida"
-msgstr ""
+msgstr "Lleida"
 
 #: src/php/helpers/country-helper.class.php:1333
 msgid "Lugo"
-msgstr ""
+msgstr "Lugo"
 
 #: src/php/helpers/country-helper.class.php:1334
 msgid "Madrid"
-msgstr ""
+msgstr "مادرید"
 
 #: src/php/helpers/country-helper.class.php:1335
 msgid "M&aacute;laga"
-msgstr ""
+msgstr "M&aacute;laga"
 
 #: src/php/helpers/country-helper.class.php:1336
 msgid "Melilla"
-msgstr ""
+msgstr "Melilla"
 
 #: src/php/helpers/country-helper.class.php:1337
 msgid "Murcia"
-msgstr ""
+msgstr "Murcia"
 
 #: src/php/helpers/country-helper.class.php:1338
 msgid "Navarra"
-msgstr ""
+msgstr "Navarra"
 
 #: src/php/helpers/country-helper.class.php:1339
 msgid "Ourense"
-msgstr ""
+msgstr "Ourense"
 
 #: src/php/helpers/country-helper.class.php:1340
 msgid "Palencia"
-msgstr ""
+msgstr "Palencia"
 
 #: src/php/helpers/country-helper.class.php:1341
 msgid "Pontevedra"
-msgstr ""
+msgstr "Pontevedra"
 
 #: src/php/helpers/country-helper.class.php:1342
 msgid "Salamanca"
-msgstr ""
+msgstr "Salamanca"
 
 #: src/php/helpers/country-helper.class.php:1343
 msgid "Santa Cruz de Tenerife"
-msgstr ""
+msgstr "Santa Cruz de Tenerife"
 
 #: src/php/helpers/country-helper.class.php:1344
 msgid "Segovia"
-msgstr ""
+msgstr "Segovia"
 
 #: src/php/helpers/country-helper.class.php:1345
 msgid "Sevilla"
-msgstr ""
+msgstr "Sevilla"
 
 #: src/php/helpers/country-helper.class.php:1346
 msgid "Soria"
-msgstr ""
+msgstr "Soria"
 
 #: src/php/helpers/country-helper.class.php:1347
 msgid "Tarragona"
-msgstr ""
+msgstr "Tarragona"
 
 #: src/php/helpers/country-helper.class.php:1348
 msgid "Teruel"
-msgstr ""
+msgstr "Teruel"
 
 #: src/php/helpers/country-helper.class.php:1349
 msgid "Toledo"
-msgstr ""
+msgstr "Toledo"
 
 #: src/php/helpers/country-helper.class.php:1350
 msgid "Valencia"
-msgstr ""
+msgstr "Valencia"
 
 #: src/php/helpers/country-helper.class.php:1351
 msgid "Valladolid"
-msgstr ""
+msgstr "Valladolid"
 
 #: src/php/helpers/country-helper.class.php:1352
 msgid "Bizkaia"
-msgstr ""
+msgstr "Bizkaia"
 
 #: src/php/helpers/country-helper.class.php:1353
 msgid "Zamora"
-msgstr ""
+msgstr "Zamora"
 
 #: src/php/helpers/country-helper.class.php:1354
 msgid "Zaragoza"
-msgstr ""
+msgstr "Zaragoza"
 
 #: src/php/helpers/currency-helper.class.php:36
 msgid "Australian Dollar (&#36;)"
@@ -4226,7 +4239,7 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:37
 msgid "Brazilian Real (R&#36;)"
-msgstr ""
+msgstr "رئال برزیل (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:38
 msgid "Canadian Dollar (&#36;)"
@@ -4234,11 +4247,11 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:39
 msgid "Czech Koruna"
-msgstr ""
+msgstr "کورونای چک"
 
 #: src/php/helpers/currency-helper.class.php:40
 msgid "Danish Krone"
-msgstr ""
+msgstr "کرون دانمارک"
 
 #: src/php/helpers/currency-helper.class.php:41
 msgid "Euro (&euro;)"
@@ -4246,27 +4259,27 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:42
 msgid "Hong Kong Dollar (&#36;)"
-msgstr ""
+msgstr "دلار هنگ کنگ (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:43
 msgid "Hungarian Forint"
-msgstr ""
+msgstr "هانگاریان فورینت"
 
 #: src/php/helpers/currency-helper.class.php:44
 msgid "Indian Rupee (&#8377;)"
-msgstr ""
+msgstr "روپیه هند (&#8377;)"
 
 #: src/php/helpers/currency-helper.class.php:45
 msgid "Iranian Rial (&#65020;)"
-msgstr ""
+msgstr "ریال ایران (&#65020;)"
 
 #: src/php/helpers/currency-helper.class.php:46
 msgid "Israeli Shekel (&#8362;)"
-msgstr ""
+msgstr "شکل اسرائیل (&#8362;)"
 
 #: src/php/helpers/currency-helper.class.php:47
 msgid "Japanese Yen (&yen;)"
-msgstr ""
+msgstr "ین ژاپن (&yen;)"
 
 #: src/php/helpers/currency-helper.class.php:48
 msgid "Malaysian Ringgit"
@@ -4274,15 +4287,15 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:49
 msgid "Mexican Peso (&#36;)"
-msgstr ""
+msgstr "پسکو مکزیک (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:50
 msgid "New Zealand Dollar (&#36;)"
-msgstr ""
+msgstr "دلار نیوزلند (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:51
 msgid "Norwegian Krone"
-msgstr ""
+msgstr "کرون نروژ"
 
 #: src/php/helpers/currency-helper.class.php:52
 msgid "Philippine Peso"
@@ -4290,11 +4303,11 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:53
 msgid "Polish Zloty"
-msgstr ""
+msgstr "زلوتی لهستان"
 
 #: src/php/helpers/currency-helper.class.php:54
 msgid "Pounds Sterling (&pound;)"
-msgstr ""
+msgstr "پوند استرلینگ (&pound;)"
 
 #: src/php/helpers/currency-helper.class.php:55
 msgid "Russian Ruble"
@@ -4302,15 +4315,15 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:56
 msgid "Singapore Dollar (&#36;)"
-msgstr ""
+msgstr "دلار سنگاپور (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:57
 msgid "Swedish Krona"
-msgstr ""
+msgstr "کورونا سوئد"
 
 #: src/php/helpers/currency-helper.class.php:58
 msgid "Swiss Franc"
-msgstr ""
+msgstr "فرانک سوییس"
 
 #: src/php/helpers/currency-helper.class.php:59
 msgid "Taiwan New Dollar"
@@ -4318,11 +4331,11 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:60
 msgid "Thai Baht (&#3647;)"
-msgstr ""
+msgstr "بات تایلند (&#3647;)"
 
 #: src/php/helpers/currency-helper.class.php:61
 msgid "Turkish Lira (&#8378;)"
-msgstr ""
+msgstr "لیر ترکیه (&#8378;)"
 
 #: src/php/helpers/currency-helper.class.php:62
 msgid "US Dollar (&#36;)"
@@ -4675,7 +4688,3 @@ msgstr ""
 msgctxt "Currency amount (1=amount, 2=currency)"
 msgid "%2$s %1$s"
 msgstr ""
-
-#~ msgctxt "Date picker text"
-#~ msgid "Done"
-#~ msgstr "تایید"

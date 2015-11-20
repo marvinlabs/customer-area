@@ -6,25 +6,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
-"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
-"environment/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2015-09-07 07:35:27+00:00\n"
-"PO-Revision-Date: 2015-09-21 06:54+0000\n"
-"Last-Translator: AVIS Ostiano <info@avisostiano.it>\n"
-"Language-Team: Italian (Italy) (http://www.transifex.com/wp-translations/wp-"
-"customer-area/language/it_IT/)\n"
-"Language: it_IT\n"
+"PO-Revision-Date: 2015-11-20 11:26+0000\n"
+"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"Language-Team: Italian (Italy) (http://www.transifex.com/wp-translations/wp-customer-area/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: grunt-wp-i18n 0.5.3\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
@@ -34,21 +30,20 @@ msgid "Address Manager"
 msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:72
-#, fuzzy
 msgid "Home address"
-msgstr "Indirizzo IP"
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:73
-#, fuzzy
 msgid "Billing address"
-msgstr "Indirizzo email"
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:92
-#, fuzzy
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:190
 msgid "Clear"
 msgstr "Pulisci"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:93
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:191
 msgid "Clear the address"
 msgstr ""
 
@@ -57,24 +52,20 @@ msgid "Error: you must choose an owner first"
 msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:132
-#, fuzzy
 msgid "Are you sure that you want to associate this address with that owner?"
-msgstr "Sei sicuro di voler eliminare questo contenuto?"
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:133
-#, fuzzy
 msgid "Do you really want to replace current address?"
-msgstr "Vuoi davvero rimuovere questo files?"
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:134
-#, fuzzy
 msgid "There is no address linked to that owner"
-msgstr "Non ci sono pagine in questa categoria."
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:135
-#, fuzzy
 msgid "Do you really want to clear the address?"
-msgstr "Vuoi davvero rimuovere questo files?"
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:148
 #: src/php/core-addons/addresses/addresses-addon.class.php:186
@@ -95,15 +86,15 @@ msgstr "Cercando di ingannare ?"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:200
 #: src/php/core-addons/addresses/addresses-addon.class.php:233
-#, fuzzy
 msgid "You must specify the owner"
-msgstr "Devi specificare un articolo da modificare"
+msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:239
-#, fuzzy
 msgid "You must specify the address"
-msgstr "Devi specificare un articolo da eliminare"
+msgstr ""
 
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:46
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:49
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:52
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:55
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:57
@@ -116,6 +107,8 @@ msgstr "Devi specificare un articolo da eliminare"
 msgid "Name"
 msgstr "Nome"
 
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:55
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:58
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:61
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:64
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:68
@@ -125,22 +118,79 @@ msgstr "Nome"
 msgid "Company"
 msgstr ""
 
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:65
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:68
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:72
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:74
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:79
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:84
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:63
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:65
-#, fuzzy
 msgid "VAT Number"
-msgstr "Numero"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:75
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:93
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:102
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:80
+msgid "Street address"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:78
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:96
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:104
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
+msgid "Street address, line 1"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:87
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:112
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:87
+msgid "Street address, line 2"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:94
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:97
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:113
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:116
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:118
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:120
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:92
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:94
+msgid "Zip/Postal code"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:104
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:107
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:123
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:126
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:126
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:128
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:99
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
+msgid "City"
+msgstr "Città"
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:115
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:134
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:134
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:107
+msgid "Country"
+msgstr "Nazione"
+
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:130
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:149
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:147
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:119
+msgid "State/Province"
+msgstr "Stato/Provincia"
 
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:81
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:91
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:70
-#, fuzzy
 msgid "Logo"
-msgstr "Logout"
+msgstr "Logo"
 
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:84
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:94
@@ -151,60 +201,14 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:85
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:95
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:74
-#, fuzzy
 msgid "Upload Logo"
-msgstr "Aggiornato il %s"
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:93
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:102
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:80
-#, fuzzy
-msgid "Street address"
-msgstr "Indirizzo IP"
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:96
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:104
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
-msgid "Street address, line 1"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:112
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:87
-msgid "Street address, line 2"
+#: src/php/core-addons/addresses/templates/view-address.template.php:34
+msgid "No address yet"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:113
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:116
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:118
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:120
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:92
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:94
-msgid "Zip/Postal code"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:123
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:126
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:126
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:128
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:99
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
-msgid "City"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:134
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:134
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:107
-msgid "Country"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:149
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:147
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:119
-msgid "State/Province"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/view-address.template.php:44
+#: src/php/core-addons/addresses/templates/view-address.template.php:49
 msgid "VAT ID -"
 msgstr ""
 
@@ -228,19 +232,13 @@ msgstr "Parametri mancanti"
 msgid ""
 "Error while changing permissions. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
-msgstr ""
-"Errore durante la modifica delle autorizzazioni . PHP probabilmente non "
-"dispone delle autorizzazioni necessarie . Si prega di farlo manualmente "
-"tramite FTP o SSH."
+msgstr "Errore durante la modifica delle autorizzazioni . PHP probabilmente non dispone delle autorizzazioni necessarie . Si prega di farlo manualmente tramite FTP o SSH."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:108
 msgid ""
 "Permissions could not be changed. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
-msgstr ""
-"Le autorizzazioni non possono essere cambiati . PHP probabilmente non "
-"dispone delle autorizzazioni necessarie . Si prega di farlo manualmente via "
-"FTP o SSH."
+msgstr "Le autorizzazioni non possono essere cambiati . PHP probabilmente non dispone delle autorizzazioni necessarie . Si prega di farlo manualmente via FTP o SSH."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:118
 msgid "Folder could not be created"
@@ -249,9 +247,7 @@ msgstr "La cartella non può essere creata"
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:129
 msgid ""
 "htaccess file could not be copied. Please do it manually using FTP or SSH."
-msgstr ""
-"Il file .htaccess non può essere copiato. Si prega di farlo manualmente "
-"tramite FTP o SSH."
+msgstr "Il file .htaccess non può essere copiato. Si prega di farlo manualmente tramite FTP o SSH."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:173
 msgid "Restrict WP admin area"
@@ -317,9 +313,7 @@ msgstr "Benvenuto su WP Customer Area %s"
 msgid ""
 "<strong>WP Customer Area</strong> %s is more powerful, stable and secure "
 "than ever before. We hope you will enjoy using it."
-msgstr ""
-"<strong>WP Customer Area</strong> %s è più potente, stabile e sicuro di "
-"prima. Buon divertimento."
+msgstr "<strong>WP Customer Area</strong> %s è più potente, stabile e sicuro di prima. Buon divertimento."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:476
 msgid "Add new"
@@ -486,9 +480,7 @@ msgstr "/whats-new-in-wp-customer-area-6-2"
 msgid ""
 "WP Customer Area 6.2 has been aimed at improving the attachments to private "
 "files and everything around that."
-msgstr ""
-"WP Customer Area 6.2 è stato in grado di migliorare i collegamenti ai file "
-"privati ​​e tutto intorno a questo."
+msgstr "WP Customer Area 6.2 è stato in grado di migliorare i collegamenti ai file privati ​​e tutto intorno a questo."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
 msgid "New upload system"
@@ -500,11 +492,7 @@ msgid ""
 "drop files and watch the upload progress. Additionally, we have also added "
 "some more settings and provide a security helper to make sure your setup is "
 "as secure as it can."
-msgstr ""
-"Il sistema di caricamento dei file è stato completamente riscritto . È ora "
-"possibile trascinare e rilasciare i file e vedere l'avanzamento del "
-"caricamento . Inoltre , abbiamo anche aggiunto alcune ulteriori impostazioni "
-"e fornire un aiuto di sicurezza per assicurarsi che il setup sia sicuro."
+msgstr "Il sistema di caricamento dei file è stato completamente riscritto . È ora possibile trascinare e rilasciare i file e vedere l'avanzamento del caricamento . Inoltre , abbiamo anche aggiunto alcune ulteriori impostazioni e fornire un aiuto di sicurezza per assicurarsi che il setup sia sicuro."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
 msgid "Enhanced Files"
@@ -513,13 +501,9 @@ msgstr "Files avanzati"
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:18
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
-"multiple attachments on the same private file, change the attachment caption "
-"and automatically add file type icons in front of the download links."
-msgstr ""
-"Stiamo introducendo un nuovo add-on che migliora i file allegati : caricare "
-"più allegati sullo stesso file privato , modificare la didascalia "
-"dell'allegato e aggiungere automaticamente le icone del tipo file, davanti "
-"ai link per il download ."
+"multiple attachments on the same private file, change the attachment caption"
+" and automatically add file type icons in front of the download links."
+msgstr "Stiamo introducendo un nuovo add-on che migliora i file allegati : caricare più allegati sullo stesso file privato , modificare la didascalia dell'allegato e aggiungere automaticamente le icone del tipo file, davanti ai link per il download ."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:20
 msgid "/downloads/wpca-enhanced-files"
@@ -535,12 +519,7 @@ msgid ""
 "or removing users by hand, you will simply make dynamic groups based on "
 "criteria such as name, domain of the email address, and any other meta "
 "information linked to your user profiles."
-msgstr ""
-"Smart Groups cambieranno il modo di costruire i vostri gruppi di utenti . "
-"Non più aggiungere o rimuovere gli utenti a mano , vi sarà semplicemente "
-"fare gruppi dinamici sulla base di criteri quali il nome , dominio "
-"dell'indirizzo e-mail , e qualsiasi altra meta informazioni legate ai vostri "
-"profili utente ."
+msgstr "Smart Groups cambieranno il modo di costruire i vostri gruppi di utenti . Non più aggiungere o rimuovere gli utenti a mano , vi sarà semplicemente fare gruppi dinamici sulla base di criteri quali il nome , dominio dell'indirizzo e-mail , e qualsiasi altra meta informazioni legate ai vostri profili utente ."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:26
 msgid "/downloads/wpca-smart-groups"
@@ -554,10 +533,7 @@ msgstr "/whats-new-in-wp-customer-area-6-1"
 msgid ""
 "WP Customer Area 6.1 focuses mainly on making administrator's life easier, "
 "introducing event logging and a better administration panel."
-msgstr ""
-"WP Customer Area 6.1 ha il compito di rendere la vita dell'amministratore "
-"più semplice, introducendo gli eventi di login e pannello di amministrazione "
-"migliorato."
+msgstr "WP Customer Area 6.1 ha il compito di rendere la vita dell'amministratore più semplice, introducendo gli eventi di login e pannello di amministrazione migliorato."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:37
 msgid "Protect post types"
@@ -568,11 +544,7 @@ msgid ""
 "We are introducing a new add-on which will allow protecting any kind of "
 "external post types. Posts created from third party plugins can be made "
 "private and assigned just like private pages or files."
-msgstr ""
-"Introduciamo un nuovo add-on che ti permetterà di proteggere qualsiasi tipo "
-"di articolo esterno. Gli articoli creati da plugins di terze parti possono "
-"essere resi privati e assegnati come come fai per le pagine private o i "
-"files. "
+msgstr "Introduciamo un nuovo add-on che ti permetterà di proteggere qualsiasi tipo di articolo esterno. Gli articoli creati da plugins di terze parti possono essere resi privati e assegnati come come fai per le pagine private o i files. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:40
 msgid "/downloads/wpca-protect-post-types"
@@ -588,11 +560,7 @@ msgid ""
 "we have added shortcodes to display the navigation menu, list protected "
 "content, etc. You will now be able to easily build custom pages with a list "
 "of the content you want to pull for the connected user."
-msgstr ""
-"abbiamo aggiunto gli shortcodes per mostrare il menù di navigazione, un "
-"lista di contenuti protetta, etc. Adesso potrai facilmente costruire pagine "
-"personalizzate contenenti una lista d contenuti a mostrare agli utenti "
-"connessi. "
+msgstr "abbiamo aggiunto gli shortcodes per mostrare il menù di navigazione, un lista di contenuti protetta, etc. Adesso potrai facilmente costruire pagine personalizzate contenenti una lista d contenuti a mostrare agli utenti connessi. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:46
 msgid "/documentation/shortcodes"
@@ -605,12 +573,9 @@ msgstr "Miglior pannello d'amministrazione"
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
-"better organised. The content lists now feature powerful filters to help you "
-"find the content you are looking for faster."
-msgstr ""
-"Il plugin principale è stato migliorato, adesso è più organizzato e meno "
-"confusionario. La lista dei contenuti adesso presenta dei filtri che ti "
-"permettono di trovare i contenuti più velocemente. "
+"better organised. The content lists now feature powerful filters to help you"
+" find the content you are looking for faster."
+msgstr "Il plugin principale è stato migliorato, adesso è più organizzato e meno confusionario. La lista dei contenuti adesso presenta dei filtri che ti permettono di trovare i contenuti più velocemente. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:54
 msgid "Logging"
@@ -621,10 +586,7 @@ msgid ""
 "When dealing with private content and secure areas, keeping track of events "
 "is crucial. We have added a module to track what is happening within your "
 "private area."
-msgstr ""
-"Quando si ha a che fare con contenuti privati e aree sicure è cruciale "
-"tenere traccia dei logs. Abbiamo aggiunto un modulo che permette di tenere "
-"traccia di tutte le azioni all'interno dell'area privata. "
+msgstr "Quando si ha a che fare con contenuti privati e aree sicure è cruciale tenere traccia dei logs. Abbiamo aggiunto un modulo che permette di tenere traccia di tutte le azioni all'interno dell'area privata. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:59
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:82
@@ -635,9 +597,7 @@ msgstr "E di più!"
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 23 issues corrected."
-msgstr ""
-"Come per ogni nuovo aggiornamento, provvediamo a correggere i bugs. Questo "
-"aggiornamento non è un'eccezione abbiamo corretto più di 23 problemi. "
+msgstr "Come per ogni nuovo aggiornamento, provvediamo a correggere i bugs. Questo aggiornamento non è un'eccezione abbiamo corretto più di 23 problemi. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
 msgid "/customer-area-is-dead-long-live-wp-customer-area/"
@@ -645,11 +605,9 @@ msgstr "/customer-area-is-dead-long-live-wp-customer-area/"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:69
 msgid ""
-"WP Customer Area 6.0 is a major release which sees a lot of changes not only "
-"inside the plugin but also on the website."
-msgstr ""
-"WP Customer Area 6.0 è una major release che introduce numerosi cambiamenti "
-"non solo all'interno del plugin ma in tutto il sito internet. "
+"WP Customer Area 6.0 is a major release which sees a lot of changes not only"
+" inside the plugin but also on the website."
+msgstr "WP Customer Area 6.0 è una major release che introduce numerosi cambiamenti non solo all'interno del plugin ma in tutto il sito internet. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:72
 msgid "Improved setup &amp; updates"
@@ -659,10 +617,7 @@ msgstr "Installazione migliorata &amp; aggiornamenti"
 msgid ""
 "We have implemented a new setup assistant that will make it even easier to "
 "install the plugin. Updates will be smoother too."
-msgstr ""
-"Abbiamo implementato un nuovo assistente per la configurazione per rendere "
-"ancora più semplice il processo di installazione del plugin. Anche gli "
-"aggiornamenti saranno semplificati. "
+msgstr "Abbiamo implementato un nuovo assistente per la configurazione per rendere ancora più semplice il processo di installazione del plugin. Anche gli aggiornamenti saranno semplificati. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
 msgid "Better permissions"
@@ -673,18 +628,13 @@ msgid ""
 "Some new permissions have been added to give you more control about what "
 "your users can do. On top of that, we have also improved the permissions "
 "screen to make it faster to set permissions."
-msgstr ""
-"Alcuni nuovi permessi sono stati aggiunti per darti più controllo riguardo a "
-"quello che gli utenti possono fare. In più, abbiamo anche migliorato il "
-"pannello dei permessi per rendere la gestione dei permessi più veloce. "
+msgstr "Alcuni nuovi permessi sono stati aggiunti per darti più controllo riguardo a quello che gli utenti possono fare. In più, abbiamo anche migliorato il pannello dei permessi per rendere la gestione dei permessi più veloce. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 20 issues corrected."
-msgstr ""
-"Come per ogni nuovo aggiornamento, provvediamo a correggere i bugs. Questo "
-"aggiornamento non è un'eccezione abbiamo corretto più di 20 problemi. "
+msgstr "Come per ogni nuovo aggiornamento, provvediamo a correggere i bugs. Questo aggiornamento non è un'eccezione abbiamo corretto più di 20 problemi. "
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
 msgid "New in %s ~ <em>%s</em>"
@@ -737,9 +687,8 @@ msgid "and"
 msgstr "e"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:17
-#, fuzzy
 msgid "Filter %1$s List"
-msgstr "File in %1$s "
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:30
 #: src/php/core-addons/log/templates/logs-page.template.php:27
@@ -822,18 +771,22 @@ msgstr "Visualizza dettagli profilo"
 msgid "Edit account details"
 msgstr "Modifica dettagli profilo"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:14
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:11
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:17
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:13
 msgid "Hello %s,"
 msgstr "Bentornato %s,"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:19
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:22
 msgid "Your profile has been updated"
 msgstr "Il tuo profilo è stato aggiornato"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:23
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:26
 msgid "Please find below your account details"
 msgstr "Trova qui in basso i dettagli del tuo account"
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:30
+msgid "Addresses"
+msgstr ""
 
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:44
 msgid "Account - Edit"
@@ -845,18 +798,15 @@ msgstr "Modifica profilo"
 
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
 msgid "This page shows a form where the user can edit his account"
-msgstr ""
-"Questa pagina mostra un modulo dove l'utente può modificare il suo profilo"
+msgstr "Questa pagina mostra un modulo dove l'utente può modificare il suo profilo"
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:14
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:16
 msgid ""
-"You can update your account details. If you leave the password fields empty, "
-"your password will not be modified."
-msgstr ""
-"Puoi aggiornare i dettagli del profilo. Se lasci il campo password vuoto, la "
-"tua password non verrà modificata. "
+"You can update your account details. If you leave the password fields empty,"
+" your password will not be modified."
+msgstr "Puoi aggiornare i dettagli del profilo. Se lasci il campo password vuoto, la tua password non verrà modificata. "
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:21
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:25
 msgid "Submit"
 msgstr "Invia"
 
@@ -878,9 +828,7 @@ msgstr "Bacheca"
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
 msgid ""
 "Shows a summary of the user's private content (files, pages, messages, ...)."
-msgstr ""
-"Mostra un riassunto dei contenuti privati dell'utente (file, pagine, "
-"messaggi, ...)."
+msgstr "Mostra un riassunto dei contenuti privati dell'utente (file, pagine, messaggi, ...)."
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:43
 msgid "Home"
@@ -888,11 +836,9 @@ msgstr "Home"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
-"This is the main page for your customers. It will redirect to the login page "
-"or to the customer area dashboard."
-msgstr ""
-"Questa è la pagina principale per i tuoi clienti. Reindirizzerà l'utente "
-"alla pagina di login o alla dashboard dell'area clienti."
+"This is the main page for your customers. It will redirect to the login page"
+" or to the customer area dashboard."
+msgstr "Questa è la pagina principale per i tuoi clienti. Reindirizzerà l'utente alla pagina di login o alla dashboard dell'area clienti."
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:55
 msgid "customer-area"
@@ -906,9 +852,7 @@ msgstr "Logout"
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
-msgstr ""
-"Questa pagina effettua il log out dell'utente e lo rimanda sulla pagina di "
-"logout."
+msgstr "Questa pagina effettua il log out dell'utente e lo rimanda sulla pagina di logout."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
@@ -965,9 +909,7 @@ msgstr "Elimina tutte le pagine esistenti e ricreale."
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
-msgstr ""
-"Sei sicuro di voler eliminare tutte le pagine esistenti e ricrearne di nuove "
-"(questa operazione non può essere annullata)?"
+msgstr "Sei sicuro di voler eliminare tutte le pagine esistenti e ricrearne di nuove (questa operazione non può essere annullata)?"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1037
 msgid "Main Navigation Menu"
@@ -981,9 +923,7 @@ msgstr "Pagine WP Customer Area "
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
-msgstr ""
-"Mostra automaticamente il menu di navigazione dell'Area Clienti all'interno "
-"delle pagine dell'Area Clienti."
+msgstr "Mostra automaticamente il menu di navigazione dell'Area Clienti all'interno delle pagine dell'Area Clienti."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1066
 msgid "Private content single pages"
@@ -993,9 +933,7 @@ msgstr "Pagine dei contenuti privati"
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
-msgstr ""
-"Mostra automaticamente il menu di navigazione dell'Area Clienti sulle "
-"singole pagine private."
+msgstr "Mostra automaticamente il menu di navigazione dell'Area Clienti sulle singole pagine private."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1093
 msgid "Recreate menu"
@@ -1009,9 +947,7 @@ msgstr "Cancella e ricrea il menu di navigazione principale."
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
-msgstr ""
-"Sei sicuro di voler cancellare e ricreare il menu di navigazione principale "
-"(questa operazione non può essere annullata)?"
+msgstr "Sei sicuro di voler cancellare e ricreare il menu di navigazione principale (questa operazione non può essere annullata)?"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
 msgid "Permalinks"
@@ -1043,23 +979,18 @@ msgstr "Elimina contenuto"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1188
 msgid "Slug that is used in the URL to delete existing private content"
-msgstr ""
-"Lo slug utilizzato nell'URL per eliminare il contenuto privato esistente"
+msgstr "Lo slug utilizzato nell'URL per eliminare il contenuto privato esistente"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1202
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
-msgstr ""
-"Dalla versione 4.0.0, l'Area Clienti gestisce la navigazione usando i menu."
+msgstr "Dalla versione 4.0.0, l'Area Clienti gestisce la navigazione usando i menu."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1214
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
-msgstr ""
-"Dalla versione 4.0.0, Area Clienti usa diverse pagine per mostrare il "
-"contenuto per i tuoi clienti. Crea queste pagine da qui o semplicemente "
-"indica quelle già esistenti che vuoi associare."
+msgstr "Dalla versione 4.0.0, Area Clienti usa diverse pagine per mostrare il contenuto per i tuoi clienti. Crea queste pagine da qui o semplicemente indica quelle già esistenti che vuoi associare."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1325
@@ -1067,9 +998,7 @@ msgstr ""
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
-msgstr ""
-"Alcune pagine dell'area clienti sono state create o eliminate. Il menu di "
-"navigazione dell'area clienti deve essere aggironato."
+msgstr "Alcune pagine dell'area clienti sono state create o eliminate. Il menu di navigazione dell'area clienti deve essere aggironato."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
 msgid "The following pages have been created: %s"
@@ -1081,11 +1010,9 @@ msgstr "Non ci sono pagine mancanti che possono essere create."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1375
 msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings."
-msgstr ""
-"Alcune pagine nel tuo sito contengono shortcodes ma non sono registrate "
-"nelle impostazioni delle pagine dell'Area Clienti. "
+"Some pages in your site seem to contain Customer Area shortcodes but are not"
+" registered in the Customer Area pages settings."
+msgstr "Alcune pagine nel tuo sito contengono shortcodes ma non sono registrate nelle impostazioni delle pagine dell'Area Clienti. "
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1395
 msgid "%s page has been deleted"
@@ -1114,18 +1041,13 @@ msgid ""
 "A navigation menu organizes the customer area. It allows to browse the "
 "files, the pages, to view the account details and much more. It seems that "
 "this menu has not yet been created."
-msgstr ""
-"Un menu di navigazione organizza l'area clienti, permettendo di navigare "
-"file, pagine, visualizzare i dettagli del profilo e molto altro. Sembra che "
-"tale menu non sia stato ancora creato."
+msgstr "Un menu di navigazione organizza l'area clienti, permettendo di navigare file, pagine, visualizzare i dettagli del profilo e molto altro. Sembra che tale menu non sia stato ancora creato."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
 msgid ""
-"You can review which menus are currently created on the <a href=\"%1$s"
-"\">menus page</a>."
-msgstr ""
-"Puoi rivedere i menu che sono stati creati nella <a href=\"%1$s\">pagina dei "
-"menu</a>."
+"You can review which menus are currently created on the <a "
+"href=\"%1$s\">menus page</a>."
+msgstr "Puoi rivedere i menu che sono stati creati nella <a href=\"%1$s\">pagina dei menu</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:32
 msgid "Create the menu"
@@ -1135,9 +1057,7 @@ msgstr "Crea il menu"
 msgid ""
 "Are you sure that you want to create the menu (this operation cannot be "
 "undone)?"
-msgstr ""
-"Sei sicuro di voler creare il menu (questa operazione non può essere "
-"annullata)?"
+msgstr "Sei sicuro di voler creare il menu (questa operazione non può essere annullata)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:23
 msgid "Navigation menu is out of sync"
@@ -1145,21 +1065,16 @@ msgstr "Il menu di navigazione non è sincronizzato"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
 msgid ""
-"Some pages of the customer area have been changed and our current navigation "
-"menu probably references the previous pages. We recommend to synchronize the "
-"menu with the new pages. "
-msgstr ""
-"Alcune pagine dell'area clienti sono state modificate e l'attuale menu di "
-"navigazione probabilmente indirizza alle pagine precedenti. Raccomandiamo di "
-"sincronizzare il menu con le nuove pagine."
+"Some pages of the customer area have been changed and our current navigation"
+" menu probably references the previous pages. We recommend to synchronize "
+"the menu with the new pages. "
+msgstr "Alcune pagine dell'area clienti sono state modificate e l'attuale menu di navigazione probabilmente indirizza alle pagine precedenti. Raccomandiamo di sincronizzare il menu con le nuove pagine."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
 msgid ""
 "You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
 "&raquo; Menus</a> page."
-msgstr ""
-"Puoi modificare manualmente il menu nella sezione <a href=\"%1$s\">Aspetto "
-"&raquo; Menu</a>."
+msgstr "Puoi modificare manualmente il menu nella sezione <a href=\"%1$s\">Aspetto &raquo; Menu</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:30
 msgid "Suggested actions"
@@ -1177,17 +1092,13 @@ msgstr "Ignora avviso"
 msgid ""
 "Are you sure that you want to clear current menu and create it again from "
 "scratch (this operation cannot be undone)?"
-msgstr ""
-"Sei sicuro di voler eliminare il menu attuale e ricrearlo da zero (questa "
-"oeprazione non può essere annullata)?"
+msgstr "Sei sicuro di voler eliminare il menu attuale e ricrearlo da zero (questa oeprazione non può essere annullata)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:46
 msgid ""
 "Are you sure that you want ignore this warning? You can also manually edit "
 "your menu in the page: \"Appearance > Menus\"."
-msgstr ""
-"Sei sicuro di voler ignorare questo avviso? Puoi manualmente modificare il "
-"tuo menu nella pagina: \"Aspetto > Menu\"."
+msgstr "Sei sicuro di voler ignorare questo avviso? Puoi manualmente modificare il tuo menu nella pagina: \"Aspetto > Menu\"."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:23
 msgid "Orphan pages"
@@ -1203,8 +1114,7 @@ msgstr "Elimina pagine orfane"
 msgid ""
 "Are you sure that you want to delete those pages (this operation cannot be "
 "undone)?"
-msgstr ""
-"Sei sicuro di voler eliminare queste pagine (non potrai tornare indietro)?"
+msgstr "Sei sicuro di voler eliminare queste pagine (non potrai tornare indietro)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:23
 msgid "Missing front-office pages"
@@ -1215,17 +1125,13 @@ msgid ""
 "Some pages of the customer area have not yet been created. Those pages are "
 "responsible for displaying the private content you have assigned to your "
 "users."
-msgstr ""
-"Alcune pagine dell'area clienti non sono state ancora create. Quelle pagine "
-"si occupano di mostrare i contenuti privati che hai assegnato ai tuoi utenti."
+msgstr "Alcune pagine dell'area clienti non sono state ancora create. Quelle pagine si occupano di mostrare i contenuti privati che hai assegnato ai tuoi utenti."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
 msgid ""
-"You can review which pages are currently created on the <a href=\"%1$s"
-"\">pages settings page</a>."
-msgstr ""
-"Puoi rivedere quali pagine sono state attualmente create nelle pagina <a "
-"href=\"%1$s\">impostazioni pagine</a>."
+"You can review which pages are currently created on the <a "
+"href=\"%1$s\">pages settings page</a>."
+msgstr "Puoi rivedere quali pagine sono state attualmente create nelle pagina <a href=\"%1$s\">impostazioni pagine</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:32
 msgid "Create missing pages"
@@ -1235,9 +1141,7 @@ msgstr "Crea le pagine mancanti"
 msgid ""
 "Are you sure that you want to create all the pages that are currently "
 "missing (this operation cannot be undone)?"
-msgstr ""
-"Sei sicuro di voler creare tutte le pagine che attualmente mancano (questa "
-"operazione non può essere annullata)?"
+msgstr "Sei sicuro di voler creare tutte le pagine che attualmente mancano (questa operazione non può essere annullata)?"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
 msgid "Page"
@@ -1582,11 +1486,9 @@ msgstr "Installa WP Customer Area"
 
 #: src/php/core-addons/installer/installer-addon.class.php:248
 msgid ""
-"There is a quick installation to run before being able to publish your first "
-"private files and pages. It should be over in less than a minute!"
-msgstr ""
-"Devi eseguire una installazione veloce prima di poter pubblicare i tuoi "
-"primi files e pagine privati. Dovrebbe richiedere meno di un minuto!"
+"There is a quick installation to run before being able to publish your first"
+" private files and pages. It should be over in less than a minute!"
+msgstr "Devi eseguire una installazione veloce prima di poter pubblicare i tuoi primi files e pagine privati. Dovrebbe richiedere meno di un minuto!"
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
 msgid "Setup pages and navigation menu"
@@ -1642,7 +1544,7 @@ msgstr "Logs"
 
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: src/php/core-addons/log/log-addon.class.php:165
 #: src/php/core-addons/log/log-addon.class.php:464
@@ -1702,15 +1604,12 @@ msgstr "Ca"
 
 #: src/php/core-addons/log/log-addon.class.php:403
 #: src/php/core-addons/log/log-addon.class.php:412
-#, fuzzy
 msgid "Attachment: "
-msgstr "Allegato aggiunto"
+msgstr ""
 
 #: src/php/core-addons/log/log-addon.class.php:471
 msgid "Only log the first time a private content is viewed by a user."
-msgstr ""
-"Registra log solo la prima volta che un contenuto è visualizzato "
-"dall'utente. "
+msgstr "Registra log solo la prima volta che un contenuto è visualizzato dall'utente. "
 
 #: src/php/core-addons/log/log-addon.class.php:473
 msgid ""
@@ -1718,29 +1617,19 @@ msgid ""
 "first time a user is viewing private content. There will be a single event "
 "per user and per content. Else, each time a user is viewing a private "
 "content, an event will be generated."
-msgstr ""
-"Se spunti questo box, W Customer Area genererà un evento di log solo per la "
-"prima volta che gli utenti visualizzano un contenuto privato. Ci sarà un "
-"singolo evento di log per utente e per contenuto. Altrimenti, ogni volta che "
-"un utente visualizza un contenuto privato verrà generato un evento di log. "
+msgstr "Se spunti questo box, W Customer Area genererà un evento di log solo per la prima volta che gli utenti visualizzano un contenuto privato. Ci sarà un singolo evento di log per utente e per contenuto. Altrimenti, ogni volta che un utente visualizza un contenuto privato verrà generato un evento di log. "
 
 #: src/php/core-addons/log/log-addon.class.php:488
 msgid "Only log the first time a private file is downloaded by a user."
-msgstr ""
-"Crea un evento di log solo quando un file privato è scaricato per la prima "
-"volta."
+msgstr "Crea un evento di log solo quando un file privato è scaricato per la prima volta."
 
 #: src/php/core-addons/log/log-addon.class.php:490
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is downloading a private file. There will be a single "
-"event per user and per file. Else, each time a user is downloading a private "
-"file, an event will be generated."
-msgstr ""
-"Se spunti questo box, WP Customer Area genererà un evento di log solo quando "
-"l'utente scarica un file privato per la prima volta. Ci sarà un solo evento "
-"di log per utente e per file. Altrimenti, ogni volta che un utente scarica u "
-"file privato, verrà generato un evento di log. "
+"event per user and per file. Else, each time a user is downloading a private"
+" file, an event will be generated."
+msgstr "Se spunti questo box, WP Customer Area genererà un evento di log solo quando l'utente scarica un file privato per la prima volta. Ci sarà un solo evento di log per utente e per file. Altrimenti, ogni volta che un utente scarica u file privato, verrà generato un evento di log. "
 
 #: src/php/core-addons/log/log-table.class.php:155
 msgid "Event"
@@ -1760,14 +1649,12 @@ msgid "Extra info"
 msgstr "Extra info"
 
 #: src/php/core-addons/log/log-table.class.php:167
-#, fuzzy
 msgid "Y/m/d - H:i:s"
-msgstr "Y/m/d - g:i:s"
+msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:178
-#, fuzzy
 msgid "User %1$s"
-msgstr "Utilizzatore - %s"
+msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:180
 msgid "<a href=\"%1$s\" title=\"Username: %2$s\">%3$s</a>"
@@ -1797,9 +1684,8 @@ msgid "Delete all events permanently"
 msgstr "Elimina tutti gli eventi permanentemente"
 
 #: src/php/core-addons/log/templates/logs-page.template.php:11
-#, fuzzy
 msgid "Filter Log Event List"
-msgstr "Filtra eventi"
+msgstr ""
 
 #: src/php/core-addons/log/templates/logs-page.template.php:32
 msgid "Event type"
@@ -1860,9 +1746,7 @@ msgstr "File Privati"
 msgid ""
 "<a href=\"%s\">Public URL to a test file in that folder</a>. Response code: "
 "%s. File content: %s"
-msgstr ""
-"<a href=\"%s\">URL pubblico per tesare un file in quella cartella</a>. "
-"Codice risposta: %s. Contenuto file: %s"
+msgstr "<a href=\"%s\">URL pubblico per tesare un file in quella cartella</a>. Codice risposta: %s. Contenuto file: %s"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:771
 msgid "Do you really want to remove this file?"
@@ -1990,29 +1874,22 @@ msgid "FTP uploads folder"
 msgstr "Cartella per l'upload FTP"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:246
-msgid "<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
-msgstr ""
-"<strong>Lasciare vuoto per utilizzare la cartella di default</strong>:<br/"
-"><code>%s</code>"
+msgid ""
+"<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
+msgstr "<strong>Lasciare vuoto per utilizzare la cartella di default</strong>:<br/><code>%s</code>"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:249
 msgid ""
 "This folder is the root folder for storing private files. This should "
-"preferably be located outside of the web server public area or secured using "
-"a <code>.htaccess</code> file"
-msgstr ""
-"Questa cartella è la cartella principale per la memorizzazione dei file "
-"privati. Questa deve essere preferibilmente situata al di fuori dell'area "
-"pubblica del server web o bloccata con un <code>.htaccess </code>"
+"preferably be located outside of the web server public area or secured using"
+" a <code>.htaccess</code> file"
+msgstr "Questa cartella è la cartella principale per la memorizzazione dei file privati. Questa deve essere preferibilmente situata al di fuori dell'area pubblica del server web o bloccata con un <code>.htaccess </code>"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:263
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
-msgstr ""
-"Questa cartella può essere usata se vuoi utilizzare i file caricati via FTP. "
-"Questo sistema è pratico quando il caricamento diretto non va a buon fine, "
-"caso tipico per file di grandi dimensioni-"
+msgstr "Questa cartella può essere usata se vuoi utilizzare i file caricati via FTP. Questo sistema è pratico quando il caricamento diretto non va a buon fine, caso tipico per file di grandi dimensioni-"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:280
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:298
@@ -2033,10 +1910,7 @@ msgid ""
 "That directory should at least have the permissions set to %s. Currently it "
 "is %s. You should adjust that directory permissions as upload or download "
 "might not work properly."
-msgstr ""
-"Questa directory dovrebbe avere almeno i permessi settati a %S. Attualemente "
-"è %s. Dovresti aggiustare le autorizzazioni della directory, altrimenti gli "
-"upload o i download non funzionano correttamente."
+msgstr "Questa directory dovrebbe avere almeno i permessi settati a %S. Attualemente è %s. Dovresti aggiustare le autorizzazioni della directory, altrimenti gli upload o i download non funzionano correttamente."
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:304
 msgid "Change permissions"
@@ -2045,22 +1919,16 @@ msgstr "Cambiare permessi"
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:315
 msgid ""
 "That directory seems to be accessible from the web. <strong>This is not "
-"safe</strong>. The most secure would be to move it outside of the web folder "
-"of your server"
-msgstr ""
-"Questo directory sembra essere accessibile dal web . <strong> Questo non è "
-"sicuro </strong> . Il modo più sicuro sarebbe quello di spostare al di fuori "
-"della cartella web del proprio server"
+"safe</strong>. The most secure would be to move it outside of the web folder"
+" of your server"
+msgstr "Questo directory sembra essere accessibile dal web . <strong> Questo non è sicuro </strong> . Il modo più sicuro sarebbe quello di spostare al di fuori della cartella web del proprio server"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:320
 msgid ""
 "We can try to protect it with a <code>.htaccess</code> file with the button "
 "below, but <strong>this only works for Apache servers</strong> (will do "
 "nothing if you are running nginx or IIS)"
-msgstr ""
-"Possiamo cercare di proteggerlo con una <code> .htaccess </code> con il "
-"bottone qui sotto , ma <strong> questo funziona solo per i server Apache </"
-"strong> ( non farà nulla se si esegue nginx o IIS )"
+msgstr "Possiamo cercare di proteggerlo con una <code> .htaccess </code> con il bottone qui sotto , ma <strong> questo funziona solo per i server Apache </strong> ( non farà nulla se si esegue nginx o IIS )"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:325
 msgid "Try to secure it"
@@ -2081,9 +1949,8 @@ msgid "A path must be specified in the extra parameter"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:386
-#, fuzzy
 msgid "An error happened while copying %1$s from the server folder %2$s"
-msgstr "E' avvenuto un errore durante la copia di %s dalla cartella FTP"
+msgstr ""
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:438
 msgid "An error happened while copying %s from the FTP folder"
@@ -2109,8 +1976,7 @@ msgstr "Upload classico"
 msgid ""
 "Select the files you want to upload, they will be processed when you save "
 "the post."
-msgstr ""
-"Selezionare i file da caricare, saranno processati quando si salva il post. ."
+msgstr "Selezionare i file da caricare, saranno processati quando si salva il post. ."
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:617
 msgid "Get from server FTP folder"
@@ -2120,10 +1986,7 @@ msgstr "Prelevali dalla cartella del server FTP"
 msgid ""
 "Below are the files listed from the FTP folder you have set in the plugin "
 "options. Those files will be moved or copied to their final location."
-msgstr ""
-"Qui di seguito sono elencati i file dalla cartella FTP che è stata impostata "
-"nelle opzioni del plugin . Questi file vengono spostati o copiati nella loro "
-"posizione finale"
+msgstr "Qui di seguito sono elencati i file dalla cartella FTP che è stata impostata nelle opzioni del plugin . Questi file vengono spostati o copiati nella loro posizione finale"
 
 #: src/php/core-addons/private-file/templates/private-attachments-add-classic-upload.template.php:16
 msgid "Drop your files here or click me!"
@@ -2154,9 +2017,8 @@ msgid "How do you want to add the files?"
 msgstr "Come vuoi aggiungere questi files?"
 
 #: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:21
-#, fuzzy
 msgid "Download"
-msgstr "Files scaricati"
+msgstr "Scarica"
 
 #: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:24
 msgid "Remove"
@@ -2198,16 +2060,13 @@ msgstr "Visualizza qualunque pagina privata"
 
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:138
 msgid "Check this to enable the private pages add-on."
-msgstr ""
-"Impostare questo campo per attivare l'estensione per le pagine private."
+msgstr "Impostare questo campo per attivare l'estensione per le pagine private."
 
 #: src/php/core-addons/shortcodes/shortcodes/protected-content-shortcode.class.php:103
 msgid ""
 "The parameter %2$s of shortcode <code>[%1$s]</code> has an invalid value: "
 "<code>%3$s</code>"
-msgstr ""
-"Il parametro %2$s dello shortcode <code>[%1$s]</code> ha un valore non "
-"valido: <code>%3$s</code>"
+msgstr "Il parametro %2$s dello shortcode <code>[%1$s]</code> ha un valore non valido: <code>%3$s</code>"
 
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-empty-default.template.php:3
 msgid "There is no content to show"
@@ -2333,12 +2192,9 @@ msgstr "Versione obsoleta del plugin"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a href="
-"\"%2$s\">add-ons status pages</a>."
-msgstr ""
-"Alcune estensioni richiedono una versione aggiornata del plugin principale "
-"(attualmente stai utilizzando la versione %1$s). Puoi trovare l'elenco delle "
-"estensioni sulle <a href=\"%2$s\">pagine dello status delle estensioni</a>."
+"running version %1$s). You can find the list of all add-ons on the <a "
+"href=\"%2$s\">add-ons status pages</a>."
+msgstr "Alcune estensioni richiedono una versione aggiornata del plugin principale (attualmente stai utilizzando la versione %1$s). Puoi trovare l'elenco delle estensioni sulle <a href=\"%2$s\">pagine dello status delle estensioni</a>."
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
 msgid "Update the plugin"
@@ -2386,9 +2242,7 @@ msgstr "Problema #%d"
 msgid ""
 "Congratulations, everything seems to be configured properly. You can enjoy "
 "your customer area now."
-msgstr ""
-"Congratulazioni, tutto sembra essere configurto correttamente. Puoi goderti "
-"la tua area clienti ora."
+msgstr "Congratulazioni, tutto sembra essere configurto correttamente. Puoi goderti la tua area clienti ora."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:27
 #: src/php/core-addons/status/templates/status-section-reset.template.php:33
@@ -2399,10 +2253,7 @@ msgstr "Esporta Impostazioni"
 msgid ""
 "You can export all the settings to a JSON file. You can then use that file "
 "to restore your settings using the import settings field below."
-msgstr ""
-"Puoi esportare tutte le impostazioni in un pratico file JSON. Puoi quindi "
-"usare questo file per riprisitnare le impostazioni usando il campo di import "
-"qui in basso."
+msgstr "Puoi esportare tutte le impostazioni in un pratico file JSON. Puoi quindi usare questo file per riprisitnare le impostazioni usando il campo di import qui in basso."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:36
 #: src/php/core-addons/status/templates/status-section-reset.template.php:43
@@ -2411,10 +2262,9 @@ msgstr "Impostazioni di import"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:38
 msgid ""
-"You can import all the settings you had previously exported from a JSON file."
-msgstr ""
-"Puoi importare tutte le impostazioni esportate precedentemente in un file "
-"JSON."
+"You can import all the settings you had previously exported from a JSON "
+"file."
+msgstr "Puoi importare tutte le impostazioni esportate precedentemente in un file JSON."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:47
 msgid "Reset settings"
@@ -2424,27 +2274,21 @@ msgstr "Resetta impostazioni"
 msgid ""
 "Pressing the button below will reset all your Customer Area settings to the "
 "default values. This cannot be undone!"
-msgstr ""
-"Cliccando sul pulsante qui sotto resetterà tutte le impostazioni di Area "
-"Clienti ai valori predefiniti. Questa operazione non può essere annullata!"
+msgstr "Cliccando sul pulsante qui sotto resetterà tutte le impostazioni di Area Clienti ai valori predefiniti. Questa operazione non può essere annullata!"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:53
 msgid "Reset default settings"
 msgstr "Ripristina impostazioni predefinite"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:56
-#, fuzzy
 msgid "Uninstall WP Customer Area"
-msgstr "Installa WP Customer Area"
+msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:58
-#, fuzzy
 msgid ""
-"Pressing the button below will clean-up any data related to WP Customer Area "
-"(posts, taxonomies, etc.). This cannot be undone!"
+"Pressing the button below will clean-up any data related to WP Customer Area"
+" (posts, taxonomies, etc.). This cannot be undone!"
 msgstr ""
-"Cliccando sul pulsante qui sotto resetterà tutte le impostazioni di Area "
-"Clienti ai valori predefiniti. Questa operazione non può essere annullata!"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:62
 msgid "Clean-up database"
@@ -2452,19 +2296,15 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:68
 msgid ""
-"Are you sure that you want to reset all the settings to their default values "
-"(this operation cannot be undone)?"
-msgstr ""
-"Sei sicuro di voler resettare tutte le impostazioni ai valori predefiniti "
-"(questa operazione non può essere annullata)?"
+"Are you sure that you want to reset all the settings to their default values"
+" (this operation cannot be undone)?"
+msgstr "Sei sicuro di voler resettare tutte le impostazioni ai valori predefiniti (questa operazione non può essere annullata)?"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:73
-#, fuzzy
 msgid ""
 "Are you sure that you want to delete everything related to WP Customer Area "
 "(this operation cannot be undone)?"
 msgstr ""
-"Sei sicuro di voler eliminare queste pagine (non potrai tornare indietro)?"
 
 #: src/php/core-addons/status/templates/status-section-templates.template.php:27
 msgid "Overridden only"
@@ -2508,10 +2348,7 @@ msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
 "fields empty if you want to keep your current password"
-msgstr ""
-"La password deve almeno essere composta da 5 caratteri . Vi verrà richiesto "
-"di effettuare nuovamente il login dopo che la password viene cambiata. "
-"Lasciare questi campi vuoti se si desidera mantenere la password corrente"
+msgstr "La password deve almeno essere composta da 5 caratteri . Vi verrà richiesto di effettuare nuovamente il login dopo che la password viene cambiata. Lasciare questi campi vuoti se si desidera mantenere la password corrente"
 
 #: src/php/core-classes/Content/list-table.class.php:262
 msgid "Unpublished"
@@ -2568,13 +2405,10 @@ msgstr "Svuota Cestino"
 
 #: src/php/core-classes/Licensing/license-validation-result.class.php:81
 msgid ""
-"You have bought your license on the previous shop. We have a <a href=\"%1$s"
-"\">brand new website</a>, please contact us so that we can help you migrate "
-"your license to the new shop."
-msgstr ""
-"Hai acquistato la tua licenza nel vecchio negozio. Abbiamo creato un <a href="
-"\"%1$s\">nuovo sito internet</a>, per favore contattaci così possiamo "
-"migrare la licenza nel nuovo negozio. "
+"You have bought your license on the previous shop. We have a <a "
+"href=\"%1$s\">brand new website</a>, please contact us so that we can help "
+"you migrate your license to the new shop."
+msgstr "Hai acquistato la tua licenza nel vecchio negozio. Abbiamo creato un <a href=\"%1$s\">nuovo sito internet</a>, per favore contattaci così possiamo migrare la licenza nel nuovo negozio. "
 
 #: src/php/core-classes/Licensing/licensing.class.php:73
 msgid "Unknown add-on"
@@ -2584,9 +2418,7 @@ msgstr "Add-on sconosciuto"
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
-msgstr ""
-"Si è verificato un problema nel contattare i servers per la licenza. Stai "
-"usando la chiave di licenza corretta? Hai abilitato PHP cURL?"
+msgstr "Si è verificato un problema nel contattare i servers per la licenza. Stai usando la chiave di licenza corretta? Hai abilitato PHP cURL?"
 
 #: src/php/core-classes/Licensing/licensing.class.php:94
 msgid "Your license is valid until: %s"
@@ -2600,9 +2432,7 @@ msgstr "La licenza è scaduta !"
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
-msgstr ""
-"Hai raggiunto il numero massimo di siti con questa chiave di licenza. Puoi "
-"utilizzarla al massimo su %s siti."
+msgstr "Hai raggiunto il numero massimo di siti con questa chiave di licenza. Puoi utilizzarla al massimo su %s siti."
 
 #: src/php/core-classes/Licensing/licensing.class.php:118
 msgid "Renew license"
@@ -2618,8 +2448,7 @@ msgstr "Questa chiave di licenza non corrisponde."
 
 #: src/php/core-classes/Licensing/licensing.class.php:135
 msgid "This license key seems to have been generated for another product."
-msgstr ""
-"Questa chiave di licenza sembra essere stata generata per un altro prodotto."
+msgstr "Questa chiave di licenza sembra essere stata generata per un altro prodotto."
 
 #: src/php/core-classes/Licensing/licensing.class.php:142
 msgid "Problem when validating your license key"
@@ -2631,8 +2460,7 @@ msgstr "Log events"
 
 #: src/php/core-classes/MessageCenter/message-center.class.php:148
 msgid "<strong>WP Customer Area</strong> has detected some potential issues: "
-msgstr ""
-"<strong>WP Customer Area</strong> ha eliminato alcuni potenziali errori:"
+msgstr "<strong>WP Customer Area</strong> ha eliminato alcuni potenziali errori:"
 
 #: src/php/core-classes/MessageCenter/message-center.class.php:156
 msgid "Fix these potential issues"
@@ -2655,19 +2483,14 @@ msgstr "Mostra dopo l'articolo"
 #: src/php/core-classes/addon-container-page.class.php:774
 #: src/php/core-classes/addon-content-page.class.php:804
 msgid "Show additional information after the post in the single post view."
-msgstr ""
-"Mostra le informazioni aggiuntive dopo l'articolo nella visualizzazione ad "
-"articolo singolo. "
+msgstr "Mostra le informazioni aggiuntive dopo l'articolo nella visualizzazione ad articolo singolo. "
 
 #: src/php/core-classes/addon-container-page.class.php:776
 #: src/php/core-classes/addon-content-page.class.php:806
 msgid ""
 "You can disable this if you have your own theme template file for single "
 "posts. The theme file to look for or create should be called: %s."
-msgstr ""
-"Puoi disabilitare questa impostazione se hai il tuo file del template per i "
-"singoli articoli. Il file del tema da cercare o creare dovrebbe chiamarsi: "
-"%s."
+msgstr "Puoi disabilitare questa impostazione se hai il tuo file del template per i singoli articoli. Il file del tema da cercare o creare dovrebbe chiamarsi: %s."
 
 #: src/php/core-classes/addon-container-page.class.php:797
 #: src/php/core-classes/addon-content-page.class.php:827
@@ -2677,10 +2500,9 @@ msgstr "Mostra contenuti recenti sulla dashboard."
 #: src/php/core-classes/addon-container-page.class.php:811
 #: src/php/core-classes/addon-content-page.class.php:842
 msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all items."
-msgstr ""
-"Definisci quanti elementi saranno mostrati sulla pagina della dashboard. -1 "
-"mostrarà tutti gli elementi."
+"Define how many items to allow on the dashboard page. -1 will show all "
+"items."
+msgstr "Definisci quanti elementi saranno mostrati sulla pagina della dashboard. -1 mostrarà tutti gli elementi."
 
 #: src/php/core-classes/addon-container-page.class.php:892
 msgid "Slug that is used in the URL for archives of the taxonomy: "
@@ -2712,8 +2534,7 @@ msgstr "Moderazione"
 
 #: src/php/core-classes/addon-create-content-page.class.php:216
 msgid "Enable moderation when new content is submitted by a user."
-msgstr ""
-"Abilita la moderazione quando un nuovo contenuto viene inviato da un utente."
+msgstr "Abilita la moderazione quando un nuovo contenuto viene inviato da un utente."
 
 #: src/php/core-classes/addon-create-content-page.class.php:232
 msgid "Default owner type"
@@ -2832,9 +2653,7 @@ msgstr "Modifica contenuti"
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
-msgstr ""
-"<strong>Error: </strong>Gli add-on di WP Customer Area sono attivi ma il "
-"plugin principale non è installato!"
+msgstr "<strong>Error: </strong>Gli add-on di WP Customer Area sono attivi ma il plugin principale non è installato!"
 
 #: src/php/core-classes/addon.class.php:125
 msgid "License Keys"
@@ -2848,17 +2667,13 @@ msgstr "License Key per estensioni commerciali"
 msgid ""
 "This page allows you to enter license key you have received when you "
 "purchased commercial addons."
-msgstr ""
-"Questa pagina ti permette di inserire la chiave di licenza che hai ricevuto "
-"quando hai acquistato le estensioni commerciali."
+msgstr "Questa pagina ti permette di inserire la chiave di licenza che hai ricevuto quando hai acquistato le estensioni commerciali."
 
 #: src/php/core-classes/addon.class.php:180
 msgid ""
 "Do not activate your license on your development site. Only on the final "
 "site where you are running the plugin."
-msgstr ""
-"Non attivare la tua licenza sul tuo sito di sviluppo. Attivala solo sul tuo "
-"sito finale in produzione dove utilizzerai il plugin."
+msgstr "Non attivare la tua licenza sul tuo sito di sviluppo. Attivala solo sul tuo sito finale in produzione dove utilizzerai il plugin."
 
 #: src/php/core-classes/object-meta/field/email-field.class.php:47
 msgid "Email"
@@ -2946,15 +2761,11 @@ msgstr "Annulla"
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
-msgstr ""
-"I permalink sono disabilitati, l'Area Cliente potrebbe non funzionare "
-"correttamente. Si prega di <a href=\"%1$s\">abilitarli nelle impostazioni di "
-"Wordpress</a>."
+msgstr "I permalink sono disabilitati, l'Area Cliente potrebbe non funzionare correttamente. Si prega di <a href=\"%1$s\">abilitarli nelle impostazioni di Wordpress</a>."
 
 #: src/php/core-classes/plugin.class.php:622
 msgid "Some add-ons require a newer version of the main plugin."
-msgstr ""
-"Alcune estensioni richiedono una versione aggiornata del plugin principale."
+msgstr "Alcune estensioni richiedono una versione aggiornata del plugin principale."
 
 #: src/php/core-classes/plugin.class.php:841
 msgid "Some template files you have overridden seem to be outdated."
@@ -2988,19 +2799,14 @@ msgstr "Nascondi la selezione del proprietario"
 
 #: src/php/core-classes/settings.class.php:315
 msgid "Hide the owner selection field when a single owner is possible."
-msgstr ""
-"Nascondi il campo di selezione del proprietario quando è possibile un solo "
-"proprietario."
+msgstr "Nascondi il campo di selezione del proprietario quando è possibile un solo proprietario."
 
 #: src/php/core-classes/settings.class.php:317
 msgid ""
-"The owner will not be displayed but included directly if a single owner type "
-"is available to the current user and if within that owner type, a single "
+"The owner will not be displayed but included directly if a single owner type"
+" is available to the current user and if within that owner type, a single "
 "owner is available."
-msgstr ""
-"Il proprietario non viene visualizzato ma incluso direttamente quando "
-"all'utente corrente è possibile la selezione di un solo tipo di proprietario "
-"e se per questo tipo è selezionabile un solo proprietario."
+msgstr "Il proprietario non viene visualizzato ma incluso direttamente quando all'utente corrente è possibile la selezione di un solo tipo di proprietario e se per questo tipo è selezionabile un solo proprietario."
 
 #: src/php/core-classes/settings.class.php:356
 msgid "Use skin"
@@ -3009,16 +2815,12 @@ msgstr "Utilizza tema"
 #: src/php/core-classes/settings.class.php:363
 msgid ""
 "Includes the WP Customer Area skin to provide a stylesheet for the plugin."
-msgstr ""
-"Include il tema di WP Customer Area per fornire un foglio di stile per il "
-"plugin"
+msgstr "Include il tema di WP Customer Area per fornire un foglio di stile per il plugin"
 
 #: src/php/core-classes/settings.class.php:364
 msgid ""
 "You can uncheck this if your theme includes support for WP Customer Area."
-msgstr ""
-"Puoi rimuover il segno di spunta se il tuo tema include il supporto per WP "
-"Customer Area"
+msgstr "Puoi rimuover il segno di spunta se il tuo tema include il supporto per WP Customer Area"
 
 #: src/php/core-classes/settings.class.php:369
 msgid "Skin to use"
@@ -3028,9 +2830,7 @@ msgstr "Tema da utilizzare"
 msgid ""
 "You can make your own skin, please refer to <a href=\"%1$s\">our "
 "documentation about skins</a>."
-msgstr ""
-"Puoi creare il tuo tema, per favore leggi <a href=\"%1$s\">la nostra "
-"documentazione sui temi</a>."
+msgstr "Puoi creare il tuo tema, per favore leggi <a href=\"%1$s\">la nostra documentazione sui temi</a>."
 
 #: src/php/core-classes/settings.class.php:378
 msgid "/documentation/the-skin-system/"
@@ -3042,8 +2842,7 @@ msgstr "Debug template"
 
 #: src/php/core-classes/settings.class.php:392
 msgid "Print debug information about the templates used by Customer Area."
-msgstr ""
-"Mostra le informazioni di debug del template utilizzato da Area Clienti."
+msgstr "Mostra le informazioni di debug del template utilizzato da Area Clienti."
 
 #: src/php/core-classes/settings.class.php:512
 msgid " is not a valid post"
@@ -3092,7 +2891,7 @@ msgstr "non puoi selezionare più di un termine."
 
 #: src/php/core-classes/settings.class.php:987
 msgid "Upload File"
-msgstr ""
+msgstr "Carica file"
 
 #: src/php/core-classes/settings.class.php:1131
 msgid "None"
@@ -3127,9 +2926,8 @@ msgid "WordPress content folder"
 msgstr "Cartella di WordPress"
 
 #: src/php/core-classes/templates/default-container-content-item.template.php:14
-#, fuzzy
 msgid "You created this content"
-msgstr "Hai creato questa pagina"
+msgstr ""
 
 #: src/php/core-classes/templates/widget-content-authors.template.php:18
 msgid "Show all content published by %s"
@@ -3225,111 +3023,111 @@ msgstr "kB"
 
 #: src/php/helpers/country-helper.class.php:52
 msgid "Afghanistan"
-msgstr ""
+msgstr "Afghanistan"
 
 #: src/php/helpers/country-helper.class.php:53
 msgid "&#197;land Islands"
-msgstr ""
+msgstr "&#197;land Islands"
 
 #: src/php/helpers/country-helper.class.php:54
 msgid "Albania"
-msgstr ""
+msgstr "Albania"
 
 #: src/php/helpers/country-helper.class.php:55
 msgid "Algeria"
-msgstr ""
+msgstr "Algeria"
 
 #: src/php/helpers/country-helper.class.php:56
 msgid "American Samoa"
-msgstr ""
+msgstr "American Samoa"
 
 #: src/php/helpers/country-helper.class.php:57
 msgid "Andorra"
-msgstr ""
+msgstr "Andorra"
 
 #: src/php/helpers/country-helper.class.php:58
 msgid "Angola"
-msgstr ""
+msgstr "Angola"
 
 #: src/php/helpers/country-helper.class.php:59
 msgid "Anguilla"
-msgstr ""
+msgstr "Anguilla"
 
 #: src/php/helpers/country-helper.class.php:60
 msgid "Antarctica"
-msgstr ""
+msgstr "Antarctica"
 
 #: src/php/helpers/country-helper.class.php:61
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "Antigua and Barbuda"
 
 #: src/php/helpers/country-helper.class.php:62
 msgid "Argentina"
-msgstr ""
+msgstr "Argentina"
 
 #: src/php/helpers/country-helper.class.php:63
 msgid "Armenia"
-msgstr ""
+msgstr "Armenia"
 
 #: src/php/helpers/country-helper.class.php:64
 msgid "Aruba"
-msgstr ""
+msgstr "Aruba"
 
 #: src/php/helpers/country-helper.class.php:65
 msgid "Australia"
-msgstr ""
+msgstr "Australia"
 
 #: src/php/helpers/country-helper.class.php:66
 msgid "Austria"
-msgstr ""
+msgstr "Austria"
 
 #: src/php/helpers/country-helper.class.php:67
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Azerbaijan"
 
 #: src/php/helpers/country-helper.class.php:68
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamas"
 
 #: src/php/helpers/country-helper.class.php:69
 msgid "Bahrain"
-msgstr ""
+msgstr "Bahrain"
 
 #: src/php/helpers/country-helper.class.php:70
 msgid "Bangladesh"
-msgstr ""
+msgstr "Bangladesh"
 
 #: src/php/helpers/country-helper.class.php:71
 msgid "Barbados"
-msgstr ""
+msgstr "Barbados"
 
 #: src/php/helpers/country-helper.class.php:72
 msgid "Belarus"
-msgstr ""
+msgstr "Belarus"
 
 #: src/php/helpers/country-helper.class.php:73
 msgid "Belgium"
-msgstr ""
+msgstr "Belgium"
 
 #: src/php/helpers/country-helper.class.php:74
 msgid "Belize"
-msgstr ""
+msgstr "Belize"
 
 #: src/php/helpers/country-helper.class.php:75
 msgid "Benin"
-msgstr ""
+msgstr "Benin"
 
 #: src/php/helpers/country-helper.class.php:76
 msgid "Bermuda"
-msgstr ""
+msgstr "Bermuda"
 
 #: src/php/helpers/country-helper.class.php:77
 msgid "Bhutan"
-msgstr ""
+msgstr "Bhutan"
 
 #: src/php/helpers/country-helper.class.php:78
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolivia"
 
 #: src/php/helpers/country-helper.class.php:79
 msgid "Bonaire, Saint Eustatius and Saba"
@@ -3337,11 +3135,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:80
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosnia and Herzegovina"
 
 #: src/php/helpers/country-helper.class.php:81
 msgid "Botswana"
-msgstr ""
+msgstr "Botswana"
 
 #: src/php/helpers/country-helper.class.php:82
 msgid "Bouvet Island"
@@ -3349,11 +3147,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:83
 msgid "Brazil"
-msgstr ""
+msgstr "Brazil"
 
 #: src/php/helpers/country-helper.class.php:84
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "British Indian Ocean Territory"
 
 #: src/php/helpers/country-helper.class.php:85
 msgid "Brunei Darrussalam"
@@ -3361,55 +3159,55 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:86
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulgaria"
 
 #: src/php/helpers/country-helper.class.php:87
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Burkina Faso"
 
 #: src/php/helpers/country-helper.class.php:88
 msgid "Burundi"
-msgstr ""
+msgstr "Burundi"
 
 #: src/php/helpers/country-helper.class.php:89
 msgid "Cambodia"
-msgstr ""
+msgstr "Cambodia"
 
 #: src/php/helpers/country-helper.class.php:90
 msgid "Cameroon"
-msgstr ""
+msgstr "Cameroon"
 
 #: src/php/helpers/country-helper.class.php:91
 msgid "Canada"
-msgstr ""
+msgstr "Canada"
 
 #: src/php/helpers/country-helper.class.php:92
 msgid "Cape Verde"
-msgstr ""
+msgstr "Cape Verde"
 
 #: src/php/helpers/country-helper.class.php:93
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Cayman Islands"
 
 #: src/php/helpers/country-helper.class.php:94
 msgid "Central African Republic"
-msgstr ""
+msgstr "Central African Republic"
 
 #: src/php/helpers/country-helper.class.php:95
 msgid "Chad"
-msgstr ""
+msgstr "Chad"
 
 #: src/php/helpers/country-helper.class.php:96
 msgid "Chile"
-msgstr ""
+msgstr "Chile"
 
 #: src/php/helpers/country-helper.class.php:97
 msgid "China"
-msgstr ""
+msgstr "China"
 
 #: src/php/helpers/country-helper.class.php:98
 msgid "Christmas Island"
-msgstr ""
+msgstr "Christmas Island"
 
 #: src/php/helpers/country-helper.class.php:99
 msgid "Cocos Islands"
@@ -3417,11 +3215,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:100
 msgid "Colombia"
-msgstr ""
+msgstr "Colombia"
 
 #: src/php/helpers/country-helper.class.php:101
 msgid "Comoros"
-msgstr ""
+msgstr "Comoros"
 
 #: src/php/helpers/country-helper.class.php:102
 msgid "Congo, Democratic People's Republic"
@@ -3433,15 +3231,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:104
 msgid "Cook Islands"
-msgstr ""
+msgstr "Cook Islands"
 
 #: src/php/helpers/country-helper.class.php:105
 msgid "Costa Rica"
-msgstr ""
+msgstr "Costa Rica"
 
 #: src/php/helpers/country-helper.class.php:106
 msgid "Cote d'Ivoire"
-msgstr ""
+msgstr "Costa d' avorio"
 
 #: src/php/helpers/country-helper.class.php:107
 msgid "Croatia/Hrvatska"
@@ -3449,7 +3247,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:108
 msgid "Cuba"
-msgstr ""
+msgstr "Cuba"
 
 #: src/php/helpers/country-helper.class.php:109
 msgid "Cura&Ccedil;ao"
@@ -3457,28 +3255,27 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:110
 msgid "Cyprus"
-msgstr ""
+msgstr "Cyprus"
 
 #: src/php/helpers/country-helper.class.php:111
 msgid "Czech Republic"
-msgstr ""
+msgstr "Czech Republic"
 
 #: src/php/helpers/country-helper.class.php:112
 msgid "Denmark"
-msgstr ""
+msgstr "Denmark"
 
 #: src/php/helpers/country-helper.class.php:113
-#, fuzzy
 msgid "Djibouti"
-msgstr "Circa"
+msgstr "Djibouti"
 
 #: src/php/helpers/country-helper.class.php:114
 msgid "Dominica"
-msgstr ""
+msgstr "Dominica"
 
 #: src/php/helpers/country-helper.class.php:115
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Dominican Republic"
 
 #: src/php/helpers/country-helper.class.php:116
 msgid "East Timor"
@@ -3486,132 +3283,131 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:117
 msgid "Ecuador"
-msgstr ""
+msgstr "Ecuador"
 
 #: src/php/helpers/country-helper.class.php:118
 msgid "Egypt"
-msgstr ""
+msgstr "Egypt"
 
 #: src/php/helpers/country-helper.class.php:119
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Equatorial Guinea"
 
 #: src/php/helpers/country-helper.class.php:120
 msgid "El Salvador"
-msgstr ""
+msgstr "El Salvador"
 
 #: src/php/helpers/country-helper.class.php:121
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrea"
 
 #: src/php/helpers/country-helper.class.php:122
 msgid "Estonia"
-msgstr ""
+msgstr "Estonia"
 
 #: src/php/helpers/country-helper.class.php:123
 msgid "Ethiopia"
-msgstr ""
+msgstr "Ethiopia"
 
 #: src/php/helpers/country-helper.class.php:124
 msgid "Falkland Islands"
-msgstr ""
+msgstr "Falkland Islands"
 
 #: src/php/helpers/country-helper.class.php:125
 msgid "Faroe Islands"
-msgstr ""
+msgstr "Faroe Islands"
 
 #: src/php/helpers/country-helper.class.php:126
 msgid "Fiji"
-msgstr ""
+msgstr "Fiji"
 
 #: src/php/helpers/country-helper.class.php:127
 msgid "Finland"
-msgstr ""
+msgstr "Finland"
 
 #: src/php/helpers/country-helper.class.php:128
-#, fuzzy
 msgid "France"
-msgstr "Annulla"
+msgstr "France"
 
 #: src/php/helpers/country-helper.class.php:129
 msgid "French Guiana"
-msgstr ""
+msgstr "French Guiana"
 
 #: src/php/helpers/country-helper.class.php:130
 msgid "French Polynesia"
-msgstr ""
+msgstr "French Polynesia"
 
 #: src/php/helpers/country-helper.class.php:131
 msgid "French Southern Territories"
-msgstr ""
+msgstr "French Southern Territories"
 
 #: src/php/helpers/country-helper.class.php:132
 msgid "Gabon"
-msgstr ""
+msgstr "Gabon"
 
 #: src/php/helpers/country-helper.class.php:133
 msgid "Gambia"
-msgstr ""
+msgstr "Gambia"
 
 #: src/php/helpers/country-helper.class.php:134
 msgid "Georgia"
-msgstr ""
+msgstr "Georgia"
 
 #: src/php/helpers/country-helper.class.php:135
 msgid "Germany"
-msgstr ""
+msgstr "Germany"
 
 #: src/php/helpers/country-helper.class.php:136
 msgid "Greece"
-msgstr ""
+msgstr "Greece"
 
 #: src/php/helpers/country-helper.class.php:137
 msgid "Ghana"
-msgstr ""
+msgstr "Ghana"
 
 #: src/php/helpers/country-helper.class.php:138
 msgid "Gibraltar"
-msgstr ""
+msgstr "Gibraltar"
 
 #: src/php/helpers/country-helper.class.php:139
 msgid "Greenland"
-msgstr ""
+msgstr "Greenland"
 
 #: src/php/helpers/country-helper.class.php:140
 msgid "Grenada"
-msgstr ""
+msgstr "Grenada"
 
 #: src/php/helpers/country-helper.class.php:141
 msgid "Guadeloupe"
-msgstr ""
+msgstr "Guadeloupe"
 
 #: src/php/helpers/country-helper.class.php:142
 msgid "Guam"
-msgstr ""
+msgstr "Guam"
 
 #: src/php/helpers/country-helper.class.php:143
 msgid "Guatemala"
-msgstr ""
+msgstr "Guatemala"
 
 #: src/php/helpers/country-helper.class.php:144
 msgid "Guernsey"
-msgstr ""
+msgstr "Guernsey"
 
 #: src/php/helpers/country-helper.class.php:145
 msgid "Guinea"
-msgstr ""
+msgstr "Guinea"
 
 #: src/php/helpers/country-helper.class.php:146
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "Guinea-Bissau"
 
 #: src/php/helpers/country-helper.class.php:147
 msgid "Guyana"
-msgstr ""
+msgstr "Guyana"
 
 #: src/php/helpers/country-helper.class.php:148
 msgid "Haiti"
-msgstr ""
+msgstr "Haiti"
 
 #: src/php/helpers/country-helper.class.php:149
 msgid "Heard and McDonald Islands"
@@ -3623,87 +3419,87 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:151
 msgid "Honduras"
-msgstr ""
+msgstr "Honduras"
 
 #: src/php/helpers/country-helper.class.php:152
 msgid "Hong Kong"
-msgstr ""
+msgstr "Hong Kong"
 
 #: src/php/helpers/country-helper.class.php:153
 msgid "Hungary"
-msgstr ""
+msgstr "Hungary"
 
 #: src/php/helpers/country-helper.class.php:154
 msgid "Iceland"
-msgstr ""
+msgstr "Iceland"
 
 #: src/php/helpers/country-helper.class.php:155
 msgid "India"
-msgstr ""
+msgstr "India"
 
 #: src/php/helpers/country-helper.class.php:156
 msgid "Indonesia"
-msgstr ""
+msgstr "Indonesia"
 
 #: src/php/helpers/country-helper.class.php:157
 msgid "Iran"
-msgstr ""
+msgstr "Iran"
 
 #: src/php/helpers/country-helper.class.php:158
 msgid "Iraq"
-msgstr ""
+msgstr "Iraq"
 
 #: src/php/helpers/country-helper.class.php:159
 msgid "Ireland"
-msgstr ""
+msgstr "Irlanda"
 
 #: src/php/helpers/country-helper.class.php:160
 msgid "Isle of Man"
-msgstr ""
+msgstr "Isle of Man"
 
 #: src/php/helpers/country-helper.class.php:161
 msgid "Israel"
-msgstr ""
+msgstr "Israel"
 
 #: src/php/helpers/country-helper.class.php:162
 msgid "Italy"
-msgstr ""
+msgstr "Italy"
 
 #: src/php/helpers/country-helper.class.php:163
 msgid "Jamaica"
-msgstr ""
+msgstr "Jamaica"
 
 #: src/php/helpers/country-helper.class.php:164
 msgid "Japan"
-msgstr ""
+msgstr "Japan"
 
 #: src/php/helpers/country-helper.class.php:165
 msgid "Jersey"
-msgstr ""
+msgstr "Jersey"
 
 #: src/php/helpers/country-helper.class.php:166
 msgid "Jordan"
-msgstr ""
+msgstr "Jordan"
 
 #: src/php/helpers/country-helper.class.php:167
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Kazakhstan"
 
 #: src/php/helpers/country-helper.class.php:168
 msgid "Kenya"
-msgstr ""
+msgstr "Kenya"
 
 #: src/php/helpers/country-helper.class.php:169
 msgid "Kiribati"
-msgstr ""
+msgstr "Kiribati"
 
 #: src/php/helpers/country-helper.class.php:170
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuwait"
 
 #: src/php/helpers/country-helper.class.php:171
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "Kyrgyzstan"
 
 #: src/php/helpers/country-helper.class.php:172
 msgid "Lao People's Democratic Republic"
@@ -3711,19 +3507,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:173
 msgid "Latvia"
-msgstr ""
+msgstr "Latvia"
 
 #: src/php/helpers/country-helper.class.php:174
 msgid "Lebanon"
-msgstr ""
+msgstr "Lebanon"
 
 #: src/php/helpers/country-helper.class.php:175
 msgid "Lesotho"
-msgstr ""
+msgstr "Lesotho"
 
 #: src/php/helpers/country-helper.class.php:176
 msgid "Liberia"
-msgstr ""
+msgstr "Liberia"
 
 #: src/php/helpers/country-helper.class.php:177
 msgid "Libyan Arab Jamahiriya"
@@ -3731,75 +3527,75 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:178
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Liechtenstein"
 
 #: src/php/helpers/country-helper.class.php:179
 msgid "Lithuania"
-msgstr ""
+msgstr "Lithuania"
 
 #: src/php/helpers/country-helper.class.php:180
 msgid "Luxembourg"
-msgstr ""
+msgstr "Luxembourg"
 
 #: src/php/helpers/country-helper.class.php:181
 msgid "Macau"
-msgstr ""
+msgstr "Macao"
 
 #: src/php/helpers/country-helper.class.php:182
 msgid "Macedonia"
-msgstr ""
+msgstr "Macedonia"
 
 #: src/php/helpers/country-helper.class.php:183
 msgid "Madagascar"
-msgstr ""
+msgstr "Madagascar"
 
 #: src/php/helpers/country-helper.class.php:184
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 #: src/php/helpers/country-helper.class.php:185
 msgid "Malaysia"
-msgstr ""
+msgstr "Malaysia"
 
 #: src/php/helpers/country-helper.class.php:186
 msgid "Maldives"
-msgstr ""
+msgstr "Maldives"
 
 #: src/php/helpers/country-helper.class.php:187
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 #: src/php/helpers/country-helper.class.php:188
 msgid "Malta"
-msgstr ""
+msgstr "Malta"
 
 #: src/php/helpers/country-helper.class.php:189
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Marshall Islands"
 
 #: src/php/helpers/country-helper.class.php:190
 msgid "Martinique"
-msgstr ""
+msgstr "Martinique"
 
 #: src/php/helpers/country-helper.class.php:191
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritania"
 
 #: src/php/helpers/country-helper.class.php:192
 msgid "Mauritius"
-msgstr ""
+msgstr "Mauritius"
 
 #: src/php/helpers/country-helper.class.php:193
 msgid "Mayotte"
-msgstr ""
+msgstr "Mayotte"
 
 #: src/php/helpers/country-helper.class.php:194
 msgid "Mexico"
-msgstr ""
+msgstr "Mexico"
 
 #: src/php/helpers/country-helper.class.php:195
 msgid "Micronesia"
-msgstr ""
+msgstr "Micronesia"
 
 #: src/php/helpers/country-helper.class.php:196
 msgid "Moldova, Republic of"
@@ -3807,104 +3603,103 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:197
 msgid "Monaco"
-msgstr ""
+msgstr "Monaco"
 
 #: src/php/helpers/country-helper.class.php:198
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolia"
 
 #: src/php/helpers/country-helper.class.php:199
-#, fuzzy
 msgid "Montenegro"
-msgstr "Integrazione al sito"
+msgstr "Montenegro"
 
 #: src/php/helpers/country-helper.class.php:200
 msgid "Montserrat"
-msgstr ""
+msgstr "Montserrat"
 
 #: src/php/helpers/country-helper.class.php:201
 msgid "Morocco"
-msgstr ""
+msgstr "Morocco"
 
 #: src/php/helpers/country-helper.class.php:202
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambique"
 
 #: src/php/helpers/country-helper.class.php:203
 msgid "Myanmar"
-msgstr ""
+msgstr "Myanmar"
 
 #: src/php/helpers/country-helper.class.php:204
 msgid "Namibia"
-msgstr ""
+msgstr "Namibia"
 
 #: src/php/helpers/country-helper.class.php:205
 msgid "Nauru"
-msgstr ""
+msgstr "Nauru"
 
 #: src/php/helpers/country-helper.class.php:206
 msgid "Nepal"
-msgstr ""
+msgstr "Nepal"
 
 #: src/php/helpers/country-helper.class.php:207
 msgid "Netherlands"
-msgstr ""
+msgstr "Netherlands"
 
 #: src/php/helpers/country-helper.class.php:208
 msgid "Netherlands Antilles"
-msgstr ""
+msgstr "Netherlands Antilles"
 
 #: src/php/helpers/country-helper.class.php:209
 msgid "New Caledonia"
-msgstr ""
+msgstr "New Caledonia"
 
 #: src/php/helpers/country-helper.class.php:210
 msgid "New Zealand"
-msgstr ""
+msgstr "New Zealand"
 
 #: src/php/helpers/country-helper.class.php:211
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nicaragua"
 
 #: src/php/helpers/country-helper.class.php:212
 msgid "Niger"
-msgstr ""
+msgstr "Niger"
 
 #: src/php/helpers/country-helper.class.php:213
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigeria"
 
 #: src/php/helpers/country-helper.class.php:214
 msgid "Niue"
-msgstr ""
+msgstr "Niue"
 
 #: src/php/helpers/country-helper.class.php:215
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Norfolk Island"
 
 #: src/php/helpers/country-helper.class.php:216
 msgid "North Korea"
-msgstr ""
+msgstr "North Korea"
 
 #: src/php/helpers/country-helper.class.php:217
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Northern Mariana Islands"
 
 #: src/php/helpers/country-helper.class.php:218
 msgid "Norway"
-msgstr ""
+msgstr "Norway"
 
 #: src/php/helpers/country-helper.class.php:219
 msgid "Oman"
-msgstr ""
+msgstr "Oman"
 
 #: src/php/helpers/country-helper.class.php:220
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakistan"
 
 #: src/php/helpers/country-helper.class.php:221
 msgid "Palau"
-msgstr ""
+msgstr "Palau"
 
 #: src/php/helpers/country-helper.class.php:222
 msgid "Palestinian Territories"
@@ -3912,19 +3707,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:223
 msgid "Panama"
-msgstr ""
+msgstr "Panama"
 
 #: src/php/helpers/country-helper.class.php:224
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Papua New Guinea"
 
 #: src/php/helpers/country-helper.class.php:225
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguay"
 
 #: src/php/helpers/country-helper.class.php:226
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 #: src/php/helpers/country-helper.class.php:227
 msgid "Phillipines"
@@ -3936,19 +3731,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:229
 msgid "Poland"
-msgstr ""
+msgstr "Poland"
 
 #: src/php/helpers/country-helper.class.php:230
 msgid "Portugal"
-msgstr ""
+msgstr "Portugal"
 
 #: src/php/helpers/country-helper.class.php:231
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Puerto Rico"
 
 #: src/php/helpers/country-helper.class.php:232
 msgid "Qatar"
-msgstr ""
+msgstr "Qatar"
 
 #: src/php/helpers/country-helper.class.php:233
 msgid "Republic of Kosovo"
@@ -3960,7 +3755,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:235
 msgid "Romania"
-msgstr ""
+msgstr "Romania"
 
 #: src/php/helpers/country-helper.class.php:236
 msgid "Russian Federation"
@@ -3968,23 +3763,23 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:237
 msgid "Rwanda"
-msgstr ""
+msgstr "Rwanda"
 
 #: src/php/helpers/country-helper.class.php:238
 msgid "Saint Barth&eacute;lemy"
-msgstr ""
+msgstr "Saint Barth&eacute;lemy"
 
 #: src/php/helpers/country-helper.class.php:239
 msgid "Saint Helena"
-msgstr ""
+msgstr "Saint Helena"
 
 #: src/php/helpers/country-helper.class.php:240
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "Saint Kitts and Nevis"
 
 #: src/php/helpers/country-helper.class.php:241
 msgid "Saint Lucia"
-msgstr ""
+msgstr "Saint Lucia"
 
 #: src/php/helpers/country-helper.class.php:242
 msgid "Saint Martin (French)"
@@ -3996,43 +3791,43 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:244
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Saint Pierre and Miquelon"
 
 #: src/php/helpers/country-helper.class.php:245
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "Saint Vincent and the Grenadines"
 
 #: src/php/helpers/country-helper.class.php:246
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 #: src/php/helpers/country-helper.class.php:247
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
-msgstr ""
+msgstr "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
 
 #: src/php/helpers/country-helper.class.php:248
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saudi Arabia"
 
 #: src/php/helpers/country-helper.class.php:249
 msgid "Senegal"
-msgstr ""
+msgstr "Senegal"
 
 #: src/php/helpers/country-helper.class.php:250
 msgid "Serbia"
-msgstr ""
+msgstr "Serbia"
 
 #: src/php/helpers/country-helper.class.php:251
 msgid "Seychelles"
-msgstr ""
+msgstr "Seychelles"
 
 #: src/php/helpers/country-helper.class.php:252
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #: src/php/helpers/country-helper.class.php:253
 msgid "Singapore"
-msgstr ""
+msgstr "Singapore"
 
 #: src/php/helpers/country-helper.class.php:254
 msgid "Slovak Republic"
@@ -4040,27 +3835,27 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:255
 msgid "Slovenia"
-msgstr ""
+msgstr "Slovenia"
 
 #: src/php/helpers/country-helper.class.php:256
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Solomon Islands"
 
 #: src/php/helpers/country-helper.class.php:257
 msgid "Somalia"
-msgstr ""
+msgstr "Somalia"
 
 #: src/php/helpers/country-helper.class.php:258
 msgid "South Africa"
-msgstr ""
+msgstr "South Africa"
 
 #: src/php/helpers/country-helper.class.php:259
 msgid "South Georgia"
-msgstr ""
+msgstr "Georgia del Sud"
 
 #: src/php/helpers/country-helper.class.php:260
 msgid "South Korea"
-msgstr ""
+msgstr "South Korea"
 
 #: src/php/helpers/country-helper.class.php:261
 msgid "South Sudan"
@@ -4068,20 +3863,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:262
 msgid "Spain"
-msgstr ""
+msgstr "Spain"
 
 #: src/php/helpers/country-helper.class.php:263
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Sri Lanka"
 
 #: src/php/helpers/country-helper.class.php:264
 msgid "Sudan"
-msgstr ""
+msgstr "Sudan"
 
 #: src/php/helpers/country-helper.class.php:265
-#, fuzzy
 msgid "Suriname"
-msgstr "Username"
+msgstr "Suriname"
 
 #: src/php/helpers/country-helper.class.php:266
 msgid "Svalbard and Jan Mayen Islands"
@@ -4089,15 +3883,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:267
 msgid "Swaziland"
-msgstr ""
+msgstr "Swaziland"
 
 #: src/php/helpers/country-helper.class.php:268
 msgid "Sweden"
-msgstr ""
+msgstr "Sweden"
 
 #: src/php/helpers/country-helper.class.php:269
 msgid "Switzerland"
-msgstr ""
+msgstr "Switzerland"
 
 #: src/php/helpers/country-helper.class.php:270
 msgid "Syrian Arab Republic"
@@ -4105,103 +3899,103 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:271
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #: src/php/helpers/country-helper.class.php:272
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tajikistan"
 
 #: src/php/helpers/country-helper.class.php:273
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzania"
 
 #: src/php/helpers/country-helper.class.php:274
 msgid "Thailand"
-msgstr ""
+msgstr "Thailand"
 
 #: src/php/helpers/country-helper.class.php:275
 msgid "Timor-Leste"
-msgstr ""
+msgstr "Timor-Leste"
 
 #: src/php/helpers/country-helper.class.php:276
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 #: src/php/helpers/country-helper.class.php:277
 msgid "Tokelau"
-msgstr ""
+msgstr "Tokelau"
 
 #: src/php/helpers/country-helper.class.php:278
 msgid "Tonga"
-msgstr ""
+msgstr "Tonga"
 
 #: src/php/helpers/country-helper.class.php:279
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "Trinidad and Tobago"
 
 #: src/php/helpers/country-helper.class.php:280
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunisia"
 
 #: src/php/helpers/country-helper.class.php:281
 msgid "Turkey"
-msgstr ""
+msgstr "Turkey"
 
 #: src/php/helpers/country-helper.class.php:282
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Turkmenistan"
 
 #: src/php/helpers/country-helper.class.php:283
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "Turks and Caicos Islands"
 
 #: src/php/helpers/country-helper.class.php:284
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 #: src/php/helpers/country-helper.class.php:285
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #: src/php/helpers/country-helper.class.php:286
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukraine"
 
 #: src/php/helpers/country-helper.class.php:287
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "United Arab Emirates"
 
 #: src/php/helpers/country-helper.class.php:288
 msgid "United Kingdom"
-msgstr ""
+msgstr "United Kingdom"
 
 #: src/php/helpers/country-helper.class.php:289
 msgid "United States"
-msgstr ""
+msgstr "United States"
 
 #: src/php/helpers/country-helper.class.php:290
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguay"
 
 #: src/php/helpers/country-helper.class.php:291
 msgid "US Minor Outlying Islands"
-msgstr ""
+msgstr "US Minor Outlying Islands"
 
 #: src/php/helpers/country-helper.class.php:292
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #: src/php/helpers/country-helper.class.php:293
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #: src/php/helpers/country-helper.class.php:294
 msgid "Venezuela"
-msgstr ""
+msgstr "Venezuela"
 
 #: src/php/helpers/country-helper.class.php:295
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnam"
 
 #: src/php/helpers/country-helper.class.php:296
 msgid "Virgin Islands (British)"
@@ -4217,7 +4011,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:299
 msgid "Western Sahara"
-msgstr ""
+msgstr "Western Sahara"
 
 #: src/php/helpers/country-helper.class.php:300
 msgid "Western Samoa"
@@ -4225,15 +4019,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:301
 msgid "Yemen"
-msgstr ""
+msgstr "Yemen"
 
 #: src/php/helpers/country-helper.class.php:302
 msgid "Zambia"
-msgstr ""
+msgstr "Zambia"
 
 #: src/php/helpers/country-helper.class.php:303
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Zimbabwe"
 
 #: src/php/helpers/country-helper.class.php:1303
 msgid "A Coru&ntilde;a"
@@ -4268,9 +4062,8 @@ msgid "Badajoz"
 msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1311
-#, fuzzy
 msgid "Baleares"
-msgstr "Pulisci"
+msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1312
 msgid "Barcelona"
@@ -4298,7 +4091,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1318
 msgid "Ceuta"
-msgstr ""
+msgstr "Ceuta"
 
 #: src/php/helpers/country-helper.class.php:1319
 msgid "Ciudad Real"
@@ -4342,7 +4135,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1329
 msgid "La Rioja"
-msgstr ""
+msgstr "La Rioja"
 
 #: src/php/helpers/country-helper.class.php:1330
 msgid "Las Palmas"
@@ -4362,7 +4155,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1334
 msgid "Madrid"
-msgstr ""
+msgstr "Madrid"
 
 #: src/php/helpers/country-helper.class.php:1335
 msgid "M&aacute;laga"
@@ -4450,7 +4243,7 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:37
 msgid "Brazilian Real (R&#36;)"
-msgstr ""
+msgstr "Real Brasiliano (R&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:38
 msgid "Canadian Dollar (&#36;)"
@@ -4458,11 +4251,11 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:39
 msgid "Czech Koruna"
-msgstr ""
+msgstr "Czech Koruna"
 
 #: src/php/helpers/currency-helper.class.php:40
 msgid "Danish Krone"
-msgstr ""
+msgstr "Danish Krone"
 
 #: src/php/helpers/currency-helper.class.php:41
 msgid "Euro (&euro;)"
@@ -4470,27 +4263,27 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:42
 msgid "Hong Kong Dollar (&#36;)"
-msgstr ""
+msgstr "Dollaro Hong Kong (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:43
 msgid "Hungarian Forint"
-msgstr ""
+msgstr "Hungarian Forint"
 
 #: src/php/helpers/currency-helper.class.php:44
 msgid "Indian Rupee (&#8377;)"
-msgstr ""
+msgstr "Rupia Indiana (&#8377;)"
 
 #: src/php/helpers/currency-helper.class.php:45
 msgid "Iranian Rial (&#65020;)"
-msgstr ""
+msgstr "Rial Iraniano (&#65020;)"
 
 #: src/php/helpers/currency-helper.class.php:46
 msgid "Israeli Shekel (&#8362;)"
-msgstr ""
+msgstr "Shekel Israeliano (&#8362;)"
 
 #: src/php/helpers/currency-helper.class.php:47
 msgid "Japanese Yen (&yen;)"
-msgstr ""
+msgstr "Yen Japponese (&yen;)"
 
 #: src/php/helpers/currency-helper.class.php:48
 msgid "Malaysian Ringgit"
@@ -4498,15 +4291,15 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:49
 msgid "Mexican Peso (&#36;)"
-msgstr ""
+msgstr "Pesos Messicano (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:50
 msgid "New Zealand Dollar (&#36;)"
-msgstr ""
+msgstr "Dollaro Nuova Zelandia (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:51
 msgid "Norwegian Krone"
-msgstr ""
+msgstr "Norwegian Krone"
 
 #: src/php/helpers/currency-helper.class.php:52
 msgid "Philippine Peso"
@@ -4514,27 +4307,27 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:53
 msgid "Polish Zloty"
-msgstr ""
+msgstr "Polish Zloty"
 
 #: src/php/helpers/currency-helper.class.php:54
 msgid "Pounds Sterling (&pound;)"
-msgstr ""
+msgstr "Sterlina (&pound;)"
 
 #: src/php/helpers/currency-helper.class.php:55
 msgid "Russian Ruble"
-msgstr ""
+msgstr "Russian Ruble"
 
 #: src/php/helpers/currency-helper.class.php:56
 msgid "Singapore Dollar (&#36;)"
-msgstr ""
+msgstr "Dollaro Singapore (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:57
 msgid "Swedish Krona"
-msgstr ""
+msgstr "Swedish Krona"
 
 #: src/php/helpers/currency-helper.class.php:58
 msgid "Swiss Franc"
-msgstr ""
+msgstr "Swiss Franc"
 
 #: src/php/helpers/currency-helper.class.php:59
 msgid "Taiwan New Dollar"
@@ -4542,11 +4335,11 @@ msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:60
 msgid "Thai Baht (&#3647;)"
-msgstr ""
+msgstr "Baht Thailandese (&#3647;)"
 
 #: src/php/helpers/currency-helper.class.php:61
 msgid "Turkish Lira (&#8378;)"
-msgstr ""
+msgstr "Lira Turca (&#8378;)"
 
 #: src/php/helpers/currency-helper.class.php:62
 msgid "US Dollar (&#36;)"
@@ -4556,9 +4349,7 @@ msgstr ""
 msgid ""
 "WP Customer Area is a modular all-in-one solution to manage private content "
 "with WordPress."
-msgstr ""
-"WP Customer Area è una soluzione modulare per gestire contenuti privati con "
-"WordPress."
+msgstr "WP Customer Area è una soluzione modulare per gestire contenuti privati con WordPress."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:95
 msgctxt "Private content category archive slug"
@@ -4901,6 +4692,3 @@ msgstr "Mostra un mese differente"
 msgctxt "Currency amount (1=amount, 2=currency)"
 msgid "%2$s %1$s"
 msgstr ""
-
-#~ msgid "File: "
-#~ msgstr "File:"
