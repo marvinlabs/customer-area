@@ -99,6 +99,15 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
         		}
         	}
         }
+
+		/** @var CUAR_AddressesAddOn $ad_addon */
+		$ad_addon = $this->plugin->get_addon('address-manager');
+		$user_addresses = $ad_addon->get_registered_user_addresses();
+		foreach ($user_addresses as $address_id => $address_label)
+		{
+			$address = isset($_POST[$address_id]) ? $_POST[$address_id] : array();
+			$ad_addon->set_owner_address('usr', array($current_user_id), $address_id, $address);
+		}
         
         do_action( 'cuar/core/user-profile/edit/save_profile_fields', $current_user_id, $this->form_errors );
         
@@ -164,6 +173,30 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 		}
 		
 		do_action( 'cuar/core/user-profile/edit/after_fields', $current_user );
+	}
+
+	public function print_address_fields() {
+		$user = get_userdata( get_current_user_id() );
+
+		/** @var CUAR_AddressesAddOn $ad_addon */
+		$ad_addon = $this->plugin->get_addon('address-manager');
+
+		$user_addresses = $ad_addon->get_registered_user_addresses();
+		foreach ($user_addresses as $address_id => $address_label)
+		{
+			$address = $ad_addon->get_owner_address('usr', array($user->ID), $address_id);
+			$address_actions = array(
+					'reset' => array(
+							'label'   => __('Clear', 'cuar'),
+							'tooltip' => __('Clear the address', 'cuar')
+					),
+			);
+			$extra_scripts = '';
+
+			$ad_addon->print_address_editor($address,
+					$address_id, $address_label,
+					$address_actions, $extra_scripts, 'account');
+		}
 	}
 	
 	private $current_user = null;
