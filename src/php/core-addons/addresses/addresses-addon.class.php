@@ -294,6 +294,11 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
          */
         private function get_owner_addresses($owner_type, $owner_ids)
         {
+            if ( !is_array($owner_ids))
+            {
+                $owner_ids = array($owner_ids);
+            }
+
             sort($owner_ids);
             $key = 'cuar_owner_addresses|' . $owner_type . '|' . implode(',', $owner_ids);
 
