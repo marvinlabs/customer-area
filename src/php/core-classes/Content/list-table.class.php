@@ -243,7 +243,7 @@ abstract class CUAR_ListTable extends WP_List_Table
         $out = array();
         foreach ($terms as $t)
         {
-            $out[] = sprintf('<a href="%1$s" title="Show content classified under %2$s" class="cuar-taxonomy-term">%3$s</a>',
+            $out[] = sprintf(__('<a href="%1$s" title="Show content classified under %2$s" class="cuar-taxonomy-term">%3$s</a>', 'cuar'),
                 $this->base_url . '&' . $taxonomy . '=' . $t->slug,
                 esc_attr($t->name),
                 $t->name);
