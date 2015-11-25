@@ -1,9 +1,10 @@
-<?php
-/** Template version: 1.0.0
+<?php /** Template version: 1.1.0
+ *
+ * -= 1.1.0 =-
+ * - Added addresses
  *
  * -= 1.0.0 =-
  * - Initial version
- *
  */
 ?>
 
@@ -19,6 +20,8 @@
 
 <?php $this->print_account_fields(); ?>
 
-<?php $this->print_submit_button(__('Submit', 'cuar')); ?>
+<?php $this->print_address_fields(); ?>
+
+<?php $this->print_submit_button( __( 'Submit', 'cuar' ) ); ?>
 <?php $this->print_form_footer(); ?>
 	

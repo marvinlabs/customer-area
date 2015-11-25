@@ -17,6 +17,10 @@
 
     <span class="cuar-actions">
         <?php do_action('cuar/templates/attachment-manager/file-attachment-actions', $post_id, $attached_file); ?>
+        <?php if ($file_id != null): ?>
+        <a href="<?php cuar_the_attached_file_link($post_id, $attached_file); ?>" class="cuar-download-action" title="<?php esc_attr_e('Download', 'cuar'); ?>">
+            <span class="dashicons dashicons-download"></span></a>
+        <?php endif; ?>
         <a href="#" class="cuar-remove-action" title="<?php esc_attr_e('Remove', 'cuar'); ?>">
             <span class="dashicons dashicons-dismiss"></span></a>
     </span>

@@ -1,4 +1,11 @@
 .cuar-form {
+	.form-control,
+	.form-group,
+	.control-label,
+	.control-container {
+		box-sizing: border-box;
+	}
+
 	.cuar-field {
 			margin-bottom: 10px;
 	}
@@ -95,5 +102,42 @@
 	}
 	.wp-editor-container{
 		overflow:hidden;
+	}
+}
+
+.widget_cuar_login_form .cuar-form {
+	.form-group > label {
+		text-align: left;
+	}
+	.form-group > label {
+		float: none;
+		padding-top: 0;
+		text-align: left;
+		width: 100%
+	}
+	.form-control {
+		margin-left: 0;
+	}
+	.form-actions,
+	.form-actions {
+		padding-left: 20px;
+	}
+	.form-group .form-group {
+		margin-bottom: 0;
+	}
+
+	&.cuar-login-form {
+		.control-label {
+			.make-xs-column(12);
+			.make-sm-column(12);
+		}
+		.control-container {
+			.make-xs-column(12);
+			.make-sm-column(12);
+		}
+		.submit-container, .checkbox-container {
+			.make-sm-column(12);
+			.make-sm-column-offset(0);
+		}
 	}
 }

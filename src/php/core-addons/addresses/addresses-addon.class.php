@@ -89,8 +89,8 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
                 $address = $this->get_owner_address('usr', array($user->ID), $address_id);
                 $address_actions = array(
                     'reset' => array(
-                        'label'   => __('Clear', 'cuarin'),
-                        'tooltip' => __('Clear the address', 'cuarin')
+                        'label'   => __('Clear', 'cuar'),
+                        'tooltip' => __('Clear the address', 'cuar')
                     ),
                 );
                 $extra_scripts = '';
@@ -282,7 +282,7 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
         {
             $addresses = $this->get_owner_addresses($owner_type, $owner_ids);
 
-            return isset($addresses[$address_id]) ? $addresses[$address_id] : CUAR_AddressHelper::sanitize_address(array());
+            return CUAR_AddressHelper::sanitize_address(isset($addresses[$address_id]) ? $addresses[$address_id] : array());
         }
 
         /**
@@ -294,6 +294,11 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
          */
         private function get_owner_addresses($owner_type, $owner_ids)
         {
+            if ( !is_array($owner_ids))
+            {
+                $owner_ids = array($owner_ids);
+            }
+
             sort($owner_ids);
             $key = 'cuar_owner_addresses|' . $owner_type . '|' . implode(',', $owner_ids);
 
@@ -337,7 +342,7 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
         {
             $this->plugin->enable_library('jquery.select2');
 
-            wp_enqueue_media();
+            if (is_admin()) wp_enqueue_media();
             wp_enqueue_script(is_admin() ? 'cuar.admin' : 'cuar.frontend');
 
             $address_class = str_replace('_', '-', $address_id);

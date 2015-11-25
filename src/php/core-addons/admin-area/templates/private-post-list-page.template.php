@@ -1,13 +1,21 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /** Template version: 1.0.0
+ *
+ * -=1.0.1=-
+ * - change heading for WP 4.4
+ *
+ */ ?>
 
 <div class="wrap cuar-private-post-list-page cuar-list-table-page">
-    <h2><?php
+    <h1><?php
         echo $post_type_object->labels->name;
         foreach ($title_links as $label => $url)
         {
-            printf(' <a href="%2$s" class="add-new-h2">%1$s</a>', $label, $url);
+            printf(' <a href="%2$s" class="add-new-h2 page-title-action">%1$s</a>', $label, $url);
         }
-        ?></h2>
+        ?></h1>
+
+    <h2 class="screen-reader-text"><?php printf(__('Filter %1$s List', 'cuar'), $post_type_object->labels->name); ?></h2>
+
     <?php
     do_action('cuar/core/admin/' . $private_type_group . '-list-page/after-title');
     do_action('cuar/core/admin/' . $private_type_group . '-list-page/after-title?post_type=' . $post_type);

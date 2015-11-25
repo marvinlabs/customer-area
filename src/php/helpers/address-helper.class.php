@@ -1,9 +1,9 @@
 <?php
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if ( !defined('ABSPATH')) exit;
 
-if (!class_exists('CUAR_AddressHelper')) :
+if ( !class_exists('CUAR_AddressHelper')) :
 
     /**
      * Gathers some helper functions to facilitate some coding
@@ -12,6 +12,28 @@ if (!class_exists('CUAR_AddressHelper')) :
     {
         public static $DEFAULT_HOME_ADDRESS_ID = 'home_address';
         public static $DEFAULT_BILLING_ADDRESS_ID = 'billing_address';
+
+        /**
+         * Compare two addresses
+         *
+         * @param array $a
+         * @param array $b
+         *
+         * @return bool true if addresses are the same
+         */
+        public static function compare_addresses($a, $b)
+        {
+            return 0 == strcmp($a['name'], $b['name'])
+            && 0 == strcmp($a['company'], $b['company'])
+            && 0 == strcmp($a['vat_number'], $b['vat_number'])
+            && 0 == strcmp($a['logo_url'], $b['logo_url'])
+            && 0 == strcmp($a['line1'], $b['line1'])
+            && 0 == strcmp($a['line2'], $b['line2'])
+            && 0 == strcmp($a['zip'], $b['zip'])
+            && 0 == strcmp($a['city'], $b['city'])
+            && 0 == strcmp($a['country'], $b['country'])
+            && 0 == strcmp($a['state'], $b['state']);
+        }
 
         /**
          * Make sure we always have a proper address
@@ -51,25 +73,102 @@ if (!class_exists('CUAR_AddressHelper')) :
             return apply_filters('cuar/core/address', $address);
         }
 
-        public static function get_address_as_short_string($address)
+        /**
+         * @param $address
+         *
+         * @return mixed|void
+         */
+        public static function get_address_as_string($address)
         {
             $out = '';
-            if (!empty($address['line1'])) {
+            if ( !empty($address['name']))
+            {
+                $out .= $address['name'];
+            }
+
+            if ( !empty($address['company']))
+            {
+                if ( !empty($out)) $out .= ', ';
+                $out .= $address['company'];
+            }
+
+            if ( !empty($address['vat_number']))
+            {
+                if ( !empty($out)) $out .= ', ';
+                $out .= $address['vat_number'];
+            }
+
+            if ( !empty($address['line1']))
+            {
+                if ( !empty($out)) $out .= ', ';
                 $out .= $address['line1'];
             }
 
-            if (!empty($address['zip'])) {
-                if (!empty($out)) $out .= ', ';
+            if ( !empty($address['line2']))
+            {
+                $out .= $address['line2'];
+            }
+
+            if ( !empty($address['zip']))
+            {
+                if ( !empty($out)) $out .= ', ';
                 $out .= $address['zip'];
             }
 
-            if (!empty($address['city'])) {
-                if (!empty($address['zip'])) $out .= ' ';
+            if ( !empty($address['city']))
+            {
+                if ( !empty($address['zip'])) $out .= ' ';
                 $out .= $address['city'];
             }
 
-            if (!empty($address['country'])) {
-                if (!empty($out)) $out .= ', ';
+            if ( !empty($address['state']))
+            {
+                if ( !empty($out)) $out .= ', ';
+                $out .= $address['state'];
+            }
+
+            if ( !empty($address['country']))
+            {
+                if ( !empty($out)) $out .= ', ';
+                $out .= $address['country'];
+            }
+
+            return apply_filters('cuar/core/address-as-string', $out, $address);
+        }
+
+        /**
+         * @param $address
+         *
+         * @return mixed|void
+         */
+        public static function get_address_as_short_string($address)
+        {
+            $out = '';
+            if ( !empty($address['line1']))
+            {
+                $out .= $address['line1'];
+            }
+
+            if ( !empty($address['line2']))
+            {
+                $out .= $address['line2'];
+            }
+
+            if ( !empty($address['zip']))
+            {
+                if ( !empty($out)) $out .= ', ';
+                $out .= $address['zip'];
+            }
+
+            if ( !empty($address['city']))
+            {
+                if ( !empty($address['zip'])) $out .= ' ';
+                $out .= $address['city'];
+            }
+
+            if ( !empty($address['country']))
+            {
+                if ( !empty($out)) $out .= ', ';
                 $out .= $address['country'];
             }
 

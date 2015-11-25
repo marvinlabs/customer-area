@@ -164,7 +164,7 @@ class CUAR_LogTable extends CUAR_ListTable
     public function column_log_timestamp($item)
     {
         $m_time = $item->get_post()->post_date;
-        $h_time = mysql2date(__('Y/m/d - g:i:s', 'cuar'), $m_time);
+        $h_time = mysql2date(__('Y/m/d - H:i:s', 'cuar'), $m_time);
 
         return $h_time;
     }
@@ -173,15 +173,27 @@ class CUAR_LogTable extends CUAR_ListTable
     {
         $rel_object_id = $item->get_post()->post_parent;
         $rel_object_type = $item->related_object_type;
-        $obj_link_text = isset($this->content_types[$rel_object_type])
-            ? $this->content_types[$rel_object_type]['label-singular']
-            : $rel_object_type;
-        $obj_link_text .= ' ' . $rel_object_id;
 
-        return sprintf('<a href="%1$s" title="Title: %2$s">%3$s</a>',
-            admin_url('post.php?post_type=' . $rel_object_type . '&action=edit&post=' . $rel_object_id),
-            esc_attr(get_the_title($rel_object_id)),
-            $obj_link_text);
+        if ($rel_object_type=='WP_User') {
+            $obj_link_text = sprintf(__('User %1$s', 'cuar'), $rel_object_id);
+
+            return sprintf(__('<a href="%1$s" title="Username: %2$s">%3$s</a>', 'cuar'),
+                admin_url('user-edit.php?user_id=' . $rel_object_id),
+                esc_attr(get_userdata($rel_object_id)->display_name),
+                $obj_link_text);
+        }
+        else
+        {
+            $obj_link_text = isset($this->content_types[$rel_object_type])
+                ? $this->content_types[$rel_object_type]['label-singular']
+                : $rel_object_type;
+            $obj_link_text .= ' ' . $rel_object_id;
+
+            return sprintf(__('<a href="%1$s" title="Title: %2$s">%3$s</a>', 'cuar'),
+                admin_url('post.php?post_type=' . $rel_object_type . '&action=edit&post=' . $rel_object_id),
+                esc_attr(get_the_title($rel_object_id)),
+                $obj_link_text);
+        }
     }
 
     public function column_log_user($item)
