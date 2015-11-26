@@ -20,7 +20,7 @@ $whats_new = array(
             ),
             array(
                 'title' => __('Improvements and bug fixes', 'cuar'),
-                'text'  => __('While this time we do not have other big news than the new invoicing add-on, there have been lots of additions and fixes to the base plugin and the existing add-ons: 14 new features and 17 issues have been implemented/fixed.',
+                'text'  => __('While this time we do not have other big news than the new invoicing add-on, there have been lots of additions and fixes to the base plugin and the existing add-ons: 15 new features and 19 issues have been implemented/fixed.',
                     'cuar'),
             ),
         )
