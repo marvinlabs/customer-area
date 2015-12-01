@@ -31,11 +31,17 @@ a {
   text-decoration: none;
 }
 
+img {
+  border-radius: 0;
+  box-shadow: none;
+  border: 0;
+}
+
 table, th, .table>thead>tr>th, table>thead>tr>th, td, .table>tbody>tr>td, table>tbody>tr>td {
   font-family: @font-family-sans-serif;
   font-size: @font-size-base;
   color: inherit;
-  border-color: inherit;
+  border-color: @table-border-color;
 }
 
 th, .table>thead>tr>th, table>thead>tr>th {
@@ -45,4 +51,8 @@ th, .table>thead>tr>th, table>thead>tr>th {
 
 td.progress, .table>thead>tr>td.progress, table>thead>tr>td.progress {
   border-radius: 0;
+}
+
+.table tbody>tr:first-child>th+td {
+  border-top: 1px solid @table-border-color;
 }
