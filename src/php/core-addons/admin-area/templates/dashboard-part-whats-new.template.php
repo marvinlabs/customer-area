@@ -2,11 +2,33 @@
 
 <?php
 $whats_new = array(
+    '6.3' => array(
+        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-6-3', 'cuar'),
+        'codename'  => 'Bon Scott',
+        'tagline'   => __("WP Customer Area 6.3 has been aimed at improving customer relationship management and improving existing add-ons.", 'cuar'),
+        'blocks'    => array(
+            array(
+                'title' => __('Contact information', 'cuar'),
+                'text'  => __('User profiles can now store a home and a billing address. This is an essential information when managing your customers and will help building more CRM features into the plugin later on.',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('Invoicing', 'cuar'),
+                'text'  => __('We are introducing a new add-on to publish invoices for your customers. No more attaching files, there is a proper content type for invoices and we will soon add a lot around that (PDF generation, online payment, etc.).',
+                    'cuar'),
+                'more'  => 'http://wp-customerarea.com' . __('/downloads/wpca-invoicing', 'cuar')
+            ),
+            array(
+                'title' => __('Improvements and bug fixes', 'cuar'),
+                'text'  => __('While this time we do not have other big news than the new invoicing add-on, there have been lots of additions and fixes to the base plugin and the existing add-ons: 15 new features and 19 issues have been implemented/fixed.',
+                    'cuar'),
+            ),
+        )
+    ),
     '6.2' => array(
         'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-6-2', 'cuar'),
         'codename'  => 'Jim Morrison',
-        'tagline'   => __("WP Customer Area 6.2 has been aimed at improving the attachments to private files and everything around that.",
-            'cuar'),
+        'tagline'   => __("WP Customer Area 6.2 has been aimed at improving the attachments to private files and everything around that.", 'cuar'),
         'blocks'    => array(
             array(
                 'title' => __('New upload system', 'cuar'),
@@ -30,8 +52,7 @@ $whats_new = array(
     '6.1' => array(
         'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-6-1', 'cuar'),
         'codename'  => 'Jimi Hendrix',
-        'tagline'   => __("WP Customer Area 6.1 focuses mainly on making administrator's life easier, introducing event logging and a better administration panel.",
-            'cuar'),
+        'tagline'   => __("WP Customer Area 6.1 focuses mainly on making administrator's life easier, introducing event logging and a better administration panel.", 'cuar'),
         'blocks'    => array(
             array(
                 'title' => __('Protect post types', 'cuar'),

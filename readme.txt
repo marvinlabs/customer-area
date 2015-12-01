@@ -129,7 +129,7 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 6.3.0 (2015/) =
+= 6.3.0 (2015/11/26) =
 
 * New: Changes for better WordPress 4.4 support
 * New: Add addresses (home, billing) to the user profile - one step towards better CRM integrated into WP Customer Area

@@ -26,6 +26,7 @@ foreach ($feeds as $f) :
 <?php if (is_wp_error($feed)) : ?>
     <p><?php echo $feed->get_error_message(); ?></p>
 <?php else: ?>
+    <p><a href="<?php echo 'http://wp-customerarea.com' . __('/add-ons-and-themes', 'cuar'); ?>" class="button"><?php _e('Show all', 'cuar'); ?></a></p>
     <div class="cuar-add-ons">
 <?php
         $odd = true;
