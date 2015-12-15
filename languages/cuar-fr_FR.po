@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2015-09-07 07:35:27+00:00\n"
-"PO-Revision-Date: 2015-11-20 11:34+0000\n"
+"PO-Revision-Date: 2015-12-01 08:24+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: French (France) (http://www.transifex.com/wp-translations/wp-customer-area/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -469,25 +469,80 @@ msgstr "Thèmes optimisés pour WP Customer Area"
 msgid "/downloads/category/wpca-themes/feed/rss"
 msgstr "/downloads/category/wpca-themes/feed/rss"
 
+#: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:29
+msgid "/add-ons-and-themes"
+msgstr "/fr/extensions-et-themes"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:29
+msgid "Show all"
+msgstr "Tout voir"
+
 #: src/php/core-addons/admin-area/templates/dashboard-part-blog.template.php:7
 msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
+msgid "/whats-new-in-wp-customer-area-6-3"
+msgstr "/quoi-de-neuf-dans-wp-customer-area-6-3"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
+msgid ""
+"WP Customer Area 6.3 has been aimed at improving customer relationship "
+"management and improving existing add-ons."
+msgstr "WP Customer Area 6.3 a été fait pour améliorer la gestion des relations client et les extensions existantes."
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
+msgid "Contact information"
+msgstr "Information de contact"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+msgid ""
+"User profiles can now store a home and a billing address. This is an "
+"essential information when managing your customers and will help building "
+"more CRM features into the plugin later on."
+msgstr "Les profils utilisateur ont maintenant une adresse de domicile et de facturation. C'est une information essentielle pour gérer votre base clients et nous aidera ensuite à ajouter encore plus de fonctionnalité de gestion des relations client par la suite."
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+msgid "Invoicing"
+msgstr "Facturation"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+msgid ""
+"We are introducing a new add-on to publish invoices for your customers. No "
+"more attaching files, there is a proper content type for invoices and we "
+"will soon add a lot around that (PDF generation, online payment, etc.)."
+msgstr "Nous publions une nouvelle extension pour publier des factures pour vos clients. Terminé les fichiers attachés, maintenant les factures ont leur propre type de contenu et nous ajouterons très bientôt beaucoup de fonctionnalités autour de ceci (génération PDF, paiement en ligne, etc.)"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:19
+msgid "/downloads/wpca-invoicing"
+msgstr "/fr/telechargements/facturation-wpca/"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+msgid "Improvements and bug fixes"
+msgstr "Améliorations et correctifs"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:23
+msgid ""
+"While this time we do not have other big news than the new invoicing add-on,"
+" there have been lots of additions and fixes to the base plugin and the "
+"existing add-ons: 15 new features and 19 issues have been implemented/fixed."
+msgstr "Même si cette fois nous n'avons pas de grande nouvelle autre que l'extension de facturation, il y a eu de nombreux ajouts et correctifs au plugin de base et aux extensions existantes : 15 nouvelles fonctionnalités et 19 problèmes ont été réglés."
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:29
 msgid "/whats-new-in-wp-customer-area-6-2"
 msgstr "/quoi-de-neuf-dans-wp-customer-area-6-2"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:31
 msgid ""
 "WP Customer Area 6.2 has been aimed at improving the attachments to private "
 "files and everything around that."
 msgstr "Le développement de WP Customer Area 6.2 a été dédié à l'amélioration des pièces jointes aux fichiers privés et tout ce qui gravite autour."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
 msgid "New upload system"
 msgstr "Nouveau système de téléversement"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:13
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:35
 msgid ""
 "The file upload system has been completely rewritten. You can now drag and "
 "drop files and watch the upload progress. Additionally, we have also added "
@@ -495,26 +550,26 @@ msgid ""
 "as secure as it can."
 msgstr "Le système de téléversement des fichiers a été totalement réécrit. Vous pouvez maintenant glisser-déposer des fichiers et suivre l'avancement du téléversement. En plus de cela, nous avons ajouté des options et implémenté une aide pour vous aider à renforcer la sécurisation de vos fichiers privés."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
 msgid "Enhanced Files"
 msgstr "Améliorations des fichiers"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:18
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:40
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
 "multiple attachments on the same private file, change the attachment caption"
 " and automatically add file type icons in front of the download links."
 msgstr "Nous vous présentons une nouvelle extension qui améliore encore les pièces jointes : attachez plusieurs pièces jointes au même fichier privé, changez le texte affiché pour le lien de téléchargement et affichez automatiquement une icone correspondant au type de fichier devant ces liens."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:20
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:42
 msgid "/downloads/wpca-enhanced-files"
 msgstr "/fr/telechargements/ameliorations-pour-les-fichiers-wpca"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:23
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:45
 msgid "Smart Groups"
 msgstr "Groupes intelligents"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:24
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:46
 msgid ""
 "Smart Groups will change the way to build your user groups. No more adding "
 "or removing users by hand, you will simply make dynamic groups based on "
@@ -522,126 +577,126 @@ msgid ""
 "information linked to your user profiles."
 msgstr "Les groupes intelligents vont changer votre façon de constituer vos groupes d'utilisateur. Terminé l'ajout et la suppression manuelle des utilisateurs, vous pourrez tout simplement construire des groupes dynamiques selon des critères tels que le nom, le domaine de l'adresse mél, et n'importe quelle autre méta-information liée au profil utilisateur."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:26
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:48
 msgid "/downloads/wpca-smart-groups"
 msgstr "/fr/telechargements/groupes-intelligents-wpca"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:31
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:53
 msgid "/whats-new-in-wp-customer-area-6-1"
 msgstr "/fr/quoi-de-neuf-dans-wp-customer-area-6-1"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
 msgid ""
 "WP Customer Area 6.1 focuses mainly on making administrator's life easier, "
 "introducing event logging and a better administration panel."
 msgstr "WP Customer Area 6.1 se concentre principalement sur les moyens de rendre la vie de l'administrateur plus facile en introduisant la journalisation des événements et un meilleur panneau d'administration."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:37
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:58
 msgid "Protect post types"
 msgstr "Protection de contenus externes"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:59
 msgid ""
 "We are introducing a new add-on which will allow protecting any kind of "
 "external post types. Posts created from third party plugins can be made "
 "private and assigned just like private pages or files."
 msgstr "Nous ajoutons une nouvelle extension qui permet de protéger n'importe quel type de contenu externe. Les contenus créés par l'intermédiaire de plugins externes peuvent être rendus privés et affectés à un propriétaire comme les pages ou fichiers privés."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:40
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
 msgid "/downloads/wpca-protect-post-types"
 msgstr "/fr/telechargements/protection-de-contenus-tierce"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:43
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:64
 #: src/php/core-addons/shortcodes/shortcodes-addon.class.php:36
 msgid "Shortcodes"
 msgstr "Codes courts"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:65
 msgid ""
 "we have added shortcodes to display the navigation menu, list protected "
 "content, etc. You will now be able to easily build custom pages with a list "
 "of the content you want to pull for the connected user."
 msgstr "nous avons ajouté des codes courts pour afficher le menu de navigation, la liste du contenu protégé, etc. Vous allez maintenant être en mesure de créer facilement des pages personnalisées avec une liste du contenu que vous voulez sortir pour l'utilisateur connecté."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:46
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
 msgid "/documentation/shortcodes"
 msgstr "/fr/documentation/codes-courts/"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:49
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:70
 msgid "Better admin panel"
 msgstr "Meilleur panneau d'administration"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:71
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
 "better organised. The content lists now feature powerful filters to help you"
 " find the content you are looking for faster."
 msgstr "Le menu principal de l'extension a été beaucoup amélioré, il est maintenant moins encombré et mieux organisé. Les listes de contenu disposent maintenant de puissants filtres pour vous aider à trouver le contenu que vous cherchez plus rapidement."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:54
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
 msgid "Logging"
 msgstr "Journalisation"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:76
 msgid ""
 "When dealing with private content and secure areas, keeping track of events "
 "is crucial. We have added a module to track what is happening within your "
 "private area."
 msgstr "Lorsque vous travaillez avec du contenu privé et des zones sécurisées, garder une trace des événements est crucial. Nous avons ajouté un module pour suivre ce qui se passe au sein de votre espace privé."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:59
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:82
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:80
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
 msgid "And more!"
 msgstr "Et bien plus !"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:60
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:81
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 23 issues corrected."
 msgstr "Comme avec toute nouvelle version, nous fournissons constamment des corrections de bogues. Cette mise à jour ne fait pas exception avec pas moins de 23 problèmes corrigés."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:88
 msgid "/customer-area-is-dead-long-live-wp-customer-area/"
 msgstr "/fr/customer-area-est-mort-vive-wp-customer-area/"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:69
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:90
 msgid ""
 "WP Customer Area 6.0 is a major release which sees a lot of changes not only"
 " inside the plugin but also on the website."
 msgstr "WP Customer Area 6.0 est une version majeure qui apporte beaucoup de changements non seulement à l'intérieur de l'extension, mais aussi pour le site."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:72
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:93
 msgid "Improved setup &amp; updates"
 msgstr "Installation &amp; mises à jour améliorées"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:73
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:94
 msgid ""
 "We have implemented a new setup assistant that will make it even easier to "
 "install the plugin. Updates will be smoother too."
 msgstr "Nous avons implémenté un nouvel assistant de configuration qui rend plus simple l'installation de l'extension. Les mises à jour seront aussi plus douces."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:98
 msgid "Better permissions"
 msgstr "Meilleures permissions"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:78
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:99
 msgid ""
 "Some new permissions have been added to give you more control about what "
 "your users can do. On top of that, we have also improved the permissions "
 "screen to make it faster to set permissions."
 msgstr "Quelques nouveaux droits ont été ajoutés pour vous donner plus de contrôle sur ce que vos utilisateurs peuvent faire. En plus de cela, nous avons également amélioré l'écran des droits pour le rendre plus rapide la définition des autorisations."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:104
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 20 issues corrected."
 msgstr "Comme avec toute nouvelle version, nous fournissons constamment des corrections de bogues. Cette mise à jour ne fait pas exception avec pas moins de 20 problèmes corrigés."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:113
 msgid "New in %s ~ <em>%s</em>"
 msgstr "Nouveau dans %s ~ <em>%s</em>"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:123
 msgid "Learn more"
 msgstr "En savoir plus"
 
@@ -2350,6 +2405,12 @@ msgid ""
 "requested to login again after your password gets changed. Leave these "
 "fields empty if you want to keep your current password"
 msgstr "Le mot de passe doit être composé d'au moins 5 caractères. Vous devrez vous reconnecter après que votre mot de passe ait été mis à jour. Laissez ces champs vides pour garder votre mot de passe actuel."
+
+#: src/php/core-classes/Content/list-table.class.php:246
+msgid ""
+"<a href=\"%1$s\" title=\"Show content classified under %2$s\" class=\"cuar-"
+"taxonomy-term\">%3$s</a>"
+msgstr "<a href=\"%1$s\" title=\"Voir le contenu classé dans %2$s\" class=\"cuar-taxonomy-term\">%3$s</a>"
 
 #: src/php/core-classes/Content/list-table.class.php:262
 msgid "Unpublished"
