@@ -41,10 +41,21 @@ function cuar_addon($id)
  */
 function cuar_the_customer_area_menu()
 {
-    $cuar_plugin = CUAR_Plugin::get_instance();
-    $cp_addon = $cuar_plugin->get_addon('customer-pages');
+    /** @var CUAR_CustomerPagesAddOn $cp_addon */
+    $cp_addon = cuar_addon('customer-pages');
 
-    echo '<div class="cuar-menu-container">' . $cp_addon->get_main_navigation_menu() . '</div>';
+    echo $cp_addon->get_main_navigation_menu();
+}
+
+/**
+ * Print the customer area menu
+ */
+function cuar_the_contextual_toolbar()
+{
+    /** @var CUAR_CustomerPagesAddOn $cp_addon */
+    $cp_addon = cuar_addon('customer-pages');
+
+    echo $cp_addon->get_contextual_toolbar();
 }
 
 /**
@@ -57,9 +68,8 @@ function cuar_the_customer_area_menu()
  */
 function cuar_is_customer_area_page($post_id = 0, $page_slug = null)
 {
-    $cuar_plugin = CUAR_Plugin::get_instance();
     /** @var CUAR_CustomerPagesAddOn $cp_addon */
-    $cp_addon = $cuar_plugin->get_addon('customer-pages');
+    $cp_addon = cuar_addon('customer-pages');
 
     if ($page_slug == null) {
         return $cp_addon->is_customer_area_page($post_id);
@@ -87,7 +97,7 @@ function cuar_is_customer_area_page($post_id = 0, $page_slug = null)
  */
 function cuar_is_customer_area_private_content($post = null)
 {
-    $cuar_plugin = CUAR_Plugin::get_instance();
+    $cuar_plugin = cuar();
     $private_types = array_merge($cuar_plugin->get_content_post_types(), $cuar_plugin->get_container_post_types());
 
     return in_array(get_post_type($post), $private_types);
@@ -95,6 +105,8 @@ function cuar_is_customer_area_private_content($post = null)
 
 /**
  * Outputs a loading indicator
+ *
+ * @param bool $is_visible
  */
 function cuar_ajax_loading($is_visible = false)
 {
@@ -110,6 +122,11 @@ function cuar_ajax_loading($is_visible = false)
 
 /**
  * Print an address
+ *
+ * @param        $address
+ * @param        $address_id
+ * @param string $address_label
+ * @param string $template_prefix
  */
 function cuar_print_address($address, $address_id, $address_label = '', $template_prefix = '')
 {
