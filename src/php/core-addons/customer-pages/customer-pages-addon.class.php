@@ -1030,7 +1030,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             {
                 $groups['subpages'] = array(
                     'items'       => $group_items,
-                    'extra_class' => 'visible-xs'
+                    'extra_class' => ''
                 );
             }
 
