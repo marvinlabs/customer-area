@@ -17,8 +17,7 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".nav-container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-container">
                 <span class="sr-only"><?php _e('Toggle navigation', 'cuar'); ?></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
