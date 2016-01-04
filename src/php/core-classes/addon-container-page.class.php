@@ -496,45 +496,24 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
 
         /*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 
-        public function print_single_private_content_action_links()
+        public function add_single_private_content_contextual_toolbar_group($groups)
         {
-            do_action('cuar/private-container/view/before_action_links', $this);
-            do_action('cuar/private-container/view/before_action_links?post-type=' . $this->get_friendly_post_type(), $this);
+            // If not on a matching post type, we do nothing
+            if ( !is_singular($this->get_friendly_post_type())) return $groups;
+            if (get_post_type() != $this->get_friendly_post_type()) return $groups;
 
             $links = apply_filters('cuar/private-container/view/single-post-action-links', array());
             $links = apply_filters('cuar/private-container/view/single-post-action-links?post-type=' . $this->get_friendly_post_type(), $links);
 
-            include($this->plugin->get_template_file_path(
-                array(
-                    $this->get_page_addon_path(),
-                    CUAR_INCLUDES_DIR . '/core-classes'
-                ),
-                $this->get_slug() . '-single-post-action-links.template.php',
-                'templates',
-                'single-post-action-links.template.php'));
+            if ( !empty($links))
+            {
+                $groups['singular-container'] = array(
+                    'items'       => $links,
+                    'extra_class' => ''
+                );
+            }
 
-            do_action('cuar/private-container/view/after_action_links', $this);
-            do_action('cuar/private-container/view/after_action_links?post-type=' . $this->get_friendly_post_type(), $this);
-        }
-
-        public function print_single_private_content_action_links_filter($content)
-        {
-            // If theme is taking care of it, don't do anything
-            $theme_support = get_theme_support('customer-area.single-post-templates');
-            if (is_array($theme_support) && in_array($this->get_friendly_post_type(), $theme_support[0])) return $content;
-
-            // If not on a matching post type, we do nothing
-            if ( !is_singular($this->get_friendly_post_type())) return $content;
-            if (get_post_type() != $this->get_friendly_post_type()) return $content;
-
-            ob_start();
-
-            $this->print_single_private_content_action_links();
-
-            $out = ob_get_contents();
-            ob_end_clean();
-
-            return $content . $out;
+            return $groups;
         }
 
         public function print_single_container_footer($content)
@@ -948,7 +927,7 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
 
             if ( !is_admin())
             {
-                add_filter('cuar/core/page/toolbar', array(&$this, 'print_single_private_content_action_links_filter'));
+                add_filter('cuar/core/page/toolbar', array(&$this, 'add_single_private_content_contextual_toolbar_group'), 300);
 
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())

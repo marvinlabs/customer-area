@@ -70,20 +70,18 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 // Settings
                 add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_settings_tab'), 300, 1);
 
-                add_action('cuar/core/settings/print-settings?tab=cuar_frontend',
-                    array(&$this, 'print_frontend_settings'), 50, 2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_frontend',
-                    array(&$this, 'validate_frontend_settings'), 50, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_frontend', array(&$this, 'print_frontend_settings'), 50, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_frontend', array(&$this, 'validate_frontend_settings'), 50, 3);
 
-                add_action('cuar/core/settings/print-settings?tab=cuar_customer_pages',
-                    array(&$this, 'print_pages_settings'), 50, 2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_customer_pages',
-                    array(&$this, 'validate_pages_settings'), 50, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_customer_pages', array(&$this, 'print_pages_settings'), 50, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_customer_pages', array(&$this, 'validate_pages_settings'), 50, 3);
             }
             else
             {
                 add_filter('body_class', array(&$this, 'add_body_class'));
-                add_filter('cuar/core/page/toolbar', array(&$this, 'get_subpages_menu'));
+                add_filter('cuar/core/page/toolbar', array(&$this, 'add_subpages_contextual_toolbar_group'), 100);
+                add_filter('the_content', array(&$this, 'get_contextual_toolbar_for_pages'), 880);
+                add_filter('the_content', array(&$this, 'wrap_content_into_container'), 9998);
             }
         }
 
@@ -525,11 +523,11 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 if ( !empty($item->classes))
                 {
                     $is_user_logged_in = is_user_logged_in();
-                    if ($is_user_logged_in && false!==array_search("wpca-guest-only", $item->classes))
+                    if ($is_user_logged_in && false !== array_search("wpca-guest-only", $item->classes))
                     {
                         $exclude = true;
                     }
-                    else if ( !$is_user_logged_in && false!==array_search("wpca-logged-only", $item->classes))
+                    else if ( !$is_user_logged_in && false !== array_search("wpca-logged-only", $item->classes))
                     {
                         $exclude = true;
                     }
@@ -615,7 +613,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                         }
 
                         if ($menu_item_page->get_friendly_post_type() == $post_type
-                            && in_array($menu_item_page->get_type(), array('list-content', 'redirect')))
+                            && in_array($menu_item_page->get_type(), array('list-content', 'redirect'))
+                        )
                         {
                             if ($highlighted_menu_item == null)
                             {
@@ -827,6 +826,13 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 admin_url('nav-menus.php?menu=') . $menu->term_id), 'updated');
         }
 
+        /**
+         * Get the main navigation menu as HTML
+         *
+         * @param bool $echo
+         *
+         * @return string
+         */
         public function get_main_navigation_menu($echo = false)
         {
             $out = '';
@@ -836,6 +842,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 return $out;
             }
 
+            /** @noinspection PhpUnusedLocalVariableInspection */
             $nav_menu_args = apply_filters('cuar/core/page/nav-menu-args', array(
                 'theme_location'  => 'cuar_main_menu',
                 'container_class' => 'menu-container cuar-menu-container',
@@ -863,9 +870,9 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
         /**
          * Output the customer area navigation menu
          *
-         * @param unknown $content
+         * @param string $content
          *
-         * @return unknown|string
+         * @return string
          */
         public function get_main_menu_for_single_private_content($content)
         {
@@ -883,8 +890,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 || (is_singular($container_types) && in_array(get_post_type(), $container_types))
             )
             {
-                $content = '<div class="cuar-menu-container">' . $this->get_main_navigation_menu() . '</div>'
-                    . $content;
+                $content = $this->get_main_navigation_menu() . $content;
             }
 
             return $content;
@@ -893,9 +899,9 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
         /**
          * Output the customer area navigation menu
          *
-         * @param unknown $content
+         * @param string $content
          *
-         * @return unknown|string
+         * @return string
          */
         public function get_main_menu_for_customer_area_pages($content)
         {
@@ -911,44 +917,143 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 return $content;
             }
 
-            $content = '<div class="cuar-menu-container">' . $this->get_main_navigation_menu() . '</div>' . $content;
+            $content = $this->get_main_navigation_menu() . $content;
 
             return $content;
         }
 
-        // Print a row of buttons that allow to click the child pages even on mobile
-        public function get_subpages_menu($content)
+        /**
+         * Get the contextual toolbar as HTML
+         *
+         * @param bool $echo
+         *
+         * @return string
+         */
+        public function get_contextual_toolbar($echo = false)
+        {
+            $out = '';
+
+            if ( !is_user_logged_in())
+            {
+                return $out;
+            }
+
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $toolbar_groups = apply_filters('cuar/core/page/toolbar', array());
+            if ( !empty($toolbar_groups))
+            {
+
+                // TODO Order groups by priority
+
+
+                ob_start();
+
+                include($this->plugin->get_template_file_path(
+                    CUAR_INCLUDES_DIR . '/core-addons/customer-pages',
+                    'customer-pages-contextual-toolbar.template.php',
+                    'templates'));
+
+                $out = ob_get_contents();
+                ob_end_clean();
+            }
+            else
+            {
+                $out = '';
+            }
+
+            if ($echo)
+            {
+                echo $out;
+            }
+
+            return $out;
+        }
+
+        /**
+         * Automatically print the contextual toolbar if the theme does not support it natively
+         *
+         * @param string $content
+         *
+         * @return string
+         */
+        public function get_contextual_toolbar_for_pages($content)
+        {
+            // Only if the theme does not already support this
+            if (current_theme_supports('customer-area.contextual-toolbar'))
+            {
+                return $content;
+            }
+
+            $out = $this->get_contextual_toolbar();
+
+            return $out . $content;
+        }
+
+        /**
+         * Add to the toolbar a group of buttons that allow to click the child pages even on mobile
+         *
+         * @param array $groups The toolbar groups
+         *
+         * @return array
+         */
+        public function add_subpages_contextual_toolbar_group($groups)
         {
             $theme_locations = get_nav_menu_locations();
             if ( !isset($theme_locations['cuar_main_menu']))
             {
-                return '';
+                return $groups;
             }
 
             $menu_items = wp_get_nav_menu_items($theme_locations['cuar_main_menu']);
             if (empty($menu_items))
             {
-                return '';
+                return $groups;
             }
 
             $current_item_id = $this->get_current_menu_item_id();
 
-            $out = '';
+            $group_items = array();
             foreach ($menu_items as $item)
             {
                 if ($item->menu_item_parent == $current_item_id)
                 {
-                    $out .= sprintf('<a href="%1$s" class="btn btn-primary" role="button">%2$s</a>', $item->url,
-                        $item->title);
+                    $group_items[] = array(
+                        'title'       => $item->title,
+                        'url'         => $item->url,
+                        'tooltip'     => '',
+                        'extra_class' => ''
+                    );
                 }
             }
 
-            if ( !empty($out))
+            if ( !empty($group_items))
             {
-                $out = '<div class="cuar-child-pages-menu btn-group">' . $out . '</div>';
+                $groups['subpages'] = array(
+                    'items'       => $group_items,
+                    'extra_class' => ''
+                );
             }
 
-            return $content . $out;
+            return $groups;
+        }
+
+        /**
+         * Wrap the WP Customer Area generated content into a container, always
+         *
+         * @param string $content
+         *
+         * @return string
+         */
+        public function wrap_content_into_container($content)
+        {
+            if (cuar_is_customer_area_page(get_queried_object_id())
+                || cuar_is_customer_area_private_content(get_the_ID())
+            )
+            {
+                return '<div class="cuar-content-container">' . $content . '</div>';
+            }
+
+            return $content;
         }
 
         public function get_current_menu_item_id()
