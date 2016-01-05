@@ -38,19 +38,19 @@ $attached_files = cuar_get_the_attached_files($post->ID);
     <div class="cuar-meta-category cuar-content-meta">
         <div class="cuar-row">
             <div class="cuar-meta-block cuar-author">
-                <h4><span class="cuar-dashicons cuar-dashicons-businessman"></span> <?php _e('Author', 'cuar'); ?></h4>
+                <h4><span class="fa fa-user"></span> <?php _e('Author', 'cuar'); ?></h4>
 
                 <p><?php echo $author; ?></p>
             </div>
 
             <div class="cuar-meta-block cuar-owner">
-                <h4><span class="cuar-dashicons cuar-dashicons-groups"></span> <?php _e('Recipient', 'cuar'); ?></h4>
+                <h4><span class="fa fa-group"></span> <?php _e('Recipient', 'cuar'); ?></h4>
 
                 <p><?php echo $recipients; ?></p>
             </div>
 
             <div class="cuar-meta-block cuar-date">
-                <h4><span class="cuar-dashicons cuar-dashicons-calendar"></span> <?php _e('Date', 'cuar'); ?></h4>
+                <h4><span class="fa fa-calendar"></span> <?php _e('Date', 'cuar'); ?></h4>
 
                 <p><?php echo $date; ?></p>
             </div>
@@ -60,7 +60,7 @@ $attached_files = cuar_get_the_attached_files($post->ID);
     <div class="cuar-meta-category cuar-file-meta">
         <div class="cuar-row">
             <div class="cuar-meta-block cuar-file">
-                <h4><span class="cuar-dashicons cuar-dashicons-admin-links"></span> <?php _e('Attached files', 'cuar'); ?>
+                <h4><span class="fa fa-files-o"></span> <?php _e('Attached files', 'cuar'); ?>
                 </h4>
                 <ul class="cuar-attached-files">
                     <?php foreach ($attached_files as $file_id => $file) : ?>

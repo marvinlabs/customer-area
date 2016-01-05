@@ -11,7 +11,7 @@
     <div class="metabox-row">
         <div class="cuar-dropzone" id="cuar_dropzone" data-post-id="<?php echo esc_attr($post_id); ?>">
             <p class="cuar-dropzone-message">
-                <span class="dashicons dashicons-upload"></span>
+                <span class="fa fa-upload"></span>
                 <br/>
                 <?php _e('Drop your files here or click me!', 'cuar'); ?>
             </p>

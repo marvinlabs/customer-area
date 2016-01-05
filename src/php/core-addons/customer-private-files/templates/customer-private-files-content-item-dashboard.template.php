@@ -80,8 +80,7 @@ if ($files && is_array($files) && $file_count >= 1) {
                 the_post_thumbnail('medium');
             } else {
                 ?>
-                <div class="va-m pt40 text-center bg-primary light"
-                     style="display: inline-block; height: 150px; width: 100%;">
+                <div class="va-m pt40 text-center bg-primary light" style="display: inline-block; height: 150px; width: 100%;">
                     <i class="<?php echo $extensions[$files_icon]; ?> mt30 mr5 text-primary dark icon-bg"></i>
                     <h6 class="text-white mn fs30" style="margin-top: 20%!important;z-index: 2;position: relative;">
                         <?php
@@ -104,15 +103,12 @@ if ($files && is_array($files) && $file_count >= 1) {
                     </a>
 
                     <div class="cuar-subtitle">
-                        <a href="<?php the_permalink(); ?>"
-                           title="<?php echo esc_attr($subtitle_popup, 'cuar'); ?>"><?php echo $subtitle; ?></a>
+                        <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($subtitle_popup, 'cuar'); ?>"><?php echo $subtitle; ?></a>
                     </div>
 
                     <div class="cuar-badges">
-                        <a href="<?php the_permalink(); ?>"
-                           title="<?php esc_attr_e(sprintf(_n('%1$s file attached', '%1$s files attached', $file_count, 'cuar'), $file_count)); ?>">
-                            <span
-                                class="cuar-download-badge cuar-dashicons cuar-dashicons-download cuar-dashicon-badge cuar-small cuar-pull-right"></span>
+                        <a href="<?php the_permalink(); ?>" title="<?php esc_attr_e(sprintf(_n('%1$s file attached', '%1$s files attached', $file_count, 'cuar'), $file_count)); ?>">
+                            <span class="cuar-download-badge fa fa-download small pull-right"></span>
                         </a>
                     </div>
                 </div>

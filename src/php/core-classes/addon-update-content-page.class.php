@@ -274,7 +274,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
             if ($this->current_user_can_edit_content($post_id))
             {
                 $links[] = array(
-                    'title'       => '<span class="dashicons dashicons-edit"></span> ' . __('Edit', 'cuar'),
+                    'title'       => '<span class="fa fa-edit"></span> ' . __('Edit', 'cuar'),
                     'tooltip'     => __('Edit', 'cuar'),
                     'url'         => $this->get_update_content_url($post_id),
                     'extra_class' => ''
@@ -284,7 +284,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
             if ($this->current_user_can_delete_content($post_id))
             {
                 $links[] = array(
-                    'title'           => '<span class="dashicons dashicons-trash"></span> ' . __('Delete', 'cuar'),
+                    'title'           => '<span class="fa fa-trash"></span> ' . __('Delete', 'cuar'),
                     'tooltip'         => __('Delete', 'cuar'),
                     'url'             => $this->get_delete_content_url($post_id),
                     'extra_class'     => '',

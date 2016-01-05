@@ -251,7 +251,6 @@ if ( !class_exists('CUAR_Plugin')) :
                 wp_enqueue_style(
                     'cuar.frontend',
                     $this->get_frontend_theme_url() . '/assets/css/styles.min.css',
-                    array('dashicons'),
                     $this->get_version()
                 );
             }
