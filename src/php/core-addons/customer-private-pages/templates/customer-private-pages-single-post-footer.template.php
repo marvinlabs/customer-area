@@ -27,26 +27,46 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
 ?>
 
 
-<div class="cuar-single-post-footer<?php echo $extra_class; ?>">
+<div class="cuar-single-post-footer row br-t pt20 mt5<?php echo $extra_class; ?>">
 
-    <div class="cuar-meta-category cuar-content-meta">
-        <div class="cuar-meta-block cuar-author">
-            <h4><span class="fa fa-user"></span> <?php _e('Author', 'cuar'); ?></h4>
+    <div class="cuar-meta-category cuar-content-meta clearfix">
 
-            <p><?php echo $author; ?></p>
+        <div class="cuar-meta-block cuar-author col-sm-4">
+            <div class="panel panel-tile text-primary br-b bw5 br-primary-light">
+                <div class="panel-body pn pl20 p5">
+                    <i class="fa fa-user icon-bg p5"></i>
+                    <h4 class="mt15 lh15">
+                        <b><?php echo $author; ?></b>
+                    </h4>
+                    <h5 class="text-muted"><?php _e('Author', 'cuar'); ?></h5>
+                </div>
+            </div>
         </div>
 
-        <div class="cuar-meta-block cuar-owner">
-            <h4><span class="fa fa-users"></span> <?php _e('Recipient', 'cuar'); ?></h4>
-
-            <p><?php echo $recipients; ?></p>
+        <div class="cuar-meta-block cuar-owner col-sm-4">
+            <div class="panel panel-tile text-primary br-b bw5 br-primary-light">
+                <div class="panel-body pn pl20 p5">
+                    <i class="fa fa-users icon-bg p5"></i>
+                    <h4 class="mt15 lh15">
+                        <b><?php echo $recipients; ?></b>
+                    </h4>
+                    <h5 class="text-muted"><?php _e('Recipient', 'cuar'); ?></h5>
+                </div>
+            </div>
         </div>
 
-        <div class="cuar-meta-block cuar-date">
-            <h4><span class="fa fa-calendar"></span> <?php _e('Date', 'cuar'); ?></h4>
-
-            <p><?php echo $date; ?></p>
+        <div class="cuar-meta-block cuar-date col-sm-4">
+            <div class="panel panel-tile text-primary br-b bw5 br-primary-light">
+                <div class="panel-body pn pl20 p5">
+                    <i class="fa fa-calendar icon-bg p5"></i>
+                    <h4 class="mt15 lh15">
+                        <b><?php echo $date; ?></b>
+                    </h4>
+                    <h5 class="text-muted"><?php _e('Date', 'cuar'); ?></h5>
+                </div>
+            </div>
         </div>
+
     </div>
 
 </div>
