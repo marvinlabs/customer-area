@@ -12,23 +12,75 @@
   padding: 0;
   border: none;
 
+  &, &:before, &:after,
+  *, *:before, *:after {
+    .box-sizing(border-box);
+  }
+
   &.cuar-content-container {
     margin-bottom: @line-height-computed;
-    background: @body-bg;
+    background: @main-bg;
     border: 1px solid darken(@body-bg, 3%);
-    padding: @padding-base-vertical @padding-base-horizontal;
-  }
-}
+    overflow: hidden;
 
-.box-sizing(border-box);
-&:before,
-&:after {
-  .box-sizing(border-box);
+    .cuar-page-content {
+      ul, ol {
+        list-style: disc outside;
+      }
+
+      li {
+        margin-left: @grid-gutter-width;
+      }
+
+      .list-group {
+        list-style: none;
+
+        > li {
+          margin: 0;
+
+          > .list-group li {
+            margin-left: @grid-gutter-width / 4;
+            padding-left: @grid-gutter-width / 4;
+            border-left: 1px solid @panel-border-color;
+
+            &:first-child {
+              padding-top: @grid-gutter-width / 4;
+            }
+          }
+        }
+      }
+    }
+
+    .cuar-page-content-main {
+      padding: @grid-gutter-width @padding-base-horizontal;
+    }
+
+    .cuar-page-content {
+      position: relative;
+    }
+
+    .cuar-content-block {
+      background: @panel-bg;
+      border-top: 5px solid @panel-border-color;
+    }
+
+    .cuar-single-post-footer {
+      background: darken(@main-bg, 4%);
+    }
+  }
 }
 
 a {
   border: 0;
   text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+li {
+  margin: 0;
 }
 
 img {
@@ -37,22 +89,22 @@ img {
   border: 0;
 }
 
-table, th, .table>thead>tr>th, table>thead>tr>th, td, .table>tbody>tr>td, table>tbody>tr>td {
+table, th, .table > thead > tr > th, table > thead > tr > th, td, .table > tbody > tr > td, table > tbody > tr > td {
   font-family: @font-family-sans-serif;
   font-size: @font-size-base;
   color: inherit;
   border-color: @table-border-color;
 }
 
-th, .table>thead>tr>th, table>thead>tr>th {
+th, .table > thead > tr > th, table > thead > tr > th {
   text-transform: uppercase;
   font-size: @font-size-small;
 }
 
-td.progress, .table>thead>tr>td.progress, table>thead>tr>td.progress {
+td.progress, .table > thead > tr > td.progress, table > thead > tr > td.progress {
   border-radius: 0;
 }
 
-.table tbody>tr:first-child>th+td {
+.table tbody > tr:first-child > th + td {
   border-top: 1px solid @table-border-color;
 }

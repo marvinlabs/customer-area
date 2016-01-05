@@ -1,6 +1,12 @@
 .cuar-toolbar {
-  .panel;
+  position: relative;
+  z-index: 2;
+  padding: @grid-gutter-width / 2;
+  background: @panel-heading-bg;
   vertical-align: top;
+  border: 1px solid darken(@body-bg, 3%);
+  border-bottom: 1px solid darken(@body-bg, 10%);
+  .box-shadow(0 2px 4px darken(@body-bg, 30%));
 
   > * {
     position: relative;
