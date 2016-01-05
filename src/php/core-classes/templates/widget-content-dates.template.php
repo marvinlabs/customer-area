@@ -5,14 +5,14 @@
 
  */ ?>
 
-<ul>
+<ul class="list-group">
     <?php
     foreach ($dates as $year => $months) :
         $link = $this->get_link($year);
         ?>
         <li><?php
             // Print the year
-            printf('<a href="%1$s" title="%3$s">%2$s</a>',
+            printf('<a href="%1$s" title="%3$s" class="list-group-item">%2$s</a>',
                 $link,
                 $year,
                 sprintf(esc_attr__('Show all content published in %s', 'cuar'), $year)
@@ -20,7 +20,7 @@
 
             if (count($months) > 0) :
                 ?>
-                <ul>
+                <ul class="list-group">
                     <?php
                     foreach ($months as $month) :
                         $link = $this->get_link($year, $month);
@@ -29,7 +29,7 @@
                         <li>
                             <?php
                             // Print the month
-                            printf('<a href="%1$s" title="%3$s">%2$s</a>',
+                            printf('<a href="%1$s" title="%3$s" class="list-group-item">%2$s</a>',
                                 $link,
                                 $month_name,
                                 sprintf(esc_attr__('Show all content published in %2$s %1$s', 'cuar'), $year,
