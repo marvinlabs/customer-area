@@ -373,7 +373,7 @@ if ( !class_exists('CUAR_Settings')) :
                     array(
                         'option_id'  => self::$OPTION_FRONTEND_SKIN,
                         'theme_type' => 'frontend',
-                        'after'     => '<p class="description">'
+                        'after'      => '<p class="description">'
                             . sprintf(__('You can make your own skin, please refer to <a href="%1$s">our documentation about skins</a>.', 'cuar'),
                                 'http://wp-customerarea.com' . __('/documentation/the-skin-system/', 'cuar'))
                             . '</p>'
@@ -426,10 +426,10 @@ if ( !class_exists('CUAR_Settings')) :
         {
             ?>
             <script type="text/javascript">
-                jQuery(document).ready(function($) {
-                   $('#cuar_include_css').change(function() {
-                       $('#cuar_frontend_theme_url').parents('tr').slideToggle();
-                   });
+                jQuery(document).ready(function ($) {
+                    $('#cuar_include_css').change(function () {
+                        $('#cuar_frontend_theme_url').parents('tr').slideToggle();
+                    });
                     if ($('#cuar_include_css').is(':checked')) {
                         $('#cuar_frontend_theme_url').parents('tr').show();
                     } else {
@@ -459,6 +459,21 @@ if ( !class_exists('CUAR_Settings')) :
         }
 
         /* ------------ VALIDATION HELPERS ------------------------------------------------------------------------------ */
+
+        /**
+         * Validate an address
+         *
+         * @param array  $input
+         *            Input array
+         * @param array  $validated
+         *            Output array
+         * @param string $option_id
+         *            Key of the value to check in the input array
+         */
+        public function validate_address($input, &$validated, $option_id)
+        {
+            $validated[$option_id] = CUAR_AddressHelper::sanitize_address($input[$option_id]);
+        }
 
         /**
          * Validate a value in any case
@@ -952,6 +967,35 @@ if ( !class_exists('CUAR_Settings')) :
 
                 wp_editor($this->options [$option_id], $option_id, $editor_settings);
             }
+            else if ($type == 'upload')
+            {
+                wp_enqueue_script('cuar.admin');
+                wp_enqueue_media();
+
+                $extra_class = 'cuar-upload-input regular-text';
+
+                if (isset($before))
+                {
+                    echo $before;
+                }
+
+                echo '<div id="cuar-upload-control-' . $option_id . '">';
+                echo sprintf('<input type="%s" id="%s" name="%s[%s]" value="%s" class="%s" />', esc_attr($type),
+                    esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id),
+                    esc_attr(stripslashes($this->options [$option_id])), esc_attr($extra_class));
+
+                echo '<span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="' . __( 'Upload File', 'cuar' ) . '"/></span>';
+
+                echo '<script type="text/javascript">';
+                echo '    jQuery(document).ready(function($) { $("#cuar-upload-control-' . $option_id . '").mediaInputControl(); });';
+                echo '</script>';
+                echo '</div>';
+
+                if (isset($after))
+                {
+                    echo $after;
+                }
+            }
             else
             {
                 $extra_class = isset($is_large) && $is_large == true ? 'large-text' : 'regular-text';
@@ -1016,7 +1060,7 @@ if ( !class_exists('CUAR_Settings')) :
                     });
                     //-->
                 </script>
-            <?php
+                <?php
             }
         }
 
@@ -1158,6 +1202,34 @@ if ( !class_exists('CUAR_Settings')) :
 
             $po_addon = $this->plugin->get_addon("post-owner");
             $po_addon->print_owner_type_select_field($option_id, self::$OPTIONS_GROUP, $this->options [$option_id]);
+
+            if (isset($after))
+            {
+                echo $after;
+            }
+        }
+
+        /**
+         * Output a set of fields for an address
+         *
+         * @param string $option_id
+         * @param array  $options
+         * @param string $caption
+         */
+        public function print_address_fields($args)
+        {
+            extract($args);
+
+            if (isset($before))
+            {
+                echo $before;
+            }
+
+            $address = CUAR_AddressHelper::sanitize_address($this->options[$option_id]);
+
+            /** @var CUAR_AddressesAddOn $am_addon */
+            $am_addon = $this->plugin->get_addon("address-manager");
+            $am_addon->print_address_editor($address, $option_id, '', array(), '', 'settings');
 
             if (isset($after))
             {
@@ -1443,7 +1515,7 @@ if ( !class_exists('CUAR_Settings')) :
                 {
                     $theme_name = basename($s);
                     $label = $theme_location['label'] . ' - ' . $theme_name;
-                    if ($theme_location['base']=='addon')
+                    if ($theme_location['base'] == 'addon')
                     {
                         $value = esc_attr($theme_location['base'] . '%%' . $theme_location['addon-name'] . '%%' . $theme_name);
                     }

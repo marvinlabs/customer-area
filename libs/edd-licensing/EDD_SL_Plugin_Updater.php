@@ -1,21 +1,24 @@
 <?php
 
 // uncomment this line for testing
-//set_site_transient( 'update_plugins', null );
+// set_site_transient( 'update_plugins', null );
+
+// Exit if accessed directly
+if ( !defined('ABSPATH')) exit;
 
 /**
  * Allows plugins to use their own update API.
  *
- * @author Pippin Williamson
- * @version 1.5
+ * @author  Pippin Williamson
+ * @version 1.6.2
  */
 class CUAR_Plugin_Updater
 {
-
     private $api_url = '';
     private $api_data = array();
     private $name = '';
     private $slug = '';
+    private $version = '';
 
     /**
      * Class constructor.
@@ -23,10 +26,9 @@ class CUAR_Plugin_Updater
      * @uses plugin_basename()
      * @uses hook()
      *
-     * @param string $_api_url The URL pointing to the custom API endpoint.
+     * @param string $_api_url     The URL pointing to the custom API endpoint.
      * @param string $_plugin_file Path to the plugin file.
-     * @param array $_api_data Optional data to send with API calls.
-     * @return void
+     * @param array  $_api_data    Optional data to send with API calls.
      */
     function __construct($_api_url, $_plugin_file, $_api_data = null)
     {
@@ -50,10 +52,10 @@ class CUAR_Plugin_Updater
      */
     public function init()
     {
-
         add_filter('pre_set_site_transient_update_plugins', array($this, 'check_update'));
         add_filter('plugins_api', array($this, 'plugins_api_filter'), 10, 3);
 
+        remove_action('after_plugin_row_' . $this->name, 'wp_plugin_update_row', 10);
         add_action('after_plugin_row_' . $this->name, array($this, 'show_update_notification'), 10, 2);
     }
 
@@ -68,34 +70,38 @@ class CUAR_Plugin_Updater
      * @uses api_request()
      *
      * @param array $_transient_data Update array build by WordPress.
+     *
      * @return array Modified update array with custom plugin data.
      */
     function check_update($_transient_data)
     {
 
-        if (!is_object($_transient_data)) {
+        global $pagenow;
+
+        if ( !is_object($_transient_data))
+        {
             $_transient_data = new stdClass;
         }
 
-        if (empty($_transient_data->response) || empty($_transient_data->response[$this->name])) {
+        if ('plugins.php' == $pagenow && is_multisite())
+        {
+            return $_transient_data;
+        }
 
+        if (empty($_transient_data->response) || empty($_transient_data->response[$this->name]))
+        {
             $version_info = $this->api_request('plugin_latest_version', array('slug' => $this->slug));
 
-            if (false !== $version_info && is_object($version_info) && isset($version_info->new_version)) {
-
-                $this->did_check = true;
-
-                if (version_compare($this->version, $version_info->new_version, '<')) {
-
+            if (false !== $version_info && is_object($version_info) && isset($version_info->new_version))
+            {
+                if (version_compare($this->version, $version_info->new_version, '<'))
+                {
                     $_transient_data->response[$this->name] = $version_info;
-
                 }
 
                 $_transient_data->last_checked = time();
                 $_transient_data->checked[$this->name] = $this->version;
-
             }
-
         }
 
         return $_transient_data;
@@ -105,20 +111,23 @@ class CUAR_Plugin_Updater
      * show update nofication row -- needed for multisite subsites, because WP won't tell you otherwise!
      *
      * @param string $file
-     * @param array $plugin
+     * @param array  $plugin
      */
     public function show_update_notification($file, $plugin)
     {
 
-        if (!current_user_can('update_plugins')) {
+        if ( !current_user_can('update_plugins'))
+        {
             return;
         }
 
-        if (!is_multisite()) {
+        if ( !is_multisite())
+        {
             return;
         }
 
-        if ($this->name != $file) {
+        if ($this->name != $file)
+        {
             return;
         }
 
@@ -126,45 +135,68 @@ class CUAR_Plugin_Updater
         remove_filter('pre_set_site_transient_update_plugins', array($this, 'check_update'), 10);
 
         $update_cache = get_site_transient('update_plugins');
+        $update_cache = is_object($update_cache) ? $update_cache : new stdClass();
 
-        if (empty($update_cache->response) || empty($update_cache->response[$this->name])) {
+        if (empty($update_cache->response) || empty($update_cache->response[$this->name]))
+        {
 
-            $version_info = $this->api_request('plugin_latest_version', array('slug' => $this->slug));
+            $cache_key = md5('edd_plugin_' . sanitize_key($this->name) . '_version_info');
+            $version_info = get_transient($cache_key);
 
-            if (version_compare($this->version, $version_info->new_version, '<')) {
+            if (false === $version_info)
+            {
+                $version_info = $this->api_request('plugin_latest_version', array('slug' => $this->slug));
+                set_transient($cache_key, $version_info, 3600);
+            }
 
+
+            if ( !is_object($version_info))
+            {
+                return;
+            }
+
+            if (version_compare($this->version, $version_info->new_version, '<'))
+            {
                 $update_cache->response[$this->name] = $version_info;
-
             }
 
             $update_cache->last_checked = time();
             $update_cache->checked[$this->name] = $this->version;
 
             set_site_transient('update_plugins', $update_cache);
-
+        }
+        else
+        {
+            $version_info = $update_cache->response[$this->name];
         }
 
         // Restore our filter
         add_filter('pre_set_site_transient_update_plugins', array($this, 'check_update'));
 
-        if (!empty($update_cache->response[$this->name]) && version_compare($this->version, $version_info->new_version, '<')) {
-
+        if ( !empty($update_cache->response[$this->name]) && version_compare($this->version, $version_info->new_version, '<'))
+        {
             // build a plugin list row, with update notification
             $wp_list_table = _get_list_table('WP_Plugins_List_Table');
-            echo '<tr class="plugin-update-tr"><td colspan="' . $wp_list_table->get_column_count() . '" class="plugin-update colspanchange"><div class="update-message">';
+            echo '<tr class="plugin-update-tr"><td colspan="' . $wp_list_table->get_column_count()
+                . '" class="plugin-update colspanchange"><div class="update-message">';
 
-            $changelog_link = self_admin_url('index.php?edd_sl_action=view_plugin_changelog&plugin=' . $this->name . '&slug=' . $this->slug . '&TB_iframe=true&width=772&height=911');
+            $changelog_link = self_admin_url('index.php?edd_sl_action=view_plugin_changelog&plugin=' . $this->name . '&slug=' . $this->slug
+                . '&TB_iframe=true&width=772&height=911');
 
-            if (empty($version_info->download_link)) {
+            if (empty($version_info->download_link))
+            {
                 printf(
-                    __('There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a>.'),
+                    __('There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a>.', 'cuar'),
                     esc_html($version_info->name),
                     esc_url($changelog_link),
                     esc_html($version_info->new_version)
                 );
-            } else {
+            }
+            else
+            {
                 printf(
-                    __('There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a> or <a href="%4$s">update now</a>.'),
+                    __('There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a> or <a href="%4$s">update now</a>.',
+                        'cuar'),
                     esc_html($version_info->name),
                     esc_url($changelog_link),
                     esc_html($version_info->new_version),
@@ -182,23 +214,26 @@ class CUAR_Plugin_Updater
      *
      * @uses api_request()
      *
-     * @param mixed $_data
+     * @param mixed  $_data
      * @param string $_action
      * @param object $_args
+     *
      * @return object $_data
      */
     function plugins_api_filter($_data, $_action = '', $_args = null)
     {
-        if ($_action != 'plugin_information') {
+        if ($_action != 'plugin_information')
+        {
             return $_data;
         }
 
-        if (!isset($_args->slug) || ($_args->slug != $this->slug)) {
+        if ( !isset($_args->slug) || ($_args->slug != $this->slug))
+        {
             return $_data;
         }
 
         $to_send = array(
-            'slug' => $this->slug,
+            'slug'   => $this->slug,
             'is_ssl' => is_ssl(),
             'fields' => array(
                 'banners' => false, // These will be supported soon hopefully
@@ -208,7 +243,8 @@ class CUAR_Plugin_Updater
 
         $api_response = $this->api_request('plugin_information', $to_send);
 
-        if (false !== $api_response) {
+        if (false !== $api_response)
+        {
             $_data = $api_response;
         }
 
@@ -219,16 +255,19 @@ class CUAR_Plugin_Updater
     /**
      * Disable SSL verification in order to prevent download update failures
      *
-     * @param array $args
+     * @param array  $args
      * @param string $url
+     *
      * @return object $array
      */
     function http_request_args($args, $url)
     {
         // If it is an https request and we are performing a package download, disable ssl verification
-        if (strpos($url, 'https://') !== false && strpos($url, 'edd_action=package_download')) {
+        if (strpos($url, 'https://') !== false && strpos($url, 'edd_action=package_download'))
+        {
             $args['sslverify'] = false;
         }
+
         return $args;
     }
 
@@ -240,44 +279,50 @@ class CUAR_Plugin_Updater
      * @uses is_wp_error()
      *
      * @param string $_action The requested action.
-     * @param array $_data Parameters for the API action.
-     * @return false||object
+     * @param array  $_data   Parameters for the API action.
+     *
+     * @return false|object
      */
     private function api_request($_action, $_data)
     {
+
         global $wp_version;
 
         $data = array_merge($this->api_data, $_data);
 
         if ($data['slug'] != $this->slug)
-            return;
+        {
+            return false;
+        }
 
-        if (empty($data['license']))
-            return;
-
-        if ($this->api_url == home_url()) {
+        if ($this->api_url == home_url())
+        {
             return false; // Don't allow a plugin to ping itself
         }
 
         $api_params = array(
             'edd_action' => 'get_version',
-            'license' => $data['license'],
-            'item_name' => isset($data['item_name']) ? $data['item_name'] : false,
-            'item_id' => isset($data['item_id']) ? $data['item_id'] : false,
-            'slug' => $this->slug,
-            'author' => $data['author'],
-            'url' => home_url()
+            'license'    => !empty($data['license']) ? $data['license'] : '',
+            'item_name'  => isset($data['item_name']) ? $data['item_name'] : false,
+            'item_id'    => isset($data['item_id']) ? $data['item_id'] : false,
+            'slug'       => $data['slug'],
+            'author'     => $data['author'],
+            'url'        => home_url()
         );
 
         $request = wp_remote_post($this->api_url, array('timeout' => 15, 'sslverify' => false, 'body' => $api_params));
 
-        if (!is_wp_error($request)) {
+        if ( !is_wp_error($request))
+        {
             $request = json_decode(wp_remote_retrieve_body($request));
         }
 
-        if ($request && isset($request->sections)) {
+        if ($request && isset($request->sections))
+        {
             $request->sections = maybe_unserialize($request->sections);
-        } else {
+        }
+        else
+        {
             $request = false;
         }
 
@@ -286,25 +331,30 @@ class CUAR_Plugin_Updater
 
     public function show_changelog()
     {
-        if (empty($_REQUEST['edd_sl_action']) || 'view_plugin_changelog' != $_REQUEST['edd_sl_action']) {
+        if (empty($_REQUEST['edd_sl_action']) || 'view_plugin_changelog' != $_REQUEST['edd_sl_action'])
+        {
             return;
         }
 
-        if (empty($_REQUEST['plugin'])) {
+        if (empty($_REQUEST['plugin']))
+        {
             return;
         }
 
-        if (empty($_REQUEST['slug'])) {
+        if (empty($_REQUEST['slug']))
+        {
             return;
         }
 
-        if (!current_user_can('update_plugins')) {
-            wp_die(__('You do not have permission to install plugin updates'), __('Error', 'edd_sl'), array('response' => 401));
+        if ( !current_user_can('update_plugins'))
+        {
+            wp_die(__('You do not have permission to install plugin updates', 'cuar'), __('Error', 'cuar'), array('response' => 403));
         }
 
         $response = $this->api_request('plugin_latest_version', array('slug' => $_REQUEST['slug']));
 
-        if ($response && isset($response->sections['changelog'])) {
+        if ($response && isset($response->sections['changelog']))
+        {
             echo '<div style="background:#fff;padding:10px;">' . $response->sections['changelog'] . '</div>';
         }
 

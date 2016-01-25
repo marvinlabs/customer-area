@@ -39,20 +39,25 @@ class CUAR_PrivateFilesDefaultHandlers
         add_filter('cuar/private-content/files/on-attach-file?method=ftp-folder', array(&$this, 'attach_ftp_file'), 10, 7);
         add_filter('cuar/private-content/files/on-attach-file?method=classic-upload', array(&$this, 'attach_uploaded_file'), 10, 7);
 
-        // Get a unique filename for the methods we manage
+        // Handling of local files
         add_filter('cuar/private-content/files/unique-filename?method=ftp-folder', array(&$this, 'unique_local_filename'), 10, 4);
         add_filter('cuar/private-content/files/unique-filename?method=classic-upload', array(&$this, 'unique_local_filename_from_files_param'), 10, 4);
-
-        // Handling of local files
-        add_action('cuar/private-content/files/on-remove-attached-file?source=local', array(&$this, 'remove_attached_file'), 10, 3);
+        add_action('cuar/private-content/files/on-remove-attached-file?source=local', array(&$this, 'remove_attached_local_file'), 10, 3);
         add_filter('cuar/private-content/files/is-missing?source=local', array(&$this, 'is_local_file_missing'), 10, 3);
-        add_action('cuar/private-content/files/remove-orphan-files?source=local', array(&$this, 'remove_orphan_files'), 10, 1);
+        add_action('cuar/private-content/files/remove-orphan-files?source=local', array(&$this, 'remove_orphan_local_files'), 10, 1);
         add_action('cuar/private-content/files/output-file?source=local', array(&$this, 'output_local_file'), 10, 3);
 
+        // Handling of server files
+        add_filter('cuar/private-content/files/on-attach-file?method=server', array(&$this, 'attach_server_file'), 10, 7);
+        add_filter('cuar/private-content/files/unique-filename?method=server', array(&$this, 'unique_server_filename'), 10, 4);
+        add_action('cuar/private-content/files/on-remove-attached-file?source=server', array(&$this, 'remove_attached_server_file'), 10, 3);
+        add_filter('cuar/private-content/files/is-missing?source=server', array(&$this, 'is_server_file_missing'), 10, 3);
+        add_action('cuar/private-content/files/output-file?source=server', array(&$this, 'output_server_file'), 10, 3);
+        add_action('cuar/private-content/files/remove-orphan-files?source=server', array(&$this, 'remove_orphan_local_files'), 10, 1);
+        add_action('cuar/private-content/files/file-path', array(&$this, 'get_server_file_path'), 10, 3);
+        add_action('cuar/private-content/files/file-id', array(&$this, 'get_server_file_id'), 10, 2);
+
         // Handling of legacy files
-//        add_action('cuar/private-content/files/on-remove-attached-file?source=legacy', array(&$this, 'remove_attached_file'), 10, 3);
-//        add_filter('cuar/private-content/files/is-missing?source=legacy', array(&$this, 'is_local_file_missing'), 10, 3);
-//        add_action('cuar/private-content/files/remove-orphan-files?source=legacy', array(&$this, 'remove_orphan_files'), 10, 1);
         add_action('cuar/private-content/files/output-file?source=legacy', array(&$this, 'output_legacy_file'), 10, 3);
     }
 
@@ -102,6 +107,28 @@ class CUAR_PrivateFilesDefaultHandlers
     }
 
     /**
+     * Get a unique filename for storing a file in the post's storage folder. If the method is to leave the file in the original directory, we simply return
+     * its current filename
+     *
+     * @param string $filename The original filename
+     * @param int    $post_id  The post ID
+     * @param mixed  $extra    Available extra information
+     *
+     * @return string A unique filename
+     */
+    public function unique_server_filename($filename, $post_id, $extra)
+    {
+        if (isset($extra['method']) && $extra['method'] == 'noop') return $filename;
+
+        /** @var CUAR_PostOwnerAddOn $po_addon */
+        $po_addon = $this->plugin->get_addon('post-owner');
+        $path = $po_addon->get_private_storage_directory($post_id, true, false);
+        $unique_filename = wp_unique_filename($path, $filename, null);
+
+        return $unique_filename;
+    }
+
+    /**
      * Stream a local file to the client from the post's storage folder
      *
      * @param int    $post_id    The post ID
@@ -115,6 +142,81 @@ class CUAR_PrivateFilesDefaultHandlers
 
         $filename = $found_file['file'];
         $filepath = $po_addon->get_private_file_path($filename, $post_id, false);
+
+        $this->output_file($filepath, $filename, $action);
+    }
+
+    /**
+     * Stream a server file to the client from its folder
+     *
+     * @param string $file_path The current file path
+     * @param int    $post_id   The post ID
+     * @param array  $file      The file description
+     *
+     * @return string
+     */
+    public function get_server_file_path($file_path, $post_id, $file)
+    {
+        if ($file['source'] != 'server') return $file_path;
+
+        $filename = $file['file'];
+        $is_protected = $file['extra']['is_protected'];
+        if ($is_protected)
+        {
+            /** @var CUAR_PostOwnerAddOn $po_addon */
+            $po_addon = $this->plugin->get_addon('post-owner');
+            $file_path = $po_addon->get_private_file_path($filename, $post_id, false);
+        }
+        else
+        {
+            $file_path = $file['extra']['abs_path'];
+        }
+
+        return $file_path;
+    }
+
+    /**
+     * Stream a server file to the client from its folder
+     *
+     * @param string $file_id The current file ID
+     * @param array  $file    The file description
+     *
+     * @return string
+     */
+    public function get_server_file_id($file_id, $file)
+    {
+        if ($file['source'] != 'server') return $file_id;
+
+        $is_protected = $file['extra']['is_protected'];
+        if ( !$is_protected)
+        {
+            return md5($file['extra']['abs_path']);
+        }
+
+        return $file_id;
+    }
+
+    /**
+     * Stream a server file to the client from its folder
+     *
+     * @param int    $post_id    The post ID
+     * @param array  $found_file The file description
+     * @param string $action     The action (download|view)
+     */
+    public function output_server_file($post_id, $found_file, $action)
+    {
+        $filename = $found_file['file'];
+        $is_protected = $found_file['extra']['is_protected'];
+        if ($is_protected)
+        {
+            /** @var CUAR_PostOwnerAddOn $po_addon */
+            $po_addon = $this->plugin->get_addon('post-owner');
+            $filepath = $po_addon->get_private_file_path($filename, $post_id, false);
+        }
+        else
+        {
+            $filepath = $found_file['extra']['abs_path'];
+        }
 
         $this->output_file($filepath, $filename, $action);
     }
@@ -142,7 +244,7 @@ class CUAR_PrivateFilesDefaultHandlers
      *
      * @param int $post_id The post ID
      */
-    public function remove_orphan_files($post_id)
+    public function remove_orphan_local_files($post_id)
     {
         /** @var CUAR_PrivateFileAddOn $pf_addon */
         $pf_addon = $this->plugin->get_addon('private-files');
@@ -186,6 +288,105 @@ class CUAR_PrivateFilesDefaultHandlers
         $file_path = $folder . $file['file'];
 
         return !file_exists($file_path);
+    }
+
+    /**
+     * Tell if a file on the server is missing
+     *
+     * @param bool  $result  The result of the test
+     * @param int   $post_id The post ID
+     * @param array $file    The file description
+     *
+     * @return bool true if the file is missing
+     */
+    public function is_server_file_missing($result, $post_id, $file)
+    {
+        $filename = $file['file'];
+        $is_protected = $file['is_protected'];
+        if ($is_protected)
+        {
+            /** @var CUAR_PostOwnerAddOn $po_addon */
+            $po_addon = $this->plugin->get_addon('post-owner');
+            $filepath = $po_addon->get_private_file_path($filename, $post_id, false);
+        }
+        else
+        {
+            $filepath = $file['abs_path'];
+        }
+
+        return !file_exists($filepath);
+    }
+
+    /**
+     * Move or copy a file from a server folder to the final directory
+     *
+     * @param array                 $errors           The eventual errors
+     * @param CUAR_PrivateFileAddOn $pf_addon         The private files add-on instance
+     * @param string                $initial_filename The filename as it had been transmitted from AJAX
+     * @param int                   $post_id          The post ID owning the files
+     * @param string                $filename         The file name
+     * @param string                $caption          The caption
+     * @param string                $extra            Contains the method (move|copy|noop) and the file path
+     *
+     * @return array Errors if any
+     */
+    public function attach_server_file($errors, $pf_addon, $initial_filename, $post_id, $filename, $caption, $extra)
+    {
+        $supported_types = apply_filters('cuar/private-content/files/supported-types', null);
+        if ($supported_types != null)
+        {
+            $arr_file_type = wp_check_filetype(basename($filename));
+            $uploaded_type = $arr_file_type['type'];
+            if ( !in_array($uploaded_type, $supported_types))
+            {
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+
+                return $errors;
+            }
+        }
+
+        if ( !isset($extra['method']))
+        {
+            $errors[] = __("A method must be specified (copy|move|noop) in the extra parameter", 'cuar');
+
+            return $errors;
+        }
+
+        if ( !isset($extra['path']))
+        {
+            $errors[] = __("A path must be specified in the extra parameter", 'cuar');
+
+            return $errors;
+        }
+
+        // If the method is to leave the file where it is, we do nothing
+        if ($extra['method'] == 'noop')
+        {
+            return $errors;
+        }
+
+        // Else we copy/move the original file to the post's protected folder
+        $src_folder = trailingslashit($extra['path']);
+        $src_path = $src_folder . $initial_filename;
+
+        /** @var CUAR_PostOwnerAddOn $po_addon */
+        $po_addon = $this->plugin->get_addon('post-owner');
+        $dest_folder = trailingslashit($po_addon->get_private_storage_directory($post_id, true, true));
+        $dest_path = $dest_folder . $filename;
+
+        if (@copy($src_path, $dest_path))
+        {
+            if ($extra['method'] == 'move')
+            {
+                @unlink($src_path);
+            }
+        }
+        else
+        {
+            $errors[] = sprintf(__('An error happened while copying %1$s from the server folder %2$s', 'cuar'), $filename, $src_folder);
+        }
+
+        return $errors;
     }
 
     /**
@@ -352,11 +553,43 @@ class CUAR_PrivateFilesDefaultHandlers
      *
      * @return array Errors if any
      */
-    public function remove_attached_file($errors, $post_id, $file)
+    public function remove_attached_local_file($errors, $post_id, $file)
     {
         /** @var CUAR_PrivateFileAddOn $pf_addon */
         $pf_addon = $this->plugin->get_addon('private-files');
         $file_path = $pf_addon->get_file_path($post_id, $file);
+        if (@file_exists($file_path))
+        {
+            @unlink($file_path);
+        }
+
+        return $errors;
+    }
+
+    /**
+     * Physically remove a file attached to a post
+     *
+     * @param array $errors  The eventual errors
+     * @param int   $post_id The post ID owning the files
+     * @param array $file    The file description
+     *
+     * @return array Errors if any
+     */
+    public function remove_attached_server_file($errors, $post_id, $file)
+    {
+        $filename = $file['file'];
+        $is_protected = $file['is_protected'];
+        if ($is_protected)
+        {
+            /** @var CUAR_PostOwnerAddOn $po_addon */
+            $po_addon = $this->plugin->get_addon('post-owner');
+            $file_path = $po_addon->get_private_file_path($filename, $post_id, false);
+        }
+        else
+        {
+            $file_path = $file['abs_path'];
+        }
+
         if (@file_exists($file_path))
         {
             @unlink($file_path);
@@ -711,13 +944,13 @@ class CUAR_PrivateFilesDefaultHandlers
         if (ini_get('zlib.output_compression')) ini_set('zlib.output_compression', 'Off');
 
         header('Content-Type: ' . $mime_type);
-        if ($action == 'download')
+        if ($action == 'view')
         {
-            header('Content-Disposition: attachment; filename="' . $filename . '"');
+            header('Content-Disposition: inline; filename="' . $filename . '"');
         }
         else
         {
-            header('Content-Disposition: inline; filename="' . $filename . '"');
+            header('Content-Disposition: attachment; filename="' . $filename . '"');
         }
 
         header("Content-Transfer-Encoding: binary");

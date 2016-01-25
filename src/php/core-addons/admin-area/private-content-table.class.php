@@ -129,9 +129,18 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
     protected function get_query_args()
     {
         $args = array(
-            'post_type'   => $this->post_type,
-            'post_status' => $this->parameters['status']
+            'post_type' => $this->post_type
         );
+
+        if (empty($this->parameters['status']) || $this->parameters['status'] == 'any')
+        {
+            $statuses = array_diff(get_available_post_statuses(), array('trash'));
+            $args['post_status'] = $statuses;
+        }
+        else
+        {
+            $args['post_status'] = $this->parameters['status'];
+        }
 
         if ( !empty($this->parameters['author']))
         {
@@ -289,7 +298,10 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
 
     public function column_owner($item)
     {
-        return $this->po_addon->get_post_owner_displayname($item->ID, true);
+        $out = $this->po_addon->get_post_owner_displayname($item->ID, true);
+
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $out, $item, 'owner', $this);
     }
 
     /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/

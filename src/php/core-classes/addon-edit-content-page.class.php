@@ -108,14 +108,24 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 return false;
             }
 
+            // If not submitting the form, just stop here
+            if ( !isset($_POST['cuar_do_register']) && !isset($_GET["nonce"]))
+            {
+                return true;
+            }
+
             // Form ID should match
-            if ( !isset($_POST['cuar_form_id']) || $_POST['cuar_form_id'] != $this->get_slug())
+            if (isset($_POST['cuar_form_id']) && $_POST['cuar_form_id'] != $this->get_slug())
             {
                 return false;
             }
 
             // Nonce check
-            if ( !wp_verify_nonce($_POST["cuar_" . $this->get_slug() . "_nonce"], 'cuar_' . $this->get_slug()))
+            $nonce = isset($_POST["cuar_" . $this->get_slug() . "_nonce"])
+                ? $_POST["cuar_" . $this->get_slug() . "_nonce"]
+                : (isset($_GET["nonce"]) ? $_GET["nonce"] : '');
+
+            if ( !wp_verify_nonce($nonce, 'cuar_' . $this->get_slug()))
             {
                 die('An attempt to bypass security checks was detected! Please go back and try again.');
             }
@@ -598,7 +608,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 /** @var CUAR_PostOwnerAddOn $po_addon */
                 $po_addon = $this->plugin->get_addon('post-owner');
                 $owner = $po_addon->get_owner_from_post_data();
-                if ($owner != null)
+                if ($owner != null && !empty($owner['type']))
                 {
                     $owner_type = $owner['type'];
                     $owner_ids = $owner['ids'];

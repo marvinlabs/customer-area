@@ -34,11 +34,14 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public static $TYPE_FILE_ATTACHMENT_ADDED = 'cuar_file_attachment_added';
         public static $TYPE_FILE_ATTACHMENT_REMOVED = 'cuar_file_attachment_removed';
         public static $TYPE_FILE_ATTACHMENT_UPDATED = 'cuar_file_attachment_updated';
+        public static $TYPE_LOGIN = 'cuar_user_login';
+
         public static $META_USER_ID = 'user_id';
         public static $META_IP = 'ip';
         public static $META_PREVIOUS_OWNER = 'previous_owner';
         public static $META_CURRENT_OWNER = 'current_owner';
         public static $META_FILE_ATTACHMENT = 'attachment';
+        public static $META_FILE_ID = 'attachment_id';
 
         /** @var CUAR_Logger The logger object */
         private $logger = null;
@@ -71,11 +74,11 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 20, 2);
                 add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_options'), 20, 3);
             }
-            else
-            {
-            }
 
             add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 99);
+
+            // User login
+            add_action('wp_login', array(&$this, 'log_user_login'), 10, 2);
 
             // Add some event types by default
             add_filter('cuar/core/log/event-types', array(&$this, 'add_default_event_types'));
@@ -87,8 +90,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
             add_action('cuar/core/ownership/protect-single-post/on-access-granted', array(&$this, 'log_content_viewed'));
 
             // File downloaded
-            add_action('cuar/private-content/files/on-download', array(&$this, 'log_file_downloaded'), 10, 3);
-            add_action('cuar/private-content/files/on-view', array(&$this, 'log_file_downloaded'), 10, 3);
+            add_action('cuar/private-content/files/on-download', array(&$this, 'log_file_downloaded'), 10, 4);
+            add_action('cuar/private-content/files/on-view', array(&$this, 'log_file_downloaded'), 10, 4);
 
             // File attachment operations
             add_action('cuar/private-content/files/on-add-attachment', array(&$this, 'log_add_file_attachment'), 10, 2);
@@ -158,6 +161,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
         public function add_default_event_types($default_types)
         {
             return array_merge($default_types, array(
+                self::$TYPE_LOGIN                   => __('Login', 'cuar'),
                 self::$TYPE_CONTENT_VIEWED          => __('Content viewed', 'cuar'),
                 self::$TYPE_FILE_DOWNLOADED         => __('File downloaded', 'cuar'),
                 self::$TYPE_OWNER_CHANGED           => __('Owner changed', 'cuar'),
@@ -165,6 +169,25 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 self::$TYPE_FILE_ATTACHMENT_REMOVED => __('Attachment removed', 'cuar'),
                 self::$TYPE_FILE_ATTACHMENT_UPDATED => __('Attachment updated', 'cuar')
             ));
+        }
+
+        /**
+         * Log a successful login
+         *
+         * @param string  $username
+         * @param WP_User $user
+         */
+        public function log_user_login($username, $user)
+        {
+            $should_log_event = true;
+            $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_LOGIN, $should_log_event, $user);
+            if ($should_log_event)
+            {
+                $this->logger->log_event(self::$TYPE_LOGIN,
+                    $user->ID,
+                    'WP_User',
+                    $this->get_default_event_meta());
+            }
         }
 
         /**
@@ -209,8 +232,9 @@ if ( !class_exists('CUAR_LogAddOn')) :
          * @param $post_id
          * @param $current_user_id
          * @param $pf_addon
+         * @param $file_id
          */
-        public function log_file_downloaded($post_id, $current_user_id, $pf_addon)
+        public function log_file_downloaded($post_id, $current_user_id, $pf_addon, $file_id)
         {
             $should_log_event = true;
             $log_only_once = $this->only_log_first_download();
@@ -221,6 +245,11 @@ if ( !class_exists('CUAR_LogAddOn')) :
                         array(
                             'key'     => self::$META_USER_ID,
                             'value'   => get_current_user_id(),
+                            'compare' => '='
+                        ),
+                        array(
+                            'key'     => self::$META_FILE_ID,
+                            'value'   => $file_id,
                             'compare' => '='
                         )
                     ));
@@ -237,7 +266,9 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 $this->logger->log_event(self::$TYPE_FILE_DOWNLOADED,
                     $post_id,
                     get_post_type($post_id),
-                    $this->get_default_event_meta());
+                    array_merge($this->get_default_event_meta(), array(
+                        self::$META_FILE_ID => $file_id,
+                    )));
             }
         }
 
@@ -338,7 +369,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 self::$META_IP,
                 self::$META_PREVIOUS_OWNER,
                 self::$META_CURRENT_OWNER,
-                self::$META_FILE_ATTACHMENT
+                self::$META_FILE_ATTACHMENT,
+                self::$META_FILE_ID
             ));
         }
 
@@ -368,7 +400,16 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 case self::$META_FILE_ATTACHMENT:
                     $o = $item->$meta;
                     $pill['title'] = __('Caption: ', 'cuar') . $o['caption'];
-                    $pill['value'] = __('File: ', 'cuar') . $o['file'];
+                    $pill['value'] = __('Attachment: ', 'cuar') . $o['file'];
+                    break;
+
+                case self::$META_FILE_ID:
+                    $o = $item->$meta;
+                    /** @var CUAR_PrivateFileAddOn $pf_addon */
+                    $pf_addon = $this->plugin->get_addon('private-files');
+                    $f = $pf_addon->get_attached_file($item->post->post_parent, $o);
+                    $pill['title'] = __('Caption: ', 'cuar') . $f['caption'];
+                    $pill['value'] = __('Attachment: ', 'cuar') . $f['file'];
                     break;
             }
 

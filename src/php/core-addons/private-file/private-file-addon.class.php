@@ -176,9 +176,10 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          *
          * @return string The ID
          */
-        public function get_file_id_from_name($filename)
+        public function compute_file_id($file)
         {
-            return md5($filename);
+            $id = md5($file['file']);
+            return apply_filters('cuar/private-content/files/file-id', $id, $file);
         }
 
         /**
@@ -374,9 +375,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          */
         public function add_attached_file($post_id, $filename, $caption, $source, $extra)
         {
-            $file_id = $this->get_file_id_from_name($filename);
             $meta = array(
-                'id'      => $file_id,
+                'id'      => '',
                 'source'  => $source,
                 'post_id' => $post_id,
                 'file'    => $filename,
@@ -384,15 +384,17 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 'extra'   => $extra
             );
 
+            $meta['id'] = $this->compute_file_id($meta);
+
             // Update an existing file if any
             $files = $this->get_attached_files($post_id);
             $found = false;
             foreach ($files as $fid => $file)
             {
-                if ($fid == $file_id || $file['file'] == $filename)
+                if ($fid == $meta['id'] || $file['file'] == $filename)
                 {
                     unset($files[$fid]);
-                    $files[$file_id] = $meta;
+                    $files[$meta['id']] = $meta;
                     $found = true;
                     break;
                 }
@@ -401,7 +403,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // File not updated, just add it
             if ( !$found)
             {
-                $files[$file_id] = $meta;
+                $files[$meta['id']] = $meta;
             }
 
             $this->save_attached_files($post_id, $files);
@@ -467,11 +469,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 $files = $this->get_attached_files($post_id);
             }
 
-            // Check if present
-            $file_id = $this->get_file_id_from_name($filename);
-            if (isset($files[$file_id]))
+            foreach ($files as $file)
             {
-                return $files[$file_id];
+                if ($file['file']==$filename) return $file;
             }
 
             return false;
@@ -531,10 +531,10 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         {
             if ( !isset($file['source']))
             {
-                $file['id'] = $this->get_file_id_from_name($file['file']);
                 $file['source'] = 'legacy';
                 $file['caption'] = $file['file'];
                 $file['extra'] = '';
+                $file['id'] = $this->compute_file_id($file);
             }
 
             return $file;
@@ -1059,25 +1059,15 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                 exit();
             }
 
+            // Default action to apply on file
+            $action = apply_filters('cuar/private-content/files/default-action', $action, $found_file);
+
             // Seems we are all good, do some stuff before sending the file
-            if ($action == 'download')
+            if ($author_id != $current_user_id)
             {
-                if ($author_id != $current_user_id)
-                {
-                    $this->increment_file_download_count($post->ID, $file_id);
-                }
-
-                do_action('cuar/private-content/files/on-download', $post->ID, $current_user_id, $this, $file_id);
+                $this->increment_file_download_count($post->ID, $file_id);
             }
-            else if ($action == 'view')
-            {
-                if ($author_id != $current_user_id)
-                {
-                    $this->increment_file_download_count($post->ID, $file_id);
-                }
-
-                do_action('cuar/private-content/files/on-view', $post->ID, $current_user_id, $this, $file_id);
-            }
+            do_action('cuar/private-content/files/on-' . $action, $post->ID, $current_user_id, $this, $file_id);
 
             // Send the file
             do_action('cuar/private-content/files/output-file?source=' . $found_file['source'], $post->ID, $found_file, $action);

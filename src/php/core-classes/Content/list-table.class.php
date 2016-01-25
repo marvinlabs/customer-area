@@ -121,8 +121,14 @@ abstract class CUAR_ListTable extends WP_List_Table
 
         $statuses = $this->get_view_statuses();
 
-        foreach ($statuses as $status => $label)
+        foreach ($statuses as $id => $label)
         {
+            $status = $id;
+            if ($id == 'any')
+            {
+                $status = array_diff(get_available_post_statuses(), array('trash'));
+            }
+
             $args = array_merge($query_args, array(
                 'fields'         => 'ids',
                 'paged'          => 1,
@@ -131,7 +137,7 @@ abstract class CUAR_ListTable extends WP_List_Table
             ));
 
             $q = new WP_Query($args);
-            $this->view_counts[$status] = $q->post_count;
+            $this->view_counts[$id] = $q->post_count;
         }
 
         $this->total_count = $this->view_counts[$this->parameters['status']];
@@ -237,13 +243,16 @@ abstract class CUAR_ListTable extends WP_List_Table
         $out = array();
         foreach ($terms as $t)
         {
-            $out[] = sprintf('<a href="%1$s" title="Show content classified under %2$s" class="cuar-taxonomy-term">%3$s</a>',
+            $out[] = sprintf(__('<a href="%1$s" title="Show content classified under %2$s" class="cuar-taxonomy-term">%3$s</a>', 'cuar'),
                 $this->base_url . '&' . $taxonomy . '=' . $t->slug,
                 esc_attr($t->name),
                 $t->name);
         }
 
-        return empty($out) ? '-' : implode(', ', $out);
+        $out = empty($out) ? '-' : implode(', ', $out);
+
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $out, $item, $taxonomy, $this);
     }
 
     public function column_date($item)
@@ -294,7 +303,8 @@ abstract class CUAR_ListTable extends WP_List_Table
             $out .= __('Last Modified', 'cuar');
         }
 
-        return $out;
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $out, $item, 'date', $this);
     }
 
     public function column_title($item)
@@ -356,17 +366,21 @@ abstract class CUAR_ListTable extends WP_List_Table
 
         $value = $title . $this->row_actions($row_actions);
 
-        return $value;
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $value, $item, 'title', $this);
     }
 
     public function column_author($item)
     {
         $user = get_userdata($item->post_author);
 
-        return sprintf('<a href="%1$s" title="Show content authored by %2$s" class="cuar-author">%3$s</a>',
+        $value = sprintf('<a href="%1$s" title="Show content authored by %2$s" class="cuar-author">%3$s</a>',
             $this->base_url . '&author=' . $user->ID,
             esc_attr($user->display_name),
             $user->user_login);
+
+        return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
+            $value, $item, 'author', $this);
     }
 
     /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/

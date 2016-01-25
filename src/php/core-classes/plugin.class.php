@@ -750,6 +750,14 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
                     break;
 
+                case 'jquery.datepicker':
+                {
+                    wp_enqueue_script('jquery-ui-datepicker');
+                    $protocol = is_ssl() ? 'https' : 'http';
+                    wp_enqueue_style('jquery-ui', $protocol . '://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css');
+                }
+                    break;
+
                 case 'bootstrap.dropdown':
                 {
                     wp_enqueue_script('bootstrap.transition', CUAR_PLUGIN_URL . 'libs/bootstrap/js/transition.js', array('jquery'), $this->get_version());
@@ -770,9 +778,9 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
                     break;
 
-                case 'jquery.knob':
+                case 'bootstrap.slider':
                 {
-                    wp_enqueue_script('jquery.knob', CUAR_PLUGIN_URL . 'libs/knob/jquery.knob.min.js', array('jquery'), $this->get_version());
+                    wp_enqueue_script('bootstrap.slider', CUAR_PLUGIN_URL . 'libs/bootstrap-slider/dist/bootstrap-slider.min.js', array('jquery'), $this->get_version());
                 }
                     break;
 
@@ -780,6 +788,12 @@ if ( !class_exists('CUAR_Plugin')) :
                 {
                     wp_enqueue_script('jquery.repeatable-fields', CUAR_PLUGIN_URL . 'libs/repeatable-fields/repeatable-fields.min.js',
                         array('jquery', 'jquery-ui-sortable'), $this->get_version());
+                }
+                    break;
+
+                case 'jquery.autogrow':
+                {
+                    wp_enqueue_script('jquery.autogrow', CUAR_PLUGIN_URL . 'libs/autogrow/autogrow.min.js', array('jquery'), $this->get_version());
                 }
                     break;
 

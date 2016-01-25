@@ -1,0 +1,144 @@
+.cuar-invoice-list {
+  .cuar-invoice {
+    .title {
+      width: 70%;
+      float: left;
+    }
+    .amount {
+      width: 30%;
+      float: right;
+      font-size: 1.5em;
+      text-align: right;
+      margin-top: 12px;
+    }
+    .due-date {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+    &.expired.open {
+      .due-date {
+        color: #cc1111;
+      }
+    }
+    &.closed {
+      .due-date {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+// Invoice info in the single post footer
+// --------------------------------------------------
+
+.cuar-single-post-footer.cuar_invoice {
+  .header-meta {
+    .invoice-header {
+      .make-md-column(12);
+    }
+    margin-bottom: 20px;
+  }
+
+  .footer-meta {
+    .invoice-footer {
+      .make-md-column(12);
+    }
+    margin-top: 20px;
+  }
+
+  .addresses-meta {
+    .billing-address,
+    .emitter-address {
+      .make-md-column(6);
+    }
+    margin-bottom: 20px;
+  }
+
+  .cuar-address-logo {
+    max-height: 150px;
+    margin-bottom: 20px;
+  }
+
+  .properties-meta {
+    .notice {
+      .make-md-column(6);
+    }
+    .properties {
+      .make-md-column(6);
+
+      th, td {
+        width: 50%;
+      }
+    }
+  }
+
+  .items-meta {
+    margin-top: 18px;
+    margin-bottom: 18px;
+
+    .title {
+      .make-xs-column(12);
+      .make-md-column(8);
+    }
+    .unit-price,
+    .quantity {
+      .make-xs-column(6);
+      .make-md-column(2);
+    }
+    .quantity {
+    }
+    .unit-price {
+      text-align: right;
+    }
+    .description {
+      .make-md-column(8);
+      opacity: 0.8;
+      font-style: italic;
+      margin-top: 7px;
+    }
+    .row {
+      border-bottom: 1px solid #eee;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      &:last-child {
+        border: none;
+      }
+    }
+    .row.item-heading {
+      .title,
+      .unit-price,
+      .quantity {
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+  }
+
+  .totals-meta {
+    .title {
+      .make-md-column(8);
+      font-weight: bold;
+      text-align: right;
+    }
+    .price {
+      .make-md-column(4);
+      font-weight: bold;
+      text-align: right;
+    }
+    .description {
+      .make-md-column(8);
+      opacity: 0.8;
+      font-style: italic;
+      margin-top: 7px;
+      text-align: right;
+    }
+    .row {
+      border-bottom: 0px solid #eee;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}

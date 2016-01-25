@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once(CUAR_INCLUDES_DIR . '/core-classes/addon-page.class.php');
 
-if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
+if ( !class_exists('CUAR_TermsWidget')) :
 
     /**
      * Widget to show the terms of a taxonomy in a list
@@ -188,4 +188,4 @@ if ( !class_exists('CUAR_PrivateFileCategoriesWidget')) :
         }
     }
 
-endif; // if (!class_exists('CUAR_PrivateFileCategoriesWidget')) 
+endif; // if (!class_exists('CUAR_TermsWidget'))

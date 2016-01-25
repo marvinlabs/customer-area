@@ -139,6 +139,7 @@ if ( !class_exists('CUAR_StatusAddOn')) :
                     'label'   => __('Settings', 'cuar'),
                     'title'   => __('Settings tools', 'cuar'),
                     'actions' => array(
+                        'cuar-uninstall'          => array(&$this, 'uninstall'),
                         'cuar-reset-all-settings' => array(&$this, 'reset_settings'),
                         'cuar-export-settings'    => array(&$this, 'export_settings'),
                         'cuar-import-settings'    => array(&$this, 'import_settings')
@@ -190,6 +191,19 @@ if ( !class_exists('CUAR_StatusAddOn')) :
                     }
                 }
             }
+        }
+
+        private function uninstall()
+        {
+            $this->reset_settings();
+
+            // TODO cleanup extra temporary settings if any
+            // TODO cleanup capabilities
+            // TODO delete private content
+            // TODO delete custom taxonomies
+            // TODO delete user meta
+
+            $this->plugin->add_admin_notice(__('The database has been cleaned up, you can now remove the plugin', 'cuar'), 'updated');
         }
 
         private function reset_settings()

@@ -1,7 +1,14 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /** Template version: 1.0.0
+ *
+ * -=1.0.1=-
+ * - change heading for WP 4.4
+ *
+ */ ?>
 
 <div class="wrap cuar-logs-list-page cuar-list-table-page">
-    <h2><?php _e('Logs', 'cuar'); ?></h2>
+    <h1><?php _e('Logs', 'cuar'); ?></h1>
+
+    <h2 class="screen-reader-text"><?php _e('Filter Log Event List', 'cuar'); ?></h2>
 
     <form method="GET" action="<?php echo admin_url('admin.php'); ?>">
         <input type="hidden" name="cuar-do-logs-action" value="1"/>
