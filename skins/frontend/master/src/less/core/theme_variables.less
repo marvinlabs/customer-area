@@ -125,16 +125,92 @@
 @border-radius-large:       3px;
 @border-radius-small:       0px;
 
-
-//** Global color for active items (e.g., navs or dropdowns).
-@component-active-color:    @cuar-color-contrast-text;
 //** Global background color for active items (e.g., navs or dropdowns).
 @component-active-bg:       @brand-primary;
+//** Global color for active items (e.g., navs or dropdowns).
+@component-active-color:    contrast(@component-active-bg, @palette-Black-Text, @palette-White-Text);
+
 
 //** Width of the `border` for generating carets that indicator dropdowns.
 @caret-width-base:          4px;
 //** Carets increase slightly in size for larger components.
 @caret-width-large:         5px;
+
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+@navbar-height:                    50px;
+@navbar-margin-bottom:             @line-height-computed;
+@navbar-border-radius:             @border-radius-base;
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height:       340px;
+
+@navbar-default-color:             @cuar-color-neutral-90;
+@navbar-default-bg:                @cuar-color-neutral-10;
+@navbar-default-border:            darken(@navbar-default-bg, 16%);
+
+// Navbar links
+@navbar-default-link-hover-bg:             @cuar-color-neutral-20;
+@navbar-default-link-color:                contrast(@navbar-default-bg, @palette-Black-Text, @palette-White-Text);
+@navbar-default-link-hover-color:          contrast(@navbar-default-link-hover-bg, @palette-Black-Text, @palette-White-Text);
+@navbar-default-link-active-bg:            @component-active-bg;
+@navbar-default-link-active-color:         @component-active-color;
+@navbar-default-link-disabled-color:       @muted;
+@navbar-default-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-default-brand-color:               @navbar-default-link-color;
+@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:           #ddd;
+@navbar-default-toggle-icon-bar-bg:        #888;
+@navbar-default-toggle-border-color:       #ddd;
+
+
+// Inverted navbar
+// Reset inverted navbar basics
+@navbar-inverse-color:                      @cuar-color-neutral-50;
+@navbar-inverse-bg:                         @cuar-color-neutral-80;
+@navbar-inverse-border:                     lighten(@navbar-inverse-bg, 6.5%);
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 @gray-light;
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            #333;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-border-color:        #333;
+
+
+//== Navs
+//
+//##
+
+//=== Shared nav styles
+@nav-link-padding:                          10px 15px;
+@nav-link-hover-bg:                         darken(@navbar-default-bg, 5%);
+
+@nav-disabled-link-color:                   @gray-light;
+@nav-disabled-link-hover-color:             @gray-light;
+
+@nav-open-link-hover-color:                 #fff;
 
 
 //== Tables
@@ -252,20 +328,20 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    @cuar-color-neutral-30;
+@dropdown-bg:                    @navbar-default-bg;
 //** Dropdown menu `border-color`.
-@dropdown-border:                darken(@dropdown-bg, 8%);
+@dropdown-border:                @navbar-default-border;
 //** Dropdown menu `border-color` **for IE8**.
 @dropdown-fallback-border:       @dropdown-border;
 //** Divider color for between dropdown items.
-@dropdown-divider-bg:            darken(@dropdown-bg, 8%);
+@dropdown-divider-bg:            @dropdown-border;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @cuar-color-neutral-70;
-//** Hover color for dropdown links.
-@dropdown-link-hover-color:      lighten(@dropdown-link-color, 5%);
+@dropdown-link-color:            contrast(@dropdown-bg, @palette-Black-Text, @palette-White-Text);
 //** Hover background for dropdown links.
-@dropdown-link-hover-bg:         darken(@dropdown-bg, 15%);
+@dropdown-link-hover-bg:         @nav-link-hover-bg;
+//** Hover color for dropdown links.
+@dropdown-link-hover-color:      @dropdown-link-color;
 
 //** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
@@ -393,82 +469,6 @@
 //## Define colors used in content tray navigations(".tray-nav")
 @tray-nav-active-icon: @brand-primary;
 @tray-nav-active-border: @brand-primary;
-
-
-//== Navbar
-//
-//##
-
-// Basics of a navbar
-@navbar-height:                    50px;
-@navbar-margin-bottom:             @line-height-computed;
-@navbar-border-radius:             @border-radius-base;
-@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
-@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
-@navbar-collapse-max-height:       340px;
-
-@navbar-default-color:             @cuar-color-neutral-90;
-@navbar-default-bg:                @cuar-color-neutral-10;
-@navbar-default-border:            darken(@navbar-default-bg, 16%);
-
-// Navbar links
-@navbar-default-link-hover-bg:             @cuar-color-neutral-20;
-@navbar-default-link-color:                contrast(@navbar-default-bg, @palette-Black-Text, @palette-White-Text);
-@navbar-default-link-hover-color:          contrast(@navbar-default-link-hover-bg, @palette-Black-Text, @palette-White-Text);
-@navbar-default-link-active-bg:            @brand-primary;
-@navbar-default-link-active-color:         contrast(@navbar-default-link-active-bg, @palette-Black-Text, @palette-White-Text);
-@navbar-default-link-disabled-color:       @muted;
-@navbar-default-link-disabled-bg:          transparent;
-
-// Navbar brand label
-@navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
-@navbar-default-brand-hover-bg:            transparent;
-
-// Navbar toggle
-@navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #888;
-@navbar-default-toggle-border-color:       #ddd;
-
-
-// Inverted navbar
-// Reset inverted navbar basics
-@navbar-inverse-color:                      @cuar-color-neutral-50;
-@navbar-inverse-bg:                         @cuar-color-neutral-80;
-@navbar-inverse-border:                     lighten(@navbar-inverse-bg, 6.5%);
-
-// Inverted navbar links
-@navbar-inverse-link-color:                 @gray-light;
-@navbar-inverse-link-hover-color:           #fff;
-@navbar-inverse-link-hover-bg:              transparent;
-@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
-@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-disabled-color:        #444;
-@navbar-inverse-link-disabled-bg:           transparent;
-
-// Inverted navbar brand label
-@navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          #fff;
-@navbar-inverse-brand-hover-bg:             transparent;
-
-// Inverted navbar toggle
-@navbar-inverse-toggle-hover-bg:            #333;
-@navbar-inverse-toggle-icon-bar-bg:         #fff;
-@navbar-inverse-toggle-border-color:        #333;
-
-
-//== Navs
-//
-//##
-
-//=== Shared nav styles
-@nav-link-padding:                          10px 15px;
-@nav-link-hover-bg:                         darken(@navbar-default-bg, 5%);
-
-@nav-disabled-link-color:                   @gray-light;
-@nav-disabled-link-hover-color:             @gray-light;
-
-@nav-open-link-hover-color:                 #fff;
 
 //== Tabs
 @nav-tabs-border-color:                     #ddd;

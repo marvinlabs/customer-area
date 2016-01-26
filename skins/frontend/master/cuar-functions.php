@@ -63,7 +63,7 @@ if ( !function_exists('cuar_enable_bootstrap_nav_walker'))
         $new_args['depth'] = 2;
         $new_args['container'] = 'div';
         $new_args['container_class'] = 'nav-container collapse navbar-collapse';
-        $new_args['menu_class'] = 'nav navbar';
+        $new_args['menu_class'] = 'nav navbar-nav';
         $new_args['fallback_cb'] = 'CUAR_BootstrapNavWalker::fallback';
         $new_args['walker'] = new CUAR_BootstrapNavWalker();
 

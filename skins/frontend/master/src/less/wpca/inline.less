@@ -6,7 +6,11 @@ body.single .cuar-content-container {
     margin-left: -@grid-gutter-width / 2;
     margin-top: -@grid-gutter-width / 2;
     margin-right: -@grid-gutter-width / 2;
-    margin-bottom: @grid-gutter-width;
+
+    & + script + .cuar-menu-container,
+    & + .cuar-menu-container {
+      margin-bottom: @grid-gutter-width;
+    }
   }
 }
 
