@@ -91,7 +91,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
             <th><label for="<?php echo $address_id; ?>_logo_url" class="control-label"><?php _e('Logo', 'cuar'); ?></label></th>
             <td>
                 <div class="cuar-upload-control">
-                    <input type="text" name="<?php echo $address_id; ?>[logo_url]" id="<?php echo $address_id; ?>_logo" value="<?php echo esc_attr($address['logo_url']); ?>" placeholder="<?php esc_attr_e('Logo URL', 'cuar'); ?>" class="regular-text cuar-address-field cuar-upload-input"/>
+                    <input type="text" name="<?php echo $address_id; ?>[logo_url]" id="<?php echo $address_id; ?>_logo_url" value="<?php echo esc_attr($address['logo_url']); ?>" placeholder="<?php esc_attr_e('Logo URL', 'cuar'); ?>" class="regular-text cuar-address-field cuar-upload-input"/>
                     <span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="<?php _e('Upload Logo', 'cuar'); ?>"/></span>
                 </div>
             </td>
