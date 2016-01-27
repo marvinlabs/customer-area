@@ -59,8 +59,12 @@
 @font-weight-base:        400;
 
 @font-size-base:          13px;
+@font-size-md:            @font-size-base;
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-lg:            @font-size-large;
 @font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+@font-size-sm:            @font-size-small;
+@font-size-xs:            ceil((@font-size-base * 0.7)); // ~9px
 
 @font-size-h1:            floor((@font-size-base * 2.35)); // ~30px
 @font-size-h2:            floor((@font-size-base * 1.85)); // ~24px
@@ -106,14 +110,32 @@
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
+@margin-base-vertical:      30px;
+@margin-base-horizontal:    30px;
+@margin-md-vertical:        ceil((1.00 * @margin-base-vertical));
+@margin-md-horizontal:      ceil((1.00 * @margin-base-horizontal));
+@margin-lg-vertical:        ceil((1.50 * @margin-base-vertical));
+@margin-lg-horizontal:      ceil((1.50 * @margin-base-horizontal));
+@margin-sm-vertical:        ceil((0.85 * @margin-base-vertical));
+@margin-sm-horizontal:      ceil((0.85 * @margin-base-horizontal));
+@margin-xs-vertical:        ceil((0.70 * @margin-base-vertical));
+@margin-xs-horizontal:      ceil((0.70 * @margin-base-horizontal));
+
+
 @padding-base-vertical:     9px;
 @padding-base-horizontal:   12px;
+@padding-md-vertical:       @padding-base-vertical;
+@padding-md-horizontal:     @padding-base-horizontal;
 
 @padding-large-vertical:    10px;
 @padding-large-horizontal:  16px;
+@padding-lg-vertical:       @padding-large-vertical;
+@padding-lg-horizontal:     @padding-large-horizontal;
 
 @padding-small-vertical:    5px;
 @padding-small-horizontal:  10px;
+@padding-sm-vertical:       @padding-small-vertical;
+@padding-sm-horizontal:     @padding-small-horizontal;
 
 @padding-xs-vertical:       1px;
 @padding-xs-horizontal:     5px;
