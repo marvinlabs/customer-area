@@ -1,3 +1,22 @@
+// Fix panel body without padding table bug
+//--
+.panel-body.pn {
+  .table {
+    border-bottom: 0 none;
+
+    tr:first-child {
+      td, th {
+        border-top: 0 none;
+      }
+    }
+    tr:last-child {
+      td, th {
+        border-bottom: 0 none;
+      }
+    }
+  }
+}
+
 // Panel for meta information tiles in single post footers
 //--
 
