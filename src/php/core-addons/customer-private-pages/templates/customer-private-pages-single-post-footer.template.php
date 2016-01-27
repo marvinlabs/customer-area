@@ -27,35 +27,33 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
 ?>
 
 
-<div class="cuar-single-post-footer<?php echo $extra_class; ?>">
-    <div class="row clearfix">
-        <div class="cuar-author col-sm-4">
-            <div class="panel panel-tile cuar-panel-meta-tile">
-                <div class="panel-body">
-                    <i class="fa fa-user cuar-bg"></i>
-                    <h4 class="cuar-meta-value"><?php echo $author; ?></h4>
-                    <h5 class="cuar-meta-label"><?php _e('Author', 'cuar'); ?></h5>
-                </div>
+<div class="cuar-single-post-footer row clearfix<?php echo $extra_class; ?>">
+    <div class="cuar-author col-sm-4">
+        <div class="panel panel-tile cuar-panel-meta-tile">
+            <div class="panel-body">
+                <i class="fa fa-user icon-bg"></i>
+                <h4 class="cuar-meta-value"><?php echo $author; ?></h4>
+                <h5 class="cuar-meta-label"><?php _e('Author', 'cuar'); ?></h5>
             </div>
         </div>
+    </div>
 
-        <div class="cuar-owner col-sm-4">
-            <div class="panel panel-tile cuar-panel-meta-tile">
-                <div class="panel-body">
-                    <i class="fa fa-users cuar-bg"></i>
-                    <h4 class="cuar-meta-value"><?php echo $recipients; ?></h4>
-                    <h5 class="cuar-meta-label"><?php _e('Recipient', 'cuar'); ?></h5>
-                </div>
+    <div class="cuar-owner col-sm-4">
+        <div class="panel panel-tile cuar-panel-meta-tile">
+            <div class="panel-body">
+                <i class="fa fa-users icon-bg"></i>
+                <h4 class="cuar-meta-value"><?php echo $recipients; ?></h4>
+                <h5 class="cuar-meta-label"><?php _e('Recipient', 'cuar'); ?></h5>
             </div>
         </div>
+    </div>
 
-        <div class="cuar-date col-sm-4">
-            <div class="panel panel-tile cuar-panel-meta-tile">
-                <div class="panel-body">
-                    <i class="fa fa-calendar cuar-bg"></i>
-                    <h4 class="cuar-meta-value"><?php echo $date; ?></h4>
-                    <h5 class="cuar-meta-label"><?php _e('Date', 'cuar'); ?></h5>
-                </div>
+    <div class="cuar-date col-sm-4">
+        <div class="panel panel-tile cuar-panel-meta-tile">
+            <div class="panel-body">
+                <i class="fa fa-calendar icon-bg"></i>
+                <h4 class="cuar-meta-value"><?php echo $date; ?></h4>
+                <h5 class="cuar-meta-label"><?php _e('Date', 'cuar'); ?></h5>
             </div>
         </div>
     </div>
