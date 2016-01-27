@@ -32,9 +32,9 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
         <div class="cuar-author col-sm-4">
             <div class="panel panel-tile cuar-panel-meta-tile">
                 <div class="panel-body">
-                    <i class="fa fa-user"></i>
-                    <h4><?php echo $author; ?></h4>
-                    <h5><?php _e('Author', 'cuar'); ?></h5>
+                    <i class="fa fa-user cuar-bg"></i>
+                    <h4 class="cuar-meta-value"><?php echo $author; ?></h4>
+                    <h5 class="cuar-meta-label"><?php _e('Author', 'cuar'); ?></h5>
                 </div>
             </div>
         </div>
@@ -42,9 +42,9 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
         <div class="cuar-owner col-sm-4">
             <div class="panel panel-tile cuar-panel-meta-tile">
                 <div class="panel-body">
-                    <i class="fa fa-users"></i>
-                    <h4><?php echo $recipients; ?></h4>
-                    <h5><?php _e('Recipient', 'cuar'); ?></h5>
+                    <i class="fa fa-users cuar-bg"></i>
+                    <h4 class="cuar-meta-value"><?php echo $recipients; ?></h4>
+                    <h5 class="cuar-meta-label"><?php _e('Recipient', 'cuar'); ?></h5>
                 </div>
             </div>
         </div>
@@ -52,9 +52,9 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
         <div class="cuar-date col-sm-4">
             <div class="panel panel-tile cuar-panel-meta-tile">
                 <div class="panel-body">
-                    <i class="fa fa-calendar"></i>
-                    <h4><?php echo $date; ?></h4>
-                    <h5><?php _e('Date', 'cuar'); ?></h5>
+                    <i class="fa fa-calendar cuar-bg"></i>
+                    <h4 class="cuar-meta-value"><?php echo $date; ?></h4>
+                    <h5 class="cuar-meta-label"><?php _e('Date', 'cuar'); ?></h5>
                 </div>
             </div>
         </div>
