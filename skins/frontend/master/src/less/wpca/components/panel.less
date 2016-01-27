@@ -12,7 +12,11 @@
 
     i {
       padding: @padding-sm-vertical;
-      color: @muted;
+      color: mix(@muted, @panel-bg, 60%);
+
+      .icon-bg {
+        z-index: 0;
+      }
     }
 
     .cuar-meta-value {
@@ -20,6 +24,12 @@
       font-size: @font-size-lg;
       line-height: @font-size-lg;
       margin-top: @font-size-lg;
+    }
+
+    .cuar-meta-value,
+    .cuar-meta-label {
+      z-index: 1;
+      position: relative;
     }
   }
 }
