@@ -8,11 +8,20 @@
 
 <div class="cuar-content-block cuar-private-pages panel">
     <div class="panel-heading">
+        <?php
+        $pp_addon = $this->plugin->get_addon('customer-private-pages');
+        $page_id = $pp_addon->get_page_id($this->get_slug());
+        ?>
         <span class="panel-icon">
             <i class="fa fa-book"></i>
         </span>
         <span class="panel-title">
             <?php echo $page_subtitle; ?>
+            <span class="widget-menu pull-right">
+                <a href="<?php echo get_permalink($page_id); ?>" class="btn btn-default btn-xs">
+                    <span class="fa fa-eye"></span> <?php _e('View all', 'cuar'); ?>
+                </a>
+            </span>
         </span>
     </div>
     <div class="cuar-private-pages-list cuar-item-list panel-body">

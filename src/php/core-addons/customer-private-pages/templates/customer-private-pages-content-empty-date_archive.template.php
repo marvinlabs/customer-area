@@ -9,4 +9,16 @@
  *
  */ ?>
 
-<p><?php _e( 'There are no pages for that period.', 'cuar' ); ?></p>
+<div class="cuar-content-block cuar-private-pages cuar-empty cuar-empty-date panel">
+    <div class="panel-heading">
+        <span class="panel-icon">
+            <i class="fa fa-book"></i>
+        </span>
+        <span class="panel-title">
+            <?php echo $page_subtitle; ?>
+        </span>
+    </div>
+    <div class="cuar-private-pages-list cuar-item-list panel-body">
+        <p><?php _e( 'There are no pages for that period.', 'cuar' ); ?></p>
+    </div>
+</div>
