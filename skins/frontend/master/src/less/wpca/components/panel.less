@@ -1,3 +1,6 @@
+// Panel for meta information tiles in single post footers
+//--
+
 .cuar-panel-meta-tile.panel.panel-tile {
   border-top: 0;
   border-left: 0;
@@ -17,6 +20,38 @@
       font-size: @font-size-lg;
       line-height: @font-size-lg;
       margin-top: @font-size-lg;
+    }
+  }
+}
+
+// Panel to show a list of key/value pairs
+//--
+
+.cuar-panel-property-list {
+  .panel-body {
+    .pn();
+
+    th, td {
+      .fs-sm();
+    }
+
+    th {
+      padding-left: @table-cell-padding + 6px; // 6px defined as such in framework's panels.less
+    }
+
+    table {
+      border-bottom: 0 none;
+
+      tr:first-child {
+        td, th {
+          border-top: 0 none;
+        }
+      }
+      tr:last-child {
+        td, th {
+          border-bottom: 0 none;
+        }
+      }
     }
   }
 }
