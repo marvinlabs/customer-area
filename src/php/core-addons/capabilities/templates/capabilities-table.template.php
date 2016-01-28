@@ -17,12 +17,14 @@ $column_count = 1; // We got an empty column on the left
 wp_enqueue_script('jquery-ui-tabs');
 ?>
 
-<div id="sections_tabs" class="cuar-tab-container">
-    <ul class="cuar-tab-wrapper">
+<p><?php _e('You can adjust here the permissions granted to the users for each role defined in your site.', 'cuar'); ?></p>
+
+<div id="sections_tabs" class="tab-container tab-vertical">
+    <ul class="tab-wrapper">
         <?php
         foreach ($all_capability_groups as $section_id => $section) {
             $section_label = $section['label'];
-            printf('<li class="cuar-nav-tab"><a href="#section_tab_%s">%s</a></li>',
+            printf('<li class="nav-tab"><a href="#section_tab_%s">%s</a></li>',
                 esc_attr($section_id),
                 esc_html($section_label));
         }
@@ -33,8 +35,6 @@ wp_enqueue_script('jquery-ui-tabs');
     foreach ($all_capability_groups as $section_id => $section) : ?>
 
         <div id="section_tab_<?php echo esc_attr($section_id); ?>">
-            <p>&nbsp;</p>
-
             <div style="overflow-x: scroll; overflow-y: visible;">
                 <table class="widefat cuar-capabilities">
                     <thead>
