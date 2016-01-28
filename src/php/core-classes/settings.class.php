@@ -1033,7 +1033,7 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
-            echo sprintf('<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button button-primary %s" /></p>',
+            echo sprintf('<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button %s" /></p>',
                 esc_attr($option_id),
                 self::$OPTIONS_GROUP, esc_attr($option_id),
                 $label,
@@ -1151,20 +1151,20 @@ if ( !class_exists('CUAR_Settings')) :
             {
                 if ($show_create_button)
                 {
-                    printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post"/>',
+                    printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post button"/>',
                         esc_attr__('Delete existing &amp; create new &raquo;', 'cuar'),
                         esc_attr($this->get_submit_create_post_button_name($option_id))
                     );
                 }
 
-                edit_post_link(__('Edit it &raquo;', 'cuar'), '<span class="cuar-edit-page-link">', '</span>',
-                    $this->options[$option_id]);
+                edit_post_link(__('Edit it &raquo;', 'cuar'), '<span class="cuar-edit-page-link ">', '</span>',
+                    $this->options[$option_id], 'post-edit-link button');
             }
             else
             {
                 if ($show_create_button)
                 {
-                    printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post"/>',
+                    printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post button"/>',
                         esc_attr__('Create it &raquo;', 'cuar'),
                         esc_attr($this->get_submit_create_post_button_name($option_id))
                     );
