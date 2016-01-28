@@ -1050,7 +1050,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 || cuar_is_customer_area_private_content(get_the_ID())
             )
             {
-                return '<div class="cuar-content-container">' . $content . '</div>';
+                return '<div id="cuar-js-content-container" class="cuar-content-container">' . $content . '</div>';
             }
 
             return $content;

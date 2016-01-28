@@ -1316,6 +1316,7 @@ if ( !class_exists('CUAR_Settings')) :
                 <!--
                 jQuery("document").ready(function ($) {
                     $("#' . esc_attr( $option_id ) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
                         width: "100%"
                     });
                 });
@@ -1389,6 +1390,7 @@ if ( !class_exists('CUAR_Settings')) :
                 <!--
                 jQuery("document").ready(function ($) {
                     $("#<?php echo esc_attr( $option_id ); ?>").select2({
+                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1461,6 +1463,7 @@ if ( !class_exists('CUAR_Settings')) :
                 <!--
                 jQuery("document").ready(function ($) {
                     $("#<?php echo esc_attr( $option_id ); ?>").select2({
+                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1549,6 +1552,7 @@ if ( !class_exists('CUAR_Settings')) :
                 <!--
                 jQuery("document").ready(function ($) {
                     $("#' . esc_attr( $option_id ) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
                         width: "100%"
                     });
                 });
