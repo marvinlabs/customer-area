@@ -24,15 +24,8 @@
             </span>
         </span>
     </div>
-    <div class="cuar-private-pages-list cuar-item-list panel-body">
+    <div class="cuar-private-pages-list cuar-item-list panel-body pn">
         <table class="table">
-            <thead>
-            <tr class="">
-                <th><?php _e('Title', 'cuar'); ?></th>
-                <th><?php _e('Owners', 'cuar'); ?></th>
-            </tr>
-            </thead>
-
             <tbody>
             <?php
             while ($content_query->have_posts()) {
