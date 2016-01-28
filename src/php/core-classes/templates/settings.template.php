@@ -43,10 +43,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	
 	<?php 
 		settings_fields( CUAR_Settings::$OPTIONS_GROUP . '_' . $this->current_tab ); 
-		do_settings_sections( CUAR_Settings::$OPTIONS_PAGE_SLUG ); 
+		do_settings_sections( CUAR_Settings::$OPTIONS_PAGE_SLUG );
+		do_action( 'cuar/templates/settings/in-settings-form?tab=' . $this->current_tab, $this );
 	?>
-	
-<?php do_action( 'cuar/templates/settings/in-settings-form?tab=' . $this->current_tab, $this ); ?>
 	
 	<?php submit_button(); ?>
 	</form>
@@ -54,14 +53,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php do_action( 'cuar/templates/settings/after-settings?tab=' . $this->current_tab, $this ); ?>
 <?php do_action( 'cuar/templates/settings/after-settings', $this ); ?>
 
-	</div>
-	
-	<div class="cuar-side">
-
-	<?php do_action( 'cuar/templates/settings/before-settings-sidebar', $this ); ?>
-	<?php do_action( 'cuar/templates/settings/settings-sidebar?tab=' . $this->current_tab, $this ); ?>
-	<?php do_action( 'cuar/templates/settings/after-settings-sidebar', $this ); ?>
-		
 	</div>
 </div>
 
