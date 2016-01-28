@@ -959,6 +959,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                             <!--
                             jQuery("document").ready(function ($) {
                                 $("#<?php echo $field_id; ?>").select2({
+                                    <?php if(!is_admin()) echo "dropdownParent: $('#" . $field_id . "').parent(),"; ?>
                                     width: "100%"
                                 });
                             });

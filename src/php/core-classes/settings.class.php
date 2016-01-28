@@ -52,11 +52,15 @@ if ( !class_exists('CUAR_Settings')) :
                 // We have some core settings to take care of too
                 add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_core_settings_tab'), 200, 1);
 
-                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 10, 2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_settings'), 10, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 10,
+                    2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_core',
+                    array(&$this, 'validate_core_settings'), 10, 3);
 
-                add_action('cuar/core/settings/print-settings?tab=cuar_frontend', array(&$this, 'print_frontend_settings'), 10, 2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_frontend', array(&$this, 'validate_frontend_settings'), 10, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_frontend',
+                    array(&$this, 'print_frontend_settings'), 10, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_frontend',
+                    array(&$this, 'validate_frontend_settings'), 10, 3);
 
                 add_action('wp_ajax_cuar_validate_license', array('CUAR_Settings', 'ajax_validate_license'));
             }
@@ -198,11 +202,18 @@ if ( !class_exists('CUAR_Settings')) :
             $this->setup_tabs();
 
             // Register the main settings and for the current tab too
-            register_setting(self::$OPTIONS_GROUP, self::$OPTIONS_GROUP, array(&$this, 'validate_options'));
-            register_setting(self::$OPTIONS_GROUP . '_' . $this->current_tab, self::$OPTIONS_GROUP, array(&$this, 'validate_options'));
+            register_setting(self::$OPTIONS_GROUP, self::$OPTIONS_GROUP, array(
+                &$this,
+                'validate_options'
+            ));
+            register_setting(self::$OPTIONS_GROUP . '_' . $this->current_tab, self::$OPTIONS_GROUP, array(
+                &$this,
+                'validate_options'
+            ));
 
             // Let the current tab add its own settings to the page
-            do_action("cuar/core/settings/print-settings?tab=" . $this->current_tab, $this, self::$OPTIONS_GROUP . '_' . $this->current_tab);
+            do_action("cuar/core/settings/print-settings?tab=" . $this->current_tab, $this,
+                self::$OPTIONS_GROUP . '_' . $this->current_tab);
         }
 
         /**
@@ -973,7 +984,7 @@ if ( !class_exists('CUAR_Settings')) :
                     esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id),
                     esc_attr(stripslashes($this->options [$option_id])), esc_attr($extra_class));
 
-                echo '<span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="' . __('Upload File', 'cuar') . '"/></span>';
+                echo '<span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="' . __( 'Upload File', 'cuar' ) . '"/></span>';
 
                 echo '<script type="text/javascript">';
                 echo '    jQuery(document).ready(function($) { $("#cuar-upload-control-' . $option_id . '").mediaInputControl(); });';
@@ -1022,7 +1033,7 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
-            echo sprintf('<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button %s" /></p>',
+            echo sprintf('<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button button-primary %s" /></p>',
                 esc_attr($option_id),
                 self::$OPTIONS_GROUP, esc_attr($option_id),
                 $label,
@@ -1042,8 +1053,8 @@ if ( !class_exists('CUAR_Settings')) :
                 <script type="text/javascript">
                     <!--
                     jQuery(document).ready(function ($) {
-                        $('input.<?php echo esc_attr($option_id); ?>').click('click', function () {
-                            var answer = confirm("<?php echo str_replace('"', '\\"', $confirm_message); ?>");
+                        $('input.<?php echo esc_attr( $option_id ); ?>').click('click', function () {
+                            var answer = confirm("<?php echo str_replace( '"', '\\"', $confirm_message ); ?>");
                             return answer;
                         });
                     });
@@ -1140,20 +1151,20 @@ if ( !class_exists('CUAR_Settings')) :
             {
                 if ($show_create_button)
                 {
-                    printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post button"/>',
+                    printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post"/>',
                         esc_attr__('Delete existing &amp; create new &raquo;', 'cuar'),
                         esc_attr($this->get_submit_create_post_button_name($option_id))
                     );
                 }
 
-                edit_post_link(__('Edit it &raquo;', 'cuar'), '<span class="cuar-edit-page-link ">', '</span>',
-                    $this->options[$option_id], 'post-edit-link button');
+                edit_post_link(__('Edit it &raquo;', 'cuar'), '<span class="cuar-edit-page-link">', '</span>',
+                    $this->options[$option_id]);
             }
             else
             {
                 if ($show_create_button)
                 {
-                    printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post button"/>',
+                    printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post"/>',
                         esc_attr__('Create it &raquo;', 'cuar'),
                         esc_attr($this->get_submit_create_post_button_name($option_id))
                     );
@@ -1304,7 +1315,8 @@ if ( !class_exists('CUAR_Settings')) :
             echo '<script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#' . esc_attr($option_id) . '").select2({
+                    $("#' . esc_attr( $option_id ) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
                         width: "100%"
                     });
                 });
@@ -1367,7 +1379,8 @@ if ( !class_exists('CUAR_Settings')) :
                         $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
                     }
                     ?>
-                    <option value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+                    <option
+                        value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
 
                 <?php endforeach; ?>
 
@@ -1376,7 +1389,8 @@ if ( !class_exists('CUAR_Settings')) :
             <script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#<?php echo esc_attr($option_id); ?>").select2({
+                    $("#<?php echo esc_attr( $option_id ); ?>").select2({
+                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1438,7 +1452,8 @@ if ( !class_exists('CUAR_Settings')) :
                         $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
                     }
                     ?>
-                    <option value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+                    <option
+                        value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
 
                 <?php endforeach; ?>
 
@@ -1447,7 +1462,8 @@ if ( !class_exists('CUAR_Settings')) :
             <script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#<?php echo esc_attr($option_id); ?>").select2({
+                    $("#<?php echo esc_attr( $option_id ); ?>").select2({
+                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1535,7 +1551,8 @@ if ( !class_exists('CUAR_Settings')) :
             echo '<script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#' . esc_attr($option_id) . '").select2({
+                    $("#' . esc_attr( $option_id ) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
                         width: "100%"
                     });
                 });

@@ -15,7 +15,7 @@
     cursor: pointer;
     display: block;
 
-    height: 38px;
+    height: 28px;
 
     user-select: none;
     -webkit-user-select: none;
@@ -28,6 +28,10 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+
+    .select2-selection__clear {
+      position: relative;
     }
   }
 
@@ -47,7 +51,7 @@
     cursor: pointer;
     display: block;
 
-    min-height: 38px;
+    min-height: 32px;
 
     user-select: none;
     -webkit-user-select: none;
@@ -68,8 +72,8 @@
       box-sizing: border-box;
       border: none;
       font-size: 100%;
-      margin-top: 7px;
-      margin-left: 3px;
+      margin-top: 5px;
+      padding: 0;
 
       &::-webkit-search-cancel-button {
         -webkit-appearance: none;
@@ -137,7 +141,7 @@
 
 .select2-search--dropdown {
   display: block;
-  padding: 7px;
+  padding: 4px;
 
   .select2-search__field {
     padding: 4px;
@@ -172,8 +176,19 @@
 
   // styles required for IE to work
 
-  background-color: @input-bg;
+  background-color: #fff;
   filter: alpha(opacity=0);
+}
+
+.select2-hidden-accessible {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
 }
 
 /* SELECT2 THEME
