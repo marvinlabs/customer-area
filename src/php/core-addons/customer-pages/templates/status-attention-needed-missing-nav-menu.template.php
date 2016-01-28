@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
     </p>
 
     <p class="cuar-suggested-action"><span class="cuar-text"><?php _e('Suggested action', 'cuar'); ?></span>
-        <input type="submit" id="cuar-synchronize-menu" name="cuar-synchronize-menu" value="<?php esc_attr_e('Create the menu', 'cuar'); ?> &raquo;"/>
+        <input type="submit" id="cuar-synchronize-menu" name="cuar-synchronize-menu" value="<?php esc_attr_e('Create the menu', 'cuar'); ?> &raquo;" class="button button-primary"/>
         <?php wp_nonce_field('cuar-synchronize-menu', 'cuar-synchronize-menu_nonce'); ?>
 
         <script type="text/javascript">

@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	</p>
 		 
 	<p class="cuar-suggested-action"><span class="text"><?php _e('Suggested action', 'cuar' ); ?></span>
-		<input type="submit" id="cuar-remove-orphan-pages" name="cuar-remove-orphan-pages" value="<?php esc_attr_e( 'Delete orphan pages', 'cuar' ); ?> &raquo;" />
+		<input type="submit" id="cuar-remove-orphan-pages" name="cuar-remove-orphan-pages" value="<?php esc_attr_e( 'Delete orphan pages', 'cuar' ); ?> &raquo;" class="button button-primary" />
 		<?php wp_nonce_field( 'cuar-remove-orphan-pages', 'cuar-remove-orphan-pages_nonce' ); ?>
 		
 		<script type="text/javascript">
