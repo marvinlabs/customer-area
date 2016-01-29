@@ -1,3 +1,5 @@
+// Components
+// -
 @import 'components/list-tables';
 @import 'components/buttons';
 @import 'components/ajax';
@@ -16,6 +18,8 @@
 @import 'components/tabs';
 @import 'components/tooltip';
 
+// Tweaks
+// -
 @import 'tweaks/dashboard';
 @import 'tweaks/settings';
 @import 'tweaks/status';
@@ -23,3 +27,19 @@
 @import 'tweaks/invoicing';
 @import 'tweaks/projects';
 @import 'tweaks/protected-post-types';
+
+// Import source LESS files from frontend master-skin
+// -
+& {
+  /* Path to LESS files */
+  @path: '../../../../frontend/master/src/less';
+
+  /* Variables setup */
+  @import '@{path}/wpca/variables/all.less';
+  @cuar-color-primary: #0085BA;
+  @import '@{path}/wpca/mixins/colors.less';
+  @import '@{path}/core/theme_variables.less';
+
+  /* Components */
+  @import '@{path}/wpca/components/select2.less';
+}

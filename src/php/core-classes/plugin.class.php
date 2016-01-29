@@ -746,11 +746,6 @@ if ( !class_exists('CUAR_Plugin')) :
                         }
                     }
 
-                    // Core styles load removed on frontend and added directly to master skin CSS.
-                    if(is_admin()) {
-                        wp_enqueue_style('jquery.select2', CUAR_PLUGIN_URL . 'libs/js/bower/select2/select2.min.css', $cuar_version);
-                    }
-
                     break;
                 }
 
