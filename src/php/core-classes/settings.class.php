@@ -1033,7 +1033,7 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
-            echo sprintf('<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button button-primary %s" /></p>',
+            echo sprintf('<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button %s" /></p>',
                 esc_attr($option_id),
                 self::$OPTIONS_GROUP, esc_attr($option_id),
                 $label,
