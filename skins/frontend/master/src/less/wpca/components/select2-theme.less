@@ -104,8 +104,8 @@
   /* MULTIPLE LIST
    * ------------------------------------------------- */
   .select2-selection--multiple {
-    background-color: darken(@input-bg, 5%);
-    border: 1px solid @cuar-color-overlay;
+    background-color: @input-bg;
+    border: 1px solid @input-border;
     border-radius: 0;
     cursor: text;
 
@@ -134,10 +134,10 @@
     }
 
     .select2-selection__choice {
-      color: @input-color;
-      background-color: darken(@input-color, 15%);
+      color: @btn-primary-color;
+      background-color: @btn-primary-bg;
 
-      border: 1px solid @input-border;
+      border: 1px solid @btn-primary-border;
       border-radius: 2px;
       cursor: default;
 
@@ -145,11 +145,12 @@
 
       margin-right: 5px;
       margin-top: 5px;
+      margin-bottom: 0;
       padding: 3px 5px 2px;
     }
 
     .select2-selection__choice__remove {
-      color: @input-color;
+      color: @btn-primary-color;
       cursor: pointer;
 
       display: inline-block;
@@ -158,7 +159,7 @@
       margin-right: 2px;
 
       &:hover {
-        color: darken(@input-color, 20%);
+        color: mix(@btn-primary-color, @btn-primary-bg, 70%);
       }
     }
   }
