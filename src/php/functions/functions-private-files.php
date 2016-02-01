@@ -281,7 +281,7 @@ function cuar_the_attached_file_size($post_id = null, $file, $human = true)
 function cuar_format_human_file_size($size)
 {
     $factor = 1;
-    $unit = __('bytes', 'cuar');
+    $unit = _x('b', 'bytes', 'cuar');
 
     if ($size >= 1024 * 1024 * 1024 * 1024)
     {
@@ -304,7 +304,7 @@ function cuar_format_human_file_size($size)
         $unit = __('kB', 'cuar');
     }
 
-    return sprintf('%1$s %2$s', number_format($size / $factor, 2), $unit);
+    return sprintf('%1$s&nbsp;%2$s', number_format($size / $factor, 2), $unit);
 }
 
 /**
