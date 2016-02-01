@@ -9,6 +9,8 @@
  *
  */ ?>
 
+<?php /** @var string $page_subtitle */ ?>
+
 <div class="panel panel-border panel-default top cuar-empty cuar_private_page">
     <div class="panel-heading">
         <span class="panel-icon">
