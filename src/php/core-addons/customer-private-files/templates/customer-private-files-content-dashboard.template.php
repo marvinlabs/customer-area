@@ -28,11 +28,11 @@ $all_items_url = cuar_addon('customer-private-pages')->get_page_url('customer-pr
         </span>
         <span class="panel-title">
             <?php echo $page_subtitle; ?>
-            <span class="widget-menu pull-right">
-                <a href="<?php echo esc_attr($all_items_url); ?>" class="btn btn-default btn-xs">
-                    <span class="fa fa-eye"></span> <?php _e('View all', 'cuar'); ?>
-                </a>
-            </span>
+        </span>
+        <span class="widget-menu pull-right">
+            <a href="<?php echo esc_attr($all_items_url); ?>" class="btn btn-default btn-xs">
+                <span class="fa fa-eye"></span> <?php _e('View all', 'cuar'); ?>
+            </a>
         </span>
     </div>
     <div class="panel-body pn">
