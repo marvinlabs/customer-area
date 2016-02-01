@@ -13,7 +13,7 @@
 <div class="panel panel-border panel-default top cuar_private_file">
     <div class="panel-heading">
         <span class="panel-icon">
-            <i class="fa fa-book"></i>
+            <i class="fa fa-file"></i>
         </span>
         <span class="panel-title">
             <?php echo $page_subtitle; ?>
