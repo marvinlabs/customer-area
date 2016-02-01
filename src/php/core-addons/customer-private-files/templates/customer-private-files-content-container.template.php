@@ -10,7 +10,7 @@
 <?php /** @var WP_Query $content_query */ ?>
 <?php /** @var string $item_template */ ?>
 
-<div class="cuar-collection panel panel-border panel-default top cuar_private_page">
+<div class="cuar-collection panel panel-border panel-default top cuar_private_file">
     <div class="panel-heading">
         <span class="panel-icon">
             <i class="fa fa-book"></i>
