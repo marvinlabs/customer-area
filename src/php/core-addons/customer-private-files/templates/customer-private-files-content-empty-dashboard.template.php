@@ -9,7 +9,7 @@
  *
  */ ?>
 
-<div class="panel panel-border panel-default top cuar-empty cuar_private_page">
+<div class="panel panel-border panel-default top cuar-empty cuar_private_file">
     <div class="panel-heading">
         <span class="panel-icon">
             <i class="fa fa-book"></i>
@@ -19,6 +19,6 @@
         </span>
     </div>
     <div class="panel-body">
-        <p class="mn"><?php _e( 'You currently have no pages.', 'cuar' ); ?></p>
+        <p class="mn"><?php _e( 'You currently have no files.', 'cuar' ); ?></p>
     </div>
 </div>
