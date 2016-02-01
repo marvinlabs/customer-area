@@ -18,7 +18,7 @@
 $all_items_url = cuar_addon('customer-private-pages')->get_page_url('customer-private-pages');
 ?>
 
-<div class="cuar-collection panel panel-border panel-default top cuar_private_page">
+<div class="panel panel-border panel-default top cuar_private_page">
     <div class="panel-heading">
         <span class="panel-icon">
             <i class="fa fa-book"></i>
@@ -32,7 +32,7 @@ $all_items_url = cuar_addon('customer-private-pages')->get_page_url('customer-pr
             </span>
         </span>
     </div>
-    <div class="cuar-collection-content panel-body pn">
+    <div class="panel-body pn">
         <table class="table">
             <tbody>
             <?php

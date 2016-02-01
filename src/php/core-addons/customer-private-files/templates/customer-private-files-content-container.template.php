@@ -10,7 +10,7 @@
 <?php /** @var WP_Query $content_query */ ?>
 <?php /** @var string $item_template */ ?>
 
-<div class="cuar-collection panel panel-border panel-default top cuar_private_file">
+<div class="panel panel-border panel-default top cuar_private_file">
     <div class="panel-heading">
         <span class="panel-icon">
             <i class="fa fa-book"></i>
@@ -19,7 +19,7 @@
             <?php echo $page_subtitle; ?>
         </span>
     </div>
-    <div class="cuar-collection-content panel-body pn">
+    <div class="panel-body pn">
         <table class="table">
             <tbody>
             <?php
