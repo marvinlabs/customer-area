@@ -36,7 +36,7 @@ $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
 ?>
 
-<tr class="cuar-private-page cuar-item cuar-item-large<?php echo $extra_class; ?>">
+<tr class="cuar-item cuar-item-large<?php echo $extra_class; ?>">
     <td class="cuar-title">
         <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
     </td>

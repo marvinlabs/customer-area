@@ -9,16 +9,8 @@
  *
  */ ?>
 
-<div class="cuar-content-block cuar-private-pages cuar-empty cuar-empty-date panel">
-    <div class="panel-heading">
-        <span class="panel-icon">
-            <i class="fa fa-book"></i>
-        </span>
-        <span class="panel-title">
-            <?php echo $page_subtitle; ?>
-        </span>
-    </div>
-    <div class="cuar-private-pages-list cuar-item-list panel-body">
-        <p><?php _e( 'There are no pages for that period.', 'cuar' ); ?></p>
+<div class="cuar-collection panel cuar-empty cuar-empty-date cuar_private_page">
+    <div class="cuar-collection-content">
+        <p class="mn"><?php _e( 'There are no pages for that period.', 'cuar' ); ?></p>
     </div>
 </div>

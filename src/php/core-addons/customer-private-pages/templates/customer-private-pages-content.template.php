@@ -6,16 +6,8 @@
  *
  */ ?>
 
-<div class="cuar-content-block cuar-private-pages panel">
-    <div class="panel-heading">
-        <span class="panel-icon">
-            <i class="fa fa-book"></i>
-        </span>
-        <span class="panel-title">
-            <?php echo $page_subtitle; ?>
-        </span>
-    </div>
-    <div class="cuar-private-pages-list cuar-item-list panel-body">
+<div class="cuar-collection cuar_private_page">
+    <div class="cuar-collection-content">
         <table class="table">
             <thead>
             <tr class="">
