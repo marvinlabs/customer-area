@@ -17,9 +17,18 @@
   }
 }
 
+// Fix progress within panel margin-bottom
+//--
+.panel-body {
+  .table {
+    .progress {
+      margin-bottom: 0;
+    }
+  }
+}
+
 // Panel for meta information tiles in single post footers
 //--
-
 .cuar-panel-meta-tile.panel.panel-tile {
   border-top: 0;
   border-left: 0;
@@ -55,7 +64,6 @@
 
 // Panel to show a list of key/value pairs
 //--
-
 .cuar-panel-property-list {
   .panel-body {
     .pn();
