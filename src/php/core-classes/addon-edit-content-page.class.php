@@ -592,7 +592,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             else
             {
                 ob_start();
-                wp_editor($content, 'cuar_content', $this->plugin->get_default_wp_editor_settings());
+                wp_editor($content, 'cuar_content', cuar_wp_editor_settings());
 
                 $field_code = ob_get_contents();
                 ob_end_clean();

@@ -961,7 +961,7 @@ if ( !class_exists('CUAR_Settings')) :
             {
                 if ( !isset($editor_settings))
                 {
-                    $editor_settings = $this->plugin->get_default_wp_editor_settings();
+                    $editor_settings = cuar_wp_editor_settings();
                 }
                 $editor_settings ['textarea_name'] = self::$OPTIONS_GROUP . "[" . $option_id . "]";
 
