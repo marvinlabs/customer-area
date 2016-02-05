@@ -1,6 +1,5 @@
 <?php
-if ( !function_exists('cuar_load_theme_scripts'))
-{
+if (!function_exists('cuar_load_theme_scripts')) {
 
     /**
      * TODO: Librairies shouldn't always be enabled.
@@ -8,22 +7,21 @@ if ( !function_exists('cuar_load_theme_scripts'))
      */
     function cuar_load_skin_scripts()
     {
-        if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID()))
-        {
+        if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
             $cuar_plugin = cuar();
 
-            $cuar_plugin->enable_library('bootstrap.affix');
+            //$cuar_plugin->enable_library('bootstrap.affix');
             $cuar_plugin->enable_library('bootstrap.alert');
             $cuar_plugin->enable_library('bootstrap.button');
-            $cuar_plugin->enable_library('bootstrap.carousel');
+            //$cuar_plugin->enable_library('bootstrap.carousel');
             $cuar_plugin->enable_library('bootstrap.collapse');
             $cuar_plugin->enable_library('bootstrap.dropdown');
-            $cuar_plugin->enable_library('bootstrap.modal');
-            $cuar_plugin->enable_library('bootstrap.popover');
-            $cuar_plugin->enable_library('bootstrap.scrollspy');
-            $cuar_plugin->enable_library('bootstrap.tab');
+            //$cuar_plugin->enable_library('bootstrap.modal');
+            //$cuar_plugin->enable_library('bootstrap.popover');
+            //$cuar_plugin->enable_library('bootstrap.scrollspy');
+            //$cuar_plugin->enable_library('bootstrap.tab');
             $cuar_plugin->enable_library('bootstrap.tooltip');
-            $cuar_plugin->enable_library('bootstrap.transition');
+            //$cuar_plugin->enable_library('bootstrap.transition');
 
             $cuar_plugin->enable_library('jquery.mixitup');
 
