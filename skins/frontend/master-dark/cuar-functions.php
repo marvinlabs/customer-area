@@ -1,16 +1,22 @@
 <?php
 
-if ( ! function_exists('cuar_custom_editor_styles'))
-{
+if (!function_exists('cuar_custom_editor_styles')) {
     /**
      * Load custom styles for TinyMCE
+     * @param $mce_css
+     * @return string
      */
-    function cuar_custom_editor_styles( $mce_css ) {
+    function cuar_custom_editor_styles($mce_css)
+    {
         if (is_admin()) return $mce_css;
-        $mce_css .= ', ' . plugins_url( 'assets/css/custom-editor-style.css', __FILE__ );
+
+        if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
+            $mce_css .= ', ' . plugins_url('assets/css/custom-editor-style.css', __FILE__);
+        }
         return $mce_css;
     }
-    add_action( 'mce_css', 'cuar_custom_editor_styles' );
+
+    add_action('mce_css', 'cuar_custom_editor_styles');
 }
 
 // Includes functions from base theme
