@@ -47,7 +47,7 @@ $attachment_count = count($attachments);
                 <div class="panel-body">
                     <i class="fa fa-users icon-bg"></i>
                     <h4 class="cuar-meta-value"><?php echo $recipients; ?></h4>
-                    <h5 class="cuar-meta-label"><?php _e('Recipient', 'cuar'); ?></h5>
+                    <h5 class="cuar-meta-label"><?php _e('Assigned to', 'cuar'); ?></h5>
                 </div>
             </div>
         </div>
