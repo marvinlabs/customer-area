@@ -39,6 +39,13 @@ if ( !function_exists('cuar_load_theme_scripts'))
                 $cuar_plugin->get_version(),
                 true);
 
+            wp_register_style('customer-area-master-eqcss',
+                CUAR_PLUGIN_URL . '/skins/frontend/master/assets/css/eqcss/queries.eqcss',
+                array(),
+                $cuar_plugin->get_version(),
+                true);
+
+            wp_enqueue_style('customer-area-master-eqcss');
             wp_enqueue_script('customer-area-master-skin');
         }
     }
