@@ -32,12 +32,14 @@
 @base_2: ~".entry-content .cuar-menu-container";
 @base_3: ~".cuar-content-container";
 @base_4: ~".cuar-menu-container";
+@base_5: ~"body.customer-area .cuar-content-container";
+@base_6: ~"body.customer-area .cuar-menu-container";
 
 // Would love to wraps bases into a single variable, but this isn't
 // working. If someone knows the syntax, just let us know please.
-//@base_wrapper: @{base_1}, @{base_2}, @{base_3}, @{base_4};
+//@base_wrapper: @{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6};
 
-@{base_1}, @{base_2}, @{base_3}, @{base_4} {
+@{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6} {
   // Hard resets to not allow parent theme to modify WPCA
   @import "resets";
 
