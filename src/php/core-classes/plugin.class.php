@@ -66,6 +66,8 @@ if ( !class_exists('CUAR_Plugin')) :
             add_action('init', array(&$this, 'load_styles'), 8);
             add_action('init', array(&$this, 'load_defaults'), 9);
 
+            add_action('plugins_loaded', array(&$this, 'load_theme_functions'), 7);
+
             if (is_admin())
             {
                 add_action('admin_notices', array(&$this, 'print_admin_notices'));
@@ -75,10 +77,6 @@ if ( !class_exists('CUAR_Plugin')) :
 
                 add_action('cuar/core/activation/run-deferred-action?action_id=check-template-files', array(&$this, 'check_templates'));
                 add_action('cuar/core/activation/run-deferred-action?action_id=check-permalink-settings', array(&$this, 'check_permalinks_enabled'));
-            }
-            else
-            {
-                add_action('plugins_loaded', array(&$this, 'load_theme_functions'), 7);
             }
         }
 
