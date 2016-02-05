@@ -19,12 +19,26 @@
 @import "../core/theme_mixins.less";
 
 // Base Wrapper
-body .entry-content .cuar-content-container,
-body .entry-content .cuar-menu-container,
-.cuar-content-container,
-.cuar-menu-container {
+// Use the following wrapper and paste your styles inside
+// to make sure your rules will override possible CSS rules
+// defined by the parent WP theme.
+// WARNING : If you add a new wrapper div,
+// -> make sure you find in LESS files all occurences of
+// `@base_1` and edit them accordingly.
+// -> find the file wp-plugins/customer-area/skins/frontend/master/assets/css/eqcss/queries.eqcss
+// and paste new containers where its needed.
+// -
+@base_1: ~".entry-content .cuar-content-container";
+@base_2: ~".entry-content .cuar-menu-container";
+@base_3: ~".cuar-content-container";
+@base_4: ~".cuar-menu-container";
 
-  // Hard resets to nto allow parent theme modifying WPCA
+// Would love to wraps bases into a single variable, but this isn't
+// working. If someone knows the syntax, just let us know please.
+//@base_wrapper: @{base_1}, @{base_2}, @{base_3}, @{base_4};
+
+@{base_1}, @{base_2}, @{base_3}, @{base_4} {
+  // Hard resets to not allow parent theme to modify WPCA
   @import "resets";
 
   // Skin Settings
@@ -36,7 +50,6 @@ body .entry-content .cuar-menu-container,
   // Main WPCA components
   @import "wrapped";
   @import "utilities";
-
 }
 
 // Main Base components that require to be outside containers
