@@ -172,7 +172,7 @@ if (!function_exists('cuar_trim_excerpt')) {
 
             /** This filter is documented in wp-includes/post-template.php */
             // We do not want this
-            $text = apply_filters('the_content', $text);
+            // $text = apply_filters('the_content', $text);
             $text = str_replace(']]>', ']]&gt;', $text);
 
             /**
