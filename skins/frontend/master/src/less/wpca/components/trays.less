@@ -10,7 +10,7 @@
    A. Content Trays
 ================================================= */
 
-@{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6} {
+@{base} {
   #cuar-js-mobile-sidebar {
     &:not(:empty) {
       border: 1px solid @navbar-default-border;
@@ -59,7 +59,7 @@
     padding: 15px;
   }
   .tray-top.light {
-    background-color: lighten(@navbar-default-bg,2%);
+    background-color: lighten(@navbar-default-bg, 2%);
   }
 
   /*===============================================
@@ -351,7 +351,6 @@
 
 }
 
-
 /*===============================================
    F. Tray Hover Settings
 
@@ -361,11 +360,11 @@
    expand it only when the user hovers over the
    portion that's still visible
 ================================================= */
-body.tray-rescale {
-  overflow-x: hidden;
+@{base_body}.tray-rescale {
+  //overflow-x: hidden;
 
   &.sb-r-o {
-    @{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6} {
+    @{base_wrapper} {
       .tray-center {
         padding-right: 20px !important;
       }
@@ -376,7 +375,7 @@ body.tray-rescale {
     }
   }
 
-  @{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6} {
+  @{base_wrapper} {
     .tray-left,
     .tray-right {
       position: absolute;
@@ -386,7 +385,9 @@ body.tray-rescale {
       transition: all 0.3s ease;
     }
     .tray-left,
-    .tray-right {right: -275px;}
+    .tray-right {
+      right: -275px;
+    }
 
     .tray-left {
       border-left: 1px solid #DDD;
@@ -440,16 +441,27 @@ body.tray-rescale {
     }
 
     .tray-left:hover,
-    .tray-right:hover {right: 0px;}
+    .tray-right:hover {
+      right: 0px;
+    }
 
     // Changes added via updates
     // Update v1.5
     //
     // Tray Scroller Settings (Fixed content panes)
-    .tray-scroller { min-height: 500px; }
-    .tray-left .tray-scroller { margin-right: -16px; }
-    .tray-center .tray-scroller { margin-right: -20px; padding-right: 5px; }
-    .tray-right .tray-scroller { margin-right: -13px; }
+    .tray-scroller {
+      min-height: 500px;
+    }
+    .tray-left .tray-scroller {
+      margin-right: -16px;
+    }
+    .tray-center .tray-scroller {
+      margin-right: -20px;
+      padding-right: 5px;
+    }
+    .tray-right .tray-scroller {
+      margin-right: -13px;
+    }
     .tray-scroller .scroller-handle {
       opacity: 0;
       -webkit-transition: opacity 0.3s ease;
@@ -460,8 +472,6 @@ body.tray-rescale {
     }
   }
 }
-
-
 
 /* adjust any bootstrap affix settings if they exist */
 // body.tray-rescale .tray .tray-nav.affix,

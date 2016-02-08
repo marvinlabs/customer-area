@@ -508,7 +508,6 @@
 
                     if (This.attr('data-tray-height-substract') && This.attr('data-tray-height-base')) {
                         var heightBase = 'window' ? $(window).height() : $(This.data('tray-height-base')).innerHeight();
-                        console.log(heightBase);
                         var heightSubstract = This.data('tray-height-substract').split(',');
                         for (i = 0; i < heightSubstract.length; i++) {
                             heightEls = heightEls + $(heightSubstract[i]).outerHeight(true);
