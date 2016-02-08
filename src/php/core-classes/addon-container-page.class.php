@@ -932,7 +932,7 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())
                 {
-                    add_filter('the_content', array(&$this, 'print_single_container_footer'), 3000);
+                    add_filter('cuar/core/the_content', array(&$this, 'print_single_container_footer'), 3000);
                 }
 
                 // Optionally output the latest files on the dashboard
