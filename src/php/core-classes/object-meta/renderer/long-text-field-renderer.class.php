@@ -46,8 +46,9 @@ class CUAR_LongTextFieldRenderer extends CUAR_AbstractFieldRenderer implements C
 		if ( $this->enable_rich_editor && !$this->readonly ) {
 			ob_start();
 			
-			$editor_settings = CUAR_Plugin::get_instance()->get_default_wp_editor_settings();
-			$editor_settings['textarea_name'] = $id;
+			$editor_settings = cuar_wp_editor_settings(array(
+				'textarea_name' => $id
+			));
 			
 			wp_editor( $value, $id, $editor_settings );
 			
