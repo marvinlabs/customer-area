@@ -172,7 +172,7 @@ if (!function_exists('cuar_trim_excerpt')) {
 
             /** This filter is documented in wp-includes/post-template.php */
             // We do not want this
-            // $text = apply_filters('the_content', $text);
+            $text = apply_filters('the_content', $text);
             $text = str_replace(']]>', ']]&gt;', $text);
 
             /**
@@ -211,8 +211,10 @@ if (!function_exists('cuar_remove_auto_excerpt')) {
      */
     function cuar_remove_auto_excerpt()
     {
-        remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-        add_filter('get_the_excerpt', 'cuar_trim_excerpt');
+        if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
+            remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+            add_filter('get_the_excerpt', 'cuar_trim_excerpt');
+        }
     }
 
     add_action('init', 'cuar_remove_auto_excerpt');
