@@ -1,0 +1,52 @@
+/*
+ * Tray Responsive Changes
+ * -----------------------
+ * Hide the tray completely if #cuar-js-content-container is <600 px
+ * JS will take care about moving the sidebar out of the tray.
+ */
+@element 'body.tray-rescale #cuar-js-content-container' and (max-width: 551px){
+    .entry-content .cuar-content-container .tray-left,
+    .entry-content .cuar-content-container .tray-right,
+    .entry-content .cuar-content-container .scroller-bar,
+    .entry-content .cuar-menu-container .tray-left,
+    .entry-content .cuar-menu-container .tray-right,
+    .entry-content .cuar-menu-container .scroller-bar,
+    .cuar-content-container .tray-left,
+    .cuar-content-container .tray-right,
+    .cuar-content-container .scroller-bar,
+    .cuar-menu-container .tray-left,
+    .cuar-menu-container .tray-right,
+     .cuar-menu-container .scroller-bar{
+        display: none!important;
+    }
+    .entry-content .cuar-content-container .tray-center,
+    .entry-content .cuar-menu-container .tray-center,
+    .cuar-content-container .tray-center,
+    .cuar-menu-container .tray-center {
+        padding-right: 13px !important;
+        height: auto!important;
+    }
+    .entry-content .cuar-content-container .tray-scroller,
+    .entry-content .cuar-content-container .scroller-content,
+    .entry-content .cuar-menu-container .tray-scroller,
+    .entry-content .cuar-menu-container .scroller-content,
+    .cuar-content-container .tray-scroller,
+    .cuar-content-container .scroller-content,
+    .cuar-menu-container .tray-scroller,
+     .cuar-menu-container .scroller-content {
+        overflow: auto;
+        overflow-x: auto;
+        overflow-y: auto;
+        height: auto!important;
+    }
+    .entry-content .cuar-content-container .cuar-page-content.table-layout > div,
+    .entry-content .cuar-content-container .cuar-page-content.table-layout > section,
+    .entry-content .cuar-menu-container .cuar-page-content.table-layout > div,
+    .entry-content .cuar-menu-container .cuar-page-content.table-layout > section,
+    .cuar-content-container .cuar-page-content.table-layout > div,
+    .cuar-content-container .cuar-page-content.table-layout > section,
+    .cuar-menu-container .cuar-page-content.table-layout > div,
+    .cuar-menu-container .cuar-page-content.table-layout > section {
+        padding: 10px 13px 40px !important;
+    }
+}

@@ -1,0 +1,113 @@
+.cuar-collection {
+
+  // container - justified grid (default)
+  .cuar-collection-content {
+    &,
+    &.list {
+      padding: 0;
+      text-align: justify;
+
+      // add extra pseudo class for last line justified fix
+      &:after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+      }
+
+      // items
+      .mix,
+      .gap {
+        display: none;
+        vertical-align: top;
+        width: 23.5%;
+        margin-bottom: @margin-md-vertical;
+      }
+      .gap {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+
+      // mixitup content panels
+      .mix .panel {
+        margin: 0;
+        img {
+          cursor: pointer;
+        }
+      }
+      .cuar-collection-item {
+        .cuar-collection-excerpt {
+          display: none;
+        }
+
+        .cuar-collection-thumbnail {
+          width: 100%;
+          height: 150px;
+        }
+
+        img.cuar-collection-thumbnail {
+          height: auto;
+        }
+      }
+    }
+  }
+
+  // container - list
+  .cuar-collection-content {
+    &.list {
+      // items
+      .mix,
+      .gap {
+        width: 100%;
+      }
+
+      .cuar-collection-item {
+        .clearfix();
+
+        .cuar-collection-thumbnail {
+          width: 30%;
+          float: left;
+        }
+
+        .cuar-collection-description {
+          width: 70%;
+          float: left;
+          padding-left: @padding-md-horizontal;
+        }
+
+        .cuar-collection-excerpt {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // container fail message
+  .fail-message {
+    display: none;
+    margin-top: @margin-md-vertical;
+  }
+  .fail .fail-message {
+    display: block;
+  }
+
+  // responsive styles
+  @media (max-width: 1350px) {
+    .cuar-collection-content:not(.list) {
+      .mix,
+      .gap {
+        width: 31.5%;
+      }
+    }
+  }
+
+  // responsive styles
+  @media (max-width: 750px) {
+    .cuar-collection-content:not(.list) {
+      .mix,
+      .gap {
+        width: 48%;
+      }
+    }
+  }
+
+}

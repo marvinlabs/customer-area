@@ -36,13 +36,22 @@ $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
 ?>
 
-<tr class="cuar-item cuar-item-large<?php echo $extra_class; ?>">
-    <td class="cuar-title">
-        <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
-    </td>
+<div class="cuar-collection-item of-h mix<?php echo $extra_class; ?>">
+    <?php if (has_post_thumbnail()) {
+        the_post_thumbnail('wpca-thumb', array('class' => 'cuar-collection-thumbnail va-m img-responsive text-center bg-primary light table-layout'));
+    } else { ?>
+        <div class="cuar-collection-thumbnail va-m img-responsive text-center bg-primary light table-layout">
+            <div class="fa fa-picture-o text-primary dark icon-bg posr va-m text-center"></div>
+        </div>
+    <?php } ?>
 
-    <td class="cuar-subtitle">
-        <a href="<?php the_permalink(); ?>"
-           title="<?php echo esc_attr($subtitle_popup); ?>"><?php echo $subtitle; ?></a>
-    </td>
-</tr>
+    <div class="cuar-collection-description va-m">
+        <a href="<?php the_permalink(); ?>" class="cuar-collection-title" title="<?php echo esc_attr($title_popup); ?>">
+            <h5><?php the_title(); ?></h5>
+        </a>
+        <a href="<?php the_permalink(); ?>" class="cuar-collection-subtitle" title="<?php echo esc_attr($subtitle_popup); ?>">
+            <h6><?php echo $subtitle; ?></h6>
+        </a>
+        <p class="cuar-collection-excerpt"><?php echo get_the_excerpt(); ?></p>
+    </div>
+</div>

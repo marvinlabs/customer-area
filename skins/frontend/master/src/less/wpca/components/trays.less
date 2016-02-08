@@ -1,0 +1,475 @@
+/* ==============================================
+   Content Trays
+     A. Trays
+     B. Tray Sizes
+     C. Tray Bin
+     D. Misc Tray Helpers
+     E. Tray Navigation
+     F. Tray Hover Settings
+=================================================
+   A. Content Trays
+================================================= */
+
+@{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6} {
+  #cuar-js-mobile-sidebar {
+    &:not(:empty) {
+      border: 1px solid @navbar-default-border;
+      background: @navbar-default-bg;
+      padding: 15px;
+    }
+  }
+  /*tray table layout*/
+  .cuar-page-content.table-layout {
+    padding: 0;
+  }
+
+  .cuar-page-content.table-layout > div,
+  .cuar-page-content.table-layout > section {
+    vertical-align: top;
+    padding: 25px ( @grid-gutter-width / 2 ) 50px; // Do not change, fixed values used in JS
+  }
+  .cuar-page-content.table-layout > aside {
+    vertical-align: top;
+  }
+
+  /*trays*/
+  .tray-left,
+  .tray-right {
+    position: relative;
+    width: 250px;
+    min-height: 100%;
+    padding: 15px;
+    border-right: 1px solid @navbar-default-border;
+    background: @navbar-default-bg;
+  }
+
+  /*Right tray*/
+  .tray-right {
+    border-left: 1px solid @navbar-default-border;
+    border-right: 0;
+  }
+
+  /*Top tray*/
+  .tray-top {
+    position: relative;
+    width: 100%;
+    min-height: 150px;
+    border-bottom: 1px solid @navbar-default-border;
+    background-color: @navbar-default-bg;
+    padding: 15px;
+  }
+  .tray-top.light {
+    background-color: lighten(@navbar-default-bg,2%);
+  }
+
+  /*===============================================
+     B. Tray Sizes
+  ================================================= */
+  .tray200 {
+    width: 200px;
+  }
+  .tray240 {
+    width: 240px;
+  }
+  .tray270 {
+    width: 270px;
+  }
+  .tray290 {
+    width: 290px;
+  }
+  .tray300 {
+    width: 300px;
+  }
+  .tray320 {
+    width: 320px;
+  }
+  .tray350 {
+    width: 350px;
+  }
+  .tray400 {
+    width: 400px;
+  }
+  /* affixed tray widths - we subtract 1px to make
+   * sure the parent left/right border is display */
+  .tray200 .tray-nav.affix {
+    width: 199px;
+  }
+  .tray200 .tray-nav.affix {
+    width: 239px;
+  }
+  .tray270 .tray-nav.affix {
+    width: 269px;
+  }
+  .tray290 .tray-nav.affix {
+    width: 289px;
+  }
+  .tray300 .tray-nav.affix {
+    width: 299px;
+  }
+  .tray320 .tray-nav.affix {
+    width: 319px;
+  }
+  .tray350 .tray-nav.affix {
+    width: 349px;
+  }
+  .tray400 .tray-nav.affix {
+    width: 399px;
+  }
+
+  /*===============================================
+     C. Tray Bin
+  ================================================= */
+
+  /* tray bin - great for organizing buttons and links
+   * negative margin added to counter parent tray padding
+   */
+  .tray-bin {
+    min-height: 65px;
+    padding: 7px;
+    margin: 0 -15px 15px;
+    border: 1px dashed @navbar-default-border;
+    background: #eee;
+  }
+  .tray-bin.stretch {
+    border-left: 0;
+    border-right: 0
+  }
+  /*If navbar has a contextual bg we make menu links white*/
+  .tray-bin div[class*='col-'] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  /*traybin divider text. Used primarily in li navs*/
+  .tray-bin .nav-label {
+    text-align: center;
+    font-size: 12px;
+    color: @muted;
+    padding-left: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  /*===============================================
+     D. Misc Tray Helpers
+  ================================================= */
+
+  /* often used as first title in tray */
+  .tray-title {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 0 5px 15px;
+    border-bottom: 1px solid @navbar-default-border;
+  }
+
+  /* Icon list commonly seen in tray header */
+  .icon-list {
+    margin: 20px 0 30px;
+    font-size: 14px;
+    padding-left: 5px;
+    list-style: none;
+  }
+  .icon-list li + li {
+    padding-top: 10px;
+  }
+
+  /*===============================================
+     E. Tray Navigation
+  ================================================= */
+  /* tray navigation - negative margin added
+   * to counter parent tray padding
+   */
+  ul.tray-nav {
+    margin: 15px -15px;
+  }
+  /* item link */
+  ul.tray-nav li a {
+    width: 100%;
+    padding: 11px 15px 11px 30px;
+    color: @btn-default-color;
+    font-size: 13px;
+    background: @btn-default-bg;
+    border-top: 1px solid @btn-default-border;
+  }
+
+  /* item icon */
+  ul.tray-nav li a .fa {
+    padding-right: 18px;
+  }
+
+  /* active item  */
+  ul.tray-nav li.active a {
+    color: @btn-primary-color;
+    background: @btn-primary-bg;
+    border-color: @btn-primary-border;
+    transition: all 0.3s ease;
+  }
+
+  /* active item icon */
+  ul.tray-nav li.active a .fa {
+    color: @tray-nav-active-icon;
+  }
+
+  /*Tray nav style option - Arrow*/
+
+  /* active item bottom border */
+  ul.tray-nav.tray-nav-arrow li.active:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    top: 1px;
+    left: 0;
+    border-bottom: 1px solid @navbar-default-border;
+  }
+  ul.tray-nav.tray-nav-arrow li.active a:before,
+  ul.tray-nav.tray-nav-arrow li.active a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-left: 20px solid;
+    border-left-color: lighten(@navbar-default-border, 2%);
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    transition: all 0.3s ease;
+  }
+  ul.tray-nav.tray-nav-arrow li.active a:before {
+    border-left-color: darken(@navbar-default-border, 6%);
+  }
+
+  /* item hover */
+  ul.tray-nav.tray-nav-arrow li:hover a:after {
+    border-left-color: @navbar-default-border;
+  }
+
+  /*settings for arrows when used on a right aligned tray (.tray-right)*/
+
+  /* active item bottom border */
+  .tray-right ul.tray-nav.tray-nav-arrow li.active:before {
+    width: 100%;
+    left: auto;
+    right: 0;
+  }
+  .tray-right ul.tray-nav.tray-nav-arrow li.active a:before,
+  .tray-right ul.tray-nav.tray-nav-arrow li.active a:after {
+    left: auto;
+    right: 100%;
+    border-right: 20px solid;
+    border-left-color: transparent;
+    border-right-color: @navbar-default-border;
+  }
+  .tray-right ul.tray-nav.tray-nav-arrow li.active a:before {
+    border-left-color: transparent;
+    border-right-color: darken(@navbar-default-border, 6%);
+  }
+
+  /* item hover */
+  .tray-right ul.tray-nav.tray-nav-arrow li:hover a:after {
+    border-left-color: transparent;
+    border-right-color: @navbar-default-border;
+  }
+
+  /*Tray nav style option - Bordered*/
+  .tray-nav.tray-nav-border li {
+    position: relative;
+  }
+  .tray-nav.tray-nav-border li a {
+    font-size: 14px;
+    padding: 12px 15px 12px 23px;
+  }
+  .tray-nav.tray-nav-border li:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: @navbar-default-bg;
+  }
+  .tray-nav.tray-nav-border li.active:after {
+    background: @tray-nav-active-border;
+  }
+  .tray-nav.tray-nav-border li:hover:after {
+    background: lighten(@navbar-default-bg, 2%);
+  }
+
+  /*modifcation for right side trays (.tray-right)*/
+  .tray-right .tray-nav.tray-nav-border li:after {
+    left: 0;
+    right: auto;
+  }
+
+  /*border skin contextuals*/
+  .tray-nav.tray-nav-border li.active.nav-primary:after {
+    background: @brand-primary;
+  }
+  .tray-nav.tray-nav-border li.active.nav-success:after {
+    background: @brand-success;
+  }
+  .tray-nav.tray-nav-border li.active.nav-info:after {
+    background: @brand-info;
+  }
+  .tray-nav.tray-nav-border li.active.nav-warning:after {
+    background: @brand-warning;
+  }
+  .tray-nav.tray-nav-border li.active.nav-danger:after {
+    background: @brand-danger;
+  }
+  .tray-nav.tray-nav-border li.active.nav-alert:after {
+    background: @brand-alert;
+  }
+  .tray-nav.tray-nav-border li.active.nav-system:after {
+    background: @brand-system;
+  }
+  .tray-nav.tray-nav-border li.active.nav-dark:after {
+    background: @brand-dark;
+  }
+
+  /* Tray elements fixed settings */
+  .tray-nav.affix,
+  .tray .tray-affix {
+    top: 55px;
+  }
+  #topbar.affix + .cuar-page-content .tray-nav.affix,
+  #topbar.affix + .cuar-page-content .tray .tray-affix {
+    top: 115px;
+  }
+
+  /* tray-nav animation helper class */
+  .tray-nav[data-nav-animate] li {
+    display: none;
+  }
+  .tray-nav[data-nav-animate] li.animated {
+    display: block;
+  }
+
+}
+
+
+/*===============================================
+   F. Tray Hover Settings
+
+   At <1000 window width javascript will add a
+   "tray-rescale" class to the document body. This
+   will shift the menu over out of sight and
+   expand it only when the user hovers over the
+   portion that's still visible
+================================================= */
+body.tray-rescale {
+  overflow-x: hidden;
+
+  &.sb-r-o {
+    @{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6} {
+      .tray-center {
+        padding-right: 20px !important;
+      }
+      .tray-left,
+      .tray-right {
+        display: none;
+      }
+    }
+  }
+
+  @{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6} {
+    .tray-left,
+    .tray-right {
+      position: absolute;
+      z-index: 1;
+      opacity: 0.5;
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+    }
+    .tray-left,
+    .tray-right {right: -275px;}
+
+    .tray-left {
+      border-left: 1px solid #DDD;
+    }
+
+    /* adjust center tray to fill window width add needed
+     padding to offset the partially hidden tray */
+    .tray-center {
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      padding-right: 58px !important;
+    }
+    .tray-top + .tray-center {
+      padding-right: inherit !important;
+    }
+    /* adjust depending on tray size */
+    .tray.tray200 {
+      right: -155px;
+    }
+    .tray.tray225 {
+      right: -180px;
+    }
+    .tray.tray250 {
+      right: -205px;
+    }
+    .tray.tray270 {
+      right: -225px;
+    }
+    .tray.tray290 {
+      right: -245px;
+    }
+    .tray.tray300 {
+      right: -255px;
+    }
+    .tray.tray320 {
+      right: -275px;
+    }
+    .tray.tray350 {
+      right: -305px;
+    }
+    .tray.tray400 {
+      right: -355px;
+    }
+
+    /* on hover open the menus */
+    .tray-left:hover,
+    .tray-right:hover {
+      opacity: 1;
+      z-index: 999;
+    }
+
+    .tray-left:hover,
+    .tray-right:hover {right: 0px;}
+
+    // Changes added via updates
+    // Update v1.5
+    //
+    // Tray Scroller Settings (Fixed content panes)
+    .tray-scroller { min-height: 500px; }
+    .tray-left .tray-scroller { margin-right: -16px; }
+    .tray-center .tray-scroller { margin-right: -20px; padding-right: 5px; }
+    .tray-right .tray-scroller { margin-right: -13px; }
+    .tray-scroller .scroller-handle {
+      opacity: 0;
+      -webkit-transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease;
+    }
+    .tray-scroller:hover .scroller-handle {
+      opacity: 1;
+    }
+  }
+}
+
+
+
+/* adjust any bootstrap affix settings if they exist */
+// body.tray-rescale .tray .tray-nav.affix,
+// body.tray-rescale .tray .affix-pane.affix {
+//     top: auto;
+// }
+
+// Changes added via updates
+// Update v1.2
+//
+
