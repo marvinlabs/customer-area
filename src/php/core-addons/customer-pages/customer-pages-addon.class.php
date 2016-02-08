@@ -51,12 +51,12 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
             if ($this->is_auto_menu_on_single_private_content_pages_enabled())
             {
-                add_filter('the_content', array(&$this, 'get_main_menu_for_single_private_content'), 50);
+                add_filter('cuar/core/the_content', array(&$this, 'get_main_menu_for_single_private_content'), 50);
             }
 
             if ($this->is_auto_menu_on_customer_area_pages_enabled())
             {
-                add_filter('the_content', array(&$this, 'get_main_menu_for_customer_area_pages'), 51);
+                add_filter('cuar/core/the_content', array(&$this, 'get_main_menu_for_customer_area_pages'), 51);
             }
 
             add_filter('wp_page_menu_args', array(&$this, 'exclude_pages_from_wp_page_menu'));
@@ -80,10 +80,24 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             {
                 add_filter('body_class', array(&$this, 'add_body_class'));
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_subpages_contextual_toolbar_group'), 100);
-                add_filter('the_content', array(&$this, 'get_contextual_toolbar_for_pages'), 880);
-                add_filter('the_content', array(&$this, 'wrap_content_into_container'), 9998);
+
+                add_filter('the_content', array(&$this, 'define_main_content_filter'), 5000);
+                add_filter('cuar/core/the_content', array(&$this, 'get_contextual_toolbar_for_pages'), 100);
+                add_filter('cuar/core/the_content', array(&$this, 'wrap_content_into_container'), 8000);
             }
         }
+
+        /**
+         * Main WPCA content filter
+         * Never use the default WP filter called `the_content`,
+         * use `cuar/core/the_content` instead !
+         * @param $content
+         * @return mixed|void
+         */
+        public function define_main_content_filter($content){
+            return apply_filters('cuar/core/the_content', $content);
+        }
+
 
         public function set_default_options($defaults)
         {
@@ -478,7 +492,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
         {
             if (cuar_is_customer_area_page() || cuar_is_customer_area_private_content())
             {
-                $classes[] = 'cuar-body';
+                $classes[] = 'customer-area';
             }
 
             return $classes;
@@ -1046,11 +1060,10 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
          */
         public function wrap_content_into_container($content)
         {
-            if (cuar_is_customer_area_page(get_queried_object_id())
-                || cuar_is_customer_area_private_content(get_the_ID())
+            if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())
             )
             {
-                return '<div id="cuar-js-content-container" class="cuar-content-container">' . $content . '</div>';
+                return '<div id="cuar-js-content-container" class="cuar-content-container cuar-css-wrapper">' . $content . '</div>';
             }
 
             return $content;

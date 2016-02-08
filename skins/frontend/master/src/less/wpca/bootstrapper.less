@@ -24,22 +24,15 @@
 // defined by the parent WP theme.
 // WARNING : If you add a new wrapper div,
 // -> make sure you find in LESS files all occurences of
-// `@base_1` and edit them accordingly.
+// `@{base}` and edit them accordingly.
 // -> find the file wp-plugins/customer-area/skins/frontend/master/assets/css/eqcss/queries.eqcss
 // and paste new containers where its needed.
 // -
-@base_1: ~".entry-content .cuar-content-container";
-@base_2: ~".entry-content .cuar-menu-container";
-@base_3: ~".cuar-content-container";
-@base_4: ~".cuar-menu-container";
-@base_5: ~"body.customer-area .cuar-content-container";
-@base_6: ~"body.customer-area .cuar-menu-container";
+@base_body: ~"body.customer-area";
+@base_wrapper: ~".cuar-css-wrapper";
+@base: ~"@{base_body} @{base_wrapper}";
 
-// Would love to wraps bases into a single variable, but this isn't
-// working. If someone knows the syntax, just let us know please.
-//@base_wrapper: @{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6};
-
-@{base_1}, @{base_2}, @{base_3}, @{base_4}, @{base_5}, @{base_6} {
+@{base}{
   // Hard resets to not allow parent theme to modify WPCA
   @import "resets";
 

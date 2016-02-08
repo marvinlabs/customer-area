@@ -211,9 +211,11 @@ if (!function_exists('cuar_remove_auto_excerpt')) {
      */
     function cuar_remove_auto_excerpt()
     {
-        remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-        add_filter('get_the_excerpt', 'cuar_trim_excerpt');
+        // if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
+            remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+            add_filter('get_the_excerpt', 'cuar_trim_excerpt');
+        // }
     }
 
-    add_action('init', 'cuar_remove_auto_excerpt');
+    add_action('after_setup_theme', 'cuar_remove_auto_excerpt');
 }
