@@ -95,6 +95,7 @@ input, ins, keygen, kbd, label, legend, li, map, mark, menu, meter, nav,
 noscript, object, ol, optgroup, option, output, p, param, pre, progress,
 q, rp, rt, ruby, samp, section, select, small, span, strong, sub, sup,
 table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
+  position: static;
   background: transparent;
   border: 0;
   font-family: @font-family-base;
@@ -117,6 +118,7 @@ table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
   right: initial;
   left: initial;
   bottom: initial;
+  content: initial;
 
   // This will reinitialize :before and :after elements defined by parent themes
   // This should only be applied on non-replaced elements
