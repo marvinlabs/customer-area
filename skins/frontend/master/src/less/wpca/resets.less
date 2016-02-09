@@ -121,9 +121,19 @@ blockquote, q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after, q:before, q:after {
-  content: '';
-  content: none;
+// This will reinitialize :before and :after elements defined by parent themes
+blockquote, q, a{
+  &:before, &:after {
+    content: '';
+    position: static;
+    width: auto;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    background: none;
+  }
 }
 
 a {
