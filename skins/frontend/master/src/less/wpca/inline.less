@@ -1,5 +1,5 @@
 // Auto padding on single private contents
-body.single .cuar-content-container {
+@{wrapperBody}.single @{wrapperContainer} {
   padding: @grid-gutter-width / 2;
 
   .cuar-toolbar {
@@ -10,37 +10,26 @@ body.single .cuar-content-container {
     & + script + .cuar-menu-container,
     & + .cuar-menu-container {
       margin-bottom: @grid-gutter-width;
+      margin-left: -@grid-gutter-width / 2;
+      margin-right: -@grid-gutter-width / 2;
     }
   }
 }
 
-// Extend required tray-rescale class
-.cuar-tray-rescale:extend(body.tray-rescale all){};
-
-// Prevent adminbar from overriding theme
-body.admin-bar .navbar-fixed-top,
-body.admin-bar .navbar-fixed-top + #sidebar_left,
-body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper + #sidebar_right {
-  top: 32px !important;
-}
-body.admin-bar .navbar-fixed-top + #sidebar_left + #content_wrapper{
-  margin-bottom: -32px;
-}
-
 // Possible fix for links color for theme that often use .entry-content class
-body .entry-content .cuar-page a,
-body .entry-content .cuar-page a:visited,
-body .comment-content .cuar-page a,
-body .comment-content .cuar-page a:visited {
-  color: @link-color;
+@{wrapperBody} .entry-content @{wrapperContainer} .cuar-page a,
+@{wrapperBody} .entry-content @{wrapperContainer} .cuar-page a:visited,
+@{wrapperBody} .comment-content @{wrapperContainer} .cuar-page a,
+@{wrapperBody} .comment-content @{wrapperContainer} .cuar-page a:visited {
+  //color: @link-color;
 }
-body .entry-content .cuar-page a:hover,
-body .comment-content .cuar-page a:hover {
-  color: @link-hover-color;
+@{wrapperBody} .entry-content @{wrapperContainer} .cuar-page a:hover,
+@{wrapperBody} .comment-content @{wrapperContainer} .cuar-page a:hover {
+ // color: @link-hover-color;
 }
 
 // TinyMCE Body Fix
-body.mceContentBody {
+@{wrapperBody}.mceContentBody {
   background-color: @input-bg;
   color: @input-color;
   font-family: @font-family-sans-serif;
