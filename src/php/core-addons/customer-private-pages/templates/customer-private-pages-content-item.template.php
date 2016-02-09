@@ -40,18 +40,21 @@ $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' .
     <?php if (has_post_thumbnail()) {
         the_post_thumbnail('wpca-thumb', array('class' => 'cuar-collection-thumbnail va-m img-responsive text-center bg-primary light table-layout'));
     } else { ?>
-        <div class="cuar-collection-thumbnail va-m img-responsive text-center bg-primary light table-layout">
-            <div class="fa fa-picture-o text-primary dark icon-bg posr va-m text-center"></div>
+        <div class="cuar-collection-thumbnail img-responsive bg-primary light table-layout">
+            <div class="cuar-collection-thumbnail-padder"></div>
+            <div class="cuar-collection-thumbnail-icon fa fa-picture-o text-primary dark icon-bg"></div>
         </div>
     <?php } ?>
 
     <div class="cuar-collection-description va-m">
-        <a href="<?php the_permalink(); ?>" class="cuar-collection-title" title="<?php echo esc_attr($title_popup); ?>">
-            <h5><?php the_title(); ?></h5>
-        </a>
-        <a href="<?php the_permalink(); ?>" class="cuar-collection-subtitle" title="<?php echo esc_attr($subtitle_popup); ?>">
-            <h6><?php echo $subtitle; ?></h6>
-        </a>
+        <h5 class="cuar-collection-title">
+            <a href="<?php the_permalink(); ?>">
+                <?php the_title(); ?> <span class="small">(<?php echo $title_popup; ?>)</span>
+            </a>
+        </h5>
+        <h6 class="cuar-collection-subtitle">
+                <?php echo $subtitle; ?> <span class="small">(<?php echo $subtitle_popup; ?>)</span>
+        </h6>
         <p class="cuar-collection-excerpt"><?php echo get_the_excerpt(); ?></p>
     </div>
 </div>
