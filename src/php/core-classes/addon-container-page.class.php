@@ -611,6 +611,8 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
                             "default-container-content.template.php"
                         ),
                         'templates'));
+
+                    wp_reset_query();
                 }
             }
 
