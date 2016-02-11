@@ -881,6 +881,8 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
          * @param CUAR_Settings $cuar_settings
          * @param array         $input
          * @param array         $validated
+         *
+         * @return array
          */
         public function validate_options($validated, $cuar_settings, $input)
         {
