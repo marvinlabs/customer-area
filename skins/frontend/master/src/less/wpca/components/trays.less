@@ -10,7 +10,7 @@
    A. Content Trays
 ================================================= */
 
-@{base} {
+@{wrapperBase} {
   #cuar-js-mobile-sidebar {
     &:not(:empty) {
       border: 1px solid @navbar-default-border;
@@ -360,11 +360,11 @@
    expand it only when the user hovers over the
    portion that's still visible
 ================================================= */
-@{base_body}.tray-rescale {
+@{wrapperBody}.tray-rescale {
   //overflow-x: hidden;
 
   &.sb-r-o {
-    @{base_wrapper} {
+    @{wrapperContainer} {
       .tray-center {
         padding-right: 20px !important;
       }
@@ -375,7 +375,7 @@
     }
   }
 
-  @{base_wrapper} {
+  @{wrapperContainer} {
     .tray-left,
     .tray-right {
       position: absolute;

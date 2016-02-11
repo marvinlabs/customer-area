@@ -5,24 +5,24 @@
  * JS will take care about moving the sidebar out of the tray.
  */
 @element 'body.customer-area.tray-rescale #cuar-js-content-container' and (max-width: 551px){
-    .tray-left,
-    .tray-right,
-    .scroller-bar{
+    body.customer-area.tray-rescale .cuar-css-wrapper .tray-left,
+    body.customer-area.tray-rescale .cuar-css-wrapper .tray-right,
+    body.customer-area.tray-rescale .cuar-css-wrapper .scroller-bar{
         display: none!important;
     }
-    .tray-center{
+    body.customer-area.tray-rescale .cuar-css-wrapper .tray-center{
         padding-right: 13px !important;
         height: auto!important;
     }
-    .tray-scroller,
-    .scroller-content{
+    body.customer-area.tray-rescale .cuar-css-wrapper .tray-scroller,
+    body.customer-area.tray-rescale .cuar-css-wrapper .scroller-content{
         overflow: auto;
         overflow-x: auto;
         overflow-y: auto;
         height: auto!important;
     }
-    .cuar-page-content.table-layout > div,
-    .cuar-page-content.table-layout > section{
+    body.customer-area.tray-rescale .cuar-css-wrapper .cuar-page-content.table-layout > div,
+    body.customer-area.tray-rescale .cuar-css-wrapper .cuar-page-content.table-layout > section{
         padding: 10px 13px 40px !important;
     }
 }

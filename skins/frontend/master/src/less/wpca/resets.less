@@ -95,6 +95,7 @@ input, ins, keygen, kbd, label, legend, li, map, mark, menu, meter, nav,
 noscript, object, ol, optgroup, option, output, p, param, pre, progress,
 q, rp, rt, ruby, samp, section, select, small, span, strong, sub, sup,
 table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
+  position: static;
   background: transparent;
   border: 0;
   font-family: @font-family-base;
@@ -110,6 +111,41 @@ table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
   z-index: inherit;
   width: auto;
   max-width: initial;
+  height: auto;
+  max-height: initial;
+  text-transform: initial;
+  top: initial;
+  right: initial;
+  left: initial;
+  bottom: initial;
+  content: initial;
+  word-wrap: initial;
+  white-space: normal;
+
+  // This will reinitialize :before and :after elements defined by parent themes
+  // This should only be applied on non-replaced elements
+  // http://ahmed.amayem.com/html-replaced-elements-non-replaced-elements-examples/
+  &:not(audio),
+  &:not(canvas),
+  &:not(embed),
+  &:not(iframe),
+  &:not(img),
+  &:not(math),
+  &:not(object),
+  &:not(svg),
+  &:not(video) {
+    &:before, &:after {
+      content: initial;
+      position: static;
+      width: auto;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      color: inherit;
+      background: none;
+    }
+  }
 }
 
 /* Miscellaneous resets */
@@ -119,11 +155,6 @@ ol, ul {
 
 blockquote, q {
   quotes: none;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-  content: '';
-  content: none;
 }
 
 a {

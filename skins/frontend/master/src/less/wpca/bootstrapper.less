@@ -22,17 +22,12 @@
 // Use the following wrapper and paste your styles inside
 // to make sure your rules will override possible CSS rules
 // defined by the parent WP theme.
-// WARNING : If you add a new wrapper div,
-// -> make sure you find in LESS files all occurences of
-// `@{base}` and edit them accordingly.
-// -> find the file wp-plugins/customer-area/skins/frontend/master/assets/css/eqcss/queries.eqcss
-// and paste new containers where its needed.
 // -
-@base_body: ~"body.customer-area";
-@base_wrapper: ~".cuar-css-wrapper";
-@base: ~"@{base_body} @{base_wrapper}";
+@wrapperBody: ~"body.customer-area";
+@wrapperContainer: ~".cuar-css-wrapper";
+@wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
 
-@{base}{
+@{wrapperBase}{
   // Hard resets to not allow parent theme to modify WPCA
   @import "resets";
 

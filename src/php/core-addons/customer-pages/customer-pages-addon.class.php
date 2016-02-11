@@ -51,12 +51,12 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
             if ($this->is_auto_menu_on_single_private_content_pages_enabled())
             {
-                add_filter('cuar/core/the_content', array(&$this, 'get_main_menu_for_single_private_content'), 50);
+                add_filter('cuar/core/the_content', array(&$this, 'get_main_menu_for_single_private_content'), 20);
             }
 
             if ($this->is_auto_menu_on_customer_area_pages_enabled())
             {
-                add_filter('cuar/core/the_content', array(&$this, 'get_main_menu_for_customer_area_pages'), 51);
+                add_filter('cuar/core/the_content', array(&$this, 'get_main_menu_for_customer_area_pages'), 21);
             }
 
             add_filter('wp_page_menu_args', array(&$this, 'exclude_pages_from_wp_page_menu'));
@@ -81,9 +81,9 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 add_filter('body_class', array(&$this, 'add_body_class'));
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_subpages_contextual_toolbar_group'), 100);
 
-                add_filter('the_content', array(&$this, 'define_main_content_filter'), 5000);
-                add_filter('cuar/core/the_content', array(&$this, 'get_contextual_toolbar_for_pages'), 100);
-                add_filter('cuar/core/the_content', array(&$this, 'wrap_content_into_container'), 8000);
+                add_filter('the_content', array(&$this, 'define_main_content_filter'), 9998);
+                add_filter('cuar/core/the_content', array(&$this, 'get_contextual_toolbar_for_pages'), 30);
+                add_filter('cuar/core/the_content', array(&$this, 'wrap_content_into_container'), 100);
             }
         }
 
