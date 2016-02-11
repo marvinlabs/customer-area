@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @param int $post_id Defaults to the current post ID from the loop
  *
- * @return string
+ * @return array
  */
 function cuar_get_the_attached_files($post_id = null)
 {

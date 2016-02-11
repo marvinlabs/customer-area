@@ -4,11 +4,15 @@
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
  *
- * -= 2.0.0 =-
- * - Add cuar- prefix to bootstrap classes
+ * -= 1.3.0 =-
+ * - Compatibility with the new multiple attached files
+ * - New hooks for attachment items
+ *
+ * -= 1.2.0 =-
+ * - Updated to new responsive markup
  *
  * -= 1.1.0 =-
- * - Updated to new responsive markup
+ * - Added file size
  *
  * -= 1.0.0 =-
  * - Initial version
@@ -23,8 +27,7 @@ $author = sprintf("<em>%s</em>", get_the_author_meta('display_name'));
 $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
 ?>
 
-
-<div class="cuar-single-post-footer">
+<div class="cuar-single-post-header">
     <div class="row clearfix">
         <div class="cuar-author col-sm-4">
             <div class="panel panel-tile cuar-panel-meta-tile">
