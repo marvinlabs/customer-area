@@ -129,6 +129,13 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.0.0 (2015/
+
+* New: Brand new frontend skin. Greater UI and that should fix most compatibility problems with themes.
+* Fix: Global post data not restored after secondary queries (https://github.com/marvinlabs/customer-area/issues/205)
+* Fix: Translations where not loaded early enough
+* Fix: Fix widget class and ID not replaced (https://github.com/marvinlabs/customer-area/issues/123)
+
 = 6.3.0 (2015/11/26) =
 
 * New: Changes for better WordPress 4.4 support
