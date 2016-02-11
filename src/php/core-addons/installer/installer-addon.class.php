@@ -140,8 +140,7 @@ if (!class_exists('CUAR_InstallerAddOn')) :
          */
         public function check_plugin_version()
         {
-            $plugin_data = get_plugin_data(WP_CONTENT_DIR . '/plugins/' . CUAR_PLUGIN_FILE, false, false);
-            $current_version = $plugin_data['Version'];
+            $current_version = CUAR_PLUGIN_VERSION;
             $active_version = $this->plugin->get_version();
 
             // Before 1.4.0 we did not have any versioning

@@ -60,6 +60,7 @@ if ( !class_exists('CUAR_Plugin')) :
 
             add_action('plugins_loaded', array(&$this, 'load_textdomain'), 3);
             add_action('plugins_loaded', array(&$this, 'load_settings'), 5);
+            add_action('plugins_loaded', array(&$this, 'check_version'), 6);
             add_action('plugins_loaded', array(&$this, 'load_addons'), 10);
 
             add_action('init', array(&$this, 'load_scripts'), 7);
@@ -130,6 +131,22 @@ if ( !class_exists('CUAR_Plugin')) :
 
             // Configure some components
             $this->template_engine->enable_debug($this->get_option(CUAR_Settings::$OPTION_DEBUG_TEMPLATES));
+        }
+
+        /**
+         * Compare the version currently in database to the real plugin version. If not matching, then we should simulate an activation
+         */
+        public function check_version()
+        {
+            if (!is_admin()) return;
+
+            $active_version = CUAR_PLUGIN_VERSION;
+            $current_version = $this->get_version();
+
+            if ($active_version != $current_version)
+            {
+                CUAR_PluginActivationManager::on_activate();
+            }
         }
 
         /**
