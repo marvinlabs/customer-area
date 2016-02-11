@@ -9,6 +9,7 @@
 <div class="cuar-collection cuar_private_page">
     <div class="row clearfix mb-md">
         <div class="col-xs-7">
+            <!-- CURRENTLY NOT IMPLEMENTED
             <div class="mix-controls ib">
                 <form id="cuar-js-collection-filters" class="controls">
                     <div class="btn-group ib mr10">
@@ -28,7 +29,7 @@
                     </div>
                 </form>
             </div>
-
+            -->
         </div>
         <div class="col-xs-5 text-right">
             <div class="btn-group">
