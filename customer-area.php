@@ -117,6 +117,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/addresses/addresses-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/payments-addon.class.php');
 
 // Core content types
 include_once(CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php');
