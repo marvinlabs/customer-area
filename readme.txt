@@ -137,6 +137,7 @@ feel free to fork the project and send us pull requests!
 * Fix: Global post data not restored after secondary queries (https://github.com/marvinlabs/customer-area/issues/205)
 * Fix: Translations where not loaded early enough
 * Fix: Fix widget class and ID not replaced (https://github.com/marvinlabs/customer-area/issues/123)
+* Fix: When using our shortcodes, some pages could be detected as "orphan WP Customer Area pages" by mistake
 
 = 6.3.0 (2015/11/26) =
 
