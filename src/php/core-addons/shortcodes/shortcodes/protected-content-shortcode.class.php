@@ -40,6 +40,7 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
             'type'           => '',
 
             // Optional
+            'title'          => '',
             'show'           => 'owned',
             'max_items'      => -1,
             'layout'         => 'default',
@@ -79,6 +80,7 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
 
         $layout = $params['layout'];
         $type = $params['type'];
+        $title = $params['title'];
 
         $content_types = $plugin->get_content_post_types();
         $container_types = $plugin->get_container_post_types();
@@ -194,6 +196,8 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
 
         $out = ob_get_contents();
         ob_end_clean();
+
+        wp_reset_query();
 
         return $out;
     }

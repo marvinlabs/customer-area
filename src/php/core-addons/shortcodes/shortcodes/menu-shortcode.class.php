@@ -39,7 +39,7 @@ class CUAR_MenuShortcode extends CUAR_Shortcode {
 	public function process_shortcode( $params, $content ) {
         ob_start();
         cuar_the_customer_area_menu();
-        $out = ob_get_contents();
+		$out = ob_get_contents();
         ob_end_clean();
 
 		return $out;

@@ -38,13 +38,19 @@ function cuar_addon($id)
 
 /**
  * Print the customer area menu
+ *
+ * @param bool   $wrap Wrap the menu inside a div element
+ * @param string $wrapper_class
  */
-function cuar_the_customer_area_menu()
+function cuar_the_customer_area_menu($wrap = true, $wrapper_class = "cuar-css-wrapper")
 {
+    if ($wrap) echo '<div class="' . esc_attr($wrapper_class) . '">';
+
     /** @var CUAR_CustomerPagesAddOn $cp_addon */
     $cp_addon = cuar_addon('customer-pages');
-
     echo $cp_addon->get_main_navigation_menu();
+
+    if ($wrap) echo '</div>';
 }
 
 /**
