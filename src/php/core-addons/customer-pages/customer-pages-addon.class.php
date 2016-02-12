@@ -91,10 +91,13 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
          * Main WPCA content filter
          * Never use the default WP filter called `the_content`,
          * use `cuar/core/the_content` instead !
+         *
          * @param $content
+         *
          * @return mixed|void
          */
-        public function define_main_content_filter($content){
+        public function define_main_content_filter($content)
+        {
             return apply_filters('cuar/core/the_content', $content);
         }
 
@@ -1476,7 +1479,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                     }
 
                     // If we contain the shortcode, that's potentially bad news
-                    if (false != strpos($suspect->post_content, $verified->get_page_shortcode()))
+                    if (has_shortcode($suspect->post_content, $verified->get_page_shortcode()))
                     {
                         $contains_shortcode = true;
                     }
@@ -1493,6 +1496,10 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 $this->plugin->set_attention_needed('orphan-pages',
                     __('Some pages in your site seem to contain Customer Area shortcodes but are not registered in the Customer Area pages settings.',
                         'cuar'), 20);
+            }
+            else
+            {
+                $this->plugin->clear_attention_needed('orphan-pages');
             }
 
             return $orphans;
