@@ -3,6 +3,7 @@
 
 require_once(CUAR_INCLUDES_DIR . '/core-classes/addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/payment.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/payment-status.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-admin-interface.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-settings-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/payment-gateway.class.php');
