@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
 Tested up to:       4.4
-Stable tag:         6.3.0
+Stable tag:         6.4.666
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,16 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.0.0 (2015/
+
+* New: Brand new frontend skin. Greater UI and that should fix most compatibility problems with themes.
+* New: Added a title parameter to the private content shortcode
+* Fix: Projects were not listed by the protected content shortcode (https://github.com/marvinlabs/customer-area/issues/204)
+* Fix: Global post data not restored after secondary queries (https://github.com/marvinlabs/customer-area/issues/205)
+* Fix: Translations where not loaded early enough
+* Fix: Fix widget class and ID not replaced (https://github.com/marvinlabs/customer-area/issues/123)
+* Fix: When using our shortcodes, some pages could be detected as "orphan WP Customer Area pages" by mistake
 
 = 6.3.0 (2015/11/26) =
 

@@ -9,7 +9,7 @@
 
 <?php /** @var array $toolbar_groups */ ?>
 
-<div class="cuar-toolbar panel-footer">
+<div class="cuar-toolbar">
     <?php do_action('cuar/core/page/before-toolbar-groups'); ?>
 
     <?php foreach ($toolbar_groups as $id => $group) : ?>

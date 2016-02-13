@@ -10,6 +10,11 @@
 @muted:                 @cuar-color-contrast-disabled;
 @transparent:           transparent;
 
+@shadow-color:          @cuar-color-overlay;
+@shadow-size:           2px;
+@shadow-position:       0 1px;
+@shadow-box:            @shadow-position @shadow-size @shadow-color;
+
 @gray-darker:           @cuar-color-neutral-darker;
 @gray-dark:             @cuar-color-neutral-dark;
 @gray:                  @cuar-color-neutral-50;
@@ -59,8 +64,12 @@
 @font-weight-base:        400;
 
 @font-size-base:          13px;
-@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
-@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+@font-size-md:            @font-size-base;
+@font-size-large:         ceil((@font-size-base * 1.3)); // ~18px
+@font-size-lg:            @font-size-large;
+@font-size-small:         ceil((@font-size-base * 0.8)); // ~12px
+@font-size-sm:            @font-size-small;
+@font-size-xs:            ceil((@font-size-base * 0.65)); // ~9px
 
 @font-size-h1:            floor((@font-size-base * 2.35)); // ~30px
 @font-size-h2:            floor((@font-size-base * 1.85)); // ~24px
@@ -106,14 +115,32 @@
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
+@margin-base-vertical:      18px;
+@margin-base-horizontal:    22px;
+@margin-md-vertical:        ceil((1.00 * @margin-base-vertical));
+@margin-md-horizontal:      ceil((1.00 * @margin-base-horizontal));
+@margin-lg-vertical:        ceil((1.50 * @margin-base-vertical));
+@margin-lg-horizontal:      ceil((1.50 * @margin-base-horizontal));
+@margin-sm-vertical:        ceil((0.80 * @margin-base-vertical));
+@margin-sm-horizontal:      ceil((0.80 * @margin-base-horizontal));
+@margin-xs-vertical:        ceil((0.65 * @margin-base-vertical));
+@margin-xs-horizontal:      ceil((0.65 * @margin-base-horizontal));
+
+
 @padding-base-vertical:     9px;
 @padding-base-horizontal:   12px;
+@padding-md-vertical:       @padding-base-vertical;
+@padding-md-horizontal:     @padding-base-horizontal;
 
 @padding-large-vertical:    10px;
 @padding-large-horizontal:  16px;
+@padding-lg-vertical:       @padding-large-vertical;
+@padding-lg-horizontal:     @padding-large-horizontal;
 
 @padding-small-vertical:    5px;
 @padding-small-horizontal:  10px;
+@padding-sm-vertical:       @padding-small-vertical;
+@padding-sm-horizontal:     @padding-small-horizontal;
 
 @padding-xs-vertical:       1px;
 @padding-xs-horizontal:     5px;
@@ -125,16 +152,198 @@
 @border-radius-large:       3px;
 @border-radius-small:       0px;
 
-
-//** Global color for active items (e.g., navs or dropdowns).
-@component-active-color:    @cuar-color-contrast-text;
 //** Global background color for active items (e.g., navs or dropdowns).
 @component-active-bg:       @brand-primary;
+//** Global color for active items (e.g., navs or dropdowns).
+@component-active-color:    contrast(@component-active-bg, @palette-Black-Text, @palette-White-Text);
+
 
 //** Width of the `border` for generating carets that indicator dropdowns.
 @caret-width-base:          4px;
 //** Carets increase slightly in size for larger components.
 @caret-width-large:         5px;
+
+
+//-- Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+//
+// Note: These variables are not generated into the Customizer.
+
+@zindex-navbar:            1000;
+@zindex-dropdown:          1000;
+@zindex-popover:           1060;
+@zindex-tooltip:           1070;
+@zindex-navbar-fixed:      1030;
+@zindex-modal-background:  1040;
+@zindex-modal:             1050;
+
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+//** Deprecated `@screen-xs` as of v3.0.1
+@screen-xs:                  480px;
+//** Deprecated `@screen-xs-min` as of v3.2.0
+@screen-xs-min:              @screen-xs;
+//** Deprecated `@screen-phone` as of v3.0.1
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `@screen-sm` as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+//** Deprecated `@screen-tablet` as of v3.0.1
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `@screen-md` as of v3.0.1
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+//** Deprecated `@screen-desktop` as of v3.0.1
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `@screen-lg` as of v3.0.1
+@screen-lg:                  1140px;
+@screen-lg-min:              @screen-lg;
+//** Deprecated `@screen-lg-desktop` as of v3.0.1
+@screen-lg-desktop:          @screen-lg-min;
+
+// XLarge screen / extra wide desktop
+@screen-xl:                  1400px;
+@screen-xl-min:              @screen-xl;
+@screen-xl-desktop:          @screen-xl-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+@screen-lg-max:              (@screen-xl-min - 1);
+
+
+// Mobile View Breakpoint - Currently set to 0 as to disable
+@screen-mobile:              0px;
+
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+@grid-columns:              12;
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width:         @margin-base-horizontal;
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed. Setting to "@screen-xs-min"
+// will prevent the navbar from ever entering mobile mode.
+@grid-float-breakpoint:     @screen-xs-min;
+//** Point at which the navbar begins collapsing.
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+@container-tablet:             ((720px + @grid-gutter-width));
+//** For `@screen-sm-min` and up.
+@container-sm:                 @container-tablet;
+
+// Medium screen / desktop
+@container-desktop:            ((940px + @grid-gutter-width));
+//** For `@screen-md-min` and up.
+@container-md:                 @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop:      ((1040px + @grid-gutter-width));
+//** For `@screen-lg-min` and up.
+@container-lg:                 @container-large-desktop;
+
+// Extra Large screen / Extra wide desktop
+@container-xlarge-desktop:      ((1280px + @grid-gutter-width));
+//** For `@screen-xl-min` and up.
+@container-xl:                 @container-xlarge-desktop;
+
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+@navbar-height:                    50px;
+@navbar-margin-bottom:             @line-height-computed;
+@navbar-border-radius:             @border-radius-base;
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height:       340px;
+
+@navbar-default-color:             @cuar-color-neutral-90;
+@navbar-default-bg:                @cuar-color-neutral-10;
+@navbar-default-border:            darken(@navbar-default-bg, 16%);
+
+// Navbar links
+@navbar-default-link-hover-bg:             @cuar-color-neutral-20;
+@navbar-default-link-color:                contrast(@navbar-default-bg, @palette-Black-Text, @palette-White-Text);
+@navbar-default-link-hover-color:          contrast(@navbar-default-link-hover-bg, @palette-Black-Text, @palette-White-Text);
+@navbar-default-link-active-bg:            @component-active-bg;
+@navbar-default-link-active-color:         @component-active-color;
+@navbar-default-link-disabled-color:       @muted;
+@navbar-default-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-default-brand-color:               @navbar-default-link-color;
+@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:           #ddd;
+@navbar-default-toggle-icon-bar-bg:        #888;
+@navbar-default-toggle-border-color:       #ddd;
+
+
+// Inverted navbar
+// Reset inverted navbar basics
+@navbar-inverse-color:                      @cuar-color-neutral-50;
+@navbar-inverse-bg:                         @cuar-color-neutral-80;
+@navbar-inverse-border:                     lighten(@navbar-inverse-bg, 6.5%);
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 @gray-light;
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            #333;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-border-color:        #333;
+
+
+//== Navs
+//
+//##
+
+//=== Shared nav styles
+@nav-link-padding:                          10px 15px;
+@nav-link-hover-bg:                         darken(@navbar-default-bg, 5%);
+
+@nav-disabled-link-color:                   @gray-light;
+@nav-disabled-link-hover-color:             @gray-light;
+
+@nav-open-link-hover-color:                 #fff;
 
 
 //== Tables
@@ -252,20 +461,20 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    @cuar-color-neutral-30;
+@dropdown-bg:                    @navbar-default-bg;
 //** Dropdown menu `border-color`.
-@dropdown-border:                darken(@dropdown-bg, 8%);
+@dropdown-border:                @navbar-default-border;
 //** Dropdown menu `border-color` **for IE8**.
 @dropdown-fallback-border:       @dropdown-border;
 //** Divider color for between dropdown items.
-@dropdown-divider-bg:            darken(@dropdown-bg, 8%);
+@dropdown-divider-bg:            @dropdown-border;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @cuar-color-neutral-70;
-//** Hover color for dropdown links.
-@dropdown-link-hover-color:      lighten(@dropdown-link-color, 5%);
+@dropdown-link-color:            contrast(@dropdown-bg, @palette-Black-Text, @palette-White-Text);
 //** Hover background for dropdown links.
-@dropdown-link-hover-bg:         darken(@dropdown-bg, 15%);
+@dropdown-link-hover-bg:         @nav-link-hover-bg;
+//** Hover color for dropdown links.
+@dropdown-link-hover-color:      @dropdown-link-color;
 
 //** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
@@ -282,193 +491,11 @@
 @dropdown-caret-color:           @dropdown-link-color;
 
 
-//-- Z-index master list
-//
-// Warning: Avoid customizing these values. They're used for a bird's eye view
-// of components dependent on the z-axis and are designed to all work together.
-//
-// Note: These variables are not generated into the Customizer.
-
-@zindex-navbar:            1000;
-@zindex-dropdown:          1000;
-@zindex-popover:           1060;
-@zindex-tooltip:           1070;
-@zindex-navbar-fixed:      1030;
-@zindex-modal-background:  1040;
-@zindex-modal:             1050;
-
-
-//== Media queries breakpoints
-//
-//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
-
-// Extra small screen / phone
-//** Deprecated `@screen-xs` as of v3.0.1
-@screen-xs:                  480px;
-//** Deprecated `@screen-xs-min` as of v3.2.0
-@screen-xs-min:              @screen-xs;
-//** Deprecated `@screen-phone` as of v3.0.1
-@screen-phone:               @screen-xs-min;
-
-// Small screen / tablet
-//** Deprecated `@screen-sm` as of v3.0.1
-@screen-sm:                  768px;
-@screen-sm-min:              @screen-sm;
-//** Deprecated `@screen-tablet` as of v3.0.1
-@screen-tablet:              @screen-sm-min;
-
-// Medium screen / desktop
-//** Deprecated `@screen-md` as of v3.0.1
-@screen-md:                  992px;
-@screen-md-min:              @screen-md;
-//** Deprecated `@screen-desktop` as of v3.0.1
-@screen-desktop:             @screen-md-min;
-
-// Large screen / wide desktop
-//** Deprecated `@screen-lg` as of v3.0.1
-@screen-lg:                  1140px;
-@screen-lg-min:              @screen-lg;
-//** Deprecated `@screen-lg-desktop` as of v3.0.1
-@screen-lg-desktop:          @screen-lg-min;
-
-// XLarge screen / extra wide desktop
-@screen-xl:                  1400px;
-@screen-xl-min:              @screen-xl;
-@screen-xl-desktop:          @screen-xl-min;
-
-// So media queries don't overlap when required, provide a maximum
-@screen-xs-max:              (@screen-sm-min - 1);
-@screen-sm-max:              (@screen-md-min - 1);
-@screen-md-max:              (@screen-lg-min - 1);
-@screen-lg-max:              (@screen-xl-min - 1);
-
-
-// Mobile View Breakpoint - Currently set to 0 as to disable
-@screen-mobile:              0px;
-
-
-//== Grid system
-//
-//## Define your custom responsive grid.
-
-//** Number of columns in the grid.
-@grid-columns:              12;
-//** Padding between columns. Gets divided in half for the left and right.
-@grid-gutter-width:         22px;
-// Navbar collapse
-//** Point at which the navbar becomes uncollapsed. Setting to "@screen-xs-min"
-// will prevent the navbar from ever entering mobile mode.
-@grid-float-breakpoint:     @screen-xs-min;
-//** Point at which the navbar begins collapsing.
-@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
-
-
-//== Container sizes
-//
-//## Define the maximum width of `.container` for different screen sizes.
-
-// Small screen / tablet
-@container-tablet:             ((720px + @grid-gutter-width));
-//** For `@screen-sm-min` and up.
-@container-sm:                 @container-tablet;
-
-// Medium screen / desktop
-@container-desktop:            ((940px + @grid-gutter-width));
-//** For `@screen-md-min` and up.
-@container-md:                 @container-desktop;
-
-// Large screen / wide desktop
-@container-large-desktop:      ((1040px + @grid-gutter-width));
-//** For `@screen-lg-min` and up.
-@container-lg:                 @container-large-desktop;
-
-// Extra Large screen / Extra wide desktop
-@container-xlarge-desktop:      ((1280px + @grid-gutter-width));
-//** For `@screen-xl-min` and up.
-@container-xl:                 @container-xlarge-desktop;
-
-
 //== Content Tray Navs
 //
 //## Define colors used in content tray navigations(".tray-nav")
 @tray-nav-active-icon: @brand-primary;
 @tray-nav-active-border: @brand-primary;
-
-
-//== Navbar
-//
-//##
-
-// Basics of a navbar
-@navbar-height:                    50px;
-@navbar-margin-bottom:             @line-height-computed;
-@navbar-border-radius:             @border-radius-base;
-@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
-@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
-@navbar-collapse-max-height:       340px;
-
-@navbar-default-color:             @cuar-color-neutral-90;
-@navbar-default-bg:                @cuar-color-neutral-10;
-@navbar-default-border:            darken(@navbar-default-bg, 16%);
-
-// Navbar links
-@navbar-default-link-hover-bg:             @cuar-color-neutral-20;
-@navbar-default-link-color:                contrast(@navbar-default-bg, @palette-Black-Text, @palette-White-Text);
-@navbar-default-link-hover-color:          contrast(@navbar-default-link-hover-bg, @palette-Black-Text, @palette-White-Text);
-@navbar-default-link-active-bg:            @brand-primary;
-@navbar-default-link-active-color:         contrast(@navbar-default-link-active-bg, @palette-Black-Text, @palette-White-Text);
-@navbar-default-link-disabled-color:       @muted;
-@navbar-default-link-disabled-bg:          transparent;
-
-// Navbar brand label
-@navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
-@navbar-default-brand-hover-bg:            transparent;
-
-// Navbar toggle
-@navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #888;
-@navbar-default-toggle-border-color:       #ddd;
-
-
-// Inverted navbar
-// Reset inverted navbar basics
-@navbar-inverse-color:                      @cuar-color-neutral-50;
-@navbar-inverse-bg:                         @cuar-color-neutral-80;
-@navbar-inverse-border:                     lighten(@navbar-inverse-bg, 6.5%);
-
-// Inverted navbar links
-@navbar-inverse-link-color:                 @gray-light;
-@navbar-inverse-link-hover-color:           #fff;
-@navbar-inverse-link-hover-bg:              transparent;
-@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
-@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-disabled-color:        #444;
-@navbar-inverse-link-disabled-bg:           transparent;
-
-// Inverted navbar brand label
-@navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          #fff;
-@navbar-inverse-brand-hover-bg:             transparent;
-
-// Inverted navbar toggle
-@navbar-inverse-toggle-hover-bg:            #333;
-@navbar-inverse-toggle-icon-bar-bg:         #fff;
-@navbar-inverse-toggle-border-color:        #333;
-
-
-//== Navs
-//
-//##
-
-//=== Shared nav styles
-@nav-link-padding:                          10px 15px;
-@nav-link-hover-bg:                         darken(@navbar-default-bg, 5%);
-
-@nav-disabled-link-color:                   @gray-light;
-@nav-disabled-link-hover-color:             @gray-light;
-
-@nav-open-link-hover-color:                 #fff;
 
 //== Tabs
 @nav-tabs-border-color:                     #ddd;

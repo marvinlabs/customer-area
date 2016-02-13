@@ -45,12 +45,16 @@
 @import "@{base-path}/mixins/clearfix.less";
 @import "@{base-path}/mixins/center-block.less";
 @import "@{base-path}/mixins/nav-vertical-align.less";
-//@import "@{base-path}/mixins/grid-framework.less";
-@import "../wpca/mixins/grid-framework.less";
+// @import "@{base-path}/mixins/grid-framework.less"; /* Overriden by WPCA mixin, see bottom */
 @import "@{base-path}/mixins/grid.less";
-
 
 // Added Patch v1.4
 @import "@{base-path}/mixins/checkboxes.less";
 @import "@{base-path}/mixins/dropdowns.less";
 @import "@{base-path}/mixins/tabs.less";
+
+// WPCA
+@import "../wpca/mixins/grid-framework.less";
+@import "../wpca/mixins/colors.less";
+@import "../wpca/mixins/sizes.less";
+@import "../wpca/mixins/for.less";

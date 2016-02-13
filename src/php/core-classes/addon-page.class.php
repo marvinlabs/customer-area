@@ -395,10 +395,12 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
             return false;
         }
 
-        public function get_default_widget_args()
+        public function get_default_widget_args($id)
         {
+            $fake_id = $id . '-' . rand();
+            $fake_class = 'widget_' . $id;
             return array(
-                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                'before_widget' => sprintf('<aside id="%1$s" class="widget %2$s">', $fake_id, $fake_class),
                 'after_widget'  => "</aside>",
                 'before_title'  => '<h3 class="widget-title">',
                 'after_title'   => '</h3>',

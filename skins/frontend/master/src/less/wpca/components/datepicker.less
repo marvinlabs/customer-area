@@ -1,0 +1,161 @@
+body.wp-admin[class^='post-type-cuar_'] .ui-datepicker,
+body.wp-admin[class*=' post-type-cuar_'] .ui-datepicker,
+body.customer-area .ui-datepicker {
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  font-weight: @font-weight-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background: @panel-bg;
+  border-radius: @panel-border-radius;
+  border: 1px solid @panel-border-color;
+  box-shadow: @shadow-box;
+  display: none;
+  margin-top: 4px;
+  padding: @grid-gutter-width / 2;
+  width: 240px;
+
+  &, *{
+    box-sizing: border-box;
+    outline: 0;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      -moz-transition: color 0.1s ease-in-out;
+      -o-transition: color 0.1s ease-in-out;
+      -webkit-transition: color 0.1s ease-in-out;
+      color: @brand-primary;
+      text-decoration: none;
+      transition: color 0.1s ease-in-out;
+      outline: 0;
+    }
+  }
+  td {
+    &:hover {
+      a {
+        -moz-transition: color 0.1s ease-in-out;
+        -o-transition: color 0.1s ease-in-out;
+        -webkit-transition: color 0.1s ease-in-out;
+        color: @brand-primary;
+        transition: color 0.1s ease-in-out;
+        outline: 0;
+      }
+    }
+  }
+  .ui-datepicker-header {
+    width: 238px;
+    margin-top: -@grid-gutter-width / 2;
+    margin-left: -@grid-gutter-width / 2;
+    margin-right: -@grid-gutter-width / 2;
+    margin-bottom: @margin-xs-vertical;
+    text-align: center;
+    border-radius: 0;
+    background: @panel-heading-bg;
+    color: @panel-heading-font-color;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid @panel-heading-border-color;
+  }
+  .ui-datepicker-title {
+    font-weight: 700;
+  }
+
+  .ui-corner-all {
+    display: table;
+    &:before {
+      height: 100%;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .ui-icon,
+  .ui-datepicker-prev span,
+  .ui-datepicker-next span{
+    display: none;
+  }
+  .ui-datepicker-prev {
+    -webkit-font-smoothing: antialiased;
+    cursor: default;
+    float: left;
+    font-family: 'dashicons';
+    font-style: normal;
+    font-weight: normal;
+    height: 20px;
+    line-height: 1;
+    margin-top: 2px;
+    text-align: left;
+    width: 30px;
+    &:before {
+      content: "\f341";
+    }
+  }
+  .ui-datepicker-next {
+    -webkit-font-smoothing: antialiased;
+    cursor: default;
+    float: right;
+    font-family: 'dashicons';
+    font-style: normal;
+    font-weight: normal;
+    height: 20px;
+    line-height: 1;
+    margin-top: 2px;
+    text-align: right;
+    width: 30px;
+    &:before {
+      content: "\f345";
+    }
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    border: 1px solid @btn-default-border;
+    background: @btn-default-bg;
+    font-weight: normal;
+    color: @btn-default-color;
+    outline: 0;
+    box-shadow: none;
+  }
+  .ui-state-highlight, .ui-state-active{
+    background: @btn-primary-bg;
+    color: @btn-primary-color;
+    border: 1px solid @btn-primary-border;
+  }
+  .ui-datepicker-calendar {
+    table-layout: fixed;
+    width: 100%;
+    th {
+      padding: 4px 0;
+      text-align: center;
+    }
+    td {
+      -moz-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+      -o-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+      -webkit-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+      border-radius: 2px;
+      padding: 1px 0;
+      text-align: center;
+      transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+      &:hover {
+        background-color: @btn-primary-bg;
+        color: @btn-primary-color;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+      }
+    }
+    .ui-datepicker-unselectable {
+      &:hover {
+        background-color: @panel-bg;
+        cursor: default;
+      }
+    }
+  }
+  .ui-datepicker-current-day {
+    background-color: @btn-primary-bg;
+    a {
+      color: @btn-primary-color;
+    }
+  }
+}

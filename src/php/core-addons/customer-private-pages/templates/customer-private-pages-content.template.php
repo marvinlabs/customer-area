@@ -6,40 +6,58 @@
  *
  */ ?>
 
-<div class="cuar-content-block cuar-private-pages panel">
-    <div class="panel-heading">
-        <?php
-        $pp_addon = $this->plugin->get_addon('customer-private-pages');
-        $page_id = $pp_addon->get_page_id($this->get_slug());
-        ?>
-        <span class="panel-icon">
-            <i class="fa fa-book"></i>
-        </span>
-        <span class="cuar-title panel-title">
-            <a href="<?php echo get_permalink($page_id); ?>" title="<?php esc_attr_e('View all', 'cuar'); ?>">
-                <?php echo $page_subtitle; ?>
-            </a>
-        </span>
+<div class="cuar-collection cuar_private_page">
+    <div class="row clearfix mb-md">
+        <div class="col-xs-7">
+            <!-- CURRENTLY NOT IMPLEMENTED
+            <div class="mix-controls ib">
+                <form id="cuar-js-collection-filters" class="controls">
+                    <div class="btn-group ib mr10">
+                        <button type="button" class="btn btn-default hidden-xs">
+                            <span class="fa fa-folder"></span>
+                        </button>
+                        <div class="btn-group">
+                            <fieldset>
+                                <select class="cuar-js-collection-filters-buttons">
+                                    <option value=""><?php _e('All categories', 'cuar'); ?></option>
+                                    <option value=".category1">category1</option>
+                                    <option value=".category2">Scategory2</option>
+                                    <option value=".category3">category3</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            -->
+        </div>
+        <div class="col-xs-5 text-right">
+            <div class="btn-group">
+                <button type="button" id="cuar-js-collection-to-grid" class="btn btn-primary">
+                    <span class="fa fa-th"></span>
+                </button>
+                <button type="button" id="cuar-js-collection-to-list" class="btn btn-default">
+                    <span class="fa fa-navicon"></span>
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="cuar-private-pages-list cuar-item-list panel-body">
-        <table class="table">
-            <thead>
-            <tr class="">
-                <th><?php _e('Title', 'cuar'); ?></th>
-                <th><?php _e('Owners', 'cuar'); ?></th>
-            </tr>
-            </thead>
 
-            <tbody>
-            <?php
-            while ($content_query->have_posts()) {
-                $content_query->the_post();
-                global $post;
+    <div id="cuar-js-collection-gallery" class="cuar-collection-content">
+        <div class="fail-message alert alert-warning">
+            <?php _e('No items were found matching the selected filters', 'cuar'); ?>
+        </div>
+        <?php
+        while ($content_query->have_posts()) {
+            $content_query->the_post();
+            global $post;
 
-                include($item_template);
-            }
-            ?>
-            </tbody>
-        </table>
+            include($item_template);
+        }
+        ?>
+        <div class="gap"></div>
+        <div class="gap"></div>
+        <div class="gap"></div>
+        <div class="gap"></div>
     </div>
 </div>

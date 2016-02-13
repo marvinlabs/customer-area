@@ -516,7 +516,55 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
             return $groups;
         }
 
-        public function print_single_container_footer($content)
+        public function print_single_private_container_header()
+        {
+            do_action('cuar/private-container/view/before_header', $this);
+            do_action('cuar/private-container/view/before_header?post-type=' . $this->get_friendly_post_type(), $this);
+
+            $template_file_path = $this->plugin->get_template_file_path(
+                $this->get_page_addon_path(),
+                $this->get_slug() . '-single-post-header.template.php',
+                'templates');
+            if ( !empty($template_file_path))
+            {
+                include($template_file_path);
+            }
+
+            do_action('cuar/private-container/view/before_additional_header', $this);
+            do_action('cuar/private-container/view/before_additional_header?post-type=' . $this->get_friendly_post_type(), $this);
+
+            $this->print_additional_private_container_header();
+
+            do_action('cuar/private-container/view/after_header', $this);
+            do_action('cuar/private-container/view/after_header?post-type=' . $this->get_friendly_post_type(), $this);
+        }
+
+        public function print_single_private_container_footer()
+        {
+            do_action('cuar/private-container/view/before_footer', $this);
+            do_action('cuar/private-container/view/before_footer?post-type=' . $this->get_friendly_post_type(), $this);
+
+            $template_file_path = $this->plugin->get_template_file_path(
+                $this->get_page_addon_path(),
+                $this->get_slug() . '-single-post-footer.template.php',
+                'templates');
+            if ( !empty($template_file_path))
+            {
+                include($template_file_path);
+            }
+
+            do_action('cuar/private-container/view/before_additional_footer', $this);
+            do_action('cuar/private-container/view/before_additional_footer?post-type=' . $this->get_friendly_post_type(), $this);
+
+            $this->print_additional_private_container_footer();
+
+            $this->print_associated_content();
+
+            do_action('cuar/private-container/view/after_footer', $this);
+            do_action('cuar/private-container/view/after_footer?post-type=' . $this->get_friendly_post_type(), $this);
+        }
+
+        public function print_single_private_container_meta_filter($content)
         {
             // If theme is taking care of it, don't do anything
             $theme_support = get_theme_support('customer-area.single-post-templates');
@@ -527,33 +575,27 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
             if (get_post_type() != $this->get_friendly_post_type()) return $content;
 
             ob_start();
-
-            do_action('cuar/core/container/view/before_footer', $this);
-
-            include($this->plugin->get_template_file_path(
-                $this->get_page_addon_path(),
-                $this->get_slug() . '-single-post-footer.template.php',
-                'templates'));
-
-            do_action('cuar/core/container/view/before_additional_footer', $this);
-
-            $this->print_additional_container_footer();
-
-            do_action('cuar/core/container/view/after_footer', $this);
-
-            $this->print_associated_content();
-
-            $out = ob_get_contents();
+            $this->print_single_private_container_header();
+            $before = ob_get_contents();
             ob_end_clean();
 
-            return $content . $out;
+            ob_start();
+            $this->print_single_private_container_footer();
+            $after = ob_get_contents();
+            ob_end_clean();
+
+            return $before . $content . $after;
         }
 
-        // Retrieve all the private content associated to this project and display it here
+        /**
+         * Retrieve all the private content associated to this project and display it here
+         *
+         */
         public function print_associated_content()
         {
             do_action('cuar/core/container/view/before_associated_content', $this);
 
+            /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
 
             $container_id = get_queried_object_id();
@@ -611,13 +653,17 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
                             "default-container-content.template.php"
                         ),
                         'templates'));
+
+                    wp_reset_query();
                 }
             }
 
             do_action('cuar/core/container/view/after_associated_content', $this);
         }
 
-        protected function print_additional_container_footer() { }
+        protected function print_additional_private_container_header() { }
+
+        protected function print_additional_private_container_footer() { }
 
         /*------- DASHBOARD BLOCK ---------------------------------------------------------------------------------------*/
 
@@ -932,7 +978,7 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())
                 {
-                    add_filter('the_content', array(&$this, 'print_single_container_footer'), 3000);
+                    add_filter('cuar/core/the_content', array(&$this, 'print_single_private_container_meta_filter'), 50);
                 }
 
                 // Optionally output the latest files on the dashboard

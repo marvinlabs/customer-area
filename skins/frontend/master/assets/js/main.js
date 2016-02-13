@@ -12,7 +12,24 @@
 
         // Variables
         var runHeader;
+        var WPCA = $('cuar-js-content-container');
+        var Window = $(window);
         var Body = $('body');
+        var Navbar = $('.navbar');
+        var Topbar = $('#topbar');
+
+        // Constant Heights
+        var windowH = Window.height();
+        var bodyH = Body.height();
+        var navbarH = 0;
+        var topbarH = 0;
+
+        // Variable Heights
+        if (Navbar.is(':visible')) { navbarH = Navbar.height(); }
+        if (Topbar.is(':visible')) { topbarH = Topbar.height(); }
+
+        // Calculate Height for inner content elements
+        var contentHeight = windowH - (navbarH + topbarH);
 
         // SideMenu Functions
         var runSideMenu = function (options) {
@@ -478,25 +495,47 @@
         var runTrays = function () {
 
             // Match height of tray with the height of body
-            var trayMatch = $('.tray[data-tray-height="match"]');
-            if (trayMatch.length) {
+            var trayFormat = $('#cuar-js-content-container .tray-right, #cuar-js-content-container .tray-left');
+            if (trayFormat.length) {
 
                 // Loop each tray and set height to match body
-                trayMatch.each(function () {
-                    var bodyH = $('body').innerHeight();
-                    var TopbarH = $('#topbar').outerHeight();
-                    var NavbarH = $('#main > .main-header').outerHeight();
-                    var AdminbarH = $('#wpadminbar').outerHeight();
-                    var Height = bodyH - (TopbarH + NavbarH + AdminbarH);
-                    $(this).height(Height - 45);
+                trayFormat.each(function(i,e) {
+                    var This = $(e);
+                    var trayCenter = This.parent().find('.tray-center');
+                    var heightEls = null;
+                    var trayHeight = null;
+                    var trayScroll = This.find('.tray-scroller');
+
+                    if (This.attr('data-tray-height-substract') && This.attr('data-tray-height-base')) {
+                        var heightBase = 'window' ? $(window).height() : $(This.data('tray-height-base')).innerHeight();
+                        var heightSubstract = This.data('tray-height-substract').split(',');
+                        for (i = 0; i < heightSubstract.length; i++) {
+                            heightEls = heightEls + $(heightSubstract[i]).outerHeight(true);
+                        }
+                        trayHeight = heightBase - heightEls;
+                    } else {
+                        trayHeight = contentHeight;
+                    }
+
+                    This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()));
+                    if (trayCenter.length) {
+                        trayCenter.height(trayHeight - 75); // 75 = trayCenter padding-top + padding-bottom
+                    }
+
+                    if (trayScroll.length) {
+                        trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+                        trayScroll.scroller();
+                    }
                 });
 
-            }
-            ;
+                // Scroll lock all fixed content overflow
+                $('.cuar-page-content').scrollLock('on', 'div');
+
+            };
 
             // Debounced resize handler
             var rescale = function () {
-                if ($(window).width() < 1000) {
+                if ($('#cuar-js-content-container').width() < 1000) {
                     Body.addClass('tray-rescale');
                 }
                 else {
@@ -540,7 +579,7 @@
             var dataAppend = dataTray.children();
 
             function fcRefresh() {
-                if ($('body').width() < 585) {
+                if ($('#cuar-js-content-container').innerWidth() < 550) {
                     dataAppend.appendTo($(dataTray.data('tray-mobile')));
                 }
                 else {
@@ -674,6 +713,60 @@
             }
 
         }
+
+        // Gallery
+        var runGallery = function(){
+
+            // Init multiselect plugin on filter dropdowns
+            $('.cuar-js-collection-filters-buttons').multiselect({
+                buttonClass: 'btn btn-default'
+            });
+
+            var $container = $('#cuar-js-collection-gallery'), // mixitup container
+                $toList = $('#cuar-js-collection-to-list'), // list view button
+                $toGrid = $('#cuar-js-collection-to-grid'); // list view button
+
+            // Instantiate MixItUp
+            $container.mixItUp({
+                controls: {
+                    enable: false // we won't be needing these
+                },
+                animation: {
+                    duration: 400,
+                    effects: 'fade translateZ(-360px) stagger(45ms)',
+                    easing: 'ease'
+                },
+                callbacks: {
+                    onMixFail: function () {
+                    }
+                }
+            });
+
+            $toList.on('click', function () {
+                $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
+                if ($container.hasClass('list')) {
+                    return
+                }
+                $container.mixItUp('changeLayout', {
+                    display: 'block',
+                    containerClass: 'list'
+                }, function (state) {
+                    // callback function
+                });
+            });
+            $toGrid.on('click', function () {
+                $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
+                if ($container.hasClass('grid')) {
+                    return
+                }
+                $container.mixItUp('changeLayout', {
+                    display: 'inline-block',
+                    containerClass: 'grid'
+                }, function (state) {
+                    // callback function
+                });
+            });
+        }
         return {
             init: function (options) {
 
@@ -700,6 +793,7 @@
                 runFooter();
                 runTrays();
                 runFormElements();
+                runGallery();
             }
 
         }
@@ -733,12 +827,6 @@
             onFinish: function () {
                 $('.admin-panels').addClass('animated fadeIn').removeClass('fade-onload');
 
-                // Init Demo settings
-                $('#p0 .panel-control-color').click();
-
-                // Init Demo settings
-                $('#p1 .panel-control-title').click();
-
                 // Create an example admin panel filter
                 $('#admin-panel-filter a').on('click', function () {
                     var This = $(this);
@@ -767,7 +855,7 @@
 
 })(jQuery);
 
-// Global Library of Theme colors for Javascript plug and play use  
+// Global Library of Theme colors for Javascript plug and play use
 var bgPrimary = '#4a89dc',
     bgPrimaryL = '#5d9cec',
     bgPrimaryLr = '#83aee7',

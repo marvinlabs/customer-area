@@ -961,7 +961,7 @@ if ( !class_exists('CUAR_Settings')) :
             {
                 if ( !isset($editor_settings))
                 {
-                    $editor_settings = $this->plugin->get_default_wp_editor_settings();
+                    $editor_settings = cuar_wp_editor_settings();
                 }
                 $editor_settings ['textarea_name'] = self::$OPTIONS_GROUP . "[" . $option_id . "]";
 
@@ -1033,7 +1033,7 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
-            echo sprintf('<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button button-primary %s" /></p>',
+            echo sprintf('<p><input type="submit" name="%s" id="%s[%s]" value="%s" class="button %s" /></p>',
                 esc_attr($option_id),
                 self::$OPTIONS_GROUP, esc_attr($option_id),
                 $label,
@@ -1316,6 +1316,7 @@ if ( !class_exists('CUAR_Settings')) :
                 <!--
                 jQuery("document").ready(function ($) {
                     $("#' . esc_attr( $option_id ) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
                         width: "100%"
                     });
                 });
@@ -1389,6 +1390,7 @@ if ( !class_exists('CUAR_Settings')) :
                 <!--
                 jQuery("document").ready(function ($) {
                     $("#<?php echo esc_attr( $option_id ); ?>").select2({
+                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1461,6 +1463,7 @@ if ( !class_exists('CUAR_Settings')) :
                 <!--
                 jQuery("document").ready(function ($) {
                     $("#<?php echo esc_attr( $option_id ); ?>").select2({
+                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1549,6 +1552,7 @@ if ( !class_exists('CUAR_Settings')) :
                 <!--
                 jQuery("document").ready(function ($) {
                     $("#' . esc_attr( $option_id ) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
                         width: "100%"
                     });
                 });

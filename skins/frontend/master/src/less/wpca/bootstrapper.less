@@ -19,12 +19,17 @@
 @import "../core/theme_mixins.less";
 
 // Base Wrapper
-body .entry-content .cuar-content-container,
-body .entry-content .cuar-menu-container,
-.cuar-content-container,
-.cuar-menu-container {
+// Use the following wrapper and paste your styles inside
+// to make sure your rules will override possible CSS rules
+// defined by the parent WP theme.
+// -
+@wrapperBody: ~"body.customer-area";
+@wrapperContainer: ~".cuar-css-wrapper";
+// @wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
+@wrapperBase: ~"@{wrapperContainer}";
 
-  // Hard resets to nto allow parent theme modifying WPCA
+@{wrapperBase}{
+  // Hard resets to not allow parent theme to modify WPCA
   @import "resets";
 
   // Skin Settings
@@ -35,7 +40,7 @@ body .entry-content .cuar-menu-container,
 
   // Main WPCA components
   @import "wrapped";
-
+  @import "utilities";
 }
 
 // Main Base components that require to be outside containers
@@ -44,8 +49,9 @@ body .entry-content .cuar-menu-container,
 @import "@{base-path}/tooltip.less";
 // @import "@{base-path}/popovers.less";
 // @import "@{base-path}/carousel.less";
-@import "components/select2";
 
 // Main WPCA components that require to be outside containers
 // ----------------------------
+@import "components/trays";
+@import "components/datepicker";
 @import "inline";

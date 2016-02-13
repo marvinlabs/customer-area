@@ -1,5 +1,8 @@
+// Components
+// -
 @import 'components/list-tables';
 @import 'components/buttons';
+@import 'components/ajax';
 @import 'components/menu';
 @import 'components/actions';
 @import 'components/progress';
@@ -11,9 +14,32 @@
 @import 'components/jeditable';
 @import 'components/address';
 @import 'components/range-input';
+@import 'components/tabs';
 @import 'components/tooltip';
 
-@import 'addons/tasks';
-@import 'addons/invoicing';
-@import 'addons/projects';
-@import 'addons/protected-post-types';
+// Tweaks
+// -
+@import 'tweaks/dashboard';
+@import 'tweaks/settings';
+@import 'tweaks/status';
+@import 'tweaks/tasks';
+@import 'tweaks/invoicing';
+@import 'tweaks/projects';
+@import 'tweaks/protect-post-types';
+
+// Import source LESS files from frontend master-skin
+// -
+& {
+  /* Path to LESS files */
+  @path: '../../../../frontend/master/src/less';
+
+  /* Variables setup */
+  @import '@{path}/wpca/variables/all.less';
+  @cuar-color-primary: #0085BA;
+  @import '@{path}/wpca/mixins/colors.less';
+  @import '@{path}/core/theme_variables.less';
+
+  /* Components */
+  @import '@{path}/wpca/components/datepicker.less';
+  @import '@{path}/wpca/components/select2.less';
+}

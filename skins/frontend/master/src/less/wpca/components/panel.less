@@ -1,0 +1,94 @@
+// Fix panel body without padding table bug
+//--
+.panel-body.pn {
+  .table {
+    border-bottom: 0 none;
+
+    tr:first-child {
+      td, th {
+        border-top: 0 none;
+      }
+    }
+    tr:last-child {
+      td, th {
+        border-bottom: 0 none;
+      }
+    }
+  }
+}
+
+// Fix progress within panel margin-bottom
+//--
+.panel-body {
+  .table {
+    .progress {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Panel for meta information tiles in single post footers
+//--
+.cuar-panel-meta-tile.panel.panel-tile {
+  border-top: 0;
+  border-left: 0;
+  border-bottom: 5px solid @brand-primary;
+  border-right: 0;
+
+  .panel-body {
+    padding: @padding-sm-vertical @padding-sm-horizontal @padding-sm-vertical @padding-md-horizontal;
+
+    i {
+      padding: @padding-sm-vertical;
+      color: mix(@muted, @panel-bg, 60%);
+
+      .icon-bg {
+        z-index: 0;
+      }
+    }
+
+    .cuar-meta-value {
+      color: @brand-primary;
+      font-size: @font-size-lg;
+      line-height: @font-size-lg;
+      margin-top: @font-size-lg;
+    }
+
+    .cuar-meta-value,
+    .cuar-meta-label {
+      z-index: 1;
+      position: relative;
+    }
+  }
+}
+
+// Panel to show a list of key/value pairs
+//--
+.cuar-panel-property-list {
+  .panel-body {
+    .pn();
+
+    th, td {
+      .fs-sm();
+    }
+
+    th {
+      padding-left: @table-cell-padding + 6px; // 6px defined as such in framework's panels.less
+    }
+
+    table {
+      border-bottom: 0 none;
+
+      tr:first-child {
+        td, th {
+          border-top: 0 none;
+        }
+      }
+      tr:last-child {
+        td, th {
+          border-bottom: 0 none;
+        }
+      }
+    }
+  }
+}

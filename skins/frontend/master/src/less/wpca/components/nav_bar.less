@@ -1,19 +1,43 @@
+// Nav margins fix
+// ---------------
+// Margins should be adjusted depending on where the menu is outputted
+&.cuar-content-container > .cuar-menu-container {
+  .navbar {
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+  }
+}
+
 // Fluidify Nav
 // ------------
 // - Make bootstrap Navbar always fit horizontally
 // - Fixes some CSS on small devices
-
-&.cuar-menu-container {
-  display:block;
-  margin-bottom: @line-height-computed;
+.cuar-menu-container {
+  .clearfix();
+  display: block;
+  margin-bottom: 0;
   background: @body-bg;
+  width: auto;
+
+  .navbar,
+  .navbar-header,
+  .nav-container {
+    .clearfix();
+  }
 
   .navbar {
     margin: 0;
     min-height: initial;
+    background: @transparent;
 
     .navbar-brand {
       display: none;
+    }
+
+    li.current-page-parent > a{
+      background: @component-active-bg;
+      color: @component-active-color;
     }
   }
 

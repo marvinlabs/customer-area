@@ -143,7 +143,7 @@ class CUAR_MessageCenter
         $warnings = $this->get_warnings();
         if (empty($warnings)) return;
 
-        echo '<div id="message" class="error">';
+        echo '<div id="message" class="error cuar-error">';
 
         echo '<p>' . __('<strong>WP Customer Area</strong> has detected some potential issues: ', 'cuar') . '</p>';
 
@@ -153,7 +153,7 @@ class CUAR_MessageCenter
         }
         echo '</ol>';
 
-        echo '<p><a href="' . admin_url('admin.php?page=wpca-status&tab=needs-attention') . '" class="button-primary button-cuar">' . __('Fix these potential issues', 'cuar') . ' &raquo;</a></p>';
+        echo '<p><a href="' . admin_url('admin.php?page=wpca-status&tab=needs-attention') . '" class="button button-primary">' . __('Fix these potential issues', 'cuar') . ' &raquo;</a></p>';
         echo '</div>';
     }
 

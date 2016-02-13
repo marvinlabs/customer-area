@@ -12,31 +12,32 @@
  *
  */ ?>
 
-<div class="cuar-content-block cuar-private-files panel">
+<?php /** @var string $page_subtitle */ ?>
+<?php /** @var string $all_items_url */ ?>
+<?php /** @var WP_Query $content_query */ ?>
+<?php /** @var string $item_template */ ?>
+
+<?php
+$all_items_url = cuar_addon('customer-private-pages')->get_page_url('customer-private-files');
+?>
+
+<div class="panel panel-border panel-default top cuar_private_file">
     <div class="panel-heading">
-        <?php
-        global $cpf_addon;
-        if (!$cpf_addon)
-            $cpf_addon = $this->plugin->get_addon('customer-private-files');
-        $page_id = $cpf_addon->get_page_id($this->get_slug());
-        ?>
         <span class="panel-icon">
             <i class="fa fa-file"></i>
         </span>
-        <span class="cuar-title panel-title">
-            <a href="<?php echo get_permalink($page_id); ?>" title="<?php esc_attr_e('View all', 'cuar'); ?>">
-                <?php echo $page_subtitle; ?>
+        <span class="panel-title">
+            <?php echo $page_subtitle; ?>
+        </span>
+        <span class="widget-menu pull-right">
+            <a href="<?php echo esc_attr($all_items_url); ?>" class="btn btn-default btn-xs">
+                <span class="fa fa-eye"></span> <?php _e('View all', 'cuar'); ?>
             </a>
         </span>
     </div>
-    <div class="cuar-private-file-list cuar-item-list panel-body cuar-gallery-page">
-
-        <div id="mix-container">
-
-            <div class="fail-message">
-                <span>No items were found matching the selected filters</span>
-            </div>
-
+    <div class="panel-body pn">
+        <table class="table">
+            <tbody>
             <?php
             while ($content_query->have_posts()) {
                 $content_query->the_post();
@@ -45,12 +46,7 @@
                 include($item_template);
             }
             ?>
-            <div class="gap"></div>
-            <div class="gap"></div>
-            <div class="gap"></div>
-            <div class="gap"></div>
-
-        </div>
-
+            </tbody>
+        </table>
     </div>
 </div>

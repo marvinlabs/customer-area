@@ -59,9 +59,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 			<td><?php echo $page->get_type(); ?></td>
 			<td>
 <?php 			if ( $page_id>0 ) {
-					printf( '<a href="%1$s">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $page_id), __('Edit', 'cuar') );
-					echo ' ';
-					printf( '<a href="%1$s">%2$s &raquo;</a>', get_permalink( $page_id ), __('View', 'cuar') );
+					printf( '<a href="%1$s">%2$s</a>', admin_url('post.php?action=edit&post=' . $page_id), __('Edit', 'cuar') );
+					echo ' | ';
+					printf( '<a href="%1$s">%2$s</a>', get_permalink( $page_id ), __('View', 'cuar') );
 				}
 ?>
 			</td>
@@ -87,7 +87,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	</p>
 		 
 	<p class="cuar-suggested-action"><span class="cuar-text"><?php _e('Suggested action', 'cuar' ); ?></span>
-		<input type="submit" id="cuar-remove-orphan-pages" name="cuar-remove-orphan-pages" class="cuar-button cuar-button-primary" value="<?php esc_attr_e( 'Delete orphan pages', 'cuar' ); ?> &raquo;" />
+		<input type="submit" id="cuar-remove-orphan-pages" name="cuar-remove-orphan-pages" class="button button-primary" value="<?php esc_attr_e( 'Delete orphan pages', 'cuar' ); ?> &raquo;" />
 		<?php wp_nonce_field( 'cuar-remove-orphan-pages', 'cuar-remove-orphan-pages_nonce' ); ?>
 		
 		<script type="text/javascript">
@@ -123,9 +123,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 			<td><?php echo $o->ID; ?></td>
 			<td>
 <?php 			if ( $page_id>0 ) {
-					printf( '<a href="%1$s" class="cuar-button">%2$s &raquo;</a>', admin_url('post.php?action=edit&post=' . $o->ID), __('Edit', 'cuar') );
-					echo ' ';
-					printf( '<a href="%1$s" class="cuar-button">%2$s &raquo;</a>', get_permalink( $o->ID ), __('View', 'cuar') );
+					printf( '<a href="%1$s" class="cuar-button">%2$s</a>', admin_url('post.php?action=edit&post=' . $o->ID), __('Edit', 'cuar') );
+					echo ' | ';
+					printf( '<a href="%1$s" class="cuar-button">%2$s</a>', get_permalink( $o->ID ), __('View', 'cuar') );
 				}
 ?>
 			</td>

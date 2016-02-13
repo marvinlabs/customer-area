@@ -38,9 +38,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
     <p class="cuar-suggested-action"><span class="cuar-text"><?php _e('Suggested action', 'cuar'); ?></span>
         <a href="<?php echo admin_url('admin.php?page=wpca-settings&tab=cuar_capabilities'); ?>"
            class="cuar-button cuar-button-primary"><?php _e('Configure permissions', 'cuar'); ?> &raquo;</a>
-        <input type="submit" id="cuar-ignore-unconfigured-capabilities" name="cuar-ignore-unconfigured-capabilities"
-               class="cuar-button cuar-button-primary"
-               value="<?php esc_attr_e('Ignore this warning', 'cuar'); ?> &raquo;"/>
+        <input type="submit" id="cuar-ignore-unconfigured-capabilities" name="cuar-ignore-unconfigured-capabilities" class="button button-primary" value="<?php esc_attr_e('Ignore this warning', 'cuar'); ?> &raquo;"/>
         <?php wp_nonce_field('cuar-ignore-unconfigured-capabilities', 'cuar-ignore-unconfigured-capabilities_nonce'); ?>
     </p>
 </div>

@@ -38,13 +38,19 @@ function cuar_addon($id)
 
 /**
  * Print the customer area menu
+ *
+ * @param bool   $wrap Wrap the menu inside a div element
+ * @param string $wrapper_class
  */
-function cuar_the_customer_area_menu()
+function cuar_the_customer_area_menu($wrap = true, $wrapper_class = "cuar-css-wrapper")
 {
+    if ($wrap) echo '<div class="' . esc_attr($wrapper_class) . '">';
+
     /** @var CUAR_CustomerPagesAddOn $cp_addon */
     $cp_addon = cuar_addon('customer-pages');
-
     echo $cp_addon->get_main_navigation_menu();
+
+    if ($wrap) echo '</div>';
 }
 
 /**
@@ -71,7 +77,8 @@ function cuar_is_customer_area_page($post_id = 0, $page_slug = null)
     /** @var CUAR_CustomerPagesAddOn $cp_addon */
     $cp_addon = cuar_addon('customer-pages');
 
-    if ($page_slug == null) {
+    if ($page_slug == null)
+    {
         return $cp_addon->is_customer_area_page($post_id);
     }
 
@@ -133,4 +140,18 @@ function cuar_print_address($address, $address_id, $address_label = '', $templat
     /** @var CUAR_AddressesAddOn $ad_addon */
     $ad_addon = cuar_addon('address-manager');
     $ad_addon->print_address($address, $address_id, $address_label, $template_prefix);
+}
+
+/**
+ * Get the WP editor settings allowing to override them
+ *
+ * @param array $extra_settings
+ *
+ * @return array
+ */
+function cuar_wp_editor_settings($extra_settings = array())
+{
+    $defaults = cuar()->get_default_wp_editor_settings();
+
+    return array_merge($defaults, $extra_settings);
 }

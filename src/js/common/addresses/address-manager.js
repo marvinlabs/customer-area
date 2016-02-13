@@ -13,7 +13,7 @@
         var base = this;
 
         // Address fields we have to handle
-        base.fields = ['name', 'company', 'line1', 'line2', 'zip', 'city', 'country', 'state'];
+        base.fields = ['name', 'company', 'line1', 'line2', 'zip', 'city', 'country', 'state', 'vat-number', 'logo-url'];
         base.isBusy = false;
 
         // Access to jQuery and DOM versions of element
@@ -161,7 +161,9 @@
                 'zip': '',
                 'city': '',
                 'country': '',
-                'state': ''
+                'state': '',
+                'vat_number': '',
+                'logo_url': ''
             });
         };
 

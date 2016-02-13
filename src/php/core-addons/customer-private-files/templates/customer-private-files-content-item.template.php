@@ -69,7 +69,7 @@ $file_count = cuar_get_the_attached_file_count($post->ID);
     <div class="cuar-badges">
         <a href="<?php the_permalink(); ?>"
            title="<?php echo esc_attr(sprintf(_n('%1$s file attached', '%1$s files attached', $file_count, 'cuar'), $file_count)); ?>">
-            <span class="download-badge dashicons dashicons-download dashicon-badge pull-right">
+            <span class="cuar-download-badge fa fa-download small pull-right">
                 <?php echo $file_count; ?>
             </span>
         </a>

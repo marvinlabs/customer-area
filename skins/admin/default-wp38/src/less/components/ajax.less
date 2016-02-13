@@ -1,0 +1,32 @@
+@keyframes blinker {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.cuar-ajax-container {
+  display: inline-block;
+  vertical-align: top;
+  margin: 8px 15px 0;
+  font-size: 0.8em;
+}
+
+.cuar-ajax-running {
+  color: #666;
+  animation: blinker 1s linear infinite;
+}
+
+.cuar-ajax-success {
+  color: #006400;
+}
+
+.cuar-ajax-failure {
+  color: #B22222;
+}
+
+.cuar-loading-indicator {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: url('../img/loading-indicator.gif') top left no-repeat;
+}

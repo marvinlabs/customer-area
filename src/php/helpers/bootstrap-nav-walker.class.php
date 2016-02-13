@@ -100,14 +100,14 @@ class CUAR_BootstrapNavWalker extends Walker_Nav_Menu {
 			$item_output = $args->before;
 
 			/*
-			 * Glyphicons
-			 * ===========
+			 * Font-Awesome
+			 * ============
 			 * Since the the menu item is NOT a Divider or Header we check the see
 			 * if there is a value in the attr_title property. If the attr_title
 			 * property is NOT null we apply it as the class name for the glyphicon.
 			 */
 			if ( ! empty( $item->attr_title ) )
-				$item_output .= '<a'. $attributes .'><span class="dashicons ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
+				$item_output .= '<a'. $attributes .'><span class="fa fa-' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
 			else
 				$item_output .= '<a'. $attributes .'>';
 

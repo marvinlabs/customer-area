@@ -905,11 +905,11 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 {
                     foreach ($owners as $id => $name)
                     {
-                        printf('<input type="hidden" name="%s" value="%s" />', $field_name, $id);
+                        printf('<input type="hidden" name="%s" id="%s" value="%s" />', $field_name, $field_id, $id);
 
                         if ($hide_if_single_owner)
                         {
-                            printf('<span id="%s" class="single-owner hidden-message %s"><em>%s</em></span>',
+                            printf('<span id="%s_text" class="single-owner hidden-message %s"><em>%s</em></span>',
                                 $field_id,
                                 $owner_type_field_id . '_owner_select',
                                 apply_filters('cuar/core/ownership/hidden-single-selectable-owner-text',
@@ -917,7 +917,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                         }
                         else
                         {
-                            printf('<span id="%s" class="single-owner %s"><em>%s</em></span>',
+                            printf('<span id="%s_text" class="single-owner %s"><em>%s</em></span>',
                                 $field_id,
                                 $owner_type_field_id . '_owner_select',
                                 apply_filters('cuar/core/ownership/single-selectable-owner-text', $name));
@@ -959,6 +959,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                             <!--
                             jQuery("document").ready(function ($) {
                                 $("#<?php echo $field_id; ?>").select2({
+                                    <?php if(!is_admin()) echo "dropdownParent: $('#" . $field_id . "').parent(),"; ?>
                                     width: "100%"
                                 });
                             });
