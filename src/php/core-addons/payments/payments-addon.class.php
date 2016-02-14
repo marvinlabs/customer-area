@@ -49,10 +49,11 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
          */
         public function run_addon($plugin)
         {
+            $payable_types = $this->get_payable_types();
+            if (empty($payable_types)) return;
+
             $this->settings = new CUAR_PaymentsSettingsHelper($plugin, $this);
             $this->payments = new CUAR_PaymentsHelper($plugin, $this);
-//            $this->logger = new CUAR_PaymentsLogger($plugin, $this);
-//            $this->editor = new CUAR_PaymentEditorHelper($plugin, $this);
 
             // Init the admin interface if needed
             if (is_admin()) {
@@ -78,6 +79,16 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
             return $this->payments;
         }
 
+        /**
+         * Get the types which can be paid
+         *
+         * @return array
+         */
+        public function get_payable_types()
+        {
+            return apply_filters('cuar/private-content/payments/payable-types', array());
+        }
+
         /*------- INITIALISATION -----------------------------------------------------------------------------------------*/
 
         /**
@@ -99,6 +110,7 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
         {
             $defaults = parent::set_default_options($defaults);
             $defaults = CUAR_PaymentsSettingsHelper::set_default_options($defaults);
+
             return $defaults;
         }
     }

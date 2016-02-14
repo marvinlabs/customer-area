@@ -64,10 +64,13 @@ class CUAR_PaymentsHelper
         if (is_wp_error($payment) || $payment == 0) return false;
 
         $payment = new CUAR_Payment($payment);
+
         $payment->set_object($object_type, $object_id);
+
         $payment->set_gateway($gateway);
         $payment->set_amount($amount);
         $payment->set_currency($currency);
+
         $payment->set_user_id($user_id);
         $payment->set_user_ip(CUAR_GeneralHelper::get_ip());
         $payment->set_address($user_address);

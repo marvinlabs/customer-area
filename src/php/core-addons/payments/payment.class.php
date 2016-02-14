@@ -312,7 +312,7 @@ class CUAR_Payment extends CUAR_CustomPost
             'supports'            => array('title', 'editor', 'author'),
             'taxonomies'          => array(),
             'public'              => true,
-            'show_ui'             => false,
+            'show_ui'             => true,
             'show_in_menu'        => false,
             'show_in_nav_menus'   => false,
             'publicly_queryable'  => true,
