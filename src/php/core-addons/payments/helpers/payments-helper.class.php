@@ -22,6 +22,8 @@ class CUAR_PaymentsHelper
         $this->pa_addon = $pa_addon;
     }
 
+    //----------- MANAGEMENT ------------------------------------------------------------------------------------------/
+
     /**
      * @param string $object_type
      * @param int    $object_id
