@@ -6,12 +6,13 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/payment.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/payment-status.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-admin-interface.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-settings-helper.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/abstract-payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/bacs-payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/test-payment-gateway.class.php');
 
-if ( !class_exists('CUAR_PaymentsAddOn')) :
+if (!class_exists('CUAR_PaymentsAddOn')) :
 
     /**
      * Add-on to allow users to send messages to each other
@@ -25,6 +26,9 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
 
         /** @var CUAR_PaymentsAdminInterface */
         private $admin_interface;
+
+        /** @var CUAR_PaymentsHelper */
+        private $payments;
 
         /**
          * CUAR_PaymentsAddOn constructor.
@@ -46,12 +50,12 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
         public function run_addon($plugin)
         {
             $this->settings = new CUAR_PaymentsSettingsHelper($plugin, $this);
+            $this->payments = new CUAR_PaymentsHelper($plugin, $this);
 //            $this->logger = new CUAR_PaymentsLogger($plugin, $this);
 //            $this->editor = new CUAR_PaymentEditorHelper($plugin, $this);
 
             // Init the admin interface if needed
-            if (is_admin())
-            {
+            if (is_admin()) {
                 $this->admin_interface = new CUAR_PaymentsAdminInterface($plugin, $this);
             }
 
@@ -64,6 +68,14 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
         public function settings()
         {
             return $this->settings;
+        }
+
+        /**
+         * @return CUAR_PaymentsHelper
+         */
+        public function payments()
+        {
+            return $this->payments;
         }
 
         /*------- INITIALISATION -----------------------------------------------------------------------------------------*/

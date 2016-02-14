@@ -44,6 +44,7 @@ define('CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', false);
 
 // Helpers
 include_once(CUAR_INCLUDES_DIR . '/helpers/address-helper.class.php');
+include_once(CUAR_INCLUDES_DIR . '/helpers/general-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/currency-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/country-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/wordpress-helper.class.php');

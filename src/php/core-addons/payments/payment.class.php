@@ -21,7 +21,7 @@ class CUAR_Payment extends CUAR_CustomPost
      * Constructor
      *
      * @param WP_Post|int $custom_post
-     * @param boolean $load_post If we supply an int as the first argument, shall we load the post object?
+     * @param boolean     $load_post If we supply an int as the first argument, shall we load the post object?
      */
     public function __construct($custom_post, $load_post = true)
     {
@@ -51,9 +51,9 @@ class CUAR_Payment extends CUAR_CustomPost
             do_action('cuar/private-content/payments/before-update-status', $this, $old_status, $new_status);
 
             $args = array(
-                'ID' => $this->ID,
+                'ID'          => $this->ID,
                 'post_status' => $new_status,
-                'edit_date' => current_time('mysql'),
+                'edit_date'   => current_time('mysql'),
             );
             wp_update_post(apply_filters('cuar/private-content/payments/update-payment-status-args', $args));
 
@@ -69,7 +69,7 @@ class CUAR_Payment extends CUAR_CustomPost
      * Set the object for which the payment was made
      *
      * @param string $object_type
-     * @param int $object_id
+     * @param int    $object_id
      */
     public function set_object($object_type, $object_id)
     {
@@ -89,7 +89,7 @@ class CUAR_Payment extends CUAR_CustomPost
 
         return array(
             'type' => $object_type,
-            'id' => $object_id,
+            'id'   => $object_id,
         );
     }
 
@@ -117,7 +117,7 @@ class CUAR_Payment extends CUAR_CustomPost
 
     /**
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
      */
     public function set_gateway_meta($key, $value)
     {
@@ -126,11 +126,13 @@ class CUAR_Payment extends CUAR_CustomPost
 
     /**
      * @param string $key
+     *
      * @return mixed
      */
     public function get_gateway_meta($key)
     {
         $value = get_post_meta($this->ID, 'cuar_gateway_' . $key, true);
+
         return $value;
     }
 
@@ -290,45 +292,45 @@ class CUAR_Payment extends CUAR_CustomPost
     public static function register_post_type()
     {
         $labels = array(
-            'name' => _x('Payments', 'cuar_payment', 'cuar'),
-            'singular_name' => _x('Payment', 'cuar_payment', 'cuar'),
-            'add_new' => _x('Add New', 'cuar_payment', 'cuar'),
-            'add_new_item' => _x('Add New Payment', 'cuar_payment', 'cuar'),
-            'edit_item' => _x('Edit Payment', 'cuar_payment', 'cuar'),
-            'new_item' => _x('New Payment', 'cuar_payment', 'cuar'),
-            'view_item' => _x('View Payment', 'cuar_payment', 'cuar'),
-            'search_items' => _x('Search Payments', 'cuar_payment', 'cuar'),
-            'not_found' => _x('No payment found', 'cuar_payment', 'cuar'),
+            'name'               => _x('Payments', 'cuar_payment', 'cuar'),
+            'singular_name'      => _x('Payment', 'cuar_payment', 'cuar'),
+            'add_new'            => _x('Add New', 'cuar_payment', 'cuar'),
+            'add_new_item'       => _x('Add New Payment', 'cuar_payment', 'cuar'),
+            'edit_item'          => _x('Edit Payment', 'cuar_payment', 'cuar'),
+            'new_item'           => _x('New Payment', 'cuar_payment', 'cuar'),
+            'view_item'          => _x('View Payment', 'cuar_payment', 'cuar'),
+            'search_items'       => _x('Search Payments', 'cuar_payment', 'cuar'),
+            'not_found'          => _x('No payment found', 'cuar_payment', 'cuar'),
             'not_found_in_trash' => _x('No payment found in Trash', 'cuar_payment', 'cuar'),
-            'parent_item_colon' => _x('Parent Payment:', 'cuar_payment', 'cuar'),
-            'menu_name' => _x('Payments', 'cuar_payment', 'cuar'),
+            'parent_item_colon'  => _x('Parent Payment:', 'cuar_payment', 'cuar'),
+            'menu_name'          => _x('Payments', 'cuar_payment', 'cuar'),
         );
 
         $args = array(
-            'labels' => $labels,
-            'hierarchical' => false,
-            'supports' => array('title', 'editor', 'author'),
-            'taxonomies' => array(),
-            'public' => true,
-            'show_ui' => false,
-            'show_in_menu' => false,
-            'show_in_nav_menus' => false,
-            'publicly_queryable' => true,
+            'labels'              => $labels,
+            'hierarchical'        => false,
+            'supports'            => array('title', 'editor', 'author'),
+            'taxonomies'          => array(),
+            'public'              => true,
+            'show_ui'             => false,
+            'show_in_menu'        => false,
+            'show_in_nav_menus'   => false,
+            'publicly_queryable'  => true,
             'exclude_from_search' => true,
-            'has_archive' => false,
-            'query_var' => self::$POST_TYPE,
-            'can_export' => false,
-            'rewrite' => false,
-            'capabilities' => array(
-                'edit_post' => 'cuar_pay_edit',
-                'edit_posts' => 'cuar_pay_edit',
-                'edit_others_posts' => 'cuar_pay_edit',
-                'publish_posts' => 'cuar_pay_edit',
-                'read_post' => 'cuar_pay_read',
+            'has_archive'         => false,
+            'query_var'           => self::$POST_TYPE,
+            'can_export'          => false,
+            'rewrite'             => false,
+            'capabilities'        => array(
+                'edit_post'          => 'cuar_pay_edit',
+                'edit_posts'         => 'cuar_pay_edit',
+                'edit_others_posts'  => 'cuar_pay_edit',
+                'publish_posts'      => 'cuar_pay_edit',
+                'read_post'          => 'cuar_pay_read',
                 'read_private_posts' => 'cuar_pay_list_all',
-                'delete_post' => 'cuar_pay_delete',
-                'delete_posts' => 'cuar_pay_delete'
-            )
+                'delete_post'        => 'cuar_pay_delete',
+                'delete_posts'       => 'cuar_pay_delete',
+            ),
         );
 
         register_post_type(self::$POST_TYPE, apply_filters('cuar/private-content/payments/register-post-type-args', $args));
