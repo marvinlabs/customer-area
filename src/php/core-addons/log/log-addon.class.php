@@ -407,7 +407,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     $o = $item->$meta;
                     /** @var CUAR_PrivateFileAddOn $pf_addon */
                     $pf_addon = $this->plugin->get_addon('private-files');
-                    $f = $pf_addon->get_attached_file($item->post->post_parent, $o);
+                    $f = $pf_addon->get_attached_file($item->get_post()->post_parent, $o);
                     $pill['title'] = __('Caption: ', 'cuar') . $f['caption'];
                     $pill['value'] = __('Attachment: ', 'cuar') . $f['file'];
                     break;

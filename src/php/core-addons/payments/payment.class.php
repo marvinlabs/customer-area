@@ -29,6 +29,43 @@ class CUAR_Payment extends CUAR_CustomPost
     }
 
     /**
+     * Update the status of the payment
+     *
+     * @param string $new_status
+     */
+    public function update_status($new_status)
+    {
+        if ($new_status == 'completed' || $new_status == 'complete') {
+            $new_status = 'publish';
+        }
+
+        $old_status = $this->get_post()->post_status;
+
+        if ($old_status === $new_status) {
+            return; // Don't permit status changes that aren't changes
+        }
+
+        $do_change = apply_filters('cuar/private-content/payments/can-update-status', true, $this, $old_status, $new_status);
+
+        if ($do_change) {
+            do_action('cuar/private-content/payments/before-update-status', $this, $old_status, $new_status);
+
+            $args = array(
+                'ID' => $this->ID,
+                'post_status' => $new_status,
+                'edit_date' => current_time('mysql'),
+            );
+            wp_update_post(apply_filters('cuar/private-content/payments/update-payment-status-args', $args));
+
+            do_action('cuar/private-content/payments/on-status-updated', $this->ID, $new_status, $old_status);
+        }
+    }
+
+
+
+    //------- ACCESSORS -----------------------------------------------------------------------------------------------/
+
+    /**
      * Set the object for which the payment was made
      *
      * @param string $object_type
@@ -76,6 +113,25 @@ class CUAR_Payment extends CUAR_CustomPost
         $gateway = get_post_meta($this->ID, self::$META_GATEWAY, true);
 
         return $gateway;
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     */
+    public function set_gateway_meta($key, $value)
+    {
+        update_post_meta($this->ID, 'cuar_gateway_' . $key, $value);
+    }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function get_gateway_meta($key)
+    {
+        $value = get_post_meta($this->ID, 'cuar_gateway_' . $key, true);
+        return $value;
     }
 
     /**
@@ -225,6 +281,8 @@ class CUAR_Payment extends CUAR_CustomPost
 
         return $amount;
     }
+
+    //------- UTILITY FUNCTIONS ---------------------------------------------------------------------------------------/
 
     /**
      * Register the custom post type
