@@ -30,8 +30,9 @@ class CUAR_PaymentsUiHelper
      * @param double $amount
      * @param string $currency
      * @param string $label The label to show on the button
+     * @param array  $address
      */
-    public function show_payment_button($object_type, $object_id, $amount, $currency, $label)
+    public function show_payment_button($object_type, $object_id, $amount, $currency, $label, $address)
     {
         /** @noinspection PhpUnusedLocalVariableInspection */
         $gateways = $this->pa_addon->settings()->get_enabled_gateways();

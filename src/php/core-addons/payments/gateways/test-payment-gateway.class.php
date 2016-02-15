@@ -27,6 +27,14 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
         return __('Test gateway', 'cuar');
     }
 
+    /**
+     * @return bool
+     */
+    public function has_form()
+    {
+        return true;
+    }
+
     //-- Settings helper functions ----------------------------------------------------------------------------------------------------------------------------/
 
     public function validate_options($validated, $cuar_settings, $input)

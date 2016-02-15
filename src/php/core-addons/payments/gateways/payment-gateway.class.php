@@ -29,6 +29,16 @@ interface CUAR_PaymentGateway
      */
     function get_icon();
 
+    /**
+     * @return bool
+     */
+    function has_form();
+
+    /**
+     *
+     */
+    function print_form();
+
     //-- Settings functions -----------------------------------------------------------------------------------------------------------------------------------/
 
     /**

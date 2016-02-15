@@ -38,6 +38,30 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
         );
     }
 
+    /**
+     * @return bool
+     */
+    public function has_form()
+    {
+        return false;
+    }
+
+    /**
+     *
+     */
+    function print_form()
+    {
+        if ($this->has_form())
+        {
+            $form_template = $this->plugin->get_template_file_path(
+                $this->get_template_files_root(),
+                'gateway-checkout-form-' . $this->get_id() . '.template.php',
+                'templates'
+            );
+            if ( !empty($form_template)) include($form_template);
+        }
+    }
+
     //-- Settings functions -----------------------------------------------------------------------------------------------------------------------------------/
 
     public function print_settings()
@@ -47,13 +71,13 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
         include($this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/payments',
-            'gateway_settings_common.template.php',
+            'gateway-settings-common.template.php',
             'templates'
         ));
 
         $settings_template = $this->plugin->get_template_file_path(
             $this->get_template_files_root(),
-            'gateway_settings_' . $this->get_id() . '.template.php',
+            'gateway-settings-' . $this->get_id() . '.template.php',
             'templates'
         );
         if ( !empty($settings_template)) include($settings_template);

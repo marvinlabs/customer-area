@@ -25,10 +25,23 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  * @param string $currency
  * @param string $label The label to show on the button
  */
-function cuar_the_payment_button($object_type, $object_id, $amount, $currency, $label)
+function cuar_the_payment_button($object_type, $object_id, $amount, $currency, $label, $address)
 {
     /** @var CUAR_PaymentsAddOn $pa_addon */
     $pa_addon = cuar_addon('payments');
 
-    $pa_addon->ui()->show_payment_button($object_type, $object_id, $amount, $currency, $label);
+    $pa_addon->ui()->show_payment_button($object_type, $object_id, $amount, $currency, $label, $address);
+}
+
+/**
+ * Get the URL to the checkout page
+ *
+ * @return string
+ */
+function cuar_get_checkout_url()
+{
+    /** @var CUAR_CustomerPagesAddOn $pa_addon */
+    $pa_addon = cuar_addon('customer-pages');
+
+    return $pa_addon->get_page_url('payments-checkout');
 }

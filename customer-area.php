@@ -119,6 +119,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.c
 include_once(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/addresses/addresses-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/payments-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments-home/payments-home-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments-checkout/payments-checkout-addon.class.php');
 
 // Core content types

@@ -6,16 +6,23 @@
 <?php /** @var int $object_id */ ?>
 <?php /** @var double $amount */ ?>
 <?php /** @var string $currency */ ?>
-<?php /** @var string $label The label to show on the button */ ?>
+<?php /** @var string $label */ ?>
+<?php /** @var array $address */ ?>
 
-<form action="" method="POST">
+<form action="<?php echo esc_attr(cuar_get_checkout_url()); ?>" method="POST">
     <input type="hidden" name="cuar_object_type" value="<?php echo esc_attr($object_type); ?>"/>
     <input type="hidden" name="cuar_object_id" value="<?php echo esc_attr($object_id); ?>"/>
     <input type="hidden" name="cuar_amount" value="<?php echo esc_attr($amount); ?>"/>
     <input type="hidden" name="cuar_currency" value="<?php echo esc_attr($currency); ?>"/>
+    <?php echo CUAR_AddressHelper::get_address_as_hidden_input($address, 'cuar_address'); ?>
 
     <?php do_action('cuar/private-content/payments/before-payment-button', $object_type, $object_id); ?>
 
+    <div class="row">
+        <div class="col-xs-12">
+            <h3><?php _e('Pay now', 'cuar'); ?></h3>
+        </div>
+    </div>
     <div class="row">
         <div class="form-group col-xs-8">
             <p><?php _e('We accept the following secure payment methods', 'cuar'); ?></p>
@@ -50,7 +57,7 @@
             </ul>
         </div>
         <div class="form-group col-xs-4 text-right">
-            <button type="submit" name="cuar_do_pay" class="btn btn-primary btn-lg"><?php echo $label; ?></button>
+            <button type="submit" name="cuar_do_checkout" class="btn btn-primary btn-lg"><?php echo $label; ?></button>
         </div>
     </div>
 
