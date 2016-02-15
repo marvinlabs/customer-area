@@ -26,6 +26,14 @@ class CUAR_BacsPaymentGateway extends CUAR_AbstractPaymentGateway
         return __('Wired transfer', 'cuar');
     }
 
+    public function get_icon()
+    {
+        return array(
+            'icon' => CUAR_PLUGIN_URL . 'assets/common/img/gateways/bacs.png',
+            'link' => '',
+        );
+    }
+
     //-- Settings helper functions ----------------------------------------------------------------------------------------------------------------------------/
 
     public function validate_options($validated, $cuar_settings, $input)

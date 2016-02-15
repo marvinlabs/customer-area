@@ -23,15 +23,29 @@
             <ul class="list-inline mt-sm">
                 <?php foreach ($accepted_credit_cards as $cc_id => $cc): ?>
                     <li>
-                        <?php if (!empty($cc['icon'])) : ?>
-                            <img src="<?php echo esc_attr($cc['icon']); ?>" title="<?php echo esc_attr($cc['label']); ?>" />
-                        <?php else: ?>
-                            <?php echo esc_attr($cc['label']); ?>
-                        <?php endif; ?>
+                        <?php if ( !empty($cc['icon'])) : ?>
+                            <img src="<?php echo esc_attr($cc['icon']); ?>" title="<?php echo esc_attr($cc['label']); ?>"/>
+                        <?php else: ?><?php echo esc_attr($cc['label']); ?><?php endif; ?>
                     </li>
                 <?php endforeach; ?>
-                <?php foreach ($gateways as $gateway_id => $gateway): ?>
-                    <li><?php echo $gateway_id; ?></li>
+                <?php foreach ($gateways as $gateway_id => $gateway):
+                    $icon = $gateway->get_icon();
+                    ?>
+                    <li>
+                    <?php if ( !empty($icon['link'])) : ?>
+                        <a href="<?php echo esc_attr($icon['link']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>" target="_blank">
+                    <?php endif; ?>
+
+                    <?php if ( !empty($icon['icon'])) : ?>
+                        <img src="<?php echo esc_attr($icon['icon']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>"/>
+                    <?php else: ?>
+                        <?php echo $gateway->get_name(); ?>
+                    <?php endif; ?>
+
+                    <?php if ( !empty($icon['link'])) : ?>
+                        </a>
+                    <?php endif; ?>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>

@@ -19,13 +19,23 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
         $this->plugin = $plugin;
     }
 
-    //-- CUAR_PaymentGateway implementation -------------------------------------------------------------------------------------------------------------------/
+    //-- General functions ------------------------------------------------------------------------------------------------------------------------------------/
 
     public function is_enabled()
     {
         $value = $this->get_option(self::$OPTION_ENABLED);
 
         return isset($value) && $value == 1 ? true : false;
+    }
+
+    //-- UI functions -----------------------------------------------------------------------------------------------------------------------------------------/
+
+    public function get_icon()
+    {
+        return array(
+            'icon' => '',
+            'link' => '',
+        );
     }
 
     //-- Settings functions -----------------------------------------------------------------------------------------------------------------------------------/
