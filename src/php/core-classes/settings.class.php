@@ -1080,14 +1080,24 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
-            echo sprintf('<select id="%s" name="%s[%s]">', esc_attr($option_id), self::$OPTIONS_GROUP,
-                esc_attr($option_id));
+            $multiple = isset($multiple) ? $multiple : false;
+            $multiple = $multiple ? ' multiple="multiple" ' : '';
+
+            echo sprintf('<select id="%s" name="%s[%s]" %s>', esc_attr($option_id), self::$OPTIONS_GROUP,
+                esc_attr($option_id),
+                $multiple);
 
             $option_value = isset($this->options[$option_id]) ? $this->options[$option_id] : null;
-
             foreach ($options as $value => $label)
             {
-                $selected = ($option_value == $value) ? 'selected="selected"' : '';
+                if (is_array($option_value))
+                {
+                    $selected = in_array($value, $option_value) ? 'selected="selected"' : '';
+                }
+                else
+                {
+                    $selected = ($option_value == $value) ? 'selected="selected"' : '';
+                }
 
                 echo sprintf('<option value="%s" %s>%s</option>', esc_attr($value), $selected, $label);
             }
@@ -1098,6 +1108,18 @@ if ( !class_exists('CUAR_Settings')) :
             {
                 echo $after;
             }
+
+            $this->plugin->enable_library('jquery.select2');
+            echo '<script type="text/javascript">
+                <!--
+                jQuery("document").ready(function ($) {
+                    $("#' . esc_attr( $option_id ) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
+                        width: "100%"
+                    });
+                });
+                //-->
+            </script>';
         }
 
         /**
