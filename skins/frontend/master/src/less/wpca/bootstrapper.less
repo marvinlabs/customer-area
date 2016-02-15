@@ -23,10 +23,9 @@
 // to make sure your rules will override possible CSS rules
 // defined by the parent WP theme.
 // -
-@wrapperBody: ~"body.customer-area";
+@wrapperBody: ~"html > body";
 @wrapperContainer: ~".cuar-css-wrapper";
-// @wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
-@wrapperBase: ~"@{wrapperContainer}";
+@wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
 
 @{wrapperBase}{
   // Hard resets to not allow parent theme to modify WPCA

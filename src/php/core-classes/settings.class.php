@@ -620,6 +620,52 @@ if ( !class_exists('CUAR_Settings')) :
         /**
          * Validate an enum value within an array
          *
+         * @param array  $input          Input array
+         * @param array  $validated      Output array
+         * @param string $option_id      Key of the value to check in the input array
+         * @param array  $select_options List of possible id => values
+         * @param bool   $multiple       Is multiple selection allowed
+         */
+        public function validate_select($input, &$validated, $option_id, $select_options, $multiple)
+        {
+            if ($multiple)
+            {
+                if (!is_array($input[$option_id]))
+                {
+                    add_settings_error($option_id, 'settings-errors',
+                        $option_id . ': ' . $input[$option_id] . __(' is not a valid value', 'cuar'), 'error');
+                    $validated[$option_id] = $this->default_options [$option_id];
+
+                    return;
+                }
+
+                $validated[$option_id] = array();
+                foreach ($input[$option_id] as $item)
+                {
+                    if (isset($select_options[$item]))
+                    {
+                        $validated[$option_id][] = $item;
+                    }
+                }
+            }
+            else
+            {
+                if (is_array($input[$option_id]) || !isset($select_options[$input[$option_id]]))
+                {
+                    add_settings_error($option_id, 'settings-errors',
+                        $option_id . ': ' . $input[$option_id] . __(' is not a valid value', 'cuar'), 'error');
+                    $validated[$option_id] = $this->default_options [$option_id];
+
+                    return;
+                }
+
+                $validated[$option_id] = $input[$option_id];
+            }
+        }
+
+        /**
+         * Validate an enum value within an array
+         *
          * @param array  $input
          *            Input array
          * @param array  $validated
@@ -984,7 +1030,7 @@ if ( !class_exists('CUAR_Settings')) :
                     esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id),
                     esc_attr(stripslashes($this->options [$option_id])), esc_attr($extra_class));
 
-                echo '<span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="' . __( 'Upload File', 'cuar' ) . '"/></span>';
+                echo '<span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="' . __('Upload File', 'cuar') . '"/></span>';
 
                 echo '<script type="text/javascript">';
                 echo '    jQuery(document).ready(function($) { $("#cuar-upload-control-' . $option_id . '").mediaInputControl(); });';
@@ -1053,8 +1099,8 @@ if ( !class_exists('CUAR_Settings')) :
                 <script type="text/javascript">
                     <!--
                     jQuery(document).ready(function ($) {
-                        $('input.<?php echo esc_attr( $option_id ); ?>').click('click', function () {
-                            var answer = confirm("<?php echo str_replace( '"', '\\"', $confirm_message ); ?>");
+                        $('input.<?php echo esc_attr($option_id); ?>').click('click', function () {
+                            var answer = confirm("<?php echo str_replace('"', '\\"', $confirm_message); ?>");
                             return answer;
                         });
                     });
@@ -1083,9 +1129,10 @@ if ( !class_exists('CUAR_Settings')) :
             $multiple = isset($multiple) ? $multiple : false;
             $multiple = $multiple ? ' multiple="multiple" ' : '';
 
-            echo sprintf('<select id="%s" name="%s[%s]" %s>', esc_attr($option_id), self::$OPTIONS_GROUP,
-                esc_attr($option_id),
-                $multiple);
+            $option_name = sprintf('%s[%s]', self::$OPTIONS_GROUP, esc_attr($option_id));
+            $option_name = $multiple ? $option_name . '[]' : $option_name;
+
+            echo sprintf('<select id="%s" name="%s" %s>', esc_attr($option_id), $option_name, $multiple);
 
             $option_value = isset($this->options[$option_id]) ? $this->options[$option_id] : null;
             foreach ($options as $value => $label)
@@ -1113,8 +1160,8 @@ if ( !class_exists('CUAR_Settings')) :
             echo '<script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#' . esc_attr( $option_id ) . '").select2({
-                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
+                    $("#' . esc_attr($option_id) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr($option_id) . '.parent()"),' : '') . '
                         width: "100%"
                     });
                 });
@@ -1337,8 +1384,8 @@ if ( !class_exists('CUAR_Settings')) :
             echo '<script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#' . esc_attr( $option_id ) . '").select2({
-                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
+                    $("#' . esc_attr($option_id) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr($option_id) . '.parent()"),' : '') . '
                         width: "100%"
                     });
                 });
@@ -1401,8 +1448,7 @@ if ( !class_exists('CUAR_Settings')) :
                         $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
                     }
                     ?>
-                    <option
-                        value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+                    <option value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
 
                 <?php endforeach; ?>
 
@@ -1411,8 +1457,8 @@ if ( !class_exists('CUAR_Settings')) :
             <script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#<?php echo esc_attr( $option_id ); ?>").select2({
-                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
+                    $("#<?php echo esc_attr($option_id); ?>").select2({
+                        <?php if ( !is_admin()) echo "dropdownParent: $('#" . esc_attr($option_id) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1474,8 +1520,7 @@ if ( !class_exists('CUAR_Settings')) :
                         $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
                     }
                     ?>
-                    <option
-                        value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+                    <option value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
 
                 <?php endforeach; ?>
 
@@ -1484,8 +1529,8 @@ if ( !class_exists('CUAR_Settings')) :
             <script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#<?php echo esc_attr( $option_id ); ?>").select2({
-                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
+                    $("#<?php echo esc_attr($option_id); ?>").select2({
+                        <?php if ( !is_admin()) echo "dropdownParent: $('#" . esc_attr($option_id) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1573,8 +1618,8 @@ if ( !class_exists('CUAR_Settings')) :
             echo '<script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#' . esc_attr( $option_id ) . '").select2({
-                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
+                    $("#' . esc_attr($option_id) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr($option_id) . '.parent()"),' : '') . '
                         width: "100%"
                     });
                 });

@@ -33,6 +33,21 @@ class CUAR_PaymentsUiHelper
      */
     public function show_payment_button($object_type, $object_id, $amount, $currency, $label)
     {
-        echo 'Pay this now';
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        $gateways = $this->pa_addon->settings()->get_enabled_gateways();
+        if (empty($gateways)) return;
+
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        $accepted_credit_cards = $this->pa_addon->settings()->get_enabled_credit_cards();
+
+        $template = $this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/payments',
+            array(
+                'payment-button-' . $object_type . '.template.php',
+                'payment-button.template.php',
+            ),
+            'templates');
+
+        include($template);
     }
 }

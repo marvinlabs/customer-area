@@ -4,17 +4,7 @@
 
 class CUAR_PaymentsSettingsHelper
 {
-    public static $OPTION_DEFAULT_STATUS = 'cuar_in_default_status';
-    public static $OPTION_CLOSED_STATUSES = 'cuar_in_closed_statuses';
-    public static $OPTION_DEFAULT_CURRENCY = 'cuar_in_default_currency';
-    public static $OPTION_DEFAULT_EMITTER = 'cuar_in_default_emitter';
-    public static $OPTION_TAX_RATES = 'cuar_in_tax_rates';
-    public static $OPTION_IS_SEQUENTIAL_NUMBERS_ENABLED = 'cuar_in_generate_sequential_numbers';
-    public static $OPTION_NUMBER_FORMAT = 'cuar_in_number_format';
-    public static $OPTION_SEQUENCE_NUMBER_CURRENT = 'cuar_in_current_sequence_number';
-    public static $OPTION_SEQUENCE_NUMBER_START = 'cuar_in_initial_sequence_number';
-    public static $OPTION_DEFAULT_HEADER = 'cuar_in_default_header';
-    public static $OPTION_DEFAULT_FOOTER = 'cuar_in_default_footer';
+    public static $OPTION_ENABLED_CREDIT_CARDS = 'cuar_enabled_credit_cards';
 
     /** @var CUAR_Plugin */
     private $plugin;
@@ -39,14 +29,7 @@ class CUAR_PaymentsSettingsHelper
         }
 
         // Default invoice properties provided by settings
-        add_filter('cuar/private-content/payments/emitter-address', array(&$this, 'provide_default_invoice_emitter_address'), 10, 2);
-        add_filter('cuar/private-content/payments/status', array(&$this, 'provide_default_invoice_status'), 10, 2);
-        add_filter('cuar/private-content/payments/currency', array(&$this, 'provide_default_invoice_currency'), 10, 2);
-        add_filter('cuar/private-content/payments/tax-rate', array(&$this, 'provide_default_invoice_tax_rate'), 10, 2);
-        add_filter('cuar/private-content/payments/generate-new-number', array(&$this, 'provide_new_invoice_number'), 10, 2);
-        add_filter('cuar/private-content/payments/number', array(&$this, 'format_invoice_number'), 100, 2);
-        add_filter('cuar/private-content/payments/header', array(&$this, 'provide_default_invoice_header'), 10, 2);
-        add_filter('cuar/private-content/payments/footer', array(&$this, 'provide_default_invoice_footer'), 10, 2);
+        // add_filter('cuar/private-content/payments/tax-rate', array(&$this, 'provide_default_invoice_tax_rate'), 10, 2);
     }
 
     //------- PAYMENT DEFAULTS --------------------------------------------------------------------------------------------------------------------------------/
@@ -63,7 +46,7 @@ class CUAR_PaymentsSettingsHelper
     {
         if ($tax_rate == null)
         {
-            $tax_rate = $this->get_default_tax_rate();
+            // $tax_rate = $this->get_default_tax_rate();
         }
 
         return $tax_rate;
@@ -80,7 +63,7 @@ class CUAR_PaymentsSettingsHelper
      */
     public static function set_default_options($defaults)
     {
-        // $defaults[self::$OPTION_DEFAULT_STATUS] = -1;
+        $defaults[self::$OPTION_ENABLED_CREDIT_CARDS] = array('visa', 'mastercard', 'maestro');
 
         return $defaults;
     }
@@ -106,10 +89,74 @@ class CUAR_PaymentsSettingsHelper
         /** @var CUAR_PaymentGateway $gateway */
         foreach ($gateways as $id => $gateway)
         {
-            // TODO Read settings for that gateway to see if it is enabled
+            if ( !$gateway->is_enabled()) unset($gateways[$id]);
         }
 
         return $gateways;
+    }
+
+    /**
+     * @return array The IDs of enabled credit cards
+     */
+    public function get_enabled_credit_card_ids()
+    {
+        return $this->plugin->get_option(self::$OPTION_ENABLED_CREDIT_CARDS);
+    }
+
+    /**
+     * @return array A description of all available credit cards
+     */
+    public function get_available_credit_cards()
+    {
+        $img_path = CUAR_PLUGIN_URL . 'assets/common/img/credit-cards/';
+
+        return apply_filters('cuar/private-content/payments/credit-cards', array(
+            'visa'       => array(
+                'label' => __('Visa', 'cuar'),
+                'icon'  => $img_path . 'visa.png',
+            ),
+            'amex'       => array(
+                'label' => __('American Express', 'cuar'),
+                'icon'  => $img_path . 'amex.png',
+            ),
+            'diners'     => array(
+                'label' => __('Diner\'s Club', 'cuar'),
+                'icon'  => $img_path . 'diners.png',
+            ),
+            'maestro'    => array(
+                'label' => __('Maestro', 'cuar'),
+                'icon'  => $img_path . 'maestro.png',
+            ),
+            'mastercard' => array(
+                'label' => __('Master Card', 'cuar'),
+                'icon'  => $img_path . 'mastercard.png',
+            ),
+            'discover'   => array(
+                'label' => __('Discover', 'cuar'),
+                'icon'  => $img_path . 'discover.png',
+            ),
+            'jcb'        => array(
+                'label' => __('JCB International', 'cuar'),
+                'icon'  => $img_path . 'jcb.png',
+            ),
+        ));
+    }
+
+    /**
+     * @return array The default tax rates we can quickly select
+     */
+    public function get_enabled_credit_cards()
+    {
+        $cards = $this->get_available_credit_cards();
+        $enabled = $this->get_enabled_credit_card_ids();
+
+        /** @var CUAR_PaymentGateway $gateway */
+        foreach ($cards as $id => $card)
+        {
+            if ( !in_array($id, $enabled)) unset($cards[$id]);
+        }
+
+        return apply_filters('cuar/private-content/payments/enabled-credit-cards', $cards);
     }
 
     //------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE -------------------------------------------------------------------------------------------------------/
@@ -136,20 +183,28 @@ class CUAR_PaymentsSettingsHelper
      */
     public function print_settings($cuar_settings, $options_group)
     {
-//        add_settings_section(
-//            'cuar_payments_general',
-//            __('General settings', 'cuar'),
-//            array(&$cuar_settings, 'print_empty_section_info'),
-//            CUAR_Settings::$OPTIONS_PAGE_SLUG
-//        );
-//
-//        $gateways = $this->get_available_gateways();
-//
-//        /** @var CUAR_PaymentGateway $gateway */
-//        foreach ($gateways as $gateway)
-//        {
-//            $defaults = $gateway->set_default_options($defaults);
-//        }
+        add_settings_section(
+            'cuar_payments_general',
+            __('General settings', 'cuar'),
+            array(&$cuar_settings, 'print_empty_section_info'),
+            CUAR_Settings::$OPTIONS_PAGE_SLUG
+        );
+
+        add_settings_field(
+            self::$OPTION_ENABLED_CREDIT_CARDS,
+            __("Credit Cards", 'cuarin'),
+            array(&$cuar_settings, 'print_select_field'),
+            CUAR_Settings::$OPTIONS_PAGE_SLUG,
+            'cuar_payments_general',
+            array(
+                'option_id' => self::$OPTION_ENABLED_CREDIT_CARDS,
+                'options'   => $this->get_selectable_credit_card_options(),
+                'multiple'  => true,
+                'after'     => '<p class="description">' . __('Show the following credit card logos next to the payment button', 'cuar') . '</p>',
+            )
+        );
+
+
 
         add_settings_section(
             'cuar_payments_gateways',
@@ -170,12 +225,13 @@ class CUAR_PaymentsSettingsHelper
      */
     public function validate_options($validated, $cuar_settings, $input)
     {
-        $gateways = $this->get_available_gateways();
+        $cuar_settings->validate_select($input, $validated, self::$OPTION_ENABLED_CREDIT_CARDS, $this->get_selectable_credit_card_options(), true);
 
+        $gateways = $this->get_available_gateways();
         /** @var CUAR_PaymentGateway $gateway */
         foreach ($gateways as $gateway)
         {
-            $validated  = $gateway->validate_options($validated, $cuar_settings, $input);
+            $validated = $gateway->validate_options($validated, $cuar_settings, $input);
         }
 
         return $validated;
@@ -195,5 +251,19 @@ class CUAR_PaymentsSettingsHelper
             CUAR_INCLUDES_DIR . '/core-addons/payments',
             'gateways-table.template.php',
             'templates'));
+    }
+
+    /**
+     * @return array
+     */
+    private function get_selectable_credit_card_options()
+    {
+        $cc_options = $this->get_available_credit_cards();
+        foreach ($cc_options as $id => $card)
+        {
+            $cc_options[$id] = $card['label'];
+        }
+
+        return $cc_options;
     }
 }

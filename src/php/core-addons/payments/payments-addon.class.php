@@ -85,7 +85,7 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
         }
 
         /**
-         * @return CUAR_PaymentsHelper
+         * @return CUAR_PaymentsUiHelper
          */
         public function ui()
         {
