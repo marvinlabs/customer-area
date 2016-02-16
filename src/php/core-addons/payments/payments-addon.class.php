@@ -99,7 +99,7 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
          */
         public function get_payable_types()
         {
-            return apply_filters('cuar/private-content/payments/payable-types', array());
+            return apply_filters('cuar/core/payments/payable-types', array());
         }
 
         /*------- INITIALISATION -----------------------------------------------------------------------------------------*/

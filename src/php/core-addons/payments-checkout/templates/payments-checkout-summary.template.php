@@ -11,16 +11,16 @@
 $pto = get_post_type_object($object_type);
 
 $title = '<span class="panel-title">' . $pto->labels->singular_name . '</span>';
-$title = apply_filters('cuar/payments/templates/checkout/summary/title', $title, $object_type, $object_id);
+$title = apply_filters('cuar/core/payments/templates/checkout/summary/title', $title, $object_type, $object_id);
 
 $content =  get_the_title($object_id);
-$content = apply_filters('cuar/payments/templates/checkout/summary/content', $content, $object_type, $object_id);
+$content = apply_filters('cuar/core/payments/templates/checkout/summary/content', $content, $object_type, $object_id);
 
 $footer = '<strong class="fs-lg pull-right">' . CUAR_CurrencyHelper::formatAmount($amount, $currency, '') . '</strong>';
-$footer = apply_filters('cuar/payments/templates/checkout/summary/footer', $footer, $object_type, $object_id);
+$footer = apply_filters('cuar/core/payments/templates/checkout/summary/footer', $footer, $object_type, $object_id);
 ?>
 
-<?php do_action('cuar/payments/templates/checkout/before-summary'); ?>
+<?php do_action('cuar/core/payments/templates/checkout/before-summary'); ?>
 
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -34,4 +34,4 @@ $footer = apply_filters('cuar/payments/templates/checkout/summary/footer', $foot
     </div>
 </div>
 
-<?php do_action('cuar/payments/templates/checkout/after-summary'); ?>
+<?php do_action('cuar/core/payments/templates/checkout/after-summary'); ?>

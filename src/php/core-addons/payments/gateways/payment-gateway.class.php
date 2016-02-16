@@ -22,6 +22,15 @@ interface CUAR_PaymentGateway
      */
     function is_enabled();
 
+    /**
+     * Process the payment which has been created with the pending status
+     *
+     * @param CUAR_Payment $payment        The payment object
+     * @param array        $payment_data   The payment data as submitted in the checkout form
+     * @param array        $gateway_params The parameters from the gateway form
+     */
+    function process_payment($payment, $payment_data, $gateway_params);
+
     //-- UI functions -----------------------------------------------------------------------------------------------------------------------------------------/
 
     /**

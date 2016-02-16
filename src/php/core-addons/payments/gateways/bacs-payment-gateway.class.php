@@ -1,8 +1,10 @@
 <?php
+
 /*  Copyright 2015 MarvinLabs (contact@marvinlabs.com) */
 
 class CUAR_BacsPaymentGateway extends CUAR_AbstractPaymentGateway
 {
+    public static $OPTION_SUCCESS_MESSAGE = 'success_message';
 
     /**
      * CUAR_AbstractPaymentGateway constructor.
@@ -34,15 +36,35 @@ class CUAR_BacsPaymentGateway extends CUAR_AbstractPaymentGateway
         );
     }
 
+    public function process_payment($payment, $payment_data, $gateway_params)
+    {
+        $message = apply_filters('cuar/core/payments/gateway/bacs/success-message',
+            __('We will monitor our bank account and validate your payment as soon as possible.', 'cuar'));
+
+        $this->redirect_to_success_page($message);
+    }
+
     //-- Settings helper functions ----------------------------------------------------------------------------------------------------------------------------/
 
     public function validate_options($validated, $cuar_settings, $input)
     {
         $validated = parent::validate_options($validated, $cuar_settings, $input);
 
-        // $cuar_settings->validate_boolean($input, $validated, $this->get_option_id(self::$OPTION_ENABLED));
+        $cuar_settings->validate_always($input, $validated, $this->get_option_id(self::$OPTION_SUCCESS_MESSAGE));
 
         return $validated;
+    }
+
+    public function get_success_message()
+    {
+        $message = $this->get_option(self::$OPTION_SUCCESS_MESSAGE);
+
+        return apply_filters('cuar/core/payments/gateway/bacs/success-message', $message);
+    }
+
+    public function set_default_options($defaults)
+    {
+        $defaults[$this->get_option_id(self::$OPTION_SUCCESS_MESSAGE)] = __('We will monitor our bank account and validate your payment as soon as possible.', 'cuar');
     }
 
 }

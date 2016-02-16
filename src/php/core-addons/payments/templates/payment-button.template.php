@@ -16,7 +16,7 @@
     <input type="hidden" name="cuar_currency" value="<?php echo esc_attr($currency); ?>"/>
     <?php echo CUAR_AddressHelper::get_address_as_hidden_input($address, 'cuar_address'); ?>
 
-    <?php do_action('cuar/private-content/payments/before-payment-button', $object_type, $object_id); ?>
+    <?php do_action('cuar/core/payments/templates/before-payment-button', $object_type, $object_id); ?>
 
     <div class="row">
         <div class="col-xs-12">
@@ -61,5 +61,5 @@
         </div>
     </div>
 
-    <?php do_action('cuar/private-content/payments/after-payment-button', $object_type, $object_id); ?>
+    <?php do_action('cuar/core/payments/templates/after-payment-button', $object_type, $object_id); ?>
 </form>

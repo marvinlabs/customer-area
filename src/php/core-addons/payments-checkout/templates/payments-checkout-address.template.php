@@ -4,7 +4,7 @@
 <?php /** @var array $address */ ?>
 <?php /** @var bool $is_address_editable */ ?>
 
-<?php do_action('cuar/payments/templates/checkout/before-address'); ?>
+<?php do_action('cuar/core/payments/templates/checkout/before-address'); ?>
 
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -20,4 +20,4 @@
     </div>
 </div>
 
-<?php do_action('cuar/payments/templates/checkout/after-address'); ?>
+<?php do_action('cuar/core/payments/templates/checkout/after-address'); ?>

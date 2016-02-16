@@ -44,12 +44,10 @@ class CUAR_PaymentsHelper
                         $extra_data = array(),
                         $status = 'pending')
     {
-        if (empty($extra_data)) return false;
-
         // Make sure the payment is inserted with the correct timezone
         date_default_timezone_set(CUAR_GeneralHelper::get_timezone_id());
 
-        $args = apply_filters('cuar/private-content/payments/create-payment-args', array(
+        $args = apply_filters('cuar/core/payments/create-payment-args', array(
             'post_title'    => $title,
             'post_status'   => !empty($status) ? $status : 'pending',
             'post_type'     => CUAR_Payment::$POST_TYPE,
@@ -77,7 +75,7 @@ class CUAR_PaymentsHelper
         $payment->set_user_ip(CUAR_GeneralHelper::get_ip());
         $payment->set_address($user_address);
 
-        do_action('cuar/private-content/payments/on-payment-added', $payment);
+        do_action('cuar/core/payments/on-payment-added', $payment);
 
         return $payment->ID;
     }

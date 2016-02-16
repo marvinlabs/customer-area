@@ -71,12 +71,25 @@ if ( !class_exists('CUAR_PaymentsCheckoutAddOn')) :
 
         public function print_page_content($args = array(), $shortcode_content = '')
         {
-            $object_id = isset($_POST['cuar_object_id']) ? $_POST['cuar_object_id'] : 0;
-            $object_type = isset($_POST['cuar_object_type']) ? $_POST['cuar_object_type'] : '';
-            $amount = isset($_POST['cuar_amount']) ? $_POST['cuar_amount'] : 0;
-            $currency = isset($_POST['cuar_currency']) ? $_POST['cuar_currency'] : '';
-            $address = isset($_POST['cuar_address']) ? $_POST['cuar_address'] : array();
-            $selected_gateway = isset($_POST['cuar_gateway']) ? $_POST['cuar_gateway'] : '';
+            if (isset($_SESSION['cuar_checkout_data']) && !empty($_SESSION['cuar_checkout_data']))
+            {
+                $form_data = $_SESSION['cuar_checkout_data'];
+                unset($_SESSION['cuar_checkout_data']);
+            }
+            else
+            {
+                $form_data = $_POST;
+            }
+
+            $error_message = isset($_SESSION['cuar_checkout_error']) ? $_SESSION['cuar_checkout_error'] : '';
+            unset($_SESSION['cuar_checkout_error']);
+
+            $object_id = isset($form_data['cuar_object_id']) ? $form_data['cuar_object_id'] : 0;
+            $object_type = isset($form_data['cuar_object_type']) ? $form_data['cuar_object_type'] : '';
+            $amount = isset($form_data['cuar_amount']) ? $form_data['cuar_amount'] : 0;
+            $currency = isset($form_data['cuar_currency']) ? $form_data['cuar_currency'] : '';
+            $address = isset($form_data['cuar_address']) ? $form_data['cuar_address'] : array();
+            $selected_gateway = isset($form_data['cuar_gateway']) ? $form_data['cuar_gateway'] : '';
 
             if (empty($object_type) || 0 == $object_id || empty($currency))
             {
@@ -96,9 +109,9 @@ if ( !class_exists('CUAR_PaymentsCheckoutAddOn')) :
             // Payer address
             /** @var CUAR_AddressesAddOn $ad_addon */
             $ad_addon = $this->plugin->get_addon('address-manager');
-            $address = apply_filters('cuar/private-content/payments/checkout-address', $address, $object_type, $object_id);
+            $address = apply_filters('cuar/core/payments/checkout-address', $address, $object_type, $object_id);
             $address = CUAR_AddressHelper::sanitize_address($address);
-            $is_address_editable = apply_filters('cuar/private-content/payments/checkout-is-address-editable', true, $object_type, $object_id);
+            $is_address_editable = apply_filters('cuar/core/payments/checkout-is-address-editable', false, $object_type, $object_id);
 
             // Templates
             $summary_template = $this->plugin->get_template_file_path(
@@ -130,7 +143,7 @@ if ( !class_exists('CUAR_PaymentsCheckoutAddOn')) :
 
     }
 
-// Make sure the addon is loaded
+    // Make sure the addon is loaded
     new CUAR_PaymentsCheckoutAddOn();
 
 endif; // if (!class_exists('CUAR_PaymentsCheckoutAddOn')) :

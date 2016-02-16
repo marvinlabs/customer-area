@@ -45,19 +45,19 @@ class CUAR_Payment extends CUAR_CustomPost
             return; // Don't permit status changes that aren't changes
         }
 
-        $do_change = apply_filters('cuar/private-content/payments/can-update-status', true, $this, $old_status, $new_status);
+        $do_change = apply_filters('cuar/core/payments/can-update-status', true, $this, $old_status, $new_status);
 
         if ($do_change) {
-            do_action('cuar/private-content/payments/before-update-status', $this, $old_status, $new_status);
+            do_action('cuar/core/payments/before-update-status', $this, $old_status, $new_status);
 
             $args = array(
                 'ID'          => $this->ID,
                 'post_status' => $new_status,
                 'edit_date'   => current_time('mysql'),
             );
-            wp_update_post(apply_filters('cuar/private-content/payments/update-payment-status-args', $args));
+            wp_update_post(apply_filters('cuar/core/payments/update-payment-status-args', $args));
 
-            do_action('cuar/private-content/payments/on-status-updated', $this->ID, $new_status, $old_status);
+            do_action('cuar/core/payments/on-status-updated', $this->ID, $new_status, $old_status);
         }
     }
 
@@ -333,7 +333,7 @@ class CUAR_Payment extends CUAR_CustomPost
             ),
         );
 
-        register_post_type(self::$POST_TYPE, apply_filters('cuar/private-content/payments/register-post-type-args', $args));
+        register_post_type(self::$POST_TYPE, apply_filters('cuar/core/payments/register-post-type-args', $args));
     }
 
 }

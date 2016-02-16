@@ -63,16 +63,15 @@ if ( !class_exists('CUAR_Plugin')) :
             add_action('plugins_loaded', array(&$this, 'check_version'), 6);
             add_action('plugins_loaded', array(&$this, 'load_addons'), 10);
 
+            add_action('init', array(&$this, 'start_session'), 1);
             add_action('init', array(&$this, 'load_scripts'), 7);
             add_action('init', array(&$this, 'load_styles'), 8);
-            add_action('init', array(&$this, 'load_defaults'), 9);
 
             add_action('plugins_loaded', array(&$this, 'load_theme_functions'), 7);
 
             if (is_admin())
             {
                 add_action('admin_notices', array(&$this, 'print_admin_notices'));
-                add_action('init', array(&$this, 'load_defaults'), 9);
 
                 add_action('permalink_structure_changed', array(&$this, 'check_permalinks_enabled'));
 
@@ -274,11 +273,10 @@ if ( !class_exists('CUAR_Plugin')) :
         }
 
         /**
-         * Initialise some defaults for the plugin (add basic capabilities, ...)
+         * Start a session when we save a post in order to store error logs
          */
-        public function load_defaults()
+        public function start_session()
         {
-            // Start a session when we save a post in order to store error logs
             if ( !session_id()) session_start();
         }
 

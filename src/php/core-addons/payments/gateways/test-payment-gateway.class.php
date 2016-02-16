@@ -27,12 +27,30 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
         return __('Test gateway', 'cuar');
     }
 
-    /**
-     * @return bool
-     */
     public function has_form()
     {
         return true;
+    }
+
+    public function process_payment($payment, $payment_data, $gateway_params)
+    {
+        switch ($gateway_params['expected_result'])
+        {
+            case 'success':
+                $this->redirect_to_success_page(__('The test gateway accepted the payment', 'cuar'));
+                break;
+
+            case 'rejected':
+                $this->redirect_to_failure_page(__('The test gateway failed to process the payment', 'cuar'));
+                break;
+
+            case 'pending':
+                $this->redirect_to_success_page(__('The test gateway did not validate the payment yet', 'cuar'));
+                break;
+
+            default:
+                die('Unhandled test gateway expected result value');
+        }
     }
 
     //-- Settings helper functions ----------------------------------------------------------------------------------------------------------------------------/

@@ -29,7 +29,7 @@ class CUAR_PaymentsSettingsHelper
         }
 
         // Default invoice properties provided by settings
-        // add_filter('cuar/private-content/payments/tax-rate', array(&$this, 'provide_default_invoice_tax_rate'), 10, 2);
+        // add_filter('cuar/core/payments/tax-rate', array(&$this, 'provide_default_invoice_tax_rate'), 10, 2);
     }
 
     //------- PAYMENT DEFAULTS --------------------------------------------------------------------------------------------------------------------------------/
@@ -65,7 +65,25 @@ class CUAR_PaymentsSettingsHelper
     {
         $defaults[self::$OPTION_ENABLED_CREDIT_CARDS] = array('visa', 'mastercard', 'maestro');
 
+        $gateways = array(
+            new CUAR_BacsPaymentGateway(cuar())
+        );
+        foreach ($gateways as $g)
+        {
+            $defaults = $g->set_default_options($defaults);
+        }
+
         return $defaults;
+    }
+
+    /**
+     * @return CUAR_PaymentGateway|bool The gateway or false if not available
+     */
+    public function get_gateway($gateway_id)
+    {
+        $gateways = $this->get_enabled_gateways();
+
+        return isset($gateways[$gateway_id]) ? $gateways[$gateway_id] : false;
     }
 
     /**
@@ -73,7 +91,7 @@ class CUAR_PaymentsSettingsHelper
      */
     public function get_available_gateways()
     {
-        return apply_filters('cuar/private-content/payments/gateways', array(
+        return apply_filters('cuar/core/payments/gateways', array(
             'bacs' => new CUAR_BacsPaymentGateway($this->plugin),
             'test' => new CUAR_TestPaymentGateway($this->plugin),
         ));
@@ -110,7 +128,7 @@ class CUAR_PaymentsSettingsHelper
     {
         $img_path = CUAR_PLUGIN_URL . 'assets/common/img/credit-cards/';
 
-        return apply_filters('cuar/private-content/payments/credit-cards', array(
+        return apply_filters('cuar/core/payments/credit-cards', array(
             'visa'       => array(
                 'label' => __('Visa', 'cuar'),
                 'icon'  => $img_path . 'visa.png',
@@ -156,7 +174,7 @@ class CUAR_PaymentsSettingsHelper
             if ( !in_array($id, $enabled)) unset($cards[$id]);
         }
 
-        return apply_filters('cuar/private-content/payments/enabled-credit-cards', $cards);
+        return apply_filters('cuar/core/payments/enabled-credit-cards', $cards);
     }
 
     //------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE -------------------------------------------------------------------------------------------------------/
@@ -203,7 +221,6 @@ class CUAR_PaymentsSettingsHelper
                 'after'     => '<p class="description">' . __('Show the following credit card logos next to the payment button', 'cuar') . '</p>',
             )
         );
-
 
 
         add_settings_section(

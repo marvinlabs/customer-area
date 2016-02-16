@@ -18,7 +18,7 @@ class CUAR_PaymentStatus
             'revoked'   => __( 'Revoked', 'cuar' )
         );
 
-        return apply_filters( 'cuar/private-content/payments/statuses', $payment_statuses );
+        return apply_filters( 'cuar/core/payments/statuses', $payment_statuses );
     }
 
     /**

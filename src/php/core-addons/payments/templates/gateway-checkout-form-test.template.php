@@ -8,10 +8,10 @@
         <label for="gateway_test_expected_result"><?php _e('Result to return when calling the test gateway', 'cuar'); ?></label>
     </div>
     <div class="form-group col-sm-4">
-        <select class="form-control" id="gateway_test_expected_result" name="gateway[test][expected_result]">
-            <option><?php _e('Payment success', 'cuar'); ?></option>
-            <option><?php _e('Payment rejected', 'cuar'); ?></option>
-            <option><?php _e('Payment pending', 'cuar'); ?></option>
+        <select class="form-control" id="gateway_test_expected_result" name="cuar_gateway[test][expected_result]">
+            <option value="success"><?php _e('Payment validated', 'cuar'); ?></option>
+            <option value="rejected"><?php _e('Payment rejected', 'cuar'); ?></option>
+            <option value="pending"><?php _e('Payment still pending', 'cuar'); ?></option>
         </select>
     </div>
 </div>

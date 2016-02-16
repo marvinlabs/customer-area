@@ -28,6 +28,30 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
         return isset($value) && $value == 1 ? true : false;
     }
 
+    public function redirect_to_success_page($message='')
+    {
+        if (!empty($message))
+        {
+
+        }
+
+        // $url = cuar_get_payment_success_url();
+        // wp_redirect($url);
+        die('PAYMENT SUCCESS ' . $message);
+    }
+
+    public function redirect_to_failure_page($message='')
+    {
+        if (!empty($message))
+        {
+
+        }
+
+        // $url = cuar_get_payment_failure_url();
+        // wp_redirect($url);
+        die('PAYMENT FAILURE ' . $message);
+    }
+
     //-- UI functions -----------------------------------------------------------------------------------------------------------------------------------------/
 
     public function get_icon()
