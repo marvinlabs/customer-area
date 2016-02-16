@@ -20,6 +20,10 @@ class CUAR_PaymentsUiHelper
     {
         $this->plugin = $plugin;
         $this->pa_addon = $pa_addon;
+
+// TODO        add_action( 'template_redirect', 'edd_process_payment' );
+// TODO        add_action( 'template_redirect', 'edd_listen_for_successful_payments' );
+// TODO        add_action( 'template_redirect', 'edd_listen_for_failed_payments' );
     }
 
     /**
@@ -51,4 +55,24 @@ class CUAR_PaymentsUiHelper
 
         include($template);
     }
+
+//    function edd_listen_for_failed_payments() {
+//
+//        $failed_page = edd_get_option( 'failure_page', 0 );
+//
+//        if( ! empty( $failed_page ) && is_page( $failed_page ) && ! empty( $_GET['payment-id'] ) ) {
+//
+//            $payment_id = absint( $_GET['payment-id'] );
+//            $payment    = get_post( $payment_id );
+//            $status     = edd_get_payment_status( $payment );
+//
+//            if( $status && 'pending' === strtolower( $status ) ) {
+//
+//                edd_update_payment_status( $payment_id, 'failed' );
+//
+//            }
+//
+//        }
+//
+//    }
 }

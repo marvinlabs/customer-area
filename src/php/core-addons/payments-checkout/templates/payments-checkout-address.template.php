@@ -4,14 +4,20 @@
 <?php /** @var array $address */ ?>
 <?php /** @var bool $is_address_editable */ ?>
 
-<?php if ($is_address_editable) : ?>
+<?php do_action('cuar/payments/templates/checkout/before-address'); ?>
 
-    <?php $ad_addon->print_address_editor($address, 'billing', '', array(), '', 'checkout'); ?>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <span class="panel-title"><?php _e('Billing information', 'cuar'); ?></span>
+    </div>
+    <div class="panel-body">
+        <?php if ($is_address_editable) : ?>
+            <?php $ad_addon->print_address_editor($address, 'cuar_address', '', array(), '', 'checkout'); ?>
+       <?php else: ?>
+            <?php echo CUAR_AddressHelper::get_address_as_hidden_input($address, 'cuar_address'); ?>
+            <?php $ad_addon->print_address($address, 'cuar_address', '', 'checkout'); ?>
+        <?php endif; ?>
+    </div>
+</div>
 
-<?php else: ?>
-
-    <?php echo CUAR_AddressHelper::get_address_as_hidden_input($address, 'cuar_address'); ?>
-
-    <?php $ad_addon->print_address($address, 'billing', '', 'checkout'); ?>
-
-<?php endif; ?>
+<?php do_action('cuar/payments/templates/checkout/after-address'); ?>

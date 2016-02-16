@@ -6,32 +6,58 @@
 <?php /** @var CUAR_PaymentGateway $gateway */ ?>
 <?php /** @var string $selected_gateway */ ?>
 
-<div class="row mt-lg clearfix cuar-js-gateway-picker">
-    <div class="col-md-12">
-        <ul class="list-inline">
-            <?php foreach ($gateways as $gateway_id => $gateway):
-                $icon = $gateway->get_icon();
-                ?>
-                <li>
-                    <div class="radio-custom mb5">
-                        <input type="radio" class="cuar-js-gateway-selector" id="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>" name="cuar_gateway" value="<?php echo esc_attr($gateway->get_id()); ?>" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php checked($selected_gateway, $gateway_id); ?>>
-                        <label for="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>">
-                            <?php if ( !empty($icon['checkout_icon'])) : ?>
-                                <img src="<?php echo esc_attr($icon['checkout_icon']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>"/>
-                            <?php else: ?>
-                                <?php echo $gateway->get_name(); ?>
-                            <?php endif; ?>
-                        </label>
-                    </div>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+<?php
+$is_single_gateway = (count($gateways)==1);
+$first_gateway = reset($gateways);
+if ($is_single_gateway) $selected_gateway = $first_gateway->get_id();
+?>
+
+<?php do_action('cuar/payments/templates/checkout/before-gateways'); ?>
+
+<div class="panel panel-primary cuar-js-gateway-picker">
+    <div class="panel-heading">
+        <span class="panel-title"><?php
+            if ($is_single_gateway) printf(__('Pay with %s', 'cuar'), $first_gateway->get_name());
+            else _e('Choose a payment method', 'cuar');
+            ?></span>
     </div>
-    <div class="col-md-12">
-    <?php foreach ($gateways as $gateway_id => $gateway): ?>
-        <div class="cuar-js-gateway-form" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php if ($selected_gateway!=$gateway_id) echo 'style="display: none;"'; ?>>
-            <?php if ($gateway->has_form()) $gateway->print_form(); ?>
-        </div>
+    <?php if (!$is_single_gateway): ?>
+    <div class="panel-menu">
+        <div class="btn-group">
+    <?php foreach ($gateways as $gateway_id => $gateway):
+        $icon = $gateway->get_icon();
+        ?>
+            <div class="btn radio-custom">
+                <input type="radio" class="cuar-js-gateway-selector" id="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>" name="cuar_gateway" value="<?php echo esc_attr($gateway->get_id()); ?>" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php checked($selected_gateway, $gateway_id); ?>>
+                <label for="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>">
+                    <?php if ( !empty($icon['checkout_icon'])) : ?>
+                        <img src="<?php echo esc_attr($icon['checkout_icon']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>"/>
+                    <?php else: ?>
+                        <?php echo $gateway->get_name(); ?>
+                    <?php endif; ?>
+                </label>
+            </div>
     <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+    <div class="panel-body">
+        <?php foreach ($gateways as $gateway_id => $gateway): ?>
+            <div class="clearfix cuar-js-gateway-form" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php if ($selected_gateway!=$gateway_id) echo 'style="display: none;"'; ?>>
+                <?php if ($gateway->has_form()) $gateway->print_form(); ?>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
+
+<?php do_action('cuar/payments/templates/checkout/after-gateways'); ?>
+
+<?php if (!$is_single_gateway): ?>
+<script type="text/javascript">
+    <!--
+    jQuery(document).ready(function($) {
+       $('.cuar-js-gateway-picker').gatewayPicker();
+    });
+    // -->
+</script>
+<?php endif; ?>
