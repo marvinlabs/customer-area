@@ -120,7 +120,7 @@ if ( !class_exists('CUAR_ContentListWidget')) :
         protected function get_content($args, $instance)
         {
             // Get user content
-            $cuar_plugin = CUAR_Plugin::get_instance();
+            $cuar_plugin = cuar();
             $po_addon = $cuar_plugin->get_addon('post-owner');
 
             $limit = isset($instance['posts_per_page']) ? $instance['posts_per_page'] : 5;
@@ -160,7 +160,7 @@ if ( !class_exists('CUAR_ContentListWidget')) :
          */
         protected function print_content_list($posts)
         {
-            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+            $template = cuar()->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
                 "widget-content-list-" . $this->id_base . ".template.php",
                 'templates',

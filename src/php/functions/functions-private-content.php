@@ -31,8 +31,8 @@ function cuar_the_owner( $post_id = 0 ) {
  * @return mixed
  */
 function cuar_get_the_owner( $post_id = 0 ) {
-	$cuar_plugin = CUAR_Plugin::get_instance();
-	$po_addon = $cuar_plugin->get_addon( 'post-owner' ); 
+    /** @var CUAR_PostOwnerAddOn $po_addon */
+    $po_addon = cuar_addon( 'post-owner' );
 	
 	$post_id = $post_id==0 ? get_the_ID() : $post_id;		
 	$owner_name = $po_addon->get_post_owner_displayname( $post_id );

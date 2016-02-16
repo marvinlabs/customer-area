@@ -874,7 +874,7 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public static function ajax_validate_license()
         {
-            $cuar_plugin = CUAR_Plugin::get_instance();
+            $cuar_plugin = cuar();
 
             $addon_id = $_POST["addon_id"];
             $license = $_POST["license"];

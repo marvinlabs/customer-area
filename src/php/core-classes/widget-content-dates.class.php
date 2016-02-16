@@ -115,7 +115,7 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
 
 
             // Get user files
-            $cuar_plugin = CUAR_Plugin::get_instance();
+            $cuar_plugin = cuar();
             $po_addon = $cuar_plugin->get_addon('post-owner');
 
             $args = array(
@@ -156,7 +156,7 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
          */
         protected function print_date_list($dates, $show_months)
         {
-            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+            $template = cuar()->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
                 "widget-content-dates-" . $this->id_base . ".template.php",
                 'templates',

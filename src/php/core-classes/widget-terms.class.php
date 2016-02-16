@@ -112,7 +112,7 @@ if ( !class_exists('CUAR_TermsWidget')) :
          */
         protected function print_term_list($terms, $hide_empty)
         {
-            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+            $template = cuar()->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
                 "widget-terms-" . $this->id_base . ".template.php",
                 'templates',
