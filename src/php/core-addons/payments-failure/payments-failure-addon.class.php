@@ -49,12 +49,12 @@ if ( !class_exists('CUAR_PaymentsFailureAddOn')) :
 
         public function get_title()
         {
-            return __('Thank you', 'cuar');
+            return __('Payment rejected', 'cuar');
         }
 
         public function get_hint()
         {
-            return __('This page show a user a message when payment has been validated', 'cuar');
+            return __('This page show a user a message when payment has not been validated', 'cuar');
         }
 
         public function run_addon($plugin)

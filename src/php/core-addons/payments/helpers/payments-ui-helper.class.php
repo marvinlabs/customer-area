@@ -134,9 +134,7 @@ class CUAR_PaymentsUiHelper
         $payment = new CUAR_Payment($payment_id);
         $selected_gateway->process_payment($payment, $payment_data, $gateway_params);
 
-        $_SESSION['cuar_checkout_data'] = $_POST;
-        $_SESSION['cuar_checkout_error'] = __('The payment has been processed.', 'cuar');
-        wp_redirect(cuar_get_checkout_url());
+        exit;
     }
 
 //    function edd_listen_for_failed_payments() {

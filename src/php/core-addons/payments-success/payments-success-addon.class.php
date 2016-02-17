@@ -49,7 +49,7 @@ if ( !class_exists('CUAR_PaymentsSuccessAddOn')) :
 
         public function get_title()
         {
-            return __('Thank you', 'cuar');
+            return __('Payment accepted', 'cuar');
         }
 
         public function get_hint()

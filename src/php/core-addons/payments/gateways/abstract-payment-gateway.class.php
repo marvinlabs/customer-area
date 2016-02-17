@@ -37,6 +37,7 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
         $url = cuar_get_payment_success_url();
         wp_redirect($url);
+        exit;
     }
 
     public function redirect_to_failure_page($message='')
@@ -48,6 +49,7 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
         $url = cuar_get_payment_failure_url();
         wp_redirect($url);
+        exit;
     }
 
     //-- UI functions -----------------------------------------------------------------------------------------------------------------------------------------/
