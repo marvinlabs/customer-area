@@ -32,22 +32,26 @@ class CUAR_Payment extends CUAR_CustomPost
      * Update the status of the payment
      *
      * @param string $new_status
+     * @param string $changed_by
      */
-    public function update_status($new_status)
+    public function update_status($new_status, $changed_by = '')
     {
-        if ($new_status == 'completed' || $new_status == 'complete') {
+        if ($new_status == 'completed' || $new_status == 'complete')
+        {
             $new_status = 'publish';
         }
 
         $old_status = $this->get_post()->post_status;
 
-        if ($old_status === $new_status) {
+        if ($old_status === $new_status)
+        {
             return; // Don't permit status changes that aren't changes
         }
 
         $do_change = apply_filters('cuar/core/payments/can-update-status', true, $this, $old_status, $new_status);
 
-        if ($do_change) {
+        if ($do_change)
+        {
             do_action('cuar/core/payments/before-update-status', $this, $old_status, $new_status);
 
             $args = array(
@@ -57,11 +61,11 @@ class CUAR_Payment extends CUAR_CustomPost
             );
             wp_update_post(apply_filters('cuar/core/payments/update-payment-status-args', $args));
 
+            $this->add_note(sprintf(__('Status changed to %1$s by %2$s', 'cuar'), $new_status, $changed_by));
+
             do_action('cuar/core/payments/on-status-updated', $this->ID, $new_status, $old_status);
         }
     }
-
-
 
     //------- ACCESSORS -----------------------------------------------------------------------------------------------/
 
@@ -222,7 +226,10 @@ class CUAR_Payment extends CUAR_CustomPost
     public function add_note($note)
     {
         $notes = $this->get_notes();
-        $notes[] = $note;
+        $notes[] = array(
+            'timestamp_gmt' => current_time('mysql', true),
+            'message'       => $note
+        );
         $this->set_notes($notes);
     }
 
@@ -235,7 +242,7 @@ class CUAR_Payment extends CUAR_CustomPost
     {
         $notes = get_post_meta($this->ID, self::$META_NOTES, true);
 
-        if (!isset($notes) || !is_array($notes)) $notes = array();
+        if ( !isset($notes) || !is_array($notes)) $notes = array();
 
         return $notes;
     }

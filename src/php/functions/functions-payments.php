@@ -45,3 +45,47 @@ function cuar_get_checkout_url()
 
     return $pa_addon->get_page_url('payments-checkout');
 }
+
+/**
+ * Get the URL to the success page
+ *
+ * @return string
+ */
+function cuar_get_payment_success_url()
+{
+    /** @var CUAR_CustomerPagesAddOn $pa_addon */
+    $pa_addon = cuar_addon('customer-pages');
+
+    return $pa_addon->get_page_url('payments-success');
+}
+
+/**
+ * Get the URL to the failure page
+ *
+ * @return string
+ */
+function cuar_get_payment_failure_url()
+{
+    /** @var CUAR_CustomerPagesAddOn $pa_addon */
+    $pa_addon = cuar_addon('customer-pages');
+
+    return $pa_addon->get_page_url('payments-failure');
+}
+
+/**
+ * Get the URL to the checkout page
+ *
+ * @return string
+ */
+function cuar_get_gateway_message()
+{
+    if (isset($_SESSION['cuar_gateway_message']))
+    {
+        $message = $_SESSION['cuar_gateway_message'];
+        unset($_SESSION['cuar_gateway_message']);
+
+        return $message;
+    }
+
+    return '';
+}

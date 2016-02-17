@@ -32,24 +32,22 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
     {
         if (!empty($message))
         {
-
+            $this->set_result_message($message);
         }
 
-        // $url = cuar_get_payment_success_url();
-        // wp_redirect($url);
-        die('PAYMENT SUCCESS ' . $message);
+        $url = cuar_get_payment_success_url();
+        wp_redirect($url);
     }
 
     public function redirect_to_failure_page($message='')
     {
         if (!empty($message))
         {
-
+            $this->set_result_message($message);
         }
 
-        // $url = cuar_get_payment_failure_url();
-        // wp_redirect($url);
-        die('PAYMENT FAILURE ' . $message);
+        $url = cuar_get_payment_failure_url();
+        wp_redirect($url);
     }
 
     //-- UI functions -----------------------------------------------------------------------------------------------------------------------------------------/
@@ -62,18 +60,12 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
         );
     }
 
-    /**
-     * @return bool
-     */
     public function has_form()
     {
         return false;
     }
 
-    /**
-     *
-     */
-    function print_form()
+    public function print_form()
     {
         if ($this->has_form())
         {
@@ -84,6 +76,11 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
             );
             if ( !empty($form_template)) include($form_template);
         }
+    }
+
+    protected function set_result_message($message)
+    {
+        $_SESSION['cuar_gateway_message'] = $message;
     }
 
     //-- Settings functions -----------------------------------------------------------------------------------------------------------------------------------/

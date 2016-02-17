@@ -37,14 +37,23 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
         switch ($gateway_params['expected_result'])
         {
             case 'success':
+                // In case of success we update the payment status
+                $payment->update_status(CUAR_PaymentStatus::$STATUS_COMPLETE, $this->get_name());
+
+                // Finally redirect to the success page
                 $this->redirect_to_success_page(__('The test gateway accepted the payment', 'cuar'));
                 break;
 
             case 'rejected':
+                // In case of failure we update the payment status
+                $payment->update_status(CUAR_PaymentStatus::$STATUS_FAILED, $this->get_name());
+
+                // Finally redirect to the success page
                 $this->redirect_to_failure_page(__('The test gateway failed to process the payment', 'cuar'));
                 break;
 
             case 'pending':
+                // We do not change the payment status but show success with a message to tell the user we are working on it
                 $this->redirect_to_success_page(__('The test gateway did not validate the payment yet', 'cuar'));
                 break;
 
@@ -52,16 +61,4 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
                 die('Unhandled test gateway expected result value');
         }
     }
-
-    //-- Settings helper functions ----------------------------------------------------------------------------------------------------------------------------/
-
-    public function validate_options($validated, $cuar_settings, $input)
-    {
-        $validated = parent::validate_options($validated, $cuar_settings, $input);
-
-        // $cuar_settings->validate_boolean($input, $validated, $this->get_option_id(self::$OPTION_ENABLED));
-
-        return $validated;
-    }
-
 }

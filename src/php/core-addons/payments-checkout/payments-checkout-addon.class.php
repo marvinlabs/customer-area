@@ -34,7 +34,7 @@ if ( !class_exists('CUAR_PaymentsCheckoutAddOn')) :
 
             $this->set_page_parameters(220, array(
                     'slug'         => 'payments-checkout',
-                    'parent_slug'  => 'customer-home',
+                    'parent_slug'  => 'payments-home',
                     'hide_in_menu' => true,
                 )
             );
