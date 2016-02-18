@@ -27,10 +27,6 @@ require_once(CUAR_INCLUDES_DIR . '/core-classes/Content/list-table.class.php');
  */
 class CUAR_PaymentTable extends CUAR_ListTable
 {
-
-    public $content_types = array();
-    public $displayable_meta = array();
-
     /**
      * Constructor, we override the parent to pass our own arguments
      * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
@@ -46,10 +42,7 @@ class CUAR_PaymentTable extends CUAR_ListTable
                 'ajax'     => false
             ),
             admin_url('admin.php?page=wpca-payments'),
-            'CUAR_PaymentEvent');
-
-        $this->displayable_meta = apply_filters('cuar/core/payment/table-displayable-meta', array());
-        $this->content_types = array_merge($this->plugin->get_content_types(), $this->plugin->get_container_types());
+            'CUAR_Payment');
     }
 
     /**
@@ -75,8 +68,7 @@ class CUAR_PaymentTable extends CUAR_ListTable
      */
     public function is_search_active()
     {
-        $is_active = $this->parameters['event-type'] != 0
-            || !empty($this->parameters['start-date'])
+        $is_active = !empty($this->parameters['start-date'])
             || !empty($this->parameters['end-date']);
 
         return $is_active;
@@ -89,12 +81,12 @@ class CUAR_PaymentTable extends CUAR_ListTable
     protected function get_query_args()
     {
         $args = array(
-            'post_type' => CUAR_Payment::$POST_TYPE,
-        ); // $paymentger->build_query_args($this->parameters['related-object'],
-            // $this->parameters['event-type'],
-            // null, -1, 1);
-
-        $args['date_query'] = array();
+            'post_type'      => CUAR_Payment::$POST_TYPE,
+            'posts_per_page' => -1,
+            'post_status'    => $this->parameters['status'],
+            'paged'          => 1,
+            'date_query'     => array(),
+        );
 
         $start_date = $this->parameters['start-date'];
         if ($start_date != null)
@@ -152,54 +144,68 @@ class CUAR_PaymentTable extends CUAR_ListTable
     public function get_columns()
     {
         $columns = array_merge(parent::get_columns(), array(
-            'payment_timestamp' => __('Date', 'cuar'),
-            'payment_event'     => __('Event', 'cuar'),
-            'payment_object'    => __('Object', 'cuar'),
-            'payment_user'      => __('User', 'cuar'),
-            'payment_extra'     => __('Extra info', 'cuar'),
+            // 'payment_id'     => __('ID', 'cuar'),
+            'payment_title'  => __('Object', 'cuar'),
+            'payment_user'   => __('User', 'cuar'),
+            'payment_date'   => __('Date', 'cuar'),
+            'payment_amount' => __('Amount', 'cuar'),
+            'payment_status' => __('Status', 'cuar'),
         ));
 
         return $columns;
     }
 
-    public function column_payment_timestamp($item)
+    /**
+     * @param CUAR_Payment $item
+     *
+     * @return string
+     */
+    public function column_payment_id($item)
     {
-        $m_time = $item->get_post()->post_date;
-        $h_time = mysql2date(__('Y/m/d - H:i:s', 'cuar'), $m_time);
-
-        return $h_time;
+        return $item->ID;
     }
 
-    public function column_payment_object($item)
+    /**
+     * @param CUAR_Payment $item
+     *
+     * @return string
+     */
+    public function column_payment_title($item)
     {
-        $rel_object_id = $item->get_post()->post_parent;
-        $rel_object_type = $item->related_object_type;
-
-        if ($rel_object_type=='WP_User') {
-            $obj_link_text = sprintf(__('User %1$s', 'cuar'), $rel_object_id);
-
-            return sprintf(__('<a href="%1$s" title="Username: %2$s">%3$s</a>', 'cuar'),
-                admin_url('user-edit.php?user_id=' . $rel_object_id),
-                esc_attr(get_userdata($rel_object_id)->display_name),
-                $obj_link_text);
-        }
-        else
-        {
-            $obj_link_text = isset($this->content_types[$rel_object_type])
-                ? $this->content_types[$rel_object_type]['label-singular']
-                : $rel_object_type;
-            $obj_link_text .= ' ' . $rel_object_id;
-
-            return sprintf(__('<a href="%1$s" title="Title: %2$s">%3$s</a>', 'cuar'),
-                admin_url('post.php?post_type=' . $rel_object_type . '&action=edit&post=' . $rel_object_id),
-                esc_attr(get_the_title($rel_object_id)),
-                $obj_link_text);
-        }
+        return get_the_title($item->get_post());
     }
 
+    /**
+     * @param CUAR_Payment $item
+     *
+     * @return string
+     */
+    public function column_payment_date($item)
+    {
+        return get_the_date('', $item->get_post());
+    }
+
+    /**
+     * @param CUAR_Payment $item
+     *
+     * @return string
+     */
+    public function column_payment_status($item)
+    {
+        $s = $item->get_post()->post_status;
+        $statuses = CUAR_PaymentStatus::get_payment_statuses();
+
+        return isset($statuses[$s]) ? $statuses[$s] : $s;
+    }
+
+    /**
+     * @param CUAR_Payment $item
+     *
+     * @return string
+     */
     public function column_payment_user($item)
     {
-        $user_id = isset($item->user_id) ? $item->user_id : 0;
+        $user_id = $item->get_user_id();
         if ($user_id == 0)
         {
             return '';
@@ -207,55 +213,28 @@ class CUAR_PaymentTable extends CUAR_ListTable
 
         $user = get_userdata($user_id);
 
-        return sprintf('<span title="%4$s" class="cuar-btn-xs ip">IP</span> <a href="%1$s" title="Profile of %2$s" class="cuar-btn-xs user">%3$s</a>',
+        return sprintf('<a href="%1$s" title="Profile of %2$s" class="cuar-btn-xs user">%3$s</a><br>%4$s',
             admin_url('user-edit.php?user_id=' . $user_id),
-            esc_attr($user->display_name),
-            $user->user_paymentin,
-            $item->ip);
+            esc_attr($user->user_login),
+            $user->display_name,
+            $user->user_email);
     }
 
-    public function column_payment_event($item)
+    /**
+     * @param CUAR_Payment $item
+     *
+     * @return string
+     */
+    public function column_payment_amount($item)
     {
-        $type = $item->get_type();
-        $paymentger = $this->plugin->get_paymentger();
-        $types = $paymentger->get_valid_event_types();
-
-        return isset($types[$type]) ? $types[$type] : 'Unknown';
+        return CUAR_CurrencyHelper::formatAmount($item->get_amount(), $item->get_currency());
     }
 
-    public function column_payment_extra($item)
+    /*------- VIEWS --------------------------------------------------------------------------------------------------*/
+
+    protected function get_view_statuses()
     {
-        $fields = array();
-        $exclude = array('user_id', 'ip');
-
-        foreach ($this->displayable_meta as $key)
-        {
-            if (in_array($key, $exclude))
-            {
-                continue;
-            }
-            if (isset($item->$key))
-            {
-                $meta = apply_filters('cuar/core/payment/table-meta-pill-descriptor', array(
-                    'title' => $item->$key,
-                    'value' => $key,
-                    'link'  => ''
-                ), $key, $item);
-
-                if (empty($meta['link']))
-                {
-                    $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', $meta['title'],
-                        esc_attr($meta['value']), $key);
-                }
-                else
-                {
-                    $fields[] = sprintf('<a href="%4$s" title="%1$s" class="cuar-btn-xs %3$s">%2$s</a>', $meta['title'],
-                        esc_attr($meta['value']), $key, esc_attr($meta['link']));
-                }
-            }
-        }
-
-        return implode(' ', $fields);
+        return array_merge(parent::get_view_statuses(), CUAR_PaymentStatus::get_payment_statuses());
     }
 
     /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/
@@ -265,8 +244,7 @@ class CUAR_PaymentTable extends CUAR_ListTable
      */
     public function get_bulk_actions()
     {
-        $actions = array(
-            'delete'    => __('Delete permanently', 'cuar')
+        $actions = array(// 'delete' => __('Delete permanently', 'cuar')
         );
 
         return $actions;
@@ -285,7 +263,7 @@ class CUAR_PaymentTable extends CUAR_ListTable
             }
 
             $post_ids = get_posts(array(
-                'post_type'      => CUAR_PaymentEvent::$POST_TYPE,
+                'post_type'      => CUAR_Payment::$POST_TYPE,
                 'posts_per_page' => -1,
                 'fields'         => 'ids'
             ));
@@ -332,26 +310,5 @@ class CUAR_PaymentTable extends CUAR_ListTable
     {
         return current_user_can('delete_posts');
     }
-
-    /**
-     * @global int   $cat
-     *
-     * @param string $which
-     */
-    public function extra_tablenav($which)
-    {
-        global $cat;
-        ?>
-        <div class="alignleft actions">
-            <?php
-            if ($this->current_user_can_delete())
-            {
-                submit_button(__('Delete all events permanently', 'cuar'), 'apply', 'delete_all', false);
-            }
-            ?>
-        </div>
-    <?php
-    }
-
 
 }

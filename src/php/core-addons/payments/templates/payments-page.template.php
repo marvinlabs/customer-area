@@ -1,9 +1,6 @@
-<?php /** Template version: 1.0.0
- *
- * -=1.0.1=-
- * - change heading for WP 4.4
- *
- */ ?>
+<?php /** Template version: 3.0.0 */ ?>
+
+<?php /** @var CUAR_PaymentTable $payments_table */ ?>
 
 <div class="wrap cuar-payments-list-page cuar-list-table-page">
     <h1><?php _e('Payments', 'cuar'); ?></h1>
@@ -17,8 +14,6 @@
         <?php
         $start_date = isset($_POST['start-date']) ? sanitize_text_field($_POST['start-date']) : '';
         $end_date = isset($_POST['end-date']) ? sanitize_text_field($_POST['end-date']) : '';
-        // $paymentger = cuar()->get_paymentger();
-        $type_filter = isset($_POST['event-type']) ? $_POST['event-type'] : 0;
         ?>
 
         <?php $payments_table->views() ?>
@@ -29,31 +24,16 @@
             <?php $collapse_panel = $payments_table->is_search_active() ? '' : 'display: none;'; ?>
             <div class="cuar-filter-panel" style="<?php echo $collapse_panel; ?>">
                 <div class="cuar-filter-row">
-                    <label for="event-type"><?php _e('Event type', 'cuar'); ?> </label>
-                    <select name="event-type" id="cat" class="postform">
-                        <option value="0"><?php _e('Any type', 'cuar'); ?></option>
-                        <?php
-                        $types = $paymentger->get_valid_event_types(true);
-                        foreach ($types as $slug => $label)
-                        {
-                            $selected = selected($type_filter, $slug, false);
-                            echo sprintf('<option value="%1$s" %3$s>%2$s</option>', $slug, $label, $selected);
-                        }
-                        ?>
-                    </select>
+                        <label for="start-date"><?php _e('Between', 'cuar'); ?> </label>
+                        <input type="text" id="start-date" name="start-date" class="cuar_datepicker"
+                               value="<?php echo esc_attr($start_date); ?>" placeholder="dd/mm/yyyy"/>
+
+                        <label for="end-date"> <?php _e('and', 'cuar'); ?> </label>
+                        <input type="text" id="end-date" name="end-date" class="cuar_datepicker"
+                               value="<?php echo esc_attr($end_date); ?>" placeholder="dd/mm/yyyy"/>
 
                     <input type="submit" name="filter_action" id="post-query-submit" class="button cuar-filter-button"
                            value="<?php esc_attr_e('Filter payments', 'cuar'); ?>">
-                </div>
-
-                <div class="cuar-filter-row">
-                    <label for="start-date"><?php _e('Between', 'cuar'); ?> </label>
-                    <input type="text" id="start-date" name="start-date" class="cuar_datepicker"
-                           value="<?php echo esc_attr($start_date); ?>" placeholder="dd/mm/yyyy"/>
-
-                    <label for="end-date"> <?php _e('and', 'cuar'); ?> </label>
-                    <input type="text" id="end-date" name="end-date" class="cuar_datepicker"
-                           value="<?php echo esc_attr($end_date); ?>" placeholder="dd/mm/yyyy"/>
                 </div>
             </div>
         </div>

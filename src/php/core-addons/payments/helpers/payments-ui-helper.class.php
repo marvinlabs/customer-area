@@ -94,10 +94,9 @@ class CUAR_PaymentsUiHelper
         $user = get_userdata($user_id);
 
         $pto = get_post_type_object($object_type);
-        $title = sprintf(__('Payment for %1$s &laquo; %2$s &raquo; by &laquo; %3$s &raquo;'),
+        $title = sprintf(__('%1$s || %2$s'),
             $pto->labels->singular_name,
-            get_the_title($object_id),
-            $user->user_email);
+            get_the_title($object_id));
 
         // Allow themes and plugins to hook before the gateway
         do_action('cuar/core/payments/process/before-gateway', $_POST);

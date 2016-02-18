@@ -18,11 +18,11 @@ class CUAR_PaymentStatus
     public static function get_payment_statuses()
     {
         $payment_statuses = array(
-            self::$STATUS_PENDING   => __('Pending', 'cuar'),
             self::$STATUS_COMPLETE  => __('Complete', 'cuar'),
+            self::$STATUS_PENDING   => __('Pending', 'cuar'),
             self::$STATUS_REFUNDED  => __('Refunded', 'cuar'),
-            self::$STATUS_FAILED    => __('Failed', 'cuar'),
             self::$STATUS_ABANDONED => __('Abandoned', 'cuar'),
+            self::$STATUS_FAILED    => __('Failed', 'cuar'),
         );
 
         return apply_filters('cuar/core/payments/statuses', $payment_statuses);
