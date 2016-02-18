@@ -122,6 +122,14 @@ if ( !class_exists('CUAR_Plugin')) :
             return $this->logger;
         }
 
+        /**
+         * @return CUAR_Settings
+         */
+        public function get_settings()
+        {
+            return $this->settings;
+        }
+
         /*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/
 
         public function load_settings()

@@ -28,9 +28,9 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
         return isset($value) && $value == 1 ? true : false;
     }
 
-    public function redirect_to_success_page($message='')
+    public function redirect_to_success_page($message = '')
     {
-        if (!empty($message))
+        if ( !empty($message))
         {
             $this->set_result_message($message);
         }
@@ -40,9 +40,9 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
         exit;
     }
 
-    public function redirect_to_failure_page($message='')
+    public function redirect_to_failure_page($message = '')
     {
-        if (!empty($message))
+        if ( !empty($message))
         {
             $this->set_result_message($message);
         }
@@ -76,7 +76,12 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
                 'gateway-checkout-form-' . $this->get_id() . '.template.php',
                 'templates'
             );
-            if ( !empty($form_template)) include($form_template);
+            if ( !empty($form_template))
+            {
+                /** @noinspection PhpUnusedLocalVariableInspection */
+                $gateway = $this;
+                include($form_template);
+            }
         }
     }
 
@@ -87,7 +92,7 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
     //-- Settings functions -----------------------------------------------------------------------------------------------------------------------------------/
 
-    public function print_settings()
+    public function print_settings($settings)
     {
         /** @noinspection PhpUnusedLocalVariableInspection */
         $gateway = $this;

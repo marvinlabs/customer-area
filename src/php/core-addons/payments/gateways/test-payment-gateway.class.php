@@ -27,6 +27,11 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
         return __('Test gateway', 'cuar');
     }
 
+    public function get_description()
+    {
+        return __('The test gateway allows you to see how your website is behaving when the gateways return different results.', 'cuar');
+    }
+
     public function has_form()
     {
         return true;
@@ -60,5 +65,16 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
             default:
                 die('Unhandled test gateway expected result value');
         }
+    }
+
+    //-- Settings helper functions ----------------------------------------------------------------------------------------------------------------------------/
+
+    public static function set_default_options($defaults)
+    {
+        $g = new CUAR_TestPaymentGateway(cuar());
+
+        $defaults[$g->get_option_id(self::$OPTION_ENABLED)] = true;
+
+        return $defaults;
     }
 }

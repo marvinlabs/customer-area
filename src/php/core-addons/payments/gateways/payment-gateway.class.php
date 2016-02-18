@@ -18,6 +18,11 @@ interface CUAR_PaymentGateway
     function get_name();
 
     /**
+     * @return string The gateway's description
+     */
+    function get_description();
+
+    /**
      * @return bool Is the gateway enabled
      */
     function is_enabled();
@@ -52,8 +57,12 @@ interface CUAR_PaymentGateway
 
     /**
      * Add our fields to the settings tab
+     *
+     * @param CUAR_Settings $settings
+     *
+     * @return
      */
-    function print_settings();
+    function print_settings($settings);
 
     /**
      * Validate our options

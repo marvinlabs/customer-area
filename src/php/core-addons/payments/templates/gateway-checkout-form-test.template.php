@@ -1,5 +1,7 @@
 <?php /** Template version: 3.0.0 */ ?>
 
+<?php /** @var CUAR_TestPaymentGateway $gateway */ ?>
+
 <div class="row">
     <div class="form-group col-xs-12">
         <p><?php _e('The test gateway allows you to see how your website is behaving when the gateways return different results.', 'cuar'); ?></p>

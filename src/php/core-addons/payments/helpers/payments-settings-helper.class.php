@@ -65,13 +65,9 @@ class CUAR_PaymentsSettingsHelper
     {
         $defaults[self::$OPTION_ENABLED_CREDIT_CARDS] = array('visa', 'mastercard', 'maestro');
 
-        $gateways = array(
-            new CUAR_BacsPaymentGateway(cuar())
-        );
-        foreach ($gateways as $g)
-        {
-            $defaults = $g->set_default_options($defaults);
-        }
+        // For gateways too
+        $defaults = CUAR_TestPaymentGateway::set_default_options($defaults);
+        $defaults = CUAR_BacsPaymentGateway::set_default_options($defaults);
 
         return $defaults;
     }
@@ -222,7 +218,6 @@ class CUAR_PaymentsSettingsHelper
             )
         );
 
-
         add_settings_section(
             'cuar_payments_gateways',
             __('Gateways', 'cuar'),
@@ -264,9 +259,12 @@ class CUAR_PaymentsSettingsHelper
         /** @noinspection PhpUnusedLocalVariableInspection */
         $gateways = $this->get_available_gateways();
 
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        $settings = $this->plugin->get_settings();
+
         include($this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/payments',
-            'gateways-table.template.php',
+            'gateways-settings-table.template.php',
             'templates'));
     }
 
