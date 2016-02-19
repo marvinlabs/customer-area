@@ -94,7 +94,7 @@ class CUAR_PaymentsUiHelper
         $user = get_userdata($user_id);
 
         $pto = get_post_type_object($object_type);
-        $title = sprintf(__('%1$s || %2$s'),
+        $title = sprintf(__('%1$s | %2$s'),
             $pto->labels->singular_name,
             get_the_title($object_id));
 

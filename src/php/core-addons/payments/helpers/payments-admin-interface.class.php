@@ -28,9 +28,28 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
             add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 90);
             add_action("load-post-new.php", array(&$this, 'block_default_admin_pages'));
             add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
+
+            add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'));
         }
 
-        /*------- ADMIN PAGE -----------------------------------------------------------------------------------------*/
+        /*------- PERMISSIONS --------------------------------------------------------------------------------------------------------------------------------*/
+
+        public function get_configurable_capability_groups($capability_groups)
+        {
+            $capability_groups['cuar_general']['groups']['payments'] = array(
+                'group_name'   => __('Payments', 'cuar'),
+                'capabilities' => array(
+                    'cuar_pay_list_all' => __('List all payments', 'cuar'),
+                    'cuar_pay_edit'     => __('Create/Edit payments', 'cuar'),
+                    'cuar_pay_delete'   => __('Delete payments', 'cuar'),
+                    'cuar_pay_read'     => __('Access payments', 'cuar'),
+                )
+            );
+
+            return $capability_groups;
+        }
+
+        /*------- ADMIN PAGE ---------------------------------------------------------------------------------------------------------------------------------*/
 
         private static $PAYMENT_PAGE_SLUG = "wpca-payments";
 

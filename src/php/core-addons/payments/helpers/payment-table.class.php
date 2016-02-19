@@ -27,6 +27,13 @@ require_once(CUAR_INCLUDES_DIR . '/core-classes/Content/list-table.class.php');
  */
 class CUAR_PaymentTable extends CUAR_ListTable
 {
+
+    /** @var string The post type to be displayed by this table */
+    public $post_type = null;
+
+    /** @var object The post type object */
+    public $post_type_object = null;
+
     /**
      * Constructor, we override the parent to pass our own arguments
      * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
@@ -43,6 +50,11 @@ class CUAR_PaymentTable extends CUAR_ListTable
             ),
             admin_url('admin.php?page=wpca-payments'),
             'CUAR_Payment');
+
+        $this->post_type = CUAR_Payment::$POST_TYPE;
+        $this->post_type_object = get_post_type_object(CUAR_Payment::$POST_TYPE);
+
+        add_filter('cuar/core/admin/content-list-table/row-actions', array(&$this, 'custom_row_actions'), 20, 2);
     }
 
     /**
@@ -144,8 +156,7 @@ class CUAR_PaymentTable extends CUAR_ListTable
     public function get_columns()
     {
         $columns = array_merge(parent::get_columns(), array(
-            // 'payment_id'     => __('ID', 'cuar'),
-            'payment_title'  => __('Object', 'cuar'),
+            'title'          => __('Object', 'cuar'),
             'payment_user'   => __('User', 'cuar'),
             'payment_date'   => __('Date', 'cuar'),
             'payment_amount' => __('Amount', 'cuar'),
@@ -239,12 +250,27 @@ class CUAR_PaymentTable extends CUAR_ListTable
 
     /*------- BULK ACTIONS -------------------------------------------------------------------------------------------*/
 
+    public function custom_row_actions($row_actions, $item)
+    {
+        unset($row_actions['view']);
+        unset($row_actions['trash']);
+        unset($row_actions['untrash']);
+
+        $row_actions['delete'] = sprintf('<a href="%1$s" title="%2$s this post">%2$s</a>',
+            wp_nonce_url(add_query_arg(array('action' => 'delete', 'posts' => $item->ID), $this->base_url),
+                'cuar_content_row_nonce'),
+            __('Delete', 'cuar'));
+
+        return $row_actions;
+    }
+
     /**
      * @return array An associative array containing all the bulk actions: 'slugs'=>'Visible Titles'
      */
     public function get_bulk_actions()
     {
-        $actions = array(// 'delete' => __('Delete permanently', 'cuar')
+        $actions = array(
+            'delete' => __('Delete permanently', 'cuar')
         );
 
         return $actions;
@@ -308,7 +334,7 @@ class CUAR_PaymentTable extends CUAR_ListTable
      */
     protected function current_user_can_delete()
     {
-        return current_user_can('delete_posts');
+        return current_user_can('cuar_pay_delete');
     }
 
 }
