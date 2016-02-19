@@ -273,39 +273,13 @@ class CUAR_PaymentTable extends CUAR_ListTable
             'delete' => __('Delete permanently', 'cuar')
         );
 
-        return $actions;
-    }
-
-    /**
-     * Execute the bulk action on all selected posts
-     */
-    public function process_bulk_action()
-    {
-        if (isset($_REQUEST['delete_all']) && !empty($_REQUEST['delete_all']))
+        $statuses = CUAR_PaymentStatus::get_payment_statuses();
+        foreach ($statuses as $s => $label)
         {
-            if ( !current_user_can('delete_posts'))
-            {
-                wp_die(__('You are not allowed to delete payments.', 'cuar'));
-            }
-
-            $post_ids = get_posts(array(
-                'post_type'      => CUAR_Payment::$POST_TYPE,
-                'posts_per_page' => -1,
-                'fields'         => 'ids'
-            ));
-
-            if ( !is_wp_error($post_ids))
-            {
-                foreach ($post_ids as $post_id)
-                {
-                    wp_delete_post($post_id, true);
-                }
-            }
-
-            return;
+            $actions['set_status_' . $s] = sprintf(__('Mark payment as %s', 'cuar'), $label);
         }
 
-        parent::process_bulk_action();
+        return $actions;
     }
 
     /**
@@ -326,6 +300,19 @@ class CUAR_PaymentTable extends CUAR_ListTable
 
                 wp_delete_post($post_id, true);
                 break;
+        }
+
+        // Status change
+        $statuses = CUAR_PaymentStatus::get_payment_statuses();
+        foreach ($statuses as $s => $label)
+        {
+            if ($action == 'set_status_' . $s)
+            {
+                $user = get_userdata(get_current_user_id());
+                $payment = new CUAR_Payment($post_id);
+                $payment->update_status($s, $user->user_login);
+                break;
+            }
         }
     }
 

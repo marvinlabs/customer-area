@@ -34,7 +34,7 @@ class CUAR_Payment extends CUAR_CustomPost
      * @param string $new_status
      * @param string $changed_by
      */
-    public function update_status($new_status, $changed_by = '')
+    public function update_status($new_status, $changed_by = 'WPCA Bot')
     {
         if ($new_status == 'completed' || $new_status == 'complete')
         {
@@ -61,7 +61,7 @@ class CUAR_Payment extends CUAR_CustomPost
             );
             wp_update_post(apply_filters('cuar/core/payments/update-payment-status-args', $args));
 
-            $this->add_note(sprintf(__('Status changed to %1$s by %2$s', 'cuar'), $new_status, $changed_by));
+            $this->add_note($changed_by, sprintf(__('Status changed from %1$s to %2$s', 'cuar'), $old_status, $new_status));
 
             do_action('cuar/core/payments/on-status-updated', $this->ID, $new_status, $old_status);
         }
@@ -221,14 +221,16 @@ class CUAR_Payment extends CUAR_CustomPost
     /**
      * Get the object for which the payment was made
      *
+     * @param string $author
      * @param string $note
      */
-    public function add_note($note)
+    public function add_note($author, $note)
     {
         $notes = $this->get_notes();
         $notes[] = array(
             'timestamp_gmt' => current_time('mysql', true),
-            'message'       => $note
+            'message'       => $note,
+            'author'        => $author,
         );
         $this->set_notes($notes);
     }
@@ -316,7 +318,7 @@ class CUAR_Payment extends CUAR_CustomPost
         $args = array(
             'labels'              => $labels,
             'hierarchical'        => false,
-            'supports'            => array('title', 'editor', 'author'),
+            'supports'            => false,
             'taxonomies'          => array(),
             'public'              => true,
             'show_ui'             => true,

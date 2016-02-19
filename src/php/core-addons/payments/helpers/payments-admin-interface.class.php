@@ -30,6 +30,9 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
             add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
 
             add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'));
+
+            // Payments page
+            add_action('add_meta_boxes', array(&$this, 'register_edit_page_meta_boxes'), 120);
         }
 
         /*------- PERMISSIONS --------------------------------------------------------------------------------------------------------------------------------*/
@@ -96,6 +99,67 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
                 'templates'));
         }
 
+        /*------- EDIT PAGE ----------------------------------------------------------------------------------------------------------------------------------*/
+
+        /**
+         * Register some additional boxes on the page to edit the payments
+         *
+         * @param string $post_type
+         */
+        public function register_edit_page_meta_boxes($post_type)
+        {
+            if ($post_type != CUAR_Payment::$POST_TYPE) return;
+
+            remove_meta_box( 'submitdiv', $post_type, 'side' );
+
+            add_meta_box(
+                'cuar_payment_data_metabox',
+                __('Payment data', 'cuar'),
+                array(&$this, 'print_payment_data_metabox'),
+                CUAR_Payment::$POST_TYPE,
+                'side', 'high');
+
+            add_meta_box(
+                'cuar_payment_gateway_metabox',
+                __('Gateway', 'cuar'),
+                array(&$this, 'print_gateway_metabox'),
+                CUAR_Payment::$POST_TYPE,
+                'side', 'high');
+
+            add_meta_box(
+                'cuar_payment_object_metabox',
+                __('Paid object', 'cuar'),
+                array(&$this, 'print_payment_object_metabox'),
+                CUAR_Payment::$POST_TYPE,
+                'normal', 'high');
+
+            add_meta_box(
+                'cuar_payment_notes_metabox',
+                __('Notes', 'cuar'),
+                array(&$this, 'print_notes_metabox'),
+                CUAR_Payment::$POST_TYPE,
+                'normal', 'low');
+        }
+
+        public function print_payment_data_metabox()
+        {
+            echo 'data';
+        }
+
+        public function print_gateway_metabox()
+        {
+            echo 'gateway';
+        }
+
+        public function print_payment_object_metabox()
+        {
+            echo 'object';
+        }
+
+        public function print_notes_metabox()
+        {
+            echo 'notes';
+        }
 
     }
 
