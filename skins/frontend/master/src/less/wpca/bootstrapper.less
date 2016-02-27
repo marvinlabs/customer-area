@@ -25,10 +25,9 @@
 // -
 @wrapperBody: ~"body.customer-area";
 @wrapperContainer: ~".cuar-css-wrapper";
-// @wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
 @wrapperBase: ~"@{wrapperContainer}";
 
-@{wrapperBase}{
+@{wrapperBase} {
   // Hard resets to not allow parent theme to modify WPCA
   @import "resets";
 
@@ -45,13 +44,16 @@
 
 // Main Base components that require to be outside containers
 // ----------------------------
-@import "@{base-path}/modals.less";
-@import "@{base-path}/tooltip.less";
-// @import "@{base-path}/popovers.less";
-// @import "@{base-path}/carousel.less";
+@import "@{base-path}/modals";
+@import "@{base-path}/tooltip";
+// @import "@{base-path}/popovers";
+// @import "@{base-path}/carousel";
 
 // Main WPCA components that require to be outside containers
 // ----------------------------
 @import "components/trays";
+@import "components/sidebar_left";
+@import "components/sidebar_right";
+@import "components/sidebar_actions";
 @import "components/datepicker";
 @import "inline";

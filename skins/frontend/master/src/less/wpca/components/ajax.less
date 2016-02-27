@@ -1,6 +1,63 @@
+// Ajax loading indicator
+// --------------------------------------------------
+
 .cuar-loading-indicator {
   display: block;
   width: 20px;
   height: 20px;
   background: url("@{theme-img-path}/../loading-indicator.gif") no-repeat;
 }
+/*
+@-webkit-keyframes ajax_loading_anim {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes ajax_loading_anim {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.ajax-loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1000;
+  margin-top: -4px;
+  margin-left: -14px;
+
+  .circle {
+    background-color: #CCC;
+    float: left;
+    .square(8px);
+    border-radius: 4px;
+    -webkit-animation: ajax_loading_anim 1s infinite;
+    animation: ajax_loading_anim 1s infinite;
+  }
+  .circle.left {
+  }
+  .circle.middle {
+    margin: 0 2px;
+    -webkit-animation-delay: .25s;
+    animation-delay: .25s;
+  }
+  .circle.right {
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+  }
+}
+*/

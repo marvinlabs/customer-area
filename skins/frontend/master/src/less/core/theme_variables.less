@@ -2,6 +2,212 @@
 // Variables
 // --------------------------------------------------
 
+// Animate
+// --------------------------------------
+// All Animation styles have been listed above
+// so that you may uncomment/remove those
+// that you do not need. This will help reduce
+// theme.css overall file size
+
+@animate-flips:       false;
+@animate-slides:      true;
+@animate-zooms:       false;
+@animate-fades:       true;
+@animate-fades-big:   false;
+@animate-bounces:     false;
+@animate-rotates:     false;
+@animate-specials:    false;
+@animate-lightspeed:  false;
+@animate-attention:   false;
+
+// Activated Skin Colors - Master Color Variables
+// ---------------------------------------------------------
+// Setting a color to false will disable the color sitewide
+// You will not be able to use the color on ANY site element
+// This can help greatly reduce theme.css overall file size
+
+@skin-primary:  true;
+@skin-success:  true;
+@skin-info:     true;
+@skin-warning:  true;
+@skin-danger:   true;
+@skin-alert:    true;
+@skin-system:   false;
+@skin-dark:     false;
+@skin-light:    false;
+
+// Activated Element Colors
+// Does not override above settings
+// ----------------------------------------------------
+// Useful when you want a color active, but don't need
+// it on a various element/s. If the color above is
+// "false" these per-element settings will have no effect.
+
+// Background Skin Colors
+@skin-primary-bg:  true;
+@skin-success-bg:  true;
+@skin-info-bg:     true;
+@skin-warning-bg:  true;
+@skin-danger-bg:   true;
+@skin-alert-bg:    true;
+@skin-system-bg:   false;
+@skin-dark-bg:     false;
+@skin-light-bg:    false;
+
+// Badge Skin Colors
+@skin-primary-badge:  true;
+@skin-success-badge:  true;
+@skin-info-badge:     true;
+@skin-warning-badge:  true;
+@skin-danger-badge:   true;
+@skin-alert-badge:    true;
+@skin-system-badge:   false;
+@skin-dark-badge:     false;
+@skin-light-badge:    false;
+
+// Label Skin Colors
+@skin-primary-label:  true;
+@skin-success-label:  true;
+@skin-info-label:     true;
+@skin-warning-label:  true;
+@skin-danger-label:   true;
+@skin-alert-label:    true;
+@skin-system-label:   false;
+@skin-dark-label:     false;
+@skin-light-label:    false;
+
+// Button Skin Colors
+@skin-primary-btn:  true;
+@skin-success-btn:  true;
+@skin-info-btn:     true;
+@skin-warning-btn:  true;
+@skin-danger-btn:   true;
+@skin-alert-btn:    true;
+@skin-system-btn:   false;
+@skin-dark-btn:     false;
+@skin-light-btn:    false;
+
+// Checkbox/Radio Skin Colors
+@skin-primary-checkbox:  true;
+@skin-success-checkbox:  true;
+@skin-info-checkbox:     true;
+@skin-warning-checkbox:  true;
+@skin-danger-checkbox:   true;
+@skin-alert-checkbox:    true;
+@skin-system-checkbox:   false;
+@skin-dark-checkbox:     false;
+@skin-light-checkbox:    false;
+
+// List Group Skin Colors
+@skin-primary-listgroup:  true;
+@skin-success-listgroup:  true;
+@skin-info-listgroup:     true;
+@skin-warning-listgroup:  true;
+@skin-danger-listgroup:   true;
+@skin-alert-listgroup:    true;
+@skin-system-listgroup:   false;
+@skin-dark-listgroup:     false;
+@skin-light-listgroup:    false;
+
+// Panel Skin Colors
+@skin-primary-panel:  true;
+@skin-success-panel:  true;
+@skin-info-panel:     true;
+@skin-warning-panel:  true;
+@skin-danger-panel:   true;
+@skin-alert-panel:    true;
+@skin-system-panel:   false;
+@skin-dark-panel:     false;
+@skin-light-panel:    false;
+
+// Progress Bar Skin Colors
+@skin-primary-pbar:  true;
+@skin-success-pbar:  true;
+@skin-info-pbar:     true;
+@skin-warning-pbar:  true;
+@skin-danger-pbar:   true;
+@skin-alert-pbar:    true;
+@skin-system-pbar:   false;
+@skin-dark-pbar:     false;
+@skin-light-pbar:    false;
+
+// Switch Skin Colors
+@skin-primary-switch:  true;
+@skin-success-switch:  true;
+@skin-info-switch:     true;
+@skin-warning-switch:  true;
+@skin-danger-switch:   true;
+@skin-alert-switch:    true;
+@skin-system-switch:   false;
+@skin-dark-switch:     false;
+@skin-light-switch:    false;
+
+// Table Skin Colors
+@skin-primary-table:  true;
+@skin-success-table:  true;
+@skin-info-table:     true;
+@skin-warning-table:  true;
+@skin-danger-table:   true;
+@skin-alert-table:    true;
+@skin-system-table:   false;
+@skin-dark-table:     false;
+@skin-light-table:    false;
+
+// Text Skin Colors
+@skin-primary-text:  true;
+@skin-success-text:  true;
+@skin-info-text:     true;
+@skin-warning-text:  true;
+@skin-danger-text:   true;
+@skin-alert-text:    true;
+@skin-system-text:   false;
+@skin-dark-text:     false;
+@skin-light-text:    false;
+
+// Blockquote Skin Colors
+@skin-primary-blockquote:  true;
+@skin-success-blockquote:  true;
+@skin-info-blockquote:     true;
+@skin-warning-blockquote:  true;
+@skin-danger-blockquote:   true;
+@skin-alert-blockquote:    true;
+@skin-system-blockquote:   false;
+@skin-dark-blockquote:     false;
+@skin-light-blockquote:    false;
+
+// Dropcap Skin Colors
+@skin-primary-dropcap:  true;
+@skin-success-dropcap:  true;
+@skin-info-dropcap:     true;
+@skin-warning-dropcap:  true;
+@skin-danger-dropcap:   true;
+@skin-alert-dropcap:    true;
+@skin-system-dropcap:   false;
+@skin-dark-dropcap:     false;
+@skin-light-dropcap:    false;
+
+// Alert Skin Colors
+@skin-primary-alert:  true;
+@skin-success-alert:  true;
+@skin-info-alert:     true;
+@skin-warning-alert:  true;
+@skin-danger-alert:   true;
+@skin-alert-alert:    true;
+@skin-system-alert:   false;
+@skin-dark-alert:     false;
+@skin-light-alert:    false;
+
+// Tabs Skin Colors
+@skin-primary-tabs:  true;
+@skin-success-tabs:  true;
+@skin-info-tabs:     true;
+@skin-warning-tabs:  true;
+@skin-danger-tabs:   true;
+@skin-alert-tabs:    true;
+@skin-system-tabs:   false;
+@skin-dark-tabs:     false;
+@skin-light-tabs:    false;
+
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
@@ -95,7 +301,7 @@
 
 //** Media Object global font weight
 @media-font-weight:       600;
-@media-body-color:        @cuar-color-neutral-60;
+@media-body-color:        @panel-bg;
 @media-heading-color:     @cuar-color-neutral-40;
 
 
@@ -358,9 +564,9 @@
 //** Default background color used for all tables.
 @table-bg:                      @transparent;
 //** Background color used for `.table-striped`.
-@table-bg-accent:               mix(@gray-light, @gray-lighter, 60%);
+@table-bg-accent:               fade(mix(@main-bg, @gray-lighter, 60%), 40%);
 //** Background color used for `.table-hover`.
-@table-bg-hover:                @gray-lighter;
+@table-bg-hover:                fade(mix(@main-bg, @gray-lighter, 40%), 40%);
 @table-bg-active:               @table-bg-hover;
 
 //** Border color for table and cell borders.
@@ -1029,3 +1235,149 @@
 //** Horizontal line color.
 @hr-border:                   @page-header-border-color;
 @hr-border-alt:               darken(@hr-border, 10%);
+
+
+
+// Header Customization Settings
+// ------------------------------------------
+// Only applies to the default skin(light)
+// ------------------------------------------
+
+// navbar dropdown top border
+@navbar-dropdown-active-border: @gray-light;
+
+// UserMenu multiselect dropdowns - active item
+@navbar-component-active-text: #FFF;
+@navbar-component-active-bg: lighten(@gray-light, 10%);
+
+
+
+// Sidebar Settings
+// -------------------------------------------------
+
+// Generates the styles required for Horizontal Menu
+@sidebar-generate-top-style: true;
+
+// Sidebar Width
+@sidebar-open-width:      230px;
+@sidebar-minified-width:  60px;
+@sidebar-closed-width:    0;
+
+// Sidebar Item Spacing
+@sidebar-item-spacing: 37px; // 35px (default skin), 37px (alt skin)
+
+// Sidebar Caret Style
+@sidebar-caret-style: "chevron"; // caret or chevron(skinny)
+
+
+// Sidebar Skin Settings
+// --------------------------------------
+// Only applies to the default(dark) skin
+// --------------------------------------
+
+// Sidebar Background
+@sb-bg-color: @gray-darker;
+
+// Sidebar Label Text
+@sb-label: @gray-lighter;
+
+// Menu Item Caret
+@sb-caret: @gray;
+
+// Open Menu Item Caret
+@sb-caret-open: @gray-light;
+
+// 1st level menu items (Top Most Level)
+@sb-menu-text:              @gray-lighter;
+@sb-menu-item-hover:        darken(@sb-bg-color, 5%);
+@sb-menu-text-hover:        lighten(@sb-menu-text, 8%);
+@sb-menu-border-hover:      @btn-primary-border;
+@sb-active-text:            @btn-primary-color;
+@sb-active-bg:              @btn-primary-bg;
+@sb-active-border:          @sb-menu-border-hover;
+@sb-active-icon:            @sb-active-text;
+
+// 2nd level menu items (Submenu)
+@sub-menu-bg:               lighten(@sb-bg-color, 6%);         // menu container bg color - #282d33 (default skin), #454241 (alt skin)
+@sub-menu-text:             lighten(@sb-menu-text, 8%);         // text color of item - #d1d1d1 (default skin), #bbb (alt skin)
+@sub-menu-item-hover:       lighten(@sb-menu-item-hover, 4%);     // bg color on item hover
+@sub-menu-text-hover:       lighten(@sb-menu-text-hover, 4%);         // text color on item hover
+@sub-menu-border-hover:     lighten(@sub-menu-item-hover, 4%);  // border color on item hover
+@sub-active-bg:             transparent;     // active item bg color (unused)
+@sub-active-icon:           @brand-primary;  // active item icon color
+@sub-active-border:         @brand-primary;  // active item border color
+
+// 3rd level menu items (Multi Menu)
+@multi-menu-bg:             transparent;   // menu container bg color - #22262c (default skin), transparent (alt skin)
+@multi-menu-text:           #BBBBBB;       // text color of item - #d1d1d1 (default skin), #bbb (alt skin)
+@multi-menu-item-hover:     transparent;   // bg color on item hover (unused)
+@multi-menu-text-hover:     inherit;       // text color on item hover (unused)
+@multi-menu-border-hover:   @brand-alert;  // border color on item hover
+@multi-active-bg:           transparent;   // active item bg color (unused)
+@multi-active-icon:         #FFF;          // active item icon color
+@multi-active-border:       @brand-alert;  // active item border color
+
+
+// Sidebar Widgets
+//
+@sb-widget-bg:                #423F3E; // Menu bg color - #282d33 (default skin), #423F3E (alt skin)
+
+// Menu Widget (slidedown)
+@sb-menuwidget-item-hover:    rgba(255, 255, 255, 0.1); // usermenu bg color:hover
+@sb-menuwidget-icon:    	    #DDD; // item icon color - set "inherit" to use html color classes(".text-primary", etc)
+@sb-menuwidget-icon-hover:    @brand-warning; // item icon color:hover - set "inherit" to use html color classes(".text-primary", etc)
+
+
+// Sidebar Widget Settings
+// -------------------------------------------------
+// Only applies to left sidebar/default(dark) skin
+// -------------------------------------------------
+
+@sb-widget-bg:                #423F3E; // Menu bg color - #282d33 (default skin), #423F3E (alt skin)
+
+// Menu Widget (slidedown)
+@sb-menuwidget-item-hover:    rgba(255, 255, 255, 0.1); // usermenu bg color:hover
+@sb-menuwidget-icon:    	    #DDD; // item icon color - set "inherit" to use html color classes(".text-primary", etc)
+@sb-menuwidget-icon-hover:    @brand-warning; // item icon color:hover - set "inherit" to use html color classes(".text-primary", etc)
+
+
+// Horizontal Menu Specific Styling
+// ----------------------------------------
+// Only applies to the default(dark) skin
+// ----------------------------------------
+
+// Menu Item Caret
+@sb-top-caret: #858483; // #858483 (main color), #70829a (alt color)
+
+// 1st level menu items (Top Most Level)
+@sb-top-menu-text:            #BBB;           // text color of item
+@sb-top-text-hover:           inherit;        // text color on item hover (unused)
+@sb-top-active-text:          #FFF; // active item text color
+@sb-top-active-icon:          @brand-primary; // active item icon color
+
+
+// Misc Navigation Contextual Settings
+// --------------------------------------
+
+// Nav Tabs - Active Item Border Color
+@tab-block-active-item: @brand-primary;
+
+// Nav Pills - Menu Items
+@nav-pills-link-hover-color: #888; // Item Text Color
+@nav-pills-active-link-hover-bg: @brand-primary; // Active Item BG Color
+
+
+// Misc Plugin Contextual Settings
+// --------------------------------------
+
+// Multiselect Plugin - Active Dropdown Item Background
+@component-active-bg: @brand-primary;
+
+// Typeahead Plugin - Active/Hover suggestion item
+@suggestion-active-text: #FFF;
+@suggestion-active-bg: @brand-primary;
+
+// NProgress Loader Plugin - Default BG Color
+@nprogress-active-loader: @brand-warning; // page loading progress indicator
+@nprogress-active-spinner: @brand-primary; // spinning indicator
+

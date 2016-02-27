@@ -1,6 +1,52 @@
+// Global container
+// --------------------------------------------------
+&.cuar-content-container {
+  margin-bottom: @line-height-computed;
+  background: @main-bg;
+  border: 1px solid darken(@body-bg, 3%);
+  overflow: hidden;
+
+  .cuar-page-content {
+    ul, ol {
+      list-style: disc outside;
+    }
+
+    li {
+      margin-left: @grid-gutter-width;
+    }
+
+    .list-group {
+      list-style: none;
+
+      > li {
+        margin: 0;
+
+        > .list-group li {
+          margin-left: @grid-gutter-width / 4;
+          padding-left: @grid-gutter-width / 4;
+          border-left: 1px solid @panel-border-color;
+
+          &:first-child {
+            padding-top: @grid-gutter-width / 4;
+          }
+        }
+      }
+    }
+  }
+
+  .cuar-page-content-main {
+    padding: @grid-gutter-width @padding-base-horizontal;
+  }
+
+  .cuar-page-content {
+    position: relative;
+  }
+
+}
+
 // Round dashicon
 // --------------------------------------------------
-
+/*
 .dashicon {
   width: @dashicon-size;
   height: @dashicon-size;
@@ -24,63 +70,9 @@
   line-height: 0.9 * ( @dashicon-size + 2*@dashicon-badge-padding );
   font-size: 0.9 * ( @dashicon-size - @dashicon-badge-padding );
 }
+*/
 
-// Ajax loading indicator
-// --------------------------------------------------
-
-@-webkit-keyframes ajax_loading_anim {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.2;
-  }
-}
-
-@keyframes ajax_loading_anim {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.2;
-  }
-}
-
-.ajax-loading {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1000;
-  margin-top: -4px;
-  margin-left: -14px;
-
-  .circle {
-    background-color: #CCC;
-    float: left;
-    .square(8px);
-    border-radius: 4px;
-    -webkit-animation: ajax_loading_anim 1s infinite;
-    animation: ajax_loading_anim 1s infinite;
-  }
-  .circle.left {
-  }
-  .circle.middle {
-    margin: 0 2px;
-    -webkit-animation-delay: .25s;
-    animation-delay: .25s;
-  }
-  .circle.right {
-    -webkit-animation-delay: .5s;
-    animation-delay: .5s;
-  }
-}
-
+/*
 // Unstyled keeps list items block level, just removes default browser padding and list-style
 // --------------------------------------------------
 
@@ -106,24 +98,6 @@
   }
 }
 
-// Customer Page
-// --------------------------------------------------
-
-/* Removing Scaffolding bad targeting */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-// Pagination
-// --------------------------------------------------
-
-.entry-content ul.pagination {
-  // TODO: Avoid this ! make crash Grunt
-  //&:extend( .pagination all );
-}
-
 // Admin bar
 // --------------------------------------------------
 
@@ -141,3 +115,4 @@ hr.alt { border-top: 1px dashed @hr-border-alt }
 .divider {
   background: #e2e2e2;
 }
+*/

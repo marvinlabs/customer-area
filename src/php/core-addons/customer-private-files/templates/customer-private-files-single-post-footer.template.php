@@ -29,14 +29,14 @@ $attachment_count = count($attachments);
 <div class="cuar-single-post-footer">
     <div class="row clearfix">
         <div class="col-xs-12">
-            <div class="panel panel-border panel-default top cuar-attachments">
+            <div class="panel top cuar-attachments">
                 <div class="panel-heading">
                     <span class="panel-title">
                         <?php printf(_n('%d attachment', '%d attachments', $attachment_count, 'cuar'), $attachment_count); ?>
                     </span>
                 </div>
                 <div class="panel-body pn">
-                    <table class="table">
+                    <table class="table table-hover table-striped">
                         <tbody>
                         <?php foreach ($attachments as $file_id => $file) : ?>
                             <tr>
