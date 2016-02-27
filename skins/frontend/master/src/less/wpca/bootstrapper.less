@@ -23,9 +23,23 @@
 // to make sure your rules will override possible CSS rules
 // defined by the parent WP theme.
 // -
-@wrapperBody: ~"body.customer-area";
-@wrapperContainer: ~".cuar-css-wrapper";
-@wrapperBase: ~"@{wrapperContainer}";
+.wrapperConfig() when (@master-sub-theme = true) {
+  .wrapperSetConfig() {
+    @wrapperBody: ~"body.customer-area";
+    @wrapperContainer: ~".cuar-css-wrapper";
+    @wrapperBase: ~"@{wrapperContainer}";
+  }
+  .wrapperSetConfig();
+}
+.wrapperConfig() when (@master-sub-theme = false) {
+  .wrapperSetConfig(@body: @wrapper-body, @container: @wrapper-container, @base: @wrapper-base) {
+    @wrapperBody: ~"@{body}";
+    @wrapperContainer: ~"@{container}";
+    @wrapperBase: ~"@{base}";
+  }
+  .wrapperSetConfig();
+}
+.wrapperConfig();
 
 @{wrapperBase} {
   // Hard resets to not allow parent theme to modify WPCA
