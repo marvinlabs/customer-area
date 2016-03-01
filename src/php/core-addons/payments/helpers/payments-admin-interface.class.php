@@ -129,7 +129,14 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
             add_meta_box(
                 'cuar_payment_object_metabox',
                 __('Paid object', 'cuar'),
-                array(&$this, 'print_payment_object_metabox'),
+                array(&$this, 'print_object_metabox'),
+                CUAR_Payment::$POST_TYPE,
+                'normal', 'high');
+
+            add_meta_box(
+                'cuar_payment_author_metabox',
+                __('Payer', 'cuar'),
+                array(&$this, 'print_author_metabox'),
                 CUAR_Payment::$POST_TYPE,
                 'normal', 'high');
 
@@ -151,7 +158,7 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
             echo 'gateway';
         }
 
-        public function print_payment_object_metabox()
+        public function print_object_metabox()
         {
             echo 'object';
         }
@@ -159,6 +166,11 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
         public function print_notes_metabox()
         {
             echo 'notes';
+        }
+
+        public function print_author_metabox()
+        {
+            echo 'payer';
         }
 
     }

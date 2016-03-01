@@ -8,6 +8,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-admin-i
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-settings-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-ui-helper.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-editor-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/abstract-payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/bacs-payment-gateway.class.php');
@@ -34,6 +35,9 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
         /** @var CUAR_PaymentsUiHelper */
         private $payments_ui;
 
+        /** @var CUAR_PaymentsEditorHelper */
+        private $editor;
+
         /**
          * CUAR_PaymentsAddOn constructor.
          */
@@ -56,6 +60,7 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
             $payable_types = $this->get_payable_types();
             if (empty($payable_types)) return;
 
+            $this->editor = new CUAR_PaymentsEditorHelper($plugin, $this);
             $this->settings = new CUAR_PaymentsSettingsHelper($plugin, $this);
             $this->payments = new CUAR_PaymentsHelper($plugin, $this);
             $this->payments_ui = new CUAR_PaymentsUiHelper($plugin,$this);
@@ -66,6 +71,14 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
             }
 
             add_action('init', array(&$this, 'register_custom_types'));
+        }
+
+        /**
+         * @return CUAR_PaymentsEditorHelper
+         */
+        public function editor()
+        {
+            return $this->editor;
         }
 
         /**
