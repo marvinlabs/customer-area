@@ -21,7 +21,7 @@
 $all_items_url = cuar_addon('customer-private-pages')->get_page_url('customer-private-files');
 ?>
 
-<div class="panel panel-border panel-default top cuar_private_file">
+<div class="panel top cuar_private_file">
     <div class="panel-heading">
         <span class="panel-icon">
             <i class="fa fa-file"></i>
@@ -36,7 +36,7 @@ $all_items_url = cuar_addon('customer-private-pages')->get_page_url('customer-pr
         </span>
     </div>
     <div class="panel-body pn">
-        <table class="table">
+        <table class="table table-hover table-striped">
             <tbody>
             <?php
             while ($content_query->have_posts()) {

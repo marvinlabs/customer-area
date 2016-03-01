@@ -1,193 +1,152 @@
-// Global CSS resets to redefine rules
-// like users agent's defaults
-// ----------------------------
-& {
-  .clearfix;
-  font-family: @font-family-base;
-  font-size: @font-size-base;
-  font-weight: @font-weight-base;
-  line-height: @line-height-base;
-  color: @text-color;
-  width: 100%;
-  box-sizing: border-box;
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: none;
+@{wrapperBase} {
+  // Global CSS resets to redefine rules
+  // like users agent's defaults
+  // ----------------------------
+  & {
+    .clearfix;
+    font-family: @font-family-base;
+    font-size: @font-size-base;
+    font-weight: @font-weight-base;
+    line-height: @line-height-base;
+    color: @text-color;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
 
-  &, &:before, &:after,
-  *, *:before, *:after {
-    .box-sizing(border-box);
-  }
-
-  &.cuar-content-container {
-    margin-bottom: @line-height-computed;
-    background: @main-bg;
-    border: 1px solid darken(@body-bg, 3%);
-    overflow: hidden;
-
-    .cuar-page-content {
-      ul, ol {
-        list-style: disc outside;
-      }
-
-      li {
-        margin-left: @grid-gutter-width;
-      }
-
-      .list-group {
-        list-style: none;
-
-        > li {
-          margin: 0;
-
-          > .list-group li {
-            margin-left: @grid-gutter-width / 4;
-            padding-left: @grid-gutter-width / 4;
-            border-left: 1px solid @panel-border-color;
-
-            &:first-child {
-              padding-top: @grid-gutter-width / 4;
-            }
-          }
-        }
-      }
-    }
-
-    .cuar-page-content-main {
-      padding: @grid-gutter-width @padding-base-horizontal;
-    }
-
-    .cuar-page-content {
-      position: relative;
+    &, &:before, &:after,
+    *, *:before, *:after {
+      .box-sizing(border-box);
     }
 
   }
-}
 
-// Standard HTML tags resets
-// Adapted from Eric Meyer's CSS resets
-// ----------------------------
+  // Standard HTML tags resets
+  // Adapted from Eric Meyer's CSS resets
+  // ----------------------------
 
-/* Displays for HTML 5 */
-article, aside, audio, command, datagrid, details, dialog, embed,
-figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
-video, wbr {
-  display: block;
-}
+  /* Displays for HTML 5 */
+  article, aside, audio, command, datagrid, details, dialog, embed,
+  figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+  video, wbr {
+    display: block;
+  }
 
-bdi, figcaption, keygen, mark, meter, progress, rp, rt, ruby, time {
-  display: inline;
-}
+  bdi, figcaption, keygen, mark, meter, progress, rp, rt, ruby, time {
+    display: inline;
+  }
 
-/* Deprecated tags */
-acronym, applet, big, center, dir, font, frame, frameset, noframes, s,
-strike, tt, u, xmp {
-  display: none;
-}
+  /* Deprecated tags */
+  acronym, applet, big, center, dir, font, frame, frameset, noframes, s,
+  strike, tt, u, xmp {
+    display: none;
+  }
 
-/* Reset styles for all structural tags */
-a, abbr, area, article, aside, audio, b, bdo, blockquote, button,
-canvas, caption, cite, code, col, colgroup, command, datalist, dd, del,
-details, dialog, dfn, div, dl, dt, em, embed, fieldset, figure, form,
-h1, h2, h3, h4, h5, h6, head, header, hgroup, hr, i, iframe, img,
-input, ins, keygen, kbd, label, legend, li, map, mark, menu, meter, nav,
-noscript, object, ol, optgroup, option, output, p, param, pre, progress,
-q, rp, rt, ruby, samp, section, select, small, span, strong, sub, sup,
-table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
-  position: static;
-  background: transparent;
-  border: 0;
-  font-family: @font-family-base;
-  font-size: @font-size-base;
-  font-weight: @font-weight-base;
-  line-height: @line-height-base;
-  margin: 0;
-  outline: none;
-  padding: 0;
-  text-align: left;
-  text-decoration: none;
-  vertical-align: baseline;
-  z-index: inherit;
-  width: auto;
-  max-width: initial;
-  height: auto;
-  max-height: initial;
-  text-transform: initial;
-  top: initial;
-  right: initial;
-  left: initial;
-  bottom: initial;
-  content: initial;
-  word-wrap: initial;
-  white-space: normal;
+  /* Reset styles for all structural tags */
+  a, abbr, area, article, aside, audio, b, bdo, blockquote, button,
+  canvas, caption, cite, code, col, colgroup, command, datalist, dd, del,
+  details, dialog, dfn, div, dl, dt, em, embed, fieldset, figure, form,
+  h1, h2, h3, h4, h5, h6, head, header, hgroup, hr, i, iframe, img,
+  input, ins, keygen, kbd, label, legend, li, map, mark, menu, meter, nav,
+  noscript, object, ol, optgroup, option, output, p, param, pre, progress,
+  q, rp, rt, ruby, samp, section, select, small, span, strong, sub, sup,
+  table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
+    position: static;
+    background: transparent;
+    border: 0;
+    font-family: @font-family-base;
+    font-size: @font-size-base;
+    font-weight: @font-weight-base;
+    line-height: @line-height-base;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    vertical-align: baseline;
+    z-index: inherit;
+    width: auto;
+    max-width: initial;
+    height: auto;
+    max-height: initial;
+    text-transform: initial;
+    top: initial;
+    right: initial;
+    left: initial;
+    bottom: initial;
+    content: initial;
+    word-wrap: initial;
+    white-space: normal;
 
-  // This will reinitialize :before and :after elements defined by parent themes
-  // This should only be applied on non-replaced elements
-  // http://ahmed.amayem.com/html-replaced-elements-non-replaced-elements-examples/
-  &:not(audio),
-  &:not(canvas),
-  &:not(embed),
-  &:not(iframe),
-  &:not(img),
-  &:not(math),
-  &:not(object),
-  &:not(svg),
-  &:not(video) {
-    &:before, &:after {
-      content: initial;
-      position: static;
-      width: auto;
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: inherit;
-      line-height: inherit;
-      color: inherit;
-      background: none;
+    // This will reinitialize :before and :after elements defined by parent themes
+    // This should only be applied on non-replaced elements
+    // http://ahmed.amayem.com/html-replaced-elements-non-replaced-elements-examples/
+    &:not(audio),
+    &:not(canvas),
+    &:not(embed),
+    &:not(iframe),
+    &:not(img),
+    &:not(math),
+    &:not(object),
+    &:not(svg),
+    &:not(video) {
+      &:before, &:after {
+        content: initial;
+        position: static;
+        width: auto;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        color: inherit;
+        background: none;
+      }
     }
   }
-}
 
-/* Miscellaneous resets */
-ol, ul {
-  list-style: none;
-}
+  /* Miscellaneous resets */
+  ol, ul {
+    list-style: none;
+  }
 
-blockquote, q {
-  quotes: none;
-}
+  blockquote, q {
+    quotes: none;
+  }
 
-a {
-  text-decoration: none;
-}
+  a {
+    text-decoration: none;
+  }
 
-img {
-  border-radius: 0;
-  box-shadow: none;
-  border: 0;
-}
+  img {
+    border-radius: 0;
+    box-shadow: none;
+    border: 0;
+  }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
 
-table, th, .table > thead > tr > th, table > thead > tr > th, td, .table > tbody > tr > td, table > tbody > tr > td {
-  font-family: @font-family-sans-serif;
-  font-size: @font-size-base;
-  color: inherit;
-  border-color: @table-border-color;
-}
+  table, th, .table > thead > tr > th, table > thead > tr > th, td, .table > tbody > tr > td, table > tbody > tr > td {
+    font-family: @font-family-sans-serif;
+    font-size: @font-size-base;
+    color: inherit;
+    border-color: @table-border-color;
+  }
 
-th, .table > thead > tr > th, table > thead > tr > th {
-  text-transform: uppercase;
-  font-size: @font-size-small;
-}
+  th, .table > thead > tr > th, table > thead > tr > th {
+    text-transform: uppercase;
+    font-size: @font-size-small;
+  }
 
-td.progress, .table > thead > tr > td.progress, table > thead > tr > td.progress {
-  border-radius: 0;
-}
+  td.progress, .table > thead > tr > td.progress, table > thead > tr > td.progress {
+    border-radius: 0;
+  }
 
-.table tbody > tr:first-child > th + td {
-  border-top: 1px solid @table-border-color;
+  .table tbody > tr:first-child > th + td {
+    border-top: 1px solid @table-border-color;
+  }
 }

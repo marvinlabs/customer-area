@@ -10,7 +10,7 @@
 <?php /** @var WP_Query $content_query */ ?>
 <?php /** @var string $item_template */ ?>
 
-<div class="panel panel-border panel-default top cuar_private_page">
+<div class="panel top cuar_private_page">
     <div class="panel-heading">
         <span class="panel-icon">
             <i class="fa fa-book"></i>
@@ -20,7 +20,7 @@
         </span>
     </div>
     <div class="panel-body pn">
-        <table class="table">
+        <table class="table table-hover table-striped">
             <tbody>
             <?php
             while ($content_query->have_posts()) {

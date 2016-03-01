@@ -1,0 +1,37 @@
+@{wrapperBase} {
+  .cuar-toolbar {
+    position: relative;
+    z-index: 2;
+    padding: @grid-gutter-width / 2;
+    background: @panel-heading-bg;
+    vertical-align: top;
+    border: 1px solid darken(@body-bg, 3%);
+    border-bottom: 1px solid darken(@body-bg, 10%);
+    .box-shadow(0 2px 4px fade(darken(@body-bg, 60%), 45%));
+
+    > * {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      margin: 0;
+    }
+  }
+}
+
+// Auto padding on single private contents
+@{wrapperBody}.single @{wrapperContainer} {
+  padding: @grid-gutter-width / 2;
+
+  .cuar-toolbar {
+    margin-left: -@grid-gutter-width / 2;
+    margin-top: -@grid-gutter-width / 2;
+    margin-right: -@grid-gutter-width / 2;
+
+    & + script + .cuar-menu-container,
+    & + .cuar-menu-container {
+      margin-bottom: @grid-gutter-width;
+      margin-left: -@grid-gutter-width / 2;
+      margin-right: -@grid-gutter-width / 2;
+    }
+  }
+}

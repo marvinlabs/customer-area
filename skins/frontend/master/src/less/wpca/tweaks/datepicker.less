@@ -1,6 +1,11 @@
+//
+// WARNING !!
+// This stylesheet is used in both wpca frontend and admin side !
+//
+
 body.wp-admin[class^='post-type-cuar_'] .ui-datepicker,
 body.wp-admin[class*=' post-type-cuar_'] .ui-datepicker,
-body.customer-area .ui-datepicker {
+@{wrapperBody} .ui-datepicker {
   font-family: @font-family-base;
   font-size: @font-size-base;
   font-weight: @font-weight-base;

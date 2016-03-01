@@ -339,7 +339,7 @@ class CUAR_PrivateFilesDefaultHandlers
             $uploaded_type = $arr_file_type['type'];
             if ( !in_array($uploaded_type, $supported_types))
             {
-                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar'), implode(', ', $supported_types));
 
                 return $errors;
             }
@@ -411,7 +411,7 @@ class CUAR_PrivateFilesDefaultHandlers
             $uploaded_type = $arr_file_type['type'];
             if ( !in_array($uploaded_type, $supported_types))
             {
-                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar'), implode(', ', $supported_types));
 
                 return $errors;
             }
@@ -469,7 +469,7 @@ class CUAR_PrivateFilesDefaultHandlers
             $uploaded_type = $arr_file_type['type'];
             if ( !in_array($uploaded_type, $supported_types))
             {
-                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar'), implode(', ', $supported_types));
 
                 return $errors;
             }

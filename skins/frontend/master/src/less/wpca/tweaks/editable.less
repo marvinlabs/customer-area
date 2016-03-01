@@ -1,0 +1,37 @@
+// Fixing styles for the jQuery editable plugin
+//--
+@{wrapperBase} {
+  form.cuar-js-editable {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle; // match .btn alignment given font-size hack above
+
+    > button {
+      position: relative;
+      float: left;
+      // Bring the "active" button to the front
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        z-index: 2;
+      }
+      &:focus {
+        // Remove focus outline when dropdown JS adds it after closing the menu
+        outline: 0;
+      }
+    }
+
+    button[type=submit] {
+      .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+    }
+
+    button[type=cancel] {
+      .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+    }
+
+    button + button {
+      margin-left: -1px;
+    }
+  }
+}

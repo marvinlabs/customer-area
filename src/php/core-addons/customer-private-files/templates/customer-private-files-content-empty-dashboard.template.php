@@ -9,7 +9,7 @@
  *
  */ ?>
 
-<div class="panel panel-border panel-default top cuar-empty cuar_private_file">
+<div class="panel top cuar-empty cuar_private_file">
     <div class="panel-heading">
         <span class="panel-icon">
             <i class="fa fa-book"></i>

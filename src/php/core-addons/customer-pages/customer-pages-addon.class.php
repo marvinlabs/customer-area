@@ -862,8 +862,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             /** @noinspection PhpUnusedLocalVariableInspection */
             $nav_menu_args = apply_filters('cuar/core/page/nav-menu-args', array(
                 'theme_location'  => 'cuar_main_menu',
-                'container_class' => 'menu-container cuar-menu-container',
-                'menu_class'      => 'menu cuar-menu'
+                'container_class' => 'cuar-menu-container',
+                'menu_class'      => 'cuar-menu'
             ));
 
             ob_start();

@@ -1,34 +1,36 @@
-// Dashboard columns
-//--
+@{wrapperBase} {
+  // Dashboard columns
+  //--
 
-.panel.cuar_conversation {
-  .table {
-    table-layout: auto;
-    .cuar-title {
-      width: 100%;
-    }
-    tr.cuar-updated {
-      .cuar-replies .label {
-        .label-danger;
+  .panel.cuar_conversation {
+    .table {
+      table-layout: auto;
+      .cuar-title {
+        width: 100%;
+      }
+      tr.cuar-updated {
+        .cuar-replies .label {
+          .label-variant(@label-danger-bg);
+        }
       }
     }
   }
-}
 
-// Reply list
-//--
+  // Reply list
+  //--
 
-.chat-widget {
-  .cuar-reply-item {
-    .media-body {
-      width: 100%;
+  .chat-widget {
+    .cuar-reply-item {
+      .media-body {
+        width: 100%;
+      }
     }
-  }
 
-  .cuar-ajax-progress {
-    text-align: center;
-    .cuar-loading-indicator {
-      display: inline-block;
+    .cuar-ajax-progress {
+      text-align: center;
+      .cuar-loading-indicator {
+        display: inline-block;
+      }
     }
   }
 }

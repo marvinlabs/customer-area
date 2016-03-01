@@ -12,7 +12,7 @@
 <?php /** @var string $title */ ?>
 <?php /** @var string $type */ ?>
 
-<div class="panel panel-border panel-default top <?php echo $type; ?>">
+<div class="panel top <?php echo $type; ?>">
     <?php if ( !empty($title)): ?>
         <div class="panel-heading">
             <span class="panel-title">

@@ -1,42 +1,44 @@
-/* Dashboard columns */
+@{wrapperBase} {
+  /* Dashboard columns */
 
-.panel.cuar_invoice {
-  .table {
-    table-layout: auto;
-    .cuar-total span {
-      font-weight: bold;
-    }
-  }
-}
-
-/* Single post footer tweaks */
-
-.cuar-invoice-addresses {
-  .cuar-address-logo-container {
-    .mr-sm();
-    max-width: 40%;
-  }
-}
-
-.cuar-invoice-items {
-  .cuar-invoice-item {
-    .cuar-item-description {
-      .fs-sm();
-      color: @cuar-color-text-lighter;
-    }
-  }
-}
-
-.cuar-invoice-totals {
-  .cuar-panel-property-list {
-    .panel-body {
-      td, th {
-        font-weight: normal;
+  .panel.cuar_invoice {
+    .table {
+      table-layout: auto;
+      .cuar-total span {
+        font-weight: bold;
       }
-      .cuar-total {
+    }
+  }
+
+  /* Single post footer tweaks */
+
+  .cuar-invoice-addresses {
+    .cuar-address-logo-container {
+      .mr-sm();
+      max-width: 40%;
+    }
+  }
+
+  .cuar-invoice-items {
+    .cuar-invoice-item {
+      .cuar-item-description {
+        .fs-sm();
+        color: @cuar-color-text-lighter;
+      }
+    }
+  }
+
+  .cuar-invoice-totals {
+    .cuar-panel-property-list {
+      .panel-body {
         td, th {
-          .fs-md();
-          font-weight: bold;
+          font-weight: normal;
+        }
+        .cuar-total {
+          td, th {
+            .fs-md();
+            font-weight: bold;
+          }
         }
       }
     }
