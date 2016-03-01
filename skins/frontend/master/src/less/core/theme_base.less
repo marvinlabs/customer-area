@@ -28,6 +28,7 @@
 // @import "@{plugins-path}/dropzone.less";
 // @import "@{plugins-path}/expose.less";
 // @import "@{plugins-path}/fileupload.less";
+@import "@{plugins-path}/blueimp-file-upload.less";
 // @import "@{plugins-path}/flot.less";
 // @import "@{plugins-path}/fullcalendar.less";
 // @import "@{plugins-path}/gmap.less";
@@ -54,7 +55,7 @@
 // @import "@{plugins-path}/cropper.less";      // added patch v1.4
 // @import "@{plugins-path}/markdown.less";     // added patch v1.4
 // @import "@{plugins-path}/nprogress.less";    // added patch v1.4
-@import "@{plugins-path}/scroller.less";     // added patch v1.4
+// @import "@{plugins-path}/scroller.less";     // added patch v1.4
 // @import "@{plugins-path}/select2.less";      // added patch v1.4 // Re-writted in WPCA components
 
 // @import "@{plugins-path}/admindock.less";    // added patch v1.4
@@ -129,19 +130,20 @@
 
 // Theme Settings
 // ------------------------------------------------
-@import "@{base-path}/shared.less";
+// @import "@{base-path}/shared.less";
 @import "@{base-path}/settings.less";
 
 // Primary Components - includes:
-// Sidebars, Topbar, Navbar, Footer, and Trays
+// Sidebars, Topbar, Navbar, Footer, Trays, Collection ...
 // ------------------------------------------------
-// @import "@{base-path}/components/navbar"; // forked in premium theme
-// @import "@{base-path}/components/content_trays"; // forked to components/trays
-@import "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base/components/sidebar_left";
-@import "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base/components/sidebar_right";
-@import "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base/components/sidebar_actions";
-// @import "@{base-path}/components/topbar"; // unused
-// @import "@{base-path}/components/footer"; // unused
+// @import "@{base-path}/components/navbar";
+@import "@{base-path}/components/trays";
+@import "@{base-path}/components/collection";
+@import "@{base-path}/components/sidebar_left";
+@import "@{base-path}/components/sidebar_right";
+@import "@{base-path}/components/sidebar_actions";
+// @import "@{base-path}/components/topbar";
+// @import "@{base-path}/components/footer";
 
 // Page specific styles
 // @import "@{base-path}/pages.less"; // unused

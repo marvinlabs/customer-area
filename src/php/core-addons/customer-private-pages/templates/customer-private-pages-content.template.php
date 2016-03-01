@@ -6,7 +6,7 @@
  *
  */ ?>
 
-<div class="cuar-collection cuar_private_page">
+<div class="collection cuar_private_page">
     <div class="row clearfix mb-md">
         <div class="col-xs-7">
             <!-- CURRENTLY NOT IMPLEMENTED
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div id="cuar-js-collection-gallery" class="cuar-collection-content">
+    <div id="cuar-js-collection-gallery" class="collection-content">
         <div class="fail-message alert alert-warning">
             <?php _e('No items were found matching the selected filters', 'cuar'); ?>
         </div>

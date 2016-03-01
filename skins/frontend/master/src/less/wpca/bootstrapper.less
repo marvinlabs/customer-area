@@ -54,22 +54,8 @@
 // Base Elements
 @import "../core/theme_base";
 
-// Main WPCA
+// Main WPCA components
 // ----------------------------
-// Components
-@import "components/collection";
-@import "components/dropzone";
-// @import "components/fields"; // TODO: Check if this is still used.
-@import "components/general";
-@import "components/navigation";
-@import "components/panel";
-@import "components/private-files";
-@import "components/single-post-meta";
-@import "components/switch-users";
-@import "components/task-list";
-@import "components/trays";
-@import "components/wizard";
-
 // WordPress
 @import "wp/tinymce";
 @import "wp/widgets";
@@ -85,6 +71,15 @@
 @import "tweaks/conversations";
 @import "tweaks/toolbar";
 @import "tweaks/panel";
+@import "tweaks/private-files";
+@import "tweaks/single-post-meta";
+@import "tweaks/switch-users";
+@import "tweaks/task-list";
+@import "tweaks/navigation";
 
 // Tools
 @import "utilities";
+
+// Not used
+// @import "trash/fields"; // TODO: Check if this is still used or remove it
+// @import "components/wizard"; // TODO: Replace by the one from the FW

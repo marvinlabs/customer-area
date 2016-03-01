@@ -9,8 +9,8 @@
  *
  */ ?>
 
-<div class="cuar-collection panel cuar-empty cuar-empty-date cuar_private_page">
-    <div class="cuar-collection-content">
+<div class="collection panel cuar-empty cuar-empty-date cuar_private_page">
+    <div class="collection-content">
         <p class="mn"><?php _e( 'There are no pages for that period.', 'cuar' ); ?></p>
     </div>
 </div>
