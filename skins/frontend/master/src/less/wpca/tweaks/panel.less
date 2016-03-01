@@ -1,0 +1,28 @@
+// Fix panel body without padding table bug
+//--
+.panel-body.pn {
+  > .table {
+    border-bottom: 0 none;
+
+    tr:first-child {
+      td, th {
+        border-top: 0 none;
+      }
+    }
+    tr:last-child {
+      td, th {
+        border-bottom: 0 none;
+      }
+    }
+  }
+}
+
+// Fix progress within panel margin-bottom
+//--
+.panel-body {
+  .table {
+    .progress {
+      margin-bottom: 0;
+    }
+  }
+}

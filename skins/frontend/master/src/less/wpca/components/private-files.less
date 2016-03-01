@@ -1,126 +1,128 @@
-// TODO CLEAN UP AND MOVE TO TWEAKS
+// TODO: Move to tweaks ?
+@{wrapperBase} {
 
-.cuar-private-files .cuar-gallery-page {
-  // responsive styles
-  #mix-container .mix,
-  #mix-container .gap {
-    width: 23%;
-  }
-  @media (max-width: @screen-md) {
+  .cuar-private-files .cuar-gallery-page {
+    // responsive styles
     #mix-container .mix,
     #mix-container .gap {
-      width: 31.5%;
+      width: 23%;
+    }
+    @media (max-width: @screen-md) {
+      #mix-container .mix,
+      #mix-container .gap {
+        width: 31.5%;
+      }
+    }
+    @media (max-width: @screen-sm) {
+      #mix-container .mix,
+      #mix-container .gap {
+        width: 48%;
+      }
+    }
+    @media (max-width: @screen-xs) {
+      #mix-container .mix,
+      #mix-container .gap {
+        width: 100%;
+      }
     }
   }
-  @media (max-width: @screen-sm) {
-    #mix-container .mix,
-    #mix-container .gap {
-      width: 48%;
-    }
-  }
-  @media (max-width: @screen-xs) {
-    #mix-container .mix,
-    #mix-container .gap {
-      width: 100%;
-    }
-  }
-}
 
-// File info in the single post footer
-// --------------------------------------------------
+  // File info in the single post footer
+  // --------------------------------------------------
 
-.cuar-single-post-footer.cuar-file {
-  ul.cuar-attached-files {
-    list-style: none;
-    margin: 0;
-    li {
+  .cuar-single-post-footer.cuar-file {
+    ul.cuar-attached-files {
+      list-style: none;
       margin: 0;
-    }
-    a, a:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-.cuar-file-attachments {
-
-  .cuar-file-attachment {
-    position: relative;
-    border: 1px solid #e0e0e0;
-    background: #fafafa;
-    padding: 4px 7px;
-    margin: 4px 0;
-    min-height: 28px;
-    line-height: 28px;
-
-    &.cuar-state-pending {
-      background-color: #D4E9FF;
-    }
-    &.cuar-state-error {
-      background-color: #FF777F;
-    }
-    &.cuar-state-success {
-      background-color: #fafafa;
-    }
-
-    .cuar-actions {
-      display: block;
-      float: right;
-      min-height: 28px;
-      line-height: 28px;
-      padding: 4px 0;
-
+      li {
+        margin: 0;
+      }
       a, a:hover {
         text-decoration: none;
       }
-      a:focus {
-        -webkit-box-shadow: none;
-        box-shadow: none;
+    }
+  }
+
+  .cuar-file-attachments {
+
+    .cuar-file-attachment {
+      position: relative;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      padding: 4px 7px;
+      margin: 4px 0;
+      min-height: 28px;
+      line-height: 28px;
+
+      &.cuar-state-pending {
+        background-color: #D4E9FF;
       }
-    }
+      &.cuar-state-error {
+        background-color: #FF777F;
+      }
+      &.cuar-state-success {
+        background-color: #fafafa;
+      }
 
-    .cuar-caption {
-      display: inline-block;
-    }
+      .cuar-actions {
+        display: block;
+        float: right;
+        min-height: 28px;
+        line-height: 28px;
+        padding: 4px 0;
 
-    .cuar-editable-caption {
-      input {
-        background: transparent;
-        min-width: 200px;
-        border: none;
-        border-bottom: 1px solid #aaa;
-        padding: 0;
-        font-size: 13px;
-
-        &:focus {
-          outline: 0;
+        a, a:hover {
+          text-decoration: none;
+        }
+        a:focus {
+          -webkit-box-shadow: none;
+          box-shadow: none;
         }
       }
-    }
 
-    .cuar-progress {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 100%;
-
-      .indeterminate {
-        display: block;
-        position: absolute;
-        right: 8px;
-        bottom: 0;
-        height: 100%;
-        background-position-x: 100%;
-        background-position-y: 8px;
+      .cuar-caption {
+        display: inline-block;
       }
 
-      .determinate {
-        display: none;
+      .cuar-editable-caption {
+        input {
+          background: transparent;
+          min-width: 200px;
+          border: none;
+          border-bottom: 1px solid #aaa;
+          padding: 0;
+          font-size: 13px;
+
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
+
+      .cuar-progress {
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
+        height: 100%;
+
+        .indeterminate {
+          display: block;
+          position: absolute;
+          right: 8px;
+          bottom: 0;
+          height: 100%;
+          background-position-x: 100%;
+          background-position-y: 8px;
+        }
+
+        .determinate {
+          display: none;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
       }
     }
   }

@@ -1,6 +1,67 @@
 // Define base path
 // ----------------------------
-@base-path:	 "../../../../../../../../vendor/other/framework/theme/assets/skin/base";
+@base-path:	 "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base";
+
+// Define included Fonts
+// -----------------------------------
+@base-fonts-path:  "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base/fonts";
+@import "@{base-fonts-path}/admindesigns.less"; // added v1.4
+// @import "@{base-fonts-path}/glyphicons.less";
+@import "@{base-fonts-path}/font-awesome.less";
+// @import "@{base-fonts-path}/stateface.less";
+// @import "@{base-fonts-path}/glyphicons-pro.less";
+// @import "@{base-fonts-path}/octicons.less";
+// @import "@{base-fonts-path}/zocial.less";
+// @import "@{base-fonts-path}/open-sans.less"; // imported using Google fonts CDN
+
+// Define included Animations
+// ----------------------------
+@import "@{base-path}/animate.less"; // core animation styles
+
+// Define included Plugin Styles
+// -------------------------------------
+@plugins-path:	 "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base/plugins";
+// @import "@{plugins-path}/circlegraphs.less";
+// @import "@{plugins-path}/ckeditor.less";
+// @import "@{plugins-path}/countdown.less";
+// @import "@{plugins-path}/datatables.less";
+// @import "@{plugins-path}/dropzone.less";
+// @import "@{plugins-path}/expose.less";
+// @import "@{plugins-path}/fileupload.less";
+// @import "@{plugins-path}/flot.less";
+// @import "@{plugins-path}/fullcalendar.less";
+// @import "@{plugins-path}/gmap.less";
+// @import "@{plugins-path}/highcharts.less"; // required for many demo widgets
+// @import "@{plugins-path}/jqueryspinner.less";
+// @import "@{plugins-path}/jvectormap.less";
+// @import "@{plugins-path}/magnific.less";
+// @import "@{plugins-path}/markitup.less";
+// @import "@{plugins-path}/mapplic.less";
+// @import "@{plugins-path}/multiselect.less"; // Considered Core Plugin
+// @import "@{plugins-path}/nestable.less";
+@import "@{plugins-path}/nanoscroller.less"; // Core Plugin
+// @import "@{plugins-path}/pickers.less";
+// @import "@{plugins-path}/pnotify.less";
+// @import "@{plugins-path}/rangeslider.less";
+// @import "@{plugins-path}/summernote.less";
+// @import "@{plugins-path}/tagmanager.less";
+// @import "@{plugins-path}/treeview.less";
+
+// @import "@{plugins-path}/tagsinput.less";    // added patch v1.3
+@import "@{plugins-path}/datepicker.less";   // added patch v1.4
+// @import "@{plugins-path}/typeahead.less";    // added patch v1.4
+// @import "@{plugins-path}/duallistbox.less";  // added patch v1.4
+// @import "@{plugins-path}/cropper.less";      // added patch v1.4
+// @import "@{plugins-path}/markdown.less";     // added patch v1.4
+// @import "@{plugins-path}/nprogress.less";    // added patch v1.4
+@import "@{plugins-path}/scroller.less";     // added patch v1.4
+// @import "@{plugins-path}/select2.less";      // added patch v1.4 // Re-writted in WPCA components
+
+// @import "@{plugins-path}/admindock.less";    // added patch v1.4
+// @import "@{plugins-path}/adminmodals.less";  // added patch v1.4
+@import "@{plugins-path}/adminpanels.less";  // added patch v1.4
+
+// @import "@{plugins-path}/footable.less";     // added patch v1.5
 
 // Base Mixins
 // ------------------------------------------------
@@ -55,8 +116,8 @@
 // Base Components w/ JavaScript // Move to inline elements
 // ------------------------------------------------
 // @import "@{base-path}/modals.less";
-// @import "@{base-path}/tooltip.less";
-// @import "@{base-path}/popovers.less";
+@import "@{base-path}/tooltip.less";
+//@import "@{base-path}/popovers.less";
 // @import "@{base-path}/carousel.less";
 
 // Base Utility classes
@@ -76,9 +137,9 @@
 // ------------------------------------------------
 // @import "@{base-path}/components/navbar"; // forked in premium theme
 // @import "@{base-path}/components/content_trays"; // forked to components/trays
-// @import "@{base-path}/components/sidebar_left"; // forked to components/sidebar_left
-// @import "@{base-path}/components/sidebar_right"; // forked to components/sidebar_right
-// @import "@{base-path}/components/sidebar_actions"; // forked to components/sidebar_actions
+@import "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base/components/sidebar_left";
+@import "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base/components/sidebar_right";
+@import "../../../../../../../../vendor/other/framework/theme_wpca/assets/skin/base/components/sidebar_actions";
 // @import "@{base-path}/components/topbar"; // unused
 // @import "@{base-path}/components/footer"; // unused
 

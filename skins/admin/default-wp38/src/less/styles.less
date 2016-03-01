@@ -33,6 +33,11 @@
   /* Path to LESS files */
   @path: '../../../../frontend/master/src/less';
 
+  /* Global container */
+  @wrapperBody: ~"";
+  @wrapperContainer: ~"";
+  @wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
+
   /* Variables setup */
   @import '@{path}/wpca/variables/all.less';
   @cuar-color-primary: #0085BA;
@@ -40,6 +45,6 @@
   @import '@{path}/core/theme_variables.less';
 
   /* Components */
-  @import '@{path}/wpca/components/datepicker.less';
-  @import '@{path}/wpca/components/select2.less';
+  @import '@{path}/wpca/tweaks/datepicker.less';
+  @import '@{path}/wpca/tweaks/select2.less';
 }

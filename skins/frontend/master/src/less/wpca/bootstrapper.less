@@ -11,23 +11,30 @@
 
 // Base Resources
 // ----------------------------
-
 // Base variables
 @import "../core/theme_variables";
 
 // Base Mixins
-@import "../core/theme_mixins.less";
+@import "../core/theme_mixins";
 
 // Base Wrapper
+// ----------------------------
 // Use the following wrapper and paste your styles inside
 // to make sure your rules will override possible CSS rules
 // defined by the parent WP theme.
-// -
+//
+// A standalone theme (@master-sub-theme: true;) that use this
+// framework and need another global wrapper should define the
+// following variable before including this file :
+// - @wrapper-body (eg. "body", "body.my-premium-theme", "body.theme-light", etc...)
+// - @wrapper-container (eg. ".cuar-css-wrapper", "#main_wrapper", etc...)
+// - @wrapper-base (should be left as it is.)
+//
 .wrapperConfig() when (@master-sub-theme = true) {
   .wrapperSetConfig() {
-    @wrapperBody: ~"body.customer-area";
+    @wrapperBody: ~"body";
     @wrapperContainer: ~".cuar-css-wrapper";
-    @wrapperBase: ~"@{wrapperContainer}";
+    @wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
   }
   .wrapperSetConfig();
 }
@@ -41,33 +48,43 @@
 }
 .wrapperConfig();
 
-@{wrapperBase} {
-  // Hard resets to not allow parent theme to modify WPCA
-  @import "resets";
+// Hard resets to not allow parent theme to modify WPCA
+@import "resets";
 
-  // Skin Settings
-  @import "../core/theme_settings";
+// Base Elements
+@import "../core/theme_base";
 
-  // Base Elements and Mixins
-  @import "../core/theme_base";
-
-  // Main WPCA components
-  @import "wrapped";
-  @import "utilities";
-}
-
-// Main Base components that require to be outside containers
+// Main WPCA
 // ----------------------------
-@import "@{base-path}/modals";
-@import "@{base-path}/tooltip";
-// @import "@{base-path}/popovers";
-// @import "@{base-path}/carousel";
-
-// Main WPCA components that require to be outside containers
-// ----------------------------
+// Components
+@import "components/collection";
+@import "components/dropzone";
+// @import "components/fields"; // TODO: Check if this is still used.
+@import "components/general";
+@import "components/navigation";
+@import "components/panel";
+@import "components/private-files";
+@import "components/single-post-meta";
+@import "components/switch-users";
+@import "components/task-list";
 @import "components/trays";
-@import "components/sidebar_left";
-@import "components/sidebar_right";
-@import "components/sidebar_actions";
-@import "components/datepicker";
-@import "inline";
+@import "components/wizard";
+
+// WordPress
+@import "wp/tinymce";
+@import "wp/widgets";
+@import "wp/themes-fixes.less";
+
+// Tweaks
+@import "tweaks/core";
+@import "tweaks/editable";
+@import "tweaks/datepicker";
+@import "tweaks/select2";
+@import "tweaks/invoicing";
+@import "tweaks/authentication-forms";
+@import "tweaks/conversations";
+@import "tweaks/toolbar";
+@import "tweaks/panel";
+
+// Tools
+@import "utilities";

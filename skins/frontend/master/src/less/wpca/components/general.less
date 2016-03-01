@@ -1,118 +1,49 @@
+// TODO: Move to tweaks ?
 // Global container
 // --------------------------------------------------
-&.cuar-content-container {
-  margin-bottom: @line-height-computed;
-  background: @main-bg;
-  border: 1px solid darken(@body-bg, 3%);
-  overflow: hidden;
+@{wrapperBase} {
+  &.cuar-content-container {
+    margin-bottom: @line-height-computed;
+    background: @main-bg;
+    border: 1px solid darken(@body-bg, 3%);
+    overflow: hidden;
 
-  .cuar-page-content {
-    ul, ol {
-      list-style: disc outside;
-    }
+    .cuar-page-content {
+      ul, ol {
+        list-style: disc outside;
+      }
 
-    li {
-      margin-left: @grid-gutter-width;
-    }
+      li {
+        margin-left: @grid-gutter-width;
+      }
 
-    .list-group {
-      list-style: none;
+      .list-group {
+        list-style: none;
 
-      > li {
-        margin: 0;
+        > li {
+          margin: 0;
 
-        > .list-group li {
-          margin-left: @grid-gutter-width / 4;
-          padding-left: @grid-gutter-width / 4;
-          border-left: 1px solid @panel-border-color;
+          > .list-group li {
+            margin-left: @grid-gutter-width / 4;
+            padding-left: @grid-gutter-width / 4;
+            border-left: 1px solid @panel-border-color;
 
-          &:first-child {
-            padding-top: @grid-gutter-width / 4;
+            &:first-child {
+              padding-top: @grid-gutter-width / 4;
+            }
           }
         }
       }
     }
-  }
 
-  .cuar-page-content-main {
-    padding: @grid-gutter-width @padding-base-horizontal;
-  }
-
-  .cuar-page-content {
-    position: relative;
-  }
-
-}
-
-// Round dashicon
-// --------------------------------------------------
-/*
-.dashicon {
-  width: @dashicon-size;
-  height: @dashicon-size;
-  line-height: @dashicon-size;
-  font-size: @dashicon-font-size;
-}
-
-.dashicon-badge {
-  width: @dashicon-size + 2*@dashicon-badge-padding;
-  height: @dashicon-size + 2*@dashicon-badge-padding;
-  line-height: @dashicon-size + 2*@dashicon-badge-padding;
-  font-size: @dashicon-size - @dashicon-badge-padding;
-  background-color: @badge-bg;
-  color: @badge-color;
-  border-radius: 50%;
-}
-
-.dashicon-badge.small {
-  width: 0.8 * ( @dashicon-size + 2*@dashicon-badge-padding );
-  height: 0.8 * ( @dashicon-size + 2*@dashicon-badge-padding );
-  line-height: 0.9 * ( @dashicon-size + 2*@dashicon-badge-padding );
-  font-size: 0.9 * ( @dashicon-size - @dashicon-badge-padding );
-}
-*/
-
-/*
-// Unstyled keeps list items block level, just removes default browser padding and list-style
-// --------------------------------------------------
-
-.list-unstyled {
-  padding-left: 0;
-  list-style: none;
-}
-
-// Inline turns list items into inline-block
-// --------------------------------------------------
-
-.list-inline {
-  .list-unstyled();
-
-  > li {
-    display: inline-block;
-    padding-left: 5px;
-    padding-right: 5px;
-
-    &:first-child {
-      padding-left: 0;
+    .cuar-page-content-main {
+      padding: @grid-gutter-width @padding-base-horizontal;
     }
+
+    .cuar-page-content {
+      position: relative;
+    }
+
   }
-}
 
-// Admin bar
-// --------------------------------------------------
-
-#wp-admin-bar-customer-area > a:before {
-  content: "\f332";
 }
-
-// Dividers Colors
-// --------------------------------------------------
-
-hr {
-  border-top: 1px solid @hr-border;
-}
-hr.alt { border-top: 1px dashed @hr-border-alt }
-.divider {
-  background: #e2e2e2;
-}
-*/

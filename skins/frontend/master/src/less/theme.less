@@ -1,6 +1,6 @@
 // Define main paths
 // ----------------------------
-@master-sub-theme: false;
+@master-sub-theme: true;
 @theme-root-path: "../../";
 @theme-assets-path: "@{theme-root-path}assets";
 @theme-img-path: "@{theme-root-path}assets/img/framework";
@@ -13,9 +13,9 @@
 
 // Theme Boostrapper
 // ----------------------------
-@import "wpca/bootstrapper.less";
+@import "wpca/bootstrapper";
 
-
-
-
+@{wrapperBase} {
+  @panel-heading-bg: red;
+}
 
