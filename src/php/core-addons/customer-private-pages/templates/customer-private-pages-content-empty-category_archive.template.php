@@ -9,7 +9,7 @@
  *
  */ ?>
 
-<div class="cuar-collection panel cuar-empty cuar-empty-category cuar_private_page">
+<div class="collection panel cuar-empty cuar-empty-category cuar_private_page">
     <div class="panel-heading">
         <span class="panel-icon">
             <i class="fa fa-book"></i>
@@ -18,7 +18,7 @@
             <?php echo $page_subtitle; ?>
         </span>
     </div>
-    <div class="cuar-collection-content panel-body">
+    <div class="collection-content panel-body">
         <p class="mn"><?php _e( 'There are no pages in that category.', 'cuar' ); ?></p>
     </div>
 </div>

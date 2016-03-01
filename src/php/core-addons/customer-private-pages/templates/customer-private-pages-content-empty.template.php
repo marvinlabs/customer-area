@@ -9,8 +9,8 @@
  *
  */ ?>
 
-<div class="cuar-collection panel cuar-empty cuar_private_page">
-    <div class="cuar-collection-content">
+<div class="collection panel cuar-empty cuar_private_page">
+    <div class="collection-content">
         <p class="mn"><?php _e( 'You currently have no pages.', 'cuar' ); ?></p>
     </div>
 </div>

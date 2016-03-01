@@ -8,4 +8,49 @@
       }
     }
   }
+
+  /* Define global content container styling */
+  &.cuar-content-container {
+    margin-bottom: @line-height-computed;
+    background: @main-bg;
+    border: 1px solid darken(@body-bg, 3%);
+    overflow: hidden;
+
+    .cuar-page-content {
+      ul, ol {
+        list-style: disc outside;
+      }
+
+      li {
+        margin-left: @grid-gutter-width;
+      }
+
+      .list-group {
+        list-style: none;
+
+        > li {
+          margin: 0;
+
+          > .list-group li {
+            margin-left: @grid-gutter-width / 4;
+            padding-left: @grid-gutter-width / 4;
+            border-left: 1px solid @panel-border-color;
+
+            &:first-child {
+              padding-top: @grid-gutter-width / 4;
+            }
+          }
+        }
+      }
+    }
+
+    .cuar-page-content-main {
+      padding: @grid-gutter-width @padding-base-horizontal;
+    }
+
+    .cuar-page-content {
+      position: relative;
+    }
+
+  }
 }
