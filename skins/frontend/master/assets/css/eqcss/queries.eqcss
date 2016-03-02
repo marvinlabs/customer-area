@@ -26,3 +26,27 @@
         padding: 10px 13px 40px !important;
     }
 }
+
+/*
+ * Collection Responsive Changes
+ * -----------------------------
+ * Adapt collection thumb sizes depending on wrapper width
+ */
+@element 'body.customer-area #cuar-js-content-container' and (max-width: 1350px){
+    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .mix,
+    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .gap {
+        width: 23.5%;
+    }
+}
+@element 'body.customer-area #cuar-js-content-container' and (max-width: 850px){
+    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .mix,
+    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .gap {
+        width: 31.5%;
+    }
+}
+@element 'body.customer-area #cuar-js-content-container' and (max-width: 450px){
+    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .mix,
+    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .gap {
+        width: 48%;
+    }
+}
