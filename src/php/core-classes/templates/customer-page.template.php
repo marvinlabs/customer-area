@@ -30,7 +30,9 @@ foreach ($sidebar_attributes as $att => $v) {
                 $this->print_page_content($args, $shortcode_content);
                 ?></div>
             <aside class="cuar-page-sidebar tray tray-right tray290 va-t clearfix"<?php echo $sidebar_attributes_inline; ?>>
-                <?php $this->print_page_sidebar($args, $shortcode_content); ?>
+                <div class="tray-scroller">
+                    <?php $this->print_page_sidebar($args, $shortcode_content); ?>
+                </div>
             </aside>
         <?php } else { ?>
             <div class="cuar-page-content-main clearfix"><?php
