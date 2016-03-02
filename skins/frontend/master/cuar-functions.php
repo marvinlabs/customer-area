@@ -10,7 +10,7 @@ if (!function_exists('cuar_load_theme_scripts')) {
         if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
             $cuar_plugin = cuar();
 
-            //$cuar_plugin->enable_library('bootstrap.affix');
+            $cuar_plugin->enable_library('bootstrap.affix');
             $cuar_plugin->enable_library('bootstrap.alert');
             $cuar_plugin->enable_library('bootstrap.button');
             //$cuar_plugin->enable_library('bootstrap.carousel');
