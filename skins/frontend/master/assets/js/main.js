@@ -517,13 +517,22 @@
                         trayHeight = contentHeight;
                     }
 
-                    This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()));
+                    if(Body.hasClass('admin-bar')){
+                        This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()) - 32);
+                    } else {
+                        This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()));
+                    }
+
                     if (trayCenter.length) {
                         trayCenter.height(trayHeight - 75); // 75 = trayCenter padding-top + padding-bottom
                     }
 
                     if (trayScroll.length) {
-                        trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+                        if(Body.hasClass('admin-bar')) {
+                            trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()) - 32);
+                        } else {
+                            trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+                        }
                         trayScroll.scroller();
                     }
                 });
