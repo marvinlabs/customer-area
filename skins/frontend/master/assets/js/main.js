@@ -773,7 +773,6 @@
                 if ($container.hasClass('list')) {
                     return
                 }
-                console.log(cookieName);
                 $container.mixItUp('changeLayout', {
                     display: 'block',
                     containerClass: 'list'
