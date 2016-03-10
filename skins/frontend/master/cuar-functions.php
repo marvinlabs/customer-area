@@ -34,7 +34,7 @@ if (!function_exists('cuar_load_theme_scripts')) {
                 true);
 
             wp_register_script('customer-area-master-skin',
-                CUAR_PLUGIN_URL . '/skins/frontend/master/assets/js/main.js',
+                CUAR_PLUGIN_URL . '/skins/frontend/master/assets/js/main.min.js',
                 array('jquery', 'customer-area-utilities'),
                 $cuar_plugin->get_version(),
                 true);
