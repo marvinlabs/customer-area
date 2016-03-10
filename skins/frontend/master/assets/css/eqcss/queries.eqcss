@@ -4,25 +4,25 @@
  * Hide the tray completely if #cuar-js-content-container is <600 px
  * JS will take care about moving the sidebar out of the tray.
  */
-@element 'body.customer-area.tray-rescale #cuar-js-content-container' and (max-width: 551px){
-    body.customer-area.tray-rescale .cuar-css-wrapper .tray-left,
-    body.customer-area.tray-rescale .cuar-css-wrapper .tray-right,
-    body.customer-area.tray-rescale .cuar-css-wrapper .scroller-bar{
+@element 'body.tray-rescale #cuar-js-content-container' and (max-width: 551px){
+    body.tray-rescale .cuar-css-wrapper .tray-left,
+    body.tray-rescale .cuar-css-wrapper .tray-right,
+    body.tray-rescale .cuar-css-wrapper .scroller-bar{
         display: none!important;
     }
-    body.customer-area.tray-rescale .cuar-css-wrapper .tray-center{
+    body.tray-rescale .cuar-css-wrapper .tray-center{
         padding-right: 13px !important;
         height: auto!important;
     }
-    body.customer-area.tray-rescale .cuar-css-wrapper .tray-scroller,
-    body.customer-area.tray-rescale .cuar-css-wrapper .scroller-content{
+    body.tray-rescale .cuar-css-wrapper .tray-scroller,
+    body.tray-rescale .cuar-css-wrapper .scroller-content{
         overflow: auto;
         overflow-x: auto;
         overflow-y: auto;
         height: auto!important;
     }
-    body.customer-area.tray-rescale .cuar-css-wrapper .cuar-page-content.table-layout > div,
-    body.customer-area.tray-rescale .cuar-css-wrapper .cuar-page-content.table-layout > section{
+    body.tray-rescale .cuar-css-wrapper .cuar-page-content.table-layout > div,
+    body.tray-rescale .cuar-css-wrapper .cuar-page-content.table-layout > section{
         padding: 10px 13px 40px !important;
     }
 }
@@ -32,21 +32,48 @@
  * -----------------------------
  * Adapt collection thumb sizes depending on wrapper width
  */
-@element 'body.customer-area #cuar-js-content-container' and (max-width: 1350px){
-    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .mix,
-    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .gap {
+@element 'body #cuar-js-content-container' and (max-width: 1350px){
+    body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
+    body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
         width: 23.5%;
     }
 }
-@element 'body.customer-area #cuar-js-content-container' and (max-width: 850px){
-    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .mix,
-    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .gap {
+@element 'body #cuar-js-content-container' and (max-width: 850px){
+    body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
+    body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
         width: 31.5%;
     }
 }
-@element 'body.customer-area #cuar-js-content-container' and (max-width: 450px){
-    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .mix,
-    body.customer-area .cuar-css-wrapper .collection-content:not(.list) .gap {
+@element 'body #cuar-js-content-container' and (max-width: 450px){
+    body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
+    body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
         width: 48%;
+    }
+}
+@element 'body #cuar-js-content-container' and (max-width: 1350px){
+    body .cuar-css-wrapper .collection .collection-content.list .mix,
+    body .cuar-css-wrapper .collection .collection-content.list .gap {
+        width: 48%;
+    }
+}
+@element 'body #cuar-js-content-container' and (max-width: 850px){
+    body .cuar-css-wrapper .collection .collection-content.list .mix,
+    body .cuar-css-wrapper .collection .collection-content.list .gap {
+        width: 100%;
+    }
+}
+@element 'body #cuar-js-content-container' and (max-width: 450px){
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item img.collection-thumbnail,
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-thumbnail,
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-thumbnail .collection-thumbnail-padder {
+        float: none;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-description {
+        width: 100%;
+        float: none;
+        padding-left: 0px;
     }
 }
