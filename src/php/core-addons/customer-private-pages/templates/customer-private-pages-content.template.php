@@ -7,7 +7,7 @@
  */ ?>
 
 <div class="collection cuar_private_page">
-    <div id="cuar-js-collection-gallery" class="collection-content">
+    <div id="cuar-js-collection-gallery" class="collection-content" data-type="cuar_private_page">
         <div class="fail-message alert alert-warning">
             <?php _e('No items were found matching the selected filters', 'cuar'); ?>
         </div>

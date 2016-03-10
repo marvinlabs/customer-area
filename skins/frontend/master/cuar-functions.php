@@ -23,6 +23,8 @@ if (!function_exists('cuar_load_theme_scripts')) {
             $cuar_plugin->enable_library('bootstrap.tooltip');
             //$cuar_plugin->enable_library('bootstrap.transition');
 
+            $cuar_plugin->enable_library('jquery.cookie');
+
             $cuar_plugin->enable_library('jquery.mixitup');
 
             wp_register_script('customer-area-utilities',

@@ -10,7 +10,7 @@
     <button type="button" id="cuar-js-collection-to-list" class="btn btn-default">
         <span class="fa fa-navicon"></span>
     </button>
-    <button type="button" id="cuar-js-collection-to-grid" class="btn btn-primary">
+    <button type="button" id="cuar-js-collection-to-grid" class="btn btn-default">
         <span class="fa fa-th"></span>
     </button>
 </div>

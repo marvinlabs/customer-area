@@ -733,7 +733,23 @@
 
             var $container = $('#cuar-js-collection-gallery'), // mixitup container
                 $toList = $('#cuar-js-collection-to-list'), // list view button
-                $toGrid = $('#cuar-js-collection-to-grid'); // list view button
+                $toGrid = $('#cuar-js-collection-to-grid') // list view button
+
+
+            // Initiate cookie session for filters buttons
+            var cookieName = $container.data('type') + '-collection-layout',
+                cookieLayout = $.cookie(cookieName) || $.cookie(cookieName, 'grid');
+
+            if(cookieLayout == 'list') {
+                $container.addClass(cookieLayout).removeClass('grid');
+                $toList.addClass('btn-primary').removeClass('btn-default');
+                $toGrid.addClass('btn-default').removeClass('btn-primary');
+            } else {
+                $container.addClass(cookieLayout).removeClass('list');
+                $toList.addClass('btn-default').removeClass('btn-primary');
+                $toGrid.addClass('btn-primary').removeClass('btn-default');
+            }
+
 
             // Instantiate MixItUp
             $container.mixItUp({
@@ -752,18 +768,21 @@
             });
 
             $toList.on('click', function () {
+                $.cookie(cookieName, 'list');
                 $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                 if ($container.hasClass('list')) {
                     return
                 }
+                console.log(cookieName);
                 $container.mixItUp('changeLayout', {
                     display: 'block',
                     containerClass: 'list'
                 }, function (state) {
-                    // callback function
+                    $container.removeClass('grid');
                 });
             });
             $toGrid.on('click', function () {
+                $.cookie(cookieName, 'grid');
                 $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                 if ($container.hasClass('grid')) {
                     return
@@ -772,7 +791,7 @@
                     display: 'inline-block',
                     containerClass: 'grid'
                 }, function (state) {
-                    // callback function
+                    $container.removeClass('list');
                 });
             });
         }
