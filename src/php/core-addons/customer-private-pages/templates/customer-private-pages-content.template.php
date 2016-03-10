@@ -4,10 +4,13 @@
  * -= 3.0.0 =-
  * - Initial version
  *
- */ ?>
+ */
 
-<div class="collection cuar_private_page">
-    <div id="cuar-js-collection-gallery" class="collection-content" data-type="cuar_private_page">
+$post_type = $this->get_friendly_post_type();
+?>
+
+<div class="collection <?php echo $post_type; ?>">
+    <div id="cuar-js-collection-gallery" class="collection-content" data-type="<?php echo $post_type; ?>">
         <div class="fail-message alert alert-warning">
             <?php _e('No items were found matching the selected filters', 'cuar'); ?>
         </div>
