@@ -10,10 +10,17 @@
 <?php /** @var WP_Query $content_query */ ?>
 <?php /** @var string $item_template */ ?>
 
-<div class="panel top cuar_private_file">
+<?php
+$current_addon_slug = 'customer-private-files';
+$current_addon_icon = apply_filters('cuar/private-content/view/icon?addon=' . $current_addon_slug, 'fa fa-file');
+$current_addon = cuar_addon($current_addon_slug);
+$post_type = $current_addon->get_friendly_post_type();
+?>
+
+<div class="panel top <?php echo $post_type; ?>">
     <div class="panel-heading">
         <span class="panel-icon">
-            <i class="fa fa-file"></i>
+            <i class="<?php echo $current_addon_icon; ?>"></i>
         </span>
         <span class="panel-title">
             <?php echo $page_subtitle; ?>

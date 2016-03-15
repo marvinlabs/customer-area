@@ -10,24 +10,25 @@
  */
 ?>
 
-<div class="cuar-content-block cuar-private-files panel">
+<?php /** @var string $page_subtitle */ ?>
+
+<?php
+$current_addon_slug = 'customer-private-files';
+$current_addon_icon = apply_filters('cuar/private-content/view/icon?addon=' . $current_addon_slug, 'fa fa-file');
+$current_addon = cuar_addon($current_addon_slug);
+$post_type = $current_addon->get_friendly_post_type();
+?>
+
+<div class="collection panel cuar-empty cuar-empty-category <?php echo $post_type; ?>">
     <div class="panel-heading">
-        <?php
-        global $cpf_addon;
-        if (!$cpf_addon)
-            $cpf_addon = $this->plugin->get_addon('customer-private-files');
-        $page_id = $cpf_addon->get_page_id($this->get_slug());
-        ?>
         <span class="panel-icon">
-            <i class="fa fa-file"></i>
+            <i class="<?php echo $current_addon_icon; ?>"></i>
         </span>
-        <span class="cuar-title panel-title">
-            <a href="<?php echo get_permalink($page_id); ?>" title="<?php esc_attr_e('View all', 'cuar'); ?>">
-                <?php echo $page_subtitle; ?>
-            </a>
+        <span class="panel-title">
+            <?php echo $page_subtitle; ?>
         </span>
     </div>
-    <div class="cuar-private-file-list cuar-item-list panel-body">
-        <p><?php _e( 'There are no files in that category.', 'cuar' ); ?></p>
+    <div class="collection-content panel-body">
+        <p class="alert alert-info mn"><?php _e( 'There are no files in that category.', 'cuar' ); ?></p>
     </div>
 </div>
