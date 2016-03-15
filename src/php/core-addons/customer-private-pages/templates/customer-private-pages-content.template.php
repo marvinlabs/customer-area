@@ -4,9 +4,16 @@
  * -= 3.0.0 =-
  * - Initial version
  *
- */
+ */ ?>
 
-$post_type = $this->get_friendly_post_type();
+<?php /** @var WP_Query $content_query */ ?>
+<?php /** @var string $item_template */ ?>
+
+<?php
+$current_addon_slug = 'customer-private-pages';
+$current_addon_icon = apply_filters('cuar/private-content/view/icon?addon=' . $current_addon_slug, 'fa fa-book');
+$current_addon = cuar_addon($current_addon_slug);
+$post_type = $current_addon->get_friendly_post_type();
 ?>
 
 <div class="collection <?php echo $post_type; ?>">

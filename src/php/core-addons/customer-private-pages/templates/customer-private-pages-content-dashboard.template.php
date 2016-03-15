@@ -15,13 +15,18 @@
 <?php /** @var string $item_template */ ?>
 
 <?php
-$all_items_url = cuar_addon('customer-private-pages')->get_page_url('customer-private-pages');
+$current_addon_slug = 'customer-private-pages';
+$current_addon_icon = apply_filters('cuar/private-content/view/icon?addon=' . $current_addon_slug, 'fa fa-book');
+$current_addon = cuar_addon($current_addon_slug);
+$post_type = $current_addon->get_friendly_post_type();
 ?>
 
-<div class="panel top cuar_private_page">
+<?php $all_items_url = $current_addon->get_page_url(); ?>
+
+<div class="panel top <?php echo $post_type; ?>">
     <div class="panel-heading">
         <span class="panel-icon">
-            <i class="fa fa-book"></i>
+            <i class="<?php echo $current_addon_icon; ?>"></i>
         </span>
         <span class="panel-title">
             <?php echo $page_subtitle; ?>
