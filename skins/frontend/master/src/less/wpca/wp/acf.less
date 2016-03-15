@@ -1,0 +1,158 @@
+/* For ACF Integration */
+@{wrapperBase} {
+
+  .cuar-form {
+
+    .acf_postbox > .hndle,
+    .acf_postbox > .handlediv {
+      // Simulate panel heading
+      display: block;
+      position: relative;
+      height: 40px;
+      line-height: 36px;
+      background: @panel-heading-bg;
+      color: @panel-heading-font-color;
+      font-size: @panel-heading-font-size;
+      font-weight: @panel-heading-font-weight;
+      padding: @panel-heading-padding;
+      border: 1px solid @panel-border-color;
+      .border-top-radius((@panel-border-radius - 1));
+      margin: 0;
+    }
+
+    .acf_postbox .inside,
+    #poststuff .acf_postbox .inside {
+      // Simulate panel body
+      position: relative;
+      padding: @panel-body-padding;
+      border-left: 1px solid @panel-border-color;
+      border-right: 1px solid @panel-border-color;
+      border-bottom: 1px solid @panel-border-color;
+      &:extend(.clearfix all);
+    }
+
+    .acf_postbox .field {
+      margin: 0 0 @margin-md-vertical 0;
+      padding: 0;
+      border: 0;
+
+      p.label {
+        display: block;
+        text-align: left;
+        white-space: normal;
+        font-weight: normal;
+        font-size: @font-size-base;
+
+        label {
+          font-weight: bold;
+          font-size: @font-size-base;
+        }
+      }
+
+      // Transform ACF fields into BS form-controls
+      input[type="text"],
+      input[type="number"],
+      input[type="password"],
+      input[type="email"],
+      textarea,
+      select {
+        &:extend( .form-control all );
+      }
+
+      // Input and others should fit BS inputs height
+      .acf-input-prepend,
+      .acf-input-append {
+        height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+        padding: @padding-base-vertical @padding-base-horizontal;
+        font-size: @font-size-base;
+        line-height: @line-height-base;
+        color: @input-color;
+        background-color: @input-bg-disabled;
+        background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+        border: 1px solid @input-border;
+        border-radius: @input-border-radius;
+        .transition(~"border-color ease-in-out .15s");
+      }
+
+      .acf-input-prepend {
+        border-right: 0;
+      }
+      .acf-input-append {
+        border-left: 0;
+      }
+
+    }
+  }
+}
+
+/*
+
+
+
+.acf-radio-list, .acf-checkbox-list {
+  //.list-unstyled;
+  color: @text-color;
+  padding-top: 0;
+
+  li {
+    margin-left: 0;
+
+    input {
+      margin-top: 5px;
+    }
+
+    label {
+      font-weight: normal;
+    }
+  }
+}
+
+.acf-radio-list li {
+  margin-left: 20px;
+}
+*/
+
+/*
+      .acf-input-wrap,
+      .acf-date_picker,
+      .acf-radio-list,
+      .acf-checkbox-list,
+      .acf-image-uploader {
+        .make-sm-column(8);
+      }
+
+      .select, textarea, &.field_type-page_link select {
+        .make-sm-column(8);
+        width: -webkit-calc(~'66.66% - 30px') !important;
+        width: -moz-calc(~'66.66% - 30px') !important;
+        width: -o-calc(~'66.66% - 30px') !important;
+        width: calc(~'66.66% - 30px') !important;
+        margin-left: 15px;
+      }
+
+      textarea {
+        min-height: 150px !important;
+      }
+
+      .acf_wysiwyg {
+        .make-sm-column(8);
+      }
+
+      &.field_type-page_link select[multiple="multiple"] {
+        min-height: 150px !important;
+      }
+    }
+
+    .acf_postbox {
+      & > .inside > .field {
+        border-top: none;
+      }
+    }
+
+    #poststuff {
+      margin-bottom: 15px;
+    }
+
+  }
+
+}*/

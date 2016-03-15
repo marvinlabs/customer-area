@@ -132,7 +132,8 @@
         select2: {
             width: '100%',
             allowClear: true,
-            placeholder: ""
+            placeholder: "",
+            dropdownParent: $('body').hasClass('wp-admin') ? $('body') : $('#cuar-js-content-container')
         }
     };
 

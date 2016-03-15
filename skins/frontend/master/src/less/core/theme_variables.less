@@ -647,8 +647,8 @@
 //** Small `.form-control` height
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
-@legend-color:                   @brand-info;
-@legend-border-color:            darken(@legend-color, 8%);
+@legend-color:                   mix(@panel-border-color, @text-color, 80%);
+@legend-border-color:            @panel-border-color;
 
 
 //** Background color for textual input addons
@@ -1272,8 +1272,6 @@
 
 // Sidebar Skin Settings
 // --------------------------------------
-// Only applies to the default(dark) skin
-// --------------------------------------
 
 // Sidebar Background
 @sb-bg-color: @gray-darker;
@@ -1292,58 +1290,43 @@
 @sb-menu-item-hover:        darken(@sb-bg-color, 5%);
 @sb-menu-text-hover:        lighten(@sb-menu-text, 8%);
 @sb-menu-border-hover:      @btn-primary-border;
-@sb-active-text:            @btn-primary-color;
-@sb-active-bg:              @btn-primary-bg;
-@sb-active-border:          @sb-menu-border-hover;
+@sb-active-text:            @brand-primary;
+@sb-active-bg:              transparent;
+@sb-active-border:          transparent;
 @sb-active-icon:            @sb-active-text;
 
 // 2nd level menu items (Submenu)
-@sub-menu-bg:               lighten(@sb-bg-color, 6%);         // menu container bg color - #282d33 (default skin), #454241 (alt skin)
-@sub-menu-text:             lighten(@sb-menu-text, 8%);         // text color of item - #d1d1d1 (default skin), #bbb (alt skin)
-@sub-menu-item-hover:       lighten(@sb-menu-item-hover, 4%);     // bg color on item hover
-@sub-menu-text-hover:       lighten(@sb-menu-text-hover, 4%);         // text color on item hover
-@sub-menu-border-hover:     lighten(@sub-menu-item-hover, 4%);  // border color on item hover
-@sub-active-bg:             transparent;     // active item bg color (unused)
-@sub-active-icon:           @brand-primary;  // active item icon color
-@sub-active-border:         @brand-primary;  // active item border color
+@sub-menu-bg:               lighten(@sb-bg-color, 6%);
+@sub-menu-text:             lighten(@sb-menu-text, 8%);
+@sub-menu-item-hover:       lighten(@sb-menu-item-hover, 4%);
+@sub-menu-text-hover:       lighten(@sb-menu-text-hover, 4%);
+@sub-menu-border-hover:     lighten(@sub-menu-item-hover, 4%);
+@sub-active-bg:             transparent;
+@sub-active-icon:           @brand-primary;
+@sub-active-border:         @brand-primary;
 
 // 3rd level menu items (Multi Menu)
-@multi-menu-bg:             transparent;   // menu container bg color - #22262c (default skin), transparent (alt skin)
-@multi-menu-text:           #BBBBBB;       // text color of item - #d1d1d1 (default skin), #bbb (alt skin)
-@multi-menu-item-hover:     transparent;   // bg color on item hover (unused)
-@multi-menu-text-hover:     inherit;       // text color on item hover (unused)
-@multi-menu-border-hover:   @brand-alert;  // border color on item hover
-@multi-active-bg:           transparent;   // active item bg color (unused)
-@multi-active-icon:         #FFF;          // active item icon color
-@multi-active-border:       @brand-alert;  // active item border color
+@multi-menu-bg:             @sub-menu-bg;
+@multi-menu-text:           @sub-menu-text;
+@multi-menu-item-hover:     @sub-menu-item-hover;
+@multi-menu-text-hover:     @sub-menu-text-hover;
+@multi-menu-border-hover:   @sub-menu-border-hover;
+@multi-active-bg:           @sub-active-bg;
+@multi-active-icon:         @sub-active-icon;
+@multi-active-border:       @sub-active-border;
 
 
 // Sidebar Widgets
 //
-@sb-widget-bg:                #423F3E; // Menu bg color - #282d33 (default skin), #423F3E (alt skin)
+@sb-widget-bg:                darken(@sb-bg-color, 4%); // Menu bg color - #282d33 (default skin), #423F3E (alt skin)
 
 // Menu Widget (slidedown)
 @sb-menuwidget-item-hover:    rgba(255, 255, 255, 0.1); // usermenu bg color:hover
-@sb-menuwidget-icon:    	    #DDD; // item icon color - set "inherit" to use html color classes(".text-primary", etc)
-@sb-menuwidget-icon-hover:    @brand-warning; // item icon color:hover - set "inherit" to use html color classes(".text-primary", etc)
-
-
-// Sidebar Widget Settings
-// -------------------------------------------------
-// Only applies to left sidebar/default(dark) skin
-// -------------------------------------------------
-
-@sb-widget-bg:                #423F3E; // Menu bg color - #282d33 (default skin), #423F3E (alt skin)
-
-// Menu Widget (slidedown)
-@sb-menuwidget-item-hover:    rgba(255, 255, 255, 0.1); // usermenu bg color:hover
-@sb-menuwidget-icon:    	    #DDD; // item icon color - set "inherit" to use html color classes(".text-primary", etc)
-@sb-menuwidget-icon-hover:    @brand-warning; // item icon color:hover - set "inherit" to use html color classes(".text-primary", etc)
+@sb-menuwidget-icon:    	  @brand-primary; // item icon color - set "inherit" to use html color classes(".text-primary", etc)
+@sb-menuwidget-icon-hover:    ligthen(@brand-primary, 2%); // item icon color:hover - set "inherit" to use html color classes(".text-primary", etc)
 
 
 // Horizontal Menu Specific Styling
-// ----------------------------------------
-// Only applies to the default(dark) skin
 // ----------------------------------------
 
 // Menu Item Caret
