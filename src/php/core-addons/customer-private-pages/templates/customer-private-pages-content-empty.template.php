@@ -18,6 +18,6 @@ $post_type = $current_addon->get_friendly_post_type();
 
 <div class="collection panel cuar-empty <?php echo $post_type; ?>">
     <div class="collection-content">
-        <p class="alert alert-info mn"><?php _e( 'You currently have no pages.', 'cuar' ); ?></p>
+        <p class="mn"><?php _e( 'You currently have no pages.', 'cuar' ); ?></p>
     </div>
 </div>

@@ -19,6 +19,6 @@ $post_type = $current_addon->get_friendly_post_type();
 
 <div class="collection panel cuar-empty cuar-empty-date <?php echo $post_type; ?>">
     <div class="collection-content">
-        <p class="alert alert-info mn"><?php _e( 'There are no files for that period.', 'cuar' ); ?></p>
+        <p class="mn"><?php _e( 'There are no files for that period.', 'cuar' ); ?></p>
     </div>
 </div>

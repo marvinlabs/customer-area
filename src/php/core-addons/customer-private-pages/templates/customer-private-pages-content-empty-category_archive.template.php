@@ -28,6 +28,6 @@ $post_type = $current_addon->get_friendly_post_type();
         </span>
     </div>
     <div class="collection-content panel-body">
-        <p class="alert alert-info mn"><?php _e( 'There are no pages in that category.', 'cuar' ); ?></p>
+        <p class="mn"><?php _e( 'There are no pages in that category.', 'cuar' ); ?></p>
     </div>
 </div>

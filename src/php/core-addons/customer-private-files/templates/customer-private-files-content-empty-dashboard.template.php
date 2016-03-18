@@ -28,6 +28,6 @@ $post_type = $current_addon->get_friendly_post_type();
         </span>
     </div>
     <div class="panel-body">
-        <p class="alert alert-info mn"><?php _e( 'You currently have no files.', 'cuar' ); ?></p>
+        <p class="mn"><?php _e( 'You currently have no files.', 'cuar' ); ?></p>
     </div>
 </div>
