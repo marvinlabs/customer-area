@@ -27,7 +27,7 @@ class CUAR_PostOwnerUserOwnerType
     public function __construct()
     {
         add_filter('cuar/core/ownership/owner-types', array(&$this, 'declare_new_owner_types'));
-        add_filter('cuar/core/ownership/content/meta-query', array(&$this, 'extend_private_posts_meta_query'), 10, 2);
+        add_filter('cuar/core/ownership/content/meta-query', array(&$this, 'extend_private_posts_meta_query'), 10, 3);
         add_filter('cuar/core/ownership/real-user-ids?owner-type=reg', array(&$this, 'get_post_owner_user_ids_from_usr'), 10, 2);
         add_filter('cuar/core/ownership/validate-post-ownership', array(&$this, 'is_user_owner_of_post'), 10, 5);
         add_action('cuar/core/ownership/printable-owners?owner-type=usr', array(&$this, 'get_printable_owners_for_type_usr'), 10);
@@ -116,20 +116,17 @@ class CUAR_PostOwnerUserOwnerType
      * Extend the meta query to fetch private posts belonging to a user (also fetches the posts for his role and
      * groups)
      *
-     * @param array $base_meta_query
-     * @param int   $user_id The user we want to fetch private posts for
+     * @param array               $base_meta_query
+     * @param int                 $user_id The user we want to fetch private posts for
+     * @param CUAR_PostOwnerAddOn $po_addon
      *
      * @return array
      */
-    public function extend_private_posts_meta_query($base_meta_query, $user_id)
+    public function extend_private_posts_meta_query($base_meta_query, $user_id, $po_addon)
     {
         // For users
         $user_meta_query = array(
-            array(
-                'key'     => CUAR_PostOwnerAddOn::$META_OWNER_QUERYABLE,
-                'value'   => '|usr_' . $user_id . '|',
-                'compare' => 'LIKE'
-            )
+            $po_addon->get_owner_meta_query_component('usr', $user_id)
         );
 
         // Deal with all this

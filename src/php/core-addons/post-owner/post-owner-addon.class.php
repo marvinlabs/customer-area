@@ -78,13 +78,11 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         public function get_meta_query_post_owned_by($user_id)
         {
             $user_id = apply_filters('cuar/core/ownership/content/meta-query/override-owner-id', $user_id);
-
             $base_meta_query = array(
                 'relation' => 'OR',
-                $this->get_owner_meta_query_component('usr', $user_id)
             );
 
-            return apply_filters('cuar/core/ownership/content/meta-query', $base_meta_query, $user_id);
+            return apply_filters('cuar/core/ownership/content/meta-query', $base_meta_query, $user_id, $this);
         }
 
         /**
