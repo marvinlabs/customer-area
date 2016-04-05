@@ -82,7 +82,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_subpages_contextual_toolbar_group'), 100);
 
                 add_filter('the_content', array(&$this, 'define_main_content_filter'), 9998);
-                add_filter('cuar/core/the_content', array(&$this, 'get_contextual_toolbar_for_pages'), 60);
+                add_filter('cuar/core/the_content', array(&$this, 'get_contextual_toolbar_for_pages'), 19);
                 add_filter('cuar/core/the_content', array(&$this, 'wrap_content_into_container'), 100);
             }
         }
