@@ -112,6 +112,8 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.class
 include_once(CUAR_INCLUDES_DIR . '/core-addons/installer/installer-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/log/log-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-admin-interface.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-user-owner-type.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/container-owner/container-owner-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php');
