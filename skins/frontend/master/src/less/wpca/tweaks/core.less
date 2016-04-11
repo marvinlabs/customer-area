@@ -1,3 +1,12 @@
+// Auto padding on single private contents
+@{wrapperBody}.single @{wrapperContainer} {
+  padding: @grid-gutter-width / 2;
+}
+// Cancel padding defdined below when the wrapper directly follow body tag
+@{wrapperBody}.single > @{wrapperContainer} {
+  padding: 0;
+}
+
 @{wrapperBase} {
   /* Columns for attachment table in single post footer */
   .panel.cuar-attachments {
@@ -13,44 +22,42 @@
   &.cuar-content-container {
     margin: 0;
     background: @main-bg;
-    border: 1px solid darken(@body-bg, 3%);
+    border: 1px solid @panel-border-color;
     overflow: hidden;
+  }
 
-    .cuar-page-content {
-      ul, ol {
-        list-style: disc outside;
-      }
+  /* Global layout stylings */
+  .cuar-page-content {
+    position: relative;
 
-      li {
-        margin-left: @grid-gutter-width;
-      }
+    ul, ol {
+      list-style: disc outside;
+    }
 
-      .list-group {
-        list-style: none;
+    li {
+      margin-left: @grid-gutter-width;
+    }
 
-        > li {
-          margin: 0;
+    .list-group {
+      list-style: none;
 
-          > .list-group li {
-            margin-left: @grid-gutter-width / 4;
-            padding-left: @grid-gutter-width / 4;
-            border-left: 1px solid @panel-border-color;
+      > li {
+        margin: 0;
 
-            &:first-child {
-              padding-top: @grid-gutter-width / 4;
-            }
+        > .list-group li {
+          margin-left: @grid-gutter-width / 4;
+          padding-left: @grid-gutter-width / 4;
+          border-left: 1px solid @panel-border-color;
+
+          &:first-child {
+            padding-top: @grid-gutter-width / 4;
           }
         }
       }
     }
+  }
 
-    .cuar-page-content-main {
-      padding: @grid-gutter-width @padding-base-horizontal;
-    }
-
-    .cuar-page-content {
-      position: relative;
-    }
-
+  .cuar-page-content-main {
+    padding: @grid-gutter-width @padding-base-horizontal;
   }
 }
