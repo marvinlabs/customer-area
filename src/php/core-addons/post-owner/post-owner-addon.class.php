@@ -521,6 +521,10 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 {
                     $name = __('Unknown', 'cuar');
                 }
+                if ( !is_array($name))
+                {
+                    $name = array($name);
+                }
 
                 return apply_filters('cuar/core/ownership/displayname', $name, $post_id);
             }
@@ -553,7 +557,8 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $owners = $this->get_post_owners($post_id);
             foreach ($owners as $type => $ids)
             {
-                $user_ids[] = apply_filters('cuar/core/ownership/real-user-ids?owner-type=' . $type, array(), $ids);
+                $tmp = apply_filters('cuar/core/ownership/real-user-ids?owner-type=' . $type, array(), $ids);
+                $user_ids = array_merge($user_ids, $tmp);
             }
 
             $user_ids = array_unique($user_ids);
@@ -687,7 +692,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
         /*------- PRINT SELECTION FIELDS ---------------------------------------------------------------------------------------------------------------------*/
 
-        public function print_owner_fields($owners, $field_prefix = 'cuar_owners_')
+        public function print_owner_fields($owners, $field_prefix = 'cuar_owners_', $field_group = null)
         {
             $po_addon = $this;
             $owner_types = apply_filters('cuar/core/ownership/selectable-owner-types', null);

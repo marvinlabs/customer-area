@@ -182,9 +182,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             parent::print_page_content($args, $shortcode_content);
         }
 
-        public abstract function get_default_owner_type();
-
-        public abstract function get_default_owner();
+        public abstract function get_default_owners();
 
         public abstract function get_default_category();
 
@@ -623,12 +621,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             }
             else
             {
-                $owners = array();
-                $owner_type = $this->get_default_owner_type();
-                $owner_ids = $this->get_default_owner();
-                if (!empty($owner_type) && !empty($owner_ids)) {
-                    $owners[$owner_type] = $owner_ids;
-                }
+                $owners = $this->get_default_owners();
 
                 ob_start();
                 /** @var CUAR_PostOwnerAddOn $po_addon */

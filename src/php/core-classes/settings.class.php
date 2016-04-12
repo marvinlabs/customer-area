@@ -682,33 +682,6 @@ if ( !class_exists('CUAR_Settings')) :
         }
 
         /**
-         * Validate a value which should be an owner type
-         *
-         * @param array  $input
-         *            Input array
-         * @param array  $validated
-         *            Output array
-         * @param string $option_id
-         *            Key of the value to check in the input array
-         */
-        public function validate_owner_type($input, &$validated, $option_id)
-        {
-            $po_addon = $this->plugin->get_addon("post-owner");
-
-            if (isset($input[$option_id]) && $po_addon->is_valid_owner_type($input[$option_id]))
-            {
-                $validated[$option_id] = $input[$option_id];
-            }
-            else
-            {
-                add_settings_error($option_id, 'settings-errors',
-                    $option_id . ': ' . $input[$option_id] . __(' is not a valid owner type', 'cuar'), 'error');
-
-                $validated[$option_id] = $this->default_options [$option_id];
-            }
-        }
-
-        /**
          * Validate a value which should be an owner
          *
          * @param array  $input
@@ -718,21 +691,28 @@ if ( !class_exists('CUAR_Settings')) :
          * @param string $option_id
          *            Key of the value to check in the input array
          */
-        public function validate_owner($input, &$validated, $option_id, $owner_type_option_id)
+        public function validate_owners($input, &$validated, $option_id, $owner_type_option_id)
         {
-            $field_id = $option_id . '_' . $input[$owner_type_option_id] . '_id';
-
-            // TODO better checks, for now, just check it is not empty
-            // $po_addon = $this->plugin->get_addon("post-owner");
-            if (isset($input[$field_id]))
+            if (is_array($input[$option_id]) && !empty($input[$option_id]))
             {
-                $validated[$option_id] = is_array($input[$field_id]) ? $input[$field_id] : array($input[$field_id]);
+                $owners = array();
+                foreach ($input[$option_id] as $type => $ids)
+                {
+                    if (is_array($ids))
+                    {
+                        $owners[$type] = $ids;
+                    }
+                    else
+                    {
+                        $owners[$type] = array($ids);
+                    }
+                }
+                $validated[$option_id] = $owners;
+                $validated[$owner_type_option_id] = '';
             }
             else
             {
-                add_settings_error($option_id, 'settings-errors',
-                    $option_id . ': ' . $input[$field_id] . __(' is not a valid owner', 'cuar'), 'error');
-
+                add_settings_error($option_id, 'settings-errors', $option_id . ': ' . __('Invalid owner', 'cuar'), 'error');
                 $validated[$option_id] = $this->default_options [$option_id];
             }
         }
@@ -968,7 +948,7 @@ if ( !class_exists('CUAR_Settings')) :
                     esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id),
                     esc_attr(stripslashes($this->options [$option_id])), esc_attr($extra_class));
 
-                echo '<span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="' . __( 'Upload File', 'cuar' ) . '"/></span>';
+                echo '<span>&nbsp;<input type="button" class="cuar-upload-button button-secondary" value="' . __('Upload File', 'cuar') . '"/></span>';
 
                 echo '<script type="text/javascript">';
                 echo '    jQuery(document).ready(function($) { $("#cuar-upload-control-' . $option_id . '").mediaInputControl(); });';
@@ -1037,8 +1017,8 @@ if ( !class_exists('CUAR_Settings')) :
                 <script type="text/javascript">
                     <!--
                     jQuery(document).ready(function ($) {
-                        $('input.<?php echo esc_attr( $option_id ); ?>').click('click', function () {
-                            var answer = confirm("<?php echo str_replace( '"', '\\"', $confirm_message ); ?>");
+                        $('input.<?php echo esc_attr($option_id); ?>').click('click', function () {
+                            var answer = confirm("<?php echo str_replace('"', '\\"', $confirm_message); ?>");
                             return answer;
                         });
                     });
@@ -1169,31 +1149,6 @@ if ( !class_exists('CUAR_Settings')) :
         }
 
         /**
-         * Output a select field for a setting
-         *
-         * @param string $option_id
-         * @param array  $options
-         * @param string $caption
-         */
-        public function print_owner_type_select_field($args)
-        {
-            extract($args);
-
-            if (isset($before))
-            {
-                echo $before;
-            }
-
-            $po_addon = $this->plugin->get_addon("post-owner");
-            $po_addon->print_owner_type_select_field($option_id, self::$OPTIONS_GROUP, $this->options [$option_id]);
-
-            if (isset($after))
-            {
-                echo $after;
-            }
-        }
-
-        /**
          * Output a set of fields for an address
          *
          * @param string $option_id
@@ -1237,10 +1192,22 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
+            // Handle legacy owner option
+            if ( !empty($this->options[$owner_type_option_id]))
+            {
+                $owner_type = $this->options[$owner_type_option_id];
+                $owner_ids = $this->options [$option_id];
+
+                $owners = array($owner_type => $owner_ids);
+            }
+            else
+            {
+                $owners = $this->options [$option_id];
+            }
+
+            /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon("post-owner");
-            $po_addon->print_owner_select_field($owner_type_option_id, $option_id, self::$OPTIONS_GROUP,
-                $this->options [$owner_type_option_id], $this->options [$option_id]);
-            $po_addon->print_owner_select_javascript($owner_type_option_id, $option_id);
+            $po_addon->print_owner_fields($owners, $option_id, self::$OPTIONS_GROUP);
 
             if (isset($after))
             {
@@ -1299,8 +1266,8 @@ if ( !class_exists('CUAR_Settings')) :
             echo '<script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#' . esc_attr( $option_id ) . '").select2({
-                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
+                    $("#' . esc_attr($option_id) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr($option_id) . '.parent()"),' : '') . '
                         width: "100%"
                     });
                 });
@@ -1363,8 +1330,7 @@ if ( !class_exists('CUAR_Settings')) :
                         $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
                     }
                     ?>
-                    <option
-                        value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+                    <option value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
 
                 <?php endforeach; ?>
 
@@ -1373,8 +1339,8 @@ if ( !class_exists('CUAR_Settings')) :
             <script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#<?php echo esc_attr( $option_id ); ?>").select2({
-                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
+                    $("#<?php echo esc_attr($option_id); ?>").select2({
+                        <?php if ( !is_admin()) echo "dropdownParent: $('#" . esc_attr($option_id) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1436,8 +1402,7 @@ if ( !class_exists('CUAR_Settings')) :
                         $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
                     }
                     ?>
-                    <option
-                        value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
+                    <option value="<?php echo esc_attr($value); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>
 
                 <?php endforeach; ?>
 
@@ -1446,8 +1411,8 @@ if ( !class_exists('CUAR_Settings')) :
             <script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#<?php echo esc_attr( $option_id ); ?>").select2({
-                        <?php if(!is_admin()) echo "dropdownParent: $('#" . esc_attr( $option_id ) . "').parent(),"; ?>
+                    $("#<?php echo esc_attr($option_id); ?>").select2({
+                        <?php if ( !is_admin()) echo "dropdownParent: $('#" . esc_attr($option_id) . "').parent(),"; ?>
                         width: "100%"
                     });
                 });
@@ -1535,8 +1500,8 @@ if ( !class_exists('CUAR_Settings')) :
             echo '<script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $("#' . esc_attr( $option_id ) . '").select2({
-                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr( $option_id ) . '.parent()"),' : '' ) . '
+                    $("#' . esc_attr($option_id) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr($option_id) . '.parent()"),' : '') . '
                         width: "100%"
                     });
                 });

@@ -1,7 +1,8 @@
 <?php /** @var array $owner_types */ ?>
 <?php /** @var array $owners */ ?>
 <?php /** @var bool $print_javascript */ ?>
-<?php /** @var array $field_prefix */ ?>
+<?php /** @var string $field_prefix */ ?>
+<?php /** @var string $field_group */ ?>
 <?php /** @var CUAR_PostOwnerAddOn $po_addon */ ?>
 
 <?php
@@ -10,7 +11,15 @@ foreach ($owner_types as $type_id => $type_label) :
     if (empty($selectable_owners)) continue;
 
     $allow_multiple = $po_addon->is_multiple_selection_enabled($type_id);
-    $field_name = $field_prefix . $type_id;
+    $field_name = $field_prefix;
+    if ($field_group != null) {
+        $field_name = $field_group . '[' . $field_name . '][' . $type_id . ']';
+    } else {
+        $field_name .= $type_id;
+    }
+
+    $field_id = 'cuar_owner_select_' . $type_id;
+
     if ($allow_multiple) $field_name .= '[]';
     ?>
     <div class="cuar-owner-field cuar-owner-field-<?php echo $type_id; ?>">
@@ -20,7 +29,7 @@ foreach ($owner_types as $type_id => $type_label) :
         <?php $css_class = 'form-control cuar-owner-select cuar-owner-select-' . $type_id; ?>
         <?php $placeholder = __('Select or search an owner', 'cuar'); ?>
 
-        <select name="<?php echo $field_name; ?>" class="<?php echo esc_attr($css_class); ?>" data-placeholder="<?php echo esc_attr($placeholder); ?>" <?php echo $extra_attrs; ?>>
+        <select id="<?php echo $field_id; ?>" name="<?php echo $field_name; ?>" class="<?php echo esc_attr($css_class); ?>" data-placeholder="<?php echo esc_attr($placeholder); ?>" <?php echo $extra_attrs; ?>>
             <option value=""></option>
             <?php foreach ($selectable_owners as $id => $name):
                 $selected = isset($owners[$type_id]) && !empty($owners[$type_id]) && in_array($id, $owners[$type_id]);
@@ -33,8 +42,8 @@ foreach ($owner_types as $type_id => $type_label) :
             <script type="text/javascript">
                 <!--
                 jQuery("document").ready(function ($) {
-                    $(".cuar-owner-select-<?php echo $type_id; ?>").select2({
-                        <?php if ( !is_admin()) echo "dropdownParent: $('.cuar-owner-select-" . $type_id . "').parent(),"; ?>
+                    $("#<?php echo $field_id; ?>").select2({
+                        <?php if ( !is_admin()) echo "dropdownParent: $('#" . $field_id . "').parent(),"; ?>
                         width: "100%",
                         allowClear: true
                     });
