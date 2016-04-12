@@ -28,6 +28,10 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
      */
     class CUAR_PostOwnerAddOn extends CUAR_AddOn
     {
+        public static $META_OWNER_QUERYABLE = 'cuar_owner_queryable';
+        public static $META_OWNER_DISPLAYNAME = 'cuar_owner_displayname';
+        public static $META_OWNER_SORTABLE_DISPLAYNAME = 'cuar_owner_sortable_displayname';
+
         /** @var array */
         private $owner_types = null;
 
@@ -100,6 +104,28 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 'value'   => '|' . $owner_type . '_' . $owner_id . '|',
                 'compare' => 'LIKE'
             );
+        }
+
+        /**
+         * Given an owners array, get the meta query components (array of arrays)
+         *
+         * @param array $owners
+         *
+         * @return array
+         *
+         */
+        public function get_owners_meta_query_component($owners)
+        {
+            $mq = array();
+            foreach ($owners as $type => $ids)
+            {
+                foreach ($ids as $id)
+                {
+                    $mq[] = $this->get_owner_meta_query_component($type, $id);
+                }
+            }
+
+            return $mq;
         }
 
         /*------- PRIVATE FILE STORAGE DIRECTORIES ----------------------------------------------------------------------*/
@@ -379,6 +405,30 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         }
 
         /**
+         * List all the owners which can be selected for a given type
+         *
+         * @param $type_id
+         *
+         * @return array key is the owner ID, value is the text to show to the user
+         */
+        public function get_selectable_owners($type_id)
+        {
+            return apply_filters('cuar/core/ownership/printable-owners?owner-type=' . $type_id, array());
+        }
+
+        /**
+         * Do we allow more than a single owner for the given type
+         *
+         * @param $type_id
+         *
+         * @return bool
+         */
+        public function is_multiple_selection_enabled($type_id)
+        {
+            return apply_filters('cuar/core/ownership/enable-multiple-select?owner-type=' . $type_id, false);
+        }
+
+        /**
          * Tell if this post type should be protected or not
          *
          * @param string $post_type
@@ -421,8 +471,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
             $is_protected = isset($private_types[$post_type]) ? true : false;
 
-            return apply_filters('cuar/core/ownership/is-post-protected',
-                $is_protected, $post_id, $post_type, $private_types);
+            return apply_filters('cuar/core/ownership/is-post-protected', $is_protected, $post_id, $post_type, $private_types);
         }
 
         /**
@@ -435,51 +484,14 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function is_user_owner_of_post($post_id, $user_id)
         {
-            // We take care of the single user ownership
-            $owner_type = $this->get_post_owner_type($post_id);
-            $owner_ids = $this->get_post_owner_ids($post_id);
-
-            return apply_filters('cuar/core/ownership/validate-post-ownership', false, $post_id, $user_id, $owner_type, $owner_ids);
-        }
-
-        /**
-         * Get the owner id of the post
-         *
-         * @param int $post_id The post ID
-         *
-         * @return array
-         */
-        public function get_post_owner_ids($post_id)
-        {
-            $owner_ids = get_post_meta($post_id, self::$META_OWNER_IDS, true);
-            if ( !$owner_ids || empty($owner_ids))
+            $owners = $this->get_post_owners($post_id);
+            foreach ($owners as $owner_type => $owner_ids)
             {
-                $owner_ids = array();
-            }
-            if ( !is_array($owner_ids))
-            {
-                $owner_ids = array($owner_ids);
+                $is_owner = apply_filters('cuar/core/ownership/validate-post-ownership', false, $post_id, $user_id, $owner_type, $owner_ids);
+                if ($is_owner) return true;
             }
 
-            return $owner_ids;
-        }
-
-        /**
-         * Get the owner type of the post (user, role, ...)
-         *
-         * @param int $post_id The post ID
-         *
-         * @return string the type of ownership (defaults to 'usr')
-         */
-        public function get_post_owner_type($post_id)
-        {
-            $owner_type = get_post_meta($post_id, self::$META_OWNER_TYPE, true);
-            if ( !$owner_type || empty($owner_type))
-            {
-                $owner_type = apply_filters('cuar/core/ownership/default-owner-type', 'usr');
-            }
-
-            return $owner_type;
+            return false;
         }
 
         /**
@@ -490,7 +502,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          *
          * @return string the type of ownership (defaults to 'usr')
          */
-        public function get_post_owner_displayname($post_id, $prefix_with_type = false)
+        public function get_post_displayable_owners($post_id, $prefix_with_type = false)
         {
             if ($prefix_with_type)
             {
@@ -515,33 +527,16 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         }
 
         /**
-         * Get the owner details (id and type) from post metadata
+         * @param $post_id
          *
-         * @param int $post_id The post ID
-         *
-         * @return array|NULL associative array with keys 'ids' and 'type'
+         * @return array
          */
-        public function get_post_owner($post_id)
+        public function get_post_owners($post_id)
         {
-            $owner = array(
-                'ids'          => $this->get_post_owner_ids($post_id),
-                'type'         => $this->get_post_owner_type($post_id),
-                'display_name' => $this->get_post_owner_displayname($post_id, true)
-            );
+            $queryable_owners = get_post_meta($post_id, self::$META_OWNER_QUERYABLE, true);
+            $owners = $this->decode_owners($queryable_owners);
 
-            if ( !is_array($owner['ids']))
-            {
-                $owner['ids'] = array($owner['ids']);
-            }
-
-            return $owner;
-        }
-
-        public function is_owner_assigned_to_post($post_id)
-        {
-            $ids = $this->get_post_owner_ids($post_id);
-
-            return empty($ids) ? false : true;
+            return $owners;
         }
 
         /**
@@ -553,387 +548,208 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_post_owner_user_ids($post_id)
         {
-            $owner_ids = $this->get_post_owner_ids($post_id);
-            $owner_type = $this->get_post_owner_type($post_id);
+            $user_ids = array();
+
+            $owners = $this->get_post_owners($post_id);
+            foreach ($owners as $type => $ids)
+            {
+                $user_ids[] = apply_filters('cuar/core/ownership/real-user-ids?owner-type=' . $type, array(), $ids);
+            }
+
+            $user_ids = array_unique($user_ids);
 
             // Let other add-ons return what they want
-            return apply_filters('cuar/core/ownership/real-user-ids?owner-type=' . $owner_type, array(), $owner_ids);
+            return $user_ids;
         }
 
         /**
          * Save the owner details for the given post
          *
-         * @param int    $post_id The post ID
-         * @param array  $owner_ids
-         * @param string $owner_type
-         * @param bool   $ensure_type_exists
+         * @param int   $post_id The post ID
+         * @param array $owners
+         * @param bool  $ensure_types_exist
          */
-        public function save_post_owners($post_id, $owner_ids, $owner_type, $ensure_type_exists = true)
+        public function save_post_owners($post_id, $owners, $ensure_types_exist = true)
         {
             $owner_types = $this->get_owner_types();
 
             // Check owner type exists
-            if ($ensure_type_exists && !empty($owner_type))
+            if ($ensure_types_exist && !empty($owners))
             {
-                if ( !array_key_exists($owner_type, $owner_types))
+                foreach ($owners as $type => $ids)
                 {
-                    $this->plugin->add_admin_notice('Invalid owner type, some add-on must be doing something wrong');
+                    if ( !array_key_exists($type, $owner_types))
+                    {
+                        $this->plugin->add_admin_notice('Invalid owner type ' . $type . ', some add-on must be doing something wrong');
 
-                    return;
+                        return;
+                    }
                 }
             }
-            $previous_owner = $this->get_post_owner($post_id);
-            $new_owner = $this->get_owner_from_post_data();
+
+            $previous_owners = $this->get_post_owners($post_id);
 
             // Other addons can do something before we save
-            do_action("cuar/core/ownership/before-save-owner", $post_id, $previous_owner, $new_owner);
+            do_action("cuar/core/ownership/before-save-owner", $post_id, $previous_owners, $owners);
 
             // Serialize the owner ids for queries
-            $queryable_ids = $this->encode_queryable_owner_ids($owner_ids, $owner_type);
+            $queryable_ids = $this->encode_owners($owners);
 
-            // Some defaults for the owner type 'usr'
-            if (empty($owner_type))
+            $displayname = array();
+            $sortable_displayname = array();
+            foreach ($owner_types as $type_id => $type_label)
             {
-                $displayname = '';
-                $sortable_displayname = '';
-            }
-            else
-            {
-                $displayname = '?';
-                $displayname = apply_filters('cuar/core/ownership/saved-displayname', $displayname, $post_id, $owner_ids, $owner_type);
+                if (empty($owners[$type_id])) continue;
 
-                $sortable_displayname = $owner_types[$owner_type] . ' - ' . $displayname;
-                $sortable_displayname = apply_filters('cuar/core/ownership/saved-sortable-displayname',
-                    $sortable_displayname,
-                    $post_id, $owner_ids, $owner_type, $displayname);
+                $displayname[$type_id] = apply_filters('cuar/core/ownership/saved-displayname', '', $post_id, $type_id, $owners[$type_id]);
+                $sortable_displayname[$type_id] = apply_filters('cuar/core/ownership/saved-sortable-displayname', $type_label . ' - ' . $displayname[$type_id],
+                    $post_id, $type_id, $owners[$type_id]);
             }
+            $sortable_displayname = implode(' + ', $sortable_displayname);
 
             // Persist data
-            update_post_meta($post_id, self::$META_OWNER_IDS, $owner_ids);
-            update_post_meta($post_id, self::$META_OWNER_TYPE, $owner_type);
             update_post_meta($post_id, self::$META_OWNER_QUERYABLE, $queryable_ids);
             update_post_meta($post_id, self::$META_OWNER_DISPLAYNAME, $displayname);
             update_post_meta($post_id, self::$META_OWNER_SORTABLE_DISPLAYNAME, $sortable_displayname);
 
             // Other addons can do something after we save
-            $new_owner = $this->get_post_owner($post_id);
+            $new_owners = $this->get_post_owners($post_id);
             $post = get_post($post_id);
-            do_action("cuar/core/ownership/after-save-owner", $post_id, $post, $previous_owner, $new_owner);
+            do_action("cuar/core/ownership/after-save-owner", $post_id, $post, $previous_owners, $new_owners);
+        }
+
+        /**
+         * @param int   $post_id
+         * @param array $owners
+         *
+         * @return mixed|string|void
+         */
+        public function get_displayable_owners_for_log($post_id, $owners)
+        {
+            $owner_types = $this->get_owner_types();
+            $sortable_display_names = array();
+
+            foreach ($owner_types as $type_id => $type_label)
+            {
+                if (empty($owners[$type_id])) continue;
+
+                $displayname = apply_filters('cuar/core/ownership/saved-displayname', '', $post_id, $type_id, $owners[$type_id]);
+                $sortable_display_names[] = apply_filters('cuar/core/ownership/saved-sortable-displayname', $type_label . ' - ' . $displayname, $post_id,
+                    $type_id, $owners[$type_id]);
+            }
+
+            return implode(' + ', $sortable_display_names);
         }
 
         /**
          * Encode an array of users/user groups for storage in the meta table. We expect a dictionnary where the keys are
          * user groups and values are arrays of user IDs.
          */
-        private static function encode_queryable_owner_ids($user_ids, $owner_type)
+        private function encode_owners($owners)
         {
-            $sep = '|' . $owner_type . '_';
-            $raw = $sep . implode($sep, array_filter($user_ids)) . '|';
+            $out = '';
+            foreach ($owners as $type => $ids)
+            {
+                $ids = array_filter($ids);
+                if (empty($ids)) continue;
 
-            return $raw;
+                $sep = '|' . $type . '_';
+                $out .= $sep . implode($sep, $ids);
+            }
+            $out .= '|';
+
+            return $out;
+        }
+
+        /**
+         * Decode an array of users/user groups from storage in the meta table.
+         */
+        private function decode_owners($raw)
+        {
+            $owners = array();
+            $tokens = explode('|', $raw);
+            foreach ($tokens as $t)
+            {
+                if (empty($t)) continue;
+
+                $owner = explode('_', $t, 2);
+                $type = $owner[0];
+                $id = $owner[1];
+                if (count($owner) != 2 || empty($type) || empty($id)) continue;
+
+                if ( !isset($owners[$type])) $owners[$type] = array();
+
+                $owners[$type][] = $id;
+            }
+
+            return $owners;
         }
 
         /*------- PRINT SELECTION FIELDS ---------------------------------------------------------------------------------------------------------------------*/
 
-        public function print_owner_selection_fields($current_owner_type, $current_owner_ids,
-            $field_group = null,
-            $owner_type_field_id = 'cuar_owner_type',
-            $owner_field_id = 'cuar_owner')
+        public function print_owner_fields($owners, $field_prefix = 'cuar_owners_')
         {
-            echo '<table class="metabox-row cuar-owner-select-controls">';
-            echo '<tr>';
-            echo '<td class="label"><label for="' . $owner_type_field_id . '">' . __('Select the owner', 'cuar') . '</label></td>';
-            echo '<td class="field">';
-            $this->print_owner_type_select_field($owner_type_field_id, $field_group, $current_owner_type);
-            echo '</td>';
-            echo '</tr>';
-
-            echo '<tr>';
-            echo '<td class="label"></td>';
-            echo '<td class="field">';
-            $this->print_owner_select_field($owner_type_field_id, $owner_field_id, $field_group, $current_owner_type,
-                $current_owner_ids);
-            echo '</td>';
-            echo '</tr>';
-            echo '</table>';
-
-            $this->print_owner_select_javascript($owner_type_field_id, $owner_field_id);
-        }
-
-        /**
-         * Print the metabox to select an owner type
-         */
-        public function print_owner_type_select_field($owner_type_field_id, $field_group = null, $selected_owner_type = 'usr')
-        {
-            if ($field_group != null)
-            {
-                $owner_type_field_name = $field_group . '[' . $owner_type_field_id . ']';
-            }
-            else
-            {
-                $owner_type_field_name = $owner_type_field_id;
-            }
-
+            $po_addon = $this;
             $owner_types = apply_filters('cuar/core/ownership/selectable-owner-types', null);
-            if (null === $owner_types)
+            if (null === $owner_types) $owner_types = $this->get_owner_types();
+
+            $template_suffix = is_admin() ? '-admin' : '-frontend';
+
+            $print_javascript = false;
+            $theme_support = get_theme_support('customer-area.library.jquery.select2');
+            if (is_admin()
+                || $theme_support === false
+                || (is_array($theme_support) && !in_array('markup', $theme_support[0]))
+            )
             {
-                $owner_types = $this->get_owner_types();
+                $this->plugin->enable_library('jquery.select2');
+                $print_javascript = true;
             }
 
-            if (count($owner_types) == 1)
-            {
-                reset($owner_types);
-                echo current($owner_types);
-                ?>
-                <input type="hidden" name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" value="<?php echo key($owner_types); ?>"/>
-                <?php
-            }
-            else
-            {
-                ?>
-                <select name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" class="form-control">
-                    <?php foreach ($owner_types as $type_id => $type_label) :
-                        $selected = ($selected_owner_type != $type_id ? '' : ' selected="selected"');
-                        ?>
-                        <option value="<?php echo $type_id; ?>"<?php echo $selected; ?>><?php echo $type_label; ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <?php
-            }
+            wp_nonce_field('cuar_save_owners', 'wp_cuar_nonce_owner');
+
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/post-owner',
+                array(
+                    'post-owner-fields' . $template_suffix . '.template.php',
+                    'post-owner-fields.template.php',
+                )
+            ));
         }
 
-        /**
-         * Print the javascript to change the owner select according to the owner type select
-         */
-        public function print_owner_select_javascript($owner_type_field_id, $owner_field_id)
+        public function print_owner_fields_readonly($owners, $field_prefix = 'cuar_owners_')
         {
-            ?>
-            <script type="text/javascript">
-                <!--
-                jQuery(document).ready(function ($) {
-                    $('#<?php echo $owner_type_field_id; ?>').change(function () {
-                        var type = $(this).val();
-                        var newVisibleId = '#<?php echo $owner_field_id ?>_' + type + '_container';
+            wp_nonce_field('cuar_save_owners', 'wp_cuar_nonce_owner');
 
-                        // Do nothing if already visible
-                        if ($(newVisibleId).is(":visible")) return
-
-                        // Hide previous and then show new
-                        if ($('.<?php echo $owner_type_field_id; ?>_owner_select_container:visible').length <= 0) {
-                            $(newVisibleId).fadeToggle();
-                        } else {
-                            $('.<?php echo $owner_type_field_id; ?>_owner_select_container:visible').fadeToggle("fast", function () {
-                                $(newVisibleId).fadeToggle();
-                            });
-                        }
-                    });
-                });
-                //-->
-            </script>
-            <?php
-        }
-
-        /**
-         * Print the metabox to select an owner
-         */
-        public function print_owner_select_field($owner_type_field_id, $owner_field_id, $field_group = null,
-            $selected_owner_type = 'usr', $selected_owner_ids = array())
-        {
-            global $post;
-
-            $hide_if_single_owner = $this->plugin->get_option(CUAR_Settings::$OPTION_HIDE_SINGLE_OWNER_SELECT);
-
-            $owner_types = apply_filters('cuar/core/ownership/selectable-owner-types', null);
-            if (null === $owner_types)
-            {
-                $owner_types = $this->get_owner_types();
-            }
-
-            if (array_key_exists($selected_owner_type, $owner_types))
-            {
-                $visible_owner_select = $selected_owner_type;
-            }
-            else
-            {
-                reset($owner_types);
-                $visible_owner_select = key($owner_types);
-            }
-
-            // Don't hide if we can select
-            if (count($owner_types) != 1)
-            {
-                $hide_if_single_owner = false;
-            }
-
-            foreach ($owner_types as $type_id => $type_label)
-            {
-                $container_id = $owner_field_id . '_' . $type_id . '_container';
-                $field_id = $owner_field_id . '_' . $type_id . '_id';
-                if ($field_group != null)
-                {
-                    $field_name = $field_group . '[' . $field_id . ']';
-                }
-                else
-                {
-                    $field_name = $field_id;
-                }
-
-                $owners = apply_filters('cuar/core/ownership/printable-owners?owner-type=' . $type_id, array());
-
-                $hidden = ($visible_owner_select == $type_id ? '' : ' style="display: none;"');
-
-                printf('<div id="%s" class="field %s" %s>',
-                    $container_id,
-                    $owner_type_field_id . '_owner_select_container',
-                    $hidden
-                );
-
-                if (count($owners) == 0)
-                {
-                    printf('<span class="no-owner %s"><em>%s</em></span>',
-                        $owner_type_field_id . '_owner_select',
-                        __('It seems you cannot select any owner of that type.', 'cuar'));
-                }
-                else if (count($owners) == 1)
-                {
-                    foreach ($owners as $id => $name)
-                    {
-                        printf('<input type="hidden" name="%s" id="%s" value="%s" />', $field_name, $field_id, $id);
-
-                        if ($hide_if_single_owner)
-                        {
-                            printf('<span id="%s_text" class="single-owner hidden-message %s"><em>%s</em></span>',
-                                $field_id,
-                                $owner_type_field_id . '_owner_select',
-                                apply_filters('cuar/core/ownership/hidden-single-selectable-owner-text',
-                                    __('The owner is hidden', 'cuar')));
-                        }
-                        else
-                        {
-                            printf('<span id="%s_text" class="single-owner %s"><em>%s</em></span>',
-                                $field_id,
-                                $owner_type_field_id . '_owner_select',
-                                apply_filters('cuar/core/ownership/single-selectable-owner-text', $name));
-                        }
-                    }
-                }
-                else
-                {
-                    $enable_multiple_selection = apply_filters('cuar/core/ownership/enable-multiple-select?owner-type='
-                        . $type_id, false);
-                    $multiple = $enable_multiple_selection ? ' multiple="multiple" size="8"' : '';
-
-                    printf('<select id="%s" name="%s" class="%s" %s data-placeholder="%s" class="form-control">',
-                        $field_id,
-                        $enable_multiple_selection ? $field_name . '[]' : $field_name,
-                        $owner_type_field_id . '_owner_select',
-                        $multiple,
-                        __('Select or search an owner', 'cuar')
-                    );
-
-                    foreach ($owners as $id => $name)
-                    {
-                        $selected = ($selected_owner_type == $type_id && in_array($id, $selected_owner_ids))
-                            ? ' selected="selected"' : '';
-                        printf('<option value="%1$s" %2$s>%3$s</option>', $id, $selected, $name);
-                    }
-
-                    echo '</select>';
-
-                    $theme_support = get_theme_support('customer-area.library.jquery.select2');
-                    if (is_admin()
-                        || $theme_support === false
-                        || (is_array($theme_support) && !in_array('markup', $theme_support[0]))
-                    )
-                    {
-                        $this->plugin->enable_library('jquery.select2');
-                        ?>
-                        <script type="text/javascript">
-                            <!--
-                            jQuery("document").ready(function ($) {
-                                $("#<?php echo $field_id; ?>").select2({
-                                    <?php if ( !is_admin()) echo "dropdownParent: $('#" . $field_id . "').parent(),"; ?>
-                                    width: "100%"
-                                });
-                            });
-                            //-->
-                        </script>
-                        <?php
-                    }
-                }
-
-                echo '</div>';
-            }
-        }
-
-        /**
-         * Callback to handle saving a post
-         *
-         * @param int    $post_id
-         * @param string $post
-         *
-         * @return void|unknown
-         */
-        public function do_save_post($post_id, $post = null)
-        {
-            global $post;
-
-            // When auto-saving, we don't do anything
-            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-            {
-                return $post_id;
-            }
-
-            // Only take care of private post types
-            $private_post_types = $this->plugin->get_content_post_types();
-            if ( !$post || !in_array(get_post_type($post->ID), $private_post_types))
-            {
-                return;
-            }
-
-            // Save the owner details
-            if ( !wp_verify_nonce($_POST['wp_cuar_nonce_owner'], plugin_basename(__FILE__)))
-            {
-                return $post_id;
-            }
-
-            $new_owner = $this->get_owner_from_post_data();
-
-            // Save owner details
-            $this->save_post_owners($post_id, $new_owner['ids'], $new_owner['type']);
-
-            return $post_id;
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/post-owner',
+                'post-owner-fields-readonly.template.php'
+            ));
         }
 
         /**
          * Get the owner details (id and type) from HTTP POST data
          *
-         * @return NULL|array associative array with keys 'ids' and 'type'
+         * @param string $ids_field_prefix
+         *
+         * @return array
          */
-        public function get_owner_from_post_data($owner_type_field_id = 'cuar_owner_type',
-            $owner_field_id = 'cuar_owner')
+        public function get_owners_from_post_data($ids_field_prefix = 'cuar_owners_')
         {
-            if ( !isset($_POST[$owner_type_field_id])
-                || !isset($_POST[$owner_field_id . '_' . $_POST[$owner_type_field_id] . '_id'])
-            )
+            $owners = array();
+
+            $owner_types = $this->get_owner_types();
+            foreach ($owner_types as $owner_type => $type_label)
             {
-                return array(
-                    'ids'  => array(),
-                    'type' => ''
-                );
+                $ids_field_name = $ids_field_prefix . $owner_type;
+
+                // If no owner selected, just skip this type
+                if ( !isset($_POST[$ids_field_name]) || empty($_POST[$ids_field_name])) continue;
+
+                $owners[$owner_type] = is_array($_POST[$ids_field_name]) ? $_POST[$ids_field_name] : array($_POST[$ids_field_name]);
             }
 
-            $owner = array(
-                'ids'  => $_POST[$owner_field_id . '_' . $_POST[$owner_type_field_id] . '_id'],
-                'type' => $_POST[$owner_type_field_id]
-            );
-
-            if ( !is_array($owner['ids']))
-            {
-                $owner['ids'] = array($owner['ids']);
-            }
-
-            return $owner;
+            return $owners;
         }
 
         /*------- FRONTEND ----------------------------------------------------------------------------------------------*/
@@ -986,9 +802,14 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * When the plugin is upgraded
          *
-         * @param unknown $from_version
-         * @param unknown $to_version
+         * @param string $from_version
+         * @param string $to_version
          */
+        // TODO PO REFACTORING
+        // CAUTION
+        // CLEANUP OLD CODE, 2.x NOT SUPPORTED ANYMORE ?
+        // OR EXTERNALIZE TO ANOTHER FILE
+        // USE version_compare !
         public function plugin_version_upgrade($from_version, $to_version)
         {
             // If upgrading from before 2.0.0 we must update the post meta fields
@@ -1083,12 +904,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 }
             }
         }
-
-        public static $META_OWNER_QUERYABLE = 'cuar_owner_queryable';
-        public static $META_OWNER_IDS = 'cuar_owners';
-        public static $META_OWNER_TYPE = 'cuar_owner_type';
-        public static $META_OWNER_DISPLAYNAME = 'cuar_owner_displayname';
-        public static $META_OWNER_SORTABLE_DISPLAYNAME = 'cuar_owner_sortable_displayname';
 
     }
 

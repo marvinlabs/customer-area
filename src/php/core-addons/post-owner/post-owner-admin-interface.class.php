@@ -103,14 +103,41 @@ class CUAR_PostOwnerAdminInterface
     {
         global $post;
 
-        $current_owner_type = $this->po_addon->get_post_owner_type($post->ID);
-        $current_owner_ids = $this->po_addon->get_post_owner_ids($post->ID);
-
         do_action("cuar/core/ownership/before-owner-meta-box");
 
-        $this->po_addon->print_owner_selection_fields($current_owner_type, $current_owner_ids);
+        $owners = $this->po_addon->get_post_owners($post->ID);
+        $this->po_addon->print_owner_fields($owners);
 
         do_action("cuar/core/ownership/after-owner-meta-box");
+    }
+
+    /**
+     * Callback to handle saving a post
+     *
+     * @param int    $post_id
+     * @param string $post
+     *
+     * @return int
+     */
+    public function do_save_post($post_id, $post = null)
+    {
+        global $post;
+
+        // When auto-saving, we don't do anything
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
+
+        // Only take care of private post types
+        $private_post_types = $this->plugin->get_content_post_types();
+        if ( !$post || !in_array(get_post_type($post->ID), $private_post_types)) return $post_id;
+
+        // Save the owner details
+        if ( !wp_verify_nonce($_POST['wp_cuar_nonce_owner'], 'cuar_save_owners')) return $post_id;
+
+        // Save owner details
+        $new_owners = $this->po_addon->get_owners_from_post_data();
+        $this->po_addon->save_post_owners($post_id, $new_owners);
+
+        return $post_id;
     }
 
 }

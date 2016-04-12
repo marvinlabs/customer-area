@@ -276,19 +276,29 @@ if ( !class_exists('CUAR_LogAddOn')) :
          * Log an event when the post owner changes
          *
          * @param $post_id
-         * @param $new_owner
-         * @param $previous_owner
+         * @param $new_owners
+         * @param $previous_owners
          */
-        public function log_owner_updated($post_id, $post, $previous_owner, $new_owner)
+        public function log_owner_updated($post_id, $post, $previous_owners, $new_owners)
         {
             // Compare previous and new, log only if actually changed
-            if ($previous_owner['type'] == $new_owner['type'] && $previous_owner['ids'] == $new_owner['ids'])
+            $is_same = array_diff_key($previous_owners, $new_owners);
+            $is_same = empty($is_same);
+            if ($is_same)
             {
-                return;
+                foreach ($previous_owners as $prev_type => $prev_ids)
+                {
+                    $same_ids = array_diff($prev_ids, $new_owners[$prev_type]);
+                    if (!empty($same_ids)) {
+                        $is_same = false;
+                        break;
+                    }
+                }
             }
+            if ($is_same) return;
 
             $should_log_event = apply_filters('cuar/core/log/should-log-event?event=' . self::$TYPE_OWNER_CHANGED,
-                true, $post_id, $post, $previous_owner, $new_owner);
+                true, $post_id, $post, $previous_owners, $new_owners);
             if ($should_log_event)
             {
                 // unhook this function so it doesn't loop infinitely
@@ -298,8 +308,8 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     $post_id,
                     get_post_type($post_id),
                     array_merge($this->get_default_event_meta(), array(
-                        self::$META_PREVIOUS_OWNER => $previous_owner,
-                        self::$META_CURRENT_OWNER  => $new_owner
+                        self::$META_PREVIOUS_OWNER => $previous_owners,
+                        self::$META_CURRENT_OWNER  => $new_owners
                     )));
 
                 // re-hook this function
@@ -384,15 +394,23 @@ if ( !class_exists('CUAR_LogAddOn')) :
                     break;
 
                 case self::$META_PREVIOUS_OWNER:
-                    $o = $item->$meta;
-                    $dn = empty($o['ids']) ? __('Nobody', 'cuar') : $o['display_name'];
+                    /** @var CUAR_PostOwnerAddOn $po_addon */
+                    $po_addon = $this->plugin->get_addon('post-owner');
+
+                    $owners = $item->$meta;
+                    $dn = empty($owners) ? __('Nobody', 'cuar') : $po_addon->get_displayable_owners_for_log(0, $owners);
+
                     $pill['title'] = __('Previous owner: ', 'cuar') . $dn;
                     $pill['value'] = __('From: ', 'cuar') . substr($dn, 0, 35);
                     break;
 
                 case self::$META_CURRENT_OWNER:
-                    $o = $item->$meta;
-                    $dn = empty($o['ids']) ? __('Nobody', 'cuar') : $o['display_name'];
+                    /** @var CUAR_PostOwnerAddOn $po_addon */
+                    $po_addon = $this->plugin->get_addon('post-owner');
+
+                    $owners = $item->$meta;
+                    $dn = empty($owners) ? __('Nobody', 'cuar') : $po_addon->get_displayable_owners_for_log(0, $owners);
+
                     $pill['title'] = __('Current owner: ', 'cuar') . $dn;
                     $pill['value'] = __('To: ', 'cuar') . substr($dn, 0, 35);
                     break;

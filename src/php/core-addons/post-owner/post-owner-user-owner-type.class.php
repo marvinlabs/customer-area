@@ -41,19 +41,20 @@ class CUAR_PostOwnerUserOwnerType
      *
      * @param string $displayname
      * @param int    $post_id
-     * @param array  $post_owner_ids
-     * @param string $post_owner_type
+     * @param string $owner_type
+     * @param array  $owner_ids
      *
      * @return string
+     *
      */
-    public function saved_post_owner_displayname($displayname, $post_id, $post_owner_ids, $post_owner_type)
+    public function saved_post_owner_displayname($displayname, $post_id, $owner_type, $owner_ids)
     {
         $names = array();
 
-        if ($post_owner_type == 'usr')
+        if ($owner_type == 'usr')
         {
             $names = array();
-            foreach ($post_owner_ids as $id)
+            foreach ($owner_ids as $id)
             {
                 $u = new WP_User($id);
                 $names[] = apply_filters('cuar/core/ownership/owner-display-name?owner-type=usr', $u->display_name, $u);

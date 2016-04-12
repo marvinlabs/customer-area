@@ -303,22 +303,6 @@ if ( !class_exists('CUAR_Settings')) :
                     'theme_type' => 'admin'
                 )
             );
-
-            add_settings_field(self::$OPTION_HIDE_SINGLE_OWNER_SELECT,
-                __('Hide owner selection', 'cuar'),
-                array(&$cuar_settings, 'print_input_field'),
-                self::$OPTIONS_PAGE_SLUG,
-                'cuar_general_settings',
-                array(
-                    'option_id' => self::$OPTION_HIDE_SINGLE_OWNER_SELECT,
-                    'type'      => 'checkbox',
-                    'after'     => __('Hide the owner selection field when a single owner is possible.', 'cuar')
-                        . '<p class="description">'
-                        . __('The owner will not be displayed but included directly if a single owner type is available to the current user and if within that owner type, a single owner is available.',
-                            'cuar')
-                        . '</p>'
-                )
-            );
         }
 
         /**
@@ -327,11 +311,12 @@ if ( !class_exists('CUAR_Settings')) :
          * @param CUAR_Settings $cuar_settings
          * @param array         $input
          * @param array         $validated
+         *
+         * @return array
          */
         public function validate_core_settings($validated, $cuar_settings, $input)
         {
             $cuar_settings->validate_not_empty($input, $validated, self::$OPTION_ADMIN_SKIN);
-            $cuar_settings->validate_boolean($input, $validated, self::$OPTION_HIDE_SINGLE_OWNER_SELECT);
 
             return $validated;
         }
@@ -453,7 +438,6 @@ if ( !class_exists('CUAR_Settings')) :
             $defaults [self::$OPTION_DEBUG_TEMPLATES] = false;
             $defaults [self::$OPTION_ADMIN_SKIN] = CUAR_ADMIN_SKIN;
             $defaults [self::$OPTION_FRONTEND_SKIN] = CUAR_FRONTEND_SKIN;
-            $defaults [self::$OPTION_HIDE_SINGLE_OWNER_SELECT] = false;
 
             return $defaults;
         }
@@ -1667,7 +1651,6 @@ if ( !class_exists('CUAR_Settings')) :
         public static $OPTION_INCLUDE_CSS = 'cuar_include_css';
         public static $OPTION_ADMIN_SKIN = 'cuar_admin_theme_url';
         public static $OPTION_FRONTEND_SKIN = 'cuar_frontend_theme_url';
-        public static $OPTION_HIDE_SINGLE_OWNER_SELECT = 'cuar_hide_single_owner_select';
 
         /**
          * @var CUAR_Plugin The plugin instance
