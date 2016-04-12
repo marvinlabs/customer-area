@@ -976,14 +976,14 @@
 //##
 
 //** Background color of the whole progress component
-@progress-bg:                 @cuar-color-neutral-darker;
-
-//** Progress bar text color
-@progress-bar-color:          contrast(@progress-bg, @palette-Black-Text, @palette-White-Text);
+@progress-bg:                 mix(@panel-heading-bg, @muted, 50%);
 
 //** Default progress bar color
-@progress-bar-bg:             lighten(@cuar-color-neutral-dark, 3%);
+@progress-bar-bg:             @cuar-color-neutral-dark;
 @progress-bar-default-bg:     @progress-bar-bg;
+
+//** Progress bar text color
+@progress-bar-color:          contrast(@progress-bar-bg, @palette-Black-Text, @palette-White-Text);
 
 //** Primary progress bar color
 @progress-bar-primary-bg:     @brand-primary;
