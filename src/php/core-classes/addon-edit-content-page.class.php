@@ -424,22 +424,6 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             return array();
         }
 
-        public function print_wizard_header()
-        {
-            if ($this->get_wizard_step_count() == 1) return;
-
-            /** @noinspection PhpUnusedLocalVariableInspection */
-            $steps = $this->get_wizard_steps();
-
-            /** @noinspection PhpUnusedLocalVariableInspection */
-            $current_step = $this->get_current_wizard_step();
-
-            include($this->plugin->get_template_file_path(
-                CUAR_INCLUDES_DIR . '/core-classes',
-                'edit-content-form-wizard-header.template.php',
-                'templates'));
-        }
-
         /*------- EDIT FORM ---------------------------------------------------------------------------------------------*/
 
         public function should_print_form()
@@ -466,7 +450,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 $form_url = $this->get_page_url();
             }
 
-            printf('<form name="%1$s" method="post" class="cuar-form cuar-%3$s-content-form cuar-%1$s-form" action="%2$s" enctype="multipart/form-data">',
+            printf('<form name="%1$s" method="post" class="cuar-form cuar-%3$s-content-form cuar-%1$s-form clearfix steps-icons steps-numbers steps-justified steps-left steps-arrows" action="%2$s" enctype="multipart/form-data">',
                 $this->get_slug(),
                 $form_url,
                 $this->get_action());

@@ -10,6 +10,8 @@ if (!function_exists('cuar_load_theme_scripts')) {
         if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
             $cuar_plugin = cuar();
 
+            // BOOTSTRAP
+            // --
             $cuar_plugin->enable_library('bootstrap.affix');
             $cuar_plugin->enable_library('bootstrap.alert');
             $cuar_plugin->enable_library('bootstrap.button');
@@ -18,15 +20,22 @@ if (!function_exists('cuar_load_theme_scripts')) {
             $cuar_plugin->enable_library('bootstrap.dropdown');
             //$cuar_plugin->enable_library('bootstrap.modal');
             //$cuar_plugin->enable_library('bootstrap.popover');
-            //$cuar_plugin->enable_library('bootstrap.scrollspy');
+            $cuar_plugin->enable_library('bootstrap.scrollspy');
             $cuar_plugin->enable_library('bootstrap.tab');
             $cuar_plugin->enable_library('bootstrap.tooltip');
             //$cuar_plugin->enable_library('bootstrap.transition');
 
+            // COLLECTIONS
+            // --
             $cuar_plugin->enable_library('jquery.cookie');
-
             $cuar_plugin->enable_library('jquery.mixitup');
 
+            // FORMS
+            // --
+            $cuar_plugin->enable_library('jquery.steps');
+
+            // SCRIPTS
+            // --
             wp_register_script('customer-area-utilities',
                 CUAR_PLUGIN_URL . '/assets/frontend/js/customer-area.min.js',
                 array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable'),
