@@ -27,7 +27,7 @@
         <div class="form-group col-xs-8">
             <p><?php _e('We accept the following secure payment methods', 'cuar'); ?></p>
 
-            <ul class="list-inline mt-sm">
+            <ul class="list-inline mt-sm cuar-payment-methods">
                 <?php foreach ($accepted_credit_cards as $cc_id => $cc): ?>
                     <li>
                         <?php if ( !empty($cc['icon'])) : ?>
