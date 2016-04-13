@@ -303,22 +303,6 @@ if ( !class_exists('CUAR_Settings')) :
                     'theme_type' => 'admin'
                 )
             );
-
-            add_settings_field(self::$OPTION_HIDE_SINGLE_OWNER_SELECT,
-                __('Hide owner selection', 'cuar'),
-                array(&$cuar_settings, 'print_input_field'),
-                self::$OPTIONS_PAGE_SLUG,
-                'cuar_general_settings',
-                array(
-                    'option_id' => self::$OPTION_HIDE_SINGLE_OWNER_SELECT,
-                    'type'      => 'checkbox',
-                    'after'     => __('Hide the owner selection field when a single owner is possible.', 'cuar')
-                        . '<p class="description">'
-                        . __('The owner will not be displayed but included directly if a single owner type is available to the current user and if within that owner type, a single owner is available.',
-                            'cuar')
-                        . '</p>'
-                )
-            );
         }
 
         /**
@@ -327,11 +311,12 @@ if ( !class_exists('CUAR_Settings')) :
          * @param CUAR_Settings $cuar_settings
          * @param array         $input
          * @param array         $validated
+         *
+         * @return array
          */
         public function validate_core_settings($validated, $cuar_settings, $input)
         {
             $cuar_settings->validate_not_empty($input, $validated, self::$OPTION_ADMIN_SKIN);
-            $cuar_settings->validate_boolean($input, $validated, self::$OPTION_HIDE_SINGLE_OWNER_SELECT);
 
             return $validated;
         }
@@ -453,7 +438,6 @@ if ( !class_exists('CUAR_Settings')) :
             $defaults [self::$OPTION_DEBUG_TEMPLATES] = false;
             $defaults [self::$OPTION_ADMIN_SKIN] = CUAR_ADMIN_SKIN;
             $defaults [self::$OPTION_FRONTEND_SKIN] = CUAR_FRONTEND_SKIN;
-            $defaults [self::$OPTION_HIDE_SINGLE_OWNER_SELECT] = false;
 
             return $defaults;
         }
@@ -744,33 +728,6 @@ if ( !class_exists('CUAR_Settings')) :
         }
 
         /**
-         * Validate a value which should be an owner type
-         *
-         * @param array  $input
-         *            Input array
-         * @param array  $validated
-         *            Output array
-         * @param string $option_id
-         *            Key of the value to check in the input array
-         */
-        public function validate_owner_type($input, &$validated, $option_id)
-        {
-            $po_addon = $this->plugin->get_addon("post-owner");
-
-            if (isset($input[$option_id]) && $po_addon->is_valid_owner_type($input[$option_id]))
-            {
-                $validated[$option_id] = $input[$option_id];
-            }
-            else
-            {
-                add_settings_error($option_id, 'settings-errors',
-                    $option_id . ': ' . $input[$option_id] . __(' is not a valid owner type', 'cuar'), 'error');
-
-                $validated[$option_id] = $this->default_options [$option_id];
-            }
-        }
-
-        /**
          * Validate a value which should be an owner
          *
          * @param array  $input
@@ -780,21 +737,28 @@ if ( !class_exists('CUAR_Settings')) :
          * @param string $option_id
          *            Key of the value to check in the input array
          */
-        public function validate_owner($input, &$validated, $option_id, $owner_type_option_id)
+        public function validate_owners($input, &$validated, $option_id, $owner_type_option_id)
         {
-            $field_id = $option_id . '_' . $input[$owner_type_option_id] . '_id';
-
-            // TODO better checks, for now, just check it is not empty
-            // $po_addon = $this->plugin->get_addon("post-owner");
-            if (isset($input[$field_id]))
+            if (is_array($input[$option_id]) && !empty($input[$option_id]))
             {
-                $validated[$option_id] = is_array($input[$field_id]) ? $input[$field_id] : array($input[$field_id]);
+                $owners = array();
+                foreach ($input[$option_id] as $type => $ids)
+                {
+                    if (is_array($ids))
+                    {
+                        $owners[$type] = $ids;
+                    }
+                    else
+                    {
+                        $owners[$type] = array($ids);
+                    }
+                }
+                $validated[$option_id] = $owners;
+                $validated[$owner_type_option_id] = '';
             }
             else
             {
-                add_settings_error($option_id, 'settings-errors',
-                    $option_id . ': ' . $input[$field_id] . __(' is not a valid owner', 'cuar'), 'error');
-
+                add_settings_error($option_id, 'settings-errors', $option_id . ': ' . __('Invalid owner', 'cuar'), 'error');
                 $validated[$option_id] = $this->default_options [$option_id];
             }
         }
@@ -1254,31 +1218,6 @@ if ( !class_exists('CUAR_Settings')) :
         }
 
         /**
-         * Output a select field for a setting
-         *
-         * @param string $option_id
-         * @param array  $options
-         * @param string $caption
-         */
-        public function print_owner_type_select_field($args)
-        {
-            extract($args);
-
-            if (isset($before))
-            {
-                echo $before;
-            }
-
-            $po_addon = $this->plugin->get_addon("post-owner");
-            $po_addon->print_owner_type_select_field($option_id, self::$OPTIONS_GROUP, $this->options [$option_id]);
-
-            if (isset($after))
-            {
-                echo $after;
-            }
-        }
-
-        /**
          * Output a set of fields for an address
          *
          * @param string $option_id
@@ -1322,10 +1261,22 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
+            // Handle legacy owner option
+            if ( !empty($this->options[$owner_type_option_id]))
+            {
+                $owner_type = $this->options[$owner_type_option_id];
+                $owner_ids = $this->options [$option_id];
+
+                $owners = array($owner_type => $owner_ids);
+            }
+            else
+            {
+                $owners = $this->options [$option_id];
+            }
+
+            /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon("post-owner");
-            $po_addon->print_owner_select_field($owner_type_option_id, $option_id, self::$OPTIONS_GROUP,
-                $this->options [$owner_type_option_id], $this->options [$option_id]);
-            $po_addon->print_owner_select_javascript($owner_type_option_id, $option_id);
+            $po_addon->print_owner_fields($owners, $option_id, self::$OPTIONS_GROUP);
 
             if (isset($after))
             {
@@ -1734,7 +1685,6 @@ if ( !class_exists('CUAR_Settings')) :
         public static $OPTION_INCLUDE_CSS = 'cuar_include_css';
         public static $OPTION_ADMIN_SKIN = 'cuar_admin_theme_url';
         public static $OPTION_FRONTEND_SKIN = 'cuar_frontend_theme_url';
-        public static $OPTION_HIDE_SINGLE_OWNER_SELECT = 'cuar_hide_single_owner_select';
 
         /**
          * @var CUAR_Plugin The plugin instance

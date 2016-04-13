@@ -129,15 +129,40 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.0.0 (2015/
+= 7.0.0 (2016/04/
 
-* New: Brand new frontend skin. Greater UI and that should fix most compatibility problems with themes.
+* New: Brand new frontend skin. Greater UI and that should fix most compatibility problems with themes. **REQUIRES UPDATING ALL YOUR ADD-ONS!**
+* New: You can now publish content for multiple owner types at once. E.g. for user "admin" as well as for user group "the incredible team".
 * New: Added a title parameter to the private content shortcode
 * Fix: Projects were not listed by the protected content shortcode (https://github.com/marvinlabs/customer-area/issues/204)
 * Fix: Global post data not restored after secondary queries (https://github.com/marvinlabs/customer-area/issues/205)
 * Fix: Translations where not loaded early enough
 * Fix: Fix widget class and ID not replaced (https://github.com/marvinlabs/customer-area/issues/123)
 * Fix: When using our shortcodes, some pages could be detected as "orphan WP Customer Area pages" by mistake
+
+**Add-on changes (apart from new UI and compatibility for WP Customer Area 7.x)**
+
+* New: *Additional owner types* - allow publishing content easily for any registered user with new global rule
+* New: *Conversations* - Threw in some Ajax goodness for handling replies (add, delete)
+* New: *Conversations* - Replies can now be deleted
+* New: *Conversations* - Log addition and deletion of replies
+* New: *Authentication forms* - Compatibility with the notifications add-on to customize the emails sent on registration/password reset
+* New: *Authentication forms* - Clear text password is not sent in the registration email anymore for better security (like with WordPress 4.3+)
+* New: *Notifications* - You can now have email templates which look great with logo & all HTML goodness
+* New: *Notifications* - Custom emails sent on registration/password reset when used with the authentication forms add-on
+* New: *Notifications* - Custom emails sent on comment & comment moderation for private post types
+* New: *Notifications* - Rewrote the code to send the notifications, now the hooks are easier to understand and should allow more flexibility
+* New: *Notifications* - Individual notifications for each type of private content creation for better control
+* New: *Projects* - compatibility with the notifications add-on (new project notification)
+* New: *Switch users* - Themes can now declare support for the switch toolbar and place it wherever they want
+* Fix: *Conversations* - Replies' HTML code sometimes not inserted properly (gets transformed to plain text)
+* Fix: *Front-office publishing* - Hooks for each post type have been simplified to a single hook
+* Fix: *Notifications* - Compatibility with the projects add-on (new project notification)
+* Fix: *Notifications* - Compatibility with the tasks add-on (new task list notification from frontend)
+* Fix: *Notifications* - Cleaner options page
+* Fix: *Owner restrictions* - Better settings panel
+* Fix: *Protect post types* - Bug in loading translations
+* Fix: *Smart groups* - bug when showing the UI in another language
 
 = 6.3.0 (2015/11/26) =
 

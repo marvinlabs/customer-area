@@ -3,11 +3,10 @@
     position: relative;
     z-index: 2;
     padding: @grid-gutter-width / 2;
-    background: @panel-heading-bg;
+    background: mix(@panel-heading-bg, @muted, 50%);
     vertical-align: top;
-    border: 1px solid darken(@body-bg, 3%);
-    border-bottom: 1px solid darken(@body-bg, 10%);
-    .box-shadow(0 2px 4px fade(darken(@body-bg, 60%), 45%));
+    border-top: 1px solid darken(@body-bg, 3%);
+    border-bottom: 1px solid @navbar-default-border;
 
     > * {
       position: relative;
@@ -20,22 +19,12 @@
 
 // Auto padding on single private contents
 @{wrapperBody}.single @{wrapperContainer} {
-  padding: @grid-gutter-width / 2;
-
   .cuar-toolbar {
     margin-left: -@grid-gutter-width / 2;
     margin-top: -@grid-gutter-width / 2;
     margin-right: -@grid-gutter-width / 2;
-
-    & + script + .cuar-menu-container,
-    & + .cuar-menu-container {
-      margin-bottom: @grid-gutter-width;
-      margin-left: -@grid-gutter-width / 2;
-      margin-right: -@grid-gutter-width / 2;
-    }
   }
-}
-// Cancel padding defdined below when the wrapper directly follow body tag
-@{wrapperBody}.single > @{wrapperContainer} {
-  padding: 0;
+  .cuar-menu-container + .cuar-toolbar {
+    margin-top: 0;
+  }
 }

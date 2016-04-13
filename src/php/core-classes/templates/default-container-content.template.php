@@ -1,20 +1,36 @@
-<?php /** Template version: 1.0.0
+<?php
+/** Template version: 3.0.0
+ *
+ * -= 3.0.0 =-
+ * - Default container template using tables
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ *
+ */ ?>
 
--= 1.0.0 =-
-- Initial version
+<?php /** @var string $page_subtitle */ ?>
+<?php /** @var WP_Query $content_query */ ?>
+<?php /** @var string $item_template */ ?>
 
-*/ ?>
-
-<div class="cuar-content-block cuar-container-content-block">
-	<h3><?php echo $page_subtitle; ?></h3>
-	<div class="cuar-container-content-list cuar-item-list">
-	<?php 	
-			while ( $content_query->have_posts() ) {
-				$content_query->the_post(); 
+<div class="panel top cuar-container-content-default">
+	<div class="panel-heading">
+        <span class="panel-title">
+            <?php echo $page_subtitle; ?>
+        </span>
+	</div>
+	<div class="panel-body pn">
+		<table class="table table-hover table-striped">
+			<tbody>
+			<?php
+			while ($content_query->have_posts()) {
+				$content_query->the_post();
 				global $post;
-				
-				include( $item_template ); 
+
+				include($item_template);
 			}
-	?>
+			?>
+			</tbody>
+		</table>
 	</div>
 </div>

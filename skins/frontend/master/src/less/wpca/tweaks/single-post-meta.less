@@ -1,9 +1,9 @@
 @{wrapperBase} {
-  .cuar-single-post-header,
-  .cuar-single-post-footer {
+  .cuar-single-post-header {
     background: darken(@main-bg, 4%);
-    padding: @padding-base-vertical;
-    padding-top: @padding-lg-vertical;
-    margin-top: @margin-base-vertical;
+    //padding: @padding-base-vertical;
+    padding-top: @padding-base-vertical + @line-height-computed;
+    margin-bottom: @margin-md-vertical;
+    border-bottom: 1px solid darken(@main-bg, 8%);
   }
 }

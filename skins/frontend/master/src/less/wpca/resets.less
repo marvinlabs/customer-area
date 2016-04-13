@@ -2,7 +2,8 @@
   // Global CSS resets to redefine rules
   // like users agent's defaults
   // ----------------------------
-  & {
+  &,
+  &.cuar-content-container {
     .clearfix;
     font-family: @font-family-base;
     font-size: @font-size-base;
@@ -20,7 +21,6 @@
     *, *:before, *:after {
       .box-sizing(border-box);
     }
-
   }
 
   // Standard HTML tags resets
@@ -56,10 +56,10 @@
     position: static;
     background: transparent;
     border: 0;
-    font-family: @font-family-base;
-    font-size: @font-size-base;
-    font-weight: @font-weight-base;
-    line-height: @line-height-base;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
     margin: 0;
     outline: none;
     padding: 0;
@@ -117,6 +117,15 @@
 
   a {
     text-decoration: none;
+    &:visited,
+    &:active,
+    &:focus {
+      outline: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      text-decoration: underline;
+    }
   }
 
   img {

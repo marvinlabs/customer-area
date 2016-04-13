@@ -11,8 +11,7 @@
     var Core = function (options) {
 
         // Variables
-        var runHeader;
-        var WPCA = $('cuar-js-content-container');
+        var WPCA = $('#cuar-js-content-container');
         var Window = $(window);
         var Body = $('body');
         var Navbar = $('.navbar');
@@ -293,6 +292,7 @@
             // data attribute accepts delay(in ms) and animation style
             // if only delay is provided fadeIn will be set as default
             // eg. data-animate='["500","fadeIn"]'
+            /*
             $('.animated-delay[data-animate]').each(function () {
                 var This = $(this)
                 var delayTime = This.data('animate');
@@ -312,10 +312,12 @@
                         });
                 }, delayTime);
             });
+            */
 
             // "In-View" Animations
             // data attribute accepts animation style and offset(in %)
             // eg. data-animate='["fadeIn","40%"]'
+            /*
             $('.animated-waypoint').each(function (i, e) {
                 var This = $(this);
                 var Animation = This.data('animate');
@@ -342,11 +344,12 @@
                     offset: offsetVal
                 });
             });
+            */
 
         }
 
         // Header Functions
-        runHeader = function () {
+        var runHeader = function () {
 
             // Nav Fluidify
             var fluidify = function () {
@@ -418,6 +421,7 @@
             });
 
             // Init jQuery Multi-Select for navbar user dropdowns
+            /*
             if ($("#user-status").length) {
                 $('#user-status').multiselect({
                     buttonClass: 'btn btn-default btn-sm',
@@ -432,9 +436,11 @@
                     dropRight: true
                 });
             }
+            */
 
             // Dropdown Multiselect Persist. Prevents a menu dropdown
             // from closing when a child multiselect is clicked
+            /*
             $('.dropdown-menu').on('click', function (e) {
 
                 e.stopPropagation();
@@ -452,8 +458,10 @@
                 }
 
             });
+            */
 
             // Sliding Topbar Metro Menu
+            /*
             var menu = $('#topbar-dropmenu');
             var items = menu.find('.metro-tile');
             var metroBG = $('.metro-modal');
@@ -489,6 +497,7 @@
                     menu.slideToggle(150).toggleClass('topbar-menu-open');
                 }, 250);
             });
+            */
         };
 
         // Tray related Functions
@@ -517,13 +526,22 @@
                         trayHeight = contentHeight;
                     }
 
-                    This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()));
+                    if(Body.hasClass('admin-bar')){
+                        This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()) - 32);
+                    } else {
+                        This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()));
+                    }
+
                     if (trayCenter.length) {
                         trayCenter.height(trayHeight - 75); // 75 = trayCenter padding-top + padding-bottom
                     }
 
                     if (trayScroll.length) {
-                        trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+                        if(Body.hasClass('admin-bar')) {
+                            trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()) - 32);
+                        } else {
+                            trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+                        }
                         trayScroll.scroller();
                     }
                 });
@@ -601,22 +619,26 @@
         var runFormElements = function () {
 
             // Init Bootstrap tooltips, if present
-            var Tooltips = $("[data-toggle=tooltip]");
-            if (Tooltips.length) {
-                if (Tooltips.parents('#sidebar_left')) {
-                    Tooltips.tooltip({
-                        container: $('body'),
-                        template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
-                    });
-                } else {
-                    Tooltips.tooltip();
+            if ( $.isFunction($.fn.tooltip) ) {
+                var Tooltips = $("[data-toggle=tooltip]");
+                if (Tooltips.length) {
+                    if (Tooltips.parents('#sidebar_left')) {
+                        Tooltips.tooltip({
+                            container: $('body'),
+                            template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+                        });
+                    } else {
+                        Tooltips.tooltip({container: WPCA});
+                    }
                 }
             }
 
             // Init Bootstrap Popovers, if present
-            var Popovers = $("[data-toggle=popover]");
-            if (Popovers.length) {
-                Popovers.popover();
+            if ( $.isFunction($.fn.popover) ) {
+                var Popovers = $("[data-toggle=popover]");
+                if (Popovers.length) {
+                    Popovers.popover();
+                }
             }
 
             // Init Bootstrap persistent tooltips. This prevents a
@@ -656,60 +678,64 @@
             // custom fixed height content scroller. An optional delay data attr
             // may be set. This is useful when you expect the panels height to
             // change due to a plugin or other dynamic modification.
-            var panelScroller = $('.panel-scroller');
-            if (panelScroller.length) {
-                panelScroller.each(function (i, e) {
-                    var This = $(e);
-                    var Delay = This.data('scroller-delay');
-                    var Margin = 5;
+            if ( $.isFunction($.fn.scroller) ) {
+                var panelScroller = $('.panel-scroller');
+                if (panelScroller.length) {
+                    panelScroller.each(function (i, e) {
+                        var This = $(e);
+                        var Delay = This.data('scroller-delay');
+                        var Margin = 5;
 
-                    // Check if scroller bar margin is required
-                    if (This.hasClass('scroller-thick')) {
-                        Margin = 0;
-                    }
+                        // Check if scroller bar margin is required
+                        if (This.hasClass('scroller-thick')) {
+                            Margin = 0;
+                        }
 
-                    // Check if scroller bar is in a dropdown, if so
-                    // we initilize scroller after dropdown is visible
-                    var DropMenuParent = This.parents('.dropdown-menu');
-                    if (DropMenuParent.length) {
-                        DropMenuParent.prev('.dropdown-toggle').on('click', function () {
-                            setTimeout(function () {
-                                This.scroller();
-                                $('.navbar').scrollLock('on', 'div');
-                            }, 50);
-                        });
-                        return;
-                    }
+                        // Check if scroller bar is in a dropdown, if so
+                        // we initilize scroller after dropdown is visible
+                        var DropMenuParent = This.parents('.dropdown-menu');
+                        if (DropMenuParent.length) {
+                            DropMenuParent.prev('.dropdown-toggle').on('click', function () {
+                                setTimeout(function () {
+                                    This.scroller();
+                                    $('.navbar').scrollLock('on', 'div');
+                                }, 50);
+                            });
+                            return;
+                        }
 
-                    if (Delay) {
-                        var Timer = setTimeout(function () {
+                        if (Delay) {
+                            var Timer = setTimeout(function () {
+                                This.scroller({trackMargin: Margin,});
+                                $('#content').scrollLock('on', 'div');
+                            }, Delay);
+                        }
+                        else {
                             This.scroller({trackMargin: Margin,});
                             $('#content').scrollLock('on', 'div');
-                        }, Delay);
-                    }
-                    else {
-                        This.scroller({trackMargin: Margin,});
-                        $('#content').scrollLock('on', 'div');
-                    }
+                        }
 
-                });
+                    });
+                }
             }
 
             // Init smoothscroll on elements with set data attr
             // data value determines smoothscroll offset
-            var SmoothScroll = $('[data-smoothscroll]');
-            if (SmoothScroll.length) {
-                SmoothScroll.each(function (i, e) {
-                    var This = $(e);
-                    var Offset = This.data('smoothscroll');
-                    var Links = This.find('a');
+            if ( $.isFunction($.fn.smoothScroll) ) {
+                var SmoothScroll = $('[data-smoothscroll]');
+                if (SmoothScroll.length) {
+                    SmoothScroll.each(function (i, e) {
+                        var This = $(e);
+                        var Offset = This.data('smoothscroll');
+                        var Links = This.find('a');
 
-                    // Init Smoothscroll with data stored offset
-                    Links.smoothScroll({
-                        offset: Offset
+                        // Init Smoothscroll with data stored offset
+                        Links.smoothScroll({
+                            offset: Offset
+                        });
+
                     });
-
-                });
+                }
             }
 
         }
@@ -724,7 +750,23 @@
 
             var $container = $('#cuar-js-collection-gallery'), // mixitup container
                 $toList = $('#cuar-js-collection-to-list'), // list view button
-                $toGrid = $('#cuar-js-collection-to-grid'); // list view button
+                $toGrid = $('#cuar-js-collection-to-grid') // list view button
+
+
+            // Initiate cookie session for filters buttons
+            var cookieName = $container.data('type') + '-collection-layout',
+                cookieLayout = $.cookie(cookieName) || $.cookie(cookieName, 'grid');
+
+            if(cookieLayout == 'list') {
+                $container.addClass(cookieLayout).removeClass('grid');
+                $toList.addClass('btn-primary').removeClass('btn-default');
+                $toGrid.addClass('btn-default').removeClass('btn-primary');
+            } else {
+                $container.addClass(cookieLayout).removeClass('list');
+                $toList.addClass('btn-default').removeClass('btn-primary');
+                $toGrid.addClass('btn-primary').removeClass('btn-default');
+            }
+
 
             // Instantiate MixItUp
             $container.mixItUp({
@@ -743,6 +785,7 @@
             });
 
             $toList.on('click', function () {
+                $.cookie(cookieName, 'list');
                 $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                 if ($container.hasClass('list')) {
                     return
@@ -751,10 +794,11 @@
                     display: 'block',
                     containerClass: 'list'
                 }, function (state) {
-                    // callback function
+                    $container.removeClass('grid');
                 });
             });
             $toGrid.on('click', function () {
+                $.cookie(cookieName, 'grid');
                 $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                 if ($container.hasClass('grid')) {
                     return
@@ -763,7 +807,7 @@
                     display: 'inline-block',
                     containerClass: 'grid'
                 }, function (state) {
-                    // callback function
+                    $container.removeClass('list');
                 });
             });
         }
@@ -816,6 +860,7 @@
         // HighCharts, JvectorMap, Admin Panels
 
         // Init Admin Panels on widgets inside the ".admin-panels" container
+        /*
         $('.admin-panels').adminpanel({
             grid: '.admin-grid',
             draggable: true,
@@ -849,6 +894,7 @@
                 $(window).trigger('resize');
             }
         });
+        */
 
     });
 

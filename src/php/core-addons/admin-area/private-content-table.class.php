@@ -298,7 +298,8 @@ class CUAR_PrivateContentTable extends CUAR_ListTable
 
     public function column_owner($item)
     {
-        $out = $this->po_addon->get_post_owner_displayname($item->ID, true);
+        $owner_names = $this->po_addon->get_post_displayable_owners($item->ID, true);
+        $out = $owner_names; // implode(', ', $owner_names);
 
         return apply_filters('cuar/core/admin/content-list-table/column-content?post_type=' . $this->post_type,
             $out, $item, 'owner', $this);

@@ -17,9 +17,7 @@
  */
 ?>
 
-<?php
-$title_popup = sprintf(__('Uploaded on %s', 'cuar'), get_the_date());
-?>
+<?php $title_popup = sprintf(__('Uploaded on %s', 'cuar'), get_the_date()); ?>
 
 <tr>
     <td class="cuar-title">

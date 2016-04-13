@@ -10,7 +10,9 @@ if (!function_exists('cuar_load_theme_scripts')) {
         if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
             $cuar_plugin = cuar();
 
-            //$cuar_plugin->enable_library('bootstrap.affix');
+            // BOOTSTRAP
+            // --
+            $cuar_plugin->enable_library('bootstrap.affix');
             $cuar_plugin->enable_library('bootstrap.alert');
             $cuar_plugin->enable_library('bootstrap.button');
             //$cuar_plugin->enable_library('bootstrap.carousel');
@@ -18,13 +20,22 @@ if (!function_exists('cuar_load_theme_scripts')) {
             $cuar_plugin->enable_library('bootstrap.dropdown');
             //$cuar_plugin->enable_library('bootstrap.modal');
             //$cuar_plugin->enable_library('bootstrap.popover');
-            //$cuar_plugin->enable_library('bootstrap.scrollspy');
-            //$cuar_plugin->enable_library('bootstrap.tab');
+            $cuar_plugin->enable_library('bootstrap.scrollspy');
+            $cuar_plugin->enable_library('bootstrap.tab');
             $cuar_plugin->enable_library('bootstrap.tooltip');
             //$cuar_plugin->enable_library('bootstrap.transition');
 
+            // COLLECTIONS
+            // --
+            $cuar_plugin->enable_library('jquery.cookie');
             $cuar_plugin->enable_library('jquery.mixitup');
 
+            // FORMS
+            // --
+            $cuar_plugin->enable_library('jquery.steps');
+
+            // SCRIPTS
+            // --
             wp_register_script('customer-area-utilities',
                 CUAR_PLUGIN_URL . '/assets/frontend/js/customer-area.min.js',
                 array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable'),
@@ -32,7 +43,7 @@ if (!function_exists('cuar_load_theme_scripts')) {
                 true);
 
             wp_register_script('customer-area-master-skin',
-                CUAR_PLUGIN_URL . '/skins/frontend/master/assets/js/main.js',
+                CUAR_PLUGIN_URL . '/skins/frontend/master/assets/js/main.min.js',
                 array('jquery', 'customer-area-utilities'),
                 $cuar_plugin->get_version(),
                 true);
@@ -218,4 +229,30 @@ if (!function_exists('cuar_remove_auto_excerpt')) {
     }
 
     add_action('after_setup_theme', 'cuar_remove_auto_excerpt');
+}
+
+if (!function_exists('cuar_acf_field_group_class')) {
+    /**
+     * Customize field groups on frontend
+     */
+    function cuar_acf_field_group_class($options, $id){
+        if (!is_admin())
+            $options["layout"] = 'panel';
+        return $options;
+    }
+    add_filter('acf/field_group/get_options', 'cuar_acf_field_group_class', 10, 2);
+}
+
+if (!function_exists('cuar_form_account_panel_head')) {
+    /**
+     * Wrap defaults account fields into a panel
+     */
+    function cuar_form_account_panel_head(){
+        echo '<div class="panel"><div class="panel-heading">' . __('Account details', 'cuar') . '</div><div class="panel-body">';
+    }
+    function cuar_form_account_panel_foot(){
+        echo '</div></div>';
+    }
+    add_action('cuar/core/user-profile/edit/before_field?id=user_login', 'cuar_form_account_panel_head');
+    add_action('cuar/core/user-profile/edit/after_field?id=user_pass', 'cuar_form_account_panel_foot');
 }

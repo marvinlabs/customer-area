@@ -1,4 +1,13 @@
 // TODO: Move to tweaks ?
+// Auto padding on single private contents
+@{wrapperBody}.single @{wrapperContainer} {
+  .cuar-menu-container {
+    margin-left: -@grid-gutter-width / 2;
+    margin-top: -@grid-gutter-width / 2;
+    margin-right: -@grid-gutter-width / 2;
+  }
+}
+
 @{wrapperBase} {
   // Nav margins fix
   // ---------------
@@ -26,6 +35,7 @@
     .navbar-header,
     .nav-container {
       .clearfix();
+      overflow: visible;
     }
 
     .navbar {
@@ -35,6 +45,10 @@
 
       .navbar-brand {
         display: none;
+      }
+
+      li {
+        margin: 0;
       }
 
       li.current-page-parent > a{

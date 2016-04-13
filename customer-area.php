@@ -85,6 +85,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/password-fi
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/email-field-renderer.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/long-text-field-renderer.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/short-text-field-renderer.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/display-name-field-renderer.class.php');
 
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/storage/storage.interface.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/storage/user-meta-storage.class.php');
@@ -105,12 +106,15 @@ include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/text-field.cla
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/number-field.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/email-field.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/user-password-field.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/display-name-field.class.php');
 
 // Core addons
 include_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/installer/installer-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/log/log-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-admin-interface.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-user-owner-type.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/container-owner/container-owner-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php');

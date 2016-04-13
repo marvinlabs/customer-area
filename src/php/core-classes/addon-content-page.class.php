@@ -606,6 +606,31 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             }
         }
 
+        public function add_listing_contextual_toolbar_group($groups)
+        {
+            $current_page_id = get_queried_object_id();
+            if ($current_page_id!=$this->get_page_id()) return $groups;
+
+            ob_start();
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                array(
+                    'collections-button-group-' . $this->get_slug() . '.template.php',
+                    'collections-button-group.template.php'
+                ),
+                'templates'
+            ));
+            $group_html = ob_get_contents();
+            ob_end_clean();
+
+            $groups['collection-switcher'] = array(
+                'type' => 'raw',
+                'html' => $group_html
+            );
+
+            return $groups;
+        }
+
         /*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 
         public function add_single_private_content_contextual_toolbar_group($groups)
@@ -932,8 +957,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             parent::run_addon($plugin);
 
-            if ($this->get_friendly_post_type() != null)
-            {
+            if ($this->get_friendly_post_type() != null) {
                 add_filter("get_previous_post_where", array(&$this, 'disable_single_post_navigation'), 1, 3);
                 add_filter("get_next_post_where", array(&$this, 'disable_single_post_navigation'), 1, 3);
             }
@@ -941,11 +965,12 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             if ( !is_admin())
             {
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_single_private_content_contextual_toolbar_group'), 300);
+                add_filter('cuar/core/page/toolbar', array(&$this, 'add_listing_contextual_toolbar_group'), 2000);
 
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())
                 {
-                    add_filter('cuar/core/the_content', array(&$this, 'print_single_private_content_meta_filter'), 50);
+                    add_filter('cuar/core/the_content', array(&$this, 'print_single_private_content_meta_filter'), 20);
                 }
 
                 // Optionally output the latest files on the dashboard

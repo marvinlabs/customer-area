@@ -7,14 +7,15 @@
 <?php /** @var array $select_methods */ ?>
 
 <div class="cuar-file-attachment-manager">
-    <span class="cuar-label">
+    <div class="alert alert-info clearfix">
         <label for="cuar_file_selector_input"><?php _e('How do you want to add the files?', 'cuar'); ?></label>
-    </span>
-    <select id="cuar_file_selector_input" name="cuar_file_selector_input" class="cuar-file-selector-input">
-        <?php foreach ($select_methods as $method_id => $method) : ?>
-            <option value="<?php echo esc_attr($method_id); ?>"><?php echo $method['label']; ?>&nbsp;&nbsp;</option>
-        <?php endforeach; ?>
-    </select>
+
+        <select id="cuar_file_selector_input" name="cuar_file_selector_input" class="cuar-file-selector-input pull-right">
+            <?php foreach ($select_methods as $method_id => $method) : ?>
+                <option value="<?php echo esc_attr($method_id); ?>"><?php echo $method['label']; ?>&nbsp;&nbsp;</option>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
     <div class="cuar-file-selectors">
         <?php foreach ($select_methods as $method_id => $method) : ?>
