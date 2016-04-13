@@ -33,6 +33,7 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
 
             // Payments page
             add_action('add_meta_boxes', array(&$this, 'register_edit_page_meta_boxes'), 120);
+            add_action("save_post_" . CUAR_Payment::$POST_TYPE, array(&$this, 'on_save_payment'));
         }
 
         /*------- PERMISSIONS --------------------------------------------------------------------------------------------------------------------------------*/
@@ -102,6 +103,16 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
         /*------- EDIT PAGE ----------------------------------------------------------------------------------------------------------------------------------*/
 
         /**
+         * Callback when the post is saved
+         *
+         * @param int $post_id
+         */
+        public function on_save_payment($post_id)
+        {
+            $this->pa_addon->editor()->save_address_fields($post_id, $_POST);
+        }
+
+        /**
          * Register some additional boxes on the page to edit the payments
          *
          * @param string $post_type
@@ -110,7 +121,7 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
         {
             if ($post_type != CUAR_Payment::$POST_TYPE) return;
 
-            remove_meta_box( 'submitdiv', $post_type, 'side' );
+            // remove_meta_box( 'submitdiv', $post_type, 'side' );
 
             add_meta_box(
                 'cuar_payment_data_metabox',
@@ -165,12 +176,14 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
 
         public function print_notes_metabox()
         {
-            echo 'notes';
+            global $post;
+            $this->pa_addon->editor()->print_notes_manager($post->ID);
         }
 
         public function print_author_metabox()
         {
-            echo 'payer';
+            global $post;
+            $this->pa_addon->editor()->print_address_fields($post->ID);
         }
 
     }

@@ -27,29 +27,22 @@ class CUAR_PaymentsEditorHelper
         $this->pa_addon->enqueue_scripts();
 
         $payment = new CUAR_Payment($payment_id);
-        $units = $this->pa_addon->settings()->get_units();
-        $currency = $payment->get_currency();
-        $items = $payment->get_items();
-
-        if (empty($items))
-        {
-            $items[] = CUAR_Payment::sanitize_item(array());
-        }
+        $notes = $payment->get_notes();
 
         $template_suffix = is_admin() ? '-admin' : '-frontend';
         $item_template = $this->plugin->get_template_file_path(
-            CUARIN_INCLUDES_DIR . '/invoicing',
+            CUAR_INCLUDES_DIR . '/core-addons/payments',
             array(
-                'payment-editor-item-list-item' . $template_suffix . '.template.php',
-                'payment-editor-item-list-item.template.php',
+                'payment-editor-note-list-item' . $template_suffix . '.template.php',
+                'payment-editor-note-list-item.template.php',
             ),
             'templates');
 
         include($this->plugin->get_template_file_path(
-            CUARIN_INCLUDES_DIR . '/invoicing',
+            CUAR_INCLUDES_DIR . '/core-addons/payments',
             array(
-                'payment-editor-item-list' . $template_suffix . '.template.php',
-                'payment-editor-item-list.template.php',
+                'payment-editor-note-list' . $template_suffix . '.template.php',
+                'payment-editor-note-list.template.php',
             ),
             'templates'));
     }

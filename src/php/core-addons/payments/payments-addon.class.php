@@ -71,6 +71,9 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
             }
 
             add_action('init', array(&$this, 'register_custom_types'));
+
+            // For AJAX
+            add_filter('cuar/core/js-messages?zone=admin', array(&$this, 'add_js_messages'));
         }
 
         /**
@@ -113,6 +116,31 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
         public function get_payable_types()
         {
             return apply_filters('cuar/core/payments/payable-types', array());
+        }
+
+        /*------- SCRIPTS & AJAX -----------------------------------------------------------------------------------------*/
+
+        /**
+         * Enqueue the invoicing scripts
+         */
+        public function enqueue_scripts()
+        {
+            wp_enqueue_script(is_admin() ? 'cuar.admin' : 'cuar.frontend');
+            $this->plugin->enable_library('jquery.autogrow');
+        }
+
+        /**
+         * Add our JS messages
+         *
+         * @param array $messages
+         *
+         * @return array
+         */
+        public function add_js_messages($messages)
+        {
+            $messages['confirmDeletePaymentNote'] = __('Are you sure that you want to delete this note?', 'cuar');
+
+            return $messages;
         }
 
         /*------- INITIALISATION -----------------------------------------------------------------------------------------*/

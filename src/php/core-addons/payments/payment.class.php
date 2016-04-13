@@ -227,11 +227,12 @@ class CUAR_Payment extends CUAR_CustomPost
     public function add_note($author, $note)
     {
         $notes = $this->get_notes();
-        $notes[] = array(
+        array_unshift($notes, array(
+            'id'            => microtime(true),
             'timestamp_gmt' => current_time('mysql', true),
             'message'       => $note,
             'author'        => $author,
-        );
+        ));
         $this->set_notes($notes);
     }
 
