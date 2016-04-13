@@ -219,21 +219,46 @@ class CUAR_Payment extends CUAR_CustomPost
     }
 
     /**
-     * Get the object for which the payment was made
+     * Delete a note
+     *
+     * @param string $note_id
+     */
+    public function delete_note($note_id)
+    {
+        $notes = $this->get_notes();
+        foreach ($notes as $i => $n)
+        {
+            if ($n['id'] == $note_id)
+            {
+                unset($notes[$i]);
+                break;
+            }
+        }
+        $this->set_notes($notes);
+    }
+
+    /**
+     * Add a note
      *
      * @param string $author
      * @param string $note
+     *
+     * @return array
      */
     public function add_note($author, $note)
     {
-        $notes = $this->get_notes();
-        array_unshift($notes, array(
-            'id'            => microtime(true),
+        $note = array(
+            'id'            => (string)(microtime(true)),
             'timestamp_gmt' => current_time('mysql', true),
             'message'       => $note,
             'author'        => $author,
-        ));
+        );
+
+        $notes = $this->get_notes();
+        array_unshift($notes, $note);
         $this->set_notes($notes);
+
+        return $note;
     }
 
     /**

@@ -74,6 +74,8 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
 
             // For AJAX
             add_filter('cuar/core/js-messages?zone=admin', array(&$this, 'add_js_messages'));
+            add_action('wp_ajax_cuar_delete_payment_note', array(&$this, 'ajax_delete_payment_note'));
+            add_action('wp_ajax_cuar_add_payment_note', array(&$this, 'ajax_add_payment_note'));
         }
 
         /**
@@ -141,6 +143,83 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
             $messages['confirmDeletePaymentNote'] = __('Are you sure that you want to delete this note?', 'cuar');
 
             return $messages;
+        }
+
+        /**
+         * Delete a task from our list via AJAX
+         */
+        public function ajax_delete_payment_note()
+        {
+            $payment_id = isset($_POST['payment_id']) ? $_POST['payment_id'] : 0;
+            if ($payment_id <= 0)
+            {
+                wp_send_json_error(__('Payment id is not specified', 'cuar'));
+            }
+
+            // Check nonce
+            $nonce_action = 'cuar_delete_payment_note';
+            $nonce_name = 'cuar_delete_payment_note_nonce';
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
+            {
+                wp_send_json_error(__('Trying to cheat?', 'cuar'));
+            }
+
+            // Check permissions
+            if ( !current_user_can('cuar_pay_edit'))
+            {
+                wp_send_json_error(__('You are not allowed to manage payment notes', 'cuar'));
+            }
+
+            $note_id = isset($_POST['note_id']) ? $_POST['note_id'] : 0;
+            if ($note_id <= 0)
+            {
+                wp_send_json_error(__('Note id is not specified', 'cuarta'));
+            }
+
+            $payment = new CUAR_Payment($payment_id);
+            $payment->delete_note($note_id);
+
+            wp_send_json_success(array('deleted' => true));
+        }
+
+        /**
+         * Add a task via AJAX
+         */
+        public function ajax_add_payment_note()
+        {
+            $payment_id = isset($_POST['payment_id']) ? $_POST['payment_id'] : 0;
+            if ($payment_id <= 0)
+            {
+                wp_send_json_error(__('Payment id is not specified', 'cuar'));
+            }
+
+            // Check nonce
+            $nonce_action = 'cuar_add_payment_note';
+            $nonce_name = 'cuar_add_payment_note_nonce';
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
+            {
+                wp_send_json_error(__('Trying to cheat?', 'cuar'));
+            }
+
+            // Check permissions
+            if ( !current_user_can('cuar_pay_edit'))
+            {
+                wp_send_json_error(__('You are not allowed to manage payment notes', 'cuar'));
+            }
+
+
+            $message = isset($_POST['message']) ? $_POST['message'] : '';
+            if (empty($message))
+            {
+                wp_send_json_error(__('You must provide a message', 'cuar'));
+            }
+
+            $author = get_userdata(get_current_user_id());
+
+            $payment = new CUAR_Payment($payment_id);
+            $note = $payment->add_note($author->user_login, $message);
+
+            wp_send_json_success($note);
         }
 
         /*------- INITIALISATION -----------------------------------------------------------------------------------------*/

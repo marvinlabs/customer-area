@@ -7,6 +7,7 @@ $id = $note['id'];
 $timestamp = get_date_from_gmt($note['timestamp_gmt']);
 $message = $note['message'];
 $author = isset($note['author']) ? $note['author'] : '?';
+if (!is_string($author)) $author = $author->user_login;
 ?>
 
 <div class="cuar-payment-note cuar-js-payment-note" data-note-id="<?php echo $note['id']; ?>">
