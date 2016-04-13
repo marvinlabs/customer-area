@@ -103,7 +103,30 @@ function cuar_the_payment_date($payment)
  */
 function cuar_the_payment_gateway($payment)
 {
-    echo $payment->get_gateway();
+    /** @var CUAR_PaymentsAddOn $pa_addon */
+    $pa_addon = cuar_addon('payments');
+    $gateways = $pa_addon->settings()->get_available_gateways();
+    $gw = $payment->get_gateway();
+
+    if ( !isset($gateways[$gw]))
+    {
+        echo $gw;
+    }
+    else
+    {
+        $gw = $gateways[$gw];
+        $icon = $gw->get_icon();
+        $name = $gw->get_name();
+
+        if ( !empty($icon['icon']))
+        {
+            printf('<img src="%2$s" class="cuar-gateway-icon" />&nbsp;%1$s', $name, $icon['icon']);
+        }
+        else
+        {
+            echo $name;
+        }
+    }
 }
 
 /**

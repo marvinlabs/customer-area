@@ -80,10 +80,21 @@ class CUAR_PaymentsHelper
         return $payment->ID;
     }
 
+    /**
+     * Get all payments which have been made for the given object
+     *
+     * @param string $object_type
+     * @param int    $object_id
+     * @param bool   $only_completed
+     *
+     * @return array
+     */
     public function get_payments_for_object($object_type, $object_id, $only_completed = false)
     {
         $args = array(
             'post_type'  => CUAR_Payment::$POST_TYPE,
+            'orderby'    => 'date',
+            'order'      => 'desc',
             'meta_query' => array(
                 'relation' => 'AND',
                 array(

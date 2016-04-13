@@ -18,14 +18,14 @@
     <div class="col-xs-12">
         <table class="table">
             <tr>
-                <th><?php _e('Gateway', 'cuar'); ?></th>
                 <th><?php _e('Date', 'cuar'); ?></th>
+                <th><?php _e('Gateway', 'cuar'); ?></th>
                 <th><?php _e('Amount', 'cuar'); ?></th>
             </tr>
             <?php foreach ($payments as $payment) : ?>
                 <tr>
-                    <td><?php cuar_the_payment_gateway($payment); ?></td>
                     <td><?php cuar_the_payment_date($payment); ?></td>
+                    <td><?php cuar_the_payment_gateway($payment); ?></td>
                     <td><?php cuar_the_payment_amount($payment); ?></td>
                 </tr>
             <?php endforeach; ?>
