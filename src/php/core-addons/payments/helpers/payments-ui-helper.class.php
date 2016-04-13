@@ -38,22 +38,53 @@ class CUAR_PaymentsUiHelper
      */
     public function show_payment_button($object_type, $object_id, $amount, $currency, $label, $address)
     {
-        /** @noinspection PhpUnusedLocalVariableInspection */
-        $gateways = $this->pa_addon->settings()->get_enabled_gateways();
-        if (empty($gateways)) return;
+        // Check if we already have a payment for that object, and if any, check the amount
+        $payments = $this->pa_addon->payments()->get_payments_for_object($object_type, $object_id, true);
+        $paid_amount = 0;
+        /** @var CUAR_Payment $p */
+        foreach ($payments as $p) {
+            $paid_amount += $p->get_amount();
+        }
+        $remaining_amount = $amount - $paid_amount;
 
-        /** @noinspection PhpUnusedLocalVariableInspection */
-        $accepted_credit_cards = $this->pa_addon->settings()->get_enabled_credit_cards();
+        // Display existing payments
+        if (!empty($payments) && $paid_amount>0)
+        {
+            $template = $this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/payments',
+                array(
+                    'payment-history-inline-' . $object_type . '.template.php',
+                    'payment-history-inline.template.php',
+                ),
+                'templates');
 
-        $template = $this->plugin->get_template_file_path(
-            CUAR_INCLUDES_DIR . '/core-addons/payments',
-            array(
-                'payment-button-' . $object_type . '.template.php',
-                'payment-button.template.php',
-            ),
-            'templates');
+            include($template);
+        }
 
-        include($template);
+        // If everything is paid, we do not show the payment button
+        if ($remaining_amount>0)
+        {
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $button_label = apply_filters('cuar/core/payments/templates/payment-button-label',
+                sprintf(__('Pay %s', 'cuarin'), CUAR_CurrencyHelper::formatAmount($remaining_amount, $currency, '')));
+
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $gateways = $this->pa_addon->settings()->get_enabled_gateways();
+            if (empty($gateways)) return;
+
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $accepted_credit_cards = $this->pa_addon->settings()->get_enabled_credit_cards();
+
+            $template = $this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/payments',
+                array(
+                    'payment-button-' . $object_type . '.template.php',
+                    'payment-button.template.php',
+                ),
+                'templates');
+
+            include($template);
+        }
     }
 
     //---------- PROCESSING FUNCTIONS -------------------------------------------------------------------------------------------------------------------------/

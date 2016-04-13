@@ -4,15 +4,15 @@
 <?php /** @var array $gateways */ ?>
 <?php /** @var string $object_type */ ?>
 <?php /** @var int $object_id */ ?>
-<?php /** @var double $amount */ ?>
+<?php /** @var double $remaining_amount */ ?>
 <?php /** @var string $currency */ ?>
-<?php /** @var string $label */ ?>
+<?php /** @var string $button_label */ ?>
 <?php /** @var array $address */ ?>
 
 <form action="<?php echo esc_attr(cuar_get_checkout_url()); ?>" method="POST">
     <input type="hidden" name="cuar_object_type" value="<?php echo esc_attr($object_type); ?>"/>
     <input type="hidden" name="cuar_object_id" value="<?php echo esc_attr($object_id); ?>"/>
-    <input type="hidden" name="cuar_amount" value="<?php echo esc_attr($amount); ?>"/>
+    <input type="hidden" name="cuar_amount" value="<?php echo esc_attr($remaining_amount); ?>"/>
     <input type="hidden" name="cuar_currency" value="<?php echo esc_attr($currency); ?>"/>
     <?php echo CUAR_AddressHelper::get_address_as_hidden_input($address, 'cuar_address'); ?>
 
@@ -39,17 +39,15 @@
                     $icon = $gateway->get_icon();
                     ?>
                     <li>
-                    <?php if ( !empty($icon['link'])) : ?>
+                        <?php if ( !empty($icon['link'])) : ?>
                         <a href="<?php echo esc_attr($icon['link']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>" target="_blank">
-                    <?php endif; ?>
+                            <?php endif; ?>
 
-                    <?php if ( !empty($icon['icon'])) : ?>
-                        <img src="<?php echo esc_attr($icon['icon']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>"/>
-                    <?php else: ?>
-                        <?php echo $gateway->get_name(); ?>
-                    <?php endif; ?>
+                            <?php if ( !empty($icon['icon'])) : ?>
+                                <img src="<?php echo esc_attr($icon['icon']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>"/>
+                            <?php else: ?><?php echo $gateway->get_name(); ?><?php endif; ?>
 
-                    <?php if ( !empty($icon['link'])) : ?>
+                            <?php if ( !empty($icon['link'])) : ?>
                         </a>
                     <?php endif; ?>
                     </li>
@@ -57,7 +55,7 @@
             </ul>
         </div>
         <div class="form-group col-xs-4 text-right">
-            <button type="submit" name="cuar_do_checkout" class="btn btn-primary btn-lg"><?php echo $label; ?></button>
+            <button type="submit" name="cuar_do_checkout" class="btn btn-primary btn-lg"><?php echo $button_label; ?></button>
         </div>
     </div>
 

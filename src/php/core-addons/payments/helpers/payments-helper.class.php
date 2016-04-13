@@ -39,10 +39,10 @@ class CUAR_PaymentsHelper
      * @return bool|int Payment ID if payment is inserted, false otherwise
      */
     public function add($object_type, $object_id, $title,
-                        $gateway, $amount, $currency,
-                        $user_id, $user_address,
-                        $extra_data = array(),
-                        $status = 'pending')
+        $gateway, $amount, $currency,
+        $user_id, $user_address,
+        $extra_data = array(),
+        $status = 'pending')
     {
         // Make sure the payment is inserted with the correct timezone
         date_default_timezone_set(CUAR_GeneralHelper::get_timezone_id());
@@ -78,6 +78,40 @@ class CUAR_PaymentsHelper
         do_action('cuar/core/payments/on-payment-added', $payment);
 
         return $payment->ID;
+    }
+
+    public function get_payments_for_object($object_type, $object_id, $only_completed = false)
+    {
+        $args = array(
+            'post_type'  => CUAR_Payment::$POST_TYPE,
+            'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key'   => CUAR_Payment::$META_OBJECT_TYPE,
+                    'value' => $object_type
+                ),
+                array(
+                    'key'   => CUAR_Payment::$META_OBJECT_ID,
+                    'value' => $object_id
+                )
+            )
+        );
+        $args['post_status'] = $only_completed
+            ? CUAR_PaymentStatus::$STATUS_COMPLETE
+            : CUAR_PaymentStatus::get_payment_status_keys();
+
+        $args = apply_filters('cuar/core/payments/get-payments-for-object-args', $args, $object_type, $object_id, $only_completed);
+        $posts = get_posts($args);
+
+        if (empty($posts) || is_wp_error($posts)) return array();
+
+        $payments = array();
+        foreach ($posts as $post)
+        {
+            $payments[] = new CUAR_Payment($post);
+        }
+
+        return $payments;
     }
 
 }
