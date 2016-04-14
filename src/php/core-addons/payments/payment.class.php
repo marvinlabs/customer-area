@@ -77,8 +77,16 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function set_object($object_type, $object_id)
     {
+        $previous_value = $this->get_object();
+        $new_value = array(
+            'type' => $object_type,
+            'id'   => $object_id,
+        );
+
         update_post_meta($this->ID, self::$META_OBJECT_ID, $object_id);
         update_post_meta($this->ID, self::$META_OBJECT_TYPE, $object_type);
+
+        do_action('cuar/core/payment/on-object-updated', $this, $previous_value, $new_value);
     }
 
     /**
@@ -104,7 +112,12 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function set_gateway($gateway)
     {
-        update_post_meta($this->ID, self::$META_GATEWAY, $gateway);
+        $previous_value = $this->get_gateway();
+        $new_value =$gateway;
+
+        update_post_meta($this->ID, self::$META_GATEWAY, $new_value);
+
+        do_action('cuar/core/payment/on-gateway-updated', $this, $previous_value, $new_value);
     }
 
     /**
@@ -147,8 +160,12 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function set_address($address)
     {
-        $address = CUAR_AddressHelper::sanitize_address($address);
-        update_post_meta($this->ID, self::$META_ADDRESS, $address);
+        $previous_value = $this->get_address();
+        $new_value = CUAR_AddressHelper::sanitize_address($address);
+
+        update_post_meta($this->ID, self::$META_ADDRESS, $new_value);
+
+        do_action('cuar/core/payment/on-address-updated', $this, $previous_value, $new_value);
     }
 
     /**
@@ -171,7 +188,12 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function set_user_id($user_id)
     {
-        update_post_meta($this->ID, self::$META_USER_ID, $user_id);
+        $previous_value = $this->get_user_id();
+        $new_value = $user_id;
+
+        update_post_meta($this->ID, self::$META_USER_ID, $new_value);
+
+        do_action('cuar/core/payment/on-user-id-updated', $this, $previous_value, $new_value);
     }
 
     /**
@@ -193,7 +215,12 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function set_user_ip($user_ip)
     {
-        update_post_meta($this->ID, self::$META_USER_IP, $user_ip);
+        $previous_value = $this->get_user_ip();
+        $new_value = $user_ip;
+
+        update_post_meta($this->ID, self::$META_USER_IP, $new_value);
+
+        do_action('cuar/core/payment/on-user-ip-updated', $this, $previous_value, $new_value);
     }
 
     /**
@@ -215,7 +242,12 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function set_notes($notes)
     {
-        update_post_meta($this->ID, self::$META_NOTES, $notes);
+        $previous_value = $this->get_notes();
+        $new_value = $notes;
+
+        update_post_meta($this->ID, self::$META_NOTES, $new_value);
+
+        do_action('cuar/core/payment/on-notes-updated', $this, $previous_value, $new_value);
     }
 
     /**
@@ -282,7 +314,12 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function set_currency($currency)
     {
-        update_post_meta($this->ID, self::$META_CURRENCY, $currency);
+        $previous_value = $this->get_currency();
+        $new_value = $currency;
+
+        update_post_meta($this->ID, self::$META_CURRENCY, $new_value);
+
+        do_action('cuar/core/payment/on-currency-updated', $this, $previous_value, $new_value);
     }
 
     /**
@@ -304,7 +341,12 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function set_amount($amount)
     {
-        update_post_meta($this->ID, self::$META_AMOUNT, $amount);
+        $previous_value = $this->get_amount();
+        $new_value = $amount;
+
+        update_post_meta($this->ID, self::$META_AMOUNT, $new_value);
+
+        do_action('cuar/core/payment/on-amount-updated', $this, $previous_value, $new_value);
     }
 
     /**

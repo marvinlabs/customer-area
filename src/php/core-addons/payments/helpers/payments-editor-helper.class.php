@@ -161,11 +161,15 @@ class CUAR_PaymentsEditorHelper
         $payment->set_currency($currency);
         $payment->set_amount($amount);
 
+        // Status
+        $user = get_userdata(get_current_user_id());
+        $payment->update_status($status, $user->user_login);
+
+        // Date
         $update_args = array(
             'ID' => $payment_id
         );
 
-        if (!empty($status)) $update_args['post_status'] = $status;
         if (!empty($date)) {
             $date .= ' 00:00:00';
             // $update_args['post_date'] = $date;
