@@ -68,6 +68,7 @@ class CUAR_PaymentsSettingsHelper
         // For gateways too
         $defaults = CUAR_TestPaymentGateway::set_default_options($defaults);
         $defaults = CUAR_BacsPaymentGateway::set_default_options($defaults);
+        $defaults = CUAR_ChequePaymentGateway::set_default_options($defaults);
 
         return $defaults;
     }
@@ -88,8 +89,9 @@ class CUAR_PaymentsSettingsHelper
     public function get_available_gateways()
     {
         return apply_filters('cuar/core/payments/gateways', array(
-            'bacs' => new CUAR_BacsPaymentGateway($this->plugin),
-            'test' => new CUAR_TestPaymentGateway($this->plugin),
+            'bacs'   => new CUAR_BacsPaymentGateway($this->plugin),
+            'cheque' => new CUAR_ChequePaymentGateway($this->plugin),
+            'test'   => new CUAR_TestPaymentGateway($this->plugin),
         ));
     }
 

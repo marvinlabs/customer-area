@@ -12,6 +12,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/helpers/payments-editor-
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/abstract-payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/bacs-payment-gateway.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/cheque-payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/test-payment-gateway.class.php');
 
 if ( !class_exists('CUAR_PaymentsAddOn')) :

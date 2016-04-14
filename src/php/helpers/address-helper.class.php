@@ -44,6 +44,8 @@ if ( !class_exists('CUAR_AddressHelper')) :
          */
         public static function sanitize_address($address)
         {
+            if (!is_array($address)) $address = array();
+            
             if ( !empty($address['vat-number'])) $address['vat_number'] = $address['vat-number'];
             if ( !empty($address['logo-url'])) $address['logo_url'] = $address['logo-url'];
 
