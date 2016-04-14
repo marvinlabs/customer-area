@@ -63,7 +63,7 @@ class CUAR_Payment extends CUAR_CustomPost
 
             $this->add_note($changed_by, sprintf(__('Status changed from %1$s to %2$s', 'cuar'), $old_status, $new_status));
 
-            do_action('cuar/core/payments/on-status-updated', $this->ID, $new_status, $old_status);
+            do_action('cuar/core/payments/on-status-updated', $this, $old_status, $new_status);
         }
     }
 

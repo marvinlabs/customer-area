@@ -161,10 +161,6 @@ class CUAR_PaymentsEditorHelper
         $payment->set_currency($currency);
         $payment->set_amount($amount);
 
-        // Status
-        $user = get_userdata(get_current_user_id());
-        $payment->update_status($status, $user->user_login);
-
         // Date
         $update_args = array(
             'ID' => $payment_id
@@ -179,5 +175,9 @@ class CUAR_PaymentsEditorHelper
         if (count($update_args)>1) {
             wp_update_post($update_args);
         }
+
+        // Status
+        $user = get_userdata(get_current_user_id());
+        $payment->update_status($status, $user->user_login);
     }
 }

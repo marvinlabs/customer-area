@@ -14,7 +14,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/abstract-paymen
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/bacs-payment-gateway.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/gateways/test-payment-gateway.class.php');
 
-if (!class_exists('CUAR_PaymentsAddOn')) :
+if ( !class_exists('CUAR_PaymentsAddOn')) :
 
     /**
      * Add-on to allow users to send messages to each other
@@ -57,16 +57,16 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
          */
         public function run_addon($plugin)
         {
-            $payable_types = $this->get_payable_types();
-            if (empty($payable_types)) return;
+            if ( !$this->is_enabled()) return;
 
             $this->editor = new CUAR_PaymentsEditorHelper($plugin, $this);
             $this->settings = new CUAR_PaymentsSettingsHelper($plugin, $this);
             $this->payments = new CUAR_PaymentsHelper($plugin, $this);
-            $this->payments_ui = new CUAR_PaymentsUiHelper($plugin,$this);
+            $this->payments_ui = new CUAR_PaymentsUiHelper($plugin, $this);
 
             // Init the admin interface if needed
-            if (is_admin()) {
+            if (is_admin())
+            {
                 $this->admin_interface = new CUAR_PaymentsAdminInterface($plugin, $this);
             }
 
@@ -118,6 +118,13 @@ if (!class_exists('CUAR_PaymentsAddOn')) :
         public function get_payable_types()
         {
             return apply_filters('cuar/core/payments/payable-types', array());
+        }
+
+        public function is_enabled()
+        {
+            $payable_types = $this->get_payable_types();
+
+            return !empty($payable_types);
         }
 
         /*------- SCRIPTS & AJAX -----------------------------------------------------------------------------------------*/

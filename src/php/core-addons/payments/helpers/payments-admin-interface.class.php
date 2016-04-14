@@ -111,9 +111,9 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
         {
             remove_action("save_post_" . CUAR_Payment::$POST_TYPE, array(&$this, 'on_save_payment'));
 
-            $this->pa_addon->editor()->save_data_fields($post_id, $_POST);
             $this->pa_addon->editor()->save_address_fields($post_id, $_POST);
             $this->pa_addon->editor()->save_gateway_fields($post_id, $_POST);
+            $this->pa_addon->editor()->save_data_fields($post_id, $_POST);
 
             add_action("save_post_" . CUAR_Payment::$POST_TYPE, array(&$this, 'on_save_payment'));
         }
