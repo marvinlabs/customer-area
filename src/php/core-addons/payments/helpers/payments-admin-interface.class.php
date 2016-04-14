@@ -27,7 +27,6 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
             add_action('cuar/core/admin/print-admin-page?page=payments', array(&$this, 'print_payments_page'), 99);
             add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 90);
             add_action("load-post-new.php", array(&$this, 'block_default_admin_pages'));
-            add_action("load-edit.php", array(&$this, 'block_default_admin_pages'));
 
             add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'));
 
@@ -62,7 +61,7 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
          */
         public function block_default_admin_pages()
         {
-            if (isset($_GET["post_type"]) && $_GET["post_type"] == "cuar_payment")
+            if (isset($_GET["post_type"]) && $_GET["post_type"] == CUAR_Payment::$POST_TYPE)
             {
                 wp_redirect(admin_url("admin.php?page=" . self::$PAYMENT_PAGE_SLUG));
             }
