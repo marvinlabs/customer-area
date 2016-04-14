@@ -83,17 +83,19 @@ class CUAR_PaymentsEditorHelper
      */
     public function print_address_fields($payment_id)
     {
+        $this->plugin->enable_library('select2');
         $this->pa_addon->enqueue_scripts();
 
         $payment = new CUAR_Payment($payment_id);
-        $address = $payment->get_address();
 
-        /** @var CUAR_AddressesAddOn $am */
-        $am = $this->plugin->get_addon('address-manager');
-        $am->print_address_editor($address,
-            'cuar_address', '',
-            array(), '',
-            'metabox');
+        $template_suffix = is_admin() ? '-admin' : '-frontend';
+        include($this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/payments',
+            array(
+                'payment-editor-payer' . $template_suffix . '.template.php',
+                'payment-editor-payer.template.php',
+            ),
+            'templates'));
     }
 
     /**
@@ -106,8 +108,14 @@ class CUAR_PaymentsEditorHelper
     {
         $address = isset($form_data['cuar_address']) ? $form_data['cuar_address'] : array();
 
+        $payer = isset($form_data['payer']) ? $form_data['payer'] : array();
+        $user_id = isset($payer['user_id']) ? $payer['user_id'] : 0;
+        $user_ip = isset($payer['user_ip']) ? $payer['user_ip'] : '';
+
         $payment = new CUAR_Payment($payment_id, false);
         $payment->set_address($address);
+        $payment->set_user_id($user_id);
+        $payment->set_user_ip($user_ip);
     }
 
     /**
