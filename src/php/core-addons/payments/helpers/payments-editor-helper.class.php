@@ -19,6 +19,14 @@ class CUAR_PaymentsEditorHelper
         $this->pa_addon = $pa_addon;
     }
 
+    public function print_object_summary($payment_id)
+    {
+        $payment = new CUAR_Payment($payment_id);
+        $object = $payment->get_object();
+
+        do_action('cuar/core/payments/show-object-details?type=' . $object['type'], $payment, $object['id']);
+    }
+
     public function print_data_fields($payment_id)
     {
         $payment = new CUAR_Payment($payment_id);
@@ -126,6 +134,13 @@ class CUAR_PaymentsEditorHelper
      */
     public function save_gateway_fields($payment_id, $form_data)
     {
+        $gw = isset($form_data['gateway']) ? $form_data['gateway'] : array();
+        $gateway = isset($gw['gateway']) ? $gw['gateway'] : 0;
+
+        $payment = new CUAR_Payment($payment_id, true);
+        $payment->set_gateway($gateway);
+
+        do_action('cuar/core/payments/payment-editor-save-gateway-meta?gateway=' . $gateway, $payment);
     }
 
     /**

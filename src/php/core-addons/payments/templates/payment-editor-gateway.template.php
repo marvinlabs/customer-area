@@ -18,4 +18,6 @@
             </div>
         </div>
     </div>
+
+    <?php do_action('cuar/core/payments/templates/payment-editor-gateway-meta?gateway=' . $payment->get_gateway(), $payment); ?>
 </div>

@@ -130,6 +130,13 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
             remove_meta_box( 'submitdiv', $post_type, 'side' );
 
             add_meta_box(
+                'cuar_payment_object_metabox',
+                __('Paid object', 'cuar'),
+                array(&$this, 'print_object_metabox'),
+                CUAR_Payment::$POST_TYPE,
+                'side', 'high');
+
+            add_meta_box(
                 'cuar_payment_data_metabox',
                 __('Payment data', 'cuar'),
                 array(&$this, 'print_payment_data_metabox'),
@@ -142,13 +149,6 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
                 array(&$this, 'print_gateway_metabox'),
                 CUAR_Payment::$POST_TYPE,
                 'side', 'high');
-
-            add_meta_box(
-                'cuar_payment_object_metabox',
-                __('Paid object', 'cuar'),
-                array(&$this, 'print_object_metabox'),
-                CUAR_Payment::$POST_TYPE,
-                'normal', 'high');
 
             add_meta_box(
                 'cuar_payment_author_metabox',
@@ -179,7 +179,8 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
 
         public function print_object_metabox()
         {
-            echo 'object';
+            global $post;
+            $this->pa_addon->editor()->print_object_summary($post->ID);
         }
 
         public function print_notes_metabox()
