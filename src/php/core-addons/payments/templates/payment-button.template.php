@@ -5,6 +5,7 @@
 <?php /** @var string $object_type */ ?>
 <?php /** @var int $object_id */ ?>
 <?php /** @var double $remaining_amount */ ?>
+<?php /** @var double $paid_amount */ ?>
 <?php /** @var string $currency */ ?>
 <?php /** @var string $button_label */ ?>
 <?php /** @var array $address */ ?>
@@ -20,7 +21,13 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h3><?php _e('Pay now', 'cuar'); ?></h3>
+            <?php if ($paid_amount <= 0) : ?>
+                <h3><?php _e('Pay now', 'cuar'); ?></h3>
+            <?php elseif ($remaining_amount > 0) : ?>
+                <h3><?php printf(__('You have already paid %s', 'cuar'), CUAR_CurrencyHelper::formatAmount($paid_amount, $currency)); ?></h3>
+            <?php else: ?>
+                <h3><?php _e('You have already paid the full amount. Thank you.', 'cuar'); ?></h3>
+            <?php endif; ?>
         </div>
     </div>
     <div class="row">
@@ -31,7 +38,7 @@
                 <?php foreach ($accepted_credit_cards as $cc_id => $cc): ?>
                     <li>
                         <?php if ( !empty($cc['icon'])) : ?>
-                            <img src="<?php echo esc_attr($cc['icon']); ?>" title="<?php echo esc_attr($cc['label']); ?>"/>
+                            <img src="<?php echo esc_attr($cc['icon']); ?>" title="<?php echo esc_attr($cc['label']); ?>" class="cuar-gateway-icon" />
                         <?php else: ?><?php echo esc_attr($cc['label']); ?><?php endif; ?>
                     </li>
                 <?php endforeach; ?>
@@ -44,7 +51,7 @@
                             <?php endif; ?>
 
                             <?php if ( !empty($icon['icon'])) : ?>
-                                <img src="<?php echo esc_attr($icon['icon']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>"/>
+                                <img src="<?php echo esc_attr($icon['icon']); ?>" title="<?php echo esc_attr($gateway->get_name()); ?>" class="cuar-gateway-icon"/>
                             <?php else: ?><?php echo $gateway->get_name(); ?><?php endif; ?>
 
                             <?php if ( !empty($icon['link'])) : ?>

@@ -109,7 +109,13 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
          */
         public function on_save_payment($post_id)
         {
+            remove_action("save_post_" . CUAR_Payment::$POST_TYPE, array(&$this, 'on_save_payment'));
+
+            $this->pa_addon->editor()->save_data_fields($post_id, $_POST);
             $this->pa_addon->editor()->save_address_fields($post_id, $_POST);
+            $this->pa_addon->editor()->save_gateway_fields($post_id, $_POST);
+
+            add_action("save_post_" . CUAR_Payment::$POST_TYPE, array(&$this, 'on_save_payment'));
         }
 
         /**
@@ -121,7 +127,7 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
         {
             if ($post_type != CUAR_Payment::$POST_TYPE) return;
 
-            // remove_meta_box( 'submitdiv', $post_type, 'side' );
+            remove_meta_box( 'submitdiv', $post_type, 'side' );
 
             add_meta_box(
                 'cuar_payment_data_metabox',
@@ -161,12 +167,14 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
 
         public function print_payment_data_metabox()
         {
-            echo 'data';
+            global $post;
+            $this->pa_addon->editor()->print_data_fields($post->ID);
         }
 
         public function print_gateway_metabox()
         {
-            echo 'gateway';
+            global $post;
+            $this->pa_addon->editor()->print_gateway_fields($post->ID);
         }
 
         public function print_object_metabox()

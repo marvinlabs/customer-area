@@ -7,7 +7,7 @@ class CUAR_PaymentsEditorHelper
     /** @var CUAR_Plugin */
     private $plugin;
 
-    /** @var CUAR_InvoicingAddOn */
+    /** @var CUAR_PaymentsAddOn */
     private $pa_addon;
 
     /**
@@ -17,6 +17,35 @@ class CUAR_PaymentsEditorHelper
     {
         $this->plugin = $plugin;
         $this->pa_addon = $pa_addon;
+    }
+
+    public function print_data_fields($payment_id)
+    {
+        $payment = new CUAR_Payment($payment_id);
+
+        $template_suffix = is_admin() ? '-admin' : '-frontend';
+        include($this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/payments',
+            array(
+                'payment-editor-data' . $template_suffix . '.template.php',
+                'payment-editor-data.template.php',
+            ),
+            'templates'));
+    }
+    
+    public function print_gateway_fields($payment_id) 
+    {
+        $payment = new CUAR_Payment($payment_id);
+        $gateways = $this->pa_addon->settings()->get_available_gateways();
+
+        $template_suffix = is_admin() ? '-admin' : '-frontend';
+        include($this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/payments',
+            array(
+                'payment-editor-gateway' . $template_suffix . '.template.php',
+                'payment-editor-gateway.template.php',
+            ),
+            'templates'));
     }
 
     /**
@@ -82,23 +111,46 @@ class CUAR_PaymentsEditorHelper
     }
 
     /**
+     * Save the payment gateway properties
+     *
+     * @param int   $payment_id The ID of the payment
+     * @param array $form_data  The form data (typically $_POST)
+     */
+    public function save_gateway_fields($payment_id, $form_data)
+    {
+    }
+
+    /**
      * Save the general payment properties
      *
      * @param int   $payment_id The ID of the payment
      * @param array $form_data  The form data (typically $_POST)
      */
-    public function save_settings_fields($payment_id, $form_data)
+    public function save_data_fields($payment_id, $form_data)
     {
-        $settings = isset($form_data['settings']) ? $form_data['settings'] : array();
-        $currency = isset($settings['currency']) ? $settings['currency'] : $this->pa_addon->settings()->get_default_currency();
-        $status = isset($settings['status']) ? $settings['status'] : $this->pa_addon->settings()->get_default_status();
-        $due_date = isset($settings['due_date']) ? $settings['due_date'] : '';
-        $payment_mode = isset($settings['payment_mode']) ? $settings['payment_mode'] : '';
+        $data = isset($form_data['data']) ? $form_data['data'] : array();
+        $currency = isset($data['currency']) ? $data['currency'] : 'EUR';
+        $status = isset($data['status']) ? $data['status'] : '';
+        $date = isset($data['date']) ? $data['date'] : '';
+        $amount = isset($data['amount']) ? $data['amount'] : 0;
 
         $payment = new CUAR_Payment($payment_id, false);
         $payment->set_currency($currency);
-        $payment->set_status($status);
-        $payment->set_due_date($due_date);
-        $payment->set_payment_mode($payment_mode);
+        $payment->set_amount($amount);
+
+        $update_args = array(
+            'ID' => $payment_id
+        );
+
+        if (!empty($status)) $update_args['post_status'] = $status;
+        if (!empty($date)) {
+            $date .= ' 00:00:00';
+            // $update_args['post_date'] = $date;
+            $update_args['post_date_gmt'] = $date;
+        }
+
+        if (count($update_args)>1) {
+            wp_update_post($update_args);
+        }
     }
 }

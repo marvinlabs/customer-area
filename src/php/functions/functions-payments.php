@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  * @param int    $object_id
  * @param double $amount
  * @param string $currency
- * @param string $label The label to show on the button
+ * @param string $address
  */
 function cuar_the_payment_button($object_type, $object_id, $amount, $currency, $address)
 {
@@ -135,4 +135,14 @@ function cuar_the_payment_gateway($payment)
 function cuar_the_payment_amount($payment)
 {
     echo CUAR_CurrencyHelper::formatAmount($payment->get_amount(), $payment->get_currency());
+}
+
+/**
+ * @param CUAR_Payment $payment
+ */
+function cuar_the_payment_status($payment)
+{
+    $s = $payment->get_post()->post_status;
+    $all = CUAR_PaymentStatus::get_payment_statuses();
+    echo isset($all[$s]) ? $all[$s] : $s;
 }

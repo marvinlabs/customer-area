@@ -33,33 +33,20 @@ class CUAR_PaymentsUiHelper
      * @param int    $object_id
      * @param double $amount
      * @param string $currency
-     * @param string $label The label to show on the button
      * @param array  $address
      */
-    public function show_payment_button($object_type, $object_id, $amount, $currency, $label, $address)
+    public function show_payment_button($object_type, $object_id, $amount, $currency, $address)
     {
         // Check if we already have a payment for that object, and if any, check the amount
-        $payments = $this->pa_addon->payments()->get_payments_for_object($object_type, $object_id, true);
+        $payments = $this->pa_addon->payments()->get_payments_for_object($object_type, $object_id, false);
         $paid_amount = 0;
         /** @var CUAR_Payment $p */
         foreach ($payments as $p) {
+            if ($p->get_post()->post_status!=CUAR_PaymentStatus::$STATUS_COMPLETE) continue;
+
             $paid_amount += $p->get_amount();
         }
         $remaining_amount = $amount - $paid_amount;
-
-        // Display existing payments
-        if (!empty($payments) && $paid_amount>0)
-        {
-            $template = $this->plugin->get_template_file_path(
-                CUAR_INCLUDES_DIR . '/core-addons/payments',
-                array(
-                    'payment-history-inline-' . $object_type . '.template.php',
-                    'payment-history-inline.template.php',
-                ),
-                'templates');
-
-            include($template);
-        }
 
         // If everything is paid, we do not show the payment button
         if ($remaining_amount>0)
@@ -80,6 +67,20 @@ class CUAR_PaymentsUiHelper
                 array(
                     'payment-button-' . $object_type . '.template.php',
                     'payment-button.template.php',
+                ),
+                'templates');
+
+            include($template);
+        }
+
+        // Display existing payments
+        if (!empty($payments) && $paid_amount>0)
+        {
+            $template = $this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/payments',
+                array(
+                    'payment-history-inline-' . $object_type . '.template.php',
+                    'payment-history-inline.template.php',
                 ),
                 'templates');
 
