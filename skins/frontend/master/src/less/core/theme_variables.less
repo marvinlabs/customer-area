@@ -580,40 +580,40 @@
 @btn-font-weight:                normal;
 
 @btn-default-bg:                 @cuar-color-neutral-10;
-@btn-default-color:              contrast(@btn-default-bg, @palette-Black-Text, @palette-White-Text);
+@btn-default-color:              contrast(@btn-default-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
 @btn-default-border:             darken(@btn-default-bg, 8%);
 
 @btn-primary-bg:                 @brand-primary;
-@btn-primary-color:              contrast(@btn-primary-bg, @palette-Black-Text, @palette-White-Text);
+@btn-primary-color:              contrast(@btn-primary-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
 @btn-primary-border:             darken(@btn-primary-bg, 8%);
 
 @btn-success-bg:                 @brand-success;
-@btn-success-color:              contrast(@btn-success-bg, @palette-Black-Text, @palette-White-Text);
+@btn-success-color:              contrast(@btn-success-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
 @btn-success-border:             darken(@btn-success-bg, 8%);
 
 @btn-info-bg:                    @brand-info;
-@btn-info-color:                 contrast(@btn-info-bg, @palette-Black-Text, @palette-White-Text);
-@btn-info-border:                darken(@btn-success-bg, 8%);
+@btn-info-color:                 contrast(@btn-info-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
+@btn-info-border:                darken(@btn-info-bg, 8%);
 
 @btn-warning-bg:                 @brand-warning;
-@btn-warning-color:              contrast(@btn-warning-bg, @palette-Black-Text, @palette-White-Text);
-@btn-warning-border:             darken(@btn-success-bg, 8%);
+@btn-warning-color:              contrast(@btn-warning-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
+@btn-warning-border:             darken(@btn-warning-bg, 8%);
 
 @btn-danger-bg:                  @brand-danger;
-@btn-danger-color:               contrast(@btn-danger-bg, @palette-Black-Text, @palette-White-Text);
-@btn-danger-border:              darken(@btn-success-bg, 8%);
+@btn-danger-color:               contrast(@btn-danger-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
+@btn-danger-border:              darken(@btn-danger-bg, 8%);
 
 @btn-alert-bg:                   @brand-alert;
-@btn-alert-color:                contrast(@btn-alert-bg, @palette-Black-Text, @palette-White-Text);
-@btn-alert-border:               darken(@btn-success-bg, 8%);
+@btn-alert-color:                contrast(@btn-alert-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
+@btn-alert-border:               darken(@btn-alert-bg, 8%);
 
 @btn-system-bg:                  @brand-system;
-@btn-system-color:               contrast(@btn-system-bg, @palette-Black-Text, @palette-White-Text);
-@btn-system-border:              darken(@btn-success-bg, 8%);
+@btn-system-color:               contrast(@btn-system-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
+@btn-system-border:              darken(@btn-system-bg, 8%);
 
 @btn-dark-bg:                    @brand-dark;
-@btn-dark-color:                 contrast(@btn-dark-bg, @palette-Black-Text, @palette-White-Text);
-@btn-dark-border:                darken(@btn-success-bg, 8%);
+@btn-dark-color:                 contrast(@btn-dark-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
+@btn-dark-border:                darken(@btn-dark-bg, 8%);
 
 @btn-link-disabled-color:        @muted;
 
@@ -896,10 +896,13 @@
 //** Dark label background color
 @label-dark-bg:               @btn-dark-bg;
 
+// DEPRECATED : Now generated automatically from label color
+// --
 //** Default label text color
 @label-color:                 #fff;
 //** Default text color of a linked label
 @label-link-hover-color:      #fff;
+// --
 
 
 //== Modals
