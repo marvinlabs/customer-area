@@ -236,8 +236,8 @@
 @brand-danger:          #e9573f; // red
 @brand-alert:           #967adc; // purple
 @brand-system:          #37bc9b; // teal
-@brand-dark:            #3b3f4f; // dark/black
-@brand-light:           saturate(mix(@cuar-color-primary, @cuar-color-neutral, 20%), 20%);
+@brand-dark:            saturate(mix(@cuar-color-primary, @gray-darker, 20%), 20%);
+@brand-light:           saturate(mix(@cuar-color-primary, @gray-lighter, 20%), 20%);
 
 //== Scaffolding
 //
@@ -870,31 +870,31 @@
 @label-muted-bg:              lighten(@main-bg, 10%);
 
 //** Default label background color
-@label-default-bg:            darken(@main-bg, 5%);
+@label-default-bg:            @btn-default-bg;
 
 //** Primary label background color
-@label-primary-bg:            @brand-primary;
+@label-primary-bg:            @btn-primary-bg;
 
 //** Success label background color
-@label-success-bg:            @brand-success;
+@label-success-bg:            @btn-success-bg;
 
 //** Info label background color
-@label-info-bg:               @brand-info;
+@label-info-bg:               @btn-info-bg;
 
 //** Warning label background color
-@label-warning-bg:            @brand-warning;
+@label-warning-bg:            @btn-warning-bg;
 
 //** Danger label background color
-@label-danger-bg:             @brand-danger;
+@label-danger-bg:             @btn-danger-bg;
 
 //** Alert label background color
-@label-alert-bg:              @brand-alert;
+@label-alert-bg:              @btn-alert-bg;
 
 //** System label background color
-@label-system-bg:             @brand-system;
+@label-system-bg:             @btn-system-bg;
 
 //** Dark label background color
-@label-dark-bg:               @brand-dark;
+@label-dark-bg:               @btn-dark-bg;
 
 //** Default label text color
 @label-color:                 #fff;
@@ -1167,7 +1167,7 @@
 //** Text color of current page in the breadcrumb
 @breadcrumb-active-color:       @gray-light;
 //** Textual separator for between breadcrumb elements
-@breadcrumb-separator:          "/";
+@breadcrumb-separator:          "-";
 
 
 //== Carousel
@@ -1363,4 +1363,3 @@
 // NProgress Loader Plugin - Default BG Color
 @nprogress-active-loader: @brand-warning; // page loading progress indicator
 @nprogress-active-spinner: @brand-primary; // spinning indicator
-

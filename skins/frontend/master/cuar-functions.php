@@ -223,8 +223,8 @@ if (!function_exists('cuar_remove_auto_excerpt')) {
     function cuar_remove_auto_excerpt()
     {
         // if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
-            remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-            add_filter('get_the_excerpt', 'cuar_trim_excerpt');
+        remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+        add_filter('get_the_excerpt', 'cuar_trim_excerpt');
         // }
     }
 
@@ -235,11 +235,13 @@ if (!function_exists('cuar_acf_field_group_class')) {
     /**
      * Customize field groups on frontend
      */
-    function cuar_acf_field_group_class($options, $id){
+    function cuar_acf_field_group_class($options, $id)
+    {
         if (!is_admin())
             $options["layout"] = 'panel';
         return $options;
     }
+
     add_filter('acf/field_group/get_options', 'cuar_acf_field_group_class', 10, 2);
 }
 
@@ -247,12 +249,42 @@ if (!function_exists('cuar_form_account_panel_head')) {
     /**
      * Wrap defaults account fields into a panel
      */
-    function cuar_form_account_panel_head(){
+    function cuar_form_account_panel_head()
+    {
         echo '<div class="panel"><div class="panel-heading">' . __('Account details', 'cuar') . '</div><div class="panel-body">';
     }
-    function cuar_form_account_panel_foot(){
+
+    function cuar_form_account_panel_foot()
+    {
         echo '</div></div>';
     }
+
     add_action('cuar/core/user-profile/edit/before_field?id=user_login', 'cuar_form_account_panel_head');
     add_action('cuar/core/user-profile/edit/after_field?id=user_pass', 'cuar_form_account_panel_foot');
+}
+
+if (!function_exists('cuar_dev_nuancier')) {
+    /**
+     * Nuancier colors for development purposes
+     */
+    function cuar_dev_nuancier()
+    {
+        $file = __DIR__ . DIRECTORY_SEPARATOR . 'src/less/less-vars.css';
+        if ($_SERVER['HTTP_HOST'] == 'local.wordpress.dev' && file_exists($file)) {
+            $file_txt = file_get_contents($file);
+            $file_regex = '/(.cuar-dev-nuance-)([^\'\s\{]*)/';
+
+            echo '<div id="cuar-dev-nuancier"><input type="checkbox" name="cuar-dev-nuancier-toggle" id="cuar-dev-nuancier-toggle"><label for="cuar-dev-nuancier-toggle"></label><div class="cuar-dev-nuancier"><div class="cuar-dev-nuancier-wrapper">' . "\n";
+
+            if (preg_match_all($file_regex, $file_txt, $file_match)) {
+                foreach ($file_match[2] as $class) {
+                    echo '<div class="cuar-dev-nuance cuar-dev-nuance-' . $class . '"></div>' . "\n";
+                }
+            }
+
+            echo '</div></div></div>' . "\n";
+        }
+    }
+
+    add_action('wp_footer', 'cuar_dev_nuancier');
 }
