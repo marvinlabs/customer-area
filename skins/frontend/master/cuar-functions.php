@@ -269,7 +269,7 @@ if (!function_exists('cuar_dev_nuancier')) {
      */
     function cuar_dev_nuancier()
     {
-        $file = __DIR__ . DIRECTORY_SEPARATOR . 'src/less/less-vars.css';
+        $file = CUAR_PLUGIN_DIR . '/skins/frontend/master/src/less/less-vars.css';
         if ($_SERVER['HTTP_HOST'] == 'local.wordpress.dev' && file_exists($file)) {
             $file_txt = file_get_contents($file);
             $file_regex = '/(.cuar-dev-nuance-)([^\'\s\{]*)/';
@@ -285,6 +285,25 @@ if (!function_exists('cuar_dev_nuancier')) {
             echo '</div></div></div>' . "\n";
         }
     }
+}
 
-    add_action('wp_footer', 'cuar_dev_nuancier');
+if (!function_exists('cuar_dev_nuancier_styles')) {
+
+    /**
+     * Load nuancier styles
+     */
+    function cuar_dev_nuancier_styles()
+    {
+        $file = CUAR_PLUGIN_DIR . '/skins/frontend/master/src/less/less-vars.css';
+        $css = CUAR_PLUGIN_DIR . '/skins/frontend/master/assets/css/less-vars.min.css';
+
+        if ($_SERVER['HTTP_HOST'] == 'local.wordpress.dev' && file_exists($file) && file_exists($css)) {
+            wp_register_style('customer-area-master-dev-nuancier', CUAR_PLUGIN_URL . '/skins/frontend/master/assets/css/less-vars.min.css');
+            wp_enqueue_style('customer-area-master-dev-nuancier');
+
+            add_action('wp_footer', 'cuar_dev_nuancier');
+        }
+    }
+
+    add_action('wp_enqueue_scripts', 'cuar_dev_nuancier_styles');
 }
