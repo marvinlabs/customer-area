@@ -212,7 +212,8 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@white:                 @cuar-color-contrast;
+@white:                 @cuar-color-contrast; // DEPRECATED
+
 @muted:                 @cuar-color-contrast-disabled;
 @transparent:           transparent;
 
@@ -615,6 +616,10 @@
 @btn-dark-color:                 contrast(@btn-dark-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
 @btn-dark-border:                darken(@btn-dark-bg, 8%);
 
+@btn-light-bg:                    @brand-light;
+@btn-light-color:                 contrast(@btn-light-bg, @cuar-color-text, @cuar-color-contrast-text, 60%);
+@btn-light-border:                darken(@btn-light-bg, 8%);
+
 @btn-link-disabled-color:        @muted;
 
 
@@ -773,45 +778,45 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-light-text:               @brand-light;
-@state-light-bg:                 lighten(@state-light-text, 10%);
-@state-light-border:             darken(spin(@state-light-bg, -10), 5%);
+@state-default-text:             @btn-default-color;
+@state-default-bg:               @btn-default-bg;
+@state-default-border:           @btn-default-border;
 
-@state-default-text:             @brand-default;
-@state-default-bg:               lighten(@state-default-text, 10%);
-@state-default-border:           darken(spin(@state-default-bg, -10), 5%);
+@state-primary-text:             @btn-primary-color;
+@state-primary-bg:               @btn-primary-bg;
+@state-primary-border:           @btn-primary-border;
 
-@state-primary-text:             @brand-primary;
-@state-primary-bg:               lighten(@state-primary-text, 10%);
-@state-primary-border:           darken(spin(@state-primary-bg, -10), 5%);
+@state-success-text:             @btn-success-color;
+@state-success-bg:               @btn-success-bg;
+@state-success-border:           @btn-success-border;
 
-@state-success-text:             @brand-success;
-@state-success-bg:               lighten(@state-success-text, 10%);
-@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+@state-info-text:                @btn-info-color;
+@state-info-bg:                  @btn-info-bg;
+@state-info-border:              @btn-info-border;
 
-@state-info-text:                @brand-info;
-@state-info-bg:                  lighten(@state-info-text, 10%);
-@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+@state-warning-text:             @btn-warning-color;
+@state-warning-bg:               @btn-warning-bg;
+@state-warning-border:           @btn-warning-border;
 
-@state-warning-text:             @brand-warning;
-@state-warning-bg:               lighten(@state-warning-text, 10%);
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+@state-danger-text:              @btn-danger-color;
+@state-danger-bg:                @btn-danger-bg;
+@state-danger-border:            @btn-danger-border;
 
-@state-danger-text:              @brand-danger;
-@state-danger-bg:                lighten(@state-danger-text, 13%);
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+@state-alert-text:               @btn-alert-color;
+@state-alert-bg:                 @btn-alert-bg;
+@state-alert-border:             @btn-alert-border;
 
-@state-alert-text:               @brand-alert;
-@state-alert-bg:                 lighten(@state-alert-text, 7%);
-@state-alert-border:             darken(spin(@state-alert-bg, -10), 7%);
+@state-system-text:              @btn-system-color;
+@state-system-bg:                @btn-system-bg;
+@state-system-border:            @btn-system-border;
 
-@state-system-text:              @brand-system;
-@state-system-bg:                lighten(@state-system-text, 10%);
-@state-system-border:            darken(spin(@state-system-bg, -10), 5%);
+@state-dark-text:                @btn-dark-color;
+@state-dark-bg:                  @btn-dark-bg;
+@state-dark-border:              @btn-dark-border;
 
-@state-dark-text:                @brand-dark;
-@state-dark-bg:                  lighten(@state-dark-text, 30%);
-@state-dark-border:              darken(spin(@state-dark-bg, -10), 5%);
+@state-light-text:               @btn-light-color;
+@state-light-bg:                 @btn-light-bg;
+@state-light-border:             @btn-light-border;
 
 
 
@@ -947,32 +952,16 @@
 @alert-font-size:             14px;
 @alert-link-font-weight:      bold;
 
-@alert-default-bg:            @brand-default;
-@alert-default-text:          #666;
-
-@alert-primary-bg:            @brand-primary;
-@alert-primary-text:          @white;
-
-@alert-success-bg:            @brand-success;
-@alert-success-text:          @white;
-
-@alert-info-bg:               @brand-info;
-@alert-info-text:             @white;
-
-@alert-warning-bg:            @brand-warning;
-@alert-warning-text:          @white;
-
-@alert-danger-bg:             @brand-danger;
-@alert-danger-text:           @white;
-
-@alert-alert-bg:              @brand-alert;
-@alert-alert-text:            @white;
-
-@alert-system-bg:             @brand-system;
-@alert-system-text:           @white;
-
-@alert-dark-bg:               @brand-dark;
-@alert-dark-text:             @white;
+@alert-default-bg:            @btn-default-bg;
+@alert-primary-bg:            @btn-primary-bg;
+@alert-success-bg:            @btn-success-bg;
+@alert-info-bg:               @btn-info-bg;
+@alert-warning-bg:            @btn-warning-bg;
+@alert-danger-bg:             @btn-danger-bg;
+@alert-alert-bg:              @btn-alert-bg;
+@alert-system-bg:             @btn-system-bg;
+@alert-dark-bg:               @btn-dark-bg;
+@alert-light-bg:              @btn-light-bg;
 
 //== Progress bars
 //
@@ -986,31 +975,17 @@
 @progress-bar-default-bg:     @progress-bar-bg;
 
 //** Progress bar text color
-@progress-bar-color:          contrast(@progress-bar-bg, @palette-Black-Text, @palette-White-Text);
+@progress-bar-color:          contrast(@progress-bar-bg, @cuar-color-text, @cuar-color-contrast-text);
 
-//** Primary progress bar color
-@progress-bar-primary-bg:     @brand-primary;
-
-//** Success progress bar color
-@progress-bar-success-bg:     @brand-success;
-
-//** Info progress bar color
-@progress-bar-info-bg:        @brand-info;
-
-//** Warning progress bar color
-@progress-bar-warning-bg:     @brand-warning;
-
-//** Danger progress bar color
-@progress-bar-danger-bg:      @brand-danger;
-
-//** Alert progress bar color
-@progress-bar-alert-bg:       @brand-alert;
-
-//** System progress bar color
-@progress-bar-system-bg:      @brand-system;
-
-//** Dark progress bar color
-@progress-bar-dark-bg:        @brand-dark;
+//** Progress bar background colors
+@progress-bar-primary-bg:     @btn-primary-bg;
+@progress-bar-success-bg:     @btn-success-bg;
+@progress-bar-info-bg:        @btn-info-bg;
+@progress-bar-warning-bg:     @btn-warning-bg;
+@progress-bar-danger-bg:      @btn-danger-bg;
+@progress-bar-alert-bg:       @btn-alert-bg;
+@progress-bar-system-bg:      @btn-system-bg;
+@progress-bar-dark-bg:        @btn-dark-bg;
 
 
 //== List group
@@ -1074,41 +1049,41 @@
 @panel-inner-border:          @panel-heading-border-color;
 
 // Panel Contextuals
-@panel-default-text:          @cuar-color-text;
-@panel-default-border:        @panel-heading-border-color;
-@panel-default-heading-bg:    @panel-heading-bg;
+@panel-default-text:          @btn-default-color;
+@panel-default-border:        @btn-default-border;
+@panel-default-heading-bg:    @btn-default-bg;
 
-@panel-primary-text:          #fff;
-@panel-primary-border:        @brand-primary;
-@panel-primary-heading-bg:    @brand-primary;
+@panel-primary-text:          @btn-primary-color;
+@panel-primary-border:        @btn-primary-border;
+@panel-primary-heading-bg:    @btn-primary-bg;
 
-@panel-success-text:          @white;
-@panel-success-border:        @brand-success;
-@panel-success-heading-bg:    @brand-success;
+@panel-success-text:          @btn-success-color;
+@panel-success-border:        @btn-success-border;
+@panel-success-heading-bg:    @btn-success-bg;
 
-@panel-info-text:             @white;
-@panel-info-border:           @brand-info;
-@panel-info-heading-bg:       @brand-info;
+@panel-info-text:             @btn-info-color;
+@panel-info-border:           @btn-info-border;
+@panel-info-heading-bg:       @btn-info-bg;
 
-@panel-warning-text:          @white;
-@panel-warning-border:        @brand-warning;
-@panel-warning-heading-bg:    @brand-warning;
+@panel-warning-text:          @btn-warning-color;
+@panel-warning-border:        @btn-warning-border;
+@panel-warning-heading-bg:    @btn-warning-bg;
 
-@panel-danger-text:           @white;
-@panel-danger-border:         @brand-danger;
-@panel-danger-heading-bg:     @brand-danger;
+@panel-danger-text:           @btn-danger-color;
+@panel-danger-border:         @btn-danger-border;
+@panel-danger-heading-bg:     @btn-danger-bg;
 
-@panel-alert-text:            @white;
-@panel-alert-border:          @brand-alert;
-@panel-alert-heading-bg:      @brand-alert;
+@panel-alert-text:            @btn-alert-color;
+@panel-alert-border:          @btn-alert-border;
+@panel-alert-heading-bg:      @btn-alert-bg;
 
-@panel-system-text:           @white;
-@panel-system-border:         @brand-system;
-@panel-system-heading-bg:     @brand-system;
+@panel-system-text:           @btn-system-color;
+@panel-system-border:         @btn-system-border;
+@panel-system-heading-bg:     @btn-system-bg;
 
-@panel-dark-text:             @white;
-@panel-dark-border:           @brand-dark;
-@panel-dark-heading-bg:       @brand-dark;
+@panel-dark-text:             @btn-dark-color;
+@panel-dark-border:           @btn-dark-border;
+@panel-dark-heading-bg:       @btn-dark-bg;
 
 //== Thumbnails
 //
