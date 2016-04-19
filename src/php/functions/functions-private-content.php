@@ -15,10 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
-	
+
 
 /**
  * Print the owner of a post
+ *
+ * @param int $post_id
  */
 function cuar_the_owner( $post_id = 0 ) {
 	echo cuar_get_the_owner( $post_id );
@@ -31,12 +33,14 @@ function cuar_the_owner( $post_id = 0 ) {
  * @return mixed
  */
 function cuar_get_the_owner( $post_id = 0 ) {
-	$cuar_plugin = CUAR_Plugin::get_instance();
-	$po_addon = $cuar_plugin->get_addon( 'post-owner' ); 
+    /** @var CUAR_PostOwnerAddOn $po_addon */
+    $po_addon = cuar_addon( 'post-owner' );
 	
 	$post_id = $post_id==0 ? get_the_ID() : $post_id;		
-	$owner_name = $po_addon->get_post_owner_displayname( $post_id );
-	return apply_filters( 'cuar/private-content/the-owner', $owner_name, $post_id );
+	$owner_names = $po_addon->get_post_displayable_owners( $post_id );
+    $owner_names = implode(', ', $owner_names);
+
+	return apply_filters( 'cuar/private-content/the-owner', $owner_names, $post_id );
 }
 
 /**

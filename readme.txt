@@ -132,6 +132,7 @@ feel free to fork the project and send us pull requests!
 = 7.0.0 (2016/04/
 
 * New: Brand new frontend skin. Greater UI and that should fix most compatibility problems with themes. **REQUIRES UPDATING ALL YOUR ADD-ONS!**
+* New: You can now publish content for multiple owner types at once. E.g. for user "admin" as well as for user group "the incredible team".
 * New: Added a title parameter to the private content shortcode
 * Fix: Projects were not listed by the protected content shortcode (https://github.com/marvinlabs/customer-area/issues/204)
 * Fix: Global post data not restored after secondary queries (https://github.com/marvinlabs/customer-area/issues/205)

@@ -182,9 +182,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             parent::print_page_content($args, $shortcode_content);
         }
 
-        public abstract function get_default_owner_type();
-
-        public abstract function get_default_owner();
+        public abstract function get_default_owners();
 
         public abstract function get_default_category();
 
@@ -294,20 +292,20 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             return false;
         }
 
-        protected function check_submitted_owner($form_data, $error_message)
+        protected function check_submitted_owners($form_data, $error_message)
         {
             /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
-            $new_owner = $po_addon->get_owner_from_post_data();
+            $new_owner = $po_addon->get_owners_from_post_data();
 
-            if ($new_owner != null)
+            if ($new_owner != null && !empty($new_owner))
             {
                 return $new_owner;
             }
 
             if ( !$this->is_field_required('cuar_owner'))
             {
-                return null;
+                return array();
             }
 
             $this->form_errors[] = new WP_Error('missing_owner', $error_message);
@@ -591,29 +589,15 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             {
                 /** @var CUAR_PostOwnerAddOn $po_addon */
                 $po_addon = $this->plugin->get_addon('post-owner');
-                $owner = $po_addon->get_owner_from_post_data();
-                if ($owner != null && !empty($owner['type']))
-                {
-                    $owner_type = $owner['type'];
-                    $owner_ids = $owner['ids'];
-                }
-                else if ($this->get_current_post() != null)
-                {
-                    $owner = $po_addon->get_post_owner($this->get_current_post_id());
+                $owners = $po_addon->get_owners_from_post_data();
 
-                    $owner_type = $owner['type'];
-                    $owner_ids = $owner['ids'];
-                }
-                else
+                if (empty($owners) && $this->get_current_post() != null)
                 {
-                    $owner_type = 'usr';
-                    $owner_ids = array();
+                    $owners = $po_addon->get_post_owners($this->get_current_post_id());
                 }
 
                 ob_start();
-                $po_addon->print_owner_type_select_field('cuar_owner_type', null, $owner_type);
-                $po_addon->print_owner_select_field('cuar_owner_type', 'cuar_owner', null, $owner_type, $owner_ids);
-                $po_addon->print_owner_select_javascript('cuar_owner_type', 'cuar_owner');
+                $po_addon->print_owner_fields($owners);
                 $field_code = ob_get_contents();
                 ob_end_clean();
 
@@ -621,17 +605,14 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             }
             else
             {
-                $owner_type = $this->get_default_owner_type();
-                $owner_ids = $this->get_default_owner();
+                $owners = $this->get_default_owners();
 
-                $field_code = sprintf('<input type="hidden" name="cuar_owner_type" value="%1$s" />', esc_attr($owner_type));
-
-                foreach ($owner_ids as $id)
-                {
-                    $field_code .= sprintf('<input type="hidden" name="%1$s" value="%2$s" />',
-                        'cuar_owner_' . $owner_type . '_id[]',
-                        esc_attr($id));
-                }
+                ob_start();
+                /** @var CUAR_PostOwnerAddOn $po_addon */
+                $po_addon = $this->plugin->get_addon('post-owner');
+                $po_addon->print_owner_fields_readonly($owners);
+                $field_code = ob_get_contents();
+                ob_end_clean();
 
                 echo $field_code;
             }
