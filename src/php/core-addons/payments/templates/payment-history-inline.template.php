@@ -1,9 +1,6 @@
 <?php /** Template version: 3.0.0 */ ?>
 
 <?php /** @var array $payments */ ?>
-<?php /** @var double $paid_amount */ ?>
-<?php /** @var double $remaining_amount */ ?>
-<?php /** @var string $currency */ ?>
 
 <div class="row">
     <div class="col-xs-12">

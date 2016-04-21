@@ -40,6 +40,8 @@ class CUAR_PaymentsUiHelper
         // Check if we already have a payment for that object, and if any, check the amount
         $payments = $this->pa_addon->payments()->get_payments_for_object($object_type, $object_id, false);
         $paid_amount = 0;
+        $template_suffix = is_admin() ? '-admin' : '-frontend';
+
         /** @var CUAR_Payment $p */
         foreach ($payments as $p) {
             if ($p->get_post()->post_status!=CUAR_PaymentStatus::$STATUS_COMPLETE) continue;
@@ -65,7 +67,9 @@ class CUAR_PaymentsUiHelper
             $template = $this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/payments',
                 array(
+                    'payment-button-' . $object_type . $template_suffix . '.template.php',
                     'payment-button-' . $object_type . '.template.php',
+                    'payment-button' . $template_suffix . '.template.php',
                     'payment-button.template.php',
                 ),
                 'templates');
@@ -79,13 +83,34 @@ class CUAR_PaymentsUiHelper
             $template = $this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/payments',
                 array(
+                    'payment-history-inline-' . $object_type . $template_suffix . '.template.php',
                     'payment-history-inline-' . $object_type . '.template.php',
+                    'payment-history-inline' . $template_suffix . '.template.php',
                     'payment-history-inline.template.php',
                 ),
                 'templates');
 
             include($template);
         }
+    }
+
+    public function show_payment_history($object_type, $object_id)
+    {
+        // Check if we already have a payment for that object, and if any, check the amount
+        $payments = $this->pa_addon->payments()->get_payments_for_object($object_type, $object_id, false);
+        $template_suffix = is_admin() ? '-admin' : '-frontend';
+
+        $template = $this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/payments',
+            array(
+                'payment-history-inline-' . $object_type . $template_suffix . '.template.php',
+                'payment-history-inline-' . $object_type . '.template.php',
+                'payment-history-inline' . $template_suffix . '.template.php',
+                'payment-history-inline.template.php',
+            ),
+            'templates');
+
+        include($template);
     }
 
     //---------- PROCESSING FUNCTIONS -------------------------------------------------------------------------------------------------------------------------/
@@ -134,7 +159,7 @@ class CUAR_PaymentsUiHelper
         do_action('cuar/core/payments/process/before-gateway', $_POST);
 
         // Allow themes and plugins to modify payment data before processing
-        $payment_data = apply_filters('cuar/core/payments/data-before-gateway/amount', array(
+        $payment_data = apply_filters('cuar/core/payments/data-before-gateway', array(
             'title'      => $title,
             'amount'     => $amount,
             'currency'   => $currency,

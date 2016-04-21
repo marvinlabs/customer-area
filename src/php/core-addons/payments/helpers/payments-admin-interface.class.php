@@ -33,6 +33,10 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
             // Payments page
             add_action('add_meta_boxes', array(&$this, 'register_edit_page_meta_boxes'), 120);
             add_action("save_post_" . CUAR_Payment::$POST_TYPE, array(&$this, 'on_save_payment'));
+
+            // New payment button + history on post type edit pages
+            add_action('add_meta_boxes', array(&$this, 'register_new_payment_meta_box'), 120);
+            add_action('admin_init', array(&$this, 'handle_create_payment_action'));
         }
 
         /*------- PERMISSIONS --------------------------------------------------------------------------------------------------------------------------------*/
@@ -99,6 +103,72 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
                 'templates'));
         }
 
+        /*------- EDIT PAGE FOR PAYABLE TYPES ----------------------------------------------------------------------------------------------------------------*/
+
+        public function register_new_payment_meta_box($post_type)
+        {
+            $payable_types = $this->pa_addon->get_payable_types();
+
+            if ( !in_array($post_type, $payable_types)) return;
+
+            add_meta_box(
+                'cuar_payment_history_metabox',
+                __('Payment history', 'cuar'),
+                array(&$this, 'print_payment_history_metabox'),
+                $post_type,
+                'normal', 'low');
+        }
+
+        public function print_payment_history_metabox()
+        {
+            global $post;
+            $this->pa_addon->ui()->show_payment_history($post->post_type, $post->ID);
+        }
+
+        public function handle_create_payment_action()
+        {
+            if ( !isset($_GET['cuar_action']) || $_GET['cuar_action'] != 'create-payment') return;
+
+            $nonce = isset($_GET['_wpnonce']) ? $_GET['_wpnonce'] : '';
+            $action = 'create-payment';
+            if ( !wp_verify_nonce($nonce, $action))
+            {
+                wp_die(__("Trying to cheat?", 'cuar'));
+            }
+
+            $object_type = isset($_GET['object_type']) ? $_GET['object_type'] : '';
+            $object_id = isset($_GET['object_id']) ? $_GET['object_id'] : 0;
+            if (empty($object_type) || 0 == $object_id)
+            {
+                wp_die(__("Invalid arguments. Cannot create payment.", 'cuar'));
+            }
+
+            $pto = get_post_type_object($object_type);
+            $title = sprintf(__('%1$s | %2$s'),
+                $pto->labels->singular_name,
+                get_the_title($object_id));
+
+            $payment_data = apply_filters('cuar/core/payments/data-before-manual-add', array(
+                'title'      => $title,
+                'amount'     => 0,
+                'currency'   => 'EUR',
+                'gateway'    => '',
+                'user_id'    => get_current_user_id(),
+                'address'    => CUAR_AddressHelper::sanitize_address(array()),
+                'extra_data' => array(),
+            ), $object_type, $object_id);
+
+            $payment_id = $this->pa_addon->payments()->add(
+                $object_type, $object_id,
+                $payment_data['title'],
+                $payment_data['gateway'],
+                $payment_data['amount'], $payment_data['currency'],
+                $payment_data['user_id'], $payment_data['address'],
+                $payment_data['extra_data']);
+
+            wp_redirect(admin_url('post.php?action=edit&post_type=' . CUAR_Payment::$POST_TYPE . '&post=' . $payment_id));
+        }
+
         /*------- EDIT PAGE ----------------------------------------------------------------------------------------------------------------------------------*/
 
         /**
@@ -126,7 +196,7 @@ if ( !class_exists('CUAR_PaymentsAdminInterface')) :
         {
             if ($post_type != CUAR_Payment::$POST_TYPE) return;
 
-            remove_meta_box( 'submitdiv', $post_type, 'side' );
+            remove_meta_box('submitdiv', $post_type, 'side');
 
             add_meta_box(
                 'cuar_payment_object_metabox',

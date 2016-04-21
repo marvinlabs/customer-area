@@ -34,7 +34,7 @@ class CUAR_Payment extends CUAR_CustomPost
      * @param string $new_status
      * @param string $changed_by
      */
-    public function update_status($new_status, $changed_by = 'WPCA Bot')
+    public function update_status($new_status, $changed_by = 'WP Customer Area')
     {
         if ($new_status == 'completed' || $new_status == 'complete')
         {

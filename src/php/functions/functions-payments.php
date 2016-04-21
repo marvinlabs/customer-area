@@ -100,8 +100,9 @@ function cuar_the_payment_date($payment)
 
 /**
  * @param CUAR_Payment $payment
+ * @param bool         $show_icon
  */
-function cuar_the_payment_gateway($payment)
+function cuar_the_payment_gateway($payment, $show_icon=true)
 {
     /** @var CUAR_PaymentsAddOn $pa_addon */
     $pa_addon = cuar_addon('payments');
@@ -118,7 +119,7 @@ function cuar_the_payment_gateway($payment)
         $icon = $gw->get_icon();
         $name = $gw->get_name();
 
-        if ( !empty($icon['icon']))
+        if ( $show_icon && !empty($icon['icon']))
         {
             printf('<img src="%2$s" class="cuar-gateway-icon" />&nbsp;%1$s', $name, $icon['icon']);
         }
