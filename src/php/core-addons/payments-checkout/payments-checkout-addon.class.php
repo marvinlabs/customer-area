@@ -102,8 +102,7 @@ if ( !class_exists('CUAR_PaymentsCheckoutAddOn')) :
             $gateways = $pa_addon->settings()->get_enabled_gateways();
             if (empty($selected_gateway))
             {
-                // TODO Default gateway should be a setting
-                $selected_gateway = 'test';
+                $selected_gateway = $pa_addon->settings()->get_default_gateway();
             }
 
             // Payer address

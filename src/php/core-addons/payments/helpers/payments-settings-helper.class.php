@@ -5,6 +5,7 @@
 class CUAR_PaymentsSettingsHelper
 {
     public static $OPTION_ENABLED_CREDIT_CARDS = 'cuar_enabled_credit_cards';
+    public static $OPTION_DEFAULT_GATEWAY = 'cuar_default_gateway';
 
     /** @var CUAR_Plugin */
     private $plugin;
@@ -98,6 +99,19 @@ class CUAR_PaymentsSettingsHelper
     /**
      * @return array The default tax rates we can quickly select
      */
+    public function get_available_gateways_for_select()
+    {
+        $gw = $this->get_available_gateways();
+        $out = array();
+        foreach ($gw as $g) {
+            $out[$g->get_id()] = $g->get_name();
+        }
+        return $out;
+    }
+
+    /**
+     * @return array The default tax rates we can quickly select
+     */
     public function get_enabled_gateways()
     {
         $gateways = $this->get_available_gateways();
@@ -109,6 +123,14 @@ class CUAR_PaymentsSettingsHelper
         }
 
         return $gateways;
+    }
+
+    /**
+     * @return string The gateway selected by default
+     */
+    public function get_default_gateway()
+    {
+        return $this->plugin->get_option(self::$OPTION_DEFAULT_GATEWAY);
     }
 
     /**
@@ -208,7 +230,7 @@ class CUAR_PaymentsSettingsHelper
 
         add_settings_field(
             self::$OPTION_ENABLED_CREDIT_CARDS,
-            __("Credit Cards", 'cuarin'),
+            __("Credit Cards", 'cuar'),
             array(&$cuar_settings, 'print_select_field'),
             CUAR_Settings::$OPTIONS_PAGE_SLUG,
             'cuar_payments_general',
@@ -217,6 +239,20 @@ class CUAR_PaymentsSettingsHelper
                 'options'   => $this->get_selectable_credit_card_options(),
                 'multiple'  => true,
                 'after'     => '<p class="description">' . __('Show the following credit card logos next to the payment button', 'cuar') . '</p>',
+            )
+        );
+
+        add_settings_field(
+            self::$OPTION_DEFAULT_GATEWAY,
+            __("Default gateway", 'cuar'),
+            array(&$cuar_settings, 'print_select_field'),
+            CUAR_Settings::$OPTIONS_PAGE_SLUG,
+            'cuar_payments_general',
+            array(
+                'option_id' => self::$OPTION_DEFAULT_GATEWAY,
+                'options'   => $this->get_available_gateways_for_select(),
+                'multiple'  => false,
+                'after'     => '<p class="description">' . __('The gateway which will be selected by default on the checkout page', 'cuar') . '</p>',
             )
         );
 
@@ -240,6 +276,7 @@ class CUAR_PaymentsSettingsHelper
     public function validate_options($validated, $cuar_settings, $input)
     {
         $cuar_settings->validate_select($input, $validated, self::$OPTION_ENABLED_CREDIT_CARDS, $this->get_selectable_credit_card_options(), true);
+        $cuar_settings->validate_select($input, $validated, self::$OPTION_DEFAULT_GATEWAY, $this->get_available_gateways_for_select(), false);
 
         $gateways = $this->get_available_gateways();
         /** @var CUAR_PaymentGateway $gateway */
