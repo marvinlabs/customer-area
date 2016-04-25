@@ -96,14 +96,14 @@ $file_count = cuar_get_the_attached_file_count($post->ID);
                 </span>
             </a>
         </div>
-        <h4 class="collection-title">
+        <div class="collection-title">
             <a href="<?php the_permalink(); ?>">
                 <?php the_title(); ?>
             </a>
-        </h4>
-        <h5 class="collection-subtitle text-muted">
+        </div>
+        <div class="collection-subtitle text-muted">
             <?php echo $published; ?>
-        </h5>
+        </div>
 
         <p class="collection-excerpt"><?php echo get_the_excerpt(); ?></p>
     </div>
