@@ -72,7 +72,7 @@ $file_count = cuar_get_the_attached_file_count($post->ID);
             <div class="collection-thumbnail-padder">
                 <div style="position: absolute; width: 100%; height: 100%; display: inline-block; vertical-align: middle; text-align: center;">
                     <i class="<?php echo $extensions[$files_icon]; ?> mt30 mr5 text-primary dark icon-bg"></i>
-                    <h5 class="mn text-center fs20" style="position: relative; top: 50%; margin-top: -10px!important;">
+                    <div class="cuar-title mn text-center fs20" style="position: relative; top: 50%; margin-top: -10px!important;">
                         <?php
                         if ($file_count == 0) {
                             _e('no file', 'cuar');
@@ -82,7 +82,7 @@ $file_count = cuar_get_the_attached_file_count($post->ID);
                             cuar_the_attached_file_type($post->ID, array_values($files)[0]);
                         }
                         ?>
-                    </h5>
+                    </div>
                 </div>
             </div>
         </a>

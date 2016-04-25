@@ -23,9 +23,9 @@ $current_user = get_userdata(get_current_user_id());
         </div>
         <div class="media-body va-m" style="width: 100%;">
 
-            <h2 class="media-heading text-primary"><?php echo $current_user->display_name; ?>
+            <div class="cuar-title media-heading text-primary"><?php echo $current_user->display_name; ?>
                 <small> - Profile</small>
-            </h2>
+            </div>
 
             <?php $this->print_submit_button(__('Submit', 'cuar')); ?>
 

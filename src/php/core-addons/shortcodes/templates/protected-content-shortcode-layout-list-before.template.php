@@ -14,8 +14,8 @@
 
 <div class="cuar-sc-list-container">
 <?php if ( !empty($title)): ?>
-    <h3>
+    <div class="cuar-title">
         <?php echo $title; ?>
-    </h3>
+    </div>
 <?php endif; ?>
     <ul>

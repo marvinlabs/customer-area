@@ -34,8 +34,8 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
                 <div class="panel panel-tile cuar-panel-meta-tile">
                     <div class="panel-body">
                         <i class="fa fa-user icon-bg"></i>
-                        <h4 class="cuar-meta-value"><?php echo $author; ?></h4>
-                        <h5 class="cuar-meta-label"><?php _e('Author', 'cuar'); ?></h5>
+                        <div class="cuar-meta-value"><?php echo $author; ?></div>
+                        <div class="cuar-meta-label"><?php _e('Author', 'cuar'); ?></div>
                     </div>
                 </div>
             </div>
@@ -44,8 +44,8 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
                 <div class="panel panel-tile cuar-panel-meta-tile">
                     <div class="panel-body">
                         <i class="fa fa-users icon-bg"></i>
-                        <h4 class="cuar-meta-value"><?php echo $recipients; ?></h4>
-                        <h5 class="cuar-meta-label"><?php _e('Assigned to', 'cuar'); ?></h5>
+                        <div class="cuar-meta-value"><?php echo $recipients; ?></div>
+                        <div class="cuar-meta-label"><?php _e('Assigned to', 'cuar'); ?></div>
                     </div>
                 </div>
             </div>
@@ -54,8 +54,8 @@ $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
                 <div class="panel panel-tile cuar-panel-meta-tile">
                     <div class="panel-body">
                         <i class="fa fa-calendar icon-bg"></i>
-                        <h4 class="cuar-meta-value"><?php echo $date; ?></h4>
-                        <h5 class="cuar-meta-label"><?php _e('Date', 'cuar'); ?></h5>
+                        <div class="cuar-meta-value"><?php echo $date; ?></div>
+                        <div class="cuar-meta-label"><?php _e('Date', 'cuar'); ?></div>
                     </div>
                 </div>
             </div>

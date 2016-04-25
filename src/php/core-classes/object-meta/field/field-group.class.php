@@ -59,7 +59,7 @@ class CUAR_FieldGroup implements CUAR_Field {
 	// See CUAR_AbstractField
 	public function render_read_only_field( $object_id ) {
 		echo '<div class="cuar-field-group">' . "\n";
-		echo '	<h4>' . $this->get_title() . '</h4>' . "\n";
+		echo '	<div class="cuar-title widget-title">' . $this->get_title() . '</div>' . "\n";
 		echo '	<div class="cuar-fields">' . "\n";
 		
 		foreach ( $this->fields as $id => $field ) {
