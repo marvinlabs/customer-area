@@ -6,6 +6,7 @@
 @theme-img-path: "@{theme-root-path}assets/img/framework";
 @theme-fonts-path: "@{theme-root-path}assets/fonts/framework";
 @theme-less-path: "@{theme-root-path}src/less";
+@framework-path: "../../../../../../../vendor/other/framework/theme_wpca/assets/skin/wpca";
 
 // Theme Variant Variables
 // ----------------------------
@@ -13,5 +14,8 @@
 
 // Theme Boostrapper
 // ----------------------------
-@import "@{theme-less-path}/wpca/bootstrapper";
-@import "@{theme-less-path}/wpca/components";
+@import "@{framework-path}/bootstrapper";
+
+// Theme Fonts
+// ----------------------------
+@{wrapperBase} { @import (less) "@{theme-assets-path}/css/font-awesome.min.css"; }

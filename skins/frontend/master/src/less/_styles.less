@@ -6,6 +6,7 @@
 @theme-img-path: "@{theme-root-path}assets/img/framework";
 @theme-fonts-path: "@{theme-root-path}assets/fonts/framework";
 @theme-less-path: ".";
+@framework-path: "../../../../../../../vendor/other/framework/theme_wpca/assets/skin/wpca";
 
 // Theme Variant Variables
 // ----------------------------
@@ -13,8 +14,8 @@
 
 // Theme Boostrapper
 // ----------------------------
-@import "wpca/bootstrapper";
+@import "@{framework-path}/bootstrapper";
 
-// Main WPCA components
+// Theme Fonts
 // ----------------------------
-@import "wpca/components";
+@{wrapperBase} { @import (less) "@{theme-assets-path}/css/font-awesome.min.css"; }
