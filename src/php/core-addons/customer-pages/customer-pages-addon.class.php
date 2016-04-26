@@ -84,6 +84,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 add_filter('the_content', array(&$this, 'define_main_content_filter'), 9998);
                 add_filter('cuar/core/the_content', array(&$this, 'get_contextual_toolbar_for_pages'), 80);
                 add_filter('cuar/core/the_content', array(&$this, 'wrap_content_into_container'), 100);
+                add_filter('cuar/core/the_content', array(&$this, 'wrap_content_into_entry_container'), 1);
             }
         }
 
@@ -1066,6 +1067,24 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             )
             {
                 return '<div id="cuar-js-content-container" class="cuar-content-container cuar-css-wrapper">' . $content . '</div>';
+            }
+
+            return $content;
+        }
+
+        /**
+         * Wrap the WP Customer Area generated content into an entry container, always
+         *
+         * @param string $content
+         *
+         * @return string
+         */
+        public function wrap_content_into_entry_container($content)
+        {
+            if (cuar_is_customer_area_private_content(get_the_ID())
+            )
+            {
+                return '<div class="cuar-single-entry">' . $content . '</div>';
             }
 
             return $content;
