@@ -272,6 +272,52 @@ if ( ! function_exists( 'cuar_form_account_panel_head' ) ) {
 	add_action( 'cuar/core/user-profile/edit/after_field?id=user_pass', 'cuar_form_account_panel_foot' );
 }
 
+if ( ! function_exists( 'cuar_toolbar_profile_button' ) ) {
+	function cuar_toolbar_profile_button( $groups ) {
+
+		$out          = '';
+		$current_user = wp_get_current_user();
+
+		$out .= '<div class="btn-group">';
+		$out .= '<button type="button" class="btn btn-default dropdown-toggle mn" data-toggle="dropdown" aria-expanded="false">';
+		$out .= get_avatar( $current_user->user_email, 17 );
+		//$out .= '<span class="caret ml5"></span>';
+		$out .= '</button>';
+		$out .= '<ul class="dropdown-menu" role="menu" style="margin-top: 1px;">';
+
+		if ( is_user_logged_in() ) {
+			$addon_account      = cuar_addon( 'customer-account' );
+			$addon_account_edit = cuar_addon( 'customer-account-edit' );
+			$addon_logout       = cuar_addon( 'customer-logout' );
+
+			$out .= '<li class="dropdown-header">Hello, ' . $current_user->display_name . '</li>';
+			//$out .= '<li class="divider"></li>';
+			$out .= '<li><a href="' . $addon_account->get_page_url() . '">' . __( 'View profile', 'cuar' ) . '</a></li>';
+			$out .= '<li><a href="' . $addon_account_edit->get_page_url() . '">' . __( 'Manage account', 'cuar' ) . '</a></li>';
+			$out .= '<li><a href="' . $addon_logout->get_page_url() . '">' . __( 'Logout', 'cuar' ) . '</a></li>';
+
+		} else {
+			$addon_login    = cuar_addon( 'customer-login' );
+			$addon_register = cuar_addon( 'customer-register' );
+
+			$out .= '<li><a href="' . $addon_register->get_page_url() . '">' . __( 'Register', 'cuar' ) . '</a></li>';
+			$out .= '<li><a href="' . $addon_login->get_page_url() . '">' . __( 'Login', 'cuar' ) . '</a></li>';
+		}
+
+		$out .= '</ul>';
+		$out .= '</div>';
+
+		$groups['welcome'] = array(
+			'type' => 'raw',
+			'html' => $out
+		);
+
+		return $groups;
+	}
+
+	add_action( 'cuar/core/page/toolbar', 'cuar_toolbar_profile_button', 10 );
+}
+
 if ( ! function_exists( 'cuar_dev_nuancier' ) ) {
 	/**
 	 * Nuancier colors for development purposes
