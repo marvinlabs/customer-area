@@ -2,7 +2,6 @@
 if (!function_exists('cuar_load_theme_scripts')) {
 
     /**
-     * TODO: Librairies shouldn't always be enabled.
      * Load theme particular scripts
      */
     function cuar_load_skin_scripts()
@@ -79,7 +78,6 @@ if (!function_exists('cuar_images_sizes')) {
     {
         add_theme_support('post-thumbnails');
         add_image_size('wpca-thumb', 220, 150, true);
-        add_image_size('wpca-banner', 800, 220, true);
     }
 
     add_action('after_setup_theme', 'cuar_images_sizes');
@@ -91,7 +89,7 @@ if (!function_exists('cuar_enable_bootstrap_nav_walker')) {
     /**
      * Use the bootstrap navwalker for our navigation menu to output bootstrap-friendly HTML.
      * @param $args
-     * @return
+     * @return mixed
      */
     function cuar_enable_bootstrap_nav_walker($args)
     {

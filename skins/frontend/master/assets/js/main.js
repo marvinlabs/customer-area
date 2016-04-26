@@ -775,76 +775,78 @@
 
         }
 
-        // Gallery
-        var runGallery = function(){
-
-            // Init multiselect plugin on filter dropdowns
-            $('.cuar-js-collection-filters-buttons').multiselect({
-                buttonClass: 'btn btn-default'
-            });
+        // Collections
+        var runCollection = function(){
 
             var $container = $('#cuar-js-collection-gallery'), // mixitup container
                 $toList = $('#cuar-js-collection-to-list'), // list view button
                 $toGrid = $('#cuar-js-collection-to-grid') // list view button
 
+            if($container.length > 0) {
 
-            // Initiate cookie session for filters buttons
-            var cookieName = $container.data('type') + '-collection-layout',
-                cookieLayout = $.cookie(cookieName) || $.cookie(cookieName, 'grid');
+                // Init multiselect plugin on filter dropdowns
+                $('.cuar-js-collection-filters-buttons').multiselect({
+                    buttonClass: 'btn btn-default'
+                });
 
-            if(cookieLayout == 'list') {
-                $container.addClass(cookieLayout).removeClass('grid');
-                $toList.addClass('btn-primary').removeClass('btn-default');
-                $toGrid.addClass('btn-default').removeClass('btn-primary');
-            } else {
-                $container.addClass(cookieLayout).removeClass('list');
-                $toList.addClass('btn-default').removeClass('btn-primary');
-                $toGrid.addClass('btn-primary').removeClass('btn-default');
-            }
+                // Initiate cookie session for filters buttons
+                var cookieName = $container.data('type') + '-collection-layout',
+                    cookieLayout = $.cookie(cookieName) || $.cookie(cookieName, 'grid');
 
+                if (cookieLayout == 'list') {
+                    $container.addClass(cookieLayout).removeClass('grid');
+                    $toList.addClass('btn-primary').removeClass('btn-default');
+                    $toGrid.addClass('btn-default').removeClass('btn-primary');
+                } else {
+                    $container.addClass(cookieLayout).removeClass('list');
+                    $toList.addClass('btn-default').removeClass('btn-primary');
+                    $toGrid.addClass('btn-primary').removeClass('btn-default');
+                }
 
-            // Instantiate MixItUp
-            $container.mixItUp({
-                controls: {
-                    enable: false // we won't be needing these
-                },
-                animation: {
-                    duration: 400,
-                    effects: 'fade translateZ(-360px) stagger(45ms)',
-                    easing: 'ease'
-                },
-                callbacks: {
-                    onMixFail: function () {
+                // Instantiate MixItUp
+                $container.mixItUp({
+                    controls: {
+                        enable: false // we won't be needing these
+                    },
+                    animation: {
+                        duration: 400,
+                        effects: 'fade translateZ(-360px) stagger(45ms)',
+                        easing: 'ease'
+                    },
+                    callbacks: {
+                        onMixFail: function () {
+                        }
                     }
-                }
-            });
+                });
 
-            $toList.on('click', function () {
-                $.cookie(cookieName, 'list');
-                $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
-                if ($container.hasClass('list')) {
-                    return
-                }
-                $container.mixItUp('changeLayout', {
-                    display: 'block',
-                    containerClass: 'list'
-                }, function (state) {
-                    $container.removeClass('grid');
+                // Bind layout mode buttons
+                $toList.on('click', function () {
+                    $.cookie(cookieName, 'list');
+                    $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
+                    if ($container.hasClass('list')) {
+                        return
+                    }
+                    $container.mixItUp('changeLayout', {
+                        display: 'block',
+                        containerClass: 'list'
+                    }, function (state) {
+                        $container.removeClass('grid');
+                    });
                 });
-            });
-            $toGrid.on('click', function () {
-                $.cookie(cookieName, 'grid');
-                $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
-                if ($container.hasClass('grid')) {
-                    return
-                }
-                $container.mixItUp('changeLayout', {
-                    display: 'inline-block',
-                    containerClass: 'grid'
-                }, function (state) {
-                    $container.removeClass('list');
+                $toGrid.on('click', function () {
+                    $.cookie(cookieName, 'grid');
+                    $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
+                    if ($container.hasClass('grid')) {
+                        return
+                    }
+                    $container.mixItUp('changeLayout', {
+                        display: 'inline-block',
+                        containerClass: 'grid'
+                    }, function (state) {
+                        $container.removeClass('list');
+                    });
                 });
-            });
+            }
         }
         return {
             init: function (options) {
@@ -872,7 +874,7 @@
                 runFooter();
                 runTrays();
                 runFormElements();
-                runGallery();
+                runCollection();
             }
 
         }
