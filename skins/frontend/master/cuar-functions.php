@@ -25,37 +25,46 @@ if (!function_exists('cuar_load_theme_scripts')) {
             $cuar_plugin->enable_library('bootstrap.tooltip');
             //$cuar_plugin->enable_library('bootstrap.transition');
 
-            // COLLECTIONS
+            // PAGES COLLECTIONS
             // --
-            $cuar_plugin->enable_library('jquery.cookie');
-            $cuar_plugin->enable_library('jquery.mixitup');
+            if (cuar_is_customer_area_page(get_queried_object_id())) {
+                $cuar_plugin->enable_library('jquery.cookie');
+                $cuar_plugin->enable_library('jquery.mixitup');
+            }
 
-            // FORMS
+            // PAGES FORMS
             // --
-            $cuar_plugin->enable_library('jquery.steps');
+            if (cuar_is_customer_area_page(get_queried_object_id())) {
+                $cuar_plugin->enable_library('jquery.steps');
+            }
 
-            // SCRIPTS
+            // SINGLE POSTS HEADERS
+            // --
+            if(cuar_is_customer_area_private_content(get_the_ID())) {
+                $cuar_plugin->enable_library('jquery.slick');
+            }
+
+            // CUSTOM SCRIPTS
             // --
             wp_register_script('customer-area-utilities',
                 CUAR_PLUGIN_URL . '/assets/frontend/js/customer-area.min.js',
                 array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable'),
                 $cuar_plugin->get_version(),
                 true);
-
             wp_register_script('customer-area-master-skin',
                 CUAR_PLUGIN_URL . '/skins/frontend/master/assets/js/main.min.js',
                 array('jquery', 'customer-area-utilities'),
                 $cuar_plugin->get_version(),
                 true);
+            wp_enqueue_script('customer-area-master-skin');
 
+            // CUSTOM STYLES
+            // --
             wp_register_style('customer-area-master-eqcss',
                 CUAR_PLUGIN_URL . '/skins/frontend/master/assets/css/eqcss/queries.eqcss',
                 array(),
-                $cuar_plugin->get_version(),
-                true);
-
+                $cuar_plugin->get_version());
             wp_enqueue_style('customer-area-master-eqcss');
-            wp_enqueue_script('customer-area-master-skin');
         }
     }
 
