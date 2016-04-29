@@ -402,8 +402,8 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
             return array(
                 'before_widget' => sprintf('<aside id="%1$s" class="widget %2$s">', $fake_id, $fake_class),
                 'after_widget'  => "</aside>",
-                'before_title'  => '<h3 class="widget-title">',
-                'after_title'   => '</h3>',
+                'before_title'  => '<div class="cuar-title widget-title">',
+                'after_title'   => '</div>',
             );
         }
 
@@ -440,8 +440,8 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
                 'name'          => $name,
                 'before_widget' => '<aside id="%1$s" class="widget %2$s">',
                 'after_widget'  => "</aside>",
-                'before_title'  => '<h3 class="widget-title">',
-                'after_title'   => '</h3>',
+                'before_title'  => '<div class="cuar-title widget-title">',
+                'after_title'   => '</div>',
             ));
         }
 

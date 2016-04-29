@@ -25,9 +25,9 @@ $current_user = $this->get_current_user();
         </div>
         <div class="media-body va-m" style="width: 100%;">
 
-            <h2 class="media-heading text-primary"><?php echo $current_user->display_name; ?>
+            <div class="cuar-title media-heading text-primary"><?php echo $current_user->display_name; ?>
                 <small> - Profile</small>
-            </h2>
+            </div>
 
             <?php
             if (isset($_GET['updated']) && $_GET['updated'] == 1) {
@@ -42,7 +42,7 @@ $current_user = $this->get_current_user();
 <div class="panel">
     <div class="panel-heading"><span class="panel-title"><?php _e('General', 'cuar'); ?></span></div>
     <div class="panel-body">
-        <h3><?php _e('Account Details', 'cuar'); ?></h3>
+        <div class="cuar-title"><?php _e('Account Details', 'cuar'); ?></div>
         <?php $this->print_account_fields(); ?>
     </div>
 </div>

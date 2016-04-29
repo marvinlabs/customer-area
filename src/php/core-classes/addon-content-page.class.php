@@ -646,7 +646,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             {
                 $groups['singular-content'] = array(
                     'items'       => $links,
-                    'extra_class' => ''
+                    'extra_class' => 'pull-right'
                 );
             }
 
@@ -964,7 +964,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
             if ( !is_admin())
             {
-                add_filter('cuar/core/page/toolbar', array(&$this, 'add_single_private_content_contextual_toolbar_group'), 300);
+                add_filter('cuar/core/page/toolbar', array(&$this, 'add_single_private_content_contextual_toolbar_group'), 1400);
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_listing_contextual_toolbar_group'), 2000);
 
                 // Optionally output the file links in the post footer area
