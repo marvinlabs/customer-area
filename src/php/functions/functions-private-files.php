@@ -37,7 +37,9 @@ function cuar_get_the_attached_files($post_id = null)
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
 
-    return $pf_addon->get_attached_files($post_id);
+    $files = $pf_addon->get_attached_files($post_id);
+
+    return apply_filters('cuar/private-content/files/the-files', $files, $post_id);
 }
 
 /**
@@ -61,7 +63,9 @@ function cuar_get_the_attached_file_count($post_id = null)
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
 
-    return $pf_addon->get_attached_file_count($post_id);
+    $count = $pf_addon->get_attached_file_count($post_id);
+
+    return apply_filters('cuar/private-content/files/the-count', $count, $post_id);
 }
 
 /**
@@ -87,7 +91,9 @@ function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'down
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
 
-    return $pf_addon->get_file_permalink($post_id, $file['id'], $action, $file);
+    $permalink = $pf_addon->get_file_permalink($post_id, $file['id'], $action, $file);
+
+    return apply_filters('cuar/private-content/files/the-permalink', $permalink, $file, $post_id, $action);
 }
 
 /**
@@ -126,7 +132,9 @@ function cuar_get_the_attached_file_caption($post_id = null, $file)
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
 
-    return $pf_addon->get_file_caption($post_id, $file);
+    $caption = $pf_addon->get_file_caption($post_id, $file);
+
+    return apply_filters('cuar/private-content/files/the-caption', $caption, $file, $post_id);
 }
 
 /**
@@ -166,7 +174,9 @@ function cuar_get_the_attached_file_name($post_id = null, $file)
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
 
-    return $pf_addon->get_file_name($post_id, $file);
+    $name = $pf_addon->get_file_name($post_id, $file);
+
+    return apply_filters('cuar/private-content/files/the-name', $name, $file, $post_id);
 }
 
 /**
@@ -206,7 +216,9 @@ function cuar_get_the_attached_file_type($post_id = null, $file)
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
 
-    return $pf_addon->get_file_type($post_id, $file);
+    $type = $pf_addon->get_file_type($post_id, $file);
+
+    return apply_filters('cuar/private-content/files/the-type', $type, $file, $post_id);
 }
 
 /**
@@ -258,7 +270,7 @@ function cuar_get_the_attached_file_size($post_id = null, $file, $human = true)
         $size = cuar_format_human_file_size($size);
     }
 
-    return apply_filters('cuar/private-content/files/the-size', $size, $post_id);
+    return apply_filters('cuar/private-content/files/the-size', $size, $file, $post_id);
 }
 
 /**
