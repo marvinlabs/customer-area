@@ -22,7 +22,7 @@ class CUAR_PaymentsUiHelper
         $this->pa_addon = $pa_addon;
 
         add_action('template_redirect', array(&$this, 'process_payment'));
-// TODO        add_action( 'template_redirect', 'edd_listen_for_successful_payments' );
+        add_action('template_redirect', array(&$this, 'process_payment_listener_call'));
 // TODO        add_action( 'template_redirect', 'edd_listen_for_failed_payments' );
     }
 
@@ -43,15 +43,16 @@ class CUAR_PaymentsUiHelper
         $template_suffix = is_admin() ? '-admin' : '-frontend';
 
         /** @var CUAR_Payment $p */
-        foreach ($payments as $p) {
-            if ($p->get_post()->post_status!=CUAR_PaymentStatus::$STATUS_COMPLETE) continue;
+        foreach ($payments as $p)
+        {
+            if ($p->get_post()->post_status != CUAR_PaymentStatus::$STATUS_COMPLETE) continue;
 
             $paid_amount += $p->get_amount();
         }
         $remaining_amount = $amount - $paid_amount;
 
         // If everything is paid, we do not show the payment button
-        if ($remaining_amount>0)
+        if ($remaining_amount > 0)
         {
             /** @noinspection PhpUnusedLocalVariableInspection */
             $button_label = apply_filters('cuar/core/payments/templates/payment-button-label',
@@ -78,7 +79,7 @@ class CUAR_PaymentsUiHelper
         }
 
         // Display existing payments
-        if (!empty($payments) && $paid_amount>0)
+        if ( !empty($payments) && $paid_amount > 0)
         {
             $template = $this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/payments',
@@ -129,7 +130,7 @@ class CUAR_PaymentsUiHelper
         $nonce_value = isset($_POST['cuar_process_payment_nonce']) ? $_POST['cuar_process_payment_nonce'] : '';
         if ( !wp_verify_nonce($nonce_value, $nonce_action))
         {
-            die('Trying to cheat!');
+            wp_die('Trying to cheat!');
         }
 
         // Get more required payment data
@@ -139,7 +140,7 @@ class CUAR_PaymentsUiHelper
         $selected_gateway = $this->pa_addon->settings()->get_gateway($gateway_id);
         if (empty($object_type) || 0 == $object_id || empty($currency) || $selected_gateway == false)
         {
-            die(__('Some checkout information has not been provided, please go back and try again', 'cuar'));
+            wp_die(__('Some checkout information has not been provided, please go back and try again', 'cuar'));
         }
 
         // And some more data, optional this time
@@ -151,7 +152,7 @@ class CUAR_PaymentsUiHelper
         $user = get_userdata($user_id);
 
         $pto = get_post_type_object($object_type);
-        $title = sprintf(__('%1$s | %2$s'),
+        $title = sprintf(_x('%1$s: %2$s', 'payment title format (type: title)', 'cuar'),
             $pto->labels->singular_name,
             get_the_title($object_id));
 
@@ -193,23 +194,29 @@ class CUAR_PaymentsUiHelper
         exit;
     }
 
-//    function edd_listen_for_failed_payments() {
-//
-//        $failed_page = edd_get_option( 'failure_page', 0 );
-//
-//        if( ! empty( $failed_page ) && is_page( $failed_page ) && ! empty( $_GET['payment-id'] ) ) {
-//
-//            $payment_id = absint( $_GET['payment-id'] );
-//            $payment    = get_post( $payment_id );
-//            $status     = edd_get_payment_status( $payment );
-//
-//            if( $status && 'pending' === strtolower( $status ) ) {
-//
-//                edd_update_payment_status( $payment_id, 'failed' );
-//
-//            }
-//
-//        }
-//
-//    }
+    public function process_payment_listener_call()
+    {
+        if ( !(isset($_GET['cuar-payment-listener']) || isset($_POST['cuar-payment-listener']))) return;
+
+        $listener_id = isset($_GET['cuar-payment-listener'])
+            ? $_GET['cuar-payment-listener']
+            : isset($_POST['cuar-payment-listener'])
+                ? $_POST['cuar-payment-listener']
+                : '';
+
+        // Try to find the gateway responsible for handling this event
+        $gateways = $this->pa_addon->settings()->get_enabled_gateways();
+
+        /** @var CUAR_PaymentGateway $gateway */
+        foreach ($gateways as $gateway_id => $gateway)
+        {
+            if ($gateway->get_listener_id() == $listener_id)
+            {
+                // Gateway found. Let it process the result
+                $gateway->process_callback();
+
+                return;
+            }
+        }
+    }
 }

@@ -49,27 +49,33 @@ function cuar_get_checkout_url()
 /**
  * Get the URL to the success page
  *
+ * @param int $payment_id The related payment ID
+ *
  * @return string
  */
-function cuar_get_payment_success_url()
+function cuar_get_payment_success_url($payment_id)
 {
     /** @var CUAR_CustomerPagesAddOn $pa_addon */
     $pa_addon = cuar_addon('customer-pages');
+    $url = $pa_addon->get_page_url('payments-success');
 
-    return $pa_addon->get_page_url('payments-success');
+    return $payment_id <= 0 ? $url : add_query_arg('payment_id', $payment_id, $url);
 }
 
 /**
  * Get the URL to the failure page
  *
+ * @param int $payment_id The related payment ID
+ *
  * @return string
  */
-function cuar_get_payment_failure_url()
+function cuar_get_payment_failure_url($payment_id)
 {
     /** @var CUAR_CustomerPagesAddOn $pa_addon */
     $pa_addon = cuar_addon('customer-pages');
+    $url = $pa_addon->get_page_url('payments-failure');
 
-    return $pa_addon->get_page_url('payments-failure');
+    return $payment_id <= 0 ? $url : add_query_arg('payment_id', $payment_id, $url);
 }
 
 /**
@@ -102,7 +108,7 @@ function cuar_the_payment_date($payment)
  * @param CUAR_Payment $payment
  * @param bool         $show_icon
  */
-function cuar_the_payment_gateway($payment, $show_icon=true)
+function cuar_the_payment_gateway($payment, $show_icon = true)
 {
     /** @var CUAR_PaymentsAddOn $pa_addon */
     $pa_addon = cuar_addon('payments');
@@ -119,7 +125,7 @@ function cuar_the_payment_gateway($payment, $show_icon=true)
         $icon = $gw->get_icon();
         $name = $gw->get_name();
 
-        if ( $show_icon && !empty($icon['icon']))
+        if ($show_icon && !empty($icon['icon']))
         {
             printf('<img src="%2$s" class="cuar-gateway-icon" />&nbsp;%1$s', $name, $icon['icon']);
         }

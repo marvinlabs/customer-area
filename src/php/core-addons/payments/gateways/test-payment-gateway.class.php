@@ -46,7 +46,7 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
                 $payment->update_status(CUAR_PaymentStatus::$STATUS_COMPLETE, $this->get_name());
 
                 // Finally redirect to the success page
-                $this->redirect_to_success_page(__('The test gateway accepted the payment', 'cuar'));
+                $this->redirect_to_success_page($payment->ID, __('The test gateway accepted the payment', 'cuar'));
                 break;
 
             case 'rejected':
@@ -54,12 +54,12 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
                 $payment->update_status(CUAR_PaymentStatus::$STATUS_FAILED, $this->get_name());
 
                 // Finally redirect to the success page
-                $this->redirect_to_failure_page(__('The test gateway failed to process the payment', 'cuar'));
+                $this->redirect_to_failure_page($payment->ID, __('The test gateway failed to process the payment', 'cuar'));
                 break;
 
             case 'pending':
                 // We do not change the payment status but show success with a message to tell the user we are working on it
-                $this->redirect_to_success_page(__('The test gateway did not validate the payment yet', 'cuar'));
+                $this->redirect_to_success_page($payment->ID, __('The test gateway did not validate the payment yet', 'cuar'));
                 break;
 
             default:

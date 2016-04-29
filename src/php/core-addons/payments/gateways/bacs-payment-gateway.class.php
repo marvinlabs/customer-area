@@ -50,7 +50,7 @@ class CUAR_BacsPaymentGateway extends CUAR_AbstractPaymentGateway
     public function process_payment($payment, $payment_data, $gateway_params)
     {
         $message = $this->get_success_message();
-        $this->redirect_to_success_page($message);
+        $this->redirect_to_success_page($payment->ID, $message);
     }
 
     //-- Settings helper functions ----------------------------------------------------------------------------------------------------------------------------/

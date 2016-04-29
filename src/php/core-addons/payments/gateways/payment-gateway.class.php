@@ -13,6 +13,11 @@ interface CUAR_PaymentGateway
     function get_id();
 
     /**
+     * @return string The gateway's unique ID when listening for callback functions
+     */
+    function get_listener_id();
+
+    /**
      * @return string The gateway's name
      */
     function get_name();
@@ -35,6 +40,13 @@ interface CUAR_PaymentGateway
      * @param array        $gateway_params The parameters from the gateway form
      */
     function process_payment($payment, $payment_data, $gateway_params);
+
+    /**
+     * Process the result from the payment gateway
+     *
+     * @param int $payment_id The payment related to this result
+     */
+    function process_callback($payment_id);
 
     //-- UI functions -----------------------------------------------------------------------------------------------------------------------------------------/
 
