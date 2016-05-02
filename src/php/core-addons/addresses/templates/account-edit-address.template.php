@@ -44,23 +44,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
             if (!empty($address_actions)) :
                 ?><span class="cuar-address-actions cuar-js-address-actions pull-right"><?php
                 foreach ($address_actions as $action => $desc) {
-                    ?><a href="#" class="btn btn-default btn-xs cuar-action cuar-js-action cuar-<?php echo esc_attr($action); ?>" title="<?php echo esc_attr($desc['tooltip']); ?>"><?php
+                    ?><a href="#" class="btn btn-default btn-xs cuar-action cuar-js-action cuar-js-<?php echo esc_attr($action); ?>" title="<?php echo esc_attr($desc['tooltip']); ?>"><?php
                     echo $desc['label'];
                     ?></a>&nbsp; <?php
                 } ?></span><?php endif; ?><span class="cuar-progress cuar-js-progress" style="display: none;"><span class="indeterminate"></span></span></div>
     <div class="panel-body">
 
-
-
     <?php if (!in_array('name', $excluded_fields)) : ?>
         <div class="form-group cuar-js-address-field-container cuar-js-address-name">
-            <div class="row"><div class="col-sm-3">
-            <label for="<?php echo $address_id; ?>_name" class="control-label"><?php _e('Name', 'cuar'); ?></label>
-            </div><div class="col-sm-9">
-            <div class="control-container">
-                <input type="text" name="<?php echo $address_id; ?>[name]" id="<?php echo $address_id; ?>_name" value="<?php echo esc_attr($address['name']); ?>" placeholder="<?php esc_attr_e('Name', 'cuar'); ?>" class="form-control cuar-js-address-field"/>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="<?php echo $address_id; ?>_name" class="control-label"><?php _e('Name', 'cuar'); ?></label>
+                </div>
+                <div class="col-sm-9">
+                        <input type="text" name="<?php echo $address_id; ?>[name]" id="<?php echo $address_id; ?>_name" value="<?php echo esc_attr($address['name']); ?>" placeholder="<?php esc_attr_e('Name', 'cuar'); ?>" class="form-control cuar-js-address-field"/>
+                </div>
             </div>
-            </div></div>
         </div>
     <?php endif; ?>
     <?php if (!in_array('company', $excluded_fields)) : ?>
@@ -135,14 +134,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
     </div>
     <?php endif; ?>
 
-    <div class="cuar-country-state-inputs">
+    <div class="cuar-js-country-state-inputs">
         <?php if (!in_array('country', $excluded_fields)) : ?>
         <div class="form-group cuar-js-address-field-container cuar-js-address-country">
             <div class="row"><div class="col-sm-3">
             <label for="<?php echo $address_id; ?>_country" class="control-label"><?php _e('Country', 'cuar'); ?></label>
             </div><div class="col-sm-9">
             <div class="control-container">
-                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country" class="cuar-address-field">
+                <select name="<?php echo $address_id; ?>[country]" id="<?php echo $address_id; ?>_country" class="cuar-js-address-field">
                     <?php foreach (CUAR_CountryHelper::getCountries() as $code => $label) : ?>
                         <option value="<?php echo esc_attr($code); ?>" <?php selected($address['country'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>
@@ -159,7 +158,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
             <label for="<?php echo $address_id; ?>_state" class="control-label"><?php _e('State/Province', 'cuar'); ?></label>
             </div><div class="col-sm-9">
             <div class="control-container">
-                <select name="<?php echo $address_id; ?>[state]" id="<?php echo $address_id; ?>_state" class="cuar-address-field">
+                <select name="<?php echo $address_id; ?>[state]" id="<?php echo $address_id; ?>_state" class="cuar-js-address-field">
                     <?php foreach ($country_states as $code => $label) : ?>
                         <option value="<?php echo esc_attr($code); ?>" <?php selected($address['state'], $code); ?>><?php echo $label; ?></option>
                     <?php endforeach; ?>
@@ -177,7 +176,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
     jQuery(document).ready(function ($) {
         $('.cuar-<?php echo $address_class; ?>').addressManager();
         // $(".cuar-<?php echo $address_class; ?> .cuar-js-upload-control").mediaInputControl();
-        $('.cuar-<?php echo $address_class; ?> .cuar-country-state-inputs').bindCountryStateInputs();
+        $('.cuar-<?php echo $address_class; ?> .cuar-js-country-state-inputs').bindCountryStateInputs();
         <?php echo $extra_scripts; ?>
     });
 </script>

@@ -160,11 +160,10 @@
                 'line2': '',
                 'zip': '',
                 'city': '',
-                'country': '',
-                'state': '',
-                'vat-number': '',
                 'vat_number': '',
-                'logo_url': ''
+                'logo_url': '',
+                'country': '',
+                'state': ''
             });
         };
 
@@ -264,7 +263,7 @@
             } else {
                 fieldGroupSelector += name;
             }
-            
+
             return $(fieldGroupSelector, base.el).find('.cuar-js-address-field:input');
         };
 

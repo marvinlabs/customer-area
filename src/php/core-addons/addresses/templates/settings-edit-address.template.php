@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
     <?php if ( !empty($address_actions)) : ?>
         <div class="cuar-address-actions cuar-js-address-actions">
             <?php foreach ($address_actions as $action => $desc) : ?>
-                <a href="#" class="button cuar-action cuar-js-action cuar-<?php echo esc_attr($action); ?>" title="<?php echo esc_attr($desc['tooltip']); ?>"><?php
+                <a href="#" class="button cuar-action cuar-js-action cuar-js-<?php echo esc_attr($action); ?>" title="<?php echo esc_attr($desc['tooltip']); ?>"><?php
                     echo $desc['label'];
                     ?></a>&nbsp;
             <?php endforeach; ?>
@@ -101,7 +101,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         <input type="text" name="cuar_options[<?php echo $address_id; ?>][city]" id="<?php echo $address_id; ?>_city" value="<?php echo esc_attr($address['city']); ?>" placeholder="<?php esc_attr_e('City', 'cuar'); ?>" class="regular-text cuar-js-address-field"/>
     </div>
     <?php endif; ?>
-    <div class="cuar-country-state-container">
+    <div class="cuar-js-country-state-inputs">
         <?php if (!in_array('country', $excluded_fields)) : ?>
         <div class="form-group cuar-js-address-field-container cuar-js-address-country">
             <label for="<?php echo $address_id; ?>_country" class="control-label"><?php _e('Country', 'cuar'); ?></label>
@@ -131,7 +131,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $('.cuar-<?php echo $address_class; ?>').addressManager();
-        $('.cuar-<?php echo $address_class; ?> .cuar-country-state-container').bindCountryStateInputs({
+        $('.cuar-<?php echo $address_class; ?> .cuar-js-country-state-inputs').bindCountryStateInputs({
             select2: {
                 allowClear: true,
                 placeholder: "",

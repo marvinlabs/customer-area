@@ -128,7 +128,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
         </div>
         <?php endif; ?>
     </div>
-    <div class="row cuar-country-state-inputs">
+    <div class="row cuar-js-country-state-inputs">
         <?php if (!in_array('country', $excluded_fields)) : ?>
         <div class="form-group cuar-js-address-field-container cuar-js-address-country">
             <label for="<?php echo $address_id; ?>_country" class="control-label"><?php _e('Country', 'cuar'); ?></label>
@@ -164,7 +164,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
     jQuery(document).ready(function ($) {
         $('.cuar-<?php echo $address_class; ?>').addressManager();
         $(".cuar-<?php echo $address_class; ?> .cuar-js-upload-control").mediaInputControl();
-        $('.cuar-<?php echo $address_class; ?> .cuar-country-state-inputs').bindCountryStateInputs();
+        $('.cuar-<?php echo $address_class; ?> .cuar-js-country-state-inputs').bindCountryStateInputs();
         <?php echo $extra_scripts; ?>
     });
 </script>
