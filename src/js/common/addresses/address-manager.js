@@ -228,10 +228,6 @@
                 var field = base.fields[i];
                 var elt = base._getField(field);
 
-                console.log('set address field    : ' + field);
-                console.log('set address field val: ' + address[field]);
-                console.log('set address field elt: ' + elt);
-
                 if (field == 'country') {
                     elt.val(address[field]).trigger("change");
                 } else if (field == 'state') {
