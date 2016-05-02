@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
             echo $address_label;
 
             if (!empty($address_actions)) :
-                ?><span class="cuar-address-actions pull-right"><?php
+                ?><span class="cuar-address-actions cuar-js-address-actions pull-right"><?php
                 foreach ($address_actions as $action => $desc) {
                     ?><a href="#" class="btn btn-default btn-xs cuar-action cuar-js-action cuar-<?php echo esc_attr($action); ?>" title="<?php echo esc_attr($desc['tooltip']); ?>"><?php
                     echo $desc['label'];

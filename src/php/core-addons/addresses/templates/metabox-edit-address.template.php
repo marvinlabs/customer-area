@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
     <?php if (!empty($address_actions)) : ?>
         <div class="row">
-            <div class="form-group cuar-js-address-field-container cuar-js-address-actions">
+            <div class="form-group cuar-js-address-field-container cuar-js-address-actions cuar-address-actions">
                 <?php foreach ($address_actions as $action => $desc) : ?>
                     <a href="#" class="button cuar-action cuar-js-action cuar-js-<?php echo esc_attr($action); ?>" title="<?php echo esc_attr($desc['tooltip']); ?>"><?php
                         echo $desc['label'];

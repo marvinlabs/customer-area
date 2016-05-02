@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
     <table class="form-table">
         <tbody>
         <?php if ( !empty($address_actions)) : ?>
-            <tr class="cuar-js-address-actions">
+            <tr class="cuar-js-address-actions cuar-address-actions">
                 <th></th>
                 <td>
                     <?php foreach ($address_actions as $action => $desc) : ?>
