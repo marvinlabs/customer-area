@@ -315,7 +315,7 @@ if ( ! function_exists( 'cuar_toolbar_profile_button' ) ) {
 		return $groups;
 	}
 
-	add_action( 'cuar/core/page/toolbar', 'cuar_toolbar_profile_button', 10 );
+	add_filter( 'cuar/core/page/toolbar', 'cuar_toolbar_profile_button', 10 );
 }
 
 if ( ! function_exists( 'cuar_dev_nuancier' ) ) {
