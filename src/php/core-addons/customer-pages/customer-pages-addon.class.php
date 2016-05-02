@@ -955,6 +955,10 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 return $out;
             }
 
+            if ( !cuar_is_customer_area_page( get_queried_object_id() ) && !cuar_is_customer_area_private_content( get_the_ID() ) ) {
+                return $out;
+            }
+
             /** @noinspection PhpUnusedLocalVariableInspection */
             $toolbar_groups = apply_filters('cuar/core/page/toolbar', array());
             if ( !empty($toolbar_groups))
