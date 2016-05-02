@@ -93,7 +93,13 @@ abstract class CUAR_Shortcode
             }
         }
 
+        do_action('cuar/core/shortcode/before-process', $this);
+
         // Run the shortcode
-        return $this->process_shortcode($params, $content);
+        $out = $this->process_shortcode($params, $content);
+
+        do_action('cuar/core/shortcode/after-process', $this);
+
+        return $out;
     }
 }
