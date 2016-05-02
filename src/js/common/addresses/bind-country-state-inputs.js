@@ -71,10 +71,10 @@
 
                     if (response.data.states != null) {
                         stateField.html(response.data.htmlOptions).select2(base.options.select2);
-                        stateField.select2('val', stateField.data('pending-value'));
+                        stateField.val(stateField.data('pending-value')).trigger('change');
                         stateFieldGroup.show();
                     } else {
-                        stateField.select2('val', '');
+                        stateField.val('').trigger('change');
                         stateFieldGroup.hide();
                     }
                     stateField.data('pending-value', '');

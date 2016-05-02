@@ -227,11 +227,15 @@
             for (var i = 0; i < base.fields.length; i++) {
                 var field = base.fields[i];
                 var elt = base._getField(field);
+
+                console.log('set address field    : ' + field);
+                console.log('set address field val: ' + address[field]);
+                console.log('set address field elt: ' + elt);
+
                 if (field == 'country') {
-                    elt.select2('val', address[field]);
-                    elt.change();
+                    elt.val(address[field]).trigger("change");
                 } else if (field == 'state') {
-                    elt.select2('val', address[field]);
+                    elt.val(address[field]);
                     elt.data('pending-value', address[field]);
                 } else if (field == 'vat_number') {
                     elt.val(address['vat-number']);

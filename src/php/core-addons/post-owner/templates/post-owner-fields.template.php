@@ -5,6 +5,7 @@
 <?php /** @var string $field_group */ ?>
 <?php /** @var CUAR_PostOwnerAddOn $po_addon */ ?>
 
+<div class="cuar-js-owner-select-container">
 <?php
 foreach ($owner_types as $type_id => $type_label) :
     $selectable_owners = $po_addon->get_selectable_owners($type_id);
@@ -26,10 +27,10 @@ foreach ($owner_types as $type_id => $type_label) :
         <label for="<?php esc_attr($field_name); ?>"><?php echo $type_label; ?></label>
 
         <?php $extra_attrs = $po_addon->is_multiple_selection_enabled($type_id) ? ' multiple="multiple" size="8"' : ''; ?>
-        <?php $css_class = 'form-control cuar-owner-select cuar-owner-select-' . $type_id; ?>
+        <?php $css_class = 'form-control cuar-owner-select cuar-js-owner-select cuar-owner-select-' . $type_id; ?>
         <?php $placeholder = __('Select or search an owner', 'cuar'); ?>
 
-        <select id="<?php echo $field_id; ?>" name="<?php echo $field_name; ?>" class="<?php echo esc_attr($css_class); ?>" data-placeholder="<?php echo esc_attr($placeholder); ?>" <?php echo $extra_attrs; ?>>
+        <select id="<?php echo $field_id; ?>" name="<?php echo $field_name; ?>" class="<?php echo esc_attr($css_class); ?>" data-owner-type="<?php echo esc_attr($type_id); ?>" data-placeholder="<?php echo esc_attr($placeholder); ?>" <?php echo $extra_attrs; ?>>
             <option value=""></option>
             <?php foreach ($selectable_owners as $id => $name):
                 $selected = isset($owners[$type_id]) && !empty($owners[$type_id]) && in_array($id, $owners[$type_id]);
@@ -53,4 +54,4 @@ foreach ($owner_types as $type_id => $type_label) :
         <?php endif; ?>
     </div>
 <?php endforeach; ?>
-
+</div>
