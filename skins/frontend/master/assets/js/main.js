@@ -790,8 +790,15 @@
                 });
 
                 // Initiate cookie session for filters buttons
-                var cookieName = $container.data('type') + '-collection-layout',
-                    cookieLayout = $.cookie(cookieName) || $.cookie(cookieName, 'grid');
+                var cookieName = $container.data('type') + '-collection-layout';
+                var cookieLayout = $.cookie(cookieName);
+                if (cookieLayout!='list' && cookieLayout!='grid') {
+                    if ($container.data('collection-layout')!=null) {
+                        cookieLayout = $container.data('collection-layout');
+                    } else {
+                        cookieLayout = 'grid';
+                    }
+                }
 
                 if (cookieLayout == 'list') {
                     $container.addClass(cookieLayout).removeClass('grid');

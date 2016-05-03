@@ -40,9 +40,8 @@ $current_user = $this->get_current_user();
 </div>
 
 <div class="panel">
-    <div class="panel-heading"><span class="panel-title"><?php _e('General', 'cuar'); ?></span></div>
+    <div class="panel-heading"><span class="panel-title"><?php _e('Account details', 'cuar'); ?></span></div>
     <div class="panel-body">
-        <div class="cuar-title"><?php _e('Account Details', 'cuar'); ?></div>
         <?php $this->print_account_fields(); ?>
     </div>
 </div>
