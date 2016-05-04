@@ -1,6 +1,6 @@
 <?php /**
  * Template version: 1.0.0
- * Template zone: frontend
+ * Template zone: admin|frontend
  */ ?>
 <script type="text/javascript">
     <!--

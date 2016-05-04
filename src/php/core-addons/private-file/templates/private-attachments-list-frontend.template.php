@@ -1,6 +1,6 @@
 <?php /**
  * Template version: 1.0.0
- * Template zone: admin|frontend
+ * Template zone: frontend
  */ ?>
 
 
@@ -11,7 +11,7 @@
 
 <?php do_action('cuar/templates/attachment-manager/before-file-attachment-list'); ?>
 
-<div class="cuar-file-attachments cuar-js-file-attachments">
+<table class="table cuar-file-attachments cuar-js-file-attachments">
     <?php wp_nonce_field('cuar-remove-attachment-' . $post_id, 'cuar_remove_attachment_nonce'); ?>
     <?php wp_nonce_field('cuar-update-attachment-' . $post_id, 'cuar_update_attachment_nonce'); ?>
 
@@ -21,16 +21,16 @@
         include($attachment_item_template);
     }
     ?>
-    <div class="alert cuar-js-empty-message" <?php if ( !empty($attached_files)) echo 'style="display: none;"'; ?>>
-        <?php _e('This content currently does not have any file attachment', 'cuar'); ?>
-    </div>
-</div>
+    <tr class="cuar-js-empty-message" <?php if ( !empty($attached_files)) echo 'style="display: none;"'; ?>>
+        <td><p class="alert"><?php _e('This content currently does not have any file attachment', 'cuar'); ?></p></td>
+    </tr>
+</table>
 
-<div class="cuar-js-file-attachment-template" style="display: none;"><?php
+<table class="cuar-js-file-attachment-template" style="display: none;"><?php
     $file_id = null;
     $attached_file = null;
     include($attachment_item_template);
     ?>
-</div>
+</table>
 
 <?php do_action('cuar/templates/attachment-manager/after-file-attachment-list'); ?>

@@ -23,9 +23,6 @@
          * Initialisation
          */
         base.init = function () {
-            console.log('fileAttachmentManager.init ');
-            console.log(new Error().stack);
-
             // Merge default options
             base.options = $.extend({}, $.cuar.fileAttachmentManager.defaultOptions, options);
 
@@ -131,8 +128,6 @@
             var filename = attachedItem.data('filename');
             var nonceValue = base._getAttachmentListRemoveNonce();
 
-            console.log('_onRemoveActionClick ' + filename);
-
             // Let's go to a state where we cannot do any action anymore
             base._updateAttachmentItemState(attachedItem, 'pending');
 
@@ -157,8 +152,8 @@
                         base._showError(attachedItem, filename, errorMessage, false);
                     } else {
                         // Ok. Remove the line
-                        attachedItem.slideUp(400, function () {
-                            if (base._getAttachmentItems().length == 1) {
+                        attachedItem.fadeOut(400, function () {
+                            if (base._getAttachmentItems().length <= 1) {
                                 base._getAttachmentListEmptyMessage().show();
                             }
                             attachedItem.remove();
@@ -182,8 +177,6 @@
             if (caption === undefined || caption.trim().length == 0) {
                 tempCaption = filename;
             }
-
-            console.log('_onSendFile ' + filename + ' / ' + method);
 
             base._updateAttachmentItem(item, postId, filename, tempCaption);
             base._updateAttachmentItemState(item, 'pending');
@@ -247,8 +240,6 @@
                 tempCaption = filename;
             }
 
-            console.log('_onUpdateFile ' + filename);
-
             base._updateAttachmentItemState(item, 'pending');
 
             // Send some Ajax
@@ -297,10 +288,12 @@
                 return null;
             }
 
-            console.log('_onAddAttachmentItem ' + filename);
-
             var item = base._getAttachmentTemplate().clone();
             item.appendTo(base.options.attachmentList);
+
+            console.log(base._getAttachmentTemplate());
+            console.log(item);
+            console.log(filename);
 
             base._updateAttachmentItem(item, postId, filename, caption);
             base._getAttachmentListEmptyMessage().hide();
@@ -320,8 +313,6 @@
             if (caption === undefined || caption.trim().length == 0) {
                 caption = filename;
             }
-
-            console.log('_updateAttachmentItem ' + filename);
 
             item.data('post-id', postId);
             item.data('filename', filename);
@@ -420,12 +411,13 @@
 
         /** Getter */
         base._getAttachmentListEmptyMessage = function () {
-            return $('.cuar-js-empty-message', base._getAttachmentList());
+            return base._getAttachmentList().find('.cuar-js-empty-message');
         };
 
         /** Getter */
         base._getAttachmentItems = function () {
-            return $(base.options.attachmentList + '>' + base.options.attachmentItem);
+            return base._getAttachmentList().children(base.options.attachmentItem);
+            // return $(base.options.attachmentList + ' ' + base.options.attachmentItem);
         };
 
         /** Getter */
@@ -450,7 +442,7 @@
         /** Getter */
         base._getAttachmentTemplate = function () {
             return $(base.options.attachmentItemTemplate)
-                .children(base.options.attachmentItem)
+                .find(base.options.attachmentItem)
                 .first();
         };
 
