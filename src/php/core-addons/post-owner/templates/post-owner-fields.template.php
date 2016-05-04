@@ -42,13 +42,29 @@ foreach ($owner_types as $type_id => $type_label) :
         <?php if ($print_javascript) : ?>
             <script type="text/javascript">
                 <!--
-                jQuery("document").ready(function ($) {
-                    $("#<?php echo $field_id; ?>").select2({
-                        <?php if ( !is_admin()) echo "dropdownParent: $('#" . $field_id . "').parent(),"; ?>
-                        width: "100%",
-                        allowClear: true
+                "use strict";
+                (function ($) {
+                    $(document).ready(function () {
+
+                        if ($.cuar.isAdmin) {
+                            // Init Select 2
+                            cuarInitPostOwnersSelect();
+                        } else {
+                            // Wait for wizard to be initialized before Select 2
+                            $('#cuar-js-content-container').on('cuar:wizard:initialized', cuarInitPostOwnersSelect);
+                        }
+
+                        function cuarInitPostOwnersSelect() {
+                            $("#<?php echo $field_id; ?>").select2({
+                                <?php if (!is_admin()) echo "dropdownParent: $('#" . $field_id . "').parent(),"; ?>
+                                width: "100%",
+                                allowClear: true
+                            });
+                        }
+
                     });
-                });
+
+                })(jQuery);
                 //-->
             </script>
         <?php endif; ?>
