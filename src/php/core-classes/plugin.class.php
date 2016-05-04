@@ -200,6 +200,7 @@ if ( !class_exists('CUAR_Plugin')) :
             if (is_admin())
             {
                 $messages = apply_filters('cuar/core/js-messages?zone=admin', array(
+                    'isAdmin'                                  => true,
                     'ajaxUrl'                                  => admin_url('admin-ajax.php'),
                     'checkingLicense'                          => __('Checking license...', 'cuar'),
                     'unreachableLicenseServerError'            => __('Failed to contact server', 'cuar'),
@@ -228,6 +229,7 @@ if ( !class_exists('CUAR_Plugin')) :
             else
             {
                 $messages = apply_filters('cuar/core/js-messages?zone=frontend', array(
+                    'isAdmin'                                  => false,
                     'ajaxUrl'                                  => admin_url('admin-ajax.php'),
                     'jeditableIndicator'                       => esc_attr__('Saving...', 'cuar'),
                     'jeditableTooltip'                         => esc_attr__('Click to edit...', 'cuar'),
