@@ -551,6 +551,22 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /*------- ATTACHMENTS MANAGER -----------------------------------------------------------------------------------*/
 
         /**
+         * Print the scripts to manage attachments
+         */
+        public function print_attachment_manager_scripts()
+        {
+            $template_suffix = is_admin() ? '-admin' : '-frontend';
+
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                array(
+                    'private-attachments-add-methods-browser-scripts' . $template_suffix . '.template.php',
+                    'private-attachments-add-methods-browser-scripts.template.php'
+                ),
+                'templates'));
+        }
+
+        /**
          * Print the add attachment ajax methods
          *
          * @param int $post_id The post ID

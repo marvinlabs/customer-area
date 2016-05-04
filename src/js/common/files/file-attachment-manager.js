@@ -23,6 +23,9 @@
          * Initialisation
          */
         base.init = function () {
+            console.log('fileAttachmentManager.init ');
+            console.log(new Error().stack);
+
             // Merge default options
             base.options = $.extend({}, $.cuar.fileAttachmentManager.defaultOptions, options);
 
@@ -33,10 +36,10 @@
             base._getSelectorInput().change(base._onSelectorInputChanged);
 
             // Removal of items
-            base._getAttachmentList().on('click', '.cuar-remove-action', base._onRemoveActionClick);
+            base._getAttachmentList().on('click', base.options.removeAction, base._onRemoveActionClick);
 
             // Errors
-            base._getErrorList().on('click', '.cuar-dismiss', base._onDismissError);
+            base._getErrorList().on('click', base.options.dismissAction, base._onDismissError);
 
             // Bind to our custom events
             $(document).on('cuar:attachmentManager:addItem', base._onAddAttachmentItem);
@@ -107,10 +110,10 @@
             // Hide previous and then show new
             var visibleSelectors = selectors.filter(':visible');
             if (visibleSelectors.length <= 0) {
-                target.fadeToggle();
+                target.fadeIn();
             } else {
-                visibleSelectors.fadeToggle("fast", function () {
-                    target.fadeToggle();
+                visibleSelectors.fadeOut("fast", function () {
+                    target.fadeIn();
                 });
             }
         };
@@ -127,6 +130,8 @@
             var postId = attachedItem.data('post-id');
             var filename = attachedItem.data('filename');
             var nonceValue = base._getAttachmentListRemoveNonce();
+
+            console.log('_onRemoveActionClick ' + filename);
 
             // Let's go to a state where we cannot do any action anymore
             base._updateAttachmentItemState(attachedItem, 'pending');
@@ -177,6 +182,8 @@
             if (caption === undefined || caption.trim().length == 0) {
                 tempCaption = filename;
             }
+
+            console.log('_onSendFile ' + filename + ' / ' + method);
 
             base._updateAttachmentItem(item, postId, filename, tempCaption);
             base._updateAttachmentItemState(item, 'pending');
@@ -240,6 +247,8 @@
                 tempCaption = filename;
             }
 
+            console.log('_onUpdateFile ' + filename);
+
             base._updateAttachmentItemState(item, 'pending');
 
             // Send some Ajax
@@ -288,6 +297,8 @@
                 return null;
             }
 
+            console.log('_onAddAttachmentItem ' + filename);
+
             var item = base._getAttachmentTemplate().clone();
             item.appendTo(base.options.attachmentList);
 
@@ -310,9 +321,11 @@
                 caption = filename;
             }
 
+            console.log('_updateAttachmentItem ' + filename);
+
             item.data('post-id', postId);
             item.data('filename', filename);
-            item.children('.cuar-caption').html(caption);
+            item.children('.cuar-js-caption').html(caption);
         };
 
         /**
@@ -323,12 +336,12 @@
          */
         base._updateAttachmentItemState = function (item, state) {
             item.removeClass(function (index, css) {
-                return (css.match(/(^|\s)cuar-state-\S+/g) || []).join(' ');
+                return (css.match(/(^|\s)cuar-js-state-\S+/g) || []).join(' ');
             });
-            item.addClass('cuar-state-' + state);
+            item.addClass('cuar-js-state-' + state);
 
-            var actions = item.children('.cuar-actions');
-            var progress = item.children('.cuar-progress');
+            var actions = item.children('.cuar-js-actions');
+            var progress = item.children('.cuar-js-progress');
 
             switch (state) {
                 case 'pending':
@@ -356,7 +369,7 @@
          * @private
          */
         base._updateAttachmentItemProgress = function (item, progress) {
-            var progressElt = item.children('.cuar-progress');
+            var progressElt = item.children('.cuar-js-progress');
             var indeterminateElt = progressElt.children('.indeterminate');
             var determinateElt = progressElt.children('.determinate');
 
@@ -381,18 +394,17 @@
             }
 
             if (errorMessage != null && errorMessage.length > 0) {
-                var html = '<p class="cuar-error">';
-                if (filename != null && filename.length > 0) html += '<strong>' + filename + '</strong> - ';
-                html += errorMessage;
-                html += '<a href="#" class="cuar-dismiss"><span class="dashicons dashicons-dismiss"></span></a>';
-                html += '</p>';
+                if (filename != null && filename.length > 0) errorMessage = '<strong>' + filename + '</strong> - ' + errorMessage;
 
-                $(html).appendTo(base._getErrorList());
+                var errorItem = base._getErrorTemplate().clone();
+                errorItem.find('.cuar-js-message').html(errorMessage);
+                errorItem.appendTo(base.options.errorList, base.el);
+                errorItem.show();
             }
         };
 
         base._onDismissError = function (event) {
-            $(this).closest('.cuar-error').remove();
+            $(this).closest('.cuar-js-error').remove();
             event.preventDefault();
         };
 
@@ -408,7 +420,7 @@
 
         /** Getter */
         base._getAttachmentListEmptyMessage = function () {
-            return $('.cuar-empty-message', base._getAttachmentList());
+            return $('.cuar-js-empty-message', base._getAttachmentList());
         };
 
         /** Getter */
@@ -426,6 +438,13 @@
         /** Getter */
         base._getAttachmentListRemoveNonce = function () {
             return $('#cuar_remove_attachment_nonce', base._getAttachmentList()).val();
+        };
+
+        /** Getter */
+        base._getErrorTemplate = function () {
+            return $(base.options.errorTemplate, base.el)
+                .children('.cuar-js-error')
+                .first();                
         };
 
         /** Getter */
@@ -450,13 +469,16 @@
     };
 
     $.cuar.fileAttachmentManager.defaultOptions = {
-        errorList: '.cuar-file-attachment-errors',                  // The container for the list of errors
-        attachmentList: '.cuar-file-attachments',                   // The container for the list of attachments
-        attachmentItem: '.cuar-file-attachment',                    // An item for the file attachment list
-        attachmentItemTemplate: '.cuar-file-attachment-template',   // The template for new items
-        selectorList: '.cuar-file-selectors',                       // The container for the selectors
-        selectorItem: '.cuar-file-selector',                        // An item for the selectors list
-        selectorInput: '.cuar-file-selector-input'                  // An item for the selectors list
+        errorList: '.cuar-js-file-attachment-errors',                  // The container for the list of errors
+        attachmentList: '.cuar-js-file-attachments',                   // The container for the list of attachments
+        attachmentItem: '.cuar-js-file-attachment',                    // An item for the file attachment list
+        attachmentItemTemplate: '.cuar-js-file-attachment-template',   // The template for new items
+        errorTemplate: '.cuar-js-error-template',                      // The template for errors
+        selectorList: '.cuar-js-file-selectors',                       // The container for the selectors
+        selectorItem: '.cuar-js-file-selector',                        // An item for the selectors list
+        selectorInput: '.cuar-js-file-selector-input',                 // An item for the selectors list
+        removeAction: '.cuar-js-remove-action',
+        dismissAction: '.cuar-js-dismiss'
     };
 
     $.fn.fileAttachmentManager = function (options) {

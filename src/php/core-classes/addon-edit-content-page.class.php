@@ -545,10 +545,17 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             $pf_addon->print_add_attachment_method_browser($post_id);
         }
 
-        public function print_current_attachments_manager($post_id)
+        public function print_attachment_manager_scripts()
         {
             wp_enqueue_script('cuar.frontend');
 
+            /** @var CUAR_PrivateFileAddOn $pf_addon */
+            $pf_addon = $this->plugin->get_addon('private-files');
+            $pf_addon->print_attachment_manager_scripts();
+        }
+
+        public function print_current_attachments_manager($post_id)
+        {
             /** @var CUAR_PrivateFileAddOn $pf_addon */
             $pf_addon = $this->plugin->get_addon('private-files');
             $pf_addon->print_current_attachments_manager($post_id);
