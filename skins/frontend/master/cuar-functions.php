@@ -15,7 +15,7 @@ if ( !function_exists('cuar_load_skin_scripts'))
         //$cuar_plugin->enable_library('bootstrap.carousel');
         $cuar_plugin->enable_library('bootstrap.collapse');
         $cuar_plugin->enable_library('bootstrap.dropdown');
-        //$cuar_plugin->enable_library('bootstrap.modal');
+        $cuar_plugin->enable_library('bootstrap.modal');
         //$cuar_plugin->enable_library('bootstrap.popover');
         $cuar_plugin->enable_library('bootstrap.scrollspy');
         $cuar_plugin->enable_library('bootstrap.tab');
@@ -93,7 +93,6 @@ if ( !function_exists('cuar_images_sizes'))
 
     add_action('after_setup_theme', 'cuar_images_sizes');
 }
-
 
 if ( !function_exists('cuar_enable_bootstrap_nav_walker'))
 {
