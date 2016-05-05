@@ -39,8 +39,13 @@
 
 <script type="text/javascript">
     <!--
-    jQuery(document).ready(function ($) {
-        $('.cuar-js-ftp-uploader').ftpUploader();
-    });
+    (function ($) {
+        "use strict";
+        $(document).ready(function ($) {
+            $('#cuar-js-content-container').on('cuar:wizard:initialized', function(){
+                $('.cuar-js-ftp-uploader').ftpUploader();
+            });
+        });
+    })(jQuery);
     //-->
 </script>
