@@ -976,7 +976,8 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                 // Optionally output the latest files on the dashboard
                 if ($this->is_show_in_dashboard_enabled())
                 {
-                    add_action('cuar/core/page/before-content?slug=customer-dashboard', array(&$this, 'print_dashboard_content'), 10);
+                    $priority = apply_filters('cuar/core/page/dashboard-block-priority', 10, $this->get_slug());
+                    add_action('cuar/core/page/before-content?slug=customer-dashboard', array(&$this, 'print_dashboard_content'), $priority);
                 }
             }
         }
