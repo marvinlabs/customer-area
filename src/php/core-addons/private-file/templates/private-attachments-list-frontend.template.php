@@ -1,5 +1,5 @@
 <?php /**
- * Template version: 1.0.0
+ * Template version: 3.0.0
  * Template zone: frontend
  */ ?>
 
@@ -23,7 +23,7 @@
 
             <?php
             foreach ($attached_files as $file_id => $attached_file) {
-            include ($attachment_item_template);
+                include ($attachment_item_template);
             }
             ?>
             <tr class="cuar-js-empty-message" <?php if (!empty($attached_files)) echo 'style="display: none;"'; ?>>

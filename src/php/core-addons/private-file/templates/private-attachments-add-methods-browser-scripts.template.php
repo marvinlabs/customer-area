@@ -1,13 +1,13 @@
 <?php /**
- * Template version: 1.0.0
+ * Template version: 3.0.0
  * Template zone: admin|frontend
  */ ?>
 <script type="text/javascript">
     <!--
-    "use strict";
     (function ($) {
+        "use strict";
         $(document).ready(function () {
-            if ($.cuar.isAdmin) {
+            if (cuar.isAdmin) {
                 // Init Select 2
                 cuarInitFileAttachmentManager();
             } else {

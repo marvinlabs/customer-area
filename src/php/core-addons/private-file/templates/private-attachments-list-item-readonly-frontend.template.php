@@ -1,6 +1,6 @@
 <?php /**
- * Template version: 1.0.0
- * Template zone: admin|frontend
+ * Template version: 3.0.0
+ * Template zone: frontend
  */ ?>
 
 <?php /** @var int $post_id */ ?>
