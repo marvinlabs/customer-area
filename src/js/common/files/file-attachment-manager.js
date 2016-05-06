@@ -153,6 +153,7 @@
                     } else {
                         // Ok. Remove the line
                         attachedItem.fadeOut(400, function () {
+                            alert(base._getAttachmentItems().length);
                             if (base._getAttachmentItems().length <= 1) {
                                 base._getAttachmentListEmptyMessage().show();
                             }
@@ -351,6 +352,11 @@
                     progress.hide();
                     break;
             }
+
+            $(document).trigger('cuar:attachmentManager:itemStateUpdated', [
+                item,
+                state
+            ]);
         };
 
         /**
@@ -416,7 +422,7 @@
 
         /** Getter */
         base._getAttachmentItems = function () {
-            return base._getAttachmentList().children(base.options.attachmentItem);
+            return base._getAttachmentList().find(base.options.attachmentItem);
             // return $(base.options.attachmentList + ' ' + base.options.attachmentItem);
         };
 

@@ -42,11 +42,11 @@ foreach ($owner_types as $type_id => $type_label) :
         <?php if ($print_javascript) : ?>
             <script type="text/javascript">
                 <!--
-                "use strict";
                 (function ($) {
+                    "use strict";
                     $(document).ready(function () {
 
-                        if ($.cuar.isAdmin) {
+                        if (cuar.isAdmin) {
                             // Init Select 2
                             cuarInitPostOwnersSelect();
                         } else {
