@@ -63,12 +63,11 @@ foreach ($owner_types as $type_id => $type_label) :
                             $("#<?php echo $field_id; ?>").select2({
                                 <?php if (!is_admin()) echo "dropdownParent: $('#" . $field_id . "').parent(),"; ?>
                                 width: "100%",
-                                allowClear: true
+                                allowClear: true,
+                                minimumResultsForSearch: 8
                             });
                         }
-
                     });
-
                 })(jQuery);
                 //-->
             </script>
