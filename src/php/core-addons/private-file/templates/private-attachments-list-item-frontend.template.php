@@ -18,8 +18,10 @@
     <td class="text-right cuar-js-actions">
         <?php do_action('cuar/templates/attachment-manager/file-attachment-actions', $post_id, $attached_file); ?>
         <?php if ($file_id != null): ?>
+            <!--
             <a href="<?php cuar_the_attached_file_link($post_id, $attached_file); ?>" class="btn btn-default btn-xs cuar-js-download-action" title="<?php esc_attr_e('Download', 'cuar'); ?>">
                 <span class="fa fa-download"></span> <?php esc_attr_e('Download', 'cuar'); ?></a>
+            -->    
         <?php endif; ?>
         <a href="#" class="btn btn-default btn-xs cuar-js-remove-action" title="<?php esc_attr_e('Remove', 'cuar'); ?>">
             <span class="fa fa-trash"></span> <?php esc_attr_e('Remove', 'cuar'); ?></a>

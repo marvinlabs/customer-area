@@ -51,8 +51,8 @@
         /**
          * When a remove attachment button is clicked, send an AJAX request
          */
-        base._onShowError = function (event, item, filename, errorMessage) {
-            base._showError(item, filename, errorMessage);
+        base._onShowError = function (event, item, filename, errorMessage, isRemoveRequired) {
+            base._showError(item, filename, errorMessage, isRemoveRequired);
         };
 
         /**
@@ -151,14 +151,8 @@
                         }
                         base._showError(attachedItem, filename, errorMessage, false);
                     } else {
-                        // Ok. Remove the line
-                        attachedItem.fadeOut(400, function () {
-                            alert(base._getAttachmentItems().length);
-                            if (base._getAttachmentItems().length <= 1) {
-                                base._getAttachmentListEmptyMessage().show();
-                            }
-                            attachedItem.remove();
-                        });
+                        // Remove item
+                        base._removeItem(attachedItem);
                     }
                 }
             );
@@ -285,21 +279,26 @@
         base._onAddAttachmentItem = function (event, postId, filename, caption, extra) {
             // See if we have more items than allowed
             if (cuar.maxAttachmentCount > 0 && base._getAttachmentItems().length >= cuar.maxAttachmentCount) {
-                base._showError(null, filename, cuar.tooManyAttachmentsAlready, false);
+                base._showError(null, filename, cuar.tooManyAttachmentsAlready, true);
                 return null;
             }
 
             var item = base._getAttachmentTemplate().clone();
             item.appendTo(base.options.attachmentList);
 
-            console.log(base._getAttachmentTemplate());
-            console.log(item);
-            console.log(filename);
-
             base._updateAttachmentItem(item, postId, filename, caption);
             base._getAttachmentListEmptyMessage().hide();
 
             return item;
+        };
+
+        base._removeItem = function(item) {
+            item.fadeOut(400, function () {
+                if (base._getAttachmentItems().length <= 1) {
+                    base._getAttachmentListEmptyMessage().show();
+                }
+                item.remove();
+            });
         };
 
         /**
@@ -383,8 +382,10 @@
         /** Getter */
         base._showError = function (item, filename, errorMessage, isRemoveItemRequired) {
             if (item != null) {
+                console.log(item);
+                console.log(isRemoveItemRequired);
                 if (isRemoveItemRequired) {
-                    item.remove();
+                    base._removeItem(item);
                 } else {
                     base._updateAttachmentItemState(item, 'error');
                 }
