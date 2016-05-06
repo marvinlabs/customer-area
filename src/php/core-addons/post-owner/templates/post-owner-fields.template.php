@@ -1,3 +1,8 @@
+<?php /**
+ * Template version: 3.0.0
+ * Template zone: admin|frontend
+ */ ?>
+
 <?php /** @var array $owner_types */ ?>
 <?php /** @var array $owners */ ?>
 <?php /** @var bool $print_javascript */ ?>
