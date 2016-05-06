@@ -700,6 +700,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
             $template_suffix = is_admin() ? '-admin' : '-frontend';
 
+            wp_enqueue_script(is_admin() ? 'cuar.admin' : 'cuar.frontend');
             $print_javascript = false;
             $theme_support = get_theme_support('customer-area.library.jquery.select2');
             if (is_admin()
