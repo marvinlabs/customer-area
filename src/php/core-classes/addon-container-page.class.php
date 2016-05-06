@@ -227,6 +227,31 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
             return $url;
         }
 
+        public function add_listing_contextual_toolbar_group($groups)
+        {
+            $current_page_id = get_queried_object_id();
+            if ($current_page_id!=$this->get_page_id()) return $groups;
+
+            ob_start();
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                array(
+                    'collections-button-group-' . $this->get_slug() . '.template.php',
+                    'collections-button-group.template.php'
+                ),
+                'templates'
+            ));
+            $group_html = ob_get_contents();
+            ob_end_clean();
+
+            $groups['collection-switcher'] = array(
+                'type' => 'raw',
+                'html' => $group_html
+            );
+
+            return $groups;
+        }
+
         /*------- SINGLE PRIVATE CONTENT --------------------------------------------------------------------------------*/
 
         /**
@@ -974,6 +999,7 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
             if ( !is_admin())
             {
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_single_private_content_contextual_toolbar_group'), 1400);
+                add_filter('cuar/core/page/toolbar', array(&$this, 'add_listing_contextual_toolbar_group'), 2000);
 
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())
