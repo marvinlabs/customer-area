@@ -58,12 +58,9 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         {
             $this->usr_owner_type = new CUAR_PostOwnerUserOwnerType();
 
-            if (is_admin())
-            {
+            if (is_admin()) {
                 $this->admin_interface = new CUAR_PostOwnerAdminInterface($plugin, $this);
-            }
-            else
-            {
+            } else {
                 add_action('template_redirect', array(&$this, 'protect_single_post_access'));
             }
 
@@ -117,10 +114,8 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         public function get_owners_meta_query_component($owners)
         {
             $mq = array();
-            foreach ($owners as $type => $ids)
-            {
-                foreach ($ids as $id)
-                {
+            foreach ($owners as $type => $ids) {
+                foreach ($ids as $id) {
                     $mq[] = $this->get_owner_meta_query_component($type, $id);
                 }
             }
@@ -141,8 +136,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         {
             $dir = WP_CONTENT_DIR . '/customer-area/storage';
             $dir = apply_filters('cuar/core/ownership/base-private-storage-directory', $dir);
-            if ($create_dirs && !file_exists($dir))
-            {
+            if ($create_dirs && !file_exists($dir)) {
                 mkdir($dir, 0775, true);
             }
 
@@ -171,8 +165,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_private_file_path($filename, $post_id, $create_dirs = false)
         {
-            if (empty($post_id) || empty($filename))
-            {
+            if (empty($post_id) || empty($filename)) {
                 return false;
             }
 
@@ -180,8 +173,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 . '/'
                 . $this->get_private_storage_directory($post_id, false, false);
 
-            if ($create_dirs && !file_exists($dir))
-            {
+            if ($create_dirs && !file_exists($dir)) {
                 mkdir($dir, 0775, true);
             }
 
@@ -199,21 +191,18 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_private_storage_directory($post_id, $absolute = false, $create_dirs = false)
         {
-            if (empty($post_id))
-            {
+            if (empty($post_id)) {
                 return false;
             }
 
             // Do something to make a directory out of the post_id
             $dir = md5('wpca-' . $post_id . md5(-$post_id * $post_id * $post_id));
 
-            if ($absolute)
-            {
+            if ($absolute) {
                 $dir = $this->get_base_private_storage_directory() . "/" . $dir;
             }
 
-            if ($create_dirs && !file_exists($dir))
-            {
+            if ($create_dirs && !file_exists($dir)) {
                 mkdir($dir, 0775, true);
             }
 
@@ -234,8 +223,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         {
             $dir = WP_CONTENT_DIR . '/customer-area';
             $dir = apply_filters('cuar/core/ownership/base-private-storage-directory', $dir);
-            if ($create_dirs && !file_exists($dir))
-            {
+            if ($create_dirs && !file_exists($dir)) {
                 mkdir($dir, 0775, true);
             }
 
@@ -254,8 +242,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_legacy_private_storage_directory($post_id, $absolute = false, $create_dirs = false)
         {
-            if (empty($post_id))
-            {
+            if (empty($post_id)) {
                 return false;
             }
 
@@ -283,8 +270,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_legacy_owner_file_path($post_id, $filename, $owner_ids, $owner_type, $create_dirs = false)
         {
-            if (empty($owner_ids) || empty($owner_type) || empty($filename))
-            {
+            if (empty($owner_ids) || empty($owner_type) || empty($filename)) {
                 return false;
             }
 
@@ -292,8 +278,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 . '/'
                 . $this->get_legacy_owner_storage_directory($owner_ids, $owner_type);
 
-            if ($create_dirs && !file_exists($dir))
-            {
+            if ($create_dirs && !file_exists($dir)) {
                 mkdir($dir, 0775, true);
             }
 
@@ -314,27 +299,21 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_legacy_owner_storage_directory($owner_ids, $owner_type, $absolute = false, $create_dirs = false)
         {
-            if (empty($owner_ids) || empty($owner_type))
-            {
+            if (empty($owner_ids) || empty($owner_type)) {
                 return false;
             }
 
-            if (is_array($owner_ids))
-            {
+            if (is_array($owner_ids)) {
                 $dir = md5($owner_type . '_' . implode(',', $owner_ids));
-            }
-            else
-            {
+            } else {
                 $dir = md5($owner_type . '_' . $owner_ids);
             }
 
-            if ($absolute)
-            {
+            if ($absolute) {
                 $dir = $this->get_legacy_base_private_storage_directory() . "/" . $dir;
             }
 
-            if ($create_dirs && !file_exists($dir))
-            {
+            if ($create_dirs && !file_exists($dir)) {
                 mkdir($dir, 0775, true);
             }
 
@@ -353,8 +332,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_legacy_private_file_path($filename, $post_id, $create_dirs = false)
         {
-            if (empty($post_id) || empty($filename))
-            {
+            if (empty($post_id) || empty($filename)) {
                 return false;
             }
 
@@ -362,8 +340,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 . '/'
                 . $this->get_legacy_private_storage_directory($post_id, false, false);
 
-            if ($create_dirs && !file_exists($dir))
-            {
+            if ($create_dirs && !file_exists($dir)) {
                 mkdir($dir, 0775, true);
             }
 
@@ -396,8 +373,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_owner_types()
         {
-            if ($this->owner_types == null)
-            {
+            if ($this->owner_types == null) {
                 $this->owner_types = apply_filters('cuar/core/ownership/owner-types', array());
             }
 
@@ -438,8 +414,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function is_post_type_protected($post_type, $private_types = null)
         {
-            if ($private_types == null)
-            {
+            if ($private_types == null) {
                 $private_types = $this->plugin->get_private_types();
             }
 
@@ -459,13 +434,11 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function is_post_protected($post_id, $post_type = null, $private_types = null)
         {
-            if ($post_type == null)
-            {
+            if ($post_type == null) {
                 $post_type = get_post_type($post_id);
             }
 
-            if ($private_types == null)
-            {
+            if ($private_types == null) {
                 $private_types = $this->plugin->get_private_types();
             }
 
@@ -485,8 +458,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         public function is_user_owner_of_post($post_id, $user_id)
         {
             $owners = $this->get_post_owners($post_id);
-            foreach ($owners as $owner_type => $owner_ids)
-            {
+            foreach ($owners as $owner_type => $owner_ids) {
                 $is_owner = apply_filters('cuar/core/ownership/validate-post-ownership', false, $post_id, $user_id, $owner_type, $owner_ids);
                 if ($is_owner) return true;
             }
@@ -504,25 +476,19 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_post_displayable_owners($post_id, $prefix_with_type = false)
         {
-            if ($prefix_with_type)
-            {
+            if ($prefix_with_type) {
                 $name = get_post_meta($post_id, self::$META_OWNER_SORTABLE_DISPLAYNAME, true);
-                if ( !$name || empty($name))
-                {
+                if ( !$name || empty($name)) {
                     $name = __('Unknown', 'cuar');
                 }
 
                 return apply_filters('cuar/core/ownership/sortable-displayname', $name, $post_id);
-            }
-            else
-            {
+            } else {
                 $name = get_post_meta($post_id, self::$META_OWNER_DISPLAYNAME, true);
-                if ( !$name || empty($name))
-                {
+                if ( !$name || empty($name)) {
                     $name = __('Unknown', 'cuar');
                 }
-                if ( !is_array($name))
-                {
+                if ( !is_array($name)) {
                     $name = array($name);
                 }
 
@@ -540,7 +506,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $queryable_owners = get_post_meta($post_id, self::$META_OWNER_QUERYABLE, true);
             $owners = $this->decode_owners($queryable_owners);
 
-            return $owners;
+            return apply_filters('cuar/core/ownership/post-owners', $owners, $post_id);
         }
 
         /**
@@ -555,8 +521,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $user_ids = array();
 
             $owners = $this->get_post_owners($post_id);
-            foreach ($owners as $type => $ids)
-            {
+            foreach ($owners as $type => $ids) {
                 $tmp = apply_filters('cuar/core/ownership/real-user-ids?owner-type=' . $type, array(), $ids);
                 $user_ids = array_merge($user_ids, $tmp);
             }
@@ -579,12 +544,9 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $owner_types = $this->get_owner_types();
 
             // Check owner type exists
-            if ($ensure_types_exist && !empty($owners))
-            {
-                foreach ($owners as $type => $ids)
-                {
-                    if ( !array_key_exists($type, $owner_types))
-                    {
+            if ($ensure_types_exist && !empty($owners)) {
+                foreach ($owners as $type => $ids) {
+                    if ( !array_key_exists($type, $owner_types)) {
                         $this->plugin->add_admin_notice('Invalid owner type ' . $type . ', some add-on must be doing something wrong');
 
                         return;
@@ -602,8 +564,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
 
             $displayname = array();
             $sortable_displayname = array();
-            foreach ($owner_types as $type_id => $type_label)
-            {
+            foreach ($owner_types as $type_id => $type_label) {
                 if (empty($owners[$type_id])) continue;
 
                 $displayname[$type_id] = apply_filters('cuar/core/ownership/saved-displayname', '', $post_id, $type_id, $owners[$type_id]);
@@ -634,8 +595,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $owner_types = $this->get_owner_types();
             $sortable_display_names = array();
 
-            foreach ($owner_types as $type_id => $type_label)
-            {
+            foreach ($owner_types as $type_id => $type_label) {
                 if (empty($owners[$type_id])) continue;
 
                 $displayname = apply_filters('cuar/core/ownership/saved-displayname', '', $post_id, $type_id, $owners[$type_id]);
@@ -653,8 +613,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         private function encode_owners($owners)
         {
             $out = '';
-            foreach ($owners as $type => $ids)
-            {
+            foreach ($owners as $type => $ids) {
                 $ids = array_filter($ids);
                 if (empty($ids)) continue;
 
@@ -673,8 +632,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         {
             $owners = array();
             $tokens = explode('|', $raw);
-            foreach ($tokens as $t)
-            {
+            foreach ($tokens as $t) {
                 if (empty($t)) continue;
 
                 $owner = explode('_', $t, 2);
@@ -706,8 +664,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             if (is_admin()
                 || $theme_support === false
                 || (is_array($theme_support) && !in_array('markup', $theme_support[0]))
-            )
-            {
+            ) {
                 $this->plugin->enable_library('jquery.select2');
                 $print_javascript = true;
             }
@@ -745,8 +702,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $owners = array();
 
             $owner_types = $this->get_owner_types();
-            foreach ($owner_types as $owner_type => $type_label)
-            {
+            foreach ($owner_types as $owner_type => $type_label) {
                 $ids_field_name = $ids_field_prefix . $owner_type;
 
                 // If no owner selected, just skip this type
@@ -768,21 +724,18 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $private_post_types = $this->plugin->get_content_post_types();
 
             // If not on a matching post type, we do nothing
-            if (empty($private_post_types) || !is_singular($private_post_types))
-            {
+            if (empty($private_post_types) || !is_singular($private_post_types)) {
                 return;
             }
 
             // If post is not protected, we do nothing
             $post = get_queried_object();
-            if ( !$this->is_post_protected($post->ID))
-            {
+            if ( !$this->is_post_protected($post->ID)) {
                 return;
             }
 
             // If not logged-in, we ask for details
-            if ( !is_user_logged_in())
-            {
+            if ( !is_user_logged_in()) {
                 $this->plugin->login_then_redirect_to_url(get_permalink());
             }
 
@@ -794,8 +747,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
             $is_current_user_owner = $this->is_user_owner_of_post($post->ID, $current_user_id);
             if ( !($is_current_user_owner || $author_id == $current_user_id
                 || current_user_can('cuar_view_any_' . get_post_type()))
-            )
-            {
+            ) {
                 wp_die(__("You are not authorized to view this page", "cuar"));
                 exit();
             }
@@ -819,8 +771,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
         public function plugin_version_upgrade($from_version, $to_version)
         {
             // If upgrading from before 2.0.0 we must update the post meta fields
-            if ($from_version < '2.0.0')
-            {
+            if ($from_version < '2.0.0') {
                 global $wpdb;
 
                 // Find all existing owner ids
@@ -830,8 +781,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                     . "WHERE meta_key = %s",
                     'cuar_owner'));
 
-                foreach ($owner_metas as $m)
-                {
+                foreach ($owner_metas as $m) {
                     // Before 2.0.0 there was no owner type, so default to 'user'
                     $owner_type = 'user';
                     $owner_id = $m->meta_value;
@@ -851,10 +801,8 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                     $new_name = $this->get_owner_storage_directory($owner_id, $owner_type);
                     $old_name = get_user_meta($owner_id, 'cuar_directory', true);
 
-                    if ( !empty($old_name))
-                    {
-                        if (file_exists($base_storage_directory . "/" . $old_name))
-                        {
+                    if ( !empty($old_name)) {
+                        if (file_exists($base_storage_directory . "/" . $old_name)) {
                             rename($base_storage_directory . "/" . $old_name,
                                 $base_storage_directory . "/" . $new_name);
                         }
@@ -863,8 +811,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 }
             }
 
-            if ($from_version < '2.3.0')
-            {
+            if ($from_version < '2.3.0') {
                 // Migrate all previous owner formats to the new one
                 $posts_with_owner = get_posts(array(
                     'numberposts' => -1,
@@ -874,8 +821,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                     'post_type'   => array('cuar_private_page', 'cuar_private_file')
                 ));
 
-                foreach ($posts_with_owner as $p)
-                {
+                foreach ($posts_with_owner as $p) {
                     $old_type = get_post_meta($p->ID, 'cuar_owner_type', true);
                     $old_owner = get_post_meta($p->ID, 'cuar_owner', true);
                     $old_path = $this->get_owner_storage_directory($old_owner, $old_type, true, false);
@@ -883,8 +829,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                     $new_type = null;
                     $new_owners = array($old_owner);
 
-                    switch ($old_type)
-                    {
+                    switch ($old_type) {
                         case 'user':
                             $new_type = 'usr';
                             break;
@@ -896,14 +841,12 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                             break;
                     }
 
-                    if ($new_type != null)
-                    {
+                    if ($new_type != null) {
                         $this->save_post_owners($p->ID, $new_owners, $new_type, false);
                         delete_post_meta($p->ID, 'cuar_owner');
 
                         $new_path = $this->get_owner_storage_directory($new_owners, $new_type, true, false);
-                        if (file_exists($old_path))
-                        {
+                        if (file_exists($old_path)) {
                             rename($old_path, $new_path);
                         }
                     }
