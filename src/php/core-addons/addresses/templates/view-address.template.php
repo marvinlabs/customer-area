@@ -1,4 +1,13 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /**
+ * Template version: 3.0.0
+ * Template zone: admin
+ *
+ * -= 3.0.0 =-
+ * - Updated markup for new master-skin
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ */ ?>
 
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
