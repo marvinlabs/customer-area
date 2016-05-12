@@ -94,11 +94,13 @@ if ( !class_exists('CUAR_CustomerAccountAddOn')) :
         {
             $current_user = $this->get_current_user();
 
+            /** @var CUAR_UserProfileAddOn $up_addon */
             $up_addon = $this->plugin->get_addon('user-profile');
             $fields = $up_addon->get_profile_fields();
 
             do_action('cuar/core/user-profile/view/before_fields', $current_user);
 
+            /** @var CUAR_Field $field */
             foreach ($fields as $id => $field) {
                 do_action('cuar/core/user-profile/view/before_field?id=' . $id, $current_user);
 
