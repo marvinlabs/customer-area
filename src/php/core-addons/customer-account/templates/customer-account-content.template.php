@@ -1,5 +1,6 @@
-<?php
-/** Template version: 3.0.0
+<?php /**
+ * Template version: 3.0.0
+ * Template zone: frontend
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
