@@ -392,12 +392,12 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
             if ( !empty($template_prefix))
             {
                 $template_stack[] = $template_prefix . '-' . $address_class . 'view-address' . $template_suffix . '.template.php';
-                $template_stack[] = $template_prefix . 'view-address' . $template_suffix . '.template.php';
-                $template_stack[] = $template_prefix . 'view-address.template.php';
+                $template_stack[] = $template_prefix . '-view-address' . $template_suffix . '.template.php';
+                $template_stack[] = $template_prefix . '-view-address.template.php';
             }
 
-            $template_stack[] = $address_class . 'view-address' . $template_suffix . '.template.php';
-            $template_stack[] = $address_class . 'view-address.template.php';
+            $template_stack[] = $address_class . '-view-address' . $template_suffix . '.template.php';
+            $template_stack[] = $address_class . '-view-address.template.php';
 
             $template_stack[] = 'view-address' . $template_suffix . '.template.php';
             $template_stack[] = 'view-address.template.php';
@@ -406,7 +406,7 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
         }
     }
 
-// Make sure the addon is loaded
+    // Make sure the addon is loaded
     new CUAR_AddressesAddOn();
 
 endif; // if (!class_exists('CUAR_AddressesAddOn'))

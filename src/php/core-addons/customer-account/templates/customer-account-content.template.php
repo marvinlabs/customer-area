@@ -46,9 +46,6 @@ $current_user = $this->get_current_user();
     </div>
 </div>
 
-<div class="panel">
-    <div class="panel-heading"><span class="panel-title"><?php _e('Addresses', 'cuar'); ?></span></div>
-    <div class="panel-body">
-        <?php $this->print_address_fields(); ?>
-    </div>
+<div class="row">
+    <?php $this->print_address_fields(); ?>
 </div>
