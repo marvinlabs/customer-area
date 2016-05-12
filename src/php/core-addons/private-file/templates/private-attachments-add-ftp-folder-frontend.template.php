@@ -44,6 +44,13 @@
         $(document).ready(function ($) {
             $('#cuar-js-content-container').on('cuar:wizard:initialized', function(){
                 $('.cuar-js-ftp-uploader').ftpUploader();
+
+                $("#cuar_ftp_file_selection").select2({
+                    dropdownParent: $('#cuar_ftp_file_selection').parent(),
+                    width: "100%",
+                    allowClear: true,
+                    minimumResultsForSearch: 8
+                });
             });
         });
     })(jQuery);

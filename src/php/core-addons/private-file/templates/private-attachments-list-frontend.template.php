@@ -13,7 +13,7 @@
     <?php $attachments_count = count($attached_files); ?>
     <div class="panel-heading">
         <div class="panel-title">
-            <?php printf(esc_html(_n('%d attached file', '%d attached files', $attachments_count, 'cuar')), $attachments_count); ?>
+            <?php _e('Attached files', 'cuar'); ?>
         </div>
     </div>
     <div class="panel-body pn">
