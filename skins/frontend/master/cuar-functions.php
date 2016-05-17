@@ -162,7 +162,7 @@ if ( !function_exists('cuar_custom_excerpt_length'))
     {
         if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID()))
         {
-            return 20;
+            return 30;
         }
         else
         {

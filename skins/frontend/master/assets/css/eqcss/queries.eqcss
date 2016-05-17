@@ -28,6 +28,8 @@
  * -----------------------------
  * Adapt collection thumb sizes depending on wrapper width
  */
+
+/* Grid view */
 @element 'body #cuar-js-content-container' and (max-width: 1350px){
     body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
     body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
@@ -37,19 +39,27 @@
 @element 'body #cuar-js-content-container' and (max-width: 850px){
     body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
     body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
-        width: 31.5%;
+        width: 32%;
+    }
+}
+@element 'body #cuar-js-content-container' and (max-width: 650px){
+    body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
+    body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
+        width: 49%;
     }
 }
 @element 'body #cuar-js-content-container' and (max-width: 450px){
     body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
     body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
-        width: 48%;
+        width: 100%;
     }
 }
+
+/* List view */
 @element 'body #cuar-js-content-container' and (max-width: 1350px){
     body .cuar-css-wrapper .collection .collection-content.list .mix,
     body .cuar-css-wrapper .collection .collection-content.list .gap {
-        width: 48%;
+        width: 49%;
     }
 }
 @element 'body #cuar-js-content-container' and (max-width: 850px){
@@ -57,19 +67,27 @@
     body .cuar-css-wrapper .collection .collection-content.list .gap {
         width: 100%;
     }
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left {
+        width: 40%;
+    }
 }
 @element 'body #cuar-js-content-container' and (max-width: 450px){
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item img.collection-thumbnail,
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-thumbnail,
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-thumbnail .collection-thumbnail-padder {
-        float: none;
+    body .cuar-css-wrapper .collection .collection-content.list .mix,
+    body .cuar-css-wrapper .collection .collection-content.list .gap {
         width: 100%;
-        height: auto;
-        margin-bottom: 20px;
     }
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-description {
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left,
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-right,
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks{
         width: 100%;
-        float: none;
-        padding-left: 0px;
+        display: block;
+        border-left: 0;
+    }
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left > div,
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-right > div {
+        padding: 5px!important;
+    }
+    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-footer-meta-owner {
+        padding: 0px!important;
     }
 }

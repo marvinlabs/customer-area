@@ -128,6 +128,12 @@
   @cuar-color-neutral-darker: @cuar-color-neutral-10;
 }
 
+/* RUN MIXIN CONFIG
+ * ------------------------------------------------- */
+.cuar-set-primary-palette();
+.cuar-set-secondary-palette();
+.cuar-set-neutral-palette();
+
 /* DEFAULTS COLORS
  * ------------------------------------------------- */
 .cuar-set-defaults-palette(@cuar-from-color: @cuar-color-neutral) when (@cuar-dark-scheme=false) {
@@ -139,7 +145,7 @@
   @cuar-color-contrast-hint-text: @palette-White-Hint-Text;
   @cuar-color-contrast-dividers: @palette-Black-Dividers;
 
-  @cuar-color-overlay: rgba(0, 0, 0, 0.3);
+  @cuar-color-overlay: fade(@cuar-color-neutral-lighter, 70%);
 }
 
 .cuar-set-defaults-palette(@cuar-from-color: @cuar-color-neutral) when (@cuar-dark-scheme=true) {
@@ -151,14 +157,8 @@
   @cuar-color-contrast-hint-text: @palette-Black-Hint-Text;
   @cuar-color-contrast-dividers: @palette-White-Dividers;
 
-  @cuar-color-overlay: rgba(255, 255, 255, 0.5);
+  @cuar-color-overlay: fade(@cuar-color-neutral-darker, 80%);
 }
-
-/* RUN MIXIN CONFIG
- * ------------------------------------------------- */
-.cuar-set-primary-palette();
-.cuar-set-secondary-palette();
-.cuar-set-neutral-palette();
 .cuar-set-defaults-palette();
 
 /* TEST PALETTES CLASS
