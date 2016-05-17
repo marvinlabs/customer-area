@@ -164,6 +164,7 @@ feel free to fork the project and send us pull requests!
 * Fix: *Owner restrictions* - Better settings panel
 * Fix: *Protect post types* - Bug in loading translations
 * Fix: *Smart groups* - bug when showing the UI in another language
+* Fix: *Switch users* - bug on addresses shown on the account page.
 
 = 6.3.0 (2015/11/26) =
 
