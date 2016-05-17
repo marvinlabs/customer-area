@@ -29,6 +29,8 @@ if ($is_author) {
 
 $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
+
+$current_addon_icon = apply_filters('cuar/private-content/view/icon?addon=' . $current_addon_slug, 'fa fa-book');
 ?>
 
 <div class="collection-item of-h mix<?php echo $extra_class; ?>">
@@ -41,7 +43,7 @@ $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' .
                 <div class="collection-thumbnail-padder">
                     <div class="collection-thumbnail-overlay">
                         <div class="collection-thumbnail-valign">
-                            <i class="collection-thumbnail-icon fa fa-book"></i>
+                            <i class="collection-thumbnail-icon <?php echo esc_attr($current_addon_icon); ?>"></i>
                             <span class="collection-thumbnail-header h4 mbn">Header</span>
                             <span class="collection-thumbnail-subheader h5">Sub Header</span>
                         </div>
