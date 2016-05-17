@@ -20,91 +20,66 @@
 <?php
 global $post;
 
-$extensions = apply_filters('cuar/templates/list-item/extensions-icons?post-type=' . get_post_type(), array(
-    'none' => 'fa fa-genderless',
-    'default' => 'fa fa-file-o',
-    'multiple' => 'fa fa-files-o',
-    'jpg' => 'fa fa-file-picture-o',
-    'png' => 'fa fa-file-picture-o',
-    'zip' => 'fa fa-file-zip-o'
-), $post);
-
 $file_count = cuar_get_the_attached_file_count($post->ID);
-$files = cuar_get_the_attached_files($post->ID);
-$files_data = array();
-if ($files && is_array($files) && $file_count >= 1) {
-    if ($file_count > 1) {
-        $files_icon = 'multiple';
-    } else {
-        if ($file_count > 1 && isset($extensions[cuar_get_the_attached_file_type($post->ID, $files)])) {
-            $files_icon = $extensions[cuar_get_the_attached_file_type($post->ID, $files)];
-        } else if ($file_count == 1 && isset($files[0]) && isset(array_values($files)[0]) && isset($extensions[cuar_get_the_attached_file_type($post->ID, array_values($files[0]))])) {
-            $files_icon = $extensions[cuar_get_the_attached_file_type($post->ID, array_values($files)[0])];
-        } else {
-            $files_icon = 'default';
-        }
-    }
-} else {
-    $files_icon = 'none';
-}
-
-$is_author = get_the_author_meta('ID') == get_current_user_id();
-
-if ($is_author) {
-    $published = sprintf(__('Published on %s, by yourself, for %s', 'cuar'), get_the_date(), cuar_get_the_owner());
-} else {
-    $published = sprintf(__('Published on %s, by %s, for %s', 'cuar'), get_the_date(), get_the_author_meta('display_name'), cuar_get_the_owner());
-}
 
 $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
 
-$file_count = cuar_get_the_attached_file_count($post->ID);
+$current_addon_slug = 'customer-private-files';
+$thumb_icon = $file_count==0 ? 'fa fa-genderless' : $file_count==1 ? 'fa fa-file-o' : 'fa fa-files-o';
+$thumb_icon = apply_filters('cuar/private-content/view/icon?addon=' . $current_addon_slug, $thumb_icon, $post);
+$thumb_header = apply_filters('cuar/private-content/view/header?addon=' . $current_addon_slug, $file_count, $post);
+$thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $current_addon_slug, _n('FILE', 'FILES', $file_count, 'cuar'), $post);
 ?>
 
 <div class="collection-item of-h mix<?php echo $extra_class; ?>">
-    <?php if (has_post_thumbnail()) { ?>
-        <a href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail('wpca-thumb', array('class' => 'collection-thumbnail va-m img-responsive text-center bg-primary light table-layout')); ?>
-        </a>
-    <?php } else { ?>
-        <a href="<?php the_permalink(); ?>" class="collection-thumbnail img-responsive bg-primary light table-layout">
-            <div class="collection-thumbnail-padder">
-                <div style="position: absolute; width: 100%; height: 100%; display: inline-block; vertical-align: middle; text-align: center;">
-                    <i class="<?php echo $extensions[$files_icon]; ?> mt30 mr5 text-primary dark icon-bg"></i>
-                    <div class="cuar-title mn text-center fs20" style="position: relative; top: 50%; margin-top: -10px!important;">
-                        <?php
-                        if ($file_count == 0) {
-                            _e('no file', 'cuar');
-                        } else if ($file_count > 1) {
-                            _e(sprintf(_n('%1$s file', '%1$s files', $file_count, 'cuar'), $file_count));
-                        } else {
-                            cuar_the_attached_file_type($post->ID, array_values($files)[0]);
-                        }
-                        ?>
+    <div class="collection-item-wrapper panel panel-tile br-a">
+
+        <div class="collection-list-blocks clearfix">
+            <div class="collection-thumbnail collection-list-left panel-body pn <?php if (has_post_thumbnail()) { ?> thumb-active<?php } ?>">
+                <a href="<?php the_permalink(); ?>"<?php if (has_post_thumbnail()) { ?> style="background-position: center; background-size:cover; background-image:url(<?php the_post_thumbnail_url('wpca-thumb'); ?>);"<?php } ?>>
+                    <div class="collection-thumbnail-padder">
+                        <div class="collection-thumbnail-overlay">
+                            <div class="collection-thumbnail-valign">
+                                <?php if ( !empty($thumb_icon)) : ?>
+                                    <i class="collection-thumbnail-icon <?php echo esc_attr($thumb_icon); ?>"></i>
+                                <?php endif; ?>
+                                <?php if ( !empty($thumb_header)) : ?>
+                                    <span class="collection-thumbnail-header h4 mbn"><?php echo $thumb_header; ?></span>
+                                <?php endif; ?>
+                                <?php if ( !empty($thumb_sub_header)) : ?>
+                                    <span class="collection-thumbnail-subheader h5"><?php echo $thumb_sub_header; ?></span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
+
+                <table class="collection-metas table">
+                    <tr>
+                        <th class="p5"><i class="fa fa-calendar"></i></th>
+                        <td><?php echo get_the_date(); ?></td>
+                    </tr>
+                </table>
             </div>
-        </a>
-    <?php } ?>
 
-    <div class="collection-description va-m">
-        <div class="cuar-badges pull-right">
-            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(sprintf(_n('%1$s file attached', '%1$s files attached', $file_count, 'cuar'), $file_count)); ?>">
-                <span class="cuar-download-badge fa fa-download small pull-right">
-                    <?php echo $file_count; ?>
-                </span>
-            </a>
-        </div>
-        <div class="collection-title">
-            <a href="<?php the_permalink(); ?>">
-                <?php the_title(); ?>
-            </a>
-        </div>
-        <div class="collection-subtitle text-muted">
-            <?php echo $published; ?>
+            <div class="collection-description collection-list-right panel-footer">
+                <div class="cuar-title h4">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </div>
+                <p class="collection-excerpt br-t pt20"><?php echo get_the_excerpt(); ?></p>
+            </div>
         </div>
 
-        <p class="collection-excerpt"><?php echo get_the_excerpt(); ?></p>
+        <div class="collection-footer-metas collection-list-blocks">
+            <div class="collection-footer-meta-author collection-list-left">
+                <div class="p5 va-m"><i class="fa fa-user"></i> <?php echo get_the_author_meta('display_name'); ?></div>
+            </div>
+            <div class="collection-footer-meta-owner collection-list-right">
+                <div class="p5 pln va-m"><i class="fa fa-group"></i> <?php echo cuar_get_the_owner(); ?></div>
+            </div>
+        </div>
     </div>
 </div>
