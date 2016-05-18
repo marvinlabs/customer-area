@@ -26,7 +26,7 @@ $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
 
 $current_addon_slug = 'customer-private-files';
-$thumb_icon = $file_count==0 ? 'fa fa-genderless' : $file_count==1 ? 'fa fa-file-o' : 'fa fa-files-o';
+$thumb_icon = $file_count == 0 ? 'fa fa-file-o' : ($file_count == 1 ? 'fa fa-file' : 'fa fa-file');
 $thumb_icon = apply_filters('cuar/private-content/view/icon?addon=' . $current_addon_slug, $thumb_icon, $post);
 $thumb_header = apply_filters('cuar/private-content/view/header?addon=' . $current_addon_slug, $file_count, $post);
 $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $current_addon_slug, _n('FILE', 'FILES', $file_count, 'cuar'), $post);
@@ -41,13 +41,13 @@ $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $c
                     <div class="collection-thumbnail-padder">
                         <div class="collection-thumbnail-overlay">
                             <div class="collection-thumbnail-valign">
-                                <?php if ( !empty($thumb_icon)) : ?>
+                                <?php if ($thumb_icon !== '') : ?>
                                     <i class="collection-thumbnail-icon <?php echo esc_attr($thumb_icon); ?>"></i>
                                 <?php endif; ?>
-                                <?php if ( !empty($thumb_header)) : ?>
+                                <?php if ($thumb_header !== '') : ?>
                                     <span class="collection-thumbnail-header h4 mbn"><?php echo $thumb_header; ?></span>
                                 <?php endif; ?>
-                                <?php if ( !empty($thumb_sub_header)) : ?>
+                                <?php if ( !$thumb_sub_header !== '') : ?>
                                     <span class="collection-thumbnail-subheader h5"><?php echo $thumb_sub_header; ?></span>
                                 <?php endif; ?>
                             </div>

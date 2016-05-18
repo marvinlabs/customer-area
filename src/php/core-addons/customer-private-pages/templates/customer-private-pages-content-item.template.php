@@ -38,13 +38,13 @@ $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $c
                     <div class="collection-thumbnail-padder">
                         <div class="collection-thumbnail-overlay">
                             <div class="collection-thumbnail-valign">
-                                <?php if ( !empty($thumb_icon)) : ?>
+                                <?php if ($thumb_icon !== '') : ?>
                                     <i class="collection-thumbnail-icon <?php echo esc_attr($thumb_icon); ?>"></i>
                                 <?php endif; ?>
-                                <?php if ( !empty($thumb_header)) : ?>
+                                <?php if ($thumb_header !== '') : ?>
                                     <span class="collection-thumbnail-header h4 mbn"><?php echo $thumb_header; ?></span>
                                 <?php endif; ?>
-                                <?php if ( !empty($thumb_sub_header)) : ?>
+                                <?php if ( !$thumb_sub_header !== '') : ?>
                                     <span class="collection-thumbnail-subheader h5"><?php echo $thumb_sub_header; ?></span>
                                 <?php endif; ?>
                             </div>
