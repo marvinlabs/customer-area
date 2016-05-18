@@ -857,7 +857,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 case 'bootstrap.slider':
                 {
                     wp_enqueue_script('bootstrap.slider', CUAR_PLUGIN_URL . 'libs/js/bower/bootstrap-slider/bootstrap-slider.min.js', array('jquery'),
-                        $cuar_version);
+                        $cuar_version, true);
                     break;
                 }
 
