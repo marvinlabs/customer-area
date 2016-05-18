@@ -13,7 +13,6 @@
 @import 'components/repeatable-fields';
 @import 'components/jeditable';
 @import 'components/address';
-@import 'components/range-input';
 @import 'components/tabs';
 @import 'components/tooltip';
 
@@ -32,9 +31,10 @@
 & {
   /* Path to LESS files */
   @path: '../../../../frontend/master/src/less';
+  @framework-path: "../../../../../../../vendor/other/framework/theme_wpca/assets/skin";
 
   /* Global container */
-  @wrapperBody: ~"";
+  @wrapperBody: ~"body.wp-admin";
   @wrapperContainer: ~"";
   @wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
 
@@ -42,9 +42,10 @@
   @import '@{path}/wpca/variables/all.less';
   @cuar-color-primary: #0085BA;
   @import '@{path}/wpca/variables/colors.less';
-  @import '@{path}/core/theme_variables.less';
+  @import '@{framework-path}/core/theme_variables.less';
 
   /* Components */
-  @import '@{path}/wpca/tweaks/datepicker.less';
-  @import '@{path}/wpca/tweaks/select2.less';
+  @import '@{framework-path}/wpca/tweaks/datepicker.less';
+  @import '@{framework-path}/wpca/tweaks/select2.less';
+  @import '@{framework-path}/wpca/tweaks/range-input.less';
 }
