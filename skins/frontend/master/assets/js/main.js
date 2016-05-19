@@ -12,6 +12,7 @@
 
         // Variables
         var WPCA = $('#cuar-js-content-container');
+        var Wrapper = $('.cuar-css-wrapper');
         var Window = $(window);
         var Body = $('body');
         var Navbar = $('.navbar');
@@ -24,18 +25,23 @@
         var topbarH = 0;
 
         // Variable Heights
-        if (Navbar.is(':visible')) { navbarH = Navbar.height(); }
-        if (Topbar.is(':visible')) { topbarH = Topbar.height(); }
+        if (Navbar.is(':visible')) {
+            navbarH = Navbar.height();
+        }
+        if (Topbar.is(':visible')) {
+            topbarH = Topbar.height();
+        }
 
         // Calculate Height for inner content elements
         var contentHeight = windowH - (navbarH + topbarH);
 
+        /*
         // SideMenu Functions
         var runSideMenu = function (options) {
 
             // If Nano scrollbar exist and element is fixed, init plugin
-            if ($('.nano.affix').length) {
-                $(".nano.affix").nanoScroller({
+            if ($('.nano.affix', Wrapper).length) {
+                $('.nano.affix', Wrapper).nanoScroller({
                     preventPageScrolling: true
                 });
             }
@@ -236,6 +242,8 @@
 
         }
 
+         */
+
         // jQuery Helper Functions
         var runHelpers = function () {
 
@@ -293,58 +301,58 @@
             // if only delay is provided fadeIn will be set as default
             // eg. data-animate='["500","fadeIn"]'
             /*
-            $('.animated-delay[data-animate]').each(function () {
-                var This = $(this)
-                var delayTime = This.data('animate');
-                var delayAnimation = 'fadeIn';
+             $('.animated-delay[data-animate]').each(function () {
+             var This = $(this)
+             var delayTime = This.data('animate');
+             var delayAnimation = 'fadeIn';
 
-                // if the data attribute has more than 1 value
-                // it's an array, reset defaults
-                if (delayTime.length > 1 && delayTime.length < 3) {
-                    delayTime = This.data('animate')[0];
-                    delayAnimation = This.data('animate')[1];
-                }
+             // if the data attribute has more than 1 value
+             // it's an array, reset defaults
+             if (delayTime.length > 1 && delayTime.length < 3) {
+             delayTime = This.data('animate')[0];
+             delayAnimation = This.data('animate')[1];
+             }
 
-                var delayAnimate = setTimeout(function () {
-                    This.removeClass('animated-delay').addClass('animated ' + delayAnimation)
-                        .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-                            This.removeClass('animated ' + delayAnimation);
-                        });
-                }, delayTime);
-            });
-            */
+             var delayAnimate = setTimeout(function () {
+             This.removeClass('animated-delay').addClass('animated ' + delayAnimation)
+             .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+             This.removeClass('animated ' + delayAnimation);
+             });
+             }, delayTime);
+             });
+             */
 
             // "In-View" Animations
             // data attribute accepts animation style and offset(in %)
             // eg. data-animate='["fadeIn","40%"]'
             /*
-            $('.animated-waypoint').each(function (i, e) {
-                var This = $(this);
-                var Animation = This.data('animate');
-                var offsetVal = '35%';
+             $('.animated-waypoint').each(function (i, e) {
+             var This = $(this);
+             var Animation = This.data('animate');
+             var offsetVal = '35%';
 
-                // if the data attribute has more than 1 value
-                // it's an array, reset defaults
-                if (Animation.length > 1 && Animation.length < 3) {
-                    Animation = This.data('animate')[0];
-                    offsetVal = This.data('animate')[1];
-                }
+             // if the data attribute has more than 1 value
+             // it's an array, reset defaults
+             if (Animation.length > 1 && Animation.length < 3) {
+             Animation = This.data('animate')[0];
+             offsetVal = This.data('animate')[1];
+             }
 
-                var waypoint = new Waypoint({
-                    element: This,
-                    handler: function (direction) {
-                        console.log(offsetVal)
-                        if (This.hasClass('animated-waypoint')) {
-                            This.removeClass('animated-waypoint').addClass('animated ' + Animation)
-                                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-                                    This.removeClass('animated ' + Animation);
-                                });
-                        }
-                    },
-                    offset: offsetVal
-                });
-            });
-            */
+             var waypoint = new Waypoint({
+             element: This,
+             handler: function (direction) {
+             console.log(offsetVal)
+             if (This.hasClass('animated-waypoint')) {
+             This.removeClass('animated-waypoint').addClass('animated ' + Animation)
+             .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+             This.removeClass('animated ' + Animation);
+             });
+             }
+             },
+             offset: offsetVal
+             });
+             });
+             */
 
         }
 
@@ -422,82 +430,82 @@
 
             // Init jQuery Multi-Select for navbar user dropdowns
             /*
-            if ($("#user-status").length) {
-                $('#user-status').multiselect({
-                    buttonClass: 'btn btn-default btn-sm',
-                    buttonWidth: 100,
-                    dropRight: false
-                });
-            }
-            if ($("#user-role").length) {
-                $('#user-role').multiselect({
-                    buttonClass: 'btn btn-default btn-sm',
-                    buttonWidth: 100,
-                    dropRight: true
-                });
-            }
-            */
+             if ($("#user-status").length) {
+             $('#user-status').multiselect({
+             buttonClass: 'btn btn-default btn-sm',
+             buttonWidth: 100,
+             dropRight: false
+             });
+             }
+             if ($("#user-role").length) {
+             $('#user-role').multiselect({
+             buttonClass: 'btn btn-default btn-sm',
+             buttonWidth: 100,
+             dropRight: true
+             });
+             }
+             */
 
             // Dropdown Multiselect Persist. Prevents a menu dropdown
             // from closing when a child multiselect is clicked
             /*
-            $('.dropdown-menu').on('click', function (e) {
+             $('.dropdown-menu').on('click', function (e) {
 
-                e.stopPropagation();
-                var Target = $(e.target);
-                var TargetGroup = Target.parents('.btn-group');
-                var SiblingGroup = Target.parents('.dropdown-menu').find('.btn-group');
+             e.stopPropagation();
+             var Target = $(e.target);
+             var TargetGroup = Target.parents('.btn-group');
+             var SiblingGroup = Target.parents('.dropdown-menu').find('.btn-group');
 
-                // closes all open multiselect menus. Creates Toggle like functionality
-                if (Target.hasClass('multiselect') || Target.parent().hasClass('multiselect')) {
-                    SiblingGroup.removeClass('open');
-                    TargetGroup.addClass('open');
-                }
-                else {
-                    SiblingGroup.removeClass('open');
-                }
+             // closes all open multiselect menus. Creates Toggle like functionality
+             if (Target.hasClass('multiselect') || Target.parent().hasClass('multiselect')) {
+             SiblingGroup.removeClass('open');
+             TargetGroup.addClass('open');
+             }
+             else {
+             SiblingGroup.removeClass('open');
+             }
 
-            });
-            */
+             });
+             */
 
             // Sliding Topbar Metro Menu
             /*
-            var menu = $('#topbar-dropmenu');
-            var items = menu.find('.metro-tile');
-            var metroBG = $('.metro-modal');
+             var menu = $('#topbar-dropmenu');
+             var items = menu.find('.metro-tile');
+             var metroBG = $('.metro-modal');
 
-            // Toggle menu and active class on icon click
-            $('.topbar-menu-toggle').on('click', function () {
+             // Toggle menu and active class on icon click
+             $('.topbar-menu-toggle').on('click', function () {
 
-                // If dropmenu is using alternate style we don't show modal
-                if (menu.hasClass('alt')) {
-                    // Toggle menu and active class on icon click
-                    menu.slideToggle(230).toggleClass('topbar-menu-open');
-                    metroBG.fadeIn();
-                }
-                else {
-                    menu.slideToggle(230).toggleClass('topbar-menu-open');
-                    $(items).addClass('animated animated-short fadeInDown').css('opacity', 1);
+             // If dropmenu is using alternate style we don't show modal
+             if (menu.hasClass('alt')) {
+             // Toggle menu and active class on icon click
+             menu.slideToggle(230).toggleClass('topbar-menu-open');
+             metroBG.fadeIn();
+             }
+             else {
+             menu.slideToggle(230).toggleClass('topbar-menu-open');
+             $(items).addClass('animated animated-short fadeInDown').css('opacity', 1);
 
-                    // Create Modal for hover effect
-                    if (!metroBG.length) {
-                        metroBG = $('<div class="metro-modal"></div>').appendTo('body');
-                    }
-                    setTimeout(function () {
-                        metroBG.fadeIn();
-                    }, 380);
-                }
+             // Create Modal for hover effect
+             if (!metroBG.length) {
+             metroBG = $('<div class="metro-modal"></div>').appendTo('body');
+             }
+             setTimeout(function () {
+             metroBG.fadeIn();
+             }, 380);
+             }
 
-            });
+             });
 
-            // If modal is clicked close menu
-            $('body').on('click', '.metro-modal', function () {
-                metroBG.fadeOut('fast');
-                setTimeout(function () {
-                    menu.slideToggle(150).toggleClass('topbar-menu-open');
-                }, 250);
-            });
-            */
+             // If modal is clicked close menu
+             $('body').on('click', '.metro-modal', function () {
+             metroBG.fadeOut('fast');
+             setTimeout(function () {
+             menu.slideToggle(150).toggleClass('topbar-menu-open');
+             }, 250);
+             });
+             */
         };
 
         // Tray related Functions
@@ -508,7 +516,7 @@
             if (trayFormat.length) {
 
                 // Loop each tray and set height to match body
-                trayFormat.each(function(i,e) {
+                trayFormat.each(function (i, e) {
                     var This = $(e);
                     var trayCenter = This.parent().find('.tray-center');
                     var heightEls = null;
@@ -526,7 +534,7 @@
                         trayHeight = contentHeight;
                     }
 
-                    if(Body.hasClass('admin-bar')){
+                    if (Body.hasClass('admin-bar')) {
                         This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()) - 32);
                     } else {
                         This.height(trayHeight - (This.outerHeight(true) - This.innerHeight()));
@@ -537,7 +545,7 @@
                     }
 
                     if (trayScroll.length) {
-                        if(Body.hasClass('admin-bar')) {
+                        if (Body.hasClass('admin-bar')) {
                             trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()) - 32);
                         } else {
                             trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
@@ -549,7 +557,8 @@
                 // Scroll lock all fixed content overflow
                 $('.cuar-page-content').scrollLock('on', 'div');
 
-            };
+            }
+            ;
 
             // Debounced resize handler
             var rescale = function () {
@@ -618,8 +627,19 @@
         // Form related Functions
         var runFormElements = function () {
 
+            // Init select2
+            if ($.isFunction($.fn.select2)) {
+                $('.cuar-js-select-single', Wrapper).each(function () {
+                    $(this).addClass('select2-single').select2({
+                        dropdownParent: $(this).parent(),
+                        width: '100%',
+                        minimumResultsForSearch: -1
+                    });
+                });
+            }
+
             // Init Bootstrap tooltips, if present
-            if ( $.isFunction($.fn.tooltip) ) {
+            if ($.isFunction($.fn.tooltip)) {
                 var Tooltips = $("[data-toggle=tooltip]");
                 if (Tooltips.length) {
                     if (Tooltips.parents('#sidebar_left')) {
@@ -634,7 +654,7 @@
             }
 
             // Init Bootstrap Popovers, if present
-            if ( $.isFunction($.fn.popover) ) {
+            if ($.isFunction($.fn.popover)) {
                 var Popovers = $("[data-toggle=popover]");
                 if (Popovers.length) {
                     Popovers.popover();
@@ -678,7 +698,7 @@
             // custom fixed height content scroller. An optional delay data attr
             // may be set. This is useful when you expect the panels height to
             // change due to a plugin or other dynamic modification.
-            if ( $.isFunction($.fn.scroller) ) {
+            if ($.isFunction($.fn.scroller)) {
                 var panelScroller = $('.panel-scroller');
                 if (panelScroller.length) {
                     panelScroller.each(function (i, e) {
@@ -721,7 +741,7 @@
 
             // Init smoothscroll on elements with set data attr
             // data value determines smoothscroll offset
-            if ( $.isFunction($.fn.smoothScroll) ) {
+            if ($.isFunction($.fn.smoothScroll)) {
                 var SmoothScroll = $('[data-smoothscroll]');
                 if (SmoothScroll.length) {
                     SmoothScroll.each(function (i, e) {
@@ -739,7 +759,7 @@
             }
 
             // Responsive JS Slider
-            if ( $.isFunction($.fn.slick) ) {
+            if ($.isFunction($.fn.slick)) {
                 $('.cuar-js-slick-responsive').slick({
                     autoplay: false,
                     centerMode: true,
@@ -776,13 +796,13 @@
         }
 
         // Collections
-        var runCollection = function(){
+        var runCollection = function () {
 
             var $container = $('#cuar-js-collection-gallery'), // mixitup container
                 $toList = $('#cuar-js-collection-to-list'), // list view button
                 $toGrid = $('#cuar-js-collection-to-grid') // list view button
 
-            if($container.length > 0) {
+            if ($container.length > 0) {
 
                 // Init multiselect plugin on filter dropdowns
                 $('.cuar-js-collection-filters-buttons').multiselect({
@@ -792,8 +812,8 @@
                 // Initiate cookie session for filters buttons
                 var cookieName = $container.data('type') + '-collection-layout';
                 var cookieLayout = $.cookie(cookieName);
-                if (cookieLayout!='list' && cookieLayout!='grid') {
-                    if ($container.data('collection-layout')!=null) {
+                if (cookieLayout != 'list' && cookieLayout != 'grid') {
+                    if ($container.data('collection-layout') != null) {
                         cookieLayout = $container.data('collection-layout');
                     } else {
                         cookieLayout = 'grid';
@@ -877,8 +897,8 @@
                 runHelpers();
                 runAnimations();
                 runHeader();
-                runSideMenu(options);
-                runFooter();
+                //runSideMenu(options);
+                //runFooter();
                 runTrays();
                 runFormElements();
                 runCollection();
@@ -905,40 +925,40 @@
 
         // Init Admin Panels on widgets inside the ".admin-panels" container
         /*
-        $('.admin-panels').adminpanel({
-            grid: '.admin-grid',
-            draggable: true,
-            mobile: false,
-            callback: function () {
-                bootbox.confirm('<h3>A Custom Callback!</h3>', function () {
-                });
-            },
-            onFinish: function () {
-                $('.admin-panels').addClass('animated fadeIn').removeClass('fade-onload');
+         $('.admin-panels').adminpanel({
+         grid: '.admin-grid',
+         draggable: true,
+         mobile: false,
+         callback: function () {
+         bootbox.confirm('<h3>A Custom Callback!</h3>', function () {
+         });
+         },
+         onFinish: function () {
+         $('.admin-panels').addClass('animated fadeIn').removeClass('fade-onload');
 
-                // Create an example admin panel filter
-                $('#admin-panel-filter a').on('click', function () {
-                    var This = $(this);
-                    var Value = This.attr('data-filter');
+         // Create an example admin panel filter
+         $('#admin-panel-filter a').on('click', function () {
+         var This = $(this);
+         var Value = This.attr('data-filter');
 
-                    // Toggle any elements whos name matches
-                    // that of the buttons attr value
-                    $('.admin-filter-panels').find($(Value)).each(function (i, e) {
-                        if (This.hasClass('active')) {
-                            $(this).slideDown('fast').removeClass('panel-filtered');
-                        } else {
-                            $(this).slideUp().addClass('panel-filtered');
-                        }
-                    });
-                    This.toggleClass('active');
-                });
+         // Toggle any elements whos name matches
+         // that of the buttons attr value
+         $('.admin-filter-panels').find($(Value)).each(function (i, e) {
+         if (This.hasClass('active')) {
+         $(this).slideDown('fast').removeClass('panel-filtered');
+         } else {
+         $(this).slideUp().addClass('panel-filtered');
+         }
+         });
+         This.toggleClass('active');
+         });
 
-            },
-            onSave: function () {
-                $(window).trigger('resize');
-            }
-        });
-        */
+         },
+         onSave: function () {
+         $(window).trigger('resize');
+         }
+         });
+         */
 
     });
 
