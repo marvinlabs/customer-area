@@ -39,13 +39,16 @@
   @wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
 
   /* Variables setup */
-  @import '@{path}/wpca/variables/all.less';
+  @import '@{path}/wpca/variables/all';
   @cuar-color-primary: #0085BA;
-  @import '@{path}/wpca/variables/colors.less';
-  @import '@{framework-path}/core/theme_variables.less';
+  @import '@{path}/wpca/variables/colors';
+  @import '@{framework-path}/core/theme_variables';
+
+  @import '@{framework-path}/core/theme_mixins';
 
   /* Components */
-  @import '@{framework-path}/wpca/tweaks/datepicker.less';
-  @import '@{framework-path}/wpca/tweaks/select2.less';
-  @import '@{framework-path}/wpca/tweaks/range-input.less';
+  @import '@{framework-path}/wpca/tweaks/datepicker';
+  @import '@{framework-path}/wpca/tweaks/select2';
+  @import '@{framework-path}/wpca/tweaks/range-input';
+  @import '@{framework-path}/wpca/tweaks/fields';
 }
