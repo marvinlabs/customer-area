@@ -140,13 +140,13 @@ if ( !function_exists('cuar_custom_editor_styles'))
 
         if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID()))
         {
-            $mce_css .= ', ' . plugins_url('assets/css/custom-editor-style.css', __FILE__);
+            $mce_css = ', ' . plugins_url('assets/css/styles.min.css', __FILE__);
         }
 
         return $mce_css;
     }
 
-    add_action('mce_css', 'cuar_custom_editor_styles');
+    add_filter('mce_css', 'cuar_custom_editor_styles');
 }
 
 if ( !function_exists('cuar_custom_excerpt_length'))

@@ -657,7 +657,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                     'selected'     => $category,
                     'orderby'      => 'NAME',
                     'echo'         => false,
-                    'class'        => 'form-control',
+                    'class'        => 'cuar-js-select-single form-control',
                 ));
 
                 $this->print_form_field('cuar_category', $label, $field_code, $help_text);
