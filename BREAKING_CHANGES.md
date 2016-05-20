@@ -1,5 +1,10 @@
 # Breaking changes  
 
+## Introduced in 7.0
+
+- Obsolete skins have been removed
+- All template files have been massively rewritten to use the new skin 
+
 ## Introduced in 6.0
 
 - "Themes" have been renamed "skins" to avoid confusion with WordPress themes. If you have any custom skin, in 
