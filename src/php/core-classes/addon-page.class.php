@@ -398,11 +398,11 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
         public function get_default_widget_args($id)
         {
             $fake_id = $id . '-' . rand();
-            $fake_class = 'widget_' . $id;
+            $fake_class = 'cuar-widget_' . $id;
             return array(
-                'before_widget' => sprintf('<aside id="%1$s" class="widget %2$s">', $fake_id, $fake_class),
+                'before_widget' => sprintf('<aside id="%1$s" class="cuar-widget %2$s">', $fake_id, $fake_class),
                 'after_widget'  => "</aside>",
-                'before_title'  => '<div class="cuar-title widget-title">',
+                'before_title'  => '<div class="cuar-title cuar-widget-title">',
                 'after_title'   => '</div>',
             );
         }
@@ -438,9 +438,9 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
             register_sidebar(array(
                 'id'            => $id,
                 'name'          => $name,
-                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                'before_widget' => '<aside id="%1$s" class="cuar-widget %2$s">',
                 'after_widget'  => "</aside>",
-                'before_title'  => '<div class="cuar-title widget-title">',
+                'before_title'  => '<div class="cuar-title cuar-widget-title">',
                 'after_title'   => '</div>',
             ));
         }
