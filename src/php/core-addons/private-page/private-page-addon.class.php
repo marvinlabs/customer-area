@@ -177,7 +177,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$args = array(
 				'labels' 				=> $labels,
 				'hierarchical' 			=> false,
-				'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'comments' ),
+				'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'comments', 'excerpt'),
 				'taxonomies' 			=> array( 'cuar_private_page_category' ),
 				'public' 				=> true,
 				'show_ui' 				=> true,
