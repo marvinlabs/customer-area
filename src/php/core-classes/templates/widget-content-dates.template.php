@@ -1,18 +1,29 @@
-<?php /** Template version: 1.0.0
+<?php
+/** Template version: 3.0.0
+ *
+ * -= 3.0.0 =-
+ * - Bootstrap support
  *
  * -= 1.0.0 =-
  * - First template version
-
+ *
  */ ?>
 
-<ul class="list-group">
-    <?php
-    foreach ($dates as $year => $months) :
-        $link = $this->get_link($year);
-        ?>
-        <li><?php
+<?php
+/** @var $dates */ ?>
+
+<div id="cuar-content-dates-<?php echo $this->id_base; ?>" class="cuar-tree cuar-widget-content-dates panel-body pn">
+
+    <ul class="cuar-tree-depth-0">
+        <?php
+        foreach ($dates as $year => $months) :
+            $link = $this->get_link($year);
+            $extra_class = (count($months) > 0) ? ' class="folder"' : '';
+
+            echo '<li' . $extra_class . '>';
+
             // Print the year
-            printf('<a href="%1$s" title="%3$s" class="list-group-item">%2$s</a>',
+            printf('<a href="%1$s" title="%3$s">%2$s</a>',
                 $link,
                 $year,
                 sprintf(esc_attr__('Show all content published in %s', 'cuar'), $year)
@@ -20,7 +31,7 @@
 
             if (count($months) > 0) :
                 ?>
-                <ul class="list-group">
+                <ul class="cuar-tree-depth-1">
                     <?php
                     foreach ($months as $month) :
                         $link = $this->get_link($year, $month);
@@ -29,7 +40,7 @@
                         <li>
                             <?php
                             // Print the month
-                            printf('<a href="%1$s" title="%3$s" class="list-group-item">%2$s</a>',
+                            printf('<a href="%1$s" title="%3$s">%2$s</a>',
                                 $link,
                                 $month_name,
                                 sprintf(esc_attr__('Show all content published in %2$s %1$s', 'cuar'), $year,
@@ -37,15 +48,15 @@
                             );
                             ?>
                         </li>
-                    <?php
+                        <?php
                     endforeach;
                     ?>
                 </ul>
-            <?php
+                <?php
             endif;
-            ?>
-        </li>
-    <?php
-    endforeach;
-    ?>
-</ul>
+
+            echo '</li>';
+
+        endforeach; ?>
+    </ul>
+</div>

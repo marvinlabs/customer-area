@@ -99,6 +99,8 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
 
             $this->print_date_list($dates, true);
 
+            $this->print_date_scripts();
+
             echo $args['after_widget'];
         }
 
@@ -161,6 +163,21 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
                 "widget-content-dates-" . $this->id_base . ".template.php",
                 'templates',
                 "widget-content-dates.template.php"
+            );
+            include($template);
+        }
+
+        /**
+         * Print the scripts associated to the date list
+         */
+        public function print_date_scripts()
+        {
+
+            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                "widget-content-dates-" . $this->id_base . "-scripts.template.php",
+                'templates',
+                "widget-content-dates-scripts.template.php"
             );
             include($template);
         }
