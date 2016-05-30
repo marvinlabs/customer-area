@@ -56,7 +56,7 @@ $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $c
                 </a>
 
                 <table class="collection-metas table">
-                    <tr data-toggle="tooltip" data-placement="right" data-original-title="<?php esc_attr_e('Created on', 'cuar') ?>">
+                    <tr data-toggle="tooltip" data-placement="top" data-original-title="<?php esc_attr_e('Created on', 'cuar') ?>">
                         <th class="p5"><i class="fa fa-calendar"></i></th>
                         <td><?php echo get_the_date(); ?></td>
                     </tr>
