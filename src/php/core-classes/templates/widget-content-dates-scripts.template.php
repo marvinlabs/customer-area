@@ -59,7 +59,15 @@
                     selectMode: 2, // 1:single, 2:multi, 3:multi-hier
                     tabindex: "", // Whole tree behaves as one single control
                     titlesTabbable: false, // Node titles can receive keyboard focus,
-                    toggleEffect: false
+                    toggleEffect: false,
+                    activate: function(event, data) {
+                        var node = data.node;
+                        // Use <a> href and target attributes to load the content:
+                        if( node.data.href && !node.isFolder() ){
+                            // Open target
+                            window.open(node.data.href, node.data.target);
+                        }
+                    }
                 });
             }
 

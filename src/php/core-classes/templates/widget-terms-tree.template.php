@@ -31,7 +31,7 @@
         echo '<li' . $extra_class . '>';
 
         // Print the current term
-        printf('<a href="%1$s" title="%3$s">%2$s</a>',
+        printf('<a href="%1$s" title="%3$s" target="_self">%2$s</a>',
             $link,
             $term->name,
             sprintf(esc_attr__('Show all content categorized under %s', 'cuar'), $term->name)

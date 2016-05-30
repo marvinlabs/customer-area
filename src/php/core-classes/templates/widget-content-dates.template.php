@@ -23,7 +23,7 @@
             echo '<li' . $extra_class . '>';
 
             // Print the year
-            printf('<a href="%1$s" title="%3$s">%2$s</a>',
+            printf('<a href="%1$s" title="%3$s" target="_self">%2$s</a>',
                 $link,
                 $year,
                 sprintf(esc_attr__('Show all content published in %s', 'cuar'), $year)
@@ -40,7 +40,7 @@
                         <li>
                             <?php
                             // Print the month
-                            printf('<a href="%1$s" title="%3$s">%2$s</a>',
+                            printf('<a href="%1$s" title="%3$s" target="_self">%2$s</a>',
                                 $link,
                                 $month_name,
                                 sprintf(esc_attr__('Show all content published in %2$s %1$s', 'cuar'), $year,
