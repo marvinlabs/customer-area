@@ -556,11 +556,15 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
                     esc_attr($content));
             } else {
+                /*
                 ob_start();
                 wp_editor($content, 'cuar_content', cuar_wp_editor_settings());
 
                 $field_code = ob_get_contents();
                 ob_end_clean();
+                */
+                $field_code = sprintf('<div id="summernote">%1$s</div>',
+                    esc_attr($content));
             }
 
             $this->print_form_field('cuar_content', $label, $field_code, $help_text);

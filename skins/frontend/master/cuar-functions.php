@@ -60,6 +60,10 @@ if ( !function_exists('cuar_load_skin_scripts'))
             $cuar_plugin->enable_library('jquery.slick');
         }
 
+        // SINGLE POSTS HEADERS
+        // --
+        $cuar_plugin->enable_library('summernote');
+
         // CUSTOM SCRIPTS
         // --
         wp_register_script('customer-area-utilities',

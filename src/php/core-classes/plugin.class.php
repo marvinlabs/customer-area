@@ -775,6 +775,40 @@ if ( !class_exists('CUAR_Plugin')) :
                     break;
                 }
 
+                case 'summernote':
+                {
+                    wp_enqueue_script('summernote', CUAR_PLUGIN_URL . 'libs/js/bower/summernote/summernote.min.js', array('jquery'), $cuar_version);
+
+                    // TODO: Integrate translate JS files like select2
+                    /*
+                    $locale = get_locale();
+                    if ($locale && !empty($locale))
+                    {
+                        $locale = str_replace("_", "-", $locale);
+                        $locale_parts = explode("-", $locale);
+
+                        $loc_files = array($locale . '.js');
+
+                        if (count($locale_parts) > 0)
+                        {
+                            $loc_files[] = $locale_parts[0] . '.js';
+                        }
+
+                        foreach ($loc_files as $lf)
+                        {
+                            if (file_exists(CUAR_PLUGIN_DIR . '/libs/js/bower/select2/i18n/' . $lf))
+                            {
+                                wp_enqueue_script('jquery.select2.locale', CUAR_PLUGIN_URL . 'libs/js/bower/select2/i18n/' . $lf, array('jquery.select2'),
+                                    $cuar_version);
+                                break;
+                            }
+                        }
+                    }
+                    */
+
+                    break;
+                }
+
                 case 'bootstrap.affix':
                 {
                     wp_enqueue_script('bootstrap.affix', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/affix.min.js', array('jquery'), $cuar_version);
