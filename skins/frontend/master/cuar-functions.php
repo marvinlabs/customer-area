@@ -1,4 +1,20 @@
 <?php
+if ( !function_exists('cuar_is_active_body_class'))
+{
+    /**
+     * Add a body class if WPCA is active to get better CSS priority on our area
+     * @param $classes
+     * @return array
+     */
+    function cuar_is_active_body_class($classes)
+    {
+        $classes[] = 'customer-area-active';
+        return $classes;
+    }
+
+    add_action('body_class', 'cuar_is_active_body_class');
+}
+
 if ( !function_exists('cuar_load_skin_scripts'))
 {
 
