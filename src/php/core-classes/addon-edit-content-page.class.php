@@ -556,7 +556,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
                     esc_attr($content));
             } else {
-                $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-summernote summernote">%1$s</textarea>',
+                $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%1$s</textarea>',
                     esc_attr($content));
             }
 

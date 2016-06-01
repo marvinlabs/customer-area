@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
     if (!$.isFunction($.fn.summernote)) return;
 
     // Run summernote editor on the elements having that CSS class
-    $(".cuar-js-summernote").summernote({
+    $(".cuar-js-richeditor").summernote({
         // Put common SummerNote options here
     });
 });
