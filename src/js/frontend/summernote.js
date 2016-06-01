@@ -12,6 +12,7 @@ jQuery(document).ready(function($) {
             ['insert', ['table', 'hr', 'picture', 'link', 'video']],
             ['view', ['codeview', 'fullscreen']],
             ['tools', ['undo', 'redo', 'help']]
-        ]
+        ],
+        lang: cuar.locale
     });
 });
