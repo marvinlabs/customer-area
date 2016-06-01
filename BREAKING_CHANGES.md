@@ -4,6 +4,7 @@
 
 - Obsolete skins have been removed
 - All template files have been massively rewritten to use the new skin 
+- Ownership functions now have different return results
 
 ## Introduced in 6.0
 

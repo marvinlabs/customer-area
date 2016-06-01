@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
 Tested up to:       4.4
-Stable tag:         6.4.666
+Stable tag:         7.0.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,7 +129,7 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.0.0 (2016/04/
+= 7.0.0 (2016/06/07) =
 
 * New: Brand new frontend skin. Greater UI and that should fix most compatibility problems with themes. **REQUIRES UPDATING ALL YOUR ADD-ONS!**
 * New: You can now publish content for multiple owner types at once. E.g. for user "admin" as well as for user group "the incredible team".
