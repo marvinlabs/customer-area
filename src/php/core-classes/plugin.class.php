@@ -737,33 +737,8 @@ if ( !class_exists('CUAR_Plugin')) :
                     break;
                 }
 
-                case 'summernote': {
-                    wp_enqueue_script('summernote', CUAR_PLUGIN_URL . 'libs/js/bower/summernote/summernote.min.js', array('jquery'), $cuar_version);
-
-                    $locale = get_locale();
-                    if ($locale && !empty($locale)) {
-                        $locale = str_replace("_", "-", $locale);
-                        $locale_parts = explode("-", $locale);
-
-                        $loc_files = array('summernote-' . $locale . '.min.js');
-
-                        if (count($locale_parts) > 0) {
-                            $loc_files[] = 'summernote-' . $locale_parts[0] . '.min.js';
-                        }
-
-                        foreach ($loc_files as $lf) {
-                            if (file_exists(CUAR_PLUGIN_DIR . '/libs/js/bower/summernote/lang/' . $lf)) {
-                                wp_enqueue_script('summernote.locale', CUAR_PLUGIN_URL . 'libs/js/bower/summernote/lang/' . $lf, array('summernote'),
-                                    $cuar_version);
-                                break;
-                            }
-                        }
-                    }
-
-                    break;
-                }
-
-                case 'bootstrap.affix': {
+                case 'bootstrap.affix':
+                {
                     wp_enqueue_script('bootstrap.affix', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/affix.min.js', array('jquery'), $cuar_version);
                     break;
                 }
@@ -836,7 +811,38 @@ if ( !class_exists('CUAR_Plugin')) :
                     break;
                 }
 
-                case 'jquery.datepicker': {
+                case 'summernote':
+                {
+                    wp_enqueue_script('bootstrap.tooltip', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/tooltip.min.js', array('jquery'), $cuar_version);
+                    wp_enqueue_script('bootstrap.popover', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/popover.min.js', array('jquery', 'bootstrap.tooltip'), $cuar_version);
+                    wp_enqueue_script('bootstrap.modal', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/modal.min.js', array('jquery'), $cuar_version);
+                    wp_enqueue_script('summernote', CUAR_PLUGIN_URL . 'libs/js/bower/summernote/summernote.min.js', array('jquery', 'bootstrap.tooltip', 'bootstrap.popover', 'bootstrap.modal'), $cuar_version);
+
+                    $locale = get_locale();
+                    if ($locale && !empty($locale)) {
+                        $locale = str_replace("_", "-", $locale);
+                        $locale_parts = explode("-", $locale);
+
+                        $loc_files = array('summernote-' . $locale . '.min.js');
+
+                        if (count($locale_parts) > 0) {
+                            $loc_files[] = 'summernote-' . $locale_parts[0] . '.min.js';
+                        }
+
+                        foreach ($loc_files as $lf) {
+                            if (file_exists(CUAR_PLUGIN_DIR . '/libs/js/bower/summernote/lang/' . $lf)) {
+                                wp_enqueue_script('summernote.locale', CUAR_PLUGIN_URL . 'libs/js/bower/summernote/lang/' . $lf, array('summernote'),
+                                    $cuar_version);
+                                break;
+                            }
+                        }
+                    }
+
+                    break;
+                }
+
+                case 'jquery.datepicker':
+                {
                     wp_enqueue_script('jquery-ui-datepicker');
                     break;
                 }
