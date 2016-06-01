@@ -5,5 +5,6 @@ jQuery(document).ready(function($) {
     // Run summernote editor on the elements having that CSS class
     $(".cuar-js-richeditor").summernote({
         // Put common SummerNote options here
+        lang: cuar.locale
     });
 });
