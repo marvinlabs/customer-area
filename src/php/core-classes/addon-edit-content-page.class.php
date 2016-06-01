@@ -556,20 +556,8 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
                     esc_attr($content));
             } else {
-                $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control summernote">%1$s</textarea>',
+                $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-summernote summernote">%1$s</textarea>',
                     esc_attr($content));
-                $field_code .= '<script type="text/javascript">';
-                $field_code .= '<!--';
-                $field_code .= '(function ($) {';
-                $field_code .= '    "use strict";';
-                $field_code .= '    $(document).ready(function () {';
-                $field_code .= '        $("#cuar_content").summernote({';
-                $field_code .= '            // Put summernote options here';
-                $field_code .= '        });';
-                $field_code .= '    });';
-                $field_code .= '})(jQuery);';
-                $field_code .= '//-->';
-                $field_code .= '</script>';
             }
 
             $this->print_form_field('cuar_content', $label, $field_code, $help_text);
