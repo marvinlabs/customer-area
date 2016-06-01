@@ -148,6 +148,8 @@ function cuar_print_address($address, $address_id, $address_label = '', $templat
  * @param array $extra_settings
  *
  * @return array
+ *
+ * @deprecated Since we use summernote now
  */
 function cuar_wp_editor_settings($extra_settings = array())
 {

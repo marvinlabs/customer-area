@@ -1103,6 +1103,9 @@ if ( !class_exists('CUAR_Plugin')) :
             return apply_filters('cuar/core/types/container', array());
         }
 
+        /**
+         * @deprecated Since we use summernote now
+         */
         public function get_default_wp_editor_settings()
         {
             return apply_filters('cuar/ui/default-wp-editor-settings', array(
