@@ -44,18 +44,28 @@ class CUAR_LongTextFieldRenderer extends CUAR_AbstractFieldRenderer implements C
 
 	protected function get_form_field_input( $id, $value ) {
 		if ( $this->enable_rich_editor && !$this->readonly ) {
-			ob_start();
-			
-			$editor_settings = cuar_wp_editor_settings(array(
-				'textarea_name' => $id
-			));
-			
-			wp_editor( $value, $id, $editor_settings );
-			
-			$out = ob_get_contents();
-			ob_end_clean();
-			
-			return $out;
+			if (is_admin()) {
+				ob_start();
+
+				$editor_settings = cuar_wp_editor_settings(array(
+					'textarea_name' => $id
+				));
+
+				wp_editor($value, $id, $editor_settings);
+
+				$out = ob_get_contents();
+				ob_end_clean();
+
+				return $out;
+			} else {
+				return sprintf( '<textarea rows="5" cols="40" id="%1$s" name="%2$s" class="%4$s" %5$s>%3$s</textarea>',
+					$id,
+					$id,
+					$value,
+					'form-control cuar-js-richeditor',
+					($this->readonly ? 'readonly="readonly"' : '')
+				);
+			}
 		} else {
 			return sprintf( '<textarea rows="5" cols="40" id="%1$s" name="%2$s" class="%4$s" %5$s>%3$s</textarea>',
 					$id,
