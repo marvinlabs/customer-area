@@ -12,6 +12,7 @@
 
 <div class="cuar-js-owner-select-container">
 <?php
+$owners_are_selectable = false;
 foreach ($owner_types as $type_id => $type_label) :
     $selectable_owners = $po_addon->get_selectable_owners($type_id);
     if (empty($selectable_owners)) continue;
@@ -73,5 +74,13 @@ foreach ($owner_types as $type_id => $type_label) :
             </script>
         <?php endif; ?>
     </div>
+    <?php $owners_are_selectable = true; ?>
 <?php endforeach; ?>
+
+<?php if (!$owners_are_selectable) : ?>
+    <p class="alert alert-default">
+        <i class="fa fa-info-circle mr-xs"></i>
+        <?php __('You are not allowed to select an owner', 'cuar'); ?>
+    </p>
+<?php endif; ?>
 </div>
