@@ -100,6 +100,34 @@ if ( !function_exists('cuar_load_skin_scripts'))
     add_action('cuar/core/shortcode/before-process', 'cuar_load_skin_scripts');
 }
 
+if ( !function_exists('cuar_custom_sidebar_attributes'))
+{
+    /**
+     * Example function that you can override in your theme functions to customize
+     * the behaviors of the tray sidebars
+     * By default, parameters are configured to make the area height fit the window viewport
+     * You can customize it to fit your need, or simply remove the data-tray-height-base
+     * and data-tray-height-substract that are used to calculate the height of the main content
+     * and the sidebar.
+     * This function is actually just an example, so the modifications have been commented out
+     * to leave the default behaviors
+     *
+     * @param $args array
+     * @return mixed
+     * @see customer-area/src/php/core-classes/templates/customer-page.template.php
+     */
+    function cuar_custom_sidebar_attributes($args)
+    {
+        //$args['data-tray-height-base'] = '';
+        //$args['data-tray-height-substract'] = '';
+        //$args['data-tray-height-minimum'] = 350;
+
+        return $args;
+    }
+
+    add_action('cuar/core/page/sidebar-attributes', 'cuar_custom_sidebar_attributes');
+}
+
 if ( !function_exists('cuar_images_sizes'))
 {
     /**
