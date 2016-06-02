@@ -7,11 +7,17 @@
         // -
         var wrapperJS = '#cuar-js-content-container',
             wrapperCSS = '.cuar-css-wrapper',
+            collectionContainerAnimationLength = 400,
+            trayMinimumHeight = 400,
 
         // Stored Elements
         // -
             $wrapperJS = $(wrapperJS),
             $wrapperCSS = $(wrapperCSS),
+            $collectionContainer = $('#cuar-js-collection-gallery', $wrapperJS), // mixitup container
+            $collectionToList = $('#cuar-js-collection-to-list', $wrapperJS), // list view button
+            $collectionToGrid = $('#cuar-js-collection-to-grid', $wrapperJS), // list view button
+            $collectionFilterButtons = $('.cuar-js-collection-filters-buttons', $wrapperJS),
 
         // Helper Functions
         // -
@@ -137,132 +143,161 @@
         // -
             runTrays = function () {
 
-                // Debounced resize handler
-                var rescale = function () {
-                    if ($(wrapperJS).width() < 1000) {
+                // Resize handler
+                var rescale = function() {
+                    if ($wrapperJS.width() < 1000) {
                         $('body').addClass('tray-rescale');
-                    }
-                    else {
+                    } else {
                         $('body').removeClass('tray-rescale tray-rescale-left tray-rescale-right');
                     }
                 };
+
+                // Debounced resize handler
                 var lazyLayout = _.debounce(rescale, 300);
 
                 // Apply needed classes
                 if (!$('body').hasClass('disable-tray-rescale')) {
                     // Rescale on window resize
-                    $(window).resize(lazyLayout);
+                    $(window).on('resize', lazyLayout);
 
                     // Rescale on load
                     rescale();
                 }
 
-                // Match height of tray with the height of body
-                var trayFormat = $('.tray-right, .tray-left', $wrapperJS);
-                if (trayFormat.length) {
+                // Start Trays Engine directly or wait for Mixitup Collection to be initialized
+                if ($collectionContainer.length) {
+                    $wrapperJS.on('cuar:mixitup:initialized', traysEngine);
+                } else {
+                    traysEngine();
+                }
 
-                    // Loop each tray and set height to match body
-                    trayFormat.each(function (i, e) {
+                // Define the Trays Engine
+                function traysEngine() {
 
-                        // Store Elements
-                        var This = $(e);
-                        var trayCenter = This.parent().find('.tray-center');
-                        var heightEls = null;
-                        var trayHeight = null;
-                        var trayScroll = This.find('.tray-scroller');
-                        var trayScrollContent = trayScroll.find('.scroller-content');
+                    // Match height of tray with the height of the tray center
+                    var trayFormat = $('.tray-right, .tray-left', $wrapperJS);
+                    if (trayFormat.length) {
 
-                        // Define the tray height depending on html data attributes
-                        if (This.attr('data-tray-height-substract') && This.attr('data-tray-height-base')) {
-                            var heightBase = 'window' ? $(window).height() : $(This.data('tray-height-base')).innerHeight();
-                            var heightSubstract = This.data('tray-height-substract').split(',');
-                            for (i = 0; i < heightSubstract.length; i++) {
-                                heightEls = heightEls + $(heightSubstract[i]).outerHeight(true);
-                            }
-                            trayHeight = heightBase - heightEls;
+                        // Loop each tray and set height to match tray center
+                        // Never tested with 2 side trays on a same page yet
+                        trayFormat.each(function (i, e) {
 
-                            // If html data attributes are missing, tray height should be the same as the content height
-                        } else {
-                            trayHeight = trayCenter.height();
-                        }
+                            // Store Elements
+                            var This = $(e);
+                            var trayCenter = This.parent().find('.tray-center');
+                            var heightEls = null;
+                            var trayHeight = null;
+                            var trayScroll = This.find('.tray-scroller');
+                            var trayScrollContent = trayScroll.find('.scroller-content');
 
-                        // The tray container shouldn't be taller than the content
-                        var trayNewHeight = trayHeight - (This.outerHeight(true) - This.innerHeight());
-                        This.height(trayNewHeight);
-
-                        if (trayScroll.length) {
-
-                            if (trayCenter.innerHeight() >= trayScrollContent.height()) {
-
-                                // Content is taller than tray inner content
-                                trayScroll.height(This.outerHeight());
+                            // Define the tray height depending on html data attributes if they exist
+                            if (This.attr('data-tray-height-substract') && This.attr('data-tray-height-base')) {
+                                var heightBase = 'window' ? $(window).height() : $(This.data('tray-height-base')).innerHeight();
+                                var heightSubstract = This.data('tray-height-substract').split(',');
+                                for (i = 0; i < heightSubstract.length; i++) {
+                                    heightEls = heightEls + $(heightSubstract[i]).outerHeight(true);
+                                }
+                                trayHeight = heightBase - heightEls;
 
                             } else {
 
-                                // Content is smaller than tray inner content
-                                trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+                                // If html data attributes are missing, tray height should be the same as the content height
+                                trayHeight = trayCenter.height();
+
+                                // But do not let it be too small
+                                trayHeight = (trayHeight < trayMinimumHeight) ? trayMinimumHeight : trayHeight;
 
                             }
-                            trayScroll.scroller();
 
-                            // Scroll lock all fixed content overflow
-                            $('.cuar-page-content').scrollLock('on', 'div');
-
-                        } else {
-                            // No scroller found, Set the tray and content height
-                            // Set the content height
-                            if (trayCenter.length) {
-                                trayCenter.height(trayHeight - 75); // 75 = trayCenter padding-top + padding-bottom
+                            // Helper to not let the tray be too small
+                            if (This.attr('data-tray-height-minimum')) {
+                                trayHeight = (trayHeight < This.attr('data-tray-height-minimum')) ? This.attr('data-tray-height-minimum') : trayHeight;
+                            } else {
+                                trayHeight = (trayHeight < trayMinimumHeight) ? trayMinimumHeight : trayHeight;
                             }
 
-                        }
-                    });
+                            // Define the new Tray height depending on data-attributes or trayCenter height
+                            var trayNewHeight = trayHeight - (This.outerHeight(true) - This.innerHeight());
+                            This.height(trayNewHeight);
+                            trayCenter.height(trayHeight - 75); // 75 = trayCenter padding-top + padding-bottom
 
-                }
+                            if (trayScroll.length) {
 
-                // Perform a custom animation if tray-nav has data attribute
-                var navAnimate = $('.tray-nav[data-nav-animate]');
-                if (navAnimate.length) {
-                    var Animation = navAnimate.data('nav-animate');
+                                if (trayCenter.innerHeight() >= trayScrollContent.height()) {
 
-                    // Set default "fadeIn" animation if one has not been previously set
-                    if (Animation == null || Animation == true || Animation == "") {
-                        Animation = "fadeIn";
-                    }
+                                    // Content is taller than tray inner content
+                                    trayScroll.height(This.outerHeight());
 
-                    // Loop through each li item and add animation after set timeout
-                    setTimeout(function () {
-                        navAnimate.find('li').each(function (i, e) {
-                            var Timer = setTimeout(function () {
-                                $(e).addClass('animated animated-short ' + Animation);
-                            }, 50 * i);
+                                } else {
+
+                                    // Content is smaller than tray inner content
+                                    trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+
+                                }
+                                trayScroll.scroller();
+
+                                // Scroll lock all fixed content overflow
+                                // Disabled annoying feature
+                                // $('.cuar-page-content').scrollLock('on', 'div');
+
+                            } else {
+                                // No scroller found, Set the tray and content height
+                                // Set the content height
+                                    trayCenter.height(trayHeight - 75); // 75 = trayCenter padding-top + padding-bottom
+
+                            }
                         });
-                    }, 500);
-                }
 
-                // Responsive Tray Javascript Data Helper. If browser window
-                // is <575px wide (extreme mobile) we relocate the tray left/right
-                // content into the element appointed by the user/data attr
-                var dataTray = $('.tray[data-tray-mobile]');
-                var dataAppend = dataTray.children();
-
-                function fcRefresh() {
-                    if ($('#cuar-js-content-container').innerWidth() < 550) {
-                        dataAppend.appendTo($(dataTray.data('tray-mobile')));
                     }
-                    else {
-                        dataAppend.appendTo(dataTray);
+
+                    // Perform a custom animation if tray-nav has data attribute
+                    /*
+                    var navAnimate = $('.tray-nav[data-nav-animate]');
+                    if (navAnimate.length) {
+                        var Animation = navAnimate.data('nav-animate');
+
+                        // Set default "fadeIn" animation if one has not been previously set
+                        if (Animation == null || Animation == true || Animation == "") {
+                            Animation = "fadeIn";
+                        }
+
+                        // Loop through each li item and add animation after set timeout
+                        setTimeout(function () {
+                            navAnimate.find('li').each(function (i, e) {
+                                var Timer = setTimeout(function () {
+                                    $(e).addClass('animated animated-short ' + Animation);
+                                }, 50 * i);
+                            });
+                        }, 500);
+                    }*/
+
+                    // Responsive Tray Javascript Data Helper. If browser window
+                    // is <575px wide (extreme mobile) we relocate the tray left/right
+                    // content into the element appointed by the user/data attr
+                    var dataTray = $('.tray[data-tray-mobile]');
+
+                    // noinspection JSValidateTypes
+                    var dataAppend = dataTray.children();
+
+                    function fcRefresh() {
+                        if ($('#cuar-js-content-container').innerWidth() < 550) {
+                            dataAppend.appendTo($(dataTray.data('tray-mobile')));
+                        }
+                        else {
+                            dataAppend.appendTo(dataTray);
+                        }
                     }
-                }
 
-                fcRefresh();
-
-                // Attach debounced resize handler
-                var fcResize = function () {
                     fcRefresh();
-                };
-                var fcLayout = _.debounce(fcResize, 300);
-                $(window).resize(fcLayout);
+
+                    // Attach debounced resize handler
+                    var fcResize = function () {
+                        fcRefresh();
+                    };
+                    var fcLayout = _.debounce(fcResize, 300);
+                    $(window).resize(fcLayout);
+
+                }
 
             },
 
@@ -401,79 +436,80 @@
         // -
             runCollection = function () {
 
-                var $container = $('#cuar-js-collection-gallery', $wrapperJS), // mixitup container
-                    $toList = $('#cuar-js-collection-to-list', $wrapperJS), // list view button
-                    $toGrid = $('#cuar-js-collection-to-grid', $wrapperJS); // list view button
-
-                if ($container.length > 0) {
+                if ($collectionContainer.length > 0) {
 
                     // Init multiselect plugin on filter dropdowns
-                    $('.cuar-js-collection-filters-buttons').multiselect({
-                        buttonClass: 'btn btn-default'
-                    });
+                    if($.fn.multiselect) {
+                        $collectionFilterButtons.multiselect({
+                            buttonClass: 'btn btn-default'
+                        });
+                    }
 
                     // Initiate cookie session for filters buttons
-                    var cookieName = $container.data('type') + '-collection-layout';
+                    var cookieName = $collectionContainer.data('type') + '-collection-layout';
                     var cookieLayout = $.cookie(cookieName);
                     if (cookieLayout != 'list' && cookieLayout != 'grid') {
-                        if ($container.data('collection-layout') != null) {
-                            cookieLayout = $container.data('collection-layout');
+                        if ($collectionContainer.data('collection-layout') != null) {
+                            cookieLayout = $collectionContainer.data('collection-layout');
                         } else {
                             cookieLayout = 'grid';
                         }
                     }
 
                     if (cookieLayout == 'list') {
-                        $container.addClass(cookieLayout).removeClass('grid');
-                        $toList.addClass('btn-primary').removeClass('btn-default');
-                        $toGrid.addClass('btn-default').removeClass('btn-primary');
+                        $collectionContainer.addClass(cookieLayout).removeClass('grid');
+                        $collectionToList.addClass('btn-primary').removeClass('btn-default');
+                        $collectionToGrid.addClass('btn-default').removeClass('btn-primary');
                     } else {
-                        $container.addClass(cookieLayout).removeClass('list');
-                        $toList.addClass('btn-default').removeClass('btn-primary');
-                        $toGrid.addClass('btn-primary').removeClass('btn-default');
+                        $collectionContainer.addClass(cookieLayout).removeClass('list');
+                        $collectionToList.addClass('btn-default').removeClass('btn-primary');
+                        $collectionToGrid.addClass('btn-primary').removeClass('btn-default');
                     }
 
                     // Instantiate MixItUp
-                    $container.mixItUp({
+                    $collectionContainer.mixItUp({
                         controls: {
                             enable: false // we won't be needing these
                         },
                         animation: {
-                            duration: 400,
+                            duration: collectionContainerAnimationLength,
                             effects: 'fade translateZ(-360px) stagger(45ms)',
                             easing: 'ease'
                         },
                         callbacks: {
-                            onMixFail: function () {
+                            onMixEnd: function() {
+                                setTimeout(function () {
+                                    $wrapperJS.trigger('cuar:mixitup:initialized');
+                                }, (collectionContainerAnimationLength+100));
                             }
                         }
                     });
 
                     // Bind layout mode buttons
-                    $toList.on('click', function () {
+                    $collectionToList.on('click', function () {
                         $.cookie(cookieName, 'list');
                         $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
-                        if ($container.hasClass('list')) {
+                        if ($collectionContainer.hasClass('list')) {
                             return
                         }
-                        $container.mixItUp('changeLayout', {
+                        $collectionContainer.mixItUp('changeLayout', {
                             display: 'block',
                             containerClass: 'list'
                         }, function (state) {
-                            $container.removeClass('grid');
+                            $collectionContainer.removeClass('grid');
                         });
                     });
-                    $toGrid.on('click', function () {
+                    $collectionToGrid.on('click', function () {
                         $.cookie(cookieName, 'grid');
                         $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
-                        if ($container.hasClass('grid')) {
+                        if ($collectionContainer.hasClass('grid')) {
                             return
                         }
-                        $container.mixItUp('changeLayout', {
+                        $collectionContainer.mixItUp('changeLayout', {
                             display: 'inline-block',
                             containerClass: 'grid'
                         }, function (state) {
-                            $container.removeClass('list');
+                            $collectionContainer.removeClass('list');
                         });
                     });
                 }
@@ -484,8 +520,8 @@
                 runHelpers();
                 runHeader();
                 runFormElements();
-                runCollection();
                 runTrays();
+                runCollection();
             }
 
         }
