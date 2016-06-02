@@ -5,17 +5,17 @@
  * JS will take care about moving the sidebar out of the tray.
  */
 @element 'body.tray-rescale #cuar-js-content-container' and (max-width: 551px){
-    body.tray-rescale .cuar-css-wrapper .tray-left,
-    body.tray-rescale .cuar-css-wrapper .tray-right,
-    body.tray-rescale .cuar-css-wrapper .scroller-bar{
+    body.customer-area-active.tray-rescale #cuar-js-content-container .tray-left,
+    body.customer-area-active.tray-rescale #cuar-js-content-container .tray-right,
+    body.customer-area-active.tray-rescale #cuar-js-content-container .scroller-bar{
         display: none!important;
     }
-    body.tray-rescale .cuar-css-wrapper .tray-center{
+    body.customer-area-active.tray-rescale #cuar-js-content-container .tray-center{
         padding-right: 13px !important;
         height: auto!important;
     }
-    body.tray-rescale .cuar-css-wrapper .tray-scroller,
-    body.tray-rescale .cuar-css-wrapper .scroller-content{
+    body.customer-area-active.tray-rescale #cuar-js-content-container .tray-scroller,
+    body.customer-area-active.tray-rescale #cuar-js-content-container .scroller-content{
         overflow: auto;
         overflow-x: auto;
         overflow-y: auto;
@@ -30,64 +30,64 @@
  */
 
 /* Grid view */
-@element 'body #cuar-js-content-container' and (max-width: 1350px){
-    body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
-    body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
+@element 'body.customer-area-active #cuar-js-content-container' and (max-width: 1350px){
+    body.customer-area-active #cuar-js-content-container .collection .collection-content:not(.list) .mix,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content:not(.list) .gap {
         width: 23.5%;
     }
 }
 @element 'body #cuar-js-content-container' and (max-width: 850px){
-    body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
-    body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
+    body.customer-area-active #cuar-js-content-container .collection .collection-content:not(.list) .mix,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content:not(.list) .gap {
         width: 32%;
     }
 }
 @element 'body #cuar-js-content-container' and (max-width: 650px){
-    body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
-    body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
+    body.customer-area-active #cuar-js-content-container .collection .collection-content:not(.list) .mix,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content:not(.list) .gap {
         width: 49%;
     }
 }
 @element 'body #cuar-js-content-container' and (max-width: 450px){
-    body .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
-    body .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
+    body.customer-area-active .cuar-css-wrapper .collection .collection-content:not(.list) .mix,
+    body.customer-area-active .cuar-css-wrapper .collection .collection-content:not(.list) .gap {
         width: 100%;
     }
 }
 
 /* List view */
-@element 'body #cuar-js-content-container' and (max-width: 1350px){
-    body .cuar-css-wrapper .collection .collection-content.list .mix,
-    body .cuar-css-wrapper .collection .collection-content.list .gap {
+@element 'body.customer-area-active #cuar-js-content-container' and (max-width: 1350px){
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .mix,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .gap {
         width: 49%;
     }
 }
-@element 'body #cuar-js-content-container' and (max-width: 850px){
-    body .cuar-css-wrapper .collection .collection-content.list .mix,
-    body .cuar-css-wrapper .collection .collection-content.list .gap {
+@element 'body.customer-area-active #cuar-js-content-container' and (max-width: 850px){
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .mix,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .gap {
         width: 100%;
     }
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left {
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left {
         width: 40%;
     }
 }
-@element 'body #cuar-js-content-container' and (max-width: 450px){
-    body .cuar-css-wrapper .collection .collection-content.list .mix,
-    body .cuar-css-wrapper .collection .collection-content.list .gap {
+@element 'body.customer-area-active #cuar-js-content-container' and (max-width: 450px){
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .mix,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .gap {
         width: 100%;
     }
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left,
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-right,
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks{
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-right,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .collection-item .collection-list-blocks{
         width: 100%;
         display: block;
         border-left: 0;
     }
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left > div,
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-right > div {
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-left > div,
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .collection-item .collection-list-blocks .collection-list-right > div {
         padding: 5px!important;
     }
-    body .cuar-css-wrapper .collection .collection-content.list .collection-item .collection-list-blocks .collection-footer-meta-owner {
+    body.customer-area-active #cuar-js-content-container .collection .collection-content.list .collection-item .collection-list-blocks .collection-footer-meta-owner {
         padding: 0px!important;
     }
 }
