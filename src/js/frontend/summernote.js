@@ -1,9 +1,8 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     // Bail if summernote is not loaded
     if (!$.isFunction($.fn.summernote)) return;
 
-    // Run summernote editor on the elements having that CSS class
-    $(".cuar-js-richeditor").summernote({
+    var snOptions = {
         toolbar: [
             ['block', ['style']],
             ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -12,7 +11,13 @@ jQuery(document).ready(function($) {
             ['insert', ['table', 'hr', 'picture', 'link', 'video']],
             ['view', ['codeview', 'fullscreen']],
             ['tools', ['undo', 'redo', 'help']]
-        ],
-        lang: cuar.locale
-    });
+        ]
+    };
+
+    if (typeof cuar != 'undefined') {
+        snOptions['lang'] = cuar.locale;
+    }
+
+    // Run summernote editor on the elements having that CSS class
+    $(".cuar-js-richeditor").summernote(snOptions);
 });
