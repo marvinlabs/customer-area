@@ -1470,6 +1470,8 @@ if ( !class_exists('CUAR_Settings')) :
 
             foreach ($theme_locations as $theme_location)
             {
+                if ($theme_location['type']!=$theme_type) continue;
+
                 $dir_content = glob($theme_location['dir'] . '/*');
                 if (false === $dir_content)
                 {
