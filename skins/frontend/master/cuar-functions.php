@@ -85,6 +85,14 @@ if ( !function_exists('cuar_load_skin_scripts'))
             array(),
             $cuar_plugin->get_version());
         wp_enqueue_style('customer-area-master-eqcss');
+
+        // CUSTOM FONTS
+        // --
+        wp_register_style('customer-area-master-fontawesome',
+            CUAR_PLUGIN_URL . '/skins/frontend/master/assets/css/font-awesome.min.css',
+            array(),
+            $cuar_plugin->get_version());
+        wp_enqueue_style('customer-area-master-fontawesome');
     }
 
     /** Only load our scripts when necessary */
