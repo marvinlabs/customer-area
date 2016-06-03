@@ -158,6 +158,8 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
          */
         protected function print_date_list($dates, $show_months)
         {
+            cuar()->enable_library('jquery.fancytree');
+
             $template = CUAR_Plugin::get_instance()->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
                 "widget-content-dates-" . $this->id_base . ".template.php",
