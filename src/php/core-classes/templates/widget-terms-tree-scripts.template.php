@@ -15,7 +15,7 @@
             // Init Select2
             if ($.isFunction($.fn.fancytree)) {
                 $('#cuar-terms-tree-<?php echo $this->id_base; ?>').fancytree({
-                    extensions: ["glyph", "childcounter"],
+                    extensions: ["glyph"],
                     activeVisible: true, // Make sure, active nodes are visible (expanded).
                     aria: false, // Enable WAI-ARIA support.
                     autoActivate: true, // Automatically activate a node when it is focused (using keys).
