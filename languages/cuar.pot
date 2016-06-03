@@ -1,10 +1,10 @@
 # (c) Vincent Mimoun-Prat, MarvinLabs {2016}
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Customer Area 6.4.666\n"
+"Project-Id-Version: WP Customer Area 7.0.0\n"
 "Report-Msgid-Bugs-To: "
 "http://github.com/marvinlabs/customer-area-build-environment/issues\n"
-"POT-Creation-Date: 2016-05-18 14:31:43+00:00\n"
+"POT-Creation-Date: 2016-06-03 14:36:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1263,8 +1263,8 @@ msgstr ""
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:62
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:126
 #: src/php/core-classes/Content/list-table.class.php:318
-#: src/php/core-classes/addon-update-content-page.class.php:272
-#: src/php/core-classes/addon-update-content-page.class.php:273
+#: src/php/core-classes/addon-update-content-page.class.php:274
+#: src/php/core-classes/addon-update-content-page.class.php:275
 msgid "Edit"
 msgstr ""
 
@@ -1342,7 +1342,7 @@ msgstr ""
 msgid "View all"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:32
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:24
 msgid "There are no files in that category."
 msgstr ""
 
@@ -1499,7 +1499,7 @@ msgstr ""
 msgid "Recent Pages"
 msgstr ""
 
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:31
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:23
 msgid "There are no pages in that category."
 msgstr ""
 
@@ -1805,7 +1805,12 @@ msgstr ""
 msgid "Assignment"
 msgstr ""
 
-#: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:36
+#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:14
+#: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
+msgid "You are not allowed to select an owner"
+msgstr ""
+
+#: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:37
 msgid "Select or search an owner"
 msgstr ""
 
@@ -2654,23 +2659,23 @@ msgstr ""
 msgid "Default category"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:804
+#: src/php/core-classes/addon-edit-content-page.class.php:743
 msgid "Content edition (from front-office)"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:806
+#: src/php/core-classes/addon-edit-content-page.class.php:745
 msgid "Select an owner (uses default else)"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:807
+#: src/php/core-classes/addon-edit-content-page.class.php:746
 msgid "Select a category (uses default else)"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:872
+#: src/php/core-classes/addon-edit-content-page.class.php:809
 msgid "Rich Editor"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:880
+#: src/php/core-classes/addon-edit-content-page.class.php:817
 msgid "Enable the rich editor when editing content."
 msgstr ""
 
@@ -2699,59 +2704,63 @@ msgid "You are not allowed to delete this post"
 msgstr ""
 
 #: src/php/core-classes/addon-update-content-page.class.php:159
+msgid "Done"
+msgstr ""
+
+#: src/php/core-classes/addon-update-content-page.class.php:160
 msgid "The content has been deleted."
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:282
-#: src/php/core-classes/addon-update-content-page.class.php:283
+#: src/php/core-classes/addon-update-content-page.class.php:284
+#: src/php/core-classes/addon-update-content-page.class.php:285
 msgid "Delete"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:286
+#: src/php/core-classes/addon-update-content-page.class.php:288
 msgid "Are you sure that you want to delete this content?"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:304
+#: src/php/core-classes/addon-update-content-page.class.php:306
 msgid "Content update (from front-office)"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:306
+#: src/php/core-classes/addon-update-content-page.class.php:308
 msgid "Update any content from front office"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:307
+#: src/php/core-classes/addon-update-content-page.class.php:309
 msgid "Update authored content"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:308
+#: src/php/core-classes/addon-update-content-page.class.php:310
 msgid "Update owned content"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:312
+#: src/php/core-classes/addon-update-content-page.class.php:314
 msgid "Content removal (from front-office)"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:314
+#: src/php/core-classes/addon-update-content-page.class.php:316
 msgid "Delete any content from front office"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:315
+#: src/php/core-classes/addon-update-content-page.class.php:317
 msgid "Delete authored content"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:316
+#: src/php/core-classes/addon-update-content-page.class.php:318
 msgid "Delete owned content"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:331
+#: src/php/core-classes/addon-update-content-page.class.php:333
 msgid "You must specify a post to delete"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:368
+#: src/php/core-classes/addon-update-content-page.class.php:370
 msgid "You must specify a post to edit"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:409
+#: src/php/core-classes/addon-update-content-page.class.php:411
 msgid "Content edition"
 msgstr ""
 
@@ -2836,57 +2845,57 @@ msgstr ""
 msgid "%1$s is required."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:205
+#: src/php/core-classes/plugin.class.php:210
 msgid "Checking license..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:206
+#: src/php/core-classes/plugin.class.php:211
 msgid "Failed to contact server"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:207
-#: src/php/core-classes/plugin.class.php:234
+#: src/php/core-classes/plugin.class.php:212
+#: src/php/core-classes/plugin.class.php:239
 msgid "Saving..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:208
-#: src/php/core-classes/plugin.class.php:235
+#: src/php/core-classes/plugin.class.php:213
+#: src/php/core-classes/plugin.class.php:240
 msgid "Click to edit..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:209
-#: src/php/core-classes/plugin.class.php:236
+#: src/php/core-classes/plugin.class.php:214
+#: src/php/core-classes/plugin.class.php:241
 msgid "OK"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:210
-#: src/php/core-classes/plugin.class.php:237
+#: src/php/core-classes/plugin.class.php:215
+#: src/php/core-classes/plugin.class.php:242
 msgid "Cancel"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:222
-#: src/php/core-classes/plugin.class.php:249
+#: src/php/core-classes/plugin.class.php:227
+#: src/php/core-classes/plugin.class.php:254
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:224
-#: src/php/core-classes/plugin.class.php:251
+#: src/php/core-classes/plugin.class.php:229
+#: src/php/core-classes/plugin.class.php:256
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:615
+#: src/php/core-classes/plugin.class.php:595
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:646
+#: src/php/core-classes/plugin.class.php:621
 msgid "Some add-ons require a newer version of the main plugin."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:955
+#: src/php/core-classes/plugin.class.php:932
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 
@@ -2987,59 +2996,60 @@ msgstr ""
 msgid "you cannot select multiple terms."
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:951
+#: src/php/core-classes/settings.class.php:952
 msgid "Upload File"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1095
+#: src/php/core-classes/settings.class.php:1096
 msgid "None"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1119
+#: src/php/core-classes/settings.class.php:1120
 msgid "Delete existing &amp; create new &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1124
+#: src/php/core-classes/settings.class.php:1125
 msgid "Edit it &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1132
+#: src/php/core-classes/settings.class.php:1133
 msgid "Create it &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1249
+#: src/php/core-classes/settings.class.php:1250
 msgid "Any Role"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1454
+#: src/php/core-classes/settings.class.php:1455
 msgid "Main plugin folder"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1460
+#: src/php/core-classes/settings.class.php:1461
 msgid "Current theme folder"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1466
+#: src/php/core-classes/settings.class.php:1467
 msgid "WordPress content folder"
 msgstr ""
 
-#: src/php/core-classes/templates/widget-content-authors.template.php:22
+#: src/php/core-classes/templates/widget-content-authors.template.php:21
 msgid "Show all content published by %s"
 msgstr ""
 
-#: src/php/core-classes/templates/widget-content-dates.template.php:18
+#: src/php/core-classes/templates/widget-content-dates.template.php:29
 msgid "Show all content published in %s"
 msgstr ""
 
-#: src/php/core-classes/templates/widget-content-dates.template.php:35
+#: src/php/core-classes/templates/widget-content-dates.template.php:46
 msgid "Show all content published in %2$s %1$s"
 msgstr ""
 
-#: src/php/core-classes/templates/widget-content-list.template.php:23
+#: src/php/core-classes/templates/widget-content-list.template.php:27
 msgid "Link to %s"
 msgstr ""
 
-#: src/php/core-classes/templates/widget-terms.template.php:22
+#: src/php/core-classes/templates/widget-terms-cloud.template.php:24
+#: src/php/core-classes/templates/widget-terms-tree.template.php:37
 msgid "Show all content categorized under %s"
 msgstr ""
 
@@ -3049,9 +3059,9 @@ msgid "You"
 msgstr ""
 
 #: src/php/core-classes/widget-content-authors.class.php:200
-#: src/php/core-classes/widget-content-dates.class.php:189
+#: src/php/core-classes/widget-content-dates.class.php:208
 #: src/php/core-classes/widget-content-list.class.php:192
-#: src/php/core-classes/widget-terms.class.php:153
+#: src/php/core-classes/widget-terms.class.php:187
 msgid "Title:"
 msgstr ""
 
@@ -3083,31 +3093,31 @@ msgstr ""
 msgid "Category:"
 msgstr ""
 
-#: src/php/core-classes/widget-terms.class.php:160
+#: src/php/core-classes/widget-terms.class.php:194
 msgid "Empty terms:"
 msgstr ""
 
-#: src/php/core-classes/widget-terms.class.php:164
+#: src/php/core-classes/widget-terms.class.php:198
 msgid "Show"
 msgstr ""
 
-#: src/php/core-classes/widget-terms.class.php:165
+#: src/php/core-classes/widget-terms.class.php:199
 msgid "Hide"
 msgstr ""
 
-#: src/php/functions/functions-private-files.php:301
+#: src/php/functions/functions-private-files.php:284
 msgid "TB"
 msgstr ""
 
-#: src/php/functions/functions-private-files.php:306
+#: src/php/functions/functions-private-files.php:287
 msgid "GB"
 msgstr ""
 
-#: src/php/functions/functions-private-files.php:311
+#: src/php/functions/functions-private-files.php:290
 msgid "MB"
 msgstr ""
 
-#: src/php/functions/functions-private-files.php:316
+#: src/php/functions/functions-private-files.php:293
 msgid "kB"
 msgstr ""
 
@@ -4758,31 +4768,31 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:211
-#: src/php/core-classes/plugin.class.php:238
+#: src/php/core-classes/plugin.class.php:216
+#: src/php/core-classes/plugin.class.php:243
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:212
-#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:217
+#: src/php/core-classes/plugin.class.php:244
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:213
-#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:218
+#: src/php/core-classes/plugin.class.php:245
 msgctxt "Date picker text"
 msgid "Today"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:216
-#: src/php/core-classes/plugin.class.php:243
+#: src/php/core-classes/plugin.class.php:221
+#: src/php/core-classes/plugin.class.php:248
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr ""
 
-#: src/php/functions/functions-private-files.php:296
+#: src/php/functions/functions-private-files.php:280
 msgctxt "bytes"
 msgid "b"
 msgstr ""
