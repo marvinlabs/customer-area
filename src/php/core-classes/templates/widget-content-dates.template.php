@@ -12,7 +12,7 @@
 <?php
 /** @var $dates */ ?>
 
-<div id="cuar-content-dates-<?php echo $this->id_base; ?>" class="cuar-tree cuar-widget-content-dates panel-body pn">
+<div id="cuar-content-dates-<?php echo $this->id_base; ?>" class="cuar-tree cuar-widget-content-dates panel-body br-n pn">
 
     <ul class="cuar-tree-depth-0">
         <?php

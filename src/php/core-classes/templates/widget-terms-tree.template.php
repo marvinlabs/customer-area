@@ -13,7 +13,7 @@
 ?>
 
 <?php if ($depth == 0)
-    echo '<div id="cuar-terms-tree-' . $this->id_base . '" class="cuar-tree cuar-widget-terms-tree panel-body pn">'; ?>
+    echo '<div id="cuar-terms-tree-' . $this->id_base . '" class="cuar-tree cuar-widget-terms-tree panel-body br-n pn">'; ?>
 
 <ul class="cuar-tree-depth-<?php echo $depth; ?>">
     <?php
