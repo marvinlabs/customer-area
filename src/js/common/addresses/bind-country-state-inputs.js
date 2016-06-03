@@ -45,7 +45,7 @@
             var stateFieldGroup = base._getStateFieldContainer();
 
             var selectedCountry = countryField.val();
-            if (selectedCountry.length == '' || (typeof selectedCountry == 'undefined')) {
+            if (selectedCountry==null || selectedCountry.length == '' || (typeof selectedCountry == 'undefined')) {
                 stateFieldGroup.hide();
                 return;
             }
@@ -71,10 +71,10 @@
 
                     if (response.data.states != null) {
                         stateField.html(response.data.htmlOptions).select2(base.options.select2);
-                        stateField.select2('val', stateField.data('pending-value'));
+                        stateField.val(stateField.data('pending-value')).trigger('change');
                         stateFieldGroup.show();
                     } else {
-                        stateField.select2('val', '');
+                        stateField.val('').trigger('change');
                         stateFieldGroup.hide();
                     }
                     stateField.data('pending-value', '');
@@ -84,27 +84,27 @@
 
         /** Is the address disabled */
         base._isAddressBusy = function () {
-            return base._getAddressControl().triggerHandler('cuar:address:setBusy');
+            return base._getFieldContainer().triggerHandler('cuar:address:setBusy');
         };
 
         /** Set the address as disabled for some time */
         base._setAddressBusy = function (isBusy) {
-            base._getAddressControl().trigger('cuar:address:setBusy', [isBusy]);
+            base._getFieldContainer().trigger('cuar:address:setBusy', [isBusy]);
         };
 
         /** The control we belong to */
-        base._getAddressControl = function () {
-            return base.$el.parents('.cuar-address');
+        base._getFieldContainer = function () {
+            return base.$el.parents(base.options.fieldContainer);
         };
 
         /** Getter */
         base._getNonce = function () {
-            return base._getAddressControl().triggerHandler('cuar:address:getNonce');
+            return base._getFieldContainer().triggerHandler('cuar:address:getNonce');
         };
 
         /** Getter */
         base._getAddressId = function () {
-            return base._getAddressControl().triggerHandler('cuar:address:getAddressId');
+            return base._getFieldContainer().triggerHandler('cuar:address:getAddressId');
         };
 
         /** Getter */
@@ -127,12 +127,14 @@
     };
 
     $.cuar.bindCountryStateInputs.defaultOptions = {
-        countrySelector: '.cuar-address-country',
-        stateSelector: '.cuar-address-state',
+        fieldContainer: '.cuar-js-address',
+        countrySelector: '.cuar-js-address-country',
+        stateSelector: '.cuar-js-address-state',
         select2: {
             width: '100%',
             allowClear: true,
-            placeholder: ""
+            placeholder: "",
+            dropdownParent: $('body').hasClass('wp-admin') ? $('body') : $('#cuar-js-content-container')
         }
     };
 

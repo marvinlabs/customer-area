@@ -40,6 +40,7 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
             'type'           => '',
 
             // Optional
+            'title'          => '',
             'show'           => 'owned',
             'max_items'      => -1,
             'layout'         => 'default',
@@ -79,6 +80,16 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
 
         $layout = $params['layout'];
         $type = $params['type'];
+        $title = $params['title'];
+
+        $content_types = $plugin->get_content_post_types();
+        $container_types = $plugin->get_container_post_types();
+
+        if (empty($type) || !(in_array($type, $content_types) || in_array($type, $container_types)))
+        {
+            return sprintf(__('The parameter %2$s of shortcode <code>[%1$s]</code> has an invalid value: <code>%3$s</code>', 'cuar'),
+                $this->name, 'type', $type);
+        }
 
         // Build the query
         $args = array(
@@ -90,9 +101,19 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
         switch ($params['show'])
         {
             case 'owned':
-                /** @var CUAR_PostOwnerAddOn $po_addon */
-                $po_addon = $plugin->get_addon('post-owner');
-                $args['meta_query'] = $po_addon->get_meta_query_post_owned_by($current_user_id);
+                if (in_array($type, $content_types))
+                {
+                    /** @var CUAR_PostOwnerAddOn $po_addon */
+                    $po_addon = $plugin->get_addon('post-owner');
+                    $args['meta_query'] = $po_addon->get_meta_query_post_owned_by($current_user_id);
+                }
+                else if (in_array($type, $container_types))
+                {
+                    /** @var CUAR_ContainerOwnerAddOn $co_addon */
+                    $co_addon = $plugin->get_addon('container-owner');
+                    $args['meta_query'] = $co_addon->get_meta_query_containers_owned_by($current_user_id);
+                }
+
                 break;
 
             case 'authored':
@@ -175,6 +196,8 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
 
         $out = ob_get_contents();
         ob_end_clean();
+
+        wp_reset_query();
 
         return $out;
     }

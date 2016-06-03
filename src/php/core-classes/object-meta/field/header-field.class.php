@@ -52,7 +52,7 @@ class CUAR_HeaderField extends CUAR_AbstractField implements CUAR_Field {
 
 	// See CUAR_Field
 	public function render_read_only_field( $object_id ) {
-		printf( '<%1$s id="%3$s" class="cuar-field cuar-field-header">%2$s</%1$s>', $this->get_arg( 'wrapper' ), $this->get_arg( 'label' ), $this->get_id() );
+		printf( '<%1$s id="%3$s" class="cuar-field cuar-field-header %4$s">%2$s</%1$s>', $this->get_arg( 'wrapper' ), $this->get_arg( 'label' ), $this->get_id(), $this->get_arg( 'wrapper_class' ));
 	}
 
 	// See CUAR_Field

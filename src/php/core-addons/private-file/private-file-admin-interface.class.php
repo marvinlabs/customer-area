@@ -107,6 +107,7 @@ class CUAR_PrivateFileAdminInterface
 
         global $post;
         $this->pf_addon->print_current_attachments_manager($post->ID);
+        $this->pf_addon->print_attachment_manager_scripts();
 
         do_action("cuar/private-content/files/after-attachments-meta-box");
     }
@@ -115,11 +116,11 @@ class CUAR_PrivateFileAdminInterface
      * Callback to handle saving a post
      *
      * @param int     $post_id
-     * @param unknown $post
-     * @param array   $previous_owner
-     * @param array   $new_owner
+     * @param WP_Post $post
+     * @param array   $previous_owners
+     * @param array   $new_owners
      */
-    public function do_save_post($post_id, $post, $previous_owner, $new_owner)
+    public function do_save_post($post_id, $post, $previous_owners, $new_owners)
     {
         global $post;
 
@@ -133,7 +134,7 @@ class CUAR_PrivateFileAdminInterface
         if ( !wp_verify_nonce($_POST['wp_cuar_nonce_file'], plugin_basename(__FILE__))) return;
 
         // Move the legacy files to the new storage folders
-        $this->pf_addon->move_legacy_files($post_id, $previous_owner);
+        $this->pf_addon->move_legacy_files($post_id, $previous_owners);
 
         // Remove files which are physically missing
         $this->pf_addon->remove_missing_files($post_id);

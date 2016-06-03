@@ -551,6 +551,22 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /*------- ATTACHMENTS MANAGER -----------------------------------------------------------------------------------*/
 
         /**
+         * Print the scripts to manage attachments
+         */
+        public function print_attachment_manager_scripts()
+        {
+            $template_suffix = is_admin() ? '-admin' : '-frontend';
+
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                array(
+                    'private-attachments-add-methods-browser-scripts' . $template_suffix . '.template.php',
+                    'private-attachments-add-methods-browser-scripts.template.php'
+                ),
+                'templates'));
+        }
+
+        /**
          * Print the add attachment ajax methods
          *
          * @param int $post_id The post ID
@@ -678,9 +694,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          * Move all legacy files to the new storage folder
          *
          * @param int   $post_id The post ID
-         * @param array $owner   The current owner of the post (or previous one if calling this when saving post
+         * @param array $owners   The current owner of the post (or previous one if calling this when saving post
          */
-        public function move_legacy_files($post_id, $owner)
+        public function move_legacy_files($post_id, $owners)
         {
             /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
@@ -690,22 +706,25 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             {
                 if ($file['source'] == 'legacy')
                 {
-                    $old_path = $po_addon->get_legacy_owner_file_path($post_id, $file['file'], $owner['ids'], $owner['type'], false);
-                    $new_path = $po_addon->get_private_file_path($file['file'], $post_id, true);
-
-                    if (file_exists($old_path))
+                    foreach ($owners as $owner_type => $owner_ids)
                     {
-                        @copy($old_path, $new_path);
-                        @unlink($old_path);
+                        $old_path = $po_addon->get_legacy_owner_file_path($post_id, $file['file'], $owner_ids, $owner_type, false);
+                        $new_path = $po_addon->get_private_file_path($file['file'], $post_id, true);
 
-                        // Maybe delete empty folder
-                        if ($this->is_dir_empty(basename($old_path)))
+                        if (file_exists($old_path))
                         {
-                            @rmdir(basename($old_path));
-                        }
-                    }
+                            @copy($old_path, $new_path);
+                            @unlink($old_path);
 
-                    $files[$file_id]['source'] = 'local';
+                            // Maybe delete empty folder
+                            if ($this->is_dir_empty(basename($old_path)))
+                            {
+                                @rmdir(basename($old_path));
+                            }
+                        }
+
+                        $files[$file_id]['source'] = 'local';
+                    }
                 }
             }
             $this->save_attached_files($post_id, $files);
@@ -1168,7 +1187,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $args = array(
                 'labels'              => $labels,
                 'hierarchical'        => false,
-                'supports'            => array('title', 'editor', 'author', 'thumbnail', 'comments'),
+                'supports'            => array('title', 'editor', 'author', 'thumbnail', 'comments', 'excerpt'),
                 'taxonomies'          => array('cuar_private_file_category'),
                 'public'              => true,
                 'show_ui'             => true,

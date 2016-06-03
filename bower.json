@@ -1,0 +1,34 @@
+{
+  "name": "customer-area",
+  "version": "6.1.2",
+  "homepage": "http://wp-customerarea.com",
+  "authors": [
+    "Vincent Mimoun-Prat <contact@marvinlabs.com> (http://marvinlabs.com)",
+    "Thomas Lartaud <contact@thomaslartaud.com> (http://thomaslartaud.com)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marvinlabs/customer-area"
+  },
+  "license": "",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "extras"
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "modernizr": "*",
+    "bootstrap": "*",
+    "select2": "~4.0.2",
+    "seiyria-bootstrap-slider": "~7.0.3",
+    "blueimp-file-upload": "~9.12.3",
+    "jquery.cookie": "~1.4.1",
+    "jquery.steps": "~1.1.0",
+    "slick-carousel": "^1.5.9",
+    "font-awesome": "^4.6.1",
+    "jquery.fancytree": "fancytree#2.18.0",
+    "summernote": "0.8.1"
+  }
+}

@@ -1,28 +1,24 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2015}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2016}
 # Translators:
 # Tai Jennewein <tjdesign@tjdesign.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
-"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
-"environment/issues\n"
-"POT-Creation-Date: 2015-09-07 07:35:27+00:00\n"
-"PO-Revision-Date: 2015-11-20 11:26+0000\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
+"POT-Creation-Date: 2016-05-18 14:31:43+00:00\n"
+"PO-Revision-Date: 2016-05-20 18:09+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/wp-translations/"
-"wp-customer-area/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/wp-translations/wp-customer-area/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: grunt-wp-i18n 0.5.3\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
@@ -78,9 +74,9 @@ msgstr ""
 #: src/php/core-addons/addresses/addresses-addon.class.php:156
 #: src/php/core-addons/addresses/addresses-addon.class.php:194
 #: src/php/core-addons/addresses/addresses-addon.class.php:227
-#: src/php/core-addons/private-file/private-file-addon.class.php:799
-#: src/php/core-addons/private-file/private-file-addon.class.php:893
-#: src/php/core-addons/private-file/private-file-addon.class.php:958
+#: src/php/core-addons/private-file/private-file-addon.class.php:818
+#: src/php/core-addons/private-file/private-file-addon.class.php:912
+#: src/php/core-addons/private-file/private-file-addon.class.php:977
 #: src/php/core-classes/addon-create-content-page.class.php:92
 #: src/php/core-classes/addon-create-content-page.class.php:98
 msgid "Trying to cheat?"
@@ -95,124 +91,126 @@ msgstr ""
 msgid "You must specify the address"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:46
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:49
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:52
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:55
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:57
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:61
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:49
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:51
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:64
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:67
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:61
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:64
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:64
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:66
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:58
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:60
 #: src/php/core-addons/status/hook-finder.class.php:124
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
 #: src/php/core-classes/widget-content-list.class.php:217
 msgid "Name"
 msgstr "Nome"
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:55
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:58
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:61
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:64
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:68
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:72
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:56
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:58
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:76
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:80
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:70
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:73
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:73
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:75
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:65
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:67
 msgid "Company"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:65
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:68
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:72
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:74
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:79
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:91
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:95
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:81
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:83
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:82
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:84
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:63
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:65
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:72
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:74
 msgid "VAT Number"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:75
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:93
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:102
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:80
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:106
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:102
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:103
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:89
 msgid "Street address"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:78
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:96
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:104
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:110
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:105
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:91
 msgid "Street address, line 1"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:87
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:112
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:87
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:125
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:114
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:114
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:96
 msgid "Street address, line 2"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:94
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:97
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:113
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:116
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:118
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:120
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:92
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:94
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:136
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:140
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:122
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:125
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:121
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:123
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:103
 msgid "Zip/Postal code"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:104
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:107
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:123
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:126
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:126
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:128
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:99
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:151
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:155
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:132
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:135
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:130
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:132
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:108
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:110
 msgid "City"
 msgstr "Cidade"
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:115
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:134
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:134
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:107
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:167
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:143
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:139
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:116
 msgid "Country"
 msgstr "País"
 
-#: src/php/core-addons/addresses/templates/account-edit-address.template.php:130
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:149
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:147
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:119
+#: src/php/core-addons/addresses/templates/account-edit-address.template.php:186
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:158
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:151
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:128
 msgid "State/Province"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:81
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:91
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:70
-msgid "Logo"
-msgstr "Logo"
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:84
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:94
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:73
-msgid "Logo URL"
-msgstr ""
-
-#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:85
-#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:95
-#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:74
-msgid "Upload Logo"
-msgstr "Atualizar Logo"
-
-#: src/php/core-addons/addresses/templates/view-address.template.php:34
+#: src/php/core-addons/addresses/templates/account-view-address.template.php:56
+#: src/php/core-addons/addresses/templates/view-address.template.php:43
 msgid "No address yet"
 msgstr ""
 
-#: src/php/core-addons/addresses/templates/view-address.template.php:49
+#: src/php/core-addons/addresses/templates/account-view-address.template.php:71
+#: src/php/core-addons/addresses/templates/view-address.template.php:58
 msgid "VAT ID -"
 msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:90
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:91
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:79
+msgid "Logo"
+msgstr "Logo"
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:93
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:94
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
+msgid "Logo URL"
+msgstr ""
+
+#: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:94
+#: src/php/core-addons/addresses/templates/profile-edit-address.template.php:96
+#: src/php/core-addons/addresses/templates/settings-edit-address.template.php:83
+msgid "Upload Logo"
+msgstr "Atualizar Logo"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:42
 msgid "Administration Area"
@@ -224,112 +222,105 @@ msgstr "Você não tem permissão para fazer isso"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:86
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:94
-#: src/php/core-addons/private-file/private-file-addon.class.php:823
-#: src/php/core-addons/private-file/private-file-addon.class.php:884
-#: src/php/core-addons/private-file/private-file-addon.class.php:949
+#: src/php/core-addons/private-file/private-file-addon.class.php:842
+#: src/php/core-addons/private-file/private-file-addon.class.php:903
+#: src/php/core-addons/private-file/private-file-addon.class.php:968
 msgid "Missing parameters"
 msgstr "Parâmetros que faltam"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:101
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:102
 msgid ""
 "Error while changing permissions. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
-msgstr ""
-"Erro ao alterar permissões. PHP provavelmente não tem as permissões "
-"necessárias. Por favor fazê-lo manualmente usando FTP ou SSH."
+msgstr "Erro ao alterar permissões. PHP provavelmente não tem as permissões necessárias. Por favor fazê-lo manualmente usando FTP ou SSH."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:108
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:110
 msgid ""
 "Permissions could not be changed. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
-msgstr ""
-"As permissões não poderiam ser alteradas. PHP provavelmente não tem as "
-"permissões necessárias. Por favor fazê-lo manualmente usando FTP ou SSH."
+msgstr "As permissões não poderiam ser alteradas. PHP provavelmente não tem as permissões necessárias. Por favor fazê-lo manualmente usando FTP ou SSH."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:118
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:121
 msgid "Folder could not be created"
 msgstr "Pasta não pôde ser criada"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:129
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:132
 msgid ""
 "htaccess file could not be copied. Please do it manually using FTP or SSH."
-msgstr ""
-"htaccess arquivo não pôde ser copiado. Por favor fazê-lo manualmente usando "
-"FTP ou SSH."
+msgstr "htaccess arquivo não pôde ser copiado. Por favor fazê-lo manualmente usando FTP ou SSH."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:173
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:176
 msgid "Restrict WP admin area"
 msgstr "Restringir a área de administração do WP"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:180
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:183
 msgid "Restrict the access to the administration panel of WordPress."
 msgstr "Restrinja o acesso ao painel de administração do WordPress."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:235
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:238
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:38
 #: src/php/core-classes/settings.class.php:276
 msgid "General"
 msgstr "Geral"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:243
-#: src/php/core-addons/private-file/private-file-addon.class.php:1090
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:246
+#: src/php/core-addons/private-file/private-file-addon.class.php:1109
 #: src/php/core-addons/private-page/private-page-addon.class.php:108
 msgid "Back-office"
 msgstr "Área de administração"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:245
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:248
 msgid "Access the WordPress admin area"
 msgstr "Acesse a área de administração do WordPress"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:246
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:249
 msgid "View the Customer Area menu"
 msgstr "Veja o menu Área de Clientes"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:250
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:71
-#: src/php/core-addons/private-file/private-file-addon.class.php:1103
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:253
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:79
+#: src/php/core-addons/private-file/private-file-addon.class.php:1122
 #: src/php/core-addons/private-page/private-page-addon.class.php:121
 msgid "Front-office"
 msgstr "Área de visualização"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:252
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:255
 msgid "See the WordPress top bar"
 msgstr "Veja a barra do topo do WordPress"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:410
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:413
 msgid "What's new"
 msgstr "O que há de novo"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:414
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:417
 msgid "Change log"
 msgstr "Log de mudanças"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:418
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:421
 msgid "Live from the blog"
 msgstr "Ao vivo através do blog"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:422
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:425
 msgid "Add-ons &amp; themes"
 msgstr "Aditivos &amp; temas"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:426
-#: src/php/core-addons/installer/installer-addon.class.php:246
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:429
+#: src/php/core-addons/installer/installer-addon.class.php:245
 msgid "Welcome to WP Customer Area %s"
 msgstr "Bem vindo à Área do Cliente WP %s"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:427
-#: src/php/core-addons/installer/installer-addon.class.php:247
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:430
+#: src/php/core-addons/installer/installer-addon.class.php:246
 msgid ""
 "<strong>WP Customer Area</strong> %s is more powerful, stable and secure "
 "than ever before. We hope you will enjoy using it."
-msgstr ""
-"<strong>Área do Cliente WP</strong> %s está mais poderoso, estável e seguro "
-"do que antes. Nós esperamos que você goste de usá-lo ."
+msgstr "<strong>Área do Cliente WP</strong> %s está mais poderoso, estável e seguro do que antes. Nós esperamos que você goste de usá-lo ."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:476
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:492
 msgid "Add new"
 msgstr "Adicionar novo"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:495
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:511
 msgid "Manage %1$s"
 msgstr "Gerenciar %1$s"
 
@@ -386,21 +377,21 @@ msgstr "Lixeira"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:257
 #: src/php/core-addons/admin-area/private-content-table.class.php:269
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:99
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:109
 msgid "Title"
 msgstr "Título"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:258
 #: src/php/core-addons/admin-area/private-content-table.class.php:270
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:37
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:28
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-header.template.php:37
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-header.template.php:32
 msgid "Author"
 msgstr "Autor"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:269
 #: src/php/core-addons/admin-area/private-content-table.class.php:282
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:38
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-header.template.php:57
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-header.template.php:52
 #: src/php/core-addons/log/log-table.class.php:154
 #: src/php/core-classes/widget-content-list.class.php:216
 msgid "Date"
@@ -479,286 +470,276 @@ msgid "/downloads/category/wpca-themes/feed/rss"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:29
-#, fuzzy
 msgid "/add-ons-and-themes"
-msgstr "Aditivos &amp; temas"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:29
-#, fuzzy
 msgid "Show all"
-msgstr "Exibir"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-blog.template.php:7
 msgid "/feed/rss"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-msgid "/whats-new-in-wp-customer-area-6-3"
+msgid "/whats-new-in-wp-customer-area-7-0"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
-#, fuzzy
+msgid "WP Customer Area 7.0 has got a new dress."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
+msgid "New skin"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+msgid ""
+"The appearance of the private area has been completely rewritten to enhance "
+"compatibility with all themes and usability. "
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+msgid "Better ownership control"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+msgid ""
+"Our add-ons allow assigning content to groups, roles, etc. However, these "
+"owner types could not be mixed. For example, you can now assign private "
+"content at the same time to a group and to a few users."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
+msgid "Improvements and bug fixes"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+msgid ""
+"Existing add-ons have been much improved: 17 new features and over 14 issues"
+" fixes. For instance, notifications are now sent in HTML format using a "
+"clean professional template."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+msgid "/whats-new-in-wp-customer-area-6-3"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
 msgid ""
 "WP Customer Area 6.3 has been aimed at improving customer relationship "
 "management and improving existing add-ons."
 msgstr ""
-"WP Customer Area 6.2 foi destinado a facilitar anexos de arquivos privados e "
-"tudo ao sobre isso."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
-#, fuzzy
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
 msgid "Contact information"
-msgstr "Criação de conteúdo"
+msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
 msgid ""
 "User profiles can now store a home and a billing address. This is an "
 "essential information when managing your customers and will help building "
 "more CRM features into the plugin later on."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
 msgid "Invoicing"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
 msgid ""
 "We are introducing a new add-on to publish invoices for your customers. No "
 "more attaching files, there is a proper content type for invoices and we "
 "will soon add a lot around that (PDF generation, online payment, etc.)."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:19
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:41
 msgid "/downloads/wpca-invoicing"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
-msgid "Improvements and bug fixes"
-msgstr ""
-
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:23
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:45
 msgid ""
-"While this time we do not have other big news than the new invoicing add-on, "
-"there have been lots of additions and fixes to the base plugin and the "
+"While this time we do not have other big news than the new invoicing add-on,"
+" there have been lots of additions and fixes to the base plugin and the "
 "existing add-ons: 15 new features and 19 issues have been implemented/fixed."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:29
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:51
 msgid "/whats-new-in-wp-customer-area-6-2"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:31
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:53
 msgid ""
 "WP Customer Area 6.2 has been aimed at improving the attachments to private "
 "files and everything around that."
-msgstr ""
-"WP Customer Area 6.2 foi destinado a facilitar anexos de arquivos privados e "
-"tudo ao sobre isso."
+msgstr "WP Customer Area 6.2 foi destinado a facilitar anexos de arquivos privados e tudo ao sobre isso."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
 msgid "New upload system"
 msgstr "Novo sistema de upload"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:35
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:57
 msgid ""
 "The file upload system has been completely rewritten. You can now drag and "
 "drop files and watch the upload progress. Additionally, we have also added "
 "some more settings and provide a security helper to make sure your setup is "
 "as secure as it can."
-msgstr ""
-"O sistema de upload foi completamente reescrito. Agora você pode arrastar e "
-"soltar arquivos e ver o progresso do upload. Adicionalmente, nós adicionamos "
-"mais configurações para melhorar a segurança e fazer o confirguração da "
-"segurança da forma que você quiser."
+msgstr "O sistema de upload foi completamente reescrito. Agora você pode arrastar e soltar arquivos e ver o progresso do upload. Adicionalmente, nós adicionamos mais configurações para melhorar a segurança e fazer o confirguração da segurança da forma que você quiser."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
 msgid "Enhanced Files"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:40
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:62
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
-"multiple attachments on the same private file, change the attachment caption "
-"and automatically add file type icons in front of the download links."
-msgstr ""
-"Estamos introduzindo um novo add-on que melhora os anexos de arquivo: fazer "
-"upload de vários anexos no mesmo arquivo privado, alterar a legenda de "
-"fixação e adicionar automaticamente os ícones de tipo de arquivo na frente "
-"dos links de download."
+"multiple attachments on the same private file, change the attachment caption"
+" and automatically add file type icons in front of the download links."
+msgstr "Estamos introduzindo um novo add-on que melhora os anexos de arquivo: fazer upload de vários anexos no mesmo arquivo privado, alterar a legenda de fixação e adicionar automaticamente os ícones de tipo de arquivo na frente dos links de download."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:42
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:64
 msgid "/downloads/wpca-enhanced-files"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:45
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
 msgid "Smart Groups"
 msgstr "Grupos inteligentes"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:46
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:68
 msgid ""
 "Smart Groups will change the way to build your user groups. No more adding "
 "or removing users by hand, you will simply make dynamic groups based on "
 "criteria such as name, domain of the email address, and any other meta "
 "information linked to your user profiles."
-msgstr ""
-"Grupos inteligentes vai mudar a maneira de construir seus grupos de "
-"usuários. Não mais adicionar ou remover usuários à mão, você simplesmente "
-"vai fazer grupos dinâmicos com base em critérios como nome, domínio do "
-"endereço de e-mail, e qualquer outra informação meta ligada a seus perfis de "
-"usuário."
+msgstr "Grupos inteligentes vai mudar a maneira de construir seus grupos de usuários. Não mais adicionar ou remover usuários à mão, você simplesmente vai fazer grupos dinâmicos com base em critérios como nome, domínio do endereço de e-mail, e qualquer outra informação meta ligada a seus perfis de usuário."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:48
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:70
 msgid "/downloads/wpca-smart-groups"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:53
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
 msgid "/whats-new-in-wp-customer-area-6-1"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
 msgid ""
 "WP Customer Area 6.1 focuses mainly on making administrator's life easier, "
 "introducing event logging and a better administration panel."
-msgstr ""
-"6.1 de área cliente WP centra-se principalmente em facilitar a vida do "
-"administrador, introduzindo o log de eventos e um painel de administração "
-"melhor."
+msgstr "6.1 de área cliente WP centra-se principalmente em facilitar a vida do administrador, introduzindo o log de eventos e um painel de administração melhor."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:58
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:80
 msgid "Protect post types"
 msgstr "Tipos de posts protegidos"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:59
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:81
 msgid ""
 "We are introducing a new add-on which will allow protecting any kind of "
 "external post types. Posts created from third party plugins can be made "
 "private and assigned just like private pages or files."
-msgstr ""
-"Estamos introduzindo um novo Add-on que permitirá proteger qualquer tipo de "
-"post externo tipos. Postos criados a partir de plugins de terceiros podem "
-"ser feitos privada e atribuído como privadas páginas ou arquivos."
+msgstr "Estamos introduzindo um novo Add-on que permitirá proteger qualquer tipo de post externo tipos. Postos criados a partir de plugins de terceiros podem ser feitos privada e atribuído como privadas páginas ou arquivos."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
 msgid "/downloads/wpca-protect-post-types"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:64
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
 #: src/php/core-addons/shortcodes/shortcodes-addon.class.php:36
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:65
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:87
 msgid ""
 "we have added shortcodes to display the navigation menu, list protected "
 "content, etc. You will now be able to easily build custom pages with a list "
 "of the content you want to pull for the connected user."
-msgstr ""
-"nos acrescentamos shortcodes para mostrar o menu de navegação, conteúdo da "
-"lista protegida, etc. Agora você pode construir facilmente páginas com a "
-"lista de conteúdos dos usuários conectados."
+msgstr "nos acrescentamos shortcodes para mostrar o menu de navegação, conteúdo da lista protegida, etc. Agora você pode construir facilmente páginas com a lista de conteúdos dos usuários conectados."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
 msgid "/documentation/shortcodes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:70
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
 msgid "Better admin panel"
 msgstr "Painel de administração melhorado"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:71
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:93
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
-"better organised. The content lists now feature powerful filters to help you "
-"find the content you are looking for faster."
-msgstr ""
-"O menu principal do plugin foi melhorado e está melhor organizado. As listas "
-"de conteúdo tem poderosos filtros para ajudar você a encontrar o conteúdo "
-"procurado mais rápido."
+"better organised. The content lists now feature powerful filters to help you"
+" find the content you are looking for faster."
+msgstr "O menu principal do plugin foi melhorado e está melhor organizado. As listas de conteúdo tem poderosos filtros para ajudar você a encontrar o conteúdo procurado mais rápido."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
 msgid "Logging"
 msgstr "Entrando"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:76
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:98
 msgid ""
 "When dealing with private content and secure areas, keeping track of events "
 "is crucial. We have added a module to track what is happening within your "
 "private area."
-msgstr ""
-"Ao lidar com conteúdo privado e áreas de segurança, mantendo o controle de "
-"eventos é crucial. Nós adicionamos um módulo para acompanhar o que está "
-"acontecendo dentro de sua área privada."
+msgstr "Ao lidar com conteúdo privado e áreas de segurança, mantendo o controle de eventos é crucial. Nós adicionamos um módulo para acompanhar o que está acontecendo dentro de sua área privada."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:80
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
 msgid "And more!"
 msgstr "E mais!"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:81
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 23 issues corrected."
-msgstr ""
-"Como acontece com qualquer novo lançamento, estamos constantemente a "
-"fornecer correções de bugs. Esta atualização não é excepção com nada menos "
-"que 23 questões corrigidas."
+msgstr "Como acontece com qualquer novo lançamento, estamos constantemente a fornecer correções de bugs. Esta atualização não é excepção com nada menos que 23 questões corrigidas."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:88
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:110
 msgid "/customer-area-is-dead-long-live-wp-customer-area/"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:90
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:112
 msgid ""
-"WP Customer Area 6.0 is a major release which sees a lot of changes not only "
-"inside the plugin but also on the website."
-msgstr ""
-"WP Customer Area 6.0 é um grande lançamento que vê uma série de mudanças não "
-"só dentro do plugin, mas também no nosso site."
+"WP Customer Area 6.0 is a major release which sees a lot of changes not only"
+" inside the plugin but also on the website."
+msgstr "WP Customer Area 6.0 é um grande lançamento que vê uma série de mudanças não só dentro do plugin, mas também no nosso site."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:93
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
 msgid "Improved setup &amp; updates"
 msgstr "Configuração melhorada &amp; atualizações"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:94
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:116
 msgid ""
 "We have implemented a new setup assistant that will make it even easier to "
 "install the plugin. Updates will be smoother too."
-msgstr ""
-"Temos implementado um novo assistente de configuração que irá tornar ainda "
-"mais fácil para instalar o plugin. Updates será mais suave também."
+msgstr "Temos implementado um novo assistente de configuração que irá tornar ainda mais fácil para instalar o plugin. Updates será mais suave também."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:98
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
 msgid "Better permissions"
 msgstr "Permissões melhoradas"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:99
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:121
 msgid ""
 "Some new permissions have been added to give you more control about what "
 "your users can do. On top of that, we have also improved the permissions "
 "screen to make it faster to set permissions."
-msgstr ""
-"Algumas novas permissões foram adicionados para dar a você mais controle "
-"sobre o que seus usuários podem fazer. Em cima disso, nós também melhoramos "
-"a tela permissões para torná-lo mais rápido para definir permissões."
+msgstr "Algumas novas permissões foram adicionados para dar a você mais controle sobre o que seus usuários podem fazer. Em cima disso, nós também melhoramos a tela permissões para torná-lo mais rápido para definir permissões."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:104
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:126
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 20 issues corrected."
-msgstr ""
-"Como acontece com qualquer novo lançamento, estamos constantemente a "
-"fornecer correções de bugs. Esta atualização não é excepção com nada menos "
-"que 20 questões corrigidas."
+msgstr "Como acontece com qualquer novo lançamento, estamos constantemente a fornecer correções de bugs. Esta atualização não é excepção com nada menos que 20 questões corrigidas."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:113
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:135
 msgid "New in %s ~ <em>%s</em>"
 msgstr "Novo em %s ~ <em>%s</em>"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:123
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:145
 msgid "Learn more"
 msgstr "Saiba mais"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-author.template.php:8
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:77
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:74
 msgid "Created by"
 msgstr "Criado por"
 
@@ -814,43 +795,49 @@ msgstr "Ativar filtros avançados"
 msgid "Are you sure?"
 msgstr "Você tem certeza?"
 
-#: src/php/core-addons/capabilities/capabilities-addon.class.php:35
+#: src/php/core-addons/capabilities/capabilities-addon.class.php:38
 msgid "Capabilities Manager"
 msgstr "Gerenciamento de Permissões"
 
-#: src/php/core-addons/capabilities/capabilities-addon.class.php:55
+#: src/php/core-addons/capabilities/capabilities-addon.class.php:61
 msgid "You have not yet configured the plugin permissions."
 msgstr "Você ainda não configurou as permissões do plugin"
 
-#: src/php/core-addons/capabilities/capabilities-addon.class.php:79
+#: src/php/core-addons/capabilities/capabilities-addon.class.php:88
 msgid "Capabilities"
 msgstr "Permissões"
 
-#: src/php/core-addons/capabilities/templates/capabilities-table.template.php:50
+#: src/php/core-addons/capabilities/templates/capabilities-table.template.php:20
+msgid ""
+"You can adjust here the permissions granted to the users for each role "
+"defined in your site."
+msgstr ""
+
+#: src/php/core-addons/capabilities/templates/capabilities-table.template.php:60
 msgid "Toggle all permissions for this role"
 msgstr "Habilitar todas as permissões para esta regra"
 
-#: src/php/core-addons/capabilities/templates/capabilities-table.template.php:81
+#: src/php/core-addons/capabilities/templates/capabilities-table.template.php:91
 msgid "Toggle this permission for all roles"
 msgstr "Habilitar todas as permissões para todas as regras"
 
-#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:24
-#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:30
+#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:33
+#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:40
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:23
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:33
 msgid "Configure permissions"
 msgstr "Configurar permissões"
 
-#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:29
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:31
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:30
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:31
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:79
+#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:38
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:41
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:40
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:41
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:89
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
 msgid "Suggested action"
 msgstr "Ação sugerida"
 
-#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:31
+#: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:41
 msgid "Ignore this warning"
 msgstr "Ignorar este aviso"
 
@@ -859,48 +846,35 @@ msgid "Container Owner"
 msgstr "Proprietário do container"
 
 #: src/php/core-addons/container-owner/container-owner-addon.class.php:124
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:1083
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:751
 msgid "You are not authorized to view this page"
 msgstr "Você não está autorizado a visualizar essa página"
 
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:44
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:47
 msgid "Account - Details"
 msgstr "Conta - Detalhes"
 
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:48
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:72
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
 msgid "Account details"
 msgstr "Detalhes da conta"
 
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:57
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:51
 msgid "This page shows a summary of the user account"
 msgstr "Esta página mostra um resumo da conta do usuário"
 
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:76
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:84
 msgid "View account details"
 msgstr "Ver detalhes da conta"
 
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:77
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:85
 msgid "Edit account details"
 msgstr "Editar detalhes da conta"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:17
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:13
-msgid "Hello %s,"
-msgstr "Olá %s,"
-
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:22
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:35
 msgid "Your profile has been updated"
 msgstr "Seu perfil foi atualizado"
-
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:26
-msgid "Please find below your account details"
-msgstr "Veja abaixo os detalhes da sua conta"
-
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:30
-msgid "Addresses"
-msgstr ""
 
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:44
 msgid "Account - Edit"
@@ -914,17 +888,13 @@ msgstr "Editar conta"
 msgid "This page shows a form where the user can edit his account"
 msgstr "Esta página mostra um formulário onde o usuário pode eitar a sua conta"
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:16
-msgid ""
-"You can update your account details. If you leave the password fields empty, "
-"your password will not be modified."
-msgstr ""
-"Você pode atualizar seus detalhes da sua conta. Se você deixar o campo de "
-"senha vazio, a sua senha não será modificada."
-
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:25
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:31
 msgid "Submit"
 msgstr "Enviar"
+
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:43
+msgid "Addresses"
+msgstr ""
 
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:43
 msgid "Account - Home"
@@ -936,17 +906,15 @@ msgstr "Minha conta"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
-#: src/php/core-classes/addon-container-page.class.php:789
-#: src/php/core-classes/addon-content-page.class.php:819
+#: src/php/core-classes/addon-container-page.class.php:839
+#: src/php/core-classes/addon-content-page.class.php:870
 msgid "Dashboard"
 msgstr "Painel"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
 msgid ""
 "Shows a summary of the user's private content (files, pages, messages, ...)."
-msgstr ""
-"Mostra um resumo do conteúdo particular do usuário (arquivos, páginas, "
-"mensagens, ...)."
+msgstr "Mostra um resumo do conteúdo particular do usuário (arquivos, páginas, mensagens, ...)."
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:43
 msgid "Home"
@@ -954,11 +922,9 @@ msgstr "Home"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
-"This is the main page for your customers. It will redirect to the login page "
-"or to the customer area dashboard."
-msgstr ""
-"Esta é a página principal para seus clientes. Ele irá redirecionar para a "
-"página de login ou no painel de instrumentos área cliente."
+"This is the main page for your customers. It will redirect to the login page"
+" or to the customer area dashboard."
+msgstr "Esta é a página principal para seus clientes. Ele irá redirecionar para a página de login ou no painel de instrumentos área cliente."
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:55
 msgid "customer-area"
@@ -972,382 +938,343 @@ msgstr "Sair"
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
-msgstr ""
-"Esta página registra o usuário atual e redireciona-lo para a página de logout"
+msgstr "Esta página registra o usuário atual e redireciona-lo para a página de logout"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1007
 msgid "Customer Pages"
 msgstr "Páginas do usuário"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:125
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:134
 msgid "Some pages of the customer area have not yet been created."
 msgstr "Algumas páginas do Customer Area não foram criadas."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:146
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:151
 msgid "The navigation menu for the customer area has not been created."
 msgstr "O menu de navegação para o Customer Area não foi criado."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:159
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:162
 #: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
 msgid "Pages"
 msgstr "Páginas"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:160
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:163
 msgid "Pages of the Customer Area"
 msgstr "Páginas do Customer Area"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:754
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:675
 msgid "WP Customer Area Menu"
 msgstr "Menu do WP Customer Area"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:759
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:679
 msgid "Could not create the menu. %s"
 msgstr "Não pode criar o menu. %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:825
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:736
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "O menu foi criado:: <a href=\"%s\">Ver menu</a>"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:981
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:998
 msgid "Site Pages"
 msgstr "Páginas do Site"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1017
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1087
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1033
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1102
 msgid "Reset"
 msgstr "Resetar"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1023
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1039
 msgid "Reset all pages &raquo;"
 msgstr "Reiniciar todas as páginas &raquo;"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1026
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1042
 msgid "Delete all existing pages and recreate them."
 msgstr "Excluir todas as páginas existentes e recriá-las."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1027
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1043
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
-msgstr ""
-"Tem certeza que você deseja excluir todas as páginas existentes e recriá-las "
-"(esta operação não pode ser desfeita)?"
+msgstr "Tem certeza que você deseja excluir todas as páginas existentes e recriá-las (esta operação não pode ser desfeita)?"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1037
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
 msgid "Main Navigation Menu"
 msgstr "Menu de navegação principal"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1046
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
 msgid "WP Customer Area pages"
 msgstr "Páginas do WP Customer Area"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1054
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1069
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
-msgstr ""
-"Mostrar automaticamente o menu de navegação Área do Cliente nas páginas Área "
-"de clientes."
+msgstr "Mostrar automaticamente o menu de navegação Área do Cliente nas páginas Área de clientes."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1066
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
 msgid "Private content single pages"
 msgstr "Conteúdo privado páginas únicas"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1074
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1089
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
-msgstr ""
-"Mostrar automaticamente o menu de navegação Área do Cliente em páginas de "
-"conteúdo individuais privados."
+msgstr "Mostrar automaticamente o menu de navegação Área do Cliente em páginas de conteúdo individuais privados."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1093
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1108
 msgid "Recreate menu"
 msgstr "Recriar o menu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1096
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
 msgid "Delete and recreate the main navigation menu."
 msgstr "Excluir e recriar o menu de navegação principal."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1097
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1112
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
-msgstr ""
-"Tem certeza de que deseja recriar o menu de navegação principal (esta "
-"operação não pode ser desfeita)?"
+msgstr "Tem certeza de que deseja recriar o menu de navegação principal (esta operação não pode ser desfeita)?"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1119
 msgid "Permalinks"
 msgstr "Links Permanentes"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1126
 msgid "Category Archive"
 msgstr "Categoria"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1129
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1144
 msgid "Date Archive"
 msgstr "Data"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1146
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1161
 msgid "Author Archive"
 msgstr "Autor"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1163
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1178
 msgid "Update Content"
 msgstr "Atualizar conteúdo"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1172
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1187
 msgid "Slug that is used in the URL to update existing private content"
 msgstr "Slug que é usado na URL para atualizar o conteúdo existente privado"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1179
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1194
 msgid "Delete Content"
 msgstr "Apagar conteúdo"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1188
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1203
 msgid "Slug that is used in the URL to delete existing private content"
 msgstr "Slug que é usado na URL para atualizar o conteúdo existente privado"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1202
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1217
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
-msgstr ""
-"Desde a versão 4.0.0, Área de Cliente lida com a navegação através dos menus."
+msgstr "Desde a versão 4.0.0, Área de Cliente lida com a navegação através dos menus."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1214
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1229
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
-msgstr ""
-"Desde a versão 4.0.0, Área do Cliente está usando várias páginas para "
-"mostrar o conteúdo para seus clientes. Criar essas páginas a partir daqui ou "
-"simplesmente indicar os já existentes."
+msgstr "Desde a versão 4.0.0, Área do Cliente está usando várias páginas para mostrar o conteúdo para seus clientes. Criar essas páginas a partir daqui ou simplesmente indicar os já existentes."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1325
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1400
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1295
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1329
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1396
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
-msgstr ""
-"Algumas páginas da área do cliente ter sido criado ou excluído. O menu de "
-"navegação área cliente precisa ser atualizado."
+msgstr "Algumas páginas da área do cliente ter sido criado ou excluído. O menu de navegação área cliente precisa ser atualizado."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1325
 msgid "The following pages have been created: %s"
 msgstr "As seguintes páginas foram criadas: %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1330
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1332
 msgid "There was no missing page that could be created."
 msgstr "Não houve página que poderia ser criada."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1375
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1371
 msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings."
-msgstr ""
-"Algumas páginas do seu site parecem conter códigos de acesso Área de "
-"clientes, mas não são registrados nas configurações de páginas Área de "
-"clientes."
+"Some pages in your site seem to contain Customer Area shortcodes but are not"
+" registered in the Customer Area pages settings."
+msgstr "Algumas páginas do seu site parecem conter códigos de acesso Área de clientes, mas não são registrados nas configurações de páginas Área de clientes."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1395
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1391
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] "%s a página foi apagada"
 msgstr[1] "%s as páginas foram apagadas"
 
-#: src/php/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:8
+#: src/php/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:22
 msgid "Toggle navigation"
 msgstr "Alternar de navegação"
 
-#: src/php/core-addons/customer-pages/templates/pagination.template.php:13
+#: src/php/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:25
+msgid "Menu"
+msgstr "Menu"
+
+#: src/php/core-addons/customer-pages/templates/pagination.template.php:21
 msgid "(current)"
 msgstr "(atual)"
 
-#: src/php/core-addons/customer-pages/templates/pagination.template.php:21
+#: src/php/core-addons/customer-pages/templates/pagination.template.php:29
 msgid "Page %1$s"
 msgstr "Página %1$s"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:23
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:33
 msgid "Missing navigation menu"
 msgstr "Faltando o menu de navegação"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:26
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:36
 msgid ""
 "A navigation menu organizes the customer area. It allows to browse the "
 "files, the pages, to view the account details and much more. It seems that "
 "this menu has not yet been created."
-msgstr ""
-"Um menu de navegação organiza área de cliente. Ele permite navegar pelos "
-"arquivos, as páginas, para visualizar os detalhes da conta e muito mais. "
-"Parece que este menu ainda não foi criado."
+msgstr "Um menu de navegação organiza área de cliente. Ele permite navegar pelos arquivos, as páginas, para visualizar os detalhes da conta e muito mais. Parece que este menu ainda não foi criado."
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:27
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:37
 msgid ""
-"You can review which menus are currently created on the <a href=\"%1$s"
-"\">menus page</a>."
-msgstr ""
-"Você pode rever quais os menus são actualmente criados no <a href=\"%1$s\"> "
-"página de menus </a>."
+"You can review which menus are currently created on the <a "
+"href=\"%1$s\">menus page</a>."
+msgstr "Você pode rever quais os menus são actualmente criados no <a href=\"%1$s\"> página de menus </a>."
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:32
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:42
 msgid "Create the menu"
 msgstr "Criar o menu"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:39
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:49
 msgid ""
 "Are you sure that you want to create the menu (this operation cannot be "
 "undone)?"
-msgstr ""
-"Tem certeza que você deseja criar o menu (esta operação não pode ser "
-"desfeita)?"
+msgstr "Tem certeza que você deseja criar o menu (esta operação não pode ser desfeita)?"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:23
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:33
 msgid "Navigation menu is out of sync"
 msgstr "Menu de navegação está fora de sincronia"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:26
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:36
 msgid ""
-"Some pages of the customer area have been changed and our current navigation "
-"menu probably references the previous pages. We recommend to synchronize the "
-"menu with the new pages. "
-msgstr ""
-"Algumas páginas da área de cliente foram alteradas eo nosso menu de "
-"navegação atual, provavelmente, faz referência às páginas anteriores. "
-"Recomendamos para sincronizar o menu com as novas páginas."
+"Some pages of the customer area have been changed and our current navigation"
+" menu probably references the previous pages. We recommend to synchronize "
+"the menu with the new pages. "
+msgstr "Algumas páginas da área de cliente foram alteradas eo nosso menu de navegação atual, provavelmente, faz referência às páginas anteriores. Recomendamos para sincronizar o menu com as novas páginas."
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:27
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:37
 msgid ""
 "You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
 "&raquo; Menus</a> page."
-msgstr ""
-"Você também pode editar manualmente esse menu na Aparência <a href=\"%1$s\"> "
-"& raquo; Página </a> menus."
+msgstr "Você também pode editar manualmente esse menu na Aparência <a href=\"%1$s\"> & raquo; Página </a> menus."
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:30
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:40
 msgid "Suggested actions"
 msgstr "Ações sugeridas"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:31
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:41
 msgid "Synchronize menu"
 msgstr "Sincronizar o menu"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:34
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:44
 msgid "Ignore warning"
 msgstr "Ignorar aviso"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:41
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:51
 msgid ""
 "Are you sure that you want to clear current menu and create it again from "
 "scratch (this operation cannot be undone)?"
-msgstr ""
-"Tem certeza que você deseja limpar menu atual e criá-lo novamente a partir "
-"do zero (esta operação não pode ser desfeita)?"
+msgstr "Tem certeza que você deseja limpar menu atual e criá-lo novamente a partir do zero (esta operação não pode ser desfeita)?"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:46
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:56
 msgid ""
 "Are you sure that you want ignore this warning? You can also manually edit "
 "your menu in the page: \"Appearance > Menus\"."
-msgstr ""
-"Tem a certeza que pretende ignorar este aviso? Você também pode editar "
-"manualmente seu menu na página: \"Aparência> Menus\"."
+msgstr "Tem a certeza que pretende ignorar este aviso? Você também pode editar manualmente seu menu na página: \"Aparência> Menus\"."
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:23
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:33
 msgid "Orphan pages"
 msgstr "Páginas ofãns"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:31
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:80
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:41
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:90
 msgid "Delete orphan pages"
 msgstr "Apagar páginas orfãns"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:38
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:87
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:48
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:97
 msgid ""
 "Are you sure that you want to delete those pages (this operation cannot be "
 "undone)?"
-msgstr ""
-"Tem certeza que você deseja excluir essas páginas (esta operação não pode "
-"ser desfeita)?"
+msgstr "Tem certeza que você deseja excluir essas páginas (esta operação não pode ser desfeita)?"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:23
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:33
 msgid "Missing front-office pages"
 msgstr "Páginas front-office faltando"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:26
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:36
 msgid ""
 "Some pages of the customer area have not yet been created. Those pages are "
 "responsible for displaying the private content you have assigned to your "
 "users."
-msgstr ""
-"Algumas páginas da área de cliente ainda não tiver sido criado. Essas "
-"páginas são responsável por exibir o conteúdo privado de ter atribuído a "
-"seus usuários."
+msgstr "Algumas páginas da área de cliente ainda não tiver sido criado. Essas páginas são responsável por exibir o conteúdo privado de ter atribuído a seus usuários."
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:27
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:37
 msgid ""
-"You can review which pages are currently created on the <a href=\"%1$s"
-"\">pages settings page</a>."
-msgstr ""
-"Você pode rever quais páginas estão atualmente criados no <a href=\"%1$s\"> "
-"páginas página de configuração </a>."
+"You can review which pages are currently created on the <a "
+"href=\"%1$s\">pages settings page</a>."
+msgstr "Você pode rever quais páginas estão atualmente criados no <a href=\"%1$s\"> páginas página de configuração </a>."
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:32
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:42
 msgid "Create missing pages"
 msgstr "Criar páginas que faltam"
 
-#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:39
+#: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:49
 msgid ""
 "Are you sure that you want to create all the pages that are currently "
 "missing (this operation cannot be undone)?"
-msgstr ""
-"Tem certeza que você deseja criar todas as páginas que estão atualmente em "
-"falta (esta operação não pode ser desfeita)?"
+msgstr "Tem certeza que você deseja criar todas as páginas que estão atualmente em falta (esta operação não pode ser desfeita)?"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:25
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:35
 msgid "Page"
 msgstr "Página"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:26
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:36
 msgid "Slug"
 msgstr "Slug"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:27
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:37
 msgid "Order"
 msgstr "Ordem"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:28
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:100
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:38
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:110
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:28
 msgid "ID"
 msgstr "ID"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:29
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:39
 msgid "Sidebar"
 msgstr "Barra lateral"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:30
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:40
 #: src/php/core-addons/status/hook-finder.class.php:123
 msgid "Type"
 msgstr "Type"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:52
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:116
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:62
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:126
 #: src/php/core-classes/Content/list-table.class.php:318
-#: src/php/core-classes/addon-update-content-page.class.php:277
-#: src/php/core-classes/addon-update-content-page.class.php:278
+#: src/php/core-classes/addon-update-content-page.class.php:272
+#: src/php/core-classes/addon-update-content-page.class.php:273
 msgid "Edit"
 msgstr "Editar"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:54
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:118
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:64
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:128
 #: src/php/core-classes/Content/list-table.class.php:347
 msgid "View"
 msgstr "Ver"
 
-#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:71
+#: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:81
 msgid "Potential orphan pages"
 msgstr "Páginas potencialmente orfãs"
 
@@ -1389,95 +1316,102 @@ msgstr "Arquivos publicados em %1$s"
 msgid "Recent Files"
 msgstr "Arquivos Recentes"
 
-#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:144
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:142
 #: src/php/core-addons/customer-private-files/widget-private-file-categories.class.php:49
-#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:144
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:142
 #: src/php/core-addons/customer-private-pages/widget-private-page-categories.class.php:49
 msgid "Categories"
 msgstr "Categorias"
 
-#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:149
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:147
 #: src/php/core-addons/customer-private-files/widget-private-file-dates.class.php:49
-#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:149
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:147
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:49
 msgid "Archives"
 msgstr "Archives"
 
-#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:154
+#: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:152
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:49
-#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:154
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:152
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:49
 msgid "Created By"
 msgstr "Criado por"
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:3
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-dashboard.template.php:39
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-dashboard.template.php:36
+msgid "View all"
+msgstr "Ver todos"
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-category_archive.template.php:32
 msgid "There are no files in that category."
 msgstr "Não há arquivos na categoria."
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:3
-msgid "There are no files for that period."
-msgstr "Não há arquivos no período."
-
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty.template.php:3
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-dashboard.template.php:31
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty.template.php:22
 msgid "You currently have no files."
 msgstr "Você atualmente não tem arquivos."
 
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:22
+msgid "There are no files for that period."
+msgstr "Não há arquivos no período."
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:21
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:21
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:21
-msgid "You uploaded this file"
-msgstr "Você enviou este arquivo"
-
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:22
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:24
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:22
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:24
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:19
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:21
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:19
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:21
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:10
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:12
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:9
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:11
-#: src/php/core-classes/templates/default-container-content-item.template.php:15
-#: src/php/core-classes/templates/default-container-content-item.template.php:17
-msgid "Published for %s"
-msgstr "Publicado para %s"
-
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:25
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:25
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:22
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:22
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-container.template.php:19
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:20
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:13
-#: src/php/core-classes/templates/default-container-content-item.template.php:18
-msgid "Published by %s"
-msgstr "Publicado por %s"
-
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:28
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:28
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:25
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:16
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:15
+#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:13
+#: src/php/core-classes/templates/default-container-content-item.template.php:12
 msgid "Uploaded on %s"
 msgstr "Upload em %s"
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:47
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:55
-msgid "%1$s file(s) attached"
-msgstr "%1$s arquivo(s) anexado(s)"
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:30
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:30
+msgid "%1$s file"
+msgid_plural "%1$s files"
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:43
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-footer.template.php:33
-msgid "Recipient"
-msgstr "Recipiente"
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:32
+msgid "FILE"
+msgid_plural "FILES"
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:59
-msgid "Attached files"
-msgstr "Arquivos anexados"
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:59
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:56
+msgid "Created on"
+msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:63
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:80
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-header.template.php:47
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:77
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-header.template.php:42
+msgid "Assigned to"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:28
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:22
+#: src/php/core-classes/templates/content-page-content.template.php:21
+msgid "No items were found matching the selected filters"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:33
+msgid "%d attachment"
+msgid_plural "%d attachments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:48
 msgid "Get file"
 msgstr "Obter arquivo"
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
+#: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
+#: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:22
+#: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:23
+msgid "Download"
+msgstr "Download"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:37
 msgid "WPCA - File Authors"
@@ -1565,30 +1499,18 @@ msgstr "Arquivos publicados em %1$s"
 msgid "Recent Pages"
 msgstr "Páginas recentes"
 
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:3
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:31
 msgid "There are no pages in that category."
 msgstr "Não á páginas na categoria."
 
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-date_archive.template.php:3
-msgid "There are no pages for that period."
-msgstr "Não há páginas no período."
-
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty.template.php:3
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-dashboard.template.php:31
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty.template.php:21
 msgid "You currently have no pages."
 msgstr "Você atualmente não tem páginas."
 
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:18
-msgid "You created this page"
-msgstr "Você criou esta página"
-
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:25
-#: src/php/core-classes/templates/default-container-content-item.template.php:21
-msgid "Created on %s"
-msgstr "Criada em %s"
-
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:18
-msgid "You published this page"
-msgstr "Você publicou esta página"
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-date_archive.template.php:21
+msgid "There are no pages for that period."
+msgstr "Não há páginas no período."
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:37
 msgid "WPCA - Page Authors"
@@ -1638,22 +1560,20 @@ msgstr "Página para listar os arquivos que um cliente possui."
 msgid "Installer"
 msgstr "Instalador"
 
-#: src/php/core-addons/installer/installer-addon.class.php:184
+#: src/php/core-addons/installer/installer-addon.class.php:183
 msgid "The required pages and the navigation menu have been created"
 msgstr "As páginas e menus necessários foram criados"
 
+#: src/php/core-addons/installer/installer-addon.class.php:216
 #: src/php/core-addons/installer/installer-addon.class.php:217
-#: src/php/core-addons/installer/installer-addon.class.php:218
 msgid "Install WP Customer Area"
 msgstr "Instalar o WP Customer Area"
 
-#: src/php/core-addons/installer/installer-addon.class.php:248
+#: src/php/core-addons/installer/installer-addon.class.php:247
 msgid ""
-"There is a quick installation to run before being able to publish your first "
-"private files and pages. It should be over in less than a minute!"
-msgstr ""
-"Há uma instalação rápida para executar antes de ser capaz de publicar seus "
-"primeiros arquivos e páginas privadas. Deve ser mais em menos de um minuto!"
+"There is a quick installation to run before being able to publish your first"
+" private files and pages. It should be over in less than a minute!"
+msgstr "Há uma instalação rápida para executar antes de ser capaz de publicar seus primeiros arquivos e páginas privadas. Deve ser mais em menos de um minuto!"
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
 msgid "Setup pages and navigation menu"
@@ -1701,7 +1621,7 @@ msgid "WP Customer Area - Logs"
 msgstr ""
 
 #: src/php/core-addons/log/log-addon.class.php:127
-#: src/php/core-addons/log/log-addon.class.php:457
+#: src/php/core-addons/log/log-addon.class.php:475
 #: src/php/core-addons/log/log-table.class.php:45
 #: src/php/core-addons/log/templates/logs-page.template.php:9
 msgid "Logs"
@@ -1712,12 +1632,12 @@ msgid "Login"
 msgstr "Entrar"
 
 #: src/php/core-addons/log/log-addon.class.php:165
-#: src/php/core-addons/log/log-addon.class.php:464
+#: src/php/core-addons/log/log-addon.class.php:482
 msgid "Content viewed"
 msgstr "Conteúdo visto"
 
 #: src/php/core-addons/log/log-addon.class.php:166
-#: src/php/core-addons/log/log-addon.class.php:481
+#: src/php/core-addons/log/log-addon.class.php:499
 msgid "File downloaded"
 msgstr "Arquivo baixado"
 
@@ -1737,76 +1657,64 @@ msgstr "Anexo removido"
 msgid "Attachment updated"
 msgstr "Anexo atualizado"
 
-#: src/php/core-addons/log/log-addon.class.php:382
+#: src/php/core-addons/log/log-addon.class.php:392
 msgid "IP address"
 msgstr "Endereço IP"
 
-#: src/php/core-addons/log/log-addon.class.php:388
-#: src/php/core-addons/log/log-addon.class.php:395
+#: src/php/core-addons/log/log-addon.class.php:401
+#: src/php/core-addons/log/log-addon.class.php:412
 msgid "Nobody"
 msgstr "Ninguém"
 
-#: src/php/core-addons/log/log-addon.class.php:389
+#: src/php/core-addons/log/log-addon.class.php:403
 msgid "Previous owner: "
 msgstr "Proprietário anterior:"
 
-#: src/php/core-addons/log/log-addon.class.php:390
+#: src/php/core-addons/log/log-addon.class.php:404
 msgid "From: "
 msgstr "De:"
 
-#: src/php/core-addons/log/log-addon.class.php:396
+#: src/php/core-addons/log/log-addon.class.php:414
 msgid "Current owner: "
 msgstr "Proprietário atual:"
 
-#: src/php/core-addons/log/log-addon.class.php:397
+#: src/php/core-addons/log/log-addon.class.php:415
 msgid "To: "
 msgstr "Para:"
 
-#: src/php/core-addons/log/log-addon.class.php:402
-#: src/php/core-addons/log/log-addon.class.php:411
+#: src/php/core-addons/log/log-addon.class.php:420
+#: src/php/core-addons/log/log-addon.class.php:429
 msgid "Caption: "
 msgstr "Caption: "
 
-#: src/php/core-addons/log/log-addon.class.php:403
-#: src/php/core-addons/log/log-addon.class.php:412
+#: src/php/core-addons/log/log-addon.class.php:421
+#: src/php/core-addons/log/log-addon.class.php:430
 msgid "Attachment: "
 msgstr ""
 
-#: src/php/core-addons/log/log-addon.class.php:471
+#: src/php/core-addons/log/log-addon.class.php:489
 msgid "Only log the first time a private content is viewed by a user."
-msgstr ""
-"Registrar apenas a primeira vez que um conteúdo privado é visto por um "
-"usuário."
+msgstr "Registrar apenas a primeira vez que um conteúdo privado é visto por um usuário."
 
-#: src/php/core-addons/log/log-addon.class.php:473
+#: src/php/core-addons/log/log-addon.class.php:491
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is viewing private content. There will be a single event "
 "per user and per content. Else, each time a user is viewing a private "
 "content, an event will be generated."
-msgstr ""
-"Se você marcar esta caixa, WP Área de Clientes só irá gerar um evento de log "
-"a primeira vez que um usuário está exibindo conteúdo privado. Haverá um "
-"único evento por usuário e por conteúdo. Senão, cada vez que um usuário está "
-"visualizando um conteúdo privado, um evento será gerado."
+msgstr "Se você marcar esta caixa, WP Área de Clientes só irá gerar um evento de log a primeira vez que um usuário está exibindo conteúdo privado. Haverá um único evento por usuário e por conteúdo. Senão, cada vez que um usuário está visualizando um conteúdo privado, um evento será gerado."
 
-#: src/php/core-addons/log/log-addon.class.php:488
+#: src/php/core-addons/log/log-addon.class.php:506
 msgid "Only log the first time a private file is downloaded by a user."
-msgstr ""
-"Registrar apenas a primeira vez que um arquivo é baixado privado por um "
-"usuário."
+msgstr "Registrar apenas a primeira vez que um arquivo é baixado privado por um usuário."
 
-#: src/php/core-addons/log/log-addon.class.php:490
+#: src/php/core-addons/log/log-addon.class.php:508
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is downloading a private file. There will be a single "
-"event per user and per file. Else, each time a user is downloading a private "
-"file, an event will be generated."
-msgstr ""
-"Se você marcar esta caixa, WP Área de Clientes só irá gerar um evento de log "
-"a primeira vez que um usuário está baixando um arquivo privado. Haverá um "
-"único evento por usuário e por arquivo. Senão, cada vez que um usuário está "
-"baixando um arquivo privado, um evento será gerado."
+"event per user and per file. Else, each time a user is downloading a private"
+" file, an event will be generated."
+msgstr "Se você marcar esta caixa, WP Área de Clientes só irá gerar um evento de log a primeira vez que um usuário está baixando um arquivo privado. Haverá um único evento por usuário e por arquivo. Senão, cada vez que um usuário está baixando um arquivo privado, um evento será gerado."
 
 #: src/php/core-addons/log/log-table.class.php:155
 msgid "Event"
@@ -1817,7 +1725,7 @@ msgid "Object"
 msgstr "Objeto"
 
 #: src/php/core-addons/log/log-table.class.php:157
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:361
+#: src/php/core-addons/post-owner/post-owner-user-owner-type.class.php:147
 msgid "User"
 msgstr "Usuário"
 
@@ -1880,141 +1788,127 @@ msgstr "Filtro de eventos"
 msgid "Between"
 msgstr "Entre"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:39
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:54
 msgid "Post Owner"
 msgstr "Proprietário do Post"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:496
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:506
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:482
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:489
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:695
-msgid "Assignment"
-msgstr "Atribuição"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:721
-msgid "Select the owner"
-msgstr "Selecione o proprietário"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:902
-msgid "It seems you cannot select any owner of that type."
-msgstr "Parece que você não selecionaou nenhum proprietário deste tipo"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:916
-msgid "The owner is hidden"
-msgstr "O proprietário está oculto"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:938
-msgid "Select or search an owner"
-msgstr "Selecione ou procure um proprietário"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:1121
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:792
 msgid "User - %s"
 msgstr "Usuário - %s"
 
+#: src/php/core-addons/post-owner/post-owner-admin-interface.class.php:90
+msgid "Assignment"
+msgstr "Atribuição"
+
+#: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:36
+msgid "Select or search an owner"
+msgstr "Selecione ou procure um proprietário"
+
 #: src/php/core-addons/private-file/private-file-addon.class.php:43
-#: src/php/core-addons/private-file/private-file-addon.class.php:1081
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:149
+#: src/php/core-addons/private-file/private-file-addon.class.php:1100
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:150
 msgid "Private Files"
 msgstr "Arquivos Privados"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:654
+#: src/php/core-addons/private-file/private-file-addon.class.php:670
 msgid ""
 "<a href=\"%s\">Public URL to a test file in that folder</a>. Response code: "
 "%s. File content: %s"
-msgstr ""
-"<a href=\"%s\">URL pública para testar a pasta</a>. Código de resposta: %s. "
-"Conteúdo do arquivo: %s"
+msgstr "<a href=\"%s\">URL pública para testar a pasta</a>. Código de resposta: %s. Conteúdo do arquivo: %s"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:771
+#: src/php/core-addons/private-file/private-file-addon.class.php:790
 msgid "Do you really want to remove this file?"
 msgstr "Realmente quer remover esse aquivo?"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:773
-#: src/php/core-addons/private-file/private-file-addon.class.php:833
+#: src/php/core-addons/private-file/private-file-addon.class.php:792
+#: src/php/core-addons/private-file/private-file-addon.class.php:852
 msgid "You are not allowed to attach more than %d file"
 msgid_plural "You are not allowed to attach more than %d files"
 msgstr[0] "Você não tem permissão para anexar mais que %d arquivo"
 msgstr[1] "Você não tem permissão para anexar mais que %d arquivos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:809
+#: src/php/core-addons/private-file/private-file-addon.class.php:828
 msgid "You are not allowed to attach files to this kind of content"
 msgstr "Você não pode anexar arquivos com esse conteúdo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:847
+#: src/php/core-addons/private-file/private-file-addon.class.php:866
 msgid "You cannot attach files with the same name"
 msgstr "Você não pode anexar arquivos com o mesmo nome"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:903
+#: src/php/core-addons/private-file/private-file-addon.class.php:922
 msgid "You are not allowed to update attached files"
 msgstr "Você não tem permissão para atualizar os arquivos anexados"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:912
+#: src/php/core-addons/private-file/private-file-addon.class.php:931
 msgid "File not found"
 msgstr "Arquivo não encontrado"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:968
+#: src/php/core-addons/private-file/private-file-addon.class.php:987
 msgid "You are not allowed to remove attached files"
 msgstr "Você não tem permissão para remover os arquivos anexados"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1038
+#: src/php/core-addons/private-file/private-file-addon.class.php:1057
 msgid "You are not authorized to access this file"
 msgstr "Você não está autorizado a acessar esse arquivo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1058
+#: src/php/core-addons/private-file/private-file-addon.class.php:1077
 msgid "There is no such file attached to this private content"
 msgstr "Não existe tal arquivo anexado a este conteúdo privado"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1084
+#: src/php/core-addons/private-file/private-file-addon.class.php:1103
 msgid "Global"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1086
+#: src/php/core-addons/private-file/private-file-addon.class.php:1105
 msgid "Manage file attachments"
 msgstr "Gerenciar anexos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1092
+#: src/php/core-addons/private-file/private-file-addon.class.php:1111
 msgid "List all files"
 msgstr "Lista de arquivos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1093
+#: src/php/core-addons/private-file/private-file-addon.class.php:1112
 msgid "Create/Edit files"
 msgstr "Criar/Editar arquivos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1094
+#: src/php/core-addons/private-file/private-file-addon.class.php:1113
 msgid "Delete files"
 msgstr "Arquivos apagados"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1095
+#: src/php/core-addons/private-file/private-file-addon.class.php:1114
 msgid "Access files"
 msgstr "Acessar arquivos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1096
+#: src/php/core-addons/private-file/private-file-addon.class.php:1115
 #: src/php/core-addons/private-page/private-page-addon.class.php:114
 msgid "Manage categories"
 msgstr "Gerenciar categorias"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1097
+#: src/php/core-addons/private-file/private-file-addon.class.php:1116
 #: src/php/core-addons/private-page/private-page-addon.class.php:115
 msgid "Edit categories"
 msgstr "Editar categorias"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1098
+#: src/php/core-addons/private-file/private-file-addon.class.php:1117
 #: src/php/core-addons/private-page/private-page-addon.class.php:116
 msgid "Delete categories"
 msgstr "Apagar categorias"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1099
+#: src/php/core-addons/private-file/private-file-addon.class.php:1118
 #: src/php/core-addons/private-page/private-page-addon.class.php:117
 msgid "Assign categories"
 msgstr "Atribuir categoria"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1105
+#: src/php/core-addons/private-file/private-file-addon.class.php:1124
 msgid "View private files"
 msgstr "Ver arquivos privados"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1106
+#: src/php/core-addons/private-file/private-file-addon.class.php:1125
 msgid "View any private file"
 msgstr "Visualizar qualquer arquivo privado"
 
@@ -2026,106 +1920,90 @@ msgstr "Adicionar Novo Arquivo Privado"
 msgid "Attached Files"
 msgstr "Arquivos anexados"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:163
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:164
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:123
 msgid "General settings"
 msgstr "Configurações gerais"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:170
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:171
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:130
 msgid "Enable add-on"
 msgstr "Ativar add-on"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:178
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:179
 msgid "Check this to enable the private files add-on."
 msgstr "Marque essa opção para ativar o add-on de arquivos privados."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:184
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:185
 msgid "File Storage"
 msgstr "Armazenamento de Arquivo"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:191
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:192
 msgid "File storage"
 msgstr "Armazenamento de Arquivo"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:205
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:206
 msgid "FTP uploads folder"
 msgstr "Pasta de uploads FTP"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:246
-msgid "<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
-msgstr ""
-"<strong>Deixe em branco para usar a pasta padrão</strong>:<br/><code>%s</"
-"code>"
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:247
+msgid ""
+"<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
+msgstr "<strong>Deixe em branco para usar a pasta padrão</strong>:<br/><code>%s</code>"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:249
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:250
 msgid ""
 "This folder is the root folder for storing private files. This should "
-"preferably be located outside of the web server public area or secured using "
-"a <code>.htaccess</code> file"
-msgstr ""
-"A pasta é a pasta root para armazenamento de arquivos privados. É "
-"recomendado o local fora da pasta pública da web ou segurança usando  <code>."
-"htaccess</code> arquivo."
+"preferably be located outside of the web server public area or secured using"
+" a <code>.htaccess</code> file"
+msgstr "A pasta é a pasta root para armazenamento de arquivos privados. É recomendado o local fora da pasta pública da web ou segurança usando  <code>.htaccess</code> arquivo."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:263
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:264
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
-msgstr ""
-"Esta pasta pode ser utilizada quando você quiser utilizar arquivos enviados "
-"via FTP. Isto é útil quando o upload direto está falhando para arquivos "
-"grandes."
+msgstr "Esta pasta pode ser utilizada quando você quiser utilizar arquivos enviados via FTP. Isto é útil quando o upload direto está falhando para arquivos grandes."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:280
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:298
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:314
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:281
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:299
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:315
 msgid "Save settings to check again"
 msgstr "Gravar configurações para verificar novamente"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:281
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:282
 msgid "The folder does not exist."
 msgstr "A pasta de upload FTP não existe."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:285
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:286
 msgid "Create folder"
 msgstr "Criar pasta"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:299
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:300
 msgid ""
 "That directory should at least have the permissions set to %s. Currently it "
 "is %s. You should adjust that directory permissions as upload or download "
 "might not work properly."
-msgstr ""
-"Esse diretório deve ter pelo menos as permissões definidas para %s. "
-"Atualmente ele é %s. Você deve ajustar que as permissões de diretório como "
-"upload ou download pode não funcionar corretamente."
+msgstr "Esse diretório deve ter pelo menos as permissões definidas para %s. Atualmente ele é %s. Você deve ajustar que as permissões de diretório como upload ou download pode não funcionar corretamente."
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:304
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:305
 msgid "Change permissions"
 msgstr "Modificar permissões"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:315
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:316
 msgid ""
 "That directory seems to be accessible from the web. <strong>This is not "
-"safe</strong>. The most secure would be to move it outside of the web folder "
-"of your server"
-msgstr ""
-"Esse diretório parece ser acessível a partir da web. <strong> Esta não é "
-"segura </strong>. O mais seguro seria para movê-lo fora da pasta do seu "
-"servidor web"
+"safe</strong>. The most secure would be to move it outside of the web folder"
+" of your server"
+msgstr "Esse diretório parece ser acessível a partir da web. <strong> Esta não é segura </strong>. O mais seguro seria para movê-lo fora da pasta do seu servidor web"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:320
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:321
 msgid ""
 "We can try to protect it with a <code>.htaccess</code> file with the button "
 "below, but <strong>this only works for Apache servers</strong> (will do "
 "nothing if you are running nginx or IIS)"
-msgstr ""
-"Podemos tentar protegê-lo com um <code> .htaccess </code> arquivo com o "
-"botão abaixo, mas <strong> isso só funciona para os servidores Apache </"
-"strong> (não fará nada se você estiver executando o nginx ou IIS)"
+msgstr "Podemos tentar protegê-lo com um <code> .htaccess </code> arquivo com o botão abaixo, mas <strong> isso só funciona para os servidores Apache </strong> (não fará nada se você estiver executando o nginx ou IIS)"
 
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:325
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:326
 msgid "Try to secure it"
 msgstr "Tente a segurança nisso"
 
@@ -2168,12 +2046,8 @@ msgid "Classic upload"
 msgstr "Upload clássico"
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:613
-msgid ""
-"Select the files you want to upload, they will be processed when you save "
-"the post."
+msgid "Drag and drop files here, they will be uploaded to the private folder."
 msgstr ""
-"Selecione os arquivos que deseja carregar, eles serão processados quando "
-"você salvar o post."
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:617
 msgid "Get from server FTP folder"
@@ -2181,52 +2055,63 @@ msgstr "Copiar de pasta FTP"
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:619
 msgid ""
-"Below are the files listed from the FTP folder you have set in the plugin "
-"options. Those files will be moved or copied to their final location."
+"Select one or more files from the FTP folder, they will either be moved or "
+"copied to the private folder."
 msgstr ""
-"Abaixo estão listados os arquivos da pasta de FTP tiver definido nas opções "
-"do plugin. Esses arquivos serão movidos ou copiados para a sua localização "
-"final."
 
-#: src/php/core-addons/private-file/templates/private-attachments-add-classic-upload.template.php:16
+#: src/php/core-addons/private-file/templates/private-attachments-add-classic-upload-admin.template.php:16
+#: src/php/core-addons/private-file/templates/private-attachments-add-classic-upload-frontend.template.php:14
 msgid "Drop your files here or click me!"
 msgstr "Solte seus arquivos aqui ou clique aqui!"
 
-#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder.template.php:15
-msgid "Copy the file (do not delete it from the FTP folder)"
-msgstr "Copiar o arquivo (não apagar ele da pasta FTP)"
-
-#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder.template.php:21
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-admin.template.php:15
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-frontend.template.php:14
 msgid "The FTP upload folder does not exist."
 msgstr "A pasta de upload FTP não existe."
 
-#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder.template.php:23
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-admin.template.php:17
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-frontend.template.php:16
 msgid "The FTP upload folder is empty."
 msgstr "A pasta de upload FTP está vazia."
 
-#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder.template.php:25
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-admin.template.php:19
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-frontend.template.php:19
 msgid "Pick a file"
 msgstr "Escolher um arquivo"
 
-#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder.template.php:32
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-admin.template.php:26
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-frontend.template.php:35
 msgid "Attach selected file(s)"
 msgstr "Anexar arquivo(s) selecionado(s)"
 
-#: src/php/core-addons/private-file/templates/private-attachments-add-methods-browser.template.php:11
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-admin.template.php:34
+#: src/php/core-addons/private-file/templates/private-attachments-add-ftp-folder-frontend.template.php:30
+msgid "Copy the file (do not delete it from the FTP folder)"
+msgstr "Copiar o arquivo (não apagar ele da pasta FTP)"
+
+#: src/php/core-addons/private-file/templates/private-attachments-add-methods-browser-admin.template.php:11
+#: src/php/core-addons/private-file/templates/private-attachments-add-methods-browser-frontend.template.php:13
 msgid "How do you want to add the files?"
 msgstr "Como você quer adicionar os arquivos?"
 
-#: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:21
-msgid "Download"
-msgstr "Download"
+#: src/php/core-addons/private-file/templates/private-attachments-add-methods-browser-frontend.template.php:11
+msgid "File Upload"
+msgstr ""
 
-#: src/php/core-addons/private-file/templates/private-attachments-list-item.template.php:24
-msgid "Remove"
-msgstr "Remover"
-
-#: src/php/core-addons/private-file/templates/private-attachments-list.template.php:23
+#: src/php/core-addons/private-file/templates/private-attachments-list-admin.template.php:25
+#: src/php/core-addons/private-file/templates/private-attachments-list-frontend.template.php:31
 msgid "This content currently does not have any file attachment"
 msgstr "Este conteúdo não tem actualmente qualquer anexo de arquivo"
+
+#: src/php/core-addons/private-file/templates/private-attachments-list-frontend.template.php:16
+msgid "Attached files"
+msgstr "Arquivos anexados"
+
+#: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:26
+#: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:26
+#: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:27
+msgid "Remove"
+msgstr "Remover"
 
 #: src/php/core-addons/private-page/private-page-addon.class.php:37
 #: src/php/core-addons/private-page/private-page-addon.class.php:105
@@ -2262,26 +2147,16 @@ msgstr "Visualizar qualquer página privada"
 msgid "Check this to enable the private pages add-on."
 msgstr "Marque esta opção para ativar o add-on de páginas privadas."
 
-#: src/php/core-addons/shortcodes/shortcodes/protected-content-shortcode.class.php:103
+#: src/php/core-addons/shortcodes/shortcodes/protected-content-shortcode.class.php:90
+#: src/php/core-addons/shortcodes/shortcodes/protected-content-shortcode.class.php:124
 msgid ""
 "The parameter %2$s of shortcode <code>[%1$s]</code> has an invalid value: "
 "<code>%3$s</code>"
-msgstr ""
-"O parâmetro %2$s do shortcode <code>[%1$s]</code> tem um dado inválido: "
-"<code>%3$s</code>"
+msgstr "O parâmetro %2$s do shortcode <code>[%1$s]</code> tem um dado inválido: <code>%3$s</code>"
 
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-empty-default.template.php:3
+#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-empty-default.template.php:24
 msgid "There is no content to show"
 msgstr "Não há conteúdo para mostrar"
-
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:9
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:8
-msgid "You published this content"
-msgstr "Você publicou este conteúdo"
-
-#: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:12
-msgid "Published by %s on %s"
-msgstr "Publicado por %s em %s"
 
 #: src/php/core-addons/status/hook-finder.class.php:125
 #: src/php/core-addons/status/template-printer.class.php:39
@@ -2394,12 +2269,9 @@ msgstr "Plugin desatualizado"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a href="
-"\"%2$s\">add-ons status pages</a>."
-msgstr ""
-"Alguns complementos requer uma versão mais recente do plug-in principal "
-"(você está executando a versão  %1$s). Você pode encontrar a lista de todos "
-"os complementos na <a href=\"%2$s\"> add-ons páginas de status </a>."
+"running version %1$s). You can find the list of all add-ons on the <a "
+"href=\"%2$s\">add-ons status pages</a>."
+msgstr "Alguns complementos requer uma versão mais recente do plug-in principal (você está executando a versão  %1$s). Você pode encontrar a lista de todos os complementos na <a href=\"%2$s\"> add-ons páginas de status </a>."
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
 msgid "Update the plugin"
@@ -2447,9 +2319,7 @@ msgstr "Problema #%d"
 msgid ""
 "Congratulations, everything seems to be configured properly. You can enjoy "
 "your customer area now."
-msgstr ""
-"Parabéns, tudo parece configurado corretamente. Você pode usar o Customer "
-"Area agora."
+msgstr "Parabéns, tudo parece configurado corretamente. Você pode usar o Customer Area agora."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:27
 #: src/php/core-addons/status/templates/status-section-reset.template.php:33
@@ -2460,10 +2330,7 @@ msgstr "Exportar configurações"
 msgid ""
 "You can export all the settings to a JSON file. You can then use that file "
 "to restore your settings using the import settings field below."
-msgstr ""
-"Você pode exportar todas as configurações em um arquivo JSON. Você pode "
-"então usar esse arquivo para restaurar as configurações usando o campo "
-"abaixo as configurações de importação."
+msgstr "Você pode exportar todas as configurações em um arquivo JSON. Você pode então usar esse arquivo para restaurar as configurações usando o campo abaixo as configurações de importação."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:36
 #: src/php/core-addons/status/templates/status-section-reset.template.php:43
@@ -2472,10 +2339,9 @@ msgstr "Importar configurações"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:38
 msgid ""
-"You can import all the settings you had previously exported from a JSON file."
-msgstr ""
-"Você pode importar todas as configurações que você tinha anteriormente "
-"exportados a partir de um arquivo JSON."
+"You can import all the settings you had previously exported from a JSON "
+"file."
+msgstr "Você pode importar todas as configurações que você tinha anteriormente exportados a partir de um arquivo JSON."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:47
 msgid "Reset settings"
@@ -2485,9 +2351,7 @@ msgstr "Redefinir configurações"
 msgid ""
 "Pressing the button below will reset all your Customer Area settings to the "
 "default values. This cannot be undone!"
-msgstr ""
-"Pressionar o botão abaixo redefinirá as configurações da Área do Cliente "
-"para os valores padrão. Isto não pode ser desfeito."
+msgstr "Pressionar o botão abaixo redefinirá as configurações da Área do Cliente para os valores padrão. Isto não pode ser desfeito."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:53
 msgid "Reset default settings"
@@ -2499,8 +2363,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:58
 msgid ""
-"Pressing the button below will clean-up any data related to WP Customer Area "
-"(posts, taxonomies, etc.). This cannot be undone!"
+"Pressing the button below will clean-up any data related to WP Customer Area"
+" (posts, taxonomies, etc.). This cannot be undone!"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:62
@@ -2509,11 +2373,9 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:68
 msgid ""
-"Are you sure that you want to reset all the settings to their default values "
-"(this operation cannot be undone)?"
-msgstr ""
-"Tem certeza de que deseja redefinir todas as configurações para seus valores "
-"padrão (esta operação não pode ser desfeita)?"
+"Are you sure that you want to reset all the settings to their default values"
+" (this operation cannot be undone)?"
+msgstr "Tem certeza de que deseja redefinir todas as configurações para seus valores padrão (esta operação não pode ser desfeita)?"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:73
 msgid ""
@@ -2537,36 +2399,61 @@ msgstr "%s: %d amostra(s)"
 msgid "User Profile"
 msgstr "Perfil do usuário"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:76
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:73
 msgid "Username"
 msgstr "Nome de utilizador"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:78
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:75
 msgid "Your username cannot be changed."
 msgstr "O nome do usuário não pode ser alterado."
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:83
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:80
 msgid "Primary email"
 msgstr "E-mail"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:88
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:85
+msgid "First name"
+msgstr "Primeiro Nome"
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:89
+msgid "Last name"
+msgstr "Sobrenome"
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
+msgid "Nickname"
+msgstr "Apelido"
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:97
+msgid "Display name"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:101
+msgid "Personal Website"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:105
+msgid "Biography"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:106
+msgid "Your can write a short description about you."
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:111
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Senha"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:89
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:112
 msgid "Password (confirm)"
 msgstr "Senha (confirmação)"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:90
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:113
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
 "fields empty if you want to keep your current password"
-msgstr ""
-"A senha deve ser composta, no mínimo de 5 caracteres. Você será solicitado a "
-"efetuar login novamente depois de sua senha é alterada. Deixar esses campos "
-"em branco se você quiser manter sua senha atual"
+msgstr "A senha deve ser composta, no mínimo de 5 caracteres. Você será solicitado a efetuar login novamente depois de sua senha é alterada. Deixar esses campos em branco se você quiser manter sua senha atual"
 
 #: src/php/core-classes/Content/list-table.class.php:246
 msgid ""
@@ -2629,13 +2516,10 @@ msgstr "Esvaziar a lixeira"
 
 #: src/php/core-classes/Licensing/license-validation-result.class.php:81
 msgid ""
-"You have bought your license on the previous shop. We have a <a href=\"%1$s"
-"\">brand new website</a>, please contact us so that we can help you migrate "
-"your license to the new shop."
-msgstr ""
-"Você comprou a sua licença na loja anterior. Nós temos um <a href=\"%1$s"
-"\">novo site</a>, por favor nos contacte para ajudarmos a migrar a sua "
-"licença para a nova loja."
+"You have bought your license on the previous shop. We have a <a "
+"href=\"%1$s\">brand new website</a>, please contact us so that we can help "
+"you migrate your license to the new shop."
+msgstr "Você comprou a sua licença na loja anterior. Nós temos um <a href=\"%1$s\">novo site</a>, por favor nos contacte para ajudarmos a migrar a sua licença para a nova loja."
 
 #: src/php/core-classes/Licensing/licensing.class.php:73
 msgid "Unknown add-on"
@@ -2645,9 +2529,7 @@ msgstr "add-on desconhecido"
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
-msgstr ""
-"Problema quando entrar em contato com nossos servidores de licença. A chave "
-"de licença está correta? Está habilitado PHP cURL?"
+msgstr "Problema quando entrar em contato com nossos servidores de licença. A chave de licença está correta? Está habilitado PHP cURL?"
 
 #: src/php/core-classes/Licensing/licensing.class.php:94
 msgid "Your license is valid until: %s"
@@ -2661,9 +2543,7 @@ msgstr "A sua licença voi revogada."
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
-msgstr ""
-"Atingiu o número máximo de sites para esta chave de licença. Você pode usá-"
-"lo em no local (s) mais %s."
+msgstr "Atingiu o número máximo de sites para esta chave de licença. Você pode usá-lo em no local (s) mais %s."
 
 #: src/php/core-classes/Licensing/licensing.class.php:118
 msgid "Renew license"
@@ -2699,47 +2579,43 @@ msgstr "Acertar esses potenciais problemas"
 
 #: src/php/core-classes/Shortcode/shortcode.class.php:91
 msgid "The shortcode <code>[%1$s]</code> is missing required parameter: %2$s"
-msgstr ""
-"O shortcode <code>[%1$s]</code> está faltando um parâmetro requerido: %2$s"
+msgstr "O shortcode <code>[%1$s]</code> está faltando um parâmetro requerido: %2$s"
 
-#: src/php/core-classes/addon-container-page.class.php:753
-#: src/php/core-classes/addon-content-page.class.php:783
+#: src/php/core-classes/addon-container-page.class.php:803
+#: src/php/core-classes/addon-content-page.class.php:834
 msgid "Frontend Integration"
 msgstr "Integração com Frontend"
 
-#: src/php/core-classes/addon-container-page.class.php:765
-#: src/php/core-classes/addon-content-page.class.php:795
+#: src/php/core-classes/addon-container-page.class.php:815
+#: src/php/core-classes/addon-content-page.class.php:846
 msgid "Show after post"
 msgstr "Mostrar depois do post"
 
-#: src/php/core-classes/addon-container-page.class.php:774
-#: src/php/core-classes/addon-content-page.class.php:804
+#: src/php/core-classes/addon-container-page.class.php:824
+#: src/php/core-classes/addon-content-page.class.php:855
 msgid "Show additional information after the post in the single post view."
 msgstr "Exibir informação adicional após o post, na visão de post único."
 
-#: src/php/core-classes/addon-container-page.class.php:776
-#: src/php/core-classes/addon-content-page.class.php:806
+#: src/php/core-classes/addon-container-page.class.php:826
+#: src/php/core-classes/addon-content-page.class.php:857
 msgid ""
 "You can disable this if you have your own theme template file for single "
 "posts. The theme file to look for or create should be called: %s."
-msgstr ""
-"Você não pode desabilitar isso se você tem seu próprio arquivo de tema. O "
-"aquivo do tema que deve ser chamado de: %s."
+msgstr "Você não pode desabilitar isso se você tem seu próprio arquivo de tema. O aquivo do tema que deve ser chamado de: %s."
 
-#: src/php/core-classes/addon-container-page.class.php:797
-#: src/php/core-classes/addon-content-page.class.php:827
+#: src/php/core-classes/addon-container-page.class.php:847
+#: src/php/core-classes/addon-content-page.class.php:878
 msgid "Show recent content on the dashboard."
 msgstr "Mostar o conteúdo recente no painel"
 
-#: src/php/core-classes/addon-container-page.class.php:811
-#: src/php/core-classes/addon-content-page.class.php:842
+#: src/php/core-classes/addon-container-page.class.php:861
+#: src/php/core-classes/addon-content-page.class.php:893
 msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all items."
-msgstr ""
-"Definir quantos itens permitidos na página do painel. -1 mostrará todos os "
-"itens."
+"Define how many items to allow on the dashboard page. -1 will show all "
+"items."
+msgstr "Definir quantos itens permitidos na página do painel. -1 mostrará todos os itens."
 
-#: src/php/core-classes/addon-container-page.class.php:892
+#: src/php/core-classes/addon-container-page.class.php:942
 msgid "Slug that is used in the URL for archives of the taxonomy: "
 msgstr "Slug que é usado na URL para atualizar o conteúdo existente privado"
 
@@ -2747,59 +2623,55 @@ msgstr "Slug que é usado na URL para atualizar o conteúdo existente privado"
 msgid "You are not allowed to create this type of content."
 msgstr "Você não tem permissão para criar esse tipo de conteúdo."
 
-#: src/php/core-classes/addon-create-content-page.class.php:161
+#: src/php/core-classes/addon-create-content-page.class.php:163
 msgid "Content creation (from front-office)"
 msgstr "Criação de conteúdo (a partir do painel)"
 
-#: src/php/core-classes/addon-create-content-page.class.php:163
+#: src/php/core-classes/addon-create-content-page.class.php:165
 msgid "Create content from front office"
 msgstr "Criar conteúdo a partir do painel"
 
-#: src/php/core-classes/addon-create-content-page.class.php:164
+#: src/php/core-classes/addon-create-content-page.class.php:166
 msgid "Bypass moderation (content is automatically published)"
 msgstr "Pular moderação (o conteúdo será automativamente publicado)"
 
-#: src/php/core-classes/addon-create-content-page.class.php:195
+#: src/php/core-classes/addon-create-content-page.class.php:197
 msgid "Content creation"
 msgstr "Criação de conteúdo"
 
-#: src/php/core-classes/addon-create-content-page.class.php:208
+#: src/php/core-classes/addon-create-content-page.class.php:210
 msgid "Moderation"
 msgstr "Moderação"
 
-#: src/php/core-classes/addon-create-content-page.class.php:216
+#: src/php/core-classes/addon-create-content-page.class.php:218
 msgid "Enable moderation when new content is submitted by a user."
 msgstr "Habilitar moderação quando novo conteúdo for enviado por usuário."
 
-#: src/php/core-classes/addon-create-content-page.class.php:232
-msgid "Default owner type"
-msgstr "Tipo de proprietário padrão"
+#: src/php/core-classes/addon-create-content-page.class.php:234
+msgid "Default owners"
+msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:244
-msgid "Default owner"
-msgstr "Proprietário padrão"
-
-#: src/php/core-classes/addon-create-content-page.class.php:261
+#: src/php/core-classes/addon-create-content-page.class.php:251
 msgid "Default category"
 msgstr "Categoria padrão"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:832
+#: src/php/core-classes/addon-edit-content-page.class.php:804
 msgid "Content edition (from front-office)"
 msgstr "Edição de conteúdo (do front-office)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:834
+#: src/php/core-classes/addon-edit-content-page.class.php:806
 msgid "Select an owner (uses default else)"
 msgstr "Selecione o proprietário (usar padrão)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:835
+#: src/php/core-classes/addon-edit-content-page.class.php:807
 msgid "Select a category (uses default else)"
 msgstr "Selecione a categoria (usar padrão)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:900
+#: src/php/core-classes/addon-edit-content-page.class.php:872
 msgid "Rich Editor"
 msgstr "Rich Editor"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:908
+#: src/php/core-classes/addon-edit-content-page.class.php:880
 msgid "Enable the rich editor when editing content."
 msgstr "Habilitar o rich editor quando editar o conteúdo"
 
@@ -2815,72 +2687,72 @@ msgstr "Esta página requer um usuário registrado, você não pode entrar"
 msgid "You are not allowed to view this page"
 msgstr "Você não tem permissão para ver essa página"
 
-#: src/php/core-classes/addon-page.class.php:431
+#: src/php/core-classes/addon-page.class.php:433
 msgid "WPCA - %s"
 msgstr "WPCA - %s"
 
-#: src/php/core-classes/addon-update-content-page.class.php:149
+#: src/php/core-classes/addon-update-content-page.class.php:144
 msgid "You must supply a post ID to delete"
 msgstr "Você precisa fornecer o post ID para apagar"
 
-#: src/php/core-classes/addon-update-content-page.class.php:156
+#: src/php/core-classes/addon-update-content-page.class.php:151
 msgid "You are not allowed to delete this post"
 msgstr "Você não tem permissão para apagar este post"
 
-#: src/php/core-classes/addon-update-content-page.class.php:164
+#: src/php/core-classes/addon-update-content-page.class.php:159
 msgid "The content has been deleted."
 msgstr "O conteúdo foi apagado."
 
-#: src/php/core-classes/addon-update-content-page.class.php:287
-#: src/php/core-classes/addon-update-content-page.class.php:288
+#: src/php/core-classes/addon-update-content-page.class.php:282
+#: src/php/core-classes/addon-update-content-page.class.php:283
 msgid "Delete"
 msgstr "Eliminar"
 
-#: src/php/core-classes/addon-update-content-page.class.php:291
+#: src/php/core-classes/addon-update-content-page.class.php:286
 msgid "Are you sure that you want to delete this content?"
 msgstr "Tem certeza que quer apagar este conteúdo?"
 
-#: src/php/core-classes/addon-update-content-page.class.php:309
+#: src/php/core-classes/addon-update-content-page.class.php:304
 msgid "Content update (from front-office)"
 msgstr "Atualizar conteúdo (do font-office)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:311
+#: src/php/core-classes/addon-update-content-page.class.php:306
 msgid "Update any content from front office"
 msgstr "Atualizar qualquer conteúdo do front office"
 
-#: src/php/core-classes/addon-update-content-page.class.php:312
+#: src/php/core-classes/addon-update-content-page.class.php:307
 msgid "Update authored content"
 msgstr "Atualizar o conteúdo com autoria"
 
-#: src/php/core-classes/addon-update-content-page.class.php:313
+#: src/php/core-classes/addon-update-content-page.class.php:308
 msgid "Update owned content"
 msgstr "Atualizar o conteúdo com propriedade"
 
-#: src/php/core-classes/addon-update-content-page.class.php:317
+#: src/php/core-classes/addon-update-content-page.class.php:312
 msgid "Content removal (from front-office)"
 msgstr "Removedor de conteúdo (do front-office)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:319
+#: src/php/core-classes/addon-update-content-page.class.php:314
 msgid "Delete any content from front office"
 msgstr "Apagar qualquer conteúdo do front office"
 
-#: src/php/core-classes/addon-update-content-page.class.php:320
+#: src/php/core-classes/addon-update-content-page.class.php:315
 msgid "Delete authored content"
 msgstr "Excluir conteúdo criado"
 
-#: src/php/core-classes/addon-update-content-page.class.php:321
+#: src/php/core-classes/addon-update-content-page.class.php:316
 msgid "Delete owned content"
 msgstr "Excluir conteúdo de propriedade"
 
-#: src/php/core-classes/addon-update-content-page.class.php:336
+#: src/php/core-classes/addon-update-content-page.class.php:331
 msgid "You must specify a post to delete"
 msgstr "Você precisa especificar um post para apagar"
 
-#: src/php/core-classes/addon-update-content-page.class.php:373
+#: src/php/core-classes/addon-update-content-page.class.php:368
 msgid "You must specify a post to edit"
 msgstr "Você precisa especificar um post para editar"
 
-#: src/php/core-classes/addon-update-content-page.class.php:414
+#: src/php/core-classes/addon-update-content-page.class.php:409
 msgid "Content edition"
 msgstr "Edição de conteúdo"
 
@@ -2888,9 +2760,7 @@ msgstr "Edição de conteúdo"
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
-msgstr ""
-"<strong> Erro: </ strong> Área WP Cliente add-ons são ativos, mas o plugin "
-"principal não está instalado!"
+msgstr "<strong> Erro: </ strong> Área WP Cliente add-ons são ativos, mas o plugin principal não está instalado!"
 
 #: src/php/core-classes/addon.class.php:125
 msgid "License Keys"
@@ -2904,17 +2774,18 @@ msgstr "As chaves de licença para add-ons comerciais"
 msgid ""
 "This page allows you to enter license key you have received when you "
 "purchased commercial addons."
-msgstr ""
-"Esta página permite que você insira chave de licença que você recebeu quando "
-"comprou addons comerciais."
+msgstr "Esta página permite que você insira chave de licença que você recebeu quando comprou addons comerciais."
 
 #: src/php/core-classes/addon.class.php:180
 msgid ""
 "Do not activate your license on your development site. Only on the final "
 "site where you are running the plugin."
-msgstr ""
-"Não ativar sua licença em seu site desenvolvimento. Só no site final, onde "
-"você está executando o plugin."
+msgstr "Não ativar sua licença em seu site desenvolvimento. Só no site final, onde você está executando o plugin."
+
+#: src/php/core-classes/object-meta/field/display-name-field.class.php:47
+#: src/php/core-classes/object-meta/field/text-field.class.php:58
+msgid "Text"
+msgstr "Texto"
 
 #: src/php/core-classes/object-meta/field/email-field.class.php:47
 msgid "Email"
@@ -2927,10 +2798,6 @@ msgstr "Cabeçalho"
 #: src/php/core-classes/object-meta/field/number-field.class.php:49
 msgid "Number"
 msgstr "Número"
-
-#: src/php/core-classes/object-meta/field/text-field.class.php:58
-msgid "Text"
-msgstr "Texto"
 
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:81
 msgid "The password and its confirmation do not match"
@@ -2970,52 +2837,59 @@ msgstr "%1$s deve conter no máximo %2$s caracteres"
 msgid "%1$s is required."
 msgstr "%1$s é necessário."
 
-#: src/php/core-classes/plugin.class.php:189
+#: src/php/core-classes/plugin.class.php:205
 msgid "Checking license..."
 msgstr "Verificando licensa..."
 
-#: src/php/core-classes/plugin.class.php:190
+#: src/php/core-classes/plugin.class.php:206
 msgid "Failed to contact server"
 msgstr "Falha ao conectar com o servidor"
 
-#: src/php/core-classes/plugin.class.php:191
-#: src/php/core-classes/plugin.class.php:214
+#: src/php/core-classes/plugin.class.php:207
+#: src/php/core-classes/plugin.class.php:234
 msgid "Saving..."
 msgstr "Salvando..."
 
-#: src/php/core-classes/plugin.class.php:192
-#: src/php/core-classes/plugin.class.php:215
+#: src/php/core-classes/plugin.class.php:208
+#: src/php/core-classes/plugin.class.php:235
 msgid "Click to edit..."
 msgstr "Clique para editar..."
 
-#: src/php/core-classes/plugin.class.php:193
-#: src/php/core-classes/plugin.class.php:216
+#: src/php/core-classes/plugin.class.php:209
+#: src/php/core-classes/plugin.class.php:236
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:194
-#: src/php/core-classes/plugin.class.php:217
+#: src/php/core-classes/plugin.class.php:210
+#: src/php/core-classes/plugin.class.php:237
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/php/core-classes/plugin.class.php:591
+#: src/php/core-classes/plugin.class.php:222
+#: src/php/core-classes/plugin.class.php:249
+msgid ""
+"You must select only a single owner, multiple owners are not handled for "
+"this action."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:224
+#: src/php/core-classes/plugin.class.php:251
+msgid "No owner is currently selected, the action cannot be executed."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:615
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
-msgstr ""
-"Permalinks estão desativados, Área do Cliente não irá funcionar "
-"corretamente. <a href=\"%1$s\"> ativá-los nas configurações do WordPress</"
-"a> ."
+msgstr "Permalinks estão desativados, Área do Cliente não irá funcionar corretamente. <a href=\"%1$s\"> ativá-los nas configurações do WordPress</a> ."
 
-#: src/php/core-classes/plugin.class.php:622
+#: src/php/core-classes/plugin.class.php:646
 msgid "Some add-ons require a newer version of the main plugin."
-msgstr ""
-"Alguns complementos requerem uma versão mais recente do plug-in principal."
+msgstr "Alguns complementos requerem uma versão mais recente do plug-in principal."
 
-#: src/php/core-classes/plugin.class.php:841
+#: src/php/core-classes/plugin.class.php:955
 msgid "Some template files you have overridden seem to be outdated."
-msgstr ""
-"Alguns arquivos de modelo você ter substituído parecem estar desatualizado."
+msgstr "Alguns arquivos de modelo você ter substituído parecem estar desatualizado."
 
 #: src/php/core-classes/settings.class.php:82
 #: src/php/core-classes/settings.class.php:91
@@ -3031,7 +2905,7 @@ msgid "Frontend"
 msgstr "Painel"
 
 #: src/php/core-classes/settings.class.php:292
-#: src/php/core-classes/settings.class.php:349
+#: src/php/core-classes/settings.class.php:334
 msgid "General Settings"
 msgstr "Configurações Gerais"
 
@@ -3039,153 +2913,120 @@ msgstr "Configurações Gerais"
 msgid "Admin theme"
 msgstr "Tema do Administrador"
 
-#: src/php/core-classes/settings.class.php:308
-msgid "Hide owner selection"
-msgstr "Esconder seleção de proprietário"
-
-#: src/php/core-classes/settings.class.php:315
-msgid "Hide the owner selection field when a single owner is possible."
-msgstr ""
-"Esconder o campo de seleção de proprietário quando é possível existir apenas "
-"um proprietário."
-
-#: src/php/core-classes/settings.class.php:317
-msgid ""
-"The owner will not be displayed but included directly if a single owner type "
-"is available to the current user and if within that owner type, a single "
-"owner is available."
-msgstr ""
-"O proprietário não será exibido, mas diretamente incluído se apenas um tipo "
-"de proprietário está disponível para o usuário atual, ou se "
-"independentemente do tipo de proprietário, existe apenas um disponível."
-
-#: src/php/core-classes/settings.class.php:356
+#: src/php/core-classes/settings.class.php:341
 msgid "Use skin"
 msgstr "Usar aparência"
 
-#: src/php/core-classes/settings.class.php:363
+#: src/php/core-classes/settings.class.php:348
 msgid ""
 "Includes the WP Customer Area skin to provide a stylesheet for the plugin."
-msgstr ""
-"Incluir a aparência do WP Customer Area para disponibilizar as folhas de "
-"estilo para o plugin."
+msgstr "Incluir a aparência do WP Customer Area para disponibilizar as folhas de estilo para o plugin."
 
-#: src/php/core-classes/settings.class.php:364
+#: src/php/core-classes/settings.class.php:349
 msgid ""
 "You can uncheck this if your theme includes support for WP Customer Area."
 msgstr "Você não pode desmarcar esse se seu tema suporta o WP Customer Area."
 
-#: src/php/core-classes/settings.class.php:369
+#: src/php/core-classes/settings.class.php:354
 msgid "Skin to use"
 msgstr "Usar aparência"
 
-#: src/php/core-classes/settings.class.php:377
+#: src/php/core-classes/settings.class.php:362
 msgid ""
 "You can make your own skin, please refer to <a href=\"%1$s\">our "
 "documentation about skins</a>."
-msgstr ""
-"Você pode fazer a sua própria aparência, por favor consulte  <a href=\"%1$s"
-"\">, a nossa documentação sobre aparências</a>."
+msgstr "Você pode fazer a sua própria aparência, por favor consulte  <a href=\"%1$s\">, a nossa documentação sobre aparências</a>."
 
-#: src/php/core-classes/settings.class.php:378
+#: src/php/core-classes/settings.class.php:363
 msgid "/documentation/the-skin-system/"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:385
+#: src/php/core-classes/settings.class.php:370
 msgid "Debug templates"
 msgstr "Templates degub"
 
-#: src/php/core-classes/settings.class.php:392
+#: src/php/core-classes/settings.class.php:377
 msgid "Print debug information about the templates used by Customer Area."
-msgstr ""
-"Mostrar a informação de debug sobre os templates usados pelo Customer Area"
+msgstr "Mostrar a informação de debug sobre os templates usados pelo Customer Area"
 
-#: src/php/core-classes/settings.class.php:512
+#: src/php/core-classes/settings.class.php:496
 msgid " is not a valid post"
 msgstr "não é um post válido"
 
-#: src/php/core-classes/settings.class.php:551
+#: src/php/core-classes/settings.class.php:535
 msgid " is not a valid role"
 msgstr "não é uma função válida"
 
-#: src/php/core-classes/settings.class.php:589
+#: src/php/core-classes/settings.class.php:573
 msgid " cannot be empty"
 msgstr "não pode estar vazio"
 
-#: src/php/core-classes/settings.class.php:614
+#: src/php/core-classes/settings.class.php:598
 msgid " is not a valid email"
 msgstr "não é um email válido"
 
-#: src/php/core-classes/settings.class.php:637
+#: src/php/core-classes/settings.class.php:621
 msgid " is not a valid value"
 msgstr "não é um valor válido"
 
-#: src/php/core-classes/settings.class.php:666
+#: src/php/core-classes/settings.class.php:650
 msgid "must be an integer"
 msgstr "precisa ser um inteiro"
 
-#: src/php/core-classes/settings.class.php:678
+#: src/php/core-classes/settings.class.php:662
 msgid "must be greater than %s"
 msgstr "precisa ser maior que %s"
 
-#: src/php/core-classes/settings.class.php:689
+#: src/php/core-classes/settings.class.php:673
 msgid "must be lower than %s"
 msgstr "precisa ser menor que %s"
 
-#: src/php/core-classes/settings.class.php:721
-msgid " is not a valid owner type"
-msgstr "não é um tipo de proprietário válido"
+#: src/php/core-classes/settings.class.php:715
+msgid "Invalid owner"
+msgstr ""
 
-#: src/php/core-classes/settings.class.php:750
-msgid " is not a valid owner"
-msgstr "não é um proprietário válido"
-
-#: src/php/core-classes/settings.class.php:770
-#: src/php/core-classes/settings.class.php:805
+#: src/php/core-classes/settings.class.php:734
+#: src/php/core-classes/settings.class.php:769
 msgid "you cannot select multiple terms."
 msgstr "você não pode selecionar múltiplos termos."
 
-#: src/php/core-classes/settings.class.php:987
+#: src/php/core-classes/settings.class.php:951
 msgid "Upload File"
 msgstr "Enviar Arquivo"
 
-#: src/php/core-classes/settings.class.php:1131
+#: src/php/core-classes/settings.class.php:1095
 msgid "None"
 msgstr "Nenhum"
 
-#: src/php/core-classes/settings.class.php:1155
+#: src/php/core-classes/settings.class.php:1119
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Apagar existente &amp; criar novo &raquo;"
 
-#: src/php/core-classes/settings.class.php:1160
+#: src/php/core-classes/settings.class.php:1124
 msgid "Edit it &raquo;"
 msgstr "Editar isso &raquo;"
 
-#: src/php/core-classes/settings.class.php:1168
+#: src/php/core-classes/settings.class.php:1132
 msgid "Create it &raquo;"
 msgstr "Criar isso &raquo;"
 
-#: src/php/core-classes/settings.class.php:1296
+#: src/php/core-classes/settings.class.php:1249
 msgid "Any Role"
 msgstr "Qualquer Função"
 
-#: src/php/core-classes/settings.class.php:1488
+#: src/php/core-classes/settings.class.php:1454
 msgid "Main plugin folder"
 msgstr "Pasta principal do plugin"
 
-#: src/php/core-classes/settings.class.php:1494
+#: src/php/core-classes/settings.class.php:1460
 msgid "Current theme folder"
 msgstr "Pasta do tema atual"
 
-#: src/php/core-classes/settings.class.php:1500
+#: src/php/core-classes/settings.class.php:1466
 msgid "WordPress content folder"
 msgstr "Pasta content do WordPress"
 
-#: src/php/core-classes/templates/default-container-content-item.template.php:14
-msgid "You created this content"
-msgstr ""
-
-#: src/php/core-classes/templates/widget-content-authors.template.php:18
+#: src/php/core-classes/templates/widget-content-authors.template.php:22
 msgid "Show all content published by %s"
 msgstr "Mostrar todo o conteúdo publicado por %s"
 
@@ -3197,11 +3038,11 @@ msgstr "Mostrar todo o conteúdo publicado em %s"
 msgid "Show all content published in %2$s %1$s"
 msgstr "Mostrar todo o conteúdo publicado em %2$s %1$s"
 
-#: src/php/core-classes/templates/widget-content-list.template.php:19
+#: src/php/core-classes/templates/widget-content-list.template.php:23
 msgid "Link to %s"
 msgstr "Links para %s"
 
-#: src/php/core-classes/templates/widget-terms.template.php:18
+#: src/php/core-classes/templates/widget-terms.template.php:22
 msgid "Show all content categorized under %s"
 msgstr "Mostrar todo o conteúdo categorizado por %s"
 
@@ -3257,25 +3098,25 @@ msgstr "Exibir"
 msgid "Hide"
 msgstr "Esconder"
 
-#: src/php/functions/functions-private-files.php:284
-msgid "bytes"
-msgstr "bytes"
-
-#: src/php/functions/functions-private-files.php:289
+#: src/php/functions/functions-private-files.php:301
 msgid "TB"
 msgstr "TB"
 
-#: src/php/functions/functions-private-files.php:294
+#: src/php/functions/functions-private-files.php:306
 msgid "GB"
 msgstr "GB"
 
-#: src/php/functions/functions-private-files.php:299
+#: src/php/functions/functions-private-files.php:311
 msgid "MB"
 msgstr "MB"
 
-#: src/php/functions/functions-private-files.php:304
+#: src/php/functions/functions-private-files.php:316
 msgid "kB"
 msgstr "kB"
+
+#: src/php/helpers/bootstrap-nav-walker.class.php:194
+msgid "Add a menu"
+msgstr ""
 
 #: src/php/helpers/country-helper.class.php:52
 msgid "Afghanistan"
@@ -4605,182 +4446,180 @@ msgstr ""
 msgid ""
 "WP Customer Area is a modular all-in-one solution to manage private content "
 "with WordPress."
-msgstr ""
-"O WP Customer Area é uma solução tudo-em-um para gerenciamento de conteúdo "
-"privado no WordPress."
+msgstr "O WP Customer Area é uma solução tudo-em-um para gerenciamento de conteúdo privado no WordPress."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:95
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:107
 msgctxt "Private content category archive slug"
 msgid "category"
 msgstr "categoria"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:97
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:109
 msgctxt "Private content date archive slug"
 msgid "archive"
 msgstr "arquivo"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:98
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:110
 msgctxt "Private content author archive slug"
 msgid "created-by"
 msgstr "criado por"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:100
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:112
 msgctxt "Private content update slug"
 msgid "update"
 msgstr "atualizar"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:101
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:113
 msgctxt "Private content delete slug"
 msgid "delete"
 msgstr "excluir"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:427
-#: src/php/core-classes/addon-container-page.class.php:379
-#: src/php/core-classes/addon-content-page.class.php:440
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:409
+#: src/php/core-classes/addon-container-page.class.php:404
+#: src/php/core-classes/addon-content-page.class.php:453
 msgctxt "pagination_parameter_name (should not be \"page\")"
 msgid "page-num"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:751
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:672
 msgctxt ""
 "Localised slug for the main navigation menu (small caps version of the \"WP "
 "Customer Area Menu\" translation)"
 msgid "wp-customer-area-menu"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1125
+#: src/php/core-addons/private-file/private-file-addon.class.php:1144
 msgctxt "cuar_private_file"
 msgid "File"
 msgstr "Arquivo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1126
+#: src/php/core-addons/private-file/private-file-addon.class.php:1145
 msgctxt "cuar_private_file"
 msgid "Files"
 msgstr "Arquivos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1154
-#: src/php/core-addons/private-file/private-file-addon.class.php:1165
+#: src/php/core-addons/private-file/private-file-addon.class.php:1173
+#: src/php/core-addons/private-file/private-file-addon.class.php:1184
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "Arquivos Privados"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1155
+#: src/php/core-addons/private-file/private-file-addon.class.php:1174
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "Arquivo Privado"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1156
+#: src/php/core-addons/private-file/private-file-addon.class.php:1175
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Adicionar Novo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1157
+#: src/php/core-addons/private-file/private-file-addon.class.php:1176
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Adicionar Novo Arquivo Privado"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1158
+#: src/php/core-addons/private-file/private-file-addon.class.php:1177
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Editar Arquivo Privado"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1159
+#: src/php/core-addons/private-file/private-file-addon.class.php:1178
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Novo Arquivo Privado"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1160
+#: src/php/core-addons/private-file/private-file-addon.class.php:1179
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Ver Arquivo Privado"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1161
+#: src/php/core-addons/private-file/private-file-addon.class.php:1180
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Procurar Arquivos Privados"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1162
+#: src/php/core-addons/private-file/private-file-addon.class.php:1181
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "Nenhum arquivo privado encontrado"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1163
+#: src/php/core-addons/private-file/private-file-addon.class.php:1182
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "Nenhum arquivo privado encontrado na Lixeira"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1164
+#: src/php/core-addons/private-file/private-file-addon.class.php:1183
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "Arquivo Privado Pai:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1198
-#: src/php/core-addons/private-file/private-file-addon.class.php:1212
+#: src/php/core-addons/private-file/private-file-addon.class.php:1217
+#: src/php/core-addons/private-file/private-file-addon.class.php:1231
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Categorias de Arquivos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1199
+#: src/php/core-addons/private-file/private-file-addon.class.php:1218
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Categoria de Arquivo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1200
+#: src/php/core-addons/private-file/private-file-addon.class.php:1219
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Procurar Categorias de Arquivos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1201
+#: src/php/core-addons/private-file/private-file-addon.class.php:1220
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Categorias de Arquivo Populares"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1202
+#: src/php/core-addons/private-file/private-file-addon.class.php:1221
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Todas Categorias de Arquivos"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1203
+#: src/php/core-addons/private-file/private-file-addon.class.php:1222
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Categoria de Arquivo Pai"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1204
+#: src/php/core-addons/private-file/private-file-addon.class.php:1223
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Categoria de Arquivo Pai:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1205
+#: src/php/core-addons/private-file/private-file-addon.class.php:1224
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Editar Categoria de Arquivo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1206
+#: src/php/core-addons/private-file/private-file-addon.class.php:1225
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Atualizar Arquivo de Categoria"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1207
+#: src/php/core-addons/private-file/private-file-addon.class.php:1226
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Adicionar Nova Categoria de Arquivo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1208
+#: src/php/core-addons/private-file/private-file-addon.class.php:1227
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Nova Categoria de Arquivo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1209
+#: src/php/core-addons/private-file/private-file-addon.class.php:1228
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Separe as categorias de arquivo com vírgulas"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1210
+#: src/php/core-addons/private-file/private-file-addon.class.php:1229
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Adicionar ou remover categorias de arquivo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1211
+#: src/php/core-addons/private-file/private-file-addon.class.php:1230
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Escolha entre as categorias de arquivo mais usadas"
@@ -4922,29 +4761,34 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Escolha entre as categorias de página mais usadas"
 
-#: src/php/core-classes/plugin.class.php:195
-#: src/php/core-classes/plugin.class.php:218
+#: src/php/core-classes/plugin.class.php:211
+#: src/php/core-classes/plugin.class.php:238
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:196
-#: src/php/core-classes/plugin.class.php:219
+#: src/php/core-classes/plugin.class.php:212
+#: src/php/core-classes/plugin.class.php:239
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Limpar"
 
-#: src/php/core-classes/plugin.class.php:197
-#: src/php/core-classes/plugin.class.php:220
+#: src/php/core-classes/plugin.class.php:213
+#: src/php/core-classes/plugin.class.php:240
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "Hoje"
 
-#: src/php/core-classes/plugin.class.php:200
-#: src/php/core-classes/plugin.class.php:223
+#: src/php/core-classes/plugin.class.php:216
+#: src/php/core-classes/plugin.class.php:243
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr "Mostrar um mês diferente"
+
+#: src/php/functions/functions-private-files.php:296
+msgctxt "bytes"
+msgid "b"
+msgstr ""
 
 #: src/php/helpers/currency-helper.class.php:113
 msgctxt "Currency amount (1=amount, 2=currency)"

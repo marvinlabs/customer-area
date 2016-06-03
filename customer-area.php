@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		6.3.0
+	Version: 		7.0.0
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -32,14 +32,15 @@ if ( !defined('CUAR_INCLUDES_DIR')) define('CUAR_INCLUDES_DIR', CUAR_PLUGIN_DIR 
 
 define('CUAR_LANGUAGE_DIR', 'customer-area/languages');
 
+define('CUAR_PLUGIN_VERSION', '7.0.0');
 define('CUAR_PLUGIN_URL', untrailingslashit(WP_PLUGIN_URL) . '/customer-area/'); // plugin_dir_url( __FILE__ ) );
 define('CUAR_SCRIPTS_URL', CUAR_PLUGIN_URL . 'scripts');
 define('CUAR_ADMIN_SKIN', 'plugin%%default-wp38');
-define('CUAR_FRONTEND_SKIN', 'plugin%%default-v4');
+define('CUAR_FRONTEND_SKIN', 'plugin%%master');
 define('CUAR_PLUGIN_FILE', 'customer-area/customer-area.php');
 
 define('CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', false);
-//define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' );
+// define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '6.3.0' );
 
 // Helpers
 include_once(CUAR_INCLUDES_DIR . '/helpers/address-helper.class.php');
@@ -83,6 +84,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/password-fi
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/email-field-renderer.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/long-text-field-renderer.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/short-text-field-renderer.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/display-name-field-renderer.class.php');
 
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/storage/storage.interface.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/storage/user-meta-storage.class.php');
@@ -103,12 +105,15 @@ include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/text-field.cla
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/number-field.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/email-field.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/user-password-field.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-classes/object-meta/field/display-name-field.class.php');
 
 // Core addons
 include_once(CUAR_INCLUDES_DIR . '/core-addons/admin-area/admin-area-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/installer/installer-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/log/log-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-admin-interface.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/post-owner/post-owner-user-owner-type.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/container-owner/container-owner-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/customer-pages/customer-pages-addon.class.php');

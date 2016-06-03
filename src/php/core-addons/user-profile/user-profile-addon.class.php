@@ -68,9 +68,6 @@ if ( !class_exists('CUAR_UserProfileAddOn')) :
         public function get_profile_fields()
         {
             $default_fields = array(
-                'account_details' => new CUAR_HeaderField('account_details', array(
-                    'label' => __('Account details', 'cuar')
-                )),
 
                 'user_login'      => new CUAR_TextField('user_login', new CUAR_UserStorage(), array(
                     'label'       => __('Username', 'cuar'),
@@ -84,13 +81,39 @@ if ( !class_exists('CUAR_UserProfileAddOn')) :
                     'required' => true,
                 )),
 
+                'first_name' => new CUAR_TextField('first_name', new CUAR_UserStorage(), array(
+                    'label' => __('First name', 'cuar')
+                )),
+
+                'last_name' => new CUAR_TextField('last_name', new CUAR_UserStorage(), array(
+                    'label' => __('Last name', 'cuar')
+                )),
+
+                'nickname' => new CUAR_TextField('nickname', new CUAR_UserStorage(), array(
+                    'label' => __('Nickname', 'cuar')
+                )),
+
+                'display_name' => new CUAR_DisplayNameField('display_name', new CUAR_UserStorage(), array(
+                    'label' => __('Display name', 'cuar')
+                )),
+
+                'url' => new CUAR_TextField('url', new CUAR_UserStorage(), array(
+                    'label' => __('Personal Website', 'cuar')
+                )),
+
+                'description' => new CUAR_TextField('description', new CUAR_UserStorage(), array(
+                    'label' => __('Biography', 'cuar'),
+                    'inline_help' => __('Your can write a short description about you.', 'cuar'),
+                    'type' => 'long-text'
+                )),
+
                 'user_pass'       => new CUAR_UserPasswordField('user_pass', array(
                     'label'               => __('Password', 'cuar'),
                     'confirm_label'       => __('Password (confirm)', 'cuar'),
                     'confirm_inline_help' => __('The password must at least be composed of 5 characters. You will be requested to login again after your password gets changed. Leave these fields empty if you want to keep your current password',
                         'cuar'),
                     'min_length'          => 5,
-                )),
+                ))
             );
 
             return apply_filters('cuar/core/user-profile/get_profile_fields', $default_fields);

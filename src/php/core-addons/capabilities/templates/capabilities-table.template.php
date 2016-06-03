@@ -1,4 +1,14 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php
+/** Template version: 2.0.0
+ *
+ * -= 2.0.0 =-
+ * - Add cuar- prefix to bootstrap classes
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ *
+ */
+?>
 
 <?php
 require_once(CUAR_INCLUDES_DIR . '/helpers/wordpress-helper.class.php');
@@ -7,7 +17,9 @@ $column_count = 1; // We got an empty column on the left
 wp_enqueue_script('jquery-ui-tabs');
 ?>
 
-<div id="sections_tabs" class="tab-container">
+<p><?php _e('You can adjust here the permissions granted to the users for each role defined in your site.', 'cuar'); ?></p>
+
+<div id="sections_tabs" class="tab-container tab-vertical">
     <ul class="tab-wrapper">
         <?php
         foreach ($all_capability_groups as $section_id => $section) {
@@ -23,15 +35,13 @@ wp_enqueue_script('jquery-ui-tabs');
     foreach ($all_capability_groups as $section_id => $section) : ?>
 
         <div id="section_tab_<?php echo esc_attr($section_id); ?>">
-            <p>&nbsp;</p>
-
             <div style="overflow-x: scroll; overflow-y: visible;">
                 <table class="widefat cuar-capabilities">
                     <thead>
                     <tr>
-                        <th class="checkbox-only"></th>
+                        <th class="cuar-checkbox-only"></th>
                         <th></th>
-                        <?php            foreach ($all_roles as $role) :
+                        <?php foreach ($all_roles as $role) :
                             ++$column_count;
                             ?>
                             <th><?php echo CUAR_WordPressHelper::getRoleDisplayName($role->name); ?></th>
@@ -40,21 +50,21 @@ wp_enqueue_script('jquery-ui-tabs');
                     <tr>
                         <td></td>
                         <td></td>
-                        <?php            foreach ($all_roles as $role) :
+                        <?php foreach ($all_roles as $role) :
                             $readonly = $role->name == 'administrator';
                             ?>
                             <?php if ($readonly) : ?>
                             <td></td>
                         <?php else : ?>
-                            <td><input type="checkbox" class="toggle_roles" data-role="<?php echo $role->name; ?>"
+                            <td><input type="checkbox" class="cuar-toggle_roles" data-role="<?php echo $role->name; ?>"
                                        title="<?php _e('Toggle all permissions for this role', 'cuar'); ?>"/></td>
-                        <?php            endif; ?>
+                        <?php endif; ?>
                         <?php endforeach; ?>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
-                        <th class="checkbox-only"></th>
+                        <th class="cuar-checkbox-only"></th>
                         <th></th>
                         <?php foreach ($all_roles as $role) : ?>
                             <th><?php echo CUAR_WordPressHelper::getRoleDisplayName($role->name); ?></th>
@@ -76,12 +86,12 @@ wp_enqueue_script('jquery-ui-tabs');
                     foreach ($group_caps as $cap => $cap_name) :
                         ?>
                         <tr>
-                            <td class="checkbox-only"><input type="checkbox" class="toggle_caps"
-                                                             data-cap="<?php echo $cap; ?>"
-                                                             title="<?php _e('Toggle this permission for all roles', 'cuar'); ?>"/>
+                            <td class="cuar-checkbox-only"><input type="checkbox" class="cuar-toggle_caps"
+                                                                  data-cap="<?php echo $cap; ?>"
+                                                                  title="<?php _e('Toggle this permission for all roles', 'cuar'); ?>"/>
                             </td>
-                            <th class="label"><?php echo $cap_name; ?></th>
-                            <?php                foreach ($all_roles as $role) :
+                            <th class="cuar-label"><?php echo $cap_name; ?></th>
+                            <?php foreach ($all_roles as $role) :
                                 $id = str_replace(' ', '-', $role->name . '_' . $cap);
                                 $checked = $role->has_cap($cap) ? 'checked="checked" ' : '';
                                 $readonly = $role->name == 'administrator';
@@ -99,9 +109,10 @@ wp_enqueue_script('jquery-ui-tabs');
                                         <input type="checkbox" name="<?php echo esc_attr($id); ?>"
                                                <?php echo $checked; ?>value="1" data-role="<?php echo $role->name; ?>"
                                                data-cap="<?php echo $cap; ?>"/>
-                                    <?php                    endif; ?>
+                                    <?php endif; ?>
                                 </td>
-                            <?php endforeach; // Roles ?>
+                            <?php endforeach; // Roles
+                            ?>
                         </tr>
                     <?php
                     endforeach; // Caps
@@ -122,7 +133,7 @@ wp_enqueue_script('jquery-ui-tabs');
     jQuery(function ($) {
         $("#sections_tabs").tabs();
 
-        $('.toggle_roles').change(function () {
+        $('.cuar-toggle_roles').change(function () {
             var $toggle_box = $(this);
             var $table = $(this).parents('table');
             var targetRole = $toggle_box.data('role');
@@ -137,7 +148,7 @@ wp_enqueue_script('jquery-ui-tabs');
             });
         });
 
-        $('.toggle_caps').change(function () {
+        $('.cuar-toggle_caps').change(function () {
             var $toggle_box = $(this);
             var $table = $(this).parents('table');
             var targetCap = $toggle_box.data('cap');

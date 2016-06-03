@@ -1,0 +1,21 @@
+// Define main paths
+// ----------------------------
+@master-sub-theme: true;
+@theme-root-path: "../../";
+@theme-assets-path: "../"; // relative to css folder
+@theme-img-path: "@{theme-assets-path}img"; // relative to css folder
+@theme-fonts-path: "@{theme-assets-path}fonts"; // relative to css folder
+@theme-less-path: ".";
+@framework-path: "../../../../../../../vendor/other/framework/theme_wpca/assets/skin";
+
+// Theme Variant Variables
+// ----------------------------
+@import "wpca/variables/all";
+
+// Theme Boostrapper
+// ----------------------------
+@import "@{framework-path}/wpca/bootstrapper";
+
+// Theme Fonts
+// ----------------------------
+@{wrapperBase} { @import (less) "@{theme-root-path}assets/css/font-awesome.min.css"; }

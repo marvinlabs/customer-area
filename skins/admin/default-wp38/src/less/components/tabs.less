@@ -1,0 +1,112 @@
+.tab-container {
+  .tab-wrapper {
+    border-bottom: 1px solid #ccc;
+    padding: 0;
+    margin: 0;
+
+    .nav-tab {
+      display: inline-block;
+      border: 1px solid #ccc;
+      margin-bottom: 0;
+      border-bottom: none;
+      margin-left: .5em;
+      padding: 5px 10px;
+      font-size: 14px;
+      line-height: 24px;
+      background: #e4e4e4;
+      color: #555;
+      overflow: hidden;
+
+      a {
+        outline: 0;
+        text-decoration: none;
+        color: #aaa;
+
+        &:focus {
+          -webkit-box-shadow: none;
+          box-shadow: none;
+        }
+      }
+
+      &:hover {
+        background: #f1f1f1;
+      }
+    }
+
+    .ui-state-active,
+    .ui-state-active:focus,
+    .ui-state-active:focus:active,
+    .ui-state-active:hover {
+      border-bottom: 1px solid #f1f1f1;
+      background: #f1f1f1;
+      color: #000;
+    }
+
+    .ui-state-active {
+      margin-bottom: -1px;
+      color: #464646;
+
+      a {
+        outline: 0;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
+    .ui-state-active,
+    .nav-tab:focus:active {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+
+  .ui-tabs-panel {
+    margin: 0;
+    background: #f1f1f1;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-top: 0 none;
+
+    .form-table:first-child {
+      margin-top: 0;
+    }
+
+    .tab-panel-title {
+      margin-top: 0;
+    }
+  }
+}
+
+@vertical-tab-width: 220px;
+
+.tab-container.tab-vertical {
+  .tab-wrapper {
+    width: @vertical-tab-width;
+    border-right: 1px solid #ccc;
+    border-bottom: 0 none;
+
+    .nav-tab {
+      box-sizing: border-box;
+      display: block;
+      width: @vertical-tab-width;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-right: none;
+      border-top: none;
+
+      &:first-child {
+        border-top: 1px solid #ccc;
+      }
+    }
+
+    .nav-tab-with-margin {
+      border-top: 1px solid #ccc;
+      margin-top: 10px;
+    }
+  }
+
+  .ui-tabs-panel {
+    margin-left: @vertical-tab-width;
+    border: 1px solid #ccc;
+  }
+}

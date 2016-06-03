@@ -202,8 +202,8 @@
     };
 
     $.cuar.classicUploader.defaultOptions = {
-        dropzone: '.cuar-dropzone',                         // The dropzone
-        fileInput: '.cuar-file-input'                       // The fallback file input
+        dropzone: '.cuar-js-dropzone',                         // The dropzone
+        fileInput: '.cuar-js-file-input'                       // The fallback file input
     };
 
     $.fn.classicUploader = function (options) {

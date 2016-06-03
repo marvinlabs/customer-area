@@ -1,0 +1,54 @@
+// Components
+// -
+@import 'components/list-tables';
+@import 'components/buttons';
+@import 'components/ajax';
+@import 'components/menu';
+@import 'components/actions';
+@import 'components/progress';
+@import 'components/metaboxes';
+@import 'components/dropzone';
+@import 'components/messages';
+@import 'components/others';
+@import 'components/repeatable-fields';
+@import 'components/jeditable';
+@import 'components/address';
+@import 'components/tabs';
+@import 'components/tooltip';
+
+// Tweaks
+// -
+@import 'tweaks/dashboard';
+@import 'tweaks/settings';
+@import 'tweaks/status';
+@import 'tweaks/tasks';
+@import 'tweaks/invoicing';
+@import 'tweaks/projects';
+@import 'tweaks/protect-post-types';
+
+// Import source LESS files from frontend master-skin
+// -
+& {
+  /* Path to LESS files */
+  @path: '../../../../frontend/master/src/less';
+  @framework-path: "../../../../../../../vendor/other/framework/theme_wpca/assets/skin";
+
+  /* Global container */
+  @wrapperBody: ~"body.wp-admin";
+  @wrapperContainer: ~"";
+  @wrapperBase: ~"@{wrapperBody} @{wrapperContainer}";
+
+  /* Variables setup */
+  @import '@{path}/wpca/variables/all';
+  @cuar-color-primary: #0085BA;
+  @import '@{path}/wpca/variables/colors';
+  @import '@{framework-path}/core/theme_variables';
+
+  @import '@{framework-path}/core/theme_mixins';
+
+  /* Components */
+  @import '@{framework-path}/wpca/tweaks/datepicker';
+  @import '@{framework-path}/wpca/tweaks/select2';
+  @import '@{framework-path}/wpca/tweaks/range-input';
+  @import '@{framework-path}/wpca/tweaks/fields';
+}

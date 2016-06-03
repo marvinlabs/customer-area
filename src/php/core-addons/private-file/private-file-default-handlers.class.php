@@ -339,7 +339,7 @@ class CUAR_PrivateFilesDefaultHandlers
             $uploaded_type = $arr_file_type['type'];
             if ( !in_array($uploaded_type, $supported_types))
             {
-                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar'), implode(', ', $supported_types));
 
                 return $errors;
             }
@@ -411,7 +411,7 @@ class CUAR_PrivateFilesDefaultHandlers
             $uploaded_type = $arr_file_type['type'];
             if ( !in_array($uploaded_type, $supported_types))
             {
-                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar'), implode(', ', $supported_types));
 
                 return $errors;
             }
@@ -469,7 +469,7 @@ class CUAR_PrivateFilesDefaultHandlers
             $uploaded_type = $arr_file_type['type'];
             if ( !in_array($uploaded_type, $supported_types))
             {
-                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar', implode(', ', $supported_types)));
+                $errors[] = sprintf(__("This file type is not allowed. You can only upload: %s", 'cuar'), implode(', ', $supported_types));
 
                 return $errors;
             }
@@ -610,14 +610,13 @@ class CUAR_PrivateFilesDefaultHandlers
         $methods['classic-upload'] = array(
             'label'   => __('Classic upload', 'cuar'),
             'caption' =>
-                __('Select the files you want to upload, they will be processed when you save the post.', 'cuar')
+                __('Drag and drop files here, they will be uploaded to the private folder.', 'cuar')
         );
 
         $methods['ftp-folder'] = array(
             'label'   => __('Get from server FTP folder', 'cuar'),
             'caption' =>
-                __('Below are the files listed from the FTP folder you have set in the plugin options. Those files will be moved or copied to their final location.',
-                    'cuar')
+                __('Select one or more files from the FTP folder, they will either be moved or copied to the private folder.', 'cuar')
         );
 
         return $methods;

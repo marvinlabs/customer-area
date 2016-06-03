@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ?>
 
 <div class="wrap cuar-settings-<?php echo $this->current_tab; ?>">
+	<h1>WP Customer Area <small><sup><?php echo $this->plugin->get_version(); ?></sup></small></h1>
+
 	<h2 class="nav-tab-wrapper">
 <?php foreach ( $this->tabs as $tab_id => $tab_label) : ?>
 			<?php  printf( '<a href="options-general.php?page=%s&tab=%s" class="nav-tab %s">%s</a>',
@@ -40,13 +42,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 	<form method="post" action="options.php"> 	
 		<input type="hidden" id="tab" name="tab" value="<?php echo $this->current_tab; ?>" />
 		<input type="hidden" id="cuar_do_save_settings" name="cuar_do_save_settings" value="1" />
-	
+
 	<?php 
 		settings_fields( CUAR_Settings::$OPTIONS_GROUP . '_' . $this->current_tab ); 
-		do_settings_sections( CUAR_Settings::$OPTIONS_PAGE_SLUG ); 
+		do_settings_sections( CUAR_Settings::$OPTIONS_PAGE_SLUG );
+		do_action( 'cuar/templates/settings/in-settings-form?tab=' . $this->current_tab, $this );
 	?>
-	
-<?php do_action( 'cuar/templates/settings/in-settings-form?tab=' . $this->current_tab, $this ); ?>
 	
 	<?php submit_button(); ?>
 	</form>
@@ -54,14 +55,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php do_action( 'cuar/templates/settings/after-settings?tab=' . $this->current_tab, $this ); ?>
 <?php do_action( 'cuar/templates/settings/after-settings', $this ); ?>
 
-	</div>
-	
-	<div class="cuar-side">
-
-	<?php do_action( 'cuar/templates/settings/before-settings-sidebar', $this ); ?>
-	<?php do_action( 'cuar/templates/settings/settings-sidebar?tab=' . $this->current_tab, $this ); ?>
-	<?php do_action( 'cuar/templates/settings/after-settings-sidebar', $this ); ?>
-		
 	</div>
 </div>
 

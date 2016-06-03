@@ -95,17 +95,20 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                 }
 
                 $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
-                foreach($iterator as $item) {
-                    if (false===chmod($item, octdec($extra)))
+                foreach ($iterator as $item)
+                {
+                    if (false === chmod($item, octdec($extra)))
                     {
-                        wp_send_json_error(__('Error while changing permissions. PHP probably does not have the required permissions. Please do it manually using FTP or SSH.', 'cuar'));
+                        wp_send_json_error(__('Error while changing permissions. PHP probably does not have the required permissions. Please do it manually using FTP or SSH.',
+                            'cuar'));
                     }
                 }
 
                 $current_perms = @fileperms($path) & 0777;
                 if ($current_perms !== octdec($extra))
                 {
-                    wp_send_json_error(__('Permissions could not be changed. PHP probably does not have the required permissions. Please do it manually using FTP or SSH.', 'cuar'));
+                    wp_send_json_error(__('Permissions could not be changed. PHP probably does not have the required permissions. Please do it manually using FTP or SSH.',
+                        'cuar'));
                 }
                 break;
 
@@ -264,7 +267,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
      */
     public function restrict_admin_access()
     {
-        if ( !$this->current_user_can_access_admin() && !(defined( 'DOING_AJAX' ) && DOING_AJAX))
+        if ( !$this->current_user_can_access_admin() && !(defined('DOING_AJAX') && DOING_AJAX))
         {
             $cp_addon = $this->plugin->get_addon('customer-pages');
             $customer_area_url = apply_filters('cuar/core/admin/admin-area-forbidden-redirect-url',
@@ -458,6 +461,19 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             if ($editor_role)
             {
                 $editor_role->add_cap('view-customer-area-menu');
+            }
+        }
+
+        // If upgrading from version prior to 6.4, update the default skin
+        if (version_compare($from_version, '6.4.0', '<'))
+        {
+            $current_skin = $this->plugin->get_theme('frontend');
+
+            if (count($current_skin) == 2 && $current_skin[0] == 'plugin'
+                && ($current_skin[1] == 'default-v4' || $current_skin[1] == 'default')
+            )
+            {
+                $this->plugin->update_option(CUAR_Settings::$OPTION_FRONTEND_SKIN, CUAR_FRONTEND_SKIN);
             }
         }
     }

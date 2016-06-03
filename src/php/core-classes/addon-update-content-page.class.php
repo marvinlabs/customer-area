@@ -86,14 +86,9 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
             return array('cuar_title', 'cuar_content', 'cuar_category', 'cuar_owner');
         }
 
-        public function get_default_owner_type()
+        public function get_default_owners()
         {
-            return 'usr';
-        }
-
-        public function get_default_owner()
-        {
-            return 1;
+            return array();
         }
 
         public function get_default_category()
@@ -160,9 +155,11 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
 
                 if (false !== wp_delete_post($this->get_current_post_id(), false))
                 {
-                    $this->should_print_form = false;
-                    $this->form_messages[] = __('The content has been deleted.', 'cuar');
-
+                    $this->set_form_success(
+                        __('Done', 'cuar'),
+                        __('The content has been deleted.', 'cuar')
+                    );
+                    
                     return true;
                 }
             }
@@ -274,7 +271,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
             if ($this->current_user_can_edit_content($post_id))
             {
                 $links[] = array(
-                    'title'       => '<span class="dashicons dashicons-edit"></span> ' . __('Edit', 'cuar'),
+                    'title'       => '<span class="fa fa-edit"></span> ' . __('Edit', 'cuar'),
                     'tooltip'     => __('Edit', 'cuar'),
                     'url'         => $this->get_update_content_url($post_id),
                     'extra_class' => ''
@@ -284,7 +281,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
             if ($this->current_user_can_delete_content($post_id))
             {
                 $links[] = array(
-                    'title'           => '<span class="dashicons dashicons-trash"></span> ' . __('Delete', 'cuar'),
+                    'title'           => '<span class="fa fa-trash"></span> ' . __('Delete', 'cuar'),
                     'tooltip'         => __('Delete', 'cuar'),
                     'url'             => $this->get_delete_content_url($post_id),
                     'extra_class'     => '',

@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 <p>
 	<?php wp_nonce_field( 'cuar-export-settings', 'cuar-export-settings_nonce' ); ?>
-	<input type="submit" name="cuar-export-settings" id="cuar-export-settings" class="button button-primary cuar-export-settings" value="<?php esc_attr_e( 'Export settings', 'cuar' ); ?>" />
+	<input type="submit" name="cuar-export-settings" id="cuar-export-settings" class="button cuar-export-settings" value="<?php esc_attr_e( 'Export settings', 'cuar' ); ?>" />
 </p>
 
 <h3><?php _e( 'Import settings', 'cuar' ); ?></h3>
@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <p>
 	<?php wp_nonce_field( 'cuar-import-settings', 'cuar-import-settings_nonce' ); ?>
 	<input type="file" name="cuar-settings-file" id="cuar-settings-file" /><br>
-	<input type="submit" name="cuar-import-settings" id="cuar-import-settings" class="button button-primary cuar-import-settings" value="<?php esc_attr_e( 'Import settings', 'cuar' ); ?>" />
+	<input type="submit" name="cuar-import-settings" id="cuar-import-settings" class="button cuar-import-settings" value="<?php esc_attr_e( 'Import settings', 'cuar' ); ?>" />
 </p>
 
 
@@ -50,7 +50,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 <p>
 	<?php wp_nonce_field( 'cuar-reset-all-settings', 'cuar-reset-all-settings_nonce' ); ?>
-	<input type="submit" name="cuar-reset-all-settings" id="cuar-reset-all-settings" class="button button-primary cuar-reset-all-settings" value="<?php esc_attr_e( 'Reset default settings', 'cuar' ); ?>" />
+	<input type="submit" name="cuar-reset-all-settings" id="cuar-reset-all-settings" class="button cuar-reset-all-settings" value="<?php esc_attr_e( 'Reset default settings', 'cuar' ); ?>" />
 </p>
 
 <h3><?php _e( 'Uninstall WP Customer Area', 'cuar' ); ?></h3>
@@ -59,7 +59,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 <p>
 	<?php wp_nonce_field( 'cuar-uninstall', 'cuar-uninstall_nonce' ); ?>
-	<input type="submit" name="cuar-uninstall" id="cuar-uninstall" class="button button-primary cuar-uninstall" value="<?php esc_attr_e( 'Clean-up database', 'cuar' ); ?>" />
+	<input type="submit" name="cuar-uninstall" id="cuar-uninstall" class="button cuar-uninstall" value="<?php esc_attr_e( 'Clean-up database', 'cuar' ); ?>" />
 </p>
 <script type="text/javascript">
 <!--
