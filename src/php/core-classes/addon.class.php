@@ -39,7 +39,7 @@ abstract class CUAR_AddOn {
 			add_action( 'cuar/core/addons/after-init', array( &$this, 'check_attention_needed' ), 10 );
 		}
 	}
-	
+
 	public abstract function get_addon_name();
 	
 	public function get_id() {
@@ -189,7 +189,7 @@ abstract class CUAR_AddOn {
 		
 		$license_key = $this->get_license_key();		 
 		if ( !empty( $license_key ) ) {
-            require_once( CUAR_PLUGIN_DIR . '/libs/edd-licensing/EDD_SL_Plugin_Updater.php' );
+            require_once( CUAR_PLUGIN_DIR . '/libs/php/edd-licensing/EDD_SL_Plugin_Updater.php' );
 	
 			new CUAR_Plugin_Updater(
 					$this->plugin->get_licensing()->get_store()->get_store_url(),

@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ?>
 
 <div class="wrap cuar-plugin-status">
-	<?php screen_icon( 'icon32-settings' ); ?>
+	<h1>WP Customer Area <small><sup><?php echo $this->plugin->get_version(); ?></sup></small></h1>
 	
 <?php 
 	$sections = $this->get_status_sections();

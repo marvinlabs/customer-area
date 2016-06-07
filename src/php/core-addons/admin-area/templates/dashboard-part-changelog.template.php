@@ -2,7 +2,7 @@
 
 <?php
 
-include(CUAR_PLUGIN_DIR . '/libs/automattic/parse-readme.php');
+include(CUAR_PLUGIN_DIR . '/libs/php/automattic/parse-readme.php');
 
 $parser = new Automattic_Readme();
 $readme = $parser->parse_readme(CUAR_PLUGIN_DIR . '/readme.txt');

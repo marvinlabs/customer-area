@@ -1,4 +1,14 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php
+/** Template version: 2.0.0
+ *
+ * -= 2.0.0 =-
+ * - Add cuar- prefix to bootstrap classes
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ *
+ */
+?>
 
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
@@ -20,27 +30,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ?>
 
 <div class="cuar-needs-attention">
-	<h3><?php _e( 'Missing navigation menu', 'cuar' ); ?></h3>
-	
-	<p>
-		<?php _e( 'A navigation menu organizes the customer area. It allows to browse the files, the pages, to view the account details and much more. It seems that this menu has not yet been created.', 'cuar' ); ?>
-		<?php printf( __( 'You can review which menus are currently created on the <a href="%1$s">menus page</a>.', 'cuar' ), 
-					admin_url( 'nav-menus.php' ) ); ?>
-	</p>
-		 
-	<p class="cuar-suggested-action"><span class="text"><?php _e('Suggested action', 'cuar' ); ?></span>
-		<input type="submit" id="cuar-synchronize-menu" name="cuar-synchronize-menu" class="button button-primary" value="<?php esc_attr_e( 'Create the menu', 'cuar' ); ?> &raquo;" />
-		<?php wp_nonce_field( 'cuar-synchronize-menu', 'cuar-synchronize-menu_nonce' ); ?>
-		
-		<script type="text/javascript">
-		<!--
-			jQuery(document).ready(function($) {
-				$('#cuar-synchronize-menu').click('click', function(){
-					var answer = confirm( "<?php echo str_replace( '"', '\\"', __('Are you sure that you want to create the menu (this operation cannot be undone)?', 'cuar') ); ?>" );
-					return answer;
-				});
-			});
-		//-->
-		</script>
-	</p>	
+    <h3><?php _e('Missing navigation menu', 'cuar'); ?></h3>
+
+    <p>
+        <?php _e('A navigation menu organizes the customer area. It allows to browse the files, the pages, to view the account details and much more. It seems that this menu has not yet been created.', 'cuar'); ?>
+        <?php printf(__('You can review which menus are currently created on the <a href="%1$s">menus page</a>.', 'cuar'),
+            admin_url('nav-menus.php')); ?>
+    </p>
+
+    <p class="cuar-suggested-action"><span class="cuar-text"><?php _e('Suggested action', 'cuar'); ?></span>
+        <input type="submit" id="cuar-synchronize-menu" name="cuar-synchronize-menu" value="<?php esc_attr_e('Create the menu', 'cuar'); ?> &raquo;" class="button button-primary"/>
+        <?php wp_nonce_field('cuar-synchronize-menu', 'cuar-synchronize-menu_nonce'); ?>
+
+        <script type="text/javascript">
+            <!--
+            jQuery(document).ready(function ($) {
+                $('#cuar-synchronize-menu').click('click', function () {
+                    var answer = confirm("<?php echo str_replace( '"', '\\"', __('Are you sure that you want to create the menu (this operation cannot be undone)?', 'cuar') ); ?>");
+                    return answer;
+                });
+            });
+            //-->
+        </script>
+    </p>
 </div>

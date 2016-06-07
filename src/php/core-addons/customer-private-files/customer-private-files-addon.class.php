@@ -137,20 +137,18 @@ if ( !class_exists('CUAR_CustomerPrivateFilesAddOn')) :
 
         protected function print_default_widgets()
         {
-            $default_widget_args = $this->get_default_widget_args();
-
             $w = new CUAR_PrivateFileCategoriesWidget();
-            $w->widget($default_widget_args, array(
+            $w->widget($this->get_default_widget_args($w->id_base), array(
                 'title' => __('Categories', 'cuar'),
             ));
 
             $w = new CUAR_PrivateFileDatesWidget();
-            $w->widget($default_widget_args, array(
+            $w->widget($this->get_default_widget_args($w->id_base), array(
                 'title' => __('Archives', 'cuar'),
             ));
 
             $w = new CUAR_PrivateFileAuthorsWidget();
-            $w->widget($default_widget_args, array(
+            $w->widget($this->get_default_widget_args($w->id_base), array(
                 'title' => __('Created By', 'cuar'),
             ));
         }

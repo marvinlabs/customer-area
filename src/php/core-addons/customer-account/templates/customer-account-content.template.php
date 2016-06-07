@@ -1,32 +1,52 @@
-<?php /** Template version: 1.2.0
-*
-* -= 1.2.0 =-
-* - Added addresses
-*
-* -= 1.1.0 =-
-* - Added updated message
-*
-* -= 1.0.0 =-
-* - Initial version
-*
-*/
-?>
-		
-<h3><?php 
-	$current_user = $this->get_current_user();	
-	printf( __('Hello %s,', 'cuar'), $current_user->display_name );
-?></h3>
+<?php /**
+ * Template version: 3.0.0
+ * Template zone: frontend
+ *
+ * -= 3.0.0 =-
+ * - Improve UI for new master-skin
+ *
+ * -= 1.2.0 =-
+ * - Added addresses
+ *
+ * -= 1.1.0 =-
+ * - Added updated message
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ *
+ */
 
-<?php 
-if ( isset( $_GET['updated'] ) && $_GET['updated']==1 ) {
-	printf( '<p class="alert alert-info">%s</p>', __( 'Your profile has been updated', 'cuar' ) );
-}
+$current_user = $this->get_current_user();
 ?>
 
-<p><?php _e('Please find below your account details', 'cuar' ); ?></p>
+<div class="page-heading">
+    <div class="media clearfix">
+        <div class="media-left pr30">
+            <?php echo get_avatar($current_user->ID); ?>
+        </div>
+        <div class="media-body va-m" style="width: 100%;">
 
-<?php $this->print_account_fields(); ?>
+            <div class="cuar-title media-heading text-primary"><?php echo $current_user->display_name; ?>
+                <small> - Profile</small>
+            </div>
 
-<h3 id="addresses" class="cuar-field cuar-field-header"><?php _e('Addresses', 'cuar'); ?></h3>
+            <?php
+            if (isset($_GET['updated']) && $_GET['updated'] == 1) {
+                printf('<p class="alert alert-info mt15 mbn">%s</p>', __('Your profile has been updated', 'cuar'));
+            }
+            ?>
 
-<?php $this->print_address_fields(); ?>
+        </div>
+    </div>
+</div>
+
+<div class="panel">
+    <div class="panel-heading"><span class="panel-title"><?php _e('Account details', 'cuar'); ?></span></div>
+    <div class="panel-body">
+        <?php $this->print_account_fields(); ?>
+    </div>
+</div>
+
+<div class="row">
+    <?php $this->print_address_fields(); ?>
+</div>

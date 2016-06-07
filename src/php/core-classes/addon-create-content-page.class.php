@@ -111,14 +111,17 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
             return $this->plugin->get_option($this->get_slug() . self::$OPTION_ENABLE_MODERATION, false);
         }
 
-        public function get_default_owner_type()
+        public function get_default_owners()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_DEFAULT_OWNER_TYPE, 'usr');
-        }
+            $legacy_owner_type = $this->plugin->get_option($this->get_slug() . self::$OPTION_DEFAULT_OWNER_TYPE);
+            $owners = $this->plugin->get_option($this->get_slug() . self::$OPTION_DEFAULT_OWNER);
 
-        public function get_default_owner()
-        {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_DEFAULT_OWNER, array('1'));
+            // Handle old style option
+            if (!empty($legacy_owner_type)) {
+                $owners = array($legacy_owner_type => $owners);
+            }
+
+            return $owners;
         }
 
         public function get_default_category()
@@ -140,8 +143,7 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
             $slug = $this->get_slug();
 
             $defaults[$slug . self::$OPTION_ENABLE_MODERATION] = false;
-            $defaults[$slug . self::$OPTION_DEFAULT_OWNER_TYPE] = 'usr';
-            $defaults[$slug . self::$OPTION_DEFAULT_OWNER] = array('1');
+            $defaults[$slug . self::$OPTION_DEFAULT_OWNER] = array();
             $defaults[$slug . self::$OPTION_DEFAULT_CATEGORY] = -1;
 
             return $defaults;
@@ -228,20 +230,8 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
             if (in_array('default-ownership', $this->enabled_settings))
             {
                 add_settings_field(
-                    $slug . self::$OPTION_DEFAULT_OWNER_TYPE,
-                    __('Default owner type', 'cuar'),
-                    array(&$cuar_settings, 'print_owner_type_select_field'),
-                    CUAR_Settings::$OPTIONS_PAGE_SLUG,
-                    $this->get_settings_section(),
-                    array(
-                        'option_id' => $slug . self::$OPTION_DEFAULT_OWNER_TYPE,
-                        'after'     => ''
-                    )
-                );
-
-                add_settings_field(
                     $slug . self::$OPTION_DEFAULT_OWNER,
-                    __('Default owner', 'cuar'),
+                    __('Default owners', 'cuar'),
                     array(&$cuar_settings, 'print_owner_select_field'),
                     CUAR_Settings::$OPTIONS_PAGE_SLUG,
                     $this->get_settings_section(),
@@ -289,8 +279,7 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
 
             if (in_array('default-ownership', $this->enabled_settings))
             {
-                $cuar_settings->validate_owner_type($input, $validated, $slug . self::$OPTION_DEFAULT_OWNER_TYPE);
-                $cuar_settings->validate_owner($input, $validated, $slug . self::$OPTION_DEFAULT_OWNER, $slug . self::$OPTION_DEFAULT_OWNER_TYPE);
+                $cuar_settings->validate_owners($input, $validated, $slug . self::$OPTION_DEFAULT_OWNER, $slug . self::$OPTION_DEFAULT_OWNER_TYPE);
             }
 
             $tax = $this->get_friendly_taxonomy();

@@ -1,4 +1,13 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /**
+ * Template version: 3.0.0
+ * Template zone: admin
+ *
+ * -= 3.0.0 =-
+ * - Updated markup for new master-skin
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ */ ?>
 
 <?php
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
@@ -26,7 +35,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php /** @var $excluded_fields array */ ?>
 
 <?php if (!empty($address_label)) : ?>
-<h3><?php echo $address_label; ?></h3>
+<div class="cuar-title"><?php echo $address_label; ?></div>
 <?php endif; ?>
 
 <?php if (CUAR_AddressHelper::compare_addresses(CUAR_AddressHelper::sanitize_address(array()), $address)) : ?>

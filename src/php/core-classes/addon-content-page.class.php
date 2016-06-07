@@ -95,26 +95,34 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             return $defaults;
         }
 
-        /*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
+        /*------- SETTINGS ACCESSOR -------------------------------------------------------------------------------------*/
 
         public function is_show_in_dashboard_enabled()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD, true);
+            $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD);
+
+            return empty($value) ? true : $value;
         }
 
         public function is_show_in_single_post_footer_enabled()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER, true);
+            $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER);
+
+            return empty($value) ? true : $value;
         }
 
         public function get_max_item_number_on_dashboard()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD, 5);
+            $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD);
+
+            return empty($value) ? 5 : $value;
         }
 
         public function get_max_item_number_in_listing()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING, 10);
+            $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING);
+
+            return empty($value) ? 10 : $value;
         }
 
         /*------- ARCHIVES ----------------------------------------------------------------------------------------------*/
@@ -132,15 +140,15 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         /**
          * Build the link for a given term
          *
-         * @param $termlink
+         * @param $term_link
          * @param $term
          * @param $taxonomy
          *
-         * @return string|unknown
+         * @return string
          */
-        public function get_friendly_taxonomy_term_link($termlink, $term, $taxonomy)
+        public function get_friendly_taxonomy_term_link($term_link, $term, $taxonomy)
         {
-            if ($taxonomy != $this->get_friendly_taxonomy()) return $termlink;
+            if ($taxonomy != $this->get_friendly_taxonomy()) return $term_link;
 
             return $this->get_category_archive_url($term);
         }
@@ -154,43 +162,44 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
          */
         public function insert_archive_rewrite_rules($rules)
         {
+            /** @var CUAR_CustomerPagesAddOn $cp_addon */
             $cp_addon = $this->plugin->get_addon('customer-pages');
 
             $page_id = $cp_addon->get_page_id($this->get_slug());
             $page_slug = untrailingslashit(str_replace(trailingslashit(home_url()), '', get_permalink($page_id)));
 
-            $newrules = array();
+            $new_rules = array();
 
             // Category archives
             if ($this->get_friendly_taxonomy() != null)
             {
                 $rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_category=$matches[1]';
                 $rewrite_regex = $page_slug . '/' . $cp_addon->get_category_archive_slug() . '/([^/]+)/?$';
-                $newrules[$rewrite_regex] = $rewrite_rule;
+                $new_rules[$rewrite_regex] = $rewrite_rule;
             }
 
             // Author archives
             $rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_author=$matches[1]';
             $rewrite_regex = $page_slug . '/' . $cp_addon->get_author_archive_slug() . '/([0-9]+)/?$';
-            $newrules[$rewrite_regex] = $rewrite_rule;
+            $new_rules[$rewrite_regex] = $rewrite_rule;
 
             // Year archives
             $rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_year=$matches[1]';
             $rewrite_regex = $page_slug . '/' . $cp_addon->get_date_archive_slug() . '/([0-9]{4})/?$';
-            $newrules[$rewrite_regex] = $rewrite_rule;
+            $new_rules[$rewrite_regex] = $rewrite_rule;
 
             // Month archives
             $rewrite_rule = 'index.php?page_id=' . $page_id . '&cuar_year=$matches[1]&cuar_month=$matches[2]';
             $rewrite_regex = $page_slug . '/' . $cp_addon->get_date_archive_slug() . '/([0-9]{4})/([0-9]{2})/?$';
-            $newrules[$rewrite_regex] = $rewrite_rule;
+            $new_rules[$rewrite_regex] = $rewrite_rule;
 
-            return $newrules + $rules;
+            return $new_rules + $rules;
         }
 
         /**
          * Add query variables for the archive subpages.
          *
-         * @param unknown $vars
+         * @param array $vars
          *
          * @return array
          */
@@ -211,13 +220,14 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         /**
          * Get the URL for the archive corresponding to a given date.
          *
-         * @param unknown $year
-         * @param unknown $month optional, pass a negative number to get year archive
+         * @param int $year
+         * @param int $month optional, pass a negative number to get year archive
          *
          * @return string
          */
         public function get_date_archive_url($year, $month = 0)
         {
+            /** @var CUAR_CustomerPagesAddOn $cp_addon */
             $cp_addon = $this->plugin->get_addon('customer-pages');
 
             $page_id = $cp_addon->get_page_id($this->get_slug());
@@ -238,12 +248,13 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         /**
          * Get the URL for the archive corresponding to a given category.
          *
-         * @param unknown $term
+         * @param WP_Term $term
          *
-         * @return string|unknown
+         * @return string
          */
         public function get_category_archive_url($term)
         {
+            /** @var CUAR_CustomerPagesAddOn $cp_addon */
             $cp_addon = $this->plugin->get_addon('customer-pages');
 
             $page_id = $cp_addon->get_page_id($this->get_slug());
@@ -259,12 +270,13 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         /**
          * Get the URL for the archive corresponding to a given author.
          *
-         * @param unknown $author_id
+         * @param int $author_id
          *
-         * @return string|unknown
+         * @return string
          */
         public function get_author_archive_url($author_id)
         {
+            /** @var CUAR_CustomerPagesAddOn $cp_addon */
             $cp_addon = $this->plugin->get_addon('customer-pages');
 
             $page_id = $cp_addon->get_page_id($this->get_slug());
@@ -286,9 +298,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             if ( !isset($this->page_description['friendly_post_type']))
             {
-                warn('Cannot enable single content permalinks for page without declaring its friendly_post_type');
-
-                return;
+                die('Cannot enable single content permalinks for page without declaring its friendly_post_type');
             }
 
             add_filter('rewrite_rules_array', array(&$this, 'insert_single_post_rewrite_rules'));
@@ -307,32 +317,32 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             $page_slug = $this->get_full_page_path();
 
-            $newrules = array();
+            $new_rules = array();
 
             // Single post rule
             $rewrite_rule = 'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&' . $this->page_description['friendly_post_type'] . '=$matches[4]';
             $rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/?$';
-            $newrules[$rewrite_regex] = $rewrite_rule;
+            $new_rules[$rewrite_regex] = $rewrite_rule;
 
             // Single post rule with action
             $rewrite_rule = 'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&' . $this->page_description['friendly_post_type']
                 . '=$matches[4]&cuar_action=$matches[5]';
             $rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/([^/]+)/?$';
-            $newrules[$rewrite_regex] = $rewrite_rule;
+            $new_rules[$rewrite_regex] = $rewrite_rule;
 
             // Single post rule with action & action param
             $rewrite_rule = 'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&' . $this->page_description['friendly_post_type']
                 . '=$matches[4]&cuar_action=$matches[5]&cuar_action_param=$matches[6]';
             $rewrite_regex = $page_slug . '/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/([^/]+)/([^/]+)/?$';
-            $newrules[$rewrite_regex] = $rewrite_rule;
+            $new_rules[$rewrite_regex] = $rewrite_rule;
 
-            return $newrules + $rules;
+            return $new_rules + $rules;
         }
 
         /**
          * Add query variables for single private content pages.
          *
-         * @param unknown $vars
+         * @param array $vars
          *
          * @return array
          */
@@ -348,10 +358,10 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         /**
          * Output the correct permalink for our single private content pages
          *
-         * @param unknown $permalink
-         * @param unknown $post
+         * @param string $permalink
+         * @param WP_Post $post
          *
-         * @return Ambigous <string, mixed>
+         * @return string
          */
         function filter_single_private_content_link($permalink, $post)
         {
@@ -371,7 +381,9 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         /**
          * Get the URL to view a given post
          *
-         * @param unknown $post_id
+         * @param WP_Post $post
+         *
+         * @return string
          */
         public function get_single_private_content_url($post)
         {
@@ -398,7 +410,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             {
                 $url .= '/' . $action;
 
-                if (!empty($action_param))
+                if ( !empty($action_param))
                 {
                     $url .= '/' . $action_param;
                 }
@@ -422,6 +434,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
         public function print_page_content($args = array(), $shortcode_content = '')
         {
+            /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
             $current_user_id = get_current_user_id();
             $page_slug = $this->get_slug();
@@ -570,6 +583,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                     "content-page-content.template.php"));
 
                 // Include paging navigation if necessary
+                /** @var CUAR_CustomerPagesAddOn $cp_addon */
                 $cp_addon = $this->plugin->get_addon('customer-pages');
                 $cp_addon->print_pagination($this, $content_query, $pagination_base, $current_page);
 
@@ -592,47 +606,74 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             }
         }
 
+        public function add_listing_contextual_toolbar_group($groups)
+        {
+            $current_page_id = get_queried_object_id();
+            if ($current_page_id!=$this->get_page_id()) return $groups;
+
+            ob_start();
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                array(
+                    'collections-button-group-' . $this->get_slug() . '.template.php',
+                    'collections-button-group.template.php'
+                ),
+                'templates'
+            ));
+            $group_html = ob_get_contents();
+            ob_end_clean();
+
+            $groups['collection-switcher'] = array(
+                'type' => 'raw',
+                'html' => $group_html
+            );
+
+            return $groups;
+        }
+
         /*------- SINGLE POST PAGES -------------------------------------------------------------------------------------*/
 
-        public function print_single_private_content_action_links()
+        public function add_single_private_content_contextual_toolbar_group($groups)
         {
-            do_action('cuar/private-content/view/before_action_links', $this);
-            do_action('cuar/private-content/view/before_action_links?post-type=' . $this->get_friendly_post_type(), $this);
+            // If not on a matching post type, we do nothing
+            if ( !is_singular($this->get_friendly_post_type())) return $groups;
+            if (get_post_type() != $this->get_friendly_post_type()) return $groups;
 
             $links = apply_filters('cuar/private-content/view/single-post-action-links', array());
             $links = apply_filters('cuar/private-content/view/single-post-action-links?post-type=' . $this->get_friendly_post_type(), $links);
 
-            include($this->plugin->get_template_file_path(
-                array(
-                    $this->get_page_addon_path(),
-                    CUAR_INCLUDES_DIR . '/core-classes'
-                ),
-                $this->get_slug() . '-single-post-action-links.template.php',
-                'templates',
-                'single-post-action-links.template.php'));
+            if ( !empty($links))
+            {
+                $groups['singular-content'] = array(
+                    'items'       => $links,
+                    'extra_class' => 'pull-right'
+                );
+            }
 
-            do_action('cuar/private-content/view/after_action_links', $this);
-            do_action('cuar/private-content/view/after_action_links?post-type=' . $this->get_friendly_post_type(), $this);
+            return $groups;
         }
 
-        public function print_single_private_content_action_links_filter($content)
+        public function print_single_private_content_header()
         {
-            // If theme is taking care of it, don't do anything
-            $theme_support = get_theme_support('customer-area.single-post-templates');
-            if (is_array($theme_support) && in_array($this->get_friendly_post_type(), $theme_support[0])) return $content;
+            do_action('cuar/private-content/view/before_header', $this);
+            do_action('cuar/private-content/view/before_header?post-type=' . $this->get_friendly_post_type(), $this);
 
-            // If not on a matching post type, we do nothing
-            if ( !is_singular($this->get_friendly_post_type())) return $content;
-            if (get_post_type() != $this->get_friendly_post_type()) return $content;
+            $template_file_path = $this->plugin->get_template_file_path(
+                $this->get_page_addon_path(),
+                $this->get_slug() . '-single-post-header.template.php',
+                'templates');
+            if ( !empty($template_file_path))
+            {
+                include($template_file_path);
+            }
 
-            ob_start();
+            do_action('cuar/private-content/view/before_additional_header', $this);
+            do_action('cuar/private-content/view/before_additional_header?post-type=' . $this->get_friendly_post_type(), $this);
 
-            $this->print_single_private_content_action_links();
+            $this->print_additional_private_content_header();
 
-            $out = ob_get_contents();
-            ob_end_clean();
-
-            return $out . $content;
+            do_action('cuar/private-content/view/after_header', $this);
+            do_action('cuar/private-content/view/after_header?post-type=' . $this->get_friendly_post_type(), $this);
         }
 
         public function print_single_private_content_footer()
@@ -640,10 +681,14 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             do_action('cuar/private-content/view/before_footer', $this);
             do_action('cuar/private-content/view/before_footer?post-type=' . $this->get_friendly_post_type(), $this);
 
-            include($this->plugin->get_template_file_path(
+            $template_file_path = $this->plugin->get_template_file_path(
                 $this->get_page_addon_path(),
                 $this->get_slug() . '-single-post-footer.template.php',
-                'templates'));
+                'templates');
+            if ( !empty($template_file_path))
+            {
+                include($template_file_path);
+            }
 
             do_action('cuar/private-content/view/before_additional_footer', $this);
             do_action('cuar/private-content/view/before_additional_footer?post-type=' . $this->get_friendly_post_type(), $this);
@@ -654,7 +699,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             do_action('cuar/private-content/view/after_footer?post-type=' . $this->get_friendly_post_type(), $this);
         }
 
-        public function print_single_private_content_footer_filter($content)
+        public function print_single_private_content_meta_filter($content)
         {
             // If theme is taking care of it, don't do anything
             $theme_support = get_theme_support('customer-area.single-post-templates');
@@ -665,14 +710,19 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             if (get_post_type() != $this->get_friendly_post_type()) return $content;
 
             ob_start();
-
-            $this->print_single_private_content_footer();
-
-            $out = ob_get_contents();
+            $this->print_single_private_content_header();
+            $before = ob_get_contents();
             ob_end_clean();
 
-            return $content . $out;
+            ob_start();
+            $this->print_single_private_content_footer();
+            $after = ob_get_contents();
+            ob_end_clean();
+
+            return $before . $content . $after;
         }
+
+        protected function print_additional_private_content_header() { }
 
         protected function print_additional_private_content_footer() { }
 
@@ -682,6 +732,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             if ( !$this->is_accessible_to_current_user()) return;
 
+            /** @var CUAR_PostOwnerAddOn $po_addon */
             $po_addon = $this->plugin->get_addon('post-owner');
             $current_user_id = get_current_user_id();
             $page_slug = $this->get_slug();
@@ -870,6 +921,8 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
          * @param CUAR_Settings $cuar_settings
          * @param array         $input
          * @param array         $validated
+         *
+         * @return array
          */
         public function validate_options($validated, $cuar_settings, $input)
         {
@@ -904,26 +957,27 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             parent::run_addon($plugin);
 
-            if ($this->get_friendly_post_type() != null)
-            {
+            if ($this->get_friendly_post_type() != null) {
                 add_filter("get_previous_post_where", array(&$this, 'disable_single_post_navigation'), 1, 3);
                 add_filter("get_next_post_where", array(&$this, 'disable_single_post_navigation'), 1, 3);
             }
 
             if ( !is_admin())
             {
-                add_filter('the_content', array(&$this, 'print_single_private_content_action_links_filter'), 2990);
+                add_filter('cuar/core/page/toolbar', array(&$this, 'add_single_private_content_contextual_toolbar_group'), 1400);
+                add_filter('cuar/core/page/toolbar', array(&$this, 'add_listing_contextual_toolbar_group'), 2000);
 
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())
                 {
-                    add_filter('the_content', array(&$this, 'print_single_private_content_footer_filter'), 3000);
+                    add_filter('cuar/core/the_content', array(&$this, 'print_single_private_content_meta_filter'), 20);
                 }
 
                 // Optionally output the latest files on the dashboard
                 if ($this->is_show_in_dashboard_enabled())
                 {
-                    add_action('cuar/core/page/before-content?slug=customer-dashboard', array(&$this, 'print_dashboard_content'), 10);
+                    $priority = apply_filters('cuar/core/page/dashboard-block-priority', 10, $this->get_slug());
+                    add_action('cuar/core/page/before-content?slug=customer-dashboard', array(&$this, 'print_dashboard_content'), $priority);
                 }
             }
         }
