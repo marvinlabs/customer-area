@@ -129,6 +129,10 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.0.2 () =
+
+* Fix: dashboard panels not hidden when option is unchecked
+
 = 7.0.1 (2016/06/08) =
 
 * Fix: Styles were applied outside of the WP Customer Area components on some themes.

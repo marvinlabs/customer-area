@@ -101,14 +101,14 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD);
 
-            return empty($value) ? true : $value;
+            return $value==true ? true : $value;
         }
 
         public function is_show_in_single_post_footer_enabled()
         {
             $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER);
 
-            return empty($value) ? true : $value;
+            return $value==true ? true : $value;
         }
 
         public function get_max_item_number_on_dashboard()
