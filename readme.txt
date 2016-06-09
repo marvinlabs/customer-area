@@ -132,6 +132,7 @@ feel free to fork the project and send us pull requests!
 = 7.0.2 () =
 
 * Fix: dashboard panels not hidden when option is unchecked
+* Fix: notifications not sent when owner is an individual user
 
 = 7.0.1 (2016/06/08) =
 
