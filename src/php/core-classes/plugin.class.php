@@ -905,7 +905,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
 
                 case 'jquery.fancytree': {
-                    wp_enqueue_script('jquery.fancytree', CUAR_PLUGIN_URL . 'libs/js/bower/fancytree/jquery.fancytree.min.js', array('jquery'),
+                    wp_enqueue_script('jquery.fancytree', CUAR_PLUGIN_URL . 'libs/js/bower/fancytree/jquery.fancytree.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-widget'),
                         $cuar_version);
                     break;
                 }

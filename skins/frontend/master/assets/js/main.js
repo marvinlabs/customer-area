@@ -79,9 +79,21 @@
                     var count = items.length - 1;
 
                     items.not("." + plusClass).each(function (i) {
+
+                        if(i == 0 || !items.eq(i-1).hasClass('just-hide')) {
+                            $('> .dropdown-menu', items.eq(i)).addClass('dropdown-menu-right');
+                            if(i > 0) {
+                                $('> .dropdown-menu', items.eq(i - 1)).removeClass('dropdown-menu-right');
+                            }
+                        }
+
                         if (container.width() - plus.width() < $(this).offset().left + $(this).width() - container.offset().left) {
                             items.eq(i).addClass('just-hide');
                             clone.eq(i).removeClass('hidden');
+
+                            if(i == items.length - 1 || !items.eq(i-1).hasClass('just-hide')) {
+                                $('> .dropdown-menu', items.eq(i-1)).addClass('dropdown-menu-right');
+                            }
                         } else {
                             items.eq(i).removeClass('just-hide');
                             clone.eq(i).addClass('hidden');
