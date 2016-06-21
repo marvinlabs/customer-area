@@ -459,7 +459,7 @@
 
                     // Initiate cookie session for filters buttons
                     var cookieName = $collectionContainer.data('type') + '-collection-layout';
-                    var cookieLayout = $.cookie(cookieName);
+                    var cookieLayout = Cookies.get(cookieName);
                     if (cookieLayout != 'list' && cookieLayout != 'grid') {
                         if ($collectionContainer.data('collection-layout') != null) {
                             cookieLayout = $collectionContainer.data('collection-layout');
@@ -499,7 +499,7 @@
 
                     // Bind layout mode buttons
                     $collectionToList.on('click', function () {
-                        $.cookie(cookieName, 'list');
+                        Cookies.set(cookieName, 'list');
                         $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                         if ($collectionContainer.hasClass('list')) {
                             return
@@ -512,7 +512,7 @@
                         });
                     });
                     $collectionToGrid.on('click', function () {
-                        $.cookie(cookieName, 'grid');
+                        Cookies.set(cookieName, 'grid');
                         $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                         if ($collectionContainer.hasClass('grid')) {
                             return
