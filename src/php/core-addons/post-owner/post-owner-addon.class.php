@@ -246,13 +246,20 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 return false;
             }
 
-            $owner_ids = $this->get_post_owner_ids($post_id);
-            $owner_type = $this->get_post_owner_type($post_id);
+            $owners = $this->get_post_owners($post_id);
 
-            return $this->get_legacy_owner_storage_directory($owner_ids,
-                $owner_type,
-                $absolute,
-                $create_dirs);
+            if (empty($owners)) return false;
+
+            foreach ($owners as $type => $ids) {
+                if ( !empty($ids)) {
+                    return $this->get_legacy_owner_storage_directory($ids,
+                        $type,
+                        $absolute,
+                        $create_dirs);
+                }
+            }
+
+            return false;
         }
 
         /**
