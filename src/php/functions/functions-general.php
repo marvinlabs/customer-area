@@ -77,8 +77,7 @@ function cuar_is_customer_area_page($post_id = 0, $page_slug = null)
     /** @var CUAR_CustomerPagesAddOn $cp_addon */
     $cp_addon = cuar_addon('customer-pages');
 
-    if ($page_slug == null)
-    {
+    if ($page_slug == null) {
         return $cp_addon->is_customer_area_page($post_id);
     }
 
@@ -105,7 +104,7 @@ function cuar_is_customer_area_page($post_id = 0, $page_slug = null)
 function cuar_is_customer_area_private_content($post = null)
 {
     $cuar_plugin = cuar();
-    $private_types = array_merge($cuar_plugin->get_content_post_types(), $cuar_plugin->get_container_post_types());
+    $private_types = $cuar_plugin->get_private_post_types();
 
     return in_array(get_post_type($post), $private_types);
 }
