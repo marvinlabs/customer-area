@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
 Tested up to:       4.5.2
-Stable tag:         7.0.4
+Stable tag:         7.0.5
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,16 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.0.5 (2016/06/23) =
+
+* Fix: ACF fields where showing up on all wizard panels
+* Fix: Better ACF field templates on single pages
+* Fix: Responsive mode on collection layout
+* Fix: Select2 dropdowns not displaying correctly
+* Fix: Update some outdated libs (fancytree, cookies, bootstrap-slider)
+* Fix: WP Customer Area menu is printed on external widgets sometimes
+* Fix: Loading indicator not shown in the file attachments manager (frontend only)
 
 = 7.0.4 (2016/06/17) =
 

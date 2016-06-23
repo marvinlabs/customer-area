@@ -14,7 +14,7 @@ $page_classes = array('cuar-page-' . $this->page_description['slug']);
 if ($this->has_page_sidebar()) $page_classes[] = "cuar-page-with-sidebar";
 else $page_classes[] = "cuar-page-without-sidebar";
 
-$content_class = $this->page_description['slug'] == 'customer-dashboard' ? ' cuar-customer-dashboard-home' : ' cuar-customer-dashboard-page';
+$content_class = $this->page_description['slug'];
 $content_class = $this->has_page_sidebar() ? $content_class . ' table-layout' : $content_class;
 
 $sidebar_attributes = apply_filters('cuar/core/page/sidebar-attributes', array(

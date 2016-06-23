@@ -484,9 +484,9 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             echo '</form>';
         }
 
-        public function print_submit_button($field_label)
+        public function print_submit_button($field_label, $step_id)
         {
-            do_action('cuar/private-content/edit/before_submit_button', $this);
+            do_action('cuar/private-content/edit/before_submit_button', $this, $step_id);
 
             /** @noinspection PhpUnusedLocalVariableInspection */
             $field_name = 'cuar_do_register';
@@ -496,7 +496,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 'edit-content-form-field-submit.template.php',
                 'templates'));
 
-            do_action('cuar/private-content/edit/after_submit_button', $this);
+            do_action('cuar/private-content/edit/after_submit_button', $this, $step_id);
         }
 
         public function print_title_field($label, $help_text = '')

@@ -83,21 +83,6 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             }
         }
 
-        /**
-         * Main WPCA content filter
-         * Never use the default WP filter called `the_content`,
-         * use `cuar/core/the_content` instead !
-         *
-         * @param $content
-         *
-         * @return mixed|void
-         */
-        public function define_main_content_filter($content)
-        {
-            return apply_filters('cuar/core/the_content', $content);
-        }
-
-
         public function set_default_options($defaults)
         {
             $defaults = parent::set_default_options($defaults);
@@ -790,16 +775,10 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             }
 
             // Only on single private content pages
-            $content_types = $this->plugin->get_content_post_types();
-            $container_types = $this->plugin->get_container_post_types();
+            $post_id = get_the_ID();
+            if ( !cuar_is_customer_area_private_content($post_id)) return $content;
 
-            if ((is_singular($content_types) && in_array(get_post_type(), $content_types))
-                || (is_singular($container_types) && in_array(get_post_type(), $container_types))
-            ) {
-                $content = $this->get_main_navigation_menu() . $content;
-            }
-
-            return $content;
+            return $this->get_main_navigation_menu() . $content;
         }
 
         /**
@@ -816,8 +795,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 return $content;
             }
 
-            // Only on customer area pages
-            if ( !$this->is_customer_area_page()) {
+            $post_id = get_the_ID();
+            if ( !cuar_is_customer_area_page($post_id)) {
                 return $content;
             }
 
@@ -841,17 +820,14 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 return $out;
             }
 
-            if ( !cuar_is_customer_area_page(get_queried_object_id()) && !cuar_is_customer_area_private_content(get_the_ID())) {
+            $post_id = get_the_ID();
+            if ( !cuar_is_customer_area_page($post_id) && !cuar_is_customer_area_private_content($post_id)) {
                 return $out;
             }
 
             /** @noinspection PhpUnusedLocalVariableInspection */
             $toolbar_groups = apply_filters('cuar/core/page/toolbar', array());
             if ( !empty($toolbar_groups)) {
-
-                // TODO Order groups by priority
-
-
                 ob_start();
 
                 include($this->plugin->get_template_file_path(
@@ -870,6 +846,28 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             }
 
             return $out;
+        }
+
+        /**
+         * Main WPCA content filter
+         *
+         * Never use the default WP filter called `the_content`,
+         * use `cuar/core/the_content` instead !
+         *
+         * @param $content
+         *
+         * @return mixed|void
+         */
+        public function define_main_content_filter($content)
+        {
+            $post_id = get_the_ID();
+            if ( !$this->is_customer_area_page($post_id)
+                && !cuar_is_customer_area_private_content($post_id)
+            ) {
+                return $content;
+            }
+
+            return apply_filters('cuar/core/the_content', $content);
         }
 
         /**
@@ -943,16 +941,11 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
          */
         public function wrap_content_into_container($content)
         {
-            if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())
-            ) {
-                return '<div id="cuar-js-content-container" class="cuar-content-container cuar-css-wrapper">' . $content . '</div>';
-            }
-
-            return $content;
+            return '<div id="cuar-js-content-container" class="cuar-content-container cuar-css-wrapper">' . $content . '</div>';
         }
 
         /**
-         * Wrap the WP Customer Area generated content into an entry container, always
+         * Wrap the WP Customer Area generated content into an entry container, for singular view content
          *
          * @param string $content
          *
@@ -960,11 +953,10 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
          */
         public function wrap_content_into_entry_container($content)
         {
-            if (cuar_is_customer_area_private_content(get_the_ID()) && !empty($content)) {
-                return '<div class="cuar-single-entry">' . $content . '</div>';
-            }
+            $post_id = get_the_ID();
+            if ( !cuar_is_customer_area_private_content($post_id)) return $content;
 
-            return $content;
+            return '<div class="cuar-single-entry">' . $content . '</div>';
         }
 
         public function get_current_menu_item_id()
