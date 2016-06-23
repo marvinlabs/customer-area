@@ -26,10 +26,7 @@
         <a href="#" class="btn btn-default btn-xs cuar-js-remove-action" title="<?php esc_attr_e('Remove', 'cuar'); ?>">
             <span class="fa fa-trash"></span> <?php esc_attr_e('Remove', 'cuar'); ?></a>
     </td>
-    <td class="cuar-js-progress" style="display: none;">
-        <span class="cuar-progress">
-            <span class="determinate"></span>
-            <span class="indeterminate"></span>
-        </span>
+    <td class="text-right cuar-js-progress" style="display: none;">
+        <span class="cuar-loading-indicator"></span>
     </td>
 </tr>
