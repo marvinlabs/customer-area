@@ -4,8 +4,8 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
-Tested up to:       4.5.2
-Stable tag:         7.0.5
+Tested up to:       4.5.3
+Stable tag:         7.0.6
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,27 +85,21 @@ upload a file (below the content box), set the owner of that file, publish, and 
 
 == Screenshots ==
 
-01. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
-expands the panel. Currently shown is the "Invoices" category.
-02. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
-expands the panel. Currently shown is the "Product Samples" category.
-03. The detail page for a private file. You can see the title, description and download links. 
-04. The detail page for a private file. Same page as in the previous screenshot, except that we have scrolled down
-to show that you can also comment on a private file, you can then have a discussion with your customer about that
-particular file
-05. The private file edition page. You can have a title, description, attach a file and set the owner easily, as in any
-other WordPress admin screen
-06. The main settings screen.
-07. The private files settings screen.
-08. The login screen when the login form add-on is enabled.
-09. The lost password screen when the login form add-on is enabled. Also shows the integration with the Really Simple
-CAPTCHA plugin.
-10. The registration screen when the login form add-on is enabled. Also shows the integration with the Really Simple
-CAPTCHA plugin.
-11. Send a notification to your customer when you create a new private file (see top-right box). You need to enable
-the notifications add-on.
-12. The settings screen when the notifications add-on is enabled.
-13. The rest of the settings screen when the notifications add-on is enabled.
+01. The dashboard lists all the private content assigned to the user.
+02. A private file shows secured download links to attachements.
+03. The plugin is available with two skins to allow better integration with most themes: dark and light.
+04. Detailled view for collections of private content allow showing more information.
+05. Grid view for collections of private content allow viewing more items.
+06. User account page (a form to edit that information is also provided)
+07. A project can gather any type of private content and show it to all the project team members.
+08. An invoice
+09. The search page allows finding quickly content assigned to yourself.
+10. Task lists provide a convenient way to track progress.
+11. Conversations allow creating discussions between one or more users.
+12. The login form is embedded within the website
+13. Creating a private file can be allowed from the website directly.
+14. This is how to choose an owner for the private content.
+15. Uploading attachments to a private file is as easy as drag'n'drop.
 
 == Frequently Asked Questions ==
 
@@ -128,6 +122,10 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.0.6 (2016/06/27) =
+
+* Fix: Problems in front-office publishing when a select2 field was close to the bottom of the wizard form
 
 = 7.0.5 (2016/06/23) =
 
