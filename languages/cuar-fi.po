@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2016-06-03 14:36:33+00:00\n"
+"POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
 "PO-Revision-Date: 2016-05-20 18:09+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Finnish (http://www.transifex.com/wp-translations/wp-customer-"
@@ -25,6 +25,37 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
+
+#: skins/frontend/master/cuar-functions.php:358
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
+msgid "Account details"
+msgstr "Tunnuksien asetukset"
+
+#: skins/frontend/master/cuar-functions.php:393
+#, fuzzy
+msgid "View profile"
+msgstr "Tarkastele privaattitiedostoja"
+
+#: skins/frontend/master/cuar-functions.php:394
+#, fuzzy
+msgid "Manage account"
+msgstr "Omat tunnukset"
+
+#: skins/frontend/master/cuar-functions.php:395
+#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
+#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
+msgid "Logout"
+msgstr "Kirjaudu ulos"
+
+#: skins/frontend/master/cuar-functions.php:403
+msgid "Register"
+msgstr ""
+
+#: skins/frontend/master/cuar-functions.php:404
+#: src/php/core-addons/log/log-addon.class.php:164
+msgid "Login"
+msgstr "Kirjaudu"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:38
 msgid "Address Manager"
@@ -897,18 +928,13 @@ msgid "Container Owner"
 msgstr "Söiliön omistaja"
 
 #: src/php/core-addons/container-owner/container-owner-addon.class.php:124
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:751
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:758
 msgid "You are not authorized to view this page"
 msgstr "Sinulla ei ole oikeutta nähdä tätä sivua"
 
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:47
 msgid "Account - Details"
 msgstr "Tunnukset - Asetukset"
-
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
-msgid "Account details"
-msgstr "Tunnuksien asetukset"
 
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:57
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:51
@@ -957,7 +983,7 @@ msgstr "Omat tunnukset"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
-#: src/php/core-classes/addon-container-page.class.php:839
+#: src/php/core-classes/addon-container-page.class.php:843
 #: src/php/core-classes/addon-content-page.class.php:870
 msgid "Dashboard"
 msgstr "Hallintapaneeli"
@@ -985,11 +1011,6 @@ msgstr ""
 msgid "customer-area"
 msgstr "customer-area"
 
-#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
-#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
-msgid "Logout"
-msgstr "Kirjaudu ulos"
-
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
@@ -998,57 +1019,57 @@ msgstr ""
 "uloskirjautumissivulle"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1007
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:999
 msgid "Customer Pages"
 msgstr "Asiakassivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:134
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:119
 msgid "Some pages of the customer area have not yet been created."
 msgstr "Joitakin asiakasalueen sivuja ei ole vielä luotu."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:151
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:136
 msgid "The navigation menu for the customer area has not been created."
 msgstr "Asiakasakueen navigaatiovalikkoa ei ole vielä luotu."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:162
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:147
 #: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
 msgid "Pages"
 msgstr "Sivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:163
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:148
 msgid "Pages of the Customer Area"
 msgstr "Asiakasalueen sivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:675
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:660
 msgid "WP Customer Area Menu"
 msgstr "WP Customer Area valikko"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:679
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:664
 msgid "Could not create the menu. %s"
 msgstr "Valikkoa ei voitu luoda. %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:736
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:721
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "Luotiin valikko: <a href=\"%s\">tarkastele valikkoa</a>"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:998
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
 msgid "Site Pages"
 msgstr "Sivuston sivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1033
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1102
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1025
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1094
 msgid "Reset"
 msgstr "Tyhjennä"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1039
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1031
 msgid "Reset all pages &raquo;"
 msgstr "Tyhjennä kaikki sivut &raquo;"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1042
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1034
 msgid "Delete all existing pages and recreate them."
 msgstr "Poista ja uudelleenluo kaikki nykyiset sivut."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1043
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1035
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
@@ -1056,26 +1077,26 @@ msgstr ""
 "Oletko varma, että haluat poistaa ja uudelleenluoda kaikki nykyiset sivut? "
 "(Toimintoa ei voi peruuttaa.)"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1045
 msgid "Main Navigation Menu"
 msgstr "Päänavigaatiovalikko"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
 msgid "WP Customer Area pages"
 msgstr "WP Customer Area:n sivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1069
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
 msgstr ""
 "Lisää asiakasalueen navigaatiovalikko automaattisesti asiakasalueen sivuille."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1073
 msgid "Private content single pages"
 msgstr "Privaatit yksittäissivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1089
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
@@ -1083,15 +1104,15 @@ msgstr ""
 "Lisää asiakasalueen navigaatiovalikko automaattisesti privaateille "
 "yksittäissivuille."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1108
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1100
 msgid "Recreate menu"
 msgstr "Uudelleenluo valikko"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1103
 msgid "Delete and recreate the main navigation menu."
 msgstr "Poista ja uudelleenluo navigaatiovalikko."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1112
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
@@ -1099,45 +1120,45 @@ msgstr ""
 "Oletko varma, että haluat poistaa ja uudelleenluoda päänavigaatiovalikon? "
 "(Toimintoa ei voida peruuttaa.)"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1119
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
 msgid "Permalinks"
 msgstr "Pysyväislinkit"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1126
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1118
 msgid "Category Archive"
 msgstr "Kategoria-arkisto"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1144
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1136
 msgid "Date Archive"
 msgstr "Päivamääräarkisto"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1161
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1153
 msgid "Author Archive"
 msgstr "Kirjoittaja-arkisto"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1178
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1170
 msgid "Update Content"
 msgstr "Päivitä sisältö"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1187
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1179
 msgid "Slug that is used in the URL to update existing private content"
 msgstr "Slugi, jota käytetään nykyisen privaattisisällön päivitys-URL:issa"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1194
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1186
 msgid "Delete Content"
 msgstr "Poista sisältö"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1203
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1195
 msgid "Slug that is used in the URL to delete existing private content"
 msgstr "Slugi, jota käytetään privaattisisällön poistettamis-URL:issa "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1217
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1209
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
 msgstr ""
 "Versiosta 4.0.0 lähtien Customer Area toteuttaa navigoinnin valikkoja "
 "käyttäen."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1229
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1221
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
@@ -1147,9 +1168,9 @@ msgstr ""
 "näyttämiseksi asiakkaille. Luo kyseiset sivut täällä tai vaihtoehtoisesti "
 "osoita olemassa olevat sivut."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1295
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1329
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1396
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1388
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
@@ -1157,15 +1178,15 @@ msgstr ""
 "Joitakin asiakasalueen sivuja on luotu tai poistettu. Asiakasalueen "
 "navigaatiovalikko pitää päivittää."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1325
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1317
 msgid "The following pages have been created: %s"
 msgstr "Seuraavat sivut luotiin: %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1332
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1324
 msgid "There was no missing page that could be created."
 msgstr "Ei puuttuvia sivuja, sivuja ei luotu."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1371
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1363
 msgid ""
 "Some pages in your site seem to contain Customer Area shortcodes but are not "
 "registered in the Customer Area pages settings."
@@ -1173,7 +1194,7 @@ msgstr ""
 "Jotkin sisälltösivut sisältävät WP Customer Area -lyhytkoodeja, mutta niitä "
 "ei ole rekisteröity asiakastietosivuiksi WP Customer Area:n asetuksissa."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1391
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1383
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] "%s: sivu on poistettu"
@@ -1724,10 +1745,6 @@ msgstr "WP Customer Area - Lokit"
 msgid "Logs"
 msgstr "Lokit"
 
-#: src/php/core-addons/log/log-addon.class.php:164
-msgid "Login"
-msgstr "Kirjaudu"
-
 #: src/php/core-addons/log/log-addon.class.php:165
 #: src/php/core-addons/log/log-addon.class.php:482
 msgid "Content viewed"
@@ -1900,12 +1917,12 @@ msgstr "Välillä"
 msgid "Post Owner"
 msgstr "Viestin omistaja"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:482
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:489
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:496
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:792
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:799
 msgid "User - %s"
 msgstr "Käyttäjä - %s"
 
@@ -2734,22 +2751,22 @@ msgstr "Korjaa mahdolliset ongelmat"
 msgid "The shortcode <code>[%1$s]</code> is missing required parameter: %2$s"
 msgstr "Lyhytkoodista <code>[%1$s]</code> puuttuu vaadittuja parametreja: %2$s"
 
-#: src/php/core-classes/addon-container-page.class.php:803
+#: src/php/core-classes/addon-container-page.class.php:807
 #: src/php/core-classes/addon-content-page.class.php:834
 msgid "Frontend Integration"
 msgstr "Käyttöliittymäintegraatio"
 
-#: src/php/core-classes/addon-container-page.class.php:815
+#: src/php/core-classes/addon-container-page.class.php:819
 #: src/php/core-classes/addon-content-page.class.php:846
 msgid "Show after post"
 msgstr "Näytä viestin jälkeen"
 
-#: src/php/core-classes/addon-container-page.class.php:824
+#: src/php/core-classes/addon-container-page.class.php:828
 #: src/php/core-classes/addon-content-page.class.php:855
 msgid "Show additional information after the post in the single post view."
 msgstr "Näytä lisätietoja viestin näkymässä."
 
-#: src/php/core-classes/addon-container-page.class.php:826
+#: src/php/core-classes/addon-container-page.class.php:830
 #: src/php/core-classes/addon-content-page.class.php:857
 msgid ""
 "You can disable this if you have your own theme template file for single "
@@ -2759,12 +2776,12 @@ msgstr ""
 "teematemplaattitiedosto yksittäisviesteille. Etsittävän tai luotavan "
 "teematiedoston pitäisi olla %s."
 
-#: src/php/core-classes/addon-container-page.class.php:847
+#: src/php/core-classes/addon-container-page.class.php:851
 #: src/php/core-classes/addon-content-page.class.php:878
 msgid "Show recent content on the dashboard."
 msgstr "Näytä viimeisin sisältö hallintapaneelissa."
 
-#: src/php/core-classes/addon-container-page.class.php:861
+#: src/php/core-classes/addon-container-page.class.php:865
 #: src/php/core-classes/addon-content-page.class.php:893
 msgid ""
 "Define how many items to allow on the dashboard page. -1 will show all items."
@@ -2772,7 +2789,7 @@ msgstr ""
 "Valitse, kuinka monta kohtaa näytetään hallintapaneelisivulla. -1 näyttää "
 "kaikki kohdat."
 
-#: src/php/core-classes/addon-container-page.class.php:942
+#: src/php/core-classes/addon-container-page.class.php:946
 msgid "Slug that is used in the URL for archives of the taxonomy: "
 msgstr "Slugi, jota käytetään taksonomia-arkistojen URL:issa:"
 
@@ -4620,39 +4637,39 @@ msgid ""
 "with WordPress."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:107
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:92
 msgctxt "Private content category archive slug"
 msgid "category"
 msgstr "category"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:109
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:94
 msgctxt "Private content date archive slug"
 msgid "archive"
 msgstr "archive"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:110
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:95
 msgctxt "Private content author archive slug"
 msgid "created-by"
 msgstr "created-by"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:112
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:97
 msgctxt "Private content update slug"
 msgid "update"
 msgstr "update"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:113
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:98
 msgctxt "Private content delete slug"
 msgid "delete"
 msgstr "delete"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:409
-#: src/php/core-classes/addon-container-page.class.php:404
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:394
+#: src/php/core-classes/addon-container-page.class.php:408
 #: src/php/core-classes/addon-content-page.class.php:453
 msgctxt "pagination_parameter_name (should not be \"page\")"
 msgid "page-num"
 msgstr "page-num"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:672
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:657
 msgctxt ""
 "Localised slug for the main navigation menu (small caps version of the \"WP "
 "Customer Area Menu\" translation)"

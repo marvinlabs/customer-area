@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2016-06-03 14:36:33+00:00\n"
+"POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
 "PO-Revision-Date: 2016-05-20 18:09+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/wp-translations/wp-"
@@ -25,6 +25,37 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
+
+#: skins/frontend/master/cuar-functions.php:358
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
+msgid "Account details"
+msgstr "Detalles de la cuenta"
+
+#: skins/frontend/master/cuar-functions.php:393
+#, fuzzy
+msgid "View profile"
+msgstr "Ver archivos privados"
+
+#: skins/frontend/master/cuar-functions.php:394
+#, fuzzy
+msgid "Manage account"
+msgstr "Mi cuenta"
+
+#: skins/frontend/master/cuar-functions.php:395
+#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
+#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: skins/frontend/master/cuar-functions.php:403
+msgid "Register"
+msgstr ""
+
+#: skins/frontend/master/cuar-functions.php:404
+#: src/php/core-addons/log/log-addon.class.php:164
+msgid "Login"
+msgstr "Iniciar sesión"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:38
 msgid "Address Manager"
@@ -849,18 +880,13 @@ msgid "Container Owner"
 msgstr "Propietario de la entrada"
 
 #: src/php/core-addons/container-owner/container-owner-addon.class.php:124
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:751
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:758
 msgid "You are not authorized to view this page"
 msgstr "No está autorizado para visualizar este contenido"
 
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:47
 msgid "Account - Details"
 msgstr "Cuenta - Detalles"
-
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
-msgid "Account details"
-msgstr "Detalles de la cuenta"
 
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:57
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:51
@@ -910,7 +936,7 @@ msgstr "Mi cuenta"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
-#: src/php/core-classes/addon-container-page.class.php:839
+#: src/php/core-classes/addon-container-page.class.php:843
 #: src/php/core-classes/addon-content-page.class.php:870
 msgid "Dashboard"
 msgstr "Escritorio"
@@ -938,11 +964,6 @@ msgstr ""
 msgid "customer-area"
 msgstr "Customer Area"
 
-#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
-#: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
-msgid "Logout"
-msgstr "Cerrar sesión"
-
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
@@ -951,57 +972,57 @@ msgstr ""
 "de sesión"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1007
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:999
 msgid "Customer Pages"
 msgstr "Página del Cliente"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:134
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:119
 msgid "Some pages of the customer area have not yet been created."
 msgstr "Aún no se han creado algunas páginas del área de clientes."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:151
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:136
 msgid "The navigation menu for the customer area has not been created."
 msgstr "No se ha creado el menú de navegación del área de clientes."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:162
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:147
 #: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
 msgid "Pages"
 msgstr "Páginas"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:163
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:148
 msgid "Pages of the Customer Area"
 msgstr "Páginas de Customer Area"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:675
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:660
 msgid "WP Customer Area Menu"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:679
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:664
 msgid "Could not create the menu. %s"
 msgstr "No se pudo crear el menú. %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:736
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:721
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "El menú ha sido creado: <a href=\"%s\">ver menú</a>"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:998
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
 msgid "Site Pages"
 msgstr "Páginas del sitio"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1033
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1102
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1025
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1094
 msgid "Reset"
 msgstr "Restablecer"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1039
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1031
 msgid "Reset all pages &raquo;"
 msgstr "Restablecer todas las páginas &raquo;"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1042
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1034
 msgid "Delete all existing pages and recreate them."
 msgstr "Eliminar todas las páginas existentes y volver a crearlas."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1043
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1035
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
@@ -1009,15 +1030,15 @@ msgstr ""
 "¿Estas seguro que quieres eliminar todas las páginas existentes y volver a "
 "crearlas? (esta operación no se puede deshacer)"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1045
 msgid "Main Navigation Menu"
 msgstr "Menu de navigación principal"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
 msgid "WP Customer Area pages"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1069
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
@@ -1025,11 +1046,11 @@ msgstr ""
 "Imprima automáticamente el menú Customer Area en páginas de contenido "
 "privadas individuales."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1073
 msgid "Private content single pages"
 msgstr "Categorías de archivos privados"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1089
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
@@ -1037,15 +1058,15 @@ msgstr ""
 "Imprima automáticamente el menú Customer Area en páginas de contenido "
 "privadas individuales."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1108
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1100
 msgid "Recreate menu"
 msgstr "Crear de nuevo el menú"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1103
 msgid "Delete and recreate the main navigation menu."
 msgstr "Eliminar y volver a crear el menú principal de navegación."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1112
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
@@ -1053,47 +1074,47 @@ msgstr ""
 "¿Seguro que desea volver a crear el menú de navegación principal? (esta "
 "operación no se puede deshacer)"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1119
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
 msgid "Permalinks"
 msgstr "Links permanentes %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1126
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1118
 msgid "Category Archive"
 msgstr "Categoría"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1144
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1136
 msgid "Date Archive"
 msgstr "Archivos"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1161
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1153
 msgid "Author Archive"
 msgstr "Archivos de autor"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1178
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1170
 msgid "Update Content"
 msgstr "Actualizar contenido"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1187
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1179
 msgid "Slug that is used in the URL to update existing private content"
 msgstr ""
 "Slug que se utiliza en la URL para actualizar el contenido privado existente "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1194
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1186
 msgid "Delete Content"
 msgstr "Eliminar contenido"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1203
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1195
 msgid "Slug that is used in the URL to delete existing private content"
 msgstr ""
 "Slug que se utiliza en la URL para borrar el contenido privado existente "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1217
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1209
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
 msgstr ""
 "Desde la versión 4.0.0, Customer Area se encarga de navegación utilizando "
 "menús."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1229
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1221
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
@@ -1103,9 +1124,9 @@ msgstr ""
 "contenido de sus clientes. Cree esas páginas desde aquí o indique las ya "
 "existentes."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1295
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1329
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1396
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1388
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
@@ -1113,15 +1134,15 @@ msgstr ""
 "Algunas páginas del área de clientes se han creado o eliminado. El menú de "
 "navegación del área cliente necesita ser actualizado."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1325
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1317
 msgid "The following pages have been created: %s"
 msgstr "Las siguientes páginas han sido creadas: %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1332
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1324
 msgid "There was no missing page that could be created."
 msgstr "No existe ninguna página que pueda crearse."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1371
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1363
 msgid ""
 "Some pages in your site seem to contain Customer Area shortcodes but are not "
 "registered in the Customer Area pages settings."
@@ -1129,7 +1150,7 @@ msgstr ""
 "Algunas páginas del sitio parecen contener shortcodes de Customer Area pero "
 "no están registrados en los ajustes de las páginas de Customer Area"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1391
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1383
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] ""
@@ -1678,10 +1699,6 @@ msgstr ""
 msgid "Logs"
 msgstr "Registros"
 
-#: src/php/core-addons/log/log-addon.class.php:164
-msgid "Login"
-msgstr "Iniciar sesión"
-
 #: src/php/core-addons/log/log-addon.class.php:165
 #: src/php/core-addons/log/log-addon.class.php:482
 msgid "Content viewed"
@@ -1843,12 +1860,12 @@ msgstr ""
 msgid "Post Owner"
 msgstr "Propietario de la entrada"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:482
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:489
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:496
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:792
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:799
 msgid "User - %s"
 msgstr "Usuario - %s"
 
@@ -2656,23 +2673,23 @@ msgstr ""
 msgid "The shortcode <code>[%1$s]</code> is missing required parameter: %2$s"
 msgstr ""
 
-#: src/php/core-classes/addon-container-page.class.php:803
+#: src/php/core-classes/addon-container-page.class.php:807
 #: src/php/core-classes/addon-content-page.class.php:834
 msgid "Frontend Integration"
 msgstr "Integración Parte Pública"
 
-#: src/php/core-classes/addon-container-page.class.php:815
+#: src/php/core-classes/addon-container-page.class.php:819
 #: src/php/core-classes/addon-content-page.class.php:846
 msgid "Show after post"
 msgstr "Mostrar después de la entrada"
 
-#: src/php/core-classes/addon-container-page.class.php:824
+#: src/php/core-classes/addon-container-page.class.php:828
 #: src/php/core-classes/addon-content-page.class.php:855
 msgid "Show additional information after the post in the single post view."
 msgstr ""
 "Mostrar información adicional después del post en la vista de un sólo post."
 
-#: src/php/core-classes/addon-container-page.class.php:826
+#: src/php/core-classes/addon-container-page.class.php:830
 #: src/php/core-classes/addon-content-page.class.php:857
 msgid ""
 "You can disable this if you have your own theme template file for single "
@@ -2682,12 +2699,12 @@ msgstr ""
 "para páginas de entradas. El archivo de tema para buscar o crear debería "
 "llamarse: %s."
 
-#: src/php/core-classes/addon-container-page.class.php:847
+#: src/php/core-classes/addon-container-page.class.php:851
 #: src/php/core-classes/addon-content-page.class.php:878
 msgid "Show recent content on the dashboard."
 msgstr "Mostrar los contenidos recientes en el escritorio"
 
-#: src/php/core-classes/addon-container-page.class.php:861
+#: src/php/core-classes/addon-container-page.class.php:865
 #: src/php/core-classes/addon-content-page.class.php:893
 msgid ""
 "Define how many items to allow on the dashboard page. -1 will show all items."
@@ -2695,7 +2712,7 @@ msgstr ""
 "Establece el número de elementos que se mostrarán en cada sección \"latest\" "
 "del escritorio (-1 mostrara todos los elementos)."
 
-#: src/php/core-classes/addon-container-page.class.php:942
+#: src/php/core-classes/addon-container-page.class.php:946
 msgid "Slug that is used in the URL for archives of the taxonomy: "
 msgstr "Slug que se utiliza en la dirección URL de archivos de la taxonomía:"
 
@@ -4541,39 +4558,39 @@ msgid ""
 "with WordPress."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:107
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:92
 msgctxt "Private content category archive slug"
 msgid "category"
 msgstr "Catégorias"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:109
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:94
 msgctxt "Private content date archive slug"
 msgid "archive"
 msgstr "Archivos"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:110
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:95
 msgctxt "Private content author archive slug"
 msgid "created-by"
 msgstr "creado por"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:112
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:97
 msgctxt "Private content update slug"
 msgid "update"
 msgstr "Actualizar"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:113
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:98
 msgctxt "Private content delete slug"
 msgid "delete"
 msgstr "borrar"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:409
-#: src/php/core-classes/addon-container-page.class.php:404
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:394
+#: src/php/core-classes/addon-container-page.class.php:408
 #: src/php/core-classes/addon-content-page.class.php:453
 msgctxt "pagination_parameter_name (should not be \"page\")"
 msgid "page-num"
 msgstr "num-pagina"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:672
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:657
 msgctxt ""
 "Localised slug for the main navigation menu (small caps version of the \"WP "
 "Customer Area Menu\" translation)"
