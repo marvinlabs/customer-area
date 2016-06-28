@@ -125,7 +125,7 @@ feel free to fork the project and send us pull requests!
 
 = 7.0.7 (2016/06/28) =
 
-* Fix: redirection to the wrong page after deleting content from the front end
+* Fix: redirection to the wrong page after deleting or updating content from the front end
 
 = 7.0.6 (2016/06/27) =
 
