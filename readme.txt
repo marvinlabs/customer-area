@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
 Tested up to:       4.5.3
-Stable tag:         7.0.7
+Stable tag:         7.0.8
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,13 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.0.8 (2016/06/30) =
+
+* Fix: several issues with the sidebar in Firefox and Internet Explorer
+* Fix: rich editor popovers not shown properly
+* Fix: dates where sometimes not properly internationalized
+* Fix: some minor style fixes here and there
 
 = 7.0.7 (2016/06/28) =
 
