@@ -345,9 +345,9 @@
 
                 // Init Bootstrap Popovers, if present
                 if ($.isFunction($.fn.popover)) {
-                    var Popovers = $("[data-toggle=popover]", $wrapperCSS);
+                    var Popovers = $("[data-toggle=popover]", $wrapperJS);
                     if (Popovers.length) {
-                        Popovers.popover();
+                        Popovers.popover({container: wrapperJS});
                     }
                 }
 

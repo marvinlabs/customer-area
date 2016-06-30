@@ -11,7 +11,12 @@ jQuery(document).ready(function ($) {
             ['insert', ['table', 'hr', 'picture', 'link', 'video']],
             ['view', ['codeview', 'fullscreen']],
             ['tools', ['undo', 'redo', 'help']]
-        ]
+        ],
+        callbacks: {
+            onInit: function() {
+                $('body > .note-popover').appendTo("#cuar-js-content-container");
+            }
+        }
     };
 
     if (typeof cuar != 'undefined') {

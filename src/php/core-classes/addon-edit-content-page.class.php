@@ -137,7 +137,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             if (true === $result && empty($this->form_errors)) {
                 // If we still have some wizard steps to go, redirect to the next step
                 $step_count = $this->get_wizard_step_count();
-                if ($step_count > 1) {
+                if ($action != 'delete' && $action != 'update' && $step_count > 1) {
                     $current_step = $this->get_current_wizard_step();
                     if ($current_step < $step_count - 1) {
                         wp_redirect($this->get_wizard_step_url($this->get_current_post_id(), $current_step + 1));
