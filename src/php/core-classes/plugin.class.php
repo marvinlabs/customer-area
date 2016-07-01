@@ -44,6 +44,9 @@ if ( !class_exists('CUAR_Plugin')) :
         /** @var CUAR_Logger */
         private $logger;
 
+        /** @var CUAR_AddonManager */
+        private $addon_manager;
+
         public function __construct()
         {
             $this->message_center = new CUAR_MessageCenter(array('wpca-status', 'wpca-setup', 'wpca'));
@@ -51,12 +54,14 @@ if ( !class_exists('CUAR_Plugin')) :
             $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
             $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
             $this->logger = new CUAR_Logger();
+            $this->addon_manager = new CUAR_AddonManager($this->message_center);
         }
 
         public function run()
         {
             $this->message_center->register_hooks();
             $this->activation_manager->register_hooks();
+            $this->addon_manager->register_hooks();
 
             add_action('plugins_loaded', array(&$this, 'load_textdomain'), 3);
             add_action('plugins_loaded', array(&$this, 'load_settings'), 5);
@@ -545,45 +550,43 @@ if ( !class_exists('CUAR_Plugin')) :
             do_action('cuar/core/addons/before-init', $this);
             do_action('cuar/core/addons/init', $this);
             do_action('cuar/core/addons/after-init', $this);
-
-            // Check add-on versions
-            if (is_admin()) {
-                $this->check_addons_required_versions();
-            }
         }
 
-        /**
-         * Register an add-on in the plugin
-         *
-         * @param CUAR_AddOn $addon
-         */
+        public function addon_manager() {
+            return $this->addon_manager;
+        }  
+
         public function register_addon($addon)
         {
-            $this->registered_addons[$addon->addon_id] = $addon;
+            $this->addon_manager->register_addon($addon);
         }
 
-        /**
-         * Get registered add-ons
-         */
         public function get_registered_addons()
         {
-            return $this->registered_addons;
+            return $this->addon_manager->get_registered_addons();
         }
 
         public function tag_addon_as_commercial($addon_id)
         {
-            $this->commercial_addons[$addon_id] = $this->get_addon($addon_id);
+            $this->addon_manager->tag_addon_as_commercial($addon_id);
         }
 
         public function get_commercial_addons()
         {
-            return $this->commercial_addons;
+            return $this->addon_manager->get_commercial_addons();
         }
 
         public function has_commercial_addons()
         {
-            return !empty($this->commercial_addons);
+            return $this->addon_manager->has_commercial_addons();
         }
+
+        public function get_addon($id)
+        {
+            return $this->addon_manager->get_addon($id);
+        }
+
+        /*------- ADMIN NOTICES -----------------------------------------------------------------------------------------*/
 
         /**
          * Shows a compatibity warning
@@ -600,46 +603,6 @@ if ( !class_exists('CUAR_Plugin')) :
                 $this->clear_attention_needed('permalinks-disabled');
             }
         }
-
-        /**
-         * Shows a compatibity warning
-         */
-        public function check_addons_required_versions()
-        {
-            $current_version = $this->get_version();
-            $needs_attention = false;
-
-            foreach ($this->registered_addons as $id => $addon) {
-                if ($current_version < $addon->min_cuar_version) {
-                    $needs_attention = true;
-                    break;
-                }
-            }
-
-            if ($needs_attention) {
-                $this->set_attention_needed('outdated-plugin-version',
-                    __('Some add-ons require a newer version of the main plugin.', 'cuar'),
-                    10);
-            } else {
-                $this->clear_attention_needed('outdated-plugin-version');
-            }
-        }
-
-        /**
-         * Get add-on
-         */
-        public function get_addon($id)
-        {
-            return isset($this->registered_addons[$id]) ? $this->registered_addons[$id] : null;
-        }
-
-        /** @var array */
-        private $registered_addons = array();
-
-        /** @var array */
-        private $commercial_addons = array();
-
-        /*------- ADMIN NOTICES -----------------------------------------------------------------------------------------*/
 
         /**
          * Print the eventual errors that occured during a post save/update
@@ -668,6 +631,7 @@ if ( !class_exists('CUAR_Plugin')) :
 
         /**
          * Remove the stored notices
+         * @return bool|array
          */
         private function get_admin_notices()
         {

@@ -40,6 +40,9 @@ class CUAR_PluginActivation implements CUAR_PluginActivationDelegate
 
         // Schedule a check of the permalinks setting in WordPress
         CUAR_PluginActivationManager::schedule_deferred_action('check-permalink-settings', 40);
+
+        // Schedule checking for updating/setting up the plugin
+        CUAR_PluginActivationManager::schedule_deferred_action('check-addon-versions', 60);
     }
 
     /**

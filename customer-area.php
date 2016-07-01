@@ -71,6 +71,8 @@ include_once(CUAR_INCLUDES_DIR . '/core-classes/MessageCenter/message-center.cla
 
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Shortcode/shortcode.class.php');
 
+include_once(CUAR_INCLUDES_DIR . '/core-classes/Addon/addon-manager.class.php');
+
 // Core Plugin classes
 include_once(CUAR_INCLUDES_DIR . '/core-classes/settings.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/plugin-store.class.php');

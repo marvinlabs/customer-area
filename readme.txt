@@ -123,6 +123,10 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.1.0 (2016/07/) =
+
+* New: the plugin now checks if your add-ons are compatible with the installed version. You need to activate/deactivate for that.
+
 = 7.0.8 (2016/06/30) =
 
 * Fix: several issues with the sidebar in Firefox and Internet Explorer

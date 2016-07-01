@@ -42,8 +42,7 @@ if ( !class_exists('CUAR_StatusAddOn')) :
         {
             add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'));
 
-            if (is_admin())
-            {
+            if (is_admin()) {
                 add_action('cuar/core/admin/print-admin-page?page=status', array(&$this, 'print_status_page'), 99);
                 add_action('admin_init', array(&$this, 'handle_core_section_actions'), 500);
             }
@@ -63,10 +62,8 @@ if ( !class_exists('CUAR_StatusAddOn')) :
             );
 
             $sections = $this->get_status_sections();
-            foreach ($sections as $section)
-            {
-                if ( !isset($section['label']))
-                {
+            foreach ($sections as $section) {
+                if ( !isset($section['label'])) {
                     continue;
                 }
 
@@ -100,8 +97,7 @@ if ( !class_exists('CUAR_StatusAddOn')) :
          */
         public function get_status_sections()
         {
-            if ($this->sections == null)
-            {
+            if ($this->sections == null) {
                 $this->sections = array(
                     'needs-attention'  => array(
                         'id'    => 'needs-attention',
@@ -111,8 +107,12 @@ if ( !class_exists('CUAR_StatusAddOn')) :
                     'installed-addons' => array(
                         'id'            => 'installed-addons',
                         'label'         => __('Installed add-ons', 'cuar'),
-                        'title'         => __('Core and commercial add-ons currently enabled', 'cuar'),
-                        'linked-checks' => array('outdated-plugin-version')
+                        'title'         => __('Supported add-ons currently enabled', 'cuar'),
+                        'linked-checks' => array('outdated-plugin-version', 'version-mismatch'),
+                        'actions'       => array(
+                            'cuar-ignore-version-mismatch'  => array(&$this, 'ignore_version_mismatch_flag'),
+                            'cuar-refresh-version-mismatch' => array(&$this, 'refresh_version_mismatch_warning'),
+                        )
                     )
                 );
 
@@ -158,31 +158,26 @@ if ( !class_exists('CUAR_StatusAddOn')) :
 
             $template = $this->plugin->get_template_file_path($template_path, $template_file, 'templates');
 
-            if ( !empty($template))
-            {
+            if ( !empty($template)) {
                 include($template);
             }
         }
 
         public function handle_core_section_actions()
         {
-            if ( !isset($_POST['cuar-do-status-action']))
-            {
+            if ( !isset($_POST['cuar-do-status-action'])) {
                 return;
             }
 
             $sections = $this->get_status_sections();
 
-            foreach ($sections as $id => $section)
-            {
+            foreach ($sections as $id => $section) {
                 $actions = isset($section['actions']) ? $section['actions'] : array();
 
-                foreach ($actions as $name => $callback)
-                {
+                foreach ($actions as $name => $callback) {
                     $nonce = isset($_POST[$name . '_nonce']) ? $_POST[$name . '_nonce'] : '';
 
-                    if (isset($_POST[$name]) && wp_verify_nonce($nonce, $name))
-                    {
+                    if (isset($_POST[$name]) && wp_verify_nonce($nonce, $name)) {
                         call_user_func($callback);
 
                         $current_section_id = isset($_GET['cuar_section']) ? $_GET['cuar_section'] : 'needs-attention';
@@ -217,15 +212,13 @@ if ( !class_exists('CUAR_StatusAddOn')) :
             if ( !isset($_FILES['cuar-settings-file'])
                 || !isset($_FILES['cuar-settings-file']['error'])
                 || is_array($_FILES['cuar-settings-file']['error'])
-            )
-            {
+            ) {
                 $this->plugin->add_admin_notice(__('Invalid parameters. No file sent', 'cuar'));
 
                 return;
             }
 
-            switch ($_FILES['cuar-settings-file']['error'])
-            {
+            switch ($_FILES['cuar-settings-file']['error']) {
                 case UPLOAD_ERR_OK:
                     break;
                 case UPLOAD_ERR_NO_FILE:
@@ -255,10 +248,8 @@ if ( !class_exists('CUAR_StatusAddOn')) :
             $options = $this->plugin->get_options();
 
             // Filter some options we don't want to be exported
-            foreach ($options as $key => $value)
-            {
-                if (strstr($key, 'cuar_license_') != false)
-                {
+            foreach ($options as $key => $value) {
+                if (strstr($key, 'cuar_license_') != false) {
                     unset($options[$key]);
                 }
             }
@@ -285,6 +276,16 @@ if ( !class_exists('CUAR_StatusAddOn')) :
         public function ignore_outdated_templates_flag()
         {
             $this->plugin->clear_attention_needed('outdated-templates');
+        }
+
+        public function ignore_version_mismatch_flag()
+        {
+            $this->plugin->clear_attention_needed('version-mismatch');
+        }
+
+        public function refresh_version_mismatch_warning()
+        {
+            $this->plugin->addon_manager()->check_addons_recommended_versions();
         }
 
         protected $sections = null;
