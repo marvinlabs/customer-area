@@ -28,7 +28,7 @@ if (!class_exists('CUAR_CustomerPrivatePagesHomeAddOn')) :
 class CUAR_CustomerPrivatePagesHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-private-pages-home', '4.0.0', 'customer-private-pages' );
+		parent::__construct('customer-private-pages-home', 'customer-private-pages');
 		
 		$this->set_page_parameters( 600, array(
 					'slug'					=> 'customer-private-pages-home',

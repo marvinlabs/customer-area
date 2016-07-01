@@ -27,9 +27,8 @@ if (!class_exists('CUAR_AddOn')) :
 */
 abstract class CUAR_AddOn {
 
-	public function __construct( $addon_id = null, $min_cuar_version = null ) {
+	public function __construct($addon_id = null) {
 		$this->addon_id = $addon_id;
-		$this->min_cuar_version = $min_cuar_version;
 
 		add_action( 'cuar/core/settings/default-options', array( &$this, 'set_default_options' ) );
 		add_action( 'cuar/core/addons/init', array( &$this, 'run' ), 10 );

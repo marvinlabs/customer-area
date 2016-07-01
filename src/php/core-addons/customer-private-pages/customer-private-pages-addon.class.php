@@ -35,7 +35,7 @@ if ( !class_exists('CUAR_CustomerPrivatePagesAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('customer-private-pages', '4.0.0');
+            parent::__construct('customer-private-pages');
 
             $this->set_page_parameters(610, array(
                     'slug'                => 'customer-private-pages',

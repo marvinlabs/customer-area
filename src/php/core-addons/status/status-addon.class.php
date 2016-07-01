@@ -30,7 +30,7 @@ if ( !class_exists('CUAR_StatusAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('status', '4.0.0');
+            parent::__construct('status');
         }
 
         public function get_addon_name()

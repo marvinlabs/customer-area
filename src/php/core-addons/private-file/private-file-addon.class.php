@@ -35,7 +35,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('private-files', '4.0.0');
+            parent::__construct('private-files');
         }
 
         public function get_addon_name()

@@ -16,32 +16,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-require_once(CUAR_INCLUDES_DIR . '/core-classes/addon.class.php');
 
 /**
- * Add-on to load additional shortcodes useful in Customer Area
- *
- * @author Vincent Prat @ MarvinLabs
+ * The class that will handle addon version management
  */
-class CUAR_ShortcodesAddOn extends CUAR_AddOn
+class CUAR_AddonManager
 {
-
-    public function __construct()
-    {
-        parent::__construct('shortcodes');
-    }
-
-    public function get_addon_name()
-    {
-        return __('Shortcodes', 'cuar');
-    }
-
-    public function run_addon($plugin)
-    {
-        include(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes/menu-shortcode.class.php');
-        include(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes/protected-content-shortcode.class.php');
-    }
+    
 }
-
-// Make sure the addon is loaded
-new CUAR_ShortcodesAddOn();

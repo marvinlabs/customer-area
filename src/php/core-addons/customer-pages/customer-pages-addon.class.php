@@ -31,7 +31,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('customer-pages', '4.0.0');
+            parent::__construct('customer-pages');
         }
 
         public function get_addon_name()

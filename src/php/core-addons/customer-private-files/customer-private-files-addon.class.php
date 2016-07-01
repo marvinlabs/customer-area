@@ -35,7 +35,7 @@ if ( !class_exists('CUAR_CustomerPrivateFilesAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('customer-private-files', '4.0.0');
+            parent::__construct('customer-private-files');
 
             $this->set_page_parameters(510, array(
                     'slug'                => 'customer-private-files',

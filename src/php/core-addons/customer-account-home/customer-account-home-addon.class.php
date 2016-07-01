@@ -28,7 +28,7 @@ if (!class_exists('CUAR_CustomerAccountHomeAddOn')) :
 class CUAR_CustomerAccountHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-account-home', '4.0.0', 'customer-account' );
+		parent::__construct('customer-account-home', 'customer-account');
 		
 		$this->set_page_parameters( 800, array(
 					'slug'					=> 'customer-account-home',
