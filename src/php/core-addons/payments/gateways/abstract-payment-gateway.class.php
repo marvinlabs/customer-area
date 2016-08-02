@@ -5,9 +5,13 @@
 abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 {
     public static $OPTION_ENABLED = 'enabled';
+    public static $OPTION_LOG_ENABLED = 'log_enabled';
 
     /** @var CUAR_Plugin */
     protected $plugin;
+
+    /** @var CUAR_FileLogger */
+    protected $logger;
 
     /**
      * CUAR_AbstractPaymentGateway constructor.
@@ -21,6 +25,13 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
     //-- General functions ------------------------------------------------------------------------------------------------------------------------------------/
 
+    public function is_log_enabled()
+    {
+        $value = $this->get_option(self::$OPTION_LOG_ENABLED);
+
+        return isset($value) && $value == 1 ? true : false;
+    }
+
     public function is_enabled()
     {
         $value = $this->get_option(self::$OPTION_ENABLED);
@@ -30,8 +41,7 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
     public function redirect_to_success_page($payment_id, $message = '')
     {
-        if ( !empty($message))
-        {
+        if ( !empty($message)) {
             $this->set_result_message($message);
         }
 
@@ -42,8 +52,7 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
     public function redirect_to_failure_page($payment_id, $message = '')
     {
-        if ( !empty($message))
-        {
+        if ( !empty($message)) {
             $this->set_result_message($message);
         }
 
@@ -62,7 +71,7 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
         return add_query_arg('cuar-payment-listener', $this->get_listener_id(), home_url('index.php'));
     }
 
-    public function process_callback($payment_id)
+    public function process_callback()
     {
     }
 
@@ -83,15 +92,13 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
     public function print_form()
     {
-        if ($this->has_form())
-        {
+        if ($this->has_form()) {
             $form_template = $this->plugin->get_template_file_path(
                 $this->get_template_files_root(),
                 'gateway-checkout-form-' . $this->get_id() . '.template.php',
                 'templates'
             );
-            if ( !empty($form_template))
-            {
+            if ( !empty($form_template)) {
                 /** @noinspection PhpUnusedLocalVariableInspection */
                 $gateway = $this;
                 include($form_template);
@@ -128,6 +135,7 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
     public function validate_options($validated, $cuar_settings, $input)
     {
         $cuar_settings->validate_boolean($input, $validated, $this->get_option_id(self::$OPTION_ENABLED));
+        $cuar_settings->validate_boolean($input, $validated, $this->get_option_id(self::$OPTION_LOG_ENABLED));
 
         return $validated;
     }
@@ -145,5 +153,20 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
     protected function get_template_files_root()
     {
         return CUAR_INCLUDES_DIR . '/core-addons/payments';
+    }
+
+    /**
+     * Logging method.
+     *
+     * @param string $message
+     */
+    protected function log($message)
+    {
+        if ( !$this->is_log_enabled()) return;
+
+        if (empty($this->logger)) {
+            $this->logger = new WC_Logger();
+        }
+        $this->logger->add('gateway-' . $this->get_id(), $message);
     }
 }

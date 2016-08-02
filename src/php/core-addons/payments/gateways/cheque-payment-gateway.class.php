@@ -84,6 +84,7 @@ class CUAR_ChequePaymentGateway extends CUAR_AbstractPaymentGateway
         $g = new CUAR_ChequePaymentGateway(cuar());
 
         $defaults[$g->get_option_id(self::$OPTION_ENABLED)] = true;
+        $defaults[$g->get_option_id(self::$OPTION_LOG_ENABLED)] = false;
 
         $defaults[$g->get_option_id(self::$OPTION_SUCCESS_MESSAGE)] =
             "<p>"

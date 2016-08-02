@@ -55,6 +55,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-classes/Content/custom-taxonomy.class.ph
 
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Log/log-event.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Log/log-event-type.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-classes/Log/file-logger.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Log/logger.class.php');
 
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Activation/plugin-activation-delegate.class.php');

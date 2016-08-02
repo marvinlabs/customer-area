@@ -36,22 +36,19 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function update_status($new_status, $changed_by = 'WP Customer Area')
     {
-        if ($new_status == 'completed' || $new_status == 'complete')
-        {
+        if ($new_status == 'completed' || $new_status == 'complete') {
             $new_status = 'publish';
         }
 
         $old_status = $this->get_post()->post_status;
 
-        if ($old_status === $new_status)
-        {
+        if ($old_status === $new_status) {
             return; // Don't permit status changes that aren't changes
         }
 
         $do_change = apply_filters('cuar/core/payments/can-update-status', true, $this, $old_status, $new_status);
 
-        if ($do_change)
-        {
+        if ($do_change) {
             do_action('cuar/core/payments/before-update-status', $this, $old_status, $new_status);
 
             $args = array(
@@ -68,6 +65,11 @@ class CUAR_Payment extends CUAR_CustomPost
     }
 
     //------- ACCESSORS -----------------------------------------------------------------------------------------------/
+
+    public function get_status()
+    {
+        return $this->get_post()->post_status;
+    }
 
     /**
      * Set the object for which the payment was made
@@ -113,7 +115,7 @@ class CUAR_Payment extends CUAR_CustomPost
     public function set_gateway($gateway)
     {
         $previous_value = $this->get_gateway();
-        $new_value =$gateway;
+        $new_value = $gateway;
 
         update_post_meta($this->ID, self::$META_GATEWAY, $new_value);
 
@@ -258,10 +260,8 @@ class CUAR_Payment extends CUAR_CustomPost
     public function delete_note($note_id)
     {
         $notes = $this->get_notes();
-        foreach ($notes as $i => $n)
-        {
-            if ($n['id'] == $note_id)
-            {
+        foreach ($notes as $i => $n) {
+            if ($n['id'] == $note_id) {
                 unset($notes[$i]);
                 break;
             }

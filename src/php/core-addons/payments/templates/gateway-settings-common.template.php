@@ -24,3 +24,12 @@
         )); ?>
     </td>
 </tr>
+<tr valign="top">
+    <td>
+        <?php $settings->print_input_field(array(
+            'option_id' => $gateway->get_option_id(CUAR_AbstractPaymentGateway::$OPTION_LOG_ENABLED),
+            'type'      => 'checkbox',
+            'after'     => __('Enable error logging to a file', 'cuar')
+        )); ?>
+    </td>
+</tr>

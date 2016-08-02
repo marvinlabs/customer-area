@@ -84,6 +84,7 @@ class CUAR_BacsPaymentGateway extends CUAR_AbstractPaymentGateway
         $g = new CUAR_BacsPaymentGateway(cuar());
 
         $defaults[$g->get_option_id(self::$OPTION_ENABLED)] = true;
+        $defaults[$g->get_option_id(self::$OPTION_LOG_ENABLED)] = false;
 
         $defaults[$g->get_option_id(self::$OPTION_SUCCESS_MESSAGE)] =
             "<p>"

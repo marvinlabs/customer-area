@@ -43,10 +43,8 @@ interface CUAR_PaymentGateway
 
     /**
      * Process the result from the payment gateway
-     *
-     * @param int $payment_id The payment related to this result
      */
-    function process_callback($payment_id);
+    function process_callback();
 
     //-- UI functions -----------------------------------------------------------------------------------------------------------------------------------------/
 

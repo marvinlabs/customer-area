@@ -149,7 +149,7 @@ function cuar_the_payment_amount($payment)
  */
 function cuar_the_payment_status($payment)
 {
-    $s = $payment->get_post()->post_status;
+    $s = $payment->get_status();
     $all = CUAR_PaymentStatus::get_payment_statuses();
     echo isset($all[$s]) ? $all[$s] : $s;
 }

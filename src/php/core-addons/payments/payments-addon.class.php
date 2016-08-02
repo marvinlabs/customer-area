@@ -44,7 +44,7 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
          */
         public function __construct()
         {
-            parent::__construct('payments', '6.4.0');
+            parent::__construct('payments');
         }
 
         /** @override */
