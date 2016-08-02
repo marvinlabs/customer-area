@@ -107,6 +107,7 @@ class CUAR_PrivateFileAdminInterface
 
         global $post;
         $this->pf_addon->print_current_attachments_manager($post->ID);
+        $this->pf_addon->print_attachment_manager_scripts();
 
         do_action("cuar/private-content/files/after-attachments-meta-box");
     }

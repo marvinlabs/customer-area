@@ -3,9 +3,9 @@
 Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
-Requires at least:  4.2
-Tested up to:       4.5.1
-Stable tag:         6.4.666
+Requires at least:  3.8
+Tested up to:       4.5.3
+Stable tag:         7.0.8
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,27 +85,21 @@ upload a file (below the content box), set the owner of that file, publish, and 
 
 == Screenshots ==
 
-01. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
-expands the panel. Currently shown is the "Invoices" category.
-02. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
-expands the panel. Currently shown is the "Product Samples" category.
-03. The detail page for a private file. You can see the title, description and download links. 
-04. The detail page for a private file. Same page as in the previous screenshot, except that we have scrolled down
-to show that you can also comment on a private file, you can then have a discussion with your customer about that
-particular file
-05. The private file edition page. You can have a title, description, attach a file and set the owner easily, as in any
-other WordPress admin screen
-06. The main settings screen.
-07. The private files settings screen.
-08. The login screen when the login form add-on is enabled.
-09. The lost password screen when the login form add-on is enabled. Also shows the integration with the Really Simple
-CAPTCHA plugin.
-10. The registration screen when the login form add-on is enabled. Also shows the integration with the Really Simple
-CAPTCHA plugin.
-11. Send a notification to your customer when you create a new private file (see top-right box). You need to enable
-the notifications add-on.
-12. The settings screen when the notifications add-on is enabled.
-13. The rest of the settings screen when the notifications add-on is enabled.
+01. The dashboard lists all the private content assigned to the user.
+02. A private file shows secured download links to attachements.
+03. The plugin is available with two skins to allow better integration with most themes: dark and light.
+04. Detailled view for collections of private content allow showing more information.
+05. Grid view for collections of private content allow viewing more items.
+06. User account page (a form to edit that information is also provided)
+07. A project can gather any type of private content and show it to all the project team members.
+08. An invoice
+09. The search page allows finding quickly content assigned to yourself.
+10. Task lists provide a convenient way to track progress.
+11. Conversations allow creating discussions between one or more users.
+12. The login form is embedded within the website
+13. Creating a private file can be allowed from the website directly.
+14. This is how to choose an owner for the private content.
+15. Uploading attachments to a private file is as easy as drag'n'drop.
 
 == Frequently Asked Questions ==
 
@@ -129,11 +123,58 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.0.0 (2016/04/
+= 7.1.0 (2016/07/) =
+
+* New: the plugin now checks if your add-ons are compatible with the installed version. You need to activate/deactivate for that.
+
+= 7.0.8 (2016/06/30) =
+
+* Fix: several issues with the sidebar in Firefox and Internet Explorer
+* Fix: rich editor popovers not shown properly
+* Fix: dates where sometimes not properly internationalized
+* Fix: some minor style fixes here and there
+
+= 7.0.7 (2016/06/28) =
+
+* Fix: redirection to the wrong page after deleting or updating content from the front end
+
+= 7.0.6 (2016/06/27) =
+
+* Fix: Problems in front-office publishing when a select2 field was close to the bottom of the wizard form
+
+= 7.0.5 (2016/06/23) =
+
+* Fix: ACF fields where showing up on all wizard panels
+* Fix: Better ACF field templates on single pages
+* Fix: Responsive mode on collection layout
+* Fix: Select2 dropdowns not displaying correctly
+* Fix: Update some outdated libs (fancytree, cookies, bootstrap-slider)
+* Fix: WP Customer Area menu is printed on external widgets sometimes
+* Fix: Loading indicator not shown in the file attachments manager (frontend only)
+
+= 7.0.4 (2016/06/17) =
+
+* Fix: crash when deleting file or user on private files which had been created with WP Customer Area 6.1 or older
+
+= 7.0.3 (2016/06/10) =
+
+* Fix: some minor style fixes
+
+= 7.0.2 (2016/06/09) =
+
+* Fix: dashboard panels not hidden when option is unchecked
+* Fix: notifications not sent when owner is an individual user
+
+= 7.0.1 (2016/06/08) =
+
+* Fix: Styles were applied outside of the WP Customer Area components on some themes.
+
+= 7.0.0 (2016/06/07) =
 
 * New: Brand new frontend skin. Greater UI and that should fix most compatibility problems with themes. **REQUIRES UPDATING ALL YOUR ADD-ONS!**
 * New: You can now publish content for multiple owner types at once. E.g. for user "admin" as well as for user group "the incredible team".
 * New: Added a title parameter to the private content shortcode
+* New: Add filter to change the dashboard block order ('cuar/core/page/dashboard-block-priority')
 * Fix: Projects were not listed by the protected content shortcode (https://github.com/marvinlabs/customer-area/issues/204)
 * Fix: Global post data not restored after secondary queries (https://github.com/marvinlabs/customer-area/issues/205)
 * Fix: Translations where not loaded early enough
@@ -163,6 +204,7 @@ feel free to fork the project and send us pull requests!
 * Fix: *Owner restrictions* - Better settings panel
 * Fix: *Protect post types* - Bug in loading translations
 * Fix: *Smart groups* - bug when showing the UI in another language
+* Fix: *Switch users* - bug on addresses shown on the account page.
 
 = 6.3.0 (2015/11/26) =
 

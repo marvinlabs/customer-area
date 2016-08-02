@@ -30,9 +30,9 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
     abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null)
+        public function __construct($addon_id = null)
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
         }
 
         public function run_addon($plugin)
@@ -400,9 +400,9 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
             $fake_id = $id . '-' . rand();
             $fake_class = 'widget_' . $id;
             return array(
-                'before_widget' => sprintf('<aside id="%1$s" class="widget %2$s">', $fake_id, $fake_class),
+                'before_widget' => sprintf('<aside id="%1$s" class="cuar-widget cuar-%2$s panel">', $fake_id, $fake_class),
                 'after_widget'  => "</aside>",
-                'before_title'  => '<div class="cuar-title widget-title">',
+                'before_title'  => '<div class="cuar-widget-title panel-heading">',
                 'after_title'   => '</div>',
             );
         }
@@ -438,9 +438,9 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
             register_sidebar(array(
                 'id'            => $id,
                 'name'          => $name,
-                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                'before_widget' => '<aside id="%1$s" class="cuar-widget cuar-%2$s panel">',
                 'after_widget'  => "</aside>",
-                'before_title'  => '<div class="cuar-title widget-title">',
+                'before_title'  => '<div class="cuar-widget-title panel-heading">',
                 'after_title'   => '</div>',
             ));
         }

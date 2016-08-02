@@ -18,16 +18,8 @@ $current_addon = cuar_addon($current_addon_slug);
 $post_type = $current_addon->get_friendly_post_type();
 ?>
 
-<div class="collection panel cuar-empty cuar-empty-category <?php echo $post_type; ?>">
-    <div class="panel-heading">
-        <span class="panel-icon">
-            <i class="<?php echo $current_addon_icon; ?>"></i>
-        </span>
-        <span class="panel-title">
-            <?php echo $page_subtitle; ?>
-        </span>
-    </div>
-    <div class="collection-content panel-body">
+<div class="collection panel cuar-empty cuar-empty-date <?php echo $post_type; ?>">
+    <div class="collection-content">
         <p class="mn"><?php _e( 'There are no pages in that category.', 'cuar' ); ?></p>
     </div>
 </div>

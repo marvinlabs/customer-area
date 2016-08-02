@@ -34,7 +34,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
     public function __construct()
     {
-        parent::__construct('admin-area', '6.0.0');
+        parent::__construct('admin-area');
     }
 
     public function get_addon_name()

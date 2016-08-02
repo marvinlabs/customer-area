@@ -25,12 +25,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 function cuar_get_the_attached_files($post_id = null)
 {
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         $post_id = get_the_ID();
     }
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         return '';
     }
 
@@ -51,12 +49,10 @@ function cuar_get_the_attached_files($post_id = null)
  */
 function cuar_get_the_attached_file_count($post_id = null)
 {
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         $post_id = get_the_ID();
     }
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         return '';
     }
 
@@ -79,12 +75,10 @@ function cuar_get_the_attached_file_count($post_id = null)
  */
 function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'download')
 {
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         $post_id = get_the_ID();
     }
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         return '';
     }
 
@@ -120,12 +114,10 @@ function cuar_the_attached_file_link($post_id = null, $file, $action = 'download
  */
 function cuar_get_the_attached_file_caption($post_id = null, $file)
 {
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         $post_id = get_the_ID();
     }
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         return '';
     }
 
@@ -162,12 +154,10 @@ function cuar_the_attached_file_caption($post_id = null, $file)
  */
 function cuar_get_the_attached_file_name($post_id = null, $file)
 {
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         $post_id = get_the_ID();
     }
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         return '';
     }
 
@@ -204,12 +194,10 @@ function cuar_the_attached_file_name($post_id = null, $file)
  */
 function cuar_get_the_attached_file_type($post_id = null, $file)
 {
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         $post_id = get_the_ID();
     }
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         return '';
     }
 
@@ -246,12 +234,10 @@ function cuar_the_attached_file_type($post_id = null, $file)
  */
 function cuar_get_the_attached_file_size($post_id = null, $file, $human = true)
 {
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         $post_id = get_the_ID();
     }
-    if ( !$post_id)
-    {
+    if ( !$post_id) {
         return '';
     }
 
@@ -260,13 +246,11 @@ function cuar_get_the_attached_file_size($post_id = null, $file, $human = true)
     $pf_addon = cuar_addon('private-files');
     $size = $pf_addon->get_file_size($post_id, $file);
 
-    if (false === $size)
-    {
+    if (false === $size) {
         return '';
     }
 
-    if ($human)
-    {
+    if ($human) {
         $size = cuar_format_human_file_size($size);
     }
 
@@ -295,23 +279,16 @@ function cuar_format_human_file_size($size)
     $factor = 1;
     $unit = _x('b', 'bytes', 'cuar');
 
-    if ($size >= 1024 * 1024 * 1024 * 1024)
-    {
+    if ($size >= 1024 * 1024 * 1024 * 1024) {
         $factor = 1024 * 1024 * 1024 * 1024;
         $unit = __('TB', 'cuar');
-    }
-    else if ($size >= 1024 * 1024 * 1024)
-    {
+    } else if ($size >= 1024 * 1024 * 1024) {
         $factor = 1024 * 1024 * 1024;
         $unit = __('GB', 'cuar');
-    }
-    else if ($size >= 1024 * 1024)
-    {
+    } else if ($size >= 1024 * 1024) {
         $factor = 1024 * 1024;
         $unit = __('MB', 'cuar');
-    }
-    else if ($size >= 1024)
-    {
+    } else if ($size >= 1024) {
         $factor = 1024;
         $unit = __('kB', 'cuar');
     }
@@ -325,7 +302,7 @@ function cuar_format_human_file_size($size)
  * ´cuar_bulk_create_private_files(array(
  *      array(
  *          'post_data' => (...),
- *          'owner'     => (...),
+ *          'owners'     => (...),
  *          'files'     => array(
  *              array(
  *                 'name'   => 'example.txt',
@@ -353,15 +330,11 @@ function cuar_bulk_create_private_files($args)
         'errors'  => array()
     );
 
-    foreach ($args as $a)
-    {
-        $res = cuar_create_private_file($a['post_data'], $a['owner'], $a['files']);
-        if (is_wp_error($res))
-        {
+    foreach ($args as $a) {
+        $res = cuar_create_private_file($a['post_data'], $a['owners'], $a['files']);
+        if (is_wp_error($res)) {
             $result['errors'][] = $res;
-        }
-        else
-        {
+        } else {
             $result['created'][] = $res;
         }
     }
@@ -372,7 +345,7 @@ function cuar_bulk_create_private_files($args)
 /**
  * @param array $post_data  The same array you would give to wp_insert_post to create your post. No need to set the post
  *                          type, this will automatically be set.
- * @param array $owner      An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs
+ * @param array $owners     An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs
  *                          of corresponding objects
  * @param array $files      An array containing the paths to the files to attache to the post object. Currently we only
  *                          support a single file.
@@ -386,8 +359,8 @@ function cuar_bulk_create_private_files($args)
  *          'post_status'  => 'publish'
  *      ),
  *      array(
- *          'type' => 'usr',
- *          'ids'  => array(1)
+ *          'usr' => array(1),
+ *          'grp'  => array(10, 50)
  *      ),
  *      'files'     => array(
  *          array(
@@ -401,31 +374,24 @@ function cuar_bulk_create_private_files($args)
  *
  * IMPORTANT NOTE: The files have to be located in the plugin's FTP upload folder.
  */
-function cuar_create_private_file($post_data, $owner, $files)
+function cuar_create_private_file($post_data, $owners, $files)
 {
-    if ( !isset($owner['type']) || !isset($owner['ids']) || empty($owner['ids']))
-    {
-        return new WP_Error(0, 'cuar_create_private_file needs owner data to create the private file');
-    }
-
     // Create the post object
     $post_data['post_type'] = 'cuar_private_file';
     $post_id = wp_insert_post($post_data);
-    if (is_wp_error($post_id))
-    {
+    if (is_wp_error($post_id)) {
         return $post_id;
     }
 
     // Assign the owner
     /** @var CUAR_PostOwnerAddOn $po_addon */
     $po_addon = cuar_addon('post-owner');
-    $po_addon->save_post_owners($post_id, $owner['ids'], $owner['type']);
+    $po_addon->save_post_owners($post_id, $owners);
 
     // Attach the file
     /** @var CUAR_PrivateFileAddOn $pf_addon */
     $pf_addon = cuar_addon('private-files');
-    foreach ($files as $file)
-    {
+    foreach ($files as $file) {
         $initial_filename = basename($file['name']);
         $filename = apply_filters('cuar/private-content/files/unique-filename?method=server',
             $initial_filename,
@@ -448,8 +414,7 @@ function cuar_create_private_file($post_data, $owner, $files)
 
         $pf_addon->add_attached_file($post_id, $filename, $filename, 'server', $extra);
 
-        if ( !empty($errors))
-        {
+        if ( !empty($errors)) {
             wp_delete_post($post_id);
 
             return new WP_Error('upload_error', implode(', ', $errors));

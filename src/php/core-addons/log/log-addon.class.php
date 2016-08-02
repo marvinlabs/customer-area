@@ -48,7 +48,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('log', '6.0.0');
+            parent::__construct('log');
         }
 
         public function get_addon_name()

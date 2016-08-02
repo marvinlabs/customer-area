@@ -83,7 +83,7 @@ if ( !class_exists('CUAR_TermsWidget')) :
             $hide_empty = isset($instance['hide_empty']) ? $instance['hide_empty'] : 0;
 
             $terms = get_terms($this->get_taxonomy(), array(
-                'parent'     => 0,
+                'parent' => 0,
                 'hide_empty' => $hide_empty
             ));
             if (count($terms) <= 0)
@@ -99,7 +99,9 @@ if ( !class_exists('CUAR_TermsWidget')) :
                 echo $args['before_title'] . $title . $args['after_title'];
             }
 
-            $this->print_term_list($terms, $hide_empty);
+            $this->print_term_list($terms, $hide_empty, is_taxonomy_hierarchical($this->get_taxonomy()));
+
+            $this->print_term_scripts(is_taxonomy_hierarchical($this->get_taxonomy()));
 
             echo $args['after_widget'];
         }
@@ -107,16 +109,46 @@ if ( !class_exists('CUAR_TermsWidget')) :
         /**
          * Print the list of terms
          *
-         * @param array   $terms The terms
+         * @param array $terms The terms
          * @param boolean $hide_empty Shall we hide empty terms?
+         * @param bool $is_hierarchical
          */
-        protected function print_term_list($terms, $hide_empty)
+        protected function print_term_list($terms, $hide_empty, $is_hierarchical=false, $depth=0)
         {
-            $template = cuar()->get_template_file_path(
+            $template_suffix = $is_hierarchical ? '-tree' : '-cloud';
+
+            $cuar = CUAR_Plugin::get_instance();
+            $cuar->enable_library('jquery.fancytree');
+            $template = $cuar->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
-                "widget-terms-" . $this->id_base . ".template.php",
-                'templates',
-                "widget-terms.template.php"
+                array(
+                    "widget-terms" . $template_suffix . "-" . $this->id_base . ".template.php",
+                    "widget-terms-" . $this->id_base . ".template.php",
+                    "widget-terms" . $template_suffix . ".template.php",
+                    "widget-terms.template.php",
+                ),
+                'templates'
+            );
+            include($template);
+        }
+
+        /**
+         * Print the scripts associated to the term list
+         *
+         * @param bool $is_hierarchical
+         */
+        public function print_term_scripts($is_hierarchical=false)
+        {
+            $template_suffix = $is_hierarchical ? '-tree' : '-cloud';
+            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                array(
+                    "widget-terms" . $template_suffix . "-" . $this->id_base . "-scripts.template.php",
+                    "widget-terms-" . $this->id_base . "-scripts.template.php",
+                    "widget-terms" . $template_suffix . "-scripts.template.php",
+                    "widget-terms-scripts.template.php",
+                ),
+                'templates'
             );
             include($template);
         }

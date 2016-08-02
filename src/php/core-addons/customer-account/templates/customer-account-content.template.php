@@ -1,5 +1,6 @@
-<?php
-/** Template version: 3.0.0
+<?php /**
+ * Template version: 3.0.0
+ * Template zone: frontend
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
@@ -40,16 +41,12 @@ $current_user = $this->get_current_user();
 </div>
 
 <div class="panel">
-    <div class="panel-heading"><span class="panel-title"><?php _e('General', 'cuar'); ?></span></div>
+    <div class="panel-heading"><span class="panel-title"><?php _e('Account details', 'cuar'); ?></span></div>
     <div class="panel-body">
-        <div class="cuar-title"><?php _e('Account Details', 'cuar'); ?></div>
         <?php $this->print_account_fields(); ?>
     </div>
 </div>
 
-<div class="panel">
-    <div class="panel-heading"><span class="panel-title"><?php _e('Addresses', 'cuar'); ?></span></div>
-    <div class="panel-body">
-        <?php $this->print_address_fields(); ?>
-    </div>
+<div class="row">
+    <?php $this->print_address_fields(); ?>
 </div>

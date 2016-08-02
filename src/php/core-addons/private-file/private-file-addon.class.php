@@ -35,7 +35,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('private-files', '4.0.0');
+            parent::__construct('private-files');
         }
 
         public function get_addon_name()
@@ -549,6 +549,22 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         }
 
         /*------- ATTACHMENTS MANAGER -----------------------------------------------------------------------------------*/
+
+        /**
+         * Print the scripts to manage attachments
+         */
+        public function print_attachment_manager_scripts()
+        {
+            $template_suffix = is_admin() ? '-admin' : '-frontend';
+
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-addons/private-file',
+                array(
+                    'private-attachments-add-methods-browser-scripts' . $template_suffix . '.template.php',
+                    'private-attachments-add-methods-browser-scripts.template.php'
+                ),
+                'templates'));
+        }
 
         /**
          * Print the add attachment ajax methods
@@ -1171,7 +1187,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $args = array(
                 'labels'              => $labels,
                 'hierarchical'        => false,
-                'supports'            => array('title', 'editor', 'author', 'thumbnail', 'comments'),
+                'supports'            => array('title', 'editor', 'author', 'thumbnail', 'comments', 'excerpt'),
                 'taxonomies'          => array('cuar_private_file_category'),
                 'public'              => true,
                 'show_ui'             => true,

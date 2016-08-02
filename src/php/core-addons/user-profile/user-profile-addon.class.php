@@ -30,7 +30,7 @@ if ( !class_exists('CUAR_UserProfileAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('user-profile', '4.6.0');
+            parent::__construct('user-profile');
         }
 
         public function get_addon_name()

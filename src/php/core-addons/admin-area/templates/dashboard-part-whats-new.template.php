@@ -2,6 +2,28 @@
 
 <?php
 $whats_new = array(
+    '7.0' => array(
+        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-0', 'cuar'),
+        'codename'  => 'Lemmy Kilmister',
+        'tagline'   => __("WP Customer Area 7.0 has got a new dress.", 'cuar'),
+        'blocks'    => array(
+            array(
+                'title' => __('New skin', 'cuar'),
+                'text'  => __('The appearance of the private area has been completely rewritten to enhance compatibility with all themes and usability. ',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('Better ownership control', 'cuar'),
+                'text'  => __('Our add-ons allow assigning content to groups, roles, etc. However, these owner types could not be mixed. For example, you can now assign private content at the same time to a group and to a few users.',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('Improvements and bug fixes', 'cuar'),
+                'text'  => __('Existing add-ons have been much improved: 17 new features and over 14 issues fixes. For instance, notifications are now sent in HTML format using a clean professional template.',
+                    'cuar'),
+            ),
+        )
+    ),
     '6.3' => array(
         'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-6-3', 'cuar'),
         'codename'  => 'Bon Scott',

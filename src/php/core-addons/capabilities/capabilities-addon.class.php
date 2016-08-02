@@ -30,7 +30,7 @@ if ( !class_exists('CUAR_CapabilitiesAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('capabilities-manager', '4.0.0');
+            parent::__construct('capabilities-manager');
         }
 
         public function get_addon_name()

@@ -28,9 +28,9 @@ if ( !class_exists('CUAR_RootPageAddOn')) :
     abstract class CUAR_RootPageAddOn extends CUAR_AbstractPageAddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null, $redirect_slug = 'customer-dashboard')
+        public function __construct($addon_id = null, $redirect_slug = 'customer-dashboard')
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
             $this->redirect_slug = $redirect_slug;
         }
 

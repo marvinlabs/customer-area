@@ -105,7 +105,7 @@ class CUAR_PostOwnerAdminInterface
 
         do_action("cuar/core/ownership/before-owner-meta-box");
 
-        $owners = $this->po_addon->get_post_owners($post->ID);
+        $owners = $this->po_addon->get_post_owners($post->ID);        
         $this->po_addon->print_owner_fields($owners);
 
         do_action("cuar/core/ownership/after-owner-meta-box");

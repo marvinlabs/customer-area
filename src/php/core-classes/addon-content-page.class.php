@@ -29,9 +29,9 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
     abstract class CUAR_AbstractContentPageAddOn extends CUAR_AbstractPageAddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null)
+        public function __construct($addon_id = null)
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
         }
 
         protected function set_page_parameters($priority, $description)
@@ -101,14 +101,14 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
         {
             $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD);
 
-            return empty($value) ? true : $value;
+            return $value==true ? true : $value;
         }
 
         public function is_show_in_single_post_footer_enabled()
         {
             $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER);
 
-            return empty($value) ? true : $value;
+            return $value==true ? true : $value;
         }
 
         public function get_max_item_number_on_dashboard()
@@ -976,7 +976,8 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                 // Optionally output the latest files on the dashboard
                 if ($this->is_show_in_dashboard_enabled())
                 {
-                    add_action('cuar/core/page/before-content?slug=customer-dashboard', array(&$this, 'print_dashboard_content'), 10);
+                    $priority = apply_filters('cuar/core/page/dashboard-block-priority', 10, $this->get_slug());
+                    add_action('cuar/core/page/before-content?slug=customer-dashboard', array(&$this, 'print_dashboard_content'), $priority);
                 }
             }
         }

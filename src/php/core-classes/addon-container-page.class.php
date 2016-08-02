@@ -29,9 +29,9 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
     abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null)
+        public function __construct($addon_id = null)
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
         }
 
         protected function set_page_parameters($priority, $description)
@@ -97,12 +97,16 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
 
         public function is_show_in_dashboard_enabled()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD, true);
+            $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_DASHBOARD);
+
+            return $value==true ? true : $value;
         }
 
         public function is_show_in_single_post_footer_enabled()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER, true);
+            $value = $this->plugin->get_option($this->get_slug() . self::$OPTION_SHOW_IN_SINGLE_POST_FOOTER);
+
+            return $value==true ? true : $value;
         }
 
         public function get_max_item_number_on_dashboard()
@@ -225,6 +229,31 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
             $url .= $term->slug;
 
             return $url;
+        }
+
+        public function add_listing_contextual_toolbar_group($groups)
+        {
+            $current_page_id = get_queried_object_id();
+            if ($current_page_id!=$this->get_page_id()) return $groups;
+
+            ob_start();
+            include($this->plugin->get_template_file_path(
+                CUAR_INCLUDES_DIR . '/core-classes',
+                array(
+                    'collections-button-group-' . $this->get_slug() . '.template.php',
+                    'collections-button-group.template.php'
+                ),
+                'templates'
+            ));
+            $group_html = ob_get_contents();
+            ob_end_clean();
+
+            $groups['collection-switcher'] = array(
+                'type' => 'raw',
+                'html' => $group_html
+            );
+
+            return $groups;
         }
 
         /*------- SINGLE PRIVATE CONTENT --------------------------------------------------------------------------------*/
@@ -974,6 +1003,7 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
             if ( !is_admin())
             {
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_single_private_content_contextual_toolbar_group'), 1400);
+                add_filter('cuar/core/page/toolbar', array(&$this, 'add_listing_contextual_toolbar_group'), 2000);
 
                 // Optionally output the file links in the post footer area
                 if ($this->is_show_in_single_post_footer_enabled())
@@ -984,7 +1014,8 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
                 // Optionally output the latest files on the dashboard
                 if ($this->is_show_in_dashboard_enabled())
                 {
-                    add_action('cuar/core/page/before-content?slug=customer-dashboard', array(&$this, 'print_dashboard_content'), 9);
+                    $priority = apply_filters('cuar/core/page/dashboard-block-priority', 9, $this->get_slug());
+                    add_action('cuar/core/page/before-content?slug=customer-dashboard', array(&$this, 'print_dashboard_content'), $priority);
                 }
             }
         }

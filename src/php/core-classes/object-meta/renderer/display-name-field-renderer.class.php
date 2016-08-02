@@ -48,8 +48,7 @@ include_once( CUAR_INCLUDES_DIR . '/core-classes/object-meta/renderer/abstract-i
 		protected function get_form_field_input($id, $value)
 		{
 			if (!$this->readonly) {
-				global $current_user;
-				get_currentuserinfo();
+				$current_user = get_userdata(get_current_user_id());
 
 				wp_enqueue_script('user-profile');
 

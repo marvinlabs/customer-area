@@ -20,38 +20,63 @@
 <?php
 global $post;
 
-$is_author = get_the_author_meta('ID') == get_current_user_id();
-
-if ($is_author) {
-    $published = sprintf(__('Published on %s, by yourself, for %s', 'cuar'), get_the_date(), cuar_get_the_owner());
-} else {
-    $published = sprintf(__('Published on %s, by %s, for %s', 'cuar'), get_the_date(), get_the_author_meta('display_name'), cuar_get_the_owner());
-}
-
 $extra_class = ' ' . get_post_type();
 $extra_class = apply_filters('cuar/templates/list-item/extra-class?post-type=' . get_post_type(), $extra_class, $post);
+
+$current_addon_slug = 'customer-private-pages';
+$thumb_icon = apply_filters('cuar/private-content/view/icon?addon=' . $current_addon_slug, 'fa fa-book', $post);
+$thumb_header = apply_filters('cuar/private-content/view/header?addon=' . $current_addon_slug, '', $post);
+$thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $current_addon_slug, '', $post);
 ?>
 
 <div class="collection-item of-h mix<?php echo $extra_class; ?>">
-    <?php if (has_post_thumbnail()) { ?>
-        <a href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail('wpca-thumb', array('class' => 'collection-thumbnail va-m img-responsive text-center bg-primary light table-layout')); ?>
-        </a>
-    <?php } else { ?>
-        <a href="<?php the_permalink(); ?>" class="collection-thumbnail img-responsive bg-primary light table-layout">
-            <div class="collection-thumbnail-padder"></div>
-        </a>
-    <?php } ?>
+    <div class="collection-item-wrapper panel panel-tile br-a">
 
-    <div class="collection-description va-m">
-        <div class="collection-title">
-            <a href="<?php the_permalink(); ?>">
-                <?php the_title(); ?>
-            </a>
+        <div class="collection-list-blocks clearfix">
+            <div class="collection-thumbnail collection-list-left panel-body pn <?php if (has_post_thumbnail()) { ?> thumb-active<?php } ?>">
+                <a href="<?php the_permalink(); ?>"<?php if (has_post_thumbnail()) { ?> style="background-position: center; background-size:cover; background-image:url(<?php the_post_thumbnail_url('wpca-thumb'); ?>);"<?php } ?>>
+                    <div class="collection-thumbnail-padder">
+                        <div class="collection-thumbnail-overlay">
+                            <div class="collection-thumbnail-valign">
+                                <?php if ($thumb_icon !== '') : ?>
+                                    <i class="collection-thumbnail-icon <?php echo esc_attr($thumb_icon); ?>"></i>
+                                <?php endif; ?>
+                                <?php if ($thumb_header !== '') : ?>
+                                    <span class="collection-thumbnail-header h4 mbn"><?php echo $thumb_header; ?></span>
+                                <?php endif; ?>
+                                <?php if ( !$thumb_sub_header !== '') : ?>
+                                    <span class="collection-thumbnail-subheader h5"><?php echo $thumb_sub_header; ?></span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <table class="collection-metas table">
+                    <tr data-toggle="tooltip" data-placement="top" data-original-title="<?php esc_attr_e('Created on', 'cuar') ?>">
+                        <th class="p5"><i class="fa fa-calendar"></i></th>
+                        <td><?php echo get_the_date(); ?></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="collection-description collection-list-right panel-footer">
+                <div class="cuar-title h4">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </div>
+                <p class="collection-excerpt br-t pt20"><?php echo get_the_excerpt(); ?></p>
+            </div>
         </div>
-        <div class="collection-subtitle text-muted">
-            <?php echo $published; ?>
+
+        <div class="collection-footer-metas collection-list-blocks">
+            <div class="collection-footer-meta-author collection-list-left" data-toggle="tooltip" data-placement="top" data-original-title="<?php esc_attr_e('Created by', 'cuar') ?>">
+                <div class="p5 va-m"><i class="fa fa-user"></i> <?php echo get_the_author_meta('display_name'); ?></div>
+            </div>
+            <div class="collection-footer-meta-owner collection-list-right" data-toggle="tooltip" data-placement="top" data-original-title="<?php esc_attr_e('Assigned to', 'cuar') ?>">
+                <div class="p5 pln va-m"><i class="fa fa-group"></i> <?php echo cuar_get_the_owner(); ?></div>
+            </div>
         </div>
-        <p class="collection-excerpt"><?php echo get_the_excerpt(); ?></p>
     </div>
 </div>

@@ -28,7 +28,7 @@ if (!class_exists('CUAR_CustomerAccountEditAddOn')) :
 class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-account-edit', '4.6.0' );
+		parent::__construct('customer-account-edit');
 		
 		$this->set_page_parameters( 820, array(
 					'slug'					=> 'customer-account-edit',

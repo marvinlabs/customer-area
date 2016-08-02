@@ -29,22 +29,27 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
     abstract class CUAR_AbstractEditContentPageAddOn extends CUAR_AbstractPageAddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null)
+        protected $should_print_form = true;
+        protected $form_errors = array();
+        protected $form_success = array();
+        protected $form_messages = array();
+        protected $current_post_id = null;
+        protected $current_post = null;
+
+        public function __construct($addon_id = null)
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
         }
 
         protected function set_page_parameters($priority, $description)
         {
             parent::set_page_parameters($priority, $description);
 
-            if ( !isset($this->page_description['friendly_post_type']))
-            {
+            if ( !isset($this->page_description['friendly_post_type'])) {
                 $this->page_description['friendly_post_type'] = null;
             }
 
-            if ( !isset($this->page_description['friendly_taxonomy']))
-            {
+            if ( !isset($this->page_description['friendly_taxonomy'])) {
                 $this->page_description['friendly_taxonomy'] = null;
             }
         }
@@ -63,19 +68,15 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         {
             parent::run_addon($plugin);
 
-            if ( !is_admin())
-            {
+            if ( !is_admin()) {
                 add_action('template_redirect', array(&$this, 'handle_form_submission'));
                 add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
-            }
-            else
-            {
+            } else {
                 add_action('admin_enqueue_scripts', array(&$this, 'enqueue_scripts'));
                 add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 1000);
             }
 
-            if ($this->get_wizard_step_count() > 1)
-            {
+            if ($this->get_wizard_step_count() > 1) {
                 // Enable rewrite rules for the wizard steps
                 $this->enable_wizard_permalinks();
             }
@@ -98,25 +99,21 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             if (get_queried_object_id() != $this->get_page_id()) return false;
 
             $action = $this->get_action();
-            if (get_query_var('cuar_action', null) != null)
-            {
+            if (get_query_var('cuar_action', null) != null) {
                 $action = get_query_var('cuar_action', null);
             }
 
-            if ( !$this->is_action_authorized($action))
-            {
+            if ( !$this->is_action_authorized($action)) {
                 return false;
             }
 
             // If not submitting the form, just stop here
-            if ( !isset($_POST['cuar_do_register']) && !isset($_GET["nonce"]))
-            {
+            if ( !isset($_POST['cuar_do_register']) && !isset($_GET["nonce"])) {
                 return true;
             }
 
             // Form ID should match
-            if (isset($_POST['cuar_form_id']) && $_POST['cuar_form_id'] != $this->get_slug())
-            {
+            if (isset($_POST['cuar_form_id']) && $_POST['cuar_form_id'] != $this->get_slug()) {
                 return false;
             }
 
@@ -125,8 +122,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 ? $_POST["cuar_" . $this->get_slug() . "_nonce"]
                 : (isset($_GET["nonce"]) ? $_GET["nonce"] : '');
 
-            if ( !wp_verify_nonce($nonce, 'cuar_' . $this->get_slug()))
-            {
+            if ( !wp_verify_nonce($nonce, 'cuar_' . $this->get_slug())) {
                 die('An attempt to bypass security checks was detected! Please go back and try again.');
             }
 
@@ -138,15 +134,12 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             do_action('cuar/private-content/edit/after_' . $action, $this, $this->form_errors);
             do_action('cuar/private-content/edit/after_' . $action . '/page-slug=' . $this->get_slug(), $this, $this->form_errors);
 
-            if (true === $result && empty($this->form_errors))
-            {
+            if (true === $result && empty($this->form_errors)) {
                 // If we still have some wizard steps to go, redirect to the next step
                 $step_count = $this->get_wizard_step_count();
-                if ($step_count > 1)
-                {
+                if ($action != 'delete' && $action != 'update' && $step_count > 1) {
                     $current_step = $this->get_current_wizard_step();
-                    if ($current_step < $step_count - 1)
-                    {
+                    if ($current_step < $step_count - 1) {
                         wp_redirect($this->get_wizard_step_url($this->get_current_post_id(), $current_step + 1));
                         exit;
                     }
@@ -156,8 +149,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 $redirect_url = apply_filters('cuar/private-content/edit/after_' . $action . '/redirect_url',
                     $this->get_redirect_url_after_action(),
                     $this->get_slug());
-                if ($redirect_url != null)
-                {
+                if ($redirect_url != null) {
                     wp_redirect($redirect_url);
                     exit;
                 }
@@ -169,13 +161,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         public function print_page_content($args = array(), $shortcode_content = '')
         {
             $action = $this->get_action();
-            if (get_query_var('cuar_action', null) != null)
-            {
+            if (get_query_var('cuar_action', null) != null) {
                 $action = get_query_var('cuar_action', null);
             }
 
-            if ( !$this->is_action_authorized($action))
-            {
+            if ( !$this->is_action_authorized($action)) {
                 return;
             }
 
@@ -200,8 +190,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         protected function get_required_fields()
         {
-            if ($this->required_fields == null)
-            {
+            if ($this->required_fields == null) {
                 $this->required_fields = apply_filters(
                     'cuar/private-content/edit/required-fields?post_type=' . $this->get_friendly_post_type(),
                     $this->get_default_required_fields());
@@ -226,13 +215,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         protected function check_submitted_title($form_data, $error_message)
         {
-            if (isset($form_data['cuar_title']) && !empty($form_data['cuar_title']))
-            {
+            if (isset($form_data['cuar_title']) && !empty($form_data['cuar_title'])) {
                 return $form_data['cuar_title'];
             }
 
-            if ( !$this->is_field_required('cuar_title'))
-            {
+            if ( !$this->is_field_required('cuar_title')) {
                 return '';
             }
 
@@ -243,13 +230,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         protected function check_submitted_content($form_data, $error_message)
         {
-            if (isset($form_data['cuar_content']) && !empty($form_data['cuar_content']))
-            {
+            if (isset($form_data['cuar_content']) && !empty($form_data['cuar_content'])) {
                 return $form_data['cuar_content'];
             }
 
-            if ( !$this->is_field_required('cuar_content'))
-            {
+            if ( !$this->is_field_required('cuar_content')) {
                 return '';
             }
 
@@ -260,13 +245,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         protected function check_submitted_category($form_data, $error_message)
         {
-            if (isset($form_data['cuar_category']) && !empty($form_data['cuar_category']))
-            {
+            if (isset($form_data['cuar_category']) && !empty($form_data['cuar_category'])) {
                 return $form_data['cuar_category'];
             }
 
-            if ( !$this->is_field_required('cuar_category'))
-            {
+            if ( !$this->is_field_required('cuar_category')) {
                 return 0;
             }
 
@@ -277,13 +260,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         protected function check_submitted_file($form_data, $error_message)
         {
-            if (isset($_FILES) && isset($_FILES['cuar_file']) && !empty($_FILES['cuar_file']['name']))
-            {
+            if (isset($_FILES) && isset($_FILES['cuar_file']) && !empty($_FILES['cuar_file']['name'])) {
                 return $_FILES['cuar_file'];
             }
 
-            if ( !$this->is_field_required('cuar_file'))
-            {
+            if ( !$this->is_field_required('cuar_file')) {
                 return null;
             }
 
@@ -298,13 +279,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             $po_addon = $this->plugin->get_addon('post-owner');
             $new_owner = $po_addon->get_owners_from_post_data();
 
-            if ($new_owner != null && !empty($new_owner))
-            {
+            if ($new_owner != null && !empty($new_owner)) {
                 return $new_owner;
             }
 
-            if ( !$this->is_field_required('cuar_owner'))
-            {
+            if ( !$this->is_field_required('cuar_owner')) {
                 return array();
             }
 
@@ -382,8 +361,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             if ($edited_post_id <= 0
                 || $step < 0
                 || $step >= $this->get_wizard_step_count()
-            )
-            {
+            ) {
                 return $this->get_page_url();
             }
 
@@ -426,14 +404,31 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         /*------- EDIT FORM ---------------------------------------------------------------------------------------------*/
 
+        protected function set_form_success($title, $message, $actions = array())
+        {
+            $this->form_success = array(
+                'title'   => $title,
+                'message' => $message,
+                'actions' => $actions
+            );
+
+            $this->should_print_form = false;
+        }
+
         public function should_print_form()
         {
-            if ( !empty($this->form_messages))
-            {
-                foreach ($this->form_messages as $msg)
-                {
-                    printf('<p class="alert alert-success">%s</p>', $msg);
-                }
+            if ( !empty($this->form_success)) {
+                $title = $this->form_success['title'];
+                $message = $this->form_success['message'];
+                $actions = $this->form_success['actions'];
+
+                include($this->plugin->get_template_file_path(
+                    CUAR_INCLUDES_DIR . '/core-classes',
+                    array(
+                        'edit-content-form-success-' . $this->get_slug() . '.template.php',
+                        'edit-content-form-success.template.php'
+                    ),
+                    'templates'));
             }
 
             return $this->should_print_form;
@@ -441,12 +436,9 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         public function print_form_header()
         {
-            if ($this->get_wizard_step_count() > 1)
-            {
+            if ($this->get_wizard_step_count() > 1) {
                 $form_url = $this->get_wizard_step_url($this->get_current_post_id(), $this->get_current_wizard_step());
-            }
-            else
-            {
+            } else {
                 $form_url = $this->get_page_url();
             }
 
@@ -458,13 +450,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             printf('<input type="hidden" name="cuar_form_id" value="%1$s" />', $this->get_slug());
             printf('<input type="hidden" name="cuar_post_type" value="%1$s" />', $this->get_friendly_post_type());
 
-            if ($this->get_current_post_id() > 0)
-            {
+            if ($this->get_current_post_id() > 0) {
                 printf('<input type="hidden" name="cuar_post_id" value="%1$s" />', $this->get_current_post_id());
             }
 
-            if ( !isset($_POST['cuar_post_type']))
-            {
+            if ( !isset($_POST['cuar_post_type'])) {
                 $_POST['cuar_post_type'] = $this->get_friendly_post_type();
             }
 
@@ -472,16 +462,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
             do_action('cuar/private-content/edit/before_submit_errors', $this);
 
-            if ( !empty($this->form_errors))
-            {
-                foreach ($this->form_errors as $error)
-                {
-                    if (is_wp_error($error))
-                    {
+            if ( !empty($this->form_errors)) {
+                foreach ($this->form_errors as $error) {
+                    if (is_wp_error($error)) {
                         printf('<p class="alert alert-warning">%s</p>', $error->get_error_message());
-                    }
-                    else if ($error !== false && !empty($error) && !is_array($error))
-                    {
+                    } else if ($error !== false && !empty($error) && !is_array($error)) {
                         printf('<p class="alert alert-info">%s</p>', $error);
                     }
                 }
@@ -499,9 +484,9 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             echo '</form>';
         }
 
-        public function print_submit_button($field_label)
+        public function print_submit_button($field_label, $step_id)
         {
-            do_action('cuar/private-content/edit/before_submit_button', $this);
+            do_action('cuar/private-content/edit/before_submit_button', $this, $step_id);
 
             /** @noinspection PhpUnusedLocalVariableInspection */
             $field_name = 'cuar_do_register';
@@ -511,18 +496,15 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 'edit-content-form-field-submit.template.php',
                 'templates'));
 
-            do_action('cuar/private-content/edit/after_submit_button', $this);
+            do_action('cuar/private-content/edit/after_submit_button', $this, $step_id);
         }
 
         public function print_title_field($label, $help_text = '')
         {
             $title = '';
-            if (isset($_POST['cuar_title']))
-            {
+            if (isset($_POST['cuar_title'])) {
                 $title = $_POST['cuar_title'];
-            }
-            else if ($this->get_current_post() != null)
-            {
+            } else if ($this->get_current_post() != null) {
                 $title = $this->get_current_post()->post_title;
             }
 
@@ -545,10 +527,17 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             $pf_addon->print_add_attachment_method_browser($post_id);
         }
 
-        public function print_current_attachments_manager($post_id)
+        public function print_attachment_manager_scripts()
         {
             wp_enqueue_script('cuar.frontend');
 
+            /** @var CUAR_PrivateFileAddOn $pf_addon */
+            $pf_addon = $this->plugin->get_addon('private-files');
+            $pf_addon->print_attachment_manager_scripts();
+        }
+
+        public function print_current_attachments_manager($post_id)
+        {
             /** @var CUAR_PrivateFileAddOn $pf_addon */
             $pf_addon = $this->plugin->get_addon('private-files');
             $pf_addon->print_current_attachments_manager($post_id);
@@ -557,27 +546,18 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         public function print_content_field($label, $help_text = '')
         {
             $content = '';
-            if (isset($_POST['cuar_content']))
-            {
+            if (isset($_POST['cuar_content'])) {
                 $content = $_POST['cuar_content'];
-            }
-            else if ($this->get_current_post() != null)
-            {
+            } else if ($this->get_current_post() != null) {
                 $content = $this->get_current_post()->post_content;
             }
 
-            if ( !$this->is_rich_editor_enabled())
-            {
+            if ( !$this->is_rich_editor_enabled()) {
                 $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
                     esc_attr($content));
-            }
-            else
-            {
-                ob_start();
-                wp_editor($content, 'cuar_content', cuar_wp_editor_settings());
-
-                $field_code = ob_get_contents();
-                ob_end_clean();
+            } else {
+                $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%1$s</textarea>',
+                    esc_attr($content));
             }
 
             $this->print_form_field('cuar_content', $label, $field_code, $help_text);
@@ -585,14 +565,12 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         public function print_owner_field($label, $help_text = '')
         {
-            if ($this->current_user_can_select_owner())
-            {
+            if ($this->current_user_can_select_owner()) {
                 /** @var CUAR_PostOwnerAddOn $po_addon */
                 $po_addon = $this->plugin->get_addon('post-owner');
                 $owners = $po_addon->get_owners_from_post_data();
 
-                if (empty($owners) && $this->get_current_post() != null)
-                {
+                if (empty($owners) && $this->get_current_post() != null) {
                     $owners = $po_addon->get_post_owners($this->get_current_post_id());
                 }
 
@@ -602,9 +580,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 ob_end_clean();
 
                 $this->print_form_field('cuar_owner', $label, $field_code, $help_text);
-            }
-            else
-            {
+            } else {
                 $owners = $this->get_default_owners();
 
                 ob_start();
@@ -624,20 +600,14 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 'hide_empty' => false,
                 'fields'     => 'count'
             ));
-            if (empty($categories))
-            {
+            if (empty($categories)) {
                 $field_code = '<input type="hidden" name="cuar_category" value="-1" />';
                 echo $field_code;
-            }
-            else if ($this->current_user_can_select_category())
-            {
+            } else if ($this->current_user_can_select_category()) {
                 $category = -1;
-                if (isset($_POST['cuar_category']))
-                {
+                if (isset($_POST['cuar_category'])) {
                     $category = $_POST['cuar_category'];
-                }
-                else if ($this->get_current_post() != null)
-                {
+                } else if ($this->get_current_post() != null) {
                     $cats = wp_get_post_terms($this->get_current_post_id(), $this->get_friendly_taxonomy(), array('fields' => 'ids'));
                     $category = implode(',', $cats);
                 }
@@ -650,13 +620,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                     'selected'     => $category,
                     'orderby'      => 'NAME',
                     'echo'         => false,
-                    'class'        => 'form-control',
+                    'class'        => 'cuar-js-select-single form-control',
                 ));
 
                 $this->print_form_field('cuar_category', $label, $field_code, $help_text);
-            }
-            else
-            {
+            } else {
                 $category = $this->get_default_category();
                 $field_code = sprintf('<input type="hidden" name="cuar_category" value="%1$s" />', esc_attr($category));
                 echo $field_code;
@@ -693,50 +661,36 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         public function get_current_post_id()
         {
-            if ($this->current_post_id == null)
-            {
-                if (isset($_POST['cuar_post_id']))
-                {
+            if ($this->current_post_id == null) {
+                if (isset($_POST['cuar_post_id'])) {
                     $this->current_post_id = $_POST['cuar_post_id'];
-                }
-                else if (get_query_var('cuar_post_id', 0) > 0)
-                {
+                } else if (get_query_var('cuar_post_id', 0) > 0) {
                     $this->current_post_id = get_query_var('cuar_post_id', 0);
-                }
-                else if (get_query_var('cuar_post_name', null) != null)
-                {
+                } else if (get_query_var('cuar_post_name', null) != null) {
                     $args = array(
                         'name'      => get_query_var('cuar_post_name', null),
                         'post_type' => array($this->get_friendly_post_type())
                     );
 
-                    if (get_query_var('year', null) != null)
-                    {
+                    if (get_query_var('year', null) != null) {
                         $args['year'] = get_query_var('year', null);
                     }
-                    if (get_query_var('monthnum', null) != null)
-                    {
+                    if (get_query_var('monthnum', null) != null) {
                         $args['monthnum'] = get_query_var('monthnum', null);
                     }
-                    if (get_query_var('day', null) != null)
-                    {
+                    if (get_query_var('day', null) != null) {
                         $args['day'] = get_query_var('day', null);
                     }
 
                     $post = get_posts($args);
 
-                    if ( !empty($post))
-                    {
+                    if ( !empty($post)) {
                         $this->current_post_id = $post[0]->ID;
                         $this->current_post = $post[0];
-                    }
-                    else
-                    {
+                    } else {
                         $this->current_post_id = 0;
                     }
-                }
-                else
-                {
+                } else {
                     $this->current_post_id = 0;
                 }
             }
@@ -746,19 +700,12 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         public function get_current_post()
         {
-            if ($this->current_post == null && $this->get_current_post_id() > 0)
-            {
+            if ($this->current_post == null && $this->get_current_post_id() > 0) {
                 $this->current_post = get_post($this->get_current_post_id());
             }
 
             return $this->current_post;
         }
-
-        protected $should_print_form = true;
-        protected $form_errors = array();
-        protected $form_messages = array();
-        protected $current_post_id = null;
-        protected $current_post = null;
 
         /*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 
@@ -791,8 +738,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         {
             $post_type = $this->get_friendly_post_type();
 
-            if (isset($capability_groups[$post_type]))
-            {
+            if (isset($capability_groups[$post_type])) {
                 $capability_groups[$post_type]['groups']['edit-content'] = array(
                     'group_name'   => __('Content edition (from front-office)', 'cuar'),
                     'capabilities' => array(
@@ -825,8 +771,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         {
             $this->enabled_settings = $enabled_settings;
 
-            if (is_admin() && !empty($this->enabled_settings))
-            {
+            if (is_admin() && !empty($this->enabled_settings)) {
                 // Settings
                 add_action('cuar/core/settings/print-settings?tab=' . $target_tab, array(&$this, 'print_settings'), 20, 2);
                 add_filter('cuar/core/settings/validate-settings?tab=' . $target_tab, array(&$this, 'validate_options'), 20, 3);
@@ -858,8 +803,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 CUAR_Settings::$OPTIONS_PAGE_SLUG
             );
 
-            if (in_array('rich-editor', $this->enabled_settings))
-            {
+            if (in_array('rich-editor', $this->enabled_settings)) {
                 add_settings_field(
                     $slug . self::$OPTION_ENABLE_RICH_EDITOR,
                     __('Rich Editor', 'cuar'),
@@ -891,8 +835,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         {
             $slug = $this->get_slug();
 
-            if (in_array('rich-editor', $this->enabled_settings))
-            {
+            if (in_array('rich-editor', $this->enabled_settings)) {
                 $cuar_settings->validate_boolean($input, $validated, $slug . self::$OPTION_ENABLE_RICH_EDITOR);
             }
 
@@ -925,16 +868,12 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
          */
         public function enqueue_scripts()
         {
-            if (is_admin())
-            {
+            if (is_admin()) {
                 $screen = get_current_screen();
-                if (isset($screen->id) && $screen->id == 'customer-area_page_wpca-settings')
-                {
+                if (isset($screen->id) && $screen->id == 'customer-area_page_wpca-settings') {
                     $this->plugin->enable_library('jquery.select2');
                 }
-            }
-            else
-            {
+            } else {
                 $this->plugin->enable_library('jquery.select2');
             }
         }

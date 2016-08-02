@@ -29,9 +29,9 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
     abstract class CUAR_AbstractUpdateContentPageAddOn extends CUAR_AbstractEditContentPageAddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null)
+        public function __construct($addon_id = null)
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
         }
 
         protected function set_page_parameters($priority, $description)
@@ -155,9 +155,11 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
 
                 if (false !== wp_delete_post($this->get_current_post_id(), false))
                 {
-                    $this->should_print_form = false;
-                    $this->form_messages[] = __('The content has been deleted.', 'cuar');
-
+                    $this->set_form_success(
+                        __('Done', 'cuar'),
+                        __('The content has been deleted.', 'cuar')
+                    );
+                    
                     return true;
                 }
             }

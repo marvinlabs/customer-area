@@ -132,9 +132,9 @@
     };
 
     $.cuar.ftpUploader.defaultOptions = {
-        addButton: '.cuar-ftp-add-files',               // The button to start the upload process
-        selectBox: '.cuar-ftp-file-selection',          // The select box listing the files
-        copyCheckbox: '.cuar-copy-file-checkbox'        // The check box to toggle copy/move
+        addButton: '.cuar-js-ftp-add-files',               // The button to start the upload process
+        selectBox: '.cuar-js-ftp-file-selection',          // The select box listing the files
+        copyCheckbox: '.cuar-js-copy-file-checkbox'        // The check box to toggle copy/move
     };
 
     $.fn.ftpUploader = function (options) {

@@ -28,7 +28,7 @@ if (!class_exists('CUAR_CustomerDashboardAddOn')) :
 class CUAR_CustomerDashboardAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-dashboard', '4.0.0' );
+		parent::__construct('customer-dashboard');
 		
 		$this->set_page_parameters( 5, array(
 					'slug'					=> 'customer-dashboard',

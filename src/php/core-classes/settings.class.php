@@ -971,6 +971,7 @@ if ( !class_exists('CUAR_Settings')) :
             {
                 if ( !isset($editor_settings))
                 {
+                    /** @noinspection PhpDeprecationInspection Fine since we are on the admin side*/
                     $editor_settings = cuar_wp_editor_settings();
                 }
                 $editor_settings ['textarea_name'] = self::$OPTIONS_GROUP . "[" . $option_id . "]";
@@ -1538,6 +1539,8 @@ if ( !class_exists('CUAR_Settings')) :
 
             foreach ($theme_locations as $theme_location)
             {
+                if ($theme_location['type']!=$theme_type) continue;
+
                 $dir_content = glob($theme_location['dir'] . '/*');
                 if (false === $dir_content)
                 {

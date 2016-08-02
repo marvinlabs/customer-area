@@ -30,7 +30,7 @@ if (!class_exists('CUAR_PrivatePageAddOn')) :
 class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( 'private-pages', '4.0.0' );
+		parent::__construct('private-pages');
 	}
 	
 	public function get_addon_name() {
@@ -177,7 +177,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$args = array(
 				'labels' 				=> $labels,
 				'hierarchical' 			=> false,
-				'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'comments' ),
+				'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'comments', 'excerpt'),
 				'taxonomies' 			=> array( 'cuar_private_page_category' ),
 				'public' 				=> true,
 				'show_ui' 				=> true,

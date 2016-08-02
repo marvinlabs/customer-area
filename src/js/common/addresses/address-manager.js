@@ -41,7 +41,7 @@
             base.$el.on('cuar:address:loadFromOwner', base._onLoadAddressFromOwner);
             base.$el.on('cuar:address:saveForOwner', base._onSaveAddressForOwner);
 
-            base.$el.on('click', '.cuar-action.cuar-reset', base._onResetAddressAction);
+            base.$el.on('click', '.cuar-js-action.cuar-js-reset', base._onResetAddressAction);
         };
 
         /**
@@ -160,10 +160,10 @@
                 'line2': '',
                 'zip': '',
                 'city': '',
-                'country': '',
-                'state': '',
                 'vat_number': '',
-                'logo_url': ''
+                'logo_url': '',
+                'country': '',
+                'state': ''
             });
         };
 
@@ -227,12 +227,16 @@
             for (var i = 0; i < base.fields.length; i++) {
                 var field = base.fields[i];
                 var elt = base._getField(field);
+
                 if (field == 'country') {
-                    elt.select2('val', address[field]);
-                    elt.change();
+                    elt.val(address[field]).trigger("change");
                 } else if (field == 'state') {
-                    elt.select2('val', address[field]);
+                    elt.val(address[field]);
                     elt.data('pending-value', address[field]);
+                } else if (field == 'vat_number') {
+                    elt.val(address['vat-number']);
+                } else if (field == 'logo_url') {
+                    elt.val(address['logo-url']);
                 } else {
                     elt.val(address[field]);
                 }
@@ -251,27 +255,36 @@
 
         /** Getter */
         base._getField = function (name) {
-            return $('.cuar-address-' + name, base.el).find('.cuar-address-field:input');
+            var fieldGroupSelector = '.cuar-js-address-';
+            if (name == 'vat_number') {
+                fieldGroupSelector += 'vat-number';
+            } else if (name == 'logo_url') {
+                fieldGroupSelector += 'logo-url';
+            } else {
+                fieldGroupSelector += name;
+            }
+
+            return $(fieldGroupSelector, base.el).find('.cuar-js-address-field:input');
         };
 
         /** Getter */
         base._getActions = function () {
-            return $('.cuar-action', base.el);
+            return $('.cuar-js-action', base.el);
         };
 
         /** Getter */
         base._getProgressIndicator = function () {
-            return $('.cuar-progress', base.el);
+            return $('.cuar-js-progress', base.el);
         };
 
         /** Getter */
         base._getInputFields = function () {
-            return $('.form-control', base.el);
+            return $('.cuar-js-address-field', base.el);
         };
 
         /** Getter */
         base._getInputContainers = function () {
-            return $('.form-group', base.el);
+            return $('.cuar-js-address-field-container', base.el);
         };
 
         // Make it go!

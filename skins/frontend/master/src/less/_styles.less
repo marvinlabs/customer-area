@@ -2,11 +2,11 @@
 // ----------------------------
 @master-sub-theme: true;
 @theme-root-path: "../../";
-@theme-assets-path: "@{theme-root-path}assets";
-@theme-img-path: "@{theme-root-path}assets/img/framework";
-@theme-fonts-path: "@{theme-root-path}assets/fonts/framework";
+@theme-assets-path: "../"; // relative to css folder
+@theme-img-path: "@{theme-assets-path}img"; // relative to css folder
+@theme-fonts-path: "@{theme-assets-path}fonts"; // relative to css folder
 @theme-less-path: ".";
-@framework-path: "../../../../../../../vendor/other/framework/theme_wpca/assets/skin/wpca";
+@framework-path: "../../../../../../../vendor/other/framework/theme_wpca/assets/skin";
 
 // Theme Variant Variables
 // ----------------------------
@@ -14,8 +14,4 @@
 
 // Theme Boostrapper
 // ----------------------------
-@import "@{framework-path}/bootstrapper";
-
-// Theme Fonts
-// ----------------------------
-@{wrapperBase} { @import (less) "@{theme-assets-path}/css/font-awesome.min.css"; }
+@import "@{framework-path}/wpca/bootstrapper";
