@@ -27,7 +27,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-if ( !defined('CUAR_PLUGIN_DIR')) define('CUAR_PLUGIN_DIR', plugin_dir_path(__FILE__));
+if ( !defined('CUAR_PLUGIN_DIR')) define('CUAR_PLUGIN_DIR', untrailingslashit(plugin_dir_path(__FILE__)));
 if ( !defined('CUAR_INCLUDES_DIR')) define('CUAR_INCLUDES_DIR', CUAR_PLUGIN_DIR . '/src/php');
 
 define('CUAR_LANGUAGE_DIR', 'customer-area/languages');
