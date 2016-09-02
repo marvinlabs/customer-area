@@ -874,6 +874,11 @@ if ( !class_exists('CUAR_Plugin')) :
                     break;
                 }
 
+                case 'html2pdf': {
+                    include(trailingslashit(CUAR_PLUGIN_DIR) . 'libs/php/html2pdf/vendor/autoload.php');
+                    break;
+                }
+
                 default:
                     do_action('cuar/core/libraries/enable?id=' . $library_id);
             }
