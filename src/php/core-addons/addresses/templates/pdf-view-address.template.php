@@ -32,38 +32,36 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php /** @var $excluded_fields array */ ?>
 
 <?php if (!empty($address_label)) : ?>
-    <p><?php echo $address_label; ?></p>
+    <?php echo $address_label; ?><br><br>
 <?php endif; ?>
 
 <?php if (CUAR_AddressHelper::compare_addresses(CUAR_AddressHelper::sanitize_address(array()), $address)) : ?>
-    <p><?php _e('No address yet', 'cuar'); ?></p>
+    <?php _e('No address yet', 'cuar'); ?>
 <?php else: ?>
-    <p>
-        <?php if ( !empty($address['name'])) : ?>
-            <strong><?php echo $address['name']; ?></strong><br>
-        <?php endif; ?>
+    <?php if ( !empty($address['name'])) : ?>
+        <strong><?php echo $address['name']; ?></strong><br>
+    <?php endif; ?>
 
-        <?php if ( !empty($address['company'])) : ?>
-            <strong><?php echo $address['company']; ?></strong><br>
-        <?php endif; ?>
+    <?php if ( !empty($address['company'])) : ?>
+        <strong><?php echo $address['company']; ?></strong><br>
+    <?php endif; ?>
 
-        <?php if ( !empty($address['vat_number'])) : ?>
-            <?php echo __('VAT ID -', 'cuar') . ' ' . $address['vat_number']; ?><br>
-        <?php endif; ?>
+    <?php if ( !empty($address['vat_number'])) : ?>
+        <?php echo __('VAT ID -', 'cuar') . ' ' . $address['vat_number']; ?><br>
+    <?php endif; ?>
 
-        <?php if ( !empty($address['line1'])) : ?>
-            <?php echo $address['line1']; ?><br>
-        <?php endif; ?>
-        <?php if ( !empty($address['line2'])) : ?>
-            <?php echo $address['line2']; ?><br>
-        <?php endif; ?>
-        <?php if ( !empty($address['zip']) || !empty($address['city'])) : ?>
-            <?php echo $address['zip']; ?>&nbsp;<?php echo $address['city']; ?><br>
-        <?php endif; ?>
-        <?php if ( !empty($address['state']) || !empty($address['country'])) : ?>
-            <?php if ( !empty($address['state'])) : ?><?php echo CUAR_CountryHelper::getStateName($address['country'],
-                $address['state']); ?>,&nbsp;<?php endif; ?>
-            <?php echo CUAR_CountryHelper::getCountryName($address['country']); ?>
-        <?php endif; ?>
-    </p>
+    <?php if ( !empty($address['line1'])) : ?>
+        <?php echo $address['line1']; ?><br>
+    <?php endif; ?>
+    <?php if ( !empty($address['line2'])) : ?>
+        <?php echo $address['line2']; ?><br>
+    <?php endif; ?>
+    <?php if ( !empty($address['zip']) || !empty($address['city'])) : ?>
+        <?php echo $address['zip']; ?>&nbsp;<?php echo $address['city']; ?><br>
+    <?php endif; ?>
+    <?php if ( !empty($address['state']) || !empty($address['country'])) : ?>
+        <?php if ( !empty($address['state'])) : ?><?php echo CUAR_CountryHelper::getStateName($address['country'],
+            $address['state']); ?>,&nbsp;<?php endif; ?>
+        <?php echo CUAR_CountryHelper::getCountryName($address['country']); ?>
+    <?php endif; ?>
 <?php endif; ?>
