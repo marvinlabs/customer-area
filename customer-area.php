@@ -147,6 +147,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages/customer-p
 include_once(CUAR_INCLUDES_DIR . '/functions/functions-general.php');
 include_once(CUAR_INCLUDES_DIR . '/functions/functions-private-content.php');
 include_once(CUAR_INCLUDES_DIR . '/functions/functions-private-files.php');
+include_once(CUAR_INCLUDES_DIR . '/functions/functions-private-pages.php');
 
 // Some hooks for activation, deactivation, ...
 CUAR_PluginActivationManager::set_delegate(new CUAR_PluginActivation());

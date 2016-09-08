@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 /**
  * @param array $post_data The same array you would give to wp_insert_post to create your post. No need to set the post type, this will automatically be set.
- * @param array $owner An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs of corresponding objects
+ * @param array $owners An array containing the owner description: type ('usr', 'grp', 'prj', 'rol', etc.) and IDs of corresponding objects
  * @return int¦WP_Error the post ID if the function could insert the post, else, a WP_Error object
  *
  * ´cuar_insert_file(
@@ -28,12 +28,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *          'post_status' => 'publish'
  *      ),
  *      array(
- *          'type' => 'usr',
- *          'ids' => array(1)
+ *          'usr' => array(1),
+ *          'grp'  => array(10, 50)
  *      )
  * );´
  */
-function cuar_create_private_page($post_data, $owner)
+function cuar_create_private_page($post_data, $owners)
 {
     // Create the post object
     $post_data['post_type'] = 'cuar_private_page';
@@ -45,7 +45,7 @@ function cuar_create_private_page($post_data, $owner)
     // Assign the owner
     /** @var CUAR_PostOwnerAddOn $po_addon */
     $po_addon = cuar_addon('post-owner');
-    $po_addon->save_post_owners( $post_id, $owner['ids'], $owner['type'] );
+    $po_addon->save_post_owners($post_id, $owners);
 
     return $post_id;
 }
