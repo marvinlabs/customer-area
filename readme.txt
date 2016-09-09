@@ -125,7 +125,10 @@ feel free to fork the project and send us pull requests!
 
 = 7.1.0 (2016/07/) =
 
-* New: the plugin now checks if your add-ons are compatible with the installed version. You need to activate/deactivate for that.
+* New: the plugin now checks if your add-ons are compatible with the installed version. You need to activate/deactivate for that
+* New: added a button to download all attachments at once from the private file details page
+* Fix: various tweaks and fixes on the master skin
+* Fix: a function to programmatically create private pages was not working since 7.0
 
 = 7.0.8 (2016/06/30) =
 
