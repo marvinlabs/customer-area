@@ -123,12 +123,13 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.1.0 (2016/07/) =
+= 7.1.0 (2016/) =
 
 * New: the plugin now checks if your add-ons are compatible with the installed version. You need to activate/deactivate for that
 * New: added a button to download all attachments at once from the private file details page
 * Fix: various tweaks and fixes on the master skin
 * Fix: a function to programmatically create private pages was not working since 7.0
+* Fix: some theme previews from admin where not working properly (http://wp-customerarea.com/support/topic/divi-preview-error/)
 
 = 7.0.8 (2016/06/30) =
 
