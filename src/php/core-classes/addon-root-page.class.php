@@ -52,13 +52,11 @@ if ( !class_exists('CUAR_RootPageAddOn')) :
         {
             parent::set_page_parameters($priority, $description);
 
-            if ( !isset($this->page_description['friendly_post_type']))
-            {
+            if ( !isset($this->page_description['friendly_post_type'])) {
                 $this->page_description['friendly_post_type'] = null;
             }
 
-            if ( !isset($this->page_description['friendly_taxonomy']))
-            {
+            if ( !isset($this->page_description['friendly_taxonomy'])) {
                 $this->page_description['friendly_taxonomy'] = null;
             }
         }
@@ -78,8 +76,7 @@ if ( !class_exists('CUAR_RootPageAddOn')) :
          */
         public function add_menu_items($submenus)
         {
-            if ($this->get_page_id() > 0)
-            {
+            if ($this->get_page_id() > 0) {
                 $submenus[] = array(
                     'adminbar-only' => true,
                     'parent'        => 'wpca-frontoffice',
@@ -97,8 +94,8 @@ if ( !class_exists('CUAR_RootPageAddOn')) :
         public function redirect_to_main_page()
         {
             // If we are logged-in and we really are on this page, simply redirect
-            if (is_user_logged_in() && get_queried_object_id() == $this->get_page_id())
-            {
+            $queried_object_id = get_queried_object_id();
+            if (is_user_logged_in() && $queried_object_id !== false && $queried_object_id == $this->get_page_id()) {
                 $cp_addon = $this->plugin->get_addon('customer-pages');
 
                 $redirect_slug = apply_filters('cuar/routing/redirect/root-page-to-slug?slug=' . $this->get_slug(),
