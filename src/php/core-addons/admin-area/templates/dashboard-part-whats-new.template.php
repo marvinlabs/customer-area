@@ -2,6 +2,28 @@
 
 <?php
 $whats_new = array(
+    '7.1' => array(
+        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-1', 'cuar'),
+        'codename'  => 'Kurt Cobain',
+        'tagline'   => __("A small post-summer-break update", 'cuar'),
+        'blocks'    => array(
+            array(
+                'title' => __('Better add-on version detection', 'cuar'),
+                'text'  => __('WP Customer Area will let you know after each update if you have the latest add-on release. Never forget to update them anymore!',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('PDF Invoices', 'cuar'),
+                'text'  => __('Invoices can now be downloaded as PDF files. A simple template is provided but you can make your own very easily too!',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('Download all attachments', 'cuar'),
+                'text'  => __('For those who have the Enhanced Files add-on, you can now download all attached files with a single click.',
+                    'cuar'),
+            ),
+        )
+    ),
     '7.0' => array(
         'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-0', 'cuar'),
         'codename'  => 'Lemmy Kilmister',
