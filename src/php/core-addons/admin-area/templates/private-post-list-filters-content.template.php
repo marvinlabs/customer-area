@@ -3,7 +3,6 @@
 <?php
 
 $parts = array('search', 'author', 'owner', 'taxonomies', 'timestamp', 'submit');
-$all_users = get_users(array('orderby' => 'display_name', 'fields' => 'all_with_meta'));
 
 foreach( $parts as $p)
 {

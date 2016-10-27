@@ -101,7 +101,8 @@ class CUAR_PostOwnerUserOwnerType
         $all_users = apply_filters('cuar/core/ownership/selectable-owners?owner-type=usr', null);
         if (null === $all_users)
         {
-            $all_users = get_users(array('orderby' => 'display_name', 'fields' => 'all_with_meta'));
+            // TODO: This needs to be rewritten to be "pageable"
+            $all_users = get_users(array('orderby' => 'display_name', 'fields' => array('ID', 'display_name', 'user_email')));
         }
 
         $out = $in;
