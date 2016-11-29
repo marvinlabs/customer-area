@@ -113,6 +113,16 @@ feel free to fork the project and send us pull requests!
 * Fix: a function to programmatically create private pages was not working since 7.0
 * Fix: some theme previews from admin where not working properly (http://wp-customerarea.com/support/topic/divi-preview-error/)
 
+**Add-on changes**
+
+* **ACF Integration** - New: updated supported version of ACF to 4.4.8
+* **Invoicing** - New: added ability to download an invoice as a PDF file
+* **Invoicing** - New: added a setting to pad the invoice number with leading zeros
+* **Conversations** - Fix: notifications not sent when a conversation was started
+* **Authentication forms** - Fix: email field on register page not populated properly
+* **Notifications** - Fix: added a custom message for conversation started notification
+
+
 = 7.0.8 (2016/06/30) =
 
 * Fix: several issues with the sidebar in Firefox and Internet Explorer
