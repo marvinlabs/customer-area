@@ -4,8 +4,8 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
-Tested up to:       4.5.3
-Stable tag:         7.0.8
+Tested up to:       4.6.1
+Stable tag:         7.1.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,11 +30,11 @@ one or multiple users is one of the main feature provided by our easy-to-use plu
 * Secure customer area, accessible to logged-in users
 * Private pages, that can be assigned to a particular user and will get listed in its customer area
 * Private files, that can be assigned to a particular user and will get listed in its customer area
-* Show private files grouped by category / by year / ungrouped in the customer area
-* Comments on private files and pages: the customer/user can send some feedback/observations about it
 * Customize the plugin appearance using your own themes and templates 
  
 **Extensions and themes are now available!**
+
+Invoicing, Conversations, Advanced ownership, Projects, and much more!
 
 WP Customer Area is available for free and should cover the needs of most users. If you want to encourage us to actively 
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
@@ -48,8 +48,8 @@ To the translators who send us [their translations](http://wp-customerarea.com/d
 
 * Catalan by Amanda Fontana
 * Dutch by [Paul Willems](http://wi4.nl) and [Peter Massar](http://profiles.wordpress.org/yourdigihands/)
-* English by [MarvinLabs](http://www.marvinlabs.com)
-* French by [MarvinLabs](http://www.marvinlabs.com)
+* English by [MarvinLabs](http://marvinlabs.com)
+* French by [MarvinLabs](http://marvinlabs.com)
 * German by [Benjamin Oechsler](http://benlocal.de)
 * Hungarian by [Jagri István](http://www.itcs.hu)
 * Spanish by Ulises and [e-rgonomy](http://e-rgonomy.com)
@@ -66,22 +66,9 @@ you the credit for it on this page.
 We have a safe upgrade procedure that needs to be followed, specially if you have installed any add-ons to the main
 plugin: [Important upgrade procedure for WP Customer Area](http://wp-customerarea.com/documentation/update-procedure/)
 
-= Upgrading from 3.x to 4.x =
-
-Version 4 introduces a brand new menu system and breaks many templates that have been there in version 3.x. Coming 
-from that version, you will need to create the pages that are necessary to display the private content types. Before
-upgrading the plugin, backup your files and database. It is advised that you attempt the upgrade on a development 
-site first.
-
 == Installation ==
 
-1. Nothing special, just upload the files, activate and you can then visit the settings page if you want. Like any 
-other plugin
-1. You need then to create a page and insert the [customer-area] shortcode. Your customers will be able to access their
-private content on that page.
-1. Finally, you will need to create content for the users (!): you can start with a private file for instance. Just 
-check out the WordPress menu in your administration panel, you can add new customer files just like any post. Simply 
-upload a file (below the content box), set the owner of that file, publish, and your customer should be able to see it.  
+See our [Getting started documentation](http://wp-customerarea.com/documentation/getting-started/).
 
 == Screenshots ==
 
@@ -105,12 +92,7 @@ upload a file (below the content box), set the owner of that file, publish, and 
 
 = Getting help / documentation / support / demo / ... =
 
-You have all the information on the [plugin website](http://customer-area.marvinlabs.com):
-
-* [Documentation](http://customer-area.marvinlabs.com/documentation)
-* [FAQ](http://customer-area.marvinlabs.com/category/faq/)
-* [Support](http://customer-area.marvinlabs.com/support)
-* [Demo](http://customer-area.marvinlabs.com/demo)
+You have all the information on the [plugin website](http://wp-customerarea.com)
 
 = That feature is missing, will you implement it? =
 
@@ -122,6 +104,24 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.1.0 (2016/09/15) =
+
+* New: the plugin now checks if your add-ons are compatible with the installed version. You need to activate/deactivate for that
+* New: added a button to download all attachments at once from the private file details page
+* Fix: various tweaks and fixes on the master skin
+* Fix: a function to programmatically create private pages was not working since 7.0
+* Fix: some theme previews from admin where not working properly (http://wp-customerarea.com/support/topic/divi-preview-error/)
+
+**Add-on changes**
+
+* **ACF Integration** - New: updated supported version of ACF to 4.4.8
+* **Invoicing** - New: added ability to download an invoice as a PDF file
+* **Invoicing** - New: added a setting to pad the invoice number with leading zeros
+* **Conversations** - Fix: notifications not sent when a conversation was started
+* **Authentication forms** - Fix: email field on register page not populated properly
+* **Notifications** - Fix: added a custom message for conversation started notification
+
 
 = 7.0.8 (2016/06/30) =
 

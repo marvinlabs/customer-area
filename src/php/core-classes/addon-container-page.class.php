@@ -29,9 +29,9 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
     abstract class CUAR_AbstractContainerPageAddOn extends CUAR_AbstractPageAddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null)
+        public function __construct($addon_id = null)
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
         }
 
         protected function set_page_parameters($priority, $description)

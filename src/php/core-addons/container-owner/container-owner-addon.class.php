@@ -31,7 +31,7 @@ if ( !class_exists('CUAR_ContainerOwnerAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('container-owner', '5.0.0');
+            parent::__construct('container-owner');
         }
 
         public function get_addon_name()

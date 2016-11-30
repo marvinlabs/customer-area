@@ -35,7 +35,7 @@ if (!class_exists('CUAR_InstallerAddOn')) :
          */
         public function __construct()
         {
-            parent::__construct('installer', '6.0.0');
+            parent::__construct('installer');
         }
 
         /**

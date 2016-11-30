@@ -30,7 +30,7 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('address-manager', '6.3.0');
+            parent::__construct('address-manager');
         }
 
         public function get_addon_name()

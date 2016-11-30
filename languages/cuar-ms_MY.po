@@ -3,25 +3,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
-"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
-"environment/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
-"PO-Revision-Date: 2016-05-20 18:09+0000\n"
+"PO-Revision-Date: 2016-10-24 11:49+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
-"Language-Team: Malay (Malaysia) (http://www.transifex.com/wp-translations/wp-"
-"customer-area/language/ms_MY/)\n"
-"Language: ms_MY\n"
+"Language-Team: Malay (Malaysia) (http://www.transifex.com/wp-translations/wp-customer-area/language/ms_MY/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ms_MY\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
@@ -33,9 +29,8 @@ msgid "Account details"
 msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:393
-#, fuzzy
 msgid "View profile"
-msgstr "Lihat semua"
+msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:394
 msgid "Manage account"
@@ -49,7 +44,7 @@ msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:403
 msgid "Register"
-msgstr ""
+msgstr "Daftar"
 
 #: skins/frontend/master/cuar-functions.php:404
 #: src/php/core-addons/log/log-addon.class.php:164
@@ -133,7 +128,7 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:58
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:60
 #: src/php/core-addons/status/hook-finder.class.php:124
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:42
 #: src/php/core-classes/widget-content-list.class.php:217
 msgid "Name"
 msgstr "Nama"
@@ -218,11 +213,13 @@ msgid "State/Province"
 msgstr ""
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:56
+#: src/php/core-addons/addresses/templates/pdf-view-address.template.php:39
 #: src/php/core-addons/addresses/templates/view-address.template.php:43
 msgid "No address yet"
 msgstr ""
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:71
+#: src/php/core-addons/addresses/templates/pdf-view-address.template.php:50
 #: src/php/core-addons/addresses/templates/view-address.template.php:58
 msgid "VAT ID -"
 msgstr ""
@@ -445,7 +442,7 @@ msgstr ""
 #: src/php/core-classes/settings.class.php:92
 #: src/php/core-classes/settings.class.php:124
 msgid "Settings"
-msgstr ""
+msgstr "Tetapan"
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:29
 msgid "/documentation/"
@@ -471,7 +468,7 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:84
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:71
 msgid "Email Address"
-msgstr ""
+msgstr "Alamat Emel"
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:90
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:77
@@ -515,104 +512,143 @@ msgid "/feed/rss"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-msgid "/whats-new-in-wp-customer-area-7-0"
+msgid "/whats-new-in-wp-customer-area-7-1"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
-msgid "WP Customer Area 7.0 has got a new dress."
+msgid "A small post-summer-break update"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
-msgid "New skin"
+msgid "Better add-on version detection"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+msgid ""
+"WP Customer Area will let you know after each update if you have the latest "
+"add-on release. Never forget to update them anymore!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+msgid "PDF Invoices"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+msgid ""
+"Invoices can now be downloaded as PDF files. A simple template is provided "
+"but you can make your own very easily too!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:41
+msgid "Download all attachments"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+msgid ""
+"For those who have the Enhanced Files add-on, you can now download all "
+"attached files with a single click."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+msgid "/whats-new-in-wp-customer-area-7-0"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+msgid "WP Customer Area 7.0 has got a new dress."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+msgid "New skin"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
 msgid ""
 "The appearance of the private area has been completely rewritten to enhance "
 "compatibility with all themes and usability. "
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
 msgid "Better ownership control"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
 msgid ""
 "Our add-ons allow assigning content to groups, roles, etc. However, these "
 "owner types could not be mixed. For example, you can now assign private "
 "content at the same time to a group and to a few users."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:43
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:66
 msgid "Improvements and bug fixes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
 msgid ""
-"Existing add-ons have been much improved: 17 new features and over 14 issues "
-"fixes. For instance, notifications are now sent in HTML format using a clean "
-"professional template."
+"Existing add-ons have been much improved: 17 new features and over 14 issues"
+" fixes. For instance, notifications are now sent in HTML format using a "
+"clean professional template."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 msgid "/whats-new-in-wp-customer-area-6-3"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:52
 msgid ""
 "WP Customer Area 6.3 has been aimed at improving customer relationship "
 "management and improving existing add-ons."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
 msgid "Contact information"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
 msgid ""
 "User profiles can now store a home and a billing address. This is an "
 "essential information when managing your customers and will help building "
 "more CRM features into the plugin later on."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:60
 msgid "Invoicing"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
 msgid ""
 "We are introducing a new add-on to publish invoices for your customers. No "
 "more attaching files, there is a proper content type for invoices and we "
 "will soon add a lot around that (PDF generation, online payment, etc.)."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:41
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:63
 msgid "/downloads/wpca-invoicing"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:45
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
 msgid ""
-"While this time we do not have other big news than the new invoicing add-on, "
-"there have been lots of additions and fixes to the base plugin and the "
+"While this time we do not have other big news than the new invoicing add-on,"
+" there have been lots of additions and fixes to the base plugin and the "
 "existing add-ons: 15 new features and 19 issues have been implemented/fixed."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:51
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:73
 msgid "/whats-new-in-wp-customer-area-6-2"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:53
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
 msgid ""
 "WP Customer Area 6.2 has been aimed at improving the attachments to private "
 "files and everything around that."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:78
 msgid "New upload system"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:57
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:79
 msgid ""
 "The file upload system has been completely rewritten. You can now drag and "
 "drop files and watch the upload progress. Additionally, we have also added "
@@ -620,26 +656,26 @@ msgid ""
 "as secure as it can."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
 msgid "Enhanced Files"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:62
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:84
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
-"multiple attachments on the same private file, change the attachment caption "
-"and automatically add file type icons in front of the download links."
+"multiple attachments on the same private file, change the attachment caption"
+" and automatically add file type icons in front of the download links."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:64
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
 msgid "/downloads/wpca-enhanced-files"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
 msgid "Smart Groups"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:68
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:90
 msgid ""
 "Smart Groups will change the way to build your user groups. No more adding "
 "or removing users by hand, you will simply make dynamic groups based on "
@@ -647,126 +683,126 @@ msgid ""
 "information linked to your user profiles."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:70
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
 msgid "/downloads/wpca-smart-groups"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
 msgid "/whats-new-in-wp-customer-area-6-1"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:99
 msgid ""
 "WP Customer Area 6.1 focuses mainly on making administrator's life easier, "
 "introducing event logging and a better administration panel."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:80
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
 msgid "Protect post types"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:81
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
 msgid ""
 "We are introducing a new add-on which will allow protecting any kind of "
 "external post types. Posts created from third party plugins can be made "
 "private and assigned just like private pages or files."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:105
 msgid "/downloads/wpca-protect-post-types"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:108
 #: src/php/core-addons/shortcodes/shortcodes-addon.class.php:36
 msgid "Shortcodes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:87
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:109
 msgid ""
 "we have added shortcodes to display the navigation menu, list protected "
 "content, etc. You will now be able to easily build custom pages with a list "
 "of the content you want to pull for the connected user."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:111
 msgid "/documentation/shortcodes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:114
 msgid "Better admin panel"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:93
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
-"better organised. The content lists now feature powerful filters to help you "
-"find the content you are looking for faster."
+"better organised. The content lists now feature powerful filters to help you"
+" find the content you are looking for faster."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:119
 msgid "Logging"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:98
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
 msgid ""
 "When dealing with private content and secure areas, keeping track of events "
 "is crucial. We have added a module to track what is happening within your "
 "private area."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:124
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:147
 msgid "And more!"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 23 issues corrected."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:110
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:132
 msgid "/customer-area-is-dead-long-live-wp-customer-area/"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:112
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:134
 msgid ""
-"WP Customer Area 6.0 is a major release which sees a lot of changes not only "
-"inside the plugin but also on the website."
+"WP Customer Area 6.0 is a major release which sees a lot of changes not only"
+" inside the plugin but also on the website."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:137
 msgid "Improved setup &amp; updates"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:116
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:138
 msgid ""
 "We have implemented a new setup assistant that will make it even easier to "
 "install the plugin. Updates will be smoother too."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:142
 msgid "Better permissions"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:121
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
 msgid ""
 "Some new permissions have been added to give you more control about what "
 "your users can do. On top of that, we have also improved the permissions "
 "screen to make it faster to set permissions."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:126
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 20 issues corrected."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:135
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:157
 msgid "New in %s ~ <em>%s</em>"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:145
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:167
 msgid "Learn more"
 msgstr ""
 
@@ -867,10 +903,12 @@ msgstr ""
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:41
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:89
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:50
 msgid "Suggested action"
 msgstr ""
 
 #: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:41
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:53
 msgid "Ignore this warning"
 msgstr ""
 
@@ -950,8 +988,8 @@ msgstr "Laman Utama"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
-"This is the main page for your customers. It will redirect to the login page "
-"or to the customer area dashboard."
+"This is the main page for your customers. It will redirect to the login page"
+" or to the customer area dashboard."
 msgstr ""
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:55
@@ -964,7 +1002,7 @@ msgid ""
 msgstr ""
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:999
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1001
 msgid "Customer Pages"
 msgstr ""
 
@@ -997,133 +1035,133 @@ msgstr ""
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:992
 msgid "Site Pages"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1025
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1094
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1027
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1096
 msgid "Reset"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1031
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1033
 msgid "Reset all pages &raquo;"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1034
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1036
 msgid "Delete all existing pages and recreate them."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1035
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1037
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1045
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1047
 msgid "Main Navigation Menu"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1055
 msgid "WP Customer Area pages"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1063
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1073
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1075
 msgid "Private content single pages"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1083
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1100
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1102
 msgid "Recreate menu"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1103
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1105
 msgid "Delete and recreate the main navigation menu."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1106
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1113
 msgid "Permalinks"
 msgstr "Pautan Kekal"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1118
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1120
 msgid "Category Archive"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1136
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1138
 msgid "Date Archive"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1153
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1155
 msgid "Author Archive"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1170
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1172
 msgid "Update Content"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1179
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1181
 msgid "Slug that is used in the URL to update existing private content"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1186
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1188
 msgid "Delete Content"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1195
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1197
 msgid "Slug that is used in the URL to delete existing private content"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1209
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1211
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1221
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1223
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1388
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1289
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1323
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1390
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1317
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1319
 msgid "The following pages have been created: %s"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1324
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1326
 msgid "There was no missing page that could be created."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1363
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1365
 msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings."
+"Some pages in your site seem to contain Customer Area shortcodes but are not"
+" registered in the Customer Area pages settings."
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1383
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1385
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] ""
@@ -1157,8 +1195,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:37
 msgid ""
-"You can review which menus are currently created on the <a href=\"%1$s"
-"\">menus page</a>."
+"You can review which menus are currently created on the <a "
+"href=\"%1$s\">menus page</a>."
 msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:42
@@ -1177,9 +1215,9 @@ msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:36
 msgid ""
-"Some pages of the customer area have been changed and our current navigation "
-"menu probably references the previous pages. We recommend to synchronize the "
-"menu with the new pages. "
+"Some pages of the customer area have been changed and our current navigation"
+" menu probably references the previous pages. We recommend to synchronize "
+"the menu with the new pages. "
 msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:37
@@ -1241,8 +1279,8 @@ msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:37
 msgid ""
-"You can review which pages are currently created on the <a href=\"%1$s"
-"\">pages settings page</a>."
+"You can review which pages are currently created on the <a "
+"href=\"%1$s\">pages settings page</a>."
 msgstr ""
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:42
@@ -1269,7 +1307,6 @@ msgstr "Tertib"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:38
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:110
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:28
 msgid "ID"
 msgstr "ID"
 
@@ -1416,16 +1453,16 @@ msgstr ""
 msgid "No items were found matching the selected filters"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:33
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:36
 msgid "%d attachment"
 msgid_plural "%d attachments"
 msgstr[0] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:48
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:58
 msgid "Get file"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:59
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:23
@@ -1590,8 +1627,8 @@ msgstr ""
 
 #: src/php/core-addons/installer/installer-addon.class.php:247
 msgid ""
-"There is a quick installation to run before being able to publish your first "
-"private files and pages. It should be over in less than a minute!"
+"There is a quick installation to run before being able to publish your first"
+" private files and pages. It should be over in less than a minute!"
 msgstr ""
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
@@ -1727,8 +1764,8 @@ msgstr ""
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is downloading a private file. There will be a single "
-"event per user and per file. Else, each time a user is downloading a private "
-"file, an event will be generated."
+"event per user and per file. Else, each time a user is downloading a private"
+" file, an event will be generated."
 msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:155
@@ -1822,9 +1859,8 @@ msgstr ""
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:14
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
-#, fuzzy
 msgid "You are not allowed to select an owner"
-msgstr "Anda tidak dibenarkan untuk memadam butir ini."
+msgstr ""
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:37
 msgid "Select or search an owner"
@@ -1967,14 +2003,15 @@ msgid "FTP uploads folder"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:247
-msgid "<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
+msgid ""
+"<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:250
 msgid ""
 "This folder is the root folder for storing private files. This should "
-"preferably be located outside of the web server public area or secured using "
-"a <code>.htaccess</code> file"
+"preferably be located outside of the web server public area or secured using"
+" a <code>.htaccess</code> file"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:264
@@ -2011,8 +2048,8 @@ msgstr ""
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:316
 msgid ""
 "That directory seems to be accessible from the web. <strong>This is not "
-"safe</strong>. The most secure would be to move it outside of the web folder "
-"of your server"
+"safe</strong>. The most secure would be to move it outside of the web folder"
+" of your server"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:321
@@ -2187,28 +2224,28 @@ msgid "Path"
 msgstr "Laluan"
 
 #: src/php/core-addons/status/status-addon.class.php:38
-#: src/php/core-addons/status/status-addon.class.php:59
+#: src/php/core-addons/status/status-addon.class.php:58
 msgid "Status"
 msgstr "Status"
 
-#: src/php/core-addons/status/status-addon.class.php:58
+#: src/php/core-addons/status/status-addon.class.php:57
 msgid "WP Customer Area - Plugin status"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:108
+#: src/php/core-addons/status/status-addon.class.php:104
 msgid "Needs attention"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:109
+#: src/php/core-addons/status/status-addon.class.php:105
 msgid "Things that need your attention"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:113
+#: src/php/core-addons/status/status-addon.class.php:109
 msgid "Installed add-ons"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:114
-msgid "Core and commercial add-ons currently enabled"
+#: src/php/core-addons/status/status-addon.class.php:110
+msgid "Supported add-ons currently enabled"
 msgstr ""
 
 #: src/php/core-addons/status/status-addon.class.php:123
@@ -2231,31 +2268,31 @@ msgstr ""
 msgid "Settings tools"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:206
+#: src/php/core-addons/status/status-addon.class.php:201
 msgid "The database has been cleaned up, you can now remove the plugin"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:212
+#: src/php/core-addons/status/status-addon.class.php:207
 msgid "Settings have been resetted to default values"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:222
+#: src/php/core-addons/status/status-addon.class.php:216
 msgid "Invalid parameters. No file sent"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:232
+#: src/php/core-addons/status/status-addon.class.php:225
 msgid "No file sent."
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:237
+#: src/php/core-addons/status/status-addon.class.php:230
 msgid "Exceeded filesize limit."
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:241
+#: src/php/core-addons/status/status-addon.class.php:234
 msgid "Unknown errors."
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:250
+#: src/php/core-addons/status/status-addon.class.php:243
 msgid "Settings have been imported successfully"
 msgstr ""
 
@@ -2288,8 +2325,8 @@ msgstr ""
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a href="
-"\"%2$s\">add-ons status pages</a>."
+"running version %1$s). You can find the list of all add-ons on the <a "
+"href=\"%2$s\">add-ons status pages</a>."
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
@@ -2306,6 +2343,39 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:67
 msgid "Ignore until next update"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:26
+msgid ""
+"WP Customer Area %1$s recommends the following versions for the add-ons"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:31
+msgid "Add-on"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:32
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:43
+msgid "Current version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:33
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:44
+msgid "Recommended version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:46
+msgid ""
+"If you ignore this warning, there may be unexpected behaviour from the "
+"plugin. You may also be missing on security patches and bug fixes."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:47
+msgid "You should really update the add-ons."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:51
+msgid "Download updated add-ons"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:29
@@ -2326,8 +2396,12 @@ msgstr ""
 msgid "%s: %d hook(s)"
 msgstr ""
 
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:30
-msgid "Required customer area version"
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:33
+msgid "Get latest add-ons from your account"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:35
+msgid "Check versions again"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-needs-attention.template.php:33
@@ -2358,7 +2432,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:38
 msgid ""
-"You can import all the settings you had previously exported from a JSON file."
+"You can import all the settings you had previously exported from a JSON "
+"file."
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:47
@@ -2381,8 +2456,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:58
 msgid ""
-"Pressing the button below will clean-up any data related to WP Customer Area "
-"(posts, taxonomies, etc.). This cannot be undone!"
+"Pressing the button below will clean-up any data related to WP Customer Area"
+" (posts, taxonomies, etc.). This cannot be undone!"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:62
@@ -2391,8 +2466,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:68
 msgid ""
-"Are you sure that you want to reset all the settings to their default values "
-"(this operation cannot be undone)?"
+"Are you sure that you want to reset all the settings to their default values"
+" (this operation cannot be undone)?"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:73
@@ -2473,6 +2548,10 @@ msgid ""
 "fields empty if you want to keep your current password"
 msgstr ""
 
+#: src/php/core-classes/Addon/addon-manager.class.php:138
+msgid "The plugin and the add-ons you have installed may be incompatible."
+msgstr ""
+
 #: src/php/core-classes/Content/list-table.class.php:246
 msgid ""
 "<a href=\"%1$s\" title=\"Show content classified under %2$s\" class=\"cuar-"
@@ -2534,9 +2613,9 @@ msgstr "Kosongkan Sampah"
 
 #: src/php/core-classes/Licensing/license-validation-result.class.php:81
 msgid ""
-"You have bought your license on the previous shop. We have a <a href=\"%1$s"
-"\">brand new website</a>, please contact us so that we can help you migrate "
-"your license to the new shop."
+"You have bought your license on the previous shop. We have a <a "
+"href=\"%1$s\">brand new website</a>, please contact us so that we can help "
+"you migrate your license to the new shop."
 msgstr ""
 
 #: src/php/core-classes/Licensing/licensing.class.php:73
@@ -2629,7 +2708,8 @@ msgstr ""
 #: src/php/core-classes/addon-container-page.class.php:865
 #: src/php/core-classes/addon-content-page.class.php:893
 msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all items."
+"Define how many items to allow on the dashboard page. -1 will show all "
+"items."
 msgstr ""
 
 #: src/php/core-classes/addon-container-page.class.php:946
@@ -2718,7 +2798,7 @@ msgstr ""
 
 #: src/php/core-classes/addon-update-content-page.class.php:159
 msgid "Done"
-msgstr ""
+msgstr "Selesai"
 
 #: src/php/core-classes/addon-update-content-page.class.php:160
 msgid "The content has been deleted."
@@ -2777,27 +2857,27 @@ msgstr ""
 msgid "Content edition"
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:97
+#: src/php/core-classes/addon.class.php:96
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:125
+#: src/php/core-classes/addon.class.php:124
 msgid "License Keys"
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:137
+#: src/php/core-classes/addon.class.php:136
 msgid "License keys for commercial add-ons"
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:179
+#: src/php/core-classes/addon.class.php:178
 msgid ""
 "This page allows you to enter license key you have received when you "
 "purchased commercial addons."
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:180
+#: src/php/core-classes/addon.class.php:179
 msgid ""
 "Do not activate your license on your development site. Only on the final "
 "site where you are running the plugin."
@@ -2858,57 +2938,53 @@ msgstr ""
 msgid "%1$s is required."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:210
+#: src/php/core-classes/plugin.class.php:215
 msgid "Checking license..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:211
+#: src/php/core-classes/plugin.class.php:216
 msgid "Failed to contact server"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:212
-#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:217
+#: src/php/core-classes/plugin.class.php:244
 msgid "Saving..."
 msgstr "Menyimpan..."
 
-#: src/php/core-classes/plugin.class.php:213
-#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:218
+#: src/php/core-classes/plugin.class.php:245
 msgid "Click to edit..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:214
-#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:219
+#: src/php/core-classes/plugin.class.php:246
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:215
-#: src/php/core-classes/plugin.class.php:242
+#: src/php/core-classes/plugin.class.php:220
+#: src/php/core-classes/plugin.class.php:247
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/php/core-classes/plugin.class.php:227
-#: src/php/core-classes/plugin.class.php:254
+#: src/php/core-classes/plugin.class.php:232
+#: src/php/core-classes/plugin.class.php:259
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:229
-#: src/php/core-classes/plugin.class.php:256
+#: src/php/core-classes/plugin.class.php:234
+#: src/php/core-classes/plugin.class.php:261
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:595
+#: src/php/core-classes/plugin.class.php:598
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:621
-msgid "Some add-ons require a newer version of the main plugin."
-msgstr ""
-
-#: src/php/core-classes/plugin.class.php:932
+#: src/php/core-classes/plugin.class.php:901
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 
@@ -4210,7 +4286,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1318
 msgid "Ceuta"
-msgstr ""
+msgstr "Ceuta"
 
 #: src/php/helpers/country-helper.class.php:1319
 msgid "Ciudad Real"
@@ -4254,7 +4330,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1329
 msgid "La Rioja"
-msgstr ""
+msgstr "La Rioja"
 
 #: src/php/helpers/country-helper.class.php:1330
 msgid "Las Palmas"
@@ -4783,26 +4859,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:216
-#: src/php/core-classes/plugin.class.php:243
+#: src/php/core-classes/plugin.class.php:221
+#: src/php/core-classes/plugin.class.php:248
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:217
-#: src/php/core-classes/plugin.class.php:244
+#: src/php/core-classes/plugin.class.php:222
+#: src/php/core-classes/plugin.class.php:249
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Bersihkan"
 
-#: src/php/core-classes/plugin.class.php:218
-#: src/php/core-classes/plugin.class.php:245
+#: src/php/core-classes/plugin.class.php:223
+#: src/php/core-classes/plugin.class.php:250
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "Hari ini"
 
-#: src/php/core-classes/plugin.class.php:221
-#: src/php/core-classes/plugin.class.php:248
+#: src/php/core-classes/plugin.class.php:226
+#: src/php/core-classes/plugin.class.php:253
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr ""

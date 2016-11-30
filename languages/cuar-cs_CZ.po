@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
-"PO-Revision-Date: 2016-06-24 07:00+0000\n"
+"PO-Revision-Date: 2016-10-24 15:02+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/wp-translations/wp-customer-area/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgstr "Odhlásit se"
 
 #: skins/frontend/master/cuar-functions.php:403
 msgid "Register"
-msgstr ""
+msgstr "Zaregistrujte se"
 
 #: skins/frontend/master/cuar-functions.php:404
 #: src/php/core-addons/log/log-addon.class.php:164
@@ -129,7 +129,7 @@ msgstr "Musíte zadat adresu"
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:58
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:60
 #: src/php/core-addons/status/hook-finder.class.php:124
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:42
 #: src/php/core-classes/widget-content-list.class.php:217
 msgid "Name"
 msgstr "Název"
@@ -214,11 +214,13 @@ msgid "State/Province"
 msgstr "Kraj"
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:56
+#: src/php/core-addons/addresses/templates/pdf-view-address.template.php:39
 #: src/php/core-addons/addresses/templates/view-address.template.php:43
 msgid "No address yet"
 msgstr "Zatím bez adresy"
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:71
+#: src/php/core-addons/addresses/templates/pdf-view-address.template.php:50
 #: src/php/core-addons/addresses/templates/view-address.template.php:58
 msgid "VAT ID -"
 msgstr "DIČ -"
@@ -511,104 +513,143 @@ msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-msgid "/whats-new-in-wp-customer-area-7-0"
+msgid "/whats-new-in-wp-customer-area-7-1"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
-msgid "WP Customer Area 7.0 has got a new dress."
+msgid "A small post-summer-break update"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
-msgid "New skin"
+msgid "Better add-on version detection"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+msgid ""
+"WP Customer Area will let you know after each update if you have the latest "
+"add-on release. Never forget to update them anymore!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+msgid "PDF Invoices"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+msgid ""
+"Invoices can now be downloaded as PDF files. A simple template is provided "
+"but you can make your own very easily too!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:41
+msgid "Download all attachments"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+msgid ""
+"For those who have the Enhanced Files add-on, you can now download all "
+"attached files with a single click."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+msgid "/whats-new-in-wp-customer-area-7-0"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+msgid "WP Customer Area 7.0 has got a new dress."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+msgid "New skin"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
 msgid ""
 "The appearance of the private area has been completely rewritten to enhance "
 "compatibility with all themes and usability. "
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
 msgid "Better ownership control"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
 msgid ""
 "Our add-ons allow assigning content to groups, roles, etc. However, these "
 "owner types could not be mixed. For example, you can now assign private "
 "content at the same time to a group and to a few users."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:43
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:66
 msgid "Improvements and bug fixes"
 msgstr "Vylepšení a opravy chyb"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
 msgid ""
 "Existing add-ons have been much improved: 17 new features and over 14 issues"
 " fixes. For instance, notifications are now sent in HTML format using a "
 "clean professional template."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 msgid "/whats-new-in-wp-customer-area-6-3"
 msgstr "/whats-new-in-wp-customer-area-6-3"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:52
 msgid ""
 "WP Customer Area 6.3 has been aimed at improving customer relationship "
 "management and improving existing add-ons."
 msgstr "WP Customer Area 6.3 se zaměřil na zlepšení řízení vztahů se zákazníky a zlepšení stávajících doplňků."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
 msgid "Contact information"
 msgstr "Kontaktní informace"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
 msgid ""
 "User profiles can now store a home and a billing address. This is an "
 "essential information when managing your customers and will help building "
 "more CRM features into the plugin later on."
 msgstr "V uživatelském profilu lze nyní ukládat domovskou a fakturační adresu. To je nezbytný údaj při správě vašich zákazníků či klientů a pomůže při pozdějším implementování dalších CRM funkcí do pluginu."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:60
 msgid "Invoicing"
 msgstr "Fakturace"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
 msgid ""
 "We are introducing a new add-on to publish invoices for your customers. No "
 "more attaching files, there is a proper content type for invoices and we "
 "will soon add a lot around that (PDF generation, online payment, etc.)."
 msgstr "Zavádíme nový doplněk na publikování faktur pro vaše zákazníky. Již žádné připojování souborů, pro faktury je teď k dispozici patřičný typ obsahu a brzy přidáme další věci kolem toho (generování PDF, on-line platba, atd.)."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:41
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:63
 msgid "/downloads/wpca-invoicing"
 msgstr "/downloads/wpca-invoicing"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:45
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
 msgid ""
 "While this time we do not have other big news than the new invoicing add-on,"
 " there have been lots of additions and fixes to the base plugin and the "
 "existing add-ons: 15 new features and 19 issues have been implemented/fixed."
 msgstr "Přestože tentokrát nemáme jinou velkou novinku než je doplněk na fakturace, i tak přibylo mnoho vylepšení a oprav u základního pluginu a stávajících doplňků: 15 nových funkcí a 19 problémů bylo implementováno či opraveno."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:51
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:73
 msgid "/whats-new-in-wp-customer-area-6-2"
 msgstr "/whats-new-in-wp-customer-area-6-2"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:53
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
 msgid ""
 "WP Customer Area 6.2 has been aimed at improving the attachments to private "
 "files and everything around that."
 msgstr "WP Customer Area 6.2 se zaměřil na zdokonalení příloh k privátním souborům a všeho kolem toho."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:78
 msgid "New upload system"
 msgstr "Nový systém nahrávání"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:57
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:79
 msgid ""
 "The file upload system has been completely rewritten. You can now drag and "
 "drop files and watch the upload progress. Additionally, we have also added "
@@ -616,26 +657,26 @@ msgid ""
 "as secure as it can."
 msgstr "Systém pro nahrávání souborů byl kompletně přepracován. Nyní stačí soubory jednoduše přetáhnout a už jen sledovat průběh nahrávání. Vedle toho jsme přidali navíc pár nastavení a pomocníka pro zabezpečení, aby váš systém byl co možná nejbezpečnější."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
 msgid "Enhanced Files"
 msgstr "Rozšířené soubory"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:62
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:84
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
 "multiple attachments on the same private file, change the attachment caption"
 " and automatically add file type icons in front of the download links."
 msgstr "Zavádíme nový doplněk, který rozšiřuje možnosti souborových příloh: nahrání více příloh k jednomu privátnímu souboru, změna titulku u přílohy a automatické přidávání ikony typu souboru na začátek odkazu ke stažení."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:64
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
 msgid "/downloads/wpca-enhanced-files"
 msgstr "/downloads/wpca-enhanced-files"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
 msgid "Smart Groups"
 msgstr "Chytré skupiny"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:68
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:90
 msgid ""
 "Smart Groups will change the way to build your user groups. No more adding "
 "or removing users by hand, you will simply make dynamic groups based on "
@@ -643,126 +684,126 @@ msgid ""
 "information linked to your user profiles."
 msgstr "Chytré skupiny změní způsob jakým vytváříte své uživatelské skupiny. Již žádné ruční přidávání a odstraňování uživatelů, ale jednoduše si nadefinujete dynamické skupiny na základě jména, domény emailové adresy nebo jakýchkoli jiných meta informací z uživatelského profilu."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:70
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
 msgid "/downloads/wpca-smart-groups"
 msgstr "/downloads/wpca-smart-groups"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
 msgid "/whats-new-in-wp-customer-area-6-1"
 msgstr "/whats-new-in-wp-customer-area-6-1"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:99
 msgid ""
 "WP Customer Area 6.1 focuses mainly on making administrator's life easier, "
 "introducing event logging and a better administration panel."
 msgstr "WP Customer Area 6.1 se zaměřuje především na zjednodušení práce administrátora, zavádí protokolování událostí a lepší panel administrace."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:80
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
 msgid "Protect post types"
 msgstr "Ochrana typů obsahu"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:81
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
 msgid ""
 "We are introducing a new add-on which will allow protecting any kind of "
 "external post types. Posts created from third party plugins can be made "
 "private and assigned just like private pages or files."
 msgstr "Zavádíme nový doplněk, který umožňuje ochránit i jakékoli jiné typy obsahu. Příspěvky vytvořené pomocí pluginů třetích stran, lze nyní nastavit jako privátní a přiřazovat je stejně jako privátní stránky či soubory."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:105
 msgid "/downloads/wpca-protect-post-types"
 msgstr "/downloads/wpca-protect-post-types"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:108
 #: src/php/core-addons/shortcodes/shortcodes-addon.class.php:36
 msgid "Shortcodes"
 msgstr "Zkrácené zápisy (shortcodes)"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:87
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:109
 msgid ""
 "we have added shortcodes to display the navigation menu, list protected "
 "content, etc. You will now be able to easily build custom pages with a list "
 "of the content you want to pull for the connected user."
 msgstr "Přidali jsme zkrácené zápisy (shortcodes) pro zobrazení navigačního menu, výpis chráněného obsahu a další. Nyní si budete moci snadno vytvářet své vlastní stránky s výpisem požadovaného obsahu pro daného uživatele."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:111
 msgid "/documentation/shortcodes"
 msgstr "/documentation/shortcodes"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:114
 msgid "Better admin panel"
 msgstr "Lepší panel administrace"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:93
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
 "better organised. The content lists now feature powerful filters to help you"
 " find the content you are looking for faster."
 msgstr "Hlavní menu pluginu bylo hodně vylepšeno, je více přehlednější a lépe uspořádané. Přehledy obsahu jsou nyní vybaveny mocnými filtry, díky kterým můžete prohledávat svůj obsah mnohem rychleji."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:119
 msgid "Logging"
 msgstr "Protokolování"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:98
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
 msgid ""
 "When dealing with private content and secure areas, keeping track of events "
 "is crucial. We have added a module to track what is happening within your "
 "private area."
 msgstr "Při práci s privátním obsahem a zabezpečenou zónou hraje klíčovou roli sledování jednotlivých událostí. Přidali jsme proto modul, který sleduje dění uvnitř vaší klientské sekce."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:124
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:147
 msgid "And more!"
 msgstr "A další!"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 23 issues corrected."
 msgstr "U každé nové verze průběžně opravujeme chyby. Ani tato aktualizace není výjimkou a bylo opraveno více jak 23 problémů."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:110
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:132
 msgid "/customer-area-is-dead-long-live-wp-customer-area/"
 msgstr "/customer-area-is-dead-long-live-wp-customer-area/"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:112
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:134
 msgid ""
 "WP Customer Area 6.0 is a major release which sees a lot of changes not only"
 " inside the plugin but also on the website."
 msgstr "WP Customer Area 6.0 je novou hlavní verzí, u které proběhlo mnoho změn nejen uvnitř pluginu, ale i na webu."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:137
 msgid "Improved setup &amp; updates"
 msgstr "Lepší instalace a aktualizace"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:116
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:138
 msgid ""
 "We have implemented a new setup assistant that will make it even easier to "
 "install the plugin. Updates will be smoother too."
 msgstr "Zavedli jsme nového průvodce prvotní instalací, díky kterému je nainstalování pluginu ještě snazší. Aktualizace budou také hladší."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:142
 msgid "Better permissions"
 msgstr "Lepší oprávnění"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:121
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
 msgid ""
 "Some new permissions have been added to give you more control about what "
 "your users can do. On top of that, we have also improved the permissions "
 "screen to make it faster to set permissions."
 msgstr "Byly přidány nové oprávnění pro lepší kontrolu nad tím, co vaši uživatelé mohou a nemohou provádět. Navíc jsme zdokonalili obrazovku pro oprávnění, aby se daly rychleji nastavit."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:126
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 20 issues corrected."
 msgstr "U každé nové verze průběžně opravujeme chyby. Ani tato aktualizace není výjimkou a bylo opraveno více jak 20 problémů."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:135
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:157
 msgid "New in %s ~ <em>%s</em>"
 msgstr "Novinky verze %s ~ <em>%s</em>"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:145
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:167
 msgid "Learn more"
 msgstr "Dozvědět se více"
 
@@ -863,10 +904,12 @@ msgstr "Nastavit oprávnění"
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:41
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:89
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:50
 msgid "Suggested action"
 msgstr "Doporučená akce"
 
 #: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:41
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:53
 msgid "Ignore this warning"
 msgstr "Ignorovat toto varování"
 
@@ -960,7 +1003,7 @@ msgid ""
 msgstr "Tato stránka odhlásí aktuálního uživatele a přesměruje ho na odhlašovací stránku"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:999
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1001
 msgid "Customer Pages"
 msgstr "Klientské stránky"
 
@@ -993,133 +1036,133 @@ msgstr "Nepodařilo se vytvořit menu. %s"
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "Menu bylo vytvořeno: <a href=\"%s\">zobrazit menu</a>"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:992
 msgid "Site Pages"
 msgstr "Stránky webu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1025
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1094
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1027
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1096
 msgid "Reset"
 msgstr "Resetovat"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1031
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1033
 msgid "Reset all pages &raquo;"
 msgstr "Resetovat všechny stránky"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1034
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1036
 msgid "Delete all existing pages and recreate them."
 msgstr "Smazat všechny existující stránky a znovu je vytvořit."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1035
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1037
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
 msgstr "Opravdu chcete smazat všechny existující stránky a znovu je vytvořit? (tuto akci nelze vrátit zpět)"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1045
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1047
 msgid "Main Navigation Menu"
 msgstr "Hlavní navigační menu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1055
 msgid "WP Customer Area pages"
 msgstr "Stránky klientské sekce"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1063
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
 msgstr "Automaticky vložit navigační menu klientské sekce na stránky klientské sekce."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1073
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1075
 msgid "Private content single pages"
 msgstr "Stránky privátního obsahu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1083
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
 msgstr "Automaticky vložit navigační menu klientské sekce na (single) stránky privátního obsahu."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1100
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1102
 msgid "Recreate menu"
 msgstr "Znovu vytvořit menu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1103
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1105
 msgid "Delete and recreate the main navigation menu."
 msgstr "Smazat a znovu vytvořit hlavní navigační menu."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1106
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
 msgstr "Opravdu chcete znovu vytvořit hlavní navigační menu? (tuto akci nelze vrátit zpět)"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1113
 msgid "Permalinks"
 msgstr "Trvalé odkazy"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1118
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1120
 msgid "Category Archive"
 msgstr "Archiv rubriky"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1136
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1138
 msgid "Date Archive"
 msgstr "Archiv data"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1153
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1155
 msgid "Author Archive"
 msgstr "Archiv autora"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1170
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1172
 msgid "Update Content"
 msgstr "Aktualizace obsahu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1179
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1181
 msgid "Slug that is used in the URL to update existing private content"
 msgstr "Název v URL adrese pro aktualizaci stávajícího obsahu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1186
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1188
 msgid "Delete Content"
 msgstr "Smazání obsahu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1195
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1197
 msgid "Slug that is used in the URL to delete existing private content"
 msgstr "Název v URL adrese pro smazání stávajícího obsahu"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1209
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1211
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
 msgstr "Od verze 4.0.0 je navigace v klientské sekci řešena pomocí menu."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1221
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1223
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
 msgstr "Od verze 4.0.0 se obsah z klientské sekce zobrazuje za použití různých stránek. Tyto stránky zde můžete vytvořit nebo jenom vybrat již existující."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1388
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1289
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1323
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1390
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
 msgstr "Byly vytvořeny nebo smazány některé stránky klientské sekce. Je třeba aktualizovat navigační menu klientské sekce."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1317
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1319
 msgid "The following pages have been created: %s"
 msgstr "Byly vytvořeny následující stránky: %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1324
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1326
 msgid "There was no missing page that could be created."
 msgstr "Nebyla nalezena žádná chybějící stránka, která by mohla být vytvořena."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1363
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1365
 msgid ""
 "Some pages in your site seem to contain Customer Area shortcodes but are not"
 " registered in the Customer Area pages settings."
 msgstr "Některé stránky na vašem webu obsahují zkrácené zápisy (shortcodes) pro zobrazení klientské sekce, ale nejsou přitom zaregistrovány v nastavení pluginu jako klientské stránky."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1383
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1385
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] "%s stránka byla smazána"
@@ -1267,7 +1310,6 @@ msgstr "Pořadí"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:38
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:110
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:28
 msgid "ID"
 msgstr "ID"
 
@@ -1418,18 +1460,18 @@ msgstr ""
 msgid "No items were found matching the selected filters"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:33
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:36
 msgid "%d attachment"
 msgid_plural "%d attachments"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:48
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:58
 msgid "Get file"
 msgstr "Stáhnout soubor"
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:59
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:23
@@ -2193,29 +2235,29 @@ msgid "Path"
 msgstr "Adresa"
 
 #: src/php/core-addons/status/status-addon.class.php:38
-#: src/php/core-addons/status/status-addon.class.php:59
+#: src/php/core-addons/status/status-addon.class.php:58
 msgid "Status"
 msgstr "Stav"
 
-#: src/php/core-addons/status/status-addon.class.php:58
+#: src/php/core-addons/status/status-addon.class.php:57
 msgid "WP Customer Area - Plugin status"
 msgstr "WP Customer Area - Stav pluginu"
 
-#: src/php/core-addons/status/status-addon.class.php:108
+#: src/php/core-addons/status/status-addon.class.php:104
 msgid "Needs attention"
 msgstr "Vyžaduje pozornost"
 
-#: src/php/core-addons/status/status-addon.class.php:109
+#: src/php/core-addons/status/status-addon.class.php:105
 msgid "Things that need your attention"
 msgstr "Záležitosti vyžadující vaši pozornost"
 
-#: src/php/core-addons/status/status-addon.class.php:113
+#: src/php/core-addons/status/status-addon.class.php:109
 msgid "Installed add-ons"
 msgstr "Instalované doplňky"
 
-#: src/php/core-addons/status/status-addon.class.php:114
-msgid "Core and commercial add-ons currently enabled"
-msgstr "Základní i placené doplňky, které jsou aktuálně povoleny"
+#: src/php/core-addons/status/status-addon.class.php:110
+msgid "Supported add-ons currently enabled"
+msgstr ""
 
 #: src/php/core-addons/status/status-addon.class.php:123
 msgid "Actions and filters"
@@ -2237,31 +2279,31 @@ msgstr "Soubory šablon"
 msgid "Settings tools"
 msgstr "Nástroje pro nastavení"
 
-#: src/php/core-addons/status/status-addon.class.php:206
+#: src/php/core-addons/status/status-addon.class.php:201
 msgid "The database has been cleaned up, you can now remove the plugin"
 msgstr "Databáze byla úspěšně vyčištěna, nyní můžete plugin odstranit"
 
-#: src/php/core-addons/status/status-addon.class.php:212
+#: src/php/core-addons/status/status-addon.class.php:207
 msgid "Settings have been resetted to default values"
 msgstr "Nastavení bylo úspěšně obnoveno na výchozí hodnoty"
 
-#: src/php/core-addons/status/status-addon.class.php:222
+#: src/php/core-addons/status/status-addon.class.php:216
 msgid "Invalid parameters. No file sent"
 msgstr "Neplatné parametry. Nebyl zaslán žádný soubor"
 
-#: src/php/core-addons/status/status-addon.class.php:232
+#: src/php/core-addons/status/status-addon.class.php:225
 msgid "No file sent."
 msgstr "Nebyl zaslán žádný soubor."
 
-#: src/php/core-addons/status/status-addon.class.php:237
+#: src/php/core-addons/status/status-addon.class.php:230
 msgid "Exceeded filesize limit."
 msgstr "Byl překročen limit pro velikost souboru."
 
-#: src/php/core-addons/status/status-addon.class.php:241
+#: src/php/core-addons/status/status-addon.class.php:234
 msgid "Unknown errors."
 msgstr "Neznámé chyby."
 
-#: src/php/core-addons/status/status-addon.class.php:250
+#: src/php/core-addons/status/status-addon.class.php:243
 msgid "Settings have been imported successfully"
 msgstr "Nastavení bylo úspěšně importováno"
 
@@ -2314,6 +2356,39 @@ msgstr "Jiná akce"
 msgid "Ignore until next update"
 msgstr "Ignorovat do příští aktualizace"
 
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:26
+msgid ""
+"WP Customer Area %1$s recommends the following versions for the add-ons"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:31
+msgid "Add-on"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:32
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:43
+msgid "Current version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:33
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:44
+msgid "Recommended version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:46
+msgid ""
+"If you ignore this warning, there may be unexpected behaviour from the "
+"plugin. You may also be missing on security patches and bug fixes."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:47
+msgid "You should really update the add-ons."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:51
+msgid "Download updated add-ons"
+msgstr ""
+
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:29
 #: src/php/core-addons/status/templates/status-section-templates.template.php:26
 #: src/php/core-classes/Content/list-table.class.php:157
@@ -2332,9 +2407,13 @@ msgstr "Pouze akce"
 msgid "%s: %d hook(s)"
 msgstr "%s: %d funkcí"
 
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:30
-msgid "Required customer area version"
-msgstr "Požadovaná verze WP Customer Area"
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:33
+msgid "Get latest add-ons from your account"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:35
+msgid "Check versions again"
+msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-needs-attention.template.php:33
 msgid "Issue #%d"
@@ -2479,6 +2558,10 @@ msgid ""
 "requested to login again after your password gets changed. Leave these "
 "fields empty if you want to keep your current password"
 msgstr "Heslo musí obsahovat alespoň 5 znaků. Po změně hesla se budete muset znovu přihlásit. Pokud si chcete ponechat své stávající heslo, vůbec tato pole nevyplňujte a nechte je prázdná."
+
+#: src/php/core-classes/Addon/addon-manager.class.php:138
+msgid "The plugin and the add-ons you have installed may be incompatible."
+msgstr ""
 
 #: src/php/core-classes/Content/list-table.class.php:246
 msgid ""
@@ -2785,27 +2868,27 @@ msgstr "Musíte určit příspěvek, který chcete upravit"
 msgid "Content edition"
 msgstr "Úpravy obsahu"
 
-#: src/php/core-classes/addon.class.php:97
+#: src/php/core-classes/addon.class.php:96
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
 msgstr "<strong>Chyba: </strong>jsou aktivovány doplňky pro WP Customer Area, ale hlavní plugin není nainstalován!"
 
-#: src/php/core-classes/addon.class.php:125
+#: src/php/core-classes/addon.class.php:124
 msgid "License Keys"
 msgstr "Licenční klíče"
 
-#: src/php/core-classes/addon.class.php:137
+#: src/php/core-classes/addon.class.php:136
 msgid "License keys for commercial add-ons"
 msgstr "Licenční klíče pro placené doplňky"
 
-#: src/php/core-classes/addon.class.php:179
+#: src/php/core-classes/addon.class.php:178
 msgid ""
 "This page allows you to enter license key you have received when you "
 "purchased commercial addons."
 msgstr "Na této stránce můžete vložit své licenční klíče k zakoupeným doplňkům."
 
-#: src/php/core-classes/addon.class.php:180
+#: src/php/core-classes/addon.class.php:179
 msgid ""
 "Do not activate your license on your development site. Only on the final "
 "site where you are running the plugin."
@@ -2866,57 +2949,53 @@ msgstr "%1$s musí obsahovat maximálně %2$s znaků"
 msgid "%1$s is required."
 msgstr "Pole %1$s je vyžadováno."
 
-#: src/php/core-classes/plugin.class.php:210
+#: src/php/core-classes/plugin.class.php:215
 msgid "Checking license..."
 msgstr "Probíhá kontrola licence..."
 
-#: src/php/core-classes/plugin.class.php:211
+#: src/php/core-classes/plugin.class.php:216
 msgid "Failed to contact server"
 msgstr "Nepodařilo se spojit se serverem"
 
-#: src/php/core-classes/plugin.class.php:212
-#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:217
+#: src/php/core-classes/plugin.class.php:244
 msgid "Saving..."
 msgstr "Probíhá ukládání..."
 
-#: src/php/core-classes/plugin.class.php:213
-#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:218
+#: src/php/core-classes/plugin.class.php:245
 msgid "Click to edit..."
 msgstr "Klikněte pro úpravu..."
 
-#: src/php/core-classes/plugin.class.php:214
-#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:219
+#: src/php/core-classes/plugin.class.php:246
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:215
-#: src/php/core-classes/plugin.class.php:242
+#: src/php/core-classes/plugin.class.php:220
+#: src/php/core-classes/plugin.class.php:247
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/php/core-classes/plugin.class.php:227
-#: src/php/core-classes/plugin.class.php:254
+#: src/php/core-classes/plugin.class.php:232
+#: src/php/core-classes/plugin.class.php:259
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:229
-#: src/php/core-classes/plugin.class.php:256
+#: src/php/core-classes/plugin.class.php:234
+#: src/php/core-classes/plugin.class.php:261
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:595
+#: src/php/core-classes/plugin.class.php:598
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr "Trvalé odkazy jsou vypnuty a klientská sekce proto nebude pracovat správně. Zapnětě je prosím v <a href=\"%1$s\">nastavení WordPressu</a>."
 
-#: src/php/core-classes/plugin.class.php:621
-msgid "Some add-ons require a newer version of the main plugin."
-msgstr "Některé doplňky vyžadují novější verzi hlavního pluginu."
-
-#: src/php/core-classes/plugin.class.php:932
+#: src/php/core-classes/plugin.class.php:901
 msgid "Some template files you have overridden seem to be outdated."
 msgstr "Některé vaše upravené soubory šablon jsou zřejmě zastaralé."
 
@@ -4791,26 +4870,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Vyberte si z nejpoužívanějších rubrik stránek"
 
-#: src/php/core-classes/plugin.class.php:216
-#: src/php/core-classes/plugin.class.php:243
+#: src/php/core-classes/plugin.class.php:221
+#: src/php/core-classes/plugin.class.php:248
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr "d.m.yy"
 
-#: src/php/core-classes/plugin.class.php:217
-#: src/php/core-classes/plugin.class.php:244
+#: src/php/core-classes/plugin.class.php:222
+#: src/php/core-classes/plugin.class.php:249
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Vymazat"
 
-#: src/php/core-classes/plugin.class.php:218
-#: src/php/core-classes/plugin.class.php:245
+#: src/php/core-classes/plugin.class.php:223
+#: src/php/core-classes/plugin.class.php:250
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "Dnes"
 
-#: src/php/core-classes/plugin.class.php:221
-#: src/php/core-classes/plugin.class.php:248
+#: src/php/core-classes/plugin.class.php:226
+#: src/php/core-classes/plugin.class.php:253
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr "Zobrazit jiný měsíc"

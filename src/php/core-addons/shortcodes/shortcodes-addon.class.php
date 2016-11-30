@@ -28,7 +28,7 @@ class CUAR_ShortcodesAddOn extends CUAR_AddOn
 
     public function __construct()
     {
-        parent::__construct('shortcodes', '6.1.0');
+        parent::__construct('shortcodes');
     }
 
     public function get_addon_name()

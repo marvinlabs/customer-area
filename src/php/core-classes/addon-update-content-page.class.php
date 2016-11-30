@@ -29,9 +29,9 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
     abstract class CUAR_AbstractUpdateContentPageAddOn extends CUAR_AbstractEditContentPageAddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null)
+        public function __construct($addon_id = null)
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
         }
 
         protected function set_page_parameters($priority, $description)
@@ -215,7 +215,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
         /**
          * Add query variables for the archive subpages.
          *
-         * @param unknown $vars
+         * @param array $vars
          *
          * @return array
          */
@@ -230,7 +230,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
         /**
          * Get the URL to update private content
          *
-         * @param unknown $post_id
+         * @param int $post_id
          *
          * @return string
          */
@@ -247,7 +247,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
         /**
          * Get the URL for the archive corresponding to a given date.
          *
-         * @param unknown $post_id
+         * @param int $post_id
          *
          * @return string
          */

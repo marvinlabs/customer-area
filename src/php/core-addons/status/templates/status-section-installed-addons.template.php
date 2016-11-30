@@ -18,31 +18,47 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-	$plugin_data = get_plugin_data( WP_CONTENT_DIR . '/plugins/' . CUAR_PLUGIN_FILE, false, false );
-	$current_plugin_version = $plugin_data[ 'Version' ];
+$plugin_version = cuar()->get_version();
+$version_matrix = json_decode(file_get_contents(CUAR_PLUGIN_DIR . '/versions.json'), true);
+
+if ( !isset($version_matrix[$plugin_version])) return array();
+
+$recommended_versions = $version_matrix[$plugin_version];
+
+// List plugins
+$all_plugins = get_plugins();
 ?>
+
+<p>
+	<a href="http://wp-customerarea.com/my-account" class="button button-primary"><?php _e( 'Get latest add-ons from your account', 'cuar' ); ?> &raquo;</a>
+
+	<input type="submit" id="cuar-refresh-version-mismatch" name="cuar-refresh-version-mismatch" class="button" value="<?php esc_attr_e('Check versions again', 'cuar'); ?> &raquo;"/>
+	<?php wp_nonce_field('cuar-refresh-version-mismatch', 'cuar-refresh-version-mismatch_nonce'); ?>
+</p>
 
 <table class="widefat cuar-status-table">
 	<thead>
 		<tr>
-			<th><?php _e( 'ID', 'cuar' ); ?></th>
 			<th><?php _e( 'Name', 'cuar' ); ?></th>
-			<th><?php _e( 'Required customer area version', 'cuar' ); ?></th>
+			<th><?php _e( 'Current version', 'cuar' ); ?></th>
+			<th><?php _e( 'Recommended version', 'cuar' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
 <?php
-	$addons = $this->plugin->get_registered_addons();
-	uasort( $addons, 'cuar_sort_addons_by_name_callback' );
-	
-	foreach ( $addons as $id => $addon ) : 
-		$required_version = $addon->min_cuar_version;
-		$tr_class = version_compare( $required_version, $current_plugin_version, '>' ) ? 'cuar-needs-attention' : '';
-?>
+	foreach ($all_plugins as $id => $plugin_info) :
+		$plugin_name = explode('/', $id);
+		$plugin_name = $plugin_name[0];
+
+		if ( !isset($recommended_versions[$plugin_name])) continue;
+
+		$is_mismatch = version_compare($plugin_info['Version'], $recommended_versions[$plugin_name], '<');
+		$tr_class = $is_mismatch ? 'cuar-needs-attention' : '';
+	?>
 		<tr class="<?php echo $tr_class; ?>">
-			<td><?php echo $addon->get_id(); ?></td>
-			<td><?php echo $addon->get_addon_name(); ?></td>
-			<td><?php echo $addon->min_cuar_version; ?></td>
+			<td><?php echo $plugin_info['Name']; ?></td>
+			<td><?php echo $plugin_info['Version']; ?></td>
+			<td><?php echo $recommended_versions[$plugin_name]; ?></td>
 		</tr>
 <?php 
 	endforeach; ?>

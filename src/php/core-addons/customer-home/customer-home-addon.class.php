@@ -28,7 +28,7 @@ if ( !class_exists( 'CUAR_CustomerAreaHomeAddOn' ) ) :
 class CUAR_CustomerAreaHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-home', '4.0.0', 'customer-dashboard' );
+		parent::__construct('customer-home', 'customer-dashboard');
 		
 		$this->set_page_parameters( 1, array(
 					'slug'					=> 'customer-home',

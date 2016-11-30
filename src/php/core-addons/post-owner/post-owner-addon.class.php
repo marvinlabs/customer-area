@@ -46,7 +46,7 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function __construct()
         {
-            parent::__construct('post-owner', '4.0.0');
+            parent::__construct('post-owner');
         }
 
         public function get_addon_name()

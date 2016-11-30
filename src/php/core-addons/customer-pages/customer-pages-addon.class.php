@@ -31,7 +31,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('customer-pages', '4.0.0');
+            parent::__construct('customer-pages');
         }
 
         public function get_addon_name()
@@ -955,6 +955,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
         {
             $post_id = get_the_ID();
             if ( !cuar_is_customer_area_private_content($post_id)) return $content;
+
+            if (empty($content)) return '';
 
             return '<div class="cuar-single-entry">' . $content . '</div>';
         }

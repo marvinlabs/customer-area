@@ -30,7 +30,7 @@ if ( !class_exists('CUAR_CustomerAccountAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('customer-account', '4.6.0');
+            parent::__construct('customer-account');
 
             $this->set_page_parameters(810, array(
                     'slug'                => 'customer-account',

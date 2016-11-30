@@ -28,7 +28,7 @@ if (!class_exists('CUAR_CustomerPrivateFilesHomeAddOn')) :
 class CUAR_CustomerPrivateFilesHomeAddOn extends CUAR_RootPageAddOn {
 	
 	public function __construct() {
-		parent::__construct( 'customer-private-files-home', '4.0.0', 'customer-private-files' );
+		parent::__construct('customer-private-files-home', 'customer-private-files');
 		
 		$this->set_page_parameters( 500, array(
 					'slug'					=> 'customer-private-files-home',

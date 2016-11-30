@@ -30,9 +30,9 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
     abstract class CUAR_AbstractPageAddOn extends CUAR_AddOn
     {
 
-        public function __construct($addon_id = null, $min_cuar_version = null)
+        public function __construct($addon_id = null)
         {
-            parent::__construct($addon_id, $min_cuar_version);
+            parent::__construct($addon_id);
         }
 
         public function run_addon($plugin)

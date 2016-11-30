@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.0.0
+/** Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Add button to download all files at once
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
@@ -32,6 +35,13 @@ $attachment_count = count($attachments);
             <span class="panel-title">
                 <?php printf(_n('%d attachment', '%d attachments', $attachment_count, 'cuar'), $attachment_count); ?>
             </span>
+            <?php if (count($attachments)>1) : ?>
+                <div class="widget-menu pull-right">
+                    <span class="btn btn-default btn-sm cuar-js-download-all">
+                        <span class="fa fa-download"></span>&nbsp;<?php _e('Download all attachments', 'cuar'); ?>
+                    </span>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="panel-body pn">
             <table class="table table-hover table-striped">
@@ -56,3 +66,31 @@ $attachment_count = count($attachments);
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('.cuar-js-download-all').click(function (event) {
+            event.preventDefault();
+        <?php foreach ($attachments as $file_id => $file) : ?>
+            download('<?php cuar_the_attached_file_link($post->ID, $file, 'download'); ?>');
+        <?php endforeach; ?>
+            return false;
+        });
+
+        var download = function (url) {
+            var iframe = $('<iframe style="visibility: collapse;"></iframe>');
+            $('body').append(iframe);
+            var content = iframe[0].contentDocument;
+            var form = '<form action="' + url + '" method="GET"></form>';
+            content.write(form);
+            $('form', content).submit();
+            setTimeout((function (iframe) {
+                return function () {
+                    iframe.remove();
+                }
+            })(iframe), 20000);
+
+            console.log(url);
+        };
+    });
+</script>
