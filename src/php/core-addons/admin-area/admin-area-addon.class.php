@@ -62,6 +62,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
             // Ajax
             add_action('wp_ajax_cuar_folder_action', array(&$this, 'ajax_folder_action'));
+            add_action('wp_ajax_cuar_get_users', array(&$this, 'ajax_get_users'));
         }
         else
         {
@@ -136,6 +137,93 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         }
 
         wp_send_json_success();
+    }
+
+    public function ajax_get_users()
+    {
+        $search = isset($_GET['q']) ? $_GET['q'] : '';
+        $limit = isset($_GET['limit']) ? $_GET['limit'] : '50';
+        $offset = isset($_GET['offset']) ? $_GET['offset'] : '0';
+        $order = isset($_GET['order']) ? strtolower($_GET['order']) : 'asc';
+        $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : 'display_name';
+        $get_allcaps = isset($_GET['get_allcaps']) ? $_GET['get_allcaps'] : '';
+
+        if ( !is_numeric($limit) || !is_numeric($offset) )
+        {
+            wp_send_json_error(__('Limit or offset are not numeric.', 'cuar'));
+        }
+
+        $order_options = array( 'asc', 'desc' );
+        $orderby_options = array(
+            'ID', 'display_name', 'name', 'user_name', 'login', 'user_login',
+            'nicename', 'user_nicename', 'email', 'user_email', 'url',
+            'user_url', 'registered', 'user_registered', 'post_count'
+        );
+
+        if ( !in_array($order, $order_options) )
+        {
+            wp_send_json_error(sprintf(__('Invalid parameter "%s". Needs to be one of the following: %s.', 'cuar'),'order',implode(', ', $order_options)));
+        }
+
+        if ( !in_array($orderby, $orderby_options) )
+        {
+            wp_send_json_error(sprintf(__('Invalid parameter "%s". Needs to be one of the following: %s.', 'cuar'),'orderby',implode(', ', $orderby_options)));
+        }
+
+        if ( $limit > 500 )
+        {
+            $limit = 500;
+        }
+
+        $_user_query_args = array(
+            'fields' => array(
+                'ID', 'display_name', 'user_login', 'user_nicename', 'user_url',
+                'user_email', 'user_registered',
+            ),
+            'count_total' => true
+        );
+
+        if(!empty($search)) {
+            $_user_query_args['meta_query'] = array(
+                'relation' => 'OR',
+                array(
+                    'key'     => 'nickname',
+                    'value'   => $search,
+                    'compare' => 'LIKE'
+                ),
+                array(
+                    'key'     => 'first_name',
+                    'value'   => $search,
+                    'compare' => 'LIKE'
+                ),
+                array(
+                    'key'     => 'last_name',
+                    'value'   => $search,
+                    'compare' => 'LIKE'
+                )
+            );
+        }
+
+        $user_query_args = array(
+            'offset' => $offset,
+            'number' => $limit,
+            'order' => $order,
+            'orderby' => $orderby,
+        );
+
+        $user_query = new WP_User_Query(
+            array_merge( $_user_query_args, $user_query_args) );
+
+        wp_send_json_success(array(
+            'args' => $user_query_args,
+            'total' => (int) $user_query->get_total(),
+            'result' => (array) array_map(function($x) use ($get_allcaps) {
+                $user_info = get_userdata($x->ID);
+                $x->roles = $user_info->roles;
+                if(!empty($get_allcaps)) $x->allcaps = $user_info->allcaps;
+                return $x;
+            },$user_query->get_results()),
+        ));
     }
 
     /*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
@@ -352,6 +440,8 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     {
         $post_type_object = get_post_type_object($post_type);
         $associated_taxonomies = get_object_taxonomies($post_type, 'object');
+
+        $this->plugin->enable_library('jquery.select2');
 
         $title_links = array();
         $title_links = $this->add_new_post_link($post_type_object, $post_type, $title_links);
