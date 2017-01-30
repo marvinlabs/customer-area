@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  3.8
 Tested up to:       4.6.1
-Stable tag:         7.1.1
+Stable tag:         7.1.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,8 +105,9 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.1.1 (2017/01/30) =
+= 7.1.2 (2017/01/30) =
 
+* Fix: saving updated content when forbidding to pick an owner (using front-office addon)
 * Fix: when user was not allowed to select an owner, message "You are not allowed to select an owner" was not shown, just an icon was there
 
 = 7.1.0 (2016/09/15) =
