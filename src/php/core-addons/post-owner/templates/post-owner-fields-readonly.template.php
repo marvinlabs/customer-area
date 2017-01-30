@@ -11,6 +11,6 @@
 
 <p class="alert alert-default">
     <i class="fa fa-info-circle mr-xs"></i>
-    <?php __('You are not allowed to select an owner', 'cuar'); ?>
+    <?php _e('You are not allowed to select an owner', 'cuar'); ?>
 </p>
 
