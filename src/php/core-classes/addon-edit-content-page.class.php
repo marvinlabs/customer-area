@@ -172,9 +172,31 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             parent::print_page_content($args, $shortcode_content);
         }
 
-        public abstract function get_default_owners();
+        public function get_default_owners()
+        {
+            $legacy_owner_type = $this->plugin->get_option($this->get_edit_slug_for_options() . self::$OPTION_DEFAULT_OWNER_TYPE);
+            $owners = $this->plugin->get_option($this->get_edit_slug_for_options() . self::$OPTION_DEFAULT_OWNER);
 
-        public abstract function get_default_category();
+            // Handle old style option
+            if (!empty($legacy_owner_type)) {
+                $owners = array($legacy_owner_type => $owners);
+            }
+
+            return $owners;
+        }
+
+        public function get_default_category()
+        {
+            return $this->plugin->get_option($this->get_edit_slug_for_options() . self::$OPTION_DEFAULT_CATEGORY);
+        }
+
+        private function get_edit_slug_for_options() {
+            if (strstr($this->get_slug(), 'update')) {
+                return str_replace('update', 'new', $this->get_slug());
+            }
+
+            return $this->get_slug();
+        }
 
         protected abstract function is_action_authorized($action);
 
@@ -858,6 +880,9 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         }
 
         public static $OPTION_ENABLE_RICH_EDITOR = '-enable_rich_editor';
+        public static $OPTION_DEFAULT_OWNER_TYPE = '-default_owner_type';
+        public static $OPTION_DEFAULT_OWNER = '-default_owner';
+        public static $OPTION_DEFAULT_CATEGORY = '-default_category';
 
         protected $enabled_settings = array();
 

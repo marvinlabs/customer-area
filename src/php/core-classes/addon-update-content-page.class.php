@@ -86,16 +86,6 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
             return array('cuar_title', 'cuar_content', 'cuar_category', 'cuar_owner');
         }
 
-        public function get_default_owners()
-        {
-            return array();
-        }
-
-        public function get_default_category()
-        {
-            return -1;
-        }
-
         /*------- FORM HANDLING -----------------------------------------------------------------------------------------*/
 
         protected function is_action_authorized($action)
