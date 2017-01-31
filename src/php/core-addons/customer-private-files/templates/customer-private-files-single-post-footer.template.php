@@ -89,8 +89,6 @@ $attachment_count = count($attachments);
                     iframe.remove();
                 }
             })(iframe), 20000);
-
-            console.log(url);
         };
     });
 </script>
