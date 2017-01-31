@@ -3,9 +3,9 @@
 Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
-Requires at least:  3.8
-Tested up to:       4.7.1
-Stable tag:         7.1.2
+Requires at least:  4.2
+Tested up to:       4.7.2
+Stable tag:         7.1.3
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,10 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.1.3 (2017/01/31) =
+
+* Fix: rich editor was not showing up in frontend. Causing issues when replying to conversations for instance.
 
 = 7.1.2 (2017/01/30) =
 

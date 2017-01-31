@@ -24,7 +24,5 @@ jQuery(document).ready(function ($) {
     }
 
     // Run summernote editor on the elements having that CSS class
-    $('#cuar-js-content-container').on('cuar:wizard:initialized', function(){
-        $(".cuar-js-richeditor").summernote(snOptions);
-    });
+    $(".cuar-js-richeditor").summernote(snOptions);
 });
