@@ -107,6 +107,7 @@ feel free to fork the project and send us pull requests!
 
 = 7.1.3 (2017/01/31) =
 
+* Fix: problem with scripts being loaded twice
 * Fix: rich editor was not showing up in frontend. Causing issues when replying to conversations for instance.
 
 = 7.1.2 (2017/01/30) =

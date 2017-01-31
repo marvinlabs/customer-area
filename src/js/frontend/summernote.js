@@ -1,4 +1,4 @@
-jQuery(document).ready(function ($) {
+function bootstrapSummernote($, editorSelector) {
     // Bail if summernote is not loaded
     if (!$.isFunction($.fn.summernote)) return;
 
@@ -23,6 +23,15 @@ jQuery(document).ready(function ($) {
         snOptions['lang'] = cuar.locale;
     }
 
-    // Run summernote editor on the elements having that CSS class
-    $(".cuar-js-richeditor").summernote(snOptions);
-});
+    $(editorSelector).summernote(snOptions);
+}
+
+if (jQuery('.cuar-wizard').length>0) {
+    jQuery('#cuar-js-content-container').on('cuar:wizard:initialized', function () {
+        bootstrapSummernote(jQuery, ".cuar-wizard .cuar-js-richeditor");
+    });
+} else {
+    jQuery(document).ready(function ($) {
+        bootstrapSummernote($, ".cuar-js-richeditor");
+    });
+}

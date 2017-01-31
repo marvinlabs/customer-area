@@ -60,20 +60,20 @@ if ( !function_exists('cuar_load_skin_scripts'))
             $cuar_plugin->enable_library('jquery.slick');
         }
 
-        // SINGLE POSTS HEADERS
+        // RICH EDITOR
         // --
         $cuar_plugin->enable_library('summernote');
 
         // CUSTOM SCRIPTS
         // --
-        wp_register_script('customer-area-utilities',
-            CUAR_PLUGIN_URL . '/assets/frontend/js/customer-area.min.js',
+        wp_register_script('cuar.frontend',
+            CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js',
             array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable'),
             $cuar_plugin->get_version(),
             true);
         wp_register_script('customer-area-master-skin',
-            CUAR_PLUGIN_URL . '/skins/frontend/master/assets/js/main.min.js',
-            array('jquery', 'customer-area-utilities'),
+            CUAR_PLUGIN_URL . 'skins/frontend/master/assets/js/main.min.js',
+            array('jquery', 'cuar.frontend'),
             $cuar_plugin->get_version(),
             true);
         wp_enqueue_script('customer-area-master-skin');
@@ -81,7 +81,7 @@ if ( !function_exists('cuar_load_skin_scripts'))
         // CUSTOM STYLES
         // --
         wp_register_style('customer-area-master-eqcss',
-            CUAR_PLUGIN_URL . '/skins/frontend/master/assets/css/eqcss/queries.eqcss',
+            CUAR_PLUGIN_URL . 'skins/frontend/master/assets/css/eqcss/queries.eqcss',
             array(),
             $cuar_plugin->get_version());
         wp_enqueue_style('customer-area-master-eqcss');
@@ -89,7 +89,7 @@ if ( !function_exists('cuar_load_skin_scripts'))
         // CUSTOM FONTS
         // --
         wp_register_style('customer-area-master-fontawesome',
-            CUAR_PLUGIN_URL . '/skins/frontend/master/assets/css/fonts.min.css',
+            CUAR_PLUGIN_URL . 'skins/frontend/master/assets/css/fonts.min.css',
             array(),
             $cuar_plugin->get_version());
         wp_enqueue_style('customer-area-master-fontawesome');
