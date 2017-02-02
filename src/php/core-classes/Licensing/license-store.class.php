@@ -24,10 +24,4 @@ interface CUAR_LicenseStore
      * @return string
      */
     public function get_store_url();
-
-    /**
-     * Get the previous store URL.
-     * @return string|boolean FALSE if there was no previous store
-     */
-    public function get_legacy_store_url();
 }

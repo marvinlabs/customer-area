@@ -39,6 +39,7 @@ define('CUAR_ADMIN_SKIN', 'plugin%%default-wp38');
 define('CUAR_FRONTEND_SKIN', 'plugin%%master');
 define('CUAR_PLUGIN_FILE', 'customer-area/customer-area.php');
 
+define('CUAR_DEBUG_LICENSING', false);
 define('CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', false);
 // define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '6.3.0' );
 
