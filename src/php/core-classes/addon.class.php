@@ -28,6 +28,7 @@ if ( !class_exists('CUAR_AddOn')) :
     abstract class CUAR_AddOn
     {
         private static $MISSING_LICENSE_MESSAGES_SHOWN = array();
+        private static $HAS_NOTIFIED_INVALID_LICENSES = false;
 
         private static $OPTION_LICENSE_KEY = 'cuar_license_key_';
         private static $OPTION_LICENSE_CHECK = 'cuar_license_check_';
@@ -54,6 +55,9 @@ if ( !class_exists('CUAR_AddOn')) :
 
         /** @var CUAR_Plugin The plugin instance */
         protected $plugin;
+
+        /** @var boolean Does this addon have licensing? */
+        public $is_licensing_enabled = false;
 
         public function __construct($addon_id = null)
         {
@@ -226,6 +230,7 @@ if ( !class_exists('CUAR_AddOn')) :
 
         public function enable_licensing($store_item_id, $store_item_name, $plugin_file, $add_on_version)
         {
+            $this->is_licensing_enabled = true;
             $this->store_item_id = $store_item_id;
             $this->store_item_name = $store_item_name;
             $this->plugin_file = $plugin_file;
@@ -233,6 +238,7 @@ if ( !class_exists('CUAR_AddOn')) :
 
             // Updater
             add_action('admin_init', array($this, 'auto_updater'), 0);
+            add_action('admin_init', array($this, 'show_invalid_license_admin_notice'), 10);
             add_action('in_plugin_update_message-' . plugin_basename($plugin_file), array($this, 'plugin_row_license_missing'), 10, 2);
 
             $this->plugin->tag_addon_as_commercial($this->addon_id);
@@ -284,6 +290,44 @@ if ( !class_exists('CUAR_AddOn')) :
                 self::$MISSING_LICENSE_MESSAGES_SHOWN[$this->addon_id] = true;
             }
 
+        }
+
+        /**
+         * Admin notices for errors
+         *
+         * @access  public
+         * @return  void
+         */
+        public function show_invalid_license_admin_notice()
+        {
+            // Do not show notification twice
+            if (self::$HAS_NOTIFIED_INVALID_LICENSES) return;
+
+            // Do not show on licenses settings page
+            if (isset($_GET['page']) && strcmp($_GET['page'], 'wpca-settings') == 0
+                && isset($_GET['tab']) && strcmp($_GET['tab'], 'cuar_licenses') == 0
+            ) {
+                return;
+            }
+
+            // Only show to the site administrator
+            if ( !current_user_can('manage_options')) return;
+
+            // Ignore non-commercial addons
+            if ( !$this->is_licensing_enabled) return;
+
+            $license = $this->get_license_status();
+
+            if ( !is_object($license) || !$license->success) {
+                $license_page_url = admin_url('options-general.php?page=wpca-settings&tab=cuar_licenses');
+
+                echo '<div class="error"><p>';
+                echo sprintf(__('You have invalid or expired license keys for WP Customer Area. Please go to the <a href="%s">Licenses page</a> to correct this issue.', 'cuar'),
+                    $license_page_url);
+                echo '</div></p>';
+
+                self::$HAS_NOTIFIED_INVALID_LICENSES = true;
+            }
         }
 
         public function get_license_key()
