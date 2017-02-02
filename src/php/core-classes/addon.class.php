@@ -27,6 +27,33 @@ if ( !class_exists('CUAR_AddOn')) :
      */
     abstract class CUAR_AddOn
     {
+        private static $MISSING_LICENSE_MESSAGES_SHOWN = array();
+
+        private static $OPTION_LICENSE_KEY = 'cuar_license_key_';
+        private static $OPTION_LICENSE_CHECK = 'cuar_license_check_';
+        private static $OPTION_LICENSE_STATUS = 'cuar_license_status_';
+        public static $OPTION_GET_BETA_VERSION_NOTIFICATIONS = 'cuar_license_is_beta_tester';
+
+        /** @var string Id of the add-on */
+        public $addon_id;
+
+        /** @var string ID of the add-on on the new wpca store */
+        public $store_item_id;
+
+        /** @var string Name of the add-on on the legacy marvinlabs store */
+        public $store_item_name;
+
+        /** @var string the plugin file path relative to wp-plugins */
+        public $plugin_file;
+
+        /** @var string current version number for the addon */
+        public $add_on_version;
+
+        /** @var string min version of Customer Area */
+        public $min_cuar_version;
+
+        /** @var CUAR_Plugin The plugin instance */
+        protected $plugin;
 
         public function __construct($addon_id = null)
         {
@@ -110,21 +137,6 @@ if ( !class_exists('CUAR_AddOn')) :
 
             return $defaults;
         }
-
-        /** @var string Id of the add-on */
-        public $addon_id;
-
-        /** @var string ID of the add-on on the new wpca store */
-        public $store_item_id;
-
-        /** @var string Name of the add-on on the legacy marvinlabs store */
-        public $store_item_name;
-
-        /** @var string min version of Customer Area */
-        public $min_cuar_version;
-
-        /** @var CUAR_Plugin The plugin instance */
-        protected $plugin;
 
         /*------- SETTINGS PAGE -----------------------------------------------------------------------------------------*/
 
@@ -216,25 +228,62 @@ if ( !class_exists('CUAR_AddOn')) :
         {
             $this->store_item_id = $store_item_id;
             $this->store_item_name = $store_item_name;
+            $this->plugin_file = $plugin_file;
+            $this->add_on_version = $add_on_version;
 
+            // Updater
+            add_action('admin_init', array($this, 'auto_updater'), 0);
+            add_action('in_plugin_update_message-' . plugin_basename($plugin_file), array($this, 'plugin_row_license_missing'), 10, 2);
+
+            $this->plugin->tag_addon_as_commercial($this->addon_id);
+        }
+
+        /**
+         * Check for auto-update for this addon
+         */
+        public function auto_updater()
+        {
             $license_key = $this->get_license_key();
+
             if ( !empty($license_key)) {
                 require_once(CUAR_PLUGIN_DIR . '/libs/php/edd-licensing/EDD_SL_Plugin_Updater.php');
 
                 new CUAR_Plugin_Updater(
                     $this->plugin->get_licensing()->get_store()->get_store_url(),
-                    $plugin_file,
+                    $this->plugin_file,
                     array(
                         'item_id' => $this->store_item_id,
                         'license' => $license_key,
-                        'version' => $add_on_version,
+                        'version' => $this->add_on_version,
                         'author'  => 'MarvinLabs',
-			            'beta'    => $this->is_beta_version_notification_enabled(),
+                        'beta'    => $this->is_beta_version_notification_enabled(),
                     )
                 );
             }
+        }
 
-            $this->plugin->tag_addon_as_commercial($this->addon_id);
+        /**
+         * Displays message inline on plugin row that the license key is missing
+         */
+        public function plugin_row_license_missing($plugin_data, $version_info)
+        {
+            $license = $this->get_license_status();
+
+            if (( !is_object($license) || !$license->success)
+                && empty(self::$MISSING_LICENSE_MESSAGES_SHOWN[$this->addon_id])
+            ) {
+                $license_page_url = admin_url('options-general.php?page=wpca-settings&tab=cuar_licenses');
+
+                echo '<br><br><strong style="display: block; margin-left: 26px;">';
+                echo __('Automatic updates are currently disabled for this plugin. You are probably missing some security fixes.', 'cuar');
+                echo ' <a href="' . esc_url($license_page_url) . '">'
+                    . __('Enter a valid license key to enable automatic updates.', 'cuar')
+                    . '</a>';
+                echo '</strong>';
+
+                self::$MISSING_LICENSE_MESSAGES_SHOWN[$this->addon_id] = true;
+            }
+
         }
 
         public function get_license_key()
@@ -244,12 +293,12 @@ if ( !class_exists('CUAR_AddOn')) :
 
         public function get_license_check()
         {
-            return trim($this->plugin->get_option($this->get_license_check_option_name()));
+            return $this->plugin->get_option($this->get_license_check_option_name());
         }
 
         public function get_license_status()
         {
-            return trim($this->plugin->get_option($this->get_license_status_option_name()));
+            return $this->plugin->get_option($this->get_license_status_option_name());
         }
 
         public function get_license_key_option_name($addon_id = '')
@@ -280,13 +329,14 @@ if ( !class_exists('CUAR_AddOn')) :
             return empty($option) || $option != 1 ? false : true;
         }
 
-        private static $OPTION_LICENSE_KEY = 'cuar_license_key_';
-        private static $OPTION_LICENSE_CHECK = 'cuar_license_check_';
-        private static $OPTION_LICENSE_STATUS = 'cuar_license_status_';
-        public static $OPTION_GET_BETA_VERSION_NOTIFICATIONS = 'cuar_license_is_beta_tester';
-
     }
 
+    /**
+     * @param CUAR_AddOn $a
+     * @param CUAR_AddOn $b
+     *
+     * @return int
+     */
     function cuar_sort_addons_by_name_callback($a, $b)
     {
         return strcmp($a->get_addon_name(), $b->get_addon_name());
