@@ -228,7 +228,8 @@ if ( !class_exists('CUAR_AddOn')) :
                         'item_id' => $this->store_item_id,
                         'license' => $license_key,
                         'version' => $add_on_version,
-                        'author'  => 'MarvinLabs'
+                        'author'  => 'MarvinLabs',
+			            'beta'    => $this->is_beta_version_notification_enabled(),
                     )
                 );
             }
