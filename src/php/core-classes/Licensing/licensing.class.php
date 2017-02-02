@@ -104,11 +104,11 @@ class CUAR_Licensing
 
                 case 'expired':
                     $result = CUAR_LicenseValidationResult::failure(
-                        sprintf('<a href="%s" target="_blank" class="button renew-license-button">' . __('Renew license', 'cuar') . ' &raquo;</a>&nbsp;',
-                            $this->get_renew_license_url($license))
+                        sprintf(__('Your license has expired at the date: %s', 'cuar'),
+                            date_i18n(get_option('date_format'), strtotime($license_data->expires, current_time('timestamp'))))
                         . ' '
-                        . sprintf(__('Your license has expired at the date: %s', 'cuar'),
-                            date_i18n(get_option('date_format'), strtotime($license_data->expires, current_time('timestamp')))),
+                        . sprintf('<a href="%s" target="_blank" class="button renew-license-button">' . __('Renew license', 'cuar') . ' &raquo;</a>&nbsp;',
+                            $this->get_renew_license_url($license)),
                         new DateTime($license_data->expires)
                     );
                     break;

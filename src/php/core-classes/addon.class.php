@@ -303,6 +303,9 @@ if ( !class_exists('CUAR_AddOn')) :
             // Do not show notification twice
             if (self::$HAS_NOTIFIED_INVALID_LICENSES) return;
 
+            // Bail if doing ajax
+            if (defined('DOING_AJAX') && DOING_AJAX) return;
+
             // Do not show on licenses settings page
             if (isset($_GET['page']) && strcmp($_GET['page'], 'wpca-settings') == 0
                 && isset($_GET['tab']) && strcmp($_GET['tab'], 'cuar_licenses') == 0
