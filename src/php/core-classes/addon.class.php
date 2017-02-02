@@ -241,6 +241,12 @@ if ( !class_exists('CUAR_AddOn')) :
             add_action('admin_init', array($this, 'show_invalid_license_admin_notice'), 10);
             add_action('in_plugin_update_message-' . plugin_basename($plugin_file), array($this, 'plugin_row_license_missing'), 10, 2);
 
+            // Check that license is valid once per week
+            add_action('cuar/cron/events?schedule=weekly', array($this, 'do_periodical_license_check'));
+
+            // For testing scheduled license checks, uncomment this line to force checks on every page load
+            // add_action('admin_init', array($this, 'do_periodical_license_check'), 5);
+
             $this->plugin->tag_addon_as_commercial($this->addon_id);
         }
 
@@ -327,10 +333,43 @@ if ( !class_exists('CUAR_AddOn')) :
                 echo '<div class="error"><p>';
                 echo sprintf(__('You have invalid or expired license keys for WP Customer Area. Please go to the <a href="%s">Licenses page</a> to correct this issue.', 'cuar'),
                     $license_page_url);
-                echo '</div></p>';
+                echo '</p><p>';
+                echo sprintf(__('If you do not know these license keys, you can find them listed on <a href="%s" target="_blank">your WP Customer Area account</a>.', 'cuar'),
+                    'https://wp-customerarea.com/my-account');
+                echo '</p></div>';
 
                 self::$HAS_NOTIFIED_INVALID_LICENSES = true;
             }
+        }
+
+        /**
+         * Check if license key is valid
+         */
+        public function do_periodical_license_check()
+        {
+            // Don't fire when saving settings
+            if ( !empty($_POST['cuar_do_save_settings'])) return;
+
+            // Bail if doing ajax
+            if (defined('DOING_AJAX') && DOING_AJAX) return;
+
+            // Bail if no license key entered
+            $license = $this->get_license_key();
+            if (empty($license)) return;
+
+            // Ok. Do it.
+            $license_key_option_id = $this->get_license_key_option_name();
+            $this->plugin->update_option($license_key_option_id, $license);
+
+            $licensing = $this->plugin->get_licensing();
+            $result = $licensing->validate_license($license, $this);
+
+            $today = new DateTime();
+            $license_check_option_id = $this->get_license_check_option_name();
+            $this->plugin->update_option($license_check_option_id, $today->format('Y-m-d'));
+
+            $license_status_option_id = $this->get_license_status_option_name();
+            $this->plugin->update_option($license_status_option_id, $result);
         }
 
         public function get_license_key()
