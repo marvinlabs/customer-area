@@ -30,3 +30,21 @@
   height: 28px;
   background: url('../img/loading-indicator.gif') top left no-repeat;
 }
+
+@keyframes cuar-ajax-running {
+  to {transform: rotate(360deg);}
+}
+
+.cuar-ajax-running:before {
+  content: '';
+  box-sizing: border-box;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-top: 0px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  animation: cuar-ajax-running .6s linear infinite;
+}

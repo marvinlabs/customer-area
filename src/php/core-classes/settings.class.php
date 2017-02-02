@@ -813,6 +813,9 @@ if ( !class_exists('CUAR_Settings')) :
             $license_status_option_id = $addon->get_license_status_option_name();
             $cuar_plugin->update_option($license_status_option_id, $result);
 
+            // Tell WordPress to look for updates
+            set_site_transient( 'update_plugins', null );
+
             echo json_encode($result);
             exit;
         }
