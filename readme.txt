@@ -107,6 +107,7 @@ feel free to fork the project and send us pull requests!
 
 = 7.1.5 (2017/02/07) =
 
+* Fix: default collection view type can now be overridden with a hook
 * Fix: some javascript errors preventing proper license validation in the settings page on some servers
 
 = 7.1.4 (2017/02/02) =
