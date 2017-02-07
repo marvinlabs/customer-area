@@ -4,7 +4,16 @@
  * @returns {*}
  */
 function getLicenseControlInput(licenseControl) {
-    return licenseControl.find('input');
+    return licenseControl.find('.cuar-js-license-key');
+}
+
+/**
+ * Get the input field of a license control
+ * @param licenseControl
+ * @returns {*}
+ */
+function getLicenseControlValidateButton(licenseControl) {
+    return licenseControl.find('.cuar-js-validate-button');
 }
 
 /**
@@ -13,7 +22,7 @@ function getLicenseControlInput(licenseControl) {
  * @returns {*}
  */
 function getLicenseControlResultContainer(licenseControl) {
-    return licenseControl.find('.cuar-ajax-container > span');
+    return licenseControl.find('.cuar-js-result > span');
 }
 
 /**
@@ -31,24 +40,28 @@ function getLicenseControlAddOn(licenseControl) {
  */
 function validateLicense($, licenseControl) {
     var licenseInput = getLicenseControlInput(licenseControl);
+    var validateButton = getLicenseControlValidateButton(licenseControl);
     var checkResultContainer = getLicenseControlResultContainer(licenseControl);
 
-    if (licenseInput.val().trim()=='') {
+    var licenseKey = licenseInput.val().trim();
+    if (licenseKey.length==0) {
         checkResultContainer.html('');
         return;
     }
 
-    checkResultContainer.html(cuar.checking).removeClass().addClass('cuar-ajax-running');
+    checkResultContainer.html(cuar.checkingLicense).removeClass().addClass('cuar-ajax-running');
     licenseInput.prop('disabled', true);
+    validateButton.prop('disabled', true);
 
     var data = {
         action: 'cuar_validate_license',
         addon_id: getLicenseControlAddOn(licenseControl),
-        license: licenseInput.val()
+        license: licenseKey
     };
 
-    $.post(ajaxurl, data, function(response) {
+    $.post(cuar.ajaxUrl, data, function(response) {
             licenseInput.prop('disabled', false);
+            validateButton.prop('disabled', false);
             checkResultContainer
                 .removeClass()
                 .addClass(response.success ? 'cuar-ajax-success' : 'cuar-ajax-failure')
@@ -57,6 +70,7 @@ function validateLicense($, licenseControl) {
         "json",
         function() {
             licenseInput.prop('disabled', false);
+            validateButton.prop('disabled', false);
             checkResultContainer
                 .removeClass()
                 .addClass('cuar-ajax-failure')
@@ -67,18 +81,15 @@ function validateLicense($, licenseControl) {
 
 // Runs the necessary logic on the license controls of the page
 jQuery(document).ready(function($) {
-    var licenceControls = $(".license-control");
-
     // Used in the licensing options page to check license key when the input value changes
-    licenceControls.each(function() {
+    $(".cuar-js-license-field").each(function() {
         var licenseControl = $(this);
 
-        // Check license when page is displayed
-        validateLicense($, licenseControl);
-
         // Check license when input value changes
-        getLicenseControlInput(licenseControl).change(function() {
+        licenseControl.on("click", ".cuar-js-validate-button", function(event) {
+            event.preventDefault();
             validateLicense($, licenseControl);
+            return false;
         });
     });
 });
