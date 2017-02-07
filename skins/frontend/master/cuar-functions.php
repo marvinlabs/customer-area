@@ -481,7 +481,7 @@ if ( !function_exists('cuar_default_collection_views'))
 
         $private_types = cuar()->get_private_post_types();
         foreach ($private_types as $type) {
-            $data['default_collection_view'][$type] = 'list';
+            $data['default_collection_view'][$type] = 'grid';
         }
 
         return $data;
