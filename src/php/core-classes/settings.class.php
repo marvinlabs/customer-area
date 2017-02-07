@@ -857,11 +857,12 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
-            echo '<div class="license-control">';
-            echo sprintf('<input type="text" id="%s" name="%s[%s]" value="%s" class="regular-text" data-addon="%s" />',
+            echo '<div class="license-control cuar-js-license-field">';
+            echo sprintf('<input type="text" id="%s" name="%s[%s]" value="%s" class="regular-text cuar-js-license-key" data-addon="%s" />',
                 esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id), esc_attr($this->options[$option_id]),
                 esc_attr($addon_id));
-            echo sprintf('<span class="cuar-ajax-container"><span id="%s_check_result" class="%s">%s</span></span>',
+            echo sprintf('<a href="#" class="button cuar-js-validate-button">%s</a>', __('Validate', 'cuar'));
+            echo sprintf('<span class="cuar-ajax-container cuar-js-result"><span id="%s_check_result" class="%s">%s</span></span>',
                 esc_attr($option_id), $status_class, $status_message);
             echo '</div>';
 

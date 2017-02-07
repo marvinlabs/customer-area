@@ -209,12 +209,12 @@ if ( !class_exists('CUAR_AddOn')) :
         public function validate_license_options($validated, $cuar_settings, $input)
         {
             $cuar_settings->validate_boolean($input, $validated, self::$OPTION_GET_BETA_VERSION_NOTIFICATIONS);
-
+/*
             $commercial_addons = $this->plugin->get_commercial_addons();
             foreach ($commercial_addons as $id => $addon) {
                 $cuar_settings->validate_license_key($input, $validated, $this->get_license_key_option_name($id));
             }
-
+*/
             return $validated;
         }
 
