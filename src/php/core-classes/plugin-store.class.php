@@ -26,15 +26,8 @@ class CUAR_PluginStore implements CUAR_LicenseStore
      */
     public function get_store_url()
     {
-        return 'http://wp-customerarea.com';
-    }
-
-    /**
-     * Get the previous store URL.
-     * @return string|boolean FALSE if there was no previous store
-     */
-    public function get_legacy_store_url()
-    {
-        return 'http://deprecated.marvinlabs.com/';
+        return CUAR_DEBUG_LICENSING
+            ? 'http://wp-customerarea.local'
+            : 'https://wp-customerarea.com';
     }
 }

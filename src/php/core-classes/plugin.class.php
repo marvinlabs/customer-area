@@ -47,6 +47,9 @@ if ( !class_exists('CUAR_Plugin')) :
         /** @var CUAR_AddonManager */
         private $addon_manager;
 
+        /** @var CUAR_Cron */
+        private $cron;
+
         public function __construct()
         {
             $this->message_center = new CUAR_MessageCenter(array('wpca-status', 'wpca-setup', 'wpca'));
@@ -55,6 +58,7 @@ if ( !class_exists('CUAR_Plugin')) :
             $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
             $this->logger = new CUAR_Logger();
             $this->addon_manager = new CUAR_AddonManager($this->message_center);
+            $this->cron = new CUAR_Cron();
         }
 
         public function run()
@@ -62,6 +66,7 @@ if ( !class_exists('CUAR_Plugin')) :
             $this->message_center->register_hooks();
             $this->activation_manager->register_hooks();
             $this->addon_manager->register_hooks();
+            $this->cron->register_hooks();
 
             add_action('plugins_loaded', array(&$this, 'load_textdomain'), 3);
             add_action('plugins_loaded', array(&$this, 'load_settings'), 5);
@@ -552,9 +557,10 @@ if ( !class_exists('CUAR_Plugin')) :
             do_action('cuar/core/addons/after-init', $this);
         }
 
-        public function addon_manager() {
+        public function addon_manager()
+        {
             return $this->addon_manager;
-        }  
+        }
 
         public function register_addon($addon)
         {
@@ -701,8 +707,7 @@ if ( !class_exists('CUAR_Plugin')) :
                     break;
                 }
 
-                case 'bootstrap.affix':
-                {
+                case 'bootstrap.affix': {
                     wp_enqueue_script('bootstrap.affix', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/affix.min.js', array('jquery'), $cuar_version);
                     break;
                 }
@@ -775,8 +780,7 @@ if ( !class_exists('CUAR_Plugin')) :
                     break;
                 }
 
-                case 'summernote':
-                {
+                case 'summernote': {
                     wp_enqueue_script('bootstrap.tooltip', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/tooltip.min.js', array('jquery'), $cuar_version);
                     wp_enqueue_script('bootstrap.popover', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/popover.min.js', array('jquery', 'bootstrap.tooltip'), $cuar_version);
                     wp_enqueue_script('bootstrap.modal', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/modal.min.js', array('jquery'), $cuar_version);
@@ -805,8 +809,7 @@ if ( !class_exists('CUAR_Plugin')) :
                     break;
                 }
 
-                case 'jquery.datepicker':
-                {
+                case 'jquery.datepicker': {
                     wp_enqueue_script('jquery-ui-datepicker');
                     break;
                 }

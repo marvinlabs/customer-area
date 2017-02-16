@@ -470,3 +470,23 @@ if ( !function_exists('cuar_dev_nuancier_styles'))
 
     add_action('wp_enqueue_scripts', 'cuar_dev_nuancier_styles');
 }
+
+if ( !function_exists('cuar_default_collection_views'))
+{
+    /**
+     * Customize field groups on frontend
+     */
+    function cuar_default_collection_views($data)
+    {
+        $data['default_collection_view'] = array();
+
+        $private_types = cuar()->get_private_post_types();
+        foreach ($private_types as $type) {
+            $data['default_collection_view'][$type] = 'grid';
+        }
+
+        return $data;
+    }
+
+    add_filter('cuar/core/js-messages?zone=frontend', 'cuar_default_collection_views', 10, 1);
+}

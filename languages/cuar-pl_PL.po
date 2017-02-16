@@ -1,4 +1,4 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2016}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2017}
 # Translators:
 # MaPa Studio PL <m.paradowski@outlook.com>, 2015
 # Mariusz Fik <fisiu@opensuse.org>, 2016
@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
-"PO-Revision-Date: 2016-10-24 14:59+0000\n"
-"Last-Translator: Mariusz Fik <fisiu@opensuse.org>\n"
+"PO-Revision-Date: 2017-02-02 17:33+0000\n"
+"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Polish (Poland) (http://www.transifex.com/wp-translations/wp-customer-area/language/pl_PL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1326,8 +1326,8 @@ msgstr "Typ"
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:62
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:126
 #: src/php/core-classes/Content/list-table.class.php:318
-#: src/php/core-classes/addon-update-content-page.class.php:274
-#: src/php/core-classes/addon-update-content-page.class.php:275
+#: src/php/core-classes/addon-update-content-page.class.php:264
+#: src/php/core-classes/addon-update-content-page.class.php:265
 msgid "Edit"
 msgstr "Edycja"
 
@@ -1414,7 +1414,7 @@ msgstr ""
 msgid "You currently have no files."
 msgstr "Aktualnie nie masz żadnych plików. "
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:22
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:25
 msgid "There are no files for that period."
 msgstr ""
 
@@ -1867,7 +1867,7 @@ msgstr "Użytkownik - %s"
 msgid "Assignment"
 msgstr "Zadanie"
 
-#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:14
+#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:19
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
 msgid "You are not allowed to select an owner"
 msgstr ""
@@ -2623,54 +2623,55 @@ msgstr ""
 msgid "Empty Trash"
 msgstr "Opróżnij kosz"
 
-#: src/php/core-classes/Licensing/license-validation-result.class.php:81
-msgid ""
-"You have bought your license on the previous shop. We have a <a "
-"href=\"%1$s\">brand new website</a>, please contact us so that we can help "
-"you migrate your license to the new shop."
+#: src/php/core-classes/Cron/cron.class.php:43
+msgid "Once weekly"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:73
+#: src/php/core-classes/Licensing/licensing.class.php:76
 msgid "Unknown add-on"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:86
+#: src/php/core-classes/Licensing/licensing.class.php:82
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:94
+#: src/php/core-classes/Licensing/licensing.class.php:87
 msgid "Your license is valid until: %s"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:102
+#: src/php/core-classes/Licensing/licensing.class.php:95
 msgid "This license key has been revoked."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:109
+#: src/php/core-classes/Licensing/licensing.class.php:100
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:118
-msgid "Renew license"
-msgstr ""
-
-#: src/php/core-classes/Licensing/licensing.class.php:120
+#: src/php/core-classes/Licensing/licensing.class.php:107
 msgid "Your license has expired at the date: %s"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:128
+#: src/php/core-classes/Licensing/licensing.class.php:110
+msgid "Renew license"
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:118
 msgid "This license key does not match."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:135
+#: src/php/core-classes/Licensing/licensing.class.php:125
 msgid "This license key seems to have been generated for another product."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:142
+#: src/php/core-classes/Licensing/licensing.class.php:131
+msgid "Your license is not active for this URL."
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:136
 msgid "Problem when validating your license key"
 msgstr ""
 
@@ -2732,55 +2733,55 @@ msgstr ""
 msgid "You are not allowed to create this type of content."
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:163
+#: src/php/core-classes/addon-create-content-page.class.php:145
 msgid "Content creation (from front-office)"
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:165
+#: src/php/core-classes/addon-create-content-page.class.php:147
 msgid "Create content from front office"
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:166
+#: src/php/core-classes/addon-create-content-page.class.php:148
 msgid "Bypass moderation (content is automatically published)"
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:197
+#: src/php/core-classes/addon-create-content-page.class.php:179
 msgid "Content creation"
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:210
+#: src/php/core-classes/addon-create-content-page.class.php:192
 msgid "Moderation"
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:218
+#: src/php/core-classes/addon-create-content-page.class.php:200
 msgid "Enable moderation when new content is submitted by a user."
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:234
+#: src/php/core-classes/addon-create-content-page.class.php:216
 msgid "Default owners"
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:251
+#: src/php/core-classes/addon-create-content-page.class.php:233
 msgid "Default category"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:743
+#: src/php/core-classes/addon-edit-content-page.class.php:765
 msgid "Content edition (from front-office)"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:745
+#: src/php/core-classes/addon-edit-content-page.class.php:767
 msgid "Select an owner (uses default else)"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:746
+#: src/php/core-classes/addon-edit-content-page.class.php:768
 msgid "Select a category (uses default else)"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:809
+#: src/php/core-classes/addon-edit-content-page.class.php:831
 msgid "Rich Editor"
 msgstr ""
 
-#: src/php/core-classes/addon-edit-content-page.class.php:817
+#: src/php/core-classes/addon-edit-content-page.class.php:839
 msgid "Enable the rich editor when editing content."
 msgstr ""
 
@@ -2800,99 +2801,131 @@ msgstr ""
 msgid "WPCA - %s"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:144
+#: src/php/core-classes/addon-update-content-page.class.php:134
 msgid "You must supply a post ID to delete"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:151
+#: src/php/core-classes/addon-update-content-page.class.php:141
 msgid "You are not allowed to delete this post"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:159
+#: src/php/core-classes/addon-update-content-page.class.php:149
 msgid "Done"
 msgstr "Skończone"
 
-#: src/php/core-classes/addon-update-content-page.class.php:160
+#: src/php/core-classes/addon-update-content-page.class.php:150
 msgid "The content has been deleted."
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:284
-#: src/php/core-classes/addon-update-content-page.class.php:285
+#: src/php/core-classes/addon-update-content-page.class.php:274
+#: src/php/core-classes/addon-update-content-page.class.php:275
 msgid "Delete"
 msgstr "Usuń"
 
-#: src/php/core-classes/addon-update-content-page.class.php:288
+#: src/php/core-classes/addon-update-content-page.class.php:278
 msgid "Are you sure that you want to delete this content?"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:306
+#: src/php/core-classes/addon-update-content-page.class.php:296
 msgid "Content update (from front-office)"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:308
+#: src/php/core-classes/addon-update-content-page.class.php:298
 msgid "Update any content from front office"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:309
+#: src/php/core-classes/addon-update-content-page.class.php:299
 msgid "Update authored content"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:310
+#: src/php/core-classes/addon-update-content-page.class.php:300
 msgid "Update owned content"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:314
+#: src/php/core-classes/addon-update-content-page.class.php:304
 msgid "Content removal (from front-office)"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:316
+#: src/php/core-classes/addon-update-content-page.class.php:306
 msgid "Delete any content from front office"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:317
+#: src/php/core-classes/addon-update-content-page.class.php:307
 msgid "Delete authored content"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:318
+#: src/php/core-classes/addon-update-content-page.class.php:308
 msgid "Delete owned content"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:333
+#: src/php/core-classes/addon-update-content-page.class.php:323
 msgid "You must specify a post to delete"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:370
+#: src/php/core-classes/addon-update-content-page.class.php:360
 msgid "You must specify a post to edit"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:411
+#: src/php/core-classes/addon-update-content-page.class.php:401
 msgid "Content edition"
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:96
+#: src/php/core-classes/addon.class.php:133
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:124
+#: src/php/core-classes/addon.class.php:149
 msgid "License Keys"
 msgstr "Klucze licencyjne"
 
-#: src/php/core-classes/addon.class.php:136
+#: src/php/core-classes/addon.class.php:163
 msgid "License keys for commercial add-ons"
 msgstr ""
 
+#: src/php/core-classes/addon.class.php:170
+msgid "Beta versions"
+msgstr ""
+
 #: src/php/core-classes/addon.class.php:178
+msgid ""
+"If checked, you will be notified when a beta version is published. Else, "
+"only stable updates will be delivered."
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:224
 msgid ""
 "This page allows you to enter license key you have received when you "
 "purchased commercial addons."
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:179
+#: src/php/core-classes/addon.class.php:225
 msgid ""
 "Do not activate your license on your development site. Only on the final "
 "site where you are running the plugin."
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:290
+msgid ""
+"Automatic updates are currently disabled for this plugin. You are probably "
+"missing some security fixes."
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:292
+msgid "Enter a valid license key to enable automatic updates."
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:334
+msgid ""
+"You have invalid or expired license keys for WP Customer Area. Please go to "
+"the <a href=\"%s\">Licenses page</a> to correct this issue."
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:337
+msgid ""
+"If you do not know these license keys, you can find them listed on <a "
+"href=\"%s\" target=\"_blank\">your WP Customer Area account</a>."
 msgstr ""
 
 #: src/php/core-classes/object-meta/field/display-name-field.class.php:47
@@ -2950,53 +2983,53 @@ msgstr ""
 msgid "%1$s is required."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:215
+#: src/php/core-classes/plugin.class.php:220
 msgid "Checking license..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:216
+#: src/php/core-classes/plugin.class.php:221
 msgid "Failed to contact server"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:217
-#: src/php/core-classes/plugin.class.php:244
+#: src/php/core-classes/plugin.class.php:222
+#: src/php/core-classes/plugin.class.php:249
 msgid "Saving..."
 msgstr "Zapisywanie..."
 
-#: src/php/core-classes/plugin.class.php:218
-#: src/php/core-classes/plugin.class.php:245
+#: src/php/core-classes/plugin.class.php:223
+#: src/php/core-classes/plugin.class.php:250
 msgid "Click to edit..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:219
-#: src/php/core-classes/plugin.class.php:246
+#: src/php/core-classes/plugin.class.php:224
+#: src/php/core-classes/plugin.class.php:251
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:220
-#: src/php/core-classes/plugin.class.php:247
+#: src/php/core-classes/plugin.class.php:225
+#: src/php/core-classes/plugin.class.php:252
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/php/core-classes/plugin.class.php:232
-#: src/php/core-classes/plugin.class.php:259
+#: src/php/core-classes/plugin.class.php:237
+#: src/php/core-classes/plugin.class.php:264
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:234
-#: src/php/core-classes/plugin.class.php:261
+#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:266
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:598
+#: src/php/core-classes/plugin.class.php:604
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:901
+#: src/php/core-classes/plugin.class.php:904
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 
@@ -3099,39 +3132,39 @@ msgstr ""
 msgid "you cannot select multiple terms."
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:952
+#: src/php/core-classes/settings.class.php:955
 msgid "Upload File"
 msgstr "Wyślij plik na serwer"
 
-#: src/php/core-classes/settings.class.php:1096
+#: src/php/core-classes/settings.class.php:1099
 msgid "None"
 msgstr "Żaden"
 
-#: src/php/core-classes/settings.class.php:1120
+#: src/php/core-classes/settings.class.php:1123
 msgid "Delete existing &amp; create new &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1125
+#: src/php/core-classes/settings.class.php:1128
 msgid "Edit it &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1133
+#: src/php/core-classes/settings.class.php:1136
 msgid "Create it &raquo;"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1250
+#: src/php/core-classes/settings.class.php:1253
 msgid "Any Role"
 msgstr "Dowolna rola"
 
-#: src/php/core-classes/settings.class.php:1455
+#: src/php/core-classes/settings.class.php:1458
 msgid "Main plugin folder"
 msgstr "Główny folder wtyczki"
 
-#: src/php/core-classes/settings.class.php:1461
+#: src/php/core-classes/settings.class.php:1464
 msgid "Current theme folder"
 msgstr "Aktualny folder motywu"
 
-#: src/php/core-classes/settings.class.php:1467
+#: src/php/core-classes/settings.class.php:1470
 msgid "WordPress content folder"
 msgstr "Folder zawartości Wordpress"
 
@@ -4871,26 +4904,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Wybierz z najczęściej używanych stron kategorii"
 
-#: src/php/core-classes/plugin.class.php:221
-#: src/php/core-classes/plugin.class.php:248
+#: src/php/core-classes/plugin.class.php:226
+#: src/php/core-classes/plugin.class.php:253
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:222
-#: src/php/core-classes/plugin.class.php:249
+#: src/php/core-classes/plugin.class.php:227
+#: src/php/core-classes/plugin.class.php:254
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Wyczyść"
 
-#: src/php/core-classes/plugin.class.php:223
-#: src/php/core-classes/plugin.class.php:250
+#: src/php/core-classes/plugin.class.php:228
+#: src/php/core-classes/plugin.class.php:255
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "Dzisiaj"
 
-#: src/php/core-classes/plugin.class.php:226
-#: src/php/core-classes/plugin.class.php:253
+#: src/php/core-classes/plugin.class.php:231
+#: src/php/core-classes/plugin.class.php:258
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr ""

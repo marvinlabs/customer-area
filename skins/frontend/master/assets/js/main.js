@@ -464,7 +464,7 @@
                         if ($collectionContainer.data('collection-layout') != null) {
                             cookieLayout = $collectionContainer.data('collection-layout');
                         } else {
-                            cookieLayout = 'grid';
+                            cookieLayout = cuar.default_collection_view[$collectionContainer.data('type')];
                         }
                     }
 
