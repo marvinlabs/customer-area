@@ -66,11 +66,12 @@ if ( !function_exists('cuar_load_skin_scripts'))
 
         // CUSTOM SCRIPTS
         // --
+	    /*
         wp_register_script('cuar.frontend',
             CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js',
             array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable'),
             $cuar_plugin->get_version(),
-            true);
+            true);*/
         wp_register_script('customer-area-master-skin',
             CUAR_PLUGIN_URL . 'skins/frontend/master/assets/js/main.min.js',
             array('jquery', 'cuar.frontend'),
