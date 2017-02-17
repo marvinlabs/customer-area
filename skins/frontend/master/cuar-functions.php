@@ -12,7 +12,7 @@ if ( !function_exists('cuar_is_active_body_class'))
         return $classes;
     }
 
-    add_action('body_class', 'cuar_is_active_body_class');
+    add_action('body_class', 'cuar_is_active_body_class', 100);
 }
 
 if ( !function_exists('cuar_load_skin_scripts'))
