@@ -127,7 +127,7 @@ if ( !class_exists('CUAR_CustomerPrivateFilesAddOn')) :
 
         protected function get_default_page_subtitle()
         {
-            return __('Recent Files', 'cuar');
+            return __('Files', 'cuar');
         }
 
         protected function get_default_dashboard_block_title()

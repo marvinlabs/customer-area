@@ -39,7 +39,7 @@ if ( !class_exists('CUAR_AbstractPageAddOn')) :
         {
             add_filter('cuar/core/page/customer-pages', array(&$this, 'register_page'), $this->page_priority);
             add_filter('cuar/core/page/on-page-created?slug=' . $this->get_slug(), array(&$this, 'create_default_page'), 10, 2);
-            add_filter('body_class', array(&$this, 'add_body_class'));
+            add_filter('body_class', array(&$this, 'add_body_class'), 100);
 
             add_action('template_redirect', array(&$this, 'redirect_guests_if_required'), 1000);
         }

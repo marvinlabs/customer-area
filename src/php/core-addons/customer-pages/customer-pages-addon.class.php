@@ -73,7 +73,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 add_action('cuar/core/settings/print-settings?tab=cuar_customer_pages', array(&$this, 'print_pages_settings'), 50, 2);
                 add_filter('cuar/core/settings/validate-settings?tab=cuar_customer_pages', array(&$this, 'validate_pages_settings'), 50, 3);
             } else {
-                add_filter('body_class', array(&$this, 'add_body_class'));
+                add_filter('body_class', array(&$this, 'add_body_class'), 100);
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_subpages_contextual_toolbar_group'), 100);
 
                 add_filter('the_content', array(&$this, 'define_main_content_filter'), 9998);
