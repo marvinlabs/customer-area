@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.0.0
+/** Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Add hooks
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
@@ -26,7 +29,8 @@ $file_count = cuar_get_the_attached_file_count($post->ID);
     <td class="cuar-title">
         <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
     </td>
-    <td class="text-right cuar-file-count">
-        <span class="label label-rounded label-default"><?php echo sprintf(_n('%1$s file', '%1$s files', $file_count, 'cuar'), $file_count); ?></span>
+    <td class="text-right cuar-extra-info">
+        <span class="label label-default cuar-file-count"><?php echo sprintf(_n('%1$s file', '%1$s files', $file_count, 'cuar'), $file_count); ?></span>
+        <?php do_action('cuar/templates/block/item/extra-info'); ?>
     </td>
 </tr>
