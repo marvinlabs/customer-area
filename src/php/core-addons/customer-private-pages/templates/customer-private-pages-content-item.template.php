@@ -58,6 +58,10 @@ $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $c
                         <td><?php echo get_the_date(); ?></td>
                     </tr>
                 </table>
+
+                <div class="collection-badges">
+                    <?php do_action('cuar/templates/collection/item/badges'); ?>
+                </div>
             </div>
 
             <div class="collection-description collection-list-right panel-footer">
