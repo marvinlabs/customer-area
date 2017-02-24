@@ -30,7 +30,7 @@ $file_count = cuar_get_the_attached_file_count($post->ID);
         <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
     </td>
     <td class="text-right cuar-extra-info">
-        <span class="label label-default cuar-file-count"><?php echo sprintf(_n('%1$s file', '%1$s files', $file_count, 'cuar'), $file_count); ?></span>
         <?php do_action('cuar/templates/block/item/extra-info'); ?>
+        <span class="label label-default cuar-file-count"><?php echo sprintf(_n('%1$s file', '%1$s files', $file_count, 'cuar'), $file_count); ?></span>
     </td>
 </tr>
