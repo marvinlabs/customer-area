@@ -852,7 +852,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                             'type'          => 'checkbox',
                             'default_value' => 1,
                             'after'         =>
-                                __('Show additional information after the post in the single post view.', 'cuar')
+                                __('Show additional information before and after the post in the single post view.', 'cuar')
                                 . '<p class="description">'
                                 . sprintf(__('You can disable this if you have your own theme template file for single posts. The theme file to look for or create should be called: %s.',
                                     'cuar'),
