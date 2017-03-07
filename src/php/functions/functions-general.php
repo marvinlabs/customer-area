@@ -27,6 +27,8 @@ function cuar()
 }
 
 /**
+ * Get an addon instance
+ *
  * @param string $id The ID of the add-on to find
  *
  * @return CUAR_AddOn The addon you are looking for
@@ -34,6 +36,61 @@ function cuar()
 function cuar_addon($id)
 {
     return cuar()->get_addon($id);
+}
+
+/**
+ * Get an addon instance by Post Type
+ *
+ * @param string $post_type The post Type of the addon to find
+ *
+ * @return CUAR_AddOn|null The addon you are looking for
+ */
+function cuar_get_content_page_addon( $post_type = null ) {
+
+    if ( $post_type == null ) {
+        $post_type = get_post_type();
+    }
+
+    $slugs = array(
+        'cuar_private_file' => 'customer-private-files',
+        'cuar_private_page' => 'customer-private-pages',
+        'cuar_conversation' => 'customer-conversations',
+        'cuar_project'      => 'customer-projects',
+        'cuar_tasklist'     => 'customer-tasklists',
+        'cuar_invoice'      => 'customer-invoices'
+    );
+
+    return ( isset( $slugs[ $post_type ] ) ) ? cuar_addon( $slugs[ $post_type ] ) : null;
+}
+
+/**
+ * Print the whole single private content
+ * This should be used inside a single-cuar_{...}.php file instead of the_content()
+ * while using the theme_support customer-area.single-post-templates
+ *
+ * @param string $post_type The post Type of the addon to find
+ */
+function cuar_the_single_content( $post_type = null ) {
+
+    if ( ! cuar_is_customer_area_private_content( get_the_ID() ) ) {
+        exit;
+    }
+
+    if ( $post_type == null ) {
+        $post_type = get_post_type();
+    }
+
+    $addon = cuar_get_content_page_addon( $post_type );
+
+    if ( class_exists('CUAR_Project') && $post_type == CUAR_Project::$POST_TYPE ) {
+        add_filter( 'cuar/core/the_content', array( &$addon, 'print_single_private_container_header_filter' ), 79 );
+        add_filter( 'cuar/core/the_content', array( &$addon, 'print_single_private_container_footer_filter' ), 81 );
+    } else {
+        add_filter( 'cuar/core/the_content', array( &$addon, 'print_single_private_content_header_filter' ), 79 );
+        add_filter( 'cuar/core/the_content', array( &$addon, 'print_single_private_content_footer_filter' ), 81 );
+    }
+
+    the_content();
 }
 
 /**

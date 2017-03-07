@@ -676,6 +676,19 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             do_action('cuar/private-content/view/after_header?post-type=' . $this->get_friendly_post_type(), $this);
         }
 
+	    public function print_single_private_content_header_filter($content)
+	    {
+		    ob_start();
+
+		    $this->print_single_private_content_header();
+
+		    $out = ob_get_contents();
+
+		    ob_end_clean();
+
+		    return $out . $content;
+	    }
+
         public function print_single_private_content_footer()
         {
             do_action('cuar/private-content/view/before_footer', $this);
@@ -698,6 +711,19 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             do_action('cuar/private-content/view/after_footer', $this);
             do_action('cuar/private-content/view/after_footer?post-type=' . $this->get_friendly_post_type(), $this);
         }
+
+	    public function print_single_private_content_footer_filter($content)
+	    {
+		    ob_start();
+
+		    $this->print_single_private_content_footer();
+
+		    $out = ob_get_contents();
+
+		    ob_end_clean();
+
+		    return $content . $out;
+	    }
 
         public function print_single_private_content_meta_filter($content)
         {
