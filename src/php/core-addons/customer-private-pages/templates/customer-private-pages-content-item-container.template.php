@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.0.0
+/** Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Add hooks
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
@@ -21,5 +24,8 @@
 <tr>
     <td class="cuar-title">
         <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($title_popup); ?>"><?php the_title(); ?></a>
+    </td>
+    <td class="text-right cuar-extra-info">
+        <?php do_action('cuar/templates/block/item/extra-info'); ?>
     </td>
 </tr>
