@@ -112,6 +112,7 @@ feel free to fork the project and send us pull requests!
 * Fix: wrong alignment of the carousel on single private pages when showing 3 items on large screens
 * Fix: Higher priority on body_class filters [#239](https://github.com/marvinlabs/customer-area/issues/239)
 * Fix: Download all button not working properly on some file types with the enhanced files addon button
+* Fix: better error messages when license does not validate
 
 = 7.1.5 (2017/02/07) =
 

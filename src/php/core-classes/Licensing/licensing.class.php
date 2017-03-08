@@ -65,7 +65,7 @@ class CUAR_Licensing
      * Query the server to check whether a license is valid or not
      *
      * @param string     $license The license key to validate
-     * @param CUAR_AddOn $addon   The add-on to validate
+     * @param CUAR_AddOn $addon The add-on to validate
      *
      * @return CUAR_LicenseValidationResult The result
      */
@@ -133,7 +133,9 @@ class CUAR_Licensing
 
                 default:
                     $result = CUAR_LicenseValidationResult::failure(
-                        __('Problem when validating your license key', 'cuar') . ' ' . $license_data->error);
+                        __('Problem when validating your license key', 'cuar') . ' -> ' . $license_data->error,
+                        null,
+                        $license_data);
                     break;
             }
         }
@@ -167,12 +169,16 @@ class CUAR_Licensing
         // make sure the response came back okay
         if (is_wp_error($response) || 200 !== wp_remote_retrieve_response_code($response)) {
             if (is_wp_error($response)) {
-                return json_encode(array(
-                    'license' => 'error',
-                    'error'   => $response->get_error_message(),
-                ));
+                return json_decode(json_encode(array(
+                    'license'  => 'error',
+                    'error'    => $response->get_error_message(),
+                    'response' => $response,
+                )));
             } else {
-                return null;
+                return json_decode(json_encode(array(
+                    'license' => 'error',
+                    'error'   => 'Server responded with code ' . wp_remote_retrieve_response_code($response),
+                )));
             }
         }
 
@@ -180,8 +186,12 @@ class CUAR_Licensing
         $license_data = json_decode($response);
 
         // If not a valid license and license is missing, return null
-        if ( !isset($license_data) || ($license_data->license != 'valid' && $license_data->error == 'missing')) {
-            return null;
+        if (!isset($license_data) || ($license_data->license != 'valid' && $license_data->error == 'missing')) {
+            return json_decode(json_encode(array(
+                'license'  => 'error',
+                'error'    => 'Not a valid license or license is missing',
+                'response' => $response,
+            )));
         }
 
         return $license_data;
