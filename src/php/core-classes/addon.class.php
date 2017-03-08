@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 
-if ( !class_exists('CUAR_AddOn')) :
+if (!class_exists('CUAR_AddOn')) :
 
     /**
      * The base class for addons
@@ -27,7 +27,7 @@ if ( !class_exists('CUAR_AddOn')) :
      */
     abstract class CUAR_AddOn
     {
-        private static $MISSING_LICENSE_MESSAGES_SHOWN = array();
+        private static $MISSING_LICENSE_MESSAGES_SHOWN = [];
         private static $HAS_NOTIFIED_INVALID_LICENSES = false;
 
         private static $OPTION_LICENSE_KEY = 'cuar_license_key_';
@@ -63,12 +63,12 @@ if ( !class_exists('CUAR_AddOn')) :
         {
             $this->addon_id = $addon_id;
 
-            add_action('cuar/core/settings/default-options', array(&$this, 'set_default_options'));
-            add_action('cuar/core/addons/init', array(&$this, 'run'), 10);
+            add_action('cuar/core/settings/default-options', [&$this, 'set_default_options']);
+            add_action('cuar/core/addons/init', [&$this, 'run'], 10);
 
             if (is_admin()) {
-                add_action('admin_init', array(&$this, 'check_main_plugin_enabled'), 10);
-                add_action('cuar/core/addons/after-init', array(&$this, 'check_attention_needed'), 10);
+                add_action('admin_init', [&$this, 'check_main_plugin_enabled'], 10);
+                add_action('cuar/core/addons/after-init', [&$this, 'check_attention_needed'], 10);
             }
         }
 
@@ -92,9 +92,9 @@ if ( !class_exists('CUAR_AddOn')) :
 
             if (is_admin() && $cuar_plugin->has_commercial_addons()) {
                 // Settings
-                add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_settings_tab'), 900, 1);
-                add_action('cuar/core/settings/print-settings?tab=cuar_licenses', array(&$this, 'print_license_settings'), 10, 2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_licenses', array(&$this, 'validate_license_options'), 10, 3);
+                add_filter('cuar/core/settings/settings-tabs', [&$this, 'add_settings_tab'], 900, 1);
+                add_action('cuar/core/settings/print-settings?tab=cuar_licenses', [&$this, 'print_license_settings'], 10, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_licenses', [&$this, 'validate_license_options'], 10, 3);
             }
         }
 
@@ -120,7 +120,7 @@ if ( !class_exists('CUAR_AddOn')) :
             global $cuar_main_plugin_checked;
             if ($cuar_main_plugin_checked !== true && !is_plugin_active('customer-area/customer-area.php')) {
                 $cuar_main_plugin_checked = true;
-                add_action('admin_notices', array(&$this, 'add_main_plugin_disabled_notice'));
+                add_action('admin_notices', [&$this, 'add_main_plugin_disabled_notice']);
             }
         }
 
@@ -161,22 +161,22 @@ if ( !class_exists('CUAR_AddOn')) :
             add_settings_section(
                 'cuar_license_keys_section',
                 __('License keys for commercial add-ons', 'cuar'),
-                array(&$this, 'print_license_section_info'),
+                [&$this, 'print_license_section_info'],
                 CUAR_Settings::$OPTIONS_PAGE_SLUG
             );
 
             add_settings_field(
                 self::$OPTION_GET_BETA_VERSION_NOTIFICATIONS,
                 __('Beta versions', 'cuar'),
-                array(&$cuar_settings, 'print_input_field'),
+                [&$cuar_settings, 'print_input_field'],
                 CUAR_Settings::$OPTIONS_PAGE_SLUG,
                 'cuar_license_keys_section',
-                array(
+                [
                     'option_id' => self::$OPTION_GET_BETA_VERSION_NOTIFICATIONS,
                     'type'      => 'checkbox',
                     'after'     =>
                         __('If checked, you will be notified when a beta version is published. Else, only stable updates will be delivered.', 'cuar'),
-                )
+                ]
             );
 
             $commercial_addons = $this->plugin->get_commercial_addons();
@@ -184,15 +184,15 @@ if ( !class_exists('CUAR_AddOn')) :
                 add_settings_field(
                     $this->get_license_key_option_name($id),
                     $addon->get_addon_name(),
-                    array(&$cuar_settings, 'print_license_key_field'),
+                    [&$cuar_settings, 'print_license_key_field'],
                     CUAR_Settings::$OPTIONS_PAGE_SLUG,
                     'cuar_license_keys_section',
-                    array(
+                    [
                         'option_id'        => $this->get_license_key_option_name($id),
                         'status_option_id' => $this->get_license_status_option_name($id),
                         'check_option_id'  => $this->get_license_check_option_name($id),
                         'addon_id'         => $id,
-                        'after'            => '')
+                        'after'            => '']
                 );
             }
         }
@@ -209,12 +209,14 @@ if ( !class_exists('CUAR_AddOn')) :
         public function validate_license_options($validated, $cuar_settings, $input)
         {
             $cuar_settings->validate_boolean($input, $validated, self::$OPTION_GET_BETA_VERSION_NOTIFICATIONS);
-/*
-            $commercial_addons = $this->plugin->get_commercial_addons();
-            foreach ($commercial_addons as $id => $addon) {
-                $cuar_settings->validate_license_key($input, $validated, $this->get_license_key_option_name($id));
-            }
-*/
+
+            /*
+                        $commercial_addons = $this->plugin->get_commercial_addons();
+                        foreach ($commercial_addons as $id => $addon) {
+                            $cuar_settings->validate_license_key($input, $validated, $this->get_license_key_option_name($id));
+                        }
+            */
+
             return $validated;
         }
 
@@ -237,12 +239,12 @@ if ( !class_exists('CUAR_AddOn')) :
             $this->add_on_version = $add_on_version;
 
             // Updater
-            add_action('admin_init', array($this, 'auto_updater'), 0);
-            add_action('admin_init', array($this, 'show_invalid_license_admin_notice'), 10);
-            add_action('in_plugin_update_message-' . plugin_basename($plugin_file), array($this, 'plugin_row_license_missing'), 10, 2);
+            add_action('admin_init', [$this, 'auto_updater'], 0);
+            add_action('admin_init', [$this, 'show_invalid_license_admin_notice'], 10);
+            add_action('in_plugin_update_message-' . plugin_basename($plugin_file), [$this, 'plugin_row_license_missing'], 10, 2);
 
             // Check that license is valid once per week
-            add_action('cuar/cron/events?schedule=weekly', array($this, 'do_periodical_license_check'));
+            add_action('cuar/cron/events?schedule=weekly', [$this, 'do_periodical_license_check']);
 
             // For testing scheduled license checks, uncomment this line to force checks on every page load
             // add_action('admin_init', array($this, 'do_periodical_license_check'), 5);
@@ -257,19 +259,19 @@ if ( !class_exists('CUAR_AddOn')) :
         {
             $license_key = $this->get_license_key();
 
-            if ( !empty($license_key)) {
+            if (!empty($license_key)) {
                 require_once(CUAR_PLUGIN_DIR . '/libs/php/edd-licensing/EDD_SL_Plugin_Updater.php');
 
                 new CUAR_Plugin_Updater(
                     $this->plugin->get_licensing()->get_store()->get_store_url(),
                     $this->plugin_file,
-                    array(
+                    [
                         'item_id' => $this->store_item_id,
                         'license' => $license_key,
                         'version' => $this->add_on_version,
                         'author'  => 'MarvinLabs',
                         'beta'    => $this->is_beta_version_notification_enabled(),
-                    )
+                    ]
                 );
             }
         }
@@ -281,7 +283,7 @@ if ( !class_exists('CUAR_AddOn')) :
         {
             $license = $this->get_license_status();
 
-            if (( !is_object($license) || !$license->success)
+            if ((!is_object($license) || !$license->success)
                 && empty(self::$MISSING_LICENSE_MESSAGES_SHOWN[$this->addon_id])
             ) {
                 $license_page_url = admin_url('options-general.php?page=wpca-settings&tab=cuar_licenses');
@@ -319,15 +321,23 @@ if ( !class_exists('CUAR_AddOn')) :
                 return;
             }
 
+            // Do not show on setup wizard settings page
+            if (isset($_GET['page'])
+                && (strcmp($_GET['page'], 'wpca-setup') == 0
+                    || strcmp($_GET['page'], 'wpca') == 0)
+            ) {
+                return;
+            }
+
             // Only show to the site administrator
-            if ( !current_user_can('manage_options')) return;
+            if (!current_user_can('manage_options')) return;
 
             // Ignore non-commercial addons
-            if ( !$this->is_licensing_enabled) return;
+            if (!$this->is_licensing_enabled) return;
 
             $license = $this->get_license_status();
 
-            if ( !is_object($license) || !$license->success) {
+            if (!is_object($license) || !$license->success) {
                 $license_page_url = admin_url('options-general.php?page=wpca-settings&tab=cuar_licenses');
 
                 echo '<div class="error"><p>';
@@ -348,7 +358,7 @@ if ( !class_exists('CUAR_AddOn')) :
         public function do_periodical_license_check()
         {
             // Don't fire when saving settings
-            if ( !empty($_POST['cuar_do_save_settings'])) return;
+            if (!empty($_POST['cuar_do_save_settings'])) return;
 
             // Bail if doing ajax
             if (defined('DOING_AJAX') && DOING_AJAX) return;

@@ -108,6 +108,7 @@ feel free to fork the project and send us pull requests!
 = 7.2.0 (2017/02/) =
 
 * New: compatibility with the new add-on: Unread documents
+* Fix: better error messages when license does not validate
 
 = 7.1.5 (2017/02/07) =
 

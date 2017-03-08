@@ -49,12 +49,13 @@ class CUAR_LicenseValidationResult
      * @param DateTime $expires The expiry date
      * @return \CUAR_LicenseValidationResult
      */
-    public static function failure($message, $expires = null)
+    public static function failure($message, $expires = null, $serverResponse = null)
     {
         $res = new CUAR_LicenseValidationResult();
         $res->success = false;
         $res->message = $message;
         $res->expires = $expires;
+        $res->serverResponse = $serverResponse;
         return $res;
     }
 
