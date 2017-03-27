@@ -77,6 +77,8 @@ if ( !class_exists('CUAR_Plugin')) :
             add_action('init', array(&$this, 'load_styles'), 8);
             add_action('init', array(&$this, 'load_defaults'), 9);
 
+            add_filter('single_template_hierarchy', array(&$this, 'single_template_hierarchy'), 10);
+
             add_action('plugins_loaded', array(&$this, 'load_theme_functions'), 7);
 
             if (is_admin()) {
@@ -303,6 +305,23 @@ if ( !class_exists('CUAR_Plugin')) :
         }
 
         /*------- TEMPLATING & THEMING ----------------------------------------------------------------------------------*/
+
+        public function single_template_hierarchy($templates)
+        {
+            $is_cuar_template = false;
+            for ($i = 0; $i < count($templates) - 2; ++$i) {
+                if (strstr($templates[$i], 'cuar_')) {
+                    $is_cuar_template = true;
+                    break;
+                };
+            }
+
+            if ($is_cuar_template) {
+                array_splice($templates, count($templates) - 1, 0, 'single-cuar.php');
+            }
+
+            return $templates;
+        }
 
         public function get_theme($theme_type)
         {
