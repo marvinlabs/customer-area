@@ -109,6 +109,8 @@ feel free to fork the project and send us pull requests!
 
 * New: compatibility with the new add-on: Unread documents
 * Fix: better error messages when license does not validate
+* Fix: Higher priority on body_class filters [#239](https://github.com/marvinlabs/customer-area/issues/239)
+* Fix: Download all button not working properly on some file types with the enhanced files addon button
 
 = 7.1.5 (2017/02/07) =
 
