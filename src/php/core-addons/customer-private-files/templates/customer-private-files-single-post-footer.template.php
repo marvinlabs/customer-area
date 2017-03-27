@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.1.0
+/** Template version: 3.1.1
+ *
+ * -= 3.1.1 =-
+ * - Force download when downloading all (fixes bug with Enhanced Files addon)
  *
  * -= 3.1.0 =-
  * - Add button to download all files at once
@@ -81,7 +84,7 @@ $attachment_count = count($attachments);
             var iframe = $('<iframe style="visibility: collapse;"></iframe>');
             $('body').append(iframe);
             var content = iframe[0].contentDocument;
-            var form = '<form action="' + url + '" method="GET"></form>';
+            var form = '<form action="' + url + '" method="GET"><input type="hidden" name="force-download" value="1"/></form>';
             content.write(form);
             $('form', content).submit();
             setTimeout((function (iframe) {

@@ -73,7 +73,7 @@ function cuar_get_the_attached_file_count($post_id = null)
  *
  * @return string
  */
-function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'download')
+function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'download', $force_download = false)
 {
     if ( !$post_id) {
         $post_id = get_the_ID();
@@ -87,6 +87,10 @@ function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'down
 
     $permalink = $pf_addon->get_file_permalink($post_id, $file['id'], $action, $file);
 
+    if ($force_download) {
+        $permalink = add_query_arg('force-download', 1, $permalink);
+    }
+
     return apply_filters('cuar/private-content/files/the-permalink', $permalink, $file, $post_id, $action);
 }
 
@@ -99,9 +103,9 @@ function cuar_get_the_attached_file_link($post_id = null, $file, $action = 'down
  * @param array  $file    The file description
  * @param string $action  The action (download|view)
  */
-function cuar_the_attached_file_link($post_id = null, $file, $action = 'download')
+function cuar_the_attached_file_link($post_id = null, $file, $action = 'download', $force_download = false)
 {
-    echo cuar_get_the_attached_file_link($post_id, $file, $action);
+    echo cuar_get_the_attached_file_link($post_id, $file, $action, $force_download);
 }
 
 /**
