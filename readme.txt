@@ -105,6 +105,12 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.1.6 (2017/04/05) =
+
+* Fix: pages content listing were not loading properly or were showing a blank page instead
+* Fix: added some missing reset property that should prevent some themes to crash on single private pages
+* Fix: wrong alignment of the carousel on single private pages when showing 3 items on large screens
+
 = 7.1.5 (2017/02/07) =
 
 * Fix: default collection view type can now be overridden with a hook
