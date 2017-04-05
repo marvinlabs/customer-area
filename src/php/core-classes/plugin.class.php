@@ -866,7 +866,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
 
                 case 'jquery.slick': {
-                    wp_enqueue_script('jquery.slick', CUAR_PLUGIN_URL . 'libs/js/bower/slick-carousel/jquery.slick.min.js', array('jquery'),
+                    wp_enqueue_script('jquery.slick', CUAR_PLUGIN_URL . 'libs/js/bower/slick-carousel/jquery.slick.min.js', array('jquery', 'jquery-migrate'),
                         $cuar_version);
                     break;
                 }
