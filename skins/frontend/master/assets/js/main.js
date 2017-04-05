@@ -408,6 +408,7 @@
                 if ($.isFunction($.fn.slick)) {
                     var slickSlider = $('.cuar-js-slick-responsive', $wrapperJS);
                     if (slickSlider.length) {
+                        var slickSlidesCount = slickSlider.find('.slick-slide').length;
                         slickSlider.slick({
                             autoplay: false,
                             centerMode: true,
@@ -415,21 +416,21 @@
                             infinite: true,
                             respondTo: 'slider',
                             speed: 300,
-                            slidesToShow: 4,
-                            slidesToScroll: 4,
+                            slidesToShow: (slickSlidesCount < 4 ? slickSlidesCount : 4),
+                            slidesToScroll: (slickSlidesCount < 4 ? slickSlidesCount : 4),
                             responsive: [{
                                 breakpoint: 1024,
                                 settings: {
-                                    slidesToShow: 3,
-                                    slidesToScroll: 3,
+                                    slidesToShow: (slickSlidesCount < 3 ? 2 : 3),
+                                    slidesToScroll: (slickSlidesCount < 3 ? 2 : 3),
                                     infinite: true,
                                     dots: true
                                 }
                             }, {
                                 breakpoint: 600,
                                 settings: {
-                                    slidesToShow: 2,
-                                    slidesToScroll: 2
+                                    slidesToShow: (slickSlidesCount < 2 ? 1 : 2),
+                                    slidesToScroll: (slickSlidesCount < 2 ? 1 : 2)
                                 }
                             }, {
                                 breakpoint: 480,
