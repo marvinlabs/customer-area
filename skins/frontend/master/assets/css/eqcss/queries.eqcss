@@ -10,7 +10,9 @@
     body.customer-area-active.tray-rescale #cuar-js-content-container .scroller-bar{
         display: none!important;
     }
-    body.customer-area-active.tray-rescale #cuar-js-content-container .tray-center{
+    body.customer-area-active.tray-rescale #cuar-js-content-container .tray-center,
+    body.customer-area-active.disable-tray-rescale #cuar-js-content-container .tray-center
+    {
         padding-right: 13px !important;
         height: auto!important;
     }
@@ -19,6 +21,13 @@
         overflow: auto;
         overflow-x: auto;
         overflow-y: auto;
+        height: auto!important;
+    }
+}
+@element 'body.disable-tray-rescale #cuar-js-content-container' and (max-width: 551px){
+    body.customer-area-active.disable-tray-rescale #cuar-js-content-container .tray-center
+    {
+        padding-right: 13px !important;
         height: auto!important;
     }
 }
@@ -52,6 +61,9 @@
     body.customer-area-active #cuar-js-content-container .collection .collection-content:not(.list) .mix,
     body.customer-area-active #cuar-js-content-container .collection .collection-content:not(.list) .gap {
         width: 100%;
+    }
+    body.customer-area-active #cuar-js-content-container .collection .collection-content .gap {
+        display: none;
     }
 }
 

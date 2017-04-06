@@ -188,7 +188,7 @@
 
                     // Match height of tray with the height of the tray center
                     var trayFormat = $('.tray-right, .tray-left', $wrapperJS);
-                    if (trayFormat.length) {
+                    if (trayFormat.length && !$('body').hasClass('disable-tray-rescale')) {
 
                         // Loop each tray and set height to match tray center
                         // Never tested with 2 side trays on a same page yet
@@ -292,10 +292,13 @@
                     var dataAppend = dataTray.children();
 
                     function fcRefresh() {
-                        if ($('#cuar-js-content-container').innerWidth() < 550) {
+                        var cntWidth = $('#cuar-js-content-container').innerWidth();
+                        if (($('body').hasClass('disable-tray-rescale') && cntWidth < 700) || cntWidth < 550) {
                             dataAppend.appendTo($(dataTray.data('tray-mobile')));
+                            dataTray.hide();
                         }
                         else {
+                            dataTray.show();
                             dataAppend.appendTo(dataTray);
                         }
                     }
