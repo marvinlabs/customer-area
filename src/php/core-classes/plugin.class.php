@@ -77,6 +77,9 @@ if ( !class_exists('CUAR_Plugin')) :
             add_action('init', array(&$this, 'load_styles'), 8);
             add_action('init', array(&$this, 'load_defaults'), 9);
 
+            add_filter('single_template_hierarchy', array(&$this, 'single_template_hierarchy'), 10);
+            add_filter('page_template_hierarchy', array(&$this, 'page_template_hierarchy'), 10);
+
             add_action('plugins_loaded', array(&$this, 'load_theme_functions'), 7);
 
             if (is_admin()) {
@@ -265,7 +268,7 @@ if ( !class_exists('CUAR_Plugin')) :
                         'cuar'),
                     'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
                 ));
-                wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery'), $this->get_version());
+	            wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
                 wp_localize_script('cuar.frontend', 'cuar', $messages);
             }
         }
@@ -303,6 +306,38 @@ if ( !class_exists('CUAR_Plugin')) :
         }
 
         /*------- TEMPLATING & THEMING ----------------------------------------------------------------------------------*/
+
+        public function page_template_hierarchy($templates)
+        {
+            /** @var CUAR_CustomerPagesAddOn $cp_addon */
+            $cp_addon = $this->get_addon('customer-pages');
+            $is_cuar_template = $cp_addon->is_customer_area_page(get_the_ID());
+
+            if ($is_cuar_template) {
+                array_splice($templates, count($templates) - 1, 0, 'cuar-page.php');
+                array_splice($templates, count($templates) - 1, 0, 'cuar.php');
+            }
+
+            return $templates;
+        }
+
+        public function single_template_hierarchy($templates)
+        {
+            $is_cuar_template = false;
+            for ($i = 0; $i < count($templates) - 2; ++$i) {
+                if (strstr($templates[$i], 'cuar_')) {
+                    $is_cuar_template = true;
+                    break;
+                };
+            }
+
+            if ($is_cuar_template) {
+                array_splice($templates, count($templates) - 1, 0, 'cuar-single.php');
+                array_splice($templates, count($templates) - 1, 0, 'cuar.php');
+            }
+
+            return $templates;
+        }
 
         public function get_theme($theme_type)
         {
@@ -866,7 +901,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
 
                 case 'jquery.slick': {
-                    wp_enqueue_script('jquery.slick', CUAR_PLUGIN_URL . 'libs/js/bower/slick-carousel/jquery.slick.min.js', array('jquery'),
+                    wp_enqueue_script('jquery.slick', CUAR_PLUGIN_URL . 'libs/js/bower/slick-carousel/jquery.slick.min.js', array('jquery', 'jquery-migrate'),
                         $cuar_version);
                     break;
                 }

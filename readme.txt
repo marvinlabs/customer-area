@@ -4,8 +4,8 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.2
-Tested up to:       4.7.2
-Stable tag:         7.1.5
+Tested up to:       4.7.3
+Stable tag:         7.1.6
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,15 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.1.6 (2017/04/05) =
+
+* Fix: pages content listing were not loading properly or were showing a blank page instead
+* Fix: added some missing reset property that should prevent some themes to crash on single private pages
+* Fix: wrong alignment of the carousel on single private pages when showing 3 items on large screens
+* Fix: Higher priority on body_class filters [#239](https://github.com/marvinlabs/customer-area/issues/239)
+* Fix: Download all button not working properly on some file types with the enhanced files addon button
+* Fix: better error messages when license does not validate
 
 = 7.1.5 (2017/02/07) =
 
