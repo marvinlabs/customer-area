@@ -268,7 +268,7 @@ if ( !class_exists('CUAR_Plugin')) :
                         'cuar'),
                     'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
                 ));
-                wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
+	            wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
                 wp_localize_script('cuar.frontend', 'cuar', $messages);
             }
         }

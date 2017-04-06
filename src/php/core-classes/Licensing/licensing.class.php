@@ -152,33 +152,33 @@ class CUAR_Licensing
     private function query_store($license, $addon)
     {
         // data to send in our API request
-        $api_params = [
+        $api_params = array(
             'edd_action' => 'activate_license',
             'license'    => $license,
             'url'        => get_home_url(),
             'item_id'    => (int)($addon->store_item_id),
-        ];
+        );
 
         // Call the custom API.
-        $response = wp_remote_post($this->store->get_store_url(), [
+        $response = wp_remote_post($this->store->get_store_url(), array(
             'timeout'   => 15,
             'sslverify' => false,
             'body'      => $api_params,
-        ]);
+        ));
 
         // make sure the response came back okay
         if (is_wp_error($response) || 200 !== wp_remote_retrieve_response_code($response)) {
             if (is_wp_error($response)) {
-                return json_decode(json_encode([
+                return json_decode(json_encode(array(
                     'license'  => 'error',
                     'error'    => $response->get_error_message(),
                     'response' => $response,
-                ]));
+                )));
             } else {
-                return json_decode(json_encode([
+                return json_decode(json_encode(array(
                     'license' => 'error',
                     'error'   => 'Server responded with code ' . wp_remote_retrieve_response_code($response),
-                ]));
+                )));
             }
         }
 
@@ -187,11 +187,11 @@ class CUAR_Licensing
 
         // If not a valid license and license is missing, return null
         if (!isset($license_data) || ($license_data->license != 'valid' && $license_data->error == 'missing')) {
-            return json_decode(json_encode([
+            return json_decode(json_encode(array(
                 'license'  => 'error',
                 'error'    => 'Not a valid license or license is missing',
                 'response' => $response,
-            ]));
+            )));
         }
 
         return $license_data;
