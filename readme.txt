@@ -105,6 +105,12 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.1.7 (2017/04/07) =
+
+* Fix: missing padding on the right of the sidebar
+* Fix: main.js master-skin script could crash because of a missing jquery.cookie lib
+* Fix: rewrote main.js master-skin dependencies inclusion to make sure everything gets loaded before running the script
+
 = 7.1.6 (2017/04/05) =
 
 * Fix: pages content listing were not loading properly or were showing a blank page instead
