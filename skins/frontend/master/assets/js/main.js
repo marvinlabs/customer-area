@@ -460,7 +460,7 @@
 
                     // Initiate cookie session for filters buttons
                     var cookieName = $collectionContainer.data('type') + '-collection-layout';
-                    var cookieLayout = Cookies.get(cookieName);
+                    var cookieLayout = ( typeof Cookies !== 'undefined' ) ? Cookies.get(cookieName) : '';
                     if (cookieLayout != 'list' && cookieLayout != 'grid') {
                         if ($collectionContainer.data('collection-layout') != null) {
                             cookieLayout = $collectionContainer.data('collection-layout');
@@ -500,7 +500,11 @@
 
                     // Bind layout mode buttons
                     $collectionToList.on('click', function () {
-                        Cookies.set(cookieName, 'list');
+                        if (typeof Cookies !== 'undefined') {
+                            Cookies.set(cookieName, 'list');
+                        } else {
+                            console.log('[ WPCA - Warning ] jquery.Cookie.min.js missing');
+                        }
                         $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                         if ($collectionContainer.hasClass('list')) {
                             return
@@ -513,7 +517,11 @@
                         });
                     });
                     $collectionToGrid.on('click', function () {
-                        Cookies.set(cookieName, 'grid');
+                        if (typeof Cookies !== 'undefined') {
+                            Cookies.set(cookieName, 'grid');
+                        } else {
+                            console.log('[ WPCA - Warning ] jquery.Cookie.min.js missing');
+                        }
                         $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                         if ($collectionContainer.hasClass('grid')) {
                             return
