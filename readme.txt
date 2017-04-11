@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.2
 Tested up to:       4.7.3
-Stable tag:         7.2.0
+Stable tag:         7.1.7
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,9 +105,11 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.2.0 (2017/02/) =
+= 7.1.7 (2017/04/07) =
 
-* New: compatibility with the new add-on: Unread documents
+* Fix: missing padding on the right of the sidebar
+* Fix: main.js master-skin script could crash because of a missing jquery.cookie lib
+* Fix: rewrote main.js master-skin dependencies inclusion to make sure everything gets loaded before running the script
 
 = 7.1.6 (2017/04/05) =
 
