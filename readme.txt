@@ -105,6 +105,10 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.2.0 (2017/02/) =
+
+* New: compatibility with the new add-on: Unread documents
+
 = 7.1.7 (2017/04/07) =
 
 * Fix: missing padding on the right of the sidebar
