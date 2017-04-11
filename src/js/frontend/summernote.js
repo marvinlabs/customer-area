@@ -26,12 +26,12 @@ function bootstrapSummernote($, editorSelector) {
     $(editorSelector).summernote(snOptions);
 }
 
-if (jQuery('.cuar-wizard').length>0) {
-    jQuery('#cuar-js-content-container').on('cuar:wizard:initialized', function () {
-        bootstrapSummernote(jQuery, ".cuar-wizard .cuar-js-richeditor");
-    });
-} else {
-    jQuery(document).ready(function ($) {
+jQuery(document).ready(function ($) {
+    if (jQuery('.cuar-form .cuar-js-wizard-section').length > 0) {
+        jQuery('#cuar-js-content-container').on('cuar:wizard:initialized', function () {
+            bootstrapSummernote(jQuery, ".cuar-wizard .cuar-js-richeditor");
+        });
+    } else {
         bootstrapSummernote($, ".cuar-js-richeditor");
-    });
-}
+    }
+});

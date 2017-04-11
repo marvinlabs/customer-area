@@ -105,6 +105,10 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.1.8 (2017/04/11) =
+
+* Fix: rich editor on frontend given by the collaboration add-on was not properly initialized
+
 = 7.1.7 (2017/04/07) =
 
 * Fix: missing padding on the right of the sidebar
