@@ -19,7 +19,7 @@ function bootstrapSummernote($, editorSelector) {
         }
     };
 
-    if (typeof cuar != 'undefined') {
+    if (typeof cuar !== 'undefined') {
         snOptions['lang'] = cuar.locale;
     }
 
