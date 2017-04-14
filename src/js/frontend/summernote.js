@@ -19,7 +19,7 @@ function bootstrapSummernote($, editorSelector) {
         }
     };
 
-    if (typeof cuar != 'undefined') {
+    if (typeof cuar !== 'undefined') {
         snOptions['lang'] = cuar.locale;
     }
 
@@ -27,9 +27,9 @@ function bootstrapSummernote($, editorSelector) {
 }
 
 jQuery(document).ready(function ($) {
-    if (jQuery('.cuar-form .cuar-js-wizard-section').length > 0) {
-        jQuery('#cuar-js-content-container').on('cuar:wizard:initialized', function () {
-            bootstrapSummernote(jQuery, ".cuar-wizard .cuar-js-richeditor");
+    if ($('.cuar-form .cuar-js-wizard-section').length > 0) {
+        $('#cuar-js-content-container').on('cuar:wizard:initialized', function () {
+            bootstrapSummernote($, ".cuar-wizard .cuar-js-richeditor");
         });
     } else {
         bootstrapSummernote($, ".cuar-js-richeditor");
