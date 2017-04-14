@@ -40,8 +40,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             add_action('cuar/core/admin/submenu-items?group=tools', array(&$this, 'add_menu_items'), 10);
 
-            if (is_admin())
-            {
+            if (is_admin()) {
                 add_action('admin_init', array(&$this, 'page_init'));
                 add_action('cuar/core/admin/print-admin-page?page=settings', array(&$this, 'print_settings_page'), 99);
 
@@ -51,16 +50,16 @@ if ( !class_exists('CUAR_Settings')) :
 
                 // We have some core settings to take care of too
                 add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_core_settings_tab'), 200, 1);
+                add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_licensing_settings_tab'), 900, 1);
 
-                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 10,
-                    2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_core',
-                    array(&$this, 'validate_core_settings'), 10, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_core', array(&$this, 'print_core_settings'), 10, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_core', array(&$this, 'validate_core_settings'), 10, 3);
 
-                add_action('cuar/core/settings/print-settings?tab=cuar_frontend',
-                    array(&$this, 'print_frontend_settings'), 10, 2);
-                add_filter('cuar/core/settings/validate-settings?tab=cuar_frontend',
-                    array(&$this, 'validate_frontend_settings'), 10, 3);
+                add_action('cuar/core/settings/print-settings?tab=cuar_frontend', array(&$this, 'print_frontend_settings'), 10, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_frontend', array(&$this, 'validate_frontend_settings'), 10, 3);
+
+                add_action('cuar/core/settings/print-settings?tab=cuar_licenses', array(&$this, 'print_license_settings'), 10, 2);
+                add_filter('cuar/core/settings/validate-settings?tab=cuar_licenses', array(&$this, 'validate_license_options'), 10, 3);
 
                 add_action('wp_ajax_cuar_validate_license', array('CUAR_Settings', 'ajax_validate_license'));
             }
@@ -77,8 +76,7 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public function add_menu_items($submenus)
         {
-            if (is_admin())
-            {
+            if (is_admin()) {
                 add_options_page(__('WP Customer Area Settings', 'cuar'),
                     __('WP Customer Area', 'cuar'),
                     'manage_options',
@@ -99,10 +97,8 @@ if ( !class_exists('CUAR_Settings')) :
 
             $tabs = apply_filters('cuar/core/settings/settings-tabs', array());
             $tabs_to_skip = array('cuar_addons', 'cuar_troubleshooting');
-            foreach ($tabs as $tab_id => $tab_label)
-            {
-                if (in_array($tab_id, $tabs_to_skip))
-                {
+            foreach ($tabs as $tab_id => $tab_label) {
+                if (in_array($tab_id, $tabs_to_skip)) {
                     continue;
                 }
 
@@ -132,20 +128,16 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public function print_settings_page()
         {
-            if (isset($_GET['run-setup-wizard']))
-            {
+            if (isset($_GET['run-setup-wizard'])) {
                 $success = false;
 
-                if (isset($_POST['submit']))
-                {
+                if (isset($_POST['submit'])) {
                     $errors = array();
-                    if ( !isset($_POST["cuar_page_title"]) || empty($_POST["cuar_page_title"]))
-                    {
+                    if ( !isset($_POST["cuar_page_title"]) || empty($_POST["cuar_page_title"])) {
                         $errors[] = __('The page title cannot be empty', 'cuar');
                     }
 
-                    if (empty($errors))
-                    {
+                    if (empty($errors)) {
                         $post_data = array(
                             'post_content'   => '[customer-area /]',
                             'post_title'     => $_POST["cuar_page_title"],
@@ -155,38 +147,28 @@ if ( !class_exists('CUAR_Settings')) :
                             'ping_status'    => 'closed'
                         );
                         $page_id = wp_insert_post($post_data);
-                        if (is_wp_error($page_id))
-                        {
+                        if (is_wp_error($page_id)) {
                             $errors[] = $page_id->get_error_message();
-                        }
-                        else
-                        {
+                        } else {
                             $this->plugin->get_addon('customer-pages')->set_customer_page_id($page_id);
                         }
 
-                        if (empty($errors))
-                        {
+                        if (empty($errors)) {
                             $success = true;
                         }
                     }
                 }
 
-                if ($_GET['run-setup-wizard'] == 1664)
-                {
+                if ($_GET['run-setup-wizard'] == 1664) {
                     $success = true;
                 }
 
-                if ($success)
-                {
+                if ($success) {
                     include(CUAR_INCLUDES_DIR . '/setup-wizard-done.view.php');
-                }
-                else
-                {
+                } else {
                     include(CUAR_INCLUDES_DIR . '/setup-wizard.view.php');
                 }
-            }
-            else
-            {
+            } else {
                 include($this->plugin->get_template_file_path(
                     CUAR_INCLUDES_DIR . '/core-classes',
                     'settings.template.php',
@@ -202,18 +184,11 @@ if ( !class_exists('CUAR_Settings')) :
             $this->setup_tabs();
 
             // Register the main settings and for the current tab too
-            register_setting(self::$OPTIONS_GROUP, self::$OPTIONS_GROUP, array(
-                &$this,
-                'validate_options'
-            ));
-            register_setting(self::$OPTIONS_GROUP . '_' . $this->current_tab, self::$OPTIONS_GROUP, array(
-                &$this,
-                'validate_options'
-            ));
+            register_setting(self::$OPTIONS_GROUP, self::$OPTIONS_GROUP, array(&$this, 'validate_options'));
+            register_setting(self::$OPTIONS_GROUP . '_' . $this->current_tab, self::$OPTIONS_GROUP, array(&$this, 'validate_options'));
 
             // Let the current tab add its own settings to the page
-            do_action("cuar/core/settings/print-settings?tab=" . $this->current_tab, $this,
-                self::$OPTIONS_GROUP . '_' . $this->current_tab);
+            do_action("cuar/core/settings/print-settings?tab=" . $this->current_tab, $this, self::$OPTIONS_GROUP . '_' . $this->current_tab);
         }
 
         /**
@@ -225,12 +200,10 @@ if ( !class_exists('CUAR_Settings')) :
 
             // Get current tab from GET or POST params or default to first in list
             $this->current_tab = isset($_GET ['tab']) ? $_GET ['tab'] : '';
-            if ( !isset($this->tabs [$this->current_tab]))
-            {
+            if ( !isset($this->tabs [$this->current_tab])) {
                 $this->current_tab = isset($_POST ['tab']) ? $_POST ['tab'] : '';
             }
-            if ( !isset($this->tabs [$this->current_tab]))
-            {
+            if ( !isset($this->tabs [$this->current_tab])) {
                 reset($this->tabs);
                 $this->current_tab = key($this->tabs);
             }
@@ -273,8 +246,24 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public function add_core_settings_tab($tabs)
         {
-            $tabs ['cuar_core'] = __('General', 'cuar');
-            $tabs ['cuar_frontend'] = __('Frontend', 'cuar');
+            $tabs['cuar_core'] = __('General', 'cuar');
+            $tabs['cuar_frontend'] = __('Frontend', 'cuar');
+
+            return $tabs;
+        }
+
+        /**
+         * Add a tab
+         *
+         * @param array $tabs
+         *
+         * @return array
+         */
+        public function add_licensing_settings_tab($tabs)
+        {
+            if ($this->plugin->has_commercial_addons()) {
+                $tabs['cuar_licenses'] = __('License Keys', 'cuar');
+            }
 
             return $tabs;
         }
@@ -335,8 +324,7 @@ if ( !class_exists('CUAR_Settings')) :
                 array(&$cuar_settings, 'print_frontend_section_info'),
                 self::$OPTIONS_PAGE_SLUG);
 
-            if ( !current_theme_supports('customer-area.stylesheet'))
-            {
+            if ( !current_theme_supports('customer-area.stylesheet')) {
                 add_settings_field(self::$OPTION_INCLUDE_CSS,
                     __('Use skin', 'cuar'),
                     array(&$cuar_settings, 'print_input_field'),
@@ -389,13 +377,14 @@ if ( !class_exists('CUAR_Settings')) :
          * @param CUAR_Settings $cuar_settings
          * @param array         $input
          * @param array         $validated
+         *
+         * @return array
          */
         public function validate_frontend_settings($validated, $cuar_settings, $input)
         {
             $cuar_settings->validate_boolean($input, $validated, self::$OPTION_DEBUG_TEMPLATES);
 
-            if ( !current_theme_supports('customer-area-css'))
-            {
+            if ( !current_theme_supports('customer-area-css')) {
                 $cuar_settings->validate_boolean($input, $validated, self::$OPTION_INCLUDE_CSS);
                 $cuar_settings->validate_not_empty($input, $validated, self::$OPTION_FRONTEND_SKIN);
             }
@@ -403,8 +392,104 @@ if ( !class_exists('CUAR_Settings')) :
             return $validated;
         }
 
+
+        /**
+         * Add our fields to the settings page
+         *
+         * @param CUAR_Settings $cuar_settings The settings class
+         */
+        public function print_license_settings($cuar_settings, $options_group)
+        {
+            add_settings_section(
+                'cuar_licensing_options_section',
+                __('Licensing and updates', 'cuar'),
+                array(&$this, 'print_empty_section_info'),
+                CUAR_Settings::$OPTIONS_PAGE_SLUG
+            );
+
+            add_settings_field(
+                self::$OPTION_GET_BETA_VERSION_NOTIFICATIONS,
+                __('Beta versions', 'cuar'),
+                array(&$cuar_settings, 'print_input_field'),
+                CUAR_Settings::$OPTIONS_PAGE_SLUG,
+                'cuar_licensing_options_section',
+                array(
+                    'option_id' => self::$OPTION_GET_BETA_VERSION_NOTIFICATIONS,
+                    'type'      => 'checkbox',
+                    'after'     =>
+                        __('If checked, you will be notified when a beta version is published. Else, only stable updates will be delivered.', 'cuar'),
+                )
+            );
+
+            add_settings_field(
+                self::$OPTION_BYPASS_SSL,
+                __('Bypass SSL', 'cuar'),
+                array(&$cuar_settings, 'print_input_field'),
+                CUAR_Settings::$OPTIONS_PAGE_SLUG,
+                'cuar_licensing_options_section',
+                array(
+                    'option_id' => self::$OPTION_BYPASS_SSL,
+                    'type'      => 'checkbox',
+                    'after'     =>
+                        __('Check this box if you have problems validating your license keys. The license server will be called using simple HTTP protocol instead of HTTPS.', 'cuar')
+                        . ' <strong>' . __('You need to save your changes before validating the licenses again!.', 'cuar') . '</strong>',
+                )
+            );
+
+            add_settings_section(
+                'cuar_license_keys_section',
+                __('License keys for commercial add-ons', 'cuar'),
+                array(&$this, 'print_license_section_info'),
+                CUAR_Settings::$OPTIONS_PAGE_SLUG
+            );
+
+            $commercial_addons = $this->plugin->get_commercial_addons();
+            foreach ($commercial_addons as $id => $addon) {
+                add_settings_field(
+                    $addon->get_license_key_option_name(),
+                    $addon->get_addon_name(),
+                    array(&$cuar_settings, 'print_license_key_field'),
+                    CUAR_Settings::$OPTIONS_PAGE_SLUG,
+                    'cuar_license_keys_section',
+                    array(
+                        'option_id'        => $addon->get_license_key_option_name(),
+                        'status_option_id' => $addon->get_license_status_option_name(),
+                        'check_option_id'  => $addon->get_license_check_option_name(),
+                        'addon_id'         => $id,
+                        'after'            => '')
+                );
+            }
+        }
+
+        /**
+         * Validate our options
+         *
+         * @param CUAR_Settings $cuar_settings
+         * @param array         $input
+         * @param array         $validated
+         *
+         * @return array
+         */
+        public function validate_license_options($validated, $cuar_settings, $input)
+        {
+            $cuar_settings->validate_boolean($input, $validated, self::$OPTION_GET_BETA_VERSION_NOTIFICATIONS);
+            $cuar_settings->validate_boolean($input, $validated, self::$OPTION_BYPASS_SSL);
+
+            return $validated;
+        }
+
         public function print_empty_section_info()
         {
+        }
+
+        public function print_license_section_info()
+        {
+            echo '<p>';
+            _e('This page allows you to enter license key you have received when you purchased commercial addons.', 'cuar');
+            echo ' <strong>' . __('Do not activate your license on your development site. Only on the final site where you are running the plugin.', 'cuar') . '</strong>';
+            echo '</p>';
+
+            echo $this->plugin->get_licensing()->get_store()->get_store_url();
         }
 
         public function print_frontend_section_info()
@@ -434,10 +519,12 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public static function set_default_core_options($defaults)
         {
-            $defaults [self::$OPTION_INCLUDE_CSS] = true;
-            $defaults [self::$OPTION_DEBUG_TEMPLATES] = false;
-            $defaults [self::$OPTION_ADMIN_SKIN] = CUAR_ADMIN_SKIN;
-            $defaults [self::$OPTION_FRONTEND_SKIN] = CUAR_FRONTEND_SKIN;
+            $defaults[self::$OPTION_INCLUDE_CSS] = true;
+            $defaults[self::$OPTION_DEBUG_TEMPLATES] = false;
+            $defaults[self::$OPTION_ADMIN_SKIN] = CUAR_ADMIN_SKIN;
+            $defaults[self::$OPTION_FRONTEND_SKIN] = CUAR_FRONTEND_SKIN;
+            $defaults[self::$OPTION_GET_BETA_VERSION_NOTIFICATIONS] = false;
+            $defaults[self::$OPTION_BYPASS_SSL] = false;
 
             return $defaults;
         }
@@ -486,12 +573,9 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public function validate_post_id($input, &$validated, $option_id)
         {
-            if ($input[$option_id] == -1 || get_post($input[$option_id]))
-            {
+            if ($input[$option_id] == -1 || get_post($input[$option_id])) {
                 $validated[$option_id] = $input[$option_id];
-            }
-            else
-            {
+            } else {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . $input[$option_id] . __(' is not a valid post', 'cuar'), 'error');
             }
@@ -525,12 +609,9 @@ if ( !class_exists('CUAR_Settings')) :
         public function validate_role($input, &$validated, $option_id)
         {
             $role = $input[$option_id];
-            if (isset($role) && ($role == "cuar_any" || null != get_role($input[$option_id])))
-            {
+            if (isset($role) && ($role == "cuar_any" || null != get_role($input[$option_id]))) {
                 $validated[$option_id] = $input[$option_id];
-            }
-            else
-            {
+            } else {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . $input[$option_id] . __(' is not a valid role', 'cuar'), 'error');
             }
@@ -563,12 +644,9 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public function validate_not_empty($input, &$validated, $option_id)
         {
-            if (isset($input[$option_id]) && !empty ($input[$option_id]))
-            {
+            if (isset($input[$option_id]) && !empty ($input[$option_id])) {
                 $validated[$option_id] = $input[$option_id];
-            }
-            else
-            {
+            } else {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . $input[$option_id] . __(' cannot be empty', 'cuar'), 'error');
 
@@ -588,12 +666,9 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public function validate_email($input, &$validated, $option_id)
         {
-            if (isset($input[$option_id]) && is_email($input[$option_id]))
-            {
+            if (isset($input[$option_id]) && is_email($input[$option_id])) {
                 $validated[$option_id] = $input[$option_id];
-            }
-            else
-            {
+            } else {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . $input[$option_id] . __(' is not a valid email', 'cuar'), 'error');
 
@@ -615,8 +690,7 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public function validate_enum($input, &$validated, $option_id, $enum_values)
         {
-            if ( !in_array($input[$option_id], $enum_values))
-            {
+            if ( !in_array($input[$option_id], $enum_values)) {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . $input[$option_id] . __(' is not a valid value', 'cuar'), 'error');
 
@@ -645,8 +719,7 @@ if ( !class_exists('CUAR_Settings')) :
         public function validate_int($input, &$validated, $option_id, $min = null, $max = null)
         {
             // Must be an int
-            if ( !is_int(intval($input[$option_id])))
-            {
+            if ( !is_int(intval($input[$option_id]))) {
                 add_settings_error($option_id, 'settings-errors', $option_id . ': ' . __('must be an integer', 'cuar'),
                     'error');
 
@@ -656,8 +729,7 @@ if ( !class_exists('CUAR_Settings')) :
             }
 
             // Must be > min
-            if ($min !== null && $input[$option_id] < $min)
-            {
+            if ($min !== null && $input[$option_id] < $min) {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . sprintf(__('must be greater than %s', 'cuar'), $min), 'error');
 
@@ -667,8 +739,7 @@ if ( !class_exists('CUAR_Settings')) :
             }
 
             // Must be < max
-            if ($max !== null && $input[$option_id] > $max)
-            {
+            if ($max !== null && $input[$option_id] > $max) {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . sprintf(__('must be lower than %s', 'cuar'), $max), 'error');
 
@@ -693,25 +764,18 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public function validate_owners($input, &$validated, $option_id, $owner_type_option_id)
         {
-            if (is_array($input[$option_id]) && !empty($input[$option_id]))
-            {
+            if (is_array($input[$option_id]) && !empty($input[$option_id])) {
                 $owners = array();
-                foreach ($input[$option_id] as $type => $ids)
-                {
-                    if (is_array($ids))
-                    {
+                foreach ($input[$option_id] as $type => $ids) {
+                    if (is_array($ids)) {
                         $owners[$type] = $ids;
-                    }
-                    else
-                    {
+                    } else {
                         $owners[$type] = array($ids);
                     }
                 }
                 $validated[$option_id] = $owners;
                 $validated[$owner_type_option_id] = '';
-            }
-            else
-            {
+            } else {
                 add_settings_error($option_id, 'settings-errors', $option_id . ': ' . __('Invalid owner', 'cuar'), 'error');
                 $validated[$option_id] = $this->default_options [$option_id];
             }
@@ -728,8 +792,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             $term_ids = isset($input[$option_id]) ? $input[$option_id] : '';
 
-            if ( !$allow_multiple && is_array($term_ids))
-            {
+            if ( !$allow_multiple && is_array($term_ids)) {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . __('you cannot select multiple terms.', 'cuar'), 'error');
                 $validated[$option_id] = -1;
@@ -737,17 +800,13 @@ if ( !class_exists('CUAR_Settings')) :
                 return;
             }
 
-            if ($allow_multiple)
-            {
-                if ( !is_array($term_ids))
-                {
+            if ($allow_multiple) {
+                if ( !is_array($term_ids)) {
                     $term_ids = empty($term_ids) ? array() : array($term_ids);
                 }
 
                 $validated[$option_id] = $term_ids;
-            }
-            else
-            {
+            } else {
                 $validated[$option_id] = empty($term_ids) ? -1 : $term_ids;
             }
         }
@@ -763,8 +822,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             $term_ids = isset($input[$option_id]) ? $input[$option_id] : '';
 
-            if ( !$allow_multiple && is_array($term_ids))
-            {
+            if ( !$allow_multiple && is_array($term_ids)) {
                 add_settings_error($option_id, 'settings-errors',
                     $option_id . ': ' . __('you cannot select multiple terms.', 'cuar'), 'error');
                 $validated[$option_id] = -1;
@@ -772,17 +830,13 @@ if ( !class_exists('CUAR_Settings')) :
                 return;
             }
 
-            if ($allow_multiple)
-            {
-                if ( !is_array($term_ids))
-                {
+            if ($allow_multiple) {
+                if ( !is_array($term_ids)) {
                     $term_ids = empty($term_ids) ? array() : array($term_ids);
                 }
 
                 $validated[$option_id] = $term_ids;
-            }
-            else
-            {
+            } else {
                 $validated[$option_id] = empty($term_ids) ? -1 : $term_ids;
             }
         }
@@ -814,7 +868,7 @@ if ( !class_exists('CUAR_Settings')) :
             $cuar_plugin->update_option($license_status_option_id, $result);
 
             // Tell WordPress to look for updates
-            set_site_transient( 'update_plugins', null );
+            set_site_transient('update_plugins', null);
 
             echo json_encode($result);
             exit;
@@ -832,28 +886,22 @@ if ( !class_exists('CUAR_Settings')) :
             extract($args);
 
             $license_key = $this->options[$option_id];
-            $last_status = $this->plugin->get_option($status_option_id, null);
+            $last_status = $this->plugin->get_option($status_option_id);
 
-            if ($last_status != null && !empty($license_key))
-            {
+            if ($last_status != null && !empty($license_key)) {
                 $status_class = $last_status->success ? 'cuar-ajax-success' : 'cuar-ajax-failure';
                 $status_message = $last_status->message;
-            }
-            else if (empty($license_key))
-            {
+            } else if (empty($license_key)) {
                 $status_class = '';
                 $status_message = '';
-                $this->plugin->update_option($status_option_id, null);
-                $this->plugin->update_option($check_option_id, null);
-            }
-            else
-            {
+                $this->options[$status_option_id] = null;
+                $this->options[$check_option_id] = null;
+            } else {
                 $status_class = '';
                 $status_message = '';
             }
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -866,8 +914,7 @@ if ( !class_exists('CUAR_Settings')) :
                 esc_attr($option_id), $status_class, $status_message);
             echo '</div>';
 
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
 
@@ -894,10 +941,8 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if ($type == 'checkbox')
-            {
-                if (isset($before))
-                {
+            if ($type == 'checkbox') {
+                if (isset($before)) {
                     echo $before;
                 }
 
@@ -905,46 +950,35 @@ if ( !class_exists('CUAR_Settings')) :
                     esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id),
                     ($this->options [$option_id] != 0) ? 'checked="checked" ' : '');
 
-                if (isset($after))
-                {
+                if (isset($after)) {
                     echo $after;
                 }
-            }
-            else if ($type == 'textarea')
-            {
-                if (isset($before))
-                {
+            } else if ($type == 'textarea') {
+                if (isset($before)) {
                     echo $before;
                 }
 
                 echo sprintf('<textarea id="%s" name="%s[%s]" class="large-text">%s</textarea>', esc_attr($option_id),
                     self::$OPTIONS_GROUP, esc_attr($option_id), $content);
 
-                if (isset($after))
-                {
+                if (isset($after)) {
                     echo $after;
                 }
-            }
-            else if ($type == 'editor')
-            {
-                if ( !isset($editor_settings))
-                {
-                    /** @noinspection PhpDeprecationInspection Fine since we are on the admin side*/
+            } else if ($type == 'editor') {
+                if ( !isset($editor_settings)) {
+                    /** @noinspection PhpDeprecationInspection Fine since we are on the admin side */
                     $editor_settings = cuar_wp_editor_settings();
                 }
                 $editor_settings ['textarea_name'] = self::$OPTIONS_GROUP . "[" . $option_id . "]";
 
                 wp_editor($this->options [$option_id], $option_id, $editor_settings);
-            }
-            else if ($type == 'upload')
-            {
+            } else if ($type == 'upload') {
                 wp_enqueue_script('cuar.admin');
                 wp_enqueue_media();
 
                 $extra_class = 'cuar-upload-input regular-text';
 
-                if (isset($before))
-                {
+                if (isset($before)) {
                     echo $before;
                 }
 
@@ -960,17 +994,13 @@ if ( !class_exists('CUAR_Settings')) :
                 echo '</script>';
                 echo '</div>';
 
-                if (isset($after))
-                {
+                if (isset($after)) {
                     echo $after;
                 }
-            }
-            else
-            {
+            } else {
                 $extra_class = isset($is_large) && $is_large == true ? 'large-text' : 'regular-text';
 
-                if (isset($before))
-                {
+                if (isset($before)) {
                     echo $before;
                 }
 
@@ -978,8 +1008,7 @@ if ( !class_exists('CUAR_Settings')) :
                     esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id),
                     esc_attr($this->options [$option_id]), esc_attr($extra_class));
 
-                if (isset($after))
-                {
+                if (isset($after)) {
                     echo $after;
                 }
             }
@@ -997,8 +1026,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -1011,13 +1039,11 @@ if ( !class_exists('CUAR_Settings')) :
 
             wp_nonce_field($nonce_action, $nonce_name);
 
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
 
-            if (isset($confirm_message) && !empty($confirm_message))
-            {
+            if (isset($confirm_message) && !empty($confirm_message)) {
                 ?>
                 <script type="text/javascript">
                     <!--
@@ -1044,8 +1070,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -1054,8 +1079,7 @@ if ( !class_exists('CUAR_Settings')) :
 
             $option_value = isset($this->options[$option_id]) ? $this->options[$option_id] : null;
 
-            foreach ($options as $value => $label)
-            {
+            foreach ($options as $value => $label) {
                 $selected = ($option_value == $value) ? 'selected="selected"' : '';
 
                 echo sprintf('<option value="%s" %s>%s</option>', esc_attr($value), $selected, $label);
@@ -1063,8 +1087,7 @@ if ( !class_exists('CUAR_Settings')) :
 
             echo '</select>';
 
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
         }
@@ -1088,8 +1111,7 @@ if ( !class_exists('CUAR_Settings')) :
             );
             $pages_query = new WP_Query($query_args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -1102,8 +1124,7 @@ if ( !class_exists('CUAR_Settings')) :
                 ? 'selected="selected"' : '';
             echo sprintf('<option value="%s" %s>%s</option>', esc_attr($value), $selected, $label);
 
-            while ($pages_query->have_posts())
-            {
+            while ($pages_query->have_posts()) {
                 $pages_query->the_post();
                 $value = get_the_ID();
                 $label = get_the_title();
@@ -1116,10 +1137,8 @@ if ( !class_exists('CUAR_Settings')) :
 
             echo '</select>';
 
-            if (isset($this->options[$option_id]) && $this->options[$option_id] > 0)
-            {
-                if ($show_create_button)
-                {
+            if (isset($this->options[$option_id]) && $this->options[$option_id] > 0) {
+                if ($show_create_button) {
                     printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post"/>',
                         esc_attr__('Delete existing &amp; create new &raquo;', 'cuar'),
                         esc_attr($this->get_submit_create_post_button_name($option_id))
@@ -1128,11 +1147,8 @@ if ( !class_exists('CUAR_Settings')) :
 
                 edit_post_link(__('Edit it &raquo;', 'cuar'), '<span class="cuar-edit-page-link">', '</span>',
                     $this->options[$option_id]);
-            }
-            else
-            {
-                if ($show_create_button)
-                {
+            } else {
+                if ($show_create_button) {
                     printf('<input type="submit" value="%1$s" id="%2$s" name="%2$s" class="cuar-submit-create-post"/>',
                         esc_attr__('Create it &raquo;', 'cuar'),
                         esc_attr($this->get_submit_create_post_button_name($option_id))
@@ -1142,8 +1158,7 @@ if ( !class_exists('CUAR_Settings')) :
 
             wp_reset_postdata();
 
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
         }
@@ -1164,8 +1179,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -1175,8 +1189,7 @@ if ( !class_exists('CUAR_Settings')) :
             $am_addon = $this->plugin->get_addon("address-manager");
             $am_addon->print_address_editor($address, $option_id, '', array(), '', 'settings');
 
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
         }
@@ -1192,21 +1205,17 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
             // Handle legacy owner option
-            if ( !empty($this->options[$owner_type_option_id]))
-            {
+            if ( !empty($this->options[$owner_type_option_id])) {
                 $owner_type = $this->options[$owner_type_option_id];
                 $owner_ids = $this->options [$option_id];
 
                 $owners = array($owner_type => $owner_ids);
-            }
-            else
-            {
+            } else {
                 $owners = $this->options [$option_id];
             }
 
@@ -1214,8 +1223,7 @@ if ( !class_exists('CUAR_Settings')) :
             $po_addon = $this->plugin->get_addon("post-owner");
             $po_addon->print_owner_fields($owners, $option_id, self::$OPTIONS_GROUP);
 
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
         }
@@ -1231,8 +1239,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -1242,14 +1249,12 @@ if ( !class_exists('CUAR_Settings')) :
                 esc_attr($option_id));
 
             global $wp_roles;
-            if ( !isset($wp_roles))
-            {
+            if ( !isset($wp_roles)) {
                 $wp_roles = new WP_Roles();
             }
             $all_roles = $wp_roles->role_objects;
 
-            if ($show_any_option)
-            {
+            if ($show_any_option) {
                 $value = 'cuar_any';
                 $label = __('Any Role', 'cuar');
                 $selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
@@ -1257,8 +1262,7 @@ if ( !class_exists('CUAR_Settings')) :
                 echo sprintf('<option value="%s" %s>%s</option>', esc_attr($value), $selected, $label);
             }
 
-            foreach ($all_roles as $role)
-            {
+            foreach ($all_roles as $role) {
                 $value = $role->name;
                 $label = CUAR_WordPressHelper::getRoleDisplayName($role->name);
                 $selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
@@ -1279,8 +1283,7 @@ if ( !class_exists('CUAR_Settings')) :
                 //-->
             </script>';
 
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
         }
@@ -1296,8 +1299,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -1310,8 +1312,7 @@ if ( !class_exists('CUAR_Settings')) :
             $current_option_value = $this->options[$option_id];
 
             $field_name = esc_attr(self::$OPTIONS_GROUP) . '[' . esc_attr($option_id) . ']';
-            if (isset($multiple) && $multiple)
-            {
+            if (isset($multiple) && $multiple) {
                 $field_name .= '[]';
             }
 
@@ -1326,12 +1327,9 @@ if ( !class_exists('CUAR_Settings')) :
                     $value = $term->term_id;
                     $label = $term->name;
 
-                    if (is_array($current_option_value))
-                    {
+                    if (is_array($current_option_value)) {
                         $selected = in_array($value, $current_option_value) ? 'selected="selected"' : '';
-                    }
-                    else
-                    {
+                    } else {
                         $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
                     }
                     ?>
@@ -1352,8 +1350,7 @@ if ( !class_exists('CUAR_Settings')) :
                 //-->
             </script>
             <?php
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
         }
@@ -1369,8 +1366,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -1380,8 +1376,7 @@ if ( !class_exists('CUAR_Settings')) :
             $current_option_value = $this->options[$option_id];
 
             $field_name = esc_attr(self::$OPTIONS_GROUP) . '[' . esc_attr($option_id) . ']';
-            if (isset($multiple) && $multiple)
-            {
+            if (isset($multiple) && $multiple) {
                 $field_name .= '[]';
             }
 
@@ -1398,12 +1393,9 @@ if ( !class_exists('CUAR_Settings')) :
                     $value = $type;
                     $label = isset($obj->labels->singular_name) ? $obj->labels->singular_name : $type;
 
-                    if (is_array($current_option_value))
-                    {
+                    if (is_array($current_option_value)) {
                         $selected = in_array($value, $current_option_value) ? 'selected="selected"' : '';
-                    }
-                    else
-                    {
+                    } else {
                         $selected = ($current_option_value == $value) ? 'selected="selected"' : '';
                     }
                     ?>
@@ -1424,8 +1416,7 @@ if ( !class_exists('CUAR_Settings')) :
                 //-->
             </script>
             <?php
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
         }
@@ -1441,8 +1432,7 @@ if ( !class_exists('CUAR_Settings')) :
         {
             extract($args);
 
-            if (isset($before))
-            {
+            if (isset($before)) {
                 echo $before;
             }
 
@@ -1472,28 +1462,22 @@ if ( !class_exists('CUAR_Settings')) :
                 )
             ));
 
-            foreach ($theme_locations as $theme_location)
-            {
-                if ($theme_location['type']!=$theme_type) continue;
+            foreach ($theme_locations as $theme_location) {
+                if ($theme_location['type'] != $theme_type) continue;
 
                 $dir_content = glob($theme_location['dir'] . '/*');
-                if (false === $dir_content)
-                {
+                if (false === $dir_content) {
                     continue;
                 }
 
                 $subfolders = array_filter($dir_content, 'is_dir');
 
-                foreach ($subfolders as $s)
-                {
+                foreach ($subfolders as $s) {
                     $theme_name = basename($s);
                     $label = $theme_location['label'] . ' - ' . $theme_name;
-                    if ($theme_location['base'] == 'addon')
-                    {
+                    if ($theme_location['base'] == 'addon') {
                         $value = esc_attr($theme_location['base'] . '%%' . $theme_location['addon-name'] . '%%' . $theme_name);
-                    }
-                    else
-                    {
+                    } else {
                         $value = esc_attr($theme_location['base'] . '%%' . $theme_name);
                     }
                     $selected = ($this->options[$option_id] == $value) ? 'selected="selected"' : '';
@@ -1515,8 +1499,7 @@ if ( !class_exists('CUAR_Settings')) :
                 //-->
             </script>';
 
-            if (isset($after))
-            {
+            if (isset($after)) {
                 echo $after;
             }
         }
@@ -1547,8 +1530,7 @@ if ( !class_exists('CUAR_Settings')) :
         public function update_option($option_id, $new_value, $commit = true)
         {
             $this->options [$option_id] = $new_value;
-            if ($commit)
-            {
+            if ($commit) {
                 $this->save_options();
             }
         }
@@ -1605,8 +1587,7 @@ if ( !class_exists('CUAR_Settings')) :
 
             $this->default_options = apply_filters('cuar/core/settings/default-options', array());
 
-            if ( !is_array($current_options))
-            {
+            if ( !is_array($current_options)) {
                 $current_options = array();
             }
             $this->options = array_merge($this->default_options, $current_options);
@@ -1623,6 +1604,8 @@ if ( !class_exists('CUAR_Settings')) :
         public static $OPTION_INCLUDE_CSS = 'cuar_include_css';
         public static $OPTION_ADMIN_SKIN = 'cuar_admin_theme_url';
         public static $OPTION_FRONTEND_SKIN = 'cuar_frontend_theme_url';
+        public static $OPTION_GET_BETA_VERSION_NOTIFICATIONS = 'cuar_license_is_beta_tester';
+        public static $OPTION_BYPASS_SSL = 'cuar_licensing_bypass_ssl';
 
         /**
          * @var CUAR_Plugin The plugin instance
