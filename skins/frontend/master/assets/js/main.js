@@ -80,7 +80,7 @@
 
                     items.not("." + plusClass).each(function (i) {
 
-                        if(i == 0 || !items.eq(i-1).hasClass('just-hide')) {
+                        if(i === 0 || !items.eq(i-1).hasClass('just-hide')) {
                             $('> .dropdown-menu', items.eq(i)).addClass('dropdown-menu-right');
                             if(i > 0) {
                                 $('> .dropdown-menu', items.eq(i - 1)).removeClass('dropdown-menu-right');
@@ -91,14 +91,14 @@
                             items.eq(i).addClass('just-hide');
                             clone.eq(i).removeClass('hidden');
 
-                            if(i == items.length - 1 || !items.eq(i-1).hasClass('just-hide')) {
+                            if(i === items.length - 1 || !items.eq(i-1).hasClass('just-hide')) {
                                 $('> .dropdown-menu', items.eq(i-1)).addClass('dropdown-menu-right');
                             }
                         } else {
                             items.eq(i).removeClass('just-hide');
                             clone.eq(i).addClass('hidden');
                         }
-                        if (i == count - 1 && !$(this).hasClass('just-hide')) {
+                        if (i === count - 1 && !$(this).hasClass('just-hide')) {
                             plus.addClass('just-hide');
                         } else {
                             plus.removeClass('just-hide');
@@ -144,7 +144,7 @@
                     }, 250);
 
                     // If remove icon clicked close search bar
-                    if ($(e.target).attr('class') == 'search-remove') {
+                    if ($(e.target).attr('class') === 'search-remove') {
                         This.removeClass('search-open').find('.search-remove').remove();
                     }
 
@@ -165,7 +165,7 @@
                 };
 
                 // Debounced resize handler
-                var lazyLayout = _.debounce(rescale, 300);
+                var lazyLayout = _.debounce(rescale, 250);
 
                 // Apply needed classes
                 if (!$('body').hasClass('disable-tray-rescale')) {
@@ -201,6 +201,7 @@
                             var trayHeight = null;
                             var trayScroll = This.find('.tray-scroller');
                             var trayScrollContent = trayScroll.find('.scroller-content');
+                            var trayCenterContent = trayCenter.find('#cuar-js-collection-gallery');
 
                             // Define the tray height depending on html data attributes if they exist
                             if (This.attr('data-tray-height-substract') && This.attr('data-tray-height-base')) {
@@ -231,22 +232,68 @@
                             // Define the new Tray height depending on data-attributes or trayCenter height
                             var trayNewHeight = trayHeight - (This.outerHeight(true) - This.innerHeight());
                             This.height(trayNewHeight);
-                            trayCenter.height(trayHeight - 75); // 75 = trayCenter padding-top + padding-bottom
+                            trayCenter.height(trayHeight); // 25 = trayCenter padding-top
 
                             if (trayScroll.length) {
 
-                                if (trayCenter.innerHeight() >= trayScrollContent.height()) {
+                                var buildScroll = function(buildScrollResize) {
+                                    if(buildScrollResize === true ) {
+                                        trayScroll = $('#replacedTrayScroll');
+                                    }
+                                    if ($('#cuar-js-page-content-wrapper').height() <= $('#cuar-js-tray-scroller-wrapper').height()) {
 
-                                    // Content is taller than tray inner content
-                                    trayScroll.height(This.outerHeight());
+                                        console.log('first case: content smaller than sidebar');
+                                        trayScroll.height($('#cuar-js-page-content-wrapper').outerHeight());
 
-                                } else {
+                                   } else {
+                                        console.log('second case: content taller than sidebar');
+                                        setTimeout(function() {
+                                            if ($(window).innerHeight() >= ($('#cuar-js-page-content-wrapper').height() + heightEls )) {
+                                                console.log('- but : ' + $(window).innerHeight() + ' >= ' + $('#cuar-js-page-content-wrapper').height() + ' + ' + heightEls);
+                                                trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+                                            } else {
+                                                console.log('- but');
+                                                trayScroll.height($('#cuar-js-page-content-wrapper').height());
 
-                                    // Content is smaller than tray inner content
-                                    trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
+                                            }
+                                        }, 200);
+                                    }
+                                    setTimeout(function() {
+                                        if(buildScrollResize === true){
+                                            trayScroll.scroller('resize');
+                                        } else {
+                                            trayScroll.scroller();
+                                        }
+                                    }, 400);
+                                };
+                                setTimeout(function() {
+                                    buildScroll(false);
+                                }, 800);
 
-                                }
-                                trayScroll.scroller();
+                                // Hacky function to destroy the scroll and rebuild a new div
+                                var trayDestroy = function() {
+                                    trayScroll.scroller('destroy').removeClass('scroller').closest('.scroller-bar').remove();
+                                    $('#cuar-js-tray-scroller-wrapper').unwrap('.scroller-content').wrap("<div id='replacedTrayScroll' class='tray-scroller'></div>");
+                                };
+
+                                // On collection relayout rebuild sidebar
+                                $collectionToList.on('click', function() {
+                                    setTimeout(function(){
+                                        trayDestroy();
+                                        setTimeout(function() {
+                                            buildScroll(true);
+                                        }, 800);
+                                    }, 600);
+                                });
+
+                                // On screen resize rebuild sidebar
+                                var resizeScroll = _.debounce(function(){
+                                    //trayDestroy();
+                                    setTimeout(function() {
+                                        buildScroll(true);
+                                    }, 800);
+                                }, 600);
+                                $(window).resize(resizeScroll);
 
                                 // Scroll lock all fixed content overflow
                                 // Disabled annoying feature
@@ -255,7 +302,7 @@
                             } else {
                                 // No scroller found, Set the tray and content height
                                 // Set the content height
-                                    trayCenter.height(trayHeight - 75); // 75 = trayCenter padding-top + padding-bottom
+                                    trayCenter.height(trayHeight); // 25 = trayCenter padding-top
 
                             }
                         });
@@ -464,15 +511,15 @@
                     // Initiate cookie session for filters buttons
                     var cookieName = $collectionContainer.data('type') + '-collection-layout';
                     var cookieLayout = ( typeof Cookies !== 'undefined' ) ? Cookies.get(cookieName) : '';
-                    if (cookieLayout != 'list' && cookieLayout != 'grid') {
-                        if ($collectionContainer.data('collection-layout') != null) {
+                    if (cookieLayout !== 'list' && cookieLayout !== 'grid') {
+                        if ($collectionContainer.data('collection-layout') !== null) {
                             cookieLayout = $collectionContainer.data('collection-layout');
                         } else {
                             cookieLayout = cuar.default_collection_view[$collectionContainer.data('type')];
                         }
                     }
 
-                    if (cookieLayout == 'list') {
+                    if (cookieLayout === 'list') {
                         $collectionContainer.addClass(cookieLayout).removeClass('grid');
                         $collectionToList.addClass('btn-primary').removeClass('btn-default');
                         $collectionToGrid.addClass('btn-default').removeClass('btn-primary');

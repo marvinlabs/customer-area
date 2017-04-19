@@ -36,12 +36,18 @@ foreach ($sidebar_attributes as $att => $v) {
 
     <div class="cuar-page-content <?php echo $content_class; ?>">
         <?php if ($this->has_page_sidebar()) { ?>
-            <div class="cuar-page-content-main tray tray-center va-t clearfix"><?php
-                $this->print_page_content($args, $shortcode_content);
-                ?></div>
+            <div class="cuar-page-content-main tray tray-center va-t clearfix">
+                <div id="cuar-js-page-content-wrapper">
+                    <?php
+                    $this->print_page_content($args, $shortcode_content);
+                    ?>
+                </div>
+            </div>
             <aside class="cuar-page-sidebar tray tray-right tray290 va-t clearfix"<?php echo $sidebar_attributes_inline; ?>>
                 <div class="tray-scroller">
-                    <?php $this->print_page_sidebar($args, $shortcode_content); ?>
+                    <div id="cuar-js-tray-scroller-wrapper">
+                        <?php $this->print_page_sidebar($args, $shortcode_content); ?>
+                    </div>
                 </div>
             </aside>
         <?php } else { ?>
