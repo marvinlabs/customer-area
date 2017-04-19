@@ -68,7 +68,7 @@
 }
 
 /* List view */
-@element 'body.customer-area-active #cuar-js-collection-gallery' and (max-width: 1350px){
+@element 'body.customer-area-active #cuar-js-collection-gallery' and (min-width: 1051px){
     body.customer-area-active #cuar-js-content-container .collection .collection-content.list .mix,
     body.customer-area-active #cuar-js-content-container .collection .collection-content.list .gap {
         width: 49%;
