@@ -155,6 +155,9 @@
         // -
             runTrays = function () {
 
+                var traysInitialized = false;
+                var traysWorking = false;
+
                 // Resize handler
                 var rescale = function() {
                     if ($wrapperJS.width() < 1000) {
@@ -187,165 +190,212 @@
                 function traysEngine() {
 
                     // Match height of tray with the height of the tray center
-                    var trayFormat = $('.tray-right, .tray-left', $wrapperJS);
-                    if (trayFormat.length && !$('body').hasClass('disable-tray-rescale')) {
+                    var traySidebar = $('#cuar-js-tray');
+                    if (traySidebar.length && !$('body').hasClass('disable-tray-rescale')) {
 
-                        // Loop each tray and set height to match tray center
-                        // Never tested with 2 side trays on a same page yet
-                        trayFormat.each(function (i, e) {
+                        // Store Elements
+                        var trayCenter = $('#cuar-js-page-content');
+                        var heightEls = null;
+                        var trayHeight = null;
+                        var trayScroll = $('#cuar-js-tray-scroller');
+                        var trayCount = 0;
 
-                            // Store Elements
-                            var This = $(e);
-                            var trayCenter = This.parent().find('.tray-center');
-                            var heightEls = null;
-                            var trayHeight = null;
-                            var trayScroll = This.find('.tray-scroller');
-                            var trayScrollContent = trayScroll.find('.scroller-content');
-                            var trayCenterContent = trayCenter.find('#cuar-js-collection-gallery');
+                        var buildTrayLayout = function () {
+
+                            // Var to avoid using this engine many time at once
+                            traysWorking = true;
+
+                            // Refresh stored elements
+                            var traySidebar = $('#cuar-js-tray');
+                            var trayCenter = $('#cuar-js-page-content');
+
+                            // Reset some global values
+                            heightEls = null;
+                            trayHeight = null;
 
                             // Define the tray height depending on html data attributes if they exist
-                            if (This.attr('data-tray-height-substract') && This.attr('data-tray-height-base')) {
-                                var heightBase = 'window' ? $(window).height() : $(This.data('tray-height-base')).innerHeight();
-                                var heightSubstract = This.data('tray-height-substract').split(',');
-                                for (i = 0; i < heightSubstract.length; i++) {
+                            if (traySidebar.attr('data-tray-height-substract') && traySidebar.attr('data-tray-height-base')) {
+                                var heightBase = 'window' ? $(window).height() : $(traySidebar.data('tray-height-base')).innerHeight();
+                                var heightSubstract = traySidebar.data('tray-height-substract').split(',');
+                                for (var i = 0; i < heightSubstract.length; i++) {
                                     heightEls = heightEls + $(heightSubstract[i]).outerHeight(true);
                                 }
                                 trayHeight = heightBase - heightEls;
 
                             } else {
-
                                 // If html data attributes are missing, tray height should be the same as the content height
                                 trayHeight = trayCenter.height();
 
                                 // But do not let it be too small
                                 trayHeight = (trayHeight < trayMinimumHeight) ? trayMinimumHeight : trayHeight;
-
                             }
 
                             // Helper to not let the tray be too small
-                            if (This.attr('data-tray-height-minimum')) {
-                                trayHeight = (trayHeight < This.attr('data-tray-height-minimum')) ? This.attr('data-tray-height-minimum') : trayHeight;
+                            if (traySidebar.attr('data-tray-height-minimum')) {
+                                trayHeight = (trayHeight < traySidebar.attr('data-tray-height-minimum')) ? traySidebar.attr('data-tray-height-minimum') : trayHeight;
                             } else {
                                 trayHeight = (trayHeight < trayMinimumHeight) ? trayMinimumHeight : trayHeight;
                             }
 
                             // Define the new Tray height depending on data-attributes or trayCenter height
-                            var trayNewHeight = trayHeight - (This.outerHeight(true) - This.innerHeight());
-                            This.height(trayNewHeight);
-                            trayCenter.height(trayHeight); // 25 = trayCenter padding-top
+                            var trayNewHeight = trayHeight - (traySidebar.outerHeight(true) - traySidebar.innerHeight());
+                            traySidebar.height(trayNewHeight);
+                            trayCenter.height(trayHeight - 50); // 25 + 25 = trayCenter padding-top + padding-bottom
 
-                            if (trayScroll.length) {
+                            if(!trayScroll.length) {
+                                traysWorking = false;
+                            }
+                        };
 
-                                var buildScroll = function(buildScrollResize) {
-                                    if(buildScrollResize === true ) {
-                                        trayScroll = $('#replacedTrayScroll');
-                                    }
+                        buildTrayLayout();
+
+                        if (trayScroll.length) {
+
+                            var buildScroll = function (buildScrollResize) {
+
+                                // Var to avoid using this engine many time at once
+                                traysWorking = true;
+
+                                // Refresh stored elements
+                                var traySidebar = $('#cuar-js-tray');
+                                var trayCenter = $('#cuar-js-page-content');
+
+                                if (buildScrollResize === true) {
+                                    //traySidebar.removeAttr('style');
+                                    //trayCenter.removeAttr('style');
+                                    trayScroll = $('#cuar-js-tray-scroller-' + trayCount);
+                                    buildTrayLayout();
+                                }
+
+                                setTimeout(function () {
                                     if ($('#cuar-js-page-content-wrapper').height() <= $('#cuar-js-tray-scroller-wrapper').height()) {
-
                                         console.log('first case: content smaller than sidebar');
-                                        trayScroll.height($('#cuar-js-page-content-wrapper').outerHeight());
+                                        trayScroll.height($('#cuar-js-page-content').outerHeight());
 
-                                   } else {
-                                        console.log('second case: content taller than sidebar');
-                                        setTimeout(function() {
-                                            if ($(window).innerHeight() >= ($('#cuar-js-page-content-wrapper').height() + heightEls )) {
-                                                console.log('- but : ' + $(window).innerHeight() + ' >= ' + $('#cuar-js-page-content-wrapper').height() + ' + ' + heightEls);
-                                                trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
-                                            } else {
-                                                console.log('- but');
-                                                trayScroll.height($('#cuar-js-page-content-wrapper').height());
-
-                                            }
-                                        }, 200);
-                                    }
-                                    setTimeout(function() {
-                                        if(buildScrollResize === true){
-                                            trayScroll.scroller('resize');
+                                    } else {
+                                        if ($(window).innerHeight() >= ($('#cuar-js-page-content-wrapper').height() + heightEls )) {
+                                            console.log('second case: content taller than sidebar AND whole area smaller than the window height');
+                                            trayScroll.height(trayHeight - (trayScroll.outerHeight(true) - trayScroll.innerHeight()));
                                         } else {
-                                            trayScroll.scroller();
+                                            console.log('third case: content taller than sidebar BUT the whole area is taller than the window height');
+                                            trayScroll.height($('#cuar-js-page-content-wrapper').height());
                                         }
-                                    }, 400);
-                                };
-                                setTimeout(function() {
-                                    buildScroll(false);
+                                    }
+                                    trayScroll.scroller();
+                                }, 1000);
+
+                                traysWorking = false;
+                            };
+                            setTimeout(function () {
+                                buildScroll(false);
+                            }, 400);
+
+                            // Hacky function to destroy the scroll and rebuild a new div
+                            var trayDestroy = function () {
+                                trayScroll.scroller('destroy').removeClass('scroller').closest('.scroller-bar').remove();
+                                trayCount = trayCount + 1;
+                                if ($('#cuar-js-tray-scroller-wrapper').parent().hasClass('scroller-content')) {
+                                    $('#cuar-js-tray-scroller-wrapper').unwrap();
+                                }
+                                if ($('#cuar-js-tray-scroller-wrapper').parent().hasClass('tray-scroller')) {
+                                    $('#cuar-js-tray-scroller-wrapper').unwrap();
+                                }
+                                $('#cuar-js-tray-scroller-wrapper').wrap("<div id='cuar-js-tray-scroller-" + trayCount + "' class='tray-scroller'></div>");
+                            };
+
+                            // Helper function to restart the whole engine
+                            var trayRemakeAll = function(){
+                                trayDestroy();
+                                setTimeout(function () {
+                                    buildScroll(true);
                                 }, 800);
+                            };
 
-                                // Hacky function to destroy the scroll and rebuild a new div
-                                var trayDestroy = function() {
-                                    trayScroll.scroller('destroy').removeClass('scroller').closest('.scroller-bar').remove();
-                                    $('#cuar-js-tray-scroller-wrapper').unwrap('.scroller-content').wrap("<div id='replacedTrayScroll' class='tray-scroller'></div>");
-                                };
+                            // On main content wrapper height change, relayout the tray
+                            $('#cuar-js-page-content-wrapper').on("webkitTransitionEnd transitionend oTransitionEnd trayRemakeAll", function (event) {
+                                var cntWidth = $('#cuar-js-content-container').innerWidth();
+                                if (($('body').hasClass('disable-tray-rescale') && cntWidth < 700) || cntWidth < 550) {
+                                    console.log('wont relayout the sidebar, screen too small');
+                                } else {
+                                    if (event.type === 'trayRemakeAll' || ((event.type === 'webkitTransitionEnd' || event.type === 'transitionend' || event.type === 'oTransitionEnd') && (typeof event.target.id !== 'undefined' && event.target.id === 'cuar-js-page-content-wrapper'))) {
+                                        console.log('main content has been resized !');
+                                        if (traysWorking === false) {
+                                            console.log('starting relayout trays after main content resize !');
+                                            trayRemakeAll();
+                                        }
+                                    }
+                                }
+                            });
 
+                            // Initialize scroll relayout binders
+                            if(traysInitialized === false) {
                                 // On collection relayout rebuild sidebar
-                                $collectionToList.on('click', function() {
-                                    setTimeout(function(){
-                                        trayDestroy();
-                                        setTimeout(function() {
-                                            buildScroll(true);
-                                        }, 800);
-                                    }, 600);
+                                $collectionToList.on('click', function () {
+                                    $('#cuar-js-page-content-wrapper').trigger('trayRemakeAll');
+                                });
+                                $collectionToGrid.on('click', function () {
+                                    $('#cuar-js-page-content-wrapper').trigger('trayRemakeAll');
                                 });
 
                                 // On screen resize rebuild sidebar
-                                var resizeScroll = _.debounce(function(){
-                                    //trayDestroy();
-                                    setTimeout(function() {
-                                        buildScroll(true);
-                                    }, 800);
-                                }, 600);
+                                var resizeScroll = _.debounce(function () {
+                                    $('#cuar-js-page-content-wrapper').trigger('trayRemakeAll');
+                                }, 800);
                                 $(window).resize(resizeScroll);
 
-                                // Scroll lock all fixed content overflow
-                                // Disabled annoying feature
-                                // $('.cuar-page-content').scrollLock('on', 'div');
-
-                            } else {
-                                // No scroller found, Set the tray and content height
-                                // Set the content height
-                                    trayCenter.height(trayHeight); // 25 = trayCenter padding-top
-
+                                // End of tray script : define the trays has initialized once
+                                traysInitialized = true;
                             }
-                        });
 
+                            // Scroll lock all fixed content overflow
+                            // Disabled annoying feature
+                            // $('.cuar-page-content').scrollLock('on', 'div');
+
+                        } else {
+                            // No scroller found, Set the tray and content height
+                            // Set the content height
+                            trayCenter.height(trayHeight + 50); // 25 + 25 = trayCenter padding-top + padding-bottom
+                        }
                     }
 
                     // Perform a custom animation if tray-nav has data attribute
                     /*
-                    var navAnimate = $('.tray-nav[data-nav-animate]');
-                    if (navAnimate.length) {
-                        var Animation = navAnimate.data('nav-animate');
+                     var navAnimate = $('.tray-nav[data-nav-animate]');
+                     if (navAnimate.length) {
+                     var Animation = navAnimate.data('nav-animate');
 
-                        // Set default "fadeIn" animation if one has not been previously set
-                        if (Animation == null || Animation == true || Animation == "") {
-                            Animation = "fadeIn";
-                        }
+                     // Set default "fadeIn" animation if one has not been previously set
+                     if (Animation == null || Animation == true || Animation == "") {
+                     Animation = "fadeIn";
+                     }
 
-                        // Loop through each li item and add animation after set timeout
-                        setTimeout(function () {
-                            navAnimate.find('li').each(function (i, e) {
-                                var Timer = setTimeout(function () {
-                                    $(e).addClass('animated animated-short ' + Animation);
-                                }, 50 * i);
-                            });
-                        }, 500);
-                    }*/
+                     // Loop through each li item and add animation after set timeout
+                     setTimeout(function () {
+                     navAnimate.find('li').each(function (i, e) {
+                     var Timer = setTimeout(function () {
+                     $(e).addClass('animated animated-short ' + Animation);
+                     }, 50 * i);
+                     });
+                     }, 500);
+                     }*/
 
                     // Responsive Tray Javascript Data Helper. If browser window
                     // is <575px wide (extreme mobile) we relocate the tray left/right
                     // content into the element appointed by the user/data attr
-                    var dataTray = $('.tray[data-tray-mobile]');
 
-                    // noinspection JSValidateTypes
-                    var dataAppend = dataTray.children();
+
 
                     function fcRefresh() {
+                        var dataTray = $('#cuar-js-tray');
+                        var dataAppend = $('#cuar-js-tray-scroller-wrapper');
                         var cntWidth = $('#cuar-js-content-container').innerWidth();
                         if (($('body').hasClass('disable-tray-rescale') && cntWidth < 700) || cntWidth < 550) {
+                            $(dataTray.data('tray-mobile')).empty();
                             dataAppend.appendTo($(dataTray.data('tray-mobile')));
                             dataTray.hide();
                         }
                         else {
-                            dataTray.show();
+                            dataTray.show().empty();
                             dataAppend.appendTo(dataTray);
                         }
                     }
@@ -356,7 +406,7 @@
                     var fcResize = function () {
                         fcRefresh();
                     };
-                    var fcLayout = _.debounce(fcResize, 300);
+                    var fcLayout = _.debounce(fcResize, 200);
                     $(window).resize(fcLayout);
 
                 }
@@ -557,7 +607,7 @@
                         }
                         $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                         if ($collectionContainer.hasClass('list')) {
-                            return
+                            return;
                         }
                         $collectionContainer.mixItUp('changeLayout', {
                             display: 'block',
@@ -574,7 +624,7 @@
                         }
                         $(this).addClass('btn-primary').siblings('.btn').addClass('btn-default').removeClass('btn-primary');
                         if ($collectionContainer.hasClass('grid')) {
-                            return
+                            return;
                         }
                         $collectionContainer.mixItUp('changeLayout', {
                             display: 'inline-block',

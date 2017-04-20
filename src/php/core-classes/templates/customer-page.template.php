@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.0.0
+/** Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Improve sidebar javascript UI - added some selectors
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
@@ -36,15 +39,15 @@ foreach ($sidebar_attributes as $att => $v) {
 
     <div class="cuar-page-content <?php echo $content_class; ?>">
         <?php if ($this->has_page_sidebar()) { ?>
-            <div class="cuar-page-content-main tray tray-center va-t clearfix">
+            <div id="cuar-js-page-content" class="cuar-page-content-main tray tray-center tray-center-on-left va-t clearfix">
                 <div id="cuar-js-page-content-wrapper">
                     <?php
                     $this->print_page_content($args, $shortcode_content);
                     ?>
                 </div>
             </div>
-            <aside class="cuar-page-sidebar tray tray-right tray290 va-t clearfix"<?php echo $sidebar_attributes_inline; ?>>
-                <div class="tray-scroller">
+            <aside id="cuar-js-tray" class="cuar-page-sidebar tray tray-right va-t clearfix"<?php echo $sidebar_attributes_inline; ?>>
+                <div id="cuar-js-tray-scroller" class="tray-scroller">
                     <div id="cuar-js-tray-scroller-wrapper">
                         <?php $this->print_page_sidebar($args, $shortcode_content); ?>
                     </div>
