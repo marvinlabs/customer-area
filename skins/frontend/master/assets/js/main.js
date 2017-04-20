@@ -281,8 +281,11 @@
                                             trayScroll.height($('#cuar-js-page-content-wrapper').height());
                                         }
                                     }
-                                    trayScroll.scroller();
-                                }, 1000);
+                                    setTimeout(function () {
+                                        console.log('lets rebuild the scroll !');
+                                        trayScroll.scroller();
+                                    }, 200);
+                                }, 800);
 
                                 traysWorking = false;
                             };
@@ -382,21 +385,25 @@
                     // Responsive Tray Javascript Data Helper. If browser window
                     // is <575px wide (extreme mobile) we relocate the tray left/right
                     // content into the element appointed by the user/data attr
-
-
-
+                    var dataTray = $('#cuar-js-tray');
+                    var dataAppend = $('#cuar-js-tray-scroller-wrapper');
+                    var fcRefreshCurrentPos = false;
                     function fcRefresh() {
-                        var dataTray = $('#cuar-js-tray');
-                        var dataAppend = $('#cuar-js-tray-scroller-wrapper');
                         var cntWidth = $('#cuar-js-content-container').innerWidth();
                         if (($('body').hasClass('disable-tray-rescale') && cntWidth < 700) || cntWidth < 550) {
-                            $(dataTray.data('tray-mobile')).empty();
-                            dataAppend.appendTo($(dataTray.data('tray-mobile')));
-                            dataTray.hide();
+                            if(fcRefreshCurrentPos === 'desktop' || fcRefreshCurrentPos === false) {
+                                $(dataTray.data('tray-mobile')).empty();
+                                dataAppend.appendTo($(dataTray.data('tray-mobile')));
+                                dataTray.hide();
+                                fcRefreshCurrentPos = 'mobile';
+                            }
                         }
                         else {
-                            dataTray.show().empty();
-                            dataAppend.appendTo(dataTray);
+                            if(fcRefreshCurrentPos === 'mobile') {
+                                dataTray.empty().show();
+                                dataAppend.appendTo(dataTray);
+                                fcRefreshCurrentPos = 'desktop';
+                            }
                         }
                     }
 
