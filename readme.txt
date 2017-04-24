@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.2
 Tested up to:       4.7.3
-Stable tag:         7.1.8
+Stable tag:         7.1.9
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,10 @@ feel free to fork the project and send us pull requests!
 = 7.2.0 (2017/02/) =
 
 * New: compatibility with the new add-on: Unread documents
+
+= 7.1.9 (2017/04/14) =
+
+* Fix: allow to bypass SSL for license validation (work around some bad cURL configurations/builds)
 
 = 7.1.8 (2017/04/11) =
 

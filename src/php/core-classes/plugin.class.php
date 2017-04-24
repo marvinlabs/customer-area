@@ -38,9 +38,6 @@ if ( !class_exists('CUAR_Plugin')) :
         /** @var CUAR_TemplateEngine */
         private $template_engine;
 
-        /** @var CUAR_Licensing */
-        private $licensing;
-
         /** @var CUAR_Logger */
         private $logger;
 
@@ -55,7 +52,6 @@ if ( !class_exists('CUAR_Plugin')) :
             $this->message_center = new CUAR_MessageCenter(array('wpca-status', 'wpca-setup', 'wpca'));
             $this->activation_manager = new CUAR_PluginActivationManager();
             $this->template_engine = new CUAR_TemplateEngine('customer-area', false);
-            $this->licensing = new CUAR_Licensing(new CUAR_PluginStore());
             $this->logger = new CUAR_Logger();
             $this->addon_manager = new CUAR_AddonManager($this->message_center);
             $this->cron = new CUAR_Cron();
@@ -124,7 +120,11 @@ if ( !class_exists('CUAR_Plugin')) :
          */
         public function get_licensing()
         {
-            return $this->licensing;
+            $bypass_ssl = $this->get_option(CUAR_Settings::$OPTION_BYPASS_SSL);
+
+            return new CUAR_Licensing(
+                new CUAR_PluginStore(
+                    $bypass_ssl));
         }
 
         /**
@@ -268,7 +268,7 @@ if ( !class_exists('CUAR_Plugin')) :
                         'cuar'),
                     'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
                 ));
-	            wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
+                wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
                 wp_localize_script('cuar.frontend', 'cuar', $messages);
             }
         }

@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 
 /**
- * The class that will handle licensing checks with an EDD store
+ * The class that will handle licensing checks with the WPCA store
  */
 class CUAR_Licensing
 {
