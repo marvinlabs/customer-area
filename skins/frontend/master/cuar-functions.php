@@ -386,7 +386,7 @@ if ( ! function_exists( 'cuar_toolbar_profile_button' ) ) {
 		$out .= get_avatar( $current_user->user_email, 17 );
 		//$out .= '<span class="caret ml5"></span>';
 		$out .= '</button>';
-		$out .= '<ul class="dropdown-menu" role="menu" style="margin-top: 1px;">';
+		$out .= '<ul class="dropdown-menu animated animated-shorter fadeIn" role="menu" style="margin-top: 1px;">';
 
 		if ( is_user_logged_in() ) {
 			$addon_account      = cuar_addon( 'customer-account' );
