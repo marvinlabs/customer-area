@@ -108,6 +108,8 @@ feel free to fork the project and send us pull requests!
 = 7.2.0 (2017/02/) =
 
 * New: compatibility with the new add-on: Unread documents
+* New: compatibility with the new add-on: Design extras
+* Tweak: Improve listing of installed addons in status screen
 
 = 7.1.9 (2017/04/14) =
 
