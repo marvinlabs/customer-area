@@ -289,17 +289,19 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /**
          * Get the number of times the file has been downloaded
          *
-         * @param int    $post_id
-         * @param string $file_id
+         * @param int      $post_id
+         * @param string   $file_id
+         * @param int|null $user_id
          *
          * @return int
          */
-        public function get_file_download_count($post_id, $file_id = null)
+        public function get_file_download_count($post_id, $file_id = null, $user_id = null)
         {
+            $user = is_null($user_id) ? get_current_user_id() : $user_id;
             if ($file_id == null) {
-                $count = get_post_meta($post_id, 'cuar/private-content/files/on-download_count', true);
+                $count = get_post_meta($post_id, 'cuar/private-content/files/download_count?user=' . $user, true);
             } else {
-                $count = get_post_meta($post_id, 'cuar/private-content/files/on-download_count?name=' . $file_id, true);
+                $count = get_post_meta($post_id, 'cuar/private-content/files/download_count?user=' . $user . '&file=' . $file_id, true);
             }
 
             if ( !$count || empty($count)) return 0;
@@ -310,21 +312,23 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /**
          * Get the number of times the file has been downloaded
          *
-         * @param int    $post_id
-         * @param string $file_id
+         * @param int      $post_id
+         * @param string   $file_id
+         * @param int|null $user_id
          *
          * @return int
          */
-        public function increment_file_download_count($post_id, $file_id = null)
+        public function increment_file_download_count($post_id, $file_id = null, $user_id = null)
         {
+            $user = is_null($user_id) ? get_current_user_id() : $user_id;
             $current_count = $this->get_file_download_count($post_id, $file_id);
             if ($file_id == null) {
                 update_post_meta($post_id,
-                    'cuar/private-content/files/on-download_count',
+                    'cuar/private-content/files/download_count?user=' . $user,
                     $current_count + 1);
             } else {
                 update_post_meta($post_id,
-                    'cuar/private-content/files/on-download_count?id=' . $file_id,
+                    'cuar/private-content/files/download_count?user=' . $user . '&file=' . $file_id,
                     $current_count + 1);
             }
         }
