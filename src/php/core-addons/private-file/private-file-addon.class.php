@@ -321,7 +321,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         public function increment_file_download_count($post_id, $file_id = null, $user_id = null)
         {
             $user = is_null($user_id) ? get_current_user_id() : $user_id;
-            $current_count = $this->get_file_download_count($post_id, $file_id);
+            $current_count = $this->get_file_download_count($post_id, $file_id, $user_id);
             if ($file_id == null) {
                 update_post_meta($post_id,
                     'cuar/private-content/files/download_count?user=' . $user,
