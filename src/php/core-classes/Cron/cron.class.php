@@ -55,6 +55,7 @@ class CUAR_Cron
     {
         $this->schedule_weekly_events();
         $this->schedule_daily_events();
+        $this->schedule_hourly_events();
     }
 
     /**
@@ -78,6 +79,18 @@ class CUAR_Cron
     {
         if ( !wp_next_scheduled('cuar/cron/events?schedule=daily')) {
             wp_schedule_event(current_time('timestamp', true), 'daily', 'cuar/cron/events?schedule=daily');
+        }
+    }
+
+    /**
+     * Schedule daily events
+     *
+     * @return void
+     */
+    private function schedule_hourly_events()
+    {
+        if ( !wp_next_scheduled('cuar/cron/events?schedule=hourly')) {
+            wp_schedule_event(current_time('timestamp', true), 'hourly', 'cuar/cron/events?schedule=hourly');
         }
     }
 
