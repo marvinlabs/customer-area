@@ -96,7 +96,7 @@ if ( !class_exists('CUAR_ContentAuthorsWidget')) :
                 echo $args['before_title'] . $title . $args['after_title'];
             }
 
-            $this->print_author_list($authors, true);
+            $this->print_author_list($authors);
 
             echo $args['after_widget'];
         }

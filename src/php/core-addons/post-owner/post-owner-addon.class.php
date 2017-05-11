@@ -770,97 +770,9 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
          * @param string $from_version
          * @param string $to_version
          */
-        // TODO PO REFACTORING
-        // CAUTION
-        // CLEANUP OLD CODE, 2.x NOT SUPPORTED ANYMORE ?
-        // OR EXTERNALIZE TO ANOTHER FILE
-        // USE version_compare !
         public function plugin_version_upgrade($from_version, $to_version)
         {
-            // If upgrading from before 2.0.0 we must update the post meta fields
-            if ($from_version < '2.0.0') {
-                global $wpdb;
-
-                // Find all existing owner ids
-                $owner_metas = $wpdb->get_results($wpdb->prepare(
-                    "SELECT meta_id, post_id, meta_key, meta_value "
-                    . "FROM $wpdb->postmeta "
-                    . "WHERE meta_key = %s",
-                    'cuar_owner'));
-
-                foreach ($owner_metas as $m) {
-                    // Before 2.0.0 there was no owner type, so default to 'user'
-                    $owner_type = 'user';
-                    $owner_id = $m->meta_value;
-
-                    // Add post meta (owner type, display names)
-                    $u = new WP_User($owner_id);
-                    $display_name = $u->display_name;
-                    $sortable_display_name = sprintf(__('User - %s', 'cuar'), $u->display_name);
-
-                    update_post_meta($m->post_id, self::$META_OWNER_TYPE, $owner_type);
-                    update_post_meta($m->post_id, self::$META_OWNER_DISPLAYNAME, $display_name);
-                    update_post_meta($m->post_id, self::$META_OWNER_SORTABLE_DISPLAYNAME, $sortable_display_name);
-                    update_post_meta($m->post_id, self::$META_OWNER_QUERYABLE, $owner_type . '_' . $owner_id);
-
-                    // If owner had a directory, rename that directory into the new naming scheme
-                    $base_storage_directory = $this->get_base_private_storage_directory(true);
-                    $new_name = $this->get_owner_storage_directory($owner_id, $owner_type);
-                    $old_name = get_user_meta($owner_id, 'cuar_directory', true);
-
-                    if ( !empty($old_name)) {
-                        if (file_exists($base_storage_directory . "/" . $old_name)) {
-                            rename($base_storage_directory . "/" . $old_name,
-                                $base_storage_directory . "/" . $new_name);
-                        }
-                        delete_user_meta($owner_id, 'cuar_directory');
-                    }
-                }
-            }
-
-            if ($from_version < '2.3.0') {
-                // Migrate all previous owner formats to the new one
-                $posts_with_owner = get_posts(array(
-                    'numberposts' => -1,
-                    'post_status' => array(
-                        'publish', 'auto-draft', 'future', 'draft', 'pending', 'private', 'inherit', 'trash'
-                    ),
-                    'post_type'   => array('cuar_private_page', 'cuar_private_file')
-                ));
-
-                foreach ($posts_with_owner as $p) {
-                    $old_type = get_post_meta($p->ID, 'cuar_owner_type', true);
-                    $old_owner = get_post_meta($p->ID, 'cuar_owner', true);
-                    $old_path = $this->get_owner_storage_directory($old_owner, $old_type, true, false);
-
-                    $new_type = null;
-                    $new_owners = array($old_owner);
-
-                    switch ($old_type) {
-                        case 'user':
-                            $new_type = 'usr';
-                            break;
-                        case 'user_group':
-                            $new_type = 'grp';
-                            break;
-                        case 'role':
-                            $new_type = 'rol';
-                            break;
-                    }
-
-                    if ($new_type != null) {
-                        $this->save_post_owners($p->ID, $new_owners, $new_type, false);
-                        delete_post_meta($p->ID, 'cuar_owner');
-
-                        $new_path = $this->get_owner_storage_directory($new_owners, $new_type, true, false);
-                        if (file_exists($old_path)) {
-                            rename($old_path, $new_path);
-                        }
-                    }
-                }
-            }
         }
-
     }
 
 // Make sure the addon is loaded

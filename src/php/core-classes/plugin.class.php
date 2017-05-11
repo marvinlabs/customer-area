@@ -341,7 +341,7 @@ if ( !class_exists('CUAR_Plugin')) :
 
         public function get_theme($theme_type)
         {
-            return explode('%%', $this->get_option($theme_type == 'admin' ? CUAR_Settings::$OPTION_ADMIN_SKIN : CUAR_Settings::$OPTION_FRONTEND_SKIN, ''));
+            return explode('%%', $this->get_option($theme_type == 'admin' ? CUAR_Settings::$OPTION_ADMIN_SKIN : CUAR_Settings::$OPTION_FRONTEND_SKIN));
         }
 
         public function get_theme_url($theme_type)

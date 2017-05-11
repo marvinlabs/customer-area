@@ -108,7 +108,7 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
 
         public function is_moderation_enabled()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_ENABLE_MODERATION, false);
+            return $this->plugin->get_option($this->get_slug() . self::$OPTION_ENABLE_MODERATION);
         }
 
         /**

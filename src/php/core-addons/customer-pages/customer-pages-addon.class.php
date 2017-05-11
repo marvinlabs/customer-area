@@ -182,7 +182,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             $option_name = $this->get_page_option_name($slug);
 
             if ($settings_array == null) {
-                $page_id = $this->plugin->get_option($option_name, -1);
+                $page_id = $this->plugin->get_option($option_name);
             } else {
                 $page_id = isset($settings_array[$option_name]) ? $settings_array[$option_name] : -1;
             }
@@ -206,7 +206,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 return false;
             }
 
-            $page_id = $this->plugin->get_option($this->get_page_option_name($slug), -1);
+            $page_id = $this->plugin->get_option($this->get_page_option_name($slug));
 
             return $page_id < 0 ? false : get_permalink($page_id);
         }
