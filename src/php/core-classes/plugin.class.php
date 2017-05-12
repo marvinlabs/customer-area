@@ -279,15 +279,19 @@ if ( !class_exists('CUAR_Plugin')) :
         public function load_styles()
         {
             if (is_admin()) {
-                wp_enqueue_style(
-                    'cuar.admin',
-                    $this->get_admin_theme_url() . '/assets/css/styles.min.css',
-                    array(),
-                    $this->get_version());
+                if ($this->is_admin_area_page()) {
+                    wp_enqueue_style(
+                        'cuar.admin',
+                        $this->get_admin_theme_url() . '/assets/css/styles.min.css',
+                        array(),
+                        $this->get_version());
+                } else {
+                    // When not on a page, we still need a little CSS for the menu separators
+                    add_action('admin_head', array($this, 'print_inline_admin_area_styles'));
+                }
             } else if ( !current_theme_supports('customer-area.stylesheet')
                 && $this->get_option(CUAR_Settings::$OPTION_INCLUDE_CSS)
             ) {
-
                 wp_enqueue_style(
                     'cuar.frontend',
                     $this->get_frontend_theme_url() . '/assets/css/styles.min.css',
@@ -303,6 +307,52 @@ if ( !class_exists('CUAR_Plugin')) :
         {
             // Start a session when we save a post in order to store error logs
             if ( !session_id()) session_start();
+        }
+
+        /**
+         * @return bool True if we are on one of the admin area WP Customer Area pages
+         */
+        private function is_admin_area_page()
+        {
+            // About page
+            if (isset($_GET['page']) && $_GET['page'] == 'wpca') return true;
+
+            // Status, logs, settings and content listing pages
+            if (isset($_GET['page']) && false !== strpos($_GET['page'], 'wpca-')) return true;
+
+            // Post edition pages
+            $private_post_types = $this->get_private_post_types();
+            if (isset($_GET['post_type']) && in_array($_GET['post_type'], $private_post_types)) return true;
+            if (isset($_GET['post']) && in_array(get_post_type($_GET['post']), $private_post_types)) return true;
+
+            // User group, Managed group, Smart group pages
+            $group_post_types = array('cuar_user_group', 'cuar_managed_group', 'cuar_smart_group',);
+            if (isset($_GET['post_type']) && in_array($_GET['post_type'], $group_post_types)) return true;
+            if (isset($_GET['post']) && in_array(get_post_type($_GET['post']), $group_post_types)) return true;
+
+            return false;
+        }
+
+        public function print_inline_admin_area_styles()
+        {
+            ?>
+            <style type="text/css" media="screen">
+                #adminmenu #toplevel_page_wpca div.wp-menu-image:before,
+                #wp-admin-bar-wpca > a:before {
+                    content: "\f332";
+                }
+
+                #adminmenu span.cuar-menu-divider {
+                    display: block;
+                    margin: 0px 5px 12px 0px;
+                    padding: 0;
+                    height: 1px;
+                    line-height: 1px;
+                    background: #666;
+                    opacity: 0.5;
+                }
+            </style>
+            <?php
         }
 
         /*------- TEMPLATING & THEMING ----------------------------------------------------------------------------------*/
