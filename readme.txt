@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.2
 Tested up to:       4.7.3
-Stable tag:         7.1.9
+Stable tag:         7.2.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,8 +108,25 @@ feel free to fork the project and send us pull requests!
 = 7.2.0 (2017/02/) =
 
 * New: compatibility with the new add-on: Unread documents
-* New: compatibility with the new add-on: Design extras
 * Tweak: Improve listing of installed addons in status screen
+
+**Add-on changes**
+
+* **Additional Owner Types** - Fix: notifications where not sent when assigning content to "any registered user"
+* **Conversations** - Fix: compatibility with the new unread documents add-on
+* **Invoicing** - Fix: compatibility with the new unread documents add-on
+* **Notifications** - New: Add recipient setting for file downloaded notification
+* **Notifications** - New: Notification when tasks are about to be overdue
+* **Notifications** - New: Notification when tasks are overdue
+* **Notifications** - Fix: Fix bug for file download notification mode (first time only)
+* **Projects** - Fix: compatibility with the new unread documents add-on
+* **Switch Users** - Fix: scripts where sometimes not loaded in the right order
+* **Tasks** - New: notifications get sent automatically when tasks are about to expire (requires the notifications add-on)
+* **Tasks** - Fix: compatibility with the new unread documents add-on
+* **Tasks** - Fix: due date was not being shown properly when changed (JS bug)
+* **Unread documents** - First plugin release
+* **Unread documents** - Let the user know which documents have not been read yet
+* **Unread documents** - Let the user mark documents as unread
 
 = 7.1.9 (2017/04/14) =
 
