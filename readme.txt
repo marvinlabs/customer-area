@@ -105,9 +105,17 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.2.0 (2017/02/) =
+= 7.2.0 (2017/05/15) =
 
 * New: compatibility with the new add-on: Unread documents
+* Fix: extend neutral color palette
+* Fix: dark skin should have a really dark panel heading
+* Fix: smooth dropdown animations
+* Fix: sidebar mobile and desktop transition
+* Fix: sidebar scroll fixes
+* Fix: wrong collection list layout on large screens
+* Fix: Improve collection thumbnails ratios
+* Fix: bug for file download notification mode (first time only)
 * Tweak: Improve listing of installed addons in status screen
 
 **Add-on changes**
