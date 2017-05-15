@@ -532,7 +532,6 @@ if ( !class_exists('CUAR_PostOwnerAddOn')) :
                 $tmp = apply_filters('cuar/core/ownership/real-user-ids?owner-type=' . $type, array(), $ids);
                 $user_ids = array_merge($user_ids, $tmp);
             }
-
             $user_ids = array_unique($user_ids);
 
             // Let other add-ons return what they want

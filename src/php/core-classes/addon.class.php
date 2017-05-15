@@ -63,6 +63,7 @@ if ( !class_exists('CUAR_AddOn')) :
             $this->addon_id = $addon_id;
 
             add_action('cuar/core/settings/default-options', array(&$this, 'set_default_options'));
+            add_action('cuar/core/addons/before-init', array(&$this, 'before_run'), 10);
             add_action('cuar/core/addons/init', array(&$this, 'run'), 10);
 
             if (is_admin()) {
@@ -83,10 +84,19 @@ if ( !class_exists('CUAR_AddOn')) :
          *
          * @param CUAR_Plugin $cuar_plugin
          */
-        public function run($cuar_plugin)
+        public function before_run($cuar_plugin)
         {
             $this->plugin = $cuar_plugin;
             $cuar_plugin->register_addon($this);
+        }
+
+        /**
+         * Function that starts the add-on
+         *
+         * @param CUAR_Plugin $cuar_plugin
+         */
+        public function run($cuar_plugin)
+        {
             $this->run_addon($cuar_plugin);
         }
 
