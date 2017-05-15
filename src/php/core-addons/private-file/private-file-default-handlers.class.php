@@ -326,7 +326,7 @@ class CUAR_PrivateFilesDefaultHandlers
      * @param int                   $post_id          The post ID owning the files
      * @param string                $filename         The file name
      * @param string                $caption          The caption
-     * @param string                $extra            Contains the method (move|copy|noop) and the file path
+     * @param array                 $extra            Contains the method (move|copy|noop) and the file path
      *
      * @return array Errors if any
      */

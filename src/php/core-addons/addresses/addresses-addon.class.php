@@ -290,7 +290,7 @@ if ( !class_exists('CUAR_AddressesAddOn')) :
          * @param string $owner_type
          * @param array  $owner_ids
          *
-         * @return string
+         * @return array
          */
         private function get_owner_addresses($owner_type, $owner_ids)
         {

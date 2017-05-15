@@ -19,19 +19,19 @@ function bootstrapSummernote($, editorSelector) {
         }
     };
 
-    if (typeof cuar != 'undefined') {
+    if (typeof cuar !== 'undefined') {
         snOptions['lang'] = cuar.locale;
     }
 
     $(editorSelector).summernote(snOptions);
 }
 
-if (jQuery('.cuar-wizard').length>0) {
-    jQuery('#cuar-js-content-container').on('cuar:wizard:initialized', function () {
-        bootstrapSummernote(jQuery, ".cuar-wizard .cuar-js-richeditor");
-    });
-} else {
-    jQuery(document).ready(function ($) {
+jQuery(document).ready(function ($) {
+    if ($('.cuar-form .cuar-js-wizard-section').length > 0) {
+        $('#cuar-js-content-container').on('cuar:wizard:initialized', function () {
+            bootstrapSummernote($, ".cuar-wizard .cuar-js-richeditor");
+        });
+    } else {
         bootstrapSummernote($, ".cuar-js-richeditor");
-    });
-}
+    }
+});

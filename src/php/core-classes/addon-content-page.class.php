@@ -676,6 +676,19 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             do_action('cuar/private-content/view/after_header?post-type=' . $this->get_friendly_post_type(), $this);
         }
 
+	    public function print_single_private_content_header_filter($content)
+	    {
+		    ob_start();
+
+		    $this->print_single_private_content_header();
+
+		    $out = ob_get_contents();
+
+		    ob_end_clean();
+
+		    return $out . $content;
+	    }
+
         public function print_single_private_content_footer()
         {
             do_action('cuar/private-content/view/before_footer', $this);
@@ -698,6 +711,19 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             do_action('cuar/private-content/view/after_footer', $this);
             do_action('cuar/private-content/view/after_footer?post-type=' . $this->get_friendly_post_type(), $this);
         }
+
+	    public function print_single_private_content_footer_filter($content)
+	    {
+		    ob_start();
+
+		    $this->print_single_private_content_footer();
+
+		    $out = ob_get_contents();
+
+		    ob_end_clean();
+
+		    return $content . $out;
+	    }
 
         public function print_single_private_content_meta_filter($content)
         {
@@ -852,7 +878,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                             'type'          => 'checkbox',
                             'default_value' => 1,
                             'after'         =>
-                                __('Show additional information after the post in the single post view.', 'cuar')
+                                __('Show additional information before and after the post in the single post view.', 'cuar')
                                 . '<p class="description">'
                                 . sprintf(__('You can disable this if you have your own theme template file for single posts. The theme file to look for or create should be called: %s.',
                                     'cuar'),

@@ -466,7 +466,7 @@ abstract class CUAR_ListTable extends WP_List_Table
                 {
                     wp_die(__('You are not allowed to move this item to trash.', 'cuar'));
                 }
-                wp_trash_post($post_id, false);
+                wp_trash_post($post_id);
                 break;
 
             case 'cuar-delete':

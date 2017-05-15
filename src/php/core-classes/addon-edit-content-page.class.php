@@ -733,7 +733,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         public function is_rich_editor_enabled()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_ENABLE_RICH_EDITOR, true);
+            return $this->plugin->get_option($this->get_slug() . self::$OPTION_ENABLE_RICH_EDITOR);
         }
 
         /**

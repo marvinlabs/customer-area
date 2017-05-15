@@ -127,7 +127,7 @@ if ( !class_exists('CUAR_CustomerPrivatePagesAddOn')) :
 
         protected function get_default_page_subtitle()
         {
-            return __('Recent Pages', 'cuar');
+            return __('Pages', 'cuar');
         }
 
         protected function get_default_dashboard_block_title()

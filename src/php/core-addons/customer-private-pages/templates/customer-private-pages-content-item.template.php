@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.0.0
+/** Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Improve thumbnails ratios
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
@@ -38,15 +41,17 @@ $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $c
                     <div class="collection-thumbnail-padder">
                         <div class="collection-thumbnail-overlay">
                             <div class="collection-thumbnail-valign">
-                                <?php if ($thumb_icon !== '') : ?>
-                                    <i class="collection-thumbnail-icon <?php echo esc_attr($thumb_icon); ?>"></i>
-                                <?php endif; ?>
-                                <?php if ($thumb_header !== '') : ?>
-                                    <span class="collection-thumbnail-header h4 mbn"><?php echo $thumb_header; ?></span>
-                                <?php endif; ?>
-                                <?php if ( !$thumb_sub_header !== '') : ?>
-                                    <span class="collection-thumbnail-subheader h5"><?php echo $thumb_sub_header; ?></span>
-                                <?php endif; ?>
+                                <div class="collection-thumbnail-overlay-content">
+                                    <?php if ($thumb_icon !== '') : ?>
+                                        <i class="collection-thumbnail-icon <?php echo esc_attr($thumb_icon); ?>"></i>
+                                    <?php endif; ?>
+                                    <?php if ($thumb_header !== '') : ?>
+                                        <span class="collection-thumbnail-header h4 mbn"><?php echo $thumb_header; ?></span>
+                                    <?php endif; ?>
+                                    <?php if ( !$thumb_sub_header !== '') : ?>
+                                        <span class="collection-thumbnail-subheader h5"><?php echo $thumb_sub_header; ?></span>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -58,6 +63,10 @@ $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $c
                         <td><?php echo get_the_date(); ?></td>
                     </tr>
                 </table>
+
+                <div class="collection-badges">
+                    <?php do_action('cuar/templates/collection/item/badges'); ?>
+                </div>
             </div>
 
             <div class="collection-description collection-list-right panel-footer">

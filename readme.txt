@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.2
 Tested up to:       4.7.3
-Stable tag:         7.1.7
+Stable tag:         7.2.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,45 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.2.0 (2017/05/15) =
+
+* New: compatibility with the new add-on: Unread documents
+* Fix: extend neutral color palette
+* Fix: dark skin should have a really dark panel heading
+* Fix: smooth dropdown animations
+* Fix: sidebar mobile and desktop transition
+* Fix: sidebar scroll fixes
+* Fix: wrong collection list layout on large screens
+* Fix: Improve collection thumbnails ratios
+* Fix: bug for file download notification mode (first time only)
+* Tweak: Improve listing of installed addons in status screen
+
+**Add-on changes**
+
+* **Additional Owner Types** - Fix: notifications where not sent when assigning content to "any registered user"
+* **Conversations** - Fix: compatibility with the new unread documents add-on
+* **Invoicing** - Fix: compatibility with the new unread documents add-on
+* **Notifications** - New: Add recipient setting for file downloaded notification
+* **Notifications** - New: Notification when tasks are about to be overdue
+* **Notifications** - New: Notification when tasks are overdue
+* **Notifications** - Fix: Fix bug for file download notification mode (first time only)
+* **Projects** - Fix: compatibility with the new unread documents add-on
+* **Switch Users** - Fix: scripts where sometimes not loaded in the right order
+* **Tasks** - New: notifications get sent automatically when tasks are about to expire (requires the notifications add-on)
+* **Tasks** - Fix: compatibility with the new unread documents add-on
+* **Tasks** - Fix: due date was not being shown properly when changed (JS bug)
+* **Unread documents** - First plugin release
+* **Unread documents** - Let the user know which documents have not been read yet
+* **Unread documents** - Let the user mark documents as unread
+
+= 7.1.9 (2017/04/14) =
+
+* Fix: allow to bypass SSL for license validation (work around some bad cURL configurations/builds)
+
+= 7.1.8 (2017/04/11) =
+
+* Fix: rich editor on frontend given by the collaboration add-on was not properly initialized
 
 = 7.1.7 (2017/04/07) =
 

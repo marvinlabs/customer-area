@@ -73,7 +73,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 add_action('cuar/core/settings/print-settings?tab=cuar_customer_pages', array(&$this, 'print_pages_settings'), 50, 2);
                 add_filter('cuar/core/settings/validate-settings?tab=cuar_customer_pages', array(&$this, 'validate_pages_settings'), 50, 3);
             } else {
-                add_filter('body_class', array(&$this, 'add_body_class'));
+                add_filter('body_class', array(&$this, 'add_body_class'), 100);
                 add_filter('cuar/core/page/toolbar', array(&$this, 'add_subpages_contextual_toolbar_group'), 100);
 
                 add_filter('the_content', array(&$this, 'define_main_content_filter'), 9998);
@@ -182,7 +182,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             $option_name = $this->get_page_option_name($slug);
 
             if ($settings_array == null) {
-                $page_id = $this->plugin->get_option($option_name, -1);
+                $page_id = $this->plugin->get_option($option_name);
             } else {
                 $page_id = isset($settings_array[$option_name]) ? $settings_array[$option_name] : -1;
             }
@@ -206,7 +206,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
                 return false;
             }
 
-            $page_id = $this->plugin->get_option($this->get_page_option_name($slug), -1);
+            $page_id = $this->plugin->get_option($this->get_page_option_name($slug));
 
             return $page_id < 0 ? false : get_permalink($page_id);
         }
