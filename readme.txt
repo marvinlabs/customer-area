@@ -4,8 +4,8 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.2
-Tested up to:       4.7.3
-Stable tag:         7.2.1
+Tested up to:       4.7.5
+Stable tag:         7.3.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,10 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.3.0 (2017/) =
+
+* Tweak: some internal improvements to settings (color setting, etc.)
 
 = 7.2.0 (2017/05/15) =
 
