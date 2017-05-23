@@ -25,14 +25,16 @@
          * Initialisation
          */
         base.init = function () {
+            // Dynamic dropdown parent for select2
+            if ($.cuar.bindCountryStateInputs.defaultOptions.select2.dropdownParent===null) {
+                var $body = $('body');
+                $.cuar.bindCountryStateInputs.defaultOptions.select2.dropdownParent = $body.hasClass('wp-admin')
+                    ? $body
+                    : $('#cuar-js-content-container');
+            }
+
             // Merge default options
             base.options = $.extend({}, $.cuar.bindCountryStateInputs.defaultOptions, options);
-
-            // Dynamic dropdown parent for select2
-            var $body = $('body');
-            base.options.select2.dropdownParent = $body.hasClass('wp-admin')
-                ? $body
-                : $('#cuar-js-content-container');
 
             // Select2 should be enabled
             base._getCountryField().select2(base.options.select2);
