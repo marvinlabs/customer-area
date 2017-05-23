@@ -109,6 +109,7 @@ feel free to fork the project and send us pull requests!
 
 * Fix: wrong hook for the owner type hooks
 * Tweak: some internal improvements to settings (color setting, etc.)
+* Tweak: improve longs owner names rendering
 
 **Add-on changes**
 
