@@ -4,26 +4,30 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h3><?php _e('Payment history', 'cuar'); ?></h3>
+        <h2><?php _e('Payment history', 'cuar'); ?></h2>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <table class="table">
+        <table class="table table-striped table-hover table-responsive panel panel-default">
+            <thead class="panel-heading">
             <tr>
                 <th><?php _e('Date', 'cuar'); ?></th>
                 <th><?php _e('Gateway', 'cuar'); ?></th>
-                <th><?php _e('Amount', 'cuar'); ?></th>
                 <th><?php _e('Status', 'cuar'); ?></th>
+                <th class="text-right"><?php _e('Amount', 'cuar'); ?></th>
             </tr>
+            </thead>
+            <tbody class="panel-body">
             <?php foreach ($payments as $payment) : ?>
                 <tr>
                     <td><?php cuar_the_payment_date($payment); ?></td>
                     <td><?php cuar_the_payment_gateway($payment); ?></td>
-                    <td><?php cuar_the_payment_amount($payment); ?></td>
                     <td><?php cuar_the_payment_status($payment); ?></td>
+                    <td class="text-nowrap text-right"><?php cuar_the_payment_amount($payment); ?></td>
                 </tr>
             <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </div>
