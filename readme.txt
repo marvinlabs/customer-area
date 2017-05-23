@@ -107,7 +107,12 @@ feel free to fork the project and send us pull requests!
 
 = 7.3.0 (2017/) =
 
+* Fix: wrong hook for the owner type hooks
 * Tweak: some internal improvements to settings (color setting, etc.)
+
+**Add-on changes**
+
+
 
 = 7.2.0 (2017/05/15) =
 
