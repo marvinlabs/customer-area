@@ -374,19 +374,27 @@
             if (progress <= 0) {
                 // Show indeterminate progress
                 progressBar
+                    .addClass('cuar-js-indeterminate')
+                    // TODO CSS REFACTORING NEEDED -> this should be removed and styled using the cuar-js-indeterminate class instead
                     .addClass('progress-bar-striped')
                     .addClass('active')
+                    // END CSS REFACTORING NEEDED
                     .css({
                         'width': '100%'
                     })
                     .attr('aria-valuenow', '100');
 
-                progressBarLabel.hide().html("");
+                progressBarLabel
+                    .hide()
+                    .html("");
             } else {
                 // Show determinate progress
                 progressBar
+                    .removeClass('cuar-js-indeterminate')
+                    // TODO CSS REFACTORING NEEDED -> this should be removed and styled using the cuar-js-indeterminate class instead
                     .removeClass('progress-bar-striped')
                     .removeClass('active')
+                    // END CSS REFACTORING NEEDED
                     .css({
                         'width': progress + '%'
                     })
