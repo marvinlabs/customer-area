@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.1.0
+/** Template version: 3.2.0
+ *
+ * -= 3.2.0 =-
+ * - Improve longs owner names rendering
  *
  * -= 3.1.0 =-
  * - Improve thumbnails ratios
@@ -82,9 +85,9 @@ $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $c
             </div>
         </div>
 
-        <div class="collection-footer-metas collection-list-blocks">
+        <div class="collection-footer-metas collection-list-blocks br-t">
             <div class="collection-footer-meta-author collection-list-left" data-toggle="tooltip" data-placement="top" data-original-title="<?php esc_attr_e('Created by', 'cuar') ?>">
-                <div class="p5 va-m"><i class="fa fa-user"></i> <?php echo get_the_author_meta('display_name'); ?></div>
+                <div class="p5 table-layout"><i class="fa fa-user"></i><div><?php echo get_the_author_meta('display_name'); ?></div></div>
             </div>
             <div class="collection-footer-meta-owner collection-list-right" data-toggle="tooltip" data-placement="top" data-original-title="<?php esc_attr_e('Assigned to', 'cuar') ?>">
                 <div class="p5 pln va-m"><i class="fa fa-group"></i> <?php echo cuar_get_the_owner(); ?></div>
