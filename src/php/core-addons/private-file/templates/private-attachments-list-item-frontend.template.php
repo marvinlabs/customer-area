@@ -26,10 +26,9 @@
         <a href="#" class="btn btn-default btn-xs cuar-js-remove-action" title="<?php esc_attr_e('Remove', 'cuar'); ?>">
             <span class="fa fa-trash"></span> <?php esc_attr_e('Remove', 'cuar'); ?></a>
     </td>
-    <td class="cuar-progress cuar-js-progress progress" style="display: none;">
-        <div class="progress-bar progress-bar-danger progress-bar-striped text-center active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-            <span class="cuar-js-progress-percent">0%</span>
-            <span class="cuar-js-progress-remove hidden"><?php _e('Deleting...', 'cuar'); ?></span>
+    <td class="progress cuar-js-progress" style="display: none;">
+        <div class="progress-bar progress-bar-primary text-center active cuar-js-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <span class="cuar-js-progress-label">0%</span>
         </div>
     </td>
 </tr>

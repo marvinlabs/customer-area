@@ -292,7 +292,7 @@
             return item;
         };
 
-        base._removeItem = function(item) {
+        base._removeItem = function (item) {
             item.fadeOut(400, function () {
                 if (base._getAttachmentItems().length <= 1) {
                     base._getAttachmentListEmptyMessage().show();
@@ -310,7 +310,7 @@
          * @private
          */
         base._updateAttachmentItem = function (item, postId, filename, caption) {
-            if (caption === undefined || caption.trim().length == 0) {
+            if (caption === undefined || caption.trim().length === 0) {
                 caption = filename;
             }
 
@@ -327,8 +327,9 @@
          */
         base._updateAttachmentItemState = function (item, state) {
             item.removeClass(function (index, css) {
-                return (css.match(/(^|\s)bg-\S+/g) || []).join(' ');
+                return (css.match(/(^|\s)cuar-js-state-\S+/g) || []).join(' ');
             });
+            item.addClass('cuar-js-state-' + state);
 
             var actions = item.children('.cuar-js-actions');
             var progress = item.children('.cuar-js-progress');
@@ -338,19 +339,16 @@
                     actions.hide();
                     progress.show();
                     base._updateAttachmentItemProgress(item, 0);
-                    item.addClass('bg-info');
                     break;
 
                 case 'error':
                     actions.show();
                     progress.hide();
-                    item.addClass('bg-danger');
                     break;
 
                 case 'success':
                     actions.show();
                     progress.hide();
-                    item.addClass('bg-success');
                     break;
             }
 
@@ -367,35 +365,42 @@
          * @private
          */
         base._updateAttachmentItemProgress = function (item, progress) {
-            var progressElt = item.children('.cuar-js-progress');
-            var progressBar = progressElt.find('.progress-bar');
-            var progressMsgPercent = progressBar.find('.cuar-js-progress-percent');
-            var progressMsgRemove = progressBar.find('.cuar-js-progress-remove');
+            var progressContainer = item.children('.cuar-js-progress');
+            var progressBar = progressContainer.find('.cuar-js-progress-bar');
+            var progressBarLabel = progressContainer.find('.cuar-js-progress-label');
+
+            progressContainer.show();
 
             if (progress <= 0) {
-                progressBar.removeClass('progress-bar-success').addClass('progress-bar-danger');
-                progressBar.css({
-                    'width': '100%'
-                });
-                progressBar.attr('aria-valuenow', '100');
+                // Show indeterminate progress
+                progressBar
+                    .addClass('progress-bar-striped')
+                    .addClass('active')
+                    .css({
+                        'width': '100%'
+                    })
+                    .attr('aria-valuenow', '100');
+
+                progressBarLabel.hide().html("");
             } else {
-                progressElt.css({
-                    'display': 'table-cell'
-                });
-                progressBar.css({
-                    'width': progress + '%'
-                });
-                progressBar.attr('aria-valuenow', progress);
-                progressBar.html(progress + '%');
-                progressBar.removeClass('progress-bar-danger').addClass('progress-bar-success');
-                progressMsgRemove.addClass('hidden');
-                progressMsgPercent.removeClass('hidden');
+                // Show determinate progress
+                progressBar
+                    .removeClass('progress-bar-striped')
+                    .removeClass('active')
+                    .css({
+                        'width': progress + '%'
+                    })
+                    .attr('aria-valuenow', progress);
+
+                progressBarLabel
+                    .show()
+                    .html(progress + '%');
             }
         };
 
         /** Getter */
         base._showError = function (item, filename, errorMessage, isRemoveItemRequired) {
-            if (item != null) {
+            if (item !== null) {
                 console.log(item);
                 console.log(isRemoveItemRequired);
                 if (isRemoveItemRequired) {
@@ -457,7 +462,7 @@
         base._getErrorTemplate = function () {
             return $(base.options.errorTemplate, base.el)
                 .children('.cuar-js-error')
-                .first();                
+                .first();
         };
 
         /** Getter */
