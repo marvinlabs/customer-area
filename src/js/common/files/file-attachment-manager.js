@@ -327,9 +327,8 @@
          */
         base._updateAttachmentItemState = function (item, state) {
             item.removeClass(function (index, css) {
-                return (css.match(/(^|\s)cuar-js-state-\S+/g) || []).join(' ');
+                return (css.match(/(^|\s)bg-\S+/g) || []).join(' ');
             });
-            item.addClass('cuar-js-state-' + state);
 
             var actions = item.children('.cuar-js-actions');
             var progress = item.children('.cuar-js-progress');
@@ -339,16 +338,19 @@
                     actions.hide();
                     progress.show();
                     base._updateAttachmentItemProgress(item, 0);
+                    item.addClass('bg-info');
                     break;
 
                 case 'error':
                     actions.show();
                     progress.hide();
+                    item.addClass('bg-danger');
                     break;
 
                 case 'success':
                     actions.show();
                     progress.hide();
+                    item.addClass('bg-success');
                     break;
             }
 
@@ -366,16 +368,28 @@
          */
         base._updateAttachmentItemProgress = function (item, progress) {
             var progressElt = item.children('.cuar-js-progress');
-            var indeterminateElt = progressElt.children('.indeterminate');
-            var determinateElt = progressElt.children('.determinate');
+            var progressBar = progressElt.find('.progress-bar');
+            var progressMsgPercent = progressBar.find('.cuar-js-progress-percent');
+            var progressMsgRemove = progressBar.find('.cuar-js-progress-remove');
 
             if (progress <= 0) {
-                indeterminateElt.show();
-                determinateElt.hide();
+                progressBar.removeClass('progress-bar-success').addClass('progress-bar-danger');
+                progressBar.css({
+                    'width': '100%'
+                });
+                progressBar.attr('aria-valuenow', '100');
             } else {
-                indeterminateElt.hide();
-                determinateElt.show();
-                determinateElt.css({'width': progress + '%'});
+                progressElt.css({
+                    'display': 'table-cell'
+                });
+                progressBar.css({
+                    'width': progress + '%'
+                });
+                progressBar.attr('aria-valuenow', progress);
+                progressBar.html(progress + '%');
+                progressBar.removeClass('progress-bar-danger').addClass('progress-bar-success');
+                progressMsgRemove.addClass('hidden');
+                progressMsgPercent.removeClass('hidden');
             }
         };
 
