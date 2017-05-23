@@ -2,12 +2,12 @@
 
 <?php /** @var array $payments */ ?>
 
-<div class="row">
+<div class="row mb-md">
     <div class="col-xs-12">
         <h2><?php _e('Payment history', 'cuar'); ?></h2>
     </div>
 </div>
-<div class="row">
+<div class="row mb-md">
     <div class="col-xs-12">
         <table class="table table-striped table-hover table-responsive panel panel-default">
             <thead class="panel-heading">
