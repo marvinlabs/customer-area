@@ -3,9 +3,9 @@
 Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
-Requires at least:  3.8
-Tested up to:       4.5.3
-Stable tag:         7.0.8
+Requires at least:  4.2
+Tested up to:       4.7.5
+Stable tag:         7.3.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,11 +30,11 @@ one or multiple users is one of the main feature provided by our easy-to-use plu
 * Secure customer area, accessible to logged-in users
 * Private pages, that can be assigned to a particular user and will get listed in its customer area
 * Private files, that can be assigned to a particular user and will get listed in its customer area
-* Show private files grouped by category / by year / ungrouped in the customer area
-* Comments on private files and pages: the customer/user can send some feedback/observations about it
 * Customize the plugin appearance using your own themes and templates 
  
 **Extensions and themes are now available!**
+
+Invoicing, Conversations, Advanced ownership, Projects, and much more!
 
 WP Customer Area is available for free and should cover the needs of most users. If you want to encourage us to actively 
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
@@ -48,8 +48,8 @@ To the translators who send us [their translations](http://wp-customerarea.com/d
 
 * Catalan by Amanda Fontana
 * Dutch by [Paul Willems](http://wi4.nl) and [Peter Massar](http://profiles.wordpress.org/yourdigihands/)
-* English by [MarvinLabs](http://www.marvinlabs.com)
-* French by [MarvinLabs](http://www.marvinlabs.com)
+* English by [MarvinLabs](http://marvinlabs.com)
+* French by [MarvinLabs](http://marvinlabs.com)
 * German by [Benjamin Oechsler](http://benlocal.de)
 * Hungarian by [Jagri István](http://www.itcs.hu)
 * Spanish by Ulises and [e-rgonomy](http://e-rgonomy.com)
@@ -66,22 +66,9 @@ you the credit for it on this page.
 We have a safe upgrade procedure that needs to be followed, specially if you have installed any add-ons to the main
 plugin: [Important upgrade procedure for WP Customer Area](http://wp-customerarea.com/documentation/update-procedure/)
 
-= Upgrading from 3.x to 4.x =
-
-Version 4 introduces a brand new menu system and breaks many templates that have been there in version 3.x. Coming 
-from that version, you will need to create the pages that are necessary to display the private content types. Before
-upgrading the plugin, backup your files and database. It is advised that you attempt the upgrade on a development 
-site first.
-
 == Installation ==
 
-1. Nothing special, just upload the files, activate and you can then visit the settings page if you want. Like any 
-other plugin
-1. You need then to create a page and insert the [customer-area] shortcode. Your customers will be able to access their
-private content on that page.
-1. Finally, you will need to create content for the users (!): you can start with a private file for instance. Just 
-check out the WordPress menu in your administration panel, you can add new customer files just like any post. Simply 
-upload a file (below the content box), set the owner of that file, publish, and your customer should be able to see it.  
+See our [Getting started documentation](http://wp-customerarea.com/documentation/getting-started/).
 
 == Screenshots ==
 
@@ -105,12 +92,7 @@ upload a file (below the content box), set the owner of that file, publish, and 
 
 = Getting help / documentation / support / demo / ... =
 
-You have all the information on the [plugin website](http://customer-area.marvinlabs.com):
-
-* [Documentation](http://customer-area.marvinlabs.com/documentation)
-* [FAQ](http://customer-area.marvinlabs.com/category/faq/)
-* [Support](http://customer-area.marvinlabs.com/support)
-* [Demo](http://customer-area.marvinlabs.com/demo)
+You have all the information on the [plugin website](http://wp-customerarea.com)
 
 = That feature is missing, will you implement it? =
 
@@ -123,9 +105,107 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.1.0 (2016/07/) =
+= 7.3.0 (2017/) =
 
-* New: the plugin now checks if your add-ons are compatible with the installed version. You need to activate/deactivate for that.
+* Fix: wrong hook for the owner type hooks
+* Fix: show determinate [progress on file uploads](https://github.com/marvinlabs/customer-area/issues/116)
+* Tweak: some internal improvements to settings (color setting, etc.)
+* Tweak: improve longs owner names rendering
+
+**Add-on changes**
+
+
+
+= 7.2.0 (2017/05/15) =
+
+* New: compatibility with the new add-on: Unread documents
+* Fix: extend neutral color palette
+* Fix: dark skin should have a really dark panel heading
+* Fix: smooth dropdown animations
+* Fix: sidebar mobile and desktop transition
+* Fix: sidebar scroll fixes
+* Fix: wrong collection list layout on large screens
+* Fix: Improve collection thumbnails ratios
+* Fix: bug for file download notification mode (first time only)
+* Tweak: Improve listing of installed addons in status screen
+
+**Add-on changes**
+
+* **Additional Owner Types** - Fix: notifications where not sent when assigning content to "any registered user"
+* **Conversations** - Fix: compatibility with the new unread documents add-on
+* **Invoicing** - Fix: compatibility with the new unread documents add-on
+* **Notifications** - New: Add recipient setting for file downloaded notification
+* **Notifications** - New: Notification when tasks are about to be overdue
+* **Notifications** - New: Notification when tasks are overdue
+* **Notifications** - Fix: Fix bug for file download notification mode (first time only)
+* **Projects** - Fix: compatibility with the new unread documents add-on
+* **Switch Users** - Fix: scripts where sometimes not loaded in the right order
+* **Tasks** - New: notifications get sent automatically when tasks are about to expire (requires the notifications add-on)
+* **Tasks** - Fix: compatibility with the new unread documents add-on
+* **Tasks** - Fix: due date was not being shown properly when changed (JS bug)
+* **Unread documents** - First plugin release
+* **Unread documents** - Let the user know which documents have not been read yet
+* **Unread documents** - Let the user mark documents as unread
+
+= 7.1.9 (2017/04/14) =
+
+* Fix: allow to bypass SSL for license validation (work around some bad cURL configurations/builds)
+
+= 7.1.8 (2017/04/11) =
+
+* Fix: rich editor on frontend given by the collaboration add-on was not properly initialized
+
+= 7.1.7 (2017/04/07) =
+
+* Fix: missing padding on the right of the sidebar
+* Fix: main.js master-skin script could crash because of a missing jquery.cookie lib
+* Fix: rewrote main.js master-skin dependencies inclusion to make sure everything gets loaded before running the script
+
+= 7.1.6 (2017/04/05) =
+
+* Fix: pages content listing were not loading properly or were showing a blank page instead
+* Fix: added some missing reset property that should prevent some themes to crash on single private pages
+* Fix: wrong alignment of the carousel on single private pages when showing 3 items on large screens
+* Fix: Higher priority on body_class filters [#239](https://github.com/marvinlabs/customer-area/issues/239)
+* Fix: Download all button not working properly on some file types with the enhanced files addon button
+* Fix: better error messages when license does not validate
+
+= 7.1.5 (2017/02/07) =
+
+* Fix: default collection view type can now be overridden with a hook
+* Fix: some javascript errors preventing proper license validation in the settings page on some servers
+
+= 7.1.4 (2017/02/02) =
+
+* Fix: slow plugin page display when licenses were active + several improvements to the license checks
+
+= 7.1.3 (2017/01/31) =
+
+* Fix: problem with scripts being loaded twice
+* Fix: rich editor was not showing up in frontend. Causing issues when replying to conversations for instance.
+
+= 7.1.2 (2017/01/30) =
+
+* Fix: saving updated content when forbidding to pick an owner (using front-office addon)
+* Fix: when user was not allowed to select an owner, message "You are not allowed to select an owner" was not shown, just an icon was there
+
+= 7.1.0 (2016/09/15) =
+
+* New: the plugin now checks if your add-ons are compatible with the installed version. You need to activate/deactivate for that
+* New: added a button to download all attachments at once from the private file details page
+* Fix: various tweaks and fixes on the master skin
+* Fix: a function to programmatically create private pages was not working since 7.0
+* Fix: some theme previews from admin where not working properly (http://wp-customerarea.com/support/topic/divi-preview-error/)
+
+**Add-on changes**
+
+* **ACF Integration** - New: updated supported version of ACF to 4.4.8
+* **Invoicing** - New: added ability to download an invoice as a PDF file
+* **Invoicing** - New: added a setting to pad the invoice number with leading zeros
+* **Conversations** - Fix: notifications not sent when a conversation was started
+* **Authentication forms** - Fix: email field on register page not populated properly
+* **Notifications** - Fix: added a custom message for conversation started notification
+
 
 = 7.0.8 (2016/06/30) =
 

@@ -140,6 +140,10 @@ tr.cuar-needs-attention td {
 	color: #fff;
 }
 
+tr.cuar-is-inactive td {
+	opacity: 0.6;
+}
+
 div.cuar-needs-attention {
 	margin: 5px 0 15px;
 	padding: 1px 12px;
@@ -351,19 +355,24 @@ p.forcelinebreak {
 .wp-core-ui .button.renew-license-button {
     display: inline-block;
     font-size: 0.95em;
-    margin-right: 15px;
+	margin-left: 15px;
+	margin-top: -7px;
 }
-.license-control input {
-    max-width: 30%;
-    min-width: 270px;
-}
-.license-control .cuar-ajax-container {
-    max-width: 60%;
-}
-.cuar-old-shop-warning {
-    display: inline-block;
-    color: #666;
-    margin-top: 4px;
+.license-control  {
+	input {
+		max-width: 30%;
+		min-width: 270px;
+	}
+
+	a.button {
+		margin-left: 15px;
+	}
+
+	.cuar-ajax-container {
+		display: block;
+		margin: 12px 2px 0;
+		font-size: 0.8em;
+	}
 }
 
 /* -= RSS Feed items */

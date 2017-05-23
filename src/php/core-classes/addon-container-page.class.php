@@ -111,7 +111,7 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
 
         public function get_max_item_number_on_dashboard()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD, 5);
+            return $this->plugin->get_option($this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_DASHBOARD);
         }
 
         public function get_taxonomy_archive_slug($tax)
@@ -121,7 +121,7 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
 
         public function get_max_item_number_in_listing()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING, 10);
+            return $this->plugin->get_option($this->get_slug() . self::$OPTION_MAX_ITEM_NUMBER_ON_LISTING);
         }
 
         /*------- ARCHIVES ----------------------------------------------------------------------------------------------*/
@@ -568,6 +568,19 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
             do_action('cuar/private-container/view/after_header?post-type=' . $this->get_friendly_post_type(), $this);
         }
 
+	    public function print_single_private_container_header_filter($content)
+	    {
+		    ob_start();
+
+		    $this->print_single_private_container_header();
+
+		    $out = ob_get_contents();
+
+		    ob_end_clean();
+
+		    return $out . $content;
+	    }
+
         public function print_single_private_container_footer()
         {
             do_action('cuar/private-container/view/before_footer', $this);
@@ -592,6 +605,19 @@ if ( !class_exists('CUAR_AbstractContainerPageAddOn')) :
             do_action('cuar/private-container/view/after_footer', $this);
             do_action('cuar/private-container/view/after_footer?post-type=' . $this->get_friendly_post_type(), $this);
         }
+
+	    public function print_single_private_container_footer_filter($content)
+	    {
+		    ob_start();
+
+		    $this->print_single_private_container_footer();
+
+		    $out = ob_get_contents();
+
+		    ob_end_clean();
+
+		    return $content . $out;
+	    }
 
         public function print_single_private_container_meta_filter($content)
         {

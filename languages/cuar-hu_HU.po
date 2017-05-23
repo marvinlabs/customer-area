@@ -1,74 +1,69 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2016}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2017}
 # Translators:
+# Csilla Z, 2016
 # Istvan Jagri <istvan.jagri@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
-"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
-"environment/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
-"PO-Revision-Date: 2016-05-20 18:09+0000\n"
+"PO-Revision-Date: 2017-05-15 10:24+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
-"Language-Team: Hungarian (Hungary) (http://www.transifex.com/wp-translations/"
-"wp-customer-area/language/hu_HU/)\n"
-"Language: hu_HU\n"
+"Language-Team: Hungarian (Hungary) (http://www.transifex.com/wp-translations/wp-customer-area/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu_HU\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: skins/frontend/master/cuar-functions.php:358
+#: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
 #: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
 msgid "Account details"
 msgstr "A profil részletei"
 
-#: skins/frontend/master/cuar-functions.php:393
-#, fuzzy
+#: skins/frontend/master/cuar-functions.php:398
 msgid "View profile"
-msgstr "Privát fájlok megtekintése"
+msgstr ""
 
-#: skins/frontend/master/cuar-functions.php:394
-#, fuzzy
+#: skins/frontend/master/cuar-functions.php:399
 msgid "Manage account"
-msgstr "Profilom"
+msgstr ""
 
-#: skins/frontend/master/cuar-functions.php:395
+#: skins/frontend/master/cuar-functions.php:400
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
 msgstr "Kilépés"
 
-#: skins/frontend/master/cuar-functions.php:403
+#: skins/frontend/master/cuar-functions.php:406
 msgid "Register"
-msgstr ""
+msgstr "Regisztráció"
 
-#: skins/frontend/master/cuar-functions.php:404
+#: skins/frontend/master/cuar-functions.php:407
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
 msgstr "Bejelentkezés"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:38
 msgid "Address Manager"
-msgstr ""
+msgstr "Cím menedzser"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:72
 msgid "Home address"
-msgstr ""
+msgstr "Otthoni cím"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:73
 msgid "Billing address"
-msgstr ""
+msgstr "Számlázási cím"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:92
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:190
@@ -78,7 +73,7 @@ msgstr "Törlés"
 #: src/php/core-addons/addresses/addresses-addon.class.php:93
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:191
 msgid "Clear the address"
-msgstr ""
+msgstr "Cím törlése"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:131
 msgid "Error: you must choose an owner first"
@@ -109,9 +104,9 @@ msgstr ""
 #: src/php/core-addons/addresses/addresses-addon.class.php:156
 #: src/php/core-addons/addresses/addresses-addon.class.php:194
 #: src/php/core-addons/addresses/addresses-addon.class.php:227
-#: src/php/core-addons/private-file/private-file-addon.class.php:818
-#: src/php/core-addons/private-file/private-file-addon.class.php:912
-#: src/php/core-addons/private-file/private-file-addon.class.php:977
+#: src/php/core-addons/private-file/private-file-addon.class.php:784
+#: src/php/core-addons/private-file/private-file-addon.class.php:872
+#: src/php/core-addons/private-file/private-file-addon.class.php:932
 #: src/php/core-classes/addon-create-content-page.class.php:92
 #: src/php/core-classes/addon-create-content-page.class.php:98
 msgid "Trying to cheat?"
@@ -135,7 +130,7 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:58
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:60
 #: src/php/core-addons/status/hook-finder.class.php:124
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:43
 #: src/php/core-classes/widget-content-list.class.php:217
 msgid "Name"
 msgstr "Név"
@@ -167,21 +162,21 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:103
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:89
 msgid "Street address"
-msgstr ""
+msgstr "Utca neve"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:110
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:105
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:91
 msgid "Street address, line 1"
-msgstr ""
+msgstr "Utca neve, sor 1"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:125
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:114
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:114
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:96
 msgid "Street address, line 2"
-msgstr ""
+msgstr "Utca neve, sor 2"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:136
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:140
@@ -192,7 +187,7 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:103
 msgid "Zip/Postal code"
-msgstr ""
+msgstr "Irányítószám"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:151
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:155
@@ -220,11 +215,13 @@ msgid "State/Province"
 msgstr "Állam/Tartomány"
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:56
+#: src/php/core-addons/addresses/templates/pdf-view-address.template.php:39
 #: src/php/core-addons/addresses/templates/view-address.template.php:43
 msgid "No address yet"
-msgstr ""
+msgstr "Nincs cím még"
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:71
+#: src/php/core-addons/addresses/templates/pdf-view-address.template.php:50
 #: src/php/core-addons/addresses/templates/view-address.template.php:58
 msgid "VAT ID -"
 msgstr ""
@@ -239,13 +236,13 @@ msgstr "Logo"
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:94
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
 msgid "Logo URL"
-msgstr ""
+msgstr "Logo URL"
 
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:94
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:96
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:83
 msgid "Upload Logo"
-msgstr ""
+msgstr "Logó feltöltés"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:42
 msgid "Administration Area"
@@ -257,9 +254,9 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:86
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:94
-#: src/php/core-addons/private-file/private-file-addon.class.php:842
-#: src/php/core-addons/private-file/private-file-addon.class.php:903
-#: src/php/core-addons/private-file/private-file-addon.class.php:968
+#: src/php/core-addons/private-file/private-file-addon.class.php:807
+#: src/php/core-addons/private-file/private-file-addon.class.php:864
+#: src/php/core-addons/private-file/private-file-addon.class.php:924
 msgid "Missing parameters"
 msgstr ""
 
@@ -294,12 +291,12 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:238
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:38
-#: src/php/core-classes/settings.class.php:276
+#: src/php/core-classes/settings.class.php:249
 msgid "General"
 msgstr "Általános"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:246
-#: src/php/core-addons/private-file/private-file-addon.class.php:1109
+#: src/php/core-addons/private-file/private-file-addon.class.php:1059
 #: src/php/core-addons/private-page/private-page-addon.class.php:108
 msgid "Back-office"
 msgstr "Back-office"
@@ -314,7 +311,7 @@ msgstr "A Customer Area menü megtekintése"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:253
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:79
-#: src/php/core-addons/private-file/private-file-addon.class.php:1122
+#: src/php/core-addons/private-file/private-file-addon.class.php:1072
 #: src/php/core-addons/private-page/private-page-addon.class.php:121
 msgid "Front-office"
 msgstr "Front-office"
@@ -349,9 +346,7 @@ msgstr "Üdvözöl a WP Customer Area %s"
 msgid ""
 "<strong>WP Customer Area</strong> %s is more powerful, stable and secure "
 "than ever before. We hope you will enjoy using it."
-msgstr ""
-"A <strong>WP Customer Area</strong> %s erőteljesebb, stabilabb és "
-"biztonságosabb, mint valaha. Reméljük, tetszeni fog. "
+msgstr "A <strong>WP Customer Area</strong> %s erőteljesebb, stabilabb és biztonságosabb, mint valaha. Reméljük, tetszeni fog. "
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:492
 msgid "Add new"
@@ -446,8 +441,8 @@ msgstr "verzió %s"
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:26
 #: src/php/core-addons/status/status-addon.class.php:139
-#: src/php/core-classes/settings.class.php:92
-#: src/php/core-classes/settings.class.php:124
+#: src/php/core-classes/settings.class.php:90
+#: src/php/core-classes/settings.class.php:120
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -512,111 +507,150 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:29
 msgid "Show all"
-msgstr ""
+msgstr "Mindent mutat"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-blog.template.php:7
 msgid "/feed/rss"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-msgid "/whats-new-in-wp-customer-area-7-0"
+msgid "/whats-new-in-wp-customer-area-7-1"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
-msgid "WP Customer Area 7.0 has got a new dress."
+msgid "A small post-summer-break update"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
-msgid "New skin"
+msgid "Better add-on version detection"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+msgid ""
+"WP Customer Area will let you know after each update if you have the latest "
+"add-on release. Never forget to update them anymore!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+msgid "PDF Invoices"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+msgid ""
+"Invoices can now be downloaded as PDF files. A simple template is provided "
+"but you can make your own very easily too!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:44
+msgid "Download all attachments"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+msgid ""
+"For those who have the Enhanced Files add-on, you can now download all "
+"attached files with a single click."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+msgid "/whats-new-in-wp-customer-area-7-0"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+msgid "WP Customer Area 7.0 has got a new dress."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+msgid "New skin"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
 msgid ""
 "The appearance of the private area has been completely rewritten to enhance "
 "compatibility with all themes and usability. "
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
 msgid "Better ownership control"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
 msgid ""
 "Our add-ons allow assigning content to groups, roles, etc. However, these "
 "owner types could not be mixed. For example, you can now assign private "
 "content at the same time to a group and to a few users."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:43
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:66
 msgid "Improvements and bug fixes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
 msgid ""
-"Existing add-ons have been much improved: 17 new features and over 14 issues "
-"fixes. For instance, notifications are now sent in HTML format using a clean "
-"professional template."
+"Existing add-ons have been much improved: 17 new features and over 14 issues"
+" fixes. For instance, notifications are now sent in HTML format using a "
+"clean professional template."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 msgid "/whats-new-in-wp-customer-area-6-3"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:52
 msgid ""
 "WP Customer Area 6.3 has been aimed at improving customer relationship "
 "management and improving existing add-ons."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
 msgid "Contact information"
-msgstr ""
+msgstr "Kapcsolat információ"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
 msgid ""
 "User profiles can now store a home and a billing address. This is an "
 "essential information when managing your customers and will help building "
 "more CRM features into the plugin later on."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:60
 msgid "Invoicing"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
 msgid ""
 "We are introducing a new add-on to publish invoices for your customers. No "
 "more attaching files, there is a proper content type for invoices and we "
 "will soon add a lot around that (PDF generation, online payment, etc.)."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:41
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:63
 msgid "/downloads/wpca-invoicing"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:45
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
 msgid ""
-"While this time we do not have other big news than the new invoicing add-on, "
-"there have been lots of additions and fixes to the base plugin and the "
+"While this time we do not have other big news than the new invoicing add-on,"
+" there have been lots of additions and fixes to the base plugin and the "
 "existing add-ons: 15 new features and 19 issues have been implemented/fixed."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:51
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:73
 msgid "/whats-new-in-wp-customer-area-6-2"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:53
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
 msgid ""
 "WP Customer Area 6.2 has been aimed at improving the attachments to private "
 "files and everything around that."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:78
 msgid "New upload system"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:57
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:79
 msgid ""
 "The file upload system has been completely rewritten. You can now drag and "
 "drop files and watch the upload progress. Additionally, we have also added "
@@ -624,26 +658,26 @@ msgid ""
 "as secure as it can."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
 msgid "Enhanced Files"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:62
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:84
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
-"multiple attachments on the same private file, change the attachment caption "
-"and automatically add file type icons in front of the download links."
+"multiple attachments on the same private file, change the attachment caption"
+" and automatically add file type icons in front of the download links."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:64
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
 msgid "/downloads/wpca-enhanced-files"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
 msgid "Smart Groups"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:68
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:90
 msgid ""
 "Smart Groups will change the way to build your user groups. No more adding "
 "or removing users by hand, you will simply make dynamic groups based on "
@@ -651,132 +685,132 @@ msgid ""
 "information linked to your user profiles."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:70
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
 msgid "/downloads/wpca-smart-groups"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
 msgid "/whats-new-in-wp-customer-area-6-1"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:99
 msgid ""
 "WP Customer Area 6.1 focuses mainly on making administrator's life easier, "
 "introducing event logging and a better administration panel."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:80
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
 msgid "Protect post types"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:81
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
 msgid ""
 "We are introducing a new add-on which will allow protecting any kind of "
 "external post types. Posts created from third party plugins can be made "
 "private and assigned just like private pages or files."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:105
 msgid "/downloads/wpca-protect-post-types"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:108
 #: src/php/core-addons/shortcodes/shortcodes-addon.class.php:36
 msgid "Shortcodes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:87
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:109
 msgid ""
 "we have added shortcodes to display the navigation menu, list protected "
 "content, etc. You will now be able to easily build custom pages with a list "
 "of the content you want to pull for the connected user."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:111
 msgid "/documentation/shortcodes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:114
 msgid "Better admin panel"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:93
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
-"better organised. The content lists now feature powerful filters to help you "
-"find the content you are looking for faster."
+"better organised. The content lists now feature powerful filters to help you"
+" find the content you are looking for faster."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:119
 msgid "Logging"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:98
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
 msgid ""
 "When dealing with private content and secure areas, keeping track of events "
 "is crucial. We have added a module to track what is happening within your "
 "private area."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:124
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:147
 msgid "And more!"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 23 issues corrected."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:110
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:132
 msgid "/customer-area-is-dead-long-live-wp-customer-area/"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:112
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:134
 msgid ""
-"WP Customer Area 6.0 is a major release which sees a lot of changes not only "
-"inside the plugin but also on the website."
+"WP Customer Area 6.0 is a major release which sees a lot of changes not only"
+" inside the plugin but also on the website."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:137
 msgid "Improved setup &amp; updates"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:116
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:138
 msgid ""
 "We have implemented a new setup assistant that will make it even easier to "
 "install the plugin. Updates will be smoother too."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:142
 msgid "Better permissions"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:121
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
 msgid ""
 "Some new permissions have been added to give you more control about what "
 "your users can do. On top of that, we have also improved the permissions "
 "screen to make it faster to set permissions."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:126
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 20 issues corrected."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:135
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:157
 msgid "New in %s ~ <em>%s</em>"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:145
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:167
 msgid "Learn more"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-author.template.php:8
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:77
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:74
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:86
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:83
 msgid "Created by"
 msgstr ""
 
@@ -794,7 +828,7 @@ msgstr "Keresés"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-search.template.php:12
 msgid "in"
-msgstr ""
+msgstr "ban"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-search.template.php:15
 msgid "Title or content"
@@ -816,7 +850,7 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-timestamp.template.php:13
 #: src/php/core-addons/log/templates/logs-page.template.php:54
 msgid "and"
-msgstr ""
+msgstr "és"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:17
 msgid "Filter %1$s List"
@@ -871,10 +905,12 @@ msgstr "Engedélyek beállítása"
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:41
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:89
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:50
 msgid "Suggested action"
 msgstr "Javasolt művelet"
 
 #: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:41
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:53
 msgid "Ignore this warning"
 msgstr "A figyelmeztetés figyelmen kívül hagyása"
 
@@ -883,7 +919,7 @@ msgid "Container Owner"
 msgstr "Konténer tulajdonos"
 
 #: src/php/core-addons/container-owner/container-owner-addon.class.php:124
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:758
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:757
 msgid "You are not authorized to view this page"
 msgstr "Nincs engedélyed az oldal megtekintéséhez"
 
@@ -926,7 +962,7 @@ msgstr "Küld"
 
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:43
 msgid "Addresses"
-msgstr ""
+msgstr "Címek"
 
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:43
 msgid "Account - Home"
@@ -938,16 +974,15 @@ msgstr "Profilom"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
-#: src/php/core-classes/addon-container-page.class.php:843
-#: src/php/core-classes/addon-content-page.class.php:870
+#: src/php/core-classes/addon-container-page.class.php:869
+#: src/php/core-classes/addon-content-page.class.php:896
 msgid "Dashboard"
 msgstr "Home"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
 msgid ""
 "Shows a summary of the user's private content (files, pages, messages, ...)."
-msgstr ""
-"A felhasználó privát tartalmát mutatja meg (fájlok, oldalak, üzenetek, ...)."
+msgstr "A felhasználó privát tartalmát mutatja meg (fájlok, oldalak, üzenetek, ...)."
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:43
 msgid "Home"
@@ -955,11 +990,9 @@ msgstr "Home"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
-"This is the main page for your customers. It will redirect to the login page "
-"or to the customer area dashboard."
-msgstr ""
-"Ez az ügyfelek fő oldala. Át fogja irányítani őket a login oldalra, vagy az "
-"ügyfél terület home-jára. "
+"This is the main page for your customers. It will redirect to the login page"
+" or to the customer area dashboard."
+msgstr "Ez az ügyfelek fő oldala. Át fogja irányítani őket a login oldalra, vagy az ügyfél terület home-jára. "
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:55
 msgid "customer-area"
@@ -968,11 +1001,10 @@ msgstr "ugyfel-terulet"
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
-msgstr ""
-"Ez az oldal kilépteti az aktuális felhasználót és átirányítja logout oldalra"
+msgstr "Ez az oldal kilépteti az aktuális felhasználót és átirányítja logout oldalra"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:999
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1001
 msgid "Customer Pages"
 msgstr "Ügyfél oldalak"
 
@@ -985,6 +1017,7 @@ msgid "The navigation menu for the customer area has not been created."
 msgstr "Az ügyfél felület navigációs menüje még nem készült el. "
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:147
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:130
 #: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
 msgid "Pages"
 msgstr "Oldalak"
@@ -1005,149 +1038,133 @@ msgstr "Nem lehet létrehozni a menüt : %s"
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "A menü elkészült : <a href=\"%s\">nézd meg</a>"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:992
 msgid "Site Pages"
 msgstr "Site oldalak"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1025
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1094
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1027
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1096
 msgid "Reset"
 msgstr "Reset"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1031
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1033
 msgid "Reset all pages &raquo;"
 msgstr "Minden oldal resetelése &raquo;"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1034
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1036
 msgid "Delete all existing pages and recreate them."
 msgstr "Minden lézető oldal törlése és újra létrehozása"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1035
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1037
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
-msgstr ""
-"Biztos vagy benne, hogy minden létező oldalt törölni akarsz és újra "
-"létrehozni (ezt a műveletet nem lehet visszavonnni)?"
+msgstr "Biztos vagy benne, hogy minden létező oldalt törölni akarsz és újra létrehozni (ezt a műveletet nem lehet visszavonnni)?"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1045
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1047
 msgid "Main Navigation Menu"
 msgstr "Fő navigációs menü"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1055
 msgid "WP Customer Area pages"
 msgstr ""
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1063
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
-msgstr ""
-"Automatikusan írja ki a Customer Area navigációs menüjét az Ügyfél felület "
-"oldalaira. "
+msgstr "Automatikusan írja ki a Customer Area navigációs menüjét az Ügyfél felület oldalaira. "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1073
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1075
 msgid "Private content single pages"
 msgstr "Privát tartalom oldalai"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1083
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
-msgstr ""
-"Automatikusan jelenítse meg a Customer Area navigációs menüit a privát "
-"tartalom oldalain. "
+msgstr "Automatikusan jelenítse meg a Customer Area navigációs menüit a privát tartalom oldalain. "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1100
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1102
 msgid "Recreate menu"
 msgstr "Menü ismételt létrehozása"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1103
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1105
 msgid "Delete and recreate the main navigation menu."
 msgstr "Töröld és hozd létre újra a fő navigációs menüt. "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1106
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
-msgstr ""
-"Biztos vagy benne, hogy újra létre akarod hozni a fő navigációs menüt (ezt a "
-"műveletet nem lehet visszavonnni)?"
+msgstr "Biztos vagy benne, hogy újra létre akarod hozni a fő navigációs menüt (ezt a műveletet nem lehet visszavonnni)?"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1113
 msgid "Permalinks"
 msgstr "Permalinkek"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1118
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1120
 msgid "Category Archive"
 msgstr "Kategória archívum"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1136
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1138
 msgid "Date Archive"
 msgstr "Archív dátumok"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1153
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1155
 msgid "Author Archive"
 msgstr "Archív szerzők"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1170
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1172
 msgid "Update Content"
 msgstr "Tartalom frissítése"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1179
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1181
 msgid "Slug that is used in the URL to update existing private content"
-msgstr ""
-"\"Slug\", ami a privát tartalmak URL-jében a frissítéshez lesz használva"
+msgstr "\"Slug\", ami a privát tartalmak URL-jében a frissítéshez lesz használva"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1186
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1188
 msgid "Delete Content"
 msgstr "Tartalom törlése"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1195
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1197
 msgid "Slug that is used in the URL to delete existing private content"
 msgstr "\"Slug\", ami a privát tartalmak URL-jében a törléshez lesz használva"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1209
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1211
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
 msgstr "A 4.0.0-ás verzió óta az Customer Area kezeli a navigációs menüket."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1221
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1223
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
-msgstr ""
-"A 4.0.0-ás verzió óta a Customer Area számos oldalt használ arra, hogy "
-"taralmat jelenítsen meg az ügyfelek számára. Ezeket az oldalakat "
-"létrehozhatod itt, vagy jelölj ki már létezőket. "
+msgstr "A 4.0.0-ás verzió óta a Customer Area számos oldalt használ arra, hogy taralmat jelenítsen meg az ügyfelek számára. Ezeket az oldalakat létrehozhatod itt, vagy jelölj ki már létezőket. "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1388
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1289
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1323
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1390
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
-msgstr ""
-"Az ügyfél felület néhány oldala létrehozásra, vagy törlésre került. Az "
-"ügyfél felület navigációs menüjének frissítése szükséges. "
+msgstr "Az ügyfél felület néhány oldala létrehozásra, vagy törlésre került. Az ügyfél felület navigációs menüjének frissítése szükséges. "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1317
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1319
 msgid "The following pages have been created: %s"
 msgstr "A következő oldalak elkészültek : %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1324
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1326
 msgid "There was no missing page that could be created."
 msgstr "Nincsen hiányzó oldal. "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1363
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1365
 msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings."
-msgstr ""
-"A site néhány oldala Customer Area shortcode-ot tartalmaz, de nincsenek "
-"regisztrálva a Customer Area oldalbeállításainál. "
+"Some pages in your site seem to contain Customer Area shortcodes but are not"
+" registered in the Customer Area pages settings."
+msgstr "A site néhány oldala Customer Area shortcode-ot tartalmaz, de nincsenek regisztrálva a Customer Area oldalbeállításainál. "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1383
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1385
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] ""
@@ -1178,18 +1195,13 @@ msgid ""
 "A navigation menu organizes the customer area. It allows to browse the "
 "files, the pages, to view the account details and much more. It seems that "
 "this menu has not yet been created."
-msgstr ""
-"A navigációs menü az ügyfél felület oldalait rendszerezi. Lehetővé teszi "
-"fájlok és oldalak megtekintését, a felhasználó profiljának megtekintését, "
-"stb. Úgy tűnik, ez a menü még nem lett létrehozva.  "
+msgstr "A navigációs menü az ügyfél felület oldalait rendszerezi. Lehetővé teszi fájlok és oldalak megtekintését, a felhasználó profiljának megtekintését, stb. Úgy tűnik, ez a menü még nem lett létrehozva.  "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:37
 msgid ""
-"You can review which menus are currently created on the <a href=\"%1$s"
-"\">menus page</a>."
-msgstr ""
-"Hogy jelenleg milyen menük elérhetőek, megnézheted <a href=\"%1$s\">ezen</a> "
-"a linken."
+"You can review which menus are currently created on the <a "
+"href=\"%1$s\">menus page</a>."
+msgstr "Hogy jelenleg milyen menük elérhetőek, megnézheted <a href=\"%1$s\">ezen</a> a linken."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:42
 msgid "Create the menu"
@@ -1199,9 +1211,7 @@ msgstr "Menü létrehozása"
 msgid ""
 "Are you sure that you want to create the menu (this operation cannot be "
 "undone)?"
-msgstr ""
-"Biztos, hogy létre akarod hozni ezt a menüt (ez a művelet nem vonható "
-"vissza)?"
+msgstr "Biztos, hogy létre akarod hozni ezt a menüt (ez a művelet nem vonható vissza)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:33
 msgid "Navigation menu is out of sync"
@@ -1209,21 +1219,16 @@ msgstr "A navigációs menü nincs szinkronizálva"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:36
 msgid ""
-"Some pages of the customer area have been changed and our current navigation "
-"menu probably references the previous pages. We recommend to synchronize the "
-"menu with the new pages. "
-msgstr ""
-"Néhány oldal az ügyfél felületen belül megváltozott, de a navigációs menü "
-"valószínűleg még a régi oldalra hivatkozik. Javasoljuk a menü "
-"szinkronizálását. "
+"Some pages of the customer area have been changed and our current navigation"
+" menu probably references the previous pages. We recommend to synchronize "
+"the menu with the new pages. "
+msgstr "Néhány oldal az ügyfél felületen belül megváltozott, de a navigációs menü valószínűleg még a régi oldalra hivatkozik. Javasoljuk a menü szinkronizálását. "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:37
 msgid ""
 "You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
 "&raquo; Menus</a> page."
-msgstr ""
-"Ezt a menüt manuálisan is szerkesztheted az <a href=\"%1$s\">Megjelenés "
-"&raquo; Menük</a> oldalon. "
+msgstr "Ezt a menüt manuálisan is szerkesztheted az <a href=\"%1$s\">Megjelenés &raquo; Menük</a> oldalon. "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:40
 msgid "Suggested actions"
@@ -1241,17 +1246,13 @@ msgstr "Figyelmeztetés figyelmen kívül hagyása"
 msgid ""
 "Are you sure that you want to clear current menu and create it again from "
 "scratch (this operation cannot be undone)?"
-msgstr ""
-"Biztos, hogy törölni szeretnéd és újra létrehozni az aktuális menüt (ez a "
-"művelet nem vonható vissza)?"
+msgstr "Biztos, hogy törölni szeretnéd és újra létrehozni az aktuális menüt (ez a művelet nem vonható vissza)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:56
 msgid ""
 "Are you sure that you want ignore this warning? You can also manually edit "
 "your menu in the page: \"Appearance > Menus\"."
-msgstr ""
-"Biztos, hogy figyelmen kívül akarod hagyni ezt a figyelmeztetést? Ezt a "
-"menüt manuálisan is szerkesztheted a \"Megjelenés > Menük\" oldalon. "
+msgstr "Biztos, hogy figyelmen kívül akarod hagyni ezt a figyelmeztetést? Ezt a menüt manuálisan is szerkesztheted a \"Megjelenés > Menük\" oldalon. "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:33
 msgid "Orphan pages"
@@ -1267,9 +1268,7 @@ msgstr "Árva oldalak törlése"
 msgid ""
 "Are you sure that you want to delete those pages (this operation cannot be "
 "undone)?"
-msgstr ""
-"Biztos, hogy törölni akarod ezeket az oldalakat (ez a művelet nem vonható "
-"vissza)?"
+msgstr "Biztos, hogy törölni akarod ezeket az oldalakat (ez a művelet nem vonható vissza)?"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:33
 msgid "Missing front-office pages"
@@ -1280,17 +1279,13 @@ msgid ""
 "Some pages of the customer area have not yet been created. Those pages are "
 "responsible for displaying the private content you have assigned to your "
 "users."
-msgstr ""
-"Néhány oldal hiányzik az ügyfél felületről. Ezek az oldalak hivatottak "
-"megeleníteni a privát tartalamakat. "
+msgstr "Néhány oldal hiányzik az ügyfél felületről. Ezek az oldalak hivatottak megeleníteni a privát tartalamakat. "
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:37
 msgid ""
-"You can review which pages are currently created on the <a href=\"%1$s"
-"\">pages settings page</a>."
-msgstr ""
-"Megnézheted, milyen oldalak lettek létrehozva az <a href=\"%1$s"
-"\">oldalbeállításoknál</a>."
+"You can review which pages are currently created on the <a "
+"href=\"%1$s\">pages settings page</a>."
+msgstr "Megnézheted, milyen oldalak lettek létrehozva az <a href=\"%1$s\">oldalbeállításoknál</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:42
 msgid "Create missing pages"
@@ -1300,9 +1295,7 @@ msgstr "Hiányzó oldalak létrehozása"
 msgid ""
 "Are you sure that you want to create all the pages that are currently "
 "missing (this operation cannot be undone)?"
-msgstr ""
-"Biztos, hogy létre akarod hozni a hiányzó oldalakat (ez a művelet nem "
-"vonható vissza)?"
+msgstr "Biztos, hogy létre akarod hozni a hiányzó oldalakat (ez a művelet nem vonható vissza)?"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:35
 msgid "Page"
@@ -1318,7 +1311,6 @@ msgstr "Sorrend"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:38
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:110
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:28
 msgid "ID"
 msgstr "ID"
 
@@ -1334,8 +1326,8 @@ msgstr "Típus"
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:62
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:126
 #: src/php/core-classes/Content/list-table.class.php:318
-#: src/php/core-classes/addon-update-content-page.class.php:274
-#: src/php/core-classes/addon-update-content-page.class.php:275
+#: src/php/core-classes/addon-update-content-page.class.php:264
+#: src/php/core-classes/addon-update-content-page.class.php:265
 msgid "Edit"
 msgstr "Szerkesztés"
 
@@ -1382,6 +1374,10 @@ msgid "Files published in %1$s"
 msgstr "Fájl publikálva itt: %1$s"
 
 #: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:130
+#: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:50
+msgid "Files"
+msgstr "Fájlok"
+
 #: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:135
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:49
 msgid "Recent Files"
@@ -1422,62 +1418,67 @@ msgstr "Ebben a kategóriában nincsenek fájlok."
 msgid "You currently have no files."
 msgstr "Jelenleg nincs egyetlen fájlod sem."
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:22
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:25
 msgid "There are no files for that period."
 msgstr "Ebben az időszakban nincsenek fájlok. "
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:21
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:21
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-container.template.php:19
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:20
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:24
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:24
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-container.template.php:22
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:23
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:13
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:13
 #: src/php/core-classes/templates/default-container-content-item.template.php:12
 msgid "Uploaded on %s"
 msgstr "Feltöltve %s"
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:30
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:30
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:34
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:34
 msgid "%1$s file"
 msgid_plural "%1$s files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:32
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:35
 msgid "FILE"
 msgid_plural "FILES"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:59
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:56
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:64
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:61
 msgid "Created on"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:80
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:89
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-header.template.php:47
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:77
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:86
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-header.template.php:42
 msgid "Assigned to"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:28
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:22
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:33
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:27
+msgid "Page %1$s/%2$s"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:42
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:36
 #: src/php/core-classes/templates/content-page-content.template.php:21
 msgid "No items were found matching the selected filters"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:33
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:39
 msgid "%d attachment"
 msgid_plural "%d attachments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:48
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:61
 msgid "Get file"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:62
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:23
@@ -1524,10 +1525,6 @@ msgstr "Nincsenek fájlok"
 msgid "Private Files - Home"
 msgstr "PRivát fájlok - Home"
 
-#: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:50
-msgid "Files"
-msgstr "Fájlok"
-
 #: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:54
 msgid "Root page for the customer files."
 msgstr "Az ügyfelek fájljainak fő oldala."
@@ -1564,7 +1561,6 @@ msgstr "Oldalak publikáva %2$s %1$s"
 msgid "Pages published in %1$s"
 msgstr "Oldalak publikálva %1$s"
 
-#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:130
 #: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:135
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:49
 msgid "Recent Pages"
@@ -1605,8 +1601,7 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-dates.class.php:39
 msgid "Shows the private page yearly archives of the Customer Area"
-msgstr ""
-"A Customer Area privát oldalainak évekre bontott archívumát listázza ki"
+msgstr "A Customer Area privát oldalainak évekre bontott archívumát listázza ki"
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:37
 msgid "WPCA - Recent Pages"
@@ -1643,8 +1638,8 @@ msgstr "A WP Customer Area telepítése"
 
 #: src/php/core-addons/installer/installer-addon.class.php:247
 msgid ""
-"There is a quick installation to run before being able to publish your first "
-"private files and pages. It should be over in less than a minute!"
+"There is a quick installation to run before being able to publish your first"
+" private files and pages. It should be over in less than a minute!"
 msgstr ""
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
@@ -1780,8 +1775,8 @@ msgstr ""
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is downloading a private file. There will be a single "
-"event per user and per file. Else, each time a user is downloading a private "
-"file, an event will be generated."
+"event per user and per file. Else, each time a user is downloading a private"
+" file, an event will be generated."
 msgstr ""
 
 #: src/php/core-addons/log/log-table.class.php:155
@@ -1865,124 +1860,119 @@ msgstr "Post tulajdonos"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:799
-msgid "User - %s"
-msgstr "Felhasználó - %s"
-
 #: src/php/core-addons/post-owner/post-owner-admin-interface.class.php:90
 msgid "Assignment"
 msgstr "Feladat"
 
-#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:14
+#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:19
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
-#, fuzzy
 msgid "You are not allowed to select an owner"
-msgstr "Nincs jogosultságod ezt a postot törölni"
+msgstr ""
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:37
 msgid "Select or search an owner"
 msgstr "Tulajdonos kiválasztása, vagy keresése"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:43
-#: src/php/core-addons/private-file/private-file-addon.class.php:1100
+#: src/php/core-addons/private-file/private-file-addon.class.php:1050
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:150
 msgid "Private Files"
 msgstr "Privát fájl"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:670
+#: src/php/core-addons/private-file/private-file-addon.class.php:646
 msgid ""
 "<a href=\"%s\">Public URL to a test file in that folder</a>. Response code: "
 "%s. File content: %s"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:790
+#: src/php/core-addons/private-file/private-file-addon.class.php:757
 msgid "Do you really want to remove this file?"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:792
-#: src/php/core-addons/private-file/private-file-addon.class.php:852
+#: src/php/core-addons/private-file/private-file-addon.class.php:759
+#: src/php/core-addons/private-file/private-file-addon.class.php:816
 msgid "You are not allowed to attach more than %d file"
 msgid_plural "You are not allowed to attach more than %d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:828
+#: src/php/core-addons/private-file/private-file-addon.class.php:794
 msgid "You are not allowed to attach files to this kind of content"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:866
+#: src/php/core-addons/private-file/private-file-addon.class.php:829
 msgid "You cannot attach files with the same name"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:922
+#: src/php/core-addons/private-file/private-file-addon.class.php:882
 msgid "You are not allowed to update attached files"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:931
+#: src/php/core-addons/private-file/private-file-addon.class.php:890
 msgid "File not found"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:987
+#: src/php/core-addons/private-file/private-file-addon.class.php:942
 msgid "You are not allowed to remove attached files"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1057
+#: src/php/core-addons/private-file/private-file-addon.class.php:1007
 msgid "You are not authorized to access this file"
 msgstr "Nincs jogosultságod ezt a fájlt megtekinteni"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1077
+#: src/php/core-addons/private-file/private-file-addon.class.php:1024
 msgid "There is no such file attached to this private content"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1103
+#: src/php/core-addons/private-file/private-file-addon.class.php:1053
 msgid "Global"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1105
+#: src/php/core-addons/private-file/private-file-addon.class.php:1055
 msgid "Manage file attachments"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1111
+#: src/php/core-addons/private-file/private-file-addon.class.php:1061
 msgid "List all files"
 msgstr "Összes fájl"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1112
+#: src/php/core-addons/private-file/private-file-addon.class.php:1062
 msgid "Create/Edit files"
 msgstr "Fájl létrehozása/szerkesztése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1113
+#: src/php/core-addons/private-file/private-file-addon.class.php:1063
 msgid "Delete files"
 msgstr "Fájl törlése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1114
+#: src/php/core-addons/private-file/private-file-addon.class.php:1064
 msgid "Access files"
 msgstr "Fájl elérése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1115
+#: src/php/core-addons/private-file/private-file-addon.class.php:1065
 #: src/php/core-addons/private-page/private-page-addon.class.php:114
 msgid "Manage categories"
 msgstr "Kategóriák kezelése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1116
+#: src/php/core-addons/private-file/private-file-addon.class.php:1066
 #: src/php/core-addons/private-page/private-page-addon.class.php:115
 msgid "Edit categories"
 msgstr "Kategóriák szerkesztése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1117
+#: src/php/core-addons/private-file/private-file-addon.class.php:1067
 #: src/php/core-addons/private-page/private-page-addon.class.php:116
 msgid "Delete categories"
 msgstr "Kategóriák törlése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1118
+#: src/php/core-addons/private-file/private-file-addon.class.php:1068
 #: src/php/core-addons/private-page/private-page-addon.class.php:117
 msgid "Assign categories"
 msgstr "Kategóriák hozzárendelése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1124
+#: src/php/core-addons/private-file/private-file-addon.class.php:1074
 msgid "View private files"
 msgstr "Privát fájlok megtekintése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1125
+#: src/php/core-addons/private-file/private-file-addon.class.php:1075
 msgid "View any private file"
 msgstr "Bármilyen privát fájl megtekintése"
 
@@ -2021,24 +2011,22 @@ msgid "FTP uploads folder"
 msgstr "FTP feltöltési könyvtár"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:247
-msgid "<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
+msgid ""
+"<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:250
 msgid ""
 "This folder is the root folder for storing private files. This should "
-"preferably be located outside of the web server public area or secured using "
-"a <code>.htaccess</code> file"
+"preferably be located outside of the web server public area or secured using"
+" a <code>.htaccess</code> file"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:264
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
-msgstr ""
-"Ezt a könyvtárat akkor tudod használni, ha fájlokat töltöttél fel FTP-vel. "
-"Hasznos lehet akkor, ha a direkt feltöltés meghiúsul, pl. túl nagy fájlméret "
-"miatt. "
+msgstr "Ezt a könyvtárat akkor tudod használni, ha fájlokat töltöttél fel FTP-vel. Hasznos lehet akkor, ha a direkt feltöltés meghiúsul, pl. túl nagy fájlméret miatt. "
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:281
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:299
@@ -2068,8 +2056,8 @@ msgstr ""
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:316
 msgid ""
 "That directory seems to be accessible from the web. <strong>This is not "
-"safe</strong>. The most secure would be to move it outside of the web folder "
-"of your server"
+"safe</strong>. The most secure would be to move it outside of the web folder"
+" of your server"
 msgstr ""
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:321
@@ -2087,8 +2075,7 @@ msgstr ""
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:414
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:472
 msgid "This file type is not allowed. You can only upload: %s"
-msgstr ""
-"Ez a fájltípus nem engedélyezett. Csak a következőket tudod feltölteni: %s"
+msgstr "Ez a fájltípus nem engedélyezett. Csak a következőket tudod feltölteni: %s"
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:350
 msgid "A method must be specified (copy|move|noop) in the extra parameter"
@@ -2245,29 +2232,29 @@ msgid "Path"
 msgstr "Útvonal"
 
 #: src/php/core-addons/status/status-addon.class.php:38
-#: src/php/core-addons/status/status-addon.class.php:59
+#: src/php/core-addons/status/status-addon.class.php:58
 msgid "Status"
 msgstr "Státusz"
 
-#: src/php/core-addons/status/status-addon.class.php:58
+#: src/php/core-addons/status/status-addon.class.php:57
 msgid "WP Customer Area - Plugin status"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:108
+#: src/php/core-addons/status/status-addon.class.php:104
 msgid "Needs attention"
 msgstr "Figyelmet igényel"
 
-#: src/php/core-addons/status/status-addon.class.php:109
+#: src/php/core-addons/status/status-addon.class.php:105
 msgid "Things that need your attention"
 msgstr "Amikre figyelned kell"
 
-#: src/php/core-addons/status/status-addon.class.php:113
+#: src/php/core-addons/status/status-addon.class.php:109
 msgid "Installed add-ons"
 msgstr "Telepített kiegészítők"
 
-#: src/php/core-addons/status/status-addon.class.php:114
-msgid "Core and commercial add-ons currently enabled"
-msgstr "A központi és üzlet kiegészítők jelenleg engedélyezve vannak"
+#: src/php/core-addons/status/status-addon.class.php:110
+msgid "Supported add-ons currently enabled"
+msgstr ""
 
 #: src/php/core-addons/status/status-addon.class.php:123
 msgid "Actions and filters"
@@ -2289,31 +2276,31 @@ msgstr "Template fájlok"
 msgid "Settings tools"
 msgstr "Beállítások"
 
-#: src/php/core-addons/status/status-addon.class.php:206
+#: src/php/core-addons/status/status-addon.class.php:201
 msgid "The database has been cleaned up, you can now remove the plugin"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:212
+#: src/php/core-addons/status/status-addon.class.php:207
 msgid "Settings have been resetted to default values"
 msgstr "A beállítások az alapértelmezések szerinti értékekre visszaálltak"
 
-#: src/php/core-addons/status/status-addon.class.php:222
+#: src/php/core-addons/status/status-addon.class.php:216
 msgid "Invalid parameters. No file sent"
 msgstr "Rossz paraméter. Fájlküldés nem történt"
 
-#: src/php/core-addons/status/status-addon.class.php:232
+#: src/php/core-addons/status/status-addon.class.php:225
 msgid "No file sent."
 msgstr "Fájlküldés nem történt."
 
-#: src/php/core-addons/status/status-addon.class.php:237
+#: src/php/core-addons/status/status-addon.class.php:230
 msgid "Exceeded filesize limit."
 msgstr "Túl nagy fájlméret."
 
-#: src/php/core-addons/status/status-addon.class.php:241
+#: src/php/core-addons/status/status-addon.class.php:234
 msgid "Unknown errors."
 msgstr "Ismeretlen hiba. "
 
-#: src/php/core-addons/status/status-addon.class.php:250
+#: src/php/core-addons/status/status-addon.class.php:243
 msgid "Settings have been imported successfully"
 msgstr "A beállítások sikeresen importálásra kerültek. "
 
@@ -2346,12 +2333,9 @@ msgstr "Elavult plugin verzió"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a href="
-"\"%2$s\">add-ons status pages</a>."
-msgstr ""
-"Nehány kiegészítő a plugin újabb verzióját követeli meg (jelenleg a %1$s "
-"verzió fut). Az összes kiegészítőt a <a href=\"%2$s\">Kiegészítők státusz "
-"oldalon</a> találod meg."
+"running version %1$s). You can find the list of all add-ons on the <a "
+"href=\"%2$s\">add-ons status pages</a>."
+msgstr "Nehány kiegészítő a plugin újabb verzióját követeli meg (jelenleg a %1$s verzió fut). Az összes kiegészítőt a <a href=\"%2$s\">Kiegészítők státusz oldalon</a> találod meg."
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
 msgid "Update the plugin"
@@ -2368,6 +2352,39 @@ msgstr "Egyéb action"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:67
 msgid "Ignore until next update"
 msgstr "A következő frissítésig hagyja figyelmen kívül"
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:26
+msgid ""
+"WP Customer Area %1$s recommends the following versions for the add-ons"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:31
+msgid "Add-on"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:32
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:44
+msgid "Current version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:33
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:45
+msgid "Recommended version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:46
+msgid ""
+"If you ignore this warning, there may be unexpected behaviour from the "
+"plugin. You may also be missing on security patches and bug fixes."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:47
+msgid "You should really update the add-ons."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:51
+msgid "Download updated add-ons"
+msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:29
 #: src/php/core-addons/status/templates/status-section-templates.template.php:26
@@ -2387,9 +2404,25 @@ msgstr "Csak action-ök"
 msgid "%s: %d hook(s)"
 msgstr "%s: %d hook-ok"
 
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:30
-msgid "Required customer area version"
-msgstr "Szükséges Customer Area verzió"
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:33
+msgid "Get latest add-ons from your account"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:35
+msgid "Check versions again"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:64
+msgid "Version mismatch"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:66
+msgid "Addon is active"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:68
+msgid "Addon is not active"
+msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-needs-attention.template.php:33
 msgid "Issue #%d"
@@ -2399,9 +2432,7 @@ msgstr "Probléma #%d"
 msgid ""
 "Congratulations, everything seems to be configured properly. You can enjoy "
 "your customer area now."
-msgstr ""
-"Gratulálunk, minden konfiguráció helyesnek tűnik. Használhatod a Customer "
-"Area-t. "
+msgstr "Gratulálunk, minden konfiguráció helyesnek tűnik. Használhatod a Customer Area-t. "
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:27
 #: src/php/core-addons/status/templates/status-section-reset.template.php:33
@@ -2412,9 +2443,7 @@ msgstr "Beállítások exportálása"
 msgid ""
 "You can export all the settings to a JSON file. You can then use that file "
 "to restore your settings using the import settings field below."
-msgstr ""
-"A beállításokat JSON formátumban exportálhatod. Ezt a fájlt használhatod "
-"majd az importálás során, a beállítások visszaállításához. "
+msgstr "A beállításokat JSON formátumban exportálhatod. Ezt a fájlt használhatod majd az importálás során, a beállítások visszaállításához. "
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:36
 #: src/php/core-addons/status/templates/status-section-reset.template.php:43
@@ -2423,9 +2452,9 @@ msgstr "Beállítások importálása"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:38
 msgid ""
-"You can import all the settings you had previously exported from a JSON file."
-msgstr ""
-"Minden beállítást importálhatsz, amit előzőleg a JSON fájlba exportáltál. "
+"You can import all the settings you had previously exported from a JSON "
+"file."
+msgstr "Minden beállítást importálhatsz, amit előzőleg a JSON fájlba exportáltál. "
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:47
 msgid "Reset settings"
@@ -2435,9 +2464,7 @@ msgstr "Beállítások alapértelmezése"
 msgid ""
 "Pressing the button below will reset all your Customer Area settings to the "
 "default values. This cannot be undone!"
-msgstr ""
-"A gomb megnyomásával a Customer Area minden beállítása alapértelmezésre áll "
-"visssza. Ezt a műveletet nem lehet visszavonni!"
+msgstr "A gomb megnyomásával a Customer Area minden beállítása alapértelmezésre áll visssza. Ezt a műveletet nem lehet visszavonni!"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:53
 msgid "Reset default settings"
@@ -2449,8 +2476,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:58
 msgid ""
-"Pressing the button below will clean-up any data related to WP Customer Area "
-"(posts, taxonomies, etc.). This cannot be undone!"
+"Pressing the button below will clean-up any data related to WP Customer Area"
+" (posts, taxonomies, etc.). This cannot be undone!"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:62
@@ -2459,11 +2486,9 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:68
 msgid ""
-"Are you sure that you want to reset all the settings to their default values "
-"(this operation cannot be undone)?"
-msgstr ""
-"Biztos vagy benne, hogy minden beállítást alapértelmezésre akarsz "
-"visszaállítani (ezt a műveletet nem lehet visszavonni)?"
+"Are you sure that you want to reset all the settings to their default values"
+" (this operation cannot be undone)?"
+msgstr "Biztos vagy benne, hogy minden beállítást alapértelmezésre akarsz visszaállítani (ezt a műveletet nem lehet visszavonni)?"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:73
 msgid ""
@@ -2543,6 +2568,10 @@ msgid ""
 "fields empty if you want to keep your current password"
 msgstr ""
 
+#: src/php/core-classes/Addon/addon-manager.class.php:138
+msgid "The plugin and the add-ons you have installed may be incompatible."
+msgstr ""
+
 #: src/php/core-classes/Content/list-table.class.php:246
 msgid ""
 "<a href=\"%1$s\" title=\"Show content classified under %2$s\" class=\"cuar-"
@@ -2602,61 +2631,55 @@ msgstr ""
 msgid "Empty Trash"
 msgstr "Lomtár ürítése"
 
-#: src/php/core-classes/Licensing/license-validation-result.class.php:81
-msgid ""
-"You have bought your license on the previous shop. We have a <a href=\"%1$s"
-"\">brand new website</a>, please contact us so that we can help you migrate "
-"your license to the new shop."
+#: src/php/core-classes/Cron/cron.class.php:43
+msgid "Once weekly"
 msgstr ""
-"A licencedet a régi shopunkban vásároltad meg. Van egy <a href=\"%1$s\">új "
-"weboldalunk</a>, kérünk, hogy vedd fel velünk a kapcsolatot, hogy "
-"segíthessünk a licenced migrálásában. "
 
-#: src/php/core-classes/Licensing/licensing.class.php:73
+#: src/php/core-classes/Licensing/licensing.class.php:76
 msgid "Unknown add-on"
 msgstr "Ismeretlen kiegészítő"
 
-#: src/php/core-classes/Licensing/licensing.class.php:86
+#: src/php/core-classes/Licensing/licensing.class.php:82
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
-msgstr ""
-"Probléma történt a licencszerver elérésekor. Helyes a licenckulcs? A PHP "
-"cURL engedélyezve van? "
+msgstr "Probléma történt a licencszerver elérésekor. Helyes a licenckulcs? A PHP cURL engedélyezve van? "
 
-#: src/php/core-classes/Licensing/licensing.class.php:94
+#: src/php/core-classes/Licensing/licensing.class.php:87
 msgid "Your license is valid until: %s"
 msgstr "A licenszed %s-ig érvényes"
 
-#: src/php/core-classes/Licensing/licensing.class.php:102
+#: src/php/core-classes/Licensing/licensing.class.php:95
 msgid "This license key has been revoked."
 msgstr "A licenszkulcsod érvényessége vissza lett vonva."
 
-#: src/php/core-classes/Licensing/licensing.class.php:109
+#: src/php/core-classes/Licensing/licensing.class.php:100
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
-msgstr ""
-"Elérted a licenszkulccsal használható maximális site-ok számát. Maximum %s "
-"site-on használhatod."
+msgstr "Elérted a licenszkulccsal használható maximális site-ok számát. Maximum %s site-on használhatod."
 
-#: src/php/core-classes/Licensing/licensing.class.php:118
-msgid "Renew license"
-msgstr "Licenc megújítása"
-
-#: src/php/core-classes/Licensing/licensing.class.php:120
+#: src/php/core-classes/Licensing/licensing.class.php:107
 msgid "Your license has expired at the date: %s"
 msgstr "A licenszed %s-n lejárt"
 
-#: src/php/core-classes/Licensing/licensing.class.php:128
+#: src/php/core-classes/Licensing/licensing.class.php:110
+msgid "Renew license"
+msgstr "Licenc megújítása"
+
+#: src/php/core-classes/Licensing/licensing.class.php:118
 msgid "This license key does not match."
 msgstr "A licenszkulcs nem egyezik. "
 
-#: src/php/core-classes/Licensing/licensing.class.php:135
+#: src/php/core-classes/Licensing/licensing.class.php:125
 msgid "This license key seems to have been generated for another product."
 msgstr "Úgy tűnik, ez a licenszkulcs egy másik termékhez készült. "
 
-#: src/php/core-classes/Licensing/licensing.class.php:142
+#: src/php/core-classes/Licensing/licensing.class.php:131
+msgid "Your license is not active for this URL."
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:136
 msgid "Problem when validating your license key"
 msgstr "A licenszkulcs érvényesítése során probléma lépett fel"
 
@@ -2666,8 +2689,7 @@ msgstr ""
 
 #: src/php/core-classes/MessageCenter/message-center.class.php:148
 msgid "<strong>WP Customer Area</strong> has detected some potential issues: "
-msgstr ""
-"A <strong>WP Customer Area</strong> néhány lehetséges problémát talált: "
+msgstr "A <strong>WP Customer Area</strong> néhány lehetséges problémát talált: "
 
 #: src/php/core-classes/MessageCenter/message-center.class.php:156
 msgid "Fix these potential issues"
@@ -2677,101 +2699,102 @@ msgstr "Lehetséges hibák javítása"
 msgid "The shortcode <code>[%1$s]</code> is missing required parameter: %2$s"
 msgstr ""
 
-#: src/php/core-classes/addon-container-page.class.php:807
-#: src/php/core-classes/addon-content-page.class.php:834
+#: src/php/core-classes/addon-container-page.class.php:833
+#: src/php/core-classes/addon-content-page.class.php:860
 msgid "Frontend Integration"
 msgstr "Front-end integráció"
 
-#: src/php/core-classes/addon-container-page.class.php:819
-#: src/php/core-classes/addon-content-page.class.php:846
+#: src/php/core-classes/addon-container-page.class.php:845
+#: src/php/core-classes/addon-content-page.class.php:872
 msgid "Show after post"
 msgstr "Mutassa a post után"
 
-#: src/php/core-classes/addon-container-page.class.php:828
-#: src/php/core-classes/addon-content-page.class.php:855
+#: src/php/core-classes/addon-container-page.class.php:854
 msgid "Show additional information after the post in the single post view."
 msgstr "Mutasson egyéb információkat a post után szimpla post nézetben. "
 
-#: src/php/core-classes/addon-container-page.class.php:830
-#: src/php/core-classes/addon-content-page.class.php:857
+#: src/php/core-classes/addon-container-page.class.php:856
+#: src/php/core-classes/addon-content-page.class.php:883
 msgid ""
 "You can disable this if you have your own theme template file for single "
 "posts. The theme file to look for or create should be called: %s."
-msgstr ""
-"Ezt letilthatod, ha van saját template fájlod a szimpla postokhoz. A téma "
-"fájl neve, amt meg kell keresni, vagy létre kell hozni: %s."
+msgstr "Ezt letilthatod, ha van saját template fájlod a szimpla postokhoz. A téma fájl neve, amt meg kell keresni, vagy létre kell hozni: %s."
 
-#: src/php/core-classes/addon-container-page.class.php:851
-#: src/php/core-classes/addon-content-page.class.php:878
+#: src/php/core-classes/addon-container-page.class.php:877
+#: src/php/core-classes/addon-content-page.class.php:904
 msgid "Show recent content on the dashboard."
 msgstr "Mutassa a legújabb tartalmakat a dashboard-on. "
 
-#: src/php/core-classes/addon-container-page.class.php:865
-#: src/php/core-classes/addon-content-page.class.php:893
+#: src/php/core-classes/addon-container-page.class.php:891
+#: src/php/core-classes/addon-content-page.class.php:919
 msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all items."
-msgstr ""
-"Hány tétel jelenjen meg a dashboard oldalon? A -1 azt jelenti, hogy minden "
-"jelenjen meg. "
+"Define how many items to allow on the dashboard page. -1 will show all "
+"items."
+msgstr "Hány tétel jelenjen meg a dashboard oldalon? A -1 azt jelenti, hogy minden jelenjen meg. "
 
-#: src/php/core-classes/addon-container-page.class.php:946
+#: src/php/core-classes/addon-container-page.class.php:972
 msgid "Slug that is used in the URL for archives of the taxonomy: "
 msgstr "Slug, ami a taxonómiák archív URL-jében lesz használva."
+
+#: src/php/core-classes/addon-content-page.class.php:881
+msgid ""
+"Show additional information before and after the post in the single post "
+"view."
+msgstr ""
 
 #: src/php/core-classes/addon-create-content-page.class.php:85
 msgid "You are not allowed to create this type of content."
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:163
+#: src/php/core-classes/addon-create-content-page.class.php:145
 msgid "Content creation (from front-office)"
 msgstr "Tartalom létrehozása (a front-office-ból)"
 
-#: src/php/core-classes/addon-create-content-page.class.php:165
+#: src/php/core-classes/addon-create-content-page.class.php:147
 msgid "Create content from front office"
 msgstr "Tartalom létrehozása a front-office-ból"
 
-#: src/php/core-classes/addon-create-content-page.class.php:166
+#: src/php/core-classes/addon-create-content-page.class.php:148
 msgid "Bypass moderation (content is automatically published)"
 msgstr "Moderáció kihagyása (a tartalom automatikusan megjelenik)"
 
-#: src/php/core-classes/addon-create-content-page.class.php:197
+#: src/php/core-classes/addon-create-content-page.class.php:179
 msgid "Content creation"
 msgstr "Tartalom létrehozása"
 
-#: src/php/core-classes/addon-create-content-page.class.php:210
+#: src/php/core-classes/addon-create-content-page.class.php:192
 msgid "Moderation"
 msgstr "Moderáció"
 
-#: src/php/core-classes/addon-create-content-page.class.php:218
+#: src/php/core-classes/addon-create-content-page.class.php:200
 msgid "Enable moderation when new content is submitted by a user."
-msgstr ""
-"Moderáció engedélyezése, miután a felhasználó új tartalmat küldött be. "
+msgstr "Moderáció engedélyezése, miután a felhasználó új tartalmat küldött be. "
 
-#: src/php/core-classes/addon-create-content-page.class.php:234
+#: src/php/core-classes/addon-create-content-page.class.php:216
 msgid "Default owners"
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:251
+#: src/php/core-classes/addon-create-content-page.class.php:233
 msgid "Default category"
 msgstr "Alapértelmezett kategória"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:743
+#: src/php/core-classes/addon-edit-content-page.class.php:765
 msgid "Content edition (from front-office)"
 msgstr "Tartalom szerkesztése (a front-end-ről)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:745
+#: src/php/core-classes/addon-edit-content-page.class.php:767
 msgid "Select an owner (uses default else)"
 msgstr "Tulajdonos kiválasztása (egyébként az alapértelmezett használata)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:746
+#: src/php/core-classes/addon-edit-content-page.class.php:768
 msgid "Select a category (uses default else)"
 msgstr "Kategória kiválasztása (egyébként az alapértelmezett használata)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:809
+#: src/php/core-classes/addon-edit-content-page.class.php:831
 msgid "Rich Editor"
 msgstr "Rich Editor"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:817
+#: src/php/core-classes/addon-edit-content-page.class.php:839
 msgid "Enable the rich editor when editing content."
 msgstr "Rich Editor engedélyezése a tartalom szerkesztéséhez."
 
@@ -2779,118 +2802,114 @@ msgstr "Rich Editor engedélyezése a tartalom szerkesztéséhez."
 msgid "Customer Page - %s"
 msgstr "Ügyfél oldal - %s"
 
-#: src/php/core-classes/addon-page.class.php:313
+#: src/php/core-classes/addon-page.class.php:292
 msgid "This page requires login, you should not be here"
 msgstr "Ez az oldal bejelentkezést igény"
 
-#: src/php/core-classes/addon-page.class.php:325
+#: src/php/core-classes/addon-page.class.php:300
 msgid "You are not allowed to view this page"
 msgstr "Nincs jogosultságod az oldal megtekintéséhez"
 
-#: src/php/core-classes/addon-page.class.php:433
+#: src/php/core-classes/addon-page.class.php:402
 msgid "WPCA - %s"
 msgstr ""
 
-#: src/php/core-classes/addon-update-content-page.class.php:144
+#: src/php/core-classes/addon-update-content-page.class.php:134
 msgid "You must supply a post ID to delete"
 msgstr "Meg kell adnod egy post ID-t a törléshez"
 
-#: src/php/core-classes/addon-update-content-page.class.php:151
+#: src/php/core-classes/addon-update-content-page.class.php:141
 msgid "You are not allowed to delete this post"
 msgstr "Nincs jogosultságod ezt a postot törölni"
 
-#: src/php/core-classes/addon-update-content-page.class.php:159
+#: src/php/core-classes/addon-update-content-page.class.php:149
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
-#: src/php/core-classes/addon-update-content-page.class.php:160
+#: src/php/core-classes/addon-update-content-page.class.php:150
 msgid "The content has been deleted."
 msgstr "A tartalom törölve."
 
-#: src/php/core-classes/addon-update-content-page.class.php:284
-#: src/php/core-classes/addon-update-content-page.class.php:285
+#: src/php/core-classes/addon-update-content-page.class.php:274
+#: src/php/core-classes/addon-update-content-page.class.php:275
 msgid "Delete"
 msgstr "Törlés"
 
-#: src/php/core-classes/addon-update-content-page.class.php:288
+#: src/php/core-classes/addon-update-content-page.class.php:278
 msgid "Are you sure that you want to delete this content?"
 msgstr "Biztosan törölni akarod ezt a tartalmat? "
 
-#: src/php/core-classes/addon-update-content-page.class.php:306
+#: src/php/core-classes/addon-update-content-page.class.php:296
 msgid "Content update (from front-office)"
 msgstr "Tartalom frissítése (a front-office-ről)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:308
+#: src/php/core-classes/addon-update-content-page.class.php:298
 msgid "Update any content from front office"
 msgstr "Bármilyen tartalom frissítése (a front-office-ről)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:309
+#: src/php/core-classes/addon-update-content-page.class.php:299
 msgid "Update authored content"
 msgstr "Jóváhagyott tartalom frissítése"
 
-#: src/php/core-classes/addon-update-content-page.class.php:310
+#: src/php/core-classes/addon-update-content-page.class.php:300
 msgid "Update owned content"
 msgstr "Tlajdonolt tartalom frissítése"
 
-#: src/php/core-classes/addon-update-content-page.class.php:314
+#: src/php/core-classes/addon-update-content-page.class.php:304
 msgid "Content removal (from front-office)"
 msgstr "Tartalom eltávolítása (a front-office-ból)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:316
+#: src/php/core-classes/addon-update-content-page.class.php:306
 msgid "Delete any content from front office"
 msgstr "Bármilyen tartalom eltávolítása (a front-office-ból)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:317
+#: src/php/core-classes/addon-update-content-page.class.php:307
 msgid "Delete authored content"
 msgstr "Jóváhagyott tartalom törlése"
 
-#: src/php/core-classes/addon-update-content-page.class.php:318
+#: src/php/core-classes/addon-update-content-page.class.php:308
 msgid "Delete owned content"
 msgstr "Tulajdonolt tartalom törlése"
 
-#: src/php/core-classes/addon-update-content-page.class.php:333
+#: src/php/core-classes/addon-update-content-page.class.php:323
 msgid "You must specify a post to delete"
 msgstr "Meg kell adni egy postot a törléshez"
 
-#: src/php/core-classes/addon-update-content-page.class.php:370
+#: src/php/core-classes/addon-update-content-page.class.php:360
 msgid "You must specify a post to edit"
 msgstr "Meg kell adni egy postot a szerkesztéshez"
 
-#: src/php/core-classes/addon-update-content-page.class.php:411
+#: src/php/core-classes/addon-update-content-page.class.php:401
 msgid "Content edition"
 msgstr "Tartalomszerkesztés"
 
-#: src/php/core-classes/addon.class.php:97
+#: src/php/core-classes/addon.class.php:135
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
-msgstr ""
-"<strong>Hiba: </strong>A WP Customer Area kiegészítő aktív, de a fő plugin "
-"nincs telepítve!"
+msgstr "<strong>Hiba: </strong>A WP Customer Area kiegészítő aktív, de a fő plugin nincs telepítve!"
 
-#: src/php/core-classes/addon.class.php:125
-msgid "License Keys"
-msgstr "Licenszkulcsok"
-
-#: src/php/core-classes/addon.class.php:137
-msgid "License keys for commercial add-ons"
-msgstr "Licenszkulcsok a fizetős kiegészítőkhöz"
-
-#: src/php/core-classes/addon.class.php:179
+#: src/php/core-classes/addon.class.php:207
 msgid ""
-"This page allows you to enter license key you have received when you "
-"purchased commercial addons."
+"Automatic updates are currently disabled for this plugin. You are probably "
+"missing some security fixes."
 msgstr ""
-"Ezen az oldalon kell megadnod azt a licenszkulcsot, amit a fizetős "
-"kiegészítő vásárlásakor kaptál."
 
-#: src/php/core-classes/addon.class.php:180
-msgid ""
-"Do not activate your license on your development site. Only on the final "
-"site where you are running the plugin."
+#: src/php/core-classes/addon.class.php:209
+msgid "Enter a valid license key to enable automatic updates."
 msgstr ""
-"A fejlesztői site-on nem kell aktiválni a licenszkulcsot, csak azon a "
-"végleges site-on ahol a plugin futni fog. "
+
+#: src/php/core-classes/addon.class.php:259
+msgid ""
+"You have invalid or expired license keys for WP Customer Area. Please go to "
+"the <a href=\"%s\">Licenses page</a> to correct this issue."
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:262
+msgid ""
+"If you do not know these license keys, you can find them listed on <a "
+"href=\"%s\" target=\"_blank\">your WP Customer Area account</a>."
+msgstr ""
 
 #: src/php/core-classes/object-meta/field/display-name-field.class.php:47
 #: src/php/core-classes/object-meta/field/text-field.class.php:58
@@ -2947,194 +2966,240 @@ msgstr "%1$s - legfeljebb %2$s karaktert tartalmazhat."
 msgid "%1$s is required."
 msgstr "%1$s szükséges"
 
-#: src/php/core-classes/plugin.class.php:210
+#: src/php/core-classes/plugin.class.php:223
 msgid "Checking license..."
 msgstr "Licensz ellenőrzése..."
 
-#: src/php/core-classes/plugin.class.php:211
+#: src/php/core-classes/plugin.class.php:224
 msgid "Failed to contact server"
 msgstr "Nem sikerült kapcsolatba lépni a szerverrel"
 
-#: src/php/core-classes/plugin.class.php:212
-#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:225
+#: src/php/core-classes/plugin.class.php:252
 msgid "Saving..."
 msgstr "Mentés...."
 
-#: src/php/core-classes/plugin.class.php:213
-#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:226
+#: src/php/core-classes/plugin.class.php:253
 msgid "Click to edit..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:214
-#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:227
+#: src/php/core-classes/plugin.class.php:254
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:215
-#: src/php/core-classes/plugin.class.php:242
+#: src/php/core-classes/plugin.class.php:228
+#: src/php/core-classes/plugin.class.php:255
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/php/core-classes/plugin.class.php:227
-#: src/php/core-classes/plugin.class.php:254
+#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:267
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:229
-#: src/php/core-classes/plugin.class.php:256
+#: src/php/core-classes/plugin.class.php:242
+#: src/php/core-classes/plugin.class.php:269
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:595
+#: src/php/core-classes/plugin.class.php:689
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
-msgstr ""
-"A permalinkek le vannak tiltva. A Customer Area nem fog megfelelően működni. "
-"Kérünk, <a href=\"%1$s\">engedélyezd a WordPress beállításaiban</a>"
+msgstr "A permalinkek le vannak tiltva. A Customer Area nem fog megfelelően működni. Kérünk, <a href=\"%1$s\">engedélyezd a WordPress beállításaiban</a>"
 
-#: src/php/core-classes/plugin.class.php:621
-msgid "Some add-ons require a newer version of the main plugin."
-msgstr "Néhány kiegészítőnek újabb verziójú fő plugin-re van szüksége. "
-
-#: src/php/core-classes/plugin.class.php:932
+#: src/php/core-classes/plugin.class.php:989
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:82
-#: src/php/core-classes/settings.class.php:91
+#: src/php/core-classes/settings.class.php:80
+#: src/php/core-classes/settings.class.php:89
 msgid "WP Customer Area Settings"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:144
+#: src/php/core-classes/settings.class.php:137
 msgid "The page title cannot be empty"
 msgstr "Az oldal címe nem lehet üres"
 
-#: src/php/core-classes/settings.class.php:277
+#: src/php/core-classes/settings.class.php:250
 msgid "Frontend"
 msgstr "Front-end"
 
-#: src/php/core-classes/settings.class.php:292
-#: src/php/core-classes/settings.class.php:334
+#: src/php/core-classes/settings.class.php:265
+msgid "License Keys"
+msgstr "Licenszkulcsok"
+
+#: src/php/core-classes/settings.class.php:281
+#: src/php/core-classes/settings.class.php:323
 msgid "General Settings"
 msgstr "Általános beállítások"
 
-#: src/php/core-classes/settings.class.php:297
+#: src/php/core-classes/settings.class.php:286
 msgid "Admin theme"
 msgstr "Admin téma"
 
-#: src/php/core-classes/settings.class.php:341
+#: src/php/core-classes/settings.class.php:329
 msgid "Use skin"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:348
+#: src/php/core-classes/settings.class.php:336
 msgid ""
 "Includes the WP Customer Area skin to provide a stylesheet for the plugin."
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:349
+#: src/php/core-classes/settings.class.php:337
 msgid ""
 "You can uncheck this if your theme includes support for WP Customer Area."
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:354
+#: src/php/core-classes/settings.class.php:342
 msgid "Skin to use"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:362
+#: src/php/core-classes/settings.class.php:350
 msgid ""
 "You can make your own skin, please refer to <a href=\"%1$s\">our "
 "documentation about skins</a>."
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:363
+#: src/php/core-classes/settings.class.php:351
 msgid "/documentation/the-skin-system/"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:370
+#: src/php/core-classes/settings.class.php:358
 msgid "Debug templates"
 msgstr "Template hibakeresés"
 
-#: src/php/core-classes/settings.class.php:377
+#: src/php/core-classes/settings.class.php:365
 msgid "Print debug information about the templates used by Customer Area."
 msgstr "Debug információkat jelenít meg a használt template-ekről."
 
-#: src/php/core-classes/settings.class.php:496
+#: src/php/core-classes/settings.class.php:405
+msgid "Licensing and updates"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:412
+msgid "Beta versions"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:420
+msgid ""
+"If checked, you will be notified when a beta version is published. Else, "
+"only stable updates will be delivered."
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:426
+msgid "Bypass SSL"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:434
+msgid ""
+"Check this box if you have problems validating your license keys. The "
+"license server will be called using simple HTTP protocol instead of HTTPS."
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:435
+msgid "You need to save your changes before validating the licenses again!."
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:441
+msgid "License keys for commercial add-ons"
+msgstr "Licenszkulcsok a fizetős kiegészítőkhöz"
+
+#: src/php/core-classes/settings.class.php:488
+msgid ""
+"This page allows you to enter license key you have received when you "
+"purchased commercial addons."
+msgstr "Ezen az oldalon kell megadnod azt a licenszkulcsot, amit a fizetős kiegészítő vásárlásakor kaptál."
+
+#: src/php/core-classes/settings.class.php:489
+msgid ""
+"Do not activate your license on your development site. Only on the final "
+"site where you are running the plugin."
+msgstr "A fejlesztői site-on nem kell aktiválni a licenszkulcsot, csak azon a végleges site-on ahol a plugin futni fog. "
+
+#: src/php/core-classes/settings.class.php:580
 msgid " is not a valid post"
 msgstr "nem érvényes post"
 
-#: src/php/core-classes/settings.class.php:535
+#: src/php/core-classes/settings.class.php:616
 msgid " is not a valid role"
 msgstr "nem érvényes szerepkör"
 
-#: src/php/core-classes/settings.class.php:573
+#: src/php/core-classes/settings.class.php:651
 msgid " cannot be empty"
 msgstr "nem lehet üres"
 
-#: src/php/core-classes/settings.class.php:598
+#: src/php/core-classes/settings.class.php:673
 msgid " is not a valid email"
 msgstr "nem valós email cím"
 
-#: src/php/core-classes/settings.class.php:621
+#: src/php/core-classes/settings.class.php:695
 msgid " is not a valid value"
 msgstr "nem valós dátum"
 
-#: src/php/core-classes/settings.class.php:650
+#: src/php/core-classes/settings.class.php:723
 msgid "must be an integer"
 msgstr "egész számnak kell lennie"
 
-#: src/php/core-classes/settings.class.php:662
+#: src/php/core-classes/settings.class.php:734
 msgid "must be greater than %s"
 msgstr "nagyobbnak kell lennie, mint %s"
 
-#: src/php/core-classes/settings.class.php:673
+#: src/php/core-classes/settings.class.php:744
 msgid "must be lower than %s"
 msgstr "kisebbnek kell lennie, mint %s"
 
-#: src/php/core-classes/settings.class.php:715
+#: src/php/core-classes/settings.class.php:779
 msgid "Invalid owner"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:734
-#: src/php/core-classes/settings.class.php:769
+#: src/php/core-classes/settings.class.php:797
+#: src/php/core-classes/settings.class.php:827
 msgid "you cannot select multiple terms."
 msgstr "csak egy kifejezést választhatsz ki"
 
-#: src/php/core-classes/settings.class.php:952
+#: src/php/core-classes/settings.class.php:912
+msgid "Validate"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:990
 msgid "Upload File"
 msgstr "Fájl feltöltése"
 
-#: src/php/core-classes/settings.class.php:1096
+#: src/php/core-classes/settings.class.php:1122
 msgid "None"
 msgstr "Nincs"
 
-#: src/php/core-classes/settings.class.php:1120
+#: src/php/core-classes/settings.class.php:1143
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Lézető törlése &amp; új létrehozása &raquo;"
 
-#: src/php/core-classes/settings.class.php:1125
+#: src/php/core-classes/settings.class.php:1148
 msgid "Edit it &raquo;"
 msgstr "Szerkesztés &raquo;"
 
-#: src/php/core-classes/settings.class.php:1133
+#: src/php/core-classes/settings.class.php:1153
 msgid "Create it &raquo;"
 msgstr "Létrehozás &raquo;"
 
-#: src/php/core-classes/settings.class.php:1250
+#: src/php/core-classes/settings.class.php:1259
 msgid "Any Role"
 msgstr "Bármilyen szerepkör"
 
-#: src/php/core-classes/settings.class.php:1455
+#: src/php/core-classes/settings.class.php:1449
 msgid "Main plugin folder"
 msgstr "Fő plugin könyvtára"
 
-#: src/php/core-classes/settings.class.php:1461
+#: src/php/core-classes/settings.class.php:1455
 msgid "Current theme folder"
 msgstr "Akutális téma könyvtára"
 
-#: src/php/core-classes/settings.class.php:1467
+#: src/php/core-classes/settings.class.php:1461
 msgid "WordPress content folder"
 msgstr "WordPress tartalmak könyvtára"
 
@@ -3211,19 +3276,19 @@ msgstr "Mutat"
 msgid "Hide"
 msgstr "Elrejt"
 
-#: src/php/functions/functions-private-files.php:284
+#: src/php/functions/functions-private-files.php:288
 msgid "TB"
 msgstr "TB"
 
-#: src/php/functions/functions-private-files.php:287
+#: src/php/functions/functions-private-files.php:291
 msgid "GB"
 msgstr "GB"
 
-#: src/php/functions/functions-private-files.php:290
+#: src/php/functions/functions-private-files.php:294
 msgid "MB"
 msgstr "MB"
 
-#: src/php/functions/functions-private-files.php:293
+#: src/php/functions/functions-private-files.php:297
 msgid "kB"
 msgstr "kB"
 
@@ -3233,23 +3298,23 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:52
 msgid "Afghanistan"
-msgstr ""
+msgstr "Afghanistan"
 
 #: src/php/helpers/country-helper.class.php:53
 msgid "&#197;land Islands"
-msgstr ""
+msgstr "&#197;land Islands"
 
 #: src/php/helpers/country-helper.class.php:54
 msgid "Albania"
-msgstr ""
+msgstr "Albania"
 
 #: src/php/helpers/country-helper.class.php:55
 msgid "Algeria"
-msgstr ""
+msgstr "Algeria"
 
 #: src/php/helpers/country-helper.class.php:56
 msgid "American Samoa"
-msgstr ""
+msgstr "American Samoa"
 
 #: src/php/helpers/country-helper.class.php:57
 msgid "Andorra"
@@ -3257,7 +3322,7 @@ msgstr "Andorra"
 
 #: src/php/helpers/country-helper.class.php:58
 msgid "Angola"
-msgstr ""
+msgstr "Angola"
 
 #: src/php/helpers/country-helper.class.php:59
 msgid "Anguilla"
@@ -3269,7 +3334,7 @@ msgstr "ANTARKTISZ"
 
 #: src/php/helpers/country-helper.class.php:61
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "Antigua and Barbuda"
 
 #: src/php/helpers/country-helper.class.php:62
 msgid "Argentina"
@@ -3277,7 +3342,7 @@ msgstr "Argentina"
 
 #: src/php/helpers/country-helper.class.php:63
 msgid "Armenia"
-msgstr ""
+msgstr "Armenia"
 
 #: src/php/helpers/country-helper.class.php:64
 msgid "Aruba"
@@ -3289,15 +3354,15 @@ msgstr "AUSZTRÁLIA"
 
 #: src/php/helpers/country-helper.class.php:66
 msgid "Austria"
-msgstr ""
+msgstr "Austria"
 
 #: src/php/helpers/country-helper.class.php:67
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Azerbaijan"
 
 #: src/php/helpers/country-helper.class.php:68
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamas"
 
 #: src/php/helpers/country-helper.class.php:69
 msgid "Bahrain"
@@ -3305,7 +3370,7 @@ msgstr "Bahrain"
 
 #: src/php/helpers/country-helper.class.php:70
 msgid "Bangladesh"
-msgstr ""
+msgstr "Bangladesh"
 
 #: src/php/helpers/country-helper.class.php:71
 msgid "Barbados"
@@ -3313,11 +3378,11 @@ msgstr "Barbados"
 
 #: src/php/helpers/country-helper.class.php:72
 msgid "Belarus"
-msgstr ""
+msgstr "Belarus"
 
 #: src/php/helpers/country-helper.class.php:73
 msgid "Belgium"
-msgstr ""
+msgstr "Belgium"
 
 #: src/php/helpers/country-helper.class.php:74
 msgid "Belize"
@@ -3325,7 +3390,7 @@ msgstr "Belize"
 
 #: src/php/helpers/country-helper.class.php:75
 msgid "Benin"
-msgstr ""
+msgstr "Benin"
 
 #: src/php/helpers/country-helper.class.php:76
 msgid "Bermuda"
@@ -3333,11 +3398,11 @@ msgstr "Bermuda"
 
 #: src/php/helpers/country-helper.class.php:77
 msgid "Bhutan"
-msgstr ""
+msgstr "Bhutan"
 
 #: src/php/helpers/country-helper.class.php:78
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolivia"
 
 #: src/php/helpers/country-helper.class.php:79
 msgid "Bonaire, Saint Eustatius and Saba"
@@ -3345,11 +3410,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:80
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosnia and Herzegovina"
 
 #: src/php/helpers/country-helper.class.php:81
 msgid "Botswana"
-msgstr ""
+msgstr "Botswana"
 
 #: src/php/helpers/country-helper.class.php:82
 msgid "Bouvet Island"
@@ -3357,11 +3422,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:83
 msgid "Brazil"
-msgstr ""
+msgstr "Brazil"
 
 #: src/php/helpers/country-helper.class.php:84
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "British Indian Ocean Territory"
 
 #: src/php/helpers/country-helper.class.php:85
 msgid "Brunei Darrussalam"
@@ -3369,27 +3434,27 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:86
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulgaria"
 
 #: src/php/helpers/country-helper.class.php:87
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Burkina Faso"
 
 #: src/php/helpers/country-helper.class.php:88
 msgid "Burundi"
-msgstr ""
+msgstr "Burundi"
 
 #: src/php/helpers/country-helper.class.php:89
 msgid "Cambodia"
-msgstr ""
+msgstr "Cambodia"
 
 #: src/php/helpers/country-helper.class.php:90
 msgid "Cameroon"
-msgstr ""
+msgstr "Cameroon"
 
 #: src/php/helpers/country-helper.class.php:91
 msgid "Canada"
-msgstr ""
+msgstr "Canada"
 
 #: src/php/helpers/country-helper.class.php:92
 msgid "Cape Verde"
@@ -3397,27 +3462,27 @@ msgstr "Cape Verde"
 
 #: src/php/helpers/country-helper.class.php:93
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Cayman Islands"
 
 #: src/php/helpers/country-helper.class.php:94
 msgid "Central African Republic"
-msgstr ""
+msgstr "Central African Republic"
 
 #: src/php/helpers/country-helper.class.php:95
 msgid "Chad"
-msgstr ""
+msgstr "Chad"
 
 #: src/php/helpers/country-helper.class.php:96
 msgid "Chile"
-msgstr ""
+msgstr "Chile"
 
 #: src/php/helpers/country-helper.class.php:97
 msgid "China"
-msgstr ""
+msgstr "China"
 
 #: src/php/helpers/country-helper.class.php:98
 msgid "Christmas Island"
-msgstr ""
+msgstr "Christmas Island"
 
 #: src/php/helpers/country-helper.class.php:99
 msgid "Cocos Islands"
@@ -3425,11 +3490,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:100
 msgid "Colombia"
-msgstr ""
+msgstr "Colombia"
 
 #: src/php/helpers/country-helper.class.php:101
 msgid "Comoros"
-msgstr ""
+msgstr "Comoros"
 
 #: src/php/helpers/country-helper.class.php:102
 msgid "Congo, Democratic People's Republic"
@@ -3441,7 +3506,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:104
 msgid "Cook Islands"
-msgstr ""
+msgstr "Cook Islands"
 
 #: src/php/helpers/country-helper.class.php:105
 msgid "Costa Rica"
@@ -3457,7 +3522,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:108
 msgid "Cuba"
-msgstr ""
+msgstr "Cuba"
 
 #: src/php/helpers/country-helper.class.php:109
 msgid "Cura&Ccedil;ao"
@@ -3465,15 +3530,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:110
 msgid "Cyprus"
-msgstr ""
+msgstr "Cyprus"
 
 #: src/php/helpers/country-helper.class.php:111
 msgid "Czech Republic"
-msgstr ""
+msgstr "Czech Republic"
 
 #: src/php/helpers/country-helper.class.php:112
 msgid "Denmark"
-msgstr ""
+msgstr "Denmark"
 
 #: src/php/helpers/country-helper.class.php:113
 msgid "Djibouti"
@@ -3485,7 +3550,7 @@ msgstr "Dominika"
 
 #: src/php/helpers/country-helper.class.php:115
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Dominican Republic"
 
 #: src/php/helpers/country-helper.class.php:116
 msgid "East Timor"
@@ -3493,15 +3558,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:117
 msgid "Ecuador"
-msgstr ""
+msgstr "Ecuador"
 
 #: src/php/helpers/country-helper.class.php:118
 msgid "Egypt"
-msgstr ""
+msgstr "Egypt"
 
 #: src/php/helpers/country-helper.class.php:119
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Equatorial Guinea"
 
 #: src/php/helpers/country-helper.class.php:120
 msgid "El Salvador"
@@ -3509,23 +3574,23 @@ msgstr "El Salvador"
 
 #: src/php/helpers/country-helper.class.php:121
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrea"
 
 #: src/php/helpers/country-helper.class.php:122
 msgid "Estonia"
-msgstr ""
+msgstr "Estonia"
 
 #: src/php/helpers/country-helper.class.php:123
 msgid "Ethiopia"
-msgstr ""
+msgstr "Ethiopia"
 
 #: src/php/helpers/country-helper.class.php:124
 msgid "Falkland Islands"
-msgstr ""
+msgstr "Falkland Islands"
 
 #: src/php/helpers/country-helper.class.php:125
 msgid "Faroe Islands"
-msgstr ""
+msgstr "Faroe Islands"
 
 #: src/php/helpers/country-helper.class.php:126
 msgid "Fiji"
@@ -3533,47 +3598,47 @@ msgstr "Fiji"
 
 #: src/php/helpers/country-helper.class.php:127
 msgid "Finland"
-msgstr ""
+msgstr "Finland"
 
 #: src/php/helpers/country-helper.class.php:128
 msgid "France"
-msgstr ""
+msgstr "France"
 
 #: src/php/helpers/country-helper.class.php:129
 msgid "French Guiana"
-msgstr ""
+msgstr "French Guiana"
 
 #: src/php/helpers/country-helper.class.php:130
 msgid "French Polynesia"
-msgstr ""
+msgstr "French Polynesia"
 
 #: src/php/helpers/country-helper.class.php:131
 msgid "French Southern Territories"
-msgstr ""
+msgstr "French Southern Territories"
 
 #: src/php/helpers/country-helper.class.php:132
 msgid "Gabon"
-msgstr ""
+msgstr "Gabon"
 
 #: src/php/helpers/country-helper.class.php:133
 msgid "Gambia"
-msgstr ""
+msgstr "Gambia"
 
 #: src/php/helpers/country-helper.class.php:134
 msgid "Georgia"
-msgstr ""
+msgstr "Georgia"
 
 #: src/php/helpers/country-helper.class.php:135
 msgid "Germany"
-msgstr ""
+msgstr "Germany"
 
 #: src/php/helpers/country-helper.class.php:136
 msgid "Greece"
-msgstr ""
+msgstr "Greece"
 
 #: src/php/helpers/country-helper.class.php:137
 msgid "Ghana"
-msgstr ""
+msgstr "Ghana"
 
 #: src/php/helpers/country-helper.class.php:138
 msgid "Gibraltar"
@@ -3581,7 +3646,7 @@ msgstr "Gibraltár"
 
 #: src/php/helpers/country-helper.class.php:139
 msgid "Greenland"
-msgstr ""
+msgstr "Greenland"
 
 #: src/php/helpers/country-helper.class.php:140
 msgid "Grenada"
@@ -3605,11 +3670,11 @@ msgstr "Guernsey"
 
 #: src/php/helpers/country-helper.class.php:145
 msgid "Guinea"
-msgstr ""
+msgstr "Guinea"
 
 #: src/php/helpers/country-helper.class.php:146
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "Guinea-Bissau"
 
 #: src/php/helpers/country-helper.class.php:147
 msgid "Guyana"
@@ -3617,7 +3682,7 @@ msgstr "Guyana"
 
 #: src/php/helpers/country-helper.class.php:148
 msgid "Haiti"
-msgstr ""
+msgstr "Haiti"
 
 #: src/php/helpers/country-helper.class.php:149
 msgid "Heard and McDonald Islands"
@@ -3629,7 +3694,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:151
 msgid "Honduras"
-msgstr ""
+msgstr "Honduras"
 
 #: src/php/helpers/country-helper.class.php:152
 msgid "Hong Kong"
@@ -3637,27 +3702,27 @@ msgstr "Hong Kong"
 
 #: src/php/helpers/country-helper.class.php:153
 msgid "Hungary"
-msgstr ""
+msgstr "Magyarország"
 
 #: src/php/helpers/country-helper.class.php:154
 msgid "Iceland"
-msgstr ""
+msgstr "Iceland"
 
 #: src/php/helpers/country-helper.class.php:155
 msgid "India"
-msgstr ""
+msgstr "India"
 
 #: src/php/helpers/country-helper.class.php:156
 msgid "Indonesia"
-msgstr ""
+msgstr "Indonesia"
 
 #: src/php/helpers/country-helper.class.php:157
 msgid "Iran"
-msgstr ""
+msgstr "Iran"
 
 #: src/php/helpers/country-helper.class.php:158
 msgid "Iraq"
-msgstr ""
+msgstr "Iraq"
 
 #: src/php/helpers/country-helper.class.php:159
 msgid "Ireland"
@@ -3669,11 +3734,11 @@ msgstr "Man szigetek"
 
 #: src/php/helpers/country-helper.class.php:161
 msgid "Israel"
-msgstr ""
+msgstr "Israel"
 
 #: src/php/helpers/country-helper.class.php:162
 msgid "Italy"
-msgstr ""
+msgstr "Italy"
 
 #: src/php/helpers/country-helper.class.php:163
 msgid "Jamaica"
@@ -3681,7 +3746,7 @@ msgstr "Jamaika"
 
 #: src/php/helpers/country-helper.class.php:164
 msgid "Japan"
-msgstr ""
+msgstr "Japan"
 
 #: src/php/helpers/country-helper.class.php:165
 msgid "Jersey"
@@ -3689,19 +3754,19 @@ msgstr "Jersey"
 
 #: src/php/helpers/country-helper.class.php:166
 msgid "Jordan"
-msgstr ""
+msgstr "Jordan"
 
 #: src/php/helpers/country-helper.class.php:167
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Kazakhstan"
 
 #: src/php/helpers/country-helper.class.php:168
 msgid "Kenya"
-msgstr ""
+msgstr "Kenya"
 
 #: src/php/helpers/country-helper.class.php:169
 msgid "Kiribati"
-msgstr ""
+msgstr "Kiribati"
 
 #: src/php/helpers/country-helper.class.php:170
 msgid "Kuwait"
@@ -3709,7 +3774,7 @@ msgstr "Kuwait"
 
 #: src/php/helpers/country-helper.class.php:171
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "Kyrgyzstan"
 
 #: src/php/helpers/country-helper.class.php:172
 msgid "Lao People's Democratic Republic"
@@ -3717,19 +3782,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:173
 msgid "Latvia"
-msgstr ""
+msgstr "Latvia"
 
 #: src/php/helpers/country-helper.class.php:174
 msgid "Lebanon"
-msgstr ""
+msgstr "Lebanon"
 
 #: src/php/helpers/country-helper.class.php:175
 msgid "Lesotho"
-msgstr ""
+msgstr "Lesotho"
 
 #: src/php/helpers/country-helper.class.php:176
 msgid "Liberia"
-msgstr ""
+msgstr "Liberia"
 
 #: src/php/helpers/country-helper.class.php:177
 msgid "Libyan Arab Jamahiriya"
@@ -3737,11 +3802,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:178
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Liechtenstein"
 
 #: src/php/helpers/country-helper.class.php:179
 msgid "Lithuania"
-msgstr ""
+msgstr "Lithuania"
 
 #: src/php/helpers/country-helper.class.php:180
 msgid "Luxembourg"
@@ -3753,19 +3818,19 @@ msgstr "Macau"
 
 #: src/php/helpers/country-helper.class.php:182
 msgid "Macedonia"
-msgstr ""
+msgstr "Macedonia"
 
 #: src/php/helpers/country-helper.class.php:183
 msgid "Madagascar"
-msgstr ""
+msgstr "Madagascar"
 
 #: src/php/helpers/country-helper.class.php:184
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 #: src/php/helpers/country-helper.class.php:185
 msgid "Malaysia"
-msgstr ""
+msgstr "Malaysia"
 
 #: src/php/helpers/country-helper.class.php:186
 msgid "Maldives"
@@ -3773,7 +3838,7 @@ msgstr "Maldives"
 
 #: src/php/helpers/country-helper.class.php:187
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 #: src/php/helpers/country-helper.class.php:188
 msgid "Malta"
@@ -3781,7 +3846,7 @@ msgstr "Málta"
 
 #: src/php/helpers/country-helper.class.php:189
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Marshall Islands"
 
 #: src/php/helpers/country-helper.class.php:190
 msgid "Martinique"
@@ -3789,7 +3854,7 @@ msgstr "Martinique"
 
 #: src/php/helpers/country-helper.class.php:191
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritania"
 
 #: src/php/helpers/country-helper.class.php:192
 msgid "Mauritius"
@@ -3801,11 +3866,11 @@ msgstr "Mayotte"
 
 #: src/php/helpers/country-helper.class.php:194
 msgid "Mexico"
-msgstr ""
+msgstr "Mexico"
 
 #: src/php/helpers/country-helper.class.php:195
 msgid "Micronesia"
-msgstr ""
+msgstr "Micronesia"
 
 #: src/php/helpers/country-helper.class.php:196
 msgid "Moldova, Republic of"
@@ -3817,11 +3882,11 @@ msgstr "Monaco"
 
 #: src/php/helpers/country-helper.class.php:198
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolia"
 
 #: src/php/helpers/country-helper.class.php:199
 msgid "Montenegro"
-msgstr ""
+msgstr "Montenegro"
 
 #: src/php/helpers/country-helper.class.php:200
 msgid "Montserrat"
@@ -3829,19 +3894,19 @@ msgstr "Montserrat"
 
 #: src/php/helpers/country-helper.class.php:201
 msgid "Morocco"
-msgstr ""
+msgstr "Morocco"
 
 #: src/php/helpers/country-helper.class.php:202
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambique"
 
 #: src/php/helpers/country-helper.class.php:203
 msgid "Myanmar"
-msgstr ""
+msgstr "Myanmar"
 
 #: src/php/helpers/country-helper.class.php:204
 msgid "Namibia"
-msgstr ""
+msgstr "Namibia"
 
 #: src/php/helpers/country-helper.class.php:205
 msgid "Nauru"
@@ -3849,35 +3914,35 @@ msgstr "Nauru"
 
 #: src/php/helpers/country-helper.class.php:206
 msgid "Nepal"
-msgstr ""
+msgstr "Nepal"
 
 #: src/php/helpers/country-helper.class.php:207
 msgid "Netherlands"
-msgstr ""
+msgstr "Netherlands"
 
 #: src/php/helpers/country-helper.class.php:208
 msgid "Netherlands Antilles"
-msgstr ""
+msgstr "Netherlands Antilles"
 
 #: src/php/helpers/country-helper.class.php:209
 msgid "New Caledonia"
-msgstr ""
+msgstr "New Caledonia"
 
 #: src/php/helpers/country-helper.class.php:210
 msgid "New Zealand"
-msgstr ""
+msgstr "New Zealand"
 
 #: src/php/helpers/country-helper.class.php:211
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nicaragua"
 
 #: src/php/helpers/country-helper.class.php:212
 msgid "Niger"
-msgstr ""
+msgstr "Niger"
 
 #: src/php/helpers/country-helper.class.php:213
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigeria"
 
 #: src/php/helpers/country-helper.class.php:214
 msgid "Niue"
@@ -3885,27 +3950,27 @@ msgstr "Niue"
 
 #: src/php/helpers/country-helper.class.php:215
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Norfolk Island"
 
 #: src/php/helpers/country-helper.class.php:216
 msgid "North Korea"
-msgstr ""
+msgstr "North Korea"
 
 #: src/php/helpers/country-helper.class.php:217
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Northern Mariana Islands"
 
 #: src/php/helpers/country-helper.class.php:218
 msgid "Norway"
-msgstr ""
+msgstr "Norway"
 
 #: src/php/helpers/country-helper.class.php:219
 msgid "Oman"
-msgstr ""
+msgstr "Oman"
 
 #: src/php/helpers/country-helper.class.php:220
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakistan"
 
 #: src/php/helpers/country-helper.class.php:221
 msgid "Palau"
@@ -3921,15 +3986,15 @@ msgstr "Panama"
 
 #: src/php/helpers/country-helper.class.php:224
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Papua New Guinea"
 
 #: src/php/helpers/country-helper.class.php:225
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguay"
 
 #: src/php/helpers/country-helper.class.php:226
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 #: src/php/helpers/country-helper.class.php:227
 msgid "Phillipines"
@@ -3941,11 +4006,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:229
 msgid "Poland"
-msgstr ""
+msgstr "Poland"
 
 #: src/php/helpers/country-helper.class.php:230
 msgid "Portugal"
-msgstr ""
+msgstr "Portugal"
 
 #: src/php/helpers/country-helper.class.php:231
 msgid "Puerto Rico"
@@ -3965,7 +4030,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:235
 msgid "Romania"
-msgstr ""
+msgstr "Romania"
 
 #: src/php/helpers/country-helper.class.php:236
 msgid "Russian Federation"
@@ -3973,23 +4038,23 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:237
 msgid "Rwanda"
-msgstr ""
+msgstr "Rwanda"
 
 #: src/php/helpers/country-helper.class.php:238
 msgid "Saint Barth&eacute;lemy"
-msgstr ""
+msgstr "Saint Barth&eacute;lemy"
 
 #: src/php/helpers/country-helper.class.php:239
 msgid "Saint Helena"
-msgstr ""
+msgstr "Saint Helena"
 
 #: src/php/helpers/country-helper.class.php:240
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "Saint Kitts and Nevis"
 
 #: src/php/helpers/country-helper.class.php:241
 msgid "Saint Lucia"
-msgstr ""
+msgstr "Saint Lucia"
 
 #: src/php/helpers/country-helper.class.php:242
 msgid "Saint Martin (French)"
@@ -4001,11 +4066,11 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:244
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Saint Pierre and Miquelon"
 
 #: src/php/helpers/country-helper.class.php:245
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "Saint Vincent and the Grenadines"
 
 #: src/php/helpers/country-helper.class.php:246
 msgid "San Marino"
@@ -4013,27 +4078,27 @@ msgstr "San Marino"
 
 #: src/php/helpers/country-helper.class.php:247
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
-msgstr ""
+msgstr "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
 
 #: src/php/helpers/country-helper.class.php:248
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saudi Arabia"
 
 #: src/php/helpers/country-helper.class.php:249
 msgid "Senegal"
-msgstr ""
+msgstr "Senegal"
 
 #: src/php/helpers/country-helper.class.php:250
 msgid "Serbia"
-msgstr ""
+msgstr "Serbia"
 
 #: src/php/helpers/country-helper.class.php:251
 msgid "Seychelles"
-msgstr ""
+msgstr "Seychelles"
 
 #: src/php/helpers/country-helper.class.php:252
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #: src/php/helpers/country-helper.class.php:253
 msgid "Singapore"
@@ -4045,19 +4110,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:255
 msgid "Slovenia"
-msgstr ""
+msgstr "Slovenia"
 
 #: src/php/helpers/country-helper.class.php:256
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Solomon Islands"
 
 #: src/php/helpers/country-helper.class.php:257
 msgid "Somalia"
-msgstr ""
+msgstr "Somalia"
 
 #: src/php/helpers/country-helper.class.php:258
 msgid "South Africa"
-msgstr ""
+msgstr "South Africa"
 
 #: src/php/helpers/country-helper.class.php:259
 msgid "South Georgia"
@@ -4065,7 +4130,7 @@ msgstr "Dél Georgia"
 
 #: src/php/helpers/country-helper.class.php:260
 msgid "South Korea"
-msgstr ""
+msgstr "South Korea"
 
 #: src/php/helpers/country-helper.class.php:261
 msgid "South Sudan"
@@ -4073,19 +4138,19 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:262
 msgid "Spain"
-msgstr ""
+msgstr "Spain"
 
 #: src/php/helpers/country-helper.class.php:263
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Sri Lanka"
 
 #: src/php/helpers/country-helper.class.php:264
 msgid "Sudan"
-msgstr ""
+msgstr "Sudan"
 
 #: src/php/helpers/country-helper.class.php:265
 msgid "Suriname"
-msgstr ""
+msgstr "Suriname"
 
 #: src/php/helpers/country-helper.class.php:266
 msgid "Svalbard and Jan Mayen Islands"
@@ -4093,15 +4158,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:267
 msgid "Swaziland"
-msgstr ""
+msgstr "Swaziland"
 
 #: src/php/helpers/country-helper.class.php:268
 msgid "Sweden"
-msgstr ""
+msgstr "Sweden"
 
 #: src/php/helpers/country-helper.class.php:269
 msgid "Switzerland"
-msgstr ""
+msgstr "Switzerland"
 
 #: src/php/helpers/country-helper.class.php:270
 msgid "Syrian Arab Republic"
@@ -4109,103 +4174,103 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:271
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #: src/php/helpers/country-helper.class.php:272
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tajikistan"
 
 #: src/php/helpers/country-helper.class.php:273
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzania"
 
 #: src/php/helpers/country-helper.class.php:274
 msgid "Thailand"
-msgstr ""
+msgstr "Thailand"
 
 #: src/php/helpers/country-helper.class.php:275
 msgid "Timor-Leste"
-msgstr ""
+msgstr "Timor-Leste"
 
 #: src/php/helpers/country-helper.class.php:276
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 #: src/php/helpers/country-helper.class.php:277
 msgid "Tokelau"
-msgstr ""
+msgstr "Tokelau"
 
 #: src/php/helpers/country-helper.class.php:278
 msgid "Tonga"
-msgstr ""
+msgstr "Tonga"
 
 #: src/php/helpers/country-helper.class.php:279
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "Trinidad and Tobago"
 
 #: src/php/helpers/country-helper.class.php:280
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunisia"
 
 #: src/php/helpers/country-helper.class.php:281
 msgid "Turkey"
-msgstr ""
+msgstr "Turkey"
 
 #: src/php/helpers/country-helper.class.php:282
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Turkmenistan"
 
 #: src/php/helpers/country-helper.class.php:283
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "Turks and Caicos Islands"
 
 #: src/php/helpers/country-helper.class.php:284
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 #: src/php/helpers/country-helper.class.php:285
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #: src/php/helpers/country-helper.class.php:286
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukraine"
 
 #: src/php/helpers/country-helper.class.php:287
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "United Arab Emirates"
 
 #: src/php/helpers/country-helper.class.php:288
 msgid "United Kingdom"
-msgstr ""
+msgstr "United Kingdom"
 
 #: src/php/helpers/country-helper.class.php:289
 msgid "United States"
-msgstr ""
+msgstr "United States"
 
 #: src/php/helpers/country-helper.class.php:290
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguay"
 
 #: src/php/helpers/country-helper.class.php:291
 msgid "US Minor Outlying Islands"
-msgstr ""
+msgstr "US Minor Outlying Islands"
 
 #: src/php/helpers/country-helper.class.php:292
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #: src/php/helpers/country-helper.class.php:293
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #: src/php/helpers/country-helper.class.php:294
 msgid "Venezuela"
-msgstr ""
+msgstr "Venezuela"
 
 #: src/php/helpers/country-helper.class.php:295
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnam"
 
 #: src/php/helpers/country-helper.class.php:296
 msgid "Virgin Islands (British)"
@@ -4221,7 +4286,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:299
 msgid "Western Sahara"
-msgstr ""
+msgstr "Western Sahara"
 
 #: src/php/helpers/country-helper.class.php:300
 msgid "Western Samoa"
@@ -4229,15 +4294,15 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:301
 msgid "Yemen"
-msgstr ""
+msgstr "Yemen"
 
 #: src/php/helpers/country-helper.class.php:302
 msgid "Zambia"
-msgstr ""
+msgstr "Zambia"
 
 #: src/php/helpers/country-helper.class.php:303
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Zimbabwe"
 
 #: src/php/helpers/country-helper.class.php:1303
 msgid "A Coru&ntilde;a"
@@ -4525,7 +4590,7 @@ msgstr "Font Sterling (&pound;)"
 
 #: src/php/helpers/currency-helper.class.php:55
 msgid "Russian Ruble"
-msgstr ""
+msgstr "Russian Ruble"
 
 #: src/php/helpers/currency-helper.class.php:56
 msgid "Singapore Dollar (&#36;)"
@@ -4600,139 +4665,139 @@ msgctxt ""
 msgid "wp-customer-area-menu"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1144
+#: src/php/core-addons/private-file/private-file-addon.class.php:1094
 msgctxt "cuar_private_file"
 msgid "File"
 msgstr "Fájl"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1145
+#: src/php/core-addons/private-file/private-file-addon.class.php:1095
 msgctxt "cuar_private_file"
 msgid "Files"
 msgstr "Fájlok"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1173
-#: src/php/core-addons/private-file/private-file-addon.class.php:1184
+#: src/php/core-addons/private-file/private-file-addon.class.php:1123
+#: src/php/core-addons/private-file/private-file-addon.class.php:1134
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "Privát fájlok"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1174
+#: src/php/core-addons/private-file/private-file-addon.class.php:1124
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "Privát fájl"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1175
+#: src/php/core-addons/private-file/private-file-addon.class.php:1125
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Új"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1176
+#: src/php/core-addons/private-file/private-file-addon.class.php:1126
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Új privát fájl hozzáadása"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1177
+#: src/php/core-addons/private-file/private-file-addon.class.php:1127
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Privát fájl szerkesztése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1178
+#: src/php/core-addons/private-file/private-file-addon.class.php:1128
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Új privát fájl"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1179
+#: src/php/core-addons/private-file/private-file-addon.class.php:1129
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Privát fájl megtekintése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1180
+#: src/php/core-addons/private-file/private-file-addon.class.php:1130
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Privát fájl keresése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1181
+#: src/php/core-addons/private-file/private-file-addon.class.php:1131
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "Nincs privát fájl"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1182
+#: src/php/core-addons/private-file/private-file-addon.class.php:1132
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "Nincs privát fájl a Lomtárban"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1183
+#: src/php/core-addons/private-file/private-file-addon.class.php:1133
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "Szülő privát fájl:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1217
-#: src/php/core-addons/private-file/private-file-addon.class.php:1231
+#: src/php/core-addons/private-file/private-file-addon.class.php:1167
+#: src/php/core-addons/private-file/private-file-addon.class.php:1181
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Fájl kategóriák"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1218
+#: src/php/core-addons/private-file/private-file-addon.class.php:1168
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Fájl kategória"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1219
+#: src/php/core-addons/private-file/private-file-addon.class.php:1169
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Fájl kategóriák keresése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1220
+#: src/php/core-addons/private-file/private-file-addon.class.php:1170
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Népszerű fájl kategóriák"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1221
+#: src/php/core-addons/private-file/private-file-addon.class.php:1171
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Minden fájl kategória"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1222
+#: src/php/core-addons/private-file/private-file-addon.class.php:1172
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Szülő fájl kategória"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1223
+#: src/php/core-addons/private-file/private-file-addon.class.php:1173
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Szülő fájl kategória: "
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1224
+#: src/php/core-addons/private-file/private-file-addon.class.php:1174
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Fájl kategória szerkesztése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1225
+#: src/php/core-addons/private-file/private-file-addon.class.php:1175
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Fájl kategória feltöltése"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1226
+#: src/php/core-addons/private-file/private-file-addon.class.php:1176
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Új fájl kategória hozzáadása"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1227
+#: src/php/core-addons/private-file/private-file-addon.class.php:1177
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Új fájl kategória"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1228
+#: src/php/core-addons/private-file/private-file-addon.class.php:1178
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "A fájl kategóriákat vesszővel kell elválasztani"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1229
+#: src/php/core-addons/private-file/private-file-addon.class.php:1179
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Fájl kategória hozzáadása, eltávolítása"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1230
+#: src/php/core-addons/private-file/private-file-addon.class.php:1180
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Válassz a leggyakoribb fájl kategóriákból"
@@ -4874,31 +4939,31 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Válassz a leggyakrabban használt oldal kategóriákból"
 
-#: src/php/core-classes/plugin.class.php:216
-#: src/php/core-classes/plugin.class.php:243
+#: src/php/core-classes/plugin.class.php:229
+#: src/php/core-classes/plugin.class.php:256
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:217
-#: src/php/core-classes/plugin.class.php:244
+#: src/php/core-classes/plugin.class.php:230
+#: src/php/core-classes/plugin.class.php:257
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Törlés"
 
-#: src/php/core-classes/plugin.class.php:218
-#: src/php/core-classes/plugin.class.php:245
+#: src/php/core-classes/plugin.class.php:231
+#: src/php/core-classes/plugin.class.php:258
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "ma"
 
-#: src/php/core-classes/plugin.class.php:221
-#: src/php/core-classes/plugin.class.php:248
+#: src/php/core-classes/plugin.class.php:234
+#: src/php/core-classes/plugin.class.php:261
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr ""
 
-#: src/php/functions/functions-private-files.php:280
+#: src/php/functions/functions-private-files.php:284
 msgctxt "bytes"
 msgid "b"
 msgstr "b"

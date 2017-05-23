@@ -302,7 +302,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
             if ($should_log_event)
             {
                 // unhook this function so it doesn't loop infinitely
-                remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10, 4);
+                remove_action('cuar/core/ownership/after-save-owner', array(&$this, 'log_owner_updated'), 10);
 
                 $this->logger->log_event(self::$TYPE_OWNER_CHANGED,
                     $post_id,

@@ -45,8 +45,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
         public function run_addon($plugin)
         {
-            if ($this->is_enabled())
-            {
+            if ($this->is_enabled()) {
                 add_action('init', array(&$this, 'register_custom_types'));
                 add_filter('cuar/core/post-types/content', array(&$this, 'register_private_post_types'));
                 add_filter('cuar/core/types/content', array(&$this, 'register_content_type'));
@@ -74,8 +73,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // Init the admin interface if needed
-            if (is_admin())
-            {
+            if (is_admin()) {
                 $this->admin_interface = new CUAR_PrivateFileAdminInterface($plugin, $this);
             }
         }
@@ -109,8 +107,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         {
             $path = $this->plugin->get_option(self::$OPTION_FTP_PATH);
 
-            if ($create_dirs)
-            {
+            if ($create_dirs) {
                 @mkdir($path, 0750, true);
             }
 
@@ -144,14 +141,12 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $po_addon = $this->plugin->get_addon('post-owner');
 
             $files = $this->get_attached_files($post_id);
-            foreach ($files as $file_id => $file)
-            {
+            foreach ($files as $file_id => $file) {
                 $filename = $file['file'];
                 $source = $file['source'];
 
                 // New file structure
-                if ( !empty($source))
-                {
+                if ( !empty($source)) {
                     apply_filters('cuar/private-content/files/on-remove-attached-file?source=' . $source,
                         array(),
                         $post_id,
@@ -160,8 +155,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
                 // Legacy files
                 $legacy_filepath = $po_addon->get_legacy_private_file_path($filename, $post_id);
-                if (file_exists($legacy_filepath))
-                {
+                if (file_exists($legacy_filepath)) {
                     unlink($legacy_filepath);
                 }
             }
@@ -179,6 +173,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         public function compute_file_id($file)
         {
             $id = md5($file['file']);
+
             return apply_filters('cuar/private-content/files/file-id', $id, $file);
         }
 
@@ -199,14 +194,12 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $file_path = $po_addon->get_private_file_path($file['file'], $post_id, false);
 
             // If the file does not exist, try with the old path format (without post ID)
-            if ( !file_exists($file_path))
-            {
+            if ( !file_exists($file_path)) {
                 $file_path = $po_addon->get_legacy_private_file_path($file['file'], $post_id, false);
             }
 
             // Does not exist at all? -> return false
-            if ( !file_exists($file_path))
-            {
+            if ( !file_exists($file_path)) {
                 $file_path = false;
             }
 
@@ -296,20 +289,19 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /**
          * Get the number of times the file has been downloaded
          *
-         * @param int    $post_id
-         * @param string $file_id
+         * @param int      $post_id
+         * @param string   $file_id
+         * @param int|null $user_id
          *
          * @return int
          */
-        public function get_file_download_count($post_id, $file_id = null)
+        public function get_file_download_count($post_id, $file_id = null, $user_id = null)
         {
-            if ($file_id == null)
-            {
-                $count = get_post_meta($post_id, 'cuar/private-content/files/on-download_count', true);
-            }
-            else
-            {
-                $count = get_post_meta($post_id, 'cuar/private-content/files/on-download_count?name=' . $file_id, true);
+            $user = is_null($user_id) ? get_current_user_id() : $user_id;
+            if ($file_id == null) {
+                $count = get_post_meta($post_id, 'cuar/private-content/files/download_count?user=' . $user, true);
+            } else {
+                $count = get_post_meta($post_id, 'cuar/private-content/files/download_count?user=' . $user . '&file=' . $file_id, true);
             }
 
             if ( !$count || empty($count)) return 0;
@@ -320,24 +312,23 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         /**
          * Get the number of times the file has been downloaded
          *
-         * @param int    $post_id
-         * @param string $file_id
+         * @param int      $post_id
+         * @param string   $file_id
+         * @param int|null $user_id
          *
          * @return int
          */
-        public function increment_file_download_count($post_id, $file_id = null)
+        public function increment_file_download_count($post_id, $file_id = null, $user_id = null)
         {
-            $current_count = $this->get_file_download_count($post_id, $file_id);
-            if ($file_id == null)
-            {
+            $user = is_null($user_id) ? get_current_user_id() : $user_id;
+            $current_count = $this->get_file_download_count($post_id, $file_id, $user_id);
+            if ($file_id == null) {
                 update_post_meta($post_id,
-                    'cuar/private-content/files/on-download_count',
+                    'cuar/private-content/files/download_count?user=' . $user,
                     $current_count + 1);
-            }
-            else
-            {
+            } else {
                 update_post_meta($post_id,
-                    'cuar/private-content/files/on-download_count?id=' . $file_id,
+                    'cuar/private-content/files/download_count?user=' . $user . '&file=' . $file_id,
                     $current_count + 1);
             }
         }
@@ -389,10 +380,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Update an existing file if any
             $files = $this->get_attached_files($post_id);
             $found = false;
-            foreach ($files as $fid => $file)
-            {
-                if ($fid == $meta['id'] || $file['file'] == $filename)
-                {
+            foreach ($files as $fid => $file) {
+                if ($fid == $meta['id'] || $file['file'] == $filename) {
                     unset($files[$fid]);
                     $files[$meta['id']] = $meta;
                     $found = true;
@@ -401,8 +390,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // File not updated, just add it
-            if ( !$found)
-            {
+            if ( !$found) {
                 $files[$meta['id']] = $meta;
             }
 
@@ -436,14 +424,12 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $file_meta = get_post_meta($post_id, 'cuar_private_file_file', true);
 
             // No files at all
-            if ( !$file_meta)
-            {
+            if ( !$file_meta) {
                 return array();
             }
 
             // We have a single file attached to the content type, this is the legacy meta format
-            if (isset($file_meta['file']))
-            {
+            if (isset($file_meta['file'])) {
                 // Use this opportunity to update that meta field to the new format
                 $file_meta = $this->update_legacy_file_meta($file_meta);
                 $file_meta = array($file_meta['id'] => $file_meta);
@@ -464,14 +450,12 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          */
         public function get_attached_file_by_name($post_id, $filename, $files = null)
         {
-            if ($files == null)
-            {
+            if ($files == null) {
                 $files = $this->get_attached_files($post_id);
             }
 
-            foreach ($files as $file)
-            {
-                if ($file['file']==$filename) return $file;
+            foreach ($files as $file) {
+                if ($file['file'] == $filename) return $file;
             }
 
             return false;
@@ -488,14 +472,12 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          */
         public function get_attached_file($post_id, $file_id, $files = null)
         {
-            if ($files == null)
-            {
+            if ($files == null) {
                 $files = $this->get_attached_files($post_id);
             }
 
             // Check if present
-            if (isset($files[$file_id]))
-            {
+            if (isset($files[$file_id])) {
                 return $files[$file_id];
             }
 
@@ -529,8 +511,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          */
         private function update_legacy_file_meta($file)
         {
-            if ( !isset($file['source']))
-            {
+            if ( !isset($file['source'])) {
                 $file['source'] = 'legacy';
                 $file['caption'] = $file['file'];
                 $file['extra'] = '';
@@ -600,9 +581,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $template_suffix = is_admin() ? '-admin' : '-frontend';
 
             $post = get_post($post_id);
-            if (($post!=null && $post->post_author==get_current_user_id())
-                || current_user_can('cuar_pf_manage_attachments'))
-            {
+            if (($post != null && $post->post_author == get_current_user_id())
+                || current_user_can('cuar_pf_manage_attachments')
+            ) {
                 /** @noinspection PhpUnusedLocalVariableInspection */
                 $attachment_item_template = $this->plugin->get_template_file_path(
                     CUAR_INCLUDES_DIR . '/core-addons/private-file',
@@ -611,9 +592,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
                         'private-attachments-list-item.template.php',
                     ),
                     'templates');
-            }
-            else
-            {
+            } else {
                 /** @noinspection PhpUnusedLocalVariableInspection */
                 $attachment_item_template = $this->plugin->get_template_file_path(
                     CUAR_INCLUDES_DIR . '/core-addons/private-file',
@@ -645,8 +624,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $tmp_file = @fopen($tmp_filepath, "w");
             if ($tmp_file === false) return false;
 
-            if (false === @fwrite($tmp_file, '0123456789'))
-            {
+            if (false === @fwrite($tmp_file, '0123456789')) {
                 @unlink($tmp_filepath);
                 @fclose($tmp_file);
 
@@ -657,16 +635,14 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $url_path = '';
             $home_url = trailingslashit(home_url());
             $path_tokens = explode('/', $path);
-            for ($i = count($path_tokens) - 1; $i >= 0; $i--)
-            {
+            for ($i = count($path_tokens) - 1; $i >= 0; $i--) {
                 $url_path = $path_tokens[$i] . '/' . $url_path;
                 $full_url = $home_url . $url_path . $tmp_filename;
 
                 $response = wp_remote_get($full_url, array('method' => 'GET'));
                 $response_code = wp_remote_retrieve_response_code($response);
                 $body = wp_remote_retrieve_body($response);
-                if ($response_code < 400 && !empty($body) && $body == '0123456789')
-                {
+                if ($response_code < 400 && !empty($body) && $body == '0123456789') {
                     return sprintf(__('<a href="%s">Public URL to a test file in that folder</a>. Response code: %s. File content: %s', 'cuar'),
                         $full_url,
                         $response_code,
@@ -694,7 +670,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
          * Move all legacy files to the new storage folder
          *
          * @param int   $post_id The post ID
-         * @param array $owners   The current owner of the post (or previous one if calling this when saving post
+         * @param array $owners  The current owner of the post (or previous one if calling this when saving post
          */
         public function move_legacy_files($post_id, $owners)
         {
@@ -702,23 +678,18 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $po_addon = $this->plugin->get_addon('post-owner');
 
             $files = $this->get_attached_files($post_id);
-            foreach ($files as $file_id => $file)
-            {
-                if ($file['source'] == 'legacy')
-                {
-                    foreach ($owners as $owner_type => $owner_ids)
-                    {
+            foreach ($files as $file_id => $file) {
+                if ($file['source'] == 'legacy') {
+                    foreach ($owners as $owner_type => $owner_ids) {
                         $old_path = $po_addon->get_legacy_owner_file_path($post_id, $file['file'], $owner_ids, $owner_type, false);
                         $new_path = $po_addon->get_private_file_path($file['file'], $post_id, true);
 
-                        if (file_exists($old_path))
-                        {
+                        if (file_exists($old_path)) {
                             @copy($old_path, $new_path);
                             @unlink($old_path);
 
                             // Maybe delete empty folder
-                            if ($this->is_dir_empty(basename($old_path)))
-                            {
+                            if ($this->is_dir_empty(basename($old_path))) {
                                 @rmdir(basename($old_path));
                             }
                         }
@@ -744,10 +715,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             if ( !is_readable($dir)) return false;
 
             $handle = opendir($dir);
-            while (false !== ($entry = readdir($handle)))
-            {
-                if ($entry != "." && $entry != "..")
-                {
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != "." && $entry != "..") {
                     return false;
                 }
             }
@@ -763,11 +732,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         public function remove_missing_files($post_id)
         {
             $files = $this->get_attached_files($post_id);
-            foreach ($files as $file_id => $file)
-            {
+            foreach ($files as $file_id => $file) {
                 $is_missing = apply_filters('cuar/private-content/files/is-missing?source=' . $file['source'], false, $post_id, $file);
-                if ($is_missing)
-                {
+                if ($is_missing) {
                     unset($files[$file_id]);
                 }
             }
@@ -813,8 +780,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check nonce
             $nonce_action = 'cuar-attach-' . $method . '-' . $post_id;
             $nonce_name = 'cuar_' . $method . '_' . $post_id;
-            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
-            {
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action)) {
                 $errors[] = __('Trying to cheat?', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -822,9 +788,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check permissions
             $post = get_post($post_id);
             if ( !is_user_logged_in()
-                || $post===null
-                || ($post->post_author!=get_current_user_id() && !current_user_can('cuar_pf_manage_attachments')))
-            {
+                || $post === null
+                || ($post->post_author != get_current_user_id() && !current_user_can('cuar_pf_manage_attachments'))
+            ) {
                 $errors[] = __('You are not allowed to attach files to this kind of content', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -837,8 +803,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $caption = isset($_POST['caption']) ? $_POST['caption'] : $unique_filename;
 
             // Check for missing parameters
-            if (empty($post_id) || empty($unique_filename) || empty($method))
-            {
+            if (empty($post_id) || empty($unique_filename) || empty($method)) {
                 $errors[] = __('Missing parameters', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -846,8 +811,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check allowed number of attached files
             $file_count = $this->get_attached_file_count($post_id);
             $max_file_count = $this->get_max_attachment_count();
-            if ($max_file_count >= 0 && $file_count >= $max_file_count)
-            {
+            if ($max_file_count >= 0 && $file_count >= $max_file_count) {
                 $errors[] = sprintf(
                     _n(
                         'You are not allowed to attach more than %d file',
@@ -861,8 +825,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check file exists
             $found_file_index = null;
             $found_file = $this->get_attached_file_by_name($post_id, $unique_filename);
-            if ($found_file)
-            {
+            if ($found_file) {
                 $errors[] = __('You cannot attach files with the same name', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -870,8 +833,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // File does not exist, we'll add it now
             $errors = apply_filters('cuar/private-content/files/on-attach-file?method=' . $method, $errors, $this, $initial_filename, $post_id,
                 $unique_filename, $caption, $extra);
-            if ( !empty($errors))
-            {
+            if ( !empty($errors)) {
                 wp_send_json_error($errors);
             }
 
@@ -898,8 +860,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
 
             // Check parameters
-            if (empty($post_id) || empty($filename))
-            {
+            if (empty($post_id) || empty($filename)) {
                 $errors[] = __('Missing parameters', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -907,8 +868,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check nonce
             $nonce_action = 'cuar-update-attachment-' . $post_id;
             $nonce_name = 'cuar_update_attachment_nonce';
-            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
-            {
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action)) {
                 $errors[] = __('Trying to cheat?', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -916,9 +876,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check permissions
             $post = get_post($post_id);
             if ( !is_user_logged_in()
-                || $post===null
-                || ($post->post_author!=get_current_user_id() && !current_user_can('cuar_pf_manage_attachments')))
-            {
+                || $post === null
+                || ($post->post_author != get_current_user_id() && !current_user_can('cuar_pf_manage_attachments'))
+            ) {
                 $errors[] = __('You are not allowed to update attached files', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -926,22 +886,19 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check file exists
             $files = $this->get_attached_files($post_id);
             $found_file = $this->get_attached_file_by_name($post_id, $filename, $files);
-            if ($found_file == false)
-            {
+            if ($found_file == false) {
                 $errors[] = __('File not found', 'cuar');
                 wp_send_json_error($errors);
             }
 
             // File exists, change the details which need to be changed
             $has_changed = false;
-            if (isset($_POST['caption']) && 0 != strcmp($_POST['caption'], $found_file['caption']))
-            {
+            if (isset($_POST['caption']) && 0 != strcmp($_POST['caption'], $found_file['caption'])) {
                 $has_changed = true;
                 $files[$found_file['id']]['caption'] = $_POST['caption'];
             }
 
-            if ($has_changed)
-            {
+            if ($has_changed) {
                 $this->save_attached_files($post_id, $files);
 
                 // Log an event
@@ -963,8 +920,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $filename = isset($_POST['filename']) ? $_POST['filename'] : 0;
 
             // Check parameters
-            if (empty($post_id) || empty($filename))
-            {
+            if (empty($post_id) || empty($filename)) {
                 $errors[] = __('Missing parameters', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -972,8 +928,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check nonce
             $nonce_action = 'cuar-remove-attachment-' . $post_id;
             $nonce_name = 'cuar_remove_attachment_nonce';
-            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
-            {
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action)) {
                 $errors[] = __('Trying to cheat?', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -981,9 +936,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check permissions
             $post = get_post($post_id);
             if ( !is_user_logged_in()
-                || $post===null
-                || ($post->post_author!=get_current_user_id() && !current_user_can('cuar_pf_manage_attachments')))
-            {
+                || $post === null
+                || ($post->post_author != get_current_user_id() && !current_user_can('cuar_pf_manage_attachments'))
+            ) {
                 $errors[] = __('You are not allowed to remove attached files', 'cuar');
                 wp_send_json_error($errors);
             }
@@ -991,8 +946,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Check file exists
             $files = $this->get_attached_files($post_id);
             $found_file = $this->get_attached_file_by_name($post_id, $filename, $files);
-            if ($found_file == false)
-            {
+            if ($found_file == false) {
                 // Consider that is ok with us
                 wp_send_json_success();
             }
@@ -1000,8 +954,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // File exists, we'll remove it now. First physically
             $source = $this->get_file_source($post_id, $found_file);
             $errors = apply_filters('cuar/private-content/files/on-remove-attached-file?source=' . $source, $errors, $post_id, $found_file);
-            if ( !empty($errors))
-            {
+            if ( !empty($errors)) {
                 wp_send_json_error($errors);
             }
 
@@ -1027,8 +980,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
             // If not a known action, do nothing
             $action = get_query_var('cuar_action');
-            if ($action != 'download' && $action != 'view')
-            {
+            if ($action != 'download' && $action != 'view') {
                 return;
             }
 
@@ -1036,8 +988,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $file_id = get_query_var('cuar_action_param');
 
             // If not logged-in, we ask for details
-            if ( !is_user_logged_in())
-            {
+            if ( !is_user_logged_in()) {
                 $this->plugin->login_then_redirect_to_url($_SERVER['REQUEST_URI']);
 
                 return;
@@ -1052,8 +1003,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $author_id = $post->post_author;
             $is_current_user_owner = $po_addon->is_user_owner_of_post($post->ID, $current_user_id);
 
-            if ( !($is_current_user_owner || $author_id == $current_user_id || current_user_can('cuar_view_any_cuar_private_file')))
-            {
+            if ( !($is_current_user_owner || $author_id == $current_user_id || current_user_can('cuar_view_any_cuar_private_file'))) {
                 wp_die(__("You are not authorized to access this file", "cuar"));
                 exit();
             }
@@ -1061,29 +1011,29 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             // Look up that file given its ID
             $files = $this->get_attached_files($post->ID);
             $found_file = null;
-            foreach ($files as $fid => $file)
-            {
+            foreach ($files as $fid => $file) {
                 // Default case
-                if ($fid == $file_id)
-                {
+                if ($fid == $file_id) {
                     $found_file = $file;
                     break;
                 }
             }
 
             // File not found
-            if ($found_file == null)
-            {
+            if ($found_file == null) {
                 wp_die(__("There is no such file attached to this private content", "cuar"));
                 exit();
             }
 
             // Default action to apply on file
-            $action = apply_filters('cuar/private-content/files/default-action', $action, $found_file);
+            if ( !isset($_GET['force-download']) && $_GET['force-download'] != 1) {
+                $action = apply_filters('cuar/private-content/files/default-action', $action, $found_file);
+            } else {
+                $action = 'download';
+            }
 
             // Seems we are all good, do some stuff before sending the file
-            if ($author_id != $current_user_id)
-            {
+            if ($author_id != $current_user_id) {
                 $this->increment_file_download_count($post->ID, $file_id);
             }
             do_action('cuar/private-content/files/on-' . $action, $post->ID, $current_user_id, $this, $file_id);

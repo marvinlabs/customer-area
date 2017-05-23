@@ -1,58 +1,52 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2016}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2017}
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
-"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
-"environment/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
-"PO-Revision-Date: 2016-05-20 18:09+0000\n"
+"PO-Revision-Date: 2017-05-15 10:24+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
-"Language-Team: Finnish (http://www.transifex.com/wp-translations/wp-customer-"
-"area/language/fi/)\n"
-"Language: fi\n"
+"Language-Team: Finnish (http://www.transifex.com/wp-translations/wp-customer-area/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: skins/frontend/master/cuar-functions.php:358
+#: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
 #: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
 msgid "Account details"
 msgstr "Tunnuksien asetukset"
 
-#: skins/frontend/master/cuar-functions.php:393
-#, fuzzy
+#: skins/frontend/master/cuar-functions.php:398
 msgid "View profile"
-msgstr "Tarkastele privaattitiedostoja"
+msgstr ""
 
-#: skins/frontend/master/cuar-functions.php:394
-#, fuzzy
+#: skins/frontend/master/cuar-functions.php:399
 msgid "Manage account"
-msgstr "Omat tunnukset"
+msgstr ""
 
-#: skins/frontend/master/cuar-functions.php:395
+#: skins/frontend/master/cuar-functions.php:400
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
-#: skins/frontend/master/cuar-functions.php:403
+#: skins/frontend/master/cuar-functions.php:406
 msgid "Register"
-msgstr ""
+msgstr "Rekisteröidy"
 
-#: skins/frontend/master/cuar-functions.php:404
+#: skins/frontend/master/cuar-functions.php:407
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
 msgstr "Kirjaudu"
@@ -108,9 +102,9 @@ msgstr ""
 #: src/php/core-addons/addresses/addresses-addon.class.php:156
 #: src/php/core-addons/addresses/addresses-addon.class.php:194
 #: src/php/core-addons/addresses/addresses-addon.class.php:227
-#: src/php/core-addons/private-file/private-file-addon.class.php:818
-#: src/php/core-addons/private-file/private-file-addon.class.php:912
-#: src/php/core-addons/private-file/private-file-addon.class.php:977
+#: src/php/core-addons/private-file/private-file-addon.class.php:784
+#: src/php/core-addons/private-file/private-file-addon.class.php:872
+#: src/php/core-addons/private-file/private-file-addon.class.php:932
 #: src/php/core-classes/addon-create-content-page.class.php:92
 #: src/php/core-classes/addon-create-content-page.class.php:98
 msgid "Trying to cheat?"
@@ -134,7 +128,7 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:58
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:60
 #: src/php/core-addons/status/hook-finder.class.php:124
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:29
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:43
 #: src/php/core-classes/widget-content-list.class.php:217
 msgid "Name"
 msgstr "Nimi"
@@ -219,11 +213,13 @@ msgid "State/Province"
 msgstr ""
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:56
+#: src/php/core-addons/addresses/templates/pdf-view-address.template.php:39
 #: src/php/core-addons/addresses/templates/view-address.template.php:43
 msgid "No address yet"
 msgstr ""
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:71
+#: src/php/core-addons/addresses/templates/pdf-view-address.template.php:50
 #: src/php/core-addons/addresses/templates/view-address.template.php:58
 msgid "VAT ID -"
 msgstr ""
@@ -256,9 +252,9 @@ msgstr "Sinulla ei ole oikeutta tehdä näin"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:86
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:94
-#: src/php/core-addons/private-file/private-file-addon.class.php:842
-#: src/php/core-addons/private-file/private-file-addon.class.php:903
-#: src/php/core-addons/private-file/private-file-addon.class.php:968
+#: src/php/core-addons/private-file/private-file-addon.class.php:807
+#: src/php/core-addons/private-file/private-file-addon.class.php:864
+#: src/php/core-addons/private-file/private-file-addon.class.php:924
 msgid "Missing parameters"
 msgstr "Parametreja puuttuu"
 
@@ -266,17 +262,13 @@ msgstr "Parametreja puuttuu"
 msgid ""
 "Error while changing permissions. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
-msgstr ""
-"Virhe käyttöoikeutta muutettaessa. PHP:llä ei luultavasti ole tarvittavia "
-"oikeuksia. Tee muutos manuaalisesti FTP:llä tai SSH:lla."
+msgstr "Virhe käyttöoikeutta muutettaessa. PHP:llä ei luultavasti ole tarvittavia oikeuksia. Tee muutos manuaalisesti FTP:llä tai SSH:lla."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:110
 msgid ""
 "Permissions could not be changed. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
-msgstr ""
-"Oikeuksia ei voitu muuttaa. PHP:llä ei todennäköisesti ole tarvittavia "
-"oikeuksia. Tee muutos muaalisesti FTP:llä tai SSH:lla."
+msgstr "Oikeuksia ei voitu muuttaa. PHP:llä ei todennäköisesti ole tarvittavia oikeuksia. Tee muutos muaalisesti FTP:llä tai SSH:lla."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:121
 msgid "Folder could not be created"
@@ -285,9 +277,7 @@ msgstr "Kansiota ei voitu luoda"
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:132
 msgid ""
 "htaccess file could not be copied. Please do it manually using FTP or SSH."
-msgstr ""
-"htaccess-tiedostoa ei voitu kopioida. Kopioi tiedosti manuaalisesti FTP:llä "
-"tai SSH:lla."
+msgstr "htaccess-tiedostoa ei voitu kopioida. Kopioi tiedosti manuaalisesti FTP:llä tai SSH:lla."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:176
 msgid "Restrict WP admin area"
@@ -299,12 +289,12 @@ msgstr "Rajaa pääsy WordPress-admin-paneeliin."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:238
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:38
-#: src/php/core-classes/settings.class.php:276
+#: src/php/core-classes/settings.class.php:249
 msgid "General"
 msgstr "Yleiset"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:246
-#: src/php/core-addons/private-file/private-file-addon.class.php:1109
+#: src/php/core-addons/private-file/private-file-addon.class.php:1059
 #: src/php/core-addons/private-page/private-page-addon.class.php:108
 msgid "Back-office"
 msgstr "Takanhuone"
@@ -319,7 +309,7 @@ msgstr "Katsele WP Customer Area -valikkoa"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:253
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:79
-#: src/php/core-addons/private-file/private-file-addon.class.php:1122
+#: src/php/core-addons/private-file/private-file-addon.class.php:1072
 #: src/php/core-addons/private-page/private-page-addon.class.php:121
 msgid "Front-office"
 msgstr "Julkinen alue"
@@ -354,9 +344,7 @@ msgstr "Tervetuloa WP Customer Area:an, %s"
 msgid ""
 "<strong>WP Customer Area</strong> %s is more powerful, stable and secure "
 "than ever before. We hope you will enjoy using it."
-msgstr ""
-"<strong>WP Customer Area</strong> %s on voimakkaampi, vakaampi ja "
-"turvallisempi kuin koskaan aiemmin. Toivomme että nautit sen käytöstä."
+msgstr "<strong>WP Customer Area</strong> %s on voimakkaampi, vakaampi ja turvallisempi kuin koskaan aiemmin. Toivomme että nautit sen käytöstä."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:492
 msgid "Add new"
@@ -451,8 +439,8 @@ msgstr "versio %s"
 
 #: src/php/core-addons/admin-area/templates/dashboard-page.template.php:26
 #: src/php/core-addons/status/status-addon.class.php:139
-#: src/php/core-classes/settings.class.php:92
-#: src/php/core-classes/settings.class.php:124
+#: src/php/core-classes/settings.class.php:90
+#: src/php/core-classes/settings.class.php:120
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -524,304 +512,303 @@ msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-msgid "/whats-new-in-wp-customer-area-7-0"
+msgid "/whats-new-in-wp-customer-area-7-1"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
-msgid "WP Customer Area 7.0 has got a new dress."
+msgid "A small post-summer-break update"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
-msgid "New skin"
+msgid "Better add-on version detection"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+msgid ""
+"WP Customer Area will let you know after each update if you have the latest "
+"add-on release. Never forget to update them anymore!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+msgid "PDF Invoices"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+msgid ""
+"Invoices can now be downloaded as PDF files. A simple template is provided "
+"but you can make your own very easily too!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:44
+msgid "Download all attachments"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+msgid ""
+"For those who have the Enhanced Files add-on, you can now download all "
+"attached files with a single click."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+msgid "/whats-new-in-wp-customer-area-7-0"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+msgid "WP Customer Area 7.0 has got a new dress."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+msgid "New skin"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
 msgid ""
 "The appearance of the private area has been completely rewritten to enhance "
 "compatibility with all themes and usability. "
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
 msgid "Better ownership control"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
 msgid ""
 "Our add-ons allow assigning content to groups, roles, etc. However, these "
 "owner types could not be mixed. For example, you can now assign private "
 "content at the same time to a group and to a few users."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:43
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:66
 msgid "Improvements and bug fixes"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
 msgid ""
-"Existing add-ons have been much improved: 17 new features and over 14 issues "
-"fixes. For instance, notifications are now sent in HTML format using a clean "
-"professional template."
+"Existing add-ons have been much improved: 17 new features and over 14 issues"
+" fixes. For instance, notifications are now sent in HTML format using a "
+"clean professional template."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 msgid "/whats-new-in-wp-customer-area-6-3"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:52
 msgid ""
 "WP Customer Area 6.3 has been aimed at improving customer relationship "
 "management and improving existing add-ons."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
 msgid "Contact information"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
 msgid ""
 "User profiles can now store a home and a billing address. This is an "
 "essential information when managing your customers and will help building "
 "more CRM features into the plugin later on."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:60
 msgid "Invoicing"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
 msgid ""
 "We are introducing a new add-on to publish invoices for your customers. No "
 "more attaching files, there is a proper content type for invoices and we "
 "will soon add a lot around that (PDF generation, online payment, etc.)."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:41
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:63
 msgid "/downloads/wpca-invoicing"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:45
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
 msgid ""
-"While this time we do not have other big news than the new invoicing add-on, "
-"there have been lots of additions and fixes to the base plugin and the "
+"While this time we do not have other big news than the new invoicing add-on,"
+" there have been lots of additions and fixes to the base plugin and the "
 "existing add-ons: 15 new features and 19 issues have been implemented/fixed."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:51
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:73
 msgid "/whats-new-in-wp-customer-area-6-2"
 msgstr "/whats-new-in-wp-customer-area-6-2"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:53
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
 msgid ""
 "WP Customer Area 6.2 has been aimed at improving the attachments to private "
 "files and everything around that."
-msgstr ""
-"WP Customer Area 6.2 pyrkii parantamaan yksityistiedostojen liitteitä ja "
-"kaikkia niihin liittyviä asioita."
+msgstr "WP Customer Area 6.2 pyrkii parantamaan yksityistiedostojen liitteitä ja kaikkia niihin liittyviä asioita."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:78
 msgid "New upload system"
 msgstr "Uusi ylöslatausjärjestelmä"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:57
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:79
 msgid ""
 "The file upload system has been completely rewritten. You can now drag and "
 "drop files and watch the upload progress. Additionally, we have also added "
 "some more settings and provide a security helper to make sure your setup is "
 "as secure as it can."
-msgstr ""
-"Tiedostojen ylöslatausjärjestelmä on täydellisesti uudelleenkoodattu. Nyt "
-"tiedostoja voi raahata ja pudettaa ja niiden ylöslatauksen kehitystä voi "
-"seurata. Lisäksi tietoturva-asetuksia on parannettu sen varmistamiseksi, "
-"että asennuksesi on niin turvallinen kuin vain suinkin mahdollista."
+msgstr "Tiedostojen ylöslatausjärjestelmä on täydellisesti uudelleenkoodattu. Nyt tiedostoja voi raahata ja pudettaa ja niiden ylöslatauksen kehitystä voi seurata. Lisäksi tietoturva-asetuksia on parannettu sen varmistamiseksi, että asennuksesi on niin turvallinen kuin vain suinkin mahdollista."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
 msgid "Enhanced Files"
 msgstr "Parannetut tiedosto"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:62
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:84
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
-"multiple attachments on the same private file, change the attachment caption "
-"and automatically add file type icons in front of the download links."
-msgstr ""
-"Esittelemme uuden lisäosan, joka parantaa tiedostoliitteitä: nyt on "
-"mahdollista lisätä useita liitteitä samaan privaattitiedostoon, muuttaa "
-"otsikoita ja automaattisesti lisätä tiedostotyypin kertova ikoni "
-"latauslinkkien eteen."
+"multiple attachments on the same private file, change the attachment caption"
+" and automatically add file type icons in front of the download links."
+msgstr "Esittelemme uuden lisäosan, joka parantaa tiedostoliitteitä: nyt on mahdollista lisätä useita liitteitä samaan privaattitiedostoon, muuttaa otsikoita ja automaattisesti lisätä tiedostotyypin kertova ikoni latauslinkkien eteen."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:64
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
 msgid "/downloads/wpca-enhanced-files"
 msgstr "/downloads/wpca-enhanced-files"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
 msgid "Smart Groups"
 msgstr "Älyryhmät"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:68
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:90
 msgid ""
 "Smart Groups will change the way to build your user groups. No more adding "
 "or removing users by hand, you will simply make dynamic groups based on "
 "criteria such as name, domain of the email address, and any other meta "
 "information linked to your user profiles."
-msgstr ""
-"Älyryhmät muuttavat tapaa, jolla hallitset käyttäjäryhmiäsi. Enää ei ole "
-"tarpeen lisätä ja poistaa käyttäjiä käsin, nyt on niitä mahdollista luoda "
-"dynaamisia nimen, www-osoitteen, sähköpostiosoitteen tai minkän tahansa muun "
-"profiiliin liittyvän meta-informaation perusteella."
+msgstr "Älyryhmät muuttavat tapaa, jolla hallitset käyttäjäryhmiäsi. Enää ei ole tarpeen lisätä ja poistaa käyttäjiä käsin, nyt on niitä mahdollista luoda dynaamisia nimen, www-osoitteen, sähköpostiosoitteen tai minkän tahansa muun profiiliin liittyvän meta-informaation perusteella."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:70
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
 msgid "/downloads/wpca-smart-groups"
 msgstr "/downloads/wpca-smart-groups"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
 msgid "/whats-new-in-wp-customer-area-6-1"
 msgstr "/whats-new-in-wp-customer-area-6-1"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:99
 msgid ""
 "WP Customer Area 6.1 focuses mainly on making administrator's life easier, "
 "introducing event logging and a better administration panel."
-msgstr ""
-"WP Customer Area 6.1 keskittyy tekemään adminin elämästä helpompaa "
-"esittelemällä tapahtumalokin ja parannetun admin-paneelin."
+msgstr "WP Customer Area 6.1 keskittyy tekemään adminin elämästä helpompaa esittelemällä tapahtumalokin ja parannetun admin-paneelin."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:80
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
 msgid "Protect post types"
 msgstr "Suojatut artikkelityypit"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:81
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
 msgid ""
 "We are introducing a new add-on which will allow protecting any kind of "
 "external post types. Posts created from third party plugins can be made "
 "private and assigned just like private pages or files."
-msgstr ""
-"Olemme lisänneet liitännäisen, joka mahdollistaa minkä tahansa ulkoisen "
-"viestityypin suojauksen. Kolmansien osapuolten liitännäisten generoimista "
-"viesteistä voidaan tehdä privaatteja ja hallittuja aivan kuten muistakin "
-"privaattisivuista ja -tiedostoista."
+msgstr "Olemme lisänneet liitännäisen, joka mahdollistaa minkä tahansa ulkoisen viestityypin suojauksen. Kolmansien osapuolten liitännäisten generoimista viesteistä voidaan tehdä privaatteja ja hallittuja aivan kuten muistakin privaattisivuista ja -tiedostoista."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:105
 msgid "/downloads/wpca-protect-post-types"
 msgstr "/downloads/wpca-protect-post-types"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:108
 #: src/php/core-addons/shortcodes/shortcodes-addon.class.php:36
 msgid "Shortcodes"
 msgstr "Lyhytkoodit"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:87
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:109
 msgid ""
 "we have added shortcodes to display the navigation menu, list protected "
 "content, etc. You will now be able to easily build custom pages with a list "
 "of the content you want to pull for the connected user."
-msgstr ""
-"Olemme lisänneet lyhytkoodeja, jotka näyttävät navigointivalikon, suojatun "
-"sisällön jne. Voit helposti rakentaa kustomoituja sivuja, joiden sisältö "
-"voidaan näyttää valituille käyttäjille."
+msgstr "Olemme lisänneet lyhytkoodeja, jotka näyttävät navigointivalikon, suojatun sisällön jne. Voit helposti rakentaa kustomoituja sivuja, joiden sisältö voidaan näyttää valituille käyttäjille."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:111
 msgid "/documentation/shortcodes"
 msgstr "/documentation/shortcodes"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:114
 msgid "Better admin panel"
 msgstr "Parannettu adminpaneeli"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:93
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
-"better organised. The content lists now feature powerful filters to help you "
-"find the content you are looking for faster."
-msgstr ""
-"Päälitännäistä on parannettu huomattavasti, nyt se on vähemmän sekava ja "
-"rakenteisempi. Sisällön listaukseen voi nyt liittää tehokkaita suodattimia, "
-"joiden avulla halutun sisällön löytäminen on helpompaa."
+"better organised. The content lists now feature powerful filters to help you"
+" find the content you are looking for faster."
+msgstr "Päälitännäistä on parannettu huomattavasti, nyt se on vähemmän sekava ja rakenteisempi. Sisällön listaukseen voi nyt liittää tehokkaita suodattimia, joiden avulla halutun sisällön löytäminen on helpompaa."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:119
 msgid "Logging"
 msgstr "Loki"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:98
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
 msgid ""
 "When dealing with private content and secure areas, keeping track of events "
 "is crucial. We have added a module to track what is happening within your "
 "private area."
-msgstr ""
-"Käsiteltäessä privaattisisältöä ja käytön rajoitetuksia, tapahtumaseuranta "
-"on ensiarvoisen tärkeää. Olemme lisänneet moduulin, joka seuraa "
-"privaattialueesi tapahtumia."
+msgstr "Käsiteltäessä privaattisisältöä ja käytön rajoitetuksia, tapahtumaseuranta on ensiarvoisen tärkeää. Olemme lisänneet moduulin, joka seuraa privaattialueesi tapahtumia."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:124
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:147
 msgid "And more!"
 msgstr "Ja paljon muuta!"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 23 issues corrected."
-msgstr ""
-"Jokainen uusi julkaisu sisältää myös bugi-korjauksia. Tämä ei ole poikkeus, "
-"vaan puuttuu perätä 23 ongelmaan."
+msgstr "Jokainen uusi julkaisu sisältää myös bugi-korjauksia. Tämä ei ole poikkeus, vaan puuttuu perätä 23 ongelmaan."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:110
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:132
 msgid "/customer-area-is-dead-long-live-wp-customer-area/"
 msgstr "/customer-area-is-dead-long-live-wp-customer-area/"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:112
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:134
 msgid ""
-"WP Customer Area 6.0 is a major release which sees a lot of changes not only "
-"inside the plugin but also on the website."
-msgstr ""
-"WP Customer Area 6.0 on merkittävä julkaisu, joka ei muuta pelkästää "
-"liitännäisen sisäistä toimintaa, vaan koko sivuston toimintaa."
+"WP Customer Area 6.0 is a major release which sees a lot of changes not only"
+" inside the plugin but also on the website."
+msgstr "WP Customer Area 6.0 on merkittävä julkaisu, joka ei muuta pelkästää liitännäisen sisäistä toimintaa, vaan koko sivuston toimintaa."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:137
 msgid "Improved setup &amp; updates"
 msgstr "Parannuksia asentamiseen ja päivittämiseen"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:116
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:138
 msgid ""
 "We have implemented a new setup assistant that will make it even easier to "
 "install the plugin. Updates will be smoother too."
-msgstr ""
-"Uusi asennusapuohjelma tekee tämän liitännäisen asentamisesta aiempaa "
-"helpompaa. Myös päivityksien pitäisi hoitua jatkossa sulavammin."
+msgstr "Uusi asennusapuohjelma tekee tämän liitännäisen asentamisesta aiempaa helpompaa. Myös päivityksien pitäisi hoitua jatkossa sulavammin."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:142
 msgid "Better permissions"
 msgstr "Paremmat käyttöoikeusasetukset"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:121
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
 msgid ""
 "Some new permissions have been added to give you more control about what "
 "your users can do. On top of that, we have also improved the permissions "
 "screen to make it faster to set permissions."
-msgstr ""
-"Lisää käyttäjäoikeusasetuksia on lisätty käyttäjien käytön valvonnan "
-"hienojakoisuuden parantamiseksi. Lisäksi käyttöoikeusnäkymää on parannettu "
-"oikeuksien asettamisen sujuvoittamiseksi."
+msgstr "Lisää käyttäjäoikeusasetuksia on lisätty käyttäjien käytön valvonnan hienojakoisuuden parantamiseksi. Lisäksi käyttöoikeusnäkymää on parannettu oikeuksien asettamisen sujuvoittamiseksi."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:126
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 20 issues corrected."
-msgstr ""
-"Jokainen uusi julkaisu sisältää myös bugi-korjauksia. Tämä ei ole poikkeus, "
-"vaan puuttuu perätä 20 ongelmaan."
+msgstr "Jokainen uusi julkaisu sisältää myös bugi-korjauksia. Tämä ei ole poikkeus, vaan puuttuu perätä 20 ongelmaan."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:135
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:157
 msgid "New in %s ~ <em>%s</em>"
 msgstr "Uutta versiossa: %s ~ <em>%s</em>"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:145
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:167
 msgid "Learn more"
 msgstr "Lue lisää"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-author.template.php:8
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:77
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:74
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:86
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:83
 msgid "Created by"
 msgstr "Luonut"
 
@@ -916,10 +903,12 @@ msgstr "Konfiguroi oikeudet"
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:41
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:89
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:33
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:50
 msgid "Suggested action"
 msgstr "Ehdotettu toiminto"
 
 #: src/php/core-addons/capabilities/templates/status-attention-needed-unconfigured-capabilities.template.php:41
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:53
 msgid "Ignore this warning"
 msgstr "Sivuuta tämä varoitus"
 
@@ -928,7 +917,7 @@ msgid "Container Owner"
 msgstr "Söiliön omistaja"
 
 #: src/php/core-addons/container-owner/container-owner-addon.class.php:124
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:758
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:757
 msgid "You are not authorized to view this page"
 msgstr "Sinulla ei ole oikeutta nähdä tätä sivua"
 
@@ -983,17 +972,15 @@ msgstr "Omat tunnukset"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
-#: src/php/core-classes/addon-container-page.class.php:843
-#: src/php/core-classes/addon-content-page.class.php:870
+#: src/php/core-classes/addon-container-page.class.php:869
+#: src/php/core-classes/addon-content-page.class.php:896
 msgid "Dashboard"
 msgstr "Hallintapaneeli"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:51
 msgid ""
 "Shows a summary of the user's private content (files, pages, messages, ...)."
-msgstr ""
-"Näyttää yhteenvedon käyttäjän privaattiaineistosta (tiedostot, sivut, "
-"viestit, ...)"
+msgstr "Näyttää yhteenvedon käyttäjän privaattiaineistosta (tiedostot, sivut, viestit, ...)"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:43
 msgid "Home"
@@ -1001,11 +988,9 @@ msgstr "Koti"
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:51
 msgid ""
-"This is the main page for your customers. It will redirect to the login page "
-"or to the customer area dashboard."
-msgstr ""
-"Tämä on asiakkaidesi pääsivu, se uudelleenohjaa joko kirjautumissivulle tai "
-"asiakasalueen hallintapaneeliin."
+"This is the main page for your customers. It will redirect to the login page"
+" or to the customer area dashboard."
+msgstr "Tämä on asiakkaidesi pääsivu, se uudelleenohjaa joko kirjautumissivulle tai asiakasalueen hallintapaneeliin."
 
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:55
 msgid "customer-area"
@@ -1014,12 +999,10 @@ msgstr "customer-area"
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:52
 msgid ""
 "This page logs the current user out and redirects him to the logout page"
-msgstr ""
-"Tämä sivu toteuttaa käyttäjän uloskirjautumisen ja uudelleenohjaa hänet "
-"uloskirjautumissivulle"
+msgstr "Tämä sivu toteuttaa käyttäjän uloskirjautumisen ja uudelleenohjaa hänet uloskirjautumissivulle"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:999
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1001
 msgid "Customer Pages"
 msgstr "Asiakassivut"
 
@@ -1032,6 +1015,7 @@ msgid "The navigation menu for the customer area has not been created."
 msgstr "Asiakasakueen navigaatiovalikkoa ei ole vielä luotu."
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:147
+#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:130
 #: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
 msgid "Pages"
 msgstr "Sivut"
@@ -1052,149 +1036,133 @@ msgstr "Valikkoa ei voitu luoda. %s"
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "Luotiin valikko: <a href=\"%s\">tarkastele valikkoa</a>"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:990
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:992
 msgid "Site Pages"
 msgstr "Sivuston sivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1025
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1094
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1027
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1096
 msgid "Reset"
 msgstr "Tyhjennä"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1031
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1033
 msgid "Reset all pages &raquo;"
 msgstr "Tyhjennä kaikki sivut &raquo;"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1034
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1036
 msgid "Delete all existing pages and recreate them."
 msgstr "Poista ja uudelleenluo kaikki nykyiset sivut."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1035
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1037
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
-msgstr ""
-"Oletko varma, että haluat poistaa ja uudelleenluoda kaikki nykyiset sivut? "
-"(Toimintoa ei voi peruuttaa.)"
+msgstr "Oletko varma, että haluat poistaa ja uudelleenluoda kaikki nykyiset sivut? (Toimintoa ei voi peruuttaa.)"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1045
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1047
 msgid "Main Navigation Menu"
 msgstr "Päänavigaatiovalikko"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1053
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1055
 msgid "WP Customer Area pages"
 msgstr "WP Customer Area:n sivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1061
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1063
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
-msgstr ""
-"Lisää asiakasalueen navigaatiovalikko automaattisesti asiakasalueen sivuille."
+msgstr "Lisää asiakasalueen navigaatiovalikko automaattisesti asiakasalueen sivuille."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1073
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1075
 msgid "Private content single pages"
 msgstr "Privaatit yksittäissivut"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1081
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1083
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
-msgstr ""
-"Lisää asiakasalueen navigaatiovalikko automaattisesti privaateille "
-"yksittäissivuille."
+msgstr "Lisää asiakasalueen navigaatiovalikko automaattisesti privaateille yksittäissivuille."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1100
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1102
 msgid "Recreate menu"
 msgstr "Uudelleenluo valikko"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1103
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1105
 msgid "Delete and recreate the main navigation menu."
 msgstr "Poista ja uudelleenluo navigaatiovalikko."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1106
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
-msgstr ""
-"Oletko varma, että haluat poistaa ja uudelleenluoda päänavigaatiovalikon? "
-"(Toimintoa ei voida peruuttaa.)"
+msgstr "Oletko varma, että haluat poistaa ja uudelleenluoda päänavigaatiovalikon? (Toimintoa ei voida peruuttaa.)"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1111
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1113
 msgid "Permalinks"
 msgstr "Pysyväislinkit"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1118
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1120
 msgid "Category Archive"
 msgstr "Kategoria-arkisto"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1136
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1138
 msgid "Date Archive"
 msgstr "Päivamääräarkisto"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1153
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1155
 msgid "Author Archive"
 msgstr "Kirjoittaja-arkisto"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1170
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1172
 msgid "Update Content"
 msgstr "Päivitä sisältö"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1179
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1181
 msgid "Slug that is used in the URL to update existing private content"
 msgstr "Slugi, jota käytetään nykyisen privaattisisällön päivitys-URL:issa"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1186
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1188
 msgid "Delete Content"
 msgstr "Poista sisältö"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1195
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1197
 msgid "Slug that is used in the URL to delete existing private content"
 msgstr "Slugi, jota käytetään privaattisisällön poistettamis-URL:issa "
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1209
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1211
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
-msgstr ""
-"Versiosta 4.0.0 lähtien Customer Area toteuttaa navigoinnin valikkoja "
-"käyttäen."
+msgstr "Versiosta 4.0.0 lähtien Customer Area toteuttaa navigoinnin valikkoja käyttäen."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1221
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1223
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
 "existing ones. "
-msgstr ""
-"Versiosta 4.0.0 lähtien asiakasalue on käyttänyt erinäisiä sivuja sisällön "
-"näyttämiseksi asiakkaille. Luo kyseiset sivut täällä tai vaihtoehtoisesti "
-"osoita olemassa olevat sivut."
+msgstr "Versiosta 4.0.0 lähtien asiakasalue on käyttänyt erinäisiä sivuja sisällön näyttämiseksi asiakkaille. Luo kyseiset sivut täällä tai vaihtoehtoisesti osoita olemassa olevat sivut."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1287
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1388
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1289
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1323
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1390
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
-msgstr ""
-"Joitakin asiakasalueen sivuja on luotu tai poistettu. Asiakasalueen "
-"navigaatiovalikko pitää päivittää."
+msgstr "Joitakin asiakasalueen sivuja on luotu tai poistettu. Asiakasalueen navigaatiovalikko pitää päivittää."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1317
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1319
 msgid "The following pages have been created: %s"
 msgstr "Seuraavat sivut luotiin: %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1324
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1326
 msgid "There was no missing page that could be created."
 msgstr "Ei puuttuvia sivuja, sivuja ei luotu."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1363
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1365
 msgid ""
-"Some pages in your site seem to contain Customer Area shortcodes but are not "
-"registered in the Customer Area pages settings."
-msgstr ""
-"Jotkin sisälltösivut sisältävät WP Customer Area -lyhytkoodeja, mutta niitä "
-"ei ole rekisteröity asiakastietosivuiksi WP Customer Area:n asetuksissa."
+"Some pages in your site seem to contain Customer Area shortcodes but are not"
+" registered in the Customer Area pages settings."
+msgstr "Jotkin sisälltösivut sisältävät WP Customer Area -lyhytkoodeja, mutta niitä ei ole rekisteröity asiakastietosivuiksi WP Customer Area:n asetuksissa."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1383
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1385
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] "%s: sivu on poistettu"
@@ -1225,18 +1193,13 @@ msgid ""
 "A navigation menu organizes the customer area. It allows to browse the "
 "files, the pages, to view the account details and much more. It seems that "
 "this menu has not yet been created."
-msgstr ""
-"Asiakasalueen organisointiin käytetty navigaatiovalikko. Se mahdollistaa "
-"tiedostojen ja -sivujen selaamisen, tunnuksien asetuksien muokkaamisen ja "
-"paljon muuta. Vaikuttaa siltä, että kyseistä valikkoa ei ole vielä luotu."
+msgstr "Asiakasalueen organisointiin käytetty navigaatiovalikko. Se mahdollistaa tiedostojen ja -sivujen selaamisen, tunnuksien asetuksien muokkaamisen ja paljon muuta. Vaikuttaa siltä, että kyseistä valikkoa ei ole vielä luotu."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:37
 msgid ""
-"You can review which menus are currently created on the <a href=\"%1$s"
-"\">menus page</a>."
-msgstr ""
-"Voit tarkastella tällä hetkellä olemassa olevia valikkoja <a href=\"%1$s"
-"\">valikkosivulla</a>."
+"You can review which menus are currently created on the <a "
+"href=\"%1$s\">menus page</a>."
+msgstr "Voit tarkastella tällä hetkellä olemassa olevia valikkoja <a href=\"%1$s\">valikkosivulla</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-missing-nav-menu.template.php:42
 msgid "Create the menu"
@@ -1254,21 +1217,16 @@ msgstr "Navigaatiovalikko on vanhentunut."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:36
 msgid ""
-"Some pages of the customer area have been changed and our current navigation "
-"menu probably references the previous pages. We recommend to synchronize the "
-"menu with the new pages. "
-msgstr ""
-"Jotkin asiakasalueen sivut ovat muuttuneet ja nykyinen navigaatiovalikkomme "
-"todennäköisesti viittaa aiempiin sivuihin. Suosittelemme synkronoimaan "
-"valikon uusien sivujen kanssa."
+"Some pages of the customer area have been changed and our current navigation"
+" menu probably references the previous pages. We recommend to synchronize "
+"the menu with the new pages. "
+msgstr "Jotkin asiakasalueen sivut ovat muuttuneet ja nykyinen navigaatiovalikkomme todennäköisesti viittaa aiempiin sivuihin. Suosittelemme synkronoimaan valikon uusien sivujen kanssa."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:37
 msgid ""
 "You can also manually edit that menu in the <a href=\"%1$s\">Appearance "
 "&raquo; Menus</a> page."
-msgstr ""
-"Voit myös muokata kyseistä valikkoa käsin <a href=\"%1$s\">Ulkonäkö &raquo; "
-"Valikot</a> sivulla."
+msgstr "Voit myös muokata kyseistä valikkoa käsin <a href=\"%1$s\">Ulkonäkö &raquo; Valikot</a> sivulla."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:40
 msgid "Suggested actions"
@@ -1286,17 +1244,13 @@ msgstr "Sivuuta varoitus"
 msgid ""
 "Are you sure that you want to clear current menu and create it again from "
 "scratch (this operation cannot be undone)?"
-msgstr ""
-"Oletko varma, että haluat tyhjentää nykyisen valikon ja luoda uuden "
-"tyhjästä? (Toimintoa ei voida peruuttaa.)"
+msgstr "Oletko varma, että haluat tyhjentää nykyisen valikon ja luoda uuden tyhjästä? (Toimintoa ei voida peruuttaa.)"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-nav-menu-needs-sync.template.php:56
 msgid ""
 "Are you sure that you want ignore this warning? You can also manually edit "
 "your menu in the page: \"Appearance > Menus\"."
-msgstr ""
-"Oletko varma, että haluat sivuuttaa tämän varoituksen? Valikoita on "
-"mahdollista muokata myös käsin sivulla: \" Ulkoasu > Valikot \"."
+msgstr "Oletko varma, että haluat sivuuttaa tämän varoituksen? Valikoita on mahdollista muokata myös käsin sivulla: \" Ulkoasu > Valikot \"."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-orphan-pages.template.php:33
 msgid "Orphan pages"
@@ -1312,8 +1266,7 @@ msgstr "Poista orpo sivu"
 msgid ""
 "Are you sure that you want to delete those pages (this operation cannot be "
 "undone)?"
-msgstr ""
-"Oletko varma, että haluat poistaa sivut? (Toimintoa ei voida peruuttaa.)"
+msgstr "Oletko varma, että haluat poistaa sivut? (Toimintoa ei voida peruuttaa.)"
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:33
 msgid "Missing front-office pages"
@@ -1324,17 +1277,13 @@ msgid ""
 "Some pages of the customer area have not yet been created. Those pages are "
 "responsible for displaying the private content you have assigned to your "
 "users."
-msgstr ""
-"Joitain asiakasalueen sivuja ei ole vielä luotu. Kyseiset sivut ovat "
-"vastuussa asiakkalle osoitetun privaatin sisällän näyttämisestä."
+msgstr "Joitain asiakasalueen sivuja ei ole vielä luotu. Kyseiset sivut ovat vastuussa asiakkalle osoitetun privaatin sisällän näyttämisestä."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:37
 msgid ""
-"You can review which pages are currently created on the <a href=\"%1$s"
-"\">pages settings page</a>."
-msgstr ""
-"Voit tarkastella tällä hetkellä luotuna olevia sivuja <a href=\"%1$s"
-"\">sivujen asetukset -sivulla</a>."
+"You can review which pages are currently created on the <a "
+"href=\"%1$s\">pages settings page</a>."
+msgstr "Voit tarkastella tällä hetkellä luotuna olevia sivuja <a href=\"%1$s\">sivujen asetukset -sivulla</a>."
 
 #: src/php/core-addons/customer-pages/templates/status-attention-needed-pages-without-id.template.php:42
 msgid "Create missing pages"
@@ -1344,9 +1293,7 @@ msgstr "Luo puuttuvat sivut"
 msgid ""
 "Are you sure that you want to create all the pages that are currently "
 "missing (this operation cannot be undone)?"
-msgstr ""
-"Oletko varma, että haluat luoda kaikki tällä hetkellä puuttuvaksi uskotut "
-"sivut? (Toimintoa ei voi peruuttaa.)"
+msgstr "Oletko varma, että haluat luoda kaikki tällä hetkellä puuttuvaksi uskotut sivut? (Toimintoa ei voi peruuttaa.)"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:35
 msgid "Page"
@@ -1362,7 +1309,6 @@ msgstr "Järjestys"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:38
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:110
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:28
 msgid "ID"
 msgstr "ID"
 
@@ -1378,8 +1324,8 @@ msgstr "Tyyppi"
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:62
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:126
 #: src/php/core-classes/Content/list-table.class.php:318
-#: src/php/core-classes/addon-update-content-page.class.php:274
-#: src/php/core-classes/addon-update-content-page.class.php:275
+#: src/php/core-classes/addon-update-content-page.class.php:264
+#: src/php/core-classes/addon-update-content-page.class.php:265
 msgid "Edit"
 msgstr "Muokkaa"
 
@@ -1426,6 +1372,10 @@ msgid "Files published in %1$s"
 msgstr "%1$s julkaistut tiedostot"
 
 #: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:130
+#: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:50
+msgid "Files"
+msgstr "Tiedostot"
+
 #: src/php/core-addons/customer-private-files/customer-private-files-addon.class.php:135
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:49
 msgid "Recent Files"
@@ -1466,62 +1416,67 @@ msgstr "Kategoriassa ei ole tiedostoja."
 msgid "You currently have no files."
 msgstr "Sinulla ei tällä hetkellä ole tiedostoja."
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:22
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-empty-date_archive.template.php:25
 msgid "There are no files for that period."
 msgstr "Valitulla aikavälillä ei ole tiedostoja."
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:21
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:21
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-container.template.php:19
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:20
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:24
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:24
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-container.template.php:22
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item-dashboard.template.php:23
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-default-item.template.php:13
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-layout-list-item.template.php:13
 #: src/php/core-classes/templates/default-container-content-item.template.php:12
 msgid "Uploaded on %s"
 msgstr "Ylösladattu kansioon %s"
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:30
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:30
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-container.template.php:34
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item-dashboard.template.php:34
 msgid "%1$s file"
 msgid_plural "%1$s files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:32
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:35
 msgid "FILE"
 msgid_plural "FILES"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:59
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:56
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:64
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:61
 msgid "Created on"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:80
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:89
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-header.template.php:47
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:77
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:86
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-header.template.php:42
 msgid "Assigned to"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:28
-#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:22
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:33
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:27
+msgid "Page %1$s/%2$s"
+msgstr ""
+
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:42
+#: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:36
 #: src/php/core-classes/templates/content-page-content.template.php:21
 msgid "No items were found matching the selected filters"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:33
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:39
 msgid "%d attachment"
 msgid_plural "%d attachments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:48
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:61
 msgid "Get file"
 msgstr "Lataa tiedosto"
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:49
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:62
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:23
@@ -1568,10 +1523,6 @@ msgstr "Ei tiedostoja"
 msgid "Private Files - Home"
 msgstr "Privaattitiedostot - Koti"
 
-#: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:50
-msgid "Files"
-msgstr "Tiedostot"
-
 #: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:54
 msgid "Root page for the customer files."
 msgstr "Asiakastiedostojen juurisivu."
@@ -1608,7 +1559,6 @@ msgstr "%2$s %1$s julkaistut sivut"
 msgid "Pages published in %1$s"
 msgstr "%1$s julkaistut sivut"
 
-#: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:130
 #: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:135
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:49
 msgid "Recent Pages"
@@ -1686,12 +1636,9 @@ msgstr "Asenna WP Customer Area"
 
 #: src/php/core-addons/installer/installer-addon.class.php:247
 msgid ""
-"There is a quick installation to run before being able to publish your first "
-"private files and pages. It should be over in less than a minute!"
-msgstr ""
-"On suoritettava nopea asennustoiminto, ennen kuin voit julkaista ensimmäiset "
-"privaattisivusi ja -tiedostosi. Sen ei pitäisi viedä muutamaa minuuttia "
-"kauempaa!"
+"There is a quick installation to run before being able to publish your first"
+" private files and pages. It should be over in less than a minute!"
+msgstr "On suoritettava nopea asennustoiminto, ennen kuin voit julkaista ensimmäiset privaattisivusi ja -tiedostosi. Sen ei pitäisi viedä muutamaa minuuttia kauempaa!"
 
 #: src/php/core-addons/installer/templates/installer-part-setup-wizard.template.php:4
 msgid "Setup pages and navigation menu"
@@ -1808,9 +1755,7 @@ msgstr ""
 
 #: src/php/core-addons/log/log-addon.class.php:489
 msgid "Only log the first time a private content is viewed by a user."
-msgstr ""
-"Lokaa vain ensimmäinen kerta, kun privaattisisältöä katsellaan käyttäjän "
-"toimesta."
+msgstr "Lokaa vain ensimmäinen kerta, kun privaattisisältöä katsellaan käyttäjän toimesta."
 
 #: src/php/core-addons/log/log-addon.class.php:491
 msgid ""
@@ -1818,28 +1763,19 @@ msgid ""
 "first time a user is viewing private content. There will be a single event "
 "per user and per content. Else, each time a user is viewing a private "
 "content, an event will be generated."
-msgstr ""
-"Tämän laatikon ollessa valittuna WP Customer area lokaa vain ensimmäisen "
-"privaattisivun käyttökerran. Lokissa on yksi tapahtumakirjaus erikseen "
-"jokaisen käyttäjän ensimmäiselle käyttökerralle. Muussa tapauksessa jokainen "
-"sivun käyttökerta kirjoitetaan lokiin."
+msgstr "Tämän laatikon ollessa valittuna WP Customer area lokaa vain ensimmäisen privaattisivun käyttökerran. Lokissa on yksi tapahtumakirjaus erikseen jokaisen käyttäjän ensimmäiselle käyttökerralle. Muussa tapauksessa jokainen sivun käyttökerta kirjoitetaan lokiin."
 
 #: src/php/core-addons/log/log-addon.class.php:506
 msgid "Only log the first time a private file is downloaded by a user."
-msgstr ""
-"Kirjoita lokiin vain käyttäjän ensimmäinen privaattisisällön käyttökerta."
+msgstr "Kirjoita lokiin vain käyttäjän ensimmäinen privaattisisällön käyttökerta."
 
 #: src/php/core-addons/log/log-addon.class.php:508
 msgid ""
 "If you check this box, WP Customer Area will only generate a log event the "
 "first time a user is downloading a private file. There will be a single "
-"event per user and per file. Else, each time a user is downloading a private "
-"file, an event will be generated."
-msgstr ""
-"Tämän laatikon ollessa valittuna WP Customer Area lokaa vain ensimmäisen "
-"privaattitiedoston käyttökerran. Lokissa on yksi tapahtumakirjaus erikseen "
-"jokaisen käyttäjän ensimmäiselle käyttökerralle. Muussa tapauksessa jokainen "
-"tiedoston käyttökerta kirjoitetaan lokiin."
+"event per user and per file. Else, each time a user is downloading a private"
+" file, an event will be generated."
+msgstr "Tämän laatikon ollessa valittuna WP Customer Area lokaa vain ensimmäisen privaattitiedoston käyttökerran. Lokissa on yksi tapahtumakirjaus erikseen jokaisen käyttäjän ensimmäiselle käyttökerralle. Muussa tapauksessa jokainen tiedoston käyttökerta kirjoitetaan lokiin."
 
 #: src/php/core-addons/log/log-table.class.php:155
 msgid "Event"
@@ -1922,126 +1858,119 @@ msgstr "Viestin omistaja"
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:799
-msgid "User - %s"
-msgstr "Käyttäjä - %s"
-
 #: src/php/core-addons/post-owner/post-owner-admin-interface.class.php:90
 msgid "Assignment"
 msgstr "Asetus"
 
-#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:14
+#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:19
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
-#, fuzzy
 msgid "You are not allowed to select an owner"
-msgstr "Simulla ei ole oikeutta poistaa lokeja."
+msgstr ""
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:37
 msgid "Select or search an owner"
 msgstr "Valitse tai etsi omistajaa"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:43
-#: src/php/core-addons/private-file/private-file-addon.class.php:1100
+#: src/php/core-addons/private-file/private-file-addon.class.php:1050
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:150
 msgid "Private Files"
 msgstr "Privaatit tiedostot"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:670
+#: src/php/core-addons/private-file/private-file-addon.class.php:646
 msgid ""
 "<a href=\"%s\">Public URL to a test file in that folder</a>. Response code: "
 "%s. File content: %s"
-msgstr ""
-"<a href=\"%s\">Julkinen URL-osoite kansiossa olevan tiedoston testaamiseksi</"
-"a>. Vastauskoodi: %s. Tiedoston sisältö: %s"
+msgstr "<a href=\"%s\">Julkinen URL-osoite kansiossa olevan tiedoston testaamiseksi</a>. Vastauskoodi: %s. Tiedoston sisältö: %s"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:790
+#: src/php/core-addons/private-file/private-file-addon.class.php:757
 msgid "Do you really want to remove this file?"
 msgstr "Oletko varma, että haluat poistaa tämän tiedoston?"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:792
-#: src/php/core-addons/private-file/private-file-addon.class.php:852
+#: src/php/core-addons/private-file/private-file-addon.class.php:759
+#: src/php/core-addons/private-file/private-file-addon.class.php:816
 msgid "You are not allowed to attach more than %d file"
 msgid_plural "You are not allowed to attach more than %d files"
 msgstr[0] "Sinulla ei ole oikeutta liittää kuin %d tiedosto"
 msgstr[1] "Sinulla ei ole oikeutta liittää kuin %d tiedostoa"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:828
+#: src/php/core-addons/private-file/private-file-addon.class.php:794
 msgid "You are not allowed to attach files to this kind of content"
 msgstr "Et voi liittää tiedostoja tämänlaatuiseen sisältöön"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:866
+#: src/php/core-addons/private-file/private-file-addon.class.php:829
 msgid "You cannot attach files with the same name"
 msgstr "Et voi liittää kahta samannimistä tiedostoa"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:922
+#: src/php/core-addons/private-file/private-file-addon.class.php:882
 msgid "You are not allowed to update attached files"
 msgstr "Sinulla ei ole oikeutta ylösladata valittuja tiedostoja"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:931
+#: src/php/core-addons/private-file/private-file-addon.class.php:890
 msgid "File not found"
 msgstr "Tiedostoa ei löydy"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:987
+#: src/php/core-addons/private-file/private-file-addon.class.php:942
 msgid "You are not allowed to remove attached files"
 msgstr "Sinulla ei ole oikeutta poistaa liitettyjä tiedostoja"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1057
+#: src/php/core-addons/private-file/private-file-addon.class.php:1007
 msgid "You are not authorized to access this file"
 msgstr "Sinulla ei ole oikeutta tähän tiedostoon"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1077
+#: src/php/core-addons/private-file/private-file-addon.class.php:1024
 msgid "There is no such file attached to this private content"
 msgstr "Kuvatunkaltaista tiedostoa ei ole liitetty tähän privaattisisältöön"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1103
+#: src/php/core-addons/private-file/private-file-addon.class.php:1053
 msgid "Global"
 msgstr "Globaali"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1105
+#: src/php/core-addons/private-file/private-file-addon.class.php:1055
 msgid "Manage file attachments"
 msgstr "Hallitse tiedostoliitteitä"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1111
+#: src/php/core-addons/private-file/private-file-addon.class.php:1061
 msgid "List all files"
 msgstr "Listaa kaikki tiedostot"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1112
+#: src/php/core-addons/private-file/private-file-addon.class.php:1062
 msgid "Create/Edit files"
 msgstr "Luo/Muokkaa tiedostoja"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1113
+#: src/php/core-addons/private-file/private-file-addon.class.php:1063
 msgid "Delete files"
 msgstr "Poista tiedostot"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1114
+#: src/php/core-addons/private-file/private-file-addon.class.php:1064
 msgid "Access files"
 msgstr "Pääsy tiedostoihin"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1115
+#: src/php/core-addons/private-file/private-file-addon.class.php:1065
 #: src/php/core-addons/private-page/private-page-addon.class.php:114
 msgid "Manage categories"
 msgstr "Hallitse kategorioita"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1116
+#: src/php/core-addons/private-file/private-file-addon.class.php:1066
 #: src/php/core-addons/private-page/private-page-addon.class.php:115
 msgid "Edit categories"
 msgstr "Muokkaa kategorioita"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1117
+#: src/php/core-addons/private-file/private-file-addon.class.php:1067
 #: src/php/core-addons/private-page/private-page-addon.class.php:116
 msgid "Delete categories"
 msgstr "Poista kategorioita"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1118
+#: src/php/core-addons/private-file/private-file-addon.class.php:1068
 #: src/php/core-addons/private-page/private-page-addon.class.php:117
 msgid "Assign categories"
 msgstr "Aseta kategorioita"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1124
+#: src/php/core-addons/private-file/private-file-addon.class.php:1074
 msgid "View private files"
 msgstr "Tarkastele privaattitiedostoja"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1125
+#: src/php/core-addons/private-file/private-file-addon.class.php:1075
 msgid "View any private file"
 msgstr "Tarkastele mitä tahansa privaattitiedostoa"
 
@@ -2080,28 +2009,22 @@ msgid "FTP uploads folder"
 msgstr "FTP-ylöslatauskansio"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:247
-msgid "<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
-msgstr ""
-"<strong>Jätä tyhjäksi valitaksesi oletuskansio</strong>:<br/><code>%s</code>"
+msgid ""
+"<strong>Leave empty to use default folder</strong>:<br/><code>%s</code>"
+msgstr "<strong>Jätä tyhjäksi valitaksesi oletuskansio</strong>:<br/><code>%s</code>"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:250
 msgid ""
 "This folder is the root folder for storing private files. This should "
-"preferably be located outside of the web server public area or secured using "
-"a <code>.htaccess</code> file"
-msgstr ""
-"Tämä on privaattitiedostosäilön juurikansio. Sen olisi syytä olla poissa web-"
-"palvelinen julkiselta alueelta tai suojattu käyttäen <code>.htaccess</code> -"
-"tiedostoa"
+"preferably be located outside of the web server public area or secured using"
+" a <code>.htaccess</code> file"
+msgstr "Tämä on privaattitiedostosäilön juurikansio. Sen olisi syytä olla poissa web-palvelinen julkiselta alueelta tai suojattu käyttäen <code>.htaccess</code> -tiedostoa"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:264
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
-msgstr ""
-"Tämä polku voidaan asettaa, mikäli haluat käyttää FTP:llä ylösladattuja "
-"tiedostoja. Tämä on kätevää, mikä tiedostojen lataus epäonnistuu esimerkiksi "
-"suurten tiedostojen kanssa."
+msgstr "Tämä polku voidaan asettaa, mikäli haluat käyttää FTP:llä ylösladattuja tiedostoja. Tämä on kätevää, mikä tiedostojen lataus epäonnistuu esimerkiksi suurten tiedostojen kanssa."
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:281
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:299
@@ -2122,10 +2045,7 @@ msgid ""
 "That directory should at least have the permissions set to %s. Currently it "
 "is %s. You should adjust that directory permissions as upload or download "
 "might not work properly."
-msgstr ""
-"Kansion käyttäjäoikeuden tulisi olla vähintään %s. Tällä hetkellä se on %s. "
-"Sinun tulisi muokata tiedoston oikeuksia tai muuten ylöslataus tai lataus ei "
-"toimi oikein."
+msgstr "Kansion käyttäjäoikeuden tulisi olla vähintään %s. Tällä hetkellä se on %s. Sinun tulisi muokata tiedoston oikeuksia tai muuten ylöslataus tai lataus ei toimi oikein."
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:305
 msgid "Change permissions"
@@ -2134,22 +2054,16 @@ msgstr "Muuta oikeuksia"
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:316
 msgid ""
 "That directory seems to be accessible from the web. <strong>This is not "
-"safe</strong>. The most secure would be to move it outside of the web folder "
-"of your server"
-msgstr ""
-"Kyseinen tiedosto vaikuttaisi olevan luettavissa verkosta. <strong>Tämä on "
-"vaarallista</strong>.  Parasta olisi siirtää se kansioon joka on web-"
-"palvelimesi web-kansiohierarkian ulkopuolella."
+"safe</strong>. The most secure would be to move it outside of the web folder"
+" of your server"
+msgstr "Kyseinen tiedosto vaikuttaisi olevan luettavissa verkosta. <strong>Tämä on vaarallista</strong>.  Parasta olisi siirtää se kansioon joka on web-palvelimesi web-kansiohierarkian ulkopuolella."
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:321
 msgid ""
 "We can try to protect it with a <code>.htaccess</code> file with the button "
 "below, but <strong>this only works for Apache servers</strong> (will do "
 "nothing if you are running nginx or IIS)"
-msgstr ""
-"Me voimme yrittää suojella sitä <code>.htaccess</code> tiedostolla, mutta "
-"<strong>tämä toimii vain Apache-palvelimella</strong>.  (Ei toimi, mikäli "
-"palvelimesi on nginx tai IIS.) Paina oheista nappia."
+msgstr "Me voimme yrittää suojella sitä <code>.htaccess</code> tiedostolla, mutta <strong>tämä toimii vain Apache-palvelimella</strong>.  (Ei toimi, mikäli palvelimesi on nginx tai IIS.) Paina oheista nappia."
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:326
 msgid "Try to secure it"
@@ -2300,9 +2214,7 @@ msgstr "Ota käyttöön privaattisivu-laajennos."
 msgid ""
 "The parameter %2$s of shortcode <code>[%1$s]</code> has an invalid value: "
 "<code>%3$s</code>"
-msgstr ""
-"Parametri %2$s, joka kuuluu lyhytkoodiin <code>[%1$s]</code> on epäkelpo: "
-"<code>%3$s</code>"
+msgstr "Parametri %2$s, joka kuuluu lyhytkoodiin <code>[%1$s]</code> on epäkelpo: <code>%3$s</code>"
 
 #: src/php/core-addons/shortcodes/templates/protected-content-shortcode-empty-default.template.php:24
 msgid "There is no content to show"
@@ -2318,29 +2230,29 @@ msgid "Path"
 msgstr "Polku"
 
 #: src/php/core-addons/status/status-addon.class.php:38
-#: src/php/core-addons/status/status-addon.class.php:59
+#: src/php/core-addons/status/status-addon.class.php:58
 msgid "Status"
 msgstr "Tila"
 
-#: src/php/core-addons/status/status-addon.class.php:58
+#: src/php/core-addons/status/status-addon.class.php:57
 msgid "WP Customer Area - Plugin status"
 msgstr "WP Customer Area - Liitännäisen tila"
 
-#: src/php/core-addons/status/status-addon.class.php:108
+#: src/php/core-addons/status/status-addon.class.php:104
 msgid "Needs attention"
 msgstr "Kaipaa huomiota"
 
-#: src/php/core-addons/status/status-addon.class.php:109
+#: src/php/core-addons/status/status-addon.class.php:105
 msgid "Things that need your attention"
 msgstr "Huomiotasi kaipaavia asioita"
 
-#: src/php/core-addons/status/status-addon.class.php:113
+#: src/php/core-addons/status/status-addon.class.php:109
 msgid "Installed add-ons"
 msgstr "Asennetut laajennukset"
 
-#: src/php/core-addons/status/status-addon.class.php:114
-msgid "Core and commercial add-ons currently enabled"
-msgstr "Tällä hetkellä asennetut ydin- ja kaupallisetlaajennokset"
+#: src/php/core-addons/status/status-addon.class.php:110
+msgid "Supported add-ons currently enabled"
+msgstr ""
 
 #: src/php/core-addons/status/status-addon.class.php:123
 msgid "Actions and filters"
@@ -2362,31 +2274,31 @@ msgstr "Templaattitiedosto"
 msgid "Settings tools"
 msgstr "Asetustyökalut"
 
-#: src/php/core-addons/status/status-addon.class.php:206
+#: src/php/core-addons/status/status-addon.class.php:201
 msgid "The database has been cleaned up, you can now remove the plugin"
 msgstr ""
 
-#: src/php/core-addons/status/status-addon.class.php:212
+#: src/php/core-addons/status/status-addon.class.php:207
 msgid "Settings have been resetted to default values"
 msgstr "Asetukset on palautettu oletusarvoihinsa."
 
-#: src/php/core-addons/status/status-addon.class.php:222
+#: src/php/core-addons/status/status-addon.class.php:216
 msgid "Invalid parameters. No file sent"
 msgstr "Virheelliset paranetrin, yhtään tiedostoa ei lähetetty."
 
-#: src/php/core-addons/status/status-addon.class.php:232
+#: src/php/core-addons/status/status-addon.class.php:225
 msgid "No file sent."
 msgstr "Yhtään tiedostoa ei lähetetty."
 
-#: src/php/core-addons/status/status-addon.class.php:237
+#: src/php/core-addons/status/status-addon.class.php:230
 msgid "Exceeded filesize limit."
 msgstr "Tiedostokoko on ylitetty."
 
-#: src/php/core-addons/status/status-addon.class.php:241
+#: src/php/core-addons/status/status-addon.class.php:234
 msgid "Unknown errors."
 msgstr "Tuntemattomia virheitä."
 
-#: src/php/core-addons/status/status-addon.class.php:250
+#: src/php/core-addons/status/status-addon.class.php:243
 msgid "Settings have been imported successfully"
 msgstr "Asetukset on tuotu onnistuneesti"
 
@@ -2419,12 +2331,9 @@ msgstr "Vanhentunut liitännäisversio"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:28
 msgid ""
 "Some add-ons require a newer version of the main plugin (you are currently "
-"running version %1$s). You can find the list of all add-ons on the <a href="
-"\"%2$s\">add-ons status pages</a>."
-msgstr ""
-"Jotkin aliliitännäiset vaativat uudemman version pääliitännäisestä (nykyinen "
-"versiosi on %1$s). Löydät listan liitännäisistä <a href=\"%2$s"
-"\">liitännäisten tilasivulta</a>."
+"running version %1$s). You can find the list of all add-ons on the <a "
+"href=\"%2$s\">add-ons status pages</a>."
+msgstr "Jotkin aliliitännäiset vaativat uudemman version pääliitännäisestä (nykyinen versiosi on %1$s). Löydät listan liitännäisistä <a href=\"%2$s\">liitännäisten tilasivulta</a>."
 
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-plugin-version.template.php:34
 msgid "Update the plugin"
@@ -2441,6 +2350,39 @@ msgstr "Muut toiminnot"
 #: src/php/core-addons/status/templates/status-attention-needed-outdated-templates.template.php:67
 msgid "Ignore until next update"
 msgstr "Sivuuta seuraavaan päivitykseen asti"
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:26
+msgid ""
+"WP Customer Area %1$s recommends the following versions for the add-ons"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:31
+msgid "Add-on"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:32
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:44
+msgid "Current version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:33
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:45
+msgid "Recommended version"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:46
+msgid ""
+"If you ignore this warning, there may be unexpected behaviour from the "
+"plugin. You may also be missing on security patches and bug fixes."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:47
+msgid "You should really update the add-ons."
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:51
+msgid "Download updated add-ons"
+msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:29
 #: src/php/core-addons/status/templates/status-section-templates.template.php:26
@@ -2460,9 +2402,25 @@ msgstr "Vain toiminnot"
 msgid "%s: %d hook(s)"
 msgstr "%s: %d kouku(t)"
 
-#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:30
-msgid "Required customer area version"
-msgstr "Edellytetty WP Custon Area -versio"
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:33
+msgid "Get latest add-ons from your account"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:35
+msgid "Check versions again"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:64
+msgid "Version mismatch"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:66
+msgid "Addon is active"
+msgstr ""
+
+#: src/php/core-addons/status/templates/status-section-installed-addons.template.php:68
+msgid "Addon is not active"
+msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-needs-attention.template.php:33
 msgid "Issue #%d"
@@ -2472,9 +2430,7 @@ msgstr "Ongelma #%d"
 msgid ""
 "Congratulations, everything seems to be configured properly. You can enjoy "
 "your customer area now."
-msgstr ""
-"Onneksi olkoon, kaikki tuntuisi olevan oikein konfiguroitu. Voit nyt nauttia "
-"asiakasalueestasi."
+msgstr "Onneksi olkoon, kaikki tuntuisi olevan oikein konfiguroitu. Voit nyt nauttia asiakasalueestasi."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:27
 #: src/php/core-addons/status/templates/status-section-reset.template.php:33
@@ -2485,10 +2441,7 @@ msgstr "Vie asetukset"
 msgid ""
 "You can export all the settings to a JSON file. You can then use that file "
 "to restore your settings using the import settings field below."
-msgstr ""
-"Voit viedä kaikki asetukset JSON-tidostoon. Tämän jälkeen voit käyttää "
-"luotua tiedostoa asetusten palauttamiseen käyttäen alla olevaa asetusten "
-"tuonti -kenttää."
+msgstr "Voit viedä kaikki asetukset JSON-tidostoon. Tämän jälkeen voit käyttää luotua tiedostoa asetusten palauttamiseen käyttäen alla olevaa asetusten tuonti -kenttää."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:36
 #: src/php/core-addons/status/templates/status-section-reset.template.php:43
@@ -2497,7 +2450,8 @@ msgstr "Tuo asetukset"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:38
 msgid ""
-"You can import all the settings you had previously exported from a JSON file."
+"You can import all the settings you had previously exported from a JSON "
+"file."
 msgstr "Voit tuoda asetuksia, jotka olet aemmin tallentanut JSON-tidostoksi."
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:47
@@ -2508,9 +2462,7 @@ msgstr "Tyhjennä asetukset"
 msgid ""
 "Pressing the button below will reset all your Customer Area settings to the "
 "default values. This cannot be undone!"
-msgstr ""
-"Oheinen painike palauttaa WP Custon Area -asetuksesi oletusarvoihin. Tätä "
-"toimintoa ei voi perua!"
+msgstr "Oheinen painike palauttaa WP Custon Area -asetuksesi oletusarvoihin. Tätä toimintoa ei voi perua!"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:53
 msgid "Reset default settings"
@@ -2522,8 +2474,8 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:58
 msgid ""
-"Pressing the button below will clean-up any data related to WP Customer Area "
-"(posts, taxonomies, etc.). This cannot be undone!"
+"Pressing the button below will clean-up any data related to WP Customer Area"
+" (posts, taxonomies, etc.). This cannot be undone!"
 msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:62
@@ -2532,11 +2484,9 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:68
 msgid ""
-"Are you sure that you want to reset all the settings to their default values "
-"(this operation cannot be undone)?"
-msgstr ""
-"Oletko varma, että halaut tyhjentää asetukset ja palauttaa ne "
-"oletusarvoihinsa? (Tätä toimintoa ei voi peruuttaa.)"
+"Are you sure that you want to reset all the settings to their default values"
+" (this operation cannot be undone)?"
+msgstr "Oletko varma, että halaut tyhjentää asetukset ja palauttaa ne oletusarvoihinsa? (Tätä toimintoa ei voi peruuttaa.)"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:73
 msgid ""
@@ -2586,7 +2536,7 @@ msgstr "Lempinimi"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:97
 msgid "Display name"
-msgstr ""
+msgstr "Näyttönimi"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:101
 msgid "Personal Website"
@@ -2614,10 +2564,11 @@ msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
 "fields empty if you want to keep your current password"
+msgstr "Salasanan on oltava vähintään 5 merkkiä pitkä. Sinua pyydetään kirjautumaan uudelleen sisään salasanasi vaihduttua. Jätä kentät tyhjäksi säilyttääksesi vanhan salasanasi."
+
+#: src/php/core-classes/Addon/addon-manager.class.php:138
+msgid "The plugin and the add-ons you have installed may be incompatible."
 msgstr ""
-"Salasanan on oltava vähintään 5 merkkiä pitkä. Sinua pyydetään kirjautumaan "
-"uudelleen sisään salasanasi vaihduttua. Jätä kentät tyhjäksi säilyttääksesi "
-"vanhan salasanasi."
 
 #: src/php/core-classes/Content/list-table.class.php:246
 msgid ""
@@ -2678,60 +2629,55 @@ msgstr "Sinulla ei ole oikeutta siirtää tätä kohdetta roskakoriin."
 msgid "Empty Trash"
 msgstr "Tyhjennä roskakori."
 
-#: src/php/core-classes/Licensing/license-validation-result.class.php:81
-msgid ""
-"You have bought your license on the previous shop. We have a <a href=\"%1$s"
-"\">brand new website</a>, please contact us so that we can help you migrate "
-"your license to the new shop."
+#: src/php/core-classes/Cron/cron.class.php:43
+msgid "Once weekly"
 msgstr ""
-"Olet ostanut lisenssisi aiemmasta kaupasta. Meillä on <a href=\"%1$s\">uusi "
-"verkkosivu</a>, ota meihin yhteyttä saadaksesi apua lisenssin siirtämisessä."
 
-#: src/php/core-classes/Licensing/licensing.class.php:73
+#: src/php/core-classes/Licensing/licensing.class.php:76
 msgid "Unknown add-on"
 msgstr "Tuntematon liitännäinen"
 
-#: src/php/core-classes/Licensing/licensing.class.php:86
+#: src/php/core-classes/Licensing/licensing.class.php:82
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
-msgstr ""
-"Ongelma yhdistettäessä lisenssipalvelimiimme. Onhan lisenssi oikein? Onko "
-"PHP cURL käytössä?"
+msgstr "Ongelma yhdistettäessä lisenssipalvelimiimme. Onhan lisenssi oikein? Onko PHP cURL käytössä?"
 
-#: src/php/core-classes/Licensing/licensing.class.php:94
+#: src/php/core-classes/Licensing/licensing.class.php:87
 msgid "Your license is valid until: %s"
 msgstr "Lisenssisi on voimassa %s saakka"
 
-#: src/php/core-classes/Licensing/licensing.class.php:102
+#: src/php/core-classes/Licensing/licensing.class.php:95
 msgid "This license key has been revoked."
 msgstr "Lisenssiavain on uudistettu."
 
-#: src/php/core-classes/Licensing/licensing.class.php:109
+#: src/php/core-classes/Licensing/licensing.class.php:100
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
-msgstr ""
-"Olet saavuttanut tämän lisenssiavaimen salliman maksimisivumäärän. Voit "
-"käyttää sitä enintään %s sivulla."
+msgstr "Olet saavuttanut tämän lisenssiavaimen salliman maksimisivumäärän. Voit käyttää sitä enintään %s sivulla."
 
-#: src/php/core-classes/Licensing/licensing.class.php:118
-msgid "Renew license"
-msgstr "Uudista lisenssi"
-
-#: src/php/core-classes/Licensing/licensing.class.php:120
+#: src/php/core-classes/Licensing/licensing.class.php:107
 msgid "Your license has expired at the date: %s"
 msgstr "Lisenssisi on vanhentunut %s"
 
-#: src/php/core-classes/Licensing/licensing.class.php:128
+#: src/php/core-classes/Licensing/licensing.class.php:110
+msgid "Renew license"
+msgstr "Uudista lisenssi"
+
+#: src/php/core-classes/Licensing/licensing.class.php:118
 msgid "This license key does not match."
 msgstr "Lisenssiavain ei täsmää."
 
-#: src/php/core-classes/Licensing/licensing.class.php:135
+#: src/php/core-classes/Licensing/licensing.class.php:125
 msgid "This license key seems to have been generated for another product."
 msgstr "Tämä lisenssiavain tuntuu olevan generoitu toiselle tuotteelle."
 
-#: src/php/core-classes/Licensing/licensing.class.php:142
+#: src/php/core-classes/Licensing/licensing.class.php:131
+msgid "Your license is not active for this URL."
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:136
 msgid "Problem when validating your license key"
 msgstr "Ongelma tarkastettaessa lisenssiavainta"
 
@@ -2751,101 +2697,102 @@ msgstr "Korjaa mahdolliset ongelmat"
 msgid "The shortcode <code>[%1$s]</code> is missing required parameter: %2$s"
 msgstr "Lyhytkoodista <code>[%1$s]</code> puuttuu vaadittuja parametreja: %2$s"
 
-#: src/php/core-classes/addon-container-page.class.php:807
-#: src/php/core-classes/addon-content-page.class.php:834
+#: src/php/core-classes/addon-container-page.class.php:833
+#: src/php/core-classes/addon-content-page.class.php:860
 msgid "Frontend Integration"
 msgstr "Käyttöliittymäintegraatio"
 
-#: src/php/core-classes/addon-container-page.class.php:819
-#: src/php/core-classes/addon-content-page.class.php:846
+#: src/php/core-classes/addon-container-page.class.php:845
+#: src/php/core-classes/addon-content-page.class.php:872
 msgid "Show after post"
 msgstr "Näytä viestin jälkeen"
 
-#: src/php/core-classes/addon-container-page.class.php:828
-#: src/php/core-classes/addon-content-page.class.php:855
+#: src/php/core-classes/addon-container-page.class.php:854
 msgid "Show additional information after the post in the single post view."
 msgstr "Näytä lisätietoja viestin näkymässä."
 
-#: src/php/core-classes/addon-container-page.class.php:830
-#: src/php/core-classes/addon-content-page.class.php:857
+#: src/php/core-classes/addon-container-page.class.php:856
+#: src/php/core-classes/addon-content-page.class.php:883
 msgid ""
 "You can disable this if you have your own theme template file for single "
 "posts. The theme file to look for or create should be called: %s."
-msgstr ""
-"Voit ottaa tämän pois käytöstä, mikäli sinulla on oma "
-"teematemplaattitiedosto yksittäisviesteille. Etsittävän tai luotavan "
-"teematiedoston pitäisi olla %s."
+msgstr "Voit ottaa tämän pois käytöstä, mikäli sinulla on oma teematemplaattitiedosto yksittäisviesteille. Etsittävän tai luotavan teematiedoston pitäisi olla %s."
 
-#: src/php/core-classes/addon-container-page.class.php:851
-#: src/php/core-classes/addon-content-page.class.php:878
+#: src/php/core-classes/addon-container-page.class.php:877
+#: src/php/core-classes/addon-content-page.class.php:904
 msgid "Show recent content on the dashboard."
 msgstr "Näytä viimeisin sisältö hallintapaneelissa."
 
-#: src/php/core-classes/addon-container-page.class.php:865
-#: src/php/core-classes/addon-content-page.class.php:893
+#: src/php/core-classes/addon-container-page.class.php:891
+#: src/php/core-classes/addon-content-page.class.php:919
 msgid ""
-"Define how many items to allow on the dashboard page. -1 will show all items."
-msgstr ""
-"Valitse, kuinka monta kohtaa näytetään hallintapaneelisivulla. -1 näyttää "
-"kaikki kohdat."
+"Define how many items to allow on the dashboard page. -1 will show all "
+"items."
+msgstr "Valitse, kuinka monta kohtaa näytetään hallintapaneelisivulla. -1 näyttää kaikki kohdat."
 
-#: src/php/core-classes/addon-container-page.class.php:946
+#: src/php/core-classes/addon-container-page.class.php:972
 msgid "Slug that is used in the URL for archives of the taxonomy: "
 msgstr "Slugi, jota käytetään taksonomia-arkistojen URL:issa:"
+
+#: src/php/core-classes/addon-content-page.class.php:881
+msgid ""
+"Show additional information before and after the post in the single post "
+"view."
+msgstr ""
 
 #: src/php/core-classes/addon-create-content-page.class.php:85
 msgid "You are not allowed to create this type of content."
 msgstr "Sinulla ei ole oikeutta luoda tällaista sisältöä."
 
-#: src/php/core-classes/addon-create-content-page.class.php:163
+#: src/php/core-classes/addon-create-content-page.class.php:145
 msgid "Content creation (from front-office)"
 msgstr "Sisällön luominen (julkisesta tilasta)"
 
-#: src/php/core-classes/addon-create-content-page.class.php:165
+#: src/php/core-classes/addon-create-content-page.class.php:147
 msgid "Create content from front office"
 msgstr "Luo sisältö julkisesta tilasta"
 
-#: src/php/core-classes/addon-create-content-page.class.php:166
+#: src/php/core-classes/addon-create-content-page.class.php:148
 msgid "Bypass moderation (content is automatically published)"
 msgstr "Ohita moderointi (sisältö julkaistaa automaattisesti)"
 
-#: src/php/core-classes/addon-create-content-page.class.php:197
+#: src/php/core-classes/addon-create-content-page.class.php:179
 msgid "Content creation"
 msgstr "Sisällön luominen"
 
-#: src/php/core-classes/addon-create-content-page.class.php:210
+#: src/php/core-classes/addon-create-content-page.class.php:192
 msgid "Moderation"
 msgstr "Moderointi"
 
-#: src/php/core-classes/addon-create-content-page.class.php:218
+#: src/php/core-classes/addon-create-content-page.class.php:200
 msgid "Enable moderation when new content is submitted by a user."
 msgstr "Ota moderointi käyttöön käyttäjien luomalle uudelle sisällölle."
 
-#: src/php/core-classes/addon-create-content-page.class.php:234
+#: src/php/core-classes/addon-create-content-page.class.php:216
 msgid "Default owners"
 msgstr ""
 
-#: src/php/core-classes/addon-create-content-page.class.php:251
+#: src/php/core-classes/addon-create-content-page.class.php:233
 msgid "Default category"
 msgstr "Oletuskategoria"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:743
+#: src/php/core-classes/addon-edit-content-page.class.php:765
 msgid "Content edition (from front-office)"
 msgstr "Sisällön muokkaus (käyttöliittymästä)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:745
+#: src/php/core-classes/addon-edit-content-page.class.php:767
 msgid "Select an owner (uses default else)"
 msgstr "Valitse omistaja (muuten käytetään oletusta)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:746
+#: src/php/core-classes/addon-edit-content-page.class.php:768
 msgid "Select a category (uses default else)"
 msgstr "Valitse kategoria (muuten käytetään oletusta)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:809
+#: src/php/core-classes/addon-edit-content-page.class.php:831
 msgid "Rich Editor"
 msgstr "Monipuolinen editori"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:817
+#: src/php/core-classes/addon-edit-content-page.class.php:839
 msgid "Enable the rich editor when editing content."
 msgstr "Ota käyttöön monipuolinen editori sisältöä muokattaessa."
 
@@ -2853,118 +2800,114 @@ msgstr "Ota käyttöön monipuolinen editori sisältöä muokattaessa."
 msgid "Customer Page - %s"
 msgstr "Asiakassivu - %s"
 
-#: src/php/core-classes/addon-page.class.php:313
+#: src/php/core-classes/addon-page.class.php:292
 msgid "This page requires login, you should not be here"
 msgstr "Tämä sivu vaatii sisäänkirjautumisen, sinun ei kuuluisi olla täällä"
 
-#: src/php/core-classes/addon-page.class.php:325
+#: src/php/core-classes/addon-page.class.php:300
 msgid "You are not allowed to view this page"
 msgstr "Sinulla ei ole oikeutta tarkastella tätä sivua"
 
-#: src/php/core-classes/addon-page.class.php:433
+#: src/php/core-classes/addon-page.class.php:402
 msgid "WPCA - %s"
 msgstr "WPCA - %s"
 
-#: src/php/core-classes/addon-update-content-page.class.php:144
+#: src/php/core-classes/addon-update-content-page.class.php:134
 msgid "You must supply a post ID to delete"
 msgstr "Sinun annetta poistettavan viestin ID"
 
-#: src/php/core-classes/addon-update-content-page.class.php:151
+#: src/php/core-classes/addon-update-content-page.class.php:141
 msgid "You are not allowed to delete this post"
 msgstr "Sinulla ei ole oikeutta poistaa tätä viestiä"
 
-#: src/php/core-classes/addon-update-content-page.class.php:159
+#: src/php/core-classes/addon-update-content-page.class.php:149
 msgid "Done"
-msgstr ""
+msgstr "Valmis"
 
-#: src/php/core-classes/addon-update-content-page.class.php:160
+#: src/php/core-classes/addon-update-content-page.class.php:150
 msgid "The content has been deleted."
 msgstr "Sisältö on poistettu."
 
-#: src/php/core-classes/addon-update-content-page.class.php:284
-#: src/php/core-classes/addon-update-content-page.class.php:285
+#: src/php/core-classes/addon-update-content-page.class.php:274
+#: src/php/core-classes/addon-update-content-page.class.php:275
 msgid "Delete"
 msgstr "Poista"
 
-#: src/php/core-classes/addon-update-content-page.class.php:288
+#: src/php/core-classes/addon-update-content-page.class.php:278
 msgid "Are you sure that you want to delete this content?"
 msgstr "Oletko varma, että haluat poistaa tämän sisällön?"
 
-#: src/php/core-classes/addon-update-content-page.class.php:306
+#: src/php/core-classes/addon-update-content-page.class.php:296
 msgid "Content update (from front-office)"
 msgstr "Sisällön päivitys (käyttöliittymästä)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:308
+#: src/php/core-classes/addon-update-content-page.class.php:298
 msgid "Update any content from front office"
 msgstr "Päivitä mikä tahansa sisältö julkiselta alueelta käsin"
 
-#: src/php/core-classes/addon-update-content-page.class.php:309
+#: src/php/core-classes/addon-update-content-page.class.php:299
 msgid "Update authored content"
 msgstr "Päivitä toisen kirjoittamaa sisältöä"
 
-#: src/php/core-classes/addon-update-content-page.class.php:310
+#: src/php/core-classes/addon-update-content-page.class.php:300
 msgid "Update owned content"
 msgstr "Päivitä toisen omistamaa sisältöä"
 
-#: src/php/core-classes/addon-update-content-page.class.php:314
+#: src/php/core-classes/addon-update-content-page.class.php:304
 msgid "Content removal (from front-office)"
 msgstr "Sisällön poisto (julkisesta tilasta)"
 
-#: src/php/core-classes/addon-update-content-page.class.php:316
+#: src/php/core-classes/addon-update-content-page.class.php:306
 msgid "Delete any content from front office"
 msgstr "Poista mikä tahansa sisältö julkiselta tilasta käsin"
 
-#: src/php/core-classes/addon-update-content-page.class.php:317
+#: src/php/core-classes/addon-update-content-page.class.php:307
 msgid "Delete authored content"
 msgstr "Poista toisen kirjoittamaa sisältöä"
 
-#: src/php/core-classes/addon-update-content-page.class.php:318
+#: src/php/core-classes/addon-update-content-page.class.php:308
 msgid "Delete owned content"
 msgstr "Poista toisen omistamaa sisältöä"
 
-#: src/php/core-classes/addon-update-content-page.class.php:333
+#: src/php/core-classes/addon-update-content-page.class.php:323
 msgid "You must specify a post to delete"
 msgstr "Sinun on määritettevä poistettava viesti"
 
-#: src/php/core-classes/addon-update-content-page.class.php:370
+#: src/php/core-classes/addon-update-content-page.class.php:360
 msgid "You must specify a post to edit"
 msgstr "Sinun on määritettävä muokattava viesti"
 
-#: src/php/core-classes/addon-update-content-page.class.php:411
+#: src/php/core-classes/addon-update-content-page.class.php:401
 msgid "Content edition"
 msgstr "Sisällön muokkaus"
 
-#: src/php/core-classes/addon.class.php:97
+#: src/php/core-classes/addon.class.php:135
 msgid ""
 "<strong>Error: </strong>WP Customer Area add-ons are active but the main "
 "plugin is not installed!"
-msgstr ""
-"<strong>Virhe: </strong>WP Customer Area -lisäosia on aktivoitu, mutta pää-"
-"lisäosaa ei ole asennettu"
+msgstr "<strong>Virhe: </strong>WP Customer Area -lisäosia on aktivoitu, mutta pää-lisäosaa ei ole asennettu"
 
-#: src/php/core-classes/addon.class.php:125
-msgid "License Keys"
-msgstr "Lisenssiavaimet"
-
-#: src/php/core-classes/addon.class.php:137
-msgid "License keys for commercial add-ons"
-msgstr "Lisenssiavaimet kaupallisille lisäosille"
-
-#: src/php/core-classes/addon.class.php:179
+#: src/php/core-classes/addon.class.php:207
 msgid ""
-"This page allows you to enter license key you have received when you "
-"purchased commercial addons."
+"Automatic updates are currently disabled for this plugin. You are probably "
+"missing some security fixes."
 msgstr ""
-"Tälle sivulle voit syöttää lisenssiavaimen, jonka sait ostaessasi "
-"kaupallisia lisäosia."
 
-#: src/php/core-classes/addon.class.php:180
-msgid ""
-"Do not activate your license on your development site. Only on the final "
-"site where you are running the plugin."
+#: src/php/core-classes/addon.class.php:209
+msgid "Enter a valid license key to enable automatic updates."
 msgstr ""
-"Älä aktivoi lisenssiavainta kehityssivuillasi, vaan vasta viimeisellä "
-"sivulla, jolla aiot käyttää tätä laajennosta."
+
+#: src/php/core-classes/addon.class.php:259
+msgid ""
+"You have invalid or expired license keys for WP Customer Area. Please go to "
+"the <a href=\"%s\">Licenses page</a> to correct this issue."
+msgstr ""
+
+#: src/php/core-classes/addon.class.php:262
+msgid ""
+"If you do not know these license keys, you can find them listed on <a "
+"href=\"%s\" target=\"_blank\">your WP Customer Area account</a>."
+msgstr ""
 
 #: src/php/core-classes/object-meta/field/display-name-field.class.php:47
 #: src/php/core-classes/object-meta/field/text-field.class.php:58
@@ -3021,196 +2964,240 @@ msgstr "%1$s -pitää sisältää enintään %2$s merkkiä"
 msgid "%1$s is required."
 msgstr "%1$s on pakollinen."
 
-#: src/php/core-classes/plugin.class.php:210
+#: src/php/core-classes/plugin.class.php:223
 msgid "Checking license..."
 msgstr "Tarkastetaan lisenssiä..."
 
-#: src/php/core-classes/plugin.class.php:211
+#: src/php/core-classes/plugin.class.php:224
 msgid "Failed to contact server"
 msgstr "Palvelimeen ei saatu yhteyttä"
 
-#: src/php/core-classes/plugin.class.php:212
-#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:225
+#: src/php/core-classes/plugin.class.php:252
 msgid "Saving..."
 msgstr "Tallennetaan..."
 
-#: src/php/core-classes/plugin.class.php:213
-#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:226
+#: src/php/core-classes/plugin.class.php:253
 msgid "Click to edit..."
 msgstr "Klikkaa muokataksesi..."
 
-#: src/php/core-classes/plugin.class.php:214
-#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:227
+#: src/php/core-classes/plugin.class.php:254
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:215
-#: src/php/core-classes/plugin.class.php:242
+#: src/php/core-classes/plugin.class.php:228
+#: src/php/core-classes/plugin.class.php:255
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/php/core-classes/plugin.class.php:227
-#: src/php/core-classes/plugin.class.php:254
+#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:267
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:229
-#: src/php/core-classes/plugin.class.php:256
+#: src/php/core-classes/plugin.class.php:242
+#: src/php/core-classes/plugin.class.php:269
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:595
+#: src/php/core-classes/plugin.class.php:689
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
-msgstr ""
-"Pysyväislinkit on poistettu käytöstä, WP Customer Area ei toimi oikein.  <a "
-"href=\"%1$s\">Ota ne käyttöön WordPress asetuksista</a>."
+msgstr "Pysyväislinkit on poistettu käytöstä, WP Customer Area ei toimi oikein.  <a href=\"%1$s\">Ota ne käyttöön WordPress asetuksista</a>."
 
-#: src/php/core-classes/plugin.class.php:621
-msgid "Some add-ons require a newer version of the main plugin."
-msgstr "Jotkin aliliitännäisen vaativat uudemman version pääliitännäisestä."
-
-#: src/php/core-classes/plugin.class.php:932
+#: src/php/core-classes/plugin.class.php:989
 msgid "Some template files you have overridden seem to be outdated."
 msgstr "Jotkin ohittamisi templaattitiedostot tuntuvat olevan vanhentuneita."
 
-#: src/php/core-classes/settings.class.php:82
-#: src/php/core-classes/settings.class.php:91
+#: src/php/core-classes/settings.class.php:80
+#: src/php/core-classes/settings.class.php:89
 msgid "WP Customer Area Settings"
 msgstr "WP Customer Area asetukset"
 
-#: src/php/core-classes/settings.class.php:144
+#: src/php/core-classes/settings.class.php:137
 msgid "The page title cannot be empty"
 msgstr "Sivun otsikko ei voi olla tyhjä."
 
-#: src/php/core-classes/settings.class.php:277
+#: src/php/core-classes/settings.class.php:250
 msgid "Frontend"
 msgstr "Käyttöliittymä"
 
-#: src/php/core-classes/settings.class.php:292
-#: src/php/core-classes/settings.class.php:334
+#: src/php/core-classes/settings.class.php:265
+msgid "License Keys"
+msgstr "Lisenssiavaimet"
+
+#: src/php/core-classes/settings.class.php:281
+#: src/php/core-classes/settings.class.php:323
 msgid "General Settings"
 msgstr "Yleisasetukset"
 
-#: src/php/core-classes/settings.class.php:297
+#: src/php/core-classes/settings.class.php:286
 msgid "Admin theme"
 msgstr "Adminin teema"
 
-#: src/php/core-classes/settings.class.php:341
+#: src/php/core-classes/settings.class.php:329
 msgid "Use skin"
 msgstr "Käytä skiniä."
 
-#: src/php/core-classes/settings.class.php:348
+#: src/php/core-classes/settings.class.php:336
 msgid ""
 "Includes the WP Customer Area skin to provide a stylesheet for the plugin."
 msgstr "Lisää WP Customer Area skinit liitännäisen CSS:n lisäämiseksi."
 
-#: src/php/core-classes/settings.class.php:349
+#: src/php/core-classes/settings.class.php:337
 msgid ""
 "You can uncheck this if your theme includes support for WP Customer Area."
 msgstr "Voit poistaa tämän valinnan, mikäli teemasi tukee WP Customer Areaa."
 
-#: src/php/core-classes/settings.class.php:354
+#: src/php/core-classes/settings.class.php:342
 msgid "Skin to use"
 msgstr "Käytettävä skini"
 
-#: src/php/core-classes/settings.class.php:362
+#: src/php/core-classes/settings.class.php:350
 msgid ""
 "You can make your own skin, please refer to <a href=\"%1$s\">our "
 "documentation about skins</a>."
-msgstr ""
-"Voit luoda oman skinin, lue <a href=\"%1$s\">dokumentaatiomme skineistä</a>."
+msgstr "Voit luoda oman skinin, lue <a href=\"%1$s\">dokumentaatiomme skineistä</a>."
 
-#: src/php/core-classes/settings.class.php:363
+#: src/php/core-classes/settings.class.php:351
 msgid "/documentation/the-skin-system/"
 msgstr "/documentation/the-skin-system/"
 
-#: src/php/core-classes/settings.class.php:370
+#: src/php/core-classes/settings.class.php:358
 msgid "Debug templates"
 msgstr "Debuggaa templaatteja"
 
-#: src/php/core-classes/settings.class.php:377
+#: src/php/core-classes/settings.class.php:365
 msgid "Print debug information about the templates used by Customer Area."
-msgstr ""
-"Tulosta debuggaustietoa koskien WP Customer Area:a käyttämiä templaatteja"
+msgstr "Tulosta debuggaustietoa koskien WP Customer Area:a käyttämiä templaatteja"
 
-#: src/php/core-classes/settings.class.php:496
+#: src/php/core-classes/settings.class.php:405
+msgid "Licensing and updates"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:412
+msgid "Beta versions"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:420
+msgid ""
+"If checked, you will be notified when a beta version is published. Else, "
+"only stable updates will be delivered."
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:426
+msgid "Bypass SSL"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:434
+msgid ""
+"Check this box if you have problems validating your license keys. The "
+"license server will be called using simple HTTP protocol instead of HTTPS."
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:435
+msgid "You need to save your changes before validating the licenses again!."
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:441
+msgid "License keys for commercial add-ons"
+msgstr "Lisenssiavaimet kaupallisille lisäosille"
+
+#: src/php/core-classes/settings.class.php:488
+msgid ""
+"This page allows you to enter license key you have received when you "
+"purchased commercial addons."
+msgstr "Tälle sivulle voit syöttää lisenssiavaimen, jonka sait ostaessasi kaupallisia lisäosia."
+
+#: src/php/core-classes/settings.class.php:489
+msgid ""
+"Do not activate your license on your development site. Only on the final "
+"site where you are running the plugin."
+msgstr "Älä aktivoi lisenssiavainta kehityssivuillasi, vaan vasta viimeisellä sivulla, jolla aiot käyttää tätä laajennosta."
+
+#: src/php/core-classes/settings.class.php:580
 msgid " is not a valid post"
 msgstr "ei ole sallittu viesti"
 
-#: src/php/core-classes/settings.class.php:535
+#: src/php/core-classes/settings.class.php:616
 msgid " is not a valid role"
 msgstr "ei ole sallittu rooli"
 
-#: src/php/core-classes/settings.class.php:573
+#: src/php/core-classes/settings.class.php:651
 msgid " cannot be empty"
 msgstr "ei voi olla tyhjä"
 
-#: src/php/core-classes/settings.class.php:598
+#: src/php/core-classes/settings.class.php:673
 msgid " is not a valid email"
 msgstr "ei ole sallittu sähköpostiosoite"
 
-#: src/php/core-classes/settings.class.php:621
+#: src/php/core-classes/settings.class.php:695
 msgid " is not a valid value"
 msgstr "ei ole sallittu arvo"
 
-#: src/php/core-classes/settings.class.php:650
+#: src/php/core-classes/settings.class.php:723
 msgid "must be an integer"
 msgstr "on oltava kokonaisluku"
 
-#: src/php/core-classes/settings.class.php:662
+#: src/php/core-classes/settings.class.php:734
 msgid "must be greater than %s"
 msgstr "on oltava suurempi kuin %s"
 
-#: src/php/core-classes/settings.class.php:673
+#: src/php/core-classes/settings.class.php:744
 msgid "must be lower than %s"
 msgstr "On oltava pienempi kuin %s"
 
-#: src/php/core-classes/settings.class.php:715
+#: src/php/core-classes/settings.class.php:779
 msgid "Invalid owner"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:734
-#: src/php/core-classes/settings.class.php:769
+#: src/php/core-classes/settings.class.php:797
+#: src/php/core-classes/settings.class.php:827
 msgid "you cannot select multiple terms."
 msgstr "Et voi valita useita termejä kerrallaan."
 
-#: src/php/core-classes/settings.class.php:952
+#: src/php/core-classes/settings.class.php:912
+msgid "Validate"
+msgstr ""
+
+#: src/php/core-classes/settings.class.php:990
 msgid "Upload File"
 msgstr "Lataa tiedosto"
 
-#: src/php/core-classes/settings.class.php:1096
+#: src/php/core-classes/settings.class.php:1122
 msgid "None"
 msgstr "Ei mikään"
 
-#: src/php/core-classes/settings.class.php:1120
+#: src/php/core-classes/settings.class.php:1143
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Poista nykyinen &amp; luo uusi &raquo;"
 
-#: src/php/core-classes/settings.class.php:1125
+#: src/php/core-classes/settings.class.php:1148
 msgid "Edit it &raquo;"
 msgstr "Muokkaa &raquo;"
 
-#: src/php/core-classes/settings.class.php:1133
+#: src/php/core-classes/settings.class.php:1153
 msgid "Create it &raquo;"
 msgstr "Luo &raquo;"
 
-#: src/php/core-classes/settings.class.php:1250
+#: src/php/core-classes/settings.class.php:1259
 msgid "Any Role"
 msgstr "Kaikki roolit"
 
-#: src/php/core-classes/settings.class.php:1455
+#: src/php/core-classes/settings.class.php:1449
 msgid "Main plugin folder"
 msgstr "Pääliitännäisen kansio"
 
-#: src/php/core-classes/settings.class.php:1461
+#: src/php/core-classes/settings.class.php:1455
 msgid "Current theme folder"
 msgstr "Nykyinen teemakansio"
 
-#: src/php/core-classes/settings.class.php:1467
+#: src/php/core-classes/settings.class.php:1461
 msgid "WordPress content folder"
 msgstr "WordPress -sisältökansio"
 
@@ -3287,19 +3274,19 @@ msgstr "Näytä"
 msgid "Hide"
 msgstr "Piilota"
 
-#: src/php/functions/functions-private-files.php:284
+#: src/php/functions/functions-private-files.php:288
 msgid "TB"
 msgstr "Tt"
 
-#: src/php/functions/functions-private-files.php:287
+#: src/php/functions/functions-private-files.php:291
 msgid "GB"
 msgstr "Gt"
 
-#: src/php/functions/functions-private-files.php:290
+#: src/php/functions/functions-private-files.php:294
 msgid "MB"
 msgstr "Mt"
 
-#: src/php/functions/functions-private-files.php:293
+#: src/php/functions/functions-private-files.php:297
 msgid "kB"
 msgstr "kt"
 
@@ -4377,7 +4364,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1318
 msgid "Ceuta"
-msgstr ""
+msgstr "Ceuta"
 
 #: src/php/helpers/country-helper.class.php:1319
 msgid "Ciudad Real"
@@ -4421,7 +4408,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1329
 msgid "La Rioja"
-msgstr ""
+msgstr "La Rioja"
 
 #: src/php/helpers/country-helper.class.php:1330
 msgid "Las Palmas"
@@ -4441,7 +4428,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:1334
 msgid "Madrid"
-msgstr ""
+msgstr "Madrid"
 
 #: src/php/helpers/country-helper.class.php:1335
 msgid "M&aacute;laga"
@@ -4676,139 +4663,139 @@ msgctxt ""
 msgid "wp-customer-area-menu"
 msgstr "wp-customer-area-menu"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1144
+#: src/php/core-addons/private-file/private-file-addon.class.php:1094
 msgctxt "cuar_private_file"
 msgid "File"
 msgstr "Tiedosto"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1145
+#: src/php/core-addons/private-file/private-file-addon.class.php:1095
 msgctxt "cuar_private_file"
 msgid "Files"
 msgstr "Tiedostot"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1173
-#: src/php/core-addons/private-file/private-file-addon.class.php:1184
+#: src/php/core-addons/private-file/private-file-addon.class.php:1123
+#: src/php/core-addons/private-file/private-file-addon.class.php:1134
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "Privaattitiedostot"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1174
+#: src/php/core-addons/private-file/private-file-addon.class.php:1124
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "Privaattitiedosto"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1175
+#: src/php/core-addons/private-file/private-file-addon.class.php:1125
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Lisää uusi"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1176
+#: src/php/core-addons/private-file/private-file-addon.class.php:1126
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Lisää uusi privaattitiedosto"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1177
+#: src/php/core-addons/private-file/private-file-addon.class.php:1127
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Muokkaa privaattitiedostoa"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1178
+#: src/php/core-addons/private-file/private-file-addon.class.php:1128
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Uusi privaattitiedosto"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1179
+#: src/php/core-addons/private-file/private-file-addon.class.php:1129
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Katsele privaattititiedostoja"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1180
+#: src/php/core-addons/private-file/private-file-addon.class.php:1130
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Etsi privaattitiedostoja"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1181
+#: src/php/core-addons/private-file/private-file-addon.class.php:1131
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "Privaattitiedostoja ei löytynyt"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1182
+#: src/php/core-addons/private-file/private-file-addon.class.php:1132
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "Privattitiedostoja ei löytynyt roskakorista"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1183
+#: src/php/core-addons/private-file/private-file-addon.class.php:1133
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "Ylemmän tason privaattitiedosto:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1217
-#: src/php/core-addons/private-file/private-file-addon.class.php:1231
+#: src/php/core-addons/private-file/private-file-addon.class.php:1167
+#: src/php/core-addons/private-file/private-file-addon.class.php:1181
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Tiedostokategoriat"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1218
+#: src/php/core-addons/private-file/private-file-addon.class.php:1168
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Tiedostokategoria"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1219
+#: src/php/core-addons/private-file/private-file-addon.class.php:1169
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Etsi tiedostokategorioita"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1220
+#: src/php/core-addons/private-file/private-file-addon.class.php:1170
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Suositut tiedostokategoriat"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1221
+#: src/php/core-addons/private-file/private-file-addon.class.php:1171
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Kaikki tiedostokategoriat"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1222
+#: src/php/core-addons/private-file/private-file-addon.class.php:1172
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Ylemmän tason tiedostokategoria"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1223
+#: src/php/core-addons/private-file/private-file-addon.class.php:1173
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Ylemmän tason tiedostokategoria:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1224
+#: src/php/core-addons/private-file/private-file-addon.class.php:1174
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Muokkaa tiedostokategoriaa"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1225
+#: src/php/core-addons/private-file/private-file-addon.class.php:1175
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Päivitä tiedostokategoria"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1226
+#: src/php/core-addons/private-file/private-file-addon.class.php:1176
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Lisää uusi tiedostokategoria"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1227
+#: src/php/core-addons/private-file/private-file-addon.class.php:1177
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Uusi tiedostokategoria"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1228
+#: src/php/core-addons/private-file/private-file-addon.class.php:1178
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Erota tiedostokategoriat pilkulla"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1229
+#: src/php/core-addons/private-file/private-file-addon.class.php:1179
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Lisää tai poista tiedostokategorioita"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1230
+#: src/php/core-addons/private-file/private-file-addon.class.php:1180
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Valitse käytetyimpien tiedostokategorioiden joukosta"
@@ -4950,31 +4937,31 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Valitse käytetyimpien sivukategorieiden joukosta"
 
-#: src/php/core-classes/plugin.class.php:216
-#: src/php/core-classes/plugin.class.php:243
+#: src/php/core-classes/plugin.class.php:229
+#: src/php/core-classes/plugin.class.php:256
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr "MM d, yy"
 
-#: src/php/core-classes/plugin.class.php:217
-#: src/php/core-classes/plugin.class.php:244
+#: src/php/core-classes/plugin.class.php:230
+#: src/php/core-classes/plugin.class.php:257
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Puhdas"
 
-#: src/php/core-classes/plugin.class.php:218
-#: src/php/core-classes/plugin.class.php:245
+#: src/php/core-classes/plugin.class.php:231
+#: src/php/core-classes/plugin.class.php:258
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "Tänään"
 
-#: src/php/core-classes/plugin.class.php:221
-#: src/php/core-classes/plugin.class.php:248
+#: src/php/core-classes/plugin.class.php:234
+#: src/php/core-classes/plugin.class.php:261
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr "Näytä eri kuukausi"
 
-#: src/php/functions/functions-private-files.php:280
+#: src/php/functions/functions-private-files.php:284
 msgctxt "bytes"
 msgid "b"
 msgstr ""

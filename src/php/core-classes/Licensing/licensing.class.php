@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 
 /**
- * The class that will handle licensing checks with an EDD store
+ * The class that will handle licensing checks with the WPCA store
  */
 class CUAR_Licensing
 {
@@ -28,6 +28,7 @@ class CUAR_Licensing
 
     /**
      * Constructor
+     *
      * @param $store
      */
     public function __construct($store)
@@ -47,6 +48,7 @@ class CUAR_Licensing
      * Get the url to renew a license
      *
      * @param string $license_key The license key to renew
+     *
      * @internal param int $item_id The item ID linked to the license
      * @return string The URL for the WP Customer Area store page to renew the license
      */
@@ -55,93 +57,85 @@ class CUAR_Licensing
         $url = trailingslashit($this->store->get_store_url());
         $url .= 'checkout/';
         $url .= '?edd_license_key=' . $license_key;
+
         return $url;
     }
 
     /**
      * Query the server to check whether a license is valid or not
      *
-     * @param string $license The license key to validate
+     * @param string     $license The license key to validate
      * @param CUAR_AddOn $addon The add-on to validate
+     *
      * @return CUAR_LicenseValidationResult The result
      */
     public function validate_license($license, $addon)
     {
         if ($addon == null) {
             return CUAR_LicenseValidationResult::failure(
-                null,
-                __('Unknown add-on', 'cuar')
-            );
+                __('Unknown add-on', 'cuar'));
         }
 
-        $is_new_store_license = true;
-        $license_data = $this->query_store($license, $addon, true);
-        if ($license_data == null && false!==$this->store->get_legacy_store_url()) {
-            $license_data = $this->query_store($license, $addon, false);
-            if ($license_data != null) $is_new_store_license = false;
-        }
-
+        $license_data = $this->query_store($license, $addon);
         if ($license_data == null) {
-            return CUAR_LicenseValidationResult::failure($this->store,
-                __('Problem when contacting our license servers. Is the license key correct? Is PHP cURL enabled?', 'cuar'),
-                $is_new_store_license
-            );
+            return CUAR_LicenseValidationResult::failure(
+                __('Problem when contacting our license servers. Is the license key correct? Is PHP cURL enabled?', 'cuar'));
         }
 
         if ($license_data->license == 'valid') {
-            $expiry_date = new DateTime($license_data->expires);
-            $result = CUAR_LicenseValidationResult::success($this->store,
-                sprintf(__('Your license is valid until: %s', 'cuar'), $expiry_date->format('d/m/Y')),
-                $is_new_store_license,
-                $expiry_date
+            $result = CUAR_LicenseValidationResult::success(
+                sprintf(__('Your license is valid until: %s', 'cuar'),
+                    date_i18n(get_option('date_format'), strtotime($license_data->expires, current_time('timestamp')))),
+                new DateTime($license_data->expires)
             );
         } else {
             switch ($license_data->error) {
                 case 'revoked':
-                    $result = CUAR_LicenseValidationResult::failure($this->store,
-                        __('This license key has been revoked.', 'cuar'),
-                        $is_new_store_license
-                    );
+                    $result = CUAR_LicenseValidationResult::failure(
+                        __('This license key has been revoked.', 'cuar'));
                     break;
 
                 case 'no_activations_left':
-                    $result = CUAR_LicenseValidationResult::failure($this->store,
-                        sprintf(__('You have reached your maximum number of sites for this license key. You can use it on at most %s site(s).', 'cuar'), $license_data->max_sites),
-                        $is_new_store_license
-                    );
+                    $result = CUAR_LicenseValidationResult::failure(
+                        sprintf(__(
+                            'You have reached your maximum number of sites for this license key. You can use it on at most %s site(s).', 'cuar'),
+                            $license_data->max_sites));
                     break;
 
                 case 'expired':
-                    $expiry_date = new DateTime($license_data->expires);
-
-                    $result = CUAR_LicenseValidationResult::failure($this->store,
-                        sprintf('<a href="%s" target="_blank" class="button renew-license-button">' . __('Renew license', 'cuar') . ' &raquo;</a>&nbsp;', $this->get_renew_license_url($license))
+                    $result = CUAR_LicenseValidationResult::failure(
+                        sprintf(__('Your license has expired at the date: %s', 'cuar'),
+                            date_i18n(get_option('date_format'), strtotime($license_data->expires, current_time('timestamp'))))
                         . ' '
-                        . sprintf(__('Your license has expired at the date: %s', 'cuar'), $expiry_date->format('d/m/Y')),
-                        $is_new_store_license,
-                        $expiry_date
+                        . sprintf('<a href="%s" target="_blank" class="button renew-license-button">' . __('Renew license', 'cuar') . ' &raquo;</a>&nbsp;',
+                            $this->get_renew_license_url($license)),
+                        new DateTime($license_data->expires)
                     );
                     break;
 
                 case 'key_mismatch':
-                    $result = CUAR_LicenseValidationResult::failure($this->store,
-                        __('This license key does not match.', 'cuar'),
-                        $is_new_store_license
-                    );
+                    $result = CUAR_LicenseValidationResult::failure(
+                        __('This license key does not match.', 'cuar'));
                     break;
 
+                case 'invalid_item_id':
+                case 'item_name_mismatch':
                 case 'product_name_mismatch':
-                    $result = CUAR_LicenseValidationResult::failure($this->store,
-                        __('This license key seems to have been generated for another product.', 'cuar'),
-                        $is_new_store_license
-                    );
+                    $result = CUAR_LicenseValidationResult::failure(
+                        __('This license key seems to have been generated for another product.', 'cuar'));
+                    break;
+
+                case 'invalid' :
+                case 'site_inactive' :
+                    $result = CUAR_LicenseValidationResult::failure(
+                        __('Your license is not active for this URL.', 'cuar'));
                     break;
 
                 default:
-                    $result = CUAR_LicenseValidationResult::failure($this->store,
-                        __('Problem when validating your license key', 'cuar'),
-                        $is_new_store_license
-                    );
+                    $result = CUAR_LicenseValidationResult::failure(
+                        __('Problem when validating your license key', 'cuar') . ' -> ' . $license_data->error,
+                        null,
+                        $license_data);
                     break;
             }
         }
@@ -150,38 +144,42 @@ class CUAR_Licensing
     }
 
     /**
-     * @param string $license
+     * @param string     $license
      * @param CUAR_AddOn $addon
-     * @param boolean $use_new_store
+     *
      * @return array|mixed|null
      */
-    private function query_store($license, $addon, $use_new_store)
+    private function query_store($license, $addon)
     {
         // data to send in our API request
         $api_params = array(
-            'edd_action'    => 'activate_license',
-            'license'       => $license,
-            'url'           => get_home_url()
+            'edd_action' => 'activate_license',
+            'license'    => $license,
+            'url'        => get_home_url(),
+            'item_id'    => (int)($addon->store_item_id),
         );
 
-        if ($use_new_store) {
-            $store_url = $this->store->get_store_url();
-            $api_params['item_id'] = (int)($addon->store_item_id);
-        } else {
-            $store_url = $this->store->get_legacy_store_url();
-            if (false===$store_url) return null;
-            $api_params['item_name'] = urlencode($addon->store_item_name);
-        }
-
         // Call the custom API.
-        $response = wp_remote_get(add_query_arg($api_params, $store_url), array(
-            'timeout' => 15,
-            'sslverify' => false
+        $response = wp_remote_post($this->store->get_store_url(), array(
+            'timeout'   => 15,
+            'sslverify' => false,
+            'body'      => $api_params,
         ));
 
         // make sure the response came back okay
-        if (is_wp_error($response)) {
-            return null;
+        if (is_wp_error($response) || 200 !== wp_remote_retrieve_response_code($response)) {
+            if (is_wp_error($response)) {
+                return json_decode(json_encode(array(
+                    'license'  => 'error',
+                    'error'    => $response->get_error_message(),
+                    'response' => $response,
+                )));
+            } else {
+                return json_decode(json_encode(array(
+                    'license' => 'error',
+                    'error'   => 'Server responded with code ' . wp_remote_retrieve_response_code($response),
+                )));
+            }
         }
 
         $response = wp_remote_retrieve_body($response);
@@ -189,7 +187,11 @@ class CUAR_Licensing
 
         // If not a valid license and license is missing, return null
         if (!isset($license_data) || ($license_data->license != 'valid' && $license_data->error == 'missing')) {
-            return null;
+            return json_decode(json_encode(array(
+                'license'  => 'error',
+                'error'    => 'Not a valid license or license is missing',
+                'response' => $response,
+            )));
         }
 
         return $license_data;

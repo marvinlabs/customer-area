@@ -108,25 +108,7 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
 
         public function is_moderation_enabled()
         {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_ENABLE_MODERATION, false);
-        }
-
-        public function get_default_owners()
-        {
-            $legacy_owner_type = $this->plugin->get_option($this->get_slug() . self::$OPTION_DEFAULT_OWNER_TYPE);
-            $owners = $this->plugin->get_option($this->get_slug() . self::$OPTION_DEFAULT_OWNER);
-
-            // Handle old style option
-            if (!empty($legacy_owner_type)) {
-                $owners = array($legacy_owner_type => $owners);
-            }
-
-            return $owners;
-        }
-
-        public function get_default_category()
-        {
-            return $this->plugin->get_option($this->get_slug() . self::$OPTION_DEFAULT_CATEGORY, -1);
+            return $this->plugin->get_option($this->get_slug() . self::$OPTION_ENABLE_MODERATION);
         }
 
         /**
@@ -293,9 +275,6 @@ if ( !class_exists('CUAR_AbstractCreateContentPageAddOn')) :
 
         // Settings
         public static $OPTION_ENABLE_MODERATION = '-enable_moderation';
-        public static $OPTION_DEFAULT_OWNER_TYPE = '-default_owner_type';
-        public static $OPTION_DEFAULT_OWNER = '-default_owner';
-        public static $OPTION_DEFAULT_CATEGORY = '-default_category';
     }
 
 endif; // CUAR_AbstractCreateContentPageAddOn

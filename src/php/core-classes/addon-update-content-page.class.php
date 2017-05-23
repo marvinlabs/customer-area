@@ -86,16 +86,6 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
             return array('cuar_title', 'cuar_content', 'cuar_category', 'cuar_owner');
         }
 
-        public function get_default_owners()
-        {
-            return array();
-        }
-
-        public function get_default_category()
-        {
-            return -1;
-        }
-
         /*------- FORM HANDLING -----------------------------------------------------------------------------------------*/
 
         protected function is_action_authorized($action)
@@ -215,7 +205,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
         /**
          * Add query variables for the archive subpages.
          *
-         * @param unknown $vars
+         * @param array $vars
          *
          * @return array
          */
@@ -230,7 +220,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
         /**
          * Get the URL to update private content
          *
-         * @param unknown $post_id
+         * @param int $post_id
          *
          * @return string
          */
@@ -247,7 +237,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
         /**
          * Get the URL for the archive corresponding to a given date.
          *
-         * @param unknown $post_id
+         * @param int $post_id
          *
          * @return string
          */

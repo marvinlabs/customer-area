@@ -1,4 +1,5 @@
 <?php
+
 /*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
 
 This program is free software; you can redistribute it and/or modify
@@ -19,6 +20,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 class CUAR_PluginStore implements CUAR_LicenseStore
 {
+    private $bypass_ssl = false;
+
+    /**
+     * CUAR_PluginStore constructor.
+     *
+     * @param bool $bypass_ssl
+     */
+    public function __construct($bypass_ssl)
+    {
+        $this->bypass_ssl = $bypass_ssl;
+    }
+
 
     /**
      * Get the main store URL
@@ -26,15 +39,11 @@ class CUAR_PluginStore implements CUAR_LicenseStore
      */
     public function get_store_url()
     {
-        return 'http://wp-customerarea.com';
-    }
+        $protocol = $this->bypass_ssl ? 'http' : 'https';
+        $domain = CUAR_DEBUG_LICENSING
+            ? 'wp-customerarea.local'
+            : 'wp-customerarea.com';
 
-    /**
-     * Get the previous store URL.
-     * @return string|boolean FALSE if there was no previous store
-     */
-    public function get_legacy_store_url()
-    {
-        return 'http://deprecated.marvinlabs.com/';
+        return $protocol . '://' . $domain;
     }
 }

@@ -39,6 +39,7 @@ $all_plugins = get_plugins();
 <table class="widefat cuar-status-table">
 	<thead>
 		<tr>
+            <th></th>
 			<th><?php _e( 'Name', 'cuar' ); ?></th>
 			<th><?php _e( 'Current version', 'cuar' ); ?></th>
 			<th><?php _e( 'Recommended version', 'cuar' ); ?></th>
@@ -52,10 +53,21 @@ $all_plugins = get_plugins();
 
 		if ( !isset($recommended_versions[$plugin_name])) continue;
 
+		$is_active = is_plugin_active($plugin_name . '/' . $plugin_name . '.php');
 		$is_mismatch = version_compare($plugin_info['Version'], $recommended_versions[$plugin_name], '<');
-		$tr_class = $is_mismatch ? 'cuar-needs-attention' : '';
+		$tr_class = $is_mismatch ? 'cuar-needs-attention ' : '';
+        $tr_class = $is_active ? $tr_class . 'cuar-is-active ' : $tr_class . 'cuar-is-inactive ';
 	?>
 		<tr class="<?php echo $tr_class; ?>">
+            <td>
+                <?php if ($is_mismatch): ?>
+                    <span class="dashicons dashicons-warning" title="<?php esc_attr_e( 'Version mismatch', 'cuar' ); ?>"></span>
+                <?php elseif ($is_active): ?>
+                    <span class="dashicons dashicons-yes" title="<?php esc_attr_e( 'Addon is active', 'cuar' ); ?>"></span>
+                <?php else: ?>
+                    <span class="dashicons dashicons-minus" title="<?php esc_attr_e( 'Addon is not active', 'cuar' ); ?>"></span>
+                <?php endif; ?>
+            </td>
 			<td><?php echo $plugin_info['Name']; ?></td>
 			<td><?php echo $plugin_info['Version']; ?></td>
 			<td><?php echo $recommended_versions[$plugin_name]; ?></td>
