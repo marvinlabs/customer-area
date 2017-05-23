@@ -28,6 +28,12 @@
             // Merge default options
             base.options = $.extend({}, $.cuar.bindCountryStateInputs.defaultOptions, options);
 
+            // Dynamic dropdown parent for select2
+            var $body = $('body');
+            base.options.select2.dropdownParent = $body.hasClass('wp-admin')
+                ? $body
+                : $('#cuar-js-content-container');
+
             // Select2 should be enabled
             base._getCountryField().select2(base.options.select2);
             base._getStateField().select2(base.options.select2);
@@ -45,7 +51,7 @@
             var stateFieldGroup = base._getStateFieldContainer();
 
             var selectedCountry = countryField.val();
-            if (selectedCountry==null || selectedCountry.length == '' || (typeof selectedCountry == 'undefined')) {
+            if (selectedCountry===null || selectedCountry.length === 0 || (typeof selectedCountry === 'undefined')) {
                 stateFieldGroup.hide();
                 return;
             }
@@ -134,7 +140,7 @@
             width: '100%',
             allowClear: true,
             placeholder: "",
-            dropdownParent: $('body').hasClass('wp-admin') ? $('body') : $('#cuar-js-content-container')
+            dropdownParent: null
         }
     };
 
