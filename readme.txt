@@ -108,6 +108,7 @@ feel free to fork the project and send us pull requests!
 = 7.3.0 (2017/) =
 
 * Fix: wrong hook for the owner type hooks
+* Fix: show determinate [progress on file uploads](https://github.com/marvinlabs/customer-area/issues/116)
 * Tweak: some internal improvements to settings (color setting, etc.)
 * Tweak: improve longs owner names rendering
 
