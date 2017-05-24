@@ -19,7 +19,7 @@
 
     <?php do_action('cuar/core/payments/templates/before-payment-button', $object_type, $object_id); ?>
 
-    <div class="row">
+    <div class="row mb-md">
         <div class="col-xs-12">
             <?php if ($paid_amount <= 0) : ?>
                 <h3><?php _e('Pay now', 'cuar'); ?></h3>
@@ -30,7 +30,7 @@
             <?php endif; ?>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-md">
         <div class="form-group col-xs-8">
             <p><?php _e('We accept the following secure payment methods', 'cuar'); ?></p>
 

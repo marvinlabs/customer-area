@@ -34,8 +34,8 @@
             event.preventDefault();
 
             var selected = $(this).data('gateway');
-            base._getGatewayForms().slideUp(function() {
-                base._getGatewayForm(selected).slideDown();
+            base._getGatewayForms().hide(function() {
+                base._getGatewayForm(selected).show();
             });
         };
 
