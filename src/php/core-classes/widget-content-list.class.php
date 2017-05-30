@@ -265,6 +265,7 @@ if ( !class_exists('CUAR_ContentListWidget')) :
             $instance = array();
 
             $instance['title'] = ( !empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+            $instance['no_content_message'] = ( !empty($new_instance['no_content_message'])) ? strip_tags($new_instance['no_content_message']) : '';
             $instance['order'] = ( !empty($new_instance['order'])) ? $new_instance['order'] : 'DESC';
             $instance['orderby'] = ( !empty($new_instance['orderby'])) ? $new_instance['orderby'] : 'date';
             $instance['posts_per_page'] = ( !empty($new_instance['posts_per_page']))
