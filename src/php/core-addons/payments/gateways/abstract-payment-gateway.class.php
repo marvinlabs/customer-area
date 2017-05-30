@@ -77,14 +77,6 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
     //-- UI functions -----------------------------------------------------------------------------------------------------------------------------------------/
 
-    public function get_icon()
-    {
-        return array(
-            'icon' => '',
-            'link' => '',
-        );
-    }
-
     public function has_form()
     {
         return false;

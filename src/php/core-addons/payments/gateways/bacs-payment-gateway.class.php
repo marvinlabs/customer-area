@@ -34,14 +34,6 @@ class CUAR_BacsPaymentGateway extends CUAR_AbstractPaymentGateway
         return __('The BACS gateway allows you to accept payments via wired transfers (aka direct bank transfer). Your bank account information will be shown to the user after he validates the payment. Payments status will be left to pending and you will need to manually accept them once the money gets on your bank account.', 'cuar');
     }
 
-    public function get_icon()
-    {
-        return array(
-            'icon' => CUAR_PLUGIN_URL . 'assets/common/img/gateways/bacs.png',
-            'link' => '',
-        );
-    }
-
     public function has_form()
     {
         return true;

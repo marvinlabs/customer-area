@@ -63,7 +63,7 @@ class CUAR_PaymentsUiHelper
             if (empty($gateways)) return;
 
             /** @noinspection PhpUnusedLocalVariableInspection */
-            $accepted_credit_cards = $this->pa_addon->settings()->get_enabled_credit_cards();
+            $payment_icons = $this->pa_addon->settings()->get_enabled_payment_icons();
 
             $template = $this->plugin->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-addons/payments',

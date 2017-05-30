@@ -34,14 +34,6 @@ class CUAR_ChequePaymentGateway extends CUAR_AbstractPaymentGateway
         return __('The cheque gateway allows you to accept payments via cheque. Your instructions will be shown to the user after he validates the payment. Payments status will be left to pending and you will need to manually accept them once the money gets on your bank account.', 'cuar');
     }
 
-    public function get_icon()
-    {
-        return array(
-            'icon' => CUAR_PLUGIN_URL . 'assets/common/img/gateways/cheque.png',
-            'link' => '',
-        );
-    }
-
     public function has_form()
     {
         return true;
