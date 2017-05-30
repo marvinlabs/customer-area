@@ -66,12 +66,12 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
             $this->payments_ui = new CUAR_PaymentsUiHelper($plugin, $this);
 
             // Init the admin interface if needed
-            if (is_admin())
-            {
+            if (is_admin()) {
                 $this->admin_interface = new CUAR_PaymentsAdminInterface($plugin, $this);
             }
 
             add_action('init', array(&$this, 'register_custom_types'));
+            add_filter('cuar/core/post-types/other', array(&$this, 'add_managed_post_type'), 10, 1);
 
             // For AJAX
             add_filter('cuar/core/js-messages?zone=admin', array(&$this, 'add_js_messages'));
@@ -130,6 +130,18 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
 
         /*------- SCRIPTS & AJAX -----------------------------------------------------------------------------------------*/
 
+        public function add_managed_post_type($post_types)
+        {
+            $post_types[CUAR_Payment::$POST_TYPE] = array(
+                "label-singular"     => __('Payment', 'cuar'),
+                "label-plural"       => __('Payments', 'cuar'),
+                "content-page-addon" => null,
+                "type"               => "other",
+            );
+
+            return $post_types;
+        }
+
         /**
          * Enqueue the invoicing scripts
          */
@@ -159,28 +171,24 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
         public function ajax_delete_payment_note()
         {
             $payment_id = isset($_POST['payment_id']) ? $_POST['payment_id'] : 0;
-            if ($payment_id <= 0)
-            {
+            if ($payment_id <= 0) {
                 wp_send_json_error(__('Payment id is not specified', 'cuar'));
             }
 
             // Check nonce
             $nonce_action = 'cuar_delete_payment_note';
             $nonce_name = 'cuar_delete_payment_note_nonce';
-            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
-            {
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action)) {
                 wp_send_json_error(__('Trying to cheat?', 'cuar'));
             }
 
             // Check permissions
-            if ( !current_user_can('cuar_pay_edit'))
-            {
+            if ( !current_user_can('cuar_pay_edit')) {
                 wp_send_json_error(__('You are not allowed to manage payment notes', 'cuar'));
             }
 
             $note_id = isset($_POST['note_id']) ? $_POST['note_id'] : 0;
-            if ($note_id <= 0)
-            {
+            if ($note_id <= 0) {
                 wp_send_json_error(__('Note id is not specified', 'cuarta'));
             }
 
@@ -196,29 +204,25 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
         public function ajax_add_payment_note()
         {
             $payment_id = isset($_POST['payment_id']) ? $_POST['payment_id'] : 0;
-            if ($payment_id <= 0)
-            {
+            if ($payment_id <= 0) {
                 wp_send_json_error(__('Payment id is not specified', 'cuar'));
             }
 
             // Check nonce
             $nonce_action = 'cuar_add_payment_note';
             $nonce_name = 'cuar_add_payment_note_nonce';
-            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action))
-            {
+            if ( !isset($_POST[$nonce_name]) || !wp_verify_nonce($_POST[$nonce_name], $nonce_action)) {
                 wp_send_json_error(__('Trying to cheat?', 'cuar'));
             }
 
             // Check permissions
-            if ( !current_user_can('cuar_pay_edit'))
-            {
+            if ( !current_user_can('cuar_pay_edit')) {
                 wp_send_json_error(__('You are not allowed to manage payment notes', 'cuar'));
             }
 
 
             $message = isset($_POST['message']) ? $_POST['message'] : '';
-            if (empty($message))
-            {
+            if (empty($message)) {
                 wp_send_json_error(__('You must provide a message', 'cuar'));
             }
 

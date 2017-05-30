@@ -46,8 +46,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     {
         $this->admin_menu_helper = new CUAR_AdminMenuHelper($plugin, $this);
 
-        if (is_admin())
-        {
+        if (is_admin()) {
             add_action('cuar/core/on-plugin-update', array(&$this, 'plugin_version_upgrade'), 10, 2);
             add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 5);
             add_action('init', array(&$this, 'restrict_admin_access'), 1);
@@ -62,9 +61,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
             // Ajax
             add_action('wp_ajax_cuar_folder_action', array(&$this, 'ajax_folder_action'));
-        }
-        else
-        {
+        } else {
             add_action('init', array(&$this, 'hide_admin_bar'));
         }
     }
@@ -73,40 +70,33 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
 
     public function ajax_folder_action()
     {
-        if ( !current_user_can('manage_options'))
-        {
+        if ( !current_user_can('manage_options')) {
             wp_send_json_error(__('You are not allowed to do that', 'cuar'));
         }
 
         $action = isset($_POST['folder_action']) ? $_POST['folder_action'] : '';
         $path = isset($_POST['path']) ? $_POST['path'] : '';
         $extra = isset($_POST['extra']) ? $_POST['extra'] : '';
-        if (empty($action) || empty($path))
-        {
+        if (empty($action) || empty($path)) {
             wp_send_json_error(__('Missing parameters', 'cuar'));
         }
 
-        switch ($action)
-        {
+        switch ($action) {
             case 'chmod':
-                if (empty($extra))
-                {
+                if (empty($extra)) {
                     wp_send_json_error(__('Missing parameters', 'cuar'));
                 }
 
                 $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
-                foreach ($iterator as $item)
-                {
-                    if (false === chmod($item, octdec($extra)))
-                    {
+                foreach ($iterator as $item) {
+                    if (false === chmod($item, octdec($extra))) {
                         wp_send_json_error(__('Error while changing permissions. PHP probably does not have the required permissions. Please do it manually using FTP or SSH.',
                             'cuar'));
                     }
                 }
 
                 $current_perms = @fileperms($path) & 0777;
-                if ($current_perms !== octdec($extra))
-                {
+                if ($current_perms !== octdec($extra)) {
                     wp_send_json_error(__('Permissions could not be changed. PHP probably does not have the required permissions. Please do it manually using FTP or SSH.',
                         'cuar'));
                 }
@@ -116,8 +106,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                 if (empty($extra)) $extra = 0700;
                 if ( !is_int($extra)) $extra = octdec($extra);
                 @mkdir($path, $extra, true);
-                if ( !file_exists($path))
-                {
+                if ( !file_exists($path)) {
                     wp_send_json_error(__('Folder could not be created', 'cuar'));
                 }
                 break;
@@ -127,8 +116,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
                 $dest_htaccess_path = trailingslashit($path) . '.htaccess';
 
                 @copy($htaccess_template_path, $dest_htaccess_path);
-                if ( !file_exists($dest_htaccess_path))
-                {
+                if ( !file_exists($dest_htaccess_path)) {
                     wp_send_json_error(__('htaccess file could not be copied. Please do it manually using FTP or SSH.', 'cuar'));
                 }
 
@@ -219,8 +207,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         if ( !is_admin()
             && $this->is_admin_area_access_restricted()
             && !current_user_can('cuar_view_top_bar')
-        )
-        {
+        ) {
             show_admin_bar(false);
         }
     }
@@ -239,8 +226,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
             'groups' => array()
         );
 
-        if ($this->is_admin_area_access_restricted())
-        {
+        if ($this->is_admin_area_access_restricted()) {
             $capability_groups['cuar_general']['groups'] = array(
                 'back-office'  => array(
                     'group_name'   => __('Back-office', 'cuar'),
@@ -267,18 +253,14 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
      */
     public function restrict_admin_access()
     {
-        if ( !$this->current_user_can_access_admin() && !(defined('DOING_AJAX') && DOING_AJAX))
-        {
+        if ( !$this->current_user_can_access_admin() && !(defined('DOING_AJAX') && DOING_AJAX)) {
             $cp_addon = $this->plugin->get_addon('customer-pages');
             $customer_area_url = apply_filters('cuar/core/admin/admin-area-forbidden-redirect-url',
                 $cp_addon->get_page_url("customer-home"));
 
-            if (isset($customer_area_url))
-            {
+            if (isset($customer_area_url)) {
                 wp_redirect($customer_area_url);
-            }
-            else
-            {
+            } else {
                 wp_redirect(home_url());
             }
         }
@@ -297,18 +279,15 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
      */
     public function block_default_admin_pages()
     {
-        if (isset($_GET["post_type"]) && !isset($_GET['post']))
-        {
+        if (isset($_GET["post_type"]) && !isset($_GET['post'])) {
             $post_type = $_GET["post_type"];
             $is_managed = $this->plugin->is_type_managed($post_type);
-            if ( !$is_managed)
-            {
+            if ( !$is_managed) {
                 return;
             }
 
             $private_types = $this->plugin->get_private_types();
-            if (isset($private_types[$post_type]))
-            {
+            if (isset($private_types[$post_type])) {
                 $type = $private_types[$post_type]['type'];
                 wp_redirect(admin_url("admin.php?page=wpca-list," . $type . "," . $post_type));
             }
@@ -324,8 +303,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $tokens = explode(',', $page);
         $page = str_replace('wpca-', '', $tokens[0]);
 
-        switch ($page)
-        {
+        switch ($page) {
             case 'wpca':
             case 'dashboard':
                 $this->print_dashboard();
@@ -357,8 +335,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $title_links = $this->add_new_post_link($post_type_object, $post_type, $title_links);
         $title_links = $this->add_manage_taxonomy_links($post_type, $title_links);
 
-        switch ($private_type_group)
-        {
+        switch ($private_type_group) {
             case 'content':
                 $title_links = apply_filters('cuar/core/admin/content-list-page/title-links?post_type=' . $post_type,
                     $title_links);
@@ -450,29 +427,24 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     public function plugin_version_upgrade($from_version, $to_version)
     {
         // If upgrading from before 1.5.0 we must add some caps to admin & editors
-        if (version_compare($from_version, '1.5.0', '<'))
-        {
+        if (version_compare($from_version, '1.5.0', '<')) {
             $admin_role = get_role('administrator');
-            if ($admin_role)
-            {
+            if ($admin_role) {
                 $admin_role->add_cap('view-customer-area-menu');
             }
             $editor_role = get_role('editor');
-            if ($editor_role)
-            {
+            if ($editor_role) {
                 $editor_role->add_cap('view-customer-area-menu');
             }
         }
 
         // If upgrading from version prior to 6.4, update the default skin
-        if (version_compare($from_version, '6.4.0', '<'))
-        {
+        if (version_compare($from_version, '6.4.0', '<')) {
             $current_skin = $this->plugin->get_theme('frontend');
 
             if (count($current_skin) == 2 && $current_skin[0] == 'plugin'
                 && ($current_skin[1] == 'default-v4' || $current_skin[1] == 'default')
-            )
-            {
+            ) {
                 $this->plugin->update_option(CUAR_Settings::$OPTION_FRONTEND_SKIN, CUAR_FRONTEND_SKIN);
             }
         }
@@ -487,8 +459,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
      */
     private function add_new_post_link($post_type_object, $post_type, $title_links)
     {
-        if (current_user_can($post_type_object->cap->edit_posts))
-        {
+        if (current_user_can($post_type_object->cap->edit_posts)) {
             $title_links[__('Add new', 'cuar')] = admin_url('post-new.php?post_type=' . $post_type);
         }
 
@@ -504,10 +475,8 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
     private function add_manage_taxonomy_links($post_type, $title_links)
     {
         $taxonomies = get_object_taxonomies($post_type, 'objects');
-        foreach ($taxonomies as $tax)
-        {
-            if (current_user_can($tax->cap->manage_terms))
-            {
+        foreach ($taxonomies as $tax) {
+            if (current_user_can($tax->cap->manage_terms)) {
                 $title_links[sprintf(__('Manage %1$s', 'cuar'),
                     $tax->labels->name)] = admin_url('edit-tags.php?taxonomy=' . $tax->name);
             }
@@ -529,44 +498,51 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $found = false;
 
         $private_types = $this->plugin->get_private_types();
+        $managed_types = $this->plugin->get_managed_types();
 
         // New post & post edit pages
-        if ( !$found && isset($post))
-        {
+        if ( !$found && isset($post)) {
             $post_type = get_post_type($post);
-            $is_managed = $this->plugin->is_type_managed($post_type, $private_types);
+            $is_managed = $this->plugin->is_type_managed($post_type, $managed_types);
 
-            if ($is_managed && !$found)
-            {
+            if ($is_managed && !$found) {
                 $type = isset($private_types[$post_type]) ? $private_types[$post_type] : null;
-                if ($type != null)
-                {
+                if ($type != null) {
                     $top_on = 'toplevel_page_wpca';
                     $top_off = 'menu-posts';
                     $sub_on = 'admin.php?page=wpca-list,' . $type['type'] . ',' . $post_type;
                     $found = true;
                 }
+
+                if ( !$found) {
+                    $type = isset($managed_types[$post_type]) ? $managed_types[$post_type] : null;
+                    if ($type != null) {
+                        switch($post_type) {
+                            case CUAR_Payment::$POST_TYPE:
+                                $top_on = 'toplevel_page_wpca';
+                                $top_off = 'menu-posts';
+                                $sub_on = 'admin.php?page=wpca-payments';
+                                $found = true;
+                                break;
+                        }
+                    }
+                }
             }
         }
 
         // Taxonomy pages
-        if ( !$found && isset($_REQUEST['taxonomy']))
-        {
+        if ( !$found && isset($_REQUEST['taxonomy'])) {
             $tax = $_REQUEST['taxonomy'];
 
-            if ( !$found)
-            {
-                foreach ($private_types as $post_type => $desc)
-                {
+            if ( !$found) {
+                foreach ($private_types as $post_type => $desc) {
                     $is_managed = $this->plugin->is_type_managed($post_type, $private_types);
-                    if ( !$is_managed)
-                    {
+                    if ( !$is_managed) {
                         continue;
                     }
 
                     $taxonomies = get_object_taxonomies($post_type);
-                    if (in_array($tax, $taxonomies))
-                    {
+                    if (in_array($tax, $taxonomies)) {
                         $top_on = 'toplevel_page_wpca';
                         $top_off = 'menu-posts';
                         $sub_on = 'admin.php?page=wpca-list,' . $desc['type'] . ',' . $post_type;
@@ -578,8 +554,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         }
 
         // Bail if nothing to do
-        if ( !$found)
-        {
+        if ( !$found) {
             return;
         }
 

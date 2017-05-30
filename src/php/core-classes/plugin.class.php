@@ -333,14 +333,9 @@ if ( !class_exists('CUAR_Plugin')) :
             if (isset($_GET['page']) && false !== strpos($_GET['page'], 'wpca-')) return true;
 
             // Post edition pages
-            $private_post_types = $this->get_private_post_types();
-            if (isset($_GET['post_type']) && in_array($_GET['post_type'], $private_post_types)) return true;
-            if (isset($_GET['post']) && in_array(get_post_type($_GET['post']), $private_post_types)) return true;
-
-            // User group, Managed group, Smart group pages
-            $group_post_types = array('cuar_user_group', 'cuar_managed_group', 'cuar_smart_group',);
-            if (isset($_GET['post_type']) && in_array($_GET['post_type'], $group_post_types)) return true;
-            if (isset($_GET['post']) && in_array(get_post_type($_GET['post']), $group_post_types)) return true;
+            $managed_types = $this->get_managed_types();
+            if (isset($_GET['post_type']) && key_exists($_GET['post_type'], $managed_types)) return true;
+            if (isset($_GET['post']) && key_exists(get_post_type($_GET['post']), $managed_types)) return true;
 
             return false;
         }
@@ -1029,11 +1024,26 @@ if ( !class_exists('CUAR_Plugin')) :
         public function is_type_managed($post_type, $private_types = null)
         {
             if ($private_types == null) {
-                $private_types = $this->get_private_types();
+                $private_types = $this->get_managed_types();
             }
 
             return apply_filters('cuar/core/types/is-type-managed',
                 isset($private_types[$post_type]), $post_type, $private_types);
+        }
+
+        /**
+         * Get both private content and container types
+         * @return array
+         */
+        public function get_managed_types()
+        {
+            $other_types = apply_filters('cuar/core/post-types/other', array());
+
+            return array_merge(
+                $this->get_content_types(),
+                $this->get_container_types(),
+                $other_types
+            );
         }
 
         /**

@@ -85,8 +85,7 @@ function cuar_get_payment_failure_url($payment_id)
  */
 function cuar_get_gateway_message()
 {
-    if (isset($_SESSION['cuar_gateway_message']))
-    {
+    if (isset($_SESSION['cuar_gateway_message'])) {
         $message = $_SESSION['cuar_gateway_message'];
         unset($_SESSION['cuar_gateway_message']);
 
@@ -106,33 +105,19 @@ function cuar_the_payment_date($payment)
 
 /**
  * @param CUAR_Payment $payment
- * @param bool         $show_icon
  */
-function cuar_the_payment_gateway($payment, $show_icon = true)
+function cuar_the_payment_gateway($payment)
 {
     /** @var CUAR_PaymentsAddOn $pa_addon */
     $pa_addon = cuar_addon('payments');
     $gateways = $pa_addon->settings()->get_available_gateways();
     $gw = $payment->get_gateway();
 
-    if ( !isset($gateways[$gw]))
-    {
+    if ( !isset($gateways[$gw])) {
         echo $gw;
-    }
-    else
-    {
+    } else {
         $gw = $gateways[$gw];
-        $icon = $gw->get_icon();
-        $name = $gw->get_name();
-
-        if ($show_icon && !empty($icon['icon']))
-        {
-            printf('<img src="%2$s" class="cuar-gateway-icon" />&nbsp;%1$s', $name, $icon['icon']);
-        }
-        else
-        {
-            echo $name;
-        }
+        echo $gw->get_name();
     }
 }
 
