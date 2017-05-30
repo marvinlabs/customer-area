@@ -120,13 +120,13 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
 
         include($this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/payments',
-            'gateway-settings-common.template.php',
+            'settings-gateway-common.template.php',
             'templates'
         ));
 
         $settings_template = $this->plugin->get_template_file_path(
             $this->get_template_files_root(),
-            'gateway-settings-' . $this->get_id() . '.template.php',
+            'settings-gateway-' . $this->get_id() . '.template.php',
             'templates'
         );
         if ( !empty($settings_template)) include($settings_template);

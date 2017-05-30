@@ -712,6 +712,8 @@ if ( !class_exists('CUAR_Settings')) :
         {
             if ($multiple)
             {
+                if (empty($input[$option_id])) $input[$option_id] = array();
+
                 if (!is_array($input[$option_id]))
                 {
                     add_settings_error($option_id, 'settings-errors',

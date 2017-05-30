@@ -4,7 +4,8 @@
 
 class CUAR_PaymentsSettingsHelper
 {
-    public static $OPTION_ENABLED_CREDIT_CARDS = 'cuar_enabled_credit_cards';
+    public static $OPTION_ENABLED_PAYMENT_ICON_PACK = 'cuar_enabled_payment_icon_pack';
+    public static $OPTION_ENABLED_PAYMENT_ICONS = 'cuar_enabled_payment_icons_';
     public static $OPTION_DEFAULT_GATEWAY = 'cuar_default_gateway';
 
     /** @var CUAR_Plugin */
@@ -21,8 +22,7 @@ class CUAR_PaymentsSettingsHelper
         $this->plugin = $plugin;
         $this->pa_addon = $pa_addon;
 
-        if (is_admin())
-        {
+        if (is_admin()) {
             // Add a settings tab for payments
             add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_settings_tab'), 530, 1);
             add_action('cuar/core/settings/print-settings?tab=cuar_payments', array(&$this, 'print_settings'), 10, 2);
@@ -45,8 +45,7 @@ class CUAR_PaymentsSettingsHelper
      */
     public function provide_default_invoice_tax_rate($tax_rate, $invoice)
     {
-        if ($tax_rate == null)
-        {
+        if ($tax_rate == null) {
             // $tax_rate = $this->get_default_tax_rate();
         }
 
@@ -64,7 +63,8 @@ class CUAR_PaymentsSettingsHelper
      */
     public static function set_default_options($defaults)
     {
-        $defaults[self::$OPTION_ENABLED_CREDIT_CARDS] = array('visa', 'mastercard', 'maestro');
+        $defaults[self::$OPTION_ENABLED_PAYMENT_ICON_PACK] = 'color-light';
+        $defaults[self::$OPTION_ENABLED_PAYMENT_ICONS . 'color-light'] = array('visa', 'mastercard');
 
         // For gateways too
         $defaults = CUAR_TestPaymentGateway::set_default_options($defaults);
@@ -106,6 +106,7 @@ class CUAR_PaymentsSettingsHelper
         foreach ($gw as $g) {
             $out[$g->get_id()] = $g->get_name();
         }
+
         return $out;
     }
 
@@ -117,8 +118,7 @@ class CUAR_PaymentsSettingsHelper
         $gateways = $this->get_available_gateways();
 
         /** @var CUAR_PaymentGateway $gateway */
-        foreach ($gateways as $id => $gateway)
-        {
+        foreach ($gateways as $id => $gateway) {
             if ( !$gateway->is_enabled()) unset($gateways[$id]);
         }
 
@@ -134,67 +134,200 @@ class CUAR_PaymentsSettingsHelper
     }
 
     /**
-     * @return array The IDs of enabled credit cards
+     * @return array The enabled payment icon pack
      */
-    public function get_enabled_credit_card_ids()
+    public function get_enabled_payment_icon_pack()
     {
-        return $this->plugin->get_option(self::$OPTION_ENABLED_CREDIT_CARDS);
+        $id = $this->plugin->get_option(self::$OPTION_ENABLED_PAYMENT_ICON_PACK);
+        $packs = $this->get_available_payment_icon_packs();
+
+        return isset($packs) ? $packs[$id] : $packs['color-light'];
     }
 
     /**
-     * @return array A description of all available credit cards
+     * @return array The IDs of enabled payment icons
      */
-    public function get_available_credit_cards()
+    public function get_enabled_payment_icon_ids()
     {
-        $img_path = CUAR_PLUGIN_URL . 'assets/common/img/credit-cards/';
+        $icon_pack = $this->get_enabled_payment_icon_pack();
 
-        return apply_filters('cuar/core/payments/credit-cards', array(
-            'visa'       => array(
-                'label' => __('Visa', 'cuar'),
-                'icon'  => $img_path . 'visa.png',
-            ),
-            'amex'       => array(
-                'label' => __('American Express', 'cuar'),
-                'icon'  => $img_path . 'amex.png',
-            ),
-            'diners'     => array(
-                'label' => __('Diner\'s Club', 'cuar'),
-                'icon'  => $img_path . 'diners.png',
-            ),
-            'maestro'    => array(
-                'label' => __('Maestro', 'cuar'),
-                'icon'  => $img_path . 'maestro.png',
-            ),
-            'mastercard' => array(
-                'label' => __('Master Card', 'cuar'),
-                'icon'  => $img_path . 'mastercard.png',
-            ),
-            'discover'   => array(
-                'label' => __('Discover', 'cuar'),
-                'icon'  => $img_path . 'discover.png',
-            ),
-            'jcb'        => array(
-                'label' => __('JCB International', 'cuar'),
-                'icon'  => $img_path . 'jcb.png',
+        return $this->plugin->get_option(self::$OPTION_ENABLED_PAYMENT_ICONS . $icon_pack['id']);
+    }
+
+    /**
+     * @return array A description of all available payment icons
+     */
+    public function get_available_payment_icon_packs()
+    {
+        return apply_filters('cuar/core/payments/payment-icons/packs', array(
+            'color-light' => array(
+                'id'    => 'color-light',
+                'label' => __('Colorful Light', 'cuar'),
+                'path'  => CUAR_PLUGIN_URL . '/assets/common/img/payment-icons/color-light/',
             ),
         ));
     }
 
     /**
-     * @return array The default tax rates we can quickly select
+     * @return array A description of all available payment icons
      */
-    public function get_enabled_credit_cards()
+    public function get_available_payment_icons($icon_pack)
     {
-        $cards = $this->get_available_credit_cards();
-        $enabled = $this->get_enabled_credit_card_ids();
-
-        /** @var CUAR_PaymentGateway $gateway */
-        foreach ($cards as $id => $card)
-        {
-            if ( !in_array($id, $enabled)) unset($cards[$id]);
+        if ($icon_pack['id'] != 'color-light') {
+            return apply_filters('cuar/core/payments/payment-icons/available?pack=' . $icon_pack['id'], array(), $icon_pack);
         }
 
-        return apply_filters('cuar/core/payments/enabled-credit-cards', $cards);
+        return array(
+            '2checkout'           => array(
+                'label' => __('2 Checkout', 'cuar'),
+                'icon'  => $icon_pack['path'] . '2checkout.png',
+            ),
+            'amazon'              => array(
+                'label' => __('Amazon', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'amazon.png',
+            ),
+            'amazon-a'            => array(
+                'label' => __('Amazon (minimal)', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'amazon-a.png',
+            ),
+            'amazon-payments'     => array(
+                'label' => __('Amazon Payments', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'amazon-payments.png',
+            ),
+            'american-express'    => array(
+                'label' => __('American Express', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'american-express.png',
+            ),
+            'amex'                => array(
+                'label' => __('Amex', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'amex.png',
+            ),
+            'chase'               => array(
+                'label' => __('Chase', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'chase.png',
+            ),
+            'chase-2'             => array(
+                'label' => __('Chase (minimal)', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'chase-2.png',
+            ),
+            'cirrus'              => array(
+                'label' => __('Cirrus', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'cirrus.png',
+            ),
+            'delta'               => array(
+                'label' => __('Delta', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'delta.png',
+            ),
+            'diners-club'         => array(
+                'label' => __('Diner\'s Club', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'diners-club.png',
+            ),
+            'direct-debit'        => array(
+                'label' => __('Direct Debit', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'direct-debit.png',
+            ),
+            'discover'            => array(
+                'label' => __('Discover', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'discover.png',
+            ),
+            'ebay'                => array(
+                'label' => __('Ebay', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'ebay.png',
+            ),
+            'etsy'                => array(
+                'label' => __('Etsy', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'etsy.png',
+            ),
+            'eway'                => array(
+                'label' => __('Eway', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'eway.png',
+            ),
+            'google-wallet'       => array(
+                'label' => __('Google Wallet', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'google-wallet.png',
+            ),
+            'jcb'                 => array(
+                'label' => __('JCB', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'jcb.png',
+            ),
+            'maestro'             => array(
+                'label' => __('Maestro', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'maestro.png',
+            ),
+            'mastercard'          => array(
+                'label' => __('Mastercard', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'mastercard.png',
+            ),
+            'moneybookers'        => array(
+                'label' => __('Moneybookers', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'moneybookers.png',
+            ),
+            'paypal'              => array(
+                'label' => __('Paypal', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'paypal.png',
+            ),
+            'paypal-p'            => array(
+                'label' => __('Paypal (minimal)', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'paypal-p.png',
+            ),
+            'sage'                => array(
+                'label' => __('Sage', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'sage.png',
+            ),
+            'shopify'             => array(
+                'label' => __('Shopify', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'shopify.png',
+            ),
+            'skrill'              => array(
+                'label' => __('Skrill', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'skrill.png',
+            ),
+            'skrill-moneybookers' => array(
+                'label' => __('Skrill Moneybookers', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'skrill-moneybookers.png',
+            ),
+            'solo'                => array(
+                'label' => __('Solo', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'solo.png',
+            ),
+            'switch'              => array(
+                'label' => __('Switch', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'switch.png',
+            ),
+            'visa'                => array(
+                'label' => __('Visa', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'visa.png',
+            ),
+            'visa-electron'       => array(
+                'label' => __('Visa Electron', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'visa-electron.png',
+            ),
+            'western-union'       => array(
+                'label' => __('Western Union', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'western-union.png',
+            ),
+            'worldpay'            => array(
+                'label' => __('World Pay', 'cuar'),
+                'icon'  => $icon_pack['path'] . 'worldpay.png',
+            ),
+        );
+    }
+
+    /**
+     * @return array The default tax rates we can quickly select
+     */
+    public function get_enabled_payment_icons()
+    {
+        $icon_pack = $this->get_enabled_payment_icon_pack();
+        $icons = $this->get_available_payment_icons($icon_pack);
+        $enabled = $this->get_enabled_payment_icon_ids();
+
+        /** @var CUAR_PaymentGateway $gateway */
+        foreach ($icons as $id => $icon) {
+            if ( !in_array($id, $enabled)) unset($icons[$id]);
+        }
+
+        return $icons;
     }
 
     //------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE -------------------------------------------------------------------------------------------------------/
@@ -224,23 +357,41 @@ class CUAR_PaymentsSettingsHelper
         add_settings_section(
             'cuar_payments_general',
             __('General settings', 'cuar'),
-            array(&$cuar_settings, 'print_empty_section_info'),
+            array(&$this, 'print_general_section_info'),
             CUAR_Settings::$OPTIONS_PAGE_SLUG
         );
 
         add_settings_field(
-            self::$OPTION_ENABLED_CREDIT_CARDS,
-            __("Credit Cards", 'cuar'),
+            self::$OPTION_ENABLED_PAYMENT_ICON_PACK,
+            __("Payment icon pack", 'cuar'),
             array(&$cuar_settings, 'print_select_field'),
             CUAR_Settings::$OPTIONS_PAGE_SLUG,
             'cuar_payments_general',
             array(
-                'option_id' => self::$OPTION_ENABLED_CREDIT_CARDS,
-                'options'   => $this->get_selectable_credit_card_options(),
-                'multiple'  => true,
-                'after'     => '<p class="description">' . __('Show the following credit card logos next to the payment button', 'cuar') . '</p>',
+                'option_id' => self::$OPTION_ENABLED_PAYMENT_ICON_PACK,
+                'options'   => $this->get_selectable_payment_icon_pack_options(),
+                'multiple'  => false,
+                'after'     => '', //'<p class="description">' . __('Show the following payment icon logos next to the payment button', 'cuar') . '</p>',
             )
         );
+
+        $icon_packs = $this->get_available_payment_icon_packs();
+        foreach ($icon_packs as $pack_id => $pack) {
+            add_settings_field(
+                self::$OPTION_ENABLED_PAYMENT_ICONS . $pack_id,
+                '',
+                array(&$cuar_settings, 'print_select_field'),
+                CUAR_Settings::$OPTIONS_PAGE_SLUG,
+                'cuar_payments_general',
+                array(
+                    'option_id' => self::$OPTION_ENABLED_PAYMENT_ICONS . $pack_id,
+                    'options'   => $this->get_selectable_payment_icon_options($pack),
+                    'multiple'  => true,
+                    'class'  => 'cuar-payment-icon-setting cuar-payment-icon-setting-' . $pack_id,
+                    'after'     => $this->get_selectable_payment_icons_description($pack)
+                )
+            );
+        }
 
         add_settings_field(
             self::$OPTION_DEFAULT_GATEWAY,
@@ -275,13 +426,21 @@ class CUAR_PaymentsSettingsHelper
      */
     public function validate_options($validated, $cuar_settings, $input)
     {
-        $cuar_settings->validate_select($input, $validated, self::$OPTION_ENABLED_CREDIT_CARDS, $this->get_selectable_credit_card_options(), true);
+        $icon_packs = $this->get_available_payment_icon_packs();
+        $cuar_settings->validate_select($input, $validated, self::$OPTION_ENABLED_PAYMENT_ICON_PACK, $icon_packs, false);
+
+        foreach ($icon_packs as $id => $pack) {
+            $cuar_settings->validate_select($input, $validated,
+                self::$OPTION_ENABLED_PAYMENT_ICONS . $id,
+                $this->get_selectable_payment_icon_options($pack),
+                true);
+        }
+
         $cuar_settings->validate_select($input, $validated, self::$OPTION_DEFAULT_GATEWAY, $this->get_available_gateways_for_select(), false);
 
         $gateways = $this->get_available_gateways();
         /** @var CUAR_PaymentGateway $gateway */
-        foreach ($gateways as $gateway)
-        {
+        foreach ($gateways as $gateway) {
             $validated = $gateway->validate_options($validated, $cuar_settings, $input);
         }
 
@@ -303,21 +462,71 @@ class CUAR_PaymentsSettingsHelper
 
         include($this->plugin->get_template_file_path(
             CUAR_INCLUDES_DIR . '/core-addons/payments',
-            'gateways-settings-table.template.php',
+            'settings-gateways-table.template.php',
             'templates'));
     }
 
     /**
+     * Print some info about the section
+     */
+    public function print_general_section_info()
+    {
+        include($this->plugin->get_template_file_path(
+            CUAR_INCLUDES_DIR . '/core-addons/payments',
+            'settings-payment-icons-scripts.template.php',
+            'templates'));
+    }
+
+    /**
+     * @param array $icon_pack
+     *
      * @return array
      */
-    private function get_selectable_credit_card_options()
+    private function get_selectable_payment_icon_pack_options()
     {
-        $cc_options = $this->get_available_credit_cards();
-        foreach ($cc_options as $id => $card)
-        {
-            $cc_options[$id] = $card['label'];
+        $packs = $this->get_available_payment_icon_packs();
+        foreach ($packs as $id => $pack) {
+            $packs[$id] = $pack['label'];
         }
 
-        return $cc_options;
+        return $packs;
+    }
+
+    /**
+     * @param array $icon_pack
+     *
+     * @return array
+     */
+    private function get_selectable_payment_icon_options($icon_pack)
+    {
+        $icons = $this->get_available_payment_icons($icon_pack);
+        foreach ($icons as $id => $icon) {
+            $icons[$id] = $icon['label'];
+        }
+
+        return $icons;
+    }
+
+    /**
+     * @param array $icon_pack
+     *
+     * @return string
+     */
+    private function get_selectable_payment_icons_description($icon_pack)
+    {
+        $out = '<p class="description">';
+        $out .= __('Select the payment icons you want to show amongst all the available icons in this pack:', 'cuar') . '<br/><br/>';
+        $icons = $this->get_available_payment_icons($icon_pack);
+        foreach ($icons as $id => $icon) {
+            $out .= sprintf('<img width="64" src="%1$s" title="%2$s" class="cuar-payment-icon" data-pack="%3$s" data-id="%4$s"/> ',
+                $icon['icon'],
+                $icon['label'],
+                $icon_pack['id'],
+                $id
+            );
+        }
+        $out .= '</p>';
+
+        return $out;
     }
 }
