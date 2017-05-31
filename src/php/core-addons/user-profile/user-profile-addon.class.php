@@ -40,13 +40,6 @@ if ( !class_exists('CUAR_UserProfileAddOn')) :
 
         public function run_addon($plugin)
         {
-            // Init the admin interface if needed
-            if (is_admin())
-            {
-            }
-            else
-            {
-            }
         }
 
         /**
@@ -68,15 +61,14 @@ if ( !class_exists('CUAR_UserProfileAddOn')) :
         public function get_profile_fields()
         {
             $default_fields = array(
-
-                'user_login'      => new CUAR_TextField('user_login', new CUAR_UserStorage(), array(
+                'user_login' => new CUAR_TextField('user_login', new CUAR_UserStorage(), array(
                     'label'       => __('Username', 'cuar'),
                     'readonly'    => true,
                     'inline_help' => __('Your username cannot be changed.', 'cuar'),
                     'required'    => true,
                 )),
 
-                'user_email'      => new CUAR_EmailField('user_email', new CUAR_UserStorage(), array(
+                'user_email' => new CUAR_EmailField('user_email', new CUAR_UserStorage(), array(
                     'label'    => __('Primary email', 'cuar'),
                     'required' => true,
                 )),
@@ -102,12 +94,12 @@ if ( !class_exists('CUAR_UserProfileAddOn')) :
                 )),
 
                 'description' => new CUAR_TextField('description', new CUAR_UserStorage(), array(
-                    'label' => __('Biography', 'cuar'),
+                    'label'       => __('Biography', 'cuar'),
                     'inline_help' => __('Your can write a short description about you.', 'cuar'),
-                    'type' => 'long-text'
+                    'type'        => 'long-text'
                 )),
 
-                'user_pass'       => new CUAR_UserPasswordField('user_pass', array(
+                'user_pass' => new CUAR_UserPasswordField('user_pass', array(
                     'label'               => __('Password', 'cuar'),
                     'confirm_label'       => __('Password (confirm)', 'cuar'),
                     'confirm_inline_help' => __('The password must at least be composed of 5 characters. You will be requested to login again after your password gets changed. Leave these fields empty if you want to keep your current password',
