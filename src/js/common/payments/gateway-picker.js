@@ -34,9 +34,8 @@
             event.preventDefault();
 
             var selected = $(this).data('gateway');
-            base._getGatewayForms().hide(function() {
-                base._getGatewayForm(selected).show();
-            });
+            base._getGatewayForms().hide(0);
+            base._getGatewayForm(selected).show(0);
         };
 
         /** Getter */
