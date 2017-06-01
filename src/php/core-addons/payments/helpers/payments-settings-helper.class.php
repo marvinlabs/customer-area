@@ -187,7 +187,7 @@ class CUAR_PaymentsSettingsHelper
                 'icon'  => $icon_pack['path'] . 'amazon.png',
             ),
             'amazon-a'            => array(
-                'label' => __('Amazon (minimal)', 'cuar'),
+                'label' => __('Amazon', 'cuar'),
                 'icon'  => $icon_pack['path'] . 'amazon-a.png',
             ),
             'amazon-payments'     => array(
@@ -207,7 +207,7 @@ class CUAR_PaymentsSettingsHelper
                 'icon'  => $icon_pack['path'] . 'chase.png',
             ),
             'chase-2'             => array(
-                'label' => __('Chase (minimal)', 'cuar'),
+                'label' => __('Chase', 'cuar'),
                 'icon'  => $icon_pack['path'] . 'chase-2.png',
             ),
             'cirrus'              => array(
@@ -267,7 +267,7 @@ class CUAR_PaymentsSettingsHelper
                 'icon'  => $icon_pack['path'] . 'paypal.png',
             ),
             'paypal-p'            => array(
-                'label' => __('Paypal (minimal)', 'cuar'),
+                'label' => __('Paypal', 'cuar'),
                 'icon'  => $icon_pack['path'] . 'paypal-p.png',
             ),
             'sage'                => array(
