@@ -54,6 +54,9 @@ class CUAR_FileLogger
     public static function get_log_file_path($handle)
     {
         $dir = WP_CONTENT_DIR . '/customer-area/logs/';
+        if ( !file_exists($dir)) {
+            mkdir($dir, 0777, true);
+        }
 
         return $dir . sanitize_file_name($handle . '-' . wp_hash($handle)) . '.log';
     }

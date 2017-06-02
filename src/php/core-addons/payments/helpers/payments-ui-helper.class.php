@@ -196,13 +196,13 @@ class CUAR_PaymentsUiHelper
 
     public function process_payment_listener_call()
     {
-        if ( !(isset($_GET['cuar-payment-listener']) || isset($_POST['cuar-payment-listener']))) return;
+        if ( !(isset($_GET['cuar-payment-listener']) || !isset($_POST['cuar-payment-listener']))) return;
 
         $listener_id = isset($_GET['cuar-payment-listener'])
             ? $_GET['cuar-payment-listener']
-            : isset($_POST['cuar-payment-listener'])
+            : (isset($_POST['cuar-payment-listener'])
                 ? $_POST['cuar-payment-listener']
-                : '';
+                : '');
 
         // Try to find the gateway responsible for handling this event
         $gateways = $this->pa_addon->settings()->get_enabled_gateways();
@@ -214,8 +214,7 @@ class CUAR_PaymentsUiHelper
             {
                 // Gateway found. Let it process the result
                 $gateway->process_callback();
-
-                return;
+                die();
             }
         }
     }

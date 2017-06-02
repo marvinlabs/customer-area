@@ -157,7 +157,7 @@ abstract class CUAR_AbstractPaymentGateway implements CUAR_PaymentGateway
         if ( !$this->is_log_enabled()) return;
 
         if (empty($this->logger)) {
-            $this->logger = new WC_Logger();
+            $this->logger = new CUAR_FileLogger();
         }
         $this->logger->add('gateway-' . $this->get_id(), $message);
     }

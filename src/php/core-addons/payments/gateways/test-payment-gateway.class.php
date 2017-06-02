@@ -39,6 +39,8 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
 
     public function process_payment($payment, $payment_data, $gateway_params)
     {
+        $this->log(sprintf(__('PAYMENT %s - Payment processed, status set to: %s', 'cuar'), $payment->ID, $gateway_params['expected_result']));
+
         switch ($gateway_params['expected_result']) {
             case 'success':
                 // In case of success we update the payment status
@@ -64,8 +66,6 @@ class CUAR_TestPaymentGateway extends CUAR_AbstractPaymentGateway
             default:
                 die('Unhandled test gateway expected result value');
         }
-
-        $this->log(sprintf(__('PAYMENT %s - Payment processed, status set to: %s', 'cuar'), $payment->ID, $gateway_params['expected_result']));
     }
 
     //-- Settings helper functions ----------------------------------------------------------------------------------------------------------------------------/
