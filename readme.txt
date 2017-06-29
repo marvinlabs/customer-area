@@ -127,12 +127,14 @@ feel free to fork the project and send us pull requests!
 * **Design Extras** - New: 4 PDF templates for invoices
 * **Design Extras** - New: 4 templates for email notifications
 * **Extended Permissions** - Fix: wrong hook for the owner type hooks
+* **Extended Permissions** - Fix: admin area menu highlighting
 * **Invoicing** - New: PDF templates can now be configured (colors, images, etc.)
 * **Invoicing** - Fix: Allow lists to be used in [notice, header, and footer areas](https://github.com/marvinlabs/customer-area/issues/257)
 * **Invoicing** - Tweak: Improved the default HTML template for displaying invoices
 * **Invoicing** - Tweak: Invoice HTML tpl should include [sub-total](https://github.com/marvinlabs/customer-area/issues/252)
 * **Invoicing** - Tweak: improve longs owner names rendering
 * **Managed Groups** - Tweak: improve longs owner names rendering
+* **Managed Groups** - Fix: admin area menu highlighting
 * **Notifications** - New: email layouts can now be configured (colors, logo, etc.)
 * **Notifications** - New: Notification when task list gets completed
 * **Notifications** - Tweak: Enhanced the default notification template
@@ -140,6 +142,7 @@ feel free to fork the project and send us pull requests!
 * **Projects** - Tweak: task list update hook parameters
 * **Projects** - Tweak: improve longs owner names rendering
 * **Smart Groups** - Tweak: improve longs owner names rendering
+* **Smart Groups** - Fix: admin area menu highlighting
 * **Tasks** - Fix: wrong version sent to the update server
 * **Tasks** - Fix: remove unused code
 * **Tasks** - Fix: better hook to allow task list completed notifications
