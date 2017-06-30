@@ -26,7 +26,7 @@ $whats_new = array(
 	),
 	'7.2' => array(
 		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-since-wp-customer-area-7-0', 'cuar'),
-		'codename'  => 'Elton John',
+		'codename'  => 'Sid Vicious',
 		'tagline'   => __("Welcome to the Unread Documents add-on", 'cuar'),
 		'blocks'    => array(
 			array(
