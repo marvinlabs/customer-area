@@ -27,7 +27,7 @@
             <span class="dashicons dashicons-trash"></span></a>
     </span>
     <span class="cuar-progress cuar-js-progress" style="display: none;">
-        <span class="determinate"></span>
+        <span class="determinate cuar-js-progress-bar"></span>
         <span class="indeterminate"></span>
     </span>
 </div>

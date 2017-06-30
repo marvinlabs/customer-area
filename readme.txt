@@ -4,8 +4,8 @@ Contributors:       vprat, marvinlabs
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.2
-Tested up to:       4.7.3
-Stable tag:         7.2.1
+Tested up to:       4.7.5
+Stable tag:         7.3.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,49 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.3.0 (2017/06/29) =
+
+* New: compatibility with the new add-on: Design extras
+* Fix: improved some resets CSS rules
+* Fix: default message in recent pages widget not saved
+* Fix: wrong hook for the owner type hooks
+* Fix: some tooltips were not displayed outside of screen on mobile view
+* Fix: show determinate [progress on file uploads](https://github.com/marvinlabs/customer-area/issues/116)
+* Fix: country dropdown on profile [address tab were not working](https://github.com/marvinlabs/customer-area/issues/254)
+* Fix: removed [extra container on search results page](https://github.com/marvinlabs/customer-area/issues/259)
+* Fix: too long category [names in widgets are now displayed properly](https://github.com/marvinlabs/customer-area/issues/250)
+* Fix: font awesome icons were not displayed properly because [shown up in italic](https://github.com/marvinlabs/customer-area/issues/256)
+* Tweak: some internal improvements to settings (color setting, etc.)
+* Tweak: improve longs owner names rendering
+
+**Add-on changes**
+
+* **Conversations** - Tweak: improve longs owner names rendering
+* **Design Extras** - New: 13 color variations for the frontend skin
+* **Design Extras** - New: 4 PDF templates for invoices
+* **Design Extras** - New: 4 templates for email notifications
+* **Extended Permissions** - Fix: wrong hook for the owner type hooks
+* **Extended Permissions** - Fix: admin area menu highlighting
+* **Invoicing** - New: PDF templates can now be configured (colors, images, etc.)
+* **Invoicing** - Fix: Allow lists to be used in [notice, header, and footer areas](https://github.com/marvinlabs/customer-area/issues/257)
+* **Invoicing** - Tweak: Improved the default HTML template for displaying invoices
+* **Invoicing** - Tweak: Invoice HTML tpl should include [sub-total](https://github.com/marvinlabs/customer-area/issues/252)
+* **Invoicing** - Tweak: improve longs owner names rendering
+* **Managed Groups** - Tweak: improve longs owner names rendering
+* **Managed Groups** - Fix: admin area menu highlighting
+* **Notifications** - New: email layouts can now be configured (colors, logo, etc.)
+* **Notifications** - New: Notification when task list gets completed
+* **Notifications** - Tweak: Enhanced the default notification template
+* **Projects** - Fix: wrong hook for the owner type hooks
+* **Projects** - Tweak: task list update hook parameters
+* **Projects** - Tweak: improve longs owner names rendering
+* **Smart Groups** - Tweak: improve longs owner names rendering
+* **Smart Groups** - Fix: admin area menu highlighting
+* **Tasks** - Fix: wrong version sent to the update server
+* **Tasks** - Fix: remove unused code
+* **Tasks** - Fix: better hook to allow task list completed notifications
+* **Tasks** - Tweak: improve longs owner names rendering
 
 = 7.2.0 (2017/05/15) =
 

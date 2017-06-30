@@ -292,7 +292,7 @@
             return item;
         };
 
-        base._removeItem = function(item) {
+        base._removeItem = function (item) {
             item.fadeOut(400, function () {
                 if (base._getAttachmentItems().length <= 1) {
                     base._getAttachmentListEmptyMessage().show();
@@ -310,7 +310,7 @@
          * @private
          */
         base._updateAttachmentItem = function (item, postId, filename, caption) {
-            if (caption === undefined || caption.trim().length == 0) {
+            if (caption === undefined || caption.trim().length === 0) {
                 caption = filename;
             }
 
@@ -365,23 +365,50 @@
          * @private
          */
         base._updateAttachmentItemProgress = function (item, progress) {
-            var progressElt = item.children('.cuar-js-progress');
-            var indeterminateElt = progressElt.children('.indeterminate');
-            var determinateElt = progressElt.children('.determinate');
+            var progressContainer = item.children('.cuar-js-progress');
+            var progressBar = progressContainer.find('.cuar-js-progress-bar');
+            var progressBarLabel = progressContainer.find('.cuar-js-progress-label');
+
+            progressContainer.show();
 
             if (progress <= 0) {
-                indeterminateElt.show();
-                determinateElt.hide();
+                // Show indeterminate progress
+                progressBar
+                    .addClass('cuar-js-indeterminate')
+                    // TODO CSS REFACTORING NEEDED -> this should be removed and styled using the cuar-js-indeterminate class instead
+                    .addClass('progress-bar-striped')
+                    .addClass('active')
+                    // END CSS REFACTORING NEEDED
+                    .css({
+                        'width': '100%'
+                    })
+                    .attr('aria-valuenow', '100');
+
+                progressBarLabel
+                    .hide()
+                    .html("");
             } else {
-                indeterminateElt.hide();
-                determinateElt.show();
-                determinateElt.css({'width': progress + '%'});
+                // Show determinate progress
+                progressBar
+                    .removeClass('cuar-js-indeterminate')
+                    // TODO CSS REFACTORING NEEDED -> this should be removed and styled using the cuar-js-indeterminate class instead
+                    .removeClass('progress-bar-striped')
+                    .removeClass('active')
+                    // END CSS REFACTORING NEEDED
+                    .css({
+                        'width': progress + '%'
+                    })
+                    .attr('aria-valuenow', progress);
+
+                progressBarLabel
+                    .show()
+                    .html(progress + '%');
             }
         };
 
         /** Getter */
         base._showError = function (item, filename, errorMessage, isRemoveItemRequired) {
-            if (item != null) {
+            if (item !== null) {
                 console.log(item);
                 console.log(isRemoveItemRequired);
                 if (isRemoveItemRequired) {
@@ -443,7 +470,7 @@
         base._getErrorTemplate = function () {
             return $(base.options.errorTemplate, base.el)
                 .children('.cuar-js-error')
-                .first();                
+                .first();
         };
 
         /** Getter */

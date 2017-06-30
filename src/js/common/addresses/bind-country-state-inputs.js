@@ -25,6 +25,14 @@
          * Initialisation
          */
         base.init = function () {
+            // Dynamic dropdown parent for select2
+            if ($.cuar.bindCountryStateInputs.defaultOptions.select2.dropdownParent===null) {
+                var $body = $('body');
+                $.cuar.bindCountryStateInputs.defaultOptions.select2.dropdownParent = $body.hasClass('wp-admin')
+                    ? $body
+                    : $('#cuar-js-content-container');
+            }
+
             // Merge default options
             base.options = $.extend({}, $.cuar.bindCountryStateInputs.defaultOptions, options);
 
@@ -45,7 +53,7 @@
             var stateFieldGroup = base._getStateFieldContainer();
 
             var selectedCountry = countryField.val();
-            if (selectedCountry==null || selectedCountry.length == '' || (typeof selectedCountry == 'undefined')) {
+            if (selectedCountry===null || selectedCountry.length === 0 || (typeof selectedCountry === 'undefined')) {
                 stateFieldGroup.hide();
                 return;
             }
@@ -134,7 +142,7 @@
             width: '100%',
             allowClear: true,
             placeholder: "",
-            dropdownParent: $('body').hasClass('wp-admin') ? $('body') : $('#cuar-js-content-container')
+            dropdownParent: null
         }
     };
 

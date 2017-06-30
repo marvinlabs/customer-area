@@ -241,7 +241,12 @@ if ( !class_exists('CUAR_Plugin')) :
                         'cuar'),
                     'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
                 ));
-                wp_register_script('cuar.admin', CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js', array('jquery'), $this->get_version());
+                wp_register_script(
+                    'cuar.admin',
+                    CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js',
+                    array('jquery', 'wp-color-picker'),
+                    $this->get_version());
+
                 wp_localize_script('cuar.admin', 'cuar', $messages);
             } else {
                 $messages = apply_filters('cuar/core/js-messages?zone=frontend', array(
@@ -280,6 +285,7 @@ if ( !class_exists('CUAR_Plugin')) :
         {
             if (is_admin()) {
                 if ($this->is_admin_area_page()) {
+                    wp_enqueue_style( 'wp-color-picker' );
                     wp_enqueue_style(
                         'cuar.admin',
                         $this->get_admin_theme_url() . '/assets/css/styles.min.css',

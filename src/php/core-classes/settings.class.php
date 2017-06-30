@@ -582,6 +582,29 @@ if ( !class_exists('CUAR_Settings')) :
         }
 
         /**
+         * Validate an hexadecimal color value within an array
+         *
+         * @param array  $input
+         *            Input array
+         * @param array  $validated
+         *            Output array
+         * @param string $option_id
+         *            Key of the value to check in the input array
+         */
+        public function validate_hex_color($input, &$validated, $option_id)
+        {
+            if ( !isset($input[$option_id])) return;
+
+            if (preg_match('/^#[a-f0-9]{6}$/i', $input[$option_id])) { // if user insert a HEX color with #123456
+                $validated[$option_id] = $input[$option_id];
+            }
+
+            if (preg_match('/^#[a-f0-9]{3}$/i', $input[$option_id])) { // if user insert a HEX color with #123
+                $validated[$option_id] = $input[$option_id];
+            }
+        }
+
+        /**
          * Validate a boolean value within an array
          *
          * @param array  $input
@@ -997,6 +1020,27 @@ if ( !class_exists('CUAR_Settings')) :
                 if (isset($after)) {
                     echo $after;
                 }
+            } else if ($type == 'color') {
+                wp_enqueue_script('cuar.admin');
+
+                $extra_class = 'cuar-color-input color-field';
+
+                if (isset($before)) {
+                    echo $before;
+                }
+
+                echo '<div id="cuar-color-control-' . $option_id . '">';
+                echo sprintf('<input type="%s" id="%s" name="%s[%s]" value="%s" class="%s" />', 'text',
+                    esc_attr($option_id), self::$OPTIONS_GROUP, esc_attr($option_id),
+                    esc_attr(stripslashes($this->options [$option_id])), esc_attr($extra_class));
+                echo '<script type="text/javascript">';
+                echo '    jQuery(document).ready(function($) { $("#cuar-color-control-' . $option_id . ' input").wpColorPicker(); });';
+                echo '</script>';
+                echo '</div>';
+
+                if (isset($after)) {
+                    echo $after;
+                }
             } else {
                 $extra_class = isset($is_large) && $is_large == true ? 'large-text' : 'regular-text';
 
@@ -1013,7 +1057,6 @@ if ( !class_exists('CUAR_Settings')) :
                 }
             }
         }
-
 
         /**
          * Output a submit button
