@@ -2,8 +2,52 @@
 
 <?php
 $whats_new = array(
+	'7.3' => array(
+		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-since-wp-customer-area-7-0', 'cuar'),
+		'codename'  => 'Eric Clapton',
+		'tagline'   => __("Welcome to the Design Extras add-on", 'cuar'),
+		'blocks'    => array(
+			array(
+				'title' => __('New add-on: Design Extras', 'cuar'),
+				'text'  => __('We introduced a new add-on that will add new design elements to your private area. New skins, notifications and invoicing PDF templates have been designed for you!',
+					'cuar'),
+			),
+			array(
+				'title' => __('Notifications and PDF Invoices templates options', 'cuar'),
+				'text'  => __('Invoicing and notification templates are coming with a bunch of options in the admin area that allow you to customize colors, background and more. It will be easy for you to use them as a base and get your own customized design in a few minutes!',
+					'cuar'),
+			),
+			array(
+				'title' => __('Improvements and bug fixes', 'cuar'),
+				'text'  => __('Main plugin and existing add-ons have been much improved: many new features and more than 30 issues fixes. For instance, notifications are now sent when a task lists gets completed.',
+					'cuar'),
+			),
+		)
+	),
+	'7.2' => array(
+		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-since-wp-customer-area-7-0', 'cuar'),
+		'codename'  => 'Elton John',
+		'tagline'   => __("Welcome to the Unread Documents add-on", 'cuar'),
+		'blocks'    => array(
+			array(
+				'title' => __('New add-on: Unread Documents', 'cuar'),
+				'text'  => __('It will allow you to see if your documents have been updated since the last time you read them using a visual indicator. It is compatible with all others private content add-ons. You can also mark private contents as unread using a dedicated button.',
+					'cuar'),
+			),
+			array(
+				'title' => __('Notifications: New tasks reminders', 'cuar'),
+				'text'  => __('It comes very useful to get some emails when your tasks are overdue, about to expire, or about to be overdue. You wont get any chance left to miss tasks you are assigned to!',
+					'cuar'),
+			),
+			array(
+				'title' => __('Improvements and bug fixes', 'cuar'),
+				'text'  => __('Main plugin and existing add-ons have been much improved: this is 17 issues fixed. For instance, a lot of improvements and bug fixes can be seen on the frontend interface especially on the collection views and sidebars.',
+					'cuar'),
+			),
+		)
+	),
     '7.1' => array(
-        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-1', 'cuar'),
+        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-since-wp-customer-area-7-0', 'cuar'),
         'codename'  => 'Kurt Cobain',
         'tagline'   => __("A small post-summer-break update", 'cuar'),
         'blocks'    => array(
