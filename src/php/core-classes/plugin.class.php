@@ -251,7 +251,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 wp_register_script(
                     'cuar.admin',
                     CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js',
-                    array('jquery', 'wp-color-picker'),
+                    array('jquery', 'wp-color-picker', 'jquery-ui-datepicker'),
                     $this->get_version());
 
                 wp_localize_script('cuar.admin', 'cuar', $messages);
