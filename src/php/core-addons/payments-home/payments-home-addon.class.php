@@ -30,7 +30,7 @@ if ( !class_exists('CUAR_PaymentsHomeAddOn')) :
 
         public function __construct()
         {
-            parent::__construct('payments-home', '6.4.0', 'customer-home');
+            parent::__construct('payments-home', 'customer-home');
 
             $this->set_page_parameters(200, array(
                     'slug'         => 'payments-home',
