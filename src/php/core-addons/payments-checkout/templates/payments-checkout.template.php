@@ -13,6 +13,11 @@
 <?php /** @var string $gateways_template */ ?>
 
 <form action="<?php echo esc_attr(cuar_get_checkout_url()); ?>" method="POST">
+    <div id="cuar_payment_data"
+         data-object-title="<?php echo esc_attr(get_the_title($object_id)); ?>"
+         data-amount="<?php echo esc_attr($amount); ?>"
+         data-currency="<?php echo esc_attr($currency); ?>">
+    </div>
     <?php wp_nonce_field("process_payment_" . md5($object_type . $object_id), "cuar_process_payment_nonce"); ?>
     <input type="hidden" name="cuar_action" value="process_payment" />
     <input type="hidden" name="cuar_object_type" value="<?php echo esc_attr($object_type); ?>"/>
