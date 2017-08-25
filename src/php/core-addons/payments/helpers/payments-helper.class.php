@@ -89,7 +89,7 @@ class CUAR_PaymentsHelper
      *
      * @return array
      */
-    public function get_payments_for_object($object_type, $object_id, $only_completed = false)
+    public static function get_payments_for_object($object_type, $object_id, $only_completed = false)
     {
         $args = array(
             'post_type'  => CUAR_Payment::$POST_TYPE,

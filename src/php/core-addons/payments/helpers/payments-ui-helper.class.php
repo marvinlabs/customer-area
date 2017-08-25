@@ -38,7 +38,7 @@ class CUAR_PaymentsUiHelper
     public function show_payment_button($object_type, $object_id, $amount, $currency, $address)
     {
         // Check if we already have a payment for that object, and if any, check the amount
-        $payments = $this->pa_addon->payments()->get_payments_for_object($object_type, $object_id, false);
+        $payments = CUAR_PaymentsHelper::get_payments_for_object($object_type, $object_id, false);
         $paid_amount = 0;
         $template_suffix = is_admin() ? '-admin' : '-frontend';
 
@@ -98,7 +98,7 @@ class CUAR_PaymentsUiHelper
     public function show_payment_history($object_type, $object_id)
     {
         // Check if we already have a payment for that object, and if any, check the amount
-        $payments = $this->pa_addon->payments()->get_payments_for_object($object_type, $object_id, false);
+        $payments = CUAR_PaymentsHelper::get_payments_for_object($object_type, $object_id, false);
         $template_suffix = is_admin() ? '-admin' : '-frontend';
 
         $template = $this->plugin->get_template_file_path(
