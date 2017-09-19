@@ -956,6 +956,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             $post_id = get_the_ID();
             if ( !cuar_is_customer_area_private_content($post_id)) return $content;
 
+            if ( cuar_is_customer_area_page( get_queried_object_id(), 'customer-search' ) ) return $content;
+
             if (empty($content)) return '';
 
             return '<div class="cuar-single-entry">' . $content . '</div>';
