@@ -97,7 +97,7 @@ if ( !class_exists('CUAR_UserProfileAddOn')) :
                     'label' => __('Display name', 'cuar')
                 )),
 
-                'url' => new CUAR_TextField('url', new CUAR_UserStorage(), array(
+                'url' => new CUAR_TextField('user_url', new CUAR_UserStorage(), array(
                     'label' => __('Personal Website', 'cuar')
                 )),
 
