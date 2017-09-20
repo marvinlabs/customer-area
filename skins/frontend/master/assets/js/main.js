@@ -569,7 +569,7 @@
                     var cookieName = $collectionContainer.data('type') + '-collection-layout';
                     var cookieLayout = ( typeof Cookies !== 'undefined' ) ? Cookies.get(cookieName) : '';
                     if (cookieLayout !== 'list' && cookieLayout !== 'grid') {
-                        if ($collectionContainer.data('collection-layout') !== null) {
+                        if ((typeof $collectionContainer.data('collection-layout') !== 'undefined') && $collectionContainer.data('collection-layout') !== null) {
                             cookieLayout = $collectionContainer.data('collection-layout');
                         } else {
                             cookieLayout = cuar.default_collection_view[$collectionContainer.data('type')];
