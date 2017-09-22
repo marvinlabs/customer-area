@@ -115,11 +115,11 @@ if ( !class_exists('CUAR_TermsWidget')) :
          */
         protected function print_term_list($terms, $hide_empty, $is_hierarchical=false, $depth=0)
         {
-            cuar()->enable_library('jquery.fancytree');
-
             $template_suffix = $is_hierarchical ? '-tree' : '-cloud';
 
-            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+            $cuar = CUAR_Plugin::get_instance();
+            $cuar->enable_library('jquery.fancytree');
+            $template = $cuar->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
                 array(
                     "widget-terms" . $template_suffix . "-" . $this->id_base . ".template.php",
@@ -139,9 +139,7 @@ if ( !class_exists('CUAR_TermsWidget')) :
          */
         public function print_term_scripts($is_hierarchical=false)
         {
-
             $template_suffix = $is_hierarchical ? '-tree' : '-cloud';
-
             $template = CUAR_Plugin::get_instance()->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
                 array(

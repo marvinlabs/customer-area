@@ -44,8 +44,10 @@ if ( !class_exists('CUAR_AddressHelper')) :
          */
         public static function sanitize_address($address)
         {
-            if (!empty($address['vat-number'])) $address['vat_number'] = $address['vat-number'];
-            if (!empty($address['logo-url'])) $address['logo_url'] = $address['logo-url'];
+            if (!is_array($address)) $address = array();
+            
+            if ( !empty($address['vat-number'])) $address['vat_number'] = $address['vat-number'];
+            if ( !empty($address['logo-url'])) $address['logo_url'] = $address['logo-url'];
 
             $address = array_merge(array(
                 'name'       => '',
@@ -77,9 +79,31 @@ if ( !class_exists('CUAR_AddressHelper')) :
         }
 
         /**
+         * @param array  $address
+         * @param string $input_name
+         *
+         * @return string
+         */
+        public static function get_address_as_hidden_input($address, $input_name = 'cuar_address')
+        {
+            $fields = array('name', 'company', 'vat_number', 'logo_url', 'line1', 'line2', 'zip', 'city', 'country', 'state');
+            $out = '';
+            foreach ($fields as $f)
+            {
+                $out .= sprintf('<input type="hidden" name="%1$s[%2$s]" value="%3$s" />',
+                    esc_attr($input_name),
+                    esc_attr($f),
+                    isset($address[$f]) ? esc_attr($address[$f]) : '');
+                $out .= "\n";
+            }
+
+            return apply_filters('cuar/core/address-as-hidden-input', $out, $address, $input_name);
+        }
+
+        /**
          * @param $address
          *
-         * @return mixed|void
+         * @return string
          */
         public static function get_address_as_string($address)
         {
@@ -142,7 +166,7 @@ if ( !class_exists('CUAR_AddressHelper')) :
         /**
          * @param $address
          *
-         * @return mixed|void
+         * @return string
          */
         public static function get_address_as_short_string($address)
         {

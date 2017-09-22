@@ -75,7 +75,7 @@ class CUAR_ProtectedContentShortcode extends CUAR_Shortcode
             return '';
         }
 
-        $plugin = CUAR_Plugin::get_instance();
+        $plugin = cuar();
         $current_user_id = get_current_user_id();
 
         $layout = $params['layout'];
