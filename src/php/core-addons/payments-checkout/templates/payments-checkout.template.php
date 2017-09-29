@@ -13,22 +13,18 @@
 <?php /** @var string $gateways_template */ ?>
 
 <form action="<?php echo esc_attr(cuar_get_checkout_url()); ?>" method="POST">
-    <div id="cuar_payment_data"
-         data-object-title="<?php echo esc_attr(get_the_title($object_id)); ?>"
-         data-amount="<?php echo esc_attr($amount); ?>"
-         data-currency="<?php echo esc_attr($currency); ?>">
-    </div>
+    <div id="cuar_payment_data" data-object-title="<?php echo esc_attr(get_the_title($object_id)); ?>" data-amount="<?php echo esc_attr($amount); ?>" data-currency="<?php echo esc_attr($currency); ?>"></div>
     <?php wp_nonce_field("process_payment_" . md5($object_type . $object_id), "cuar_process_payment_nonce"); ?>
-    <input type="hidden" name="cuar_action" value="process_payment" />
+    <input type="hidden" name="cuar_action" value="process_payment"/>
     <input type="hidden" name="cuar_object_type" value="<?php echo esc_attr($object_type); ?>"/>
     <input type="hidden" name="cuar_object_id" value="<?php echo esc_attr($object_id); ?>"/>
     <input type="hidden" name="cuar_amount" value="<?php echo esc_attr($amount); ?>"/>
     <input type="hidden" name="cuar_currency" value="<?php echo esc_attr($currency); ?>"/>
 
-    <?php if (!empty($error_message)): ?>
-    <div class="alert alert-danger">
-        <?php echo $error_message; ?>
-    </div>
+    <?php if ( !empty($error_message)): ?>
+        <div class="alert alert-danger">
+            <?php echo $error_message; ?>
+        </div>
     <?php endif; ?>
 
     <div class="row clearfix mb-md">
