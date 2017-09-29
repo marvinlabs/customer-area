@@ -105,6 +105,16 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.4.0 (2017/10/) =
+
+* New: compatibility with the new paypal and stripe gateways
+* Fix: CSS for admin tabs in settings
+* Fix: website profile field not saved properly
+* Fix: hook to change default collection display mode was not working
+
+**Add-on changes**
+
+
 = 7.3.0 (2017/06/29) =
 
 * New: compatibility with the new add-on: Design extras
