@@ -36,7 +36,7 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function update_status($new_status, $changed_by = 'WP Customer Area')
     {
-        if ($new_status == 'completed' || $new_status == 'complete') {
+        if ($new_status === 'completed' || $new_status === 'complete') {
             $new_status = 'publish';
         }
 
@@ -261,7 +261,7 @@ class CUAR_Payment extends CUAR_CustomPost
     {
         $notes = $this->get_notes();
         foreach ($notes as $i => $n) {
-            if ($n['id'] == $note_id) {
+            if ($n['id'] === $note_id) {
                 unset($notes[$i]);
                 break;
             }
@@ -279,18 +279,18 @@ class CUAR_Payment extends CUAR_CustomPost
      */
     public function add_note($author, $note)
     {
-        $note = array(
-            'id'            => (string)(microtime(true)),
+        $noteStruct = array(
+            'id'            => (string)microtime(true),
             'timestamp_gmt' => current_time('mysql', true),
             'message'       => $note,
             'author'        => $author,
         );
 
         $notes = $this->get_notes();
-        array_unshift($notes, $note);
+        array_unshift($notes, $noteStruct);
         $this->set_notes($notes);
 
-        return $note;
+        return $noteStruct;
     }
 
     /**

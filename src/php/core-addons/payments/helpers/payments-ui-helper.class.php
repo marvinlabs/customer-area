@@ -23,7 +23,6 @@ class CUAR_PaymentsUiHelper
 
         add_action('template_redirect', array(&$this, 'process_payment'));
         add_action('template_redirect', array(&$this, 'process_payment_listener_call'));
-// TODO        add_action( 'template_redirect', 'edd_listen_for_failed_payments' );
     }
 
     /**
@@ -38,14 +37,16 @@ class CUAR_PaymentsUiHelper
     public function show_payment_button($object_type, $object_id, $amount, $currency, $address)
     {
         // Check if we already have a payment for that object, and if any, check the amount
-        $payments = CUAR_PaymentsHelper::get_payments_for_object($object_type, $object_id, false);
+        /** @var CUAR_PaymentsHelper $payments_helper */
+        $payments_helper = cuar_addon('payments')->payments();
+        $payments = $payments_helper->get_payments_for_object($object_type, $object_id, false);
         $paid_amount = 0;
         $template_suffix = is_admin() ? '-admin' : '-frontend';
 
         /** @var CUAR_Payment $p */
         foreach ($payments as $p)
         {
-            if ($p->get_post()->post_status != CUAR_PaymentStatus::$STATUS_COMPLETE) continue;
+            if ($p->get_post()->post_status !== CUAR_PaymentStatus::$STATUS_COMPLETE) continue;
 
             $paid_amount += $p->get_amount();
         }
@@ -98,7 +99,9 @@ class CUAR_PaymentsUiHelper
     public function show_payment_history($object_type, $object_id)
     {
         // Check if we already have a payment for that object, and if any, check the amount
-        $payments = CUAR_PaymentsHelper::get_payments_for_object($object_type, $object_id, false);
+        /** @var CUAR_PaymentsHelper $payments_helper */
+        $payments_helper = cuar_addon('payments')->payments();
+        $payments = $payments_helper->get_payments_for_object($object_type, $object_id, false);
         $template_suffix = is_admin() ? '-admin' : '-frontend';
 
         $template = $this->plugin->get_template_file_path(
@@ -126,7 +129,7 @@ class CUAR_PaymentsUiHelper
         $object_type = isset($_POST['cuar_object_type']) ? $_POST['cuar_object_type'] : '';
 
         // Verify nonce
-        $nonce_action = "process_payment_" . md5($object_type . $object_id);
+        $nonce_action = 'process_payment_' . md5($object_type . $object_id);
         $nonce_value = isset($_POST['cuar_process_payment_nonce']) ? $_POST['cuar_process_payment_nonce'] : '';
         if ( !wp_verify_nonce($nonce_value, $nonce_action))
         {
@@ -152,6 +155,10 @@ class CUAR_PaymentsUiHelper
         $user = get_userdata($user_id);
 
         $pto = get_post_type_object($object_type);
+        if ($pto===null) {
+            wp_die('Post type not found. Did you uninstall a plugin in the meantime?');
+        }
+
         $title = sprintf(_x('%1$s: %2$s', 'payment title format (type: title)', 'cuar'),
             $pto->labels->singular_name,
             get_the_title($object_id));
@@ -178,7 +185,7 @@ class CUAR_PaymentsUiHelper
             $payment_data['user_id'], $payment_data['address'],
             $payment_data['extra_data']);
 
-        if ($payment_id == false)
+        if ($payment_id === false)
         {
             $_SESSION['cuar_checkout_data'] = $_POST;
             $_SESSION['cuar_checkout_error'] = __('The payment could not be processed, please contact us.', 'cuar');
@@ -210,7 +217,7 @@ class CUAR_PaymentsUiHelper
         /** @var CUAR_PaymentGateway $gateway */
         foreach ($gateways as $gateway_id => $gateway)
         {
-            if ($gateway->get_listener_id() == $listener_id)
+            if ($gateway->get_listener_id() === $listener_id)
             {
                 // Gateway found. Let it process the result
                 $gateway->process_callback();
