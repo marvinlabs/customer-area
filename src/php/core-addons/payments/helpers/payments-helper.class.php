@@ -100,12 +100,12 @@ class CUAR_PaymentsHelper
             'meta_query' => array(
                 'relation' => 'AND',
                 array(
-                    'meta_key'   => CUAR_Payment::$META_OBJECT_TYPE,
-                    'meta_value' => $object_type
+                    'key'   => CUAR_Payment::$META_OBJECT_TYPE,
+                    'value' => $object_type,
                 ),
                 array(
-                    'meta_key'   => CUAR_Payment::$META_OBJECT_ID,
-                    'meta_value' => $object_id
+                    'key'   => CUAR_Payment::$META_OBJECT_ID,
+                    'value' => $object_id
                 )
             )
         );
