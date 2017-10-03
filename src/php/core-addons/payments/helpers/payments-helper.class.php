@@ -111,7 +111,7 @@ class CUAR_PaymentsHelper
         );
         $args['post_status'] = $only_completed
             ? CUAR_PaymentStatus::$STATUS_COMPLETE
-            : CUAR_PaymentStatus::get_payment_status_keys();
+            : 'any';
 
         $args = apply_filters('cuar/core/payments/get-payments-for-object-args', $args, $object_type, $object_id, $only_completed);
         $posts = get_posts($args);
