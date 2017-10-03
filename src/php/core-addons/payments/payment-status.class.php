@@ -9,6 +9,7 @@ class CUAR_PaymentStatus
     public static $STATUS_REFUNDED = 'refunded';
     public static $STATUS_FAILED = 'failed';
     public static $STATUS_ABANDONED = 'abandoned';
+    public static $STATUS_DRAFT = 'draft';
 
     /**
      * Retrieves all available statuses for payments.
@@ -23,6 +24,7 @@ class CUAR_PaymentStatus
             self::$STATUS_REFUNDED  => __('Refunded', 'cuar'),
             self::$STATUS_ABANDONED => __('Abandoned', 'cuar'),
             self::$STATUS_FAILED    => __('Failed', 'cuar'),
+            self::$STATUS_DRAFT     => __('Draft', 'cuar'),
         );
 
         return apply_filters('cuar/core/payments/statuses', $payment_statuses);
@@ -39,5 +41,21 @@ class CUAR_PaymentStatus
         asort($statuses);
 
         return array_values($statuses);
+    }
+
+    public static function register_statuses()
+    {
+        $statuses = self::get_payment_statuses();
+
+        foreach ($statuses as $id => $label) {
+            register_post_status($id, array(
+                'label'                     => $label,
+                'public'                    => false,
+                'internal'                  => true,
+                'exclude_from_search'       => true,
+                'show_in_admin_all_list'    => true,
+                'show_in_admin_status_list' => true,
+            ));
+        }
     }
 }
