@@ -241,6 +241,7 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
          */
         public function register_custom_types()
         {
+            CUAR_PaymentStatus::register_statuses();
             CUAR_Payment::register_post_type();
         }
 

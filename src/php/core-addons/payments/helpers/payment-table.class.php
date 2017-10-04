@@ -100,16 +100,16 @@ class CUAR_PaymentTable extends CUAR_ListTable
             'date_query'     => array(),
         );
 
+        if ($args['post_status'] === 'any') {
+            $args['post_status'] = CUAR_PaymentStatus::get_payment_status_keys();
+        }
+
         $start_date = $this->parameters['start-date'];
-        if ($start_date != null)
-        {
+        if ($start_date != null) {
             $start_tokens = explode('/', $start_date);
-            if (count($start_tokens) != 3)
-            {
+            if (count($start_tokens) != 3) {
                 $start_date = null;
-            }
-            else
-            {
+            } else {
                 $args['date_query'][] =
                     array(
                         'after'     => array(
@@ -123,15 +123,11 @@ class CUAR_PaymentTable extends CUAR_ListTable
         }
 
         $end_date = $this->parameters['end-date'];
-        if ($end_date != null)
-        {
+        if ($end_date != null) {
             $end_tokens = explode('/', $end_date);
-            if (count($end_tokens) != 3)
-            {
+            if (count($end_tokens) != 3) {
                 $end_date = null;
-            }
-            else
-            {
+            } else {
                 $args['date_query'][] =
                     array(
                         'before'    => array(
@@ -217,8 +213,7 @@ class CUAR_PaymentTable extends CUAR_ListTable
     public function column_payment_user($item)
     {
         $user_id = $item->get_user_id();
-        if ($user_id == 0)
-        {
+        if ($user_id == 0) {
             return '';
         }
 
@@ -274,8 +269,7 @@ class CUAR_PaymentTable extends CUAR_ListTable
         );
 
         $statuses = CUAR_PaymentStatus::get_payment_statuses();
-        foreach ($statuses as $s => $label)
-        {
+        foreach ($statuses as $s => $label) {
             $actions['set_status_' . $s] = sprintf(__('Mark payment as %s', 'cuar'), $label);
         }
 
@@ -290,11 +284,9 @@ class CUAR_PaymentTable extends CUAR_ListTable
      */
     protected function execute_action($action, $post_id)
     {
-        switch ($action)
-        {
+        switch ($action) {
             case 'delete':
-                if ( !current_user_can('delete_post', $post_id))
-                {
+                if ( !current_user_can('delete_post', $post_id)) {
                     wp_die(__('You are not allowed to delete this item.', 'cuar'));
                 }
 
@@ -304,10 +296,8 @@ class CUAR_PaymentTable extends CUAR_ListTable
 
         // Status change
         $statuses = CUAR_PaymentStatus::get_payment_statuses();
-        foreach ($statuses as $s => $label)
-        {
-            if ($action == 'set_status_' . $s)
-            {
+        foreach ($statuses as $s => $label) {
+            if ($action == 'set_status_' . $s) {
                 $user = get_userdata(get_current_user_id());
                 $payment = new CUAR_Payment($post_id);
                 $payment->update_status($s, $user->user_login);
