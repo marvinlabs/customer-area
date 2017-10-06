@@ -111,6 +111,7 @@ feel free to fork the project and send us pull requests!
 * Fix: CSS for admin tabs in settings
 * Fix: website profile field not saved properly
 * Fix: hook to change default collection display mode was not working
+* Fix: warnings shown by a WP function when recreating the WP Customer Area menu after deleting/re-creating all pages
 
 **Add-on changes**
 
