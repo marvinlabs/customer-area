@@ -112,6 +112,7 @@ feel free to fork the project and send us pull requests!
 * Fix: website profile field not saved properly
 * Fix: hook to change default collection display mode was not working
 * Fix: warnings shown by a WP function when recreating the WP Customer Area menu after deleting/re-creating all pages
+* Fix: update the [flush rewrite rules automatically after slug updates](https://github.com/marvinlabs/customer-area/issues/271)
 
 **Add-on changes**
 
