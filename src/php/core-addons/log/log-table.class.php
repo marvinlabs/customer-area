@@ -96,15 +96,11 @@ class CUAR_LogTable extends CUAR_ListTable
         $args['date_query'] = array();
 
         $start_date = $this->parameters['start-date'];
-        if ($start_date != null)
-        {
+        if ($start_date != null) {
             $start_tokens = explode('/', $start_date);
-            if (count($start_tokens) != 3)
-            {
+            if (count($start_tokens) != 3) {
                 $start_date = null;
-            }
-            else
-            {
+            } else {
                 $args['date_query'][] =
                     array(
                         'after'     => array(
@@ -118,15 +114,11 @@ class CUAR_LogTable extends CUAR_ListTable
         }
 
         $end_date = $this->parameters['end-date'];
-        if ($end_date != null)
-        {
+        if ($end_date != null) {
             $end_tokens = explode('/', $end_date);
-            if (count($end_tokens) != 3)
-            {
+            if (count($end_tokens) != 3) {
                 $end_date = null;
-            }
-            else
-            {
+            } else {
                 $args['date_query'][] =
                     array(
                         'before'    => array(
@@ -174,16 +166,16 @@ class CUAR_LogTable extends CUAR_ListTable
         $rel_object_id = $item->get_post()->post_parent;
         $rel_object_type = $item->related_object_type;
 
-        if ($rel_object_type=='WP_User') {
+        if ($rel_object_type == 'WP_User') {
             $obj_link_text = sprintf(__('User %1$s', 'cuar'), $rel_object_id);
 
             return sprintf(__('<a href="%1$s" title="Username: %2$s">%3$s</a>', 'cuar'),
                 admin_url('user-edit.php?user_id=' . $rel_object_id),
                 esc_attr(get_userdata($rel_object_id)->display_name),
                 $obj_link_text);
-        }
-        else
-        {
+        } else if (strpos($rel_object_type, 'string||') === 0) {
+            return substr($rel_object_type, strlen('string||'));
+        } else {
             $obj_link_text = isset($this->content_types[$rel_object_type])
                 ? $this->content_types[$rel_object_type]['label-singular']
                 : $rel_object_type;
@@ -199,8 +191,7 @@ class CUAR_LogTable extends CUAR_ListTable
     public function column_log_user($item)
     {
         $user_id = isset($item->user_id) ? $item->user_id : 0;
-        if ($user_id == 0)
-        {
+        if ($user_id == 0) {
             return '';
         }
 
@@ -227,27 +218,21 @@ class CUAR_LogTable extends CUAR_ListTable
         $fields = array();
         $exclude = array('user_id', 'ip');
 
-        foreach ($this->displayable_meta as $key)
-        {
-            if (in_array($key, $exclude))
-            {
+        foreach ($this->displayable_meta as $key) {
+            if (in_array($key, $exclude)) {
                 continue;
             }
-            if (isset($item->$key))
-            {
+            if (isset($item->$key)) {
                 $meta = apply_filters('cuar/core/log/table-meta-pill-descriptor', array(
                     'title' => $item->$key,
                     'value' => $key,
                     'link'  => ''
                 ), $key, $item);
 
-                if (empty($meta['link']))
-                {
+                if (empty($meta['link'])) {
                     $fields[] = sprintf('<span title="%1$s" class="cuar-btn-xs %3$s">%2$s</span>', $meta['title'],
                         esc_attr($meta['value']), $key);
-                }
-                else
-                {
+                } else {
                     $fields[] = sprintf('<a href="%4$s" title="%1$s" class="cuar-btn-xs %3$s">%2$s</a>', $meta['title'],
                         esc_attr($meta['value']), $key, esc_attr($meta['link']));
                 }
@@ -265,7 +250,7 @@ class CUAR_LogTable extends CUAR_ListTable
     public function get_bulk_actions()
     {
         $actions = array(
-            'delete'    => __('Delete permanently', 'cuar')
+            'delete' => __('Delete permanently', 'cuar')
         );
 
         return $actions;
@@ -276,10 +261,8 @@ class CUAR_LogTable extends CUAR_ListTable
      */
     public function process_bulk_action()
     {
-        if (isset($_REQUEST['delete_all']) && !empty($_REQUEST['delete_all']))
-        {
-            if ( !current_user_can('delete_posts'))
-            {
+        if (isset($_REQUEST['delete_all']) && !empty($_REQUEST['delete_all'])) {
+            if ( !current_user_can('delete_posts')) {
                 wp_die(__('You are not allowed to delete logs.', 'cuar'));
             }
 
@@ -289,10 +272,8 @@ class CUAR_LogTable extends CUAR_ListTable
                 'fields'         => 'ids'
             ));
 
-            if ( !is_wp_error($post_ids))
-            {
-                foreach ($post_ids as $post_id)
-                {
+            if ( !is_wp_error($post_ids)) {
+                foreach ($post_ids as $post_id) {
                     wp_delete_post($post_id, true);
                 }
             }
@@ -311,11 +292,9 @@ class CUAR_LogTable extends CUAR_ListTable
      */
     protected function execute_action($action, $post_id)
     {
-        switch ($action)
-        {
+        switch ($action) {
             case 'delete':
-                if ( !current_user_can('delete_post', $post_id))
-                {
+                if ( !current_user_can('delete_post', $post_id)) {
                     wp_die(__('You are not allowed to delete this item.', 'cuar'));
                 }
 
@@ -343,13 +322,12 @@ class CUAR_LogTable extends CUAR_ListTable
         ?>
         <div class="alignleft actions">
             <?php
-            if ($this->current_user_can_delete())
-            {
+            if ($this->current_user_can_delete()) {
                 submit_button(__('Delete all events permanently', 'cuar'), 'apply', 'delete_all', false);
             }
             ?>
         </div>
-    <?php
+        <?php
     }
 
 
