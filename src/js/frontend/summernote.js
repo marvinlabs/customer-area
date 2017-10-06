@@ -8,7 +8,7 @@ function bootstrapSummernote($, editorSelector) {
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['font', ['strikethrough', 'superscript', 'subscript']],
             ['para', ['ul', 'ol', 'paragraph']],
-            ['insert', ['table', 'hr', 'picture', 'link', 'video']],
+            ['insert', ['table', 'hr', 'picture', 'link']],
             ['view', ['codeview', 'fullscreen']],
             ['tools', ['undo', 'redo', 'help']]
         ],
