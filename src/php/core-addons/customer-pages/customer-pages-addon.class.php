@@ -643,11 +643,12 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             if (isset($locations[$menu_name]) && $locations[$menu_name] > 0) {
                 $menu = wp_get_nav_menu_object($locations[$menu_name]);
                 if ($menu != false) {
-                    $menu_items = wp_get_nav_menu_items($menu->term_id);
-
-                    // Delete existing menu items
-                    foreach ($menu_items as $item) {
-                        wp_delete_post($item->ID, true);
+                    $menu_items = @wp_get_nav_menu_items($menu->term_id);
+                    if (!empty($menu_items)) {
+                        // Delete existing menu items
+                        foreach ($menu_items as $item) {
+                            wp_delete_post($item->ID, true);
+                        }
                     }
                 }
             }
