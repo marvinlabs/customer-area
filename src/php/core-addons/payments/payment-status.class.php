@@ -50,7 +50,7 @@ class CUAR_PaymentStatus
         foreach ($statuses as $id => $label) {
             register_post_status($id, array(
                 'label'                     => $label,
-                'public'                    => false,
+                'public'                    => true,
                 'internal'                  => true,
                 'exclude_from_search'       => true,
                 'show_in_admin_all_list'    => true,
