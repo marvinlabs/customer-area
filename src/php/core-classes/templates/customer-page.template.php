@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.1.0
+/** Template version: 3.2.0
+ *
+ * -= 3.2.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
  *
  * -= 3.1.0 =-
  * - Improve sidebar javascript UI - added some selectors
@@ -32,21 +35,21 @@ foreach ($sidebar_attributes as $att => $v) {
 }
 ?>
 
-<div class="cuar-page clearfix <?php echo implode(' ', $page_classes); ?>">
+<div class="cuar-page cuar-clearfix <?php echo implode(' ', $page_classes); ?>">
     <div class="cuar-page-header"><?php
         $this->print_page_header($args, $shortcode_content);
         ?></div>
 
     <div class="cuar-page-content <?php echo $content_class; ?>">
         <?php if ($this->has_page_sidebar()) { ?>
-            <div id="cuar-js-page-content" class="cuar-page-content-main tray tray-center tray-center-on-left va-t clearfix">
+            <div id="cuar-js-page-content" class="cuar-page-content-main tray tray-center tray-center-on-left va-t cuar-clearfix">
                 <div id="cuar-js-page-content-wrapper">
                     <?php
                     $this->print_page_content($args, $shortcode_content);
                     ?>
                 </div>
             </div>
-            <aside id="cuar-js-tray" class="cuar-page-sidebar tray tray-right va-t clearfix"<?php echo $sidebar_attributes_inline; ?>>
+            <aside id="cuar-js-tray" class="cuar-page-sidebar tray tray-right va-t cuar-clearfix"<?php echo $sidebar_attributes_inline; ?>>
                 <div id="cuar-js-tray-scroller" class="tray-scroller">
                     <div id="cuar-js-tray-scroller-wrapper">
                         <?php $this->print_page_sidebar($args, $shortcode_content); ?>
@@ -54,7 +57,7 @@ foreach ($sidebar_attributes as $att => $v) {
                 </div>
             </aside>
         <?php } else { ?>
-            <div class="cuar-page-content-main clearfix"><?php
+            <div class="cuar-page-content-main cuar-clearfix"><?php
                 $this->print_page_content($args, $shortcode_content);
                 ?></div>
         <?php } ?>
@@ -62,7 +65,7 @@ foreach ($sidebar_attributes as $att => $v) {
 
     <div id="cuar-js-mobile-sidebar"></div>
 
-    <div class="cuar-page-footer clearfix"><?php
+    <div class="cuar-page-footer cuar-clearfix"><?php
         $this->print_page_footer($args, $shortcode_content);
         ?></div>
 </div>

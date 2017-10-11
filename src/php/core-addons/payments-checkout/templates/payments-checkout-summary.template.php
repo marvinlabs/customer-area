@@ -1,4 +1,14 @@
-<?php /** Template version: 3.0.0 */ ?>
+<?php
+/**
+ * Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
+ *
+ * -= 3.0.0 =-
+ * - Initial version
+ *
+ */ ?>
 
 <?php /** @var array $accepted_credit_cards */ ?>
 <?php /** @var array $gateways */ ?>
@@ -29,7 +39,7 @@ $footer = apply_filters('cuar/core/payments/templates/checkout/summary/footer', 
     <div class="panel-body">
         <?php echo $content; ?>
     </div>
-    <div class="panel-footer clearfix">
+    <div class="panel-footer cuar-clearfix">
         <?php echo $footer; ?>
     </div>
 </div>

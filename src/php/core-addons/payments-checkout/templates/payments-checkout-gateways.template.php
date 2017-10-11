@@ -1,4 +1,14 @@
-<?php /** Template version: 3.0.0 */ ?>
+<?php
+/**
+ * Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
+ *
+ * -= 3.0.0 =-
+ * - Initial version
+ *
+ */ ?>
 
 <?php /** @var array $gateways */ ?>
 <?php /** @var string $object_type */ ?>
@@ -38,7 +48,7 @@ if ($is_single_gateway) $selected_gateway = $first_gateway->get_id();
     <?php endif; ?>
     <div class="panel-body">
         <?php foreach ($gateways as $gateway_id => $gateway): ?>
-            <div class="clearfix cuar-js-gateway-form" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php if ($selected_gateway!=$gateway_id) echo 'style="display: none;"'; ?>>
+            <div class="cuar-clearfix cuar-js-gateway-form" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php if ($selected_gateway!=$gateway_id) echo 'style="display: none;"'; ?>>
                 <?php if ($gateway->has_form()) $gateway->print_form(); ?>
             </div>
         <?php endforeach; ?>

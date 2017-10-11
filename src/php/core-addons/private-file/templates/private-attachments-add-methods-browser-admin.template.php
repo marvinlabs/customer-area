@@ -1,13 +1,21 @@
-<?php /**
- * Template version: 3.0.0
+<?php
+/**
+ * Template version: 3.1.0
  * Template zone: admin
+ *
+ * -= 3.1.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
+ *
+ * -= 3.0.0 =-
+ * - Initial version
+ *
  */ ?>
 
 <?php /** @var int $post_id */ ?>
 <?php /** @var array $select_methods */ ?>
 
 <div class="cuar-file-attachment-manager cuar-js-file-attachment-manager">
-    <div class="alert alert-info clearfix">
+    <div class="alert alert-info cuar-clearfix">
         <label for="cuar_file_selector_input"><?php _e('How do you want to add the files?', 'cuar'); ?></label>
         <select id="cuar_file_selector_input" name="cuar_file_selector_input" class="cuar-file-selector-input cuar-js-file-selector-input pull-right">
             <?php foreach ($select_methods as $method_id => $method) : ?>
