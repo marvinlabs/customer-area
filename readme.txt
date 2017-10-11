@@ -105,7 +105,7 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.4.0 (2017/10/) =
+= 7.4.0 (2017/10/11) =
 
 * New: compatibility with the new paypal and stripe gateways
 * Fix: CSS for admin tabs in settings
@@ -113,6 +113,8 @@ feel free to fork the project and send us pull requests!
 * Fix: hook to change default collection display mode was not working
 * Fix: warnings shown by a WP function when recreating the WP Customer Area menu after deleting/re-creating all pages
 * Fix: update the [flush rewrite rules automatically after slug updates](https://github.com/marvinlabs/customer-area/issues/271)
+* Fix: badges and labels hover colors
+* Fix: wizard better responsive mode
 
 **Add-on changes**
 
