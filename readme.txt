@@ -118,6 +118,25 @@ feel free to fork the project and send us pull requests!
 
 **Add-on changes**
 
+* **ACF Integration** - New: updated supported version of ACF to 4.4.12.1
+* **Collaboration** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
+* **Conversations** - New: the conversation author can decide to close the conversation to new replies
+* **Conversations** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
+* **Design Extras** - Tweak: recompile styles to match WP Customer Area 7.4.0
+* **Invoicing** - New: compatibility with the new online payment gateways
+* **Invoicing** - Fix: meta data was lost when [trashing/restoring an invoice](https://github.com/marvinlabs/customer-area/issues/262)
+* **Invoicing** - Fix: the notice field was always logged as updated even when not touched
+* **Invoicing** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
+* **Login Form** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
+* **Notifications** - New: Log notifications that get sent
+* **Notifications** - Fix: Allow by default sending notifications to current user. The filter 'cuar/notifications/allow-notification-to-self' can be used to change that.
+* **Notifications** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
+* **Owner Restrictions** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
+* **Projects** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
+* **Projects** - Fix: do not execute project updated hook twice
+* **Protect Post Types** - Fix: typos about owner names in admin interface
+* **Search** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
+* **Tasks** - Fix: switch clearfix CSS class to cuar-clearfix to avoid conflicts
 
 = 7.3.0 (2017/06/29) =
 
