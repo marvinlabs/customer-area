@@ -108,6 +108,9 @@ msgstr "Adresse-ID må være spesifisert"
 #: src/php/core-addons/addresses/addresses-addon.class.php:156
 #: src/php/core-addons/addresses/addresses-addon.class.php:194
 #: src/php/core-addons/addresses/addresses-addon.class.php:227
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:136
+#: src/php/core-addons/payments/payments-addon.class.php:182
+#: src/php/core-addons/payments/payments-addon.class.php:215
 #: src/php/core-addons/private-file/private-file-addon.class.php:784
 #: src/php/core-addons/private-file/private-file-addon.class.php:872
 #: src/php/core-addons/private-file/private-file-addon.class.php:932
@@ -127,12 +130,15 @@ msgstr "Du må spesifisere adresse"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:64
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:67
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:46
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:49
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:61
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:64
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:64
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:66
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:58
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:60
+#: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:87
 #: src/php/core-addons/status/hook-finder.class.php:124
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:43
 #: src/php/core-classes/widget-content-list.class.php:217
@@ -141,6 +147,8 @@ msgstr "Navn"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:76
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:80
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:55
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:58
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:70
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:73
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:73
@@ -152,6 +160,8 @@ msgstr "Firma"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:91
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:95
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:65
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:68
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:81
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:83
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:82
@@ -162,13 +172,16 @@ msgid "VAT Number"
 msgstr "Organisasjonsnummer"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:106
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:75
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:102
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:103
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:89
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:91
 msgid "Street address"
 msgstr "Gateadresse"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:110
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:78
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:105
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:105
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:91
@@ -176,6 +189,7 @@ msgid "Street address, line 1"
 msgstr "Gateadresse, linje 1"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:125
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:87
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:114
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:114
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:96
@@ -184,6 +198,8 @@ msgstr "Gateadresse, linje 2"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:136
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:140
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:94
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:97
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:122
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:125
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:121
@@ -195,6 +211,8 @@ msgstr "Postnummer"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:151
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:155
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:104
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:107
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:132
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:135
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:130
@@ -205,13 +223,16 @@ msgid "City"
 msgstr "By"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:167
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:115
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:143
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:139
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:116
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:93
 msgid "Country"
 msgstr "Land"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:186
+#: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:130
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:158
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:151
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:128
@@ -252,19 +273,19 @@ msgstr "Last opp logo"
 msgid "Administration Area"
 msgstr "Administrasjonsområde"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:78
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:74
 msgid "You are not allowed to do that"
 msgstr "Du har ikke tillatelse til å gjøre det"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:86
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:94
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:81
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:87
 #: src/php/core-addons/private-file/private-file-addon.class.php:807
 #: src/php/core-addons/private-file/private-file-addon.class.php:864
 #: src/php/core-addons/private-file/private-file-addon.class.php:924
 msgid "Missing parameters"
 msgstr "Parametre mangler"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:102
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:93
 msgid ""
 "Error while changing permissions. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
@@ -272,7 +293,7 @@ msgstr ""
 "Feil under endring av tillatelser. PHP har sannsynligvis ikke de påkrevde "
 "tillatelsene. Vennligst utfør endringen ved å bruke FTP eller SSH."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:110
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:100
 msgid ""
 "Permissions could not be changed. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
@@ -280,78 +301,78 @@ msgstr ""
 "Tillatelser kunne ikke endres. PHP har sannsynligvis ikke de påkrevde "
 "tillatelsene. Vennligst gjør det manuelt ved å bruke FTP eller SSH."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:121
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:110
 msgid "Folder could not be created"
 msgstr "Mappen kunne ikke opprettes"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:132
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:120
 msgid ""
 "htaccess file could not be copied. Please do it manually using FTP or SSH."
 msgstr ""
 "htaccess-filen kunne ikke kopieres. Vennligst gjør det manuelt gjennom FTP "
 "eller SSH."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:176
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:164
 msgid "Restrict WP admin area"
 msgstr "Blokker WP admin-området"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:183
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:171
 msgid "Restrict the access to the administration panel of WordPress."
 msgstr "Begrenser adgangen til administrasjonspanelet i Wordpress."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:238
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:225
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:38
 #: src/php/core-classes/settings.class.php:249
 msgid "General"
 msgstr "Generelt"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:246
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:232
 #: src/php/core-addons/private-file/private-file-addon.class.php:1059
 #: src/php/core-addons/private-page/private-page-addon.class.php:108
 msgid "Back-office"
 msgstr "Back-office"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:248
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:234
 msgid "Access the WordPress admin area"
 msgstr "Tilgang til admin-området i Wordpress"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:249
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:235
 msgid "View the Customer Area menu"
 msgstr "Se på Customer Area-menyen"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:253
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:239
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:79
 #: src/php/core-addons/private-file/private-file-addon.class.php:1072
 #: src/php/core-addons/private-page/private-page-addon.class.php:121
 msgid "Front-office"
 msgstr "Front-office"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:255
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:241
 msgid "See the WordPress top bar"
 msgstr "Se øvre linje i Wordpress"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:413
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:390
 msgid "What's new"
 msgstr "Hva er nytt"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:417
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:394
 msgid "Change log"
 msgstr "Endringslogg"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:421
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:398
 msgid "Live from the blog"
 msgstr "Nyheter fra bloggen"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:425
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:402
 msgid "Add-ons &amp; themes"
 msgstr "Add-ons og temaer"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:429
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:406
 #: src/php/core-addons/installer/installer-addon.class.php:245
 msgid "Welcome to WP Customer Area %s"
 msgstr "Velkommen til WP Customer Area %s"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:430
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:407
 #: src/php/core-addons/installer/installer-addon.class.php:246
 msgid ""
 "<strong>WP Customer Area</strong> %s is more powerful, stable and secure "
@@ -360,11 +381,11 @@ msgstr ""
 "<strong>WP Customer Area</strong> %s er kraftigere, mer stabil og mer sikker "
 "enn noen gang – vi håper du får god nytte av den."
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:492
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:463
 msgid "Add new"
 msgstr "Legg til ny"
 
-#: src/php/core-addons/admin-area/admin-area-addon.class.php:511
+#: src/php/core-addons/admin-area/admin-area-addon.class.php:480
 msgid "Manage %1$s"
 msgstr "Håndter %1$s"
 
@@ -409,6 +430,7 @@ msgstr "Publisert"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:233
 #: src/php/core-addons/admin-area/private-content-table.class.php:245
+#: src/php/core-addons/payments/payment-status.class.php:27
 #: src/php/core-classes/Content/list-table.class.php:364
 msgid "Draft"
 msgstr "Kladd"
@@ -436,7 +458,11 @@ msgstr "Forfatter"
 #: src/php/core-addons/admin-area/private-content-table.class.php:282
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-header.template.php:57
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-header.template.php:52
-#: src/php/core-addons/log/log-table.class.php:154
+#: src/php/core-addons/log/log-table.class.php:146
+#: src/php/core-addons/payments/helpers/payment-table.class.php:157
+#: src/php/core-addons/payments/templates/payment-editor-data.template.php:9
+#: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:19
+#: src/php/core-addons/payments/templates/payment-history-inline.template.php:15
 #: src/php/core-classes/widget-content-list.class.php:216
 msgid "Date"
 msgstr "Dato"
@@ -526,18 +552,96 @@ msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-msgid "/whats-new-in-wp-customer-area-7-1"
-msgstr "/hva-er-nytt-i-wp-customer-area-7-1"
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
+#, fuzzy
+msgid "/whats-new-since-wp-customer-area-7-0"
+msgstr "/hva-er-nytt-i-wp-customer-area-7-0"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
+msgid "Welcome to the Design Extras add-on"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
+msgid "New add-on: Design Extras"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+msgid ""
+"We introduced a new add-on that will add new design elements to your private "
+"area. New skins, notifications and invoicing PDF templates have been "
+"designed for you!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+msgid "Notifications and PDF Invoices templates options"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+msgid ""
+"Invoicing and notification templates are coming with a bunch of options in "
+"the admin area that allow you to customize colors, background and more. It "
+"will be easy for you to use them as a base and get your own customized "
+"design in a few minutes!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:43
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:87
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:110
+msgid "Improvements and bug fixes"
+msgstr "Forbedringer og feilrettinger"
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+msgid ""
+"Main plugin and existing add-ons have been much improved: many new features "
+"and more than 30 issues fixes. For instance, notifications are now sent when "
+"a task lists gets completed."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+msgid "Welcome to the Unread Documents add-on"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+msgid "New add-on: Unread Documents"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
+msgid ""
+"It will allow you to see if your documents have been updated since the last "
+"time you read them using a visual indicator. It is compatible with all "
+"others private content add-ons. You can also mark private contents as unread "
+"using a dedicated button."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
+msgid "Notifications: New tasks reminders"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
+msgid ""
+"It comes very useful to get some emails when your tasks are overdue, about "
+"to expire, or about to be overdue. You wont get any chance left to miss "
+"tasks you are assigned to!"
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
+msgid ""
+"Main plugin and existing add-ons have been much improved: this is 17 issues "
+"fixed. For instance, a lot of improvements and bug fixes can be seen on the "
+"frontend interface especially on the collection views and sidebars."
+msgstr ""
+
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:52
 msgid "A small post-summer-break update"
 msgstr "En liten oppdatering etter sommerferien"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
 msgid "Better add-on version detection"
 msgstr "Bedre add-on versjon gjenkjenning"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
 msgid ""
 "WP Customer Area will let you know after each update if you have the latest "
 "add-on release. Never forget to update them anymore!"
@@ -546,73 +650,68 @@ msgstr ""
 "siste add-on versjonen. På denne måten unngår du å glemme fremtidige "
 "oppdateringer!"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:16
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:60
 msgid "PDF Invoices"
 msgstr "PDF fakturaer"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:17
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
 msgid ""
 "Invoices can now be downloaded as PDF files. A simple template is provided "
 "but you can make your own very easily too!"
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:21
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:65
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:44
 msgid "Download all attachments"
 msgstr "Last ned alle vedlegg"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:66
 msgid ""
 "For those who have the Enhanced Files add-on, you can now download all "
 "attached files with a single click."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:72
 msgid "/whats-new-in-wp-customer-area-7-0"
 msgstr "/hva-er-nytt-i-wp-customer-area-7-0"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:74
 msgid "WP Customer Area 7.0 has got a new dress."
 msgstr "WP Customer Area 7.0 har fått et nytt stilsett"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
 msgid "New skin"
 msgstr "Nytt tema"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:78
 msgid ""
 "The appearance of the private area has been completely rewritten to enhance "
 "compatibility with all themes and usability. "
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:82
 msgid "Better ownership control"
 msgstr "Bedre eierskapkontroll"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
 msgid ""
 "Our add-ons allow assigning content to groups, roles, etc. However, these "
 "owner types could not be mixed. For example, you can now assign private "
 "content at the same time to a group and to a few users."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:43
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:66
-msgid "Improvements and bug fixes"
-msgstr "Forbedringer og feilrettinger"
-
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:88
 msgid ""
 "Existing add-ons have been much improved: 17 new features and over 14 issues "
 "fixes. For instance, notifications are now sent in HTML format using a clean "
 "professional template."
 msgstr ""
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:94
 msgid "/whats-new-in-wp-customer-area-6-3"
 msgstr "/whats-new-in-wp-customer-area-6-3"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:52
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:96
 msgid ""
 "WP Customer Area 6.3 has been aimed at improving customer relationship "
 "management and improving existing add-ons."
@@ -620,11 +719,11 @@ msgstr ""
 "WP Customer Area 6.3 har som mål å forbedre håndteringen av kundeforhold og "
 "forbedre eksisterende add-ons"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:99
 msgid "Contact information"
 msgstr "Kontaktinformasjon"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:100
 msgid ""
 "User profiles can now store a home and a billing address. This is an "
 "essential information when managing your customers and will help building "
@@ -634,11 +733,11 @@ msgstr ""
 "essensiell informasjon når du håndterer kunder, og hjelper til med å bygge "
 "flere CRM-funksjoner inn i pluginen senere."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:60
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:104
 msgid "Invoicing"
 msgstr "Fakturering"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:105
 msgid ""
 "We are introducing a new add-on to publish invoices for your customers. No "
 "more attaching files, there is a proper content type for invoices and we "
@@ -648,11 +747,11 @@ msgstr ""
 "Glem epost med vedlegg – nå kan du håndtere det direkte i WP Customer Area. "
 "Vi vil snart legge til PDF-genrerering, online betaling og mer."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:63
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:107
 msgid "/downloads/wpca-invoicing"
 msgstr "/downloads/wpca-invoicing"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:67
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:111
 msgid ""
 "While this time we do not have other big news than the new invoicing add-on, "
 "there have been lots of additions and fixes to the base plugin and the "
@@ -662,11 +761,11 @@ msgstr ""
 "blitt lagt til mye nytt og feilrettinger til grunnsystemet, og til plugins. "
 "15 nye funksjoner har blitt lagt til, og 19 feil har blitt rettet."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:73
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:117
 msgid "/whats-new-in-wp-customer-area-6-2"
 msgstr "/whats-new-in-wp-customer-area-6-2"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:75
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:119
 msgid ""
 "WP Customer Area 6.2 has been aimed at improving the attachments to private "
 "files and everything around that."
@@ -674,11 +773,11 @@ msgstr ""
 "WP Customer Area 6.2 har hatt som mål å forbedre håndteringen av vedlagte "
 "filer og alt som berører den funksjonen."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:78
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:122
 msgid "New upload system"
 msgstr "Nytt opplastingssystem"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:79
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:123
 msgid ""
 "The file upload system has been completely rewritten. You can now drag and "
 "drop files and watch the upload progress. Additionally, we have also added "
@@ -690,11 +789,11 @@ msgstr ""
 "en sikkerhetshjelper som hjelper deg med å sikre at innstillingene dine er "
 "så sikre så mulig."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:127
 msgid "Enhanced Files"
 msgstr "Forbedret filsystem"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:84
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:128
 msgid ""
 "We are introducing a new add-on which improves the file attachments: upload "
 "multiple attachments on the same private file, change the attachment caption "
@@ -704,15 +803,15 @@ msgstr ""
 "vedlegg i samme private fil, endre tittelen på vedlegget, automatisk legg "
 "ved filikon foran nedlastingslenken."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:86
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:130
 msgid "/downloads/wpca-enhanced-files"
 msgstr "/downloads/wpca-enhanced-files"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:89
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:133
 msgid "Smart Groups"
 msgstr "Smarte Grupper"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:90
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:134
 msgid ""
 "Smart Groups will change the way to build your user groups. No more adding "
 "or removing users by hand, you will simply make dynamic groups based on "
@@ -724,15 +823,15 @@ msgstr ""
 "dynamisk gruppe basert på kriterier som navn, e-postdomene eller hvilken som "
 "helst annen metainformasjon lenket til brukerprofilen."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:92
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:136
 msgid "/downloads/wpca-smart-groups"
 msgstr "/downloads/wpca-smart-groups"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:97
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:141
 msgid "/whats-new-in-wp-customer-area-6-1"
 msgstr "/whats-new-in-wp-customer-area-6-1"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:99
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
 msgid ""
 "WP Customer Area 6.1 focuses mainly on making administrator's life easier, "
 "introducing event logging and a better administration panel."
@@ -741,11 +840,11 @@ msgstr ""
 "administrator, ved å introdusere hendelsesloggen og et bedre "
 "administrasjonspanel."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:102
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:146
 msgid "Protect post types"
 msgstr "Beskytt innleggstyper"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:103
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:147
 msgid ""
 "We are introducing a new add-on which will allow protecting any kind of "
 "external post types. Posts created from third party plugins can be made "
@@ -755,16 +854,16 @@ msgstr ""
 "ekstern innleggstype. Innlegg laget av tredjepartsplugins kan også gjøres "
 "beskyttet, akkurat som private sider eller filer."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:105
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:149
 msgid "/downloads/wpca-protect-post-types"
 msgstr "/downloads/wpca-protect-post-types"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:108
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:152
 #: src/php/core-addons/shortcodes/shortcodes-addon.class.php:36
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:109
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:153
 msgid ""
 "we have added shortcodes to display the navigation menu, list protected "
 "content, etc. You will now be able to easily build custom pages with a list "
@@ -774,15 +873,15 @@ msgstr ""
 "innhold osv. Du kan nå altså enkelt bygge egne sider med lister med innhold "
 "du ønsker, hentet fra den innloggede brukeren."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:111
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:155
 msgid "/documentation/shortcodes"
 msgstr "/documentation/shortcodes"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:114
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:158
 msgid "Better admin panel"
 msgstr "Bedre administrasjonspanel"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:115
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:159
 msgid ""
 "The main plugin menu has been improved a lot, it is now less cluttered and "
 "better organised. The content lists now feature powerful filters to help you "
@@ -792,11 +891,11 @@ msgstr ""
 "organisert. Innholdslisten har nå kraftige filtre for å finne innholdet du "
 "ser etter raskere."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:119
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:163
 msgid "Logging"
 msgstr "Logging"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:120
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:164
 msgid ""
 "When dealing with private content and secure areas, keeping track of events "
 "is crucial. We have added a module to track what is happening within your "
@@ -806,12 +905,12 @@ msgstr ""
 "logge hendelser. Vi har lagt til en modul som sporer hva som skjer inne på "
 "ditt private område."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:124
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:147
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:168
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:191
 msgid "And more!"
 msgstr "Og mer!"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:125
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:169
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 23 issues corrected."
@@ -819,11 +918,11 @@ msgstr ""
 "Som med alle nye versjoner jobber vi konstant for å fikse feil. Denne "
 "oppdateringen er ikke annerledes, med ikke mindre enn 23 feilrettinger."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:132
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:176
 msgid "/customer-area-is-dead-long-live-wp-customer-area/"
 msgstr "/customer-area-is-dead-long-live-wp-customer-area/"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:134
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:178
 msgid ""
 "WP Customer Area 6.0 is a major release which sees a lot of changes not only "
 "inside the plugin but also on the website."
@@ -831,11 +930,11 @@ msgstr ""
 "WP Customer Area 6.0 er en større oppdatering som inneholder store endringer "
 "ikke bare i pluginen, men også på  hjemmesiden."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:137
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:181
 msgid "Improved setup &amp; updates"
 msgstr "Forbedret setup &amp; oppdateringer"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:138
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:182
 msgid ""
 "We have implemented a new setup assistant that will make it even easier to "
 "install the plugin. Updates will be smoother too."
@@ -843,11 +942,11 @@ msgstr ""
 "Vi har implementert en ny setup-assistent som gjør installeringen av "
 "pluginen enda enklere. Oppdateringer blir også enklere."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:142
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:186
 msgid "Better permissions"
 msgstr "Bedre tillatelser"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:187
 msgid ""
 "Some new permissions have been added to give you more control about what "
 "your users can do. On top of that, we have also improved the permissions "
@@ -857,7 +956,7 @@ msgstr ""
 "brukerne kan gjøre. I tillegg til det har vi forbedret tillatelsespanelet "
 "for å gjøre det raskere å gjøre endringer."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:192
 msgid ""
 "As with any new release, we constantly provide bug fixes. This update is no "
 "exception with no less than 20 issues corrected."
@@ -865,11 +964,11 @@ msgstr ""
 "Som med alle nye versjoner jobber vi konstant for å fikse feil. Denne "
 "oppdateringen er ikke annerledes, med ikke mindre enn 20 feilrettinger."
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:157
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:201
 msgid "New in %s ~ <em>%s</em>"
 msgstr "Nytt i %s <em>%s</em>"
 
-#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:167
+#: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:211
 msgid "Learn more"
 msgstr "Lær mer"
 
@@ -914,6 +1013,7 @@ msgstr "Laget mellom"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-filters-row-timestamp.template.php:13
 #: src/php/core-addons/log/templates/logs-page.template.php:54
+#: src/php/core-addons/payments/templates/payments-page.template.php:31
 msgid "and"
 msgstr "og"
 
@@ -923,11 +1023,13 @@ msgstr "Filter %1$s-liste"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:30
 #: src/php/core-addons/log/templates/logs-page.template.php:27
+#: src/php/core-addons/payments/templates/payments-page.template.php:22
 msgid "Toggle advanced filters"
 msgstr "Skru av/på avanserte filter"
 
 #: src/php/core-addons/admin-area/templates/private-post-list-page.template.php:65
 #: src/php/core-addons/log/templates/logs-page.template.php:79
+#: src/php/core-addons/payments/templates/payments-page.template.php:59
 msgid "Are you sure?"
 msgstr "Er du sikker?"
 
@@ -1075,58 +1177,58 @@ msgstr ""
 "utloggingssiden"
 
 #: src/php/core-addons/customer-pages/customer-pages-addon.class.php:39
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1003
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1013
 msgid "Customer Pages"
 msgstr "Kundesider"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:119
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:121
 msgid "Some pages of the customer area have not yet been created."
 msgstr "Noe sider i Customer Area har ikke blitt skapt enda."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:136
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:138
 msgid "The navigation menu for the customer area has not been created."
 msgstr "Navigasjonsmenyen for Customer Area har ikke blitt skapt enda."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:147
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:149
 #: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:130
 #: src/php/core-addons/customer-private-pages-home/customer-private-pages-home-addon.class.php:50
 msgid "Pages"
 msgstr "Sider"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:148
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:150
 msgid "Pages of the Customer Area"
 msgstr "Sider i Customer Area"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:660
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:670
 msgid "WP Customer Area Menu"
 msgstr "WP Customer Area-meny"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:664
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:674
 msgid "Could not create the menu. %s"
 msgstr "Kunne ikke skape menyen. %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:721
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:731
 msgid "The menu has been created: <a href=\"%s\">view menu</a>"
 msgstr "Menyen har blitt laget: <a href=\"%s\">se menyen</a>"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:994
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1004
 msgid "Site Pages"
 msgstr "Sider"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1029
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1098
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1039
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1108
 msgid "Reset"
 msgstr "Tilbakestill"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1035
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1045
 msgid "Reset all pages &raquo;"
 msgstr "Tilbakestill alle sider &raquo;"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1038
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1048
 msgid "Delete all existing pages and recreate them."
 msgstr "Slett alle eksisterende sider og lag på nytt"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1039
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1049
 msgid ""
 "Are you sure that you want to delete all existing pages and recreate them "
 "(this operation cannot be undone)?"
@@ -1134,25 +1236,25 @@ msgstr ""
 "Er du sikker på at du vil slette alle eksisterende sider og sette dem opp på "
 "nytt (denne operasjonen er ENDELIG og kan ikke angres!)?"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1049
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1059
 msgid "Main Navigation Menu"
 msgstr "Hovednavigasjonsmeny"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1057
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1067
 msgid "WP Customer Area pages"
 msgstr "WP Customer Area-sider"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1065
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1075
 msgid ""
 "Automatically print the Customer Area navigation menu on the Customer Area "
 "pages."
 msgstr "Automatisk vis Customer Area-navigasjonsmenyen på Customer Area-sider."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1077
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1087
 msgid "Private content single pages"
 msgstr "Enkeltsider med privat innhold"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1085
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1095
 msgid ""
 "Automatically print the Customer Area navigation menu on private content "
 "single pages."
@@ -1160,15 +1262,15 @@ msgstr ""
 "Automatisk vis Customer Area-navigasjonsmenyen i enkeltsider med privat "
 "innhold."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1104
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1114
 msgid "Recreate menu"
 msgstr "Sett opp meny på nytt"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1107
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1117
 msgid "Delete and recreate the main navigation menu."
 msgstr "Slett og sett opp hovednavigasjonsmenyen på nytt."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1108
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1118
 msgid ""
 "Are you sure that you want to recreate the main navigation menu (this "
 "operation cannot be undone)?"
@@ -1176,44 +1278,44 @@ msgstr ""
 "Er du sikker på at du vil sette opp hovednavigasjonsmenyen på nytt (denne "
 "handlingen er ENDELIG og kan ikke angres!)?"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1115
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1125
 msgid "Permalinks"
 msgstr "Permalenker"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1122
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1132
 msgid "Category Archive"
 msgstr "Kategoriarkiv"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1140
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1150
 msgid "Date Archive"
 msgstr "Datoarkiv"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1157
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1167
 msgid "Author Archive"
 msgstr "Forfatterarkiv"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1174
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1184
 msgid "Update Content"
 msgstr "Oppdater innhold"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1183
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1193
 msgid "Slug that is used in the URL to update existing private content"
 msgstr "Slug som blir brukt i URL for å oppdatere eksisterende privat innhold"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1190
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1200
 msgid "Delete Content"
 msgstr "Slette innhold"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1199
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1209
 msgid "Slug that is used in the URL to delete existing private content"
 msgstr "Slug som brukes i URL for å slette eksisterende privat innhold"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1213
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1223
 msgid "Since version 4.0.0, Customer Area handles navigation using menus."
 msgstr ""
 "Siden versjon 4.0.0 har Customer Area håndtert navigasjon ved å bruke menyer."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1225
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1235
 msgid ""
 "Since version 4.0.0, Customer Area is using various pages to show the "
 "content for your customers. Create those pages from here or simply indicate "
@@ -1223,9 +1325,9 @@ msgstr ""
 "innhold for kundene dine. Du kan sette opp disse sidene her, eller "
 "simpelthen markere eksisterende sider."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1291
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1325
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1392
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1301
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1335
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1402
 msgid ""
 "Some pages of the customer area have been created or deleted. The customer "
 "area navigation menu needs to be updated."
@@ -1233,15 +1335,15 @@ msgstr ""
 "Noen sider i kundeområdet har blitt skapt eller slettet. Navigasjonsmenyen i "
 "kundeområdet må oppdateres."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1321
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1331
 msgid "The following pages have been created: %s"
 msgstr "Følgende sider har blitt skapt: %s"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1328
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1338
 msgid "There was no missing page that could be created."
 msgstr "Det var ingen manglende sider å opprette."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1367
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1377
 msgid ""
 "Some pages in your site seem to contain Customer Area shortcodes but are not "
 "registered in the Customer Area pages settings."
@@ -1249,7 +1351,7 @@ msgstr ""
 "Noen sider på din hjemmeside ser ut til å inneholde Customer Area "
 "shortcodes, men er ikke registrert i Customer Area sideinnstillinger."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1387
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:1397
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] "%s side har blitt slettet"
@@ -1420,6 +1522,7 @@ msgstr "Rekkefølge"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:38
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:110
+#: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:18
 msgid "ID"
 msgstr "ID"
 
@@ -1434,6 +1537,7 @@ msgstr "Skriv"
 
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:62
 #: src/php/core-addons/customer-pages/templates/status-section-customer-pages.template.php:126
+#: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:33
 #: src/php/core-classes/Content/list-table.class.php:318
 #: src/php/core-classes/addon-update-content-page.class.php:264
 #: src/php/core-classes/addon-update-content-page.class.php:265
@@ -1898,55 +2002,60 @@ msgstr ""
 "det kun vil bli logget én hendelse per bruker og per fil. Hvis den ikke er "
 "krysset av, vil det logges en hendelse hver gang en bruker laster den ned."
 
-#: src/php/core-addons/log/log-table.class.php:155
+#: src/php/core-addons/log/log-table.class.php:147
 msgid "Event"
 msgstr "Hendelse"
 
-#: src/php/core-addons/log/log-table.class.php:156
+#: src/php/core-addons/log/log-table.class.php:148
+#: src/php/core-addons/payments/helpers/payment-table.class.php:155
 msgid "Object"
 msgstr "Objekt"
 
-#: src/php/core-addons/log/log-table.class.php:157
+#: src/php/core-addons/log/log-table.class.php:149
+#: src/php/core-addons/payments/helpers/payment-table.class.php:156
+#: src/php/core-addons/payments/templates/payment-editor-payer.template.php:13
 #: src/php/core-addons/post-owner/post-owner-user-owner-type.class.php:147
 msgid "User"
 msgstr "Bruker"
 
-#: src/php/core-addons/log/log-table.class.php:158
+#: src/php/core-addons/log/log-table.class.php:150
 msgid "Extra info"
 msgstr "Ekstrainfo"
 
-#: src/php/core-addons/log/log-table.class.php:167
+#: src/php/core-addons/log/log-table.class.php:159
 msgid "Y/m/d - H:i:s"
 msgstr "Å/m/d – T:m:s"
 
-#: src/php/core-addons/log/log-table.class.php:178
+#: src/php/core-addons/log/log-table.class.php:170
 msgid "User %1$s"
 msgstr "Bruker %1$s"
 
-#: src/php/core-addons/log/log-table.class.php:180
+#: src/php/core-addons/log/log-table.class.php:172
 msgid "<a href=\"%1$s\" title=\"Username: %2$s\">%3$s</a>"
 msgstr "<a href=\"%1$s\" title=\"Username: %2$s\">%3$s</a>"
 
-#: src/php/core-addons/log/log-table.class.php:192
+#: src/php/core-addons/log/log-table.class.php:184
 msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
 msgstr "<a href=\"%1$s\" title=\"Tittel: %2$s\">%3$s</a>"
 
-#: src/php/core-addons/log/log-table.class.php:268
+#: src/php/core-addons/log/log-table.class.php:253
+#: src/php/core-addons/payments/helpers/payment-table.class.php:268
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr "Slett permanent"
 
-#: src/php/core-addons/log/log-table.class.php:283
+#: src/php/core-addons/log/log-table.class.php:266
 msgid "You are not allowed to delete logs."
 msgstr "Du har ikke tillatelse til å slette logger."
 
-#: src/php/core-addons/log/log-table.class.php:319
+#: src/php/core-addons/log/log-table.class.php:298
+#: src/php/core-addons/payments/helpers/payment-table.class.php:290
 #: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "Du har ikke lov til å slettet denne."
 
-#: src/php/core-addons/log/log-table.class.php:348
+#: src/php/core-addons/log/log-table.class.php:326
 msgid "Delete all events permanently"
 msgstr "Slett alle hendelser permanent"
 
@@ -1967,8 +2076,653 @@ msgid "Filter events"
 msgstr "Filtrer hendelser"
 
 #: src/php/core-addons/log/templates/logs-page.template.php:50
+#: src/php/core-addons/payments/templates/payments-page.template.php:27
 msgid "Between"
 msgstr "Mellom"
+
+#: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:29
+msgid "Wired transfer"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:34
+msgid ""
+"The BACS gateway allows you to accept payments via wired transfers (aka "
+"direct bank transfer). Your bank account information will be shown to the "
+"user after he validates the payment. Payments status will be left to pending "
+"and you will need to manually accept them once the money gets on your bank "
+"account."
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:83
+msgid ""
+"Please send your wired transfer to the following bank account. We will "
+"monitor our bank account and validate your payment as soon as possible."
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:88
+msgid "Bank"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:89
+msgid "IBAN"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:90
+msgid "SWIFT"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:94
+msgid ""
+"We will monitor our bank account and validate your payment as soon as "
+"possible."
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:29
+msgid "Cheque"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:34
+msgid ""
+"The cheque gateway allows you to accept payments via cheque. Your "
+"instructions will be shown to the user after he validates the payment. "
+"Payments status will be left to pending and you will need to manually accept "
+"them once the money gets on your bank account."
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:83
+msgid ""
+"Please send your cheque transfer to the following address. Once the cheque "
+"has been received and deposited on our account, we will validate your "
+"payment as soon as possible."
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:86
+msgid "Write the cheque to the order of:"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:87
+msgid "Your name or company name"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:88
+#, fuzzy
+msgid "Send to the address:"
+msgstr "Fjern adressen"
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:90
+#, fuzzy
+msgid "Your name"
+msgstr "Surinam"
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:92
+#, fuzzy
+msgid "Zip City"
+msgstr "By"
+
+#: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:97
+msgid ""
+"Once the cheque has been received and deposited on our account, we will "
+"validate your payment as soon as possible."
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:27
+msgid "Test gateway"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:32
+#: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:7
+msgid ""
+"The test gateway allows you to see how your website is behaving when the "
+"gateways return different results."
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:42
+msgid "PAYMENT %s - Payment processed, status set to: %s"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:50
+msgid "The test gateway accepted the payment"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:58
+msgid "The test gateway failed to process the payment"
+msgstr ""
+
+#: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:63
+msgid "The test gateway did not validate the payment yet"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payment-table.class.php:47
+#: src/php/core-addons/payments/payments-addon.class.php:136
+msgid "Payment"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payment-table.class.php:48
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:47
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:81
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:344
+#: src/php/core-addons/payments/payments-addon.class.php:53
+#: src/php/core-addons/payments/payments-addon.class.php:137
+#: src/php/core-addons/payments/templates/payments-page.template.php:6
+#: src/php/core-addons/payments-home/payments-home-addon.class.php:52
+msgid "Payments"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payment-table.class.php:158
+#: src/php/core-addons/payments/templates/payment-editor-data.template.php:52
+#: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:21
+#: src/php/core-addons/payments/templates/payment-history-inline.template.php:18
+#, fuzzy
+msgid "Amount"
+msgstr "Land"
+
+#: src/php/core-addons/payments/helpers/payment-table.class.php:159
+#: src/php/core-addons/payments/templates/payment-editor-data.template.php:22
+#: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:22
+#: src/php/core-addons/payments/templates/payment-history-inline.template.php:17
+#: src/php/core-addons/status/status-addon.class.php:38
+#: src/php/core-addons/status/status-addon.class.php:58
+msgid "Status"
+msgstr "Status"
+
+#: src/php/core-addons/payments/helpers/payment-table.class.php:257
+#: src/php/core-addons/payments/templates/payment-editor-note-list-item.template.php:18
+#: src/php/core-classes/addon-update-content-page.class.php:274
+#: src/php/core-classes/addon-update-content-page.class.php:275
+msgid "Delete"
+msgstr "Fjern"
+
+#: src/php/core-addons/payments/helpers/payment-table.class.php:273
+msgid "Mark payment as %s"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:49
+#, fuzzy
+msgid "List all payments"
+msgstr "List opp alle sider"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:50
+#, fuzzy
+msgid "Create/Edit payments"
+msgstr "Opprett/rediger sider"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:51
+#, fuzzy
+msgid "Delete payments"
+msgstr "Slett sider"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:52
+#, fuzzy
+msgid "Access payments"
+msgstr "Få tilgang til sider"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:80
+#, fuzzy
+msgid "WP Customer Area - Payments"
+msgstr "WP Customer Area-sider"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:116
+#: src/php/core-addons/payments/templates/payment-history-inline.template.php:7
+#, fuzzy
+msgid "Payment history"
+msgstr "Forelderkategori"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:143
+#, fuzzy
+msgid "Invalid arguments. Cannot create payment."
+msgstr "Ugyldig parameter. Ingen fil sendt"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:147
+#, fuzzy
+msgid "%1$s | %2$s"
+msgstr "%2$s %1$s"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:203
+msgid "Paid object"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:210
+#, fuzzy
+msgid "Payment data"
+msgstr "Vedlegg oppdatert"
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:217
+#: src/php/core-addons/payments/templates/payment-editor-gateway.template.php:9
+#: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:20
+#: src/php/core-addons/payments/templates/payment-history-inline.template.php:16
+msgid "Gateway"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:224
+msgid "Payer"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:231
+msgid "Notes"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:165
+msgid "Colorful Light"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:182
+msgid "2 Checkout"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:186
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:190
+msgid "Amazon"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:194
+msgid "Amazon Payments"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:198
+#, fuzzy
+msgid "American Express"
+msgstr "Amerikansk Samoa"
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:202
+msgid "Amex"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:206
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:210
+msgid "Chase"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:214
+msgid "Cirrus"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:218
+msgid "Delta"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:222
+msgid "Diner's Club"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:226
+msgid "Direct Debit"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:230
+msgid "Discover"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:234
+msgid "Ebay"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:238
+msgid "Etsy"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:242
+msgid "Eway"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:246
+msgid "Google Wallet"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:250
+msgid "JCB"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:254
+msgid "Maestro"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:258
+msgid "Mastercard"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:262
+msgid "Moneybookers"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:266
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:270
+msgid "Paypal"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:274
+msgid "Sage"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:278
+msgid "Shopify"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:282
+msgid "Skrill"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:286
+msgid "Skrill Moneybookers"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:290
+msgid "Solo"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:294
+msgid "Switch"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:298
+msgid "Visa"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:302
+msgid "Visa Electron"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:306
+#, fuzzy
+msgid "Western Union"
+msgstr "Vest-Samoa"
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:310
+msgid "World Pay"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:359
+#: src/php/core-addons/payments/templates/settings-gateway-common.template.php:14
+#: src/php/core-addons/private-file/private-file-admin-interface.class.php:164
+#: src/php/core-addons/private-page/private-page-admin-interface.class.php:123
+msgid "General settings"
+msgstr "Generelle innstillinger"
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:366
+msgid "Payment icon pack"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:398
+#, fuzzy
+msgid "Default gateway"
+msgstr "Standardkategori"
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:406
+msgid "The gateway which will be selected by default on the checkout page"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:412
+msgid "Gateways"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:518
+msgid ""
+"Select the payment icons you want to show amongst all the available icons in "
+"this pack:"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-ui-helper.class.php:60
+msgid "Pay %s"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-ui-helper.class.php:146
+#: src/php/core-addons/payments-checkout/payments-checkout-addon.class.php:96
+msgid ""
+"Some checkout information has not been provided, please go back and try again"
+msgstr ""
+
+#: src/php/core-addons/payments/helpers/payments-ui-helper.class.php:191
+msgid "The payment could not be processed, please contact us."
+msgstr ""
+
+#: src/php/core-addons/payments/payment-status.class.php:22
+msgid "Complete"
+msgstr ""
+
+#: src/php/core-addons/payments/payment-status.class.php:23
+#, fuzzy
+msgid "Pending"
+msgstr "Stigende"
+
+#: src/php/core-addons/payments/payment-status.class.php:24
+msgid "Refunded"
+msgstr ""
+
+#: src/php/core-addons/payments/payment-status.class.php:25
+msgid "Abandoned"
+msgstr ""
+
+#: src/php/core-addons/payments/payment-status.class.php:26
+msgid "Failed"
+msgstr ""
+
+#: src/php/core-addons/payments/payment.class.php:61
+msgid "Status changed from %1$s to %2$s"
+msgstr ""
+
+#: src/php/core-addons/payments/payments-addon.class.php:163
+#, fuzzy
+msgid "Are you sure that you want to delete this note?"
+msgstr "Er du sikker på at du vil slette innholdet?"
+
+#: src/php/core-addons/payments/payments-addon.class.php:175
+#: src/php/core-addons/payments/payments-addon.class.php:208
+msgid "Payment id is not specified"
+msgstr ""
+
+#: src/php/core-addons/payments/payments-addon.class.php:187
+#: src/php/core-addons/payments/payments-addon.class.php:220
+#, fuzzy
+msgid "You are not allowed to manage payment notes"
+msgstr "Du har ikke tillatelse til å slette logger."
+
+#: src/php/core-addons/payments/payments-addon.class.php:192
+msgid "Note id is not specified"
+msgstr ""
+
+#: src/php/core-addons/payments/payments-addon.class.php:226
+#, fuzzy
+msgid "You must provide a message"
+msgstr "Du må spesifisere adresse"
+
+#: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:10
+msgid "Result to return when calling the test gateway"
+msgstr ""
+
+#: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:14
+#, fuzzy
+msgid "Payment validated"
+msgstr "Vedlegg oppdatert"
+
+#: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:15
+#: src/php/core-addons/payments-failure/payments-failure-addon.class.php:52
+msgid "Payment rejected"
+msgstr ""
+
+#: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:16
+msgid "Payment still pending"
+msgstr ""
+
+#: src/php/core-addons/payments/templates/payment-button.template.php:25
+msgid "Pay now"
+msgstr ""
+
+#: src/php/core-addons/payments/templates/payment-button.template.php:27
+msgid "You have already paid %s"
+msgstr ""
+
+#: src/php/core-addons/payments/templates/payment-button.template.php:29
+msgid "You have already paid the full amount. Thank you."
+msgstr ""
+
+#: src/php/core-addons/payments/templates/payment-button.template.php:34
+msgid "We accept the following secure payment methods."
+msgstr ""
+
+#: src/php/core-addons/payments/templates/payment-editor-data.template.php:37
+#, fuzzy
+msgid "Currency"
+msgstr "Nåværende"
+
+#: src/php/core-addons/payments/templates/payment-editor-data.template.php:66
+#, fuzzy
+msgid "Update payment"
+msgstr "Oppdater innhold"
+
+#: src/php/core-addons/payments/templates/payment-editor-note-list.template.php:14
+#, fuzzy
+msgid "Add note"
+msgstr "Legg til ny"
+
+#: src/php/core-addons/payments/templates/payment-editor-note-list.template.php:18
+#, fuzzy
+msgid "There are currently no notes attached to this payment"
+msgstr "Det er ingen slik fil vedlagt til dette private innholdet"
+
+#: src/php/core-addons/payments/templates/payment-editor-payer.template.php:14
+msgid "Select user"
+msgstr ""
+
+#: src/php/core-addons/payments/templates/payment-editor-payer.template.php:24
+#, fuzzy
+msgid "User IP"
+msgstr "Bruker"
+
+#: src/php/core-addons/payments/templates/payment-editor-payer.template.php:32
+#, fuzzy
+msgid "Address"
+msgstr "Adresser"
+
+#: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:13
+#, fuzzy
+msgid "Add payment manually"
+msgstr "Legg til meny"
+
+#: src/php/core-addons/payments/templates/payments-page.template.php:8
+#, fuzzy
+msgid "Filter Payment List"
+msgstr "Filtrer liste over logghendelser"
+
+#: src/php/core-addons/payments/templates/payments-page.template.php:36
+#, fuzzy
+msgid "Filter payments"
+msgstr "Filtrer hendelser"
+
+#: src/php/core-addons/payments/templates/settings-gateway-bacs.template.php:8
+#: src/php/core-addons/payments/templates/settings-gateway-cheque.template.php:8
+#, fuzzy
+msgid "Messages"
+msgstr "Få tilgang til sider"
+
+#: src/php/core-addons/payments/templates/settings-gateway-bacs.template.php:14
+#: src/php/core-addons/payments/templates/settings-gateway-cheque.template.php:14
+#, fuzzy
+msgid "Success message"
+msgstr "Få tilgang til sider"
+
+#: src/php/core-addons/payments/templates/settings-gateway-bacs.template.php:15
+#: src/php/core-addons/payments/templates/settings-gateway-cheque.template.php:15
+msgid "Message to show once the payment is validated by the user."
+msgstr ""
+
+#: src/php/core-addons/payments/templates/settings-gateway-bacs.template.php:24
+#: src/php/core-addons/payments/templates/settings-gateway-cheque.template.php:24
+#, fuzzy
+msgid "Checkout message"
+msgstr "Sjekk versjoner på nytt"
+
+#: src/php/core-addons/payments/templates/settings-gateway-bacs.template.php:25
+#: src/php/core-addons/payments/templates/settings-gateway-cheque.template.php:25
+#, fuzzy
+msgid "Message to show on the checkout page."
+msgstr "Beskjed vist når det ikke er noen innlegg:"
+
+#: src/php/core-addons/payments/templates/settings-gateway-common.template.php:23
+msgid "Allow payments through this gateway"
+msgstr ""
+
+#: src/php/core-addons/payments/templates/settings-gateway-common.template.php:32
+msgid "Enable error logging to a file"
+msgstr ""
+
+#: src/php/core-addons/payments-checkout/payments-checkout-addon.class.php:47
+msgid "Payments - Checkout"
+msgstr ""
+
+#: src/php/core-addons/payments-checkout/payments-checkout-addon.class.php:52
+msgid "Checkout"
+msgstr ""
+
+#: src/php/core-addons/payments-checkout/payments-checkout-addon.class.php:57
+msgid "This page allows a user to pay something"
+msgstr ""
+
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-address.template.php:11
+#, fuzzy
+msgid "Billing information"
+msgstr "Kontaktinformasjon"
+
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:20
+msgid "Pay with %s"
+msgstr ""
+
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:21
+msgid "Choose a payment method"
+msgstr ""
+
+#: src/php/core-addons/payments-checkout/templates/payments-checkout.template.php:45
+#, fuzzy
+msgid "Continue"
+msgstr "Eier av container"
+
+#: src/php/core-addons/payments-failure/payments-failure-addon.class.php:47
+msgid "Payments - Failure"
+msgstr ""
+
+#: src/php/core-addons/payments-failure/payments-failure-addon.class.php:57
+msgid "This page show a user a message when payment has not been validated"
+msgstr ""
+
+#: src/php/core-addons/payments-failure/templates/payments-failure-content.template.php:8
+msgid "Sorry!"
+msgstr ""
+
+#: src/php/core-addons/payments-failure/templates/payments-failure-content.template.php:9
+msgid "There has been a problem when recording your payment."
+msgstr ""
+
+#: src/php/core-addons/payments-home/payments-home-addon.class.php:47
+#, fuzzy
+msgid "Payments - Home"
+msgstr "Private Filer – Hjem"
+
+#: src/php/core-addons/payments-home/payments-home-addon.class.php:57
+msgid "Page under which all payment related pages are filed."
+msgstr ""
+
+#: src/php/core-addons/payments-home/payments-home-addon.class.php:62
+msgid "payments"
+msgstr ""
+
+#: src/php/core-addons/payments-success/payments-success-addon.class.php:47
+msgid "Payments - Success"
+msgstr ""
+
+#: src/php/core-addons/payments-success/payments-success-addon.class.php:52
+msgid "Payment accepted"
+msgstr ""
+
+#: src/php/core-addons/payments-success/payments-success-addon.class.php:57
+msgid "This page show a user a message when payment has been validated"
+msgstr ""
+
+#: src/php/core-addons/payments-success/templates/payments-success-content.template.php:8
+msgid "Thank you"
+msgstr ""
+
+#: src/php/core-addons/payments-success/templates/payments-success-content.template.php:9
+#, fuzzy
+msgid "Your payment has been recorded."
+msgstr "Din profil er oppdatert"
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:54
 msgid "Post Owner"
@@ -2104,11 +2858,6 @@ msgstr "Legg til filvedlegg"
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:78
 msgid "Attached Files"
 msgstr "Vedlagte filer"
-
-#: src/php/core-addons/private-file/private-file-admin-interface.class.php:164
-#: src/php/core-addons/private-page/private-page-admin-interface.class.php:123
-msgid "General settings"
-msgstr "Generelle innstillinger"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:171
 #: src/php/core-addons/private-page/private-page-admin-interface.class.php:130
@@ -2372,11 +3121,6 @@ msgstr "Fil"
 #: src/php/core-addons/status/hook-finder.class.php:126
 msgid "Path"
 msgstr "Bane"
-
-#: src/php/core-addons/status/status-addon.class.php:38
-#: src/php/core-addons/status/status-addon.class.php:58
-msgid "Status"
-msgstr "Status"
 
 #: src/php/core-addons/status/status-addon.class.php:57
 msgid "WP Customer Area - Plugin status"
@@ -2669,56 +3413,56 @@ msgstr "%s: %d mal(er)"
 msgid "User Profile"
 msgstr "Brukerprofil"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:73
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:65
 msgid "Username"
 msgstr "Brukernavn"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:75
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:67
 msgid "Your username cannot be changed."
 msgstr "Brukernavnet ditt kan ikke endres"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:80
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:72
 msgid "Primary email"
 msgstr "Primær epost"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:85
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:77
 msgid "First name"
 msgstr "Fornavn"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:89
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:81
 msgid "Last name"
 msgstr "Etternavn"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:85
 msgid "Nickname"
 msgstr "Kallenavn"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:97
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:89
 msgid "Display name"
 msgstr "Vis navn"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:101
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
 msgid "Personal Website"
 msgstr "Eget nettsted"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:105
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:97
 msgid "Biography"
 msgstr "Biografi"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:106
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
 msgid "Your can write a short description about you."
 msgstr "Her kan du skrive en kort beskrivelse av deg selv."
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:111
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Passord"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:112
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:104
 msgid "Password (confirm)"
 msgstr "Passord (bekreft)"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:113
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:105
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
@@ -3001,11 +3745,6 @@ msgstr "Ferdig"
 msgid "The content has been deleted."
 msgstr "Innholdet har blitt slettet."
 
-#: src/php/core-classes/addon-update-content-page.class.php:274
-#: src/php/core-classes/addon-update-content-page.class.php:275
-msgid "Delete"
-msgstr "Fjern"
-
 #: src/php/core-classes/addon-update-content-page.class.php:278
 msgid "Are you sure that you want to delete this content?"
 msgstr "Er du sikker på at du vil slette innholdet?"
@@ -3142,36 +3881,36 @@ msgstr "%1$s må inneholde maksimalt %2$s tegn"
 msgid "%1$s is required."
 msgstr "%1$s kreves"
 
-#: src/php/core-classes/plugin.class.php:223
+#: src/php/core-classes/plugin.class.php:230
 msgid "Checking license..."
 msgstr "Sjekker lisens..."
 
-#: src/php/core-classes/plugin.class.php:224
+#: src/php/core-classes/plugin.class.php:231
 msgid "Failed to contact server"
 msgstr "Fikk ikke kontakt med server"
 
-#: src/php/core-classes/plugin.class.php:225
-#: src/php/core-classes/plugin.class.php:257
+#: src/php/core-classes/plugin.class.php:232
+#: src/php/core-classes/plugin.class.php:264
 msgid "Saving..."
 msgstr "Lagrer..."
 
-#: src/php/core-classes/plugin.class.php:226
-#: src/php/core-classes/plugin.class.php:258
+#: src/php/core-classes/plugin.class.php:233
+#: src/php/core-classes/plugin.class.php:265
 msgid "Click to edit..."
 msgstr "Klikk for å redigere..."
 
-#: src/php/core-classes/plugin.class.php:227
-#: src/php/core-classes/plugin.class.php:259
+#: src/php/core-classes/plugin.class.php:234
+#: src/php/core-classes/plugin.class.php:266
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:228
-#: src/php/core-classes/plugin.class.php:260
+#: src/php/core-classes/plugin.class.php:235
+#: src/php/core-classes/plugin.class.php:267
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/php/core-classes/plugin.class.php:240
-#: src/php/core-classes/plugin.class.php:272
+#: src/php/core-classes/plugin.class.php:247
+#: src/php/core-classes/plugin.class.php:279
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
@@ -3179,12 +3918,12 @@ msgstr ""
 "Du kan kun velge en enkelt eier, flere eiere er ikke gyldig for denne "
 "handlingen. "
 
-#: src/php/core-classes/plugin.class.php:242
-#: src/php/core-classes/plugin.class.php:274
+#: src/php/core-classes/plugin.class.php:249
+#: src/php/core-classes/plugin.class.php:281
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr "Ingen eier er foreløpig valgt, og handlingen kan derfor ikke utføres. "
 
-#: src/php/core-classes/plugin.class.php:695
+#: src/php/core-classes/plugin.class.php:696
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
@@ -3192,7 +3931,7 @@ msgstr ""
 "Permalenker er deaktivert. Customer Area vil ikke fungere ordentlig. "
 "Vennligst <a href=\"%1$s\">aktiver dem i WordPress-innstillingene</a>."
 
-#: src/php/core-classes/plugin.class.php:995
+#: src/php/core-classes/plugin.class.php:996
 msgid "Some template files you have overridden seem to be outdated."
 msgstr "Noen malfiler du har over overstyrt ser ut til å være utdatert."
 
@@ -3326,68 +4065,70 @@ msgstr "kan ikke være tom"
 msgid " is not a valid email"
 msgstr "er ikke en gyldig e-post"
 
-#: src/php/core-classes/settings.class.php:718
+#: src/php/core-classes/settings.class.php:720
+#: src/php/core-classes/settings.class.php:740
+#: src/php/core-classes/settings.class.php:766
 msgid " is not a valid value"
 msgstr "er ikke en gyldig verdi"
 
-#: src/php/core-classes/settings.class.php:746
+#: src/php/core-classes/settings.class.php:794
 msgid "must be an integer"
 msgstr "må være en integer"
 
-#: src/php/core-classes/settings.class.php:757
+#: src/php/core-classes/settings.class.php:805
 msgid "must be greater than %s"
 msgstr "må være større enn %s"
 
-#: src/php/core-classes/settings.class.php:767
+#: src/php/core-classes/settings.class.php:815
 msgid "must be lower than %s"
 msgstr "må være lavere enn %s"
 
-#: src/php/core-classes/settings.class.php:802
+#: src/php/core-classes/settings.class.php:850
 msgid "Invalid owner"
 msgstr "Ugyldig eier"
 
-#: src/php/core-classes/settings.class.php:820
-#: src/php/core-classes/settings.class.php:850
+#: src/php/core-classes/settings.class.php:868
+#: src/php/core-classes/settings.class.php:898
 msgid "you cannot select multiple terms."
 msgstr "du kan ikke velge flere vilkår."
 
-#: src/php/core-classes/settings.class.php:935
+#: src/php/core-classes/settings.class.php:983
 msgid "Validate"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1013
+#: src/php/core-classes/settings.class.php:1061
 msgid "Upload File"
 msgstr "Last opp fil"
 
-#: src/php/core-classes/settings.class.php:1165
+#: src/php/core-classes/settings.class.php:1237
 msgid "None"
 msgstr "Ingen"
 
-#: src/php/core-classes/settings.class.php:1186
+#: src/php/core-classes/settings.class.php:1258
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Slette eksisterende &amp; lag ny $raquo;"
 
-#: src/php/core-classes/settings.class.php:1191
+#: src/php/core-classes/settings.class.php:1263
 msgid "Edit it &raquo;"
 msgstr "Rediger det &raquo;"
 
-#: src/php/core-classes/settings.class.php:1196
+#: src/php/core-classes/settings.class.php:1268
 msgid "Create it &raquo;"
 msgstr "Opprett det &raquo;"
 
-#: src/php/core-classes/settings.class.php:1302
+#: src/php/core-classes/settings.class.php:1374
 msgid "Any Role"
 msgstr "Hvilken som helst rolle"
 
-#: src/php/core-classes/settings.class.php:1492
+#: src/php/core-classes/settings.class.php:1564
 msgid "Main plugin folder"
 msgstr "Hovedpluginmappe"
 
-#: src/php/core-classes/settings.class.php:1498
+#: src/php/core-classes/settings.class.php:1570
 msgid "Current theme folder"
 msgstr "Mappe for nåværende tema"
 
-#: src/php/core-classes/settings.class.php:1504
+#: src/php/core-classes/settings.class.php:1576
 msgid "WordPress content folder"
 msgstr "Mappe for Wordpress-innhold"
 
@@ -3418,9 +4159,9 @@ msgid "You"
 msgstr "Du"
 
 #: src/php/core-classes/widget-content-authors.class.php:200
-#: src/php/core-classes/widget-content-dates.class.php:208
+#: src/php/core-classes/widget-content-dates.class.php:211
 #: src/php/core-classes/widget-content-list.class.php:192
-#: src/php/core-classes/widget-terms.class.php:187
+#: src/php/core-classes/widget-terms.class.php:185
 msgid "Title:"
 msgstr "Tittel:"
 
@@ -3452,15 +4193,15 @@ msgstr "Synkende"
 msgid "Category:"
 msgstr "Kategori:"
 
-#: src/php/core-classes/widget-terms.class.php:194
+#: src/php/core-classes/widget-terms.class.php:192
 msgid "Empty terms:"
 msgstr "Tomme vilkår:"
 
-#: src/php/core-classes/widget-terms.class.php:198
+#: src/php/core-classes/widget-terms.class.php:196
 msgid "Show"
 msgstr "Vis"
 
-#: src/php/core-classes/widget-terms.class.php:199
+#: src/php/core-classes/widget-terms.class.php:197
 msgid "Hide"
 msgstr "Skjul"
 
@@ -4700,111 +5441,111 @@ msgstr "Zamora"
 msgid "Zaragoza"
 msgstr "Zaragoza"
 
-#: src/php/helpers/currency-helper.class.php:36
+#: src/php/helpers/currency-helper.class.php:41
 msgid "Australian Dollar (&#36;)"
 msgstr "Australske Dollar (&#36;)"
 
-#: src/php/helpers/currency-helper.class.php:37
+#: src/php/helpers/currency-helper.class.php:42
 msgid "Brazilian Real (R&#36;)"
 msgstr "Brazilianske Real (R&#36;)"
 
-#: src/php/helpers/currency-helper.class.php:38
+#: src/php/helpers/currency-helper.class.php:43
 msgid "Canadian Dollar (&#36;)"
 msgstr "Kanadiske Dollar (&#36;)"
 
-#: src/php/helpers/currency-helper.class.php:39
+#: src/php/helpers/currency-helper.class.php:44
 msgid "Czech Koruna"
 msgstr "Tsjekkiske koruna"
 
-#: src/php/helpers/currency-helper.class.php:40
+#: src/php/helpers/currency-helper.class.php:45
 msgid "Danish Krone"
 msgstr "Danske kroner"
 
-#: src/php/helpers/currency-helper.class.php:41
+#: src/php/helpers/currency-helper.class.php:46
 msgid "Euro (&euro;)"
 msgstr "Euro (&euro;)"
 
-#: src/php/helpers/currency-helper.class.php:42
+#: src/php/helpers/currency-helper.class.php:47
 msgid "Hong Kong Dollar (&#36;)"
 msgstr "Hong Kong Dollar (&#36;)"
 
-#: src/php/helpers/currency-helper.class.php:43
+#: src/php/helpers/currency-helper.class.php:48
 msgid "Hungarian Forint"
 msgstr "Ungarsk forint"
 
-#: src/php/helpers/currency-helper.class.php:44
+#: src/php/helpers/currency-helper.class.php:49
 msgid "Indian Rupee (&#8377;)"
 msgstr "Indiske Rupee (&#8377;)"
 
-#: src/php/helpers/currency-helper.class.php:45
+#: src/php/helpers/currency-helper.class.php:50
 msgid "Iranian Rial (&#65020;)"
 msgstr "Iranske Rial (&#65020;)"
 
-#: src/php/helpers/currency-helper.class.php:46
+#: src/php/helpers/currency-helper.class.php:51
 msgid "Israeli Shekel (&#8362;)"
 msgstr "Israelske Shekel (&#8362;)"
 
-#: src/php/helpers/currency-helper.class.php:47
+#: src/php/helpers/currency-helper.class.php:52
 msgid "Japanese Yen (&yen;)"
 msgstr "Japanske Yen (&yen;)"
 
-#: src/php/helpers/currency-helper.class.php:48
+#: src/php/helpers/currency-helper.class.php:53
 msgid "Malaysian Ringgit"
 msgstr "Malaysiske Ringgit"
 
-#: src/php/helpers/currency-helper.class.php:49
+#: src/php/helpers/currency-helper.class.php:54
 msgid "Mexican Peso (&#36;)"
 msgstr "Meksikanske Peso (&#36;)"
 
-#: src/php/helpers/currency-helper.class.php:50
+#: src/php/helpers/currency-helper.class.php:55
 msgid "New Zealand Dollar (&#36;)"
 msgstr "New Zealandske Dollar (&#36;)"
 
-#: src/php/helpers/currency-helper.class.php:51
+#: src/php/helpers/currency-helper.class.php:56
 msgid "Norwegian Krone"
 msgstr "Norske kroner"
 
-#: src/php/helpers/currency-helper.class.php:52
+#: src/php/helpers/currency-helper.class.php:57
 msgid "Philippine Peso"
 msgstr "Filippinske Pesos"
 
-#: src/php/helpers/currency-helper.class.php:53
+#: src/php/helpers/currency-helper.class.php:58
 msgid "Polish Zloty"
 msgstr "Polske zloty"
 
-#: src/php/helpers/currency-helper.class.php:54
+#: src/php/helpers/currency-helper.class.php:59
 msgid "Pounds Sterling (&pound;)"
 msgstr "Pounds Sterling (&pound;)"
 
-#: src/php/helpers/currency-helper.class.php:55
+#: src/php/helpers/currency-helper.class.php:60
 msgid "Russian Ruble"
 msgstr "Russisk rubel"
 
-#: src/php/helpers/currency-helper.class.php:56
+#: src/php/helpers/currency-helper.class.php:61
 msgid "Singapore Dollar (&#36;)"
 msgstr "Singaporske Dollar (&#36;)"
 
-#: src/php/helpers/currency-helper.class.php:57
+#: src/php/helpers/currency-helper.class.php:62
 msgid "Swedish Krona"
 msgstr "Svenske kroner"
 
-#: src/php/helpers/currency-helper.class.php:58
+#: src/php/helpers/currency-helper.class.php:63
 msgid "Swiss Franc"
 msgstr "Sveitsiske Franc"
 
-#: src/php/helpers/currency-helper.class.php:59
+#: src/php/helpers/currency-helper.class.php:64
 msgid "Taiwan New Dollar"
 msgstr "Taiwanske Nye Dollar"
 
-#: src/php/helpers/currency-helper.class.php:60
+#: src/php/helpers/currency-helper.class.php:65
 msgid "Thai Baht (&#3647;)"
 msgstr "Thailandske Baht (&#3647;)"
 
-#: src/php/helpers/currency-helper.class.php:61
+#: src/php/helpers/currency-helper.class.php:66
 msgid "Turkish Lira (&#8378;)"
 msgstr "Tyrkiske Lire (&#8378;)"
 
-#: src/php/helpers/currency-helper.class.php:62
+#: src/php/helpers/currency-helper.class.php:67
 msgid "US Dollar (&#36;)"
 msgstr "Amerikanske Dollar (&#36;)"
 
@@ -4816,44 +5557,114 @@ msgstr ""
 "WP Customer Area er en modulbasert alt-i-ett-løsning for å håndtere privat "
 "innhold i Wordpress."
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:92
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:94
 msgctxt "Private content category archive slug"
 msgid "category"
 msgstr "kategori"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:94
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:96
 msgctxt "Private content date archive slug"
 msgid "archive"
 msgstr "arkiv"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:95
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:97
 msgctxt "Private content author archive slug"
 msgid "created-by"
 msgstr "skapt-av"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:97
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:99
 msgctxt "Private content update slug"
 msgid "update"
 msgstr "oppdater"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:98
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:100
 msgctxt "Private content delete slug"
 msgid "delete"
 msgstr "slett"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:394
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:403
 #: src/php/core-classes/addon-container-page.class.php:408
 #: src/php/core-classes/addon-content-page.class.php:453
 msgctxt "pagination_parameter_name (should not be \"page\")"
 msgid "page-num"
 msgstr "side-num"
 
-#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:657
+#: src/php/core-addons/customer-pages/customer-pages-addon.class.php:667
 msgctxt ""
 "Localised slug for the main navigation menu (small caps version of the \"WP "
 "Customer Area Menu\" translation)"
 msgid "wp-customer-area-menu"
 msgstr "wp-customer-area-meny"
+
+#: src/php/core-addons/payments/helpers/payments-ui-helper.class.php:162
+#, fuzzy
+msgctxt "payment title format (type: title)"
+msgid "%1$s: %2$s"
+msgstr "%2$s %1$s"
+
+#: src/php/core-addons/payments/payment.class.php:372
+#: src/php/core-addons/payments/payment.class.php:383
+msgctxt "cuar_payment"
+msgid "Payments"
+msgstr ""
+
+#: src/php/core-addons/payments/payment.class.php:373
+msgctxt "cuar_payment"
+msgid "Payment"
+msgstr ""
+
+#: src/php/core-addons/payments/payment.class.php:374
+#, fuzzy
+msgctxt "cuar_payment"
+msgid "Add New"
+msgstr "Legg til nytt"
+
+#: src/php/core-addons/payments/payment.class.php:375
+#, fuzzy
+msgctxt "cuar_payment"
+msgid "Add New Payment"
+msgstr "Legg til ny sidekategori"
+
+#: src/php/core-addons/payments/payment.class.php:376
+#, fuzzy
+msgctxt "cuar_payment"
+msgid "Edit Payment"
+msgstr "Rediger konto"
+
+#: src/php/core-addons/payments/payment.class.php:377
+msgctxt "cuar_payment"
+msgid "New Payment"
+msgstr ""
+
+#: src/php/core-addons/payments/payment.class.php:378
+#, fuzzy
+msgctxt "cuar_payment"
+msgid "View Payment"
+msgstr "Vis alle"
+
+#: src/php/core-addons/payments/payment.class.php:379
+#, fuzzy
+msgctxt "cuar_payment"
+msgid "Search Payments"
+msgstr "Søk %s"
+
+#: src/php/core-addons/payments/payment.class.php:380
+#, fuzzy
+msgctxt "cuar_payment"
+msgid "No payment found"
+msgstr "Ingen private filer funnet"
+
+#: src/php/core-addons/payments/payment.class.php:381
+#, fuzzy
+msgctxt "cuar_payment"
+msgid "No payment found in Trash"
+msgstr "Ingen private filer funnet i papirkurven"
+
+#: src/php/core-addons/payments/payment.class.php:382
+#, fuzzy
+msgctxt "cuar_payment"
+msgid "Parent Payment:"
+msgstr "Fordeldersidekategori"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:1094
 msgctxt "cuar_private_file"
@@ -5129,26 +5940,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Velg fra de mest bruke sidekategoriene"
 
-#: src/php/core-classes/plugin.class.php:229
-#: src/php/core-classes/plugin.class.php:261
+#: src/php/core-classes/plugin.class.php:236
+#: src/php/core-classes/plugin.class.php:268
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr "MM d, åå"
 
-#: src/php/core-classes/plugin.class.php:230
-#: src/php/core-classes/plugin.class.php:262
+#: src/php/core-classes/plugin.class.php:237
+#: src/php/core-classes/plugin.class.php:269
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Fjern"
 
-#: src/php/core-classes/plugin.class.php:231
-#: src/php/core-classes/plugin.class.php:263
+#: src/php/core-classes/plugin.class.php:238
+#: src/php/core-classes/plugin.class.php:270
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "I dag"
 
-#: src/php/core-classes/plugin.class.php:234
-#: src/php/core-classes/plugin.class.php:266
+#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:273
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr "Vis en annen måned"
@@ -5158,7 +5969,10 @@ msgctxt "bytes"
 msgid "b"
 msgstr "b"
 
-#: src/php/helpers/currency-helper.class.php:113
+#: src/php/helpers/currency-helper.class.php:117
 msgctxt "Currency amount (1=amount, 2=currency)"
 msgid "%2$s %1$s"
 msgstr "%2$s %1$s"
+
+#~ msgid "/whats-new-in-wp-customer-area-7-1"
+#~ msgstr "/hva-er-nytt-i-wp-customer-area-7-1"
