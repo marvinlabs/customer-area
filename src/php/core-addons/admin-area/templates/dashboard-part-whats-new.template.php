@@ -4,7 +4,7 @@
 $whats_new = array(
 	'7.4' => array(
 		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-4', 'cuar'),
-		'codename'  => 'Georges Harrison',
+		'codename'  => 'Bob Marley',
 		'tagline'   => __("Online payment of invoices with Paypal and Stripe Gateways", 'cuar'),
 		'blocks'    => array(
 			array(
