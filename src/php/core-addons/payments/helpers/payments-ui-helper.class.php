@@ -57,7 +57,7 @@ class CUAR_PaymentsUiHelper
         {
             /** @noinspection PhpUnusedLocalVariableInspection */
             $button_label = apply_filters('cuar/core/payments/templates/payment-button-label',
-                sprintf(__('Pay %s', 'cuarin'), CUAR_CurrencyHelper::formatAmount($remaining_amount, $currency, '')));
+                sprintf(__('Pay %s', 'cuar'), CUAR_CurrencyHelper::formatAmount($remaining_amount, $currency, '')));
 
             /** @noinspection PhpUnusedLocalVariableInspection */
             $gateways = $this->pa_addon->settings()->get_enabled_gateways();
