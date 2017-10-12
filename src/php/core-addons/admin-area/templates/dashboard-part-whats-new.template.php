@@ -215,10 +215,10 @@ $whats_new = array(
             $i++;
             if ($i > 2)
             {
-                echo '<div class="clearfix">&nbsp;</div>';
+                echo '<div class="cuar-clearfix">&nbsp;</div>';
                 $i = 0;
             }
         endforeach; ?>
-        <p class="clearfix">&nbsp;</p>
+        <p class="cuar-clearfix">&nbsp;</p>
     </div>
 <?php endforeach; ?>

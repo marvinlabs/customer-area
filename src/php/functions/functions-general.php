@@ -178,7 +178,7 @@ function cuar_ajax_loading($is_visible = false)
         <div class="circle left"></div>
         <div class="circle middle"></div>
         <div class="circle right"></div>
-        <div class="clearfix"></div>
+        <div class="cuar-clearfix"></div>
     </div>
     <?php
 }

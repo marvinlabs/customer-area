@@ -1,4 +1,14 @@
-<?php /** Template version: 3.0.0 */ ?>
+<?php
+/**
+ * Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
+ *
+ * -= 3.0.0 =-
+ * - Initial version
+ *
+ */ ?>
 
 <?php /** @var array $accepted_credit_cards */ ?>
 <?php /** @var array $gateways */ ?>
@@ -27,7 +37,7 @@
         </div>
     <?php endif; ?>
 
-    <div class="row clearfix mb-md">
+    <div class="row cuar-clearfix mb-md">
         <div class="col-md-6">
             <?php include($summary_template); ?>
         </div>
@@ -38,7 +48,7 @@
 
     <?php include($gateways_template); ?>
 
-    <div class="row mt-md clearfix">
+    <div class="row mt-md cuar-clearfix">
         <div class="form-group col-xs-12 text-right">
             <?php do_action('cuar/core/payments/templates/checkout/before-validate-button'); ?>
 
