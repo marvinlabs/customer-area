@@ -2,6 +2,38 @@
 
 <?php
 $whats_new = array(
+	'7.4' => array(
+		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-4', 'cuar'),
+		'codename'  => 'Georges Harrison',
+		'tagline'   => __("Welcome to the new payments features and Paypal/Stripe Gateways add-ons", 'cuar'),
+		'blocks'    => array(
+			array(
+				'title' => __('New add-ons: Paypal and Stripe Gateways', 'cuar'),
+				'text'  => __('We introduced two new add-ons that will allow your users to pay their invoices online!',
+					'cuar'),
+			),
+			array(
+				'title' => __('Invoicing: Payments integration', 'cuar'),
+				'text'  => __('As part of the invoicing add-on, you will now find a new tab into Customer Area menu -> Payments, listing all your invoices payments. You will also find WP Customer Area settings a new Payments tab that allows you to set standard payment method, like wired transfer and cheques.',
+					'cuar'),
+			),
+			array(
+				'title' => __('Notifications: Logs', 'cuar'),
+				'text'  => __('You can now view any notification that get sent by WP Customer Area into Customer Area menu -> Logs. It comes useful to keep a trace of all the emails that get sent to your clients, when and why.',
+					'cuar'),
+			),
+			array(
+				'title' => __('Conversations: Close conversation', 'cuar'),
+				'text'  => __('The conversation author can now decide to close the conversation to new replies.',
+					'cuar'),
+			),
+			array(
+				'title' => __('Improvements and bug fixes', 'cuar'),
+				'text'  => __('Main plugin and existing add-ons have been much improved: 5 big new features and over 20 issues fixes. For instance, we updated supported version of ACF to 4.4.12.1.',
+					'cuar'),
+			),
+		)
+	),
 	'7.3' => array(
 		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-since-wp-customer-area-7-0', 'cuar'),
 		'codename'  => 'Eric Clapton',
