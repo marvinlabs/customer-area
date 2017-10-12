@@ -50,7 +50,7 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
         /** @override */
         public function get_addon_name()
         {
-            return __('Payments', 'cuarme');
+            return __('Payments', 'cuar');
         }
 
         /**
@@ -189,7 +189,7 @@ if ( !class_exists('CUAR_PaymentsAddOn')) :
 
             $note_id = isset($_POST['note_id']) ? $_POST['note_id'] : 0;
             if ($note_id <= 0) {
-                wp_send_json_error(__('Note id is not specified', 'cuarta'));
+                wp_send_json_error(__('Note id is not specified', 'cuar'));
             }
 
             $payment = new CUAR_Payment($payment_id);
