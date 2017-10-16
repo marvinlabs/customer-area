@@ -263,11 +263,11 @@ class CUAR_PaymentsSettingsHelper
                 'icon'  => $icon_pack['path'] . 'moneybookers.png',
             ),
             'paypal'              => array(
-                'label' => __('Paypal', 'cuar'),
+                'label' => __('PayPal', 'cuar'),
                 'icon'  => $icon_pack['path'] . 'paypal.png',
             ),
             'paypal-p'            => array(
-                'label' => __('Paypal', 'cuar'),
+                'label' => __('PayPal', 'cuar'),
                 'icon'  => $icon_pack['path'] . 'paypal-p.png',
             ),
             'sage'                => array(

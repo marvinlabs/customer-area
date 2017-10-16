@@ -5,11 +5,11 @@ $whats_new = array(
 	'7.4' => array(
 		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-4', 'cuar'),
 		'codename'  => 'Bob Marley',
-		'tagline'   => __("Online payment of invoices with Paypal and Stripe Gateways", 'cuar'),
+		'tagline'   => __("Online payment of invoices with PayPal and Stripe Gateways", 'cuar'),
 		'blocks'    => array(
 			array(
 				'title' => __('Online invoice payments', 'cuar'),
-				'text'  => __('You will find a new payments menu item in your WP Customer Area menu to manage your invoices payments. By default, you can accept manual payments (cheque, wired transfers), but we have 2 brand new gateways available to accept payments via Paypal accounts and from credit cards via Stripe.',
+				'text'  => __('You will find a new payments menu item in your WP Customer Area menu to manage your invoices payments. By default, you can accept manual payments (cheque, wired transfers), but we have 2 brand new gateways available to accept payments via PayPal accounts and from credit cards via Stripe.',
 					'cuar'),
 			),
 			array(
