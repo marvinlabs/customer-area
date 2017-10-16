@@ -9,9 +9,9 @@
     <?php wp_nonce_field('cuar_delete_payment_note', 'cuar_remove_note_nonce'); ?>
 
     <div class="cuar-payment-notes cuar-js-payment-notes" data-payment-id="<?php echo $payment->ID; ?>">
-        <div class="cuar-payment-note cuar-js-add-note-form">
+        <div class="cuar-payment-note cuar-clearfix cuar-js-add-note-form">
             <textarea id="cuar_new_note_message" name="cuar_new_note_message" class="cuar-js-new-note-message"></textarea>
-            <button class="button cuar-js-add-note" disabled="disabled"><?php _e('Add note', 'cuar'); ?></button>
+            <button class="button cuar-js-add-note alignright" disabled="disabled"><?php _e('Add note', 'cuar'); ?></button>
         </div>
 
         <div class="cuar-payment-note cuar-js-empty-message" <?php if ( !empty($notes)) : ?>style="display: none;"<?php endif; ?>>
