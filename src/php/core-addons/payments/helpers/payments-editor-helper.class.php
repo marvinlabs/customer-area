@@ -168,7 +168,7 @@ class CUAR_PaymentsEditorHelper
 
         if (!empty($date)) {
             $date .= ' 00:00:00';
-            // $update_args['post_date'] = $date;
+            $update_args['post_date'] = $date;
             $update_args['post_date_gmt'] = $date;
         }
 
