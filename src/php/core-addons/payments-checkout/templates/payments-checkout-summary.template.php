@@ -32,7 +32,7 @@ $footer = apply_filters('cuar/core/payments/templates/checkout/summary/footer', 
 
 <?php do_action('cuar/core/payments/templates/checkout/before-summary'); ?>
 
-<div class="panel panel-primary">
+<div class="panel">
     <div class="panel-heading">
         <?php echo $title; ?>
     </div>

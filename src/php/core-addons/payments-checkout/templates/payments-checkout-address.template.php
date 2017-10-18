@@ -6,7 +6,7 @@
 
 <?php do_action('cuar/core/payments/templates/checkout/before-address'); ?>
 
-<div class="panel panel-primary">
+<div class="panel">
     <div class="panel-heading">
         <span class="panel-title"><?php _e('Billing information', 'cuar'); ?></span>
     </div>
