@@ -1,4 +1,13 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php
+/** Template version: 1.1.0
+ *
+ * -= 1.1.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
+ *
+ * -= 1.0.0 =-
+ * - Initial version
+ *
+ */ ?>
 
 <div class="wrap cuar-dashboard-screen">
 
@@ -16,7 +25,7 @@
         </div>
     </div>
 
-    <div class="clearfix"></div>
+    <div class="cuar-clearfix"></div>
 
     <div class="cuar-content">
         <?php include($content_template); ?>

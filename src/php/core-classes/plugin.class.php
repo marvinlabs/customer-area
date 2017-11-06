@@ -69,9 +69,9 @@ if ( !class_exists('CUAR_Plugin')) :
             add_action('plugins_loaded', array(&$this, 'check_version'), 6);
             add_action('plugins_loaded', array(&$this, 'load_addons'), 10);
 
+            add_action('init', array(&$this, 'start_session'), 1);
             add_action('init', array(&$this, 'load_scripts'), 7);
             add_action('init', array(&$this, 'load_styles'), 8);
-            add_action('init', array(&$this, 'load_defaults'), 9);
 
             add_filter('single_template_hierarchy', array(&$this, 'single_template_hierarchy'), 10);
             add_filter('page_template_hierarchy', array(&$this, 'page_template_hierarchy'), 10);
@@ -80,7 +80,6 @@ if ( !class_exists('CUAR_Plugin')) :
 
             if (is_admin()) {
                 add_action('admin_notices', array(&$this, 'print_admin_notices'));
-                add_action('init', array(&$this, 'load_defaults'), 9);
 
                 add_action('permalink_structure_changed', array(&$this, 'check_permalinks_enabled'));
 
@@ -133,6 +132,14 @@ if ( !class_exists('CUAR_Plugin')) :
         public function get_logger()
         {
             return $this->logger;
+        }
+
+        /**
+         * @return CUAR_Settings
+         */
+        public function get_settings()
+        {
+            return $this->settings;
         }
 
         /*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/
@@ -244,7 +251,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 wp_register_script(
                     'cuar.admin',
                     CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js',
-                    array('jquery', 'wp-color-picker'),
+                    array('jquery', 'wp-color-picker', 'jquery-ui-datepicker'),
                     $this->get_version());
 
                 wp_localize_script('cuar.admin', 'cuar', $messages);
@@ -307,11 +314,10 @@ if ( !class_exists('CUAR_Plugin')) :
         }
 
         /**
-         * Initialise some defaults for the plugin (add basic capabilities, ...)
+         * Start a session when we save a post in order to store error logs
          */
-        public function load_defaults()
+        public function start_session()
         {
-            // Start a session when we save a post in order to store error logs
             if ( !session_id()) session_start();
         }
 
@@ -327,14 +333,9 @@ if ( !class_exists('CUAR_Plugin')) :
             if (isset($_GET['page']) && false !== strpos($_GET['page'], 'wpca-')) return true;
 
             // Post edition pages
-            $private_post_types = $this->get_private_post_types();
-            if (isset($_GET['post_type']) && in_array($_GET['post_type'], $private_post_types)) return true;
-            if (isset($_GET['post']) && in_array(get_post_type($_GET['post']), $private_post_types)) return true;
-
-            // User group, Managed group, Smart group pages
-            $group_post_types = array('cuar_user_group', 'cuar_managed_group', 'cuar_smart_group',);
-            if (isset($_GET['post_type']) && in_array($_GET['post_type'], $group_post_types)) return true;
-            if (isset($_GET['post']) && in_array(get_post_type($_GET['post']), $group_post_types)) return true;
+            $managed_types = $this->get_managed_types();
+            if (isset($_GET['post_type']) && key_exists($_GET['post_type'], $managed_types)) return true;
+            if (isset($_GET['post']) && key_exists(get_post_type($_GET['post']), $managed_types)) return true;
 
             return false;
         }
@@ -1023,11 +1024,26 @@ if ( !class_exists('CUAR_Plugin')) :
         public function is_type_managed($post_type, $private_types = null)
         {
             if ($private_types == null) {
-                $private_types = $this->get_private_types();
+                $private_types = $this->get_managed_types();
             }
 
             return apply_filters('cuar/core/types/is-type-managed',
                 isset($private_types[$post_type]), $post_type, $private_types);
+        }
+
+        /**
+         * Get both private content and container types
+         * @return array
+         */
+        public function get_managed_types()
+        {
+            $other_types = apply_filters('cuar/core/post-types/other', array());
+
+            return array_merge(
+                $this->get_content_types(),
+                $this->get_container_types(),
+                $other_types
+            );
         }
 
         /**

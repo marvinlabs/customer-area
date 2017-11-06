@@ -117,7 +117,7 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
 
 
             // Get user files
-            $cuar_plugin = CUAR_Plugin::get_instance();
+            $cuar_plugin = cuar();
             $po_addon = $cuar_plugin->get_addon('post-owner');
 
             $args = array(
@@ -158,13 +158,15 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
          */
         protected function print_date_list($dates, $show_months)
         {
-            cuar()->enable_library('jquery.fancytree');
-
-            $template = CUAR_Plugin::get_instance()->get_template_file_path(
+            $cuar = CUAR_Plugin::get_instance();
+            $cuar->enable_library('jquery.fancytree');
+            $template = $cuar->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
-                "widget-content-dates-" . $this->id_base . ".template.php",
-                'templates',
-                "widget-content-dates.template.php"
+                array(
+                    "widget-content-dates-" . $this->id_base . ".template.php",
+                    "widget-content-dates.template.php",
+                ),
+                'templates'
             );
             include($template);
         }
@@ -174,12 +176,13 @@ if ( !class_exists('CUAR_ContentDatesWidget')) :
          */
         public function print_date_scripts()
         {
-
             $template = CUAR_Plugin::get_instance()->get_template_file_path(
                 CUAR_INCLUDES_DIR . '/core-classes',
-                "widget-content-dates-" . $this->id_base . "-scripts.template.php",
-                'templates',
-                "widget-content-dates-scripts.template.php"
+                array(
+                    "widget-content-dates-" . $this->id_base . "-scripts.template.php",
+                    "widget-content-dates-scripts.template.php",
+                ),
+                'templates'
             );
             include($template);
         }

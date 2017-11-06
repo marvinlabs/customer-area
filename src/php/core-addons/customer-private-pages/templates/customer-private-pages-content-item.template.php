@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.2.0
+/** Template version: 3.3.0
+ *
+ * -= 3.3.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
  *
  * -= 3.2.0 =-
  * - Improve longs owner names rendering
@@ -38,7 +41,7 @@ $thumb_sub_header = apply_filters('cuar/private-content/view/header?addon=' . $c
 <div class="collection-item of-h mix<?php echo $extra_class; ?>">
     <div class="collection-item-wrapper panel panel-tile br-a">
 
-        <div class="collection-list-blocks clearfix">
+        <div class="collection-list-blocks cuar-clearfix">
             <div class="collection-thumbnail collection-list-left panel-body pn <?php if (has_post_thumbnail()) { ?> thumb-active<?php } ?>">
                 <a href="<?php the_permalink(); ?>"<?php if (has_post_thumbnail()) { ?> style="background-position: center; background-size:cover; background-image:url(<?php the_post_thumbnail_url('wpca-thumb'); ?>);"<?php } ?>>
                     <div class="collection-thumbnail-padder">

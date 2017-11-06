@@ -2,6 +2,28 @@
 
 <?php
 $whats_new = array(
+	'7.4' => array(
+		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-4', 'cuar'),
+		'codename'  => 'Bob Marley',
+		'tagline'   => __("Online payment of invoices with PayPal and Stripe Gateways", 'cuar'),
+		'blocks'    => array(
+			array(
+				'title' => __('Online invoice payments', 'cuar'),
+				'text'  => __('You will find a new payments menu item in your WP Customer Area menu to manage your invoices payments. By default, you can accept manual payments (cheque, wired transfers), but we have 2 brand new gateways available to accept payments via PayPal accounts and from credit cards via Stripe.',
+					'cuar'),
+			),
+			array(
+				'title' => __('Conversations: Close conversation', 'cuar'),
+				'text'  => __('The conversation author can now decide to close the conversation to new replies.',
+					'cuar'),
+			),
+			array(
+				'title' => __('Improvements and bug fixes', 'cuar'),
+				'text'  => __('Main plugin and existing add-ons have been much improved: 5 big new features and over 20 issues fixes. For instance, we updated supported version of ACF to 4.4.12.1. Also, you can now view any notification that get sent by WP Customer Area into Customer Area menu -> Logs.',
+					'cuar'),
+			),
+		)
+	),
 	'7.3' => array(
 		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-since-wp-customer-area-7-0', 'cuar'),
 		'codename'  => 'Eric Clapton',
@@ -215,10 +237,10 @@ $whats_new = array(
             $i++;
             if ($i > 2)
             {
-                echo '<div class="clearfix">&nbsp;</div>';
+                echo '<div class="cuar-clearfix">&nbsp;</div>';
                 $i = 0;
             }
         endforeach; ?>
-        <p class="clearfix">&nbsp;</p>
+        <p class="cuar-clearfix">&nbsp;</p>
     </div>
 <?php endforeach; ?>

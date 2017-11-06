@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.0.0
+/** Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
  *
  * -= 3.0.0 =-
  * - Adjustments for the new master-skin UI
@@ -14,7 +17,7 @@
 <?php /** @var string $field_code */ ?>
 <?php /** @var string $field_help_text */ ?>
 
-<div class="form-group row clearfix">
+<div class="form-group row cuar-clearfix">
     <label for="<?php echo esc_attr($field_name) ?>" class="label-container col-sm-3"><?php echo $field_label; ?></label>
     <div class="control-container col-sm-9">
         <?php echo $field_code; ?>

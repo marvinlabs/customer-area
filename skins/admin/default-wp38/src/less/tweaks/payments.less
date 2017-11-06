@@ -1,0 +1,68 @@
+.wp-admin.post-type-cuar_payment {
+  #post-body-content {
+    display: none;
+  }
+
+  .page-title-action {
+    display: none;
+  }
+}
+
+#poststuff #cuar_payment_data_metabox .inside {
+  padding: 0;
+
+  #minor-publishing {
+    padding: 0 12px 12px;
+  }
+}
+
+.cuar-payment-notes {
+  margin: 10px 0;
+  border-bottom: 1px solid #efefef;
+
+  #cuar_new_note_message {
+    margin-bottom: 10px;
+  }
+
+  .cuar-payment-note {
+    position: relative;
+    margin: 0;
+    border: 1px solid #efefef;
+    border-bottom: 0;
+    padding: 10px;
+
+    .cuar-message {
+      margin-top: 0.5em;
+      margin-bottom: 10px;
+    }
+    .cuar-timestamp {
+      color: #999;
+    }
+    .cuar-author {}
+
+    textarea {
+      min-width: 100%;
+      max-width: 100%;
+      display: inline-block;
+    }
+
+    .cuar-actions {
+      position: absolute;
+      top: 2px;
+      right: 0;
+      background-color: white;
+      opacity: 0;
+      padding: 2px 0 0;
+
+      a {
+        margin: 0 3px;
+      }
+    }
+
+    &:hover {
+      .cuar-actions {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -64,6 +64,8 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             if (is_admin()) {
                 add_filter('cuar/core/status/sections', array(&$this, 'add_status_sections'));
 
+                add_action('save_post_page', array(&$this, 'flush_rewrite_rules_for_wpca_pages'), 1000, 2);
+
                 // Settings
                 add_filter('cuar/core/settings/settings-tabs', array(&$this, 'add_settings_tab'), 300, 1);
 
@@ -331,7 +333,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             }
 
             // We expect a page. You should not make customer area pages in posts or any other custom post type.
-            if ( !is_page($page_id)) {
+            if (get_post_type($page_id) !== 'page') {
                 return false;
             }
 
@@ -348,6 +350,13 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
         }
 
         /*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
+
+        public function flush_rewrite_rules_for_wpca_pages($page_id, $page)
+        {
+            if ($this->is_customer_area_page($page_id)) {
+                flush_rewrite_rules();
+            }
+        }
 
         /**
          * Do not include the customer area pages in the search results
@@ -643,11 +652,12 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             if (isset($locations[$menu_name]) && $locations[$menu_name] > 0) {
                 $menu = wp_get_nav_menu_object($locations[$menu_name]);
                 if ($menu != false) {
-                    $menu_items = wp_get_nav_menu_items($menu->term_id);
-
-                    // Delete existing menu items
-                    foreach ($menu_items as $item) {
-                        wp_delete_post($item->ID, true);
+                    $menu_items = @wp_get_nav_menu_items($menu->term_id);
+                    if ( !empty($menu_items)) {
+                        // Delete existing menu items
+                        foreach ($menu_items as $item) {
+                            wp_delete_post($item->ID, true);
+                        }
                     }
                 }
             }
@@ -956,7 +966,7 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             $post_id = get_the_ID();
             if ( !cuar_is_customer_area_private_content($post_id)) return $content;
 
-            if ( cuar_is_customer_area_page( get_queried_object_id(), 'customer-search' ) ) return $content;
+            if (cuar_is_customer_area_page(get_queried_object_id(), 'customer-search')) return $content;
 
             if (empty($content)) return '';
 

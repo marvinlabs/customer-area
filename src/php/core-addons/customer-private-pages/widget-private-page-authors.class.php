@@ -50,9 +50,10 @@ class CUAR_PrivatePageAuthorsWidget extends CUAR_ContentAuthorsWidget {
 	}
 	
 	protected function get_link( $author_id ) {
-		$cuar_plugin = CUAR_Plugin::get_instance();
-		$cfp_addon = $cuar_plugin->get_addon( 'customer-private-pages' );
-		return $cfp_addon->get_author_archive_url( $author_id );
+		/** @var CUAR_CustomerPrivatePagesAddOn $addon */
+		$addon = cuar_addon( 'customer-private-pages' );
+
+		return $addon->get_author_archive_url( $author_id );
 	}
 	
 }
