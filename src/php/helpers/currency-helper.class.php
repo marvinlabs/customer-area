@@ -11,6 +11,11 @@ if ( !class_exists('CUAR_CurrencyHelper')) :
     class CUAR_CurrencyHelper
     {
 
+        public static function sanitizeAmount($amount)
+        {
+            return round((float)$amount, 2);
+        }
+
         /**
          * Ge the name of a currency given the currency code
          *
@@ -72,8 +77,7 @@ if ( !class_exists('CUAR_CurrencyHelper')) :
          */
         public static function getSymbol($currencyCode)
         {
-            switch ($currencyCode)
-            {
+            switch ($currencyCode) {
                 case "GBP" :
                     $symbol = '&pound;';
                     break;
@@ -114,8 +118,7 @@ if ( !class_exists('CUAR_CurrencyHelper')) :
             $symbol = self::getSymbol($currencyCode);
             $amount = number_format_i18n(doubleval($amount), 2);
 
-            if ($wrapper != null)
-            {
+            if ($wrapper != null) {
                 $symbol = '<' . $wrapper . ' class="cuar-currency">' . $symbol . '</' . $wrapper . '>';
                 $amount = '<' . $wrapper . ' class="cuar-amount">' . $amount . '</' . $wrapper . '>';
             }

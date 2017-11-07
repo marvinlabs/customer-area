@@ -16,6 +16,7 @@
       background: #e4e4e4;
       color: #555;
       overflow: hidden;
+      white-space: normal;
 
       a {
         outline: 0;
@@ -108,5 +109,25 @@
   .ui-tabs-panel {
     margin-left: @vertical-tab-width;
     border: 1px solid #ccc;
+
+    .form-table td h2 {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 782px) {
+    .tab-wrapper {
+      width: 100%;
+
+      .nav-tab {
+        width: 100%;
+        border-right: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+      }
+    }
+    .ui-tabs-panel {
+      margin-left: 0;
+      clear: both;
+    }
   }
 }

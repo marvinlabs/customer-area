@@ -1,6 +1,9 @@
 <?php /**
- * Template version: 3.0.0
+ * Template version: 3.1.0
  * Template zone: frontend
+ *
+ * -= 3.1.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
@@ -20,7 +23,7 @@ $current_user = $this->get_current_user();
 ?>
 
 <div class="page-heading">
-    <div class="media clearfix">
+    <div class="media cuar-clearfix">
         <div class="media-left pr30">
             <?php echo get_avatar($current_user->ID); ?>
         </div>

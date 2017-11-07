@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		7.3.0
+	Version: 		7.4.0
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -27,12 +27,12 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-if ( !defined('CUAR_PLUGIN_DIR')) define('CUAR_PLUGIN_DIR', plugin_dir_path(__FILE__));
+if ( !defined('CUAR_PLUGIN_DIR')) define('CUAR_PLUGIN_DIR', untrailingslashit(plugin_dir_path(__FILE__)));
 if ( !defined('CUAR_INCLUDES_DIR')) define('CUAR_INCLUDES_DIR', CUAR_PLUGIN_DIR . '/src/php');
 
 define('CUAR_LANGUAGE_DIR', 'customer-area/languages');
 
-define('CUAR_PLUGIN_VERSION', '7.3.0');
+define('CUAR_PLUGIN_VERSION', '7.4.0');
 define('CUAR_PLUGIN_URL', untrailingslashit(WP_PLUGIN_URL) . '/customer-area/'); // plugin_dir_url( __FILE__ ) );
 define('CUAR_SCRIPTS_URL', CUAR_PLUGIN_URL . 'scripts');
 define('CUAR_ADMIN_SKIN', 'plugin%%default-wp38');
@@ -45,6 +45,7 @@ define('CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', false);
 
 // Helpers
 include_once(CUAR_INCLUDES_DIR . '/helpers/address-helper.class.php');
+include_once(CUAR_INCLUDES_DIR . '/helpers/general-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/currency-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/country-helper.class.php');
 include_once(CUAR_INCLUDES_DIR . '/helpers/wordpress-helper.class.php');
@@ -55,6 +56,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-classes/Content/custom-taxonomy.class.ph
 
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Log/log-event.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Log/log-event-type.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-classes/Log/file-logger.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Log/logger.class.php');
 
 include_once(CUAR_INCLUDES_DIR . '/core-classes/Activation/plugin-activation-delegate.class.php');
@@ -126,6 +128,11 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/status/status-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/user-profile/user-profile-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/shortcodes/shortcodes-addon.class.php');
 include_once(CUAR_INCLUDES_DIR . '/core-addons/addresses/addresses-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments/payments-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments-home/payments-home-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments-checkout/payments-checkout-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments-success/payments-success-addon.class.php');
+include_once(CUAR_INCLUDES_DIR . '/core-addons/payments-failure/payments-failure-addon.class.php');
 
 // Core content types
 include_once(CUAR_INCLUDES_DIR . '/core-addons/private-page/private-page-addon.class.php');
@@ -148,6 +155,7 @@ include_once(CUAR_INCLUDES_DIR . '/core-addons/customer-private-pages/customer-p
 
 // Template functions
 include_once(CUAR_INCLUDES_DIR . '/functions/functions-general.php');
+include_once(CUAR_INCLUDES_DIR . '/functions/functions-payments.php');
 include_once(CUAR_INCLUDES_DIR . '/functions/functions-private-content.php');
 include_once(CUAR_INCLUDES_DIR . '/functions/functions-private-files.php');
 include_once(CUAR_INCLUDES_DIR . '/functions/functions-private-pages.php');

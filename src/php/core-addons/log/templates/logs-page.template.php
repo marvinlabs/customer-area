@@ -17,7 +17,7 @@
         <?php
         $start_date = isset($_POST['start-date']) ? sanitize_text_field($_POST['start-date']) : '';
         $end_date = isset($_POST['end-date']) ? sanitize_text_field($_POST['end-date']) : '';
-        $logger = CUAR_Plugin::get_instance()->get_logger();
+        $logger = cuar()->get_logger();
         $type_filter = isset($_POST['event-type']) ? $_POST['event-type'] : 0;
         ?>
 

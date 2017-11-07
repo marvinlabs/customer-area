@@ -1,5 +1,8 @@
 <?php
-/** Template version: 3.0.0
+/** Template version: 3.1.0
+ *
+ * -= 3.1.0 =-
+ * - Replace clearfix CSS classes with cuar-clearfix
  *
  * -= 3.0.0 =-
  * - Improve UI for new master-skin
@@ -27,7 +30,7 @@ $author = sprintf("<em>%s</em>", get_the_author_meta('display_name'));
 $recipients = sprintf("<em>%s</em>", cuar_get_the_owner());
 ?>
 
-<div class="cuar-single-post-header row mb-md clearfix">
+<div class="cuar-single-post-header row mb-md cuar-clearfix">
     <div class="cuar-js-slick-responsive">
 
             <div class="cuar-author slick-slide">

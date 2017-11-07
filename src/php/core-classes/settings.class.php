@@ -702,6 +702,54 @@ if ( !class_exists('CUAR_Settings')) :
         /**
          * Validate an enum value within an array
          *
+         * @param array  $input          Input array
+         * @param array  $validated      Output array
+         * @param string $option_id      Key of the value to check in the input array
+         * @param array  $select_options List of possible id => values
+         * @param bool   $multiple       Is multiple selection allowed
+         */
+        public function validate_select($input, &$validated, $option_id, $select_options, $multiple)
+        {
+            if ($multiple)
+            {
+                if (empty($input[$option_id])) $input[$option_id] = array();
+
+                if (!is_array($input[$option_id]))
+                {
+                    add_settings_error($option_id, 'settings-errors',
+                        $option_id . ': ' . $input[$option_id] . __(' is not a valid value', 'cuar'), 'error');
+                    $validated[$option_id] = $this->default_options [$option_id];
+
+                    return;
+                }
+
+                $validated[$option_id] = array();
+                foreach ($input[$option_id] as $item)
+                {
+                    if (isset($select_options[$item]))
+                    {
+                        $validated[$option_id][] = $item;
+                    }
+                }
+            }
+            else
+            {
+                if (is_array($input[$option_id]) || !isset($select_options[$input[$option_id]]))
+                {
+                    add_settings_error($option_id, 'settings-errors',
+                        $option_id . ': ' . $input[$option_id] . __(' is not a valid value', 'cuar'), 'error');
+                    $validated[$option_id] = $this->default_options [$option_id];
+
+                    return;
+                }
+
+                $validated[$option_id] = $input[$option_id];
+            }
+        }
+
+        /**
+         * Validate an enum value within an array
+         *
          * @param array  $input
          *            Input array
          * @param array  $validated
@@ -869,7 +917,7 @@ if ( !class_exists('CUAR_Settings')) :
          */
         public static function ajax_validate_license()
         {
-            $cuar_plugin = CUAR_Plugin::get_instance();
+            $cuar_plugin = cuar();
 
             $addon_id = $_POST["addon_id"];
             $license = $_POST["license"];
@@ -1117,13 +1165,25 @@ if ( !class_exists('CUAR_Settings')) :
                 echo $before;
             }
 
-            echo sprintf('<select id="%s" name="%s[%s]">', esc_attr($option_id), self::$OPTIONS_GROUP,
-                esc_attr($option_id));
+            $multiple = isset($multiple) ? $multiple : false;
+            $multiple = $multiple ? ' multiple="multiple" ' : '';
+
+            $option_name = sprintf('%s[%s]', self::$OPTIONS_GROUP, esc_attr($option_id));
+            $option_name = $multiple ? $option_name . '[]' : $option_name;
+
+            echo sprintf('<select id="%s" name="%s" %s>', esc_attr($option_id), $option_name, $multiple);
 
             $option_value = isset($this->options[$option_id]) ? $this->options[$option_id] : null;
-
-            foreach ($options as $value => $label) {
-                $selected = ($option_value == $value) ? 'selected="selected"' : '';
+            foreach ($options as $value => $label)
+            {
+                if (is_array($option_value))
+                {
+                    $selected = in_array($value, $option_value) ? 'selected="selected"' : '';
+                }
+                else
+                {
+                    $selected = ($option_value == $value) ? 'selected="selected"' : '';
+                }
 
                 echo sprintf('<option value="%s" %s>%s</option>', esc_attr($value), $selected, $label);
             }
@@ -1133,6 +1193,18 @@ if ( !class_exists('CUAR_Settings')) :
             if (isset($after)) {
                 echo $after;
             }
+
+            $this->plugin->enable_library('jquery.select2');
+            echo '<script type="text/javascript">
+                <!--
+                jQuery("document").ready(function ($) {
+                    $("#' . esc_attr($option_id) . '").select2({
+                        ' . (!is_admin() ? 'dropdownParent: $("#' . esc_attr($option_id) . '.parent()"),' : '') . '
+                        width: "100%"
+                    });
+                });
+                //-->
+            </script>';
         }
 
         /**
