@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		7.4.0
+	Version: 		7.4.1
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -32,7 +32,7 @@ if ( !defined('CUAR_INCLUDES_DIR')) define('CUAR_INCLUDES_DIR', CUAR_PLUGIN_DIR 
 
 define('CUAR_LANGUAGE_DIR', 'customer-area/languages');
 
-define('CUAR_PLUGIN_VERSION', '7.4.0');
+define('CUAR_PLUGIN_VERSION', '7.4.1');
 define('CUAR_PLUGIN_URL', untrailingslashit(WP_PLUGIN_URL) . '/customer-area/'); // plugin_dir_url( __FILE__ ) );
 define('CUAR_SCRIPTS_URL', CUAR_PLUGIN_URL . 'scripts');
 define('CUAR_ADMIN_SKIN', 'plugin%%default-wp38');
