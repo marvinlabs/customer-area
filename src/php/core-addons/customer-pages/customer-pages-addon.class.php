@@ -513,12 +513,12 @@ if ( !class_exists('CUAR_CustomerPagesAddOn')) :
             // Get menu at our location to bail early if not in the CUAR main nav menu
             $theme_locations = get_nav_menu_locations();
             if ( !isset($theme_locations['cuar_main_menu'])) {
-                return;
+                return $sorted_menu_items;
             }
 
             $menu = wp_get_nav_menu_object($theme_locations['cuar_main_menu']);
             if ( !isset($menu) || !$menu) {
-                return;
+                return $sorted_menu_items;
             }
 
             // Augment the pages list with their page IDs

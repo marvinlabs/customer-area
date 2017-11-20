@@ -48,6 +48,10 @@ class CUAR_PaymentStatus
         $statuses = self::get_payment_statuses();
 
         foreach ($statuses as $id => $label) {
+            if (in_array($id, array('publish', 'draft', 'pending'), true)) {
+                continue;
+            }
+
             register_post_status($id, array(
                 'label'                     => $label,
                 'public'                    => true,
