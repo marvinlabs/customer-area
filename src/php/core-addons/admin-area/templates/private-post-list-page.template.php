@@ -22,7 +22,7 @@
     ?>
     <form method="GET" action="<?php echo admin_url('admin.php'); ?>">
         <input type="hidden" name="referrer" value="<?php echo admin_url('admin.php?post_type=' . $post_type); ?>"/>
-        <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>"/>
+        <input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']) ?>"/>
 
         <?php $list_table->views(); ?>
         <br/>

@@ -12,7 +12,7 @@
 
     <form method="GET" action="<?php echo admin_url('admin.php'); ?>">
         <input type="hidden" name="cuar-do-logs-action" value="1"/>
-        <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>"/>
+        <input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']) ?>"/>
 
         <?php
         $start_date = isset($_POST['start-date']) ? sanitize_text_field($_POST['start-date']) : '';
