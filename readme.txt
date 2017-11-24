@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
 Tested up to:       4.9.0
-Stable tag:         7.4.2
+Stable tag:         7.4.3
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,10 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.4.3 (2017/11/22) =
+
+* Fix: minor security fix on a XSS vulnerability on some admin pages
 
 = 7.4.2 (2017/11/20) =
 
