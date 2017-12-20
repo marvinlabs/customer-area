@@ -431,7 +431,7 @@ if ( ! function_exists( 'cuar_dev_nuancier_print_html' ) ) {
 
 		$file = $current_skin_path . '/src/less/less-vars.css';
 
-		if ( $_SERVER['HTTP_HOST'] == 'local.wordpress.dev' && file_exists( $file ) ) {
+		if ( $_SERVER['HTTP_HOST'] == 'local.wordpress.test' && file_exists( $file ) ) {
 			$file_txt   = file_get_contents( $file );
 			$file_regex = '/(.cuar-dev-nuance-)([^\'\s\{]*)/';
 
@@ -460,7 +460,7 @@ if ( ! function_exists( 'cuar_dev_nuancier_print_styles' ) ) {
 
 		$css  = $current_skin_path . '/assets/css/less-vars.min.css';
 
-		if ( $_SERVER['HTTP_HOST'] == 'local.wordpress.dev' && file_exists( $css ) ) {
+		if ( $_SERVER['HTTP_HOST'] == 'local.wordpress.test' && file_exists( $css ) ) {
 			wp_register_style( 'customer-area-master-dev-nuancier', $current_skin_url . '/assets/css/less-vars.min.css' );
 			wp_enqueue_style( 'customer-area-master-dev-nuancier' );
 
