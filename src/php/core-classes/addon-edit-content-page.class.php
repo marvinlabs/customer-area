@@ -182,6 +182,9 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 $owners = array($legacy_owner_type => $owners);
             }
 
+	        // TODO : $owners is never returning an empty array, we have at least : array(1) { ["glo"]=> array(1) { [0]=> string(0) "" } }
+	        if (isset($owners['glo']) && isset($owners['glo'][0]) && $owners['glo'][0] == '' && !isset($owners['glo'][1])) unset($owners['glo']);
+
             return $owners;
         }
 
