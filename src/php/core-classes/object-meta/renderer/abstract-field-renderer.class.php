@@ -57,7 +57,7 @@ abstract class CUAR_AbstractFieldRenderer implements CUAR_FieldRenderer {
 	
 	// See CUAR_FieldRenderer
 	public function render_read_only_field( $id, $value ) {
-		$out = '<div class="cuar-field cuar-readonly-field cuar-' . $this->get_type() . '-field">' . "\n";
+		$out = '<div class="cuar-field cuar-readonly-field cuar-field-id-' . $id . ' cuar-' . $this->get_type() . '-field">' . "\n";
 				
 		$out .= apply_filters( 'cuar/core/fields/readonly/before-label?type=' . $this->get_type(), 	$this->get_before_readonly_field_label( $id, $value ), 	$this );
 		$out .= apply_filters( 'cuar/core/fields/readonly/label?type=' . $this->get_type(), 		$this->get_readonly_field_label( $id, $value ), 		$this );
@@ -101,7 +101,7 @@ abstract class CUAR_AbstractFieldRenderer implements CUAR_FieldRenderer {
 	// See CUAR_FieldRenderer
 	public function render_form_field( $id, $value ) {
 		
-		$out = '<div class="form-group cuar-field cuar-form-field cuar-' . $this->get_type() . '-field">' . "\n";
+		$out = '<div class="form-group cuar-field cuar-form-field cuar-field-id-' . $id . ' cuar-' . $this->get_type() . '-field">' . "\n";
 				
 		$out .= apply_filters( 'cuar/core/fields/form/before-label?type=' . $this->get_type(), 	$this->get_before_form_field_label( $id, $value ), 	$this );
 		$out .= apply_filters( 'cuar/core/fields/form/label?type=' . $this->get_type(), 		$this->get_form_field_label( $id, $value ), 		$this );
