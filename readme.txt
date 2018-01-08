@@ -105,6 +105,10 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.4.6 (2018/??/??) =
+
+* Tweak: add IDs to fields groups so we can manipulate them via CSS
+
 = 7.4.5 (2017/12/22) =
 
 * Fix: support for Notifications 6.3.1
