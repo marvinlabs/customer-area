@@ -253,19 +253,32 @@ if ( !class_exists('CUAR_AddOn')) :
             $license = $this->get_license_status();
 
             if ( !is_object($license) || !$license->success) {
-                $license_page_url = admin_url('options-general.php?page=wpca-settings&tab=cuar_licenses');
 
-                echo '<div class="error"><p>';
-                echo sprintf(__('You have invalid or expired license keys for WP Customer Area. Please go to the <a href="%s">Licenses page</a> to correct this issue.', 'cuar'),
-                    $license_page_url);
-                echo '</p><p>';
-                echo sprintf(__('If you do not know these license keys, you can find them listed on <a href="%s" target="_blank">your WP Customer Area account</a>.', 'cuar'),
-                    'https://wp-customerarea.com/my-account');
-                echo '</p></div>';
+	            add_action('admin_notices', array(&$this, 'print_invalid_license_admin_notice'), 10);
 
                 self::$HAS_NOTIFIED_INVALID_LICENSES = true;
             }
         }
+
+	    /**
+	     * Print admin notices for errors
+	     *
+	     * @access  public
+	     *
+	     * @return void
+	     */
+	    public function print_invalid_license_admin_notice()
+	    {
+		    $license_page_url = admin_url('options-general.php?page=wpca-settings&tab=cuar_licenses');
+
+		    echo '<div class="error"><p>';
+		    echo sprintf(__('You have invalid or expired license keys for WP Customer Area. Please go to the <a href="%s">Licenses page</a> to correct this issue.', 'cuar'),
+			    $license_page_url);
+		    echo '</p><p>';
+		    echo sprintf(__('If you do not know these license keys, you can find them listed on <a href="%s" target="_blank">your WP Customer Area account</a>.', 'cuar'),
+			    'https://wp-customerarea.com/my-account');
+		    echo '</p></div>';
+	    }
 
         /**
          * Check if license key is valid
