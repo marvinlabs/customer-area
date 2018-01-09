@@ -833,35 +833,34 @@ if ( !class_exists('CUAR_Settings')) :
          * @param string $option_id
          *            Key of the value to check in the input array
          */
-        public function validate_owners($input, &$validated, $option_id, $owner_type_option_id)
-        {
-            if (is_array($input[$option_id]) && !empty($input[$option_id])) {
-                $owners = array();
-	            foreach ($input[$option_id] as $type => $ids) {
-		            if ( !is_array($ids)) {
-			            $ids = array($ids);
-		            }
+	    public function validate_owners( $input, &$validated, $option_id, $owner_type_option_id ) {
+		    if ( is_array( $input[ $option_id ] ) && ! empty( $input[ $option_id ] ) ) {
+			    $owners = array();
+			    foreach ( $input[ $option_id ] as $type => $ids ) {
+				    if ( ! is_array( $ids ) ) {
+					    $ids = array( $ids );
+				    }
 
-		            // Check if $ids is not really empty
-		            $isNotEmpty = false;
-		            foreach ($ids as $id) {
-			            if ( !empty($id)) {
-				            $isNotEmpty = true;
-				            break;
-			            }
-		            }
+				    // Check if $ids is not really empty
+				    $isNotEmpty = false;
+				    foreach ( $ids as $id ) {
+					    if ( ! empty( $id ) ) {
+						    $isNotEmpty = true;
+						    break;
+					    }
+				    }
 
-		            if ($isNotEmpty) {
-			            $owners[$type] = $ids;
-		            }
-	            }
-                $validated[$option_id] = $owners;
-                $validated[$owner_type_option_id] = '';
-            } else {
-                add_settings_error($option_id, 'settings-errors', $option_id . ': ' . __('Invalid owner', 'cuar'), 'error');
-                $validated[$option_id] = $this->default_options [$option_id];
-            }
-        }
+				    if ( $isNotEmpty ) {
+					    $owners[ $type ] = $ids;
+				    }
+			    }
+			    $validated[ $option_id ]            = $owners;
+			    $validated[ $owner_type_option_id ] = '';
+		    } else {
+			    add_settings_error( $option_id, 'settings-errors', $option_id . ': ' . __( 'Invalid owner', 'cuar' ), 'error' );
+			    $validated[ $option_id ] = $this->default_options [ $option_id ];
+		    }
+	    }
 
         /**
          * Validate a term id (for now, we just check it is not empty and strictly positive)
