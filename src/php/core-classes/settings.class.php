@@ -833,7 +833,8 @@ if ( !class_exists('CUAR_Settings')) :
          * @param string $option_id
          *            Key of the value to check in the input array
          */
-	    public function validate_owners( $input, &$validated, $option_id, $owner_type_option_id ) {
+	    public function validate_owners( $input, &$validated, $option_id, $owner_type_option_id )
+	    {
 		    if ( is_array( $input[ $option_id ] ) && ! empty( $input[ $option_id ] ) ) {
 			    $owners = array();
 			    foreach ( $input[ $option_id ] as $type => $ids ) {
