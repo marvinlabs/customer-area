@@ -105,20 +105,21 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.4.6 (2018/??/??) =
+= 7.4.5 (2018/01/09) =
 
 * Tweak: add IDs to fields groups so we can manipulate them via CSS
-
-= 7.4.5 (2017/12/22) =
-
-* Fix: support for Notifications 6.3.1
-* Fix: support for Projects 4.1.3
+* Fix: licence warning were ouput too early and could generate a "headers already sent" error
 
 **Add-on changes**
 
 * **Projects** - Fix: bug for new project notifications
 * **Notifications** - Fix: some notifications where not properly sent
 * **Notifications** - Fix: infinite recursion when notifying of a new project
+* **Collaboration** - Tweak: hide the owner tab while creating content from front-office if user role is allowed to select one
+* **Conversations** - Tweak: hide the owner tab while creating content from front-office if user role is allowed to select one
+* **Tasks** - Tweak: hide the owner tab while creating content from front-office if user role is allowed to select one
+* **Stripe Gateway** - Fix: undefined index licence key error
+* **PayPal Gateway** - Fix: undefined index licence key error
 
 = 7.4.4 (2017/11/24) =
 
