@@ -521,6 +521,18 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
             do_action('cuar/private-content/edit/after_submit_button', $this, $step_id);
         }
 
+	    public function print_submit_disabled_button($field_label, $step_id)
+	    {
+		    do_action('cuar/private-content/edit/before_submit_disabled_button', $this, $step_id);
+
+		    include($this->plugin->get_template_file_path(
+			    CUAR_INCLUDES_DIR . '/core-classes',
+			    'edit-content-form-field-submit-disabled.template.php',
+			    'templates'));
+
+		    do_action('cuar/private-content/edit/after_submit_disabled_button', $this, $step_id);
+	    }
+
         public function print_title_field($label, $help_text = '')
         {
             $title = '';

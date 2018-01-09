@@ -1,6 +1,13 @@
 <?php /**
- * Template version: 3.0.0
+ * Template version: 3.1.0
  * Template zone: admin|frontend
+ *
+ *  * -= 3.1.0 =-
+ * - Remove alert box to only keep hidden field
+ *
+ * -= 3.0.0 =-
+ * - Initial version
+ *
  */ ?>
 
 <?php /** @var array $owners */ ?>
@@ -14,8 +21,4 @@
         <input type="hidden" name="<?php echo $field_prefix . $type . '[' . $i . ']'; ?>" value="<?php echo $owner_id; ?>" />
     <?php endforeach; ?>
 <?php endforeach; ?>
-
-<p class="alert alert-default">
-    <i class="fa fa-info-circle mr-xs"></i> <?php _e('You are not allowed to select an owner', 'cuar'); ?>
-</p>
 
