@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
 Tested up to:       4.9.0
-Stable tag:         7.4.4
+Stable tag:         7.4.5
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,21 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.4.6 (2018/??/??) =
+
+* Tweak: add IDs to fields groups so we can manipulate them via CSS
+
+= 7.4.5 (2017/12/22) =
+
+* Fix: support for Notifications 6.3.1
+* Fix: support for Projects 4.1.3
+
+**Add-on changes**
+
+* **Projects** - Fix: bug for new project notifications
+* **Notifications** - Fix: some notifications where not properly sent
+* **Notifications** - Fix: infinite recursion when notifying of a new project
 
 = 7.4.4 (2017/11/24) =
 
