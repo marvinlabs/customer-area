@@ -837,13 +837,24 @@ if ( !class_exists('CUAR_Settings')) :
         {
             if (is_array($input[$option_id]) && !empty($input[$option_id])) {
                 $owners = array();
-                foreach ($input[$option_id] as $type => $ids) {
-                    if (is_array($ids)) {
-                        $owners[$type] = $ids;
-                    } else {
-                        $owners[$type] = array($ids);
-                    }
-                }
+	            foreach ($input[$option_id] as $type => $ids) {
+		            if ( !is_array($ids)) {
+			            $ids = array($ids);
+		            }
+
+		            // Check if $ids is not really empty
+		            $isNotEmpty = false;
+		            foreach ($ids as $id) {
+			            if ( !empty($id)) {
+				            $isNotEmpty = true;
+				            break;
+			            }
+		            }
+
+		            if ($isNotEmpty) {
+			            $owners[$type] = $ids;
+		            }
+	            }
                 $validated[$option_id] = $owners;
                 $validated[$owner_type_option_id] = '';
             } else {
