@@ -76,6 +76,9 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 1000);
             }
 
+	        // Ajax Summernote Insert image
+	        add_action('wp_ajax_cuar_insert_image', array(&$this, 'ajax_insert_image'));
+
             if ($this->get_wizard_step_count() > 1) {
                 // Enable rewrite rules for the wizard steps
                 $this->enable_wizard_permalinks();
@@ -590,8 +593,8 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
                     esc_attr($content));
             } else {
-                $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%1$s</textarea>',
-                    esc_attr($content));
+                $field_code = sprintf('%2$s<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%1$s</textarea>',
+                    esc_attr($content), wp_nonce_field( 'cuar_insert_image', 'cuar_insert_image_nonce' ));
             }
 
             $this->print_form_field('cuar_content', $label, $field_code, $help_text);
@@ -740,6 +743,102 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
             return $this->current_post;
         }
+
+	    /*------- AJAX HANDLING -----------------------------------------------------------------------------------------*/
+
+	    public function ajax_delete_image()
+	    {
+	    	// TODO: allow server images deletion ?
+	    }
+
+	    public function ajax_insert_image()
+	    {
+
+	    	// TODO: add an alert box before the rich editor so we can send error message via jQuery responses.
+		    $fileErrors = array(
+			    0 => __( 'There is no error, the file uploaded with success', 'cuar' ),
+			    1 => __( 'The uploaded file exceeds the upload_max_files in server settings', 'cuar' ),
+			    2 => __( 'The uploaded file exceeds the MAX_FILE_SIZE from html form', 'cuar' ),
+			    3 => __( 'The uploaded file uploaded only partially', 'cuar' ),
+			    4 => __( 'No file was uploaded', 'cuar' ),
+			    6 => __( 'Missing a temporary folder', 'cuar' ),
+			    7 => __( 'Failed to write file to disk', 'cuar' ),
+			    8 => __( 'A PHP extension stopped file to upload', 'cuar' )
+		    );
+
+		    $posted_data = isset( $_POST ) ? $_POST : array();
+		    $file_data   = isset( $_FILES ) ? $_FILES : array();
+		    $data        = array_merge( $posted_data, $file_data );
+		    $response    = array();
+
+		    check_ajax_referer( 'cuar_insert_image', 'nonce' );
+
+		    // TODO: Need to upload files into wp-content/customer-area/editor-uploads ?
+		    $upload_dir  = wp_upload_dir();
+		    $upload_path = $upload_dir['basedir'] . '/wpca/';
+		    $upload_url  = $upload_dir['baseurl'] . '/wpca/';
+
+		    // TODO: Throw error if folder could not be created
+		    if ( ! file_exists( $upload_path ) ) {
+			    mkdir( $upload_path );
+		    }
+
+		    // TODO: Rename file to a has to prevent duplicate or at least place them in a custom folder based on current user ID ? We can't use post ID, since post is not created yet while uploading.
+		    $fileName        = $data['file']['name'];
+		    $fileNameChanged = str_replace( ' ', '_', $fileName );
+		    $temp_name       = $data['file']['tmp_name'];
+		    $file_size       = $data['file']['size'];
+		    $fileError       = $data['file']['error'];
+
+		    // TODO: Use server MAX_FILE_SIZE instead of $mb OR add new WPCA setting to set the rich-editor max file size ?
+		    $mb                    = 2 * 1024 * 1024;
+
+		    $targetPath            = $upload_path;
+		    $response['filename']  = $fileName;
+		    $response['name']      = pathinfo( $fileName, PATHINFO_FILENAME );
+		    $response['file_size'] = $file_size;
+
+		    if ( $fileError > 0 ) {
+			    $response['response'] = 'ERROR';
+			    $response['error']    = $fileErrors[ $fileError ];
+		    } else {
+			    if ( file_exists( $targetPath . '/' . $fileNameChanged ) ) {
+				    $response['response'] = 'ERROR';
+				    $response['error']    = __( 'File already exists.', 'cuar' );
+			    } else {
+				    if ( $file_size <= $mb ) {
+					    if ( move_uploaded_file( $temp_name, $targetPath . '/' . $fileNameChanged ) ) {
+						    $response['response'] = 'SUCCESS';
+						    $response['url']      = $upload_url . '/' . $fileNameChanged;
+						    $file                 = pathinfo( $targetPath . '/' . $fileNameChanged );
+
+						    if ( $file && isset( $file['extension'] ) ) {
+							    $type = $file['extension'];
+							    if ( $type === 'jpeg'
+							         || $type === 'jpg'
+							         || $type === 'png'
+							         || $type === 'gif'
+							    ) {
+								    $type = 'image/' . $type;
+							    }
+							    $response['type'] = $type;
+						    }
+
+					    } else {
+						    $response['response'] = 'ERROR';
+						    $response['error']    = __( 'Upload Failed.', 'cuar' );
+					    }
+
+				    } else {
+					    $response['response'] = 'ERROR';
+					    $response['error']    = __( 'File is too large. Max file size is 2 MB.', 'cuar' );
+				    }
+			    }
+		    }
+
+		    echo json_encode( $response );
+		    die();
+	    }
 
         /*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 
