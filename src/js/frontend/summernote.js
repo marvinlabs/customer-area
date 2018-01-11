@@ -1,8 +1,12 @@
 function bootstrapSummernote($, editorSelector) {
-    // Bail if summernote is not loaded
-    if (!$.isFunction($.fn.summernote)) return;
+    "use strict";
 
-    function jsError(string){
+    // Bail if summernote is not loaded
+    if (!$.isFunction($.fn.summernote)) {
+        return;
+    }
+
+    function jsError(string) {
         $(editorSelector + ' + .note-editor > .note-toolbar > .cuar-js-manager-errors').hide().empty().append(
             '<div class="alert alert-danger alert-dismissable cuar-js-error-item mbn mt-xs" style="margin-right: 5px; line-height: 1.2em;">' +
             '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
@@ -12,8 +16,7 @@ function bootstrapSummernote($, editorSelector) {
 
     function sendImage(file) {
         if (!file.type.includes('image')) {
-            jsError("The type of file you tried to upload is not an image");
-            return;
+            return jsError("The type of file you tried to upload is not an image.");
         }
 
         var data = new FormData();
@@ -38,11 +41,11 @@ function bootstrapSummernote($, editorSelector) {
                     $(editorSelector).summernote('insertImage', data.url, data.name);
                 }
                 else {
-                    console.log(data.error);
+                    return jsError(data.error);
                 }
             }
         }).fail(function (e) {
-            console.log(e);
+            return jsError("We could not get answer from the server, please contact site administrator.");
         });
     }
 
@@ -71,13 +74,15 @@ function bootstrapSummernote($, editorSelector) {
     };
 
     if (typeof cuar !== 'undefined') {
-        snOptions['lang'] = cuar.locale;
+        snOptions.lang = cuar.locale;
     }
 
     $(editorSelector).summernote(snOptions);
 }
 
 jQuery(document).ready(function ($) {
+    "use strict";
+
     if ($('.cuar-form .cuar-js-wizard-section').length > 0) {
         $('#cuar-js-content-container').on('cuar:wizard:initialized', function () {
             bootstrapSummernote($, ".cuar-wizard .cuar-js-richeditor");
