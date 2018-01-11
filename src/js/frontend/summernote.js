@@ -7,10 +7,12 @@ function bootstrapSummernote($, editorSelector) {
 
             var data = new FormData();
             var nonce = $("#cuar_insert_image_nonce").val();
+            var type = $("#cuar_post_type").val();
 
             data.append('file', file);
             data.append('action', 'cuar_insert_image');
             data.append("nonce", nonce );
+            data.append("post_type", type );
 
             $.ajax({
                 url: cuar.ajaxUrl,

@@ -593,11 +593,10 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 		        $field_code = sprintf( '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
 			        esc_attr( $content ) );
 	        } else {
-                $post_type = $this->get_friendly_post_type();
 		        $field_code = sprintf( '<input type="hidden" id="cuar_post_type" name="cuar_post_type" value="%1$s">'
 		                               . '%2$s'
 		                               . '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%3$s</textarea>',
-			        $post_type,
+			        $this->get_friendly_post_type(),
 			        wp_nonce_field( 'cuar_insert_image', 'cuar_insert_image_nonce' ),
 			        esc_attr( $content ));
 	        }
