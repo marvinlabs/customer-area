@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
 Tested up to:       4.9.0
-Stable tag:         7.4.5
+Stable tag:         7.4.6
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,10 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.4.6 (2018/??/??) =
+
+* Fix: frontend rich editor were not properly usable on fullscreen mode due to popups not showing up
 
 = 7.4.5 (2018/01/09) =
 
