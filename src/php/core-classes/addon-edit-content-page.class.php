@@ -589,13 +589,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 $content = $this->get_current_post()->post_content;
             }
 
-            // TODO: get post_type needed to send to ajax_insert_image to verify user permission to create content
-            $post_type = '';
-
 	        if ( ! $this->is_rich_editor_enabled() ) {
 		        $field_code = sprintf( '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
 			        esc_attr( $content ) );
 	        } else {
+                $post_type = $this->get_friendly_post_type();
 		        $field_code = sprintf( '<input type="hidden" id="cuar_post_type" name="cuar_post_type" value="%1$s">'
 		                               . '%2$s'
 		                               . '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%3$s</textarea>',
