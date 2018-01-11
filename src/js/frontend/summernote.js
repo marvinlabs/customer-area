@@ -2,40 +2,48 @@ function bootstrapSummernote($, editorSelector) {
     // Bail if summernote is not loaded
     if (!$.isFunction($.fn.summernote)) return;
 
+    function jsError(string){
+        $(editorSelector + ' + .note-editor > .note-toolbar > .cuar-js-manager-errors').hide().empty().append(
+            '<div class="alert alert-danger alert-dismissable cuar-js-error-item mbn mt-xs" style="margin-right: 5px; line-height: 1.2em;">' +
+            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+            '<span class="cuar-js-error-content" style="font-weight: lighter!important;">' + string + '</span>' +
+            '</div>').show();
+    }
+
     function sendImage(file) {
-        if (file.type.includes('image')) {
-
-            var data = new FormData();
-            var nonce = $("#cuar_insert_image_nonce").val();
-            var type = $("#cuar_post_type").val();
-
-            data.append('file', file);
-            data.append('action', 'cuar_insert_image');
-            data.append("nonce", nonce );
-            data.append("post_type", type );
-
-            $.ajax({
-                url: cuar.ajaxUrl,
-                type: 'POST',
-                contentType: false,
-                cache: false,
-                processData: false,
-                dataType: 'JSON',
-                data: data,
-                success: function(data, textStatus, jqXHR) {
-                    if( data.response === "SUCCESS" ){
-                        $(editorSelector).summernote('insertImage', data.url, data.name);
-                    }
-                    else {
-                        console.log(data.error);
-                    }
-                }
-            }).fail(function (e) {
-                console.log(e);
-            });
-        } else {
-            console.log("The type of file you tried to upload is not an image");
+        if (!file.type.includes('image')) {
+            jsError("The type of file you tried to upload is not an image");
+            return;
         }
+
+        var data = new FormData();
+        var nonce = $("#cuar_insert_image_nonce").val();
+        var type = $("#cuar_post_type").val();
+
+        data.append('file', file);
+        data.append('action', 'cuar_insert_image');
+        data.append("nonce", nonce);
+        data.append("post_type", type);
+
+        $.ajax({
+            url: cuar.ajaxUrl,
+            type: 'POST',
+            contentType: false,
+            cache: false,
+            processData: false,
+            dataType: 'JSON',
+            data: data,
+            success: function (data, textStatus, jqXHR) {
+                if (data.response === "SUCCESS") {
+                    $(editorSelector).summernote('insertImage', data.url, data.name);
+                }
+                else {
+                    console.log(data.error);
+                }
+            }
+        }).fail(function (e) {
+            console.log(e);
+        });
     }
 
     var snOptions = {
@@ -49,13 +57,13 @@ function bootstrapSummernote($, editorSelector) {
             ['tools', ['undo', 'redo', 'help']]
         ],
         callbacks: {
-            onInit: function() {
+            onInit: function () {
                 $('body > .note-popover').appendTo("#cuar-js-content-container");
+
+                $(editorSelector + ' + .note-editor > .note-toolbar').append('<div class="cuar-js-manager-errors" style="display: none;"></div>');
             },
-            onImageUpload: function(files)
-            {
-                for(var i = 0; i < files.length; i++)
-                {
+            onImageUpload: function (files) {
+                for (var i = 0; i < files.length; i++) {
                     sendImage(files[i]);
                 }
             }
