@@ -45,7 +45,7 @@ function bootstrapSummernote($, editorSelector) {
                 }
             }
         }).fail(function (e) {
-            return jsError("We could not get answer from the server, please contact site administrator.");
+            return jsError("We could not get a proper answer from the server, please contact site administrator.");
         });
     }
 
