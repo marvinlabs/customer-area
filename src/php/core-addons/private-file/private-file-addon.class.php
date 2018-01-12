@@ -980,7 +980,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
 
             // If not a known action, do nothing
             $action = get_query_var('cuar_action');
-            if ($action != 'download' && $action != 'view') {
+            if ($action !== 'download' && $action !== 'view') {
                 return;
             }
 
@@ -1003,8 +1003,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $author_id = $post->post_author;
             $is_current_user_owner = $po_addon->is_user_owner_of_post($post->ID, $current_user_id);
 
-            if ( !($is_current_user_owner || $author_id == $current_user_id || current_user_can('cuar_view_any_cuar_private_file'))) {
-                wp_die(__("You are not authorized to access this file", "cuar"));
+            if ( !($is_current_user_owner || $author_id === $current_user_id || current_user_can('cuar_view_any_cuar_private_file'))) {
+                wp_die(__( 'You are not authorized to access this file', 'cuar' ));
                 exit();
             }
 
@@ -1020,8 +1020,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // File not found
-            if ($found_file == null) {
-                wp_die(__("There is no such file attached to this private content", "cuar"));
+            if ($found_file === null) {
+                wp_die(__( 'There is no such file attached to this private content', 'cuar' ));
                 exit();
             }
 
@@ -1032,7 +1032,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
 	        // Seems we are all good, do some stuff before sending the file
-            if ($author_id != $current_user_id) {
+            if ($author_id !== $current_user_id) {
                 $this->increment_file_download_count($post->ID, $file_id);
             }
             do_action('cuar/private-content/files/on-' . $action, $post->ID, $current_user_id, $this, $file_id);
