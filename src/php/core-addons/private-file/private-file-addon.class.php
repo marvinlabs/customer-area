@@ -1026,13 +1026,12 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             }
 
             // Default action to apply on file
-            if ( !isset($_GET['force-download']) && $_GET['force-download'] != 1) {
+	        $action = 'download';
+	        if ( !isset($_GET['force-download']) || ( isset($_GET['force-download']) && $_GET['force-download'] !== 1)) {
                 $action = apply_filters('cuar/private-content/files/default-action', $action, $found_file);
-            } else {
-                $action = 'download';
             }
 
-            // Seems we are all good, do some stuff before sending the file
+	        // Seems we are all good, do some stuff before sending the file
             if ($author_id != $current_user_id) {
                 $this->increment_file_download_count($post->ID, $file_id);
             }
