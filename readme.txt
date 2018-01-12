@@ -108,6 +108,7 @@ feel free to fork the project and send us pull requests!
 = 7.4.6 (2018/??/??) =
 
 * Fix: frontend rich editor were not properly usable on fullscreen mode due to popups not showing up
+* Fix: notice: Undefined index: force-download when trying to download an inline file
 
 = 7.4.5 (2018/01/09) =
 
