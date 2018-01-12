@@ -976,7 +976,9 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         public function handle_file_actions()
         {
             // If not on a matching post type, we do nothing
-            if ( !is_singular('cuar_private_file')) return;
+            if ( !is_singular('cuar_private_file')) {
+	            return;
+            }
 
             // If not a known action, do nothing
             $action = get_query_var('cuar_action');
@@ -1013,7 +1015,7 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $found_file = null;
             foreach ($files as $fid => $file) {
                 // Default case
-                if ($fid == $file_id) {
+                if ($fid === $file_id) {
                     $found_file = $file;
                     break;
                 }
