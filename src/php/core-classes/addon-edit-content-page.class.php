@@ -762,28 +762,19 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 		    $file_data   = isset( $_FILES ) ? $_FILES : null;
 		    $data        = array_merge( $posted_data, $file_data );
 		    $post_type   = isset( $data['post_type'] ) ? $data['post_type'] : null;
-		    $response    = array();
 
 		    // Check nonce
 		    check_ajax_referer( 'cuar_insert_image', 'nonce' );
 
 		    // Check permissions
 		    if ( empty( $post_type ) || ! current_user_can( $post_type . '_create_content' ) ) {
-			    $response['response'] = 'ERROR';
-			    $response['error']    = __( 'It looks looks like you are not allowed to create content for this kind of post type.', 'cuar' );
-
-			    echo json_encode( $response );
-			    die();
+			    wp_send_json_error(__('It looks looks like you are not allowed to create content for this kind of post type.', 'cuar'));
 		    }
 
 		    // Check uploaded file
 		    if (empty($file_data))
 		    {
-			    $response['response'] = 'ERROR';
-			    $response['error']    = __('No file has been uploaded', 'cuar');
-
-			    echo json_encode( $response );
-			    die();
+			    wp_send_json_error(__('No file has been uploaded', 'cuar'));
 		    }
 
 		    // Check file type
@@ -791,11 +782,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 		    $arr_file_type = wp_check_filetype( basename( $data['file']['name'] ) );
 		    $uploaded_type = $arr_file_type['type'];
 		    if ( ! in_array( $uploaded_type, $supported_types, true ) ) {
-			    $response['response'] = 'ERROR';
-			    $response['error']    = sprintf( __( 'This file type is not allowed. You can only upload: %s', 'cuar' ), implode( ', ', $supported_types ) );
-
-			    echo json_encode( $response );
-			    die();
+			    wp_send_json_error(sprintf( __( 'This file type is not allowed. You can only upload: %s', 'cuar' ), implode( ', ', $supported_types ) ));
 		    }
 
 		    // Set custom upload dir
@@ -805,17 +792,14 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
 		    // Send results
 		    if ( $upload_result && ! isset( $upload_result['error'] ) ) {
-			    $response['response'] = 'SUCCESS';
-			    $response['filename'] = basename( $upload_result['url'] );
-			    $response['url']      = $upload_result['url'];
-			    $response['type']     = $upload_result['type'];
+			    wp_send_json_success( array(
+				    'filename' => basename( $upload_result['url'] ),
+				    'url'      => $upload_result['url'],
+				    'type'     => $upload_result['type']
+			    ) );
 		    } else {
-			    $response['response'] = 'ERROR';
-			    $response['error']    = sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload_result['error'] );
+			    wp_send_json_error( sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload_result['error'] ) );
 		    }
-
-		    echo json_encode( $response );
-		    die();
 	    }
 
 	    /**
@@ -828,7 +812,6 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 		    remove_filter( 'upload_dir', array( &$this, 'custom_editor_images_upload_dir' ) );
 
 		    $wp_upload_locations = wp_upload_dir();
-		    $response            = array();
 
 		    $dir = $wp_upload_locations['basedir'];
 		    $url = $wp_upload_locations['baseurl'];
@@ -839,11 +822,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 		    $url .= $subdir;
 
 		    if ( ! file_exists( $dir ) && ! wp_mkdir_p( $dir ) ) {
-			    $response['response'] = 'ERROR';
-			    $response['error']    = sprintf( __( 'An error happened while creating the folder: %s', 'cuar' ), $dir );
-
-			    echo json_encode( $response );
-			    die();
+			    wp_send_json_error(sprintf( __( 'An error happened while creating the folder: %s', 'cuar' ), $dir ));
 		    }
 
 		    $custom_dir = array(

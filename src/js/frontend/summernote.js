@@ -36,12 +36,12 @@ function bootstrapSummernote($, editorSelector) {
             processData: false,
             dataType: 'JSON',
             data: data,
-            success: function (data, textStatus, jqXHR) {
-                if (data.response === "SUCCESS") {
-                    $(editorSelector).summernote('insertImage', data.url, data.name);
+            success: function (response, textStatus, jqXHR) {
+                if (response.success === true) {
+                    $(editorSelector).summernote('insertImage', response.data.url, response.data.name);
                 }
                 else {
-                    return jsError(data.error);
+                    return jsError(response.data.error);
                 }
             }
         }).fail(function (e) {
