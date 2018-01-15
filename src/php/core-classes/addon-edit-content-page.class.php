@@ -757,98 +757,105 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
 	    public function ajax_insert_image()
 	    {
-
-		    // TODO: add an alert box before the rich editor so we can send error message via jQuery responses.
-		    $fileErrors = array(
-			    0 => __( 'There is no error, the file uploaded with success', 'cuar' ),
-			    1 => __( 'The uploaded file exceeds the upload_max_files in server settings', 'cuar' ),
-			    2 => __( 'The uploaded file exceeds the MAX_FILE_SIZE from html form', 'cuar' ),
-			    3 => __( 'The uploaded file uploaded only partially', 'cuar' ),
-			    4 => __( 'No file was uploaded', 'cuar' ),
-			    6 => __( 'Missing a temporary folder', 'cuar' ),
-			    7 => __( 'Failed to write file to disk', 'cuar' ),
-			    8 => __( 'A PHP extension stopped file to upload', 'cuar' )
-		    );
-
-		    $posted_data = isset( $_POST ) ? $_POST : array();
-		    $file_data   = isset( $_FILES ) ? $_FILES : array();
+		    // Prepare datas
+		    $posted_data = isset( $_POST ) ? $_POST : null;
+		    $file_data   = isset( $_FILES ) ? $_FILES : null;
 		    $data        = array_merge( $posted_data, $file_data );
-		    $post_type   = isset( $data['post_type'] ) ? $data['post_type'] : '';
+		    $post_type   = isset( $data['post_type'] ) ? $data['post_type'] : null;
 		    $response    = array();
 
+		    // Check nonce
 		    check_ajax_referer( 'cuar_insert_image', 'nonce' );
 
-		    if ( ! empty( $post_type ) && current_user_can( $post_type . '_create_content' )) {
-
-			    // TODO: Need to upload files into wp-content/customer-area/editor-uploads ?
-			    $upload_dir  = wp_upload_dir();
-			    $upload_path = $upload_dir['basedir'] . '/wpca/';
-			    $upload_url  = $upload_dir['baseurl'] . '/wpca/';
-
-			    // TODO: Throw error if folder could not be created
-			    if ( ! file_exists( $upload_path ) ) {
-				    mkdir( $upload_path );
-			    }
-
-			    // TODO: Rename file to a has to prevent duplicate or at least place them in a custom folder based on current user ID ? We can't use post ID, since post is not created yet while uploading.
-			    $fileName        = $data['file']['name'];
-			    $fileNameChanged = str_replace( ' ', '_', $fileName );
-			    $temp_name       = $data['file']['tmp_name'];
-			    $file_size       = $data['file']['size'];
-			    $fileError       = $data['file']['error'];
-
-			    // TODO: Use server MAX_FILE_SIZE instead of $mb OR add new WPCA setting to set the rich-editor max file size ?
-			    $mb = 2 * 1024 * 1024;
-
-			    $targetPath            = $upload_path;
-			    $response['filename']  = $fileName;
-			    $response['name']      = pathinfo( $fileName, PATHINFO_FILENAME );
-			    $response['file_size'] = $file_size;
-
-			    if ( $fileError > 0 ) {
-				    $response['response'] = 'ERROR';
-				    $response['error']    = $fileErrors[ $fileError ];
-			    } else {
-				    if ( file_exists( $targetPath . '/' . $fileNameChanged ) ) {
-					    $response['response'] = 'ERROR';
-					    $response['error']    = __( 'File already exists.', 'cuar' );
-				    } else {
-					    if ( $file_size <= $mb ) {
-						    if ( move_uploaded_file( $temp_name, $targetPath . '/' . $fileNameChanged ) ) {
-							    $response['response'] = 'SUCCESS';
-							    $response['url']      = $upload_url . '/' . $fileNameChanged;
-							    $file                 = pathinfo( $targetPath . '/' . $fileNameChanged );
-
-							    if ( $file && isset( $file['extension'] ) ) {
-								    $type = $file['extension'];
-								    if ( $type === 'jpeg'
-								         || $type === 'jpg'
-								         || $type === 'png'
-								         || $type === 'gif'
-								    ) {
-									    $type = 'image/' . $type;
-								    }
-								    $response['type'] = $type;
-							    }
-
-						    } else {
-							    $response['response'] = 'ERROR';
-							    $response['error']    = __( 'Upload Failed.', 'cuar' );
-						    }
-
-					    } else {
-						    $response['response'] = 'ERROR';
-						    $response['error']    = __( 'File is too large. Max file size is 2 MB.', 'cuar' );
-					    }
-				    }
-			    }
-		    } else {
+		    // Check permissions
+		    if ( empty( $post_type ) || ! current_user_can( $post_type . '_create_content' ) ) {
 			    $response['response'] = 'ERROR';
 			    $response['error']    = __( 'It looks looks like you are not allowed to create content for this kind of post type.', 'cuar' );
+
+			    echo json_encode( $response );
+			    die();
+		    }
+
+		    // Check uploaded file
+		    if (empty($file_data))
+		    {
+			    $response['response'] = 'ERROR';
+			    $response['error']    = __('No file has been uploaded', 'cuar');
+
+			    echo json_encode( $response );
+			    die();
+		    }
+
+		    // Check file type
+		    $supported_types = apply_filters( 'cuar/private-content/editor-images/supported-types', array('image/jpeg', 'image/gif', 'image/png'));
+		    $arr_file_type = wp_check_filetype( basename( $data['file']['name'] ) );
+		    $uploaded_type = $arr_file_type['type'];
+		    if ( ! in_array( $uploaded_type, $supported_types, true ) ) {
+			    $response['response'] = 'ERROR';
+			    $response['error']    = sprintf( __( 'This file type is not allowed. You can only upload: %s', 'cuar' ), implode( ', ', $supported_types ) );
+
+			    echo json_encode( $response );
+			    die();
+		    }
+
+		    // Set custom upload dir
+		    add_filter( 'upload_dir', array( &$this, 'custom_editor_images_upload_dir' ) );
+		    $upload_result = wp_handle_upload( $data['file'], array( 'test_form' => false ) );
+		    remove_filter( 'upload_dir', array( &$this, 'custom_editor_images_upload_dir' ) );
+
+		    // Send results
+		    if ( $upload_result && ! isset( $upload_result['error'] ) ) {
+			    $response['response'] = 'SUCCESS';
+			    $response['filename'] = basename( $upload_result['url'] );
+			    $response['url']      = $upload_result['url'];
+			    $response['type']     = $upload_result['type'];
+		    } else {
+			    $response['response'] = 'ERROR';
+			    $response['error']    = sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload_result['error'] );
 		    }
 
 		    echo json_encode( $response );
 		    die();
+	    }
+
+	    /**
+	     * Change the upload directory on the fly when uploading our private file
+	     *
+	     * @return array
+	     */
+	    public function custom_editor_images_upload_dir()
+	    {
+		    remove_filter( 'upload_dir', array( &$this, 'custom_editor_images_upload_dir' ) );
+
+		    $wp_upload_locations = wp_upload_dir();
+		    $response            = array();
+
+		    $dir = $wp_upload_locations['basedir'];
+		    $url = $wp_upload_locations['baseurl'];
+
+		    $subdir = '/' . 'customer-area';
+
+		    $dir .= $subdir;
+		    $url .= $subdir;
+
+		    if ( ! file_exists( $dir ) && ! wp_mkdir_p( $dir ) ) {
+			    $response['response'] = 'ERROR';
+			    $response['error']    = sprintf( __( 'An error happened while creating the folder: %s', 'cuar' ), $dir );
+
+			    echo json_encode( $response );
+			    die();
+		    }
+
+		    $custom_dir = array(
+			    'path'    => $dir,
+			    'url'     => $url,
+			    'subdir'  => $subdir,
+			    'basedir' => $wp_upload_locations['basedir'],
+			    'baseurl' => $wp_upload_locations['baseurl'],
+			    'error'   => false,
+		    );
+
+		    return $custom_dir;
 	    }
 
         /*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
