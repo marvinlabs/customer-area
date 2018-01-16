@@ -22,11 +22,13 @@ function bootstrapSummernote($, editorSelector) {
         var data = new FormData();
         var nonce = $("#cuar_insert_image_nonce").val();
         var type = $("#cuar_post_type").val();
+        var id = $("#cuar_post_id").val();
 
         data.append('file', file);
         data.append('action', 'cuar_insert_image');
         data.append("nonce", nonce);
         data.append("post_type", type);
+        data.append("post_id", id);
 
         $.ajax({
             url: cuar.ajaxUrl,
@@ -41,7 +43,7 @@ function bootstrapSummernote($, editorSelector) {
                     $(editorSelector).summernote('insertImage', response.data.url, response.data.name);
                 }
                 else {
-                    return jsError(response.data.error);
+                    return jsError(response.data);
                 }
             }
         }).fail(function (e) {

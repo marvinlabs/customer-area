@@ -583,10 +583,12 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         public function print_content_field($label, $help_text = '')
         {
             $content = '';
+            $id = -1;
             if (isset($_POST['cuar_content'])) {
                 $content = $_POST['cuar_content'];
             } else if ($this->get_current_post() != null) {
                 $content = $this->get_current_post()->post_content;
+                $id = $this->get_current_post_id();
             }
 
 	        if ( ! $this->is_rich_editor_enabled() ) {
@@ -594,9 +596,11 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 			        esc_attr( $content ) );
 	        } else {
 		        $field_code = sprintf( '<input type="hidden" id="cuar_post_type" name="cuar_post_type" value="%1$s">'
-		                               . '%2$s'
-		                               . '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%3$s</textarea>',
+		                               . '<input type="hidden" id="cuar_post_id" name="cuar_post_id" value="%2$s">'
+		                               . '%3$s'
+		                               . '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%4$s</textarea>',
 			        $this->get_friendly_post_type(),
+			        $id,
 			        wp_nonce_field( 'cuar_insert_image', 'cuar_insert_image_nonce' ),
 			        esc_attr( $content ));
 	        }
@@ -758,17 +762,38 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 	    public function ajax_insert_image()
 	    {
 		    // Prepare datas
-		    $posted_data = isset( $_POST ) ? $_POST : null;
-		    $file_data   = isset( $_FILES ) ? $_FILES : null;
-		    $data        = array_merge( $posted_data, $file_data );
-		    $post_type   = isset( $data['post_type'] ) ? $data['post_type'] : null;
+		    $posted_data     = isset( $_POST ) ? $_POST : null;
+		    $file_data       = isset( $_FILES ) ? $_FILES : null;
+		    $data            = array_merge( $posted_data, $file_data );
+		    $post_type       = isset( $data['post_type'] ) ? $data['post_type'] : null;
+		    $post_id         = isset( $data['post_id'] ) ? $data['post_id'] : null;
+		    $current_user_id = get_current_user_id();
+		    $cuar_plugin     = cuar();
+		    $po_addon        = $cuar_plugin->get_addon( 'post-owner' );
 
 		    // Check nonce
 		    check_ajax_referer( 'cuar_insert_image', 'nonce' );
 
-		    // Check permissions
-		    if ( empty( $post_type ) || ! current_user_can( $post_type . '_create_content' ) ) {
-			    wp_send_json_error(__('It looks looks like you are not allowed to create content for this kind of post type.', 'cuar'));
+		    // Check create content permissions
+		    if ( empty( $post_type ) || ( ! empty( $post_id ) && $post_id < 0 && ! current_user_can( $post_type . '_create_content' ) ) ) {
+			    wp_send_json_error( __( 'It looks like you are not allowed to create content for this kind of post type.', 'cuar' ) );
+		    }
+
+		    // Check update any content permissions
+		    if ( empty( $post_type ) || ( ! empty( $post_id ) && $post_id > 0 && current_user_can( $post_type . '_update_any_content' ) !== true ) ) {
+
+			    if ( ! empty( $post_id ) && $post_id > 0 ) {
+
+				    // Check update authored content permissions
+				    if ( $current_user_id === (int) get_post_field( 'post_author', $post_id ) && current_user_can( $post_type . '_update_authored_content' ) !== true ) {
+					    wp_send_json_error( __( 'It looks like you are not allowed to update authored content for this post.', 'cuar' ) );
+				    }
+
+				    // Check update owned content permissions
+				    if ( $po_addon->is_user_owner_of_post( $post_id, $current_user_id ) && current_user_can( $post_type . '_update_owned_content' ) !== true ) {
+					    wp_send_json_error( __( 'It looks like you are not allowed to update owned content for this post.', 'cuar' ) );
+				    }
+			    }
 		    }
 
 		    // Check uploaded file
