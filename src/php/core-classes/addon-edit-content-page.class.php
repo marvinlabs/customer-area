@@ -793,9 +793,9 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 		    // Send results
 		    if ( $upload_result && ! isset( $upload_result['error'] ) ) {
 			    wp_send_json_success( array(
-				    'filename' => basename( $upload_result['url'] ),
-				    'url'      => $upload_result['url'],
-				    'type'     => $upload_result['type']
+				    'name' => basename( $upload_result['url'] ),
+				    'url'  => $upload_result['url'],
+				    'type' => $upload_result['type']
 			    ) );
 		    } else {
 			    wp_send_json_error( sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload_result['error'] ) );
@@ -812,17 +812,18 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 		    remove_filter( 'upload_dir', array( &$this, 'custom_editor_images_upload_dir' ) );
 
 		    $wp_upload_locations = wp_upload_dir();
+		    $current_user        = wp_get_current_user();
 
 		    $dir = $wp_upload_locations['basedir'];
 		    $url = $wp_upload_locations['baseurl'];
 
-		    $subdir = '/' . 'customer-area';
+		    $subdir = '/' . 'customer-area' . '/' . md5( $current_user->user_login );
 
 		    $dir .= $subdir;
 		    $url .= $subdir;
 
 		    if ( ! file_exists( $dir ) && ! wp_mkdir_p( $dir ) ) {
-			    wp_send_json_error(sprintf( __( 'An error happened while creating the folder: %s', 'cuar' ), $dir ));
+			    wp_send_json_error( sprintf( __( 'An error happened while creating the folder: %s', 'cuar' ), $subdir ) );
 		    }
 
 		    $custom_dir = array(
