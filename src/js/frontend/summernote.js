@@ -6,6 +6,49 @@ function bootstrapSummernote($, editorSelector) {
         return;
     }
 
+    // Summernote remove button plugin
+    (function (factory) {
+        if (typeof define === 'function' && define.amd) {
+            define(['jquery'], factory);
+        } else if (typeof module === 'object' && module.exports) {
+            module.exports = factory(require('jquery'));
+        } else {
+            factory(window.jQuery);
+        }
+    }(function ($) {
+        $.extend(true, $.summernote.lang, {
+            'en-US': {
+                deleteImage: {
+                    tooltip: cuar.ajaxEditorDeleteImg
+                }
+            }
+        });
+        $.extend($.summernote.options, {
+            deleteImage: {
+                icon: '<i class="note-icon-trash"></i>'
+            }
+        });
+        $.extend($.summernote.plugins, {
+            'deleteImage': function (context) {
+                var ui = $.summernote.ui,
+                    $editable = context.layoutInfo.editable,
+                    options = context.options,
+                    lang = options.langInfo;
+                context.memo('button.deleteImage', function () {
+                    var button = ui.button({
+                        contents: options.deleteImage.icon,
+                        tooltip: lang.deleteImage.tooltip,
+                        click: function () {
+                            var img = $($editable.data('target'));
+                            updateImage(img, 'delete');
+                        }
+                    });
+                    return button.render();
+                });
+            }
+        });
+    }));
+
     function jsError(string) {
         $(editorSelector + ' + .note-editor > .note-toolbar > .cuar-js-manager-errors').hide().empty().append(
             '<div class="alert alert-danger alert-dismissable cuar-js-error-item mbn mt-xs" style="margin-right: 5px; line-height: 1.2em;">' +
@@ -14,21 +57,31 @@ function bootstrapSummernote($, editorSelector) {
             '</div>').show();
     }
 
-    function sendImage(file) {
-        if (!file.type.includes('image')) {
-            return jsError("The type of file you tried to upload is not an image.");
+    function updateImage(file, method) {
+        if (method === 'upload' && !file.type.includes('image')) {
+            return jsError(cuar.ajaxEditorImageIsNotImg);
         }
 
-        var data = new FormData();
-        var nonce = $("#cuar_insert_image_nonce").val();
-        var type = $("#cuar_post_type").val();
-        var id = $("#cuar_post_id").val();
+        var data = new FormData(),
+            nonce = $("#cuar_insert_image_nonce").val(),
+            type = $("#cuar_post_type").val(),
+            id = $("#cuar_post_id").val();
 
-        data.append('file', file);
-        data.append('action', 'cuar_insert_image');
         data.append("nonce", nonce);
         data.append("post_type", type);
         data.append("post_id", id);
+
+        if (method === 'upload') {
+            data.append('action', 'cuar_insert_image');
+            data.append('file', file);
+
+        } else if (method === 'delete') {
+            data.append("action", 'cuar_delete_image');
+            data.append("name", file.data('filename'));
+            data.append("subdir", file.data('subdir'));
+            data.append("author", file.data('author'));
+            data.append("hash", file.data('hash'));
+        }
 
         $.ajax({
             url: cuar.ajaxUrl,
@@ -40,14 +93,27 @@ function bootstrapSummernote($, editorSelector) {
             data: data,
             success: function (response, textStatus, jqXHR) {
                 if (response.success === true) {
-                    $(editorSelector).summernote('insertImage', response.data.url, response.data.name);
-                }
-                else {
+                    if (method === 'upload') {
+                        $(editorSelector).summernote('insertImage', response.data.url, function ($image) {
+                            $image.css('width', '100%');
+                            $image.attr('data-subdir', response.data.subdir);
+                            $image.attr('data-filename', response.data.name);
+                            $image.attr('data-author', response.data.author);
+                            $image.attr('data-hash', response.data.hash);
+                        });
+                    } else if (method === 'delete') {
+                        if (file.parent().is('a')) {
+                            file.parent().remove();
+                        } else {
+                            file.remove();
+                        }
+                    }
+                } else {
                     return jsError(response.data);
                 }
             }
         }).fail(function (e) {
-            return jsError("We could not get a proper answer from the server, please contact site administrator.");
+            return jsError(cuar.ajaxEditorServerUnreachable);
         });
     }
 
@@ -61,6 +127,13 @@ function bootstrapSummernote($, editorSelector) {
             ['view', ['codeview', 'fullscreen']],
             ['tools', ['undo', 'redo', 'help']]
         ],
+        popover: {
+            image: [
+                ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
+                ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                ['custom', ['deleteImage']]
+            ]
+        },
         callbacks: {
             onInit: function () {
                 $('body > .note-popover').appendTo("#cuar-js-content-container");
@@ -69,7 +142,7 @@ function bootstrapSummernote($, editorSelector) {
             },
             onImageUpload: function (files) {
                 for (var i = 0; i < files.length; i++) {
-                    sendImage(files[i]);
+                    updateImage(files[i], 'upload');
                 }
             }
         }
@@ -93,3 +166,6 @@ jQuery(document).ready(function ($) {
         bootstrapSummernote($, ".cuar-js-richeditor");
     }
 });
+
+
+
