@@ -803,7 +803,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
 		    // Check if file exists
 		    if ( ! file_exists( $file_to_delete ) ) {
-			    wp_send_json_error( __( 'It looks like the file you tried to delete does not exists. %s', 'cuar' ) );
+			    wp_send_json_error( __( 'It looks like the file you tried to delete does not exists.', 'cuar' ) );
 		    }
 
 		    // Check file type
