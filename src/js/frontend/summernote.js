@@ -43,8 +43,7 @@ function bootstrapSummernote($, editorSelector) {
                         click: function () {
                             var img = $($editable.data('target'));
                             updateImage(img, 'delete', function(){
-                                $note.val(context.invoke('code'));
-                                $note.change();
+                                context.invoke('editor.afterCommand');
                             });
                         }
                     });
