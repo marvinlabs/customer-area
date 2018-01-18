@@ -976,11 +976,13 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
         public function handle_file_actions()
         {
             // If not on a matching post type, we do nothing
-            if ( !is_singular('cuar_private_file')) return;
+            if ( !is_singular('cuar_private_file')) {
+	            return;
+            }
 
             // If not a known action, do nothing
             $action = get_query_var('cuar_action');
-            if ($action != 'download' && $action != 'view') {
+            if ($action !== 'download' && $action !== 'view') {
                 return;
             }
 
@@ -1003,8 +1005,8 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $author_id = $post->post_author;
             $is_current_user_owner = $po_addon->is_user_owner_of_post($post->ID, $current_user_id);
 
-            if ( !($is_current_user_owner || $author_id == $current_user_id || current_user_can('cuar_view_any_cuar_private_file'))) {
-                wp_die(__("You are not authorized to access this file", "cuar"));
+            if ( !($is_current_user_owner || $author_id === $current_user_id || current_user_can('cuar_view_any_cuar_private_file'))) {
+                wp_die(__( 'You are not authorized to access this file', 'cuar' ));
                 exit();
             }
 
@@ -1013,27 +1015,26 @@ if ( !class_exists('CUAR_PrivateFileAddOn')) :
             $found_file = null;
             foreach ($files as $fid => $file) {
                 // Default case
-                if ($fid == $file_id) {
+                if ($fid === $file_id) {
                     $found_file = $file;
                     break;
                 }
             }
 
             // File not found
-            if ($found_file == null) {
-                wp_die(__("There is no such file attached to this private content", "cuar"));
+            if ($found_file === null) {
+                wp_die(__( 'There is no such file attached to this private content', 'cuar' ));
                 exit();
             }
 
             // Default action to apply on file
-            if ( !isset($_GET['force-download']) && $_GET['force-download'] != 1) {
+	        $action = 'download';
+	        if ( !isset($_GET['force-download']) || ( isset($_GET['force-download']) && $_GET['force-download'] !== 1)) {
                 $action = apply_filters('cuar/private-content/files/default-action', $action, $found_file);
-            } else {
-                $action = 'download';
             }
 
-            // Seems we are all good, do some stuff before sending the file
-            if ($author_id != $current_user_id) {
+	        // Seems we are all good, do some stuff before sending the file
+            if ($author_id !== $current_user_id) {
                 $this->increment_file_download_count($post->ID, $file_id);
             }
             do_action('cuar/private-content/files/on-' . $action, $post->ID, $current_user_id, $this, $file_id);

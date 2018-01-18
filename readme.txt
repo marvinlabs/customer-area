@@ -1,6 +1,6 @@
 ﻿=== WP Customer Area ===
 
-Contributors:       vprat, marvinlabs
+Contributors:       vprat, marvinlabs, 28tom47
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
@@ -110,6 +110,7 @@ feel free to fork the project and send us pull requests!
 * Fix: frontend rich editor were not properly usable on fullscreen mode due to popups not showing up
 * Fix: uploading an image now set the image width as 100% by default
 * Tweak: graphics adjustments on frontend rich editor such as paddings
+* Fix: notice: Undefined index: force-download when trying to download an inline file
 
 = 7.4.5 (2018/01/09) =
 
