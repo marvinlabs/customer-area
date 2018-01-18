@@ -111,6 +111,7 @@ feel free to fork the project and send us pull requests!
 * Fix: uploading an image now set the image width as 100% by default
 * Tweak: graphics adjustments on frontend rich editor such as paddings
 * Fix: notice: Undefined index: force-download when trying to download an inline file
+* Fix: notice: $is_locked not defined
 
 = 7.4.5 (2018/01/09) =
 
