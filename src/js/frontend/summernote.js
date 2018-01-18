@@ -95,7 +95,9 @@ function bootstrapSummernote($, editorSelector) {
                 if (response.success === true) {
                     if (method === 'upload') {
                         $(editorSelector).summernote('insertImage', response.data.url, function ($image) {
-                            $image.css('width', '100%');
+                            $image.css('width', 'auto');
+                            $image.css('height', 'auto');
+                            $image.css('max-width', '100%');
                             $image.attr('data-subdir', response.data.subdir);
                             $image.attr('data-filename', response.data.name);
                             $image.attr('data-author', response.data.author);
