@@ -31,6 +31,8 @@ function bootstrapSummernote($, editorSelector) {
         $.extend($.summernote.plugins, {
             'deleteImage': function (context) {
                 var ui = $.summernote.ui,
+                    $note     = context.layoutInfo.note,
+                    $editor   = context.layoutInfo.editor,
                     $editable = context.layoutInfo.editable,
                     options = context.options,
                     lang = options.langInfo;
@@ -40,7 +42,10 @@ function bootstrapSummernote($, editorSelector) {
                         tooltip: lang.deleteImage.tooltip,
                         click: function () {
                             var img = $($editable.data('target'));
-                            updateImage(img, 'delete');
+                            updateImage(img, 'delete', function(){
+                                $note.val(context.invoke('code'));
+                                $note.change();
+                            });
                         }
                     });
                     return button.render();
@@ -57,7 +62,7 @@ function bootstrapSummernote($, editorSelector) {
             '</div>').show();
     }
 
-    function updateImage(file, method) {
+    function updateImage(file, method, callback) {
         if (method === 'upload' && !file.type.includes('image')) {
             return jsError(cuar.ajaxEditorImageIsNotImg);
         }
@@ -108,6 +113,9 @@ function bootstrapSummernote($, editorSelector) {
                             file.parent().remove();
                         } else {
                             file.remove();
+                        }
+                        if(typeof callback === 'function'){
+                            callback();
                         }
                     }
                 } else {
