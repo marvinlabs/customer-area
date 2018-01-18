@@ -109,6 +109,7 @@ feel free to fork the project and send us pull requests!
 
 * Fix: frontend rich editor were not properly usable on fullscreen mode due to popups not showing up
 * Fix: notice: Undefined index: force-download when trying to download an inline file
+* Fix: notice: $is_locked not defined
 
 = 7.4.5 (2018/01/09) =
 
