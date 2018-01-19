@@ -788,7 +788,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 		    // Check hash
 		    $hash_check = md5( $data['subdir'] . $user_check->data->user_login );
 		    if ( $hash_check !== $data['hash'] ) {
-			    wp_send_json_error( __( 'Oopooooooos! Security check failed!', 'cuar' ) );
+			    wp_send_json_error( __( 'Oops! Security check failed!', 'cuar' ) );
 		    }
 
 		    // Suppress parent dots
