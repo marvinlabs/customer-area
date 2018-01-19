@@ -107,9 +107,10 @@ feel free to fork the project and send us pull requests!
 
 = 7.4.6 (2018/??/??) =
 
+* New: Uploading an image through the rich editor now send it to the server through Ajax in the uploads folder
+* Tweak: graphics adjustments on frontend rich editor such as paddings and more
 * Fix: frontend rich editor were not properly usable on fullscreen mode due to popups not showing up
-* Fix: uploading an image now set the image width as 100% by default
-* Tweak: graphics adjustments on frontend rich editor such as paddings
+* Fix: uploading an image now set the image max-width as 100% by default
 * Fix: notice: Undefined index: force-download when trying to download an inline file
 * Fix: notice: $is_locked not defined
 
