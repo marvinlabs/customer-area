@@ -395,8 +395,12 @@ if ( ! function_exists( 'cuar_toolbar_profile_button' ) ) {
 
 			$out .= '<li class="dropdown-header">Hello, ' . $current_user->display_name . '</li>';
 			//$out .= '<li class="divider"></li>';
-			$out .= '<li><a href="' . $addon_account->get_page_url() . '">' . __( 'View profile', 'cuar' ) . '</a></li>';
-			$out .= '<li><a href="' . $addon_account_edit->get_page_url() . '">' . __( 'Manage account', 'cuar' ) . '</a></li>';
+			if ( current_user_can( 'cuar_view_account' ) ) {
+				$out .= '<li><a href="' . $addon_account->get_page_url() . '">' . __( 'View profile', 'cuar' ) . '</a></li>';
+			}
+			if ( current_user_can( 'cuar_edit_account' ) ) {
+				$out .= '<li><a href="' . $addon_account_edit->get_page_url() . '">' . __( 'Manage account', 'cuar' ) . '</a></li>';
+			}
 			$out .= '<li><a href="' . $addon_logout->get_page_url() . '">' . __( 'Logout', 'cuar' ) . '</a></li>';
 
 		} else {

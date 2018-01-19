@@ -112,6 +112,7 @@ feel free to fork the project and send us pull requests!
 * Fix: frontend rich editor were not properly usable on fullscreen mode due to popups not showing up
 * Fix: uploading an image now set the image max-width as 100% by default
 * Fix: notice: Undefined index: force-download when trying to download an inline file
+* Fix: some links were showing up in avatar menu without checking for capabilities
 * Fix: notice: $is_locked not defined
 
 * **Projects** - Fix: Notice: Trying to get property of non-object in core-classes/Content/list-table.class.php
