@@ -113,6 +113,8 @@ feel free to fork the project and send us pull requests!
 * Fix: notice: Undefined index: force-download when trying to download an inline file
 * Fix: notice: $is_locked not defined
 
+* **Projects** - Fix: Notice: Trying to get property of non-object in core-classes/Content/list-table.class.php
+
 = 7.4.5 (2018/01/09) =
 
 * Tweak: add IDs to fields groups so we can manipulate them via CSS
