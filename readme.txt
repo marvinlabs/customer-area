@@ -1,6 +1,6 @@
 ﻿=== WP Customer Area ===
 
-Contributors:       vprat, marvinlabs, 28tom47
+Contributors:       vprat, marvinlabs, tlartaud
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
