@@ -76,6 +76,10 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 add_filter('cuar/core/permission-groups', array(&$this, 'get_configurable_capability_groups'), 1000);
             }
 
+	        // Ajax Summernote Insert/Delete image
+	        add_action('wp_ajax_cuar_insert_image', array(&$this, 'ajax_insert_image'));
+	        add_action('wp_ajax_cuar_delete_image', array(&$this, 'ajax_delete_image'));
+
             if ($this->get_wizard_step_count() > 1) {
                 // Enable rewrite rules for the wizard steps
                 $this->enable_wizard_permalinks();
@@ -580,19 +584,27 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
         public function print_content_field($label, $help_text = '')
         {
             $content = '';
+            $id = -1;
             if (isset($_POST['cuar_content'])) {
                 $content = $_POST['cuar_content'];
             } else if ($this->get_current_post() != null) {
                 $content = $this->get_current_post()->post_content;
+                $id = $this->get_current_post_id();
             }
 
-            if ( !$this->is_rich_editor_enabled()) {
-                $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
-                    esc_attr($content));
-            } else {
-                $field_code = sprintf('<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%1$s</textarea>',
-                    esc_attr($content));
-            }
+	        if ( ! $this->is_rich_editor_enabled() ) {
+		        $field_code = sprintf( '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control">%1$s</textarea>',
+			        esc_attr( $content ) );
+	        } else {
+		        $field_code = sprintf( '<input type="hidden" id="cuar_post_type" name="cuar_post_type" value="%1$s">'
+		                               . '<input type="hidden" id="cuar_post_id" name="cuar_post_id" value="%2$s">'
+		                               . '%3$s'
+		                               . '<textarea rows="5" cols="40" name="cuar_content" id="cuar_content" class="form-control cuar-js-richeditor">%4$s</textarea>',
+			        $this->get_friendly_post_type(),
+			        $id,
+			        wp_nonce_field( 'cuar_insert_image', 'cuar_insert_image_nonce' ),
+			        esc_attr( $content ));
+	        }
 
             $this->print_form_field('cuar_content', $label, $field_code, $help_text);
         }
@@ -740,6 +752,205 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
             return $this->current_post;
         }
+
+	    /*------- AJAX HANDLING -----------------------------------------------------------------------------------------*/
+
+	    /**
+	     * Ajax function used to delete an image into the rich editor
+	     */
+	    public function ajax_delete_image()
+	    {
+		    // Check nonce
+		    check_ajax_referer( 'cuar_insert_image', 'nonce' );
+
+		    // Prepare datas
+		    $posted_data     = isset( $_POST ) ? $_POST : null;
+		    $file_data       = isset( $_FILES ) ? $_FILES : null;
+		    $data            = array_merge( $posted_data, $file_data );
+		    $post_type       = isset( $data['post_type'] ) ? $data['post_type'] : null;
+		    $post_id         = isset( $data['post_id'] ) ? $data['post_id'] : null;
+		    $current_user_id = get_current_user_id();
+
+		    // Check permissions
+		    $this->ajax_is_user_allowed_to_create_or_update_content( $post_type, $post_id, $current_user_id );
+
+		    // Check file selected for deletion
+		    if ( empty( $data['name'] ) ) {
+			    wp_send_json_error( __( 'No file has been selected for deletion', 'cuar' ) );
+		    }
+
+		    // Check user
+		    $user_check = get_userdata( (int) $data['author'] );
+		    if ( $user_check === false ) {
+			    wp_send_json_error( __( 'Oops! Security check failed!', 'cuar' ) );
+		    }
+
+		    // Check hash
+		    $hash_check = md5( $data['subdir'] . $user_check->data->user_login );
+		    if ( $hash_check !== $data['hash'] ) {
+			    wp_send_json_error( __( 'Oops! Security check failed!', 'cuar' ) );
+		    }
+
+		    // Suppress parent dots
+		    $data['subdir'] = ltrim( $data['subdir'], '/.' );
+		    $data['name']   = ltrim( $data['name'], '/.' );
+
+		    // Reconstruct image path
+		    $upload_locations = $this->ajax_custom_editor_images_upload_dir();
+		    $file_to_delete   = $upload_locations['basedir']
+		                        . apply_filters( 'cuar/private-content/editor-images/subdir-upload-location', '/customer-area/' )
+		                        . $data['subdir'] . '/' . $data['name'];
+
+		    // Check if file exists
+		    if ( ! file_exists( $file_to_delete ) ) {
+			    wp_send_json_error( __( 'It looks like the file you tried to delete does not exists.', 'cuar' ) );
+		    }
+
+		    // Check file type
+		    $supported_types = apply_filters( 'cuar/private-content/editor-images/supported-types',
+			    array(
+				    'image/jpeg',
+				    'image/gif',
+				    'image/png'
+			    ) );
+		    $arr_file_type   = wp_check_filetype( basename( $file_to_delete ) );
+		    $uploaded_type   = $arr_file_type['type'];
+		    if ( ! in_array( $uploaded_type, $supported_types, true ) ) {
+			    wp_send_json_error( sprintf( __( 'This file type is not allowed. You can only delete: %s', 'cuar' ), implode( ', ', $supported_types ) ) );
+		    }
+
+		    // Delete file
+		    if ( ! unlink( $file_to_delete ) ) {
+			    wp_send_json_error( __( 'This file cannot be deleted, please contact site administrator.', 'cuar' ) );
+		    } else {
+			    wp_send_json_success();
+		    }
+	    }
+
+	    /**
+	     * Ajax function used to insert an image into the rich editor
+	     */
+	    public function ajax_insert_image()
+	    {
+		    // Check nonce
+		    check_ajax_referer( 'cuar_insert_image', 'nonce' );
+
+		    // Prepare datas
+		    $posted_data     = isset( $_POST ) ? $_POST : null;
+		    $file_data       = isset( $_FILES ) ? $_FILES : null;
+		    $data            = array_merge( $posted_data, $file_data );
+		    $post_type       = isset( $data['post_type'] ) ? $data['post_type'] : null;
+		    $post_id         = isset( $data['post_id'] ) ? $data['post_id'] : null;
+		    $current_user    = wp_get_current_user();
+		    $current_user_id = get_current_user_id();
+
+		    // Check permissions
+		    $this->ajax_is_user_allowed_to_create_or_update_content( $post_type, $post_id, $current_user_id );
+
+		    // Check uploaded file
+		    if ( empty( $file_data ) ) {
+			    wp_send_json_error( __( 'No file has been uploaded', 'cuar' ) );
+		    }
+
+		    // Check file type
+		    $supported_types = apply_filters( 'cuar/private-content/editor-images/supported-types',
+			    array(
+				    'image/jpeg',
+				    'image/gif',
+				    'image/png'
+			    ) );
+		    $arr_file_type   = wp_check_filetype( basename( $data['file']['name'] ) );
+		    $uploaded_type   = $arr_file_type['type'];
+		    if ( ! in_array( $uploaded_type, $supported_types, true ) ) {
+			    wp_send_json_error( sprintf( __( 'This file type is not allowed. You can only upload: %s', 'cuar' ), implode( ', ', $supported_types ) ) );
+		    }
+
+		    // Set custom upload dir
+		    add_filter( 'upload_dir', array( &$this, 'ajax_custom_editor_images_upload_dir' ) );
+		    $upload_result = wp_handle_upload( $data['file'], array( 'test_form' => false ) );
+		    remove_filter( 'upload_dir', array( &$this, 'ajax_custom_editor_images_upload_dir' ) );
+
+		    // Send results
+		    if ( $upload_result && ! isset( $upload_result['error'] ) ) {
+			    $subdir = apply_filters( 'cuar/private-content/editor-images/userdir-upload-location?user-login=' . $current_user->user_login, md5( $current_user->user_login ) );
+			    wp_send_json_success( array(
+				    'name'   => basename( $upload_result['url'] ),
+				    'url'    => $upload_result['url'],
+				    'subdir' => $subdir,
+				    'hash'   => md5( $subdir . $current_user->user_login ),
+				    'author' => $current_user_id
+			    ) );
+		    } else {
+			    wp_send_json_error( sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload_result['error'] ) );
+		    }
+	    }
+
+	    /**
+	     * Ajax function used to check if the current user is allowed to update or create content when inserting or deleting an image
+	     */
+	    public function ajax_is_user_allowed_to_create_or_update_content( $post_type, $post_id, $current_user_id )
+	    {
+		    // Check create content permissions
+		    if ( empty( $post_type ) || ( ! empty( $post_id ) && $post_id < 0 && ! current_user_can( $post_type . '_create_content' ) ) ) {
+			    wp_send_json_error( __( 'It looks like you are not allowed to create content for this kind of post type.', 'cuar' ) );
+		    }
+
+		    // Check update any content permissions
+		    if ( empty( $post_type ) || ( ! empty( $post_id ) && $post_id > 0 && current_user_can( $post_type . '_update_any_content' ) !== true ) ) {
+
+			    // Make sure this is an updated content
+			    if ( ! empty( $post_id ) && $post_id > 0 ) {
+
+				    // Check update authored content permissions
+				    if ( $current_user_id === (int) get_post_field( 'post_author', $post_id ) && current_user_can( $post_type . '_update_authored_content' ) !== true ) {
+					    wp_send_json_error( __( 'It looks like you are not allowed to update authored content for this post.', 'cuar' ) );
+				    }
+
+				    // Check update owned content permissions
+				    $po_addon = $this->plugin->get_addon( 'post-owner' );
+				    if ( $po_addon->is_user_owner_of_post( $post_id, $current_user_id ) && current_user_can( $post_type . '_update_owned_content' ) !== true ) {
+					    wp_send_json_error( __( 'It looks like you are not allowed to update owned content for this post.', 'cuar' ) );
+				    }
+			    }
+		    }
+	    }
+
+	    /**
+	     * Change the upload directory on the fly when uploading our private file
+	     *
+	     * @return array
+	     */
+	    public function ajax_custom_editor_images_upload_dir()
+	    {
+		    remove_filter( 'upload_dir', array( &$this, 'ajax_custom_editor_images_upload_dir' ) );
+
+		    $current_user        = wp_get_current_user();
+		    $wp_upload_locations = apply_filters( 'cuar/private-content/editor-images/base-upload-location', wp_upload_dir() );
+
+		    $dir = $wp_upload_locations['basedir'];
+		    $url = $wp_upload_locations['baseurl'];
+
+		    $subdir = apply_filters( 'cuar/private-content/editor-images/subdir-upload-location', '/customer-area/' );
+		    $subdir .= apply_filters( 'cuar/private-content/editor-images/userdir-upload-location?user-login=' . $current_user->user_login, md5( $current_user->user_login ) );
+
+		    $dir .= $subdir;
+		    $url .= $subdir;
+
+		    if ( ! file_exists( $dir ) && ! wp_mkdir_p( $dir ) ) {
+			    wp_send_json_error( sprintf( __( 'An error happened while creating the folder: %s', 'cuar' ), $subdir ) );
+		    }
+
+		    $custom_dir = array(
+			    'path'    => $dir,
+			    'url'     => $url,
+			    'subdir'  => $subdir,
+			    'basedir' => $wp_upload_locations['basedir'],
+			    'baseurl' => $wp_upload_locations['baseurl'],
+			    'error'   => false,
+		    );
+
+		    return $custom_dir;
+	    }
 
         /*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 

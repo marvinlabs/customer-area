@@ -279,6 +279,9 @@ if ( !class_exists('CUAR_Plugin')) :
                     'addressActionsCannotHandleMultipleOwners' => __('You must select only a single owner, multiple owners are not handled for this action.',
                         'cuar'),
                     'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
+                    'ajaxEditorServerUnreachable'              => __('We could not get a proper answer from the server, please contact site administrator.', 'cuar'),
+                    'ajaxEditorImageIsNotImg'                  => __('The type of file you tried to upload is not an image.', 'cuar'),
+                    'ajaxEditorDeleteImg'                      => __('Delete image', 'cuar'),
                 ));
                 wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
                 wp_localize_script('cuar.frontend', 'cuar', $messages);
