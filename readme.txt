@@ -108,6 +108,7 @@ feel free to fork the project and send us pull requests!
 = 7.4.6 (2018/??/??) =
 
 * New: Uploading an image through the rich editor now send it to the server through Ajax in the uploads folder
+* New: Frontend rich editor now has a new button to allow image editing after clicking on it
 * Tweak: graphics adjustments on frontend rich editor such as paddings and more
 * Fix: frontend rich editor were not properly usable on fullscreen mode due to popups not showing up
 * Fix: uploading an image now set the image max-width as 100% by default
@@ -116,6 +117,7 @@ feel free to fork the project and send us pull requests!
 * Fix: notice: $is_locked not defined
 
 * **Projects** - Fix: Notice: Trying to get property of non-object in core-classes/Content/list-table.class.php
+* **Design Extras** - Tweak: Support for new styles from 7.4.6 version
 
 = 7.4.5 (2018/01/09) =
 
