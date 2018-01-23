@@ -31,8 +31,8 @@ function bootstrapSummernote($, editorSelector) {
         $.extend($.summernote.plugins, {
             'deleteImage': function (context) {
                 var ui = $.summernote.ui,
-                    $note     = context.layoutInfo.note,
-                    $editor   = context.layoutInfo.editor,
+                    $note = context.layoutInfo.note,
+                    $editor = context.layoutInfo.editor,
                     $editable = context.layoutInfo.editable,
                     options = context.options,
                     lang = options.langInfo;
@@ -42,7 +42,7 @@ function bootstrapSummernote($, editorSelector) {
                         tooltip: lang.deleteImage.tooltip,
                         click: function () {
                             var img = $($editable.data('target'));
-                            updateImage(img, 'delete', function(){
+                            updateImage(img, 'delete', function () {
                                 context.invoke('editor.afterCommand');
                             });
                         }
@@ -113,7 +113,7 @@ function bootstrapSummernote($, editorSelector) {
                         } else {
                             file.remove();
                         }
-                        if(typeof callback === 'function'){
+                        if (typeof callback === 'function') {
                             callback();
                         }
                     }
@@ -138,10 +138,16 @@ function bootstrapSummernote($, editorSelector) {
         ],
         popover: {
             image: [
+                ['custom', ['imageAttributes']],
                 ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
                 ['float', ['floatLeft', 'floatRight', 'floatNone']],
                 ['custom', ['deleteImage']]
             ]
+        },
+        imageAttributes: {
+            icon: '<i class="note-icon-pencil"/>',
+            removeEmpty: false,
+            disableUpload: true
         },
         callbacks: {
             onInit: function () {
