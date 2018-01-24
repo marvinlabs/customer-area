@@ -1,4 +1,4 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2017}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2018}
 # Translators:
 # Victor Bychek, 2016
 msgid ""
@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
-"PO-Revision-Date: 2017-11-06 08:34+0000\n"
+"PO-Revision-Date: 2018-01-24 10:25+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/wp-translations/wp-customer-area/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -29,25 +29,25 @@ msgstr ""
 msgid "Account details"
 msgstr "Детали аккаунта"
 
-#: skins/frontend/master/cuar-functions.php:398
+#: skins/frontend/master/cuar-functions.php:399
 msgid "View profile"
 msgstr "Просмотреть профиль"
 
-#: skins/frontend/master/cuar-functions.php:399
+#: skins/frontend/master/cuar-functions.php:402
 msgid "Manage account"
 msgstr "Управлять аккаунтом"
 
-#: skins/frontend/master/cuar-functions.php:400
+#: skins/frontend/master/cuar-functions.php:404
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
 msgstr "Выход"
 
-#: skins/frontend/master/cuar-functions.php:406
+#: skins/frontend/master/cuar-functions.php:410
 msgid "Register"
 msgstr "Регистрация"
 
-#: skins/frontend/master/cuar-functions.php:407
+#: skins/frontend/master/cuar-functions.php:411
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
 msgstr "Логин"
@@ -316,7 +316,7 @@ msgid "General"
 msgstr "Главная"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:232
-#: src/php/core-addons/private-file/private-file-addon.class.php:1059
+#: src/php/core-addons/private-file/private-file-addon.class.php:1060
 #: src/php/core-addons/private-page/private-page-addon.class.php:108
 msgid "Back-office"
 msgstr "Задняя часть офиса"
@@ -331,7 +331,7 @@ msgstr "Просмотреть меню Клиентской Зоны"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:239
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:79
-#: src/php/core-addons/private-file/private-file-addon.class.php:1072
+#: src/php/core-addons/private-file/private-file-addon.class.php:1073
 #: src/php/core-addons/private-page/private-page-addon.class.php:121
 msgid "Front-office"
 msgstr "Лицо офиса"
@@ -2626,17 +2626,16 @@ msgstr "Неизвестно"
 msgid "Assignment"
 msgstr "Назначение"
 
-#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:19
-#: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
-msgid "You are not allowed to select an owner"
-msgstr ""
-
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:37
 msgid "Select or search an owner"
 msgstr "Выбрать или искать владельца"
 
+#: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
+msgid "You are not allowed to select an owner"
+msgstr ""
+
 #: src/php/core-addons/private-file/private-file-addon.class.php:43
-#: src/php/core-addons/private-file/private-file-addon.class.php:1050
+#: src/php/core-addons/private-file/private-file-addon.class.php:1051
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:150
 msgid "Private Files"
 msgstr "Личные файлы"
@@ -2680,63 +2679,63 @@ msgstr "Файл не найден"
 msgid "You are not allowed to remove attached files"
 msgstr "Вам не разрешено удалять вложенные файлы"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1007
+#: src/php/core-addons/private-file/private-file-addon.class.php:1009
 msgid "You are not authorized to access this file"
 msgstr "Вы не авторизованы для доступа к этим файлам"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1024
+#: src/php/core-addons/private-file/private-file-addon.class.php:1026
 msgid "There is no such file attached to this private content"
 msgstr "Нет файлов, приложенных к этому личному содержимому"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1053
+#: src/php/core-addons/private-file/private-file-addon.class.php:1054
 msgid "Global"
 msgstr "Глобальный"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1055
+#: src/php/core-addons/private-file/private-file-addon.class.php:1056
 msgid "Manage file attachments"
 msgstr "Управлять вложением файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1061
+#: src/php/core-addons/private-file/private-file-addon.class.php:1062
 msgid "List all files"
 msgstr "Список всех файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1062
+#: src/php/core-addons/private-file/private-file-addon.class.php:1063
 msgid "Create/Edit files"
 msgstr "Создать/Редактировать файлы"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1063
+#: src/php/core-addons/private-file/private-file-addon.class.php:1064
 msgid "Delete files"
 msgstr "Удалить файлы"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1064
+#: src/php/core-addons/private-file/private-file-addon.class.php:1065
 msgid "Access files"
 msgstr "Доступ к файлам"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1065
+#: src/php/core-addons/private-file/private-file-addon.class.php:1066
 #: src/php/core-addons/private-page/private-page-addon.class.php:114
 msgid "Manage categories"
 msgstr "Управлять категориями"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1066
+#: src/php/core-addons/private-file/private-file-addon.class.php:1067
 #: src/php/core-addons/private-page/private-page-addon.class.php:115
 msgid "Edit categories"
 msgstr "Редактировать категории"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1067
+#: src/php/core-addons/private-file/private-file-addon.class.php:1068
 #: src/php/core-addons/private-page/private-page-addon.class.php:116
 msgid "Delete categories"
 msgstr "Удалить категории"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1068
+#: src/php/core-addons/private-file/private-file-addon.class.php:1069
 #: src/php/core-addons/private-page/private-page-addon.class.php:117
 msgid "Assign categories"
 msgstr "Назначить категории"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1074
+#: src/php/core-addons/private-file/private-file-addon.class.php:1075
 msgid "View private files"
 msgstr "Посмотреть личные файлы"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1075
+#: src/php/core-addons/private-file/private-file-addon.class.php:1076
 msgid "View any private file"
 msgstr "Посмотреть любые личные файлы"
 
@@ -2833,6 +2832,7 @@ msgstr "Обезопасьте это"
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:342
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:414
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:472
+#: src/php/core-classes/addon-edit-content-page.class.php:865
 msgid "This file type is not allowed. You can only upload: %s"
 msgstr "Этот тип файла не допускается. Вы можете загрузить только: %s"
 
@@ -2853,6 +2853,7 @@ msgid "An error happened while copying %s from the FTP folder"
 msgstr "Ошибка произошла при копировании %s из папки FTP"
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:460
+#: src/php/core-classes/addon-edit-content-page.class.php:852
 msgid "No file has been uploaded"
 msgstr "Ни один файл не был загружен"
 
@@ -2861,6 +2862,7 @@ msgid "An unknown error happened while uploading your file."
 msgstr "Неизвестная ошибка произошла во время загрузки файла."
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:500
+#: src/php/core-classes/addon-edit-content-page.class.php:884
 msgid "An error happened while uploading your file: %s"
 msgstr "Ошибка произошла при загрузке файла: %s"
 
@@ -3532,23 +3534,64 @@ msgstr "Владельцы по умолчанию"
 msgid "Default category"
 msgstr "Категория по умолчанию"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:765
+#: src/php/core-classes/addon-edit-content-page.class.php:779
+msgid "No file has been selected for deletion"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:785
+#: src/php/core-classes/addon-edit-content-page.class.php:791
+msgid "Oops! Security check failed!"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:806
+msgid "It looks like the file you tried to delete does not exists."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:819
+msgid "This file type is not allowed. You can only delete: %s"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:824
+msgid "This file cannot be deleted, please contact site administrator."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:895
+msgid ""
+"It looks like you are not allowed to create content for this kind of post "
+"type."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:906
+msgid ""
+"It looks like you are not allowed to update authored content for this post."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:912
+msgid ""
+"It looks like you are not allowed to update owned content for this post."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:940
+msgid "An error happened while creating the folder: %s"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:988
 msgid "Content edition (from front-office)"
 msgstr "Редактирование контента (из фронт-офиса)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:767
+#: src/php/core-classes/addon-edit-content-page.class.php:990
 msgid "Select an owner (uses default else)"
 msgstr "Выберите владельца (используется по умолчанию)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:768
+#: src/php/core-classes/addon-edit-content-page.class.php:991
 msgid "Select a category (uses default else)"
 msgstr "Выберите категорию (используется по умолчанию)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:831
+#: src/php/core-classes/addon-edit-content-page.class.php:1054
 msgid "Rich Editor"
 msgstr "Редактор форматированного текста"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:839
+#: src/php/core-classes/addon-edit-content-page.class.php:1062
 msgid "Enable the rich editor when editing content."
 msgstr "Включение редактора форм. текста при редактировании контента."
 
@@ -3648,13 +3691,13 @@ msgstr ""
 msgid "Enter a valid license key to enable automatic updates."
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:259
+#: src/php/core-classes/addon.class.php:275
 msgid ""
 "You have invalid or expired license keys for WP Customer Area. Please go to "
 "the <a href=\"%s\">Licenses page</a> to correct this issue."
 msgstr ""
 
-#: src/php/core-classes/addon.class.php:262
+#: src/php/core-classes/addon.class.php:278
 msgid ""
 "If you do not know these license keys, you can find them listed on <a "
 "href=\"%s\" target=\"_blank\">your WP Customer Area account</a>."
@@ -3755,13 +3798,27 @@ msgstr "Вы должны выбрать только одного владел�
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr "Ни один владелец не в данный момент выбран, действие не может быть выполнено."
 
-#: src/php/core-classes/plugin.class.php:696
+#: src/php/core-classes/plugin.class.php:282
+msgid ""
+"We could not get a proper answer from the server, please contact site "
+"administrator."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:283
+msgid "The type of file you tried to upload is not an image."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:284
+msgid "Delete image"
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:699
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr "Permalinks отключены, Клиентская Зона не будет работать должным образом. Пожалуйста,включите их <a href=\"%1$s\"> в настройках WordPress </a>."
 
-#: src/php/core-classes/plugin.class.php:996
+#: src/php/core-classes/plugin.class.php:1000
 msgid "Some template files you have overridden seem to be outdated."
 msgstr "Некоторые файлы шаблонов,которые вы заменили, оказываются устаревшими."
 
@@ -3905,52 +3962,52 @@ msgstr "должно быть больше %s"
 msgid "must be lower than %s"
 msgstr "должно быть меньше %s"
 
-#: src/php/core-classes/settings.class.php:850
+#: src/php/core-classes/settings.class.php:861
 msgid "Invalid owner"
 msgstr "Неправильный Владелец"
 
-#: src/php/core-classes/settings.class.php:868
-#: src/php/core-classes/settings.class.php:898
+#: src/php/core-classes/settings.class.php:879
+#: src/php/core-classes/settings.class.php:909
 msgid "you cannot select multiple terms."
 msgstr "Вы не можете выбрать несколько терминов."
 
-#: src/php/core-classes/settings.class.php:983
+#: src/php/core-classes/settings.class.php:994
 msgid "Validate"
 msgstr ""
 
-#: src/php/core-classes/settings.class.php:1061
+#: src/php/core-classes/settings.class.php:1072
 msgid "Upload File"
 msgstr "Загрузить файл"
 
-#: src/php/core-classes/settings.class.php:1237
+#: src/php/core-classes/settings.class.php:1248
 msgid "None"
 msgstr "Нет"
 
-#: src/php/core-classes/settings.class.php:1258
+#: src/php/core-classes/settings.class.php:1269
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Удалить существующие &amp; создать новое &raquo;"
 
-#: src/php/core-classes/settings.class.php:1263
+#: src/php/core-classes/settings.class.php:1274
 msgid "Edit it &raquo;"
 msgstr "Редактировать &raquo;"
 
-#: src/php/core-classes/settings.class.php:1268
+#: src/php/core-classes/settings.class.php:1279
 msgid "Create it &raquo;"
 msgstr "Создать &raquo;"
 
-#: src/php/core-classes/settings.class.php:1374
+#: src/php/core-classes/settings.class.php:1385
 msgid "Any Role"
 msgstr "Любая роль"
 
-#: src/php/core-classes/settings.class.php:1564
+#: src/php/core-classes/settings.class.php:1575
 msgid "Main plugin folder"
 msgstr "Папка главного модуля"
 
-#: src/php/core-classes/settings.class.php:1570
+#: src/php/core-classes/settings.class.php:1581
 msgid "Current theme folder"
 msgstr "Текущий каталог темы"
 
-#: src/php/core-classes/settings.class.php:1576
+#: src/php/core-classes/settings.class.php:1587
 msgid "WordPress content folder"
 msgstr "Папка содержимого WordPress"
 
@@ -5477,139 +5534,139 @@ msgctxt "cuar_payment"
 msgid "Parent Payment:"
 msgstr ""
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1094
+#: src/php/core-addons/private-file/private-file-addon.class.php:1095
 msgctxt "cuar_private_file"
 msgid "File"
 msgstr "Файл"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1095
+#: src/php/core-addons/private-file/private-file-addon.class.php:1096
 msgctxt "cuar_private_file"
 msgid "Files"
 msgstr "Файлы"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1123
-#: src/php/core-addons/private-file/private-file-addon.class.php:1134
+#: src/php/core-addons/private-file/private-file-addon.class.php:1124
+#: src/php/core-addons/private-file/private-file-addon.class.php:1135
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "Личные файлы"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1124
+#: src/php/core-addons/private-file/private-file-addon.class.php:1125
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "Личный файл"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1125
+#: src/php/core-addons/private-file/private-file-addon.class.php:1126
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Добавить новую"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1126
+#: src/php/core-addons/private-file/private-file-addon.class.php:1127
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Добавить новый файл"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1127
+#: src/php/core-addons/private-file/private-file-addon.class.php:1128
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Редактировать Личный Файл"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1128
+#: src/php/core-addons/private-file/private-file-addon.class.php:1129
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Новый Личный Файл"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1129
+#: src/php/core-addons/private-file/private-file-addon.class.php:1130
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Посмотреть личный файл"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1130
+#: src/php/core-addons/private-file/private-file-addon.class.php:1131
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Искать Личные файлы"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1131
+#: src/php/core-addons/private-file/private-file-addon.class.php:1132
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "Личные файлы не найдены"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1132
+#: src/php/core-addons/private-file/private-file-addon.class.php:1133
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "Личные файлы не найдены в корзине"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1133
+#: src/php/core-addons/private-file/private-file-addon.class.php:1134
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "Родительский личный файл"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1167
-#: src/php/core-addons/private-file/private-file-addon.class.php:1181
+#: src/php/core-addons/private-file/private-file-addon.class.php:1168
+#: src/php/core-addons/private-file/private-file-addon.class.php:1182
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Категории файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1168
+#: src/php/core-addons/private-file/private-file-addon.class.php:1169
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Категория файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1169
+#: src/php/core-addons/private-file/private-file-addon.class.php:1170
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Категории Поиска Файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1170
+#: src/php/core-addons/private-file/private-file-addon.class.php:1171
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Популярные Категории Поиска"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1171
+#: src/php/core-addons/private-file/private-file-addon.class.php:1172
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Все категории Файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1172
+#: src/php/core-addons/private-file/private-file-addon.class.php:1173
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Родительская категория файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1173
+#: src/php/core-addons/private-file/private-file-addon.class.php:1174
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Родительская категория файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1174
+#: src/php/core-addons/private-file/private-file-addon.class.php:1175
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Редактировать Категорию файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1175
+#: src/php/core-addons/private-file/private-file-addon.class.php:1176
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Обновить Категория файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1176
+#: src/php/core-addons/private-file/private-file-addon.class.php:1177
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Добавить Новую Категорию Файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1177
+#: src/php/core-addons/private-file/private-file-addon.class.php:1178
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Новая Категория Файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1178
+#: src/php/core-addons/private-file/private-file-addon.class.php:1179
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Раздельные категории файлов с разделителями(comma)"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1179
+#: src/php/core-addons/private-file/private-file-addon.class.php:1180
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Добавить или удалить категории файлов"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1180
+#: src/php/core-addons/private-file/private-file-addon.class.php:1181
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Выберите самые используемые категории файлов"

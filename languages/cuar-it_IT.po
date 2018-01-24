@@ -1,15 +1,16 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2017}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2018}
 # Translators:
 # AVIS Ostiano <info@avisostiano.it>, 2015
 # Daniele Scasciafratte Mte90 <mte90net@gmail.com>, 2015
 # Giovanbattista Amato <giovanbattista.amato@besocialadv.com>, 2017
+# Massimo Ghielmi <info@kgmservizi.com>, 2017
 # pippo <vince.karibusana@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-environment/issues\n"
 "POT-Creation-Date: 2016-06-24 06:53:13+00:00\n"
-"PO-Revision-Date: 2017-11-06 08:34+0000\n"
+"PO-Revision-Date: 2018-01-24 10:25+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/wp-translations/wp-customer-area/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -32,25 +33,25 @@ msgstr ""
 msgid "Account details"
 msgstr "Dettagli account"
 
-#: skins/frontend/master/cuar-functions.php:398
+#: skins/frontend/master/cuar-functions.php:399
 msgid "View profile"
 msgstr "Visualizza profilo"
 
-#: skins/frontend/master/cuar-functions.php:399
+#: skins/frontend/master/cuar-functions.php:402
 msgid "Manage account"
 msgstr "Gestisci account"
 
-#: skins/frontend/master/cuar-functions.php:400
+#: skins/frontend/master/cuar-functions.php:404
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
 msgstr "Logout"
 
-#: skins/frontend/master/cuar-functions.php:406
+#: skins/frontend/master/cuar-functions.php:410
 msgid "Register"
 msgstr "Registrati"
 
-#: skins/frontend/master/cuar-functions.php:407
+#: skins/frontend/master/cuar-functions.php:411
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
 msgstr "Login"
@@ -61,7 +62,7 @@ msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:72
 msgid "Home address"
-msgstr ""
+msgstr "Indirizzo di casa"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:73
 msgid "Billing address"
@@ -319,7 +320,7 @@ msgid "General"
 msgstr "Impostazioni Generali"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:232
-#: src/php/core-addons/private-file/private-file-addon.class.php:1059
+#: src/php/core-addons/private-file/private-file-addon.class.php:1060
 #: src/php/core-addons/private-page/private-page-addon.class.php:108
 msgid "Back-office"
 msgstr "Back-office"
@@ -334,7 +335,7 @@ msgstr "Visualizza il menù dell'Area Clienti"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:239
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:79
-#: src/php/core-addons/private-file/private-file-addon.class.php:1072
+#: src/php/core-addons/private-file/private-file-addon.class.php:1073
 #: src/php/core-addons/private-page/private-page-addon.class.php:121
 msgid "Front-office"
 msgstr "Front-office"
@@ -543,7 +544,7 @@ msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
 msgid "/whats-new-in-wp-customer-area-7-4"
-msgstr ""
+msgstr "/whats-new-in-wp-customer-area-7-4"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
 msgid "Online payment of invoices with PayPal and Stripe Gateways"
@@ -551,7 +552,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
 msgid "Online invoice payments"
-msgstr ""
+msgstr "Pagamento fattura online"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
 msgid ""
@@ -591,7 +592,7 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:72
 msgid "/whats-new-since-wp-customer-area-7-0"
-msgstr ""
+msgstr "/whats-new-since-wp-customer-area-7-0"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
 msgid "Welcome to the Design Extras add-on"
@@ -2621,17 +2622,16 @@ msgstr "Sconosciuto"
 msgid "Assignment"
 msgstr "Assegnazione"
 
-#: src/php/core-addons/post-owner/templates/post-owner-fields-readonly.template.php:19
-#: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
-msgid "You are not allowed to select an owner"
-msgstr ""
-
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:37
 msgid "Select or search an owner"
 msgstr "Seleziona o ricerca un proprietario"
 
+#: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:83
+msgid "You are not allowed to select an owner"
+msgstr ""
+
 #: src/php/core-addons/private-file/private-file-addon.class.php:43
-#: src/php/core-addons/private-file/private-file-addon.class.php:1050
+#: src/php/core-addons/private-file/private-file-addon.class.php:1051
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:150
 msgid "Private Files"
 msgstr "File Privati"
@@ -2673,63 +2673,63 @@ msgstr "File non trovato"
 msgid "You are not allowed to remove attached files"
 msgstr "Non sei autorizzato a rimuovere i files allegati"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1007
+#: src/php/core-addons/private-file/private-file-addon.class.php:1009
 msgid "You are not authorized to access this file"
 msgstr "Non sei autorizzato ad accedere a questo file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1024
+#: src/php/core-addons/private-file/private-file-addon.class.php:1026
 msgid "There is no such file attached to this private content"
 msgstr "Non c'è nessun file allegato a questo contenuto privato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1053
+#: src/php/core-addons/private-file/private-file-addon.class.php:1054
 msgid "Global"
 msgstr "Globale"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1055
+#: src/php/core-addons/private-file/private-file-addon.class.php:1056
 msgid "Manage file attachments"
 msgstr "Gestisci file allegato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1061
+#: src/php/core-addons/private-file/private-file-addon.class.php:1062
 msgid "List all files"
 msgstr "Elenca tutti i file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1062
+#: src/php/core-addons/private-file/private-file-addon.class.php:1063
 msgid "Create/Edit files"
 msgstr "Crea/Modifica file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1063
+#: src/php/core-addons/private-file/private-file-addon.class.php:1064
 msgid "Delete files"
 msgstr "Cancella file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1064
+#: src/php/core-addons/private-file/private-file-addon.class.php:1065
 msgid "Access files"
 msgstr "Visualizza file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1065
+#: src/php/core-addons/private-file/private-file-addon.class.php:1066
 #: src/php/core-addons/private-page/private-page-addon.class.php:114
 msgid "Manage categories"
 msgstr "Gestione Categorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1066
+#: src/php/core-addons/private-file/private-file-addon.class.php:1067
 #: src/php/core-addons/private-page/private-page-addon.class.php:115
 msgid "Edit categories"
 msgstr "Modifica Categorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1067
+#: src/php/core-addons/private-file/private-file-addon.class.php:1068
 #: src/php/core-addons/private-page/private-page-addon.class.php:116
 msgid "Delete categories"
 msgstr "Cancella Categorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1068
+#: src/php/core-addons/private-file/private-file-addon.class.php:1069
 #: src/php/core-addons/private-page/private-page-addon.class.php:117
 msgid "Assign categories"
 msgstr "Assegna Categorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1074
+#: src/php/core-addons/private-file/private-file-addon.class.php:1075
 msgid "View private files"
 msgstr "Visualizza file privati"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1075
+#: src/php/core-addons/private-file/private-file-addon.class.php:1076
 msgid "View any private file"
 msgstr "Visualizza qualunque file privato"
 
@@ -2826,6 +2826,7 @@ msgstr "Prova a fissarlo"
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:342
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:414
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:472
+#: src/php/core-classes/addon-edit-content-page.class.php:865
 msgid "This file type is not allowed. You can only upload: %s"
 msgstr "Questo tipo di file non è consentito. Potete caricare solamente : %s"
 
@@ -2846,6 +2847,7 @@ msgid "An error happened while copying %s from the FTP folder"
 msgstr "E' avvenuto un errore durante la copia di %s dalla cartella FTP"
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:460
+#: src/php/core-classes/addon-edit-content-page.class.php:852
 msgid "No file has been uploaded"
 msgstr "Nessun file è stato caricato"
 
@@ -2854,6 +2856,7 @@ msgid "An unknown error happened while uploading your file."
 msgstr "Si è verificato un errore sconosciuto durante il caricamento del file."
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:500
+#: src/php/core-classes/addon-edit-content-page.class.php:884
 msgid "An error happened while uploading your file: %s"
 msgstr "Si è verificato un errore durante il caricamento del file : %s"
 
@@ -3424,7 +3427,7 @@ msgstr "Questa chiave di licenza sembra essere stata generata per un altro prodo
 
 #: src/php/core-classes/Licensing/licensing.class.php:131
 msgid "Your license is not active for this URL."
-msgstr ""
+msgstr "La tua licenza non è attiva per questo URL."
 
 #: src/php/core-classes/Licensing/licensing.class.php:136
 msgid "Problem when validating your license key"
@@ -3487,7 +3490,7 @@ msgstr "Lo slug che è usato nell'URL per la tassonomia degli archivi:"
 msgid ""
 "Show additional information before and after the post in the single post "
 "view."
-msgstr ""
+msgstr "Visualizza maggiori informazione prima e dopo il post nel singolo articolo."
 
 #: src/php/core-classes/addon-create-content-page.class.php:85
 msgid "You are not allowed to create this type of content."
@@ -3519,29 +3522,70 @@ msgstr "Abilita la moderazione quando un nuovo contenuto viene inviato da un ute
 
 #: src/php/core-classes/addon-create-content-page.class.php:216
 msgid "Default owners"
-msgstr ""
+msgstr "Proprietario di default"
 
 #: src/php/core-classes/addon-create-content-page.class.php:233
 msgid "Default category"
 msgstr "Categoria predefinita"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:765
+#: src/php/core-classes/addon-edit-content-page.class.php:779
+msgid "No file has been selected for deletion"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:785
+#: src/php/core-classes/addon-edit-content-page.class.php:791
+msgid "Oops! Security check failed!"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:806
+msgid "It looks like the file you tried to delete does not exists."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:819
+msgid "This file type is not allowed. You can only delete: %s"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:824
+msgid "This file cannot be deleted, please contact site administrator."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:895
+msgid ""
+"It looks like you are not allowed to create content for this kind of post "
+"type."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:906
+msgid ""
+"It looks like you are not allowed to update authored content for this post."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:912
+msgid ""
+"It looks like you are not allowed to update owned content for this post."
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:940
+msgid "An error happened while creating the folder: %s"
+msgstr ""
+
+#: src/php/core-classes/addon-edit-content-page.class.php:988
 msgid "Content edition (from front-office)"
 msgstr "Modifica contenuti (dal front-office)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:767
+#: src/php/core-classes/addon-edit-content-page.class.php:990
 msgid "Select an owner (uses default else)"
 msgstr "Seleziona un utente (utilizza quello predefinito altrimenti)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:768
+#: src/php/core-classes/addon-edit-content-page.class.php:991
 msgid "Select a category (uses default else)"
 msgstr "Seleziona una categoria (utilizza quella predefinita altrimenti)"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:831
+#: src/php/core-classes/addon-edit-content-page.class.php:1054
 msgid "Rich Editor"
 msgstr "Editor Avanzato"
 
-#: src/php/core-classes/addon-edit-content-page.class.php:839
+#: src/php/core-classes/addon-edit-content-page.class.php:1062
 msgid "Enable the rich editor when editing content."
 msgstr "Abilita l'editor avanzato quando si modifica un contenuto."
 
@@ -3635,23 +3679,23 @@ msgstr "<strong>Error: </strong>Gli add-on di WP Customer Area sono attivi ma il
 msgid ""
 "Automatic updates are currently disabled for this plugin. You are probably "
 "missing some security fixes."
-msgstr ""
+msgstr "Gli aggiornamenti automatici sono attualmente disabilitati per questo plugin. In questo modo potresti perdere alcuni aggiornamenti di sicurezza."
 
 #: src/php/core-classes/addon.class.php:209
 msgid "Enter a valid license key to enable automatic updates."
-msgstr ""
+msgstr "Inserisci una chiave di licenza valida per attivare gli aggiornamenti automatici."
 
-#: src/php/core-classes/addon.class.php:259
+#: src/php/core-classes/addon.class.php:275
 msgid ""
 "You have invalid or expired license keys for WP Customer Area. Please go to "
 "the <a href=\"%s\">Licenses page</a> to correct this issue."
-msgstr ""
+msgstr "Hai una chiave di licenza WP Customer Area non valida o scaduta. Per favore vai alla<a href=\"%s\">pagina di licenza</a> per correggere il problema."
 
-#: src/php/core-classes/addon.class.php:262
+#: src/php/core-classes/addon.class.php:278
 msgid ""
 "If you do not know these license keys, you can find them listed on <a "
 "href=\"%s\" target=\"_blank\">your WP Customer Area account</a>."
-msgstr ""
+msgstr "Se non conosci questa chiave di licenza, puoi trovarla all'interno del tuo <a href=\"%s\" target=\"_blank\">Account WP Customer Area</a>."
 
 #: src/php/core-classes/object-meta/field/display-name-field.class.php:47
 #: src/php/core-classes/object-meta/field/text-field.class.php:58
@@ -3741,20 +3785,34 @@ msgstr "Annulla"
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
-msgstr ""
+msgstr "Devi selezionare un unico proprietario, non è possibile selezionare più proprietari per questa operazione."
 
 #: src/php/core-classes/plugin.class.php:249
 #: src/php/core-classes/plugin.class.php:281
 msgid "No owner is currently selected, the action cannot be executed."
+msgstr "Nessun proprietario è stato selezionato, non è possibile procedere."
+
+#: src/php/core-classes/plugin.class.php:282
+msgid ""
+"We could not get a proper answer from the server, please contact site "
+"administrator."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:696
+#: src/php/core-classes/plugin.class.php:283
+msgid "The type of file you tried to upload is not an image."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:284
+msgid "Delete image"
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:699
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr "I permalink sono disabilitati, l'Area Cliente potrebbe non funzionare correttamente. Si prega di <a href=\"%1$s\">abilitarli nelle impostazioni di Wordpress</a>."
 
-#: src/php/core-classes/plugin.class.php:996
+#: src/php/core-classes/plugin.class.php:1000
 msgid "Some template files you have overridden seem to be outdated."
 msgstr "Alcuni file del template che hai modificato sembrano essere obsoleti."
 
@@ -3822,31 +3880,31 @@ msgstr "Mostra le informazioni di debug del template utilizzato da Area Clienti.
 
 #: src/php/core-classes/settings.class.php:405
 msgid "Licensing and updates"
-msgstr ""
+msgstr "Licenza e aggiornamenti"
 
 #: src/php/core-classes/settings.class.php:412
 msgid "Beta versions"
-msgstr ""
+msgstr "Versioni beta"
 
 #: src/php/core-classes/settings.class.php:420
 msgid ""
 "If checked, you will be notified when a beta version is published. Else, "
 "only stable updates will be delivered."
-msgstr ""
+msgstr "Se spuntato verrai notificato quando sarà disponibile una versione beta. In caso contrario riceverai solamente aggiornamenti a versioni stabili."
 
 #: src/php/core-classes/settings.class.php:426
 msgid "Bypass SSL"
-msgstr ""
+msgstr "Bypassa SSL"
 
 #: src/php/core-classes/settings.class.php:434
 msgid ""
 "Check this box if you have problems validating your license keys. The "
 "license server will be called using simple HTTP protocol instead of HTTPS."
-msgstr ""
+msgstr "Spunta questo box se hai problemi nel validare la tua chiave di licenza. Il server di licenza verrà raggiunto in HTTP al posto dello standard HTTPS."
 
 #: src/php/core-classes/settings.class.php:435
 msgid "You need to save your changes before validating the licenses again!."
-msgstr ""
+msgstr "Devi salvare i cambiamenti prima di validare ancora la licenza!."
 
 #: src/php/core-classes/settings.class.php:441
 msgid "License keys for commercial add-ons"
@@ -3898,52 +3956,52 @@ msgstr "deve essere maggiore di %s"
 msgid "must be lower than %s"
 msgstr "deve essere minore di %s"
 
-#: src/php/core-classes/settings.class.php:850
+#: src/php/core-classes/settings.class.php:861
 msgid "Invalid owner"
-msgstr ""
+msgstr "Proprietario non valido"
 
-#: src/php/core-classes/settings.class.php:868
-#: src/php/core-classes/settings.class.php:898
+#: src/php/core-classes/settings.class.php:879
+#: src/php/core-classes/settings.class.php:909
 msgid "you cannot select multiple terms."
 msgstr "non puoi selezionare più di un termine."
 
-#: src/php/core-classes/settings.class.php:983
+#: src/php/core-classes/settings.class.php:994
 msgid "Validate"
 msgstr "Valida"
 
-#: src/php/core-classes/settings.class.php:1061
+#: src/php/core-classes/settings.class.php:1072
 msgid "Upload File"
 msgstr "Carica file"
 
-#: src/php/core-classes/settings.class.php:1237
+#: src/php/core-classes/settings.class.php:1248
 msgid "None"
 msgstr "Nessuno"
 
-#: src/php/core-classes/settings.class.php:1258
+#: src/php/core-classes/settings.class.php:1269
 msgid "Delete existing &amp; create new &raquo;"
 msgstr "Cancella esistente &amp; crea nuova &raquo;"
 
-#: src/php/core-classes/settings.class.php:1263
+#: src/php/core-classes/settings.class.php:1274
 msgid "Edit it &raquo;"
 msgstr "Modifica &raquo;"
 
-#: src/php/core-classes/settings.class.php:1268
+#: src/php/core-classes/settings.class.php:1279
 msgid "Create it &raquo;"
 msgstr "Crea &raquo;"
 
-#: src/php/core-classes/settings.class.php:1374
+#: src/php/core-classes/settings.class.php:1385
 msgid "Any Role"
 msgstr "Qualsiasi Ruolo"
 
-#: src/php/core-classes/settings.class.php:1564
+#: src/php/core-classes/settings.class.php:1575
 msgid "Main plugin folder"
 msgstr "Cartella principale del plugin"
 
-#: src/php/core-classes/settings.class.php:1570
+#: src/php/core-classes/settings.class.php:1581
 msgid "Current theme folder"
 msgstr "Cartella del tema attivo"
 
-#: src/php/core-classes/settings.class.php:1576
+#: src/php/core-classes/settings.class.php:1587
 msgid "WordPress content folder"
 msgstr "Cartella di WordPress"
 
@@ -4038,7 +4096,7 @@ msgstr "kB"
 
 #: src/php/helpers/bootstrap-nav-walker.class.php:194
 msgid "Add a menu"
-msgstr ""
+msgstr "Aggiungi un menù"
 
 #: src/php/helpers/country-helper.class.php:52
 msgid "Afghanistan"
@@ -4174,7 +4232,7 @@ msgstr "British Indian Ocean Territory"
 
 #: src/php/helpers/country-helper.class.php:85
 msgid "Brunei Darrussalam"
-msgstr ""
+msgstr "Brunei"
 
 #: src/php/helpers/country-helper.class.php:86
 msgid "Bulgaria"
@@ -4230,7 +4288,7 @@ msgstr "Christmas Island"
 
 #: src/php/helpers/country-helper.class.php:99
 msgid "Cocos Islands"
-msgstr ""
+msgstr "Isole Cocos"
 
 #: src/php/helpers/country-helper.class.php:100
 msgid "Colombia"
@@ -4246,7 +4304,7 @@ msgstr ""
 
 #: src/php/helpers/country-helper.class.php:103
 msgid "Congo, Republic of"
-msgstr ""
+msgstr "Congo, Repubblica del "
 
 #: src/php/helpers/country-helper.class.php:104
 msgid "Cook Islands"
@@ -4262,7 +4320,7 @@ msgstr "Costa d' avorio"
 
 #: src/php/helpers/country-helper.class.php:107
 msgid "Croatia/Hrvatska"
-msgstr ""
+msgstr "Croazia"
 
 #: src/php/helpers/country-helper.class.php:108
 msgid "Cuba"
@@ -4298,7 +4356,7 @@ msgstr "Dominican Republic"
 
 #: src/php/helpers/country-helper.class.php:116
 msgid "East Timor"
-msgstr ""
+msgstr "Timor Est"
 
 #: src/php/helpers/country-helper.class.php:117
 msgid "Ecuador"
@@ -4430,11 +4488,11 @@ msgstr "Haiti"
 
 #: src/php/helpers/country-helper.class.php:149
 msgid "Heard and McDonald Islands"
-msgstr ""
+msgstr "Isole Heard e McDonald"
 
 #: src/php/helpers/country-helper.class.php:150
 msgid "Holy See (City Vatican State)"
-msgstr ""
+msgstr "Santa Sede (Città del Vaticano)"
 
 #: src/php/helpers/country-helper.class.php:151
 msgid "Honduras"
@@ -4542,7 +4600,7 @@ msgstr "Liberia"
 
 #: src/php/helpers/country-helper.class.php:177
 msgid "Libyan Arab Jamahiriya"
-msgstr ""
+msgstr "Libia"
 
 #: src/php/helpers/country-helper.class.php:178
 msgid "Liechtenstein"
@@ -4618,7 +4676,7 @@ msgstr "Micronesia"
 
 #: src/php/helpers/country-helper.class.php:196
 msgid "Moldova, Republic of"
-msgstr ""
+msgstr "Moldavia"
 
 #: src/php/helpers/country-helper.class.php:197
 msgid "Monaco"
@@ -4722,7 +4780,7 @@ msgstr "Palau"
 
 #: src/php/helpers/country-helper.class.php:222
 msgid "Palestinian Territories"
-msgstr ""
+msgstr "Territori Palestinesi"
 
 #: src/php/helpers/country-helper.class.php:223
 msgid "Panama"
@@ -4742,11 +4800,11 @@ msgstr "Peru"
 
 #: src/php/helpers/country-helper.class.php:227
 msgid "Phillipines"
-msgstr ""
+msgstr "Filippine"
 
 #: src/php/helpers/country-helper.class.php:228
 msgid "Pitcairn Island"
-msgstr ""
+msgstr "Isole Pitcairn"
 
 #: src/php/helpers/country-helper.class.php:229
 msgid "Poland"
@@ -4766,11 +4824,11 @@ msgstr "Qatar"
 
 #: src/php/helpers/country-helper.class.php:233
 msgid "Republic of Kosovo"
-msgstr ""
+msgstr "Kosovo"
 
 #: src/php/helpers/country-helper.class.php:234
 msgid "Reunion Island"
-msgstr ""
+msgstr "Isola La Riunione"
 
 #: src/php/helpers/country-helper.class.php:235
 msgid "Romania"
@@ -4802,11 +4860,11 @@ msgstr "Saint Lucia"
 
 #: src/php/helpers/country-helper.class.php:242
 msgid "Saint Martin (French)"
-msgstr ""
+msgstr "Saint Martin (Francese)"
 
 #: src/php/helpers/country-helper.class.php:243
 msgid "Saint Martin (Dutch)"
-msgstr ""
+msgstr "Saint Martin (Olandese)"
 
 #: src/php/helpers/country-helper.class.php:244
 msgid "Saint Pierre and Miquelon"
@@ -4850,7 +4908,7 @@ msgstr "Singapore"
 
 #: src/php/helpers/country-helper.class.php:254
 msgid "Slovak Republic"
-msgstr ""
+msgstr "Slovacchia"
 
 #: src/php/helpers/country-helper.class.php:255
 msgid "Slovenia"
@@ -4898,7 +4956,7 @@ msgstr "Suriname"
 
 #: src/php/helpers/country-helper.class.php:266
 msgid "Svalbard and Jan Mayen Islands"
-msgstr ""
+msgstr "Isole Svalbard e Jan Mayen"
 
 #: src/php/helpers/country-helper.class.php:267
 msgid "Swaziland"
@@ -5018,15 +5076,15 @@ msgstr "Vietnam"
 
 #: src/php/helpers/country-helper.class.php:296
 msgid "Virgin Islands (British)"
-msgstr ""
+msgstr "Isole Vergini (Britanniche)"
 
 #: src/php/helpers/country-helper.class.php:297
 msgid "Virgin Islands (USA)"
-msgstr ""
+msgstr "Isole Vergini (Statunitensi)"
 
 #: src/php/helpers/country-helper.class.php:298
 msgid "Wallis and Futuna Islands"
-msgstr ""
+msgstr "Isole Wallis e Futuna"
 
 #: src/php/helpers/country-helper.class.php:299
 msgid "Western Sahara"
@@ -5034,7 +5092,7 @@ msgstr "Western Sahara"
 
 #: src/php/helpers/country-helper.class.php:300
 msgid "Western Samoa"
-msgstr ""
+msgstr "Samoa"
 
 #: src/php/helpers/country-helper.class.php:301
 msgid "Yemen"
@@ -5258,7 +5316,7 @@ msgstr "Zaragoza"
 
 #: src/php/helpers/currency-helper.class.php:41
 msgid "Australian Dollar (&#36;)"
-msgstr ""
+msgstr "Dollaro Australiano (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:42
 msgid "Brazilian Real (R&#36;)"
@@ -5266,7 +5324,7 @@ msgstr "Real Brasiliano (R&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:43
 msgid "Canadian Dollar (&#36;)"
-msgstr ""
+msgstr "Dollaro Canadese (&#36;)"
 
 #: src/php/helpers/currency-helper.class.php:44
 msgid "Czech Koruna"
@@ -5278,7 +5336,7 @@ msgstr "Danish Krone"
 
 #: src/php/helpers/currency-helper.class.php:46
 msgid "Euro (&euro;)"
-msgstr ""
+msgstr "Euro (&euro;)"
 
 #: src/php/helpers/currency-helper.class.php:47
 msgid "Hong Kong Dollar (&#36;)"
@@ -5306,7 +5364,7 @@ msgstr "Yen Japponese (&yen;)"
 
 #: src/php/helpers/currency-helper.class.php:53
 msgid "Malaysian Ringgit"
-msgstr ""
+msgstr "Ringgit Malese"
 
 #: src/php/helpers/currency-helper.class.php:54
 msgid "Mexican Peso (&#36;)"
@@ -5350,7 +5408,7 @@ msgstr "Swiss Franc"
 
 #: src/php/helpers/currency-helper.class.php:64
 msgid "Taiwan New Dollar"
-msgstr ""
+msgstr "Nuovo Dollaro Taiwanese"
 
 #: src/php/helpers/currency-helper.class.php:65
 msgid "Thai Baht (&#3647;)"
@@ -5362,7 +5420,7 @@ msgstr "Lira Turca (&#8378;)"
 
 #: src/php/helpers/currency-helper.class.php:67
 msgid "US Dollar (&#36;)"
-msgstr ""
+msgstr "Dollaro Statunitense (&#36;)"
 
 #. Description of the plugin/theme
 msgid ""
@@ -5458,151 +5516,151 @@ msgstr "Cerca Pagamenti"
 #: src/php/core-addons/payments/payment.class.php:380
 msgctxt "cuar_payment"
 msgid "No payment found"
-msgstr ""
+msgstr "Nessun pagamento trovato"
 
 #: src/php/core-addons/payments/payment.class.php:381
 msgctxt "cuar_payment"
 msgid "No payment found in Trash"
-msgstr ""
+msgstr "Nessun pagamento trovato nel cestino"
 
 #: src/php/core-addons/payments/payment.class.php:382
 msgctxt "cuar_payment"
 msgid "Parent Payment:"
-msgstr ""
+msgstr "Pagamenti simili:"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1094
+#: src/php/core-addons/private-file/private-file-addon.class.php:1095
 msgctxt "cuar_private_file"
 msgid "File"
 msgstr "File"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1095
+#: src/php/core-addons/private-file/private-file-addon.class.php:1096
 msgctxt "cuar_private_file"
 msgid "Files"
 msgstr "Files"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1123
-#: src/php/core-addons/private-file/private-file-addon.class.php:1134
+#: src/php/core-addons/private-file/private-file-addon.class.php:1124
+#: src/php/core-addons/private-file/private-file-addon.class.php:1135
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "File Privati"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1124
+#: src/php/core-addons/private-file/private-file-addon.class.php:1125
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "File Privato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1125
+#: src/php/core-addons/private-file/private-file-addon.class.php:1126
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Aggiungi Nuovo"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1126
+#: src/php/core-addons/private-file/private-file-addon.class.php:1127
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Aggiungi Nuovo File Privato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1127
+#: src/php/core-addons/private-file/private-file-addon.class.php:1128
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Modifica File Privato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1128
+#: src/php/core-addons/private-file/private-file-addon.class.php:1129
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Nuovo File Privato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1129
+#: src/php/core-addons/private-file/private-file-addon.class.php:1130
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Visualizza File Privato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1130
+#: src/php/core-addons/private-file/private-file-addon.class.php:1131
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Cerca tra i file privati"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1131
+#: src/php/core-addons/private-file/private-file-addon.class.php:1132
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "Nessun file privato trovato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1132
+#: src/php/core-addons/private-file/private-file-addon.class.php:1133
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "Nessun file privato trovato nel Cestino"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1133
+#: src/php/core-addons/private-file/private-file-addon.class.php:1134
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "File privato collegato"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1167
-#: src/php/core-addons/private-file/private-file-addon.class.php:1181
+#: src/php/core-addons/private-file/private-file-addon.class.php:1168
+#: src/php/core-addons/private-file/private-file-addon.class.php:1182
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Categorie File"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1168
+#: src/php/core-addons/private-file/private-file-addon.class.php:1169
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Categoria File"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1169
+#: src/php/core-addons/private-file/private-file-addon.class.php:1170
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Cerca Categorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1170
+#: src/php/core-addons/private-file/private-file-addon.class.php:1171
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Categorie più Popolari"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1171
+#: src/php/core-addons/private-file/private-file-addon.class.php:1172
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Tutte le Categorie"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1172
+#: src/php/core-addons/private-file/private-file-addon.class.php:1173
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Categoria Collegata"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1173
+#: src/php/core-addons/private-file/private-file-addon.class.php:1174
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Categoria collegata :"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1174
+#: src/php/core-addons/private-file/private-file-addon.class.php:1175
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Modifica Categoria del file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1175
+#: src/php/core-addons/private-file/private-file-addon.class.php:1176
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Aggiorna la categoria del file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1176
+#: src/php/core-addons/private-file/private-file-addon.class.php:1177
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Aggiungi una nuova categoria al file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1177
+#: src/php/core-addons/private-file/private-file-addon.class.php:1178
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Nuova Categoria File"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1178
+#: src/php/core-addons/private-file/private-file-addon.class.php:1179
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Separate le categorie con una virgola"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1179
+#: src/php/core-addons/private-file/private-file-addon.class.php:1180
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Aggiungi o rimuovi categorie al file"
 
-#: src/php/core-addons/private-file/private-file-addon.class.php:1180
+#: src/php/core-addons/private-file/private-file-addon.class.php:1181
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Scegli tra le categorie più usate"
@@ -5771,9 +5829,9 @@ msgstr "Mostra un mese differente"
 #: src/php/functions/functions-private-files.php:284
 msgctxt "bytes"
 msgid "b"
-msgstr ""
+msgstr "b"
 
 #: src/php/helpers/currency-helper.class.php:117
 msgctxt "Currency amount (1=amount, 2=currency)"
 msgid "%2$s %1$s"
-msgstr ""
+msgstr "%2$s %1$s"
