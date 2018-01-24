@@ -279,6 +279,9 @@ if ( !class_exists('CUAR_Plugin')) :
                     'addressActionsCannotHandleMultipleOwners' => __('You must select only a single owner, multiple owners are not handled for this action.',
                         'cuar'),
                     'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
+                    'ajaxEditorServerUnreachable'              => __('We could not get a proper answer from the server, please contact site administrator.', 'cuar'),
+                    'ajaxEditorImageIsNotImg'                  => __('The type of file you tried to upload is not an image.', 'cuar'),
+                    'ajaxEditorDeleteImg'                      => __('Delete image', 'cuar'),
                 ));
                 wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
                 wp_localize_script('cuar.frontend', 'cuar', $messages);
@@ -877,6 +880,7 @@ if ( !class_exists('CUAR_Plugin')) :
                     wp_enqueue_script('bootstrap.popover', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/popover.min.js', array('jquery', 'bootstrap.tooltip'), $cuar_version);
                     wp_enqueue_script('bootstrap.modal', CUAR_PLUGIN_URL . 'libs/js/framework/bootstrap/modal.min.js', array('jquery'), $cuar_version);
                     wp_enqueue_script('summernote', CUAR_PLUGIN_URL . 'libs/js/bower/summernote/summernote.min.js', array('jquery', 'bootstrap.tooltip', 'bootstrap.popover', 'bootstrap.modal'), $cuar_version);
+	                wp_enqueue_script('summernote-image-attributes', CUAR_PLUGIN_URL . 'libs/js/bower/summernote-image-attributes/summernote-image-attributes.min.js', array('jquery', 'bootstrap.tooltip', 'bootstrap.popover', 'bootstrap.modal', 'summernote'), $cuar_version);
 
                     $locale = get_locale();
                     if ($locale && !empty($locale)) {

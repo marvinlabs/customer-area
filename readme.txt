@@ -1,11 +1,11 @@
 ﻿=== WP Customer Area ===
 
-Contributors:       vprat, marvinlabs
+Contributors:       vprat, marvinlabs, tlartaud
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
 Tested up to:       4.9.0
-Stable tag:         7.4.5
+Stable tag:         7.4.6
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,20 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.4.6 (2018/01/23) =
+
+* New: Uploading an image through the rich editor now send it to the server through Ajax in the uploads folder
+* New: Frontend rich editor now has a new button to allow image editing after clicking on it
+* Tweak: graphics adjustments on frontend rich editor such as paddings and more
+* Fix: frontend rich editor were not properly usable on fullscreen mode due to popups not showing up
+* Fix: uploading an image now set the image max-width as 100% by default
+* Fix: notice: Undefined index: force-download when trying to download an inline file
+* Fix: some links were showing up in avatar menu without checking for capabilities
+* Fix: notice: $is_locked not defined
+
+* **Projects** - Fix: Notice: Trying to get property of non-object in core-classes/Content/list-table.class.php
+* **Design Extras** - Tweak: Support for new styles from 7.4.6 version
 
 = 7.4.5 (2018/01/09) =
 

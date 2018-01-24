@@ -1,0 +1,32 @@
+{
+  "name": "customer-area",
+  "version": "7.4.6",
+  "description": "WP Customer Area is a modular all-in-one solution to manage private content with WordPress.",
+  "homepage": "https://wp-customerarea.com",
+  "author": {
+    "name": "Vincent Mimoun-Prat",
+    "email": "vincent@marvinlabs.com",
+    "url": "http://marvinlabs.com/"
+  },
+  "repository": "git@github.com:marvinlabs/customer-area.git",
+  "bugs": {
+    "url": "http://github.com/marvinlabs/customer-area-build-environment/issues"
+  },
+  "license": "GPL-3.0",
+  "private": true,
+  "dependencies": {
+    "@bower_components/blueimp-file-upload": "blueimp/jQuery-File-Upload#9.12.5",
+    "@bower_components/bootstrap": "twbs/bootstrap#3.3.6",
+    "@bower_components/font-awesome": "FortAwesome/Font-Awesome#4.6.3",
+    "@bower_components/jquery": "jquery/jquery#2.2.4",
+    "@bower_components/jquery.fancytree": "mar10/fancytree#2.18.0",
+    "@bower_components/jquery.steps": "rstaib/jquery-steps#1.1.0",
+    "@bower_components/js-cookie": "js-cookie/js-cookie#2.1.2",
+    "@bower_components/modernizr": "Modernizr/Modernizr#^3.3.1",
+    "@bower_components/seiyria-bootstrap-slider": "seiyria/bootstrap-slider#7.1.1",
+    "@bower_components/select2": "ivaynberg/select2#4.0.3",
+    "@bower_components/slick-carousel": "kenwheeler/slick#1.6.0",
+    "@bower_components/summernote": "summernote/summernote#0.8.1",
+    "summernote-image-attributes": "DiemenDesign/summernote-image-attributes"
+  }
+}
