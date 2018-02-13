@@ -105,6 +105,12 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.4.7 (2018/??/??) =
+
+**Add-on changes**
+
+* **Protect Post Types** - New: add new filter for default protection checkbox status
+
 = 7.4.6 (2018/01/23) =
 
 * New: Uploading an image through the rich editor now send it to the server through Ajax in the uploads folder
