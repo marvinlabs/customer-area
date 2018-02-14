@@ -389,7 +389,7 @@ if ( !class_exists('CUAR_AbstractUpdateContentPageAddOn')) :
 
         public function is_accessible_to_current_user()
         {
-            if (get_queried_object_id() != $this->get_page_id()) return false;
+            if (!$this->is_currently_displayed()) return false;
 
             return parent::is_accessible_to_current_user();
         }

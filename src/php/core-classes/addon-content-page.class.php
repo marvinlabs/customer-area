@@ -608,8 +608,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
         public function add_listing_contextual_toolbar_group($groups)
         {
-            $current_page_id = get_queried_object_id();
-            if ($current_page_id!=$this->get_page_id()) return $groups;
+            if (!$this->is_currently_displayed()) return $groups;
 
             ob_start();
             include($this->plugin->get_template_file_path(

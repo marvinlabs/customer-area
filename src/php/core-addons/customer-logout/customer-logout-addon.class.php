@@ -68,7 +68,7 @@ class CUAR_CustomerLogoutAddOn extends CUAR_AbstractPageAddOn {
 	
 	public function do_logout() {
 		// If we are logged-in and we really are on this page, simply redirect
-		if ( is_user_logged_in() && get_queried_object_id()==$this->get_page_id() ) {
+		if ( is_user_logged_in() && $this->is_currently_displayed() ) {
 			wp_logout();
 			$logout_url = apply_filters( 'cuar/routing/logout-url', null, 'customer-dashboard', null );	
 			wp_redirect( $logout_url );			

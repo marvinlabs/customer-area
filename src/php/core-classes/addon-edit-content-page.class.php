@@ -100,7 +100,7 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
 
         public function handle_form_submission()
         {
-            if (get_queried_object_id() != $this->get_page_id()) return false;
+            if (!$this->is_currently_displayed()) return false;
 
             $action = $this->get_action();
             if (get_query_var('cuar_action', null) != null) {
