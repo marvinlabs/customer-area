@@ -105,10 +105,13 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.4.7 (2018/??/??) =
+= 7.5.0 (2018/??/??) =
+
+* Fix: [redirection of term archive pages](https://github.com/marvinlabs/customer-area/issues/297)
 
 **Add-on changes**
 
+* **Terms of Service** - Brand new addon: force users to accept your TOS when registering or logging in!
 * **Protect Post Types** - New: add new filter for default protection checkbox status
 * **Authentication Forms** - Tweak: better style for login remember me checkbox
 
