@@ -153,15 +153,14 @@ class CUAR_PostOwnerAjaxHelper
                 'fields'         => array('ID', 'display_name'),
                 'number'         => 20,
                 'paged'          => $page,
-            ), 'author'));
+            ), $context));
 
         $result = array();
         foreach ($user_query->get_results() as $user)
         {
             $result[] = array(
                 'id'   => $user->ID,
-                'text' => apply_filters('cuar/core/ajax/user-search/display-result', $user->display_name,
-                    $user, $context),
+                'text' => $this->get_user_display_value($user, $context),
             );
         }
 
