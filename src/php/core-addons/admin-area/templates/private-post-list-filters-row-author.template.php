@@ -1,11 +1,15 @@
-<?php /** Template version: 1.0.0 */ ?>
+<?php /** Template version: 3.0.0
+ *
+ * -= 3.0.0 =-
+ * - Ajaxify field
+ */ ?>
 
 <?php
 $po_addon = cuar_addon('post-owner');
 
 $post_type = $list_table->post_type;
 $author_id = $list_table->get_parameter('author');
-$author_name = $po_addon->ajax()->get_user_display_value($author_id, 'author');
+$author_name = empty($author_id) ? '' : $po_addon->ajax()->get_user_display_value($author_id, 'author');
 $nonce = wp_create_nonce('cuar_search_author');
 ?>
 
@@ -17,7 +21,7 @@ $nonce = wp_create_nonce('cuar_search_author');
         <?php endif; ?>
     </select>
 
-    <?php cuar_addon('post-owner')->ajax()->print_field_script(
+    <?php $po_addon->ajax()->print_field_script(
             'author_select', 'cuar_search_author', $nonce, array('post_type' => $post_type)
     ); ?>
 </div>

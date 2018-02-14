@@ -43,6 +43,7 @@ class CUAR_PostOwnerAjaxHelper
         if (is_admin())
         {
             add_action('wp_ajax_cuar_search_author', array(&$this, 'ajax_find_author'));
+            add_action('wp_ajax_cuar_search_visible_by', array(&$this, 'ajax_find_visible_by'));
         }
     }
 
@@ -101,12 +102,43 @@ class CUAR_PostOwnerAjaxHelper
         }
 
         $post_type_object = get_post_type_object($post_type);
-        if ($post_type_object === null || !current_user_can($post_type_object->cap->edit_posts))
+        if ($post_type_object === null || !current_user_can($post_type_object->cap->read_private_posts))
         {
             wp_send_json_error(__('You are not allowed to search users', 'cuar'));
         }
 
         wp_send_json_success($this->find_users($search, $page, 'author'));
+    }
+
+    public function ajax_find_visible_by()
+    {
+        $post_type = $this->get_query_param('post_type', null);
+        $nonce = $this->get_query_param('nonce', null);
+        $search = $this->get_query_param('search', '');
+        $page = $this->get_query_param('page', 1);
+
+        if (empty($post_type) || empty($nonce))
+        {
+            wp_send_json_error(__('Missing parameter', 'cuar'));
+        }
+
+        if (!wp_verify_nonce($nonce, 'cuar_search_visible_by'))
+        {
+            wp_send_json_error(__('Trying to cheat?', 'cuar'));
+        }
+
+        if (!current_user_can('cuar_access_admin_panel'))
+        {
+            wp_send_json_error(__('You are not allowed to search users', 'cuar'));
+        }
+
+        $post_type_object = get_post_type_object($post_type);
+        if ($post_type_object === null || !current_user_can($post_type_object->cap->read_private_posts))
+        {
+            wp_send_json_error(__('You are not allowed to search users', 'cuar'));
+        }
+
+        wp_send_json_success($this->find_users($search, $page, 'visible_by'));
     }
 
     /*------- UTILITIES ----------------------------------------------------------------------------------------------*/

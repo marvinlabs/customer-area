@@ -18,6 +18,7 @@
             $("#<?php echo esc_attr($field_id); ?>").select2({
                 width     : '40%',
                 allowClear: true,
+                placeholder: '',
                 ajax      : {
                     url           : cuar.ajaxUrl,
                     dataType      : 'json',
