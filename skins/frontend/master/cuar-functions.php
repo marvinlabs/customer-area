@@ -44,7 +44,7 @@ if ( ! function_exists( 'cuar_load_skin_scripts' ) ) {
 
 			// CUAR PAGES AND SINGLE POSTS SCRIPTS
 			array(
-				'on'      => cuar_is_customer_area_page( get_queried_object_id() ) || cuar_is_customer_area_private_content( get_the_ID() ),
+				'on'      => cuar_is_customer_area_page( get_queried_object() ) || cuar_is_customer_area_private_content( get_the_ID() ),
 				'scripts' => array(
 					'summernote'
 				),
@@ -53,7 +53,7 @@ if ( ! function_exists( 'cuar_load_skin_scripts' ) ) {
 			// CUAR PAGES SCRIPTS
 			// --
 			array(
-				'on'      => cuar_is_customer_area_page( get_queried_object_id() ),
+				'on'      => cuar_is_customer_area_page( get_queried_object() ),
 				'scripts' => array(
 					'jquery.cookie',
 					'jquery.mixitup',
@@ -119,7 +119,7 @@ if ( ! function_exists( 'cuar_load_skin_scripts' ) ) {
 	/** Only load our scripts when necessary */
 	function cuar_load_skin_scripts_conditional()
 	{
-		if ( cuar_is_customer_area_page( get_queried_object_id() ) || cuar_is_customer_area_private_content( get_the_ID() ) ) {
+		if ( cuar_is_customer_area_page( get_queried_object() ) || cuar_is_customer_area_private_content( get_the_ID() ) ) {
 			cuar_load_skin_scripts();
 		}
 	}
@@ -210,7 +210,7 @@ if ( ! function_exists( 'cuar_custom_editor_styles' ) ) {
 			return $mce_css;
 		}
 
-		if ( cuar_is_customer_area_page( get_queried_object_id() ) || cuar_is_customer_area_private_content( get_the_ID() ) ) {
+		if ( cuar_is_customer_area_page( get_queried_object() ) || cuar_is_customer_area_private_content( get_the_ID() ) ) {
 			$mce_css = ', ' . plugins_url( 'assets/css/styles.min.css', __FILE__ );
 		}
 
@@ -230,7 +230,7 @@ if ( ! function_exists( 'cuar_custom_excerpt_length' ) ) {
 	 */
 	function cuar_custom_excerpt_length( $length )
 	{
-		if ( cuar_is_customer_area_page( get_queried_object_id() ) || cuar_is_customer_area_private_content( get_the_ID() ) ) {
+		if ( cuar_is_customer_area_page( get_queried_object() ) || cuar_is_customer_area_private_content( get_the_ID() ) ) {
 			return 30;
 		} else {
 			return $length;
@@ -250,7 +250,7 @@ if ( ! function_exists( 'cuar_custom_excerpt_more' ) ) {
 	 */
 	function cuar_custom_excerpt_more( $more )
 	{
-		if ( cuar_is_customer_area_page( get_queried_object_id() ) || cuar_is_customer_area_private_content( get_the_ID() ) ) {
+		if ( cuar_is_customer_area_page( get_queried_object() ) || cuar_is_customer_area_private_content( get_the_ID() ) ) {
 			return '';
 		} else {
 			return $more;
