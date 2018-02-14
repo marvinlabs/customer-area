@@ -110,6 +110,7 @@ feel free to fork the project and send us pull requests!
 **Add-on changes**
 
 * **Protect Post Types** - New: add new filter for default protection checkbox status
+* **Authentication Forms** - Tweak: better style for login remember me checkbox
 
 = 7.4.6 (2018/01/23) =
 
