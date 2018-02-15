@@ -331,6 +331,9 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn
         $post_type_object = get_post_type_object($post_type);
         $associated_taxonomies = get_object_taxonomies($post_type, 'object');
 
+        wp_enqueue_script('cuar.admin');
+        $this->plugin->enable_library('jquery.select2');
+
         $title_links = array();
         $title_links = $this->add_new_post_link($post_type_object, $post_type, $title_links);
         $title_links = $this->add_manage_taxonomy_links($post_type, $title_links);
