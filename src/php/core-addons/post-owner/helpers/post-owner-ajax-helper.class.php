@@ -81,79 +81,46 @@ class CUAR_PostOwnerAjaxHelper
 
     public function ajax_find_author()
     {
-        $post_type = $this->get_query_param('post_type', null);
-        $nonce = $this->get_query_param('nonce', null);
+        $this->check_nonce_query_param('cuar_search_author');
+        $this->check_capability('cuar_access_admin_panel');
+
+        $post_type = $this->get_query_param('post_type', null, true);
+        $this->check_post_type_capability($post_type, 'read_private_posts');
+
         $search = $this->get_query_param('search', '');
         $page = $this->get_query_param('page', 1);
-
-        if (empty($post_type) || empty($nonce))
-        {
-            wp_send_json_error(__('Missing parameter', 'cuar'));
-        }
-
-        if (!wp_verify_nonce($nonce, 'cuar_search_author'))
-        {
-            wp_send_json_error(__('Trying to cheat?', 'cuar'));
-        }
-
-        if (!current_user_can('cuar_access_admin_panel'))
-        {
-            wp_send_json_error(__('You are not allowed to search users', 'cuar'));
-        }
-
-        $post_type_object = get_post_type_object($post_type);
-        if ($post_type_object === null || !current_user_can($post_type_object->cap->read_private_posts))
-        {
-            wp_send_json_error(__('You are not allowed to search users', 'cuar'));
-        }
-
-        wp_send_json_success($this->find_users($search, $page, 'author'));
+        wp_send_json_success($this->find_users($search, 'author', $page));
     }
 
     public function ajax_find_visible_by()
     {
-        $post_type = $this->get_query_param('post_type', null);
-        $nonce = $this->get_query_param('nonce', null);
+        $this->check_nonce_query_param('cuar_search_visible_by');
+        $this->check_capability('cuar_access_admin_panel');
+
+        $post_type = $this->get_query_param('post_type', null, true);
+        $this->check_post_type_capability($post_type, 'read_private_posts');
+
         $search = $this->get_query_param('search', '');
         $page = $this->get_query_param('page', 1);
-
-        if (empty($post_type) || empty($nonce))
-        {
-            wp_send_json_error(__('Missing parameter', 'cuar'));
-        }
-
-        if (!wp_verify_nonce($nonce, 'cuar_search_visible_by'))
-        {
-            wp_send_json_error(__('Trying to cheat?', 'cuar'));
-        }
-
-        if (!current_user_can('cuar_access_admin_panel'))
-        {
-            wp_send_json_error(__('You are not allowed to search users', 'cuar'));
-        }
-
-        $post_type_object = get_post_type_object($post_type);
-        if ($post_type_object === null || !current_user_can($post_type_object->cap->read_private_posts))
-        {
-            wp_send_json_error(__('You are not allowed to search users', 'cuar'));
-        }
-
-        wp_send_json_success($this->find_users($search, $page, 'visible_by'));
+        wp_send_json_success($this->find_users($search, 'visible_by', $page));
     }
 
     /*------- UTILITIES ----------------------------------------------------------------------------------------------*/
 
-    private function find_users($search, $page = 1, $context)
+    public function find_users($search, $context, $page = 1, $extra_query_args = array())
     {
-        $user_query = new WP_User_Query(
-            apply_filters('cuar/core/ajax/user-search/query-args', array(
-                'search'         => empty($search) ? '*' : '*' . $search . '*',
-                'search_columns' => array('display_name'),
-                'orderby'        => 'display_name',
-                'fields'         => array('ID', 'display_name'),
-                'number'         => 20,
-                'paged'          => $page,
-            ), $context));
+        $args = array(
+            'search'         => empty($search) ? '*' : '*' . $search . '*',
+            'search_columns' => array('display_name'),
+            'orderby'        => 'display_name',
+            'fields'         => array('ID', 'display_name'),
+            'number'         => 20,
+            'paged'          => $page,
+        );
+        $args = array_merge($args, $extra_query_args);
+        $args = apply_filters('cuar/core/ajax/user-search/query-args', $args, $context);
+
+        $user_query = new WP_User_Query($args);
 
         $result = array();
         foreach ($user_query->get_results() as $user)
@@ -170,8 +137,40 @@ class CUAR_PostOwnerAjaxHelper
         ), $context);
     }
 
-    private function get_query_param($name, $default = null)
+    public function check_post_type_capability($post_type, $pt_cap = 'read_private_posts') {
+        $post_type_object = get_post_type_object($post_type);
+        if ($post_type_object === null || !current_user_can($post_type_object->cap->$pt_cap))
+        {
+            wp_send_json_error(__('You are not allowed to search users', 'cuar'));
+        }
+    }
+
+    public function check_capability($cap)
     {
-        return isset($_GET[$name]) ? $_GET[$name] : $default;
+        if (!current_user_can($cap))
+        {
+            wp_send_json_error(__('You are not allowed to search users', 'cuar'));
+        }
+    }
+
+    public function check_nonce_query_param($action, $name = 'nonce')
+    {
+        $nonce = $this->get_query_param($name, '', true);
+
+        if (!wp_verify_nonce($nonce, $action))
+        {
+            wp_send_json_error(__('Trying to cheat?', 'cuar'));
+        }
+    }
+
+    public function get_query_param($name, $default = null, $required = false)
+    {
+        $value = isset($_GET[$name]) ? $_GET[$name] : null;
+        if ($required && empty($value))
+        {
+            wp_send_json_error(__('Missing parameter', 'cuar'));
+        }
+
+        return empty($value) ? $default : $value;
     }
 }
