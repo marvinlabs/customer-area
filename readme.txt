@@ -115,6 +115,7 @@ feel free to fork the project and send us pull requests!
 * **Terms of Service** - Brand new addon: force users to accept your TOS when registering or logging in!
 * **Protect Post Types** - New: add new filter 'cuar/protected-post-types/default-protection-checkbox-status' for default protection checkbox status
 * **Authentication Forms** - Tweak: better style for login remember me checkbox
+* **Design Extras** - Tweak: Support for new styles from WP Customer Area 7.5.0
 
 = 7.4.6 (2018/01/23) =
 
