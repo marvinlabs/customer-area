@@ -79,7 +79,8 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
         /**
          * @return CUAR_PostOwnerAjaxHelper
          */
-        public function ajax() {
+        public function ajax()
+        {
             return $this->ajax_helper;
         }
 
@@ -96,7 +97,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
         {
             $user_id = apply_filters('cuar/core/ownership/content/meta-query/override-owner-id', $user_id);
             $base_meta_query = array(
-                    'relation' => 'OR',
+                'relation' => 'OR',
             );
 
             return apply_filters('cuar/core/ownership/content/meta-query', $base_meta_query, $user_id, $this);
@@ -113,9 +114,9 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
         public function get_owner_meta_query_component($owner_type, $owner_id)
         {
             return array(
-                    'key'     => self::$META_OWNER_QUERYABLE,
-                    'value'   => '|' . $owner_type . '_' . $owner_id . '|',
-                    'compare' => 'LIKE',
+                'key'     => self::$META_OWNER_QUERYABLE,
+                'value'   => '|' . $owner_type . '_' . $owner_id . '|',
+                'compare' => 'LIKE',
             );
         }
 
@@ -284,9 +285,9 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
                 if (!empty($ids))
                 {
                     return $this->get_legacy_owner_storage_directory($ids,
-                            $type,
-                            $absolute,
-                            $create_dirs);
+                        $type,
+                        $absolute,
+                        $create_dirs);
                 }
             }
 
@@ -436,9 +437,10 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
          *
          * @return array key is the owner ID, value is the text to show to the user
          */
-        public function get_selectable_owners($type_id)
+        public function get_selectable_owners($type_id, $search = '', $page = 1)
         {
-            return apply_filters('cuar/core/ownership/printable-owners?owner-type=' . $type_id, array());
+            return apply_filters('cuar/core/ownership/printable-owners?owner-type=' . $type_id,
+                array(), $search, $page);
         }
 
         /**
@@ -638,7 +640,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
 
                 $displayname[$type_id] = apply_filters('cuar/core/ownership/saved-displayname', '', $post_id, $type_id, $owners[$type_id]);
                 $sortable_displayname[$type_id] = apply_filters('cuar/core/ownership/saved-sortable-displayname', $type_label . ' - ' . $displayname[$type_id],
-                        $post_id, $type_id, $owners[$type_id]);
+                    $post_id, $type_id, $owners[$type_id]);
             }
             $sortable_displayname = implode(' + ', $sortable_displayname);
 
@@ -657,7 +659,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
          * @param int   $post_id
          * @param array $owners
          *
-         * @return mixed|string|void
+         * @return string
          */
         public function get_displayable_owners_for_log($post_id, $owners)
         {
@@ -673,7 +675,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
 
                 $displayname = apply_filters('cuar/core/ownership/saved-displayname', '', $post_id, $type_id, $owners[$type_id]);
                 $sortable_display_names[] = apply_filters('cuar/core/ownership/saved-sortable-displayname', $type_label . ' - ' . $displayname, $post_id,
-                        $type_id, $owners[$type_id]);
+                    $type_id, $owners[$type_id]);
             }
 
             return implode(' + ', $sortable_display_names);
@@ -763,11 +765,11 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
             wp_nonce_field('cuar_save_owners', 'wp_cuar_nonce_owner');
 
             include($this->plugin->get_template_file_path(
-                    CUAR_INCLUDES_DIR . '/core-addons/post-owner',
-                    array(
-                            'post-owner-fields' . $template_suffix . '.template.php',
-                            'post-owner-fields.template.php',
-                    )
+                CUAR_INCLUDES_DIR . '/core-addons/post-owner',
+                array(
+                    'post-owner-fields' . $template_suffix . '.template.php',
+                    'post-owner-fields.template.php',
+                )
             ));
         }
 
@@ -776,8 +778,8 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
             wp_nonce_field('cuar_save_owners', 'wp_cuar_nonce_owner');
 
             include($this->plugin->get_template_file_path(
-                    CUAR_INCLUDES_DIR . '/core-addons/post-owner',
-                    'post-owner-fields-readonly.template.php'
+                CUAR_INCLUDES_DIR . '/core-addons/post-owner',
+                'post-owner-fields-readonly.template.php'
             ));
         }
 
@@ -804,7 +806,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
                 }
 
                 $owners[$owner_type] = is_array($_POST[$ids_field_name]) ? $_POST[$ids_field_name]
-                        : array($_POST[$ids_field_name]);
+                    : array($_POST[$ids_field_name]);
             }
 
             return $owners;
@@ -841,7 +843,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
             // If not authorized to view the page, we bail
             $author_id = $post->post_author;
             $current_user_id = apply_filters('cuar/core/ownership/protect-single-post/override-user-id',
-                    get_current_user_id());
+                get_current_user_id());
 
             $is_current_user_owner = $this->is_user_owner_of_post($post->ID, $current_user_id);
             if (!($is_current_user_owner || $author_id == $current_user_id
