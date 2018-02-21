@@ -109,6 +109,7 @@ feel free to fork the project and send us pull requests!
 
 * Fix: redirection of term archive pages [#297](https://github.com/marvinlabs/customer-area/issues/297)
 * Fix: user groups and addresses select fields not rendering properly [#299](https://github.com/marvinlabs/customer-area/issues/299)
+* Fix: save button ready too early [#291](https://github.com/marvinlabs/customer-area/issues/291)
 
 **Add-on changes**
 

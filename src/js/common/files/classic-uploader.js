@@ -19,6 +19,8 @@
         // Add a reverse reference to the DOM object
         base.$el.data("cuar.classicUploader", base);
 
+        base.uploadsInProgress = 0;
+
         /**
          * Initialisation
          */
@@ -94,6 +96,9 @@
          * File upload callback
          */
         base._onFileUploadAdd = function (e, data) {
+            // Disable the save post button
+            base._updateButtonState('disable');
+
             // Add all selected files using the attachment manager
             for (var i = 0, len = data.files.length; i < len; i++) {
                 var filename = data.files[i].name;
@@ -146,6 +151,28 @@
                         errorMessage,
                         true
                     ]);
+                }
+            }
+
+            // Enable the save post button
+            base._updateButtonState('enable');
+        };
+
+        /**
+         * Disable/Enable save button
+         *
+         * @param state
+         * @private
+         */
+        base._updateButtonState = function (state) {
+            var button = base.$el.closest('.cuar-js-wizard-section').find('.cuar-submit-container > input[type=submit]');
+            if (typeof state === 'undefined' || state === 'disable') {
+                base.uploadsInProgress++;
+                button.addClass('disabled');
+            } else if (state === 'enable') {
+                base.uploadsInProgress--;
+                if (base.uploadsInProgress === 0) {
+                    button.removeClass('disabled');
                 }
             }
         };
