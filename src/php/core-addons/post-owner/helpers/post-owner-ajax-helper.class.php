@@ -45,6 +45,8 @@ class CUAR_PostOwnerAjaxHelper
             add_action('wp_ajax_cuar_search_author', array(&$this, 'ajax_find_author'));
             add_action('wp_ajax_cuar_search_visible_by', array(&$this, 'ajax_find_visible_by'));
         }
+
+        add_action('wp_ajax_cuar_search_selectable_owner', array(&$this, 'ajax_find_selectable_owner'));
     }
 
     public function print_field_script($field_id, $action, $nonce, $extra_data)
@@ -78,6 +80,25 @@ class CUAR_PostOwnerAjaxHelper
     }
 
     /*------- AJAX CALLBACKS -----------------------------------------------------------------------------------------*/
+
+    public function ajax_find_selectable_owner()
+    {
+        // Replace filter:  cuar/core/ownership/printable-owners?owner-type=
+        // by:              cuar/core/ajax/search/post-owners?owner-type=
+
+        $type_id = $this->get_query_param('owner_type', null, true);
+        $search = $this->get_query_param('search', '');
+        $page = $this->get_query_param('page', 1);
+
+        $this->check_nonce_query_param('cuar_search_selectable_owner_' . $type_id);
+
+        wp_send_json_success(apply_filters('cuar/core/ajax/search/post-owners?owner-type=' . $type_id,
+            array(
+                'results' => array(),
+                'more'    => false,
+            ),
+            $search, $page));
+    }
 
     public function ajax_find_author()
     {
@@ -118,7 +139,7 @@ class CUAR_PostOwnerAjaxHelper
             'paged'          => $page,
         );
         $args = array_merge($args, $extra_query_args);
-        $args = apply_filters('cuar/core/ajax/user-search/query-args', $args, $context);
+        $args = apply_filters('cuar/core/ajax/search/query-args?type=users', $args, $context);
 
         $user_query = new WP_User_Query($args);
 
@@ -131,13 +152,48 @@ class CUAR_PostOwnerAjaxHelper
             );
         }
 
-        return apply_filters('cuar/core/ajax/user-search/response', array(
+        return apply_filters('cuar/core/ajax/search/response?type=users', array(
             'results' => $result,
             'more'    => $user_query->get_total() > count($result),
         ), $context);
     }
 
-    public function check_post_type_capability($post_type, $pt_cap = 'read_private_posts') {
+    public function find_posts($search, $context, $page = 1, $extra_query_args = array())
+    {
+        $args = array(
+            'orderby'        => 'post_title',
+            'order'          => 'ASC',
+            'posts_per_page' => 20,
+            'paged'          => $page,
+        );
+
+        if (!empty($search))
+        {
+            $args['s'] = $search;
+        }
+
+        $args = array_merge($args, $extra_query_args);
+        $args = apply_filters('cuar/core/ajax/search/query-args?type=posts', $args, $context);
+
+        $post_query = new WP_Query($args);
+
+        $result = array();
+        foreach ($post_query->posts as $post)
+        {
+            $result[] = array(
+                'id'   => $post->ID,
+                'text' => $post->post_title,
+            );
+        }
+
+        return apply_filters('cuar/core/ajax/search/response?type=posts', array(
+            'results' => $result,
+            'more'    => $post_query->post_count < $post_query->found_posts,
+        ), $context);
+    }
+
+    public function check_post_type_capability($post_type, $pt_cap = 'read_private_posts')
+    {
         $post_type_object = get_post_type_object($post_type);
         if ($post_type_object === null || !current_user_can($post_type_object->cap->$pt_cap))
         {
@@ -172,5 +228,40 @@ class CUAR_PostOwnerAjaxHelper
         }
 
         return empty($value) ? $default : $value;
+    }
+
+    public function format_items_for_select2($items, $search = null, $page = null, $per_page = 20)
+    {
+        $has_more = false;
+        $results = array();
+
+        foreach ($items as $id => $text)
+        {
+            // Filter if needed
+            if (!empty($search) && false === strstr(strtolower($text), strtolower($search)))
+            {
+                continue;
+            }
+
+            $results[] = array('id' => $id, 'text' => $text);
+        }
+
+        // Paginate if needed
+        if ($page !== null)
+        {
+            $total = count($results);
+            $total_pages = ceil($total / $per_page);
+            $page = min(max($page, 1), $total_pages);
+            $offset = ($page - 1) * $per_page;
+            if ($offset < 0)
+            {
+                $offset = 0;
+            }
+
+            $has_more = $page < $total_pages;
+            $results = array_slice($results, $offset, $per_page);
+        }
+
+        return array($results, $has_more);
     }
 }

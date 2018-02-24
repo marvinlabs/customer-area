@@ -61,7 +61,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
 
         public function run_addon($plugin)
         {
-            $this->usr_owner_type = new CUAR_PostOwnerUserOwnerType();
+            $this->usr_owner_type = new CUAR_PostOwnerUserOwnerType($this);
             $this->ajax_helper = new CUAR_PostOwnerAjaxHelper($plugin, $this);
 
             if (is_admin())
@@ -413,12 +413,11 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
             return array_key_exists($type, $types);
         }
 
-
         /**
          * Returns all the possible owner types in the form of an associative array. The key is the owner type (should
          * remain constant) and the value is a string to be displayed in various places (should be internationalised).
          *
-         * @return mixed
+         * @return array
          */
         public function get_owner_types()
         {
@@ -428,19 +427,6 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
             }
 
             return $this->owner_types;
-        }
-
-        /**
-         * List all the owners which can be selected for a given type
-         *
-         * @param $type_id
-         *
-         * @return array key is the owner ID, value is the text to show to the user
-         */
-        public function get_selectable_owners($type_id, $search = '', $page = 1)
-        {
-            return apply_filters('cuar/core/ownership/printable-owners?owner-type=' . $type_id,
-                array(), $search, $page);
         }
 
         /**
@@ -507,7 +493,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
          * @param int $post_id
          * @param int $user_id
          *
-         * @return mixed|void
+         * @return bool
          */
         public function is_user_owner_of_post($post_id, $user_id)
         {
