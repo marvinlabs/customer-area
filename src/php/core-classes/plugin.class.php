@@ -70,8 +70,10 @@ if ( !class_exists('CUAR_Plugin')) :
             add_action('plugins_loaded', array(&$this, 'load_addons'), 10);
 
             add_action('init', array(&$this, 'start_session'), 1);
-            add_action('init', array(&$this, 'load_scripts'), 7);
-            add_action('init', array(&$this, 'load_styles'), 8);
+            add_action('admin_enqueue_scripts', array(&$this, 'load_admin_scripts'), 7);
+            add_action('wp_enqueue_scripts', array(&$this, 'load_frontend_scripts'), 7);
+            add_action('admin_enqueue_scripts', array(&$this, 'load_admin_styles'), 8);
+            add_action('wp_enqueue_scripts', array(&$this, 'load_frontend_styles'), 8);
 
             add_filter('single_template_hierarchy', array(&$this, 'single_template_hierarchy'), 10);
             add_filter('page_template_hierarchy', array(&$this, 'page_template_hierarchy'), 10);
@@ -206,9 +208,9 @@ if ( !class_exists('CUAR_Plugin')) :
         }
 
         /**
-         * Loads the required javascript files (only when not in admin area)
+         * Loads the required javascript files (only when in admin area)
          */
-        public function load_scripts()
+        public function load_admin_scripts()
         {
             global $wp_locale;
 
@@ -221,91 +223,115 @@ if ( !class_exists('CUAR_Plugin')) :
             }
 
             // TODO Move those messages to their respective add-ons
-            if (is_admin()) {
-                $messages = apply_filters('cuar/core/js-messages?zone=admin', array(
-                    'isAdmin'                                  => true,
-                    'locale'                                   => $locale,
-                    'lang'                                     => $lang,
-                    'ajaxUrl'                                  => admin_url('admin-ajax.php'),
-                    'checkingLicense'                          => __('Checking license...', 'cuar'),
-                    'unreachableLicenseServerError'            => __('Failed to contact server', 'cuar'),
-                    'jeditableIndicator'                       => esc_attr__('Saving...', 'cuar'),
-                    'jeditableTooltip'                         => esc_attr__('Click to edit...', 'cuar'),
-                    'jeditableSubmit'                          => esc_attr__('OK', 'cuar'),
-                    'jeditableCancel'                          => esc_attr__('Cancel', 'cuar'),
-                    'datepickerDateFormat'                     => _x('MM d, yy', 'Date picker JS date format', 'cuar'),
-                    'datepickerCloseText'                      => _x('Clear', 'Date picker text', 'cuar'),
-                    'datepickerCurrentText'                    => _x('Today', 'Date picker text', 'cuar'),
-                    'datepickerMonthNames'                     => array_values($wp_locale->month),
-                    'datepickerMonthNamesShort'                => array_values($wp_locale->month_abbrev),
-                    'datepickerMonthStatus'                    => _x('Show a different month', 'Date picker text', 'cuar'),
-                    'datepickerDayNames'                       => array_values($wp_locale->weekday),
-                    'datepickerDayNamesShort'                  => array_values($wp_locale->weekday_abbrev),
-                    'datepickerDayNamesMin'                    => array_values($wp_locale->weekday_initial),
-                    'datepickerFirstDay'                       => get_option('start_of_week'),
-                    'datepickerIsRTL'                          => $wp_locale->is_rtl() ? true : false,
-                    'addressActionsCannotHandleMultipleOwners' => __('You must select only a single owner, multiple owners are not handled for this action.',
-                        'cuar'),
-                    'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
-                ));
-                wp_register_script(
-                    'cuar.admin',
-                    CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js',
-                    array('jquery', 'wp-color-picker', 'jquery-ui-datepicker'),
-                    $this->get_version());
+            $messages = apply_filters('cuar/core/js-messages?zone=admin', array(
+                'isAdmin'                                  => true,
+                'locale'                                   => $locale,
+                'lang'                                     => $lang,
+                'ajaxUrl'                                  => admin_url('admin-ajax.php'),
+                'checkingLicense'                          => __('Checking license...', 'cuar'),
+                'unreachableLicenseServerError'            => __('Failed to contact server', 'cuar'),
+                'jeditableIndicator'                       => esc_attr__('Saving...', 'cuar'),
+                'jeditableTooltip'                         => esc_attr__('Click to edit...', 'cuar'),
+                'jeditableSubmit'                          => esc_attr__('OK', 'cuar'),
+                'jeditableCancel'                          => esc_attr__('Cancel', 'cuar'),
+                'datepickerDateFormat'                     => _x('MM d, yy', 'Date picker JS date format', 'cuar'),
+                'datepickerCloseText'                      => _x('Clear', 'Date picker text', 'cuar'),
+                'datepickerCurrentText'                    => _x('Today', 'Date picker text', 'cuar'),
+                'datepickerMonthNames'                     => array_values($wp_locale->month),
+                'datepickerMonthNamesShort'                => array_values($wp_locale->month_abbrev),
+                'datepickerMonthStatus'                    => _x('Show a different month', 'Date picker text', 'cuar'),
+                'datepickerDayNames'                       => array_values($wp_locale->weekday),
+                'datepickerDayNamesShort'                  => array_values($wp_locale->weekday_abbrev),
+                'datepickerDayNamesMin'                    => array_values($wp_locale->weekday_initial),
+                'datepickerFirstDay'                       => get_option('start_of_week'),
+                'datepickerIsRTL'                          => $wp_locale->is_rtl() ? true : false,
+                'addressActionsCannotHandleMultipleOwners' => __('You must select only a single owner, multiple owners are not handled for this action.',
+                    'cuar'),
+                'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
+            ));
+            wp_register_script(
+                'cuar.admin',
+                CUAR_PLUGIN_URL . 'assets/admin/js/customer-area.min.js',
+                array('jquery', 'wp-color-picker', 'jquery-ui-datepicker'),
+                $this->get_version());
 
-                wp_localize_script('cuar.admin', 'cuar', $messages);
+            wp_localize_script('cuar.admin', 'cuar', $messages);
+        }
+
+        /**
+         * Loads the required javascript files (only when not in admin area)
+         */
+        public function load_frontend_scripts()
+        {
+            global $wp_locale;
+
+            $lang = 'en';
+            $locale = get_locale();
+            if ($locale && !empty($locale)) {
+                $locale = str_replace("_", "-", $locale);
+                $locale_parts = explode("-", $locale);
+                if (count($locale_parts) > 0) $lang = $locale_parts[0];
+            }
+
+            // TODO Move those messages to their respective add-ons
+            $messages = apply_filters('cuar/core/js-messages?zone=frontend', array(
+                'isAdmin'                                  => false,
+                'locale'                                   => $locale,
+                'lang'                                     => $lang,
+                'ajaxUrl'                                  => admin_url('admin-ajax.php'),
+                'jeditableIndicator'                       => esc_attr__('Saving...', 'cuar'),
+                'jeditableTooltip'                         => esc_attr__('Click to edit...', 'cuar'),
+                'jeditableSubmit'                          => esc_attr__('OK', 'cuar'),
+                'jeditableCancel'                          => esc_attr__('Cancel', 'cuar'),
+                'datepickerDateFormat'                     => _x('MM d, yy', 'Date picker JS date format', 'cuar'),
+                'datepickerCloseText'                      => _x('Clear', 'Date picker text', 'cuar'),
+                'datepickerCurrentText'                    => _x('Today', 'Date picker text', 'cuar'),
+                'datepickerMonthNames'                     => array_values($wp_locale->month),
+                'datepickerMonthNamesShort'                => array_values($wp_locale->month_abbrev),
+                'datepickerMonthStatus'                    => _x('Show a different month', 'Date picker text', 'cuar'),
+                'datepickerDayNames'                       => array_values($wp_locale->weekday),
+                'datepickerDayNamesShort'                  => array_values($wp_locale->weekday_abbrev),
+                'datepickerDayNamesMin'                    => array_values($wp_locale->weekday_initial),
+                'datepickerFirstDay'                       => get_option('start_of_week'),
+                'datepickerIsRTL'                          => $wp_locale->is_rtl() ? true : false,
+                'addressActionsCannotHandleMultipleOwners' => __('You must select only a single owner, multiple owners are not handled for this action.',
+                    'cuar'),
+                'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
+                'ajaxEditorServerUnreachable'              => __('We could not get a proper answer from the server, please contact site administrator.', 'cuar'),
+                'ajaxEditorImageIsNotImg'                  => __('The type of file you tried to upload is not an image.', 'cuar'),
+                'ajaxEditorDeleteImg'                      => __('Delete image', 'cuar'),
+            ));
+            wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
+            wp_localize_script('cuar.frontend', 'cuar', $messages);
+        }
+
+        /**
+         * Loads the required css (only when in admin area)
+         */
+        public function load_admin_styles()
+        {
+
+            $screen = get_current_screen();
+
+            if ($this->is_admin_area_page() || (isset($screen) && isset($screen->id) && $screen->id === 'user-edit')) {
+                wp_enqueue_style( 'wp-color-picker' );
+                wp_enqueue_style(
+                    'cuar.admin',
+                    $this->get_admin_theme_url() . '/assets/css/styles.min.css',
+                    array(),
+                    $this->get_version());
             } else {
-                $messages = apply_filters('cuar/core/js-messages?zone=frontend', array(
-                    'isAdmin'                                  => false,
-                    'locale'                                   => $locale,
-                    'lang'                                     => $lang,
-                    'ajaxUrl'                                  => admin_url('admin-ajax.php'),
-                    'jeditableIndicator'                       => esc_attr__('Saving...', 'cuar'),
-                    'jeditableTooltip'                         => esc_attr__('Click to edit...', 'cuar'),
-                    'jeditableSubmit'                          => esc_attr__('OK', 'cuar'),
-                    'jeditableCancel'                          => esc_attr__('Cancel', 'cuar'),
-                    'datepickerDateFormat'                     => _x('MM d, yy', 'Date picker JS date format', 'cuar'),
-                    'datepickerCloseText'                      => _x('Clear', 'Date picker text', 'cuar'),
-                    'datepickerCurrentText'                    => _x('Today', 'Date picker text', 'cuar'),
-                    'datepickerMonthNames'                     => array_values($wp_locale->month),
-                    'datepickerMonthNamesShort'                => array_values($wp_locale->month_abbrev),
-                    'datepickerMonthStatus'                    => _x('Show a different month', 'Date picker text', 'cuar'),
-                    'datepickerDayNames'                       => array_values($wp_locale->weekday),
-                    'datepickerDayNamesShort'                  => array_values($wp_locale->weekday_abbrev),
-                    'datepickerDayNamesMin'                    => array_values($wp_locale->weekday_initial),
-                    'datepickerFirstDay'                       => get_option('start_of_week'),
-                    'datepickerIsRTL'                          => $wp_locale->is_rtl() ? true : false,
-                    'addressActionsCannotHandleMultipleOwners' => __('You must select only a single owner, multiple owners are not handled for this action.',
-                        'cuar'),
-                    'addressActionsNeedAtLeastOneOwner'        => __('No owner is currently selected, the action cannot be executed.', 'cuar'),
-                    'ajaxEditorServerUnreachable'              => __('We could not get a proper answer from the server, please contact site administrator.', 'cuar'),
-                    'ajaxEditorImageIsNotImg'                  => __('The type of file you tried to upload is not an image.', 'cuar'),
-                    'ajaxEditorDeleteImg'                      => __('Delete image', 'cuar'),
-                ));
-                wp_register_script('cuar.frontend', CUAR_PLUGIN_URL . 'assets/frontend/js/customer-area.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-sortable', 'jquery-ui-mouse', 'jquery-ui-widget'), $this->get_version());
-                wp_localize_script('cuar.frontend', 'cuar', $messages);
+                // When not on a page, we still need a little CSS for the menu separators
+                add_action('admin_head', array($this, 'print_inline_admin_area_styles'));
             }
         }
 
         /**
-         * Loads the required css (only when not in admin area)
+         * Loads the required css (only when NOT in admin area)
          */
-        public function load_styles()
+        public function load_frontend_styles()
         {
-            if (is_admin()) {
-                if ($this->is_admin_area_page()) {
-                    wp_enqueue_style( 'wp-color-picker' );
-                    wp_enqueue_style(
-                        'cuar.admin',
-                        $this->get_admin_theme_url() . '/assets/css/styles.min.css',
-                        array(),
-                        $this->get_version());
-                } else {
-                    // When not on a page, we still need a little CSS for the menu separators
-                    add_action('admin_head', array($this, 'print_inline_admin_area_styles'));
-                }
-            } else if ( !current_theme_supports('customer-area.stylesheet')
+            if ( !current_theme_supports('customer-area.stylesheet')
                 && $this->get_option(CUAR_Settings::$OPTION_INCLUDE_CSS)
             ) {
                 wp_enqueue_style(

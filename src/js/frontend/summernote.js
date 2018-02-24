@@ -127,6 +127,7 @@ function bootstrapSummernote($, editorSelector) {
     }
 
     var snOptions = {
+        container: '#cuar-js-content-container',
         toolbar: [
             ['block', ['style']],
             ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -151,8 +152,6 @@ function bootstrapSummernote($, editorSelector) {
         },
         callbacks: {
             onInit: function () {
-                $('body > .note-popover').appendTo("#cuar-js-content-container");
-
                 $(editorSelector + ' + .note-editor > .note-toolbar').append('<div class="cuar-js-manager-errors" style="display: none;"></div>');
             },
             onImageUpload: function (files) {
