@@ -118,14 +118,24 @@ class CUAR_PostOwnerUserOwnerType
     /**
      * Print a select field with various global rules
      *
-     * @param array  $users
+     * @param array  $response
      * @param string $search
      * @param int    $page
      * @return array
      */
-    public function get_selectable_owners_for_type_usr($users, $search, $page)
+    public function get_selectable_owners_for_type_usr($response, $search, $page)
     {
-        return $this->po_addon->ajax()->find_users($search, 'post_owner', $page);
+        $items = apply_filters('cuar/core/ownership/selectable-owners?owner-type=usr', null, $search, $page);
+        if ($items === null)
+        {
+            return $this->po_addon->ajax()->find_users($search, 'post_owner', $page);
+        }
+
+        list($results, $has_more) = $items;
+        $response['results'] = $results;
+        $response['more'] = $has_more;
+
+        return $response;
     }
 
     /**
