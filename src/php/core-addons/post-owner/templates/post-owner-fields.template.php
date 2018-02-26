@@ -7,8 +7,11 @@
 <?php /** @var array $owners */ ?>
 <?php /** @var bool $print_javascript */ ?>
 <?php /** @var string $field_prefix */ ?>
+<?php /** @var string $content_type */ ?>
 <?php /** @var string $field_group */ ?>
 <?php /** @var CUAR_PostOwnerAddOn $po_addon */ ?>
+
+<?php $content_type = empty($content_type) ? "" : $content_type; ?>
 
 <div class="cuar-js-owner-select-container">
     <?php
@@ -105,6 +108,7 @@
                                             nonce : nonce,
                                             action: 'cuar_search_selectable_owner',
                                             owner_type: ownerType,
+                                            content_type: '<?php echo esc_attr($content_type); ?>',
                                             page  : params.page || 1
                                         };
                                     },

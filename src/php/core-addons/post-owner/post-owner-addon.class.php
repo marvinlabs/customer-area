@@ -736,6 +736,33 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
 
         /*------- PRINT SELECTION FIELDS ---------------------------------------------------------------------------------------------------------------------*/
 
+        private function get_current_content_type()
+        {
+            // Find the current content type
+            if (isset($_POST['cuar_post_type']))
+            {
+                return $_POST['cuar_post_type'];
+            }
+            else if (isset($_GET['post_type']))
+            {
+                return $_GET['post_type'];
+            }
+            else if (isset($_GET['post_type']))
+            {
+                return $_GET['post_type'];
+            }
+            else
+            {
+                global $post;
+                if (!empty($post))
+                {
+                    return get_post_type($post);
+                }
+            }
+
+            return null;
+        }
+
         public function print_owner_fields($owners, $field_prefix = 'cuar_owners_', $field_group = null)
         {
             $po_addon = $this;
@@ -744,6 +771,8 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
             {
                 $owner_types = $this->get_owner_types();
             }
+
+            $content_type = $this->get_current_content_type();
 
             $template_suffix = is_admin() ? '-admin' : '-frontend';
 
@@ -802,7 +831,8 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
                     continue;
                 }
 
-                $owners[$owner_type] = is_array($_POST[$ids_field_name]) ? $_POST[$ids_field_name]
+                $owners[$owner_type] = is_array($_POST[$ids_field_name])
+                    ? $_POST[$ids_field_name]
                     : array($_POST[$ids_field_name]);
             }
 
