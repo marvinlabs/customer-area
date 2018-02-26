@@ -39,6 +39,8 @@ class CUAR_PostOwnerUserOwnerType
         add_filter('cuar/core/ajax/search/post-owners?owner-type=usr',
             array(&$this, 'get_selectable_owners_for_type_usr'), 10, 3);
         add_filter('cuar/core/ownership/saved-displayname', array(&$this, 'saved_post_owner_displayname'), 10, 4);
+        add_filter('cuar/core/ownership/owner-display-name?owner-type=usr',
+            array(&$this, 'get_owner_display_name'), 10, 2);
     }
 
     /*------- EXTEND THE OWNER TYPES AVAILABLE ----------------------------------------------------------------------*/
@@ -56,21 +58,35 @@ class CUAR_PostOwnerUserOwnerType
      */
     public function saved_post_owner_displayname($displayname, $post_id, $owner_type, $owner_ids)
     {
-        $names = array();
-
-        if ($owner_type == 'usr')
+        if ($owner_type != 'usr')
         {
-            $names = array();
-            foreach ($owner_ids as $id)
-            {
-                $u = new WP_User($id);
-                $names[] = apply_filters('cuar/core/ownership/owner-display-name?owner-type=usr', $u->display_name, $u);
-            }
+            return $displayname;
         }
 
+        $names = array();
+        foreach ($owner_ids as $id)
+        {
+            $names[] = $this->get_owner_display_name($displayname, $id);
+        }
         asort($names);
 
         return empty($names) ? $displayname : implode(", ", $names);
+    }
+
+    /**
+     * @param $name
+     * @param $owner_id
+     * @return string
+     */
+    public function get_owner_display_name($name, $owner_id)
+    {
+        $u = new WP_User($owner_id);
+        if ($u != null && $u->exists() && !empty($u->display_name))
+        {
+            return $u->display_name;
+        }
+
+        return $name;
     }
 
     /**

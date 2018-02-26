@@ -46,8 +46,10 @@
                     data-owner-type="<?php echo esc_attr($type_id); ?>"
                     data-nonce="<?php echo wp_create_nonce('cuar_search_selectable_owner_' . $type_id); ?>"
                     data-placeholder="<?php echo esc_attr($placeholder); ?>" <?php echo $extra_attrs; ?>>
-                <?php foreach ($owners[$type_id] as $id => $name) : ?>
-                    <option value="<?php echo esc_attr($id); ?>" selected="selected"><?php echo $name; ?></option>
+                <?php foreach ($owners[$type_id] as $id) : ?>
+                    <option value="<?php echo esc_attr($id); ?>" selected="selected"><?php
+                        echo $po_addon->get_owner_display_name($type_id, $id);
+                    ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

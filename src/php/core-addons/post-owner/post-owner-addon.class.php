@@ -400,6 +400,17 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
 
         /*------- ACCESS TO OWNER INFO ----------------------------------------------------------------------------------*/
 
+        /**
+         * @param $owner_type
+         * @param $owner_id
+         * @return string
+         */
+        public function get_owner_display_name($owner_type, $owner_id)
+        {
+            return apply_filters('cuar/core/ownership/owner-display-name?owner-type=' . $owner_type,
+                "$owner_type : $owner_id", $owner_id);
+        }
+
         /** Check if the given value is a valid owner type
          *
          * @param string $type The owner type to test
