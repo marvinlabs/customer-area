@@ -33,7 +33,7 @@
         }
         ?>
         <div class="cuar-owner-field cuar-owner-field-<?php echo $type_id; ?>">
-            <label for="<?php esc_attr($field_name); ?>"><?php echo $type_label; ?></label>
+            <label for="<?php esc_attr($field_id); ?>"><?php echo $type_label; ?></label>
 
             <?php $extra_attrs = $po_addon->is_multiple_selection_enabled($type_id) ? ' multiple="multiple" size="8"'
                 : ''; ?>
