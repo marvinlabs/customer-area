@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
 Tested up to:       4.9.0
-Stable tag:         7.4.7
+Stable tag:         7.5.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,13 +111,29 @@ feel free to fork the project and send us pull requests!
 * Fix: user groups and addresses select fields not rendering properly [#299](https://github.com/marvinlabs/customer-area/issues/299)
 * Fix: save button ready too early [#291](https://github.com/marvinlabs/customer-area/issues/291)
 * Fix: some clearfix were not properly working [#304](https://github.com/marvinlabs/customer-area/issues/304)
+* New: New filter to allow to edit display names in selection fields 'cuar/core/ownership/owner-display-name?owner-type=usr'
 
 **Add-on changes**
 
 * **Terms of Service** - Brand new addon: force users to accept your TOS when registering or logging in!
 * **Protect Post Types** - New: add new filter 'cuar/protected-post-types/default-protection-checkbox-status' for default protection checkbox status
 * **Authentication Forms** - Tweak: better style for login remember me checkbox
+* **Authentication Forms** - Tweak: Compatibility with our new Terms Of Service add-on
+* **Authentication Forms** - Fix: redirection of term archive pages [#297](https://github.com/marvinlabs/customer-area/issues/297)
 * **Design Extras** - Tweak: Support for new styles from WP Customer Area 7.5.0
+* **Conversations** - Fix: redirection of term archive pages [#297](https://github.com/marvinlabs/customer-area/issues/297)
+* **Projects** - New: Ajaxify project team members selection
+* **Projects** - New: New filter to allow to edit display names in selection fields 'cuar/core/ownership/owner-display-name?owner-type=prj'
+* **Switch Users** - New: Ajaxify switch users select box
+* **Tasks** - Fix: redirection of term archive pages [#297](https://github.com/marvinlabs/customer-area/issues/297)
+* **Additional owner types** - New: New filter to allow to edit display names in selection fields 'cuar/core/ownership/owner-display-name?owner-type={rol|grp|glo}'
+* **Additional owner types** - New: Ajaxify owners select boxes
+* **Managed Groups** - New: New filter to allow to edit display names in selection fields 'cuar/core/ownership/owner-display-name?owner-type=mgrp'
+* **Managed Groups** - New: Ajaxify managed groups select boxes
+* **Invoicing** - Fix: Incorrect total amount were sent to Paypal
+* **Owner Restrictions** - Fix: Owner restrictions compatibility
+* **Smart Groups** - New: New filter to allow to edit display names in selection fields 'cuar/core/ownership/owner-display-name?owner-type=sgrp'
+* **Smart Groups** - New: Ajaxify smart groups select boxes
 
 = 7.4.6 (2018/01/23) =
 
