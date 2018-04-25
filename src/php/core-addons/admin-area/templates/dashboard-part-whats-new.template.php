@@ -2,6 +2,28 @@
 
 <?php
 $whats_new = array(
+    '7.5' => array(
+        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-5-0', 'cuar'),
+        'codename'  => 'Jacques Higelin',
+        'tagline'   => __('Force your users to read and agree your terms and conditions', 'cuar'),
+        'blocks'    => array(
+            array(
+                'title' => __('New add-on: Terms Of Service', 'cuar'),
+                'text'  => __('We introduced a new add-on that will allow you to force your users to accept your terms of service. Your users will need to check a box when registering or logging in.',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('Big users database: Now using Ajax inside select list', 'cuar'),
+                'text'  => __('All our select lists are now fetching content through ajax, so you can search into a list of users/groups/projects/etc, without loading the whole list every time.',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('Improvements and bug fixes', 'cuar'),
+                'text'  => __('Main plugin and existing add-ons have been much improved: 11 new features and over 12 issues fixes and tweaks. For instance, we added some filters that will allow you to customize how users names are displayed in select boxes.',
+                    'cuar'),
+            ),
+        )
+    ),
 	'7.4' => array(
 		'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-4', 'cuar'),
 		'codename'  => 'Bob Marley',
