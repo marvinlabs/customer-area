@@ -67,7 +67,7 @@ class CUAR_CustomerAccountEditAddOn extends CUAR_AbstractPageAddOn {
 	/*------- PAGE HANDLING -----------------------------------------------------------------------------------------*/
 	
 	public function handle_form_submission() {		
-		if ( get_queried_object_id()!=$this->get_page_id() ) return false;
+		if ( !$this->is_currently_displayed() ) return false;
 		
 		if ( !isset( $_POST['cuar_form_id'] ) || $_POST['cuar_form_id']!=$this->get_slug() ) return false;
 

@@ -94,8 +94,7 @@ if ( !class_exists('CUAR_RootPageAddOn')) :
         public function redirect_to_main_page()
         {
             // If we are logged-in and we really are on this page, simply redirect
-            $queried_object_id = get_queried_object_id();
-            if (is_user_logged_in() && $queried_object_id !== false && $queried_object_id == $this->get_page_id()) {
+            if (is_user_logged_in() && $this->is_currently_displayed()) {
                 $cp_addon = $this->plugin->get_addon('customer-pages');
 
                 $redirect_slug = apply_filters('cuar/routing/redirect/root-page-to-slug?slug=' . $this->get_slug(),

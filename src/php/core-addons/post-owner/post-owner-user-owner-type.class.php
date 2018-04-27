@@ -24,14 +24,23 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 class CUAR_PostOwnerUserOwnerType
 {
-    public function __construct()
+    /** @var CUAR_PostOwnerAddOn */
+    private $po_addon;
+
+    public function __construct($po_addon)
     {
+        $this->po_addon = $po_addon;
+
         add_filter('cuar/core/ownership/owner-types', array(&$this, 'declare_new_owner_types'));
         add_filter('cuar/core/ownership/content/meta-query', array(&$this, 'extend_private_posts_meta_query'), 10, 3);
-        add_filter('cuar/core/ownership/real-user-ids?owner-type=usr', array(&$this, 'get_post_owner_user_ids_from_usr'), 10, 2);
+        add_filter('cuar/core/ownership/real-user-ids?owner-type=usr',
+            array(&$this, 'get_post_owner_user_ids_from_usr'), 10, 2);
         add_filter('cuar/core/ownership/validate-post-ownership', array(&$this, 'is_user_owner_of_post'), 10, 5);
-        add_filter('cuar/core/ownership/printable-owners?owner-type=usr', array(&$this, 'get_printable_owners_for_type_usr'), 10);
+        add_filter('cuar/core/ajax/search/post-owners?owner-type=usr',
+            array(&$this, 'get_selectable_owners_for_type_usr'), 10, 3);
         add_filter('cuar/core/ownership/saved-displayname', array(&$this, 'saved_post_owner_displayname'), 10, 4);
+        add_filter('cuar/core/ownership/owner-display-name?owner-type=usr',
+            array(&$this, 'get_owner_display_name'), 10, 2);
     }
 
     /*------- EXTEND THE OWNER TYPES AVAILABLE ----------------------------------------------------------------------*/
@@ -49,21 +58,35 @@ class CUAR_PostOwnerUserOwnerType
      */
     public function saved_post_owner_displayname($displayname, $post_id, $owner_type, $owner_ids)
     {
-        $names = array();
-
-        if ($owner_type == 'usr')
+        if ($owner_type != 'usr')
         {
-            $names = array();
-            foreach ($owner_ids as $id)
-            {
-                $u = new WP_User($id);
-                $names[] = apply_filters('cuar/core/ownership/owner-display-name?owner-type=usr', $u->display_name, $u);
-            }
+            return $displayname;
         }
 
+        $names = array();
+        foreach ($owner_ids as $id)
+        {
+            $names[] = $this->get_owner_display_name($displayname, $id);
+        }
         asort($names);
 
         return empty($names) ? $displayname : implode(", ", $names);
+    }
+
+    /**
+     * @param $name
+     * @param $owner_id
+     * @return string
+     */
+    public function get_owner_display_name($name, $owner_id)
+    {
+        $u = new WP_User($owner_id);
+        if ($u != null && $u->exists() && !empty($u->display_name))
+        {
+            return $u->display_name;
+        }
+
+        return $name;
     }
 
     /**
@@ -79,7 +102,10 @@ class CUAR_PostOwnerUserOwnerType
      */
     public function is_user_owner_of_post($initial_result, $post_id, $user_id, $post_owner_type, $post_owner_ids)
     {
-        if ($initial_result) return true;
+        if ($initial_result)
+        {
+            return true;
+        }
 
         if ($post_owner_type == 'usr')
         {
@@ -92,25 +118,24 @@ class CUAR_PostOwnerUserOwnerType
     /**
      * Print a select field with various global rules
      *
-     * @param unknown $in
-     *
+     * @param array  $response
+     * @param string $search
+     * @param int    $page
      * @return array
      */
-    public function get_printable_owners_for_type_usr($in)
+    public function get_selectable_owners_for_type_usr($response, $search, $page)
     {
-        $all_users = apply_filters('cuar/core/ownership/selectable-owners?owner-type=usr', null);
-        if (null === $all_users)
+        $items = apply_filters('cuar/core/ownership/selectable-owners?owner-type=usr', null, $search, $page);
+        if ($items === null)
         {
-            $all_users = get_users(array('orderby' => 'display_name', 'fields' => 'all_with_meta'));
+            return $this->po_addon->ajax()->find_users($search, 'post_owner', $page);
         }
 
-        $out = $in;
-        foreach ($all_users as $u)
-        {
-            $out[$u->ID] = apply_filters('cuar/core/ownership/owner-display-name?owner-type=usr', $u->display_name, $u);
-        }
+        list($results, $has_more) = $items;
+        $response['results'] = $results;
+        $response['more'] = $has_more;
 
-        return $out;
+        return $response;
     }
 
     /**
@@ -127,7 +152,7 @@ class CUAR_PostOwnerUserOwnerType
     {
         // For users
         $user_meta_query = array(
-            $po_addon->get_owner_meta_query_component('usr', $user_id)
+            $po_addon->get_owner_meta_query_component('usr', $user_id),
         );
 
         // Deal with all this
