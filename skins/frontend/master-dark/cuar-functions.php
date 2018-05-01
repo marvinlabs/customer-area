@@ -10,7 +10,7 @@ if (!function_exists('cuar_custom_editor_styles')) {
     {
         if (is_admin()) return $mce_css;
 
-        if (cuar_is_customer_area_page(get_queried_object_id()) || cuar_is_customer_area_private_content(get_the_ID())) {
+        if (cuar_is_customer_area_page(get_queried_object()) || cuar_is_customer_area_private_content(get_the_ID())) {
             $mce_css = ',' . plugins_url('assets/css/styles.min.css', __FILE__);
         }
         return $mce_css;
