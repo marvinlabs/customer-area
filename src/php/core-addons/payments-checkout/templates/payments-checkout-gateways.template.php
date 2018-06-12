@@ -45,6 +45,8 @@ if ($is_single_gateway) $selected_gateway = $first_gateway->get_id();
     <?php endforeach; ?>
         </div>
     </div>
+    <?php else: ?>
+        <input type="hidden" name="cuar_selected_gateway" value="<?php echo esc_attr($selected_gateway); ?>" />
     <?php endif; ?>
     <div class="panel-body">
         <?php foreach ($gateways as $gateway_id => $gateway): ?>
