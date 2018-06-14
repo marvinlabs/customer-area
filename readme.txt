@@ -105,6 +105,10 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.5.1 (2018/06/14) =
+
+* Fix: Stripe checkout not working when a single gateway is enabled
+
 = 7.5.0 (2018/04/24) =
 
 * Fix: redirection of term archive pages [#297](https://github.com/marvinlabs/customer-area/issues/297)
