@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
 Tested up to:       4.9.0
-Stable tag:         7.5.0
+Stable tag:         7.5.1
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,16 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.5.1 (2018/06/14) =
+
+* Fix: Stripe checkout not working when a single gateway is enabled
+
+**Add-on changes**
+
+* **Terms of Service** - Fix: Update add-on ID to let licences work
+* **Conversations** - Fix: Updated conversation-editor-replies-add-form template to allow image AJAX posting in replies
+* **Notifications** - Tweak: Notifications for new content created will now be sent to the current connected user saving the post. Use filter 'cuar/notifications/allow-notification-to-self' to disable this.
 
 = 7.5.0 (2018/04/24) =
 

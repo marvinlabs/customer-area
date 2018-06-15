@@ -19,7 +19,7 @@
 <?php
 $is_single_gateway = (count($gateways)==1);
 $first_gateway = reset($gateways);
-if ($is_single_gateway) $selected_gateway = $first_gateway->get_id();
+if ($is_single_gateway) $selected_gateway = $first_gateway;
 ?>
 
 <?php do_action('cuar/core/payments/templates/checkout/before-gateways'); ?>
@@ -34,21 +34,25 @@ if ($is_single_gateway) $selected_gateway = $first_gateway->get_id();
     <?php if (!$is_single_gateway): ?>
     <div class="panel-menu">
         <div class="btn-group">
-    <?php foreach ($gateways as $gateway_id => $gateway):
-        ?>
+        <?php foreach ($gateways as $gateway_id => $gateway): ?>
             <div class="btn radio-custom">
                 <input type="radio" class="cuar-js-gateway-selector" id="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>" name="cuar_selected_gateway" value="<?php echo esc_attr($gateway->get_id()); ?>" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php checked($selected_gateway, $gateway_id); ?>>
                 <label for="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>">
                     <?php echo $gateway->get_name(); ?>
                 </label>
             </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
         </div>
     </div>
+    <?php else: ?>
+        <input type="radio" class="cuar-js-gateway-selector" id="gateway_select_<?php echo esc_attr
+        ($selected_gateway->get_id()); ?>" name="cuar_selected_gateway" value="<?php echo esc_attr
+        ($selected_gateway->get_id()); ?>" data-gateway="<?php echo esc_attr($selected_gateway->get_id()); ?>"
+               checked="checked" style="display: none;">
     <?php endif; ?>
     <div class="panel-body">
         <?php foreach ($gateways as $gateway_id => $gateway): ?>
-            <div class="cuar-clearfix cuar-js-gateway-form" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php if ($selected_gateway!=$gateway_id) echo 'style="display: none;"'; ?>>
+            <div class="cuar-clearfix cuar-js-gateway-form" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php if ($selected_gateway->get_id()!=$gateway_id) echo 'style="display: none;"'; ?>>
                 <?php if ($gateway->has_form()) $gateway->print_form(); ?>
             </div>
         <?php endforeach; ?>

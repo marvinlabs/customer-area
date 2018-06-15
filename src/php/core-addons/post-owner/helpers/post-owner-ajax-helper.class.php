@@ -42,11 +42,11 @@ class CUAR_PostOwnerAjaxHelper
 
         if (is_admin())
         {
-            add_action('wp_ajax_cuar_search_author', array(&$this, 'ajax_find_author'));
-            add_action('wp_ajax_cuar_search_visible_by', array(&$this, 'ajax_find_visible_by'));
+            add_action('wp_ajax_cuar_search_author', [&$this, 'ajax_find_author']);
+            add_action('wp_ajax_cuar_search_visible_by', [&$this, 'ajax_find_visible_by']);
         }
 
-        add_action('wp_ajax_cuar_search_selectable_owner', array(&$this, 'ajax_find_selectable_owner'));
+        add_action('wp_ajax_cuar_search_selectable_owner', [&$this, 'ajax_find_selectable_owner']);
     }
 
     public function print_field_script($field_id, $action, $nonce, $extra_data)
@@ -60,13 +60,13 @@ class CUAR_PostOwnerAjaxHelper
 
     public function get_user_display_value($user_id, $context = '')
     {
-        if (0 !== (int)($user_id))
-        {
-            $user = new WP_User($user_id);
-        }
-        else if (is_a($user_id, WP_User::class))
+        if (is_a($user_id, WP_User::class))
         {
             $user = $user_id;
+        }
+        else if (0 !== (int)($user_id))
+        {
+            $user = new WP_User($user_id);
         }
         else
         {
@@ -93,11 +93,12 @@ class CUAR_PostOwnerAjaxHelper
         $this->check_nonce_query_param('cuar_search_selectable_owner_' . $type_id);
 
         wp_send_json_success(apply_filters('cuar/core/ajax/search/post-owners?owner-type=' . $type_id,
-            array(
-                'results' => array(),
+            [
+                'results' => [],
                 'more'    => false,
-            ),
-            $search, $page));
+            ],
+            $search,
+            $page));
     }
 
     public function ajax_find_author()
@@ -128,44 +129,46 @@ class CUAR_PostOwnerAjaxHelper
 
     /*------- UTILITIES ----------------------------------------------------------------------------------------------*/
 
-    public function find_users($search, $context, $page = 1, $extra_query_args = array())
+    public function find_users($search, $context, $page = 1, $extra_query_args = [])
     {
-        $args = array(
+        $args = [
             'search'         => empty($search) ? '*' : '*' . $search . '*',
-            'search_columns' => array('display_name'),
+            'search_columns' => ['display_name'],
             'orderby'        => 'display_name',
-            'fields'         => array('ID', 'display_name'),
+            'fields'         => ['ID', 'display_name'],
             'number'         => 20,
             'paged'          => $page,
-        );
+        ];
         $args = array_merge($args, $extra_query_args);
         $args = apply_filters('cuar/core/ajax/search/query-args?type=users', $args, $context);
 
         $user_query = new WP_User_Query($args);
 
-        $result = array();
+        $result = [];
         foreach ($user_query->get_results() as $user)
         {
-            $result[] = array(
+            $result[] = [
                 'id'   => $user->ID,
                 'text' => $this->get_user_display_value($user, $context),
-            );
+            ];
         }
 
-        return apply_filters('cuar/core/ajax/search/response?type=users', array(
-            'results' => $result,
-            'more'    => $user_query->get_total() > count($result),
-        ), $context);
+        return apply_filters('cuar/core/ajax/search/response?type=users',
+            [
+                'results' => $result,
+                'more'    => $user_query->get_total() > count($result),
+            ],
+            $context);
     }
 
-    public function find_posts($search, $context, $page = 1, $extra_query_args = array())
+    public function find_posts($search, $context, $page = 1, $extra_query_args = [])
     {
-        $args = array(
+        $args = [
             'orderby'        => 'post_title',
             'order'          => 'ASC',
             'posts_per_page' => 20,
             'paged'          => $page,
-        );
+        ];
 
         if (!empty($search))
         {
@@ -177,19 +180,21 @@ class CUAR_PostOwnerAjaxHelper
 
         $post_query = new WP_Query($args);
 
-        $result = array();
+        $result = [];
         foreach ($post_query->posts as $post)
         {
-            $result[] = array(
+            $result[] = [
                 'id'   => $post->ID,
                 'text' => $post->post_title,
-            );
+            ];
         }
 
-        return apply_filters('cuar/core/ajax/search/response?type=posts', array(
-            'results' => $result,
-            'more'    => $post_query->post_count < $post_query->found_posts,
-        ), $context);
+        return apply_filters('cuar/core/ajax/search/response?type=posts',
+            [
+                'results' => $result,
+                'more'    => $post_query->post_count < $post_query->found_posts,
+            ],
+            $context);
     }
 
     public function check_post_type_capability($post_type, $pt_cap = 'read_private_posts')
@@ -233,7 +238,7 @@ class CUAR_PostOwnerAjaxHelper
     public function format_items_for_select2($items, $search = null, $page = null, $per_page = 20)
     {
         $has_more = false;
-        $results = array();
+        $results = [];
 
         foreach ($items as $id => $text)
         {
@@ -243,7 +248,7 @@ class CUAR_PostOwnerAjaxHelper
                 continue;
             }
 
-            $results[] = array('id' => $id, 'text' => $text);
+            $results[] = ['id' => $id, 'text' => $text];
         }
 
         // Paginate if needed
@@ -262,6 +267,6 @@ class CUAR_PostOwnerAjaxHelper
             $results = array_slice($results, $offset, $per_page);
         }
 
-        return array($results, $has_more);
+        return [$results, $has_more];
     }
 }
