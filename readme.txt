@@ -109,6 +109,12 @@ feel free to fork the project and send us pull requests!
 
 * Fix: Stripe checkout not working when a single gateway is enabled
 
+**Add-on changes**
+
+* **Terms of Service** - Fix: Update add-on ID to let licences work
+* **Conversations** - Fix: Updated conversation-editor-replies-add-form template to allow image AJAX posting in replies
+* **Notifications** - Tweak: Notifications for new content created will now be sent to the current connected user saving the post. Use filter 'cuar/notifications/allow-notification-to-self' to disable this.
+
 = 7.5.0 (2018/04/24) =
 
 * Fix: redirection of term archive pages [#297](https://github.com/marvinlabs/customer-area/issues/297)
