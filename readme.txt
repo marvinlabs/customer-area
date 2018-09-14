@@ -114,6 +114,7 @@ feel free to fork the project and send us pull requests!
 **Add-on changes**
 
 * **Authentication Forms** - Fix: bug in reset password [#311](https://github.com/marvinlabs/customer-area/issues/311)
+* **Owner Restrictions** - Fix: hide disabled owner fields when fully restricted [#308](https://github.com/marvinlabs/customer-area/issues/308)
 
 = 7.5.1 (2018/06/14) =
 
