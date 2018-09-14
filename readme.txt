@@ -105,6 +105,16 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
+= 7.5.2 (2018/09/14) =
+
+* Fix: create_function deprecated error [#302](https://github.com/marvinlabs/customer-area/pull/302)
+* Fix: updated some untranslated strings
+* Fix: wrong admin-bar CUAR menu logs URL
+
+**Add-on changes**
+
+* **Authentication Forms** - Fix: bug in reset password [#311](https://github.com/marvinlabs/customer-area/issues/311)
+
 = 7.5.1 (2018/06/14) =
 
 * Fix: Stripe checkout not working when a single gateway is enabled
