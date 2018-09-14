@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-06-19 08:07:55+00:00\n"
+"POT-Creation-Date: 2018-09-14 13:55:48+00:00\n"
 "PO-Revision-Date: 2017-06-05 10:49+0000\n"
 "Last-Translator: montse juanhuix <mjpunti@hotmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/wp-translations/wp-customer-"
@@ -29,7 +29,7 @@ msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:47
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
 msgid "Account details"
 msgstr "Detalls del compte"
 
@@ -1124,7 +1124,12 @@ msgstr "Veure detalls del compte"
 msgid "Edit account details"
 msgstr "Editar detalls del compte"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:38
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+#, fuzzy
+msgid "Profile"
+msgstr "Veure el perfil"
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
 msgid "Your profile has been updated"
 msgstr "El teu perfil ha estat modificat"
 
@@ -2004,24 +2009,31 @@ msgstr ""
 msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:253
+#: src/php/core-addons/log/log-table.class.php:207
+#: src/php/core-addons/log/log-table.class.php:219
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
+msgid "Unknown"
+msgstr ""
+
+#: src/php/core-addons/log/log-table.class.php:259
 #: src/php/core-addons/payments/helpers/payment-table.class.php:268
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:266
+#: src/php/core-addons/log/log-table.class.php:272
 msgid "You are not allowed to delete logs."
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:298
+#: src/php/core-addons/log/log-table.class.php:304
 #: src/php/core-addons/payments/helpers/payment-table.class.php:290
 #: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "No teniu permís per suprimir aquest element."
 
-#: src/php/core-addons/log/log-table.class.php:326
+#: src/php/core-addons/log/log-table.class.php:332
 msgid "Delete all events permanently"
 msgstr ""
 
@@ -2688,11 +2700,6 @@ msgstr "Paràmetres que falten"
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:59
 msgid "Post Owner"
-msgstr ""
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
-msgid "Unknown"
 msgstr ""
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:44
@@ -3673,7 +3680,7 @@ msgstr ""
 msgid "You are not allowed to view this page"
 msgstr ""
 
-#: src/php/core-classes/addon-page.class.php:452
+#: src/php/core-classes/addon-page.class.php:451
 msgid "WPCA - %s"
 msgstr ""
 

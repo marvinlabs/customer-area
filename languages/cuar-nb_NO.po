@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-06-19 08:07:55+00:00\n"
-"PO-Revision-Date: 2018-01-24 10:25+0000\n"
-"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"POT-Creation-Date: 2018-09-14 14:40:14+00:00\n"
+"PO-Revision-Date: 2018-09-14 13:59+0000\n"
+"Last-Translator: Sverre Magnus Vikan <sverre.vikan@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/wp-"
 "translations/wp-customer-area/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:47
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
 msgid "Account details"
 msgstr "Kontodetaljer"
 
@@ -553,9 +553,8 @@ msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-#, fuzzy
 msgid "/whats-new-in-wp-customer-area-7-5-0"
-msgstr "/hva-er-nytt-i-wp-customer-area-7-0"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
 msgid "Force your users to read and agree your terms and conditions"
@@ -1186,7 +1185,11 @@ msgstr "Se kontodetaljer"
 msgid "Edit account details"
 msgstr "Rediger kontodetaljer"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:38
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+msgid "Profile"
+msgstr "Profil"
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
 msgid "Your profile has been updated"
 msgstr "Din profil er oppdatert"
 
@@ -2117,24 +2120,31 @@ msgstr "<a href=\"%1$s\" title=\"Username: %2$s\">%3$s</a>"
 msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
 msgstr "<a href=\"%1$s\" title=\"Tittel: %2$s\">%3$s</a>"
 
-#: src/php/core-addons/log/log-table.class.php:253
+#: src/php/core-addons/log/log-table.class.php:207
+#: src/php/core-addons/log/log-table.class.php:219
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
+msgid "Unknown"
+msgstr "Ukjent"
+
+#: src/php/core-addons/log/log-table.class.php:259
 #: src/php/core-addons/payments/helpers/payment-table.class.php:268
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr "Slett permanent"
 
-#: src/php/core-addons/log/log-table.class.php:266
+#: src/php/core-addons/log/log-table.class.php:272
 msgid "You are not allowed to delete logs."
 msgstr "Du har ikke tillatelse til å slette logger."
 
-#: src/php/core-addons/log/log-table.class.php:298
+#: src/php/core-addons/log/log-table.class.php:304
 #: src/php/core-addons/payments/helpers/payment-table.class.php:290
 #: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "Du har ikke lov til å slettet denne."
 
-#: src/php/core-addons/log/log-table.class.php:326
+#: src/php/core-addons/log/log-table.class.php:332
 msgid "Delete all events permanently"
 msgstr "Slett alle hendelser permanent"
 
@@ -2771,23 +2781,16 @@ msgstr "Oppgave"
 
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:205
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:213
-#, fuzzy
 msgid "You are not allowed to search users"
-msgstr "Du har ikke tillatelse til å velge en eier"
+msgstr ""
 
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:232
-#, fuzzy
 msgid "Missing parameter"
-msgstr "Parametre mangler"
+msgstr ""
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:59
 msgid "Post Owner"
 msgstr "Posteier"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
-msgid "Unknown"
-msgstr "Ukjent"
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:44
 msgid "Select or search an owner"
@@ -3820,7 +3823,7 @@ msgstr "Denne siden krever at du logger inn."
 msgid "You are not allowed to view this page"
 msgstr "Du har ikke tillatelse til å se denne siden"
 
-#: src/php/core-classes/addon-page.class.php:452
+#: src/php/core-classes/addon-page.class.php:451
 msgid "WPCA - %s"
 msgstr "WPCA - %s"
 

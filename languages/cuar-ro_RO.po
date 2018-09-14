@@ -6,9 +6,9 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-06-19 08:07:55+00:00\n"
-"PO-Revision-Date: 2018-01-24 10:25+0000\n"
-"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"POT-Creation-Date: 2018-09-14 14:40:14+00:00\n"
+"PO-Revision-Date: 2018-09-14 13:59+0000\n"
+"Last-Translator: Mihoc Maria Estela <maria_estela_mihoc@yahoo.com>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/wp-translations/"
 "wp-customer-area/language/ro_RO/)\n"
 "Language: ro_RO\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:47
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
 msgid "Account details"
 msgstr ""
 
@@ -1124,7 +1124,11 @@ msgstr ""
 msgid "Edit account details"
 msgstr ""
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:38
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+msgid "Profile"
+msgstr "Profil"
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
 msgid "Your profile has been updated"
 msgstr ""
 
@@ -2005,24 +2009,31 @@ msgstr ""
 msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:253
+#: src/php/core-addons/log/log-table.class.php:207
+#: src/php/core-addons/log/log-table.class.php:219
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
+msgid "Unknown"
+msgstr ""
+
+#: src/php/core-addons/log/log-table.class.php:259
 #: src/php/core-addons/payments/helpers/payment-table.class.php:268
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:266
+#: src/php/core-addons/log/log-table.class.php:272
 msgid "You are not allowed to delete logs."
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:298
+#: src/php/core-addons/log/log-table.class.php:304
 #: src/php/core-addons/payments/helpers/payment-table.class.php:290
 #: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "Nu ai dreptul de a șterge acest element."
 
-#: src/php/core-addons/log/log-table.class.php:326
+#: src/php/core-addons/log/log-table.class.php:332
 msgid "Delete all events permanently"
 msgstr ""
 
@@ -2659,9 +2670,8 @@ msgstr ""
 
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:205
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:213
-#, fuzzy
 msgid "You are not allowed to search users"
-msgstr "Nu ai dreptul de a șterge acest element."
+msgstr ""
 
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:232
 msgid "Missing parameter"
@@ -2669,11 +2679,6 @@ msgstr ""
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:59
 msgid "Post Owner"
-msgstr ""
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
-msgid "Unknown"
 msgstr ""
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:44
@@ -3652,7 +3657,7 @@ msgstr ""
 msgid "You are not allowed to view this page"
 msgstr ""
 
-#: src/php/core-classes/addon-page.class.php:452
+#: src/php/core-classes/addon-page.class.php:451
 msgid "WPCA - %s"
 msgstr ""
 

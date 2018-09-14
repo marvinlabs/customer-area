@@ -2,22 +2,23 @@
 # Translators:
 # Mehmet HAKAN <mhakan1974@yahoo.com>, 2015
 # Mehmet HAKAN <mhakan1974@yahoo.com>, 2015
+# YounusEmre <yy206@live.mdx.ac.uk>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-06-19 08:07:55+00:00\n"
-"PO-Revision-Date: 2018-01-24 10:25+0000\n"
-"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"POT-Creation-Date: 2018-09-14 14:40:14+00:00\n"
+"PO-Revision-Date: 2018-09-14 13:59+0000\n"
+"Last-Translator: Justine Ak <justineakcor@yahoo.de>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/wp-translations/wp-"
 "customer-area/language/tr_TR/)\n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -30,17 +31,17 @@ msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:47
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
 msgid "Account details"
 msgstr "Hesap detayları"
 
 #: skins/frontend/master/cuar-functions.php:399
 msgid "View profile"
-msgstr ""
+msgstr "Profili görüntüle"
 
 #: skins/frontend/master/cuar-functions.php:402
 msgid "Manage account"
-msgstr ""
+msgstr "Hesabi yönet"
 
 #: skins/frontend/master/cuar-functions.php:404
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
@@ -59,15 +60,15 @@ msgstr "Giriş"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:38
 msgid "Address Manager"
-msgstr ""
+msgstr "Adresi yöneticisi"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:72
 msgid "Home address"
-msgstr ""
+msgstr "Ev adresi"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:73
 msgid "Billing address"
-msgstr ""
+msgstr "Fatura adresi"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:92
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:190
@@ -77,11 +78,11 @@ msgstr "Temizle"
 #: src/php/core-addons/addresses/addresses-addon.class.php:93
 #: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:191
 msgid "Clear the address"
-msgstr ""
+msgstr "Adresi temizle"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:131
 msgid "Error: you must choose an owner first"
-msgstr ""
+msgstr "hata: önce bir sahip seçmelisiniz"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:132
 msgid "Are you sure that you want to associate this address with that owner?"
@@ -89,7 +90,7 @@ msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:133
 msgid "Do you really want to replace current address?"
-msgstr ""
+msgstr "şu anki adresini değiştirmek istiyor musun?"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:134
 msgid "There is no address linked to that owner"
@@ -97,7 +98,7 @@ msgstr ""
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:135
 msgid "Do you really want to clear the address?"
-msgstr ""
+msgstr "Adresi gerçekten silmek istiyor musun?"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:148
 #: src/php/core-addons/addresses/addresses-addon.class.php:186
@@ -118,16 +119,16 @@ msgstr ""
 #: src/php/core-classes/addon-create-content-page.class.php:92
 #: src/php/core-classes/addon-create-content-page.class.php:98
 msgid "Trying to cheat?"
-msgstr ""
+msgstr "hile yapmaya çalışıyor?"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:200
 #: src/php/core-addons/addresses/addresses-addon.class.php:233
 msgid "You must specify the owner"
-msgstr ""
+msgstr "Sahibini belirtmelisiniz"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:239
 msgid "You must specify the address"
-msgstr ""
+msgstr "Adresi belirtmelisin"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:64
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:67
@@ -157,7 +158,7 @@ msgstr "Adı"
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:65
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:67
 msgid "Company"
-msgstr ""
+msgstr "şirket"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:91
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:95
@@ -179,7 +180,7 @@ msgstr "KDV Numarası"
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:89
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:91
 msgid "Street address"
-msgstr ""
+msgstr "Sokak adresi"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:110
 #: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:78
@@ -187,7 +188,7 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:105
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:91
 msgid "Street address, line 1"
-msgstr ""
+msgstr "Sokak adresi, hat 1"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:125
 #: src/php/core-addons/addresses/templates/edit-address-frontend.template.php:87
@@ -195,7 +196,7 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:114
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:96
 msgid "Street address, line 2"
-msgstr ""
+msgstr "Sokak adresi, hat 2"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:136
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:140
@@ -208,7 +209,7 @@ msgstr ""
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:101
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:103
 msgid "Zip/Postal code"
-msgstr ""
+msgstr "Posta kodu"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:151
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:155
@@ -238,13 +239,13 @@ msgstr "Ülke"
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:151
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:128
 msgid "State/Province"
-msgstr ""
+msgstr "eyalet/bölge"
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:56
 #: src/php/core-addons/addresses/templates/pdf-view-address.template.php:39
 #: src/php/core-addons/addresses/templates/view-address.template.php:43
 msgid "No address yet"
-msgstr ""
+msgstr "henüz adres yok"
 
 #: src/php/core-addons/addresses/templates/account-view-address.template.php:71
 #: src/php/core-addons/addresses/templates/pdf-view-address.template.php:50
@@ -262,7 +263,7 @@ msgstr "Logo"
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:94
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
 msgid "Logo URL"
-msgstr ""
+msgstr "logo URL'si"
 
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:94
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:96
@@ -276,7 +277,7 @@ msgstr "Yönetim Alanı"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:74
 msgid "You are not allowed to do that"
-msgstr ""
+msgstr "bunu yapmaya izin yok"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:81
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:87
@@ -300,7 +301,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:110
 msgid "Folder could not be created"
-msgstr ""
+msgstr "Klasör oluşturulamadı"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:120
 msgid ""
@@ -540,16 +541,15 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:29
 msgid "Show all"
-msgstr ""
+msgstr "Hepsini Göster"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-blog.template.php:7
 msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-#, fuzzy
 msgid "/whats-new-in-wp-customer-area-7-5-0"
-msgstr "/whats-new-in-wp-customer-area-6-1"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
 msgid "Force your users to read and agree your terms and conditions"
@@ -584,7 +584,7 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:131
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:154
 msgid "Improvements and bug fixes"
-msgstr ""
+msgstr "İyileştirmeler ve hata düzeltmeleri"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
 msgid ""
@@ -604,7 +604,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
 msgid "Online invoice payments"
-msgstr ""
+msgstr "Çevrimiçi fatura ödemeleri"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
 msgid ""
@@ -623,6 +623,7 @@ msgid ""
 "The conversation author can now decide to close the conversation to new "
 "replies."
 msgstr ""
+"Konuşma yazarı şimdi konuşmayı yeni yanıtlara kapatmaya karar verebilir."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
 msgid ""
@@ -640,7 +641,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:52
 msgid "Welcome to the Design Extras add-on"
-msgstr ""
+msgstr "Tasarım Ekstraları eklentisine hoş geldiniz"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
 msgid "New add-on: Design Extras"
@@ -674,7 +675,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:74
 msgid "Welcome to the Unread Documents add-on"
-msgstr ""
+msgstr "Okunmamış Belgeler eklentisine hoş geldiniz"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
 msgid "New add-on: Unread Documents"
@@ -751,7 +752,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:121
 msgid "New skin"
-msgstr ""
+msgstr "yeni deri"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:122
 msgid ""
@@ -761,7 +762,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:126
 msgid "Better ownership control"
-msgstr ""
+msgstr "Daha iyi sahiplik kontrolü"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:127
 msgid ""
@@ -769,6 +770,9 @@ msgid ""
 "owner types could not be mixed. For example, you can now assign private "
 "content at the same time to a group and to a few users."
 msgstr ""
+"Eklentilerimiz, içeriklere gruplara, rollere vb. Atanmaya izin verir. Ancak, "
+"bu sahiplerin türleri karıştırılamaz. Örneğin, özel içeriği aynı anda bir "
+"gruba ve birkaç kullanıcıya atayabilirsiniz."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:132
 msgid ""
@@ -776,6 +780,9 @@ msgid ""
 "fixes. For instance, notifications are now sent in HTML format using a clean "
 "professional template."
 msgstr ""
+"Mevcut eklentiler çok geliştirildi: 17 yeni özellik ve 14'ün üzerinde sorun "
+"düzeltildi. Örneğin, bildirimler artık temiz bir profesyonel şablon "
+"kullanılarak HTML formatında gönderilir."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:138
 msgid "/whats-new-in-wp-customer-area-6-3"
@@ -789,7 +796,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
 msgid "Contact information"
-msgstr ""
+msgstr "iletişim bilgileri"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:144
 msgid ""
@@ -797,10 +804,13 @@ msgid ""
 "essential information when managing your customers and will help building "
 "more CRM features into the plugin later on."
 msgstr ""
+"Kullanıcı profilleri artık bir ev ve fatura adresi saklayabilir. Bu, "
+"müşterilerinizi yönetirken önemli bir bilgidir ve daha sonra eklentiye daha "
+"fazla CRM özelliği oluşturmaya yardımcı olur."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
 msgid "Invoicing"
-msgstr ""
+msgstr "Faturalama"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:149
 msgid ""
@@ -819,6 +829,9 @@ msgid ""
 "there have been lots of additions and fixes to the base plugin and the "
 "existing add-ons: 15 new features and 19 issues have been implemented/fixed."
 msgstr ""
+"Bu sefer yeni faturalandırma eklentisinden başka büyük haberlerimiz olmasa "
+"da, temel eklenti ve mevcut eklentilere çok sayıda ekleme ve düzeltme "
+"yapıldı: 15 yeni özellik ve 19 sorun hayata geçirildi/düzeltildi."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:161
 msgid "/whats-new-in-wp-customer-area-6-2"
@@ -832,7 +845,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:166
 msgid "New upload system"
-msgstr ""
+msgstr "Yeni yükleme sistemi"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:167
 msgid ""
@@ -841,10 +854,14 @@ msgid ""
 "some more settings and provide a security helper to make sure your setup is "
 "as secure as it can."
 msgstr ""
+"Dosya yükleme sistemi tamamen yeniden yazılmıştır. Artık dosyaları "
+"sürükleyip bırakabilir ve yükleme işlemlerini izleyebilirsiniz. Ayrıca, bazı "
+"ayarlarınızı ekledik ve kurulumunuzun mümkün olduğu kadar güvenli olduğundan "
+"emin olmak için bir güvenlik yardımcısı sağladık."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:171
 msgid "Enhanced Files"
-msgstr ""
+msgstr "Gelişmiş dosyalar"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:172
 msgid ""
@@ -859,7 +876,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:177
 msgid "Smart Groups"
-msgstr ""
+msgstr "Akıllı gruplar"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:178
 msgid ""
@@ -1095,6 +1112,8 @@ msgid ""
 "You can adjust here the permissions granted to the users for each role "
 "defined in your site."
 msgstr ""
+"Burada, sitenizde tanımlanan her rol için kullanıcılara verilen izinleri "
+"ayarlayabilirsiniz."
 
 #: src/php/core-addons/capabilities/templates/capabilities-table.template.php:60
 msgid "Toggle all permissions for this role"
@@ -1152,7 +1171,11 @@ msgstr "Hesap detaylarına bak"
 msgid "Edit account details"
 msgstr "Hesap detaylarını düzenle"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:38
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+msgid "Profile"
+msgstr "Profil"
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
 msgid "Your profile has been updated"
 msgstr "Profiliniz güncellendi"
 
@@ -1176,7 +1199,7 @@ msgstr "Gönder"
 
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:46
 msgid "Addresses"
-msgstr ""
+msgstr "Adresler"
 
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:43
 msgid "Account - Home"
@@ -1404,6 +1427,7 @@ msgstr ""
 msgid "%s page has been deleted"
 msgid_plural "%s pages have been deleted"
 msgstr[0] "%s sayfa(lar) silindi."
+msgstr[1] "%s sayfa(lar) silindi."
 
 #: src/php/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:22
 msgid "Toggle navigation"
@@ -1696,23 +1720,25 @@ msgstr "%s tarihinde yüklendi"
 msgid "%1$s file"
 msgid_plural "%1$s files"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:41
 msgid "FILE"
 msgid_plural "FILES"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:70
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:67
 msgid "Created on"
-msgstr ""
+msgstr "üzerinde oluşturuldu"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:95
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-header.template.php:50
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:92
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-header.template.php:45
 msgid "Assigned to"
-msgstr ""
+msgstr "Atandı"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:33
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:27
@@ -1723,16 +1749,17 @@ msgstr ""
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:36
 #: src/php/core-classes/templates/content-page-content.template.php:21
 msgid "No items were found matching the selected filters"
-msgstr ""
+msgstr "Seçilen filtrelerle eşleşen öğe bulunamadı"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:39
 msgid "%d attachment"
 msgid_plural "%d attachments"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:61
 msgid "Get file"
-msgstr ""
+msgstr "Dosyayı al"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:62
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
@@ -1968,15 +1995,15 @@ msgstr "Sahiplik değişimleri"
 
 #: src/php/core-addons/log/log-addon.class.php:168
 msgid "Attachment added"
-msgstr ""
+msgstr "Eki eklendi"
 
 #: src/php/core-addons/log/log-addon.class.php:169
 msgid "Attachment removed"
-msgstr ""
+msgstr "Eki çıkarıldı"
 
 #: src/php/core-addons/log/log-addon.class.php:170
 msgid "Attachment updated"
-msgstr ""
+msgstr "Eki güncellenmiş"
 
 #: src/php/core-addons/log/log-addon.class.php:392
 msgid "IP address"
@@ -2006,12 +2033,12 @@ msgstr "Kime:"
 #: src/php/core-addons/log/log-addon.class.php:420
 #: src/php/core-addons/log/log-addon.class.php:429
 msgid "Caption: "
-msgstr ""
+msgstr "Altyazı"
 
 #: src/php/core-addons/log/log-addon.class.php:421
 #: src/php/core-addons/log/log-addon.class.php:430
 msgid "Attachment: "
-msgstr ""
+msgstr "Eki:"
 
 #: src/php/core-addons/log/log-addon.class.php:489
 msgid "Only log the first time a private content is viewed by a user."
@@ -2082,24 +2109,31 @@ msgstr ""
 msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:253
+#: src/php/core-addons/log/log-table.class.php:207
+#: src/php/core-addons/log/log-table.class.php:219
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+#: src/php/core-addons/log/log-table.class.php:259
 #: src/php/core-addons/payments/helpers/payment-table.class.php:268
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr "Kalıcı olarak sil"
 
-#: src/php/core-addons/log/log-table.class.php:266
+#: src/php/core-addons/log/log-table.class.php:272
 msgid "You are not allowed to delete logs."
 msgstr "Günlükleri silmeye izniniz yok."
 
-#: src/php/core-addons/log/log-table.class.php:298
+#: src/php/core-addons/log/log-table.class.php:304
 #: src/php/core-addons/payments/helpers/payment-table.class.php:290
 #: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "Bu nesneyi silmek için yetkiniz yok."
 
-#: src/php/core-addons/log/log-table.class.php:326
+#: src/php/core-addons/log/log-table.class.php:332
 msgid "Delete all events permanently"
 msgstr "Tüm olayları kalıcı olarak sil"
 
@@ -2126,7 +2160,7 @@ msgstr "Arasında"
 
 #: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:29
 msgid "Wired transfer"
-msgstr ""
+msgstr "Kablolu aktarma"
 
 #: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:34
 msgid ""
@@ -2145,7 +2179,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:88
 msgid "Bank"
-msgstr ""
+msgstr "Banka"
 
 #: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:89
 msgid "IBAN"
@@ -2163,7 +2197,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:29
 msgid "Cheque"
-msgstr ""
+msgstr "Kontrol"
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:34
 msgid ""
@@ -2186,11 +2220,11 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:87
 msgid "Your name or company name"
-msgstr ""
+msgstr "Adınız veya şirket adınız"
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:88
 msgid "Send to the address:"
-msgstr ""
+msgstr "Adrese gönder:"
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:90
 msgid "Your name"
@@ -2208,7 +2242,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:27
 msgid "Test gateway"
-msgstr ""
+msgstr "Test geçidi"
 
 #: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:32
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:7
@@ -2216,6 +2250,8 @@ msgid ""
 "The test gateway allows you to see how your website is behaving when the "
 "gateways return different results."
 msgstr ""
+"Test geçidi ağ geçitleri farklı sonuçlar döndürdüğünde web sitenizin nasıl "
+"davrandığını görmenizi sağlar."
 
 #: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:42
 msgid "PAYMENT %s - Payment processed, status set to: %s"
@@ -2223,15 +2259,15 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:50
 msgid "The test gateway accepted the payment"
-msgstr ""
+msgstr "Test ağ geçidi ödeme kabul etti"
 
 #: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:58
 msgid "The test gateway failed to process the payment"
-msgstr ""
+msgstr "Test geçidi ödeme işlemini gerçekleştiremedi"
 
 #: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:63
 msgid "The test gateway did not validate the payment yet"
-msgstr ""
+msgstr "Test geçidi henüz ödemeyi doğrulamadı"
 
 #: src/php/core-addons/payments/helpers/payment-table.class.php:47
 #: src/php/core-addons/payments/payments-addon.class.php:136
@@ -2278,19 +2314,19 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:49
 msgid "List all payments"
-msgstr ""
+msgstr "Tüm ödemeleri listele"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:50
 msgid "Create/Edit payments"
-msgstr ""
+msgstr "Ödeme oluştur/düzenle"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:51
 msgid "Delete payments"
-msgstr ""
+msgstr "Ödemeleri sil"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:52
 msgid "Access payments"
-msgstr ""
+msgstr "Erişim ödemeleri"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:80
 msgid "WP Customer Area - Payments"
@@ -2299,11 +2335,11 @@ msgstr ""
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:116
 #: src/php/core-addons/payments/templates/payment-history-inline.template.php:7
 msgid "Payment history"
-msgstr ""
+msgstr "Ödeme geçmişi"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:143
 msgid "Invalid arguments. Cannot create payment."
-msgstr ""
+msgstr "Geçersiz argümanlar. Ödeme oluşturulamıyor."
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:147
 msgid "%1$s | %2$s"
@@ -2311,22 +2347,22 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:203
 msgid "Paid object"
-msgstr ""
+msgstr "Ücretli nesne"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:210
 msgid "Payment data"
-msgstr ""
+msgstr "Ödeme verileri"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:217
 #: src/php/core-addons/payments/templates/payment-editor-gateway.template.php:9
 #: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:20
 #: src/php/core-addons/payments/templates/payment-history-inline.template.php:16
 msgid "Gateway"
-msgstr ""
+msgstr "Geçit"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:224
 msgid "Payer"
-msgstr ""
+msgstr "Ödeyici"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:231
 msgid "Notes"
@@ -2334,49 +2370,49 @@ msgstr "Notlar"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:165
 msgid "Colorful Light"
-msgstr ""
+msgstr "Renkli ışık"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:182
 msgid "2 Checkout"
-msgstr ""
+msgstr "2 Ödeme"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:186
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:190
 msgid "Amazon"
-msgstr ""
+msgstr "Amazon"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:194
 msgid "Amazon Payments"
-msgstr ""
+msgstr "Amazon ödemeleri"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:198
 msgid "American Express"
-msgstr ""
+msgstr "American Express"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:202
 msgid "Amex"
-msgstr ""
+msgstr "Amex"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:206
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:210
 msgid "Chase"
-msgstr ""
+msgstr "Kovalamak"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:214
 msgid "Cirrus"
-msgstr ""
+msgstr "Saçakbulut"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:218
 msgid "Delta"
-msgstr ""
+msgstr "Delta"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:222
 msgid "Diner's Club"
-msgstr ""
+msgstr "Yemek klübü"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:226
 msgid "Direct Debit"
-msgstr ""
+msgstr "Otomatik ödeme"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:230
 msgid "Discover"
@@ -2384,19 +2420,19 @@ msgstr "Discover"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:234
 msgid "Ebay"
-msgstr ""
+msgstr "Ebay"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:238
 msgid "Etsy"
-msgstr ""
+msgstr "Etsy"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:242
 msgid "Eway"
-msgstr ""
+msgstr "Eway"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:246
 msgid "Google Wallet"
-msgstr ""
+msgstr "Google cüzdanı"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:250
 msgid "JCB"
@@ -2404,7 +2440,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:254
 msgid "Maestro"
-msgstr ""
+msgstr "Maystro"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:258
 msgid "Mastercard"
@@ -2453,7 +2489,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:306
 msgid "Western Union"
-msgstr ""
+msgstr "Batı Birliği"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:310
 msgid "World Pay"
@@ -2472,7 +2508,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:398
 msgid "Default gateway"
-msgstr ""
+msgstr "Varsayılan giriş"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:406
 msgid "The gateway which will be selected by default on the checkout page"
@@ -2480,7 +2516,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:412
 msgid "Gateways"
-msgstr ""
+msgstr "Ağ geçitleri"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:518
 msgid ""
@@ -2516,7 +2552,7 @@ msgstr "İade Edildi"
 
 #: src/php/core-addons/payments/payment-status.class.php:25
 msgid "Abandoned"
-msgstr ""
+msgstr "Terkedilmiş"
 
 #: src/php/core-addons/payments/payment-status.class.php:26
 msgid "Failed"
@@ -2533,41 +2569,41 @@ msgstr ""
 #: src/php/core-addons/payments/payments-addon.class.php:175
 #: src/php/core-addons/payments/payments-addon.class.php:208
 msgid "Payment id is not specified"
-msgstr ""
+msgstr "Ödeme kimliği belirtilmemiş"
 
 #: src/php/core-addons/payments/payments-addon.class.php:187
 #: src/php/core-addons/payments/payments-addon.class.php:220
 msgid "You are not allowed to manage payment notes"
-msgstr ""
+msgstr "Ödeme notlarını yönetme izniniz yok"
 
 #: src/php/core-addons/payments/payments-addon.class.php:192
 msgid "Note id is not specified"
-msgstr ""
+msgstr "Not numarası belirtilmemiş"
 
 #: src/php/core-addons/payments/payments-addon.class.php:226
 msgid "You must provide a message"
-msgstr ""
+msgstr "Mesaj vermelisin"
 
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:10
 msgid "Result to return when calling the test gateway"
-msgstr ""
+msgstr "Test geçidini çağırırken geri dönmek için sonuç"
 
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:14
 msgid "Payment validated"
-msgstr ""
+msgstr "Ödeme doğrulandı"
 
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:15
 #: src/php/core-addons/payments-failure/payments-failure-addon.class.php:52
 msgid "Payment rejected"
-msgstr ""
+msgstr "ödeme reddedildi"
 
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:16
 msgid "Payment still pending"
-msgstr ""
+msgstr "Ödeme hala beklemede"
 
 #: src/php/core-addons/payments/templates/payment-button.template.php:25
 msgid "Pay now"
-msgstr ""
+msgstr "Şimdi öde"
 
 #: src/php/core-addons/payments/templates/payment-button.template.php:27
 msgid "You have already paid %s"
@@ -2587,11 +2623,11 @@ msgstr "Para Birimi"
 
 #: src/php/core-addons/payments/templates/payment-editor-data.template.php:66
 msgid "Update payment"
-msgstr ""
+msgstr "Ödeme güncelle"
 
 #: src/php/core-addons/payments/templates/payment-editor-note-list.template.php:14
 msgid "Add note"
-msgstr ""
+msgstr "Not ekle"
 
 #: src/php/core-addons/payments/templates/payment-editor-note-list.template.php:18
 msgid "There are currently no notes attached to this payment"
@@ -2736,23 +2772,16 @@ msgstr "Atama"
 
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:205
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:213
-#, fuzzy
 msgid "You are not allowed to search users"
-msgstr "Bu sayfayı görme yetkiniz yok"
+msgstr ""
 
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:232
-#, fuzzy
 msgid "Missing parameter"
-msgstr "Kayıp navigasyon menüsü"
+msgstr ""
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:59
 msgid "Post Owner"
 msgstr "Sahibine Posta Gönder"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
-msgid "Unknown"
-msgstr "Bilinmeyen"
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:44
 msgid "Select or search an owner"
@@ -2783,6 +2812,7 @@ msgstr ""
 msgid "You are not allowed to attach more than %d file"
 msgid_plural "You are not allowed to attach more than %d files"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:794
 msgid "You are not allowed to attach files to this kind of content"
@@ -3754,7 +3784,7 @@ msgstr "Bu sayfa giriş yapmayı gerektirir, burada bulunamazsınız"
 msgid "You are not allowed to view this page"
 msgstr "Bu sayfayı görme yetkiniz yok"
 
-#: src/php/core-classes/addon-page.class.php:452
+#: src/php/core-classes/addon-page.class.php:451
 msgid "WPCA - %s"
 msgstr "WPCA - %s"
 
