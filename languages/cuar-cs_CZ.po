@@ -6,17 +6,18 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-04-26 11:11:05+00:00\n"
-"PO-Revision-Date: 2018-01-24 10:25+0000\n"
-"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"POT-Creation-Date: 2018-09-14 14:40:14+00:00\n"
+"PO-Revision-Date: 2018-09-14 13:59+0000\n"
+"Last-Translator: FX Bénard <fxb@wp-translations.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/wp-"
 "translations/wp-customer-area/language/cs_CZ/)\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -29,7 +30,7 @@ msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:47
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
 msgid "Account details"
 msgstr "Detaily účtu"
 
@@ -110,7 +111,7 @@ msgstr "Musíte zadat ID adresy"
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:136
 #: src/php/core-addons/payments/payments-addon.class.php:182
 #: src/php/core-addons/payments/payments-addon.class.php:215
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:218
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:223
 #: src/php/core-addons/private-file/private-file-addon.class.php:784
 #: src/php/core-addons/private-file/private-file-addon.class.php:872
 #: src/php/core-addons/private-file/private-file-addon.class.php:932
@@ -552,9 +553,8 @@ msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-#, fuzzy
 msgid "/whats-new-in-wp-customer-area-7-5-0"
-msgstr "/whats-new-in-wp-customer-area-6-3"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
 msgid "Force your users to read and agree your terms and conditions"
@@ -1181,7 +1181,11 @@ msgstr "Zobrazit detaily účtu"
 msgid "Edit account details"
 msgstr "Upravit detaily účtu"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:38
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+msgid "Profile"
+msgstr "Profil"
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
 msgid "Your profile has been updated"
 msgstr "Váš profil byl úspěšně aktualizován"
 
@@ -1431,6 +1435,7 @@ msgid_plural "%s pages have been deleted"
 msgstr[0] "%s stránka byla smazána"
 msgstr[1] "%s stránky byly smazány"
 msgstr[2] "%s stránek bylo smazáno"
+msgstr[3] "%s stránek bylo smazáno"
 
 #: src/php/core-addons/customer-pages/templates/customer-pages-navigation-menu.template.php:22
 msgid "Toggle navigation"
@@ -1723,6 +1728,7 @@ msgid_plural "%1$s files"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:41
 msgid "FILE"
@@ -1730,6 +1736,7 @@ msgid_plural "FILES"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:70
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:67
@@ -1760,6 +1767,7 @@ msgid_plural "%d attachments"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:61
 msgid "Get file"
@@ -2112,24 +2120,31 @@ msgstr "<a href=\"%1$s\" title=\"Uživatelské jméno: %2$s\">%3$s</a>"
 msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
 msgstr "<a href=\"%1$s\" title=\"Název: %2$s\">%3$s</a>"
 
-#: src/php/core-addons/log/log-table.class.php:253
+#: src/php/core-addons/log/log-table.class.php:207
+#: src/php/core-addons/log/log-table.class.php:219
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
+msgid "Unknown"
+msgstr "Neznámý"
+
+#: src/php/core-addons/log/log-table.class.php:259
 #: src/php/core-addons/payments/helpers/payment-table.class.php:268
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr "Smazat"
 
-#: src/php/core-addons/log/log-table.class.php:266
+#: src/php/core-addons/log/log-table.class.php:272
 msgid "You are not allowed to delete logs."
 msgstr "Nemáte dostatečné oprávnění pro mazání záznamů z protokolu."
 
-#: src/php/core-addons/log/log-table.class.php:298
+#: src/php/core-addons/log/log-table.class.php:304
 #: src/php/core-addons/payments/helpers/payment-table.class.php:290
 #: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "Nemáte dostatečné oprávnění pro smazání této položky."
 
-#: src/php/core-addons/log/log-table.class.php:326
+#: src/php/core-addons/log/log-table.class.php:332
 msgid "Delete all events permanently"
 msgstr "Smazat všechny události"
 
@@ -2764,25 +2779,18 @@ msgstr ""
 msgid "Assignment"
 msgstr "Přiřazení"
 
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:200
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:208
-#, fuzzy
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:205
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:213
 msgid "You are not allowed to search users"
-msgstr "Nemáte dostatečné oprávnění pro aktualizaci přiložených souborů"
+msgstr ""
 
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:227
-#, fuzzy
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:232
 msgid "Missing parameter"
-msgstr "Chybí parametry"
+msgstr ""
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:59
 msgid "Post Owner"
 msgstr "Vlastník příspěvku"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
-msgid "Unknown"
-msgstr "Neznámý"
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:44
 msgid "Select or search an owner"
@@ -2817,6 +2825,7 @@ msgid_plural "You are not allowed to attach more than %d files"
 msgstr[0] "Nemáte dostatečné oprávnění pro přiložení více než %d souboru"
 msgstr[1] "Nemáte dostatečné oprávnění pro přiložení více než %d souborů"
 msgstr[2] "Nemáte dostatečné oprávnění pro přiložení více než %d souborů"
+msgstr[3] "Nemáte dostatečné oprávnění pro přiložení více než %d souborů"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:794
 msgid "You are not allowed to attach files to this kind of content"
@@ -3816,7 +3825,7 @@ msgstr "Přístup na tuto stránku je možný až po přihlášení"
 msgid "You are not allowed to view this page"
 msgstr "Nemáte oprávnění pro zobrazení této stránky"
 
-#: src/php/core-classes/addon-page.class.php:452
+#: src/php/core-classes/addon-page.class.php:451
 msgid "WPCA - %s"
 msgstr "WPCA - %s"
 

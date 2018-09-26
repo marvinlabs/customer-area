@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-04-26 11:11:05+00:00\n"
-"PO-Revision-Date: 2018-01-24 10:25+0000\n"
-"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"POT-Creation-Date: 2018-09-14 14:40:14+00:00\n"
+"PO-Revision-Date: 2018-09-14 13:59+0000\n"
+"Last-Translator: Adrian Cobo <adria.cobo@gmail.com>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/wp-translations/wp-"
 "customer-area/language/es_ES/)\n"
 "Language: es_ES\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:47
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
 msgid "Account details"
 msgstr "Detalles de la cuenta"
 
@@ -112,7 +112,7 @@ msgstr "Debe especificar el ID de Dirección"
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:136
 #: src/php/core-addons/payments/payments-addon.class.php:182
 #: src/php/core-addons/payments/payments-addon.class.php:215
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:218
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:223
 #: src/php/core-addons/private-file/private-file-addon.class.php:784
 #: src/php/core-addons/private-file/private-file-addon.class.php:872
 #: src/php/core-addons/private-file/private-file-addon.class.php:932
@@ -555,9 +555,8 @@ msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-#, fuzzy
 msgid "/whats-new-in-wp-customer-area-7-5-0"
-msgstr "/whats-new-in-wp-customer-area-7-0"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
 msgid "Force your users to read and agree your terms and conditions"
@@ -595,16 +594,12 @@ msgid "Improvements and bug fixes"
 msgstr "Mejoras y correcciones de errores"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
-#, fuzzy
 msgid ""
 "Main plugin and existing add-ons have been much improved: 11 new features "
 "and over 12 issues fixes and tweaks. For instance, we added some filters "
 "that will allow you to customize how users names are displayed in select "
 "boxes."
 msgstr ""
-"Los Complementos existentes se han mejorado mucho: 17 nuevas características "
-"y correcciones de más de 14 temas. Por ejemplo, las notificaciones se envían "
-"ahora en formato HTML usando una plantilla profesional limpia."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:28
 msgid "/whats-new-in-wp-customer-area-7-4"
@@ -1217,7 +1212,11 @@ msgstr "Ver detalles de la cuenta"
 msgid "Edit account details"
 msgstr "Editar detalles de la cuenta"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:38
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+msgid "Profile"
+msgstr "Perfil"
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
 msgid "Your profile has been updated"
 msgstr "Su perfil ha sido actualizado"
 
@@ -2156,24 +2155,31 @@ msgstr "<a href=\"%1$s\" title=\"Usuario: %2$s\">%3$s</a>"
 msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
 msgstr "<a href=\"%1$s\" title=\"Título: %2$s\">%3$s</a>"
 
-#: src/php/core-addons/log/log-table.class.php:253
+#: src/php/core-addons/log/log-table.class.php:207
+#: src/php/core-addons/log/log-table.class.php:219
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: src/php/core-addons/log/log-table.class.php:259
 #: src/php/core-addons/payments/helpers/payment-table.class.php:268
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr "Borrar permanentemente"
 
-#: src/php/core-addons/log/log-table.class.php:266
+#: src/php/core-addons/log/log-table.class.php:272
 msgid "You are not allowed to delete logs."
 msgstr "Usted no está autorizado para eliminar registros."
 
-#: src/php/core-addons/log/log-table.class.php:298
+#: src/php/core-addons/log/log-table.class.php:304
 #: src/php/core-addons/payments/helpers/payment-table.class.php:290
 #: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "No tienes autorización para borrar este elemento."
 
-#: src/php/core-addons/log/log-table.class.php:326
+#: src/php/core-addons/log/log-table.class.php:332
 msgid "Delete all events permanently"
 msgstr "Borrar permanentemente todos los eventos"
 
@@ -2808,25 +2814,18 @@ msgstr ""
 msgid "Assignment"
 msgstr "Asignación"
 
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:200
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:208
-#, fuzzy
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:205
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:213
 msgid "You are not allowed to search users"
-msgstr "No está autorizado para seleccionar un poseedor"
+msgstr ""
 
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:227
-#, fuzzy
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:232
 msgid "Missing parameter"
-msgstr "Faltan parámetros"
+msgstr ""
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:59
 msgid "Post Owner"
 msgstr "Poseedor de la entrada"
-
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
-msgid "Unknown"
-msgstr "Desconocido"
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:44
 msgid "Select or search an owner"
@@ -3871,7 +3870,7 @@ msgstr "Esta página requiere permiso, quizás no debería estar aquí"
 msgid "You are not allowed to view this page"
 msgstr "No está autorizado para ver este contenido"
 
-#: src/php/core-classes/addon-page.class.php:452
+#: src/php/core-classes/addon-page.class.php:451
 msgid "WPCA - %s"
 msgstr "WPCA - %s"
 

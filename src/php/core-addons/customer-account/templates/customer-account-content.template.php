@@ -1,6 +1,9 @@
 <?php /**
- * Template version: 3.1.0
+ * Template version: 3.2.0
  * Template zone: frontend
+ *
+ * -= 3.2.0 =-
+ * - Added translation for 'Profile'
  *
  * -= 3.1.0 =-
  * - Replace clearfix CSS classes with cuar-clearfix
@@ -30,7 +33,7 @@ $current_user = $this->get_current_user();
         <div class="media-body va-m" style="width: 100%;">
 
             <div class="cuar-title media-heading text-primary"><?php echo $current_user->display_name; ?>
-                <small> - Profile</small>
+                <small> - <?php _e('Profile', 'cuar'); ?></small>
             </div>
 
             <?php

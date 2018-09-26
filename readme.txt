@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.4
 Tested up to:       4.9.0
-Stable tag:         7.5.1
+Stable tag:         7.5.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,17 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.5.2 (2018/09/14) =
+
+* Fix: create_function deprecated error [#302](https://github.com/marvinlabs/customer-area/pull/302)
+* Fix: updated some untranslated strings
+* Fix: wrong admin-bar CUAR menu logs URL
+
+**Add-on changes**
+
+* **Authentication Forms** - Fix: bug in reset password [#311](https://github.com/marvinlabs/customer-area/issues/311)
+* **Owner Restrictions** - Fix: hide disabled owner fields when fully restricted [#308](https://github.com/marvinlabs/customer-area/issues/308)
 
 = 7.5.1 (2018/06/14) =
 

@@ -443,9 +443,8 @@ if (!class_exists('CUAR_AbstractPageAddOn')) :
             $this->has_default_sidebar = apply_filters('cuar/core/page/enable-default-sidebar?slug=' . $page_slug, $has_default_sidebar);
 
             // Register widget classes
-            foreach ($widget_classes as $w)
-            {
-                add_action('widgets_init', create_function('', 'return register_widget("' . $w . '");'));
+            foreach ($widget_classes as $w) {
+                add_action('widgets_init', function() use ($w){ return register_widget($w); });
             }
 
             // Register the sidebar

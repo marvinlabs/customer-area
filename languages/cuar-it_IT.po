@@ -1,7 +1,10 @@
 # (c) Vincent Mimoun-Prat, MarvinLabs {2018}
 # Translators:
 # AVIS Ostiano <info@avisostiano.it>, 2015
+# basilare, 2018
 # Daniele Scasciafratte Mte90 <mte90net@gmail.com>, 2015
+# Davide Martignetti <davide.martignetti@gmail.com>, 2018
+# Francesco Fresta <franco.fresta@gmail.com>, 2018
 # Giovanbattista Amato <giovanbattista.amato@besocialadv.com>, 2017
 # Massimo Ghielmi <info@kgmservizi.com>, 2017
 # pippo <vince.karibusana@gmail.com>, 2015
@@ -10,9 +13,9 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-04-26 11:11:05+00:00\n"
-"PO-Revision-Date: 2018-01-24 10:25+0000\n"
-"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"POT-Creation-Date: 2018-09-14 14:40:14+00:00\n"
+"PO-Revision-Date: 2018-09-14 13:59+0000\n"
+"Last-Translator: argacom srl <formazione@argacom.it>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/wp-translations/wp-"
 "customer-area/language/it_IT/)\n"
 "Language: it_IT\n"
@@ -20,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -33,7 +36,7 @@ msgstr ""
 
 #: skins/frontend/master/cuar-functions.php:359
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:47
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
 msgid "Account details"
 msgstr "Dettagli account"
 
@@ -62,7 +65,7 @@ msgstr "Login"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:38
 msgid "Address Manager"
-msgstr ""
+msgstr "Indirizzo Manager"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:72
 msgid "Home address"
@@ -107,7 +110,7 @@ msgstr "Sei sicuro di voler cancellare l'indirizzo?"
 #: src/php/core-addons/addresses/addresses-addon.class.php:186
 #: src/php/core-addons/addresses/addresses-addon.class.php:219
 msgid "Address ID must be specified"
-msgstr ""
+msgstr "L'ID indirizzo deve essere specificato"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:156
 #: src/php/core-addons/addresses/addresses-addon.class.php:194
@@ -115,7 +118,7 @@ msgstr ""
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:136
 #: src/php/core-addons/payments/payments-addon.class.php:182
 #: src/php/core-addons/payments/payments-addon.class.php:215
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:218
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:223
 #: src/php/core-addons/private-file/private-file-addon.class.php:784
 #: src/php/core-addons/private-file/private-file-addon.class.php:872
 #: src/php/core-addons/private-file/private-file-addon.class.php:932
@@ -559,9 +562,8 @@ msgid "/feed/rss"
 msgstr "/feed/rss"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:6
-#, fuzzy
 msgid "/whats-new-in-wp-customer-area-7-5-0"
-msgstr "/whats-new-in-wp-customer-area-7-4"
+msgstr "/whats-new-in-wp-customer-area-7-5-0"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
 msgid "Force your users to read and agree your terms and conditions"
@@ -569,7 +571,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
 msgid "New add-on: Terms Of Service"
-msgstr ""
+msgstr "Nuovo add-on: Termini di servizio"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:12
 msgid ""
@@ -596,7 +598,7 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:131
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:154
 msgid "Improvements and bug fixes"
-msgstr ""
+msgstr "Miglioramenti e correzione bug"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:22
 msgid ""
@@ -612,7 +614,7 @@ msgstr "/whats-new-in-wp-customer-area-7-4"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:30
 msgid "Online payment of invoices with PayPal and Stripe Gateways"
-msgstr ""
+msgstr "Pagamento online delle fatture con PayPal e Stripe"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
 msgid "Online invoice payments"
@@ -625,16 +627,22 @@ msgid ""
 "(cheque, wired transfers), but we have 2 brand new gateways available to "
 "accept payments via PayPal accounts and from credit cards via Stripe."
 msgstr ""
+"Nel menu Area clienti WP troverai una nuova voce di menu pagamenti per "
+"gestire i pagamenti delle fatture. Per impostazione predefinita, è possibile "
+"accettare pagamenti manuali (controllo, trasferimenti cablati), ma sono "
+"disponibili 2 nuovi gateway per accettare pagamenti tramite conti PayPal e "
+"carte di credito tramite Stripe."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:38
 msgid "Conversations: Close conversation"
-msgstr ""
+msgstr "Conversazioni: Chiudi conversazione"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:39
 msgid ""
 "The conversation author can now decide to close the conversation to new "
 "replies."
 msgstr ""
+"L'autore della conversazione può ora decidere di chiudere la conversazione."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:44
 msgid ""
@@ -643,6 +651,11 @@ msgid ""
 "to 4.4.12.1. Also, you can now view any notification that get sent by WP "
 "Customer Area into Customer Area menu -> Logs."
 msgstr ""
+"Il plug-in principale e i componenti aggiuntivi esistenti sono stati "
+"migliorati: 5 grandi nuove funzionalità e oltre 20 problemi risolti. Ad "
+"esempio, abbiamo aggiornato la versione supportata di ACF alla 4.4.12.1. "
+"Inoltre, ora è possibile visualizzare qualsiasi notifica inviata dall'area "
+"clienti WP nel menu Area clienti -> Logs."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:50
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:72
@@ -652,11 +665,11 @@ msgstr "/whats-new-since-wp-customer-area-7-0"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:52
 msgid "Welcome to the Design Extras add-on"
-msgstr ""
+msgstr "Benvenuto nell'add-on Design Extra"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:55
 msgid "New add-on: Design Extras"
-msgstr ""
+msgstr "Nuovo add-on: Design Extras"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:56
 msgid ""
@@ -664,10 +677,13 @@ msgid ""
 "area. New skins, notifications and invoicing PDF templates have been "
 "designed for you!"
 msgstr ""
+"Abbiamo introdotto un nuovo componente aggiuntivo che aggiungerà nuovi "
+"elementi di design alla tua area privata. Nuove skin, notifiche e modelli di "
+"fatturazione in PDF sono stati progettati per te!"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:60
 msgid "Notifications and PDF Invoices templates options"
-msgstr ""
+msgstr "Opzioni per notifiche e template di fatture in PDF"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:61
 msgid ""
@@ -676,6 +692,10 @@ msgid ""
 "will be easy for you to use them as a base and get your own customized "
 "design in a few minutes!"
 msgstr ""
+"I modelli di fatturazione e di notifica sono disponibili con una serie di "
+"opzioni nell'area di amministrazione che consentono di personalizzare i "
+"colori, lo sfondo e altro ancora. Sarà facile per te usarli come base e "
+"ottenere il tuo design personalizzato in pochi minuti!"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:66
 msgid ""
@@ -683,14 +703,18 @@ msgid ""
 "and more than 30 issues fixes. For instance, notifications are now sent when "
 "a task lists gets completed."
 msgstr ""
+"Il plug-in principale e i componenti aggiuntivi esistenti sono stati "
+"aggiornati: molte nuove funzionalità e più di 30 problemi risolti. Ad "
+"esempio, le notifiche vengono ora inviate quando viene completato un elenco "
+"di attività."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:74
 msgid "Welcome to the Unread Documents add-on"
-msgstr ""
+msgstr "Benvenuto nell'add-on Design Extra"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:77
 msgid "New add-on: Unread Documents"
-msgstr ""
+msgstr "Nuovo add-on: Unread Documents"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:78
 msgid ""
@@ -699,10 +723,15 @@ msgid ""
 "others private content add-ons. You can also mark private contents as unread "
 "using a dedicated button."
 msgstr ""
+"Ti consentirà di vedere se i tuoi documenti sono stati aggiornati "
+"dall'ultima volta che li hai letti utilizzando un indicatore visivo. È "
+"compatibile con tutti gli altri componenti aggiuntivi del contenuto privato. "
+"Puoi anche contrassegnare i contenuti privati ​​come non letti utilizzando un "
+"pulsante dedicato."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:82
 msgid "Notifications: New tasks reminders"
-msgstr ""
+msgstr "Notifiche: nuovi promemoria delle attività"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:83
 msgid ""
@@ -710,6 +739,9 @@ msgid ""
 "to expire, or about to be overdue. You wont get any chance left to miss "
 "tasks you are assigned to!"
 msgstr ""
+"È molto utile ricevere alcune e-mail quando le attività sono scadute, in "
+"scadenza o in ritardo. Non avrai più alcuna possibilità di perdere compiti a "
+"cui sei assegnato!"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:88
 msgid ""
@@ -755,15 +787,15 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:116
 msgid "/whats-new-in-wp-customer-area-7-0"
-msgstr ""
+msgstr "/whats-new-in-wp-customer-area-7-0"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:118
 msgid "WP Customer Area 7.0 has got a new dress."
-msgstr ""
+msgstr "WP Customer Area 7.0 ha una nuova veste."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:121
 msgid "New skin"
-msgstr ""
+msgstr "Nuovo tema"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:122
 msgid ""
@@ -791,7 +823,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:138
 msgid "/whats-new-in-wp-customer-area-6-3"
-msgstr ""
+msgstr "/whats-new-in-wp-customer-area-6-3"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:140
 msgid ""
@@ -801,7 +833,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
 msgid "Contact information"
-msgstr ""
+msgstr "Informazioni di Contatto"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:144
 msgid ""
@@ -812,7 +844,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
 msgid "Invoicing"
-msgstr ""
+msgstr "Fatturazione"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:149
 msgid ""
@@ -823,7 +855,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:151
 msgid "/downloads/wpca-invoicing"
-msgstr ""
+msgstr "/downloads/wpca-invoicing"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:155
 msgid ""
@@ -855,10 +887,11 @@ msgid ""
 "some more settings and provide a security helper to make sure your setup is "
 "as secure as it can."
 msgstr ""
-"Il sistema di caricamento dei file è stato completamente riscritto . È ora "
-"possibile trascinare e rilasciare i file e vedere l'avanzamento del "
-"caricamento . Inoltre , abbiamo anche aggiunto alcune ulteriori impostazioni "
-"e fornire un aiuto di sicurezza per assicurarsi che il setup sia sicuro."
+"Il sistema di upload dei file è stato completamente riscritto. È ora "
+"possibile fare il drag and drop dei file e vedere l'avanzamento dell'upload. "
+"Inoltre, abbiamo aggiunto ulteriori impostazioni e abbiamo reso disponibile "
+"un assistente di sicurezza per assicurarci che il setup sia quanto più "
+"sicuro possibile."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:171
 msgid "Enhanced Files"
@@ -1183,7 +1216,11 @@ msgstr "Visualizza dettagli profilo"
 msgid "Edit account details"
 msgstr "Modifica dettagli profilo"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:38
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+msgid "Profile"
+msgstr "Profilo"
+
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
 msgid "Your profile has been updated"
 msgstr "Il tuo profilo è stato aggiornato"
 
@@ -1206,7 +1243,7 @@ msgstr "Invia"
 
 #: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:46
 msgid "Addresses"
-msgstr ""
+msgstr "Indirizzi"
 
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:43
 msgid "Account - Home"
@@ -1214,7 +1251,7 @@ msgstr "Account - Home"
 
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:47
 msgid "My account"
-msgstr "Mio account"
+msgstr "Il mio account"
 
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:43
 #: src/php/core-addons/customer-dashboard/customer-dashboard-addon.class.php:47
@@ -1740,19 +1777,19 @@ msgstr[1] ""
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:70
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:67
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content-item.template.php:95
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-header.template.php:50
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-item.template.php:92
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-single-post-header.template.php:45
 msgid "Assigned to"
-msgstr ""
+msgstr "Assegnato a "
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:33
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:27
 msgid "Page %1$s/%2$s"
-msgstr ""
+msgstr "Pagina"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-content.template.php:42
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content.template.php:36
@@ -1768,7 +1805,7 @@ msgstr[1] ""
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:61
 msgid "Get file"
-msgstr "Preleva il file"
+msgstr "Scarica il file"
 
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:62
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
@@ -1823,7 +1860,7 @@ msgstr "Pagina madre per i file del cliente."
 
 #: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:54
 msgid "Private Pages - Owned"
-msgstr "Pagine Privare"
+msgstr "Pagine Private"
 
 #: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:59
 msgid "My pages"
@@ -2047,7 +2084,7 @@ msgstr "Ca"
 #: src/php/core-addons/log/log-addon.class.php:421
 #: src/php/core-addons/log/log-addon.class.php:430
 msgid "Attachment: "
-msgstr ""
+msgstr "Allegato:"
 
 #: src/php/core-addons/log/log-addon.class.php:489
 msgid "Only log the first time a private content is viewed by a user."
@@ -2121,24 +2158,31 @@ msgstr ""
 msgid "<a href=\"%1$s\" title=\"Title: %2$s\">%3$s</a>"
 msgstr ""
 
-#: src/php/core-addons/log/log-table.class.php:253
+#: src/php/core-addons/log/log-table.class.php:207
+#: src/php/core-addons/log/log-table.class.php:219
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
+#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: src/php/core-addons/log/log-table.class.php:259
 #: src/php/core-addons/payments/helpers/payment-table.class.php:268
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
 msgstr "Elimina permanentemente"
 
-#: src/php/core-addons/log/log-table.class.php:266
+#: src/php/core-addons/log/log-table.class.php:272
 msgid "You are not allowed to delete logs."
 msgstr "Non sei autorizzato a eliminare i logs."
 
-#: src/php/core-addons/log/log-table.class.php:298
+#: src/php/core-addons/log/log-table.class.php:304
 #: src/php/core-addons/payments/helpers/payment-table.class.php:290
 #: src/php/core-classes/Content/list-table.class.php:475
 msgid "You are not allowed to delete this item."
 msgstr "Non sei autorizzato ad eliminare questo oggetto. "
 
-#: src/php/core-addons/log/log-table.class.php:326
+#: src/php/core-addons/log/log-table.class.php:332
 msgid "Delete all events permanently"
 msgstr "Elimina tutti gli eventi permanentemente"
 
@@ -2184,15 +2228,15 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:88
 msgid "Bank"
-msgstr ""
+msgstr "Banca"
 
 #: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:89
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
 #: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:90
 msgid "SWIFT"
-msgstr ""
+msgstr "SWIFT"
 
 #: src/php/core-addons/payments/gateways/bacs-payment-gateway.class.php:94
 msgid ""
@@ -2202,7 +2246,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:29
 msgid "Cheque"
-msgstr ""
+msgstr "Assegno"
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:34
 msgid ""
@@ -2225,11 +2269,11 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:87
 msgid "Your name or company name"
-msgstr ""
+msgstr "Il tuo nome o quello dell'azienda"
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:88
 msgid "Send to the address:"
-msgstr ""
+msgstr "Inviato all'indirizzo:"
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:90
 msgid "Your name"
@@ -2237,7 +2281,7 @@ msgstr "Tuo Nome"
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:92
 msgid "Zip City"
-msgstr ""
+msgstr "Cap Città"
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:97
 msgid ""
@@ -2247,7 +2291,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:27
 msgid "Test gateway"
-msgstr ""
+msgstr "Gateway test"
 
 #: src/php/core-addons/payments/gateways/test-payment-gateway.class.php:32
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:7
@@ -2317,15 +2361,15 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:49
 msgid "List all payments"
-msgstr ""
+msgstr "Elenca tutti i pagamenti"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:50
 msgid "Create/Edit payments"
-msgstr ""
+msgstr "Crea/Modifica pagamenti"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:51
 msgid "Delete payments"
-msgstr ""
+msgstr "Elimina pagamenti"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:52
 msgid "Access payments"
@@ -2333,12 +2377,12 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:80
 msgid "WP Customer Area - Payments"
-msgstr ""
+msgstr "WP Customer Area - Pagamenti"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:116
 #: src/php/core-addons/payments/templates/payment-history-inline.template.php:7
 msgid "Payment history"
-msgstr ""
+msgstr "Storico pagamenti"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:143
 msgid "Invalid arguments. Cannot create payment."
@@ -2350,11 +2394,11 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:203
 msgid "Paid object"
-msgstr ""
+msgstr "Oggetto pagato"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:210
 msgid "Payment data"
-msgstr ""
+msgstr "Data del pagamento"
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:217
 #: src/php/core-addons/payments/templates/payment-editor-gateway.template.php:9
@@ -2390,68 +2434,68 @@ msgstr "Pagamenti Amazon"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:198
 msgid "American Express"
-msgstr ""
+msgstr "American Express"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:202
 msgid "Amex"
-msgstr ""
+msgstr "Amex"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:206
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:210
 msgid "Chase"
-msgstr ""
+msgstr "Chase"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:214
 msgid "Cirrus"
-msgstr ""
+msgstr "Cirrus"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:218
 msgid "Delta"
-msgstr ""
+msgstr "Delta"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:222
 msgid "Diner's Club"
-msgstr ""
+msgstr "Diner's Club"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:226
 msgid "Direct Debit"
-msgstr ""
+msgstr "Direct Debit"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:230
 msgid "Discover"
-msgstr ""
+msgstr "Discover"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:234
 msgid "Ebay"
-msgstr ""
+msgstr "Ebay"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:238
 msgid "Etsy"
-msgstr ""
+msgstr "Etsy"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:242
 msgid "Eway"
-msgstr ""
+msgstr "Eway"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:246
 msgid "Google Wallet"
-msgstr ""
+msgstr "Google Wallet"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:250
 msgid "JCB"
-msgstr ""
+msgstr "JCB"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:254
 msgid "Maestro"
-msgstr ""
+msgstr "Maestro"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:258
 msgid "Mastercard"
-msgstr ""
+msgstr "Mastercard"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:262
 msgid "Moneybookers"
-msgstr ""
+msgstr "Moneybookers"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:266
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:270
@@ -2460,23 +2504,23 @@ msgstr "PayPal"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:274
 msgid "Sage"
-msgstr ""
+msgstr "Sage"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:278
 msgid "Shopify"
-msgstr ""
+msgstr "Shopify"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:282
 msgid "Skrill"
-msgstr ""
+msgstr "Skrill"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:286
 msgid "Skrill Moneybookers"
-msgstr ""
+msgstr "Skrill Moneybookers"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:290
 msgid "Solo"
-msgstr ""
+msgstr "Solo"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:294
 msgid "Switch"
@@ -2484,19 +2528,19 @@ msgstr "Cambia"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:298
 msgid "Visa"
-msgstr ""
+msgstr "Visa"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:302
 msgid "Visa Electron"
-msgstr ""
+msgstr "Visa Electron"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:306
 msgid "Western Union"
-msgstr ""
+msgstr "Western Union"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:310
 msgid "World Pay"
-msgstr ""
+msgstr "World Pay"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:359
 #: src/php/core-addons/payments/templates/settings-gateway-common.template.php:14
@@ -2585,7 +2629,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/payments-addon.class.php:226
 msgid "You must provide a message"
-msgstr ""
+msgstr "Devi fornire un messaggio"
 
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:10
 msgid "Result to return when calling the test gateway"
@@ -2593,12 +2637,12 @@ msgstr ""
 
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:14
 msgid "Payment validated"
-msgstr ""
+msgstr "Pagamento accettato"
 
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:15
 #: src/php/core-addons/payments-failure/payments-failure-addon.class.php:52
 msgid "Payment rejected"
-msgstr ""
+msgstr "Pagamento respinto"
 
 #: src/php/core-addons/payments/templates/gateway-checkout-form-test.template.php:16
 msgid "Payment still pending"
@@ -2606,7 +2650,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/templates/payment-button.template.php:25
 msgid "Pay now"
-msgstr ""
+msgstr "Paga adesso"
 
 #: src/php/core-addons/payments/templates/payment-button.template.php:27
 msgid "You have already paid %s"
@@ -2630,15 +2674,15 @@ msgstr ""
 
 #: src/php/core-addons/payments/templates/payment-editor-note-list.template.php:14
 msgid "Add note"
-msgstr ""
+msgstr "Aggiungi una nota"
 
 #: src/php/core-addons/payments/templates/payment-editor-note-list.template.php:18
 msgid "There are currently no notes attached to this payment"
-msgstr ""
+msgstr "Non ci sono note allegate a questo pagamento"
 
 #: src/php/core-addons/payments/templates/payment-editor-payer.template.php:14
 msgid "Select user"
-msgstr ""
+msgstr "Seleziona l'utente"
 
 #: src/php/core-addons/payments/templates/payment-editor-payer.template.php:24
 msgid "User IP"
@@ -2707,7 +2751,7 @@ msgstr ""
 
 #: src/php/core-addons/payments-checkout/templates/payments-checkout-address.template.php:11
 msgid "Billing information"
-msgstr ""
+msgstr "Informazioni di fatturazione"
 
 #: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:30
 msgid "Pay with %s"
@@ -2731,15 +2775,15 @@ msgstr ""
 
 #: src/php/core-addons/payments-failure/templates/payments-failure-content.template.php:8
 msgid "Sorry!"
-msgstr ""
+msgstr "Scusa!"
 
 #: src/php/core-addons/payments-failure/templates/payments-failure-content.template.php:9
 msgid "There has been a problem when recording your payment."
-msgstr ""
+msgstr "C'è stato un problema durante la registrazione del pagamento"
 
 #: src/php/core-addons/payments-home/payments-home-addon.class.php:47
 msgid "Payments - Home"
-msgstr ""
+msgstr "Pagamenti - Home"
 
 #: src/php/core-addons/payments-home/payments-home-addon.class.php:57
 msgid "Page under which all payment related pages are filed."
@@ -2751,11 +2795,11 @@ msgstr "pagamenti"
 
 #: src/php/core-addons/payments-success/payments-success-addon.class.php:47
 msgid "Payments - Success"
-msgstr ""
+msgstr "Pagamenti - Avvenuto"
 
 #: src/php/core-addons/payments-success/payments-success-addon.class.php:52
 msgid "Payment accepted"
-msgstr ""
+msgstr "Pagamento accettato"
 
 #: src/php/core-addons/payments-success/payments-success-addon.class.php:57
 msgid "This page show a user a message when payment has been validated"
@@ -2773,33 +2817,26 @@ msgstr ""
 msgid "Assignment"
 msgstr "Assegnazione"
 
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:200
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:208
-#, fuzzy
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:205
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:213
 msgid "You are not allowed to search users"
-msgstr "Non sei autorizzato ad aggiornare i files allegati"
+msgstr ""
 
-#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:227
-#, fuzzy
+#: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:232
 msgid "Missing parameter"
-msgstr "Parametri mancanti"
+msgstr "Parametro mancante"
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:59
 msgid "Post Owner"
 msgstr "Proprietario"
 
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:539
-#: src/php/core-addons/post-owner/post-owner-addon.class.php:549
-msgid "Unknown"
-msgstr "Sconosciuto"
-
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:44
 msgid "Select or search an owner"
-msgstr "Seleziona o ricerca un proprietario"
+msgstr "Seleziona o cerca un proprietario"
 
 #: src/php/core-addons/post-owner/templates/post-owner-fields.template.php:65
 msgid "You are not allowed to select an owner"
-msgstr ""
+msgstr "Non sei abilitato a selezionare un proprietario"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:43
 #: src/php/core-addons/private-file/private-file-addon.class.php:1051
@@ -3056,6 +3093,7 @@ msgstr "Upload classico"
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:613
 msgid "Drag and drop files here, they will be uploaded to the private folder."
 msgstr ""
+"Trascinare e rilasciare i file qui.Saranno caricati nella cartella privata."
 
 #: src/php/core-addons/private-file/private-file-default-handlers.class.php:617
 msgid "Get from server FTP folder"
@@ -3066,6 +3104,8 @@ msgid ""
 "Select one or more files from the FTP folder, they will either be moved or "
 "copied to the private folder."
 msgstr ""
+"Seleziona uno o più file dalla cartella FTP, saranno spostati o copiati "
+"nella cartella privata."
 
 #: src/php/core-addons/private-file/templates/private-attachments-add-classic-upload-admin.template.php:16
 #: src/php/core-addons/private-file/templates/private-attachments-add-classic-upload-frontend.template.php:14
@@ -3104,7 +3144,7 @@ msgstr "Come vuoi aggiungere questi files?"
 
 #: src/php/core-addons/private-file/templates/private-attachments-add-methods-browser-frontend.template.php:19
 msgid "File Upload"
-msgstr ""
+msgstr "Upload file"
 
 #: src/php/core-addons/private-file/templates/private-attachments-list-admin.template.php:25
 #: src/php/core-addons/private-file/templates/private-attachments-list-frontend.template.php:31
@@ -3196,7 +3236,7 @@ msgstr "Estensioni installate"
 
 #: src/php/core-addons/status/status-addon.class.php:110
 msgid "Supported add-ons currently enabled"
-msgstr ""
+msgstr "Componenti aggiuntivi supportati attualmente abilitati"
 
 #: src/php/core-addons/status/status-addon.class.php:123
 msgid "Actions and filters"
@@ -3220,7 +3260,7 @@ msgstr "Impostazioni"
 
 #: src/php/core-addons/status/status-addon.class.php:201
 msgid "The database has been cleaned up, you can now remove the plugin"
-msgstr ""
+msgstr "Il database è stato cancellato, ora è possibile rimuovere il plug-in"
 
 #: src/php/core-addons/status/status-addon.class.php:207
 msgid "Settings have been resetted to default values"
@@ -3304,31 +3344,33 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:31
 msgid "Add-on"
-msgstr ""
+msgstr "Add-on"
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:32
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:44
 msgid "Current version"
-msgstr ""
+msgstr "Versione corrente"
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:33
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:45
 msgid "Recommended version"
-msgstr ""
+msgstr "Versione consigliata"
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:46
 msgid ""
 "If you ignore this warning, there may be unexpected behaviour from the "
 "plugin. You may also be missing on security patches and bug fixes."
 msgstr ""
+"Se ignori questo avviso, potrebbe esserci un comportamento inaspettato dal "
+"plug-in. Potrebbe anche mancare su patch di sicurezza e correzioni di bug."
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:47
 msgid "You should really update the add-ons."
-msgstr ""
+msgstr "Dovresti aggiornare i componenti aggiuntivi."
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:51
 msgid "Download updated add-ons"
-msgstr ""
+msgstr "Scarica add-on aggiornati"
 
 #: src/php/core-addons/status/templates/status-section-hooks.template.php:29
 #: src/php/core-addons/status/templates/status-section-templates.template.php:26
@@ -3350,23 +3392,23 @@ msgstr "%s: %d hook(s)"
 
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:33
 msgid "Get latest add-ons from your account"
-msgstr ""
+msgstr "Vedi le ultime news dal tuo blog"
 
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:35
 msgid "Check versions again"
-msgstr ""
+msgstr "Verifica nuovamente"
 
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:64
 msgid "Version mismatch"
-msgstr ""
+msgstr "Versione non compatibile"
 
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:66
 msgid "Addon is active"
-msgstr ""
+msgstr "L'add-on è attivo"
 
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:68
 msgid "Addon is not active"
-msgstr ""
+msgstr "L'add-on non è attivo"
 
 #: src/php/core-addons/status/templates/status-section-needs-attention.template.php:33
 msgid "Issue #%d"
@@ -3424,17 +3466,20 @@ msgstr "Ripristina impostazioni predefinite"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:56
 msgid "Uninstall WP Customer Area"
-msgstr ""
+msgstr "Disinstalla WP Customer Area"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:58
 msgid ""
 "Pressing the button below will clean-up any data related to WP Customer Area "
 "(posts, taxonomies, etc.). This cannot be undone!"
 msgstr ""
+"Premendo il pulsante in basso si eliminano tutti i dati relativi a WP "
+"Customer Area (post, tassonomie, ecc.). Questa operazione non può essere "
+"annullata!"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:62
 msgid "Clean-up database"
-msgstr ""
+msgstr "Pulizia database"
 
 #: src/php/core-addons/status/templates/status-section-reset.template.php:68
 msgid ""
@@ -3449,6 +3494,8 @@ msgid ""
 "Are you sure that you want to delete everything related to WP Customer Area "
 "(this operation cannot be undone)?"
 msgstr ""
+"Sei sicuro di voler eliminare tutto ciò che riguarda WP Customer Area "
+"(questa operazione non può essere annullata)?"
 
 #: src/php/core-addons/status/templates/status-section-templates.template.php:27
 msgid "Overridden only"
@@ -3492,19 +3539,19 @@ msgstr "Nickname"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:89
 msgid "Display name"
-msgstr ""
+msgstr "Nome da visualizzare"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:93
 msgid "Personal Website"
-msgstr ""
+msgstr "Sito web personale"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:97
 msgid "Biography"
-msgstr ""
+msgstr "Biografia"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:98
 msgid "Your can write a short description about you."
-msgstr ""
+msgstr "Puoi scrivere una tua breve biografia."
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:103
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
@@ -3528,6 +3575,8 @@ msgstr ""
 #: src/php/core-classes/Addon/addon-manager.class.php:138
 msgid "The plugin and the add-ons you have installed may be incompatible."
 msgstr ""
+"Il plug-in e i componenti aggiuntivi installati potrebbero essere "
+"incompatibili."
 
 #: src/php/core-classes/Content/list-table.class.php:246
 msgid ""
@@ -3590,7 +3639,7 @@ msgstr "Svuota Cestino"
 
 #: src/php/core-classes/Cron/cron.class.php:43
 msgid "Once weekly"
-msgstr ""
+msgstr "Una volta alla settimana"
 
 #: src/php/core-classes/Licensing/licensing.class.php:76
 msgid "Unknown add-on"
@@ -3751,16 +3800,16 @@ msgstr "Categoria predefinita"
 
 #: src/php/core-classes/addon-edit-content-page.class.php:779
 msgid "No file has been selected for deletion"
-msgstr ""
+msgstr "Nessun file è stato selezionato per la cancellazione"
 
 #: src/php/core-classes/addon-edit-content-page.class.php:785
 #: src/php/core-classes/addon-edit-content-page.class.php:791
 msgid "Oops! Security check failed!"
-msgstr ""
+msgstr "Oops! Controllo di sicurezza fallito!"
 
 #: src/php/core-classes/addon-edit-content-page.class.php:806
 msgid "It looks like the file you tried to delete does not exists."
-msgstr ""
+msgstr "Sembra che il file che hai provato ad eliminare non esista."
 
 #: src/php/core-classes/addon-edit-content-page.class.php:819
 msgid "This file type is not allowed. You can only delete: %s"
@@ -3769,22 +3818,29 @@ msgstr ""
 #: src/php/core-classes/addon-edit-content-page.class.php:824
 msgid "This file cannot be deleted, please contact site administrator."
 msgstr ""
+"Questo file non può essere cancellato, si prega di contattare "
+"l'amministratore del sito."
 
 #: src/php/core-classes/addon-edit-content-page.class.php:895
 msgid ""
 "It looks like you are not allowed to create content for this kind of post "
 "type."
 msgstr ""
+"Sembra che tu non sia autorizzato a creare contenuti per questo tipo di post."
 
 #: src/php/core-classes/addon-edit-content-page.class.php:906
 msgid ""
 "It looks like you are not allowed to update authored content for this post."
 msgstr ""
+"Sembra che tu non sia autorizzato ad aggiornare il contenuto creato per "
+"questo post."
 
 #: src/php/core-classes/addon-edit-content-page.class.php:912
 msgid ""
 "It looks like you are not allowed to update owned content for this post."
 msgstr ""
+"Sembra che tu non sia autorizzato ad aggiornare i contenuti di proprietà per "
+"questo post."
 
 #: src/php/core-classes/addon-edit-content-page.class.php:940
 msgid "An error happened while creating the folder: %s"
@@ -3822,7 +3878,7 @@ msgstr "Qiesta pagina richiede il login, tu non dovresti essere qui"
 msgid "You are not allowed to view this page"
 msgstr "Non sei autorizzato a visualizzare questa pagina"
 
-#: src/php/core-classes/addon-page.class.php:452
+#: src/php/core-classes/addon-page.class.php:451
 msgid "WPCA - %s"
 msgstr "WPCA - %s"
 
@@ -4030,14 +4086,16 @@ msgid ""
 "We could not get a proper answer from the server, please contact site "
 "administrator."
 msgstr ""
+"Non è stato possibile ottenere una risposta adeguata dal server, contattare "
+"l'amministratore del sito."
 
 #: src/php/core-classes/plugin.class.php:301
 msgid "The type of file you tried to upload is not an image."
-msgstr ""
+msgstr "Il file che hai provato a caricare non è un'immagine."
 
 #: src/php/core-classes/plugin.class.php:302
 msgid "Delete image"
-msgstr ""
+msgstr "Cancella immagine"
 
 #: src/php/core-classes/plugin.class.php:725
 msgid ""
@@ -4551,7 +4609,7 @@ msgstr "Comoros"
 
 #: src/php/helpers/country-helper.class.php:102
 msgid "Congo, Democratic People's Republic"
-msgstr ""
+msgstr "Repubblica Democratica del Congo"
 
 #: src/php/helpers/country-helper.class.php:103
 msgid "Congo, Republic of"
@@ -5764,7 +5822,7 @@ msgstr "Visualizza pagamenti"
 #: src/php/core-addons/payments/payment.class.php:379
 msgctxt "cuar_payment"
 msgid "Search Payments"
-msgstr "Cerca Pagamenti"
+msgstr "Cerca tra i Pagamenti"
 
 #: src/php/core-addons/payments/payment.class.php:380
 msgctxt "cuar_payment"
@@ -5830,7 +5888,7 @@ msgstr "Visualizza File Privato"
 #: src/php/core-addons/private-file/private-file-addon.class.php:1131
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
-msgstr "Cerca tra i file privati"
+msgstr "Cerca tra i File Privati"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:1132
 msgctxt "cuar_private_file"
@@ -5861,7 +5919,7 @@ msgstr "Categoria File"
 #: src/php/core-addons/private-file/private-file-addon.class.php:1170
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
-msgstr "Cerca Categorie"
+msgstr "Cerca tra le Categorie di File"
 
 #: src/php/core-addons/private-file/private-file-addon.class.php:1171
 msgctxt "cuar_private_file_category"
@@ -5998,7 +6056,7 @@ msgstr "Categoria Pagina"
 #: src/php/core-addons/private-page/private-page-addon.class.php:209
 msgctxt "cuar_private_page_category"
 msgid "Search Page Categories"
-msgstr "Cerca Categorie Pagine"
+msgstr "Cerca tra le Categorie di Pagine"
 
 #: src/php/core-addons/private-page/private-page-addon.class.php:210
 msgctxt "cuar_private_page_category"

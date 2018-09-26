@@ -126,7 +126,7 @@ if ( !class_exists('CUAR_LogAddOn')) :
                 'page_title' => __('WP Customer Area - Logs', 'cuar'),
                 'title'      => __('Logs', 'cuar'),
                 'slug'       => self::$LOG_PAGE_SLUG,
-                'href'       => 'admin.php?page=' . self::$LOG_PAGE_SLUG,
+                'href'       => admin_url('admin.php?page=' . self::$LOG_PAGE_SLUG),
                 'capability' => 'manage_options'
             );
 

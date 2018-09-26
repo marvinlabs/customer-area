@@ -197,11 +197,17 @@ class CUAR_LogTable extends CUAR_ListTable
 
         $user = get_userdata($user_id);
 
-        return sprintf('<span title="%4$s" class="cuar-btn-xs ip">IP</span> <a href="%1$s" title="Profile of %2$s" class="cuar-btn-xs user">%3$s</a>',
-            admin_url('user-edit.php?user_id=' . $user_id),
-            esc_attr($user->display_name),
-            $user->user_login,
-            $item->ip);
+        if(!empty($user)) {
+            $output = sprintf('<span title="%4$s" class="cuar-btn-xs ip">IP</span> <a href="%1$s" title="Profile of %2$s" class="cuar-btn-xs user">%3$s</a>',
+                admin_url('user-edit.php?user_id=' . $user_id),
+                esc_attr($user->display_name),
+                $user->user_login,
+                $item->ip);
+        } else {
+            $output = __('Unknown', 'cuar');
+        }
+
+        return $output;
     }
 
     public function column_log_event($item)
@@ -210,7 +216,7 @@ class CUAR_LogTable extends CUAR_ListTable
         $logger = $this->plugin->get_logger();
         $types = $logger->get_valid_event_types();
 
-        return isset($types[$type]) ? $types[$type] : 'Unknown';
+        return isset($types[$type]) ? $types[$type] : __('Unknown', 'cuar');
     }
 
     public function column_log_extra($item)
