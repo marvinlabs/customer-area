@@ -3,8 +3,8 @@
 Contributors:       vprat, marvinlabs, tlartaud
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
-Requires at least:  4.4
-Tested up to:       4.9.0
+Requires at least:   4.7
+Tested up to:        4.9.8
 Stable tag:         7.5.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
