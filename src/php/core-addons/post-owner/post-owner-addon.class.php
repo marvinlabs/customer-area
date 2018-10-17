@@ -171,7 +171,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
          */
         public function get_base_private_storage_url()
         {
-            return WP_CONTENT_URL . '/customer-area/storage';
+            return content_url() . '/customer-area/storage';
         }
 
         /**

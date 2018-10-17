@@ -33,7 +33,7 @@ if ( !defined('CUAR_INCLUDES_DIR')) define('CUAR_INCLUDES_DIR', CUAR_PLUGIN_DIR 
 define('CUAR_LANGUAGE_DIR', 'customer-area/languages');
 
 define('CUAR_PLUGIN_VERSION', '7.5.2');
-define('CUAR_PLUGIN_URL', untrailingslashit(WP_PLUGIN_URL) . '/customer-area/'); // plugin_dir_url( __FILE__ ) );
+define('CUAR_PLUGIN_URL', untrailingslashit(plugins_url()) . '/customer-area/'); // plugin_dir_url( __FILE__ ) );
 define('CUAR_SCRIPTS_URL', CUAR_PLUGIN_URL . 'scripts');
 define('CUAR_ADMIN_SKIN', 'plugin%%default-wp38');
 define('CUAR_FRONTEND_SKIN', 'plugin%%master');

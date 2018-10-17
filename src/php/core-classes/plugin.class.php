@@ -447,7 +447,7 @@ if ( !class_exists('CUAR_Plugin')) :
                         $base = untrailingslashit(get_stylesheet_directory_uri()) . '/customer-area/skins/';
                         break;
                     case 'wp-content':
-                        $base = untrailingslashit(WP_CONTENT_URL) . '/customer-area/skins/';
+                        $base = untrailingslashit(content_url()) . '/customer-area/skins/';
                         break;
                 }
 
@@ -459,7 +459,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 // 2 = skin folder name
                 switch ($theme[0]) {
                     case 'addon':
-                        return untrailingslashit(WP_PLUGIN_URL) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
+                        return untrailingslashit(plugins_url()) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
                 }
             }
 
@@ -470,10 +470,12 @@ if ( !class_exists('CUAR_Plugin')) :
         {
             $theme = $this->get_theme($theme_type);
 
-            if (count($theme) == 1) {
+            if (count($theme) === 1) {
                 // Still not on CUAR 4.0? then we have a problem
                 return '';
-            } else if (count($theme) == 2) {
+            }
+
+            if (count($theme) === 2) {
                 $base = '';
                 switch ($theme[0]) {
                     case 'plugin':
@@ -488,7 +490,9 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
 
                 return $base . '/' . $theme_type . '/' . $theme[1];
-            } else if (count($theme) == 3) {
+            }
+
+            if (count($theme) === 3) {
                 // For addons
                 // 0 = 'addon'
                 // 1 = addon folder name
