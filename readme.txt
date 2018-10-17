@@ -3,9 +3,9 @@
 Contributors:       vprat, marvinlabs, tlartaud
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
-Requires at least:   4.7
-Tested up to:        4.9.8
-Stable tag:         7.5.2
+Requires at least:  4.7
+Tested up to:       4.9.8
+Stable tag:         7.6.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,16 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.6.0 (2018/) =
+
+* New: improve requirement checks when plugin is activated (PHP and WordPress versions)
+* Fix: use get_user_locale instead of get_locale
+
+**Add-on changes**
+
+* **ACF Integration** - New: support for ACF 5
+* **Search** - Fix: issue with form submission on Internet Explorer
 
 = 7.5.2 (2018/09/14) =
 
