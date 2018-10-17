@@ -108,6 +108,8 @@ feel free to fork the project and send us pull requests!
 = 7.6.0 (2018/) =
 
 * New: improve requirement checks when plugin is activated (PHP and WordPress versions)
+* New: plugin requires PHP 5.6 minimum
+* New: plugin requires WordPress 4.7 minimum
 * Fix: use get_user_locale instead of get_locale
 
 **Add-on changes**
