@@ -184,8 +184,10 @@ if ( !class_exists('CUAR_Plugin')) :
             if (empty($domain)) $domain = 'cuar';
             if (empty($plugin_name)) $plugin_name = 'customer-area';
 
+            $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
+
             // Traditional WordPress plugin locale filter
-            $locale = apply_filters('plugin_locale', get_locale(), $domain);
+            $locale = apply_filters('plugin_locale', $locale, $domain);
             $mo_file = sprintf('%1$s-%2$s.mo', $domain, $locale);
 
             $locations = array(
@@ -215,7 +217,7 @@ if ( !class_exists('CUAR_Plugin')) :
             global $wp_locale;
 
             $lang = 'en';
-            $locale = get_locale();
+            $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
             if ($locale && !empty($locale)) {
                 $locale = str_replace("_", "-", $locale);
                 $locale_parts = explode("-", $locale);
@@ -266,7 +268,7 @@ if ( !class_exists('CUAR_Plugin')) :
             global $wp_locale;
 
             $lang = 'en';
-            $locale = get_locale();
+            $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
             if ($locale && !empty($locale)) {
                 $locale = str_replace("_", "-", $locale);
                 $locale_parts = explode("-", $locale);
@@ -809,7 +811,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 case 'jquery.select2': {
                     wp_enqueue_script('jquery.select2', CUAR_PLUGIN_URL . 'libs/js/bower/select2/select2.min.js', array('jquery'), $cuar_version);
 
-                    $locale = get_locale();
+                    $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
                     if ($locale && !empty($locale)) {
                         $locale = str_replace("_", "-", $locale);
                         $locale_parts = explode("-", $locale);
@@ -912,7 +914,7 @@ if ( !class_exists('CUAR_Plugin')) :
                     wp_enqueue_script('summernote', CUAR_PLUGIN_URL . 'libs/js/bower/summernote/summernote.min.js', array('jquery', 'bootstrap.tooltip', 'bootstrap.popover', 'bootstrap.modal'), $cuar_version);
 	                wp_enqueue_script('summernote-image-attributes', CUAR_PLUGIN_URL . 'libs/js/bower/summernote-image-attributes/summernote-image-attributes.min.js', array('jquery', 'bootstrap.tooltip', 'bootstrap.popover', 'bootstrap.modal', 'summernote'), $cuar_version);
 
-                    $locale = get_locale();
+                    $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
                     if ($locale && !empty($locale)) {
                         $locale = str_replace("_", "-", $locale);
                         $locale_parts = explode("-", $locale);
