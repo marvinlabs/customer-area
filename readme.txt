@@ -111,6 +111,8 @@ feel free to fork the project and send us pull requests!
 * New: plugin requires PHP 5.6 minimum
 * New: plugin requires WordPress 4.7 minimum
 * New: improved profile page - allow grouping of profile fields
+* New: show download progress on download all button for private files
+* Fix: download all button was not working in recent versions of Chrome
 * Fix: use get_user_locale instead of get_locale
 
 **Add-on changes**
