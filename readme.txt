@@ -110,6 +110,7 @@ feel free to fork the project and send us pull requests!
 * New: improve requirement checks when plugin is activated (PHP and WordPress versions)
 * New: plugin requires PHP 5.6 minimum
 * New: plugin requires WordPress 4.7 minimum
+* New: improved profile page - allow grouping of profile fields
 * Fix: use get_user_locale instead of get_locale
 
 **Add-on changes**
