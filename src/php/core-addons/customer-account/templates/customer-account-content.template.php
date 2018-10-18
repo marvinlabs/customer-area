@@ -1,6 +1,9 @@
 <?php /**
- * Template version: 3.2.0
+ * Template version: 4.0.0
  * Template zone: frontend
+ *
+ * -= 4.0.0 =-
+ * - Added field groups
  *
  * -= 3.2.0 =-
  * - Added translation for 'Profile'
@@ -46,12 +49,7 @@ $current_user = $this->get_current_user();
     </div>
 </div>
 
-<div class="panel">
-    <div class="panel-heading"><span class="panel-title"><?php _e('Account details', 'cuar'); ?></span></div>
-    <div class="panel-body">
-        <?php $this->print_account_fields(); ?>
-    </div>
-</div>
+<?php $this->print_account_fields(); ?>
 
 <div class="row">
     <?php $this->print_address_fields(); ?>
