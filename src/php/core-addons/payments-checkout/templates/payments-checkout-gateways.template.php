@@ -1,6 +1,9 @@
 <?php
 /**
- * Template version: 3.1.0
+ * Template version: 3.1.1
+ *
+ * -= 3.1.1 =-
+ * - Fix bug when using multiple gateways
  *
  * -= 3.1.0 =-
  * - Replace clearfix CSS classes with cuar-clearfix
@@ -19,7 +22,8 @@
 <?php
 $is_single_gateway = (count($gateways)==1);
 $first_gateway = reset($gateways);
-if ($is_single_gateway) $selected_gateway = $first_gateway;
+if ($is_single_gateway || !isset($gateways[$selected_gateway])) $selected_gateway = $first_gateway;
+else $selected_gateway = $gateways[$selected_gateway];
 ?>
 
 <?php do_action('cuar/core/payments/templates/checkout/before-gateways'); ?>
@@ -36,7 +40,7 @@ if ($is_single_gateway) $selected_gateway = $first_gateway;
         <div class="btn-group">
         <?php foreach ($gateways as $gateway_id => $gateway): ?>
             <div class="btn radio-custom">
-                <input type="radio" class="cuar-js-gateway-selector" id="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>" name="cuar_selected_gateway" value="<?php echo esc_attr($gateway->get_id()); ?>" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php checked($selected_gateway, $gateway_id); ?>>
+                <input type="radio" class="cuar-js-gateway-selector" id="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>" name="cuar_selected_gateway" value="<?php echo esc_attr($gateway->get_id()); ?>" data-gateway="<?php echo esc_attr($gateway->get_id()); ?>" <?php checked($selected_gateway->get_id(), $gateway_id); ?>>
                 <label for="gateway_select_<?php echo esc_attr($gateway->get_id()); ?>">
                     <?php echo $gateway->get_name(); ?>
                 </label>
