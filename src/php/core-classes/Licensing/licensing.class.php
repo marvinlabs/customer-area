@@ -65,31 +65,40 @@ class CUAR_Licensing
      * Query the server to check whether a license is valid or not
      *
      * @param string     $license The license key to validate
-     * @param CUAR_AddOn $addon The add-on to validate
+     * @param CUAR_AddOn $addon   The add-on to validate
      *
      * @return CUAR_LicenseValidationResult The result
      */
     public function validate_license($license, $addon)
     {
-        if ($addon == null) {
+        if ($addon == null)
+        {
             return CUAR_LicenseValidationResult::failure(
                 __('Unknown add-on', 'cuar'));
         }
 
         $license_data = $this->query_store($license, $addon);
-        if ($license_data == null) {
+        if ($license_data == null)
+        {
             return CUAR_LicenseValidationResult::failure(
-                __('Problem when contacting our license servers. Is the license key correct? Is PHP cURL enabled?', 'cuar'));
+                __('Problem when contacting our license servers. Is the license key correct? Is PHP cURL enabled?',
+                    'cuar'));
         }
 
-        if ($license_data->license == 'valid') {
+        if ($license_data->license == 'valid')
+        {
             $result = CUAR_LicenseValidationResult::success(
-                sprintf(__('Your license is valid until: %s', 'cuar'),
+                $license_data->expires === 'lifetime'
+                    ? __('Your license is valid forever', 'cuar')
+                    : sprintf(__('Your license is valid until: %s', 'cuar'),
                     date_i18n(get_option('date_format'), strtotime($license_data->expires, current_time('timestamp')))),
-                new DateTime($license_data->expires)
+                $license_data->expires === 'lifetime' ? new DateTime('+99 years') : new DateTime($license_data->expires)
             );
-        } else {
-            switch ($license_data->error) {
+        }
+        else
+        {
+            switch ($license_data->error)
+            {
                 case 'revoked':
                     $result = CUAR_LicenseValidationResult::failure(
                         __('This license key has been revoked.', 'cuar'));
@@ -98,16 +107,19 @@ class CUAR_Licensing
                 case 'no_activations_left':
                     $result = CUAR_LicenseValidationResult::failure(
                         sprintf(__(
-                            'You have reached your maximum number of sites for this license key. You can use it on at most %s site(s).', 'cuar'),
+                            'You have reached your maximum number of sites for this license key. You can use it on at most %s site(s).',
+                            'cuar'),
                             $license_data->max_sites));
                     break;
 
                 case 'expired':
                     $result = CUAR_LicenseValidationResult::failure(
-                        sprintf(__('Your license has expired at the date: %s', 'cuar'),
-                            date_i18n(get_option('date_format'), strtotime($license_data->expires, current_time('timestamp'))))
+                        sprintf(__('Your license has expired since %s', 'cuar'),
+                            date_i18n(get_option('date_format'),
+                                strtotime($license_data->expires, current_time('timestamp'))))
                         . ' '
-                        . sprintf('<a href="%s" target="_blank" class="button renew-license-button">' . __('Renew license', 'cuar') . ' &raquo;</a>&nbsp;',
+                        . sprintf('<a href="%s" target="_blank" class="button renew-license-button">' . __('Renew license',
+                                'cuar') . ' &raquo;</a>&nbsp;',
                             $this->get_renew_license_url($license)),
                         new DateTime($license_data->expires)
                     );
@@ -152,33 +164,37 @@ class CUAR_Licensing
     private function query_store($license, $addon)
     {
         // data to send in our API request
-        $api_params = array(
+        $api_params = [
             'edd_action' => 'activate_license',
             'license'    => $license,
             'url'        => get_home_url(),
             'item_id'    => (int)($addon->store_item_id),
-        );
+        ];
 
         // Call the custom API.
-        $response = wp_remote_post($this->store->get_store_url(), array(
+        $response = wp_remote_post($this->store->get_store_url(), [
             'timeout'   => 15,
             'sslverify' => false,
             'body'      => $api_params,
-        ));
+        ]);
 
         // make sure the response came back okay
-        if (is_wp_error($response) || 200 !== wp_remote_retrieve_response_code($response)) {
-            if (is_wp_error($response)) {
-                return json_decode(json_encode(array(
+        if (is_wp_error($response) || 200 !== wp_remote_retrieve_response_code($response))
+        {
+            if (is_wp_error($response))
+            {
+                return json_decode(json_encode([
                     'license'  => 'error',
                     'error'    => $response->get_error_message(),
                     'response' => $response,
-                )));
-            } else {
-                return json_decode(json_encode(array(
+                ]));
+            }
+            else
+            {
+                return json_decode(json_encode([
                     'license' => 'error',
                     'error'   => 'Server responded with code ' . wp_remote_retrieve_response_code($response),
-                )));
+                ]));
             }
         }
 
@@ -186,12 +202,13 @@ class CUAR_Licensing
         $license_data = json_decode($response);
 
         // If not a valid license and license is missing, return null
-        if (!isset($license_data) || ($license_data->license != 'valid' && $license_data->error == 'missing')) {
-            return json_decode(json_encode(array(
+        if (!isset($license_data) || ($license_data->license != 'valid' && $license_data->error == 'missing'))
+        {
+            return json_decode(json_encode([
                 'license'  => 'error',
                 'error'    => 'Not a valid license or license is missing',
                 'response' => $response,
-            )));
+            ]));
         }
 
         return $license_data;
