@@ -114,7 +114,10 @@ feel free to fork the project and send us pull requests!
 * New: show download progress on download all button for private files
 * Fix: download all button was not working in recent versions of Chrome
 * Fix: use get_user_locale instead of get_locale
-* Tweak: Update frontend WYSIWYG editor
+* Fix: payment form when using multiple gateways
+* Fix: remove use of WP_***_URL constants in favor of functions [#315](https://github.com/marvinlabs/customer-area/issues/315)
+* Tweak: update frontend WYSIWYG editor
+* Tweak: update translations
 
 **Add-on changes**
 
