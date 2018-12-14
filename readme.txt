@@ -4,7 +4,7 @@ Contributors:       vprat, marvinlabs, tlartaud
 Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.7
-Tested up to:       4.9.8
+Tested up to:       5.0.0
 Stable tag:         7.6.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
@@ -112,6 +112,7 @@ feel free to fork the project and send us pull requests!
 * New: plugin requires WordPress 4.7 minimum
 * New: improved profile page - allow grouping of profile fields
 * Fix: use get_user_locale instead of get_locale
+* Tweak: Update frontend WYSIWYG editor
 
 **Add-on changes**
 
