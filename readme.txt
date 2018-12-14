@@ -105,8 +105,9 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.6.0 (2018/) =
+= 7.6.0 (2018/12/14) =
 
+* New: support for ACF 5. ACF 4 is not compatible anymore with our ACF Integration add-on.
 * New: improve requirement checks when plugin is activated (PHP and WordPress versions)
 * New: plugin requires PHP 5.6 minimum
 * New: plugin requires WordPress 4.7 minimum
@@ -122,7 +123,11 @@ feel free to fork the project and send us pull requests!
 **Add-on changes**
 
 * **ACF Integration** - New: support for ACF 5
+* **Notifications** - New: Add filter to allow filtering the IDs of the users who should receive the notifications targeted at administrators. Use filter 'cuar/notifications/administrator-recipient-ids' to customize.
+* **Design Extras** - Tweak: Support for new styles from WP Customer Area 7.6.0 and ACF v5.0.0
+* **Collaboration** - Tweak: update translations
 * **Search** - Fix: issue with form submission on Internet Explorer
+* **All add-ons** - Fix: remove use of WP_***_URL constants in favor of functions [#315](https://github.com/marvinlabs/customer-area/issues/315)
 
 = 7.5.2 (2018/09/14) =
 
