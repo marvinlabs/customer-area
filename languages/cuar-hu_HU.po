@@ -1,15 +1,15 @@
 # (c) Vincent Mimoun-Prat, MarvinLabs {2018}
 # Translators:
-# Csilla Z, 2016
+# 5381de7fb266bf70e0eabb27fb0f3cdb, 2016
 # Istvan Jagri <istvan.jagri@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-09-14 14:40:14+00:00\n"
-"PO-Revision-Date: 2018-09-14 13:59+0000\n"
-"Last-Translator: Laszlo Espadas\n"
+"POT-Creation-Date: 2018-12-14 12:13:13+00:00\n"
+"PO-Revision-Date: 2018-12-14 11:44+0000\n"
+"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/wp-translations/"
 "wp-customer-area/language/hu_HU/)\n"
 "Language: hu_HU\n"
@@ -28,31 +28,25 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: skins/frontend/master/cuar-functions.php:359
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
-msgid "Account details"
-msgstr "A profil részletei"
-
-#: skins/frontend/master/cuar-functions.php:399
+#: skins/frontend/master/cuar-functions.php:381
 msgid "View profile"
 msgstr ""
 
-#: skins/frontend/master/cuar-functions.php:402
+#: skins/frontend/master/cuar-functions.php:384
 msgid "Manage account"
 msgstr ""
 
-#: skins/frontend/master/cuar-functions.php:404
+#: skins/frontend/master/cuar-functions.php:386
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
 msgstr "Kilépés"
 
-#: skins/frontend/master/cuar-functions.php:410
+#: skins/frontend/master/cuar-functions.php:392
 msgid "Register"
 msgstr "Regisztráció"
 
-#: skins/frontend/master/cuar-functions.php:411
+#: skins/frontend/master/cuar-functions.php:393
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
 msgstr "Bejelentkezés"
@@ -70,12 +64,12 @@ msgid "Billing address"
 msgstr "Számlázási cím"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:92
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:190
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:248
 msgid "Clear"
 msgstr "Törlés"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:93
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:191
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:249
 msgid "Clear the address"
 msgstr "Cím törlése"
 
@@ -316,7 +310,7 @@ msgid "Restrict the access to the administration panel of WordPress."
 msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:225
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:41
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:44
 #: src/php/core-classes/settings.class.php:276
 msgid "General"
 msgstr "Általános"
@@ -1113,6 +1107,11 @@ msgstr "Nincs engedélyed az oldal megtekintéséhez"
 msgid "Account - Details"
 msgstr "Profil - Részletek"
 
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:64
+msgid "Account details"
+msgstr "A profil részletei"
+
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:57
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:51
 msgid "This page shows a summary of the user account"
@@ -1126,31 +1125,31 @@ msgstr "A profil részleteinek megtekintése"
 msgid "Edit account details"
 msgstr "A profil részleteinek szerkesztése"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:39
 msgid "Profile"
 msgstr "Adatlap"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
 msgid "Your profile has been updated"
 msgstr "A profilod frissítésre került"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:44
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:47
 msgid "Account - Edit"
 msgstr "Profil - módosítás"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:48
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
 msgid "Edit account"
 msgstr "Profil módosítása"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:57
 msgid "This page shows a form where the user can edit his account"
 msgstr "Ezen az oldalon a felhasználó módosíthatja a profilját"
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:34
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:37
 msgid "Submit"
 msgstr "Küld"
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:46
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:49
 msgid "Addresses"
 msgstr "Címek"
 
@@ -1710,11 +1709,11 @@ msgid_plural "%d attachments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:61
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:66
 msgid "Get file"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:62
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:67
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:23
@@ -2647,11 +2646,11 @@ msgstr ""
 msgid "Billing information"
 msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:30
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:33
 msgid "Pay with %s"
 msgstr "Fizetés %s-al"
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:31
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
 msgid "Choose a payment method"
 msgstr ""
 
@@ -3378,55 +3377,59 @@ msgid "User Profile"
 msgstr "Felhasználói profil"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:65
+msgid "Personal details"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:66
+msgid "Other details"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:74
 msgid "Username"
 msgstr "Felhasználói név"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:67
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:76
 msgid "Your username cannot be changed."
 msgstr "A felhasználói nevet nem lehet megváltoztatni. "
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:72
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:82
 msgid "Primary email"
 msgstr "Elsődleges email cím"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:77
-msgid "First name"
-msgstr "Vezetéknév"
-
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:81
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:88
 msgid "Last name"
 msgstr "Keresztnév"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:85
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
 msgid "Nickname"
 msgstr "Becenév"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:89
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
 msgid "Display name"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
 msgid "Personal Website"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:97
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:108
 msgid "Biography"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:109
 msgid "Your can write a short description about you."
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:115
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Jelszó"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:104
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:116
 msgid "Password (confirm)"
 msgstr "Jelszó (megerősítés)"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:105
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:117
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
@@ -3878,61 +3881,61 @@ msgstr "%1$s - legfeljebb %2$s karaktert tartalmazhat."
 msgid "%1$s is required."
 msgstr "%1$s szükséges"
 
-#: src/php/core-classes/plugin.class.php:231
+#: src/php/core-classes/plugin.class.php:233
 msgid "Checking license..."
 msgstr "Licensz ellenőrzése..."
 
-#: src/php/core-classes/plugin.class.php:232
+#: src/php/core-classes/plugin.class.php:234
 msgid "Failed to contact server"
 msgstr "Nem sikerült kapcsolatba lépni a szerverrel"
 
-#: src/php/core-classes/plugin.class.php:233
-#: src/php/core-classes/plugin.class.php:282
+#: src/php/core-classes/plugin.class.php:235
+#: src/php/core-classes/plugin.class.php:284
 msgid "Saving..."
 msgstr "Mentés...."
 
-#: src/php/core-classes/plugin.class.php:234
-#: src/php/core-classes/plugin.class.php:283
+#: src/php/core-classes/plugin.class.php:236
+#: src/php/core-classes/plugin.class.php:285
 msgid "Click to edit..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:235
-#: src/php/core-classes/plugin.class.php:284
+#: src/php/core-classes/plugin.class.php:237
+#: src/php/core-classes/plugin.class.php:286
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:236
-#: src/php/core-classes/plugin.class.php:285
+#: src/php/core-classes/plugin.class.php:238
+#: src/php/core-classes/plugin.class.php:287
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/php/core-classes/plugin.class.php:248
-#: src/php/core-classes/plugin.class.php:297
+#: src/php/core-classes/plugin.class.php:250
+#: src/php/core-classes/plugin.class.php:299
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:250
-#: src/php/core-classes/plugin.class.php:299
+#: src/php/core-classes/plugin.class.php:252
+#: src/php/core-classes/plugin.class.php:301
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:300
+#: src/php/core-classes/plugin.class.php:302
 msgid ""
 "We could not get a proper answer from the server, please contact site "
 "administrator."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:301
+#: src/php/core-classes/plugin.class.php:303
 msgid "The type of file you tried to upload is not an image."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:302
+#: src/php/core-classes/plugin.class.php:304
 msgid "Delete image"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:725
+#: src/php/core-classes/plugin.class.php:731
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
@@ -3940,7 +3943,7 @@ msgstr ""
 "A permalinkek le vannak tiltva. A Customer Area nem fog megfelelően működni. "
 "Kérünk, <a href=\"%1$s\">engedélyezd a WordPress beállításaiban</a>"
 
-#: src/php/core-classes/plugin.class.php:1026
+#: src/php/core-classes/plugin.class.php:1032
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 
@@ -5934,26 +5937,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Válassz a leggyakrabban használt oldal kategóriákból"
 
-#: src/php/core-classes/plugin.class.php:237
-#: src/php/core-classes/plugin.class.php:286
+#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:288
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:238
-#: src/php/core-classes/plugin.class.php:287
+#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:289
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Törlés"
 
-#: src/php/core-classes/plugin.class.php:239
-#: src/php/core-classes/plugin.class.php:288
+#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:290
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "ma"
 
-#: src/php/core-classes/plugin.class.php:242
-#: src/php/core-classes/plugin.class.php:291
+#: src/php/core-classes/plugin.class.php:244
+#: src/php/core-classes/plugin.class.php:293
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr ""
