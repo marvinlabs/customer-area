@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-09-14 14:40:14+00:00\n"
-"PO-Revision-Date: 2018-09-14 13:59+0000\n"
-"Last-Translator: Adrian Cobo <adria.cobo@gmail.com>\n"
+"POT-Creation-Date: 2018-12-14 12:13:13+00:00\n"
+"PO-Revision-Date: 2018-12-14 11:44+0000\n"
+"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/wp-translations/wp-"
 "customer-area/language/es_ES/)\n"
 "Language: es_ES\n"
@@ -29,31 +29,25 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: skins/frontend/master/cuar-functions.php:359
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
-msgid "Account details"
-msgstr "Detalles de la cuenta"
-
-#: skins/frontend/master/cuar-functions.php:399
+#: skins/frontend/master/cuar-functions.php:381
 msgid "View profile"
 msgstr "Ver perfil"
 
-#: skins/frontend/master/cuar-functions.php:402
+#: skins/frontend/master/cuar-functions.php:384
 msgid "Manage account"
 msgstr "Gestionar cuenta"
 
-#: skins/frontend/master/cuar-functions.php:404
+#: skins/frontend/master/cuar-functions.php:386
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: skins/frontend/master/cuar-functions.php:410
+#: skins/frontend/master/cuar-functions.php:392
 msgid "Register"
 msgstr "Registro"
 
-#: skins/frontend/master/cuar-functions.php:411
+#: skins/frontend/master/cuar-functions.php:393
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
 msgstr "Iniciar sesión"
@@ -71,12 +65,12 @@ msgid "Billing address"
 msgstr "Dirección de Facturación"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:92
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:190
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:248
 msgid "Clear"
 msgstr "Borrar"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:93
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:191
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:249
 msgid "Clear the address"
 msgstr "Borrar la dirección"
 
@@ -324,7 +318,7 @@ msgid "Restrict the access to the administration panel of WordPress."
 msgstr "Restringir el acceso al panel de administración de WordPress."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:225
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:41
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:44
 #: src/php/core-classes/settings.class.php:276
 msgid "General"
 msgstr "General"
@@ -1199,6 +1193,11 @@ msgstr "No está autorizado para visualizar este contenido"
 msgid "Account - Details"
 msgstr "Cuenta - Detalles"
 
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:64
+msgid "Account details"
+msgstr "Detalles de la cuenta"
+
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:57
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:51
 msgid "This page shows a summary of the user account"
@@ -1212,32 +1211,32 @@ msgstr "Ver detalles de la cuenta"
 msgid "Edit account details"
 msgstr "Editar detalles de la cuenta"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:39
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
 msgid "Your profile has been updated"
 msgstr "Su perfil ha sido actualizado"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:44
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:47
 msgid "Account - Edit"
 msgstr "Cuenta - Editar"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:48
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
 msgid "Edit account"
 msgstr "Editar cuenta"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:57
 msgid "This page shows a form where the user can edit his account"
 msgstr ""
 "Esta página muestra un formulario donde el usuario puede editar su cuenta"
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:34
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:37
 msgid "Submit"
 msgstr "Enviar"
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:46
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:49
 msgid "Addresses"
 msgstr "Direcciones"
 
@@ -1800,11 +1799,11 @@ msgid_plural "%d attachments"
 msgstr[0] "%d adjunto"
 msgstr[1] "%d adjuntos"
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:61
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:66
 msgid "Get file"
 msgstr "Obtener Archivo"
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:62
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:67
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:23
@@ -2750,11 +2749,11 @@ msgstr ""
 msgid "Billing information"
 msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:30
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:33
 msgid "Pay with %s"
 msgstr "Pagar con %s"
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:31
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
 msgid "Choose a payment method"
 msgstr ""
 
@@ -3514,55 +3513,59 @@ msgid "User Profile"
 msgstr "Perfil del usuario"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:65
+msgid "Personal details"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:66
+msgid "Other details"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:74
 msgid "Username"
 msgstr "Usuario"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:67
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:76
 msgid "Your username cannot be changed."
 msgstr "Su nombre de usuario no puede cambiarse."
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:72
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:82
 msgid "Primary email"
 msgstr "Email principal"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:77
-msgid "First name"
-msgstr "Nombre"
-
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:81
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:88
 msgid "Last name"
 msgstr "Apellidos"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:85
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
 msgid "Nickname"
 msgstr "Alias"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:89
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
 msgid "Display name"
 msgstr "Mostrar nombre"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
 msgid "Personal Website"
 msgstr "Sitio Web Personal"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:97
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:108
 msgid "Biography"
 msgstr "Biografía"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:109
 msgid "Your can write a short description about you."
 msgstr "Puede escribir una breve descripción suya."
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:115
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Contraseña"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:104
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:116
 msgid "Password (confirm)"
 msgstr "Contraseña  (confirmar)"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:105
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:117
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
@@ -4032,36 +4035,36 @@ msgstr "%1$s debe contener como mucho %2$s caracteres"
 msgid "%1$s is required."
 msgstr "%1$s es necesaria."
 
-#: src/php/core-classes/plugin.class.php:231
+#: src/php/core-classes/plugin.class.php:233
 msgid "Checking license..."
 msgstr "Comprobando la licencia..."
 
-#: src/php/core-classes/plugin.class.php:232
+#: src/php/core-classes/plugin.class.php:234
 msgid "Failed to contact server"
 msgstr "Fallo al contactar con el servidor"
 
-#: src/php/core-classes/plugin.class.php:233
-#: src/php/core-classes/plugin.class.php:282
+#: src/php/core-classes/plugin.class.php:235
+#: src/php/core-classes/plugin.class.php:284
 msgid "Saving..."
 msgstr "Guardando..."
 
-#: src/php/core-classes/plugin.class.php:234
-#: src/php/core-classes/plugin.class.php:283
+#: src/php/core-classes/plugin.class.php:236
+#: src/php/core-classes/plugin.class.php:285
 msgid "Click to edit..."
 msgstr "Click para editar..."
 
-#: src/php/core-classes/plugin.class.php:235
-#: src/php/core-classes/plugin.class.php:284
+#: src/php/core-classes/plugin.class.php:237
+#: src/php/core-classes/plugin.class.php:286
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/php/core-classes/plugin.class.php:236
-#: src/php/core-classes/plugin.class.php:285
+#: src/php/core-classes/plugin.class.php:238
+#: src/php/core-classes/plugin.class.php:287
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/php/core-classes/plugin.class.php:248
-#: src/php/core-classes/plugin.class.php:297
+#: src/php/core-classes/plugin.class.php:250
+#: src/php/core-classes/plugin.class.php:299
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
@@ -4069,28 +4072,28 @@ msgstr ""
 "Solo debe seleccionar un único poseedor, no se puede asignar múltiples "
 "poseedores para esta acción."
 
-#: src/php/core-classes/plugin.class.php:250
-#: src/php/core-classes/plugin.class.php:299
+#: src/php/core-classes/plugin.class.php:252
+#: src/php/core-classes/plugin.class.php:301
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 "Ningún poseedor está seleccionado actualmente, la acción no puede ser "
 "ejecutada."
 
-#: src/php/core-classes/plugin.class.php:300
+#: src/php/core-classes/plugin.class.php:302
 msgid ""
 "We could not get a proper answer from the server, please contact site "
 "administrator."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:301
+#: src/php/core-classes/plugin.class.php:303
 msgid "The type of file you tried to upload is not an image."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:302
+#: src/php/core-classes/plugin.class.php:304
 msgid "Delete image"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:725
+#: src/php/core-classes/plugin.class.php:731
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
@@ -4099,7 +4102,7 @@ msgstr ""
 "correctamente. Por favor activa los enlaces permanentes en los <a href=\"%1$s"
 "\">ajustes de WordPress</a>."
 
-#: src/php/core-classes/plugin.class.php:1026
+#: src/php/core-classes/plugin.class.php:1032
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 "Algunos archivos de plantilla que has reemplazado parecen estar obsoletos."
@@ -6103,26 +6106,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Seleccionar de entre las categorías más usadas"
 
-#: src/php/core-classes/plugin.class.php:237
-#: src/php/core-classes/plugin.class.php:286
+#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:288
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr "d-MM-yy"
 
-#: src/php/core-classes/plugin.class.php:238
-#: src/php/core-classes/plugin.class.php:287
+#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:289
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Borrar"
 
-#: src/php/core-classes/plugin.class.php:239
-#: src/php/core-classes/plugin.class.php:288
+#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:290
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "Hoy"
 
-#: src/php/core-classes/plugin.class.php:242
-#: src/php/core-classes/plugin.class.php:291
+#: src/php/core-classes/plugin.class.php:244
+#: src/php/core-classes/plugin.class.php:293
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr "Mostrar un mes diferente"

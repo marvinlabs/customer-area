@@ -1,14 +1,15 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2017}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2018}
 # Translators:
+# Joan Ferrando <jferrando@borgenstudio.com>, 2018
 # montse juanhuix <mjpunti@hotmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-09-14 13:55:48+00:00\n"
-"PO-Revision-Date: 2017-06-05 10:49+0000\n"
-"Last-Translator: montse juanhuix <mjpunti@hotmail.com>\n"
+"POT-Creation-Date: 2018-12-14 12:13:13+00:00\n"
+"PO-Revision-Date: 2018-12-14 11:44+0000\n"
+"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Catalan (http://www.transifex.com/wp-translations/wp-customer-"
 "area/language/ca/)\n"
 "Language: ca\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -27,31 +28,25 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: skins/frontend/master/cuar-functions.php:359
-#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:50
-msgid "Account details"
-msgstr "Detalls del compte"
-
-#: skins/frontend/master/cuar-functions.php:399
+#: skins/frontend/master/cuar-functions.php:381
 msgid "View profile"
 msgstr "Veure el perfil"
 
-#: skins/frontend/master/cuar-functions.php:402
+#: skins/frontend/master/cuar-functions.php:384
 msgid "Manage account"
 msgstr "Administrar el compte"
 
-#: skins/frontend/master/cuar-functions.php:404
+#: skins/frontend/master/cuar-functions.php:386
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:44
 #: src/php/core-addons/customer-logout/customer-logout-addon.class.php:48
 msgid "Logout"
 msgstr "Surt"
 
-#: skins/frontend/master/cuar-functions.php:410
+#: skins/frontend/master/cuar-functions.php:392
 msgid "Register"
 msgstr "Registra"
 
-#: skins/frontend/master/cuar-functions.php:411
+#: skins/frontend/master/cuar-functions.php:393
 #: src/php/core-addons/log/log-addon.class.php:164
 msgid "Login"
 msgstr "Usuari"
@@ -69,12 +64,12 @@ msgid "Billing address"
 msgstr "Adreça de facturació"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:92
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:190
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:248
 msgid "Clear"
 msgstr "Neteja"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:93
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:191
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:249
 msgid "Clear the address"
 msgstr "Neteja l'adreça"
 
@@ -84,25 +79,25 @@ msgstr "Error: s'ha de triar un propietari"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:132
 msgid "Are you sure that you want to associate this address with that owner?"
-msgstr ""
+msgstr "Esteu segur que voleu associar aquesta adreça amb aquest propietari?"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:133
 msgid "Do you really want to replace current address?"
-msgstr ""
+msgstr "Realment voleu substituir l'adreça actual?"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:134
 msgid "There is no address linked to that owner"
-msgstr ""
+msgstr "No hi ha cap adreça vinculada a aquest propietari"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:135
 msgid "Do you really want to clear the address?"
-msgstr ""
+msgstr "Segur que voleu esborrar l'adreça?"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:148
 #: src/php/core-addons/addresses/addresses-addon.class.php:186
 #: src/php/core-addons/addresses/addresses-addon.class.php:219
 msgid "Address ID must be specified"
-msgstr ""
+msgstr "Cal especificar l'identificador (ID) de l'adreça"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:156
 #: src/php/core-addons/addresses/addresses-addon.class.php:194
@@ -117,16 +112,16 @@ msgstr ""
 #: src/php/core-classes/addon-create-content-page.class.php:92
 #: src/php/core-classes/addon-create-content-page.class.php:98
 msgid "Trying to cheat?"
-msgstr ""
+msgstr "Esteu intentant fer trampes?"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:200
 #: src/php/core-addons/addresses/addresses-addon.class.php:233
 msgid "You must specify the owner"
-msgstr ""
+msgstr "Heu d'especificar el propietari"
 
 #: src/php/core-addons/addresses/addresses-addon.class.php:239
 msgid "You must specify the address"
-msgstr ""
+msgstr "Heu d'especificar l'adreça"
 
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:64
 #: src/php/core-addons/addresses/templates/account-edit-address.template.php:67
@@ -261,7 +256,7 @@ msgstr "Logotip"
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:94
 #: src/php/core-addons/addresses/templates/settings-edit-address.template.php:82
 msgid "Logo URL"
-msgstr ""
+msgstr "URL del logo"
 
 #: src/php/core-addons/addresses/templates/metabox-edit-address.template.php:94
 #: src/php/core-addons/addresses/templates/profile-edit-address.template.php:96
@@ -275,7 +270,7 @@ msgstr "Àrea d'administració"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:74
 msgid "You are not allowed to do that"
-msgstr ""
+msgstr "No es permet fer això"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:81
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:87
@@ -315,7 +310,7 @@ msgid "Restrict the access to the administration panel of WordPress."
 msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:225
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:41
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:44
 #: src/php/core-classes/settings.class.php:276
 msgid "General"
 msgstr "General"
@@ -347,7 +342,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:393
 msgid "What's new"
-msgstr ""
+msgstr "Novetats"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:397
 msgid "Change log"
@@ -375,24 +370,24 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:466
 msgid "Add new"
-msgstr ""
+msgstr "Afegir nou"
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:483
 msgid "Manage %1$s"
-msgstr ""
+msgstr "Gestiona"
 
 #: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:67
 msgid "Your private area"
-msgstr ""
+msgstr "La teva àrea privada"
 
 #: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:117
 msgid "Add-ons"
-msgstr ""
+msgstr "Complements"
 
 #: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:179
 #: src/php/core-addons/customer-home/customer-home-addon.class.php:47
 msgid "Customer Area"
-msgstr ""
+msgstr "Àrea de client"
 
 #: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:184
 msgid "About WP Customer Area"
@@ -408,11 +403,11 @@ msgstr "Tots %s."
 
 #: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:241
 msgid "New %s"
-msgstr ""
+msgstr "Nou"
 
 #: src/php/core-addons/admin-area/helpers/admin-menu-helper.class.php:252
 msgid "Manage %s"
-msgstr ""
+msgstr "Gestiona"
 
 #: src/php/core-addons/admin-area/private-container-table.class.php:232
 #: src/php/core-addons/admin-area/private-content-table.class.php:244
@@ -599,9 +594,8 @@ msgid "Online payment of invoices with PayPal and Stripe Gateways"
 msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:33
-#, fuzzy
 msgid "Online invoice payments"
-msgstr "Eliminar contingut"
+msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:34
 msgid ""
@@ -730,7 +724,7 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:109
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:44
 msgid "Download all attachments"
-msgstr ""
+msgstr "Descarrega tots els adjunts"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:110
 msgid ""
@@ -797,7 +791,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
 msgid "Invoicing"
-msgstr ""
+msgstr "Facturació"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:149
 msgid ""
@@ -1111,6 +1105,11 @@ msgstr ""
 msgid "Account - Details"
 msgstr "Compte - Detalls"
 
+#: src/php/core-addons/customer-account/customer-account-addon.class.php:52
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:64
+msgid "Account details"
+msgstr "Detalls del compte"
+
 #: src/php/core-addons/customer-account/customer-account-addon.class.php:57
 #: src/php/core-addons/customer-account-home/customer-account-home-addon.class.php:51
 msgid "This page shows a summary of the user account"
@@ -1124,33 +1123,32 @@ msgstr "Veure detalls del compte"
 msgid "Edit account details"
 msgstr "Editar detalls del compte"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:36
-#, fuzzy
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:39
 msgid "Profile"
-msgstr "Veure el perfil"
+msgstr "Perfil"
 
-#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:41
+#: src/php/core-addons/customer-account/templates/customer-account-content.template.php:44
 msgid "Your profile has been updated"
 msgstr "El teu perfil ha estat modificat"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:44
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:47
 msgid "Account - Edit"
 msgstr "Compte - Editar"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:48
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
 msgid "Edit account"
 msgstr "Editar compte"
 
-#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:52
+#: src/php/core-addons/customer-account-edit/customer-account-edit-addon.class.php:57
 msgid "This page shows a form where the user can edit his account"
 msgstr ""
 "Aquesta pàgina mostra un formulari on l'usuari pot editar el seu compte"
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:34
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:37
 msgid "Submit"
 msgstr "Envia"
 
-#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:46
+#: src/php/core-addons/customer-account-edit/templates/customer-account-edit-content.template.php:49
 msgid "Addresses"
 msgstr "Adreces"
 
@@ -1668,16 +1666,16 @@ msgid_plural "%d attachments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:61
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:66
 msgid "Get file"
 msgstr ""
 
-#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:62
+#: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:67
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-admin.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:22
 #: src/php/core-addons/private-file/templates/private-attachments-list-item-frontend.template.php:23
 msgid "Download"
-msgstr "Pujar"
+msgstr "Descarregar arxius"
 
 #: src/php/core-addons/customer-private-files/widget-private-file-authors.class.php:37
 msgid "WPCA - File Authors"
@@ -1713,7 +1711,7 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-files/widget-private-files.class.php:53
 msgid "No files"
-msgstr ""
+msgstr "No hi han arxius"
 
 #: src/php/core-addons/customer-private-files-home/customer-private-files-home-addon.class.php:46
 msgid "Private Files - Home"
@@ -1729,7 +1727,7 @@ msgstr ""
 
 #: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:59
 msgid "My pages"
-msgstr "Meves pàgines"
+msgstr "Les meves pàgines"
 
 #: src/php/core-addons/customer-private-pages/customer-private-pages-addon.class.php:64
 msgid "Page to list the pages a customer owns."
@@ -1762,16 +1760,16 @@ msgstr "Pàgines recents"
 
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-category_archive.template.php:23
 msgid "There are no pages in that category."
-msgstr ""
+msgstr "No hi ha cap pàgina en aquesta categoria."
 
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-dashboard.template.php:31
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty.template.php:21
 msgid "You currently have no pages."
-msgstr ""
+msgstr "No teniu cap pàgina en aquests moments"
 
 #: src/php/core-addons/customer-private-pages/templates/customer-private-pages-content-empty-date_archive.template.php:21
 msgid "There are no pages for that period."
-msgstr ""
+msgstr "No hi han pàgines que corresponguin a aquest període."
 
 #: src/php/core-addons/customer-private-pages/widget-private-page-authors.class.php:37
 msgid "WPCA - Page Authors"
@@ -1803,7 +1801,7 @@ msgstr "WPCA - Pàgines recents"
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:39
 msgid "Shows a list of pages for the logged-in user"
-msgstr ""
+msgstr "Mostra una llista de pàgines per a l'usuari que ha iniciat la sessió"
 
 #: src/php/core-addons/customer-private-pages/widget-private-pages.class.php:53
 msgid "No pages"
@@ -1819,7 +1817,7 @@ msgstr ""
 
 #: src/php/core-addons/installer/installer-addon.class.php:46
 msgid "Installer"
-msgstr ""
+msgstr "Instal·lador"
 
 #: src/php/core-addons/installer/installer-addon.class.php:183
 msgid "The required pages and the navigation menu have been created"
@@ -2021,7 +2019,7 @@ msgstr ""
 #: src/php/core-classes/Content/list-table.class.php:334
 #: src/php/core-classes/Content/list-table.class.php:400
 msgid "Delete permanently"
-msgstr ""
+msgstr "Suprimeix de manera permanent"
 
 #: src/php/core-addons/log/log-table.class.php:272
 msgid "You are not allowed to delete logs."
@@ -2123,18 +2121,16 @@ msgid "Your name or company name"
 msgstr ""
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:88
-#, fuzzy
 msgid "Send to the address:"
-msgstr "Neteja l'adreça"
+msgstr ""
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:90
 msgid "Your name"
 msgstr ""
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:92
-#, fuzzy
 msgid "Zip City"
-msgstr "Ciutat"
+msgstr ""
 
 #: src/php/core-addons/payments/gateways/cheque-payment-gateway.class.php:97
 msgid ""
@@ -2172,7 +2168,7 @@ msgstr ""
 #: src/php/core-addons/payments/helpers/payment-table.class.php:47
 #: src/php/core-addons/payments/payments-addon.class.php:136
 msgid "Payment"
-msgstr ""
+msgstr "Pagament"
 
 #: src/php/core-addons/payments/helpers/payment-table.class.php:48
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:47
@@ -2183,15 +2179,14 @@ msgstr ""
 #: src/php/core-addons/payments/templates/payments-page.template.php:6
 #: src/php/core-addons/payments-home/payments-home-addon.class.php:52
 msgid "Payments"
-msgstr ""
+msgstr "Pagaments"
 
 #: src/php/core-addons/payments/helpers/payment-table.class.php:158
 #: src/php/core-addons/payments/templates/payment-editor-data.template.php:52
 #: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:21
 #: src/php/core-addons/payments/templates/payment-history-inline.template.php:18
-#, fuzzy
 msgid "Amount"
-msgstr "País"
+msgstr ""
 
 #: src/php/core-addons/payments/helpers/payment-table.class.php:159
 #: src/php/core-addons/payments/templates/payment-editor-data.template.php:22
@@ -2218,23 +2213,20 @@ msgid "List all payments"
 msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:50
-#, fuzzy
 msgid "Create/Edit payments"
-msgstr "Creat per"
+msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:51
-#, fuzzy
 msgid "Delete payments"
-msgstr "Eliminar contingut"
+msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:52
 msgid "Access payments"
 msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:80
-#, fuzzy
 msgid "WP Customer Area - Payments"
-msgstr "Sobre WP Customer Area"
+msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:116
 #: src/php/core-addons/payments/templates/payment-history-inline.template.php:7
@@ -2246,9 +2238,8 @@ msgid "Invalid arguments. Cannot create payment."
 msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:147
-#, fuzzy
 msgid "%1$s | %2$s"
-msgstr "Pàgina %1$s/%2$s"
+msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:203
 msgid "Paid object"
@@ -2271,7 +2262,7 @@ msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-admin-interface.class.php:231
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:165
 msgid "Colorful Light"
@@ -2358,7 +2349,7 @@ msgstr ""
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:266
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:270
 msgid "PayPal"
-msgstr ""
+msgstr "PayPal"
 
 #: src/php/core-addons/payments/helpers/payments-settings-helper.class.php:274
 msgid "Sage"
@@ -2445,16 +2436,15 @@ msgstr ""
 
 #: src/php/core-addons/payments/payment-status.class.php:22
 msgid "Complete"
-msgstr ""
+msgstr "Completat"
 
 #: src/php/core-addons/payments/payment-status.class.php:23
-#, fuzzy
 msgid "Pending"
-msgstr "Ascendent"
+msgstr "Pendent"
 
 #: src/php/core-addons/payments/payment-status.class.php:24
 msgid "Refunded"
-msgstr ""
+msgstr "Retornat"
 
 #: src/php/core-addons/payments/payment-status.class.php:25
 msgid "Abandoned"
@@ -2462,16 +2452,15 @@ msgstr ""
 
 #: src/php/core-addons/payments/payment-status.class.php:26
 msgid "Failed"
-msgstr ""
+msgstr "Erroni"
 
 #: src/php/core-addons/payments/payment.class.php:61
 msgid "Status changed from %1$s to %2$s"
 msgstr ""
 
 #: src/php/core-addons/payments/payments-addon.class.php:163
-#, fuzzy
 msgid "Are you sure that you want to delete this note?"
-msgstr "No teniu permís per suprimir aquest element."
+msgstr ""
 
 #: src/php/core-addons/payments/payments-addon.class.php:175
 #: src/php/core-addons/payments/payments-addon.class.php:208
@@ -2480,9 +2469,8 @@ msgstr ""
 
 #: src/php/core-addons/payments/payments-addon.class.php:187
 #: src/php/core-addons/payments/payments-addon.class.php:220
-#, fuzzy
 msgid "You are not allowed to manage payment notes"
-msgstr "No teniu permís per suprimir aquest element."
+msgstr ""
 
 #: src/php/core-addons/payments/payments-addon.class.php:192
 msgid "Note id is not specified"
@@ -2526,19 +2514,16 @@ msgid "We accept the following secure payment methods."
 msgstr ""
 
 #: src/php/core-addons/payments/templates/payment-editor-data.template.php:37
-#, fuzzy
 msgid "Currency"
-msgstr "Actual"
+msgstr ""
 
 #: src/php/core-addons/payments/templates/payment-editor-data.template.php:66
-#, fuzzy
 msgid "Update payment"
-msgstr "Data d'actualització"
+msgstr ""
 
 #: src/php/core-addons/payments/templates/payment-editor-note-list.template.php:14
-#, fuzzy
 msgid "Add note"
-msgstr "Afegeix"
+msgstr "Afegeix una nota"
 
 #: src/php/core-addons/payments/templates/payment-editor-note-list.template.php:18
 msgid "There are currently no notes attached to this payment"
@@ -2549,14 +2534,12 @@ msgid "Select user"
 msgstr ""
 
 #: src/php/core-addons/payments/templates/payment-editor-payer.template.php:24
-#, fuzzy
 msgid "User IP"
-msgstr "Usuari"
+msgstr "IP d'usuari"
 
 #: src/php/core-addons/payments/templates/payment-editor-payer.template.php:32
-#, fuzzy
 msgid "Address"
-msgstr "Adreces"
+msgstr "Adreça"
 
 #: src/php/core-addons/payments/templates/payment-history-inline-admin.template.php:13
 msgid "Add payment manually"
@@ -2572,9 +2555,8 @@ msgstr ""
 
 #: src/php/core-addons/payments/templates/settings-gateway-bacs.template.php:8
 #: src/php/core-addons/payments/templates/settings-gateway-cheque.template.php:8
-#, fuzzy
 msgid "Messages"
-msgstr "Meves pàgines"
+msgstr ""
 
 #: src/php/core-addons/payments/templates/settings-gateway-bacs.template.php:14
 #: src/php/core-addons/payments/templates/settings-gateway-cheque.template.php:14
@@ -2610,28 +2592,27 @@ msgstr ""
 
 #: src/php/core-addons/payments-checkout/payments-checkout-addon.class.php:52
 msgid "Checkout"
-msgstr ""
+msgstr "Passa per caixa"
 
 #: src/php/core-addons/payments-checkout/payments-checkout-addon.class.php:57
 msgid "This page allows a user to pay something"
 msgstr ""
 
 #: src/php/core-addons/payments-checkout/templates/payments-checkout-address.template.php:11
-#, fuzzy
 msgid "Billing information"
-msgstr "Informació de contacte"
+msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:30
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:33
 msgid "Pay with %s"
 msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:31
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
 msgid "Choose a payment method"
 msgstr ""
 
 #: src/php/core-addons/payments-checkout/templates/payments-checkout.template.php:55
 msgid "Continue"
-msgstr ""
+msgstr "Continua"
 
 #: src/php/core-addons/payments-failure/payments-failure-addon.class.php:47
 msgid "Payments - Failure"
@@ -2650,9 +2631,8 @@ msgid "There has been a problem when recording your payment."
 msgstr ""
 
 #: src/php/core-addons/payments-home/payments-home-addon.class.php:47
-#, fuzzy
 msgid "Payments - Home"
-msgstr "Pàgines privades - Inici"
+msgstr ""
 
 #: src/php/core-addons/payments-home/payments-home-addon.class.php:57
 msgid "Page under which all payment related pages are filed."
@@ -2679,9 +2659,8 @@ msgid "Thank you"
 msgstr ""
 
 #: src/php/core-addons/payments-success/templates/payments-success-content.template.php:9
-#, fuzzy
 msgid "Your payment has been recorded."
-msgstr "El teu perfil ha estat modificat"
+msgstr ""
 
 #: src/php/core-addons/post-owner/helpers/post-owner-admin-interface.class.php:90
 msgid "Assignment"
@@ -2689,14 +2668,12 @@ msgstr ""
 
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:205
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:213
-#, fuzzy
 msgid "You are not allowed to search users"
-msgstr "No teniu permís per suprimir aquest element."
+msgstr ""
 
 #: src/php/core-addons/post-owner/helpers/post-owner-ajax-helper.class.php:232
-#, fuzzy
 msgid "Missing parameter"
-msgstr "Paràmetres que falten"
+msgstr ""
 
 #: src/php/core-addons/post-owner/post-owner-addon.class.php:59
 msgid "Post Owner"
@@ -3340,55 +3317,59 @@ msgid "User Profile"
 msgstr ""
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:65
+msgid "Personal details"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:66
+msgid "Other details"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:74
 msgid "Username"
 msgstr "Nom d'usuari"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:67
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:76
 msgid "Your username cannot be changed."
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:72
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:82
 msgid "Primary email"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:77
-msgid "First name"
-msgstr ""
-
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:81
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:88
 msgid "Last name"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:85
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
 msgid "Nickname"
 msgstr "Sobrenom"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:89
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
 msgid "Display name"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
 msgid "Personal Website"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:97
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:108
 msgid "Biography"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:109
 msgid "Your can write a short description about you."
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:115
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Contrasenya"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:104
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:116
 msgid "Password (confirm)"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:105
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:117
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
@@ -3626,23 +3607,20 @@ msgid "This file cannot be deleted, please contact site administrator."
 msgstr ""
 
 #: src/php/core-classes/addon-edit-content-page.class.php:895
-#, fuzzy
 msgid ""
 "It looks like you are not allowed to create content for this kind of post "
 "type."
-msgstr "No teniu permís per suprimir aquest element."
+msgstr ""
 
 #: src/php/core-classes/addon-edit-content-page.class.php:906
-#, fuzzy
 msgid ""
 "It looks like you are not allowed to update authored content for this post."
-msgstr "No teniu permís per suprimir aquest element."
+msgstr ""
 
 #: src/php/core-classes/addon-edit-content-page.class.php:912
-#, fuzzy
 msgid ""
 "It looks like you are not allowed to update owned content for this post."
-msgstr "No teniu permís per suprimir aquest element."
+msgstr ""
 
 #: src/php/core-classes/addon-edit-content-page.class.php:940
 msgid "An error happened while creating the folder: %s"
@@ -3831,68 +3809,67 @@ msgstr ""
 msgid "%1$s is required."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:231
+#: src/php/core-classes/plugin.class.php:233
 msgid "Checking license..."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:232
-msgid "Failed to contact server"
-msgstr ""
-
-#: src/php/core-classes/plugin.class.php:233
-#: src/php/core-classes/plugin.class.php:282
-msgid "Saving..."
-msgstr "S'està desant..."
-
 #: src/php/core-classes/plugin.class.php:234
-#: src/php/core-classes/plugin.class.php:283
-msgid "Click to edit..."
+msgid "Failed to contact server"
 msgstr ""
 
 #: src/php/core-classes/plugin.class.php:235
 #: src/php/core-classes/plugin.class.php:284
-msgid "OK"
-msgstr "D'acord"
+msgid "Saving..."
+msgstr "S'està desant..."
 
 #: src/php/core-classes/plugin.class.php:236
 #: src/php/core-classes/plugin.class.php:285
+msgid "Click to edit..."
+msgstr ""
+
+#: src/php/core-classes/plugin.class.php:237
+#: src/php/core-classes/plugin.class.php:286
+msgid "OK"
+msgstr "D'acord"
+
+#: src/php/core-classes/plugin.class.php:238
+#: src/php/core-classes/plugin.class.php:287
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/php/core-classes/plugin.class.php:248
-#: src/php/core-classes/plugin.class.php:297
+#: src/php/core-classes/plugin.class.php:250
+#: src/php/core-classes/plugin.class.php:299
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:250
-#: src/php/core-classes/plugin.class.php:299
+#: src/php/core-classes/plugin.class.php:252
+#: src/php/core-classes/plugin.class.php:301
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:300
+#: src/php/core-classes/plugin.class.php:302
 msgid ""
 "We could not get a proper answer from the server, please contact site "
 "administrator."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:301
+#: src/php/core-classes/plugin.class.php:303
 msgid "The type of file you tried to upload is not an image."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:302
-#, fuzzy
+#: src/php/core-classes/plugin.class.php:304
 msgid "Delete image"
-msgstr "Eliminar contingut"
+msgstr ""
 
-#: src/php/core-classes/plugin.class.php:725
+#: src/php/core-classes/plugin.class.php:731
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:1026
+#: src/php/core-classes/plugin.class.php:1032
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 
@@ -5548,50 +5525,45 @@ msgid "wp-customer-area-menu"
 msgstr ""
 
 #: src/php/core-addons/payments/helpers/payments-ui-helper.class.php:162
-#, fuzzy
 msgctxt "payment title format (type: title)"
 msgid "%1$s: %2$s"
-msgstr "Pàgina %1$s/%2$s"
+msgstr "%1$s: %2$s"
 
 #: src/php/core-addons/payments/payment.class.php:372
 #: src/php/core-addons/payments/payment.class.php:383
 msgctxt "cuar_payment"
 msgid "Payments"
-msgstr ""
+msgstr "Pagaments"
 
 #: src/php/core-addons/payments/payment.class.php:373
 msgctxt "cuar_payment"
 msgid "Payment"
-msgstr ""
+msgstr "Pagament"
 
 #: src/php/core-addons/payments/payment.class.php:374
-#, fuzzy
 msgctxt "cuar_payment"
 msgid "Add New"
 msgstr "Afegeix"
 
 #: src/php/core-addons/payments/payment.class.php:375
-#, fuzzy
 msgctxt "cuar_payment"
 msgid "Add New Payment"
-msgstr "Afegeix"
+msgstr "Afegeix un pagament nou"
 
 #: src/php/core-addons/payments/payment.class.php:376
-#, fuzzy
 msgctxt "cuar_payment"
 msgid "Edit Payment"
-msgstr "Editar compte"
+msgstr ""
 
 #: src/php/core-addons/payments/payment.class.php:377
 msgctxt "cuar_payment"
 msgid "New Payment"
-msgstr ""
+msgstr "Pagament nou"
 
 #: src/php/core-addons/payments/payment.class.php:378
-#, fuzzy
 msgctxt "cuar_payment"
 msgid "View Payment"
-msgstr "Mostra-ho tot"
+msgstr "Visualitza el pagament"
 
 #: src/php/core-addons/payments/payment.class.php:379
 msgctxt "cuar_payment"
@@ -5887,26 +5859,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:237
-#: src/php/core-classes/plugin.class.php:286
+#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:288
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:238
-#: src/php/core-classes/plugin.class.php:287
+#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:289
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Neteja"
 
-#: src/php/core-classes/plugin.class.php:239
-#: src/php/core-classes/plugin.class.php:288
+#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:290
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "Avui"
 
-#: src/php/core-classes/plugin.class.php:242
-#: src/php/core-classes/plugin.class.php:291
+#: src/php/core-classes/plugin.class.php:244
+#: src/php/core-classes/plugin.class.php:293
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr ""

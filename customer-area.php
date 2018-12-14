@@ -3,7 +3,7 @@
 	Plugin Name: 	WP Customer Area
 	Description: 	WP Customer Area is a modular all-in-one solution to manage private content with WordPress.
 	Plugin URI: 	http://wp-customerarea.com
-	Version: 		7.5.2
+	Version: 		7.6.0
 	Author: 		MarvinLabs
 	Author URI: 	http://www.marvinlabs.com
 	Text Domain: 	cuar
@@ -32,8 +32,8 @@ if ( !defined('CUAR_INCLUDES_DIR')) define('CUAR_INCLUDES_DIR', CUAR_PLUGIN_DIR 
 
 define('CUAR_LANGUAGE_DIR', 'customer-area/languages');
 
-define('CUAR_PLUGIN_VERSION', '7.5.2');
-define('CUAR_PLUGIN_URL', untrailingslashit(WP_PLUGIN_URL) . '/customer-area/'); // plugin_dir_url( __FILE__ ) );
+define('CUAR_PLUGIN_VERSION', '7.6.0');
+define('CUAR_PLUGIN_URL', untrailingslashit(plugins_url()) . '/customer-area/'); // plugin_dir_url( __FILE__ ) );
 define('CUAR_SCRIPTS_URL', CUAR_PLUGIN_URL . 'scripts');
 define('CUAR_ADMIN_SKIN', 'plugin%%default-wp38');
 define('CUAR_FRONTEND_SKIN', 'plugin%%master');
@@ -42,6 +42,8 @@ define('CUAR_PLUGIN_FILE', 'customer-area/customer-area.php');
 define('CUAR_DEBUG_LICENSING', false);
 define('CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', false);
 // define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '6.3.0' );
+
+include_once(CUAR_PLUGIN_DIR . '/libs/php/cuar/cuar_commons.php');
 
 // Helpers
 include_once(CUAR_INCLUDES_DIR . '/helpers/address-helper.class.php');

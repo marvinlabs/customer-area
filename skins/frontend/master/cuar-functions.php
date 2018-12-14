@@ -350,24 +350,6 @@ if ( ! function_exists( 'cuar_acf_field_group_class' ) ) {
 	add_filter( 'acf/field_group/get_options', 'cuar_acf_field_group_class', 10, 2 );
 }
 
-if ( ! function_exists( 'cuar_form_account_panel_head' ) ) {
-	/**
-	 * Wrap defaults account fields into a panel
-	 */
-	function cuar_form_account_panel_head()
-	{
-		echo '<div class="panel"><div class="panel-heading">' . __( 'Account details', 'cuar' ) . '</div><div class="panel-body">';
-	}
-
-	function cuar_form_account_panel_foot()
-	{
-		echo '</div></div>';
-	}
-
-	add_action( 'cuar/core/user-profile/edit/before_field?id=user_login', 'cuar_form_account_panel_head' );
-	add_action( 'cuar/core/user-profile/edit/after_field?id=user_pass', 'cuar_form_account_panel_foot' );
-}
-
 if ( ! function_exists( 'cuar_toolbar_profile_button' ) ) {
 	/**
 	 * Add a profile menu button to the toolbar

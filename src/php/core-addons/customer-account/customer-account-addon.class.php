@@ -96,17 +96,49 @@ if ( !class_exists('CUAR_CustomerAccountAddOn')) :
 
             /** @var CUAR_UserProfileAddOn $up_addon */
             $up_addon = $this->plugin->get_addon('user-profile');
+            $groups = $up_addon->get_profile_field_groups();
             $fields = $up_addon->get_profile_fields();
 
             do_action('cuar/core/user-profile/view/before_fields', $current_user);
 
-            /** @var CUAR_Field $field */
-            foreach ($fields as $id => $field) {
-                do_action('cuar/core/user-profile/view/before_field?id=' . $id, $current_user);
+            foreach ($groups as $group_id => $group_label)
+            {
+                $group_fields = array_filter($fields, function ($field) use ($group_id) {
+                    if (empty($group_id) || $group_id === 'default')
+                    {
+                        return $field->get_arg('group') === '' || $field->get_arg('group') === 'default';
+                    }
 
-                $field->render_read_only_field($current_user->ID);
+                    return $field->get_arg('group') === $group_id;
+                });
 
-                do_action('cuar/core/user-profile/view/after_field?id=' . $id, $current_user);
+                if (empty($group_fields))
+                {
+                    do_action('cuar/core/user-profile/view/before_field_group?id=' . $group_id, $current_user);
+                    do_action('cuar/core/user-profile/view/after_field_group?id=' . $group_id, $current_user);
+                    continue;
+                }
+
+                do_action('cuar/core/user-profile/view/before_field_group?id=' . $group_id, $current_user);
+
+                include($this->plugin->get_template_file_path(
+                    CUAR_INCLUDES_DIR . '/core-addons/customer-account',
+                    [], 'templates', 'customer-account-view-content-field-group-open.template.php'));
+
+                foreach ($group_fields as $id => $field)
+                {
+                    do_action('cuar/core/user-profile/view/before_field?id=' . $id, $current_user);
+
+                    $field->render_read_only_field($current_user->ID);
+
+                    do_action('cuar/core/user-profile/view/after_field?id=' . $id, $current_user);
+                }
+
+                include($this->plugin->get_template_file_path(
+                    CUAR_INCLUDES_DIR . '/core-addons/customer-account',
+                    [], 'templates', 'customer-account-view-content-field-group-close.template.php'));
+
+                do_action('cuar/core/user-profile/view/after_field_group?id=' . $group_id, $current_user);
             }
 
             do_action('cuar/core/user-profile/view/after_fields', $current_user);

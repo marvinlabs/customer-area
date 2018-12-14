@@ -1,6 +1,9 @@
 <?php /**
- * Template version: 3.1.0
+ * Template version: 4.0.0
  * Template zone: frontend
+ *
+ * -= 4.0.0 =-
+ * - Added field groups
  *
  * -= 3.1.0 =-
  * - Replace clearfix CSS classes with cuar-clearfix

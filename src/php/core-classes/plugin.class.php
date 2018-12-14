@@ -184,8 +184,10 @@ if ( !class_exists('CUAR_Plugin')) :
             if (empty($domain)) $domain = 'cuar';
             if (empty($plugin_name)) $plugin_name = 'customer-area';
 
+            $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
+
             // Traditional WordPress plugin locale filter
-            $locale = apply_filters('plugin_locale', get_locale(), $domain);
+            $locale = apply_filters('plugin_locale', $locale, $domain);
             $mo_file = sprintf('%1$s-%2$s.mo', $domain, $locale);
 
             $locations = array(
@@ -215,7 +217,7 @@ if ( !class_exists('CUAR_Plugin')) :
             global $wp_locale;
 
             $lang = 'en';
-            $locale = get_locale();
+            $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
             if ($locale && !empty($locale)) {
                 $locale = str_replace("_", "-", $locale);
                 $locale_parts = explode("-", $locale);
@@ -266,7 +268,7 @@ if ( !class_exists('CUAR_Plugin')) :
             global $wp_locale;
 
             $lang = 'en';
-            $locale = get_locale();
+            $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
             if ($locale && !empty($locale)) {
                 $locale = str_replace("_", "-", $locale);
                 $locale_parts = explode("-", $locale);
@@ -447,7 +449,7 @@ if ( !class_exists('CUAR_Plugin')) :
                         $base = untrailingslashit(get_stylesheet_directory_uri()) . '/customer-area/skins/';
                         break;
                     case 'wp-content':
-                        $base = untrailingslashit(WP_CONTENT_URL) . '/customer-area/skins/';
+                        $base = untrailingslashit(content_url()) . '/customer-area/skins/';
                         break;
                 }
 
@@ -459,7 +461,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 // 2 = skin folder name
                 switch ($theme[0]) {
                     case 'addon':
-                        return untrailingslashit(WP_PLUGIN_URL) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
+                        return untrailingslashit(plugins_url()) . '/' . $theme[1] . '/skins/' . $theme_type . '/' . $theme[2];
                 }
             }
 
@@ -470,10 +472,12 @@ if ( !class_exists('CUAR_Plugin')) :
         {
             $theme = $this->get_theme($theme_type);
 
-            if (count($theme) == 1) {
+            if (count($theme) === 1) {
                 // Still not on CUAR 4.0? then we have a problem
                 return '';
-            } else if (count($theme) == 2) {
+            }
+
+            if (count($theme) === 2) {
                 $base = '';
                 switch ($theme[0]) {
                     case 'plugin':
@@ -488,7 +492,9 @@ if ( !class_exists('CUAR_Plugin')) :
                 }
 
                 return $base . '/' . $theme_type . '/' . $theme[1];
-            } else if (count($theme) == 3) {
+            }
+
+            if (count($theme) === 3) {
                 // For addons
                 // 0 = 'addon'
                 // 1 = addon folder name
@@ -805,7 +811,7 @@ if ( !class_exists('CUAR_Plugin')) :
                 case 'jquery.select2': {
                     wp_enqueue_script('jquery.select2', CUAR_PLUGIN_URL . 'libs/js/bower/select2/select2.min.js', array('jquery'), $cuar_version);
 
-                    $locale = get_locale();
+                    $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
                     if ($locale && !empty($locale)) {
                         $locale = str_replace("_", "-", $locale);
                         $locale_parts = explode("-", $locale);
@@ -908,7 +914,7 @@ if ( !class_exists('CUAR_Plugin')) :
                     wp_enqueue_script('summernote', CUAR_PLUGIN_URL . 'libs/js/bower/summernote/summernote.min.js', array('jquery', 'bootstrap.tooltip', 'bootstrap.popover', 'bootstrap.modal'), $cuar_version);
 	                wp_enqueue_script('summernote-image-attributes', CUAR_PLUGIN_URL . 'libs/js/bower/summernote-image-attributes/summernote-image-attributes.min.js', array('jquery', 'bootstrap.tooltip', 'bootstrap.popover', 'bootstrap.modal', 'summernote'), $cuar_version);
 
-                    $locale = get_locale();
+                    $locale = function_exists('get_user_locale') ? get_user_locale() : get_locale();
                     if ($locale && !empty($locale)) {
                         $locale = str_replace("_", "-", $locale);
                         $locale_parts = explode("-", $locale);

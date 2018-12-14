@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once(CUAR_INCLUDES_DIR . '/core-classes/addon.class.php');
 
-if ( !class_exists('CUAR_UserProfileAddOn')) :
+if (!class_exists('CUAR_UserProfileAddOn')) :
 
     /**
      * Add-on to setup the user profile
@@ -58,55 +58,73 @@ if ( !class_exists('CUAR_UserProfileAddOn')) :
 
         /*------- SETTINGS ACCESSORS ------------------------------------------------------------------------------------*/
 
+        public function get_profile_field_groups()
+        {
+            return apply_filters('cuar/core/user-profile/get_profile_field_groups', [
+                'account'  => __('Account details', 'cuar'),
+                'personal' => __('Personal details', 'cuar'),
+                'default'  => __('Other details', 'cuar'),
+            ]);
+        }
+
         public function get_profile_fields()
         {
-            $default_fields = array(
-                'user_login' => new CUAR_TextField('user_login', new CUAR_UserStorage(), array(
+            $default_fields = [
+                'user_login' => new CUAR_TextField('user_login', new CUAR_UserStorage(), [
                     'label'       => __('Username', 'cuar'),
                     'readonly'    => true,
                     'inline_help' => __('Your username cannot be changed.', 'cuar'),
                     'required'    => true,
-                )),
+                    'group'       => 'account',
+                ]),
 
-                'user_email' => new CUAR_EmailField('user_email', new CUAR_UserStorage(), array(
+                'user_email' => new CUAR_EmailField('user_email', new CUAR_UserStorage(), [
                     'label'    => __('Primary email', 'cuar'),
                     'required' => true,
-                )),
+                    'group'    => 'account',
+                ]),
 
-                'first_name' => new CUAR_TextField('first_name', new CUAR_UserStorage(), array(
-                    'label' => __('First name', 'cuar')
-                )),
+                'first_name' => new CUAR_TextField('first_name', new CUAR_UserStorage(), [
+                    'label' => __('First name', 'cuar'),
+                    'group' => 'personal',
+                ]),
 
-                'last_name' => new CUAR_TextField('last_name', new CUAR_UserStorage(), array(
-                    'label' => __('Last name', 'cuar')
-                )),
+                'last_name' => new CUAR_TextField('last_name', new CUAR_UserStorage(), [
+                    'label' => __('Last name', 'cuar'),
+                    'group' => 'personal',
+                ]),
 
-                'nickname' => new CUAR_TextField('nickname', new CUAR_UserStorage(), array(
-                    'label' => __('Nickname', 'cuar')
-                )),
+                'nickname' => new CUAR_TextField('nickname', new CUAR_UserStorage(), [
+                    'label' => __('Nickname', 'cuar'),
+                    'group' => 'account',
+                ]),
 
-                'display_name' => new CUAR_DisplayNameField('display_name', new CUAR_UserStorage(), array(
-                    'label' => __('Display name', 'cuar')
-                )),
+                'display_name' => new CUAR_DisplayNameField('display_name', new CUAR_UserStorage(), [
+                    'label' => __('Display name', 'cuar'),
+                    'group' => 'account',
+                ]),
 
-                'url' => new CUAR_TextField('user_url', new CUAR_UserStorage(), array(
-                    'label' => __('Personal Website', 'cuar')
-                )),
+                'url' => new CUAR_TextField('user_url', new CUAR_UserStorage(), [
+                    'label' => __('Personal Website', 'cuar'),
+                    'group' => 'personal',
+                ]),
 
-                'description' => new CUAR_TextField('description', new CUAR_UserStorage(), array(
+                'description' => new CUAR_TextField('description', new CUAR_UserStorage(), [
                     'label'       => __('Biography', 'cuar'),
                     'inline_help' => __('Your can write a short description about you.', 'cuar'),
-                    'type'        => 'long-text'
-                )),
+                    'type'        => 'long-text',
+                    'group'       => 'personal',
+                ]),
 
-                'user_pass' => new CUAR_UserPasswordField('user_pass', array(
+                'user_pass' => new CUAR_UserPasswordField('user_pass', [
                     'label'               => __('Password', 'cuar'),
                     'confirm_label'       => __('Password (confirm)', 'cuar'),
                     'confirm_inline_help' => __('The password must at least be composed of 5 characters. You will be requested to login again after your password gets changed. Leave these fields empty if you want to keep your current password',
                         'cuar'),
                     'min_length'          => 5,
-                ))
-            );
+                    'group'               => 'account',
+                ]),
+            ];
 
             return apply_filters('cuar/core/user-profile/get_profile_fields', $default_fields);
         }

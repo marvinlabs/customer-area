@@ -54,7 +54,7 @@ abstract class CUAR_AbstractField implements CUAR_Field {
 	}
 	
 	public function get_arg( $key ) {
-		return isset($this->args[$key]) ? $this->args[$key] : "";
+		return isset($this->args[$key]) ? $this->args[$key] : '';
 	}
 	
 	protected function get_default_args() {
