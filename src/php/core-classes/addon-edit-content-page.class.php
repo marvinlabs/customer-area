@@ -130,13 +130,13 @@ if ( !class_exists('CUAR_AbstractEditContentPageAddOn')) :
                 die('An attempt to bypass security checks was detected! Please go back and try again.');
             }
 
-            do_action('cuar/private-content/edit/before_' . $action, $this, $this->form_errors);
-            do_action('cuar/private-content/edit/before_' . $action . '/page-slug=' . $this->get_slug(), $this, $this->form_errors);
+            do_action('cuar/private-content/edit/before_' . $action, $this, $this->form_errors, $_POST);
+            do_action('cuar/private-content/edit/before_' . $action . '/page-slug=' . $this->get_slug(), $this, $this->form_errors, $_POST);
 
             $result = $this->do_edit_content($action, $_POST);
 
-            do_action('cuar/private-content/edit/after_' . $action, $this, $this->form_errors);
-            do_action('cuar/private-content/edit/after_' . $action . '/page-slug=' . $this->get_slug(), $this, $this->form_errors);
+            do_action('cuar/private-content/edit/after_' . $action, $this, $this->form_errors, $_POST);
+            do_action('cuar/private-content/edit/after_' . $action . '/page-slug=' . $this->get_slug(), $this, $this->form_errors, $_POST);
 
             if (true === $result && empty($this->form_errors)) {
                 // If we still have some wizard steps to go, redirect to the next step

@@ -125,7 +125,7 @@ if (!class_exists('CUAR_CustomerAccountEditAddOn')) :
                 $ad_addon->set_owner_address('usr', [$current_user_id], $address_id, $address);
             }
 
-            do_action('cuar/core/user-profile/edit/save_profile_fields', $current_user_id, $this->form_errors);
+            do_action('cuar/core/user-profile/edit/save_profile_fields', $current_user_id, $this->form_errors, $_POST);
 
             if (empty($this->form_errors))
             {
