@@ -71,7 +71,7 @@ class CUAR_LongTextFieldRenderer extends CUAR_AbstractFieldRenderer implements C
 					$id,
 					$id,
 					$value, 
-					'form-control',
+					'form-control textarea-grow',
 					($this->readonly ? 'readonly="readonly"' : '')
 				);
 		}
