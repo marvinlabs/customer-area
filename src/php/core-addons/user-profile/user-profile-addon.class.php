@@ -104,7 +104,7 @@ if (!class_exists('CUAR_UserProfileAddOn')) :
                     'group' => 'account',
                 ]),
 
-                'url' => new CUAR_TextField('user_url', new CUAR_UserStorage(), [
+                'user_url' => new CUAR_TextField('user_url', new CUAR_UserStorage(), [
                     'label' => __('Personal Website', 'cuar'),
                     'group' => 'personal',
                 ]),
