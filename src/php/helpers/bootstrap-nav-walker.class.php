@@ -87,7 +87,7 @@ class CUAR_BootstrapNavWalker extends Walker_Nav_Menu {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
 			}
 
-			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
+			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
 			$attributes = '';
 			foreach ( $atts as $attr => $value ) {
