@@ -1,14 +1,14 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2018}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2019}
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area 7.6.0\n"
 "Report-Msgid-Bugs-To: "
 "http://github.com/marvinlabs/customer-area-build-environment/issues\n"
-"POT-Creation-Date: 2018-12-14 12:13:43+00:00\n"
+"POT-Creation-Date: 2019-05-08 23:00:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Vincent Mimoun-Prat <vincent@marvinlabs.com>\n"
 "Language-Team: http://marvinlabs.com/\n"
 "Language: en_US\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n1.0.2\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
 
 #: skins/frontend/master/cuar-functions.php:381
 msgid "View profile"
@@ -2595,11 +2595,11 @@ msgstr ""
 msgid "Billing information"
 msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:33
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
 msgid "Pay with %s"
 msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:35
 msgid "Choose a payment method"
 msgstr ""
 
@@ -3331,39 +3331,43 @@ msgid "Primary email"
 msgstr ""
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:88
-msgid "Last name"
+msgid "First name"
 msgstr ""
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:93
-msgid "Nickname"
+msgid "Last name"
 msgstr ""
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:98
-msgid "Display name"
+msgid "Nickname"
 msgstr ""
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:103
-msgid "Personal Website"
+msgid "Display name"
 msgstr ""
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:108
+msgid "Personal Website"
+msgstr ""
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:113
 msgid "Biography"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:109
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:114
 msgid "Your can write a short description about you."
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:115
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:120
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:116
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:121
 msgid "Password (confirm)"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:117
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:122
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
@@ -3437,51 +3441,55 @@ msgstr ""
 msgid "Once weekly"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:76
+#: src/php/core-classes/Licensing/licensing.class.php:77
 msgid "Unknown add-on"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:82
+#: src/php/core-classes/Licensing/licensing.class.php:84
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:87
+#: src/php/core-classes/Licensing/licensing.class.php:92
+msgid "Your license is valid forever"
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:93
 msgid "Your license is valid until: %s"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:95
+#: src/php/core-classes/Licensing/licensing.class.php:104
 msgid "This license key has been revoked."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:100
+#: src/php/core-classes/Licensing/licensing.class.php:109
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:107
-msgid "Your license has expired at the date: %s"
+#: src/php/core-classes/Licensing/licensing.class.php:117
+msgid "Your license has expired since %s"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:110
+#: src/php/core-classes/Licensing/licensing.class.php:121
 msgid "Renew license"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:118
+#: src/php/core-classes/Licensing/licensing.class.php:130
 msgid "This license key does not match."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:125
+#: src/php/core-classes/Licensing/licensing.class.php:137
 msgid "This license key seems to have been generated for another product."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:131
+#: src/php/core-classes/Licensing/licensing.class.php:143
 msgid "Your license is not active for this URL."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:136
+#: src/php/core-classes/Licensing/licensing.class.php:148
 msgid "Problem when validating your license key"
 msgstr ""
 

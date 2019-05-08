@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-12-14 12:13:13+00:00\n"
+"POT-Creation-Date: 2019-05-08 14:48:55+00:00\n"
 "PO-Revision-Date: 2018-12-14 11:44+0000\n"
 "Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/wp-translations/"
@@ -2646,11 +2646,11 @@ msgstr ""
 msgid "Billing information"
 msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:33
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
 msgid "Pay with %s"
 msgstr "Fizetés %s-al"
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:35
 msgid "Choose a payment method"
 msgstr ""
 
@@ -3397,39 +3397,44 @@ msgid "Primary email"
 msgstr "Elsődleges email cím"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:88
-msgid "Last name"
+#, fuzzy
+msgid "First name"
 msgstr "Keresztnév"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:93
+msgid "Last name"
+msgstr "Keresztnév"
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
 msgid "Nickname"
 msgstr "Becenév"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
 msgid "Display name"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:108
 msgid "Personal Website"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:108
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:113
 msgid "Biography"
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:109
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:114
 msgid "Your can write a short description about you."
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:115
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:120
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Jelszó"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:116
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:121
 msgid "Password (confirm)"
 msgstr "Jelszó (megerősítés)"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:117
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:122
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
@@ -3503,11 +3508,11 @@ msgstr "Lomtár ürítése"
 msgid "Once weekly"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:76
+#: src/php/core-classes/Licensing/licensing.class.php:77
 msgid "Unknown add-on"
 msgstr "Ismeretlen kiegészítő"
 
-#: src/php/core-classes/Licensing/licensing.class.php:82
+#: src/php/core-classes/Licensing/licensing.class.php:84
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
@@ -3515,15 +3520,20 @@ msgstr ""
 "Probléma történt a licencszerver elérésekor. Helyes a licenckulcs? A PHP "
 "cURL engedélyezve van? "
 
-#: src/php/core-classes/Licensing/licensing.class.php:87
+#: src/php/core-classes/Licensing/licensing.class.php:92
+#, fuzzy
+msgid "Your license is valid forever"
+msgstr "A licenszed %s-ig érvényes"
+
+#: src/php/core-classes/Licensing/licensing.class.php:93
 msgid "Your license is valid until: %s"
 msgstr "A licenszed %s-ig érvényes"
 
-#: src/php/core-classes/Licensing/licensing.class.php:95
+#: src/php/core-classes/Licensing/licensing.class.php:104
 msgid "This license key has been revoked."
 msgstr "A licenszkulcsod érvényessége vissza lett vonva."
 
-#: src/php/core-classes/Licensing/licensing.class.php:100
+#: src/php/core-classes/Licensing/licensing.class.php:109
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
@@ -3531,27 +3541,28 @@ msgstr ""
 "Elérted a licenszkulccsal használható maximális site-ok számát. Maximum %s "
 "site-on használhatod."
 
-#: src/php/core-classes/Licensing/licensing.class.php:107
-msgid "Your license has expired at the date: %s"
+#: src/php/core-classes/Licensing/licensing.class.php:117
+#, fuzzy
+msgid "Your license has expired since %s"
 msgstr "A licenszed %s-n lejárt"
 
-#: src/php/core-classes/Licensing/licensing.class.php:110
+#: src/php/core-classes/Licensing/licensing.class.php:121
 msgid "Renew license"
 msgstr "Licenc megújítása"
 
-#: src/php/core-classes/Licensing/licensing.class.php:118
+#: src/php/core-classes/Licensing/licensing.class.php:130
 msgid "This license key does not match."
 msgstr "A licenszkulcs nem egyezik. "
 
-#: src/php/core-classes/Licensing/licensing.class.php:125
+#: src/php/core-classes/Licensing/licensing.class.php:137
 msgid "This license key seems to have been generated for another product."
 msgstr "Úgy tűnik, ez a licenszkulcs egy másik termékhez készült. "
 
-#: src/php/core-classes/Licensing/licensing.class.php:131
+#: src/php/core-classes/Licensing/licensing.class.php:143
 msgid "Your license is not active for this URL."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:136
+#: src/php/core-classes/Licensing/licensing.class.php:148
 msgid "Problem when validating your license key"
 msgstr "A licenszkulcs érvényesítése során probléma lépett fel"
 
