@@ -366,7 +366,7 @@ if ( !class_exists('CUAR_Plugin')) :
             // Post edition pages
             $managed_types = $this->get_managed_types();
             if (isset($_GET['post_type']) && key_exists($_GET['post_type'], $managed_types)) return true;
-            if (isset($_GET['post']) && key_exists(get_post_type($_GET['post']), $managed_types)) return true;
+            if (isset($_GET['post']) && get_post_type($_GET['post']) !== false && key_exists(get_post_type($_GET['post']), $managed_types)) return true;
 
             return false;
         }
