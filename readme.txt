@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.7
 Tested up to:       5.0.0
-Stable tag:         7.6.0
+Stable tag:         7.7.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,10 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.7.0 (2019/08/14) =
+
+* New: support for ACF v5.8.3 (Warning: Older versions are not anymore compatible with our ACF Integration add-on)
 
 = 7.6.0 (2018/12/14) =
 
