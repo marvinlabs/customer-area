@@ -113,6 +113,7 @@ feel free to fork the project and send us pull requests!
 * Fix: filter nav_menu_link_attributes parameters that could throw PHP errors on some themes
 * Fix: php warning showing up on contact form 7 admin page
 * Fix: widget accordion fancytree menu no more loading in some cases
+* Fix: php warning thrown when clicking the switch users dropdown
 * Tweak: design adjustments and enhancements
 * Tweak: update many translations
 * Tweak: speedup page loading by optimising some JS scripts
