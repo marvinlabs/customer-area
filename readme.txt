@@ -109,8 +109,9 @@ feel free to fork the project and send us pull requests!
 
 * New: support for ACF v5.8.3 (Warning: Older versions are not anymore compatible with our ACF Integration add-on)
 * New: allow "My private contents" to also display "authored by" contents on dashboard and pages such as "My files", "My pages", etc...
+* New: filter 'cuar/core/page/query-allow-authored-by' set to 'true' by default to allow contents "authored by" to be displayed on private content pages listings
 * Fix: url profile field that could not be used
-* Fix: filter nav_menu_link_attributes parameters that could throw PHP errors on some themes
+* Fix: filter 'nav_menu_link_attributes' parameters that could throw PHP errors on some themes
 * Fix: php warning showing up on contact form 7 admin page
 * Fix: widget accordion fancytree menu no more loading in some cases
 * Fix: php warning thrown when clicking the switch users dropdown
