@@ -614,8 +614,9 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
         public function filter_query_to_add_authored_by( $where, $q ) {
             if ( isset($q->query['query_filter']) && 'cuar_add_authored_by' === $q->query['query_filter'] ) {
-                $allow_add_authored_by = apply_filters('cuar/core/page/query-allow-authored-by', true);
-                if(!$allow_add_authored_by) return $where;
+                $disable_authored_by = apply_filters('cuar/core/page/query-disable-authored-by', true);
+                $disable_authored_by = apply_filters('cuar/core/page/query-disable-authored-by?post_type=' . $q->query['post_type'], $disable_authored_by, $q);
+                if($disable_authored_by) return $where;
 
                 $needle_open = "( wp_postmeta.meta_key = '" . CUAR_PostOwnerAddOn::$META_OWNER_QUERYABLE . "'";
                 $pos_open = strpos($where, $needle_open);
