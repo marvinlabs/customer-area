@@ -1,16 +1,17 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2018}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2019}
 # Translators:
 # Henk <henk@buma-fm.nl>, 2017
 # Lennart van Beek <lcrvanbeek@gmail.com>, 2015
+# Michael Timmerman <michael.timmerman3@gmail.com>, 2019
 # Volluta <volluta@tutanota.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-12-14 12:13:13+00:00\n"
-"PO-Revision-Date: 2018-12-14 11:44+0000\n"
-"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"POT-Creation-Date: 2019-08-13 16:59:23+00:00\n"
+"PO-Revision-Date: 2019-05-08 23:41+0000\n"
+"Last-Translator: Roel Dekker <rodekker@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/wp-translations/"
 "wp-customer-area/language/nl_NL/)\n"
 "Language: nl_NL\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: grunt-wp-i18n1.0.2\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -294,6 +295,8 @@ msgid ""
 "Permissions could not be changed. PHP probably does not have the required "
 "permissions. Please do it manually using FTP or SSH."
 msgstr ""
+"Toestemming kan niet worden verandert. PHP heeft waarschijnlijk niet de "
+"benodigde toestemmingen. Doe het alstublieft via FTP of SSH."
 
 #: src/php/core-addons/admin-area/admin-area-addon.class.php:110
 msgid "Folder could not be created"
@@ -538,7 +541,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-addons.template.php:29
 msgid "Show all"
-msgstr ""
+msgstr "Toon alles"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-blog.template.php:7
 msgid "/feed/rss"
@@ -551,6 +554,8 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:8
 msgid "Force your users to read and agree your terms and conditions"
 msgstr ""
+"Verplicht uw gebruikers om de algemene voorwaarden te lezen en goed te "
+"keuren."
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:11
 msgid "New add-on: Terms Of Service"
@@ -719,7 +724,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:104
 msgid "PDF Invoices"
-msgstr ""
+msgstr "PDF Facturen"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:105
 msgid ""
@@ -730,7 +735,7 @@ msgstr ""
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:109
 #: src/php/core-addons/customer-private-files/templates/customer-private-files-single-post-footer.template.php:44
 msgid "Download all attachments"
-msgstr ""
+msgstr "Download alle bijlagen"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:110
 msgid ""
@@ -744,11 +749,11 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:118
 msgid "WP Customer Area 7.0 has got a new dress."
-msgstr ""
+msgstr "WP Customer Area 7.0 zit in een nieuw kleedje"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:121
 msgid "New skin"
-msgstr ""
+msgstr "nieuwe skin"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:122
 msgid ""
@@ -786,7 +791,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:143
 msgid "Contact information"
-msgstr ""
+msgstr "Contact informatie"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:144
 msgid ""
@@ -797,7 +802,7 @@ msgstr ""
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:148
 msgid "Invoicing"
-msgstr ""
+msgstr "Facturering"
 
 #: src/php/core-addons/admin-area/templates/dashboard-part-whats-new.template.php:149
 msgid ""
@@ -2663,11 +2668,11 @@ msgstr ""
 msgid "Billing information"
 msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:33
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
 msgid "Pay with %s"
 msgstr "Betaal met %s"
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:35
 msgid "Choose a payment method"
 msgstr ""
 
@@ -2906,7 +2911,7 @@ msgstr ""
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:299
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:315
 msgid "Save settings to check again"
-msgstr ""
+msgstr "Bewaar instellingen om te herbekijken"
 
 #: src/php/core-addons/private-file/private-file-admin-interface.class.php:282
 msgid "The folder does not exist."
@@ -3239,17 +3244,17 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:31
 msgid "Add-on"
-msgstr ""
+msgstr "Add-on"
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:32
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:44
 msgid "Current version"
-msgstr ""
+msgstr "Huidige versie"
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:33
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:45
 msgid "Recommended version"
-msgstr ""
+msgstr "Aanbevolen versie"
 
 #: src/php/core-addons/status/templates/status-attention-needed-version-mismatch.template.php:46
 msgid ""
@@ -3297,11 +3302,11 @@ msgstr ""
 
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:66
 msgid "Addon is active"
-msgstr ""
+msgstr "Addon is actief"
 
 #: src/php/core-addons/status/templates/status-section-installed-addons.template.php:68
 msgid "Addon is not active"
-msgstr ""
+msgstr "Addon is niet actief"
 
 #: src/php/core-addons/status/templates/status-section-needs-attention.template.php:33
 msgid "Issue #%d"
@@ -3404,11 +3409,11 @@ msgstr "Gebruikersprofiel"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:65
 msgid "Personal details"
-msgstr ""
+msgstr "Persoonlijke details"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:66
 msgid "Other details"
-msgstr ""
+msgstr "andere details"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:74
 msgid "Username"
@@ -3423,39 +3428,43 @@ msgid "Primary email"
 msgstr "Primaire e-mail "
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:88
+msgid "First name"
+msgstr "Voornaam"
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
 msgid "Last name"
 msgstr "Achternaam"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
 msgid "Nickname"
 msgstr "Schermnaam"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
 msgid "Display name"
 msgstr "Schermnaam"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
-msgid "Personal Website"
-msgstr ""
-
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:108
-msgid "Biography"
-msgstr ""
+msgid "Personal Website"
+msgstr "Persoonlijke website"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:109
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:113
+msgid "Biography"
+msgstr "Biografie"
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:114
 msgid "Your can write a short description about you."
 msgstr ""
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:115
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:120
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:116
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:121
 msgid "Password (confirm)"
 msgstr "Wachtwoord (bevestigen)"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:117
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:122
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
@@ -3527,13 +3536,13 @@ msgstr "Prullenbak leegmaken "
 
 #: src/php/core-classes/Cron/cron.class.php:43
 msgid "Once weekly"
-msgstr ""
+msgstr "Eens per week"
 
-#: src/php/core-classes/Licensing/licensing.class.php:76
+#: src/php/core-classes/Licensing/licensing.class.php:77
 msgid "Unknown add-on"
 msgstr "Onbekende add-on"
 
-#: src/php/core-classes/Licensing/licensing.class.php:82
+#: src/php/core-classes/Licensing/licensing.class.php:84
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
@@ -3541,15 +3550,19 @@ msgstr ""
 "Probleem met het bereiken van onze licentie servers. Is de licentiesleutel "
 "correct? Is PHP cURL ingeschakeld?"
 
-#: src/php/core-classes/Licensing/licensing.class.php:87
+#: src/php/core-classes/Licensing/licensing.class.php:92
+msgid "Your license is valid forever"
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:93
 msgid "Your license is valid until: %s"
 msgstr "Uw licentie is geldig tot: %s"
 
-#: src/php/core-classes/Licensing/licensing.class.php:95
+#: src/php/core-classes/Licensing/licensing.class.php:104
 msgid "This license key has been revoked."
 msgstr "Deze licentie is ingetgrokken."
 
-#: src/php/core-classes/Licensing/licensing.class.php:100
+#: src/php/core-classes/Licensing/licensing.class.php:109
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
@@ -3557,27 +3570,27 @@ msgstr ""
 "U heeft uw maximum aantal website bereikt voor de Klantzone licenties. U "
 "heeft licentie tot %s website(s)."
 
-#: src/php/core-classes/Licensing/licensing.class.php:107
-msgid "Your license has expired at the date: %s"
-msgstr "Uw licentie is verlopen op: %s"
+#: src/php/core-classes/Licensing/licensing.class.php:117
+msgid "Your license has expired since %s"
+msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:110
+#: src/php/core-classes/Licensing/licensing.class.php:121
 msgid "Renew license"
 msgstr "Licentie vernieuwen"
 
-#: src/php/core-classes/Licensing/licensing.class.php:118
+#: src/php/core-classes/Licensing/licensing.class.php:130
 msgid "This license key does not match."
 msgstr "De licentie sleutel is onjuist"
 
-#: src/php/core-classes/Licensing/licensing.class.php:125
+#: src/php/core-classes/Licensing/licensing.class.php:137
 msgid "This license key seems to have been generated for another product."
 msgstr "Deze licentie sleutel is voor een ander product."
 
-#: src/php/core-classes/Licensing/licensing.class.php:131
+#: src/php/core-classes/Licensing/licensing.class.php:143
 msgid "Your license is not active for this URL."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:136
+#: src/php/core-classes/Licensing/licensing.class.php:148
 msgid "Problem when validating your license key"
 msgstr "Er is een probleem met het valideren van uw licentie sleutel"
 
@@ -3914,61 +3927,61 @@ msgstr "%1$s mag maximaal %2$s tekens zijn"
 msgid "%1$s is required."
 msgstr "%1$s is verplicht"
 
-#: src/php/core-classes/plugin.class.php:233
+#: src/php/core-classes/plugin.class.php:234
 msgid "Checking license..."
 msgstr "Licentiesleutel wordt gecontroleerd...."
 
-#: src/php/core-classes/plugin.class.php:234
+#: src/php/core-classes/plugin.class.php:235
 msgid "Failed to contact server"
 msgstr "Fout bij het vinden van de server"
 
-#: src/php/core-classes/plugin.class.php:235
-#: src/php/core-classes/plugin.class.php:284
+#: src/php/core-classes/plugin.class.php:236
+#: src/php/core-classes/plugin.class.php:285
 msgid "Saving..."
 msgstr "Opslaan&#8230;"
 
-#: src/php/core-classes/plugin.class.php:236
-#: src/php/core-classes/plugin.class.php:285
+#: src/php/core-classes/plugin.class.php:237
+#: src/php/core-classes/plugin.class.php:286
 msgid "Click to edit..."
 msgstr "Klik om te bewerken..."
 
-#: src/php/core-classes/plugin.class.php:237
-#: src/php/core-classes/plugin.class.php:286
+#: src/php/core-classes/plugin.class.php:238
+#: src/php/core-classes/plugin.class.php:287
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:238
-#: src/php/core-classes/plugin.class.php:287
+#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:288
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: src/php/core-classes/plugin.class.php:250
-#: src/php/core-classes/plugin.class.php:299
+#: src/php/core-classes/plugin.class.php:251
+#: src/php/core-classes/plugin.class.php:300
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:252
-#: src/php/core-classes/plugin.class.php:301
+#: src/php/core-classes/plugin.class.php:253
+#: src/php/core-classes/plugin.class.php:302
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:302
+#: src/php/core-classes/plugin.class.php:303
 msgid ""
 "We could not get a proper answer from the server, please contact site "
 "administrator."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:303
+#: src/php/core-classes/plugin.class.php:304
 msgid "The type of file you tried to upload is not an image."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:304
+#: src/php/core-classes/plugin.class.php:305
 msgid "Delete image"
-msgstr ""
+msgstr "Verwijder afbeelding"
 
-#: src/php/core-classes/plugin.class.php:731
+#: src/php/core-classes/plugin.class.php:732
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
@@ -3976,7 +3989,7 @@ msgstr ""
 "Permalinks zijn uitgeschakeld, Customer Area zal hier door niet goed werken. "
 "<a href=\"%1$s\"> Wijzig dit in de WordPress instellingen</a>."
 
-#: src/php/core-classes/plugin.class.php:1032
+#: src/php/core-classes/plugin.class.php:1041
 msgid "Some template files you have overridden seem to be outdated."
 msgstr "Sommige overgeschreven template bestanden lijken verouderd te zijn."
 
@@ -5978,26 +5991,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Kies uit de meest gebruikte bestandscategoriën"
 
-#: src/php/core-classes/plugin.class.php:239
-#: src/php/core-classes/plugin.class.php:288
+#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:289
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr "MM d, yy"
 
-#: src/php/core-classes/plugin.class.php:240
-#: src/php/core-classes/plugin.class.php:289
+#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:290
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Wissen"
 
-#: src/php/core-classes/plugin.class.php:241
-#: src/php/core-classes/plugin.class.php:290
+#: src/php/core-classes/plugin.class.php:242
+#: src/php/core-classes/plugin.class.php:291
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "Vandaag"
 
-#: src/php/core-classes/plugin.class.php:244
-#: src/php/core-classes/plugin.class.php:293
+#: src/php/core-classes/plugin.class.php:245
+#: src/php/core-classes/plugin.class.php:294
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr "Toon een andere maand"

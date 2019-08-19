@@ -1,4 +1,4 @@
-# (c) Vincent Mimoun-Prat, MarvinLabs {2018}
+# (c) Vincent Mimoun-Prat, MarvinLabs {2019}
 # Translators:
 # Benjamin Sponagel <roanoked@gmail.com>, 2016
 # Lennart Schreiber <webzapeu@googlemail.com>, 2016
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: WP Customer Area\n"
 "Report-Msgid-Bugs-To: http://github.com/marvinlabs/customer-area-build-"
 "environment/issues\n"
-"POT-Creation-Date: 2018-12-14 12:13:13+00:00\n"
-"PO-Revision-Date: 2018-12-14 11:44+0000\n"
-"Last-Translator: Vincent Mimoun-Prat <vpratfr@yahoo.fr>\n"
+"POT-Creation-Date: 2019-08-13 16:59:23+00:00\n"
+"PO-Revision-Date: 2019-05-08 23:41+0000\n"
+"Last-Translator: Joerg Knoerchen <news@sensorgrafie.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/wp-translations/wp-"
 "customer-area/language/de_DE/)\n"
 "Language: de_DE\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: grunt-wp-i18n1.0.2\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
@@ -2749,11 +2749,11 @@ msgstr ""
 msgid "Billing information"
 msgstr ""
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:33
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
 msgid "Pay with %s"
 msgstr "Zahle mit %s"
 
-#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:34
+#: src/php/core-addons/payments-checkout/templates/payments-checkout-gateways.template.php:35
 msgid "Choose a payment method"
 msgstr ""
 
@@ -3538,39 +3538,43 @@ msgid "Primary email"
 msgstr "Ihre Emailadresse"
 
 #: src/php/core-addons/user-profile/user-profile-addon.class.php:88
+msgid "First name"
+msgstr "Vorname"
+
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
 msgid "Last name"
 msgstr "Nachname"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:93
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
 msgid "Nickname"
 msgstr "Spitzname"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:98
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
 msgid "Display name"
 msgstr "Angezeigter Name"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:103
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:108
 msgid "Personal Website"
 msgstr "Persönliche Webseite"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:108
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:113
 msgid "Biography"
 msgstr "Biografie"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:109
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:114
 msgid "Your can write a short description about you."
 msgstr "Sie können eine Kurzbeschreibung über sich verfassen."
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:115
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:120
 #: src/php/core-classes/object-meta/field/user-password-field.class.php:70
 msgid "Password"
 msgstr "Passwort"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:116
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:121
 msgid "Password (confirm)"
 msgstr "Passwort bestätigen"
 
-#: src/php/core-addons/user-profile/user-profile-addon.class.php:117
+#: src/php/core-addons/user-profile/user-profile-addon.class.php:122
 msgid ""
 "The password must at least be composed of 5 characters. You will be "
 "requested to login again after your password gets changed. Leave these "
@@ -3654,11 +3658,11 @@ msgstr "Papierkorb leeren"
 msgid "Once weekly"
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:76
+#: src/php/core-classes/Licensing/licensing.class.php:77
 msgid "Unknown add-on"
 msgstr "Unbekanntes Add-on"
 
-#: src/php/core-classes/Licensing/licensing.class.php:82
+#: src/php/core-classes/Licensing/licensing.class.php:84
 msgid ""
 "Problem when contacting our license servers. Is the license key correct? Is "
 "PHP cURL enabled?"
@@ -3666,15 +3670,19 @@ msgstr ""
 "Problem beim kontaktieren unserer Lizenzserver. Ist der Lizenzschlüssel "
 "korrekt? Ist PHP cURL aktiviert?"
 
-#: src/php/core-classes/Licensing/licensing.class.php:87
+#: src/php/core-classes/Licensing/licensing.class.php:92
+msgid "Your license is valid forever"
+msgstr ""
+
+#: src/php/core-classes/Licensing/licensing.class.php:93
 msgid "Your license is valid until: %s"
 msgstr "Ihre Lizenz ist gültig bis: %s"
 
-#: src/php/core-classes/Licensing/licensing.class.php:95
+#: src/php/core-classes/Licensing/licensing.class.php:104
 msgid "This license key has been revoked."
 msgstr "Ihr Lizenzschlüssel wurde zurückgezogen."
 
-#: src/php/core-classes/Licensing/licensing.class.php:100
+#: src/php/core-classes/Licensing/licensing.class.php:109
 msgid ""
 "You have reached your maximum number of sites for this license key. You can "
 "use it on at most %s site(s)."
@@ -3682,29 +3690,29 @@ msgstr ""
 "Sie haben die maximale Anzahl an Webseiten für diesen Lizenzschlüssel "
 "erreicht. Sie können ihn maximal auf %s Seite(n) nutzen."
 
-#: src/php/core-classes/Licensing/licensing.class.php:107
-msgid "Your license has expired at the date: %s"
-msgstr "Ihre Lizenz ist am %s abgelaufen"
+#: src/php/core-classes/Licensing/licensing.class.php:117
+msgid "Your license has expired since %s"
+msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:110
+#: src/php/core-classes/Licensing/licensing.class.php:121
 msgid "Renew license"
 msgstr "Lizenz erneuern."
 
-#: src/php/core-classes/Licensing/licensing.class.php:118
+#: src/php/core-classes/Licensing/licensing.class.php:130
 msgid "This license key does not match."
 msgstr "Dieser Lizenzschlüssel stimmt nicht überein."
 
-#: src/php/core-classes/Licensing/licensing.class.php:125
+#: src/php/core-classes/Licensing/licensing.class.php:137
 msgid "This license key seems to have been generated for another product."
 msgstr ""
 "Dieser Lizenzschlüssel scheint für ein anderes Produkt generiert worden zu "
 "sein."
 
-#: src/php/core-classes/Licensing/licensing.class.php:131
+#: src/php/core-classes/Licensing/licensing.class.php:143
 msgid "Your license is not active for this URL."
 msgstr ""
 
-#: src/php/core-classes/Licensing/licensing.class.php:136
+#: src/php/core-classes/Licensing/licensing.class.php:148
 msgid "Problem when validating your license key"
 msgstr "Problem beim validieren ihres Lizenzschlüssels"
 
@@ -4039,36 +4047,36 @@ msgstr "%1$s darf höchstens %2$s Zeichen enthalten"
 msgid "%1$s is required."
 msgstr "%1$s wird benötigt."
 
-#: src/php/core-classes/plugin.class.php:233
+#: src/php/core-classes/plugin.class.php:234
 msgid "Checking license..."
 msgstr "Lizenz wird geprüft..."
 
-#: src/php/core-classes/plugin.class.php:234
+#: src/php/core-classes/plugin.class.php:235
 msgid "Failed to contact server"
 msgstr "Konnte nicht zum Server verbinden"
 
-#: src/php/core-classes/plugin.class.php:235
-#: src/php/core-classes/plugin.class.php:284
+#: src/php/core-classes/plugin.class.php:236
+#: src/php/core-classes/plugin.class.php:285
 msgid "Saving..."
 msgstr "Speichere …"
 
-#: src/php/core-classes/plugin.class.php:236
-#: src/php/core-classes/plugin.class.php:285
+#: src/php/core-classes/plugin.class.php:237
+#: src/php/core-classes/plugin.class.php:286
 msgid "Click to edit..."
 msgstr "Klicken zum Editieren..."
 
-#: src/php/core-classes/plugin.class.php:237
-#: src/php/core-classes/plugin.class.php:286
+#: src/php/core-classes/plugin.class.php:238
+#: src/php/core-classes/plugin.class.php:287
 msgid "OK"
 msgstr "OK"
 
-#: src/php/core-classes/plugin.class.php:238
-#: src/php/core-classes/plugin.class.php:287
+#: src/php/core-classes/plugin.class.php:239
+#: src/php/core-classes/plugin.class.php:288
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/php/core-classes/plugin.class.php:250
-#: src/php/core-classes/plugin.class.php:299
+#: src/php/core-classes/plugin.class.php:251
+#: src/php/core-classes/plugin.class.php:300
 msgid ""
 "You must select only a single owner, multiple owners are not handled for "
 "this action."
@@ -4076,28 +4084,28 @@ msgstr ""
 "Sie dürfen nur einen einzelnen Besitzer wählen. Mehrere Besitzer sind nicht "
 "vorgesehen für diese Aktion."
 
-#: src/php/core-classes/plugin.class.php:252
-#: src/php/core-classes/plugin.class.php:301
+#: src/php/core-classes/plugin.class.php:253
+#: src/php/core-classes/plugin.class.php:302
 msgid "No owner is currently selected, the action cannot be executed."
 msgstr ""
 "Aktuell ist kein Besitzer ausgewählt, weshalb die Aktion nicht ausgeführt "
 "werden kann."
 
-#: src/php/core-classes/plugin.class.php:302
+#: src/php/core-classes/plugin.class.php:303
 msgid ""
 "We could not get a proper answer from the server, please contact site "
 "administrator."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:303
+#: src/php/core-classes/plugin.class.php:304
 msgid "The type of file you tried to upload is not an image."
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:304
+#: src/php/core-classes/plugin.class.php:305
 msgid "Delete image"
 msgstr ""
 
-#: src/php/core-classes/plugin.class.php:731
+#: src/php/core-classes/plugin.class.php:732
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please <a "
 "href=\"%1$s\">enable them in the WordPress settings</a>."
@@ -4106,7 +4114,7 @@ msgstr ""
 "funktionieren. Bitte <a href=\"%1$s\">aktivieren sie diese in den WordPress "
 "Einstellungen</a>."
 
-#: src/php/core-classes/plugin.class.php:1032
+#: src/php/core-classes/plugin.class.php:1041
 msgid "Some template files you have overridden seem to be outdated."
 msgstr ""
 "Manche Vorlagendateien, die sie überschrieben haben scheinen veraltet zu "
@@ -6111,26 +6119,26 @@ msgctxt "cuar_private_page_category"
 msgid "Choose from the most used page categories"
 msgstr "Wähle aus den meistbenutzen Seitenkategorien"
 
-#: src/php/core-classes/plugin.class.php:239
-#: src/php/core-classes/plugin.class.php:288
+#: src/php/core-classes/plugin.class.php:240
+#: src/php/core-classes/plugin.class.php:289
 msgctxt "Date picker JS date format"
 msgid "MM d, yy"
 msgstr "MM d, yy"
 
-#: src/php/core-classes/plugin.class.php:240
-#: src/php/core-classes/plugin.class.php:289
+#: src/php/core-classes/plugin.class.php:241
+#: src/php/core-classes/plugin.class.php:290
 msgctxt "Date picker text"
 msgid "Clear"
 msgstr "Leeren"
 
-#: src/php/core-classes/plugin.class.php:241
-#: src/php/core-classes/plugin.class.php:290
+#: src/php/core-classes/plugin.class.php:242
+#: src/php/core-classes/plugin.class.php:291
 msgctxt "Date picker text"
 msgid "Today"
 msgstr "heute"
 
-#: src/php/core-classes/plugin.class.php:244
-#: src/php/core-classes/plugin.class.php:293
+#: src/php/core-classes/plugin.class.php:245
+#: src/php/core-classes/plugin.class.php:294
 msgctxt "Date picker text"
 msgid "Show a different month"
 msgstr "Anderen Monat anzeigen"

@@ -465,6 +465,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                 $pagination_base = $this->get_category_archive_url($cat);
 
                 $args = array(
+                    'query_filter'   => 'cuar_add_authored_by',
                     'post_type'      => $this->get_friendly_post_type(),
                     'posts_per_page' => $posts_per_page,
                     'paged'          => $current_page,
@@ -486,6 +487,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                 $display_mode = 'date_archive';
 
                 $args = array(
+                    'query_filter'   => 'cuar_add_authored_by',
                     'post_type'      => $this->get_friendly_post_type(),
                     'posts_per_page' => $posts_per_page,
                     'paged'          => $current_page,
@@ -535,6 +537,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             {
                 // Default view
                 $args = array(
+                    'query_filter'   => 'cuar_add_authored_by',
                     'post_type'      => $this->get_friendly_post_type(),
                     'posts_per_page' => $posts_per_page,
                     'paged'          => $current_page,
@@ -549,7 +552,10 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
             $args = apply_filters('cuar/core/page/query-args?slug=' . $page_slug, $args);
             $args = apply_filters('cuar/core/page/query-args?slug=' . $page_slug . '&display-mode=' . $display_mode, $args);
+
+            add_filter( 'posts_where', [&$this, 'filter_query_to_add_authored_by'], 9, 2);
             $content_query = new WP_Query($args);
+            remove_filter('posts_where', [&$this, 'filter_query_to_add_authored_by']);
 
             $page_subtitle = apply_filters('cuar/core/page/subtitle?slug=' . $page_slug, $page_subtitle);
             $page_subtitle = apply_filters('cuar/core/page/subtitle?slug=' . $page_slug . '&display-mode=' . $display_mode, $page_subtitle);
@@ -604,6 +610,18 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
                     'templates',
                     "content-page-content-empty.template.php"));
             }
+        }
+
+        public function filter_query_to_add_authored_by( $where, $q ) {
+            if ( isset($q->query['query_filter']) && 'cuar_add_authored_by' === $q->query['query_filter'] ) {
+                $needle_open = "( wp_postmeta.meta_key = '" . CUAR_PostOwnerAddOn::$META_OWNER_QUERYABLE . "'";
+                $pos_open = strpos($where, $needle_open);
+                if ($pos_open !== false) {
+                    $new_cond_open = "( post_author = '" . get_current_user_id() . "' ) OR " . $needle_open;
+                    $where = substr_replace($where, $new_cond_open, $pos_open, strlen($needle_open));
+                }
+            }
+            return $where;
         }
 
         public function add_listing_contextual_toolbar_group($groups)
@@ -763,6 +781,7 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
             $page_slug = $this->get_slug();
 
             $args = array(
+                'query_filter'   => 'cuar_add_authored_by',
                 'post_type'      => $this->get_friendly_post_type(),
                 'posts_per_page' => $this->get_max_item_number_on_dashboard(),
                 'orderby'        => 'date',
@@ -775,7 +794,9 @@ if ( !class_exists('CUAR_AbstractContentPageAddOn')) :
 
             $args = apply_filters('cuar/core/dashboard/block-query-args?slug=' . $page_slug, $args);
 
+            add_filter( 'posts_where', [&$this, 'filter_query_to_add_authored_by'], 9, 2);
             $content_query = new WP_Query($args);
+            remove_filter('posts_where', [&$this, 'filter_query_to_add_authored_by']);
 
             if ($content_query->have_posts())
             {

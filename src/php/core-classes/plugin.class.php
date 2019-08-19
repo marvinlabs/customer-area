@@ -70,6 +70,7 @@ if ( !class_exists('CUAR_Plugin')) :
             add_action('plugins_loaded', array(&$this, 'load_addons'), 10);
 
             add_action('init', array(&$this, 'start_session'), 1);
+            add_action('wp_enqueue_scripts', array(&$this, 'eqcss_load_js_tweak'), 99);
             add_action('admin_enqueue_scripts', array(&$this, 'load_admin_scripts'), 7);
             add_action('wp_enqueue_scripts', array(&$this, 'load_frontend_scripts'), 7);
             add_action('admin_enqueue_scripts', array(&$this, 'load_admin_styles'), 8);
@@ -366,7 +367,7 @@ if ( !class_exists('CUAR_Plugin')) :
             // Post edition pages
             $managed_types = $this->get_managed_types();
             if (isset($_GET['post_type']) && key_exists($_GET['post_type'], $managed_types)) return true;
-            if (isset($_GET['post']) && key_exists(get_post_type($_GET['post']), $managed_types)) return true;
+            if (isset($_GET['post']) && get_post_type($_GET['post']) !== false && key_exists(get_post_type($_GET['post']), $managed_types)) return true;
 
             return false;
         }
@@ -789,6 +790,14 @@ if ( !class_exists('CUAR_Plugin')) :
         }
 
         /*------- EXTERNAL LIBRARIES ------------------------------------------------------------------------------------*/
+
+        /**
+         * EQCSS Tweak
+         */
+        public function eqcss_load_js_tweak ()
+        {
+            wp_enqueue_script('cuar.eqcss-tweak', CUAR_PLUGIN_URL . 'libs/js/other/eqcss-tweak/eqcss.js', array('jquery'), $this->get_version(), true);
+        }
 
         /**
          * Allow the use of an external library provided by Customer Area
