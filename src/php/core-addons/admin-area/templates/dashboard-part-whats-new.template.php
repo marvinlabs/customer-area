@@ -2,6 +2,28 @@
 
 <?php
 $whats_new = array(
+    '7.7' => array(
+        'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-7-0', 'cuar'),
+        'codename'  => 'Janis Joplin',
+        'tagline'   => __('Create powerful forms using ACF and our ACF Integration add-on', 'cuar'),
+        'blocks'    => array(
+            array(
+                'title' => __('ACF Integration', 'cuar'),
+                'text'  => __('We made some huge updates on the ACF Integration add-on, its design and its compatibility with the popular ACF plugin from Elliot Condon. We made almost all the fields compatible, except 4 of them (see our readme file for more information).',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('User experience', 'cuar'),
+                'text'  => __('Many of you have let us know that it is embarrassing to have on pages of content, only the posts assigned to the connected user. We listened to you, and we added on the pages "My files", "My pages" (etc.) the contents created by the connected user.',
+                    'cuar'),
+            ),
+            array(
+                'title' => __('Design enhancements and bug fixes', 'cuar'),
+                'text'  => __('Since our 7.5.0 version, there have been many improvements on the design, but also many patches: 11 new features and over 21 issues fixes and tweaks. For instance, we optimized our code to allow a faster page load speed.',
+                    'cuar'),
+            ),
+        )
+    ),
     '7.5' => array(
         'blog_post' => 'http://wp-customerarea.com' . __('/whats-new-in-wp-customer-area-7-5-0', 'cuar'),
         'codename'  => 'Jacques Higelin',

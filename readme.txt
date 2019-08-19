@@ -120,7 +120,7 @@ feel free to fork the project and send us pull requests!
 
 **Add-on changes**
 
-* **ACF Integration** - New: added compatibility with most of the ACF fields (Fields still incompatibles: link, wysiwyg, flexible_content, color_picker, user)
+* **ACF Integration** - New: added compatibility with most of the ACF fields (Fields still incompatibles: link, wysiwyg, color_picker, user)
 * **ACF Integration** - Fix: edit-account and my-account pages not properly displaying because of a filter change in ACF (acf_match_location_rule)
 * **Switch Users** - Fix: missing select2 library that could happen in some cases
 * **Design Extras** - Tweak: Support for new styles from WP Customer Area 7.7.0 and ACF v5.8.3
