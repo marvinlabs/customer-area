@@ -105,9 +105,24 @@ feel free to fork the project and send us pull requests!
 
 == Changelog ==
 
-= 7.7.0 (2019/08/14) =
+= 7.7.0 (2019/08/19) =
 
 * New: support for ACF v5.8.3 (Warning: Older versions are not anymore compatible with our ACF Integration add-on)
+* New: allow "My private contents" to also display "authored by" contents on dashboard and pages such as "My files", "My pages", etc...
+* Fix: url profile field that could not be used
+* Fix: filter nav_menu_link_attributes parameters that could throw PHP errors on some themes
+* Fix: php warning showing up on contact form 7 admin page
+* Fix: widget accordion fancytree menu no more loading in some cases
+* Tweak: design adjustments and enhancements
+* Tweak: update many translations
+* Tweak: speedup page loading by optimising some JS scripts
+
+**Add-on changes**
+
+* **ACF Integration** - New: added compatibility with most of the ACF fields (Fields still incompatibles: link, wysiwyg, flexible_content, color_picker, user)
+* **ACF Integration** - Fix: edit-account and my-account pages not properly displaying because of a filter change in ACF (acf_match_location_rule)
+* **Switch Users** - Fix: missing select2 library that could happen in some cases
+* **Design Extras** - Tweak: Support for new styles from WP Customer Area 7.7.0 and ACF v5.8.3
 
 = 7.6.0 (2018/12/14) =
 
