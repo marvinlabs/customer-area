@@ -64,6 +64,10 @@ class CUAR_PostOwnerAjaxHelper
         {
             $user = $user_id;
         }
+        else if (is_a($user_id, stdClass::class))
+        {
+            $user = new WP_User($user_id->ID);
+        }
         else if (0 !== (int)($user_id))
         {
             $user = new WP_User($user_id);
