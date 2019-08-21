@@ -1,4 +1,8 @@
 /*
+ * WARNING: This file is NOT a CSS file but a file interpreted by JS scripts ! Do not cache it using Cache plugins !
+ */
+
+/*
  * Tray Responsive Changes
  * -----------------------
  * Hide the tray completely if #cuar-js-content-container is <600 px
@@ -110,58 +114,85 @@
  * Adapt fields sizes depending on wrapper width
  * From framework/theme_wpca/assets/skin/wpca/tweaks/fields.less
  */
-@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 768px) {
+ body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields {
+     margin-left: -11px;
+     margin-right: -11px;
+     border-top: 1px solid #171818;
+     padding: 15px 0
+ }
+ 
+ body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field:before,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields:before,body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field:after,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields:after {
+     content: " ";
+     display: table
+ }
+ 
+ body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field:after,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields:after {
+     clear: both
+ }
+ 
+ body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field:before,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields:before,body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field:after,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields:after {
+     content: " ";
+     display: table
+ }
+ 
+ body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field:after,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields:after {
+     clear: both
+ }
+ body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-label,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-label {
+     float: left;
+     width: 100%;
+     position: relative;
+     min-height: 1px;
+     padding-left: 11px;
+     padding-right: 11px;
+     font-weight: bold
+ }
+@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 451px) {
     body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-label,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-label {
         float:left;
         width: 33.33333333%
     }
 }
 
-@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 992px) {
+@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 651px) {
     body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-label,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-label {
         float:left;
         width: 25%
     }
 }
 
-@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 1140px) {
+@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 1051px) {
     body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-label,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-label {
         float:left;
         width: 16.66666667%
     }
 }
-
-@element 'body.disable-tray-rescale #cuar-js-content-container' and (min-width: 1400px) {
-    body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-label,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-label {
-        float:left;
-        width: 8.33333333%
-    }
+body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-value,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-value {
+    float: left;
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-left: 11px;
+    padding-right: 11px
 }
 
-@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 768px) {
+@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 451px) {
     body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-value,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-value {
         float:left;
         width: 66.66666667%
     }
 }
 
-@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 992px) {
+@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 651px) {
     body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-value,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-value {
         float:left;
         width: 75%
     }
 }
 
-@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 1140px) {
+@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 1051px) {
     body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-value,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-value {
         float:left;
         width: 83.33333333%
-    }
-}
-
-@element 'body.customer-area-active #cuar-js-content-container' and (min-width: 1400px) {
-    body.customer-area-active #cuar-js-content-container .customer-account .cuar-field.cuar-readonly-field .cuar-field-value,body.customer-area-active #cuar-js-content-container .customer-account .cuar-profile-fields .cuar-field-value {
-        float:left;
-        width: 91.66666667%
     }
 }
