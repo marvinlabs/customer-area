@@ -102,7 +102,7 @@ if ( ! function_exists( 'cuar_load_skin_scripts' ) ) {
 		// CUSTOM STYLES
 		// --
 		wp_register_style( 'customer-area-master-eqcss',
-			CUAR_PLUGIN_URL . 'skins/frontend/master/assets/css/eqcss/queries.eqcss',
+			CUAR_PLUGIN_URL . 'skins/frontend/master/assets/css/eqcss/queries.css',
 			array(),
 			$cuar_plugin->get_version() );
 		wp_enqueue_style( 'customer-area-master-eqcss' );
