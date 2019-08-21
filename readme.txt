@@ -5,7 +5,7 @@ Donate link:        http://www.marvinlabs.com/donate/
 Tags:               private files,client area,customer area,client portal,customer portal,user files,secure area,crm,project,project management,access control,files
 Requires at least:  4.7
 Tested up to:       5.0.0
-Stable tag:         7.7.0
+Stable tag:         7.7.1
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,10 @@ Contributions are welcome. The plugin has a [GitHub repository for contributors]
 feel free to fork the project and send us pull requests!
 
 == Changelog ==
+
+= 7.7.1 (2019/08/21) =
+
+* Fix: issue on my-account page that was making the left column of the fields too small for some sites
 
 = 7.7.0 (2019/08/19) =
 
